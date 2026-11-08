@@ -238,7 +238,82 @@
       "Pathology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-endo",
+       "title": "Endocrine Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 37–39, 41 · Pharmacotherapy 5e Ch 43–46",
+       "href": "endo/pharm-endo.html",
+       "thumb": "thumbs/pharm-endo.jpg",
+       "desc": "แผนที่กลุ่มยาต่อมไร้ท่อ: insulin, metformin, TZD, sulfonylurea, GLP-1/DPP-4, SGLT2, thionamide, levothyroxine, ยา pituitary (DDAVP, vaptans, GH, octreotide), corticosteroid, cinacalcet และการรักษา T2DM",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Endocrine drug target map",
+         "endomap"
+        ],
+        [
+         "Insulin preparations",
+         "insulin"
+        ],
+        [
+         "Metformin & pioglitazone",
+         "sensitizer"
+        ],
+        [
+         "Sulfonylureas & meglitinides",
+         "secretagog"
+        ],
+        [
+         "GLP-1 agonists, DPP-4 inhibitors & pramlintide",
+         "incretin"
+        ],
+        [
+         "SGLT2 & α-glucosidase inhibitors",
+         "glucose-other"
+        ],
+        [
+         "Thionamides",
+         "thionamide"
+        ],
+        [
+         "Levothyroxine & liothyronine",
+         "thyroxine"
+        ],
+        [
+         "Hypothalamic & pituitary drugs",
+         "pituitary"
+        ],
+        [
+         "Glucocorticoids, fludrocortisone & adrenal inhibitors",
+         "adrenal"
+        ],
+        [
+         "Cinacalcet, sevelamer & cation exchange resins",
+         "calcium"
+        ],
+        [
+         "Type 2 diabetes treatment",
+         "dmrx"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 41",
+        "sort": 41
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
