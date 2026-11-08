@@ -1,0 +1,66 @@
+/* =====================================================================
+   Study Bible design system · v1
+   One source of truth for the app shell and every atlas page.
+   - Tokens: --sb-*  (atlases map their own names onto these)
+   - Themes: system / light / dark / oled (set by the app via data-theme)
+   - Size:   html font-size is set by the app (15/16/18/20 px); use rem
+   - Components: .sb-hero, .sb-card, .sb-chip, .sb-seg, .sb-switch,
+                 .sb-table, .sb-note, .sb-src
+   Content colours (ions, lineages, germ layers) stay inside each atlas
+   and must never reuse --sb-accent, which marks selection / focus only.
+   ===================================================================== */
+:root{
+  --sb-bg:#F5F6F8; --sb-surface:#FFFFFF; --sb-surface2:#EEF0F3; --sb-plate:#F8F9FB; --sb-grid:#E6E9EE;
+  --sb-ink:#0E1116; --sb-ink2:#3D4450; --sb-muted:#6B7280; --sb-line:#E3E6EB; --sb-halo:#FFFFFF;
+  --sb-accent:#0E9F8E; --sb-accent-soft:color-mix(in srgb,var(--sb-accent) 14%,var(--sb-surface)); --sb-on-accent:#FFFFFF;
+  --sb-good:#16A34A; --sb-warn:#D97706; --sb-bad:#DC2626; --sb-xp:#F59E0B;
+  --sb-shadow:0 1px 2px rgba(14,17,22,.05),0 4px 14px rgba(14,17,22,.05);
+  --sb-r:14px; --sb-r-lg:18px;
+  /* source badges: same letter + colour in every atlas */
+  --sb-src-guyton:#1D4ED8; --sb-src-boron:#7C3AED; --sb-src-langman:#0E7490; --sb-src-moore:#B45309; --sb-src-fa:#475569; --sb-src-gen:#6B7280; --sb-src-grays:#9F1239; --sb-src-lec:#0369A1; --sb-src-junq:#C2410C; --sb-src-wheat:#4D7C0F; --sb-src-difiore:#A21CAF; --sb-src-robbins:#9C4A3C; --sb-src-harrison:#1E3A8A;
+  --sb-font:-apple-system,BlinkMacSystemFont,"SF Pro Text","Segoe UI",Roboto,"Noto Sans Thai","Helvetica Neue",sans-serif;
+  --sb-mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --sb-bg:#0B0D11; --sb-surface:#15181E; --sb-surface2:#1E222A; --sb-plate:#12151A; --sb-grid:#232832;
+  --sb-ink:#F2F4F7; --sb-ink2:#C4C9D2; --sb-muted:#8A919C; --sb-line:#262B34; --sb-halo:#15181E;
+  --sb-shadow:0 1px 2px rgba(0,0,0,.4); --sb-src-guyton:#7AA5FF; --sb-src-boron:#B79CFF; --sb-src-langman:#5CC8D8; --sb-src-moore:#F2A57E; --sb-src-fa:#A7B3BF; --sb-src-gen:#9CA3AF; --sb-src-grays:#F58BA6; --sb-src-lec:#6CC3F5; --sb-src-junq:#FB9A5C; --sb-src-wheat:#A3D16B; --sb-src-difiore:#E58BF2; --sb-src-robbins:#D29A8C; --sb-src-harrison:#93C5FD; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --sb-bg:#0B0D11; --sb-surface:#15181E; --sb-surface2:#1E222A; --sb-plate:#12151A; --sb-grid:#232832;
+  --sb-ink:#F2F4F7; --sb-ink2:#C4C9D2; --sb-muted:#8A919C; --sb-line:#262B34; --sb-halo:#15181E;
+  --sb-shadow:0 1px 2px rgba(0,0,0,.4); --sb-src-guyton:#7AA5FF; --sb-src-boron:#B79CFF; --sb-src-langman:#5CC8D8; --sb-src-moore:#F2A57E; --sb-src-fa:#A7B3BF; --sb-src-gen:#9CA3AF; --sb-src-grays:#F58BA6; --sb-src-lec:#6CC3F5; --sb-src-junq:#FB9A5C; --sb-src-wheat:#A3D16B; --sb-src-difiore:#E58BF2; --sb-src-robbins:#D29A8C; --sb-src-harrison:#93C5FD; color-scheme:dark}
+:root[data-theme="oled"]{
+  --sb-bg:#000000; --sb-surface:#0E1014; --sb-surface2:#181B21; --sb-plate:#07080A; --sb-grid:#1C2027;
+  --sb-ink:#F2F4F7; --sb-ink2:#C4C9D2; --sb-muted:#8A919C; --sb-line:#23272F; --sb-halo:#0E1014;
+  --sb-shadow:none; --sb-src-guyton:#7AA5FF; --sb-src-boron:#B79CFF; --sb-src-langman:#5CC8D8; --sb-src-moore:#F2A57E; --sb-src-fa:#A7B3BF; --sb-src-gen:#9CA3AF; --sb-src-grays:#F58BA6; --sb-src-lec:#6CC3F5; --sb-src-junq:#FB9A5C; --sb-src-wheat:#A3D16B; --sb-src-difiore:#E58BF2; --sb-src-robbins:#D29A8C; --sb-src-harrison:#93C5FD; color-scheme:dark}
+
+/* ---------- base ---------- */
+html{-webkit-text-size-adjust:100%}
+body{background:var(--sb-bg)!important;color:var(--sb-ink);font-family:var(--sb-font)!important;-webkit-font-smoothing:antialiased}
+:focus-visible{outline:2px solid var(--sb-accent)!important;outline-offset:2px}
+
+/* ---------- hero: every atlas opens with the same header ---------- */
+.sb-hero{display:flex;flex-direction:column;gap:.5rem;padding:.5rem 0 1rem}
+.sb-eyebrow{font-size:.75rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;color:var(--sb-accent)}
+.sb-hero h1{margin:0;font:800 clamp(1.75rem,4.2vw,2.5rem)/1.12 var(--sb-font);letter-spacing:-.02em;color:var(--sb-ink);text-wrap:balance}
+.sb-lede{margin:0;max-width:62ch;font-size:1rem;line-height:1.6;color:var(--sb-ink2)}
+.sb-sources{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.25rem}
+.sb-src{display:inline-flex;align-items:center;gap:.4rem;font-size:.8125rem;font-weight:500;color:var(--sb-ink2);background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:999px;padding:.3rem .7rem .3rem .35rem}
+.sb-src i{font-style:normal;font:700 .6875rem/1 var(--sb-mono);min-width:1.4rem;height:1.4rem;padding:0 .3rem;border-radius:999px;display:grid;place-items:center;color:#fff;background:var(--sb-ink2)}
+.sb-src i.guyton{background:var(--sb-src-guyton)}.sb-src i.boron{background:var(--sb-src-boron)}.sb-src i.langman{background:var(--sb-src-langman)}.sb-src i.moore{background:var(--sb-src-moore)}.sb-src i.fa{background:var(--sb-src-fa)}.sb-src i.gen{background:var(--sb-src-gen)}.sb-src i.grays{background:var(--sb-src-grays)}.sb-src i.lec{background:var(--sb-src-lec)}.sb-src i.junq{background:var(--sb-src-junq)}.sb-src i.wheat{background:var(--sb-src-wheat)}.sb-src i.difiore{background:var(--sb-src-difiore)}.sb-src i.robbins{background:var(--sb-src-robbins)}.sb-src i.harrison{background:var(--sb-src-harrison)}
+:root[data-theme="dark"] .sb-src i,:root[data-theme="oled"] .sb-src i{color:#0B0D11}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sb-src i{color:#0B0D11}}
+
+/* ---------- surfaces ---------- */
+.sb-card{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);box-shadow:var(--sb-shadow)}
+
+/* ---------- controls ---------- */
+.sb-chip{display:inline-flex;align-items:center;gap:.4rem;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink2);border-radius:999px;padding:.4rem .8rem;font:500 .8125rem/1.1 var(--sb-font);cursor:pointer}
+.sb-chip[aria-pressed="true"],.sb-chip.on{background:var(--sb-ink);color:var(--sb-bg);border-color:var(--sb-ink)}
+.sb-note{font-size:.8125rem;line-height:1.5;color:var(--sb-muted)}
+
+/* inline source tag after a fact: <b class="sbb lec">Lec</b> */
+.sbb{display:inline-block;font:700 .625rem/1 var(--sb-mono);padding:.18rem .32rem;border-radius:5px;color:#fff;vertical-align:.1em;margin-left:.2rem}
+.sbb.guyton{background:var(--sb-src-guyton)}.sbb.boron{background:var(--sb-src-boron)}.sbb.langman{background:var(--sb-src-langman)}.sbb.moore{background:var(--sb-src-moore)}.sbb.grays{background:var(--sb-src-grays)}.sbb.lec{background:var(--sb-src-lec)}.sbb.gen{background:var(--sb-src-gen)}.sbb.fa{background:var(--sb-src-fa)}.sbb.junq{background:var(--sb-src-junq)}.sbb.wheat{background:var(--sb-src-wheat)}.sbb.difiore{background:var(--sb-src-difiore)}.sbb.robbins{background:var(--sb-src-robbins)}.sbb.harrison{background:var(--sb-src-harrison)}
+:root[data-theme="dark"] .sbb,:root[data-theme="oled"] .sbb{color:#0B0D11}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sbb{color:#0B0D11}}

@@ -1,0 +1,736 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Harrison Ch 321 · Acute Kidney Injury</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media=\'all\'">
+<link rel="stylesheet" href="../design/sb.css">
+<style>
+/* Layout: sb-hero, vertical grouped contents (sidebar ≥1000px, drawer on phones), then a stage of [diagram card | notes card], lecture figures strip below.
+   Content colours (anatomy): artery, vein, lymph, nerve, kidney tissue, urinary tract, fat, fascia, muscle, bone, gland. */
+:root{
+  --a-art:#D23C3C; --a-vein:#2F64C8; --a-lymph:#2E9A50; --a-nerve:#D9A21B;
+  --a-cortex:#D98B74; --a-medulla:#B4564A; --a-uro:#E2B44C; --a-blad:#E9A08F; --a-fat:#F3D77A; --a-fat2:#F7E6A8;
+  --a-fascia:#4B5563; --a-perit:#4F86C6; --a-musc:#CF7468; --a-musc2:#E3A196; --a-bone:#ECE3CE; --a-gland:#E39A2D; --a-glandm:#9C5B2E;
+  --a-edge:rgba(20,16,14,.62); --a-cav:#FBF7F0; --a-skin:#F2DCCB; --a-prost:#C7A2C9;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}
+*{box-sizing:border-box}
+body{margin:0;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding:1rem max(16px,env(safe-area-inset-right,0px)) 5rem max(16px,env(safe-area-inset-left,0px))}
+.shell{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:1.25rem;align-items:start}
+.side{position:sticky;top:.75rem;max-height:calc(100vh - 1.5rem);overflow:auto;padding:.5rem;scrollbar-width:thin}
+.mbar{display:none}
+@media (max-width:1000px){.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}
+ .mbar{display:flex;position:sticky;top:0;z-index:20;gap:.5rem;align-items:center;margin:0 -16px;padding:.55rem 16px;background:color-mix(in srgb,var(--sb-bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--sb-line)}}
+.mbar .open{flex:1;min-width:0;display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:inherit;cursor:pointer;text-align:left}
+.mbar .open svg{flex:none;width:1.1rem;height:1.1rem;color:var(--sb-accent)}
+.mbar .open span{min-width:0;display:flex;flex-direction:column}
+.mbar .open small{font:700 .625rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.mbar .open b{font:600 .9375rem/1.25 var(--sb-font);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mbar .ar{flex:none;width:2.6rem;height:2.6rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:700 1rem var(--sb-font);cursor:pointer}
+.mbar .ar:disabled{opacity:.35}
+.drawer{position:fixed;inset:0;z-index:90;display:flex}
+.drawer[hidden]{display:none}
+.drawer .pane{width:min(86vw,22rem);height:100%;overflow:auto;background:var(--sb-bg);padding:calc(env(safe-area-inset-top,0px) + .75rem) .75rem calc(env(safe-area-inset-bottom,0px) + 1rem);box-shadow:4px 0 30px rgba(0,0,0,.2);animation:sl .18s ease-out}
+@keyframes sl{from{transform:translateX(-30px);opacity:.6}to{transform:none;opacity:1}}
+.drawer .dim{flex:1;background:rgba(0,0,0,.35)}
+.drawer .dh2{display:flex;justify-content:space-between;align-items:center;padding:.25rem .4rem .6rem}
+.drawer .dh2 b{font:750 1.125rem var(--sb-font)}
+.drawer .dh2 button{border:0;background:var(--sb-surface2);color:var(--sb-ink);border-radius:50%;width:2.25rem;height:2.25rem;font-size:1rem;cursor:pointer}
+.toc .prog{display:flex;align-items:center;gap:.5rem;font:500 .75rem var(--sb-font);color:var(--sb-muted);padding:0 .4rem .6rem}
+.toc .prog i{flex:1;height:.3rem;border-radius:1rem;background:var(--sb-surface2);overflow:hidden}
+.toc .prog i b{display:block;height:100%;background:var(--sb-accent)}
+.toc .g{margin-bottom:.25rem}
+.toc .gh{width:100%;display:flex;align-items:center;gap:.5rem;padding:.55rem .5rem;border:0;background:none;color:var(--sb-ink);font:700 .875rem var(--sb-font);cursor:pointer;border-radius:10px;text-align:left}
+.toc .gh:hover{background:var(--sb-surface2)}
+.toc .gh .n{margin-left:auto;font:600 .75rem var(--sb-mono);color:var(--sb-muted)}
+.toc .gh .cv{color:var(--sb-muted);transition:transform .15s;font-size:.75rem}
+.toc .g[data-open="true"] .gh .cv{transform:rotate(90deg)}
+.toc ul{list-style:none;margin:0 0 .35rem;padding:0 0 0 .55rem;border-left:2px solid var(--sb-line);margin-left:.95rem}
+.toc .g[data-open="false"] ul{display:none}
+.toc li a{display:flex;align-items:center;gap:.45rem;padding:.42rem .55rem;border-radius:9px;color:var(--sb-ink2);text-decoration:none;font:500 .875rem/1.3 var(--sb-font)}
+.toc li a:hover{background:var(--sb-surface2)}
+.toc li a[aria-current="true"]{background:var(--sb-ink);color:var(--sb-bg);font-weight:650}
+.toc li a .ck{flex:none;width:.95rem;height:.95rem;border-radius:50%;border:1.5px solid var(--sb-line);display:grid;place-items:center;font-size:.55rem;color:transparent}
+.toc li a .ck.on{background:var(--sb-good);border-color:var(--sb-good);color:#fff}
+.toc li a[aria-current="true"] .ck{border-color:var(--sb-bg)}
+.toc ol{list-style:none;margin:.1rem 0 .3rem 1.4rem;padding:0;display:grid;gap:.05rem}
+.toc ol a{padding:.28rem .5rem;font-size:.8125rem;color:var(--sb-muted)}
+.toc ol a:hover{color:var(--sb-ink)}
+.notes h3{scroll-margin-top:4.5rem}
+.stage{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1rem;margin-top:1rem;align-items:start}
+@media (max-width:1180px){.stage{grid-template-columns:minmax(0,1fr)}}
+.card{padding:1rem}
+.dh{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.dh h2{margin:0;font:750 1.25rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.dh .k{font:700 .6875rem/1 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-accent);margin-bottom:.25rem}
+.tools{display:flex;gap:.35rem;flex-wrap:wrap}
+.dia{border-radius:12px;background:var(--sb-plate);background-image:linear-gradient(var(--sb-grid) 1px,transparent 1px),linear-gradient(90deg,var(--sb-grid) 1px,transparent 1px);background-size:32px 32px;overflow:hidden}
+.dia svg{display:block;width:100%;height:auto}
+.notes h3{margin:.25rem 0 .5rem;font:700 1rem/1.3 var(--sb-font)}
+.notes ul{margin:0 0 .9rem;padding-left:1.1rem;display:grid;gap:.4rem}
+.notes li{font-size:.9375rem;color:var(--sb-ink2)}
+.notes li b{color:var(--sb-ink);font-weight:650}
+.notes .pearl{background:var(--sb-accent-soft);border-radius:12px;padding:.7rem .85rem;font-size:.875rem;color:var(--sb-ink);margin-bottom:.8rem}
+.notes .pearl b{color:var(--sb-accent)}
+.notes table{width:100%;border-collapse:collapse;font-size:.8125rem;margin:.25rem 0 .9rem}
+.notes th{text-align:left;padding:.4rem .35rem}
+.notes td{padding:.45rem .35rem;vertical-align:top;color:var(--sb-ink2)}
+.notes td:first-child{color:var(--sb-ink);font-weight:600;white-space:nowrap}
+.figs{margin-top:1rem}
+.steps{display:flex;gap:.6rem;margin-top:1rem}
+.steps button{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:.75rem .9rem;border-radius:14px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);cursor:pointer;text-align:left;font:inherit}
+.steps button.nx{align-items:flex-end;text-align:right}
+.steps small{font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.steps b{font:600 .9375rem var(--sb-font)}
+.steps .pg{flex:none;align-self:center;font:600 .8125rem var(--sb-mono);color:var(--sb-muted)}
+.figs h3{margin:0 0 .6rem;font:700 1rem var(--sb-font);display:flex;gap:.5rem;align-items:baseline}
+.figs h3 span{font:500 .8125rem var(--sb-font);color:var(--sb-muted)}
+.strip{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.35rem}
+.fig{flex:none;width:13rem;border:1px solid var(--sb-line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in;padding:0;text-align:left}
+.fig img{display:block;width:100%;height:9rem;object-fit:contain;background:#fff}
+.fig span{display:block;padding:.45rem .6rem;font:500 .75rem/1.3 var(--sb-font);color:#3D4450;background:#F5F6F8;border-top:1px solid #E3E6EB}
+.legend{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.7rem;font-size:.75rem;color:var(--sb-muted)}
+.legend i{display:inline-block;width:.75rem;height:.75rem;border-radius:3px;margin-right:.3rem;vertical-align:-.1rem;border:1px solid var(--a-edge)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.9);display:flex;flex-direction:column}
+.lb[hidden]{display:none}
+.lb .bar{display:flex;gap:.5rem;align-items:center;padding:calc(env(safe-area-inset-top,0px) + .6rem) 1rem .6rem;color:#fff}
+.lb .bar b{flex:1;font:600 .9375rem var(--sb-font)}
+.lb button{border:0;border-radius:10px;background:rgba(255,255,255,.14);color:#fff;font:700 1rem var(--sb-font);min-width:2.5rem;height:2.5rem;cursor:pointer}
+.lb .sc{flex:1;overflow:auto;display:block;touch-action:pan-x pan-y pinch-zoom}
+.lb .sc>*{display:block;margin:1rem auto;max-width:none}
+.lb{background:rgba(8,10,14,.96)}
+.lb img,.lb .zsvg{width:min(96vw,1000px);height:auto;background:#fff;border-radius:6px;transition:width .15s}
+.lb .zsvg{background:var(--sb-plate)}.lb .zsvg svg{display:block;width:100%;height:auto}
+.dia{cursor:zoom-in}
+/* svg */
+.t{font:600 12px var(--sb-font);fill:var(--sb-ink);paint-order:stroke;stroke:var(--sb-plate);stroke-width:3.2px;stroke-linejoin:round}
+.t.s{font-size:10.5px;font-weight:500}.t.m{fill:var(--sb-muted);font-weight:500}.t.b{font-size:14px;font-weight:750}.t.h{font-size:13px;font-weight:700;fill:var(--sb-accent)}
+.t.w{fill:#fff;stroke:rgba(0,0,0,.35);stroke-width:2.4px}
+.ld{fill:none;stroke:var(--sb-ink2);stroke-width:.9;opacity:.75}.ldd{fill:var(--sb-ink2)}
+.f{stroke:var(--a-edge);stroke-width:1.3;stroke-linejoin:round}
+.v,.vo{fill:none;stroke-linecap:round;stroke-linejoin:round}.vo{stroke:var(--a-edge)}
+.guide{stroke:var(--sb-muted);stroke-width:.8;stroke-dasharray:3 4;opacity:.45}
+.f.art{fill:var(--a-art)}.v.art{stroke:var(--a-art)}.f.vein{fill:var(--a-vein)}.v.vein{stroke:var(--a-vein)}.v.lymph{stroke:var(--a-lymph)}.f.lymph{fill:var(--a-lymph)}
+.v.nerve{stroke:var(--a-nerve)}.f.nerve{fill:var(--a-nerve)}.f.cortex{fill:var(--a-cortex)}.f.medulla{fill:var(--a-medulla)}.f.uro{fill:var(--a-uro)}.v.uro{stroke:var(--a-uro)}
+.f.blad{fill:var(--a-blad)}.f.fat{fill:var(--a-fat)}.f.fat2{fill:var(--a-fat2)}.f.musc{fill:var(--a-musc)}.f.musc2{fill:var(--a-musc2)}.v.musc{stroke:var(--a-musc)}
+.f.bone{fill:var(--a-bone)}.v.bone{stroke:var(--a-bone)}.f.gland{fill:var(--a-gland)}.f.glandm{fill:var(--a-glandm)}.f.cav{fill:var(--a-cav)}.f.skin{fill:var(--a-skin)}.f.prost{fill:var(--a-prost)}
+.fascia{fill:none;stroke:var(--a-fascia);stroke-width:2.2;stroke-dasharray:6 3}.perit{fill:none;stroke:var(--a-perit);stroke-width:2.6}
+.hatch{fill:url(#hatch)}
+.stone{fill:#8A8F99;stroke:var(--a-edge);stroke-width:1}
+.ring{fill:none;stroke:var(--sb-bad);stroke-width:2.2;stroke-dasharray:3 2}
+.num{fill:var(--sb-bad)}.numt{font:800 11px var(--sb-font);fill:#fff}
+.box{fill:var(--sb-surface);stroke:var(--sb-line);stroke-width:1.2}
+.box.ar{fill:color-mix(in srgb,var(--a-art) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-art) 55%,transparent)}
+.box.vn{fill:color-mix(in srgb,var(--a-vein) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-vein) 55%,transparent)}
+.box.gl{fill:color-mix(in srgb,#8E6CCB 18%,var(--sb-surface));stroke:color-mix(in srgb,#8E6CCB 60%,transparent)}
+.arw{fill:none;stroke:var(--sb-ink2);stroke-width:1.4;marker-end:url(#ah)}
+.zone{stroke:rgba(0,0,0,.25);stroke-width:.8}
+@media (prefers-reduced-motion:no-preference){.dia svg{animation:fi .25s ease-out}@keyframes fi{from{opacity:.4}to{opacity:1}}}
+:root{--s-na:#1d4ed8;--s-k:#9333ea;--s-cl:#15803d;--s-h2o:#0ea5e9;--s-glc:#db2777;--s-h:#dc2626;--s-hco3:#0d9488;--s-urea:#ca8a04;--s-ca:#ea580c;--s-pi:#a16207;--s-nh4:#4338ca;--s-org:#78716c;
+ --p-lumen:#FFF7E6;--p-blood:#FDECEC;--p-cell:#F3E8DF;--p-memb:#E9D5FF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-na:#7aa5ff;--s-k:#c79bff;--s-cl:#5fd68a;--s-h2o:#5cc8ff;--s-glc:#ff7ab8;--s-h:#ff6b6b;--s-hco3:#3fd6c4;--s-urea:#f2c94c;--s-ca:#ff9a52;--s-pi:#e0b452;--s-nh4:#9a95ff;--s-org:#c2b8b0;--p-lumen:#2A2618;--p-blood:#2E1C1F;--p-cell:#2A2420;--p-memb:#2E2340}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--s-na:#7aa5ff;--s-k:#c79bff;--s-cl:#5fd68a;--s-h2o:#5cc8ff;--s-glc:#ff7ab8;--s-h:#ff6b6b;--s-hco3:#3fd6c4;--s-urea:#f2c94c;--s-ca:#ff9a52;--s-pi:#e0b452;--s-nh4:#9a95ff;--s-org:#c2b8b0;--p-lumen:#2A2618;--p-blood:#2E1C1F;--p-cell:#2A2420;--p-memb:#2E2340}
+:root{--s-h2o2:color-mix(in srgb,var(--s-h2o) 70%,var(--sb-surface));--s-h2o3:color-mix(in srgb,var(--s-h2o) 50%,var(--sb-surface));--s-h2o4:color-mix(in srgb,var(--s-h2o) 35%,var(--sb-surface));
+ --s-na2:color-mix(in srgb,var(--s-na) 70%,var(--sb-surface));--s-na3:color-mix(in srgb,var(--s-na) 50%,var(--sb-surface));--s-na4:color-mix(in srgb,var(--s-na) 35%,var(--sb-surface));
+ --s-k2:color-mix(in srgb,var(--s-k) 65%,var(--sb-surface));--s-ca2:color-mix(in srgb,var(--s-ca) 65%,var(--sb-surface));--s-ca3:color-mix(in srgb,var(--s-ca) 40%,var(--sb-surface));
+ --s-hco32:color-mix(in srgb,var(--s-hco3) 65%,var(--sb-surface));--s-hco33:color-mix(in srgb,var(--s-hco3) 40%,var(--sb-surface))}
+.plot{fill:var(--sb-surface);stroke:none}.gl{stroke:var(--sb-grid);stroke-width:1}.ax{fill:none;stroke:var(--sb-ink2);stroke-width:1.4}
+.ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:var(--sb-ink)}.ln.alt{stroke:var(--sb-muted)}.ln.gfr{stroke:var(--s-na)}.ln.uo{stroke:var(--s-h2o)}.ln.filt{stroke:var(--s-org)}.ln.reab{stroke:var(--s-hco3)}.ln.excr{stroke:var(--s-glc)}.ln.spike{stroke:var(--s-h);stroke-width:2}.ln.iso{stroke:var(--sb-muted);stroke-width:1.2;opacity:.6}
+.gl.th{stroke:var(--sb-muted);stroke-dasharray:4 4}.gl.now{stroke:var(--sb-accent);stroke-width:2;stroke-dasharray:5 4}
+.band{fill:var(--sb-accent);opacity:.1}.pt{fill:var(--sb-accent);stroke:var(--sb-surface);stroke-width:2.5}.pt2{fill:var(--s-h2o);stroke:var(--sb-surface);stroke-width:2.5}
+.lumen{fill:var(--p-lumen);stroke:var(--sb-line)}.blood{fill:var(--p-blood);stroke:var(--sb-line)}.cell{fill:var(--p-cell);stroke:var(--sb-ink2);stroke-width:1.4}.memb{fill:var(--p-memb)}
+.tr circle{fill:var(--sb-surface);stroke:var(--sb-ink2);stroke-width:1.6}.tr.pump circle{fill:#FDE68A;stroke:#B45309}.tr.ch circle{fill:var(--sb-surface2)}.tr.ex circle{stroke-dasharray:3 2}
+.flux{fill:none;stroke-width:2.6;stroke-linecap:round}
+.t.atp{font:800 8px var(--sb-font);fill:#7C2D12;stroke:none}.t.ion{font:800 9px var(--sb-font);fill:#fff;stroke:none}.t.ionl{font-weight:700;stroke-width:2.6px}
+.t.bh{font-size:12.5px;font-weight:750}.t.bb{font-size:17px;font-weight:800}.t.bad{fill:var(--sb-bad);font-weight:800}.t.w{fill:#fff;stroke:none;font-weight:700}
+.seg{stroke:var(--sb-surface);stroke-width:1.5}
+.tube{fill:none;stroke:var(--s-urea);stroke-width:14;stroke-linecap:round;stroke-linejoin:round;opacity:.55}.tube.big{stroke-width:30;opacity:.35;stroke:var(--s-org)}.tube.thick{stroke:var(--s-na);opacity:.35;stroke-width:38}.tube.cd{stroke:var(--s-nh4);opacity:.3}
+.cap{fill:none;stroke:var(--a-art);stroke-width:10;opacity:.45;stroke-linecap:round}.urine{fill:var(--s-urea)}
+.force{opacity:.85}.force.push{fill:var(--a-art)}.force.pull{fill:var(--s-na)}
+.vess{fill:none;stroke:var(--a-art);stroke-linecap:round}.vess.v{stroke:var(--a-vein)}.glom{fill:color-mix(in srgb,var(--a-art) 25%,var(--sb-surface));stroke:var(--a-art);stroke-width:2}
+.cbar{fill:var(--sb-surface2)}.cbar.on{fill:var(--sb-accent)}
+.tbox{stroke:var(--sb-line)}.tbox.d{fill:color-mix(in srgb,var(--s-h2o) 22%,var(--sb-surface))}.tbox.i{fill:color-mix(in srgb,var(--s-urea) 22%,var(--sb-surface))}.tbox.a{fill:color-mix(in srgb,var(--s-na) 20%,var(--sb-surface))}
+.vr{fill:none;stroke:var(--a-art);stroke-width:12;opacity:.45}
+.phbar{fill:url(#phg)}.dsite{fill:var(--sb-bad);stroke:var(--sb-surface);stroke-width:3}
+.arw.art{stroke:var(--a-art)}.arw.vein{stroke:var(--a-vein)}.arw.h2o{stroke:var(--s-h2o)}.arw.na{stroke:var(--s-na)}.arw.urea{stroke:var(--s-urea)}.arw.x{stroke:var(--sb-bad);stroke-dasharray:4 3}
+.ion{stroke:var(--sb-surface);stroke-width:1.5}
+.tools .sl{display:flex;flex-direction:column;gap:.15rem;min-width:9.5rem;flex:1 1 9.5rem;font:500 .8125rem var(--sb-font);color:var(--sb-ink2)}
+.tools .sl b{color:var(--sb-ink);font-family:var(--sb-mono)}.tools .sl input{width:100%;accent-color:var(--sb-accent)}
+.tools select{font:500 .875rem var(--sb-font);padding:.4rem .6rem;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink)}
+.figs[hidden]{display:none}
+/* ===== pathology plates ===== */
+:root{--em-bg:#2b2b2b;--em-lum:#d9d9d4;--em-gbm:#5a5a5a;--em-cell:#8a8a86;--em-dep:#101010;--em-us:#e6e6e1;
+ --if-bg:#040805;--if-tuft:#0c1a0f;--if-g:#4ADE80;
+ --lm-bg:#F7D9E3;--lm-pink:#EBA6BE;--lm-deep:#C9638A;--lm-nu:#4B2A7B;--lm-us:#FBEFF3;--lm-hy:#F2C4D4;
+ --pa-box:color-mix(in srgb,var(--sb-surface2) 80%,transparent);--pa-ar:color-mix(in srgb,#DC2626 14%,var(--sb-surface));--pa-vn:color-mix(in srgb,#2563EB 14%,var(--sb-surface));--pa-gl:color-mix(in srgb,#D97706 16%,var(--sb-surface));
+ --pa-kid:#C98B7E;--pa-kid2:#E9C3B8;--pa-cyst:#FFF4C9;--pa-uro:#F1D3C6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pa-kid:#8A5348;--pa-kid2:#5A3830;--pa-cyst:#4A4428;--pa-uro:#4D3730}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--pa-kid:#8A5348;--pa-kid2:#5A3830;--pa-cyst:#4A4428;--pa-uro:#4D3730}
+.box{fill:var(--pa-box);stroke:var(--sb-line);stroke-width:1.2}.box.ar{fill:var(--pa-ar)}.box.vn{fill:var(--pa-vn)}.box.gl{fill:var(--pa-gl)}
+.em-bg{fill:var(--em-cell)}.em-lum{fill:var(--em-lum)}.em-rbc{fill:#6d6d6a}.em-pmn{fill:#9b9b96;stroke:#555}.em-n{fill:#3a3a3a}
+.em-mes{fill:#a3a39e}.em-mc{fill:#7b7b77}.em-nod{fill:#bdbdb6;stroke:#777}.em-dep{fill:var(--em-dep)}.em-fib{stroke:#222;stroke-width:1.4}
+.em-endo{fill:#8f8f8a}.em-mesx{fill:#7b7b77}.em-gbm{fill:var(--em-gbm)}.em-gbm-l{fill:none;stroke:var(--em-gbm);stroke-width:3}
+.em-dense{fill:#0a0a0a}.em-lin{fill:#C2410C;opacity:.9}.em-pod{fill:#b1b1ac;stroke:#6b6b67}.em-us{fill:var(--em-us)}
+.dia svg .em-bg~.t,.dia svg .if-bg~.t,.dia svg .lm-bg:not(.lm-p)~.t{fill:#111;stroke:rgba(255,255,255,.85)}
+.dia svg .if-bg~.t{fill:#d7ffe0;stroke:rgba(0,0,0,.9)}
+.t.bad{fill:#B91C1C}.dia svg .if-bg~.t.bad{fill:#ff9a9a}
+.if-bg{fill:var(--if-bg)}.if-tuft{fill:var(--if-tuft);stroke:#183a20;stroke-width:2}
+.if-lin{fill:none;stroke:var(--if-g);stroke-width:4.5;filter:drop-shadow(0 0 1.5px var(--if-g))}
+.if-dot{fill:var(--if-g);filter:drop-shadow(0 0 1px var(--if-g))}.if-br{stroke:var(--if-g);stroke-width:7;opacity:.55;stroke-linecap:round}
+.t.if-t{fill:#d7ffe0;stroke:#000;font-weight:750}
+.lm-bg{fill:var(--lm-bg)}.lm-us{fill:var(--lm-us)}.lm-cap{fill:none;stroke:var(--lm-deep);stroke-width:4}
+.lm-cres{fill:#E7A9C1;stroke:var(--lm-deep);stroke-width:1.5}.lm-tuft{fill:var(--lm-pink)}
+.lm-loop{fill:var(--lm-us);stroke:var(--lm-deep);stroke-width:2}.lm-loop.thick{stroke-width:5}.lm-loop.wire{stroke:#9D174D;stroke-width:7}
+.lm-nu{fill:var(--lm-nu)}.lm-pmn{fill:#2E1065;stroke:#fff;stroke-width:1}.lm-scl{fill:var(--lm-hy);stroke:var(--lm-deep);stroke-width:1.5;opacity:.95}
+.lm-nod{fill:#F4C6D8;stroke:var(--lm-deep);stroke-width:2}.lm-col{fill:#D88AA8;opacity:.75}
+.t.lm-t{fill:#4a1030;stroke:rgba(255,255,255,.9)}
+.gsum{fill:var(--sb-surface2)}
+.kid{fill:var(--pa-kid2);stroke:var(--pa-kid);stroke-width:4}.pelvis{fill:var(--pa-cyst);stroke:var(--pa-kid);stroke-width:2}
+.ureter{fill:none;stroke:var(--pa-kid);stroke-width:12;stroke-linecap:round}.cyst{fill:var(--pa-cyst);stroke:var(--pa-kid);stroke-width:1.5}
+.abs{fill:#FDE68A;stroke:#B45309;stroke-width:2}.scar{fill:var(--pa-kid);opacity:.8}.dsite{fill:none;stroke:var(--sb-bad);stroke-width:3;stroke-dasharray:4 3}
+.tube.big{fill:none;stroke:var(--pa-kid);stroke-width:26;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.ves-wall{fill:var(--lm-pink);stroke:var(--lm-deep);stroke-width:3}.hyal{fill:#F9D5E2;stroke:#E6A0BA}.lum{fill:var(--lm-us);stroke:var(--lm-deep)}
+.onion{fill:none;stroke:var(--lm-deep);stroke-width:2.2}.fibrin{fill:none;stroke:#BE185D;stroke-width:8;stroke-linecap:round}
+.cc{fill:#FFFDF7;stroke:#D9A7BA}.chr{fill:#F6E7EE;stroke:#B0506F;stroke-width:1.8}.halo{fill:none;stroke:#fff;stroke-width:3}
+.pap{fill:none;stroke:var(--lm-pink);stroke-width:18;stroke-linecap:round}.cdg{fill:var(--lm-us);stroke:var(--lm-deep);stroke-width:5}
+.blast{fill:#3B1C6E}.tub{fill:var(--lm-pink);stroke:var(--lm-deep);stroke-width:2}.fibr{fill:none;stroke:#D58BA8;stroke-width:2}
+.uro{fill:var(--pa-uro);stroke:var(--pa-kid);stroke-width:1.2}.lp{fill:#F3D9E0}.mp{fill:#D98C9C}.tum{fill:#7C3AED;opacity:.8}
+.cbar.on{fill:var(--sb-accent)}
+.notes td,.notes th{border-bottom:1px solid var(--sb-line);padding:.3rem .35rem;text-align:left;vertical-align:top}.notes th{color:var(--sb-muted);font-weight:700;font-size:.75rem}
+
+.dia svg .em-bg~.t,.dia svg .lm-bg:not(.lm-p)~.t,.dia svg .if-bg~.t{font-size:13.5px;font-weight:650;stroke-width:3.6px}.dia svg .gsum~.t{font-size:12.5px}
+/* continuous chapter flow */
+#flow{display:block}
+.ghead{margin:.5rem 0 1rem;padding:1rem 1.1rem;border-radius:var(--sb-r-lg);background:var(--sb-surface);border:1px solid var(--sb-line)}
+.ghead small{font:600 .75rem var(--sb-font);color:var(--sb-muted);letter-spacing:.04em}
+.ghead h2{margin:.2rem 0 .6rem;font:800 1.375rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.gchips{display:flex;flex-wrap:wrap;gap:.35rem}
+.gchips a{font:500 .8125rem var(--sb-font);color:var(--sb-ink2);text-decoration:none;padding:.3rem .65rem;border-radius:999px;background:var(--sb-surface2)}
+.gchips a:hover{color:var(--sb-ink)}
+.topic{scroll-margin-top:1rem;padding-bottom:1.75rem}
+.topic+.topic{padding-top:1.75rem;border-top:1px dashed var(--sb-line)}
+@media (max-width:1000px){.topic{scroll-margin-top:4.25rem}}
+.topic .stage{margin-top:0}
+.topic .figs{margin-top:1rem}
+.segc{display:inline-flex;gap:.35rem;flex-wrap:wrap}
+.steps{margin-top:.5rem}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Clinical · Harrison Ch 321</div>
+    <h1>Acute Kidney Injury</h1>
+    <p class="sb-lede">นิยามและ staging ของ KDIGO สาเหตุ การส่งตรวจ (FENa คำนวณได้) ภาวะแทรกซ้อน และการรักษา เรียงตาม Harrison บทที่ 321</p>
+    <div class="sb-sources"><span class="sb-src"><i class="harrison">H</i>Harrison 22e · Ch 321</span></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>
+/* ================= helpers ================= */
+const T=(x,y,s,o={})=>`<text class="t${o.c?" "+o.c:""}" x="${x}" y="${y}" text-anchor="${o.a||"middle"}"${o.s?` font-size="${o.s}"`:""}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:""}>${s}</text>`;
+const TL=(x,y,ls,o={})=>ls.map((l,i)=>T(x,y+i*(o.lh||14),l,o)).join("");
+const LD=(x1,y1,x2,y2)=>`<path class="ld" d="M${x1},${y1} L${x2},${y2}"/><circle class="ldd" cx="${x1}" cy="${y1}" r="1.8"/>`;
+const F=(c,d,x="")=>`<path class="f ${c}" d="${d}" ${x}/>`;
+const V=(c,d,w,x="")=>`<path class="vo" d="${d}" stroke-width="${w+2.2}" ${x}/><path class="v ${c}" d="${d}" stroke-width="${w}" ${x}/>`;
+const C=(c,cx,cy,r)=>`<circle class="f ${c}" cx="${cx}" cy="${cy}" r="${r}"/>`;
+const E=(c,cx,cy,rx,ry,rot=0)=>`<ellipse class="f ${c}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"${rot?` transform="rotate(${rot} ${cx} ${cy})"`:""}/>`;
+function sm(p,closed=true){const n=p.length,Q=i=>p[(i+n)%n];let d=`M${p[0][0].toFixed(1)},${p[0][1].toFixed(1)}`;const last=closed?n:n-1;
+ for(let i=0;i<last;i++){const a=closed?Q(i-1):p[Math.max(i-1,0)],b=Q(i),c=closed?Q(i+1):p[Math.min(i+1,n-1)],e=closed?Q(i+2):p[Math.min(i+2,n-1)];
+  d+=` C${(b[0]+(c[0]-a[0])/6).toFixed(1)},${(b[1]+(c[1]-a[1])/6).toFixed(1)} ${(c[0]-(e[0]-b[0])/6).toFixed(1)},${(c[1]-(e[1]-b[1])/6).toFixed(1)} ${c[0].toFixed(1)},${c[1].toFixed(1)}`}
+ return d+(closed?"Z":"")}
+function rot(p,cx,cy,a){const c=Math.cos(a),s=Math.sin(a);return p.map(([x,y])=>[cx+(x-cx)*c-(y-cy)*s,cy+(x-cx)*s+(y-cy)*c])}
+/* kidney bean: hilum on side (+1 right, -1 left), tilt in radians */
+function beanPts(cx,cy,w,h,side=1,tilt=0,n=26){const p=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2,ca=Math.cos(a),sa=Math.sin(a);let x=cx+ca*w/2,y=cy+sa*h/2;
+  if(ca*side>.55&&Math.abs(sa)<.5){x-=side*w*.2*(1-Math.abs(sa)/.5)}p.push([x,y])}return rot(p,cx,cy,tilt)}
+const bean=(...a)=>sm(beanPts(...a));
+const mir=(p,X=640)=>p.map(([x,y])=>[X-x,y]);
+const DEFS=`<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sb-ink2)"/></marker><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sb-ink2)"/></marker></defs>`;
+const svg=(body,vb="0 0 640 520")=>`<svg viewBox="${vb}" role="img" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}</svg>`;
+
+
+
+/* ================= physiology helpers ================= */
+const S={g:'<b class="sbb guyton">G</b>',r:'<b class="sbb robbins">R</b>',h:'<b class="sbb harrison">H</b>',x:'<b class="sbb gen">Gen</b>'};
+const LEG={na:["Na⁺","--s-na"],k:["K⁺","--s-k"],cl:["Cl⁻","--s-cl"],h2o:["H₂O","--s-h2o"],glc:["Glucose","--s-glc"],h:["H⁺","--s-h"],hco3:["HCO₃⁻","--s-hco3"],urea:["Urea","--s-urea"],ca:["Ca²⁺","--s-ca"],pi:["Phosphate","--s-pi"],nh4:["NH₄⁺","--s-nh4"],art:["Arteriole","--a-art"]};
+let ST={labels:true,pg:60,pb:18,pic:32,kf:12.5,map:100,glc:100,step:0,pco2:40,hco3:24,ag:12,kfac:"diet",chart:"tfp",mic:"normal",dis:"aki",ra:1,re:1};
+const f0=v=>Math.round(v),f1=v=>(Math.round(v*10)/10).toFixed(1);
+function axes(x0,y0,w,h,xr,yr,xt,yt,xl,yl){const X=v=>x0+(v-xr[0])/(xr[1]-xr[0])*w,Y=v=>y0+h-(v-yr[0])/(yr[1]-yr[0])*h;
+ let g=`<rect class="plot" x="${x0}" y="${y0}" width="${w}" height="${h}"/>`;
+ xt.forEach(v=>g+=`<line class="gl" x1="${X(v)}" y1="${y0}" x2="${X(v)}" y2="${y0+h}"/>`+T(X(v),y0+h+16,v,{c:"s m"}));
+ yt.forEach(v=>g+=`<line class="gl" x1="${x0}" y1="${Y(v)}" x2="${x0+w}" y2="${Y(v)}"/>`+T(x0-6,Y(v)+4,v,{a:"end",c:"s m"}));
+ g+=`<path class="ax" d="M${x0},${y0} V${y0+h} H${x0+w}"/>`+T(x0+w/2,y0+h+36,xl,{c:"s"})+T(x0-42,y0+h/2,yl,{c:"s",r:-90});
+ return {g,X,Y}}
+const line=(pts,c,o={})=>`<path class="ln ${c}" d="M${pts.map(p=>p.map(v=>v.toFixed(1)).join(",")).join(" L")}"${o.dash?' stroke-dasharray="6 4"':""}/>`;
+const pl=(A,f,a,b,c,o)=>line(fpts(f,a,b).map(([x,y])=>[A.X(x),A.Y(y)]),c,o);
+const fpts=(f,a,b,n=60)=>[...Array(n+1)].map((_,i)=>{const x=a+(b-a)*i/n;return [x,f(x)]});
+const B=(x,y,w,h,ttl,lines,c="")=>`<rect class="box ${c}" x="${x}" y="${y}" width="${w}" height="${h}" rx="10"/>`+T(x+w/2,y+20,ttl,{c:"bh"})+lines.map((l,i)=>T(x+w/2,y+38+i*15,l,{c:"s"})).join("");
+const AR=(x1,y1,x2,y2,c="")=>`<path class="arw ${c}" d="M${x1},${y1} L${x2},${y2}"/>`;
+const ion=(x,y,k,txt)=>`<circle class="ion" cx="${x}" cy="${y}" r="11" style="fill:var(--s-${k})"/>`+T(x,y+4,txt||LEG[k][0],{c:"ion"});
+/* epithelial cell: lumen left, blood right */
+function cell(x,y,w,h,lab){return `<rect class="lumen" x="${x-120}" y="${y-10}" width="120" height="${h+20}" rx="10"/><rect class="blood" x="${x+w}" y="${y-10}" width="120" height="${h+20}" rx="10"/><rect class="cell" x="${x}" y="${y}" width="${w}" height="${h}" rx="18"/>`+
+ (ST.labels?T(x-60,y+8,"Lumen",{c:"s m"})+T(x+w+60,y+8,"Blood",{c:"s m"})+(lab?T(x+w/2,y+h+26,lab,{c:"b"}):""):"")}
+/* transporter on membrane: side 'a' apical (x) or 'b' basolateral; kind: pump, co, ex, ch */
+function tr(x,y,kind,lab,ions,dir=1){const k=ions||[];let g=`<g class="tr ${kind}"><circle cx="${x}" cy="${y}" r="15"/>${kind==="pump"?T(x,y+4,"ATP",{c:"atp"}):""}</g>`;
+ k.forEach(([io,dx,dy,ddir],i)=>{g+=`<path class="flux" style="stroke:var(--s-${io})" d="M${x-28*(ddir??dir)},${y+dy} L${x+28*(ddir??dir)},${y+dy}" marker-end="url(#ah2)"/>`+T(x+(ddir??dir)*40,y+dy+4,LEG[io][0],{a:(ddir??dir)>0?"start":"end",c:"s ionl"}).replace('class="t','style="fill:var(--s-'+io+')" class="t')});
+ if(ST.labels&&lab)g+=T(x,y-22,lab,{c:"s"});return g}
+const pctBar=(x,y,w,segs)=>{let g="",cx=x;segs.forEach(([p,c,l])=>{const ww=w*p/100;g+=`<rect x="${cx}" y="${y}" width="${ww}" height="26" style="fill:var(${c})" class="seg"/>`+(ww>34?T(cx+ww/2,y+17,l,{c:"s w"}):"");cx+=ww});return g};
+function sl(id,lab,min,max,step,unit){return `<label class="sl"><span>${lab} <b data-v="${id}">${ST[id]}</b> ${unit}</span><input type="range" min="${min}" max="${max}" step="${step}" value="${ST[id]}" data-k="${id}"></label>`}
+function wireSl(after){const s=cur;document.querySelectorAll('#tools-'+s.id+' input[type=range]').forEach(r=>r.oninput=()=>{ST[r.dataset.k]=+r.value;r.closest(".tools").querySelector('[data-v="'+r.dataset.k+'"]').textContent=r.value;document.getElementById("dia-"+s.id).innerHTML=s.draw();if(after)after()})}
+const live=()=>{const el=document.getElementById("live");if(el&&cur.live)el.innerHTML=cur.live()};
+
+
+/* ================= glomerular lesion engine: EM · IF · LM ================= */
+Object.assign(ST,{gv:"em"});
+const GV=[["gv",[["em","EM"],["if","IF"],["lm","LM"]]]];
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+/* EM: horizontal capillary wall. o: {sub_ep:'humps'|'spikes', sub_en, mes, intra, linear, eff, split, thin, thick, dbl, fib, neut, nod} */
+function glomEM(o={}){const r=rng(7);let b="";const gT=o.thick?168:o.thin?184:176,gB=o.thick?232:o.thin?196:204;
+ b+=`<rect class="em-bg" x="0" y="0" width="640" height="420"/>`;
+ b+=`<rect class="em-lum" x="150" y="0" width="490" height="148"/>`+T(400,30,"Capillary lumen",{c:"s m"});
+ for(let i=0;i<3;i++)b+=`<ellipse class="em-rbc" cx="${260+i*120}" cy="${80+(i%2)*26}" rx="30" ry="18"/>`;
+ if(o.neut)for(let i=0;i<3;i++){const x=220+i*140;b+=`<circle class="em-pmn" cx="${x}" cy="118" r="20"/><circle class="em-n" cx="${x-6}" cy="114" r="6"/><circle class="em-n" cx="${x+7}" cy="112" r="5"/><circle class="em-n" cx="${x}" cy="124" r="5"/>`}
+ /* mesangium */
+ b+=`<path class="em-mes" d="M0,0 L150,0 C150,80 150,120 170,150 L170,${gB} L0,${gB}Z"/>`;
+ b+=`<ellipse class="em-mc" cx="70" cy="${o.nod?60:90}" rx="34" ry="22"/>`+T(70,o.nod?20:40,"Mesangium",{c:"s m"});
+ if(o.nod)b+=`<circle class="em-nod" cx="70" cy="${gB-60}" r="46"/>`+T(70,gB-56,"nodule",{c:"s m"});
+ if(o.mes)for(let i=0;i<9;i++)b+=`<ellipse class="em-dep" cx="${30+r()*110}" cy="${30+r()*(gB-60)}" rx="${7+r()*6}" ry="${5+r()*4}"/>`;
+ if(o.fib)for(let i=0;i<60;i++){const x=10+r()*150,y=10+r()*(gB-20);b+=`<line class="em-fib" x1="${x}" y1="${y}" x2="${x+8}" y2="${y+(r()-.5)*8}"/>`}
+ /* endothelium with fenestrae */
+ b+=`<rect class="em-endo" x="150" y="148" width="490" height="10"/>`;for(let x=170;x<640;x+=38)b+=`<rect class="em-lum" x="${x}" y="148" width="12" height="10"/>`;
+ /* subendothelial zone */
+ if(o.sub_en)for(let x=175;x<620;x+=r()*30+30)b+=`<ellipse class="em-dep" cx="${x}" cy="${gT-6}" rx="${12+r()*10}" ry="6"/>`;
+ if(o.dbl){b+=`<rect class="em-gbm" x="150" y="${gT-14}" width="490" height="6"/>`;b+=`<rect class="em-mesx" x="150" y="${gT-8}" width="490" height="8"/>`}
+ /* GBM */
+ if(o.split){for(let k=0;k<5;k++)b+=`<path class="em-gbm-l" d="M150,${gT+4+k*6} ${[...Array(12)].map((_,i)=>`Q${190+i*40},${gT+(k%2?10:-2)+k*6+r()*6} ${210+i*40},${gT+4+k*6}`).join(" ")}"/>`;}
+ else b+=`<rect class="em-gbm" x="150" y="${gT}" width="490" height="${gB-gT}"/>`;
+ if(o.intra)b+=`<rect class="em-dense" x="150" y="${gT+6}" width="490" height="${gB-gT-12}" rx="4"/>`;
+ if(o.linear)b+=`<rect class="em-lin" x="150" y="${(gT+gB)/2-2}" width="490" height="4"/>`;
+ if(o.fib)for(let i=0;i<50;i++){const x=150+r()*480,y=gT+r()*(gB-gT);b+=`<line class="em-fib" x1="${x}" y1="${y}" x2="${x+9}" y2="${y+(r()-.5)*6}"/>`}
+ /* subepithelial */
+ if(o.sub_ep==="humps")[220,360,500].forEach(x=>b+=`<path class="em-dep" d="M${x-28},${gB} C${x-24},${gB+34} ${x+24},${gB+34} ${x+28},${gB}Z"/>`);
+ if(o.sub_ep==="spikes")for(let x=172;x<630;x+=26){b+=`<ellipse class="em-dep" cx="${x+13}" cy="${gB+7}" rx="9" ry="7"/>`;b+=`<rect class="em-gbm" x="${x}" y="${gB}" width="4" height="16"/>`}
+ /* podocytes */
+ const fy=gB+(o.sub_ep?14:0);
+ if(o.eff)b+=`<path class="em-pod" d="M150,${fy} L640,${fy} L640,${fy+34} L150,${fy+34}Z"/>`;
+ else for(let x=154;x<640;x+=34)b+=`<path class="em-pod" d="M${x},${fy} L${x+24},${fy} C${x+27},${fy+18} ${x+24},${fy+30} ${x+20},${fy+36} L${x+4},${fy+36} C${x},${fy+30} ${x-2},${fy+18} ${x},${fy}Z"/>`;
+ b+=`<path class="em-pod" d="M240,${fy+34} C300,${fy+26} 480,${fy+26} 540,${fy+34} L540,${fy+84} C470,${fy+104} 310,${fy+104} 240,${fy+84}Z"/><ellipse class="em-n" cx="390" cy="${fy+66}" rx="44" ry="16"/>`;
+ b+=`<rect class="em-us" x="150" y="${fy+110}" width="490" height="${420-fy-110}"/>`+T(400,410,"Urinary (Bowman) space",{c:"s m"});
+ if(ST.labels){const L=(y,t)=>T(636,y,t,{a:"end",c:"s"});
+  b+=T(156,144,"Endothelium",{a:"start",c:"s m"})+L((gT+gB)/2+4,o.split?"GBM split / basket-weave":o.thin?"GBM บาง":o.thick?"GBM หนา":"GBM")+L(fy+20,o.eff?"Foot processes effaced":"Foot processes (podocyte)");
+  if(o.sub_ep)b+=T(230,gB+44,o.sub_ep==="humps"?"subepithelial humps":"subepithelial deposits + spikes",{a:"start",c:"bad"});
+  if(o.sub_en)b+=T(180,gT-18,"subendothelial deposits",{a:"start",c:"bad"});
+  if(o.mes)b+=T(76,gB+16,"mesangial deposits",{c:"bad"});
+  if(o.intra)b+=T(400,(gT+gB)/2+5,"dense deposits (intramembranous)",{c:"w"});
+  if(o.linear)b+=T(400,gT-6,"linear IgG along GBM",{c:"bad"});
+  if(o.dbl)b+=T(400,gT-20,"double contour + mesangial interposition",{c:"bad"});
+  if(o.fib)b+=T(76,gB+16,"random fibrils",{c:"bad"})}
+ return b}
+/* IF: one glomerulus, pattern: granular | linear | mesangial | c3 | none | fullhouse */
+function glomIF(p){const r=rng(11);let b=`<rect class="if-bg" x="0" y="0" width="640" height="420"/>`;const cx=320,cy=210,R=170;
+ b+=`<circle class="if-tuft" cx="${cx}" cy="${cy}" r="${R}"/>`;
+ const loops=[];for(let i=0;i<14;i++){const a=i/14*Math.PI*2,k=R*(.45+.35*(i%2));loops.push([cx+Math.cos(a)*k,cy+Math.sin(a)*k,R*.24])}
+ if(p==="linear")loops.forEach(([x,y,rr])=>b+=`<circle class="if-lin" cx="${x}" cy="${y}" r="${rr}"/>`);
+ else if(p==="mesangial"){for(let i=0;i<60;i++){const a=r()*Math.PI*2,k=r()*R*.55;b+=`<circle class="if-dot" cx="${cx+Math.cos(a)*k}" cy="${cy+Math.sin(a)*k}" r="${4+r()*5}"/>`}
+  for(let i=0;i<6;i++){const a=i/6*Math.PI*2;b+=`<path class="if-br" d="M${cx},${cy} L${cx+Math.cos(a)*R*.7},${cy+Math.sin(a)*R*.7}"/>`}}
+ else if(p&&p!=="none")loops.forEach(([x,y,rr])=>{for(let i=0;i<14;i++){const a=i/14*Math.PI*2;b+=`<circle class="if-dot" cx="${x+Math.cos(a)*rr}" cy="${y+Math.sin(a)*rr}" r="${p==="c3"?3.5:4.5+r()*3}"/>`}});
+ b+=T(cx,404,{granular:"Granular (lumpy-bumpy) IgG + C3",linear:"Linear IgG along GBM",mesangial:"Mesangial IgA (± C3)",c3:"C3 only (no Ig)",none:"Negative / no deposits",fullhouse:"‘Full house’ IgG IgA IgM C3 C1q"}[p]||p,{c:"if-t"});return b}
+/* LM: glomerulus with features */
+function glomLM(f={}){const r=rng(3);let b=`<rect class="lm-bg" x="0" y="0" width="640" height="420"/>`;const cx=320,cy=210,R=180;
+ b+=`<circle class="lm-us" cx="${cx}" cy="${cy}" r="${R}"/><circle class="lm-cap" cx="${cx}" cy="${cy}" r="${R}"/>`;
+ if(f.cres)b+=`<path class="lm-cres" d="M${cx-R+4},${cy} A${R-4},${R-4} 0 0 1 ${cx+R*.4},${cy-R*.9} C${cx+R*.1},${cy-R*.6} ${cx-R*.55},${cy-R*.35} ${cx-R*.6},${cy+R*.1}Z"/>`;
+ const TR=f.cres?R*.62:R*.86,tc=f.cres?[cx+30,cy+30]:[cx,cy];
+ b+=`<circle class="lm-tuft${f.scl?"":""}" cx="${tc[0]}" cy="${tc[1]}" r="${TR}"/>`;
+ const N=f.prolif?26:f.normal===false?14:16;for(let i=0;i<N;i++){const k=Math.sqrt((i+.5)/N)*TR*.85,a=i*2.4,x=tc[0]+Math.cos(a)*k,y=tc[1]+Math.sin(a)*k;
+  b+=`<circle class="lm-loop${f.thick?" thick":""}${f.wire&&i%3===0?" wire":""}" cx="${x}" cy="${y}" r="${TR*(f.prolif?.08:.13)}"/>`}
+ const nn=f.prolif?140:40;for(let i=0;i<nn;i++){const a=r()*Math.PI*2,k=r()*TR*.9;b+=`<circle class="lm-nu" cx="${tc[0]+Math.cos(a)*k}" cy="${tc[1]+Math.sin(a)*k}" r="${f.prolif?3.6:3}"/>`}
+ if(f.neut)for(let i=0;i<20;i++){const a=r()*Math.PI*2,k=r()*TR*.8;b+=`<circle class="lm-pmn" cx="${tc[0]+Math.cos(a)*k}" cy="${tc[1]+Math.sin(a)*k}" r="4"/>`}
+ if(f.scl)b+=`<path class="lm-scl" d="M${tc[0]},${tc[1]} L${tc[0]+TR},${tc[1]-20} A${TR},${TR} 0 0 1 ${tc[0]+20},${tc[1]+TR}Z"/>`;
+ if(f.nod)[[-60,-40],[50,30],[-10,80]].forEach(([dx,dy])=>b+=`<circle class="lm-nod" cx="${tc[0]+dx}" cy="${tc[1]+dy}" r="${TR*.2}"/>`);
+ if(f.col)b+=`<circle class="lm-col" cx="${tc[0]}" cy="${tc[1]}" r="${TR*.55}"/>`;
+ if(ST.labels){const l=[];if(f.prolif)l.push("hypercellular (proliferation)");if(f.cres)l.push("crescent ใน Bowman space");if(f.scl)l.push("segmental sclerosis");if(f.nod)l.push("nodules (Kimmelstiel–Wilson)");if(f.thick)l.push("capillary walls หนา");if(f.wire)l.push("wire loops");if(f.neut)l.push("neutrophils");if(f.col)l.push("collapsed tuft + podocyte hyperplasia");if(!l.length)l.push("LM เกือบปกติ");
+  l.forEach((t2,i)=>b+=T(14,24+i*18,t2,{a:"start",c:"s lm-t"}))}
+ return b}
+/* one disease = config for all three views + summary strip */
+function gDraw(D){let b=ST.gv==="if"?glomIF(D.if):ST.gv==="lm"?glomLM(D.lm):glomEM(D.em);
+ const row=D.sum||[];if(row.length){b+=`<rect class="gsum" x="0" y="420" width="640" height="${24+row.length*20}"/>`;row.forEach(([k,v],i)=>b+=T(14,442+i*20,k,{a:"start",c:"bh"})+T(84,442+i*20,v,{a:"start",c:"s"}))}
+ return svg(b,`0 0 640 ${420+(row.length?24+row.length*20:0)}`)}
+
+/* shared patho helpers */
+const SEC=[],GN={};
+const tbl=(h,rows)=>`<table>${h?`<tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>`:""}${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table>`;
+/* stacked cards diagram: rows [[title, desc, tone]] */
+function cards(R,o={}){const W=640,hh=o.h||(R.length>6?50:R.length>4?58:72),gap=o.gap||8;let b="",y=14;
+ R.forEach(([n,dd,c])=>{b+=`<rect class="box ${c||""}" x="16" y="${y}" width="${W-32}" height="${hh}" rx="12"/>`+T(32,y+hh/2-3,n,{a:"start",c:"bh"})+T(32,y+hh/2+15,dd,{a:"start",c:"s"});y+=hh+gap});
+ if(o.foot){b+=T(W/2,y+16,o.foot,{c:"h"});y+=26}return svg(b,`0 0 ${W} ${y+6}`)}
+/* flow: steps left→right wrapping as boxes with arrows (vertical) */
+function flow(R){let b="",y=14;R.forEach(([n,dd,c],i)=>{b+=`<rect class="box ${c||""}" x="80" y="${y}" width="480" height="56" rx="12"/>`+T(320,y+24,n,{c:"bh"})+T(320,y+43,dd,{c:"s"});
+ if(i<R.length-1)b+=`<path class="arw" d="M320,${y+58} L320,${y+76}" marker-end="url(#ah)"/>`;y+=80});return svg(b,`0 0 640 ${y}`)}
+/* horizontal bars [[label,value,display]] max */
+function bars(R,max,o={}){let b="",y=16;R.forEach(([n,v,disp])=>{b+=T(16,y+14,n,{a:"start",c:"b"})+`<rect class="cbar on" x="16" y="${y+22}" width="${Math.max(4,v/max*560)}" height="20" rx="5"/>`+T(24+v/max*560,y+37,disp??v,{a:"start",c:"s"});y+=58});
+ if(o.foot){b+=T(320,y+10,o.foot,{c:"s m"});y+=20}return svg(b,`0 0 640 ${y+4}`)}
+function wrapT(x,y,s,n,c){const w=s.split(" ");const L=[];let cur="";w.forEach(t=>{if((cur+" "+t).trim().length>n&&cur){L.push(cur);cur=t}else cur=(cur+" "+t).trim()});if(cur)L.push(cur);
+ return L.map((l,i)=>T(x,y+i*18,l,{a:"start",c})).join("")}
+function cardsInline(y,R){return R.map(([a,b2],i)=>{const yy=y+i*34;return `<rect class="box" x="0" y="${yy}" width="640" height="30" rx="8"/>`+T(14,yy+20,a,{a:"start",c:"bh"})+T(626,yy+20,b2,{a:"end",c:"s"})}).join("")}
+
+/* ================= Harrison 22e · Part 9 (Ch 319–331) ================= */
+Object.assign(ST,{scr0:1.0,scr1:2.4,uo:0.4,uoh:8,una:12,pna:138,ucr:120,pcr:2.4,gG:"G3a",gA:"A2",txt:"early",stn:"caox",tma:"ttp"});
+const HS=(ch,k,id,t,o)=>SEC.push(Object.assign({id,ch,k:ch+k,t,leg:[]},o));
+const pill=(x,y,t,c)=>`<rect class="box ${c||""}" x="${x}" y="${y}" width="${Math.max(60,t.length*7+20)}" height="26" rx="13"/>`+T(x+Math.max(60,t.length*7+20)/2,y+18,t,{c:"s"});
+
+/* ---------- 319 · Approach ---------- */
+HS("319","a","ap-aki","Prerenal · intrinsic · postrenal",{
+draw:()=>{let b="";const C=[["Prerenal","ประวัติขาดน้ำ/เสียเลือด, NSAID/ACEi/ARB, HF, cirrhosis","FENa ≤1% · U/P Cr ≥40 · UNa ≤10 · hyaline casts","vn"],["Intrinsic","sepsis, ischemia, nephrotoxins, GN, AIN, vascular","FENa 1–3% · U/P Cr ≤40 · UOsm ~iso · muddy brown casts","ar"],["Postrenal","BPH, stones, tumor, neurogenic bladder","hydronephrosis บน ultrasound · residual urine","gl"]];
+ C.forEach(([n,a,c2,t],i)=>{const x=14+i*208;b+=`<rect class="box ${t}" x="${x}" y="14" width="196" height="250" rx="14"/>`+T(x+98,44,n,{c:"bb"})+wrapT(x+12,74,a,26,"s")+`<line x1="${x+12}" x2="${x+184}" y1="170" y2="170" style="stroke:var(--sb-line)"/>`+wrapT(x+12,192,c2,26,"s")});
+ return svg(b,"0 0 640 280")},
+notes:()=>`<h3>Table 319-1</h3><ul><li>เริ่มจากประวัติ ตรวจร่างกาย และ lab พื้นฐาน แล้วค่อยส่งตรวจเฉพาะ · ไม่ส่งตรวจกว้างๆ ก่อน ${S.h}</li>
+ <li>Prerenal: FENa ≤1%, U/P creatinine ≥40, UNa ≤10 · intrinsic (ATN): FENa 1–3%, U/P Cr ≤40, urine osmolality ใกล้ plasma, muddy brown granular casts ${S.h}</li>
+ <li>BUN/Cr ratio สูงใน prerenal เพราะ urea ถูกดูดกลับพร้อมน้ำ ${S.h}</li></ul>
+ <h3>ผู้ป่วยโรค systemic</h3><ul><li>คัดกรอง microalbuminuria + eGFR ใน DM · คิดถึงไตเมื่อใช้ lithium, lead, aniline dyes (bladder cancer) ${S.h}</li></ul>`});
+HS("319","a","ap-syn","Nephritic vs nephrotic: clinical clues",{
+draw:()=>cards([["Nephritic","hematuria, RBC casts, HT, edema, azotemia · ดู C3/C4, ANCA, anti-GBM, ASO","ar"],["Nephrotic","proteinuria >3.5 g/วัน, albumin ต่ำ, edema, lipid สูง · thrombosis (RVT ใน membranous)","vn"],["Nephrotic crisis (เด็ก)","albumin <2 g/dL → ischemia ลำไส้ ปวดท้องเหมือน surgical abdomen","gl"],["ไตใหญ่ + proteinuria ใน CKD ระยะท้าย","diabetic nephropathy · amyloid · HIVAN · MN ที่มี RVT",""],["Secondary MN","NSAIDs, penicillamine, gold, mercury · solid tumor (lung, GI, breast, prostate) · syphilis, malaria, HBV",""]]),
+notes:()=>`<ul><li>อายุ 20 ปีกับ nephrotic: MCD, FSGS หรือ MN ${S.h}</li>
+ <li>Nephrotic เป็น hypercoagulable โดยเฉพาะ albumin &lt;2 g/dL · MN สัมพันธ์กับ <b>renal vein thrombosis</b> (เสีย antithrombin III, plasminogen, fibrinogen สูง) ${S.h}</li>
+ <li>RVT: ปวดหลัง, ไตวาย, hematuria, ขาบวมมากขึ้น, pulmonary embolism ${S.h}</li>
+ <li>Primary MN ~70% มี <b>anti-PLA2R</b> · หายเองได้บ่อยกว่า ${S.h}</li><li>Diabetic nephropathy เป็นเหตุให้เริ่ม dialysis มากที่สุด ${S.h}</li></ul>`});
+HS("319","b","ap-hem","Hematuria & lower urinary tract",{
+draw:()=>flow([["Hematuria (dipstick +)","แยก hemoglobinuria / myoglobinuria ด้วย microscopy",""],["มี RBC จริง?","exercise-induced: ตรวจซ้ำหลังพัก 1–2 สัปดาห์","vn"],["Glomerular?","RBC casts, dysmorphic RBC, proteinuria → thin BM, Alport, IgAN","ar"],["Non-glomerular","colic/flank pain → stone · clot → lower tract · ปวด + HT → embolus","gl"],["อายุ ≥40 เริ่มใหม่","urologic evaluation + cystoscopy",""]]),
+notes:()=>`<ul><li>Flank pain + colic → นิ่วหรือการอุดตัน · flank pain ไม่มี colic → ไตบวม (obstruction, infection, AIN, acute GN) ${S.h}</li>
+ <li>เลือดออกมากมี clot → ส่วนล่างมากกว่า · ปวดสีข้าง + HT อย่าลืม <b>arterial embolus/thrombosis</b> ${S.h}</li>
+ <li>อาการ lower tract: dysuria, frequency, urgency, ปัสสาวะไม่สุด, hematuria ช่วงต้น, ลำปัสสาวะอ่อน ${S.h}</li>
+ <li>Hematuria เรื้อรัง → thin BM, hereditary nephritis, IgAN · หาผลตรวจเก่า (ประกัน ทหาร) เพื่อยืนยันว่าเป็นมานาน ${S.h}</li></ul>`});
+
+/* ---------- 320 · Cell biology ---------- */
+HS("320","a","cb-seg","Segmental transport",{
+draw:()=>cards([["Proximal tubule","~60% ของ Na⁺ และน้ำ · glucose (SGLT2), amino acids, HCO₃⁻, PO₄ · iso-osmotic","vn"],["Thin descending limb","ดูดน้ำ (AQP1) · สร้าง medullary gradient",""],["Thick ascending limb","NKCC2 ~25% ของ Na⁺ · กันน้ำ · Ca²⁺ Mg²⁺ paracellular · target ของ loop diuretics","ar"],["Distal convoluted tubule","NCC (thiazide) · Ca²⁺ ผ่าน TRPV5","gl"],["Collecting duct","principal: ENaC + ROMK (aldosterone) · AQP2 (vasopressin) · intercalated: H⁺/HCO₃⁻","vn"]]),
+notes:()=>`<ul><li>GFR ถูกกำหนดโดย Starling forces, afferent/efferent tone, tubuloglomerular feedback และ RAS ${S.h}</li>
+ <li>แต่ละ segment มี transporter เฉพาะ ซึ่งเป็นทั้งเป้าหมายยาและตำแหน่งของโรคกรรมพันธุ์ ${S.h}</li></ul>
+ <div class="pearl">รายละเอียดกลไกดูใน Guyton Ch 27–28</div>`});
+HS("320","a","cb-inh","Inherited tubular disorders (Table 320-1)",{
+draw:()=>{const R=[["PT","Fanconi (Dent, cystinosis) · proximal RTA · cystinuria · renal glycosuria (SGLT2)"],["TAL","Bartter (NKCC2, ROMK, ClC-Kb, barttin, CaSR) → hypoK alkalosis, Ca²⁺ ในปัสสาวะสูง"],["DCT","Gitelman (NCC) → hypoK alkalosis, Mg ต่ำ, Ca²⁺ ในปัสสาวะต่ำ · Gordon (WNK) → HT, K สูง"],["CD","Liddle (ENaC gain) → HT, K ต่ำ · PHA-1 (ENaC/MR loss) · distal RTA · nephrogenic DI (V2R, AQP2)"]];
+ let b="";R.forEach(([s,d],i)=>{const y=14+i*82;b+=`<rect class="box ${["vn","ar","gl","vn"][i]}" x="14" y="${y}" width="80" height="70" rx="12"/>`+T(54,y+42,s,{c:"bb"})+`<rect class="box" x="104" y="${y}" width="522" height="70" rx="12"/>`+wrapT(118,y+28,d,70,"s")});return svg(b,"0 0 640 346")},
+notes:()=>`${tbl(["Disease","Gene","ลักษณะ"],[["Bartter","NKCC2, ROMK, ClC-Kb, BSND, CaSR","เหมือนกิน loop diuretic · hypercalciuria"],["Gitelman","SLC12A3 (NCC)","เหมือนกิน thiazide · hypomagnesemia, hypocalciuria"],["Liddle","SCNN1B/G (ENaC ↑)","HT, hypokalemia, renin/aldo ต่ำ · amiloride ได้ผล"],["Gordon (PHA-2)","WNK1/4, KLHL3, CUL3","HT, hyperkalemia, acidosis · thiazide ได้ผล"],["Nephrogenic DI","AVPR2 (X), AQP2","polyuria ไม่ตอบสนองต่อ vasopressin"]])}
+ <p class="sb-note">ชื่อยีนตาม Table 320-1 ${S.h}</p>`});
+HS("320","b","cb-na","Sodium & water balance",{
+draw:()=>cards([["Plasma Na⁺ = tonicity","สะท้อนสมดุลน้ำ ไม่ใช่ปริมาณ Na⁺ ในร่างกาย","vn"],["ECF volume = total body Na⁺","คุมด้วย RAAS, sympathetic, ANP, pressure natriuresis","ar"],["Vasopressin","osmoreceptor (ไวต่อ ~1–2%) และ baroreceptor → AQP2 ใน CD","gl"],["Thirst","กลไกป้องกัน hypernatremia",""]]),
+notes:()=>`<ul><li>Fig 320-4: plasma Na⁺ เป็นตัวแทนของ tonicity · ความผิดปกติของ Na⁺ คือความผิดปกติของน้ำ ${S.h}</li><li>ปริมาตร ECF ขึ้นกับปริมาณ Na⁺ ทั้งหมด ${S.h}</li></ul>`});
+
+/* ---------- 321 · AKI ---------- */
+HS("321","a","aki-def","Definition & KDIGO staging",{
+ctrl:()=>sl("scr0","Baseline Cr",0.5,3,0.1,"mg/dL")+sl("scr1","Current Cr",0.5,8,0.1,"mg/dL")+sl("uo","UO",0,1.2,0.05,"mL/kg/h")+sl("uoh","นาน",0,30,1,"ชม."),wire:()=>wireSl(),
+draw(){const r=ST.scr1/ST.scr0,d=ST.scr1-ST.scr0;let sc=0;if(r>=1.5||d>=0.3)sc=1;if(r>=2)sc=2;if(r>=3||ST.scr1>=4)sc=3;
+ let su=0;if(ST.uo<0.5&&ST.uoh>=6)su=1;if(ST.uo<0.5&&ST.uoh>=12)su=2;if((ST.uo<0.3&&ST.uoh>=24)||(ST.uo===0&&ST.uoh>=12))su=3;const st=Math.max(sc,su);
+ let b="";["Stage 1","Stage 2","Stage 3"].forEach((n,i)=>{const on=st===i+1,x=14+i*208;b+=`<rect class="box ${on?"ar":""}" x="${x}" y="14" width="196" height="190" rx="14"${on?' style="stroke:var(--sb-bad);stroke-width:3"':""}/>`+T(x+98,42,n,{c:"bb"})+wrapT(x+12,70,["Cr ×1.5–1.9 หรือ ↑ ≥0.3","Cr ×2.0–2.9","Cr ×3 หรือ ≥4.0 หรือเริ่ม RRT"][i],26,"s")+`<line x1="${x+12}" x2="${x+184}" y1="128" y2="128" style="stroke:var(--sb-line)"/>`+wrapT(x+12,150,["UO <0.5 นาน 6–12 ชม.","UO <0.5 ≥12 ชม.","UO <0.3 ≥24 ชม. หรือ anuria ≥12 ชม."][i],26,"s")});
+ b+=`<rect class="gsum" x="0" y="218" width="640" height="66" rx="12"/>`+T(16,244,`Cr ×${f1(r)} (↑${f1(d)}) → stage ${sc||"–"} · UO → stage ${su||"–"}`,{a:"start",c:"b"})+T(16,268,st?`ผล: AKI stage ${st} (เลือกค่าที่สูงกว่า)`:"ยังไม่เข้าเกณฑ์ AKI",{a:"start",c:st?"bad":"h"});return svg(b,"0 0 640 290")},
+notes:()=>`<h3>KDIGO definition</h3><ul><li>Cr เพิ่ม ≥0.3 mg/dL ใน 48 ชม. · หรือ ≥1.5 เท่าของ baseline ใน 7 วัน · หรือ UO &lt;0.5 mL/kg/h นาน &gt;6 ชม. ${S.h}</li>
+ <li>AKI เป็น clinical diagnosis ไม่ใช่ structural · ไม่จำเป็นต้องมีเนื้อไตเสียหาย ${S.h}</li></ul>
+ <h3>Epidemiology</h3><ul><li>5–7% ของผู้ป่วยใน · สูงถึง 30% ใน ICU · เพิ่ม &gt;4 เท่าตั้งแต่ 1988 ${S.h}</li><li>เพิ่มความเสี่ยง CKD และโรคหัวใจหลอดเลือดในอนาคต ${S.h}</li>
+ <li>Community: volume depletion, HF, ยา, obstruction, malignancy · Hospital: <b>sepsis</b>, ผ่าตัดใหญ่, critical illness, nephrotoxins ${S.h}</li></ul>
+ <div class="pearl">เลื่อนค่าเพื่อดูว่าผู้ป่วยอยู่ stage ไหน</div>`});
+HS("321","a","aki-cause","Causes: prerenal · intrinsic · postrenal",{
+draw:()=>{let b="";const col=(x,ttl,R,c)=>{b+=`<rect class="box ${c}" x="${x}" y="10" width="200" height="36" rx="10"/>`+T(x+100,33,ttl,{c:"bh"});R.forEach((n,i)=>{b+=`<rect class="box" x="${x}" y="${56+i*44}" width="200" height="38" rx="10"/>`+T(x+100,80+i*44,n,{c:"s"})})};
+ col(10,"Prerenal (พบบ่อยสุด)",["Hypovolemia","↓ cardiac output","Systemic vasodilation (sepsis)","Cirrhosis / hepatorenal","NSAIDs · ACEi/ARB","Abdominal compartment"],"vn");
+ col(220,"Intrinsic",["ATN: ischemia · sepsis","Nephrotoxins: contrast, aminoglycoside","Pigment: rhabdo · hemolysis","Tumor lysis · myeloma","GN · vasculitis · AIN","TMA · atheroemboli"],"ar");
+ col(430,"Postrenal",["Bladder neck: BPH, ca","Ureters: stones, tumor","Urethral stricture","Neurogenic bladder","Retroperitoneal fibrosis","Blocked catheter"],"gl");return svg(b,"0 0 640 330")},
+notes:()=>`<h3>Prerenal azotemia</h3><ul><li>รูปแบบ AKI ที่พบบ่อยที่สุด · เนื้อไตปกติ แก้ได้เมื่อ perfusion กลับมา ${S.h}</li>
+ <li>Autoregulation: afferent dilate (PG, myogenic) + efferent constrict (Ang II) · <b>NSAIDs และ ACEi/ARB</b> ทำลายกลไกนี้ (Fig 321-2) ${S.h}</li>
+ <li><b>Hepatorenal syndrome</b>: AKI ไม่ดีขึ้นแม้ให้สารน้ำและหยุด diuretic ${S.h}</li></ul>
+ <h3>Intrinsic</h3><ul><li>Sepsis-associated และ ischemia-associated พบบ่อยสุด · มักซ้อนบนไตที่ reserve น้อย (อายุมาก, CKD) ${S.h}</li>
+ <li><b>Contrast-associated AKI</b>: Cr ขึ้นใน 1–2 วัน peak 3–5 วัน หายใน 7 วัน ${S.h}</li>
+ <li>Tubular toxins: aminoglycoside, cisplatin, tenofovir, vancomycin, zoledronate, ethylene glycol, aristolochic acid ${S.h}</li></ul>`});
+HS("321","b","aki-dx","Diagnostics: urinalysis & FENa",{
+ctrl:()=>sl("una","UNa",5,120,1,"")+sl("pna","PNa",120,150,1,"")+sl("ucr","UCr",10,200,5,"")+sl("pcr","PCr",0.5,8,0.1,""),wire:()=>wireSl(),
+draw(){const fe=ST.una*ST.pcr/(ST.pna*ST.ucr)*100,ratio=ST.ucr/ST.pcr;let b="";
+ b+=T(320,40,"FENa = (UNa × PCr) / (PNa × UCr) × 100",{c:"b"});
+ b+=`<rect class="seg" x="40" y="70" width="${560*.25}" height="34" style="fill:var(--pa-vn)"/><rect class="seg" x="${40+560*.25}" y="70" width="${560*.75}" height="34" style="fill:var(--pa-ar)"/>`;
+ const X=Math.min(4,fe)/4*560+40;b+=`<path d="M${X},62 L${X},112" style="stroke:var(--sb-ink);stroke-width:3"/>`+T(X,130,`${fe.toFixed(2)}%`,{c:"bb"});
+ b+=T(40+70,92,"<1% prerenal",{c:"s"})+T(40+350,92,">1% (ATN, ทั่วไป >2%)",{c:"s"})+T(40,64,"0",{c:"s m"})+T(600,64,"≥4%",{c:"s m"});
+ b+=`<rect class="gsum" x="0" y="150" width="640" height="60" rx="12"/>`+T(16,176,`U/P creatinine = ${f0(ratio)} → ${ratio>=40?"เข้ากับ prerenal (≥40)":"เข้ากับ intrinsic (<40)"}`,{a:"start",c:"b"})+T(16,198,"ข้อควรระวัง: CKD, diuretics → FENa สูงทั้งที่ prerenal · contrast, pigment, GN ระยะแรก → FENa ต่ำได้",{a:"start",c:"s"});
+ b+=cardsInline(222,[["Hyaline casts","prerenal"],["Muddy brown granular, RTE casts","ATN"],["RBC casts, dysmorphic RBC","GN / vasculitis"],["WBC casts, eosinophils","AIN, pyelonephritis"],["Crystals","ethylene glycol, TLS, acyclovir"]]);return svg(b,"0 0 640 400")},
+notes:()=>`<h3>Urine sediment (Fig 321-6)</h3><ul><li>ATN: pigmented <b>muddy brown granular casts</b> + tubular epithelial cell casts · ไม่พบได้ใน &gt;20% ${S.h}</li></ul>
+ <h3>FENa</h3><ul><li>Prerenal &lt;1% · ATN &gt;1% · มีประโยชน์ที่สุดในผู้ป่วย oliguric ที่ไม่ได้ diuretic ${S.h}</li>
+ <li>FENa ต่ำ ≠ volume depletion เสมอ: GN ระยะแรก, contrast, pigment nephropathy · FENa สูงทั้งที่ prerenal: CKD, diuretics ${S.h}</li></ul>
+ <h3>อื่นๆ</h3><ul><li>Prerenal: BUN/Cr &gt;20, SG &gt;1.018, UOsm &gt;500 · ATN: UOsm &lt;500 (Table 321-2) ${S.h}</li>
+ <li>BUN สูงเกินสัดส่วน: upper GI bleed, catabolism สูง ${S.h}</li><li>Rhabdomyolysis: urine heme + แต่ RBC น้อย, CK สูง · Myeloma: M spike, free light chain, anion gap ต่ำ ${S.h}</li></ul>`});
+HS("321","c","aki-mx","Complications & management",{
+draw:()=>cards([["Volume overload","oliguria → pulmonary edema · ระยะฟื้นมี polyuria","vn"],["Hyperkalemia","รุนแรงใน rhabdo, hemolysis, TLS · arrhythmia","ar"],["Metabolic acidosis","มัก anion gap สูง",""],["Uremia","BUN >100 + mental change, bleeding, pericarditis","gl"],["Dialysis indications","volume, K⁺, acidosis ที่รักษาไม่ได้ · toxin บางชนิด · uremic complications","ar"]]),
+notes:()=>`<h3>Management by cause</h3><ul><li>Prerenal: แก้ hemodynamics · การตอบสนองต่อการแก้ไขคือการวินิจฉัยที่ดีที่สุด ${S.h}</li>
+ <li>GN/vasculitis: immunosuppression ± plasmapheresis · AIN: หยุดยา · <b>scleroderma renal crisis: ACE inhibitor</b> · TTP: plasma exchange · aHUS: complement blockade ${S.h}</li>
+ <li><b>Rhabdomyolysis</b>: ให้สารน้ำเร็วและมาก (อาจถึง 10 L/วัน) · alkaline fluid อาจช่วยแต่เสี่ยง hypocalcemia ${S.h}</li>
+ <li>Postrenal: catheter, nephrostomy, ureteral stent → diuresis หลายวัน ${S.h}</li></ul>
+ <h3>Dialysis</h3><ul><li>ข้อบ่งชี้: volume overload, hyperkalemia, acidosis ที่ medical management ไม่ได้ผล · toxic ingestion บางชนิด · uremic complications (asterixis, pericardial rub/effusion, encephalopathy, uremic bleeding) ${S.h}</li>
+ <li>เริ่มเร็วกว่าไม่ได้เพิ่ม survival ใน RCT · หลายคนเริ่มเมื่อ BUN &gt;100 mg/dL และไม่มีสัญญาณฟื้น ${S.h}</li>
+ <li>CRRT (CVVH, CVVHD, CVVHDF) เหมาะกับ hemodynamic ไม่เสถียร, cerebral edema · continuous ไม่ดีกว่า intermittent ในด้าน survival ${S.h}</li></ul>`});
+
+/* ---------- 322 · CKD ---------- */
+HS("322","a","ckd-stage","KDIGO staging: GFR × albuminuria",{tools:[["gG",[["G1","G1"],["G2","G2"],["G3a","G3a"],["G3b","G3b"],["G4","G4"],["G5","G5"]]],["gA",[["A1","A1"],["A2","A2"],["A3","A3"]]]],
+draw(){const G=["G1","G2","G3a","G3b","G4","G5"],GL=["≥90","60–89","45–59","30–44","15–29","<15"],A=["A1","A2","A3"],AL=["<30","30–300",">300"];
+ const risk=(g,a)=>{const s=g+a;return [0,0,1,2,3,3][g]+a};const col=["#22c55e","#facc15","#f97316","#dc2626","#7f1d1d"];const lab=["Low","Moderate","High","Very high","Very high"];
+ let b="";A.forEach((a,j)=>b+=T(250+j*130,30,a,{c:"bh"})+T(250+j*130,48,AL[j]+" mg/g",{c:"s m"}));
+ G.forEach((g,i)=>{const y=60+i*50;b+=T(70,y+30,g,{c:"bh"})+T(140,y+30,GL[i],{c:"s m"});A.forEach((a,j)=>{const r=Math.min(4,risk(i,j)),on=ST.gG===g&&ST.gA===a;b+=`<rect x="${190+j*130}" y="${y}" width="122" height="44" rx="8" style="fill:${col[r]};opacity:${on?1:.45};stroke:${on?"var(--sb-ink)":"none"};stroke-width:3"/>`})});
+ const gi=G.indexOf(ST.gG),aj=A.indexOf(ST.gA),r=Math.min(4,risk(gi,aj));
+ b+=`<rect class="gsum" x="0" y="370" width="640" height="56" rx="12"/>`+T(16,394,`${ST.gG}${ST.gA}: GFR ${GL[gi]} · ACR ${AL[aj]} → risk ${lab[r]}`,{a:"start",c:"b"})+T(16,414,"ความเสี่ยงตาย, CV death และ progression สูงขึ้นทั้งเมื่อ GFR ลดและ albuminuria เพิ่ม",{a:"start",c:"s"});return svg(b,"0 0 640 430")},
+notes:()=>`<h3>นิยาม</h3><ul><li>CKD = ความผิดปกติของโครงสร้างหรือการทำงานของไตนาน &gt;3 เดือน · จัดตาม <b>GFR (G1–G5)</b> และ <b>albuminuria (A1–A3)</b> (Fig 322-1) ${S.h}</li>
+ <li>eGFR คำนวณจาก creatinine ± cystatin C (Table 322-3) ${S.h}</li></ul>
+ <h3>Progression</h3><ul><li>Nephron ลด → nephron ที่เหลือ hyperfiltration + intraglomerular hypertension → sclerosis (Fig 322-2) ${S.h}</li>
+ <li>Risk factors (Table 322-1) และ monogenic loci เช่น APOL1 (Table 322-2) ${S.h}</li></ul>
+ <div class="pearl">เลือก G และ A ด้านบนเพื่อดูความเสี่ยง (สีอ้างอิงแบบ KDIGO)</div>`});
+HS("322","b","ckd-lyte","Fluid, electrolyte & acid–base",{
+draw:()=>cards([["Na⁺ & water","Na⁺ คั่ง → ECF ขยาย, HT · hyponatremia ไม่บ่อย · loop diuretic ต้องใช้ dose สูง","vn"],["Potassium","ขับทาง distal (aldosterone) + GI ชดเชย · K สูงเมื่อ RAS inhibitor, MRA, acidosis, hemolysis","ar"],["Type 4 pattern","hyporeninemic hypoaldosteronism (DM), obstruction, sickle cell → K สูงก่อน GFR ลดมาก","gl"],["Metabolic acidosis","ammonia ลด → non-AG ระยะแรก · GFR ต่ำมาก → AG acidosis",""]]),
+notes:()=>`<ul><li>ECF ขยายแบบ isonatric ถ้าดื่มน้ำไม่เกินความสามารถขับ · จำกัดเกลือ · chlorthalidone ใช้ได้แม้ stage 4 ${S.h}</li>
+ <li>ยาที่ทำให้ K สูง: RAS inhibitors, spironolactone, amiloride, eplerenone, triamterene, nonsteroidal MRA · <b>gliflozins</b> ช่วยถ่วงสมดุล K ${S.h}</li>
+ <li>Acidosis: ยังทำให้ปัสสาวะเป็นกรดได้ แต่สร้าง ammonia น้อย · net acid excretion อาจ &lt;30–40 mmol/วัน ${S.h}</li></ul>`});
+HS("322","b","ckd-mbd","CKD–mineral bone disorder",{
+draw:()=>flow([["GFR ↓ → phosphate คั่ง","FGF-23 ขึ้นเร็วมาก (osteocytes)","gl"],["Calcitriol ↓","phosphate + FGF-23 ยับยั้ง 1α-hydroxylase","vn"],["Ca²⁺ ↓ + PTH ↑","secondary hyperparathyroidism · Klotho ↓ → FGF-23 ยับยั้ง PTH ไม่ได้","ar"],["High turnover","osteitis fibrosa cystica","ar"],["Low turnover","adynamic bone disease · vascular calcification, calciphylaxis",""]]),
+notes:()=>`<ul><li>PTH สูง → bone turnover สูง → <b>osteitis fibrosa cystica</b> ${S.h}</li><li><b>Adynamic bone disease</b> (PTH ต่ำ/ปกติ) พบมากขึ้น โดยเฉพาะ DM, ผู้สูงอายุ · เสี่ยงกระดูกหักและ vascular calcification ${S.h}</li>
+ <li><b>Calciphylaxis</b>: ภาวะร้ายแรงเกือบเฉพาะในผู้ป่วยไตวายระยะท้าย · หลอดเลือดเล็กมี calcification → ผิวหนังตาย ${S.h}</li><li>FGF-23 สูงเป็นปัจจัยเสี่ยงอิสระของ LVH ${S.h}</li></ul>`});
+HS("322","c","ckd-sys","CV, hematologic & other manifestations",{
+draw:()=>cards([["Cardiovascular","สาเหตุตายอันดับ 1 · HT, LVH, accelerated atherosclerosis, pericarditis","ar"],["Anemia","normocytic normochromic เริ่ม stage 3 · เกือบทุกคนใน stage 4 · EPO ไม่พอ","vn"],["Bleeding","platelet dysfunction (uremia)",""],["Neuro","asterixis, restless legs, neuropathy, encephalopathy","gl"],["GI / skin / endocrine","anorexia, nausea, pruritus · insulin resistance, dyslipidemia",""]]),
+notes:()=>`<h3>Anemia (Table 322-5)</h3><ul><li>สาเหตุ: EPO ไม่พอ, RBC อายุสั้น, bleeding, iron deficiency, hyperparathyroidism/marrow fibrosis, inflammation, folate/B12 ${S.h}</li>
+ <li>ESA ลดการให้เลือด (ลดการติดเชื้อ, iron overload, alloantibodies ที่ขัดการปลูกถ่าย) · ต้องมี iron พอ (TSAT, ferritin) · CKD ไม่ฟอก/PD ลองให้กินก่อน ${S.h}</li>
+ <li>ESA ไม่ตอบสนอง: inflammation, ฟอกไม่พอ, hyperparathyroidism รุนแรง, เสียเลือด, infection, malignancy ${S.h}</li>
+ <li><b>HIF prolyl hydroxylase inhibitors</b>: เพิ่ม EPO และการดูดซึมเหล็ก ${S.h}</li></ul>
+ <h3>Cardiovascular</h3><ul><li>สาเหตุหลักของ morbidity และ mortality · risk เฉพาะ CKD: anemia, hyperphosphatemia, hyperparathyroidism, FGF-23, sleep apnea, inflammation ${S.h}</li></ul>`});
+HS("322","c","ckd-slow","Slowing progression & preparing for RRT",{
+draw:()=>{let b="";b+=`<rect class="box vn" x="14" y="14" width="300" height="170" rx="14"/>`+T(164,42,"ACEi / ARB",{c:"bb"})+wrapT(30,70,"efferent dilate → glomerular pressure ↓ · ลด proteinuria · eGFR ลดได้ถึง 30% แบบไม่ก้าวหน้า · ห้ามใช้ร่วมกัน",40,"s");
+ b+=`<rect class="box ar" x="326" y="14" width="300" height="170" rx="14"/>`+T(476,42,"SGLT2 inhibitors",{c:"bb"})+wrapT(342,70,"Na⁺ ถึง macula densa ↑ → TGF → afferent constrict · ใช้ได้ทั้ง DM และ non-DM · ลด CV events",40,"s");
+ b+=`<rect class="box gl" x="14" y="196" width="612" height="72" rx="14"/>`+T(320,224,"BP target 130/80 ใน proteinuric CKD · nonsteroidal MRA",{c:"b"})+T(320,248,"เตรียม RRT: ให้ความรู้ไม่ช้ากว่า stage 4 · transplant ให้ผลดีที่สุด",{c:"s"});return svg(b,"0 0 640 280")},
+notes:()=>`<ul><li>Intraglomerular hypertension เป็น maladaptive · ยิ่งลด proteinuria ได้มาก ยิ่งชะลอ GFR decline ได้มาก ${S.h}</li>
+ <li>ACEi + ARB ร่วมกัน → AKI และ cardiac events มากขึ้น · Cr ขึ้นต่อเนื่อง → สงสัย renovascular disease ${S.h}</li>
+ <li><b>Gliflozins</b> กระตุ้น TGF (Fig 322-5) ${S.h}</li></ul>
+ <h3>ข้อบ่งชี้เริ่ม RRT</h3><ul><li>anorexia/nausea ที่ไม่มีสาเหตุอื่น, malnutrition, K สูงหรือ ECF overload ที่ดื้อต่อการรักษา · encephalopathy และ pericarditis เป็นอาการท้ายมาก ${S.h}</li>
+ <li>Kidney transplant ให้การฟื้นฟูดีที่สุด เพราะ dialysis ทดแทนได้เพียงบางส่วนของการกรอง ไม่ทดแทน endocrine ${S.h}</li></ul>`});
+
+/* ---------- 323 · Dialysis ---------- */
+HS("323","a","hd","Hemodialysis",{
+draw:()=>{let b="";b+=`<rect class="box" x="230" y="40" width="180" height="230" rx="20"/>`+T(320,30,"Dialyzer (hollow fiber)",{c:"bh"});
+ for(let i=0;i<6;i++)b+=`<line x1="${255+i*26}" y1="50" x2="${255+i*26}" y2="260" style="stroke:var(--s-h);stroke-width:7;opacity:.55"/>`;
+ b+=`<path class="arw" d="M60,280 C60,330 250,330 260,270" marker-end="url(#ah)"/><path class="arw" d="M380,40 C380,0 580,0 580,60" marker-end="url(#ah)"/>`+T(110,350,"blood จาก access (arterial)",{c:"s"})+T(560,90,"กลับผู้ป่วย (venous)",{c:"s"});
+ b+=`<path class="arw" d="M600,240 L420,240" marker-end="url(#ah)" style="stroke:var(--s-h2o)"/><path class="arw" d="M220,70 L40,70" marker-end="url(#ah)" style="stroke:var(--s-h2o)"/>`+T(520,230,"dialysate (สวนทาง)",{c:"s"})+T(120,60,"ทิ้ง",{c:"s"});
+ b+=B(20,110,190,120,"Diffusion",["ตาม concentration gradient","โมเลกุลใหญ่ ผ่านช้า"],"vn")+B(430,110,190,110,"Ultrafiltration",["แรงดัน → ดึงน้ำออก","(convection)"],"gl");return svg(b,"0 0 640 370")},
+notes:()=>`<ul><li>DM เป็นสาเหตุ ESKD อันดับ 1 ในสหรัฐ (~45% ของรายใหม่) ${S.h}</li>
+ <li>Hemodialysis อาศัย <b>diffusion</b> ผ่าน semipermeable membrane · dialyzer แบบ hollow-fiber · membrane สังเคราะห์ (polysulfone) biocompatible ${S.h}</li>
+ <li>Dialysate: Na⁺, K⁺, Cl⁻, HCO₃⁻ (bicarbonate), Ca²⁺, Mg²⁺ · น้ำผ่าน reverse osmosis ${S.h}</li></ul>
+ <h3>Vascular access</h3><ul><li><b>AV fistula</b> (Brescia–Cimino: radial artery–cephalic vein) · patency ยาวที่สุด ติดเชื้อน้อยที่สุด · ใช้เวลา mature ${S.h}</li>
+ <li>AV graft → เมื่อ fistula ไม่ได้ · tunneled catheter ติดเชื้อมากที่สุด ${S.h}</li></ul>`});
+HS("323","a","hdcx","Complications of hemodialysis",{
+draw:()=>cards([["Hypotension","acute complication ที่พบบ่อยที่สุด (โดยเฉพาะ DM) · UF มาก, autonomic เสีย, ยาลดความดัน","ar"],["รักษา hypotension","หยุด UF · NSS 100–250 mL · ป้องกัน: ประเมิน dry weight, UF profiling, dialysate เย็น","vn"],["UF เร็วเกิน","&gt;13 mL/kg/h สัมพันธ์กับ CV death",""],["High-output HF","shunt ผ่าน access ใหญ่",""],["Muscle cramps · dialysis reactions","membrane / ethylene oxide",""]]),
+notes:()=>`<ul><li>Hypotension เป็น acute complication ที่พบบ่อยที่สุด ${S.h}</li><li>หลีกเลี่ยงการดึงน้ำเร็ว &gt;13 mL/kg/h ${S.h}</li><li>ป้องกัน: sequential UF แล้วค่อย dialysis, ลดอุณหภูมิ dialysate, ไม่กินมื้อหนักระหว่างฟอก ${S.h}</li></ul>`});
+HS("323","b","pd","Peritoneal dialysis",{
+draw:()=>cards([["หลักการ","ใส่น้ำยา dextrose 1.5–3 L เข้าช่องท้อง · dwell 2–4 ชม. · peritoneum เป็น membrane","vn"],["CAPD","เปลี่ยนเองด้วยมือวันละหลายรอบ + night dwell",""],["CCPD / APD","เครื่อง cycler เปลี่ยนตอนกลางคืน","" ],["Icodextrin","ใช้กับ dwell ที่นานที่สุด (last fill)","gl"],["Peritonitis","WBC ≥100/mm³ และ neutrophil ≥50% · มักจาก sterile technique พลาด","ar"]]),
+notes:()=>`<ul><li>ภาวะแทรกซ้อนหลัก: peritonitis, catheter infection (ไม่ใช่ peritonitis), น้ำหนักเพิ่ม/metabolic (glucose), residual uremia ${S.h}</li>
+ <li>เกณฑ์ peritonitis ต่ำกว่า SBP เพราะ dextrose ในน้ำยา ${S.h}</li><li>สารที่เติมในน้ำยา: heparin (กัน fibrin อุดสาย), antibiotics ระหว่าง peritonitis ${S.h}</li></ul>`});
+
+/* ---------- 324 · Interventional ---------- */
+HS("324","a","ivn","Dialysis access: assessment & intervention",{
+draw:()=>cards([["AVF","ราว 65% ของ access · ‘Fistula First, Catheter Last’ · mature 6–12 เดือนใน HT/DM","vn"],["AVG","&lt;20% · stenosis และ thrombosis บ่อยกว่า",""],["Outflow stenosis","pulsatility เพิ่ม ไม่นุ่มช่วง diastole · เสียงสูงที่จุดตีบ","ar"],["Inflow stenosis","systolic อ่อน · access ‘ว่าง’ ช่วง diastole","gl"],["Intervention","angioplasty ที่ stenosis · high flow → banding",""]]),
+notes:()=>`<ul><li>ตรวจร่างกาย access: pulse, thrill, bruit ช่วยแยก inflow/outflow stenosis ${S.h}</li><li>Catheter thrombus เล็กน้อยไม่ต้องรักษา · intra-atrial thrombus &gt;2 cm อาจต้อง intervention ${S.h}</li>
+ <li>Access flow สูงเกิน → <b>banding</b> สร้างการตีบที่ inflow ${S.h}</li></ul>`});
+
+/* ---------- 325 · Transplant ---------- */
+HS("325","a","tx-imm","Immunology of rejection",{
+draw:()=>cards([["Hyperacute","preformed Ab (ABO, anti-HLA) · ป้องกันด้วย ABO matching + crossmatch","ar"],["T cell–mediated","CD4 ตอบสนอง class II (DR) · CD8 ทำลายผ่าน class I (A, B) · ต้องมี costimulation (CD28–CD80/86)","vn"],["Antibody-mediated","donor-specific Ab ต่อ HLA/non-HLA · C4d ใน peritubular capillaries","gl"],["HLA matching","จำนวน mismatch ที่ A, B, DR ยิ่งมากยิ่ง rejection มาก · HLA อยู่บน chromosome 6",""]]),
+notes:()=>`<ul><li>ข้อห้ามทาง immunology ที่สำคัญ: preformed antibodies → <b>hyperacute rejection</b> · คัดด้วย ABO และ cytotoxic crossmatch ${S.h}</li>
+ <li>Crossmatch ใช้ donor T cells (มี class I) · ไม่เกี่ยวกับความเสี่ยงของ T cell–mediated rejection ${S.h}</li>
+ <li>HLA-identical ก็ rejection ได้จาก non-HLA antigens (เช่น LIMS-1) ${S.h}</li><li>Graft survival 1 ปี: deceased 94%, living 98% · 5 ปี: 76% และ 87% (Table 325-2) ${S.h}</li></ul>`});
+HS("325","a","tx-drug","Maintenance immunosuppression",{
+draw:()=>{const R=[["Glucocorticoids","ยับยั้ง transcription ของ IL-1, 2, 3, 6, TNF","HT, glucose, lipid, osteoporosis"],["Cyclosporine","cyclophilin + calcineurin → IL-2 ↓","nephrotoxic, HT, hirsutism, gum hyperplasia"],["Tacrolimus","FKBP-12 + calcineurin","คล้าย CsA · DM มากกว่า · ไม่มี hirsutism"],["Azathioprine","ยับยั้ง purine synthesis","marrow suppression"],["Mycophenolate","ยับยั้ง IMPDH","GI, marrow"],["Sirolimus/everolimus","FKBP-12 → mTOR","lipid, proteinuria, wound healing"],["Belatacept","จับ CD80/86 กัน CD28","PTLD (EBV−)"]];
+ let b="";R.forEach(([n,m,s],i)=>{const y=12+i*52;b+=`<rect class="box ${i===1||i===2?"vn":""}" x="10" y="${y}" width="620" height="46" rx="10"/>`+T(22,y+19,n,{a:"start",c:"bh"})+T(22,y+37,m,{a:"start",c:"s"})+T(620,y+28,s,{a:"end",c:"s m"})});return svg(b,"0 0 640 380")},
+notes:()=>`<h3>Table 325-3</h3><ul><li>Calcineurin inhibitors (cyclosporine, tacrolimus) เป็นแกนหลัก · ระวัง <b>CNI nephrotoxicity</b> ${S.h}</li>
+ <li>หยุดหรือหลีกเลี่ยง steroid เร็วเพื่อลดผลต่อกระดูก ผิว และ glucose ${S.h}</li><li>mTOR inhibitors ใช้มากขึ้นในผู้ที่เป็นมะเร็งผิวหนังซ้ำ ${S.h}</li></ul>`});
+HS("325","b","tx-inf","Infections & malignancy after transplant",{tools:[["txt",[["early","<1 เดือน"],["mid","1–6 เดือน"],["late",">6 เดือน"]]]],
+draw(){const P={early:["Wound infection","Herpesvirus","Oral candidiasis","UTI"],mid:["Pneumocystis","CMV","Legionella","Listeria","Hepatitis B","Hepatitis C"],late:["Aspergillus","Nocardia","BK virus (polyoma)","Herpes zoster","Hepatitis B","Hepatitis C"]};
+ let b="";["early","mid","late"].forEach((k,i)=>{const on=ST.txt===k,x=14+i*208;b+=`<rect class="box ${on?"ar":""}" x="${x}" y="14" width="196" height="40" rx="12"/>`+T(x+98,40,["Peritransplant <1 เดือน","Early 1–6 เดือน","Late >6 เดือน"][i],{c:"bh"});
+  P[k].forEach((n,j)=>b+=`<rect class="box" x="${x}" y="${64+j*40}" width="196" height="34" rx="10" style="opacity:${on?1:.45}"/>`+T(x+98,86+j*40,n,{c:"s"}))});
+ b+=`<rect class="gsum" x="0" y="320" width="640" height="60" rx="12"/>`+T(16,344,"Malignancy: มะเร็งผิวหนังและริมฝีปากพบบ่อยที่สุด",{a:"start",c:"b"})+T(16,366,"PTLD: เกิดช่วงแรก (<1 ปี) หรือหลัง 7–10 ปี · ส่วนใหญ่สัมพันธ์กับ EBV",{a:"start",c:"s"});return svg(b,"0 0 640 384")},
+notes:()=>`<h3>Table 325-4</h3><ul><li>&lt;1 เดือน: wound, herpesvirus, oral candida, UTI · 1–6 เดือน: <b>PCP, CMV</b>, Legionella, Listeria, HBV, HCV · &gt;6 เดือน: Aspergillus, Nocardia, <b>BK virus</b>, zoster ${S.h}</li></ul>
+ <h3>Malignancy</h3><ul><li>มะเร็งผิวหนังและริมฝีปากพบบ่อยที่สุด · ต้องเฝ้าระวังและกัน UV ${S.h}</li><li><b>PTLD</b>: ส่วนใหญ่ EBV · พยากรณ์แย่ ${S.h}</li></ul>`});
+
+/* ---------- 326 · Glomerular ---------- */
+HS("326","a","gd-prot","Measuring proteinuria",{
+draw:()=>{const R=[["Normal","8–10","<30","<150","–"],["Microalbuminuria","30–300","30–300","–/>150","–/trace/1+"],["Proteinuria",">300",">300",">150","trace–3+"]];let b="";
+ const H=["","Albumin mg/24h","ACR mg/g","Protein mg/24h","Dipstick"];H.forEach((h,j)=>b+=T(60+j*130,30,h,{c:"bh"}));
+ R.forEach((r,i)=>{const y=46+i*62;b+=`<rect class="box ${["","gl","ar"][i]}" x="6" y="${y}" width="628" height="52" rx="12"/>`;r.forEach((c,j)=>b+=T(60+j*130,y+32,c,{c:j?"b":"bh"}))});
+ b+=T(320,248,"Albumin = 20–60% ของโปรตีนทั้งหมดในปัสสาวะ · dipstick ไม่เห็น microalbuminuria",{c:"s m"});return svg(b,"0 0 640 260")},
+notes:()=>`<ul><li>Table 326-1 · microalbuminuria 30–300 mg/วัน เป็นเครื่องหมายแรกของ diabetic nephropathy ${S.h}</li><li>Nephrotic-range &gt;3 g/วัน ${S.h}</li></ul>`});
+HS("326","a","gd-pat","Clinical patterns of glomerular disease",{
+draw:()=>cards([["Acute nephritic","PSGN, endocarditis, lupus, anti-GBM, IgAN, ANCA vasculitis, HSP, cryoglobulinemia, MPGN, C3G","ar"],["Pulmonary–renal","Goodpasture, GPA, MPA, HSP, cryoglobulinemia","ar"],["Nephrotic","MCD, FSGS, MN, MPGN, diabetic, amyloid, LCDD, fibrillary, Fabry","vn"],["Basement membrane","anti-GBM, Alport, thin BM, nail-patella",""],["Glomerular–vascular","atherosclerotic, hypertensive, cholesterol emboli, sickle cell, TMA, APS","gl"],["Infection-associated","streptococcus, endocarditis, HIV, HBV/HCV, syphilis, malaria, schistosomiasis",""]]),
+notes:()=>`<ul><li>Harrison จัดโรค glomerulus เป็น 6 กลุ่มตาม syndrome (Table 326-2) ช่วยในการวินิจฉัยแยก ${S.h}</li><li>Kidney biopsy ยืนยันการวินิจฉัยในโรคส่วนใหญ่ ${S.h}</li></ul>
+ <div class="pearl">พยาธิสภาพ EM / IF / LM ของแต่ละโรคดูใน Robbins Ch 20</div>`});
+HS("326","b","gd-tx","Treatment by disease",{
+draw:()=>{const R=[["Lupus III/IV","steroid + MMF หรือ cyclophosphamide · + voclosporin หรือ belimumab"],["Anti-GBM","plasmapheresis + prednisone + cyclophosphamide · hemoptysis ตอบสนองต่อ PLEX"],["ANCA vasculitis","induction: steroid + cyclophosphamide/rituximab · maintenance 1–2 ปี"],["IgA nephropathy","RAS blockade · targeted-release budesonide · SGLT2i, sparsentan"],["MCD","prednisone first-line · relapse: CNI, MMF, cyclophosphamide, rituximab"],["Membranous","risk-stratify: steroid + cyclophosphamide, CNI หรือ rituximab"],["C3 glomerulopathy","eculizumab (anti-C5) มีหลักฐานบางส่วน"],["Fabry","agalsidase α/β หรือ migalastat"]];
+ let b="";R.forEach(([n,d],i)=>{const y=10+i*52;b+=`<rect class="box ${i%2?"":"vn"}" x="8" y="${y}" width="624" height="46" rx="10"/>`+T(20,y+20,n,{a:"start",c:"bh"})+T(20,y+38,d,{a:"start",c:"s"})});return svg(b,"0 0 640 430")},
+notes:()=>`<ul><li><b>Lupus</b>: voclosporin ร่วมกับ steroid + MMF ใน class III/IV · belimumab เพิ่มใน maintenance ${S.h}</li>
+ <li><b>Anti-GBM</b>: 8–10 ครั้งของ plasmapheresis + prednisone + cyclophosphamide ${S.h}</li>
+ <li><b>ANCA</b>: plasmapheresis แนะนำเมื่อไตวายเร็ว, ปอดเลือดออก หรือมี anti-GBM ร่วม ${S.h}</li>
+ <li><b>MCD</b>: steroid-dependent relapse เมื่อลดยา · anti-nephrin antibodies และการตอบสนองต่อ rituximab บ่งบทบาท B cell ${S.h}</li>
+ <li>Recurrent FSGS หลัง transplant: plasmapheresis ได้ remission หลายราย ${S.h}</li></ul>`});
+
+/* ---------- 327 · PKD ---------- */
+HS("327","a","pkd-ad","ADPKD",{
+draw:()=>{let b="";b+=`<rect class="box vn" x="14" y="14" width="300" height="150" rx="14"/>`+T(164,42,"Genetics",{c:"bb"})+wrapT(30,70,"PKD1 (16p13, polycystin-1) ~85% · PKD2 (4q21, polycystin-2) ~15% · cyst เกิดจาก second hit",38,"s");
+ b+=`<rect class="box ar" x="326" y="14" width="300" height="150" rx="14"/>`+T(476,42,"Renal",{c:"bb"})+wrapT(342,70,"ปวดหลัง/สีข้าง ~60% · hematuria · cyst infection · stones · HT ก่อน GFR ลด · ESRD วัยกลางคนตอนปลาย",38,"s");
+ b+=`<rect class="box gl" x="14" y="176" width="300" height="130" rx="14"/>`+T(164,204,"Extrarenal",{c:"bb"})+wrapT(30,232,"liver cysts (พบบ่อยสุด) · intracranial aneurysm 4–5 เท่า · diverticula · hernia",38,"s");
+ b+=`<rect class="box" x="326" y="176" width="300" height="130" rx="14"/>`+T(476,204,"Diagnosis & Rx",{c:"bb"})+wrapT(342,232,"US: อายุ 30–59 ≥2 cysts แต่ละข้าง · ≥60 ≥4 cysts แต่ละข้าง · tolvaptan (V2 antagonist)",38,"s");return svg(b,"0 0 640 320")},
+notes:()=>`<ul><li>Prevalence 1:400–1:1000 ทุกเชื้อชาติ ${S.h}</li><li>PKD2 อาการอ่อนกว่า เริ่มช้ากว่า จึงถูกวินิจฉัยน้อยกว่าความจริง ${S.h}</li>
+ <li>Polycystins อยู่บน <b>primary cilium</b> ควบคุม Ca²⁺ signaling (Fig 327-1) ${S.h}</li>
+ <li>Cyst infection และ acute pyelonephritis มักเป็น gram-negative ${S.h}</li><li>อายุ 30–59 ที่ไม่มี ≥2 cysts ในแต่ละข้าง → ตัดโรคออกได้ ${S.h}</li>
+ <li><b>Tolvaptan</b> ยับยั้ง vasopressin V2 receptor → cAMP ลด → cyst โตช้าลง ${S.h}</li></ul>`});
+HS("327","a","pkd-ar","ARPKD",{
+draw:()=>cards([["Gene","PKHD1 (fibrocystin/polyductin) · ทุกรูปแบบทางคลินิก","vn"],["Prevalence","1 ใน 20,000 live births",""],["Classic","ไตโตตั้งแต่เกิด · renal insufficiency/ESRD ตั้งแต่แรกเกิด","ar"],["Liver","congenital hepatic fibrosis · portal hypertension","gl"],["HT","พบบ่อยแม้ไตทำงานปกติ",""]]),
+notes:()=>`<ul><li>FPC ทำงานร่วมกับ PC2 ที่ cilia → กลไกการเกิดซีสต์คล้าย ADPKD ${S.h}</li><li>บางรายวินิจฉัยตอน 1 ปีและไตเสื่อมช้าเป็น 20 ปี ${S.h}</li></ul>`});
+HS("327","b","pkd-oth","Other inherited cystic & tubular diseases",{
+draw:()=>cards([["Tuberous sclerosis","TSC1/TSC2 · angiomyolipoma, cysts · RCC","gl"],["Von Hippel–Lindau","VHL · cysts + clear cell RCC (multifocal) · hemangioblastoma, pheo","ar"],["ADTKD","UMOD, MUC1, REN, HNF1B · CKD + gout · cysts น้อย","vn"],["Nephronophthisis","ciliopathy · ไตเล็ก fibrosis · cysts ที่ corticomedullary · ESRD ในเด็ก",""],["Medullary sponge kidney","collecting duct ขยาย · stones, hematuria",""],["CAKUT","congenital anomalies ของไตและทางเดินปัสสาวะ · สาเหตุหลักของ ESRD ในเด็ก",""]]),
+notes:()=>`<ul><li>Table 327-1 รวมโรคที่มีซีสต์ ${S.h}</li><li>HNF1B: cysts + diabetes (MODY5) ${S.h}</li><li>Nephronophthisis: growth retardation, anemia · syndromic: ตาบอด, liver fibrosis, cerebellar ataxia ${S.h}</li></ul>`});
+
+/* ---------- 328 · TIN ---------- */
+HS("328","a","tin-ain","Acute interstitial nephritis",{
+draw:()=>flow([["AKI ที่มีลักษณะ AIN","ยา: β-lactam, PPI, NSAID, sulfonamide, rifampin · infection · systemic","vn"],["หยุดยาที่สงสัย","supportive care + ติดตามใกล้ชิด",""],["ดีขึ้น","ติดตามต่อ","gl"],["ไม่ดีขึ้นใน 1 สัปดาห์ หรือแย่เร็ว","biopsy / corticosteroids","ar"]]),
+notes:()=>`<h3>Clinical</h3><ul><li>Classic triad <b>fever, rash, eosinophilia</b> + oliguric AKI หลังได้ methicillin/β-lactam 7–10 วัน เป็นข้อยกเว้น ไม่ใช่กฎ ${S.h}</li>
+ <li>Chronic TIN: polyuria (nephrogenic DI), proximal tubule defects (Fanconi), RTA ${S.h}</li>
+ <li>PPIs อาจทำให้ TIN แบบค่อยเป็นค่อยไป → CKD ${S.h}</li></ul>
+ <h3>Treatment (Fig 328-1)</h3><ul><li>หยุดยามักทำให้ดีขึ้น · steroid สำหรับกรณีรุนแรงใกล้ต้อง dialysis หรือแย่ลงแม้หยุดยา ${S.h}</li></ul>`});
+HS("328","a","tin-imm","Systemic & immune-mediated TIN",{
+draw:()=>cards([["Sjögren","lymphocytic TIN · distal RTA · nephrogenic DI · hypergammaglobulinemia","vn"],["TINU","TIN + uveitis · ตอบสนองต่อ steroid · พบเพิ่มในเด็กหลัง SARS-CoV-2",""],["Sarcoidosis","granulomatous IN · hypercalcemia","gl"],["IgG4-related","pancreatitis, cholangitis, retroperitoneal fibrosis · pseudotumor",""],["Immune checkpoint inhibitors","ไตได้รับผล 2% (เดี่ยว) – 5% (คู่) · มักใช้ PPI/NSAID ร่วม","ar"],["SLE","TIN ร่วมกับ GN",""]]),
+notes:()=>`<h3>Absolute indications for steroids (Table 328-2)</h3><ul><li>Sjögren · sarcoidosis · SLE IN · TINU ในผู้ใหญ่ · IgG4-related · idiopathic/granulomatous IN ${S.h}</li></ul>
+ <ul><li>ICI-associated AIN: steroid, หยุดยาที่เป็นตัวกระตุ้น, เว้น ICI จนไตฟื้น · กลับมาใช้ได้ในบางราย ${S.h}</li></ul>`});
+HS("328","b","tin-chronic","Chronic tubulointerstitial nephropathies",{
+draw:()=>cards([["Analgesic nephropathy","papillary necrosis · ไตเล็ก ขรุขระ · เสี่ยง urothelial ca","" ],["Aristolochic acid","Chinese herbal / Balkan · fibrosis + urothelial carcinoma","ar"],["Lithium","nephrogenic DI · chronic TIN + microcysts","vn"],["Lead","CKD + gout + HT (saturnine gout)",""],["Uric acid · hypercalcemia · hypoK","crystal / metabolic nephropathy","gl"],["Myeloma cast nephropathy","light chain + Tamm–Horsfall casts","ar"],["Calcineurin inhibitor","striped fibrosis, arteriolar hyalinosis",""]]),
+notes:()=>`<h3>Papillary necrosis (Table 328-3)</h3><ul><li>Analgesic nephropathy · sickle cell · DM + UTI · NSAID นาน (พบน้อย) ${S.h}</li></ul>
+ <ul><li><b>Aristolochic acid nephropathy</b>: เดิมพบในหญิงสาวกินสมุนไพรลดน้ำหนัก · Aristolochia เป็น carcinogen ${S.h}</li>
+ <li><b>Light chain cast nephropathy</b>: tubule ฝ่อเต็มไปด้วย casts (Fig 328-3) ${S.h}</li><li><b>Reflux nephropathy</b>: VUR ในเด็ก → scarring (Fig 328-4) ${S.h}</li></ul>`});
+
+/* ---------- 329 · TMA & renovascular ---------- */
+HS("329","a","tma-types","Thrombotic microangiopathies",{tools:[["tma",[["ttp","TTP"],["stec","STEC-HUS"],["ahus","aHUS"],["drug","Drug / other"]]]],
+draw(){const D={ttp:["TTP","ADAMTS13 <5–10% → ultra-large vWF multimers","congenital (Upshaw–Schulman) หรือ acquired autoantibody (iTTP)","Plasma exchange + immunosuppression ± caplacizumab · cTTP: ให้ plasma"],stec:["STEC-HUS","Shiga toxin E. coli (O157:H7)","bloody diarrhea ในเด็ก → AKI","Supportive · plasma exchange ไม่ได้ผล"],ahus:["Atypical HUS","alternative complement ผิดปกติ (factor H, I, MCP, C3, CFB)","ADAMTS13 ปกติ","Eculizumab / ravulizumab (anti-C5)"],drug:["Drug, cancer, HIV, scleroderma, APS, HELLP","endothelial injury โดยตรง","clopidogrel, quinine, gemcitabine, CNI","หยุดยา · รักษาโรคต้นเหตุ · C5 inhibitor ถ้าดื้อ"]}[ST.tma];
+ let b=`<rect class="box ar" x="14" y="14" width="612" height="56" rx="14"/>`+T(320,48,"MAHA (schistocytes, LDH ↑, haptoglobin ↓, Coombs −) + thrombocytopenia + organ injury",{c:"bh"});
+ b+=`<path class="arw" d="M320,72 L320,96" marker-end="url(#ah)"/>`;
+ [["ชนิด",D[0]],["กลไก",D[1]],["ลักษณะ",D[2]],["การรักษา",D[3]]].forEach(([k,v],i)=>{const y=100+i*62;b+=`<rect class="box ${i===3?"vn":""}" x="14" y="${y}" width="612" height="54" rx="12"/>`+T(30,y+32,k,{a:"start",c:"bh"})+T(130,y+32,v,{a:"start",c:"s"})});return svg(b,"0 0 640 352")},
+notes:()=>`<h3>TTP</h3><ul><li>นิยาม: MAHA + ADAMTS13 activity &lt;5–10% ${S.h}</li><li><b>Caplacizumab</b>: anti-vWF A1 domain · approved ใน iTTP ร่วมกับ plasma exchange + immunosuppression ${S.h}</li></ul>
+ <h3>HUS</h3><ul><li>STEC-HUS: supportive · plasma exchange ไม่ได้ผล ${S.h}</li><li>aHUS: <b>eculizumab/ravulizumab</b> หยุด MAHA ฟื้นไตได้ ${S.h}</li></ul>
+ <h3>Secondary</h3><ul><li>Drug-induced: หยุดยา (ไม่ตอบสนองต่อ PLEX) · Cancer-associated: รักษามะเร็ง · Catastrophic APS: anticoagulation + steroid + PLEX/IVIG ${S.h}</li><li>HSCT-associated TMA: เกณฑ์ใน Table 329-1 ${S.h}</li></ul>`});
+HS("329","b","tma-ssc","Scleroderma renal crisis & renal vein thrombosis",{
+draw:()=>cards([["Scleroderma renal crisis","diffuse SSc 12% · limited 2% · AKI + HT ฉับพลัน + sediment ปกติ","ar"],["Pathology","arcuate artery intimal/medial proliferation · เหมือน malignant HT",""],["Treatment","ACE inhibitor · ก่อนมียานี้ตาย >90% ใน 1 เดือน","vn"],["Outcome","~2/3 ต้อง dialysis · ฟื้น 50% (median 1 ปี)",""],["Renal vein thrombosis","nephrotic (โดยเฉพาะ MN), hypercoagulable, tumor · ปวดหลัง hematuria PE","gl"]]),
+notes:()=>`<ul><li>MAHA พบได้ใน scleroderma renal crisis แต่ไม่จำเป็นต้องมีครบทุกข้อ ${S.h}</li><li>Sickle cell nephropathy และ HELLP ก็เป็น vascular injury ในบทนี้ ${S.h}</li></ul>`});
+
+/* ---------- 330 · Nephrolithiasis ---------- */
+HS("330","a","st-type","Stone types & urine pH",{tools:[["stn",[["caox","Ca oxalate"],["caph","Ca phosphate"],["uric","Uric acid"],["cys","Cystine"],["struv","Struvite"]]]],
+draw(){const P={caox:[5,7.5,"ไม่ขึ้นกับ pH (ช่วง physiologic)","Ca ↑, oxalate ↑, citrate ↓ ในปัสสาวะ","bipyramidal (dihydrate)"],caph:[6.5,8,"pH ≥6.5","hypercalciuria, distal RTA","—"],uric:[4.5,5.5,"pH ≤5.5","gout, insulin resistance · radiolucent","—"],cys:[4.5,7,"ละลายดีขึ้นเมื่อ pH สูง","cystinuria (AR) · staghorn ได้ · เห็นใน X-ray","hexagonal"],struv:[8,9,"pH >8 (urease)","Proteus, Klebsiella, Providencia · staghorn","coffin-lid"]}[ST.stn];
+ let b="";const X=v=>40+(v-4.5)/4.5*560;b+=`<rect x="40" y="40" width="560" height="26" rx="13" style="fill:url(#phgr)"/>`;for(let v=5;v<=9;v++)b+=T(X(v),88,v,{c:"s m"});b+=T(320,28,"Urine pH",{c:"s"});
+ b+=`<rect x="${X(P[0])}" y="34" width="${X(P[1])-X(P[0])}" height="38" rx="8" style="fill:none;stroke:var(--sb-ink);stroke-width:3"/>`;
+ [["pH",P[2]],["Risk",P[3]],["Crystal",P[4]]].forEach(([k,v],i)=>{const y=110+i*58;b+=`<rect class="box ${i===1?"vn":""}" x="14" y="${y}" width="612" height="50" rx="12"/>`+T(30,y+30,k,{a:"start",c:"bh"})+T(120,y+30,v,{a:"start",c:"s"})});
+ return svg(`<defs><linearGradient id="phgr" x1="0" x2="1"><stop offset="0" stop-color="#ef4444"/><stop offset=".5" stop-color="#facc15"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>`+b,"0 0 640 290")},
+notes:()=>`<ul><li>Uric acid stones เมื่อ urine pH ≤5.5 · calcium phosphate เมื่อ pH ≥6.5 · cystine ละลายดีขึ้นเมื่อ pH สูง · calcium oxalate ไม่ขึ้นกับ pH ${S.h}</li>
+ <li><b>Primary hyperoxaluria</b> (AR): ตับสร้าง oxalate มาก → stones + deposition ในอวัยวะ → ไตวาย ${S.h}</li>
+ <li><b>Struvite</b> (infection, triple-phosphate): เกิดเฉพาะเมื่อมี urease bacteria · โตเร็วเป็น staghorn · ต้องเอาออกทั้งหมด ${S.h}</li>
+ <li>Crystal: Ca oxalate dihydrate bipyramidal · cystine hexagonal (Fig 330-1) ${S.h}</li></ul>`});
+HS("330","a","st-risk","Risk factors & diet",{
+draw:()=>{let b="";b+=`<rect class="box ar" x="14" y="14" width="300" height="200" rx="14"/>`+T(164,42,"เพิ่มความเสี่ยง",{c:"bb"});["animal protein","oxalate","sodium","sucrose · fructose","calcium supplements"].forEach((t,i)=>b+=T(164,74+i*28,t,{c:"s"}));
+ b+=`<rect class="box vn" x="326" y="14" width="300" height="200" rx="14"/>`+T(476,42,"ลดความเสี่ยง",{c:"bb"});["dietary calcium (!)","potassium","phytate","น้ำมาก (urine ≥2 L/วัน)"].forEach((t,i)=>b+=T(476,74+i*28,t,{c:"s"}));
+ b+=`<rect class="gsum" x="0" y="226" width="640" height="56" rx="12"/>`+T(16,250,"Calcium ในอาหารสูง → นิ่วน้อยลง (จับ oxalate ในลำไส้) · แต่ calcium supplement อาจเพิ่ม",{a:"start",c:"b"})+T(16,272,"กลับเป็นซ้ำ >50% ใน 10 ปี หลังนิ่วก้อนแรก",{a:"start",c:"s"});return svg(b,"0 0 640 290")},
+notes:()=>`<ul><li>ไม่ควรจำกัด calcium ในอาหาร · RCT และ cohort แสดงว่า calcium ในอาหารสูงลดความเสี่ยง ${S.h}</li><li>อาหาร oxalate สูง: spinach, rhubarb, potatoes ${S.h}</li>
+ <li>24-h urine: volume, Ca, oxalate, citrate, uric acid, Na, K, PO₄, Mg, pH, creatinine ${S.h}</li></ul>`});
+HS("330","b","st-mx","Acute colic & prevention",{
+draw:()=>cards([["Imaging","noncontrast CT (low-dose) เป็นมาตรฐาน","vn"],["Acute","analgesia · alpha blocker เพิ่มการหลุดเอง","" ],["Urology ด่วน","obstruction + infection · ไตข้างเดียว · ปวดดื้อยา","ar"],["Prevention ทุกชนิด","urine ≥2 L/วัน","gl"],["Ca oxalate · uric acid","thiazide, citrate · alkalinize ± allopurinol",""],["Cystine · struvite","K citrate (ไม่ใช้ Na), tiopronin · ผ่าตัดเอาออก + acetohydroxamic acid",""]]),
+notes:()=>`<ul><li>Low-dose renal-limited noncontrast CT ใช้กำหนด stone burden ${S.h}</li><li>Cystine: alkalinize ด้วย K citrate เพราะ Na เพิ่มการขับ cystine · น้ำมากเป็นหัวใจ ${S.h}</li>
+ <li>Urease inhibitor (acetohydroxamic acid) ใช้ในบางรายที่ผ่าตัดไม่ได้ ${S.h}</li><li>Thiazide ลด urinary calcium, citrate เพิ่ม inhibitor · allopurinol ใน hyperuricosuria ${S.x}</li></ul>`});
+
+/* ---------- 331 · Obstruction ---------- */
+HS("331","a","uo-cause","Causes by level",{
+draw(){let b="";const L=[["Kidney / UPJ","UPJ stenosis (เด็ก), stones, papillary necrosis, tumor"],["Ureter","stones, stricture, tumor, retroperitoneal fibrosis, pregnancy, iatrogenic"],["Bladder","neurogenic bladder, tumor, stones · lesions ระดับนี้ทำให้ bilateral"],["Bladder outlet / urethra","BPH, prostate ca, posterior urethral valves (เด็กชาย), stricture"]];
+ L.forEach(([n,d],i)=>{const y=14+i*80;b+=`<rect class="box ${["vn","","gl","ar"][i]}" x="14" y="${y}" width="612" height="70" rx="12"/>`+T(30,y+28,n,{a:"start",c:"bh"})+T(30,y+52,d,{a:"start",c:"s"})});return svg(b,"0 0 640 340")},
+notes:()=>`<ul><li>อุดเหนือ bladder → hydroureter/hydronephrosis ข้างเดียว · ที่ bladder หรือต่ำกว่า → ทั้งสองข้าง ${S.h}</li>
+ <li>เด็ก: UPJ narrowing, ureter เข้า bladder ผิดที่ · <b>posterior urethral valves</b> สาเหตุ bilateral hydronephrosis ที่พบบ่อยที่สุดในเด็กชาย ${S.h}</li>
+ <li>Flank pain เป็นอาการที่ทำให้มาพบแพทย์บ่อยที่สุด ${S.h}</li></ul>`});
+HS("331","a","uo-phys","Pathophysiology",{
+draw:()=>cards([["Hemodynamic","RBF ↑ ระยะแรก (PG, NO) → GFR ↓, medullary flow ↓","vn"],["Concentrating defect","acquired nephrogenic DI (ไม่ตอบสนอง vasopressin)",""],["Partial bilateral","distal RTA · hyperkalemia · salt wasting","ar"],["Acute partial bilateral","เลียนแบบ prerenal (BUN/Cr สูง, ปัสสาวะเข้มข้น, Na คั่ง)","gl"],["Chronic","CKD + ECF ขยาย → HT",""]]),
+notes:()=>`<ul><li>Table 331-2 · complete bilateral obstruction → anuria ${S.h}</li><li>Azotemia เกิดเมื่อ bladder outlet obstruction, bilateral obstruction หรือข้างเดียวในคนมีไตข้างเดียว ${S.h}</li></ul>`});
+HS("331","b","uo-dx","Diagnosis, relief & recovery",{
+draw:()=>flow([["Unexplained renal failure","ใส่สายสวนปัสสาวะ",""],["มี diuresis","obstruction ใต้ bladder neck","gl"],["ไม่มี diuresis → ultrasound","hydronephrosis?","vn"],["มี hydronephrosis","CT หาตำแหน่งและสาเหตุ → urology","ar"],["Relief","GFR ฟื้นบางส่วนถ้าอุด 1–2 สัปดาห์ · >8 สัปดาห์ฟื้นยาก",""]]),
+notes:()=>`<ul><li>Ultrasound อาจ <b>ไม่เห็น hydronephrosis</b> ถ้าอุด &lt;48 ชม., volume contraction, staghorn, retroperitoneal fibrosis, infiltrative disease ${S.h}</li>
+ <li>Bladder volume ประเมินด้วย bedside ultrasound ${S.h}</li><li>Bilateral และการทำงานไม่เท่ากัน → เลือกข้างที่จะ decompress ก่อน ${S.h}</li>
+ <li><b>Postobstructive diuresis</b>: หลังแก้ bilateral complete obstruction (ไม่ใช่ข้างเดียว) · ปัสสาวะ hypotonic มี Na, K, PO₄, Mg มาก · จาก ECF เกินที่ถูกแก้ไข, natriuretic factors, urea osmotic diuresis, nephrogenic DI · ส่วนใหญ่หยุดเองเมื่อ ECF กลับปกติ ${S.h}</li></ul>`});
+
+const CHK="321";for(let i=SEC.length-1;i>=0;i--)if(SEC[i].ch!==CHK)SEC.splice(i,1);Object.assign(GN,{"321a": "Definition & causes", "321b": "Diagnosis", "321c": "Complications & management"});
+window.NAV={"prev": {"m": "harrison-ch320", "f": "harrison-ch320.html", "t": "Harrison Ch 320 · Cell Biology & Physiology of the Kidney"}, "next": {"m": "harrison-ch322", "f": "harrison-ch322.html", "t": "Harrison Ch 322 · Chronic Kidney Disease"}};
+/* ================= render: one chapter = one continuous page ================= */
+const $=s=>document.querySelector(s);
+const SEENKEY="sb-harrison-ch321-seen",FIGDIR="img/";
+let cur=SEC[0],GRP=null,OBS=null;
+let SEEN={},OPEN={};try{SEEN=JSON.parse(localStorage.getItem(SEENKEY)||"{}")}catch(e){}
+const GROUPS=[...new Set(SEC.map(s=>s.k))];
+const gOf=s=>GROUPS.indexOf(s.k);
+function tocHTML(withHead){const n=Object.keys(SEEN).filter(k=>SEC.some(s=>s.id===k)).length;
+ const subs=[...document.querySelectorAll(`#notes-${cur.id} h3`)].map(h=>[h.id,h.textContent]);
+ return (withHead?`<div class="dh2"><b>สารบัญ</b><button type="button" id="dclose" aria-label="Close">✕</button></div>`:"")+
+ `<div class="prog"><i><b style="width:${n/SEC.length*100}%"></b></i>${n}/${SEC.length} หัวข้อ</div>`+
+ GROUPS.map(gk=>{const list=SEC.filter(s=>s.k===gk),open=OPEN[gk]??(gk===cur.k);
+  return `<div class="g" data-open="${open}"><button class="gh" type="button" data-g="${gk}"><span class="cv">▶</span>${GN[gk]||gk}<span class="n">${list.filter(s=>SEEN[s.id]).length}/${list.length}</span></button>
+  <ul>${list.map(s=>`<li><a href="#${s.id}" data-id="${s.id}" aria-current="${s===cur}"><span class="ck${SEEN[s.id]?" on":""}">✓</span>${s.t}</a>${s===cur&&subs.length>1?`<ol>${subs.map(([id,tx])=>`<li><a href="#${s.id}" data-sub="${id}">${tx}</a></li>`).join("")}</ol>`:""}</li>`).join("")}</ul></div>`}).join("")}
+function wireToc(root){root.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{const g=b.dataset.g,el=b.parentElement;OPEN[g]=el.dataset.open!=="true";el.dataset.open=OPEN[g]});
+ root.querySelectorAll("a[data-id]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();go(a.dataset.id,true,true)});
+ root.querySelectorAll("a[data-sub]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();const h=document.getElementById(a.dataset.sub);if(h)h.scrollIntoView({behavior:"smooth",block:"start"})});
+ const c=root.querySelector("#dclose");if(c)c.onclick=closeDrawer}
+function chips(){$("#side").innerHTML=tocHTML(false);wireToc($("#side"));
+ const i=SEC.indexOf(cur),list=SEC.filter(s=>s.k===cur.k);$("#mgrp").textContent=`${GN[cur.k]||cur.k} · ${list.indexOf(cur)+1}/${list.length}`;$("#mtop").textContent=cur.t;$("#mprev").disabled=i===0;$("#mnext").disabled=i===SEC.length-1;
+ const a=$("#side").querySelector('[aria-current="true"]');if(a){const r=a.getBoundingClientRect(),sr=$("#side").getBoundingClientRect();if(r.top<sr.top||r.bottom>sr.bottom)a.scrollIntoView({block:"nearest"})}}
+function openDrawer(){$("#dpane").innerHTML=tocHTML(true);wireToc($("#dpane"));$("#drawer").hidden=false;const a=$("#dpane").querySelector('[aria-current="true"]');if(a)a.scrollIntoView({block:"center"})}
+function closeDrawer(){$("#drawer").hidden=true}
+$("#mopen").onclick=openDrawer;$("#ddim").onclick=closeDrawer;
+$("#mprev").onclick=()=>{const i=SEC.indexOf(cur);if(i>0)go(SEC[i-1].id,true,true)};$("#mnext").onclick=()=>{const i=SEC.indexOf(cur);if(i<SEC.length-1)go(SEC[i+1].id,true,true)};
+function fixTools(s){(s.tools||[]).forEach(([k,o])=>{if(Array.isArray(o)&&!o.some(v=>v[0]===ST[k]))ST[k]=o[0][0]})}
+function tools(s){const el=document.getElementById("tools-"+s.id);if(!el)return;const tl=[["labels","Labels"]].concat((s.tools||[]).filter(t=>!Array.isArray(t[1])));
+ let h=tl.map(([k,l])=>`<button class="sb-chip" type="button" data-t="${k}" aria-pressed="${!!ST[k]}">${l}</button>`).join("");
+ (s.tools||[]).filter(t=>Array.isArray(t[1])).forEach(([k,opts])=>{h+=`<span class="segc">`+opts.map(([v,l])=>`<button class="sb-chip" type="button" data-s="${k}" data-v="${v}" aria-pressed="${ST[k]===v}">${l}</button>`).join("")+`</span>`});
+ el.innerHTML=h;const prev=cur;cur=s;if(s.ctrl){el.insertAdjacentHTML("beforeend",s.ctrl());if(s.wire)s.wire()}cur=prev;
+ el.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{ST[b.dataset.t]=!ST[b.dataset.t];SEC.filter(x=>x.k===s.k).forEach(draw)});
+ el.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{ST[b.dataset.s]=b.dataset.v;draw(s)})}
+function draw(s){const prev=cur;cur=s;const d=document.getElementById("dia-"+s.id);if(d)d.innerHTML=s.draw();tools(s);
+ const lg=document.getElementById("legend-"+s.id);if(lg)lg.innerHTML=(s.leg||[]).map(k=>LEG[k]?`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`:"").join("");cur=prev}
+function topicHTML(s){const figs=s.figs&&s.figs.length?`<section class="figs sb-card card"><h3>รูปจากเลคเชอร์ <span>${s.figs.length} รูป · แตะเพื่อขยาย</span></h3><div class="strip">${s.figs.map(([f,c])=>`<button class="fig" type="button" data-f="${f}" data-c="${c}"><img src="${FIGDIR}${f}.jpg" alt="${c}" loading="lazy"><span>${c}</span></button>`).join("")}</div></section>`:"";
+ return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><div class="stage">
+  <section class="sb-card card"><div class="dh"><div><div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2></div><div class="tools" id="tools-${s.id}"></div></div>
+   <div class="dia" id="dia-${s.id}" data-id="${s.id}"></div><div class="legend" id="legend-${s.id}"></div></section>
+  <aside class="sb-card card notes" id="notes-${s.id}"></aside></div>${figs}</article>`}
+function renderGroup(gk){GRP=gk;const list=SEC.filter(s=>s.k===gk),gi=GROUPS.indexOf(gk);
+ $("#flow").innerHTML=`<header class="ghead"><small>${GROUPS.length>1?`ส่วนที่ ${gi+1}/${GROUPS.length} · `:""}${list.length} หัวข้อ</small><h2>${GN[gk]||gk}</h2><div class="gchips">${list.map(s=>`<a href="#${s.id}" data-jump="${s.id}">${s.t}</a>`).join("")}</div></header>`+list.map(topicHTML).join("");
+ list.forEach(s=>{fixTools(s);const prev=cur;cur=s;const n=document.getElementById("notes-"+s.id);n.innerHTML=s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);cur=prev;draw(s)});
+ $("#flow").querySelectorAll("[data-jump]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.jump,true,true)});
+ $("#flow").querySelectorAll(".dia").forEach(d=>d.onclick=()=>openDia(SEC.find(s=>s.id===d.dataset.id)));
+ $("#flow").querySelectorAll(".fig").forEach(b=>b.onclick=()=>openLB(b.dataset.f,b.dataset.c));
+ const pv=GROUPS[gi-1],nx=GROUPS[gi+1],NV=window.NAV||{};
+ const btn=(g,dir)=>g?`<button type="button" class="${dir>0?"nx":""}" data-g="${g}"><small>${dir>0?"ส่วนถัดไป →":"← ส่วนก่อนหน้า"}</small><b>${GN[g]||g}</b></button>`:"";
+ const abtn=(a,dir)=>a?`<button type="button" class="${dir>0?"nx":""}" data-atlas="${a.m}" data-href="${a.f}"><small>${dir>0?"บทถัดไป →":"← บทก่อนหน้า"}</small><b>${a.t}</b></button>`:"<span style='flex:1'></span>";
+ $("#steps").innerHTML=(pv?btn(pv,-1):abtn(NV.prev,-1))+(nx?btn(nx,1):abtn(NV.next,1));
+ $("#steps").querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{go(SEC.find(s=>s.k===b.dataset.g).id,true,"chapter")});
+ $("#steps").querySelectorAll("[data-atlas]").forEach(b=>b.onclick=()=>{if(window.parent!==window)parent.postMessage({sb:"open",m:b.dataset.atlas},"*");else location.href=b.dataset.href});
+ if(OBS)OBS.disconnect();
+ OBS=new IntersectionObserver(es=>{const vis=es.filter(e=>e.isIntersecting);if(!vis.length)return;const id=vis[0].target.dataset.id;if(id!==cur.id)setCur(SEC.find(s=>s.id===id),true)},{rootMargin:"-30% 0px -60% 0px"});
+ $("#flow").querySelectorAll(".topic").forEach(t=>OBS.observe(t))}
+function setCur(s,push){cur=s;SEEN[s.id]=1;try{localStorage.setItem(SEENKEY,JSON.stringify(SEEN))}catch(e){}chips();
+ if(push&&location.hash.slice(1)!==s.id)history.replaceState(null,"","#"+s.id)}
+function go(id,push,scroll){const s=SEC.find(x=>x.id===id)||SEC[0];const fresh=s.k!==GRP;if(fresh)renderGroup(s.k);setCur(s,push);
+ const el=scroll==="chapter"?$("#flow"):document.getElementById("t-"+s.id);if(el&&scroll)el.scrollIntoView({behavior:fresh?"auto":"smooth",block:"start"})}
+let Z=1,ZEL=null;function openLB(f,c){$("#lbsc").innerHTML=`<img id="lbi" alt="" src="${FIGDIR}${f}.jpg">`;ZEL=$("#lbi");$("#lbt").textContent=c;Z=1;$("#lb").hidden=false}
+function openDia(s){const prev=cur;cur=s;$("#lbsc").innerHTML=`<div class="zsvg">${s.draw()}</div>`;cur=prev;ZEL=$("#lbsc .zsvg");$("#lbt").textContent=s.t;Z=innerWidth<700?2.2:1;ZEL.style.width=Z===1?"":`${96*Z}vw`;$("#lb").hidden=false}
+$("#lbx").onclick=()=>$("#lb").hidden=true;$("#zi").onclick=()=>{Z=Math.min(4,Z*1.4);ZEL.style.width=`min(${96*Z}vw,${1000*Z}px)`};$("#zo").onclick=()=>{Z=Math.max(1,Z/1.4);ZEL.style.width=Z===1?"":`min(${96*Z}vw,${1000*Z}px)`};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("#lb").hidden=true;closeDrawer()}});
+window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(id&&SEC.some(s=>s.id===id))go(id,false,true)});
+go(location.hash.slice(1)||"aki-def",false,!!location.hash.slice(1));
+
+</script>
+</body>
+</html>

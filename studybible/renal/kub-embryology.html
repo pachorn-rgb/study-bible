@@ -1,0 +1,950 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media=\'all\'"><link rel="stylesheet" href="../design/sb.css"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:0.875rem -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png"><script src="../app.js" defer></script><title>KUB Embryology Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+
+<style>
+/* Layout: anatomical plate on the left (diagram + CRL ruler + legend), stage notes on the right; sticky week timeline on top; reference table and anomaly cards below. */
+:root{
+  --bg:var(--sb-bg); --panel:var(--sb-surface); --plate:var(--sb-plate); --grid:var(--sb-grid);
+  --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --edge:#3B4652;
+  --halo:var(--sb-halo); --arrow:#1A2330; --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft); --adult:#0C5C8C;
+  --f-display:var(--sb-font);
+  --f-body:var(--sb-font);
+  --f-mono:var(--sb-mono);
+  /* germ layers (page-wide) */
+  --g-ec:#3E74D6; --g-me:#D9534F; --g-en:#E8C230; --g-nc:#3FA45B;
+  --g-mx:#F0CFCB;
+  /* lineage: same organ = same color in every stage */
+  --c-nep:#EE8A3C; --c-ub:#D9488B; --c-mes:#8C62D0; --c-pro:#8C97A8; --c-ugs:#1AA3AE;
+  --c-all:#B5946A; --c-gut:#A3A345; --c-ves:#B8323F; --c-adr:#D4B030; --c-gon:#B7A7C9;
+  --c-som:#D7B4A4; --c-lpm:#E4CDC4; --c-tis:#E7E2DD; --c-ecto:#9DB4D6; --c-ncm:#3FA45B;
+  /* signaling molecules */
+  --s-gdnf:#E6A700; --s-hgf:#9C6B2F; --s-wnt:#5B3FD9; --s-fgf:#E0502A; --s-bmp:#138A72; --s-ra:#7CB518; --s-shh:#0B7FC4;
+  --src-l:var(--sb-src-langman); --src-m:var(--sb-src-moore); --src-g:var(--sb-src-gen);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:var(--sb-bg); --panel:var(--sb-surface); --plate:var(--sb-plate); --grid:var(--sb-grid);
+  --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --edge:#0B0F13;
+  --halo:var(--sb-halo); --arrow:#F3F6F9; --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft); --adult:#7CC8F5;
+  --g-mx:#4A2D2C; --c-tis:#39424D; --c-lpm:#5B4440; --c-som:#7A5B50; --c-ecto:#4E6A92;
+  --src-l:var(--sb-src-langman); --src-m:var(--sb-src-moore); --src-g:var(--sb-src-gen);
+  color-scheme:dark}}
+:root[data-theme="dark"],:root[data-theme="oled"]{
+  --bg:var(--sb-bg); --panel:var(--sb-surface); --plate:var(--sb-plate); --grid:var(--sb-grid);
+  --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --edge:#0B0F13;
+  --halo:var(--sb-halo); --arrow:#F3F6F9; --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft); --adult:#7CC8F5;
+  --g-mx:#4A2D2C; --c-tis:#39424D; --c-lpm:#5B4440; --c-som:#7A5B50; --c-ecto:#4E6A92;
+  --src-l:var(--sb-src-langman); --src-m:var(--sb-src-moore); --src-g:var(--sb-src-gen);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:0.9375rem;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1280px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.2}
+header.top{padding-block:28px 16px;display:grid;gap:8px}
+.eyebrow{font-family:var(--f-mono);font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(1.625rem,4vw,40px);font-weight:700}
+.lede{max-width:72ch;color:var(--muted);margin:0}
+.srcrow{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:0.8125rem;color:var(--muted)}
+.src{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:18px;padding:0 5px;border-radius:4px;font-family:var(--f-mono);font-size:0.6875rem;font-weight:600;color:#fff;vertical-align:1px}
+.src.L{background:var(--src-l)} .src.M{background:var(--src-m)} .src.G{background:var(--src-g)}
+:root[data-theme="dark"] .src, .dk .src{color:#0E1318}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .src{color:#0E1318}}
+
+/* timeline */
+nav.tl{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tl-scroll{overflow-x:auto;scrollbar-width:thin}
+.tl-track{display:grid;grid-template-columns:repeat(8,minmax(128px,1fr));gap:6px;min-width:1040px;position:relative}
+.tl-btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 10px 9px;text-align:left;cursor:pointer;display:grid;gap:2px;font:inherit;position:relative}
+.tl-btn:hover{border-color:var(--accent)}
+.tl-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tl-btn[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.tl-wk{font-family:var(--f-mono);font-weight:600;font-size:0.8125rem}
+.tl-cs{font-family:var(--f-mono);font-size:0.6875rem;opacity:.8}
+.tl-t{font-weight:600;font-size:0.8125rem;line-height:1.25}
+.tl-dots{display:flex;gap:3px;margin-top:3px}
+.tl-dots i{width:9px;height:9px;border-radius:50%;border:1px solid var(--edge)}
+.tl-axis{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:0.6875rem;color:var(--muted);min-width:1040px;padding:4px 2px 0}
+
+/* stage */
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}
+@media (max-width:1060px){.stage{grid-template-columns:minmax(0,1fr)}}
+.plate{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-bottom:10px}
+.tg{appearance:none;font:inherit;font-size:0.8125rem;font-weight:600;border:1px solid var(--line);background:var(--plate);color:var(--ink);border-radius:999px;padding:4px 12px 4px 8px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.tg::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid var(--muted);box-sizing:border-box}
+.tg[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.tg[aria-pressed="true"]::before{background:var(--accent);border-color:var(--accent)}
+.tg:focus-visible,.seg button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:auto}
+.seg button{appearance:none;font:inherit;font-size:0.8125rem;font-weight:600;border:0;background:var(--plate);color:var(--muted);padding:4px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--panel)}
+.seg-l{font-size:0.75rem;color:var(--muted);font-family:var(--f-mono)}
+.dia-box{overflow-x:auto;border-radius:8px;background:var(--plate);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px}
+#dia{display:block;width:100%;min-width:640px;height:auto}
+.viewtag{font-family:var(--f-mono);font-size:0.75rem;color:var(--muted);margin:8px 2px 0}
+
+/* SVG styling */
+.f{stroke:var(--edge);stroke-width:2}
+.k{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.kedge{fill:none;stroke:var(--edge);stroke-linecap:round;stroke-linejoin:round}
+.pale{fill-opacity:.5}
+.cav{fill:var(--plate);stroke:var(--edge);stroke-width:1.1}
+.lum{fill:none;stroke:var(--plate);stroke-linecap:round;stroke-linejoin:round}
+.cellf{fill-opacity:.55;stroke-width:.7}
+.thin{fill:none;stroke:var(--muted);stroke-width:1.4;stroke-dasharray:5 4}
+.ghost{opacity:.42}
+.ghost .f,.ghost.f{stroke-dasharray:4 3}
+.lbl{font-family:var(--f-body);font-weight:700;fill:var(--ink);stroke:var(--halo);stroke-width:4px;paint-order:stroke;stroke-linejoin:round}
+.lbl.ptitle{font-family:var(--f-display);font-weight:700;fill:var(--muted)}
+.lbl.sm{font-weight:600}
+.lbl.adt{fill:var(--adult);font-style:italic}
+.lbl.sigt{font-family:var(--f-mono);font-weight:600}
+.lbl.note{fill:var(--muted);font-weight:600}
+.lead{stroke:var(--muted);stroke-width:1.2;fill:none}
+.arw .halo{fill:none;stroke:var(--halo);stroke-width:7.5;stroke-linecap:round}
+.arw .ink{fill:none;stroke:var(--arrow);stroke-width:3;stroke-linecap:round}
+.arw.sm .halo{stroke-width:5.5}.arw.sm .ink{stroke-width:2}
+#ah path{fill:var(--arrow)}
+.sg{stroke:var(--halo);stroke-width:1.5}
+.sigl{fill:none;stroke-width:2.2;stroke-dasharray:5 3;stroke-linecap:round}
+.tfp rect{fill:var(--panel);stroke:var(--ink);stroke-width:1.3;stroke-dasharray:3 2}
+.tfp text{font-family:var(--f-body);font-weight:700;font-style:italic;fill:var(--ink)}
+.rec{font-family:var(--f-mono);font-weight:600;fill:var(--ink);stroke:var(--halo);stroke-width:3.5px;paint-order:stroke}
+.inset{fill:var(--panel);fill-opacity:.65;stroke:var(--line);stroke-width:1.2}
+.axis{stroke:var(--muted);stroke-width:1.2}
+.axt{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.ori-l{stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round}
+#ah2 path{fill:var(--accent)}
+.ori-t{font-family:var(--f-body);font-weight:700;fill:var(--accent);stroke:var(--halo);stroke-width:3.5px;paint-order:stroke}
+.ori-c{fill:var(--panel);stroke:var(--accent);stroke-width:1.5}
+.loc-b{fill:var(--c-tis);stroke:var(--edge);stroke-width:1.4}
+.loc-m{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-dasharray:3 2}
+.loc-p{stroke:var(--accent);stroke-width:2.6}
+.band{fill:var(--panel);fill-opacity:.7;stroke:var(--line)}
+.hide-ori .L-ori,.hide-sig .L-sig,.hide-tf .L-tf,.hide-adult .L-adult,.hide-arw .L-arw{display:none}
+
+/* CRL + legend */
+.crl{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px}
+.crl b{font-family:var(--f-mono);font-size:0.9375rem}
+.crl small{color:var(--muted)}
+#crlsvg{flex:1 1 320px;min-width:0;height:42px}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 18px;margin-top:12px;font-size:0.8125rem}
+.legend h4{margin:0 0 4px;font-family:var(--f-mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lg{display:flex;flex-wrap:wrap;gap:4px 10px}
+.lg span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.sw{width:13px;height:13px;border-radius:3px;border:1px solid var(--edge);flex:none}
+.lg svg{flex:none}
+
+/* aside */
+aside.notes{display:grid;gap:12px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-family:var(--f-mono);font-size:0.75rem;font-weight:600;padding:2px 8px;border-radius:5px;background:var(--plate);border:1px solid var(--line)}
+.stitle{font-size:1.375rem;margin:8px 0 2px}
+.ssub{color:var(--muted);font-size:0.875rem;margin:0 0 8px}
+.proc{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.proc span{font-size:0.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:4px;border:1.5px solid var(--arrow)}
+.notes ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.notes li{max-width:65ch}
+.cmp{width:100%;border-collapse:collapse;font-size:0.8125rem}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:6px 6px;border-top:1px solid var(--line)}
+.cmp th{font-weight:700;width:30%}
+.cmp td{font-variant-numeric:tabular-nums}
+.h3s{font-size:0.9375rem;margin-bottom:6px;font-family:var(--f-display)}
+#adultCard[hidden]{display:none}
+#adult{width:100%;max-width:300px;display:block;margin:0 auto}
+.adim{opacity:.16}
+.gchip{display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:700;white-space:nowrap}
+.gchip i{width:10px;height:10px;border-radius:50%;border:1px solid var(--edge)}
+
+/* sections */
+section.sec{margin-top:36px}
+.sec-h{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;justify-content:space-between;margin-bottom:12px}
+h2{font-size:clamp(1.25rem,2.6vw,26px)}
+.sec-h p{margin:4px 0 0;color:var(--muted);max-width:70ch;font-size:0.875rem}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fbtn{appearance:none;font:inherit;font-size:0.8125rem;font-weight:600;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 10px;cursor:pointer}
+.fbtn[aria-pressed="true"]{background:var(--accent);color:var(--panel);border-color:var(--accent)}
+.fbtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input#q{font:inherit;font-size:0.875rem;padding:5px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);min-width:0;width:220px}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+table.der{border-collapse:collapse;width:100%;min-width:1100px;font-size:0.8438rem}
+.der th{position:sticky;top:0;background:var(--plate);text-align:left;font-family:var(--f-mono);font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px;border-bottom:1px solid var(--line)}
+.der td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+.der td:first-child{font-weight:700}
+.der tr.hl td{background:var(--accent-soft)}
+.lin{display:inline-block;width:10px;height:10px;border-radius:2px;border:1px solid var(--edge);margin-right:6px;vertical-align:0}
+.dual{display:grid;gap:3px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.ac{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px;align-content:start;border-top:5px solid var(--line)}
+.ac h3{font-size:1.062rem}
+.ac .th{color:var(--muted);font-size:0.8125rem;margin-top:-6px}
+.ac dl{margin:0;display:grid;gap:6px}
+.ac dt{font-family:var(--f-mono);font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ac dd{margin:0;font-size:0.875rem}
+.go{appearance:none;font:inherit;font-size:0.75rem;font-weight:700;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:5px;padding:2px 8px;cursor:pointer;justify-self:start}
+.go:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+footer{margin-top:40px;color:var(--muted);font-size:0.8125rem;display:grid;gap:6px;max-width:90ch}
+@media (prefers-reduced-motion:no-preference){#dia g.stagewrap{animation:fade .35s ease}@keyframes fade{from{opacity:.25}to{opacity:1}}}
+</style><style>/* Study Bible standard layer */
+
+html body{font-size:1rem}
+html body h1,html body h2,html body h3,html body h4{font-family:var(--sb-font);letter-spacing:-.015em;color:var(--sb-ink)}
+html body .sb-hero h1{font-size:clamp(1.75rem,4.2vw,2.5rem);font-weight:800;margin:0}
+html body .note{color:var(--sb-muted)}
+html body th{font:700 .6875rem/1.2 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted);border-bottom:1px solid var(--sb-line)}
+html body td{border-bottom:1px solid var(--sb-line)}
+html body select{font:500 .9375rem var(--sb-font);padding:.55rem .7rem;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface2);color:var(--sb-ink)}
+html body ::selection{background:var(--sb-accent-soft)}
+
+html body .wrap{padding:1rem max(16px,env(safe-area-inset-right,0px)) 4.5rem max(16px,env(safe-area-inset-left,0px))}
+html body .plate,html body .card,html body .ac{border-radius:var(--sb-r-lg);border-color:var(--sb-line);background:var(--sb-surface);box-shadow:var(--sb-shadow)}
+html body .ac{border-top-width:4px}
+html body .plate{padding:.9rem}
+html body .dia-box{border-radius:12px}
+html body .tg{font:500 .8125rem/1.1 var(--sb-font);background:var(--sb-surface);color:var(--sb-ink2);border:1px solid var(--sb-line);padding:.4rem .8rem .4rem .55rem}
+html body .tg[aria-pressed="true"]{background:var(--sb-ink);color:var(--sb-bg);border-color:var(--sb-ink)}
+html body .tg[aria-pressed="true"]::before{background:var(--sb-accent);border-color:var(--sb-accent)}
+html body .seg{border:0;background:var(--sb-surface2);border-radius:10px;padding:2px;gap:2px}
+html body .seg button{background:transparent;border-radius:8px;font:500 .8125rem/1.1 var(--sb-font);color:var(--sb-ink2)}
+html body .seg button[aria-pressed="true"]{background:var(--sb-surface);color:var(--sb-ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+html body .tl-btn{border-radius:12px;background:var(--sb-surface);border-color:var(--sb-line)}
+html body .tl-btn[aria-current="true"]{background:var(--sb-ink);border-color:var(--sb-ink);color:var(--sb-bg)}
+html body .fbtn{border-radius:999px;font:500 .8125rem/1.1 var(--sb-font);padding:.35rem .75rem;background:var(--sb-surface);color:var(--sb-ink2)}
+html body .fbtn[aria-pressed="true"]{background:var(--sb-ink);color:var(--sb-bg);border-color:var(--sb-ink)}
+html body .pill{border-radius:6px;background:var(--sb-surface2);border-color:var(--sb-line)}
+html body input#q{border:1px solid var(--sb-line);background:var(--sb-surface2);color:var(--sb-ink);border-radius:10px;padding:.55rem .75rem}
+html body h2{font-size:clamp(1.25rem,2.6vw,1.5rem);font-weight:750}
+
+/* figure polish: soft depth on tissue shapes, thinner hairlines on dark */
+#dia .f:not(.cellf){filter:drop-shadow(0 .6px .5px rgba(14,17,22,.22))}
+#dia .cav{filter:none}
+#dia .cellf{filter:none}
+:root[data-theme="dark"] #dia .f:not(.cellf),:root[data-theme="oled"] #dia .f:not(.cellf){filter:drop-shadow(0 .6px .6px rgba(0,0,0,.55))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #dia .f:not(.cellf){filter:drop-shadow(0 .6px .6px rgba(0,0,0,.55))}}
+html body .viewtag,html body .crl small{font-family:var(--sb-font)}
+
+/* perf: keep re-renders local */
+#diabox,.plate{contain:layout paint}
+aside.notes .card,.ac{contain:content}
+#dia{content-visibility:visible}
+</style>
+
+<div class="wrap">
+<header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Embryology</div>
+    <h1>Development of the KUB System</h1>
+    <p class="sb-lede">Kidney, ureter, bladder และ urethra ตั้งแต่ intermediate mesoderm จนถึงแรกเกิด กดช่วงเวลาบน timeline เพื่อดูภาพในระยะนั้น และเปิด/ปิด signaling, transcription factor, CRL และ adult overlay ได้</p>
+    <div class="sb-sources"><span class="sb-src"><i class="langman">L</i>Langman's Medical Embryology 14e · Ch 16</span><span class="sb-src"><i class="moore">M</i>Moore &amp; Persaud, The Developing Human · Ch 12</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติมช่องว่าง เช่น teratogen, CRL</span></div>
+  </header>
+
+<nav class="tl" aria-label="Developmental timeline">
+  <div class="tl-scroll">
+    <div class="tl-track" id="tl" role="tablist"></div>
+    <div class="tl-axis"><span>wk 3</span><span>wk 4</span><span>wk 5</span><span>wk 6</span><span>wk 7</span><span>wk 8–9</span><span>wk 12</span><span>birth</span></div>
+  </div>
+</nav>
+
+<div class="stage" data-sb-focus>
+  <div class="plate">
+    <div class="toolbar" role="group" aria-label="Diagram layers">
+      <button class="tg" id="t-ori" aria-pressed="true">Orientation</button>
+      <button class="tg" id="t-arw" aria-pressed="true">Motion arrows</button>
+      <button class="tg" id="t-sig" aria-pressed="true">Signaling</button>
+      <button class="tg" id="t-tf" aria-pressed="false">Transcription factors</button>
+      <button class="tg" id="t-crl" aria-pressed="true">CRL</button>
+      <button class="tg" id="t-adult" aria-pressed="true">Adult overlay</button>
+      <span class="seg" role="group" aria-label="Color by">
+        <button id="m-lin" aria-pressed="true">Lineage</button>
+        <button id="m-germ" aria-pressed="false">Germ layer</button>
+      </span>
+    </div>
+    <div class="dia-box" id="diabox">
+      <svg id="dia" viewBox="0 0 800 616" role="img" aria-label="Stage diagram"></svg>
+    </div>
+    <div class="viewtag" id="viewtag"></div>
+    <div class="crl" id="crlbox">
+      <div><small>Crown–rump length</small><br><b id="crlv"></b> <span class="src G">Gen</span></div>
+      <svg id="crlsvg" viewBox="0 0 520 42" preserveAspectRatio="none" aria-label="CRL on log scale"></svg>
+    </div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <aside class="notes">
+    <div class="card">
+      <div class="meta" id="smeta"></div>
+      <h2 class="stitle" id="stitle"></h2>
+      <p class="ssub" id="ssub"></p>
+      <div class="proc" id="sproc"></div>
+      <ul id="snotes"></ul>
+    </div>
+    <div class="card" id="adultCard">
+      <div class="h3s">Adult overlay · กลายเป็นอะไร</div>
+      <svg id="adult" viewBox="0 0 300 430" aria-label="Adult urinary system with derivatives highlighted"></svg>
+      <p class="ssub" id="adultNote" style="margin:6px 0 0"></p>
+    </div>
+    <div class="card">
+      <div class="h3s">ตัวเลขจากสองตำรา</div>
+      <table class="cmp" id="scmp"></table>
+    </div>
+  </aside>
+</div>
+
+<section class="sec" id="table">
+  <div class="sec-h">
+    <div><h2>Embryonic structure → adult derivative</h2>
+    <p>ตารางรวม germ layer, timing และ molecular regulation พร้อมบอกว่ามาจากตำราเล่มไหน ถ้าตัวเลขสองเล่มไม่ตรงกันจะแสดงทั้งคู่</p></div>
+    <div class="filters">
+      <button class="fbtn" id="f-all" aria-pressed="true">All</button>
+      <button class="fbtn" id="f-stage" aria-pressed="false">This stage</button>
+      <label for="q" class="seg-l">Search</label><input id="q" type="search" placeholder="เช่น trigone, WT1">
+    </div>
+  </div>
+  <div class="tablebox"><table class="der"><thead><tr><th>Embryonic structure</th><th>Adult derivative</th><th>Germ layer</th><th>Timing</th><th>Molecular regulation</th><th>Source</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</section>
+
+<section class="sec" id="anom">
+  <div class="sec-h">
+    <div><h2>Congenital anomalies</h2>
+    <p>แต่ละการ์ดบอกว่าผิดพลาดที่ขั้นตอนไหน (กดเพื่อไปดู stage นั้น), teratogen หรือปัจจัยเสี่ยง และภาพทางคลินิก ข้อมูล teratogen ส่วนใหญ่ไม่มีในบทที่แนบ จึงติดป้าย Gen</p></div>
+    <div class="filters" id="afil"></div>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<footer>
+  <div><b>อายุครรภ์:</b> สัปดาห์ในหน้านี้เป็น post-fertilization age ตามทั้งสองตำรา ถ้าเทียบกับ gestational age จาก LMP ให้บวกประมาณ 2 สัปดาห์</div>
+  <div><b>CRL:</b> ช่วงค่าตาม Carnegie stage (O'Rahilly &amp; Müller) และตาราง fetal CRL ของ Moore บทที่ 5–6 ซึ่งไม่อยู่ในบทที่แนบ จึงติดป้าย Gen</div>
+  <div><b>ภาพ:</b> เป็น schematic cartoon วาดใหม่จากคำบรรยายและรูปในตำรา ไม่ใช่สเกลจริง</div>
+</footer>
+</div>
+
+<script>
+/* ---------- tokens & dynamic color CSS ---------- */
+const LIN={nep:'Metanephric blastema → nephron',ub:'Ureteric bud → collecting system',mes:'Mesonephros / Wolffian duct',pro:'Pronephros',ugs:'Cloaca → urogenital sinus → bladder/urethra',all:'Allantois → urachus',gut:'Hindgut → rectum',ves:'Vessels',adr:'Suprarenal cortex',ncm:'Suprarenal medulla',gon:'Gonad',som:'Somite / paraxial',lpm:'Lateral plate / septum',ecto:'Surface ectoderm',tis:'Mesenchyme (body)'};
+const GERM={ec:['Ectoderm','--g-ec'],me:['Mesoderm','--g-me'],en:['Endoderm','--g-en'],nc:['Neural crest','--g-nc']};
+(function(){let c='';for(const k in LIN){c+=`.mode-lin .f.lin-${k}{fill:var(--c-${k})}.mode-lin .k.lin-${k}{stroke:var(--c-${k})}`}
+for(const g of ['ec','me','en','nc','mx']){c+=`.mode-germ .f.g-${g}{fill:var(--g-${g})}.mode-germ .k.g-${g}{stroke:var(--g-${g})}`}
+const s=document.createElement('style');s.textContent=c;document.head.appendChild(s)})();
+
+/* ---------- SVG helpers ---------- */
+const F=(lin,g,x='')=>`class="f lin-${lin} g-${g} ${x}"`;
+function K(d,lin,g,w,x=''){return `<path class="kedge ${x}" d="${d}" stroke-width="${w+4}"/><path class="k lin-${lin} g-${g} ${x}" d="${d}" stroke-width="${w}"/>`}
+function T(x,y,t,o={}){const s=o.s||14,a=o.a||'middle';return `<text class="lbl ${o.c||''}" x="${x}" y="${y}" font-size="${s}" text-anchor="${a}">${t}</text>`}
+function TL(x,y,lines,o={}){const s=o.s||14;return lines.map((l,i)=>T(x,y+i*s*1.2,l,o)).join('')}
+function AD(x,y,lines,o={}){return TL(x,y,[].concat(lines),{s:12,...o,c:'adt '+(o.c||'')})}
+function AR(d,sm){return `<g class="arw ${sm?'sm':''}"><path class="halo" d="${d}"/><path class="ink" d="${d}" marker-end="url(#ah)"/></g>`}
+function LD(x1,y1,x2,y2){return `<line class="lead" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}"/>`}
+function star(r1,r2){let p='';for(let i=0;i<10;i++){const r=i%2?r2:r1,a=-Math.PI/2+i*Math.PI/5;p+=(i?'L':'M')+(r*Math.cos(a)).toFixed(1)+','+(r*Math.sin(a)).toFixed(1)}return p+'Z'}
+function hexa(r){let p='';for(let i=0;i<6;i++){const a=Math.PI/6+i*Math.PI/3;p+=(i?'L':'M')+(r*Math.cos(a)).toFixed(1)+','+(r*Math.sin(a)).toFixed(1)}return p+'Z'}
+const SIG={
+ gdnf:{n:'GDNF',v:'--s-gdnf',p:'M0,-9L9,0L0,9L-9,0Z',d:'Glial-derived neurotrophic factor'},
+ hgf:{n:'HGF',v:'--s-hgf',p:'M-10,-6H10V6H-10Z',d:'Hepatocyte growth factor'},
+ wnt:{n:'WNT',v:'--s-wnt',p:star(10,4.5),d:'WNT family'},
+ fgf:{n:'FGF',v:'--s-fgf',p:hexa(9),d:'Fibroblast growth factor'},
+ bmp:{n:'BMP',v:'--s-bmp',p:'M-8,-8H8V8H-8Z',d:'Bone morphogenetic protein'},
+ ra:{n:'RA',v:'--s-ra',p:'M0,-10L9,7H-9Z',d:'Retinoic acid'},
+ shh:{n:'SHH',v:'--s-shh',p:'M8,0A8,8 0 1 1 -8,0A8,8 0 1 1 8,0Z',d:'Sonic hedgehog'}
+};
+function G(k,x,y,label,a='start'){const s=SIG[k];const lx=a==='start'?14:a==='end'?-14:0;const ly=a==='middle'?24:5;
+ return `<g transform="translate(${x},${y})"><path class="sg" d="${s.p}" style="fill:var(${s.v})"/>${T(lx,ly,label||s.n,{s:12,a,c:'sigt'})}</g>`}
+function SA(k,x1,y1,x2,y2){const s=SIG[k];const ang=Math.atan2(y2-y1,x2-x1),L=8;
+ const p1=[x2-L*Math.cos(ang-0.45),y2-L*Math.sin(ang-0.45)],p2=[x2-L*Math.cos(ang+0.45),y2-L*Math.sin(ang+0.45)];
+ return `<line class="sigl" x1="${x1}" y1="${y1}" x2="${x2}" y2="${y2}" style="stroke:var(${s.v})"/><path d="M${x2},${y2}L${p1[0].toFixed(1)},${p1[1].toFixed(1)}L${p2[0].toFixed(1)},${p2[1].toFixed(1)}Z" style="fill:var(${s.v})"/>`}
+function TF(x,y,t){const w=t.length*6.6+16;return `<g class="tfp"><rect x="${x}" y="${y-13}" width="${w.toFixed(0)}" height="19" rx="9.5"/><text x="${(x+w/2).toFixed(0)}" y="${y+1}" font-size="11.5" text-anchor="middle">${t}</text></g>`}
+function REC(x,y,t,a='middle'){return `<text class="rec" x="${x}" y="${y}" font-size="11" text-anchor="${a}">Y ${t}</text>`}
+function bean(cx,cy,w,h){/* w<0 → notch on right */return `M${cx},${cy-h}C${cx+w*1.15},${cy-h} ${cx+w*1.15},${cy+h} ${cx},${cy+h}C${cx-w*.95},${cy+h} ${cx-w*.95},${cy+h*.32} ${cx-w*.38},${cy}C${cx-w*.95},${cy-h*.32} ${cx-w*.95},${cy-h} ${cx},${cy-h}Z`}
+const DEFS=`<defs><marker id="ah" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="4.2" markerHeight="4.2" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z"/></marker><marker id="ah2" viewBox="0 0 10 10" refX="6" refY="5" markerWidth="3.6" markerHeight="3.6" orient="auto-start-reverse"><path d="M0,0L10,5L0,10Z"/></marker></defs>`;
+function layers(base,arw,sig,tf,ad){return `${DEFS}<g class="stagewrap"><g class="L-base">${base}</g><g class="L-arw">${arw||''}</g><g class="L-sig">${sig||''}</g><g class="L-tf">${tf||''}</g><g class="L-adult">${ad||''}</g></g>`}
+function axisLabels(){return TL(92,108,['Cervical'],{s:11,a:'end',c:'note'})+TL(92,240,['Thoracic'],{s:11,a:'end',c:'note'})+TL(92,355,['Lumbar'],{s:11,a:'end',c:'note'})+TL(92,435,['Sacral'],{s:11,a:'end',c:'note'})+
+ `<path class="lead" d="M100,70V150M100,160V300M100,310V395M100,405V460"/>`}
+/* ---------- orientation band: compass + locator per panel ---------- */
+const CRES='M30,4C12,4 4,18 4,30C4,44 14,54 28,54C32,54 33,50 30,48C22,46 16,40 16,30C16,22 22,16 30,16C38,16 40,8 30,4Z';
+function LOC(x,y,type,cap){let g=`<g transform="translate(${x},${y})"><rect x="-4" y="-4" width="64" height="64" rx="8" class="ori-c"/>`;
+ if(type==='disc'){g+=`<ellipse class="loc-b" cx="28" cy="28" rx="24" ry="14"/><line class="loc-p" x1="0" y1="28" x2="56" y2="28"/>`}
+ else if(type==='ventral'){g+=`<circle class="loc-b" cx="28" cy="10" r="8"/><rect class="loc-b" x="14" y="18" width="28" height="36" rx="12"/><rect class="loc-m" x="16" y="30" width="24" height="24" rx="3"/>`}
+ else if(type==='kidney'){g+=`<path class="loc-b" d="${bean(28,28,-20,24)}"/><rect class="loc-m" x="6" y="18" width="16" height="16" rx="3"/>`}
+ else if(type==='penis'){g+=`<rect class="loc-b" x="4" y="20" width="40" height="16" rx="8"/><ellipse class="loc-b" cx="46" cy="28" rx="9" ry="10"/><line class="loc-p" x1="0" y1="28" x2="58" y2="28"/>`}
+ else{g+=`<path class="loc-b" d="${CRES}"/><circle class="loc-b" cx="33" cy="11" r="8"/>`;
+  if(type==='tr')g+=`<line class="loc-p" x1="0" y1="31" x2="22" y2="31"/>`;
+  if(type==='tr2')g+=`<line class="loc-p" x1="0" y1="24" x2="22" y2="20"/>`;
+  if(type==='lat')g+=`<rect class="loc-m" x="1" y="8" width="18" height="46" rx="4"/>`;
+  if(type==='caud')g+=`<rect class="loc-m" x="12" y="38" width="26" height="18" rx="4"/>`}
+ return g+`<text class="axt" x="28" y="72" text-anchor="middle">${cap}</text></g>`}
+function ORI(cx,cy,o){const a=19;let g='';
+ if(o.u)g+=`<line class="ori-l" x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy-a}" marker-end="url(#ah2)"/><text class="ori-t" x="${cx}" y="${cy-a-7}" font-size="11.5" text-anchor="middle">${o.u}</text>`;
+ if(o.d)g+=`<line class="ori-l" x1="${cx}" y1="${cy}" x2="${cx}" y2="${cy+a}" marker-end="url(#ah2)"/><text class="ori-t" x="${cx}" y="${cy+a+15}" font-size="11.5" text-anchor="middle">${o.d}</text>`;
+ if(o.l)g+=`<line class="ori-l" x1="${cx}" y1="${cy}" x2="${cx-a}" y2="${cy}" marker-end="url(#ah2)"/><text class="ori-t" x="${cx-a-6}" y="${cy+4}" font-size="11.5" text-anchor="end">${o.l}</text>`;
+ if(o.r)g+=`<line class="ori-l" x1="${cx}" y1="${cy}" x2="${cx+a}" y2="${cy}" marker-end="url(#ah2)"/><text class="ori-t" x="${cx+a+6}" y="${cy+4}" font-size="11.5" text-anchor="start">${o.r}</text>`;
+ return g+`<circle cx="${cx}" cy="${cy}" r="3.5" style="fill:var(--accent)"/>`}
+function oriBand(list){let g=`<g class="L-ori"><rect class="band" x="4" y="522" width="792" height="90" rx="8"/>`;
+ list.forEach(p=>{g+=T(p.x,538,p.n,{s:11,c:'ptitle'});g+=ORI(p.cx,560,p.o);if(p.loc)g+=LOC(p.lx,530,p.loc,p.cap||'')});
+ return g+'</g>'}
+
+/* ---------- organic drawing helpers ---------- */
+function prand(i,seed){const x=Math.sin(i*12.9898+seed*78.233)*43758.5453;return x-Math.floor(x)}
+function smooth(pts,closed=true){const n=pts.length;let d=`M${pts[0][0].toFixed(1)},${pts[0][1].toFixed(1)}`;
+ const P=i=>pts[(i+n)%n];const last=closed?n:n-1;
+ for(let i=0;i<last;i++){const p0=closed?P(i-1):pts[Math.max(i-1,0)],p1=P(i),p2=closed?P(i+1):pts[Math.min(i+1,n-1)],p3=closed?P(i+2):pts[Math.min(i+2,n-1)];
+  const c1=[p1[0]+(p2[0]-p0[0])/6,p1[1]+(p2[1]-p0[1])/6],c2=[p2[0]-(p3[0]-p1[0])/6,p2[1]-(p3[1]-p1[1])/6];
+  d+=` C${c1[0].toFixed(1)},${c1[1].toFixed(1)} ${c2[0].toFixed(1)},${c2[1].toFixed(1)} ${p2[0].toFixed(1)},${p2[1].toFixed(1)}`}
+ return d+(closed?'Z':'')}
+function blob(cx,cy,rx,ry,seed=1,j=.1,n=14,rot=0){const pts=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2,r=1+(prand(i,seed)-.5)*2*j,x=Math.cos(a)*rx*r,y=Math.sin(a)*ry*r;
+ pts.push([cx+x*Math.cos(rot)-y*Math.sin(rot),cy+x*Math.sin(rot)+y*Math.cos(rot)])}return smooth(pts)}
+function cells(cx,cy,rx,ry,n,lin,g,seed=3,r=2.6){let s='';for(let i=0;i<n;i++){const a=prand(i,seed)*Math.PI*2,q=Math.sqrt(prand(i,seed+7));
+ s+=`<circle ${F(lin,g,'cellf')} cx="${(cx+Math.cos(a)*rx*q).toFixed(1)}" cy="${(cy+Math.sin(a)*ry*q).toFixed(1)}" r="${(r*(.8+prand(i,seed+3)*.5)).toFixed(1)}"/>`}return s}
+function TUBE(d,lin,g,w,x=''){return K(d,lin,g,w,x)+`<path class="lum ${x}" d="${d}" stroke-width="${Math.max(1.6,w*.4).toFixed(1)}"/>`}
+function tuft(cx,cy,r=5,n=5){let s='';for(let i=0;i<n;i++){const a=i/n*Math.PI*2;s+=`<circle ${F('ves','me')} cx="${(cx+Math.cos(a)*r*.9).toFixed(1)}" cy="${(cy+Math.sin(a)*r*.9).toFixed(1)}" r="${(r*.62).toFixed(1)}"/>`}return s}
+function corpuscle(cx,cy,r,open=0){/* Bowman cup + tuft; open = angle of the vascular pole */const a1=open+0.7,a2=open-0.7+Math.PI*2;
+ const p=(a,R)=>[(cx+Math.cos(a)*R).toFixed(1),(cy+Math.sin(a)*R).toFixed(1)];const o1=p(a1,r),o2=p(a2,r),i1=p(a1,r*.72),i2=p(a2,r*.72);
+ return `<path ${F('nep','me')} d="M${o1} A${r},${r} 0 1 1 ${o2} L${i2} A${r*.72},${r*.72} 0 1 0 ${i1} Z"/>`+tuft(cx,cy,r*.42,5)}
+function vessel(cx,cy,r){return `<circle ${F('ves','me')} cx="${cx}" cy="${cy}" r="${r}"/><circle class="cav" cx="${cx}" cy="${cy}" r="${(r*.5).toFixed(1)}"/>`}
+function somiteBlock(x,y,w,h,x2=''){return `<rect ${F('som','me',x2)} x="${x}" y="${y}" width="${w}" height="${h}" rx="5"/><ellipse class="cav ${x2}" cx="${x+w/2}" cy="${y+h/2}" rx="${(w*.18).toFixed(1)}" ry="${(h*.18).toFixed(1)}"/>`}
+function somites(){let s='';for(let y=70;y<=452;y+=19)s+=somiteBlock(113,y,20,15);return s+T(123,60,'Somites',{s:11,c:'sm'})}
+function gutTail(hx=388,hy=300){return TUBE('M372,236C372,340 330,420 276,452','gut','en',16)+TUBE('M246,450C300,444 360,428 410,392','all','en',9)+
+ `<path ${F('ugs','en')} d="${blob(254,464,30,20,5,.06)}"/><path class="cav" d="${blob(254,464,16,9,6,.08)}"/>`+K('M226,482 C244,488 266,488 284,482','ecto','ec',4)+
+ T(hx,hy,'Hindgut',{s:12,a:'start'})+T(420,392,'Allantois',{s:12,a:'start'})+T(292,492,'Cloaca',{s:12,a:'start'})}
+
+/* ---------- stage drawings ---------- */
+const DRAW={};
+DRAW.s1=()=>{
+ let b=T(210,30,'A · ~day 18–20 · trilaminar disc',{s:14,c:'ptitle'})+T(610,30,'B · ~day 26 · after lateral folding',{s:14,c:'ptitle'});
+ /* --- A --- */
+ b+=`<path class="thin" d="M44,122 C80,58 340,58 376,122"/>`+T(210,70,'Amniotic cavity',{s:11,c:'note'});
+ b+=`<path class="thin" d="M44,198 C70,292 350,292 376,198"/>`+T(300,262,'Yolk sac',{s:11,c:'note'});
+ b+=cells(210,166,170,22,46,'tis','mx',4,1.8);
+ const ecto='M40,122 C110,118 160,114 186,108 C196,116 204,120 210,120 C216,120 224,116 234,108 C260,114 310,118 380,122 L380,136 C310,132 262,134 238,140 C224,148 216,150 210,150 C204,150 196,148 182,140 C158,134 110,132 40,136 Z';
+ b+=`<path ${F('ecto','ec')} d="${ecto}"/>`;
+ b+=`<circle ${F('tis','mx')} cx="210" cy="164" r="8"/>`;
+ b+=`<path ${F('som','me')} d="${blob(158,166,32,17,2,.08)}"/><path ${F('som','me')} d="${blob(262,166,32,17,9,.08)}"/>`+cells(158,166,24,11,10,'som','me',11,2.2)+cells(262,166,24,11,10,'som','me',13,2.2);
+ b+=`<path ${F('nep','me')} d="${blob(113,168,12,10,3,.1)}"/><path ${F('nep','me')} d="${blob(307,168,12,10,4,.1)}"/>`;
+ for(const sgn of [1,-1]){const X=x=>sgn>0?x:420-x;
+  b+=K(`M${X(100)},158 C${X(84)},154 ${X(64)},152 ${X(42)},152`,'lpm','me',7)+K(`M${X(100)},180 C${X(84)},184 ${X(64)},186 ${X(42)},186`,'lpm','me',7)+
+   `<path class="cav" d="${blob(X(68),169,20,7,sgn>0?5:8,.12)}"/>`}
+ b+=K('M40,198 C140,202 280,202 380,198','gut','en',7);
+ for(let x=52;x<380;x+=14)b+=`<circle ${F('gut','en','cellf')} cx="${x}" cy="${(198+3*Math.sin((x-40)/340*Math.PI)).toFixed(1)}" r="2.3"/>`;
+ b+=T(210,98,'Ectoderm · neural plate',{s:12})+LD(210,122,226,84)+T(232,82,'neural groove',{s:10,a:'start',c:'note'})+T(158,170,'Paraxial',{s:11,c:'sm'})+T(262,170,'Paraxial',{s:11,c:'sm'})+LD(210,172,236,236)+T(240,242,'Notochord',{s:11,a:'start',c:'sm'})+
+  T(120,218,'Endoderm',{s:12})+T(386,148,'Somatic LPM',{s:11,a:'end',c:'sm'})+T(386,206,'Splanchnic LPM',{s:11,a:'end',c:'sm'})+T(352,172,'coelom',{s:10,c:'note'})+
+  LD(113,180,120,268)+T(172,284,'Intermediate mesoderm (IM)',{s:14});
+ /* --- B --- */
+ const body='M610,96 C704,96 764,168 764,258 C764,344 714,410 646,428 L574,428 C506,410 456,344 456,258 C456,168 516,96 610,96 Z';
+ b+=`<path ${F('tis','mx')} d="${body}"/>`+cells(610,262,140,150,70,'tis','mx',21,1.6)+`<path class="k lin-ecto g-ec" d="${body}" stroke-width="5"/>`;
+ for(const sgn of [1,-1]){const X=x=>610+sgn*(x-610);
+  b+=`<path class="cav" d="M${X(600)},264 C${X(600)},250 ${X(566)},238 ${X(530)},244 C${X(496)},252 ${X(478)},290 ${X(484)},330 C${X(492)},376 ${X(546)},404 ${X(598)},404 L${X(600)},360 C${X(586)},352 ${X(582)},336 ${X(586)},322 C${X(590)},300 ${X(600)},290 ${X(600)},264 Z"/>`}
+ b+=`<path ${F('ecto','ec')} d="M610,114 C632,114 642,136 642,158 C642,184 628,198 610,198 C592,198 578,184 578,158 C578,136 588,114 610,114 Z"/><ellipse class="cav" cx="610" cy="156" rx="4" ry="24"/>`;
+ b+=`<path ${F('ncm','nc')} d="${blob(570,176,8,10,4,.1)}"/><path ${F('ncm','nc')} d="${blob(650,176,8,10,6,.1)}"/>`;
+ b+=`<circle ${F('tis','mx')} cx="610" cy="212" r="7"/>`;
+ for(const sgn of [1,-1]){const X=x=>610+sgn*(x-610);
+  b+=`<path ${F('som','me')} d="${blob(X(536),190,30,22,sgn>0?7:9,.1)}"/>`+cells(X(536),196,20,12,9,'som','me',sgn>0?31:33,2)+K(`M${X(508)},176 C${X(516)},160 ${X(552)},158 ${X(566)},170`,'som','me',6)}
+ b+=vessel(590,232,10)+vessel(630,232,10);
+ b+=`<path ${F('lpm','me')} d="M603,244 C604,266 604,286 606,300 L614,300 C616,286 616,266 617,244 Z"/>`;
+ b+=`<circle ${F('lpm','me')} cx="610" cy="320" r="30"/><circle ${F('gut','en')} cx="610" cy="320" r="20"/><path class="cav" d="${blob(610,320,8,6,3,.15)}"/>`;
+ for(const sgn of [1,-1]){const X=x=>610+sgn*(x-610);b+=`<path ${F('nep','me')} d="${blob(X(562),266,24,20,sgn>0?12:14,.12,14,sgn*.4)}"/>`+cells(X(562),266,16,12,10,'nep','me',sgn>0?41:43,2)}
+ b+=TUBE('M610,350 L610,474','gut','en',10)+T(620,470,'vitelline duct → yolk sac',{s:10,a:'start',c:'note'});
+ b+=T(652,120,'Neural tube',{s:12,a:'start'})+T(660,184,'neural crest',{s:10,a:'start',c:'note'})+T(684,196,'Somite',{s:11,c:'sm'})+T(640,236,'Dorsal aortae',{s:11,a:'start'})+T(610,368,'Gut tube',{s:11,c:'sm'})+T(520,330,'Coelom',{s:11,c:'note'})+T(700,330,'Coelom',{s:11,c:'note'})+
+  LD(552,282,520,446)+LD(668,282,700,446)+T(610,450,'Nephrogenic cord = urogenital ridge',{s:13});
+ let a=AR('M30,150 C4,240 40,330 120,360')+AR('M392,150 C416,240 380,330 300,360')+T(210,372,'lateral body folding',{s:12,c:'note'})+AR('M398,262 L440,262')+
+  AR('M500,206 C492,230 504,250 528,258',true)+AR('M720,206 C728,230 716,250 692,258',true)+T(786,88,'IM ถูกพาไป ventral และหลุดจาก somite',{s:11,a:'end',c:'note'});
+ let s=G('bmp',40,92,'BMP4 · Gen','start')+SA('bmp',44,104,106,158)+G('ra',304,92,'RA · Gen','start')+SA('ra',306,104,308,156);
+ let t=TF(40,410,'OSR1')+TF(96,410,'LHX1')+TF(152,410,'PAX2/8')+T(40,434,'IM specification (Gen)',{s:10,a:'start',c:'note'})+
+  T(470,474,'ridge genes · M',{s:10,a:'start',c:'note'})+TF(470,494,'WT1')+TF(512,494,'SF1')+TF(554,494,'DAX1');
+ let ad=AD(610,508,'→ kidney, ureter, gonad, genital ducts');
+ return layers(b,a,s,t,ad)};
+
+DRAW.s2=()=>{
+ let b=T(250,30,'Lateral view (straightened) · ~day 22–26',{s:14,c:'ptitle'})+axisLabels()+somites();
+ for(let i=0;i<7;i++){const y=80+i*12;b+=K(`M168,${y} L182,${y+3}`,'pro','me',3)+`<circle ${F('pro','me')} cx="162" cy="${y}" r="6"/><circle class="cav" cx="162" cy="${y}" r="2.3"/>`}
+ const cord=[[156,168],[170,170],[173,240],[175,320],[174,400],[168,448],[156,446],[150,400],[149,320],[150,240]];
+ b+=`<path ${F('nep','me','pale')} d="${smooth(cord)}"/>`+cells(162,308,9,130,40,'nep','me',17,2);
+ b+=TUBE('M180,82 C186,140 188,200 190,262','mes','me',8)+`<path class="thin" d="M190,262 C194,340 206,420 236,452"/>`;
+ b+=gutTail();
+ b+=T(214,100,'Pronephros · nephrotomes',{s:13,a:'start'})+T(214,230,'Nephric (pronephric) duct',{s:13,a:'start'})+LD(172,330,236,330)+TL(240,330,['Nephrogenic cord','(unsegmented)'],{s:13,a:'start'});
+ b+=`<rect class="inset" x="470" y="56" width="315" height="300" rx="10"/>`+T(627,78,'Transverse · cervical, ~day 21 (L)',{s:12,c:'ptitle'});
+ const BODY='M520,304 C496,250 500,150 560,112 C600,88 654,88 694,112 C754,150 758,250 734,304';
+ b+=`<path ${F('tis','mx')} d="${BODY} L700,300 C680,294 660,291 627,291 C594,291 574,294 554,300 Z"/>`+cells(627,200,110,90,40,'tis','mx',51,1.5)+`<path class="k lin-ecto g-ec" d="${BODY}" stroke-width="5"/>`;
+ b+=`<path class="thin" d="M554,300 C546,346 708,346 700,300"/>`+K('M554,300 C594,291 660,291 700,300','gut','en',6);
+ b+=`<path class="cav" d="${blob(552,270,30,13,4,.1)}"/><path class="cav" d="${blob(702,270,30,13,5,.1)}"/>`;
+ b+=`<path ${F('ecto','ec')} d="M627,102 C641,102 647,116 647,126 C647,138 638,144 627,144 C616,144 607,138 607,126 C607,116 613,102 627,102Z"/><ellipse class="cav" cx="627" cy="124" rx="3" ry="12"/><circle ${F('tis','mx')} cx="627" cy="154" r="6"/>`;
+ b+=`<path ${F('som','me')} d="${blob(556,160,32,19,7,.08)}"/><path ${F('som','me')} d="${blob(698,160,32,19,8,.08)}"/>`+cells(556,162,22,11,8,'som','me',61,2)+cells(698,162,22,11,8,'som','me',63,2);
+ b+=vessel(604,180,10)+vessel(650,180,10);
+ b+=TUBE('M570,184 C576,208 570,236 560,256','pro','me',9)+`<circle class="cav" cx="560" cy="258" r="4"/>`;
+ b+=tuft(584,250,6,5)+K('M600,190 C596,214 592,232 586,246','ves','me',3);
+ b+=T(652,118,'Neural tube',{s:11,a:'start'})+T(556,164,'Somite',{s:11,c:'sm'})+T(640,152,'Notochord',{s:10,a:'start',c:'sm'})+T(664,184,'Dorsal aortae (paired)',{s:11,a:'start'})+TL(528,214,['Nephrotome'],{s:12,a:'end'})+LD(532,210,568,206)+
+  T(604,230,'External',{s:11,a:'start'})+T(604,244,'glomerulus',{s:11,a:'start'})+T(552,296,'Coelom',{s:10,c:'note'})+T(702,296,'Coelom',{s:10,c:'note'})+T(627,330,'Yolk sac · gut ยังไม่ปิด',{s:10,c:'note'});
+ let a=AR('M210,272 L222,356')+TL(230,380,['duct โตลงไปหา cloaca'],{s:12,a:'start',c:'note'})+AR('M140,82 L140,140',true);
+ let s=G('ra',250,150,'RA (Gen)','start')+SA('ra',246,152,172,124);
+ let t=TF(300,186,'PAX2')+TF(350,186,'PAX8')+TF(400,186,'LHX1')+T(300,206,'nephric duct · Gen/M',{s:10,a:'start',c:'note'});
+ let ad=AD(214,118,'→ ไม่มี adult derivative (vestigial)',{a:'start'})+AD(214,248,'→ ใช้ต่อเป็น mesonephric duct',{a:'start'});
+ return layers(b,a,s,t,ad)};
+
+DRAW.s3=()=>{
+ let b=T(250,30,'Lateral view (straightened) · ~day 28–32',{s:14,c:'ptitle'})+axisLabels()+somites();const GT=gutTail(300,250);
+ for(let i=0;i<7;i++){const y=80+i*12;b+=`<circle ${F('pro','me','ghost')} cx="162" cy="${y}" r="5"/>`}
+ b+=`<path ${F('mes','me','pale')} d="${smooth([[160,162],[184,168],[196,220],[198,300],[192,350],[176,362],[156,352],[146,300],[146,220],[150,172]])}"/>`;
+ for(let y=180;y<=340;y+=20){b+=`<circle class="cav" cx="156" cy="${y}" r="7"/>`+tuft(156,y,3.6,4)+TUBE(`M162,${y} C170,${y-10} 178,${y+10} 186,${y} C192,${y-5} 196,${y} 203,${y+2}`,'mes','me',3.4)}
+ b+=TUBE('M204,152 C208,240 210,330 210,400 C210,430 224,446 240,452','mes','me',8);
+ const bl=[[136,416],[160,406],[184,414],[192,432],[180,448],[156,452],[136,444],[130,430]];
+ b+=`<path ${F('nep','me')} d="${smooth(bl)}"/>`+cells(160,430,24,14,16,'nep','me',71,2.1);
+ b+=TUBE('M210,424 C200,428 190,430 182,428','ub','me',9)+`<circle ${F('ub','me')} cx="180" cy="428" r="7"/><circle class="cav" cx="180" cy="428" r="3"/>`;
+ b+=GT;
+ b+=T(214,96,'Pronephros regressing',{s:12,a:'start',c:'sm'})+T(214,190,'Mesonephros',{s:14,a:'start'})+T(214,206,'S-tubules + glomeruli',{s:11,a:'start',c:'sm'})+
+  T(218,330,'Mesonephric (Wolffian) duct',{s:12,a:'start'})+LD(160,452,150,470)+T(146,482,'Metanephric blastema',{s:12,a:'end'})+LD(196,424,222,404)+T(226,404,'Ureteric bud (wk 5)',{s:12,a:'start'});
+ b+=`<rect class="inset" x="470" y="56" width="315" height="290" rx="10"/>`+T(627,78,'Transverse · urogenital ridge, wk 5 (L 16.3)',{s:12,c:'ptitle'});
+ b+=`<path ${F('tis','mx')} d="M482,92 L772,92 L772,150 C736,160 700,158 660,156 L590,156 C550,158 514,160 482,150 Z"/>`+cells(627,124,140,22,22,'tis','mx',81,1.5);
+ b+=vessel(625,118,12);
+ b+=`<path ${F('lpm','me')} d="M620,156 C620,200 620,240 621,268 L629,268 C630,240 630,200 630,156 Z"/><circle ${F('lpm','me')} cx="625" cy="286" r="24"/><circle ${F('gut','en')} cx="625" cy="286" r="15"/><circle class="cav" cx="625" cy="286" r="5"/>`;
+ b+=`<path ${F('mes','me','pale')} d="${smooth([[506,154],[574,154],[590,190],[588,236],[566,268],[532,272],[506,250],[494,206]])}"/>`;
+ b+=TUBE('M516,248 C508,214 536,198 546,214 C556,232 572,222 570,200','mes','me',5)+`<circle ${F('mes','me')} cx="512" cy="254" r="8"/><circle class="cav" cx="512" cy="254" r="3.4"/>`;
+ b+=corpuscle(574,190,15,Math.PI*1.25);
+ b+=`<path ${F('gon','me')} d="${smooth([[600,160],[612,170],[614,214],[608,256],[598,262],[594,214],[594,170]])}"/>`+cells(604,212,6,34,8,'gon','me',91,1.6);
+ b+=`<path ${F('mes','me','pale ghost')} d="${smooth([[676,154],[744,154],[756,206],[744,250],[718,272],[684,268],[662,236],[660,190]])}"/>`;
+ b+=T(536,176,'Mesonephros',{s:12})+LD(504,258,490,288)+T(500,302,'Wolffian duct',{s:11,a:'end'})+LD(586,180,690,170)+TL(694,172,['Glomerulus +','Bowman capsule'],{s:11,a:'start'})+
+  LD(608,236,690,232)+T(694,236,'Gonadal ridge',{s:11,a:'start'})+T(642,112,'Dorsal aorta',{s:11,a:'start'})+T(656,292,'Gut',{s:11,a:'start',c:'sm'})+T(560,320,'Coelom (peritoneal cavity)',{s:10,c:'note'});
+ let a=AR('M300,112 L300,150',true)+T(308,150,'regress cranio-caudal',{s:11,a:'start',c:'note'})+AR('M260,224 L260,318',true)+TL(268,262,['tubules ใหม่เกิดทาง caudal','อันบนเริ่ม degenerate'],{s:11,a:'start',c:'note'})+AR('M198,442 C182,450 168,452 156,446',true);
+ let s=G('gdnf',96,410,'GDNF','end')+SA('gdnf',104,414,166,426)+REC(180,410,'RET');
+ let t=`<rect class="inset" x="470" y="360" width="315" height="148" rx="10"/>`+T(482,382,'Metanephric mesenchyme',{s:11,a:'start',c:'ptitle'})+TF(482,404,'WT1')+TF(522,404,'PAX2')+TF(568,404,'EYA1')+TF(614,404,'SALL1')+TF(482,430,'HOXA11 / HOXD11')+
+  T(482,458,'Nephric duct / ureteric bud',{s:11,a:'start',c:'ptitle'})+TF(482,480,'LHX1 (Lim1)')+TF(570,480,'PAX2')+TF(616,480,'HNF1B (vHNF1)')+T(774,500,'M',{s:10,a:'end',c:'note'});
+ let ad=AD(560,338,['tubules → ♂ efferent ductules · duct → epididymis, ductus deferens'])+AD(20,506,'Bud → ureter, pelvis, calyces, collecting ducts · Blastema → nephrons',{a:'start'});
+ return layers(b,a,s,t,ad)};
+
+DRAW.s4=()=>{
+ let b=T(200,30,'A · ~wk 5½ · bud ampulla under cap',{s:14,c:'ptitle'})+T(590,30,'B · end of wk 6 · first branchings',{s:14,c:'ptitle'});
+ b+=TUBE('M50,472 L350,472','mes','me',13);
+ b+=`<path ${F('nep','me','pale')} d="${blob(200,226,132,96,22,.07,16)}"/>`+cells(200,226,118,82,70,'nep','me',23,1.9);
+ b+=`<path ${F('nep','me')} d="M150,262 C142,220 168,196 200,196 C232,196 258,220 250,262 C244,240 226,228 200,228 C174,228 156,240 150,262 Z"/>`+cells(200,214,44,12,18,'nep','me',29,2.3);
+ b+=TUBE('M200,470 C200,400 200,340 200,296','ub','me',20)+`<path ${F('ub','me')} d="M170,296 C168,266 182,244 200,244 C218,244 232,266 230,296 Z"/><path class="cav" d="M182,296 C182,274 190,258 200,258 C210,258 218,274 218,296 Z"/>`;
+ b+=T(200,176,'Loose metanephric mesenchyme',{s:12,c:'sm'})+T(200,212,'Cap (condensed)',{s:12})+T(200,284,'Ampulla',{s:11,c:'sm'})+TL(186,372,['Ureteric bud stalk'],{s:13,a:'end'})+T(56,496,'Mesonephric duct',{s:12,a:'start'})+T(350,496,'→ cloaca',{s:12,a:'end',c:'note'});
+ const kid=[[590,108],[650,104],[712,128],[744,178],[748,240],[730,300],[690,340],[650,352],[624,344],[612,320],[574,320],[556,344],[530,352],[490,340],[450,300],[432,240],[436,178],[468,128],[530,104]];
+ b+=`<path ${F('nep','me','pale')} d="${smooth(kid)}"/>`+cells(590,220,140,100,60,'nep','me',37,1.6);
+ const tips=[[488,150],[532,128],[648,128],[692,150]];
+ tips.forEach(([x,y],i)=>{const ang=Math.atan2(y-300,x-590);const cx=x+Math.cos(ang)*6,cy=y+Math.sin(ang)*6;
+  b+=`<path ${F('nep','me')} d="M${(cx+Math.cos(ang+1.6)*20).toFixed(1)},${(cy+Math.sin(ang+1.6)*20).toFixed(1)} A20,20 0 0 1 ${(cx+Math.cos(ang-1.6)*20).toFixed(1)},${(cy+Math.sin(ang-1.6)*20).toFixed(1)} L${(cx+Math.cos(ang-1.4)*11).toFixed(1)},${(cy+Math.sin(ang-1.4)*11).toFixed(1)} A11,11 0 0 0 ${(cx+Math.cos(ang+1.4)*11).toFixed(1)},${(cy+Math.sin(ang+1.4)*11).toFixed(1)} Z"/>`});
+ b+=TUBE('M590,486 C590,420 590,372 590,334','ub','me',16)+`<path ${F('ub','me')} d="${blob(590,312,44,22,3,.05)}"/><path class="cav" d="${blob(590,312,30,11,4,.06)}"/>`;
+ b+=TUBE('M568,302 C552,262 536,228 516,198','ub','me',13)+TUBE('M612,302 C628,262 644,228 664,198','ub','me',13);
+ b+=TUBE('M516,198 C506,182 496,166 488,150','ub','me',9)+TUBE('M516,198 C522,176 528,150 532,128','ub','me',9)+TUBE('M664,198 C658,176 652,150 648,128','ub','me',9)+TUBE('M664,198 C674,182 684,166 692,150','ub','me',9);
+ tips.forEach(([x,y])=>b+=`<circle ${F('ub','me')} cx="${x}" cy="${y}" r="7"/><circle class="cav" cx="${x}" cy="${y}" r="3"/>`);
+ b+=T(640,330,'Primitive renal pelvis',{s:13,a:'start'})+T(604,440,'Ureter',{s:13,a:'start'})+TL(506,232,['Major calyx','(cranial)'],{s:13,a:'end'})+TL(676,232,['Major calyx','(caudal)'],{s:13,a:'start'})+
+  T(590,96,'Metanephric caps',{s:12,c:'sm'})+T(590,182,'branches gen 2–3',{s:11,c:'sm'})+T(590,512,'"Reciprocal induction": bud ↔ mesenchyme',{s:12,c:'note'});
+ let a=AR('M318,420 L318,330')+T(326,446,'dorso-cranial growth',{s:11,c:'note',a:'start'})+
+  AR('M476,130 L462,104',true)+AR('M530,104 L532,80',true)+AR('M650,104 L648,80',true)+AR('M704,130 L718,104',true)+T(770,84,'branching',{s:11,c:'note',a:'end'});
+ let s=G('gdnf',58,214,'GDNF','start')+SA('gdnf',96,218,170,262)+G('hgf',58,262,'HGF','start')+SA('hgf',104,266,168,278)+
+  G('fgf',322,206,'FGF2','start')+SA('fgf',230,262,308,212)+G('bmp',322,250,'BMP7','start')+SA('bmp',232,276,308,254)+
+  G('wnt',290,148,'WNT9B · WNT6','start')+SA('wnt',214,250,282,156)+REC(200,322,'RET · MET')+
+  G('gdnf',560,262,'','start')+G('wnt',620,262,'','start');
+ let t=TF(20,74,'WT1 → competence')+TF(20,98,'PAX2 · EYA1 · SALL1')+TF(20,122,'HOXA11/D11')+TF(40,420,'EMX2 · PAX2 · LHX1');
+ let ad=AD(640,346,'→ renal pelvis',{a:'start'})+AD(604,456,'→ ureter',{a:'start'})+AD(506,272,'→ major calyx',{a:'end'})+AD(676,272,'→ major calyx',{a:'start'})+AD(590,112,'→ nephrons');
+ return layers(b,a,s,t,ad)};
+
+DRAW.s5=()=>{
+ let b=T(130,30,'A · wk 5 · cloaca',{s:13,c:'ptitle'})+T(400,30,'B · wk 7 · divided',{s:13,c:'ptitle'})+T(672,30,'C · dorsal view · trigone',{s:13,c:'ptitle'});
+ b+=`<line class="lead" x1="262" y1="50" x2="262" y2="420" stroke-dasharray="3 4"/><line class="lead" x1="545" y1="50" x2="545" y2="420" stroke-dasharray="3 4"/>`;
+ /* A: caudal end, sagittal */
+ b+=`<path ${F('tis','mx','pale')} d="M30,110 C40,260 60,360 120,392 C150,406 196,404 222,392 C244,380 252,350 246,320 C240,290 236,250 240,110 Z"/>`+cells(140,300,90,90,30,'tis','mx',101,1.5);
+ b+=TUBE('M96,262 C86,212 72,170 52,124','all','en',14)+TUBE('M176,262 C186,204 198,160 214,116','gut','en',20);
+ b+=`<path ${F('ugs','en')} d="M66,334 C58,282 92,252 134,252 C180,252 210,282 202,334 C198,360 180,378 134,380 C92,380 70,362 66,334 Z"/><path class="cav" d="M84,334 C80,296 106,272 134,272 C164,272 186,296 184,334 C182,352 168,362 134,362 C102,362 86,352 84,334 Z"/>`;
+ b+=`<path ${F('lpm','me')} d="M116,246 C126,240 146,240 156,246 C150,272 144,296 138,318 L132,318 C126,296 122,272 116,246 Z"/>`+cells(136,270,10,26,6,'lpm','me',111,1.6);
+ b+=TUBE('M240,176 C206,224 168,262 132,296','mes','me',6)+TUBE('M184,270 C200,250 218,240 238,236','ub','me',5);
+ b+=K('M74,384 C110,392 160,392 198,384','ecto','ec',5)+K('M78,380 C112,386 158,386 194,380','gut','en',3);
+ b+=`<path ${F('tis','mx')} d="M46,382 C40,404 54,420 70,414 C80,410 82,396 76,386 Z"/>`;
+ b+=T(52,114,'Allantois',{s:12,a:'start'})+T(214,106,'Hindgut',{s:12,a:'end'})+T(134,342,'Cloaca',{s:13})+T(136,412,'Cloacal membrane',{s:12})+TL(20,232,['Urorectal','septum'],{s:12,a:'start'})+LD(70,240,120,262)+T(246,168,'Meso. duct',{s:11,a:'end',c:'sm'})+T(40,436,'genital tubercle',{s:10,a:'start',c:'note'})+T(232,404,'tail',{s:10,c:'note'});
+ /* B */
+ b+=`<path ${F('ugs','en')} d="M314,230 C312,190 330,172 350,172 C372,172 390,190 388,230 C386,262 372,282 366,292 L366,330 C364,352 348,370 322,388 L308,378 C326,362 334,346 334,330 L334,292 C326,282 316,262 314,230 Z"/>`;
+ b+=`<path class="cav" d="M330,230 C330,200 340,188 350,188 C362,188 372,200 372,230 C370,256 360,270 352,276 L352,334 C350,346 340,358 324,368 L320,366 C334,352 340,342 340,330 L340,276 C334,270 330,256 330,230 Z"/>`;
+ b+=TUBE('M344,176 C334,138 322,108 306,80','all','en',9)+TUBE('M460,118 C460,200 450,280 444,376','gut','en',24);
+ b+=`<path ${F('lpm','me')} d="M388,196 C400,190 414,190 422,196 C418,270 416,330 418,386 C410,396 396,396 390,386 C392,330 394,270 388,196 Z"/>`+cells(404,300,10,80,14,'lpm','me',121,1.6);
+ b+=`<path ${F('lpm','me')} d="${blob(404,398,18,10,4,.1)}"/>`;
+ b+=TUBE('M522,150 C462,170 412,204 380,222','ub','me',6)+TUBE('M526,196 C472,236 406,282 366,302','mes','me',6);
+ b+=K('M300,396 C320,400 350,400 376,396','ecto','ec',4)+K('M430,396 C444,400 456,400 468,396','ecto','ec',4);
+ b+=TL(351,222,['Bladder','(vesical)'],{s:12})+T(326,318,'Pelvic part',{s:11,a:'end'})+T(300,392,'Phallic part',{s:11,a:'end'})+T(300,88,'Urachus',{s:12,a:'end'})+T(474,300,'Anorectal',{s:12,a:'start'})+T(474,314,'canal',{s:12,a:'start'})+
+  T(404,424,'Perineal body',{s:12})+T(518,142,'Ureter',{s:11,a:'end',c:'sm'})+T(530,212,'Meso. duct',{s:11,a:'end',c:'sm'});
+ /* C */
+ b+=`<path ${F('ugs','en')} d="M672,108 C730,108 770,150 770,214 C770,270 732,312 700,326 L644,326 C612,312 574,270 574,214 C574,150 614,108 672,108 Z"/><path class="cav" d="M672,124 C722,124 754,160 754,214 C754,262 724,296 696,310 L648,310 C620,296 590,262 590,214 C590,160 622,124 672,124 Z"/>`;
+ b+=`<path ${F('mes','me')} d="M632,206 C652,200 692,200 712,206 L680,298 C676,304 668,304 664,298 Z"/>`;
+ b+=`<circle ${F('ub','me')} cx="634" cy="206" r="6"/><circle class="cav" cx="634" cy="206" r="2.5"/><circle ${F('ub','me')} cx="710" cy="206" r="6"/><circle class="cav" cx="710" cy="206" r="2.5"/>`;
+ b+=TUBE('M598,70 C612,128 624,174 632,202','ub','me',7)+TUBE('M746,70 C732,128 720,174 712,202','ub','me',7);
+ b+=TUBE('M566,146 C604,222 646,290 664,334','mes','me',6)+TUBE('M778,146 C740,222 698,290 680,334','mes','me',6);
+ b+=TUBE('M672,322 L672,404','ugs','en',22);
+ b+=T(672,246,'Trigone',{s:14})+T(598,62,'Ureter',{s:12})+T(746,62,'Ureter',{s:12})+T(574,140,'Meso. duct',{s:11,a:'start',c:'sm'})+T(692,392,'Urethra',{s:12,a:'start'});
+ let a=AR('M136,292 L136,358')+AR('M405,214 L405,370')+T(405,180,'septum ↓',{s:11,c:'note'})+
+  AR('M630,192 L606,160',true)+AR('M714,192 L738,160',true)+T(672,176,'orifices → cranio-lateral',{s:11,c:'note'})+AR('M650,300 L662,330',true)+AR('M694,300 L682,330',true);
+ let s=G('shh',20,286,'SHH (Gen)','start')+SA('shh',64,290,130,304)+G('ra',770,300,'RA (Gen)','end')+SA('ra',762,294,718,210);
+ let t=TF(14,456,'HOXA13 · HOXD13 (Gen)')+TF(560,440,'GATA3 · ureter (Gen)');
+ let ad=AD(400,460,['Vesical → bladder · Allantois → urachus → median umbilical lig.','Pelvic → ♂ prostatic + membranous urethra / ♀ urethra · Phallic → ♂ penile urethra','Septum tip → perineal body']);
+ ad+=AD(672,420,['L: trigone mucosa เดิมเป็น mesoderm','แล้วถูกแทนด้วย endoderm']);
+ return layers(b,a,s,t,ad)};
+
+DRAW.s6=()=>{
+ let b=T(400,26,'Ventral view · abdomino-pelvic region · wk 6 → 9',{s:14,c:'ptitle'});
+ b+=TUBE('M400,40 L400,372','ves','me',16)+TUBE('M400,372 C380,400 358,428 338,452','ves','me',11)+TUBE('M400,372 C420,400 442,428 462,452','ves','me',11)+TUBE('M338,452 C326,472 312,490 300,508','ves','me',7)+TUBE('M462,452 C474,472 488,490 500,508','ves','me',7);
+ b+=K('M400,318 C408,322 414,330 416,340','ves','me',4)+`<circle ${F('ves','me')} cx="400" cy="318" r="6"/>`;
+ const adr=(cx,sg)=>`<path ${F('adr','me')} d="M${cx-30*sg},120 C${cx-34*sg},96 ${cx-16*sg},72 ${cx+2*sg},70 C${cx+20*sg},70 ${cx+34*sg},96 ${cx+30*sg},120 C${cx+16*sg},112 ${cx-14*sg},112 ${cx-30*sg},120 Z"/><path ${F('ncm','nc')} d="${blob(cx,98,10,8,sg>0?3:4,.1)}"/>`;
+ b+=adr(326,1)+adr(474,-1);
+ const kid=(cx,cy,sg,s)=>{const W=34*s,H=52*s;return `<path ${F('nep','me')} d="${bean(cx,cy,-sg*W,H)}"/>`+cells(cx-sg*W*.15,cy,W*.55,H*.7,Math.round(16*s),'nep','me',cx,1.8)+
+  `<path ${F('ub','me')} d="M${cx+sg*W*.28},${cy-H*.25} C${cx+sg*W*.05},${cy-H*.1} ${cx+sg*W*.05},${cy+H*.1} ${cx+sg*W*.28},${cy+H*.25} C${cx+sg*W*.5},${cy+H*.1} ${cx+sg*W*.5},${cy-H*.1} ${cx+sg*W*.28},${cy-H*.25} Z"/>`};
+ b+=`<g class="ghost">${kid(372,440,1,.48)}${kid(428,440,-1,.48)}${kid(346,320,1,.68)}${kid(454,320,-1,.68)}${K('M400,322 L366,322','ves','me',3)+K('M400,322 L434,322','ves','me',3)}</g>`;
+ b+=kid(326,168,1,1)+kid(474,168,-1,1);
+ b+=TUBE('M400,172 L358,170','ves','me',6)+TUBE('M400,172 L442,170','ves','me',6);
+ b+=TUBE('M352,182 C356,280 368,400 384,478','ub','me',5)+TUBE('M448,182 C444,280 432,400 416,478','ub','me',5);
+ b+=`<path ${F('ugs','en')} d="M352,488 C352,472 372,466 400,466 C428,466 448,472 448,488 C448,504 428,514 408,516 L392,516 C372,514 352,504 352,488 Z"/><path class="cav" d="M366,488 C366,478 380,474 400,474 C420,474 434,478 434,488 C434,498 420,504 400,504 C380,504 366,498 366,488 Z"/>`;
+ b+=T(268,172,'wk 9',{s:13,a:'end'})+T(312,326,'wk 7',{s:13,a:'end'})+T(342,416,'wk 6',{s:13,a:'end'})+T(408,58,'Aorta',{s:12,a:'start'})+T(422,342,'IMA root',{s:12,a:'start'})+
+  T(296,72,'Suprarenal',{s:12,a:'end'})+T(470,470,'umbilical a. fork',{s:12,a:'start'})+T(456,494,'Bladder',{s:12,a:'start'})+T(380,262,'Ureter',{s:11,a:'end',c:'sm'})+
+  T(420,214,'Renal a.',{s:11,a:'start',c:'sm'})+T(338,174,'hilum',{s:9,a:'start',c:'note'});
+ let a=AR('M262,440 C250,350 252,270 262,214')+AR('M538,440 C550,350 548,270 538,214')+TL(560,380,['"ascent" = ลำตัวส่วน lumbar','และ sacral โตหนีลงล่าง'],{s:12,a:'start',c:'note'})+
+  AR('M528,118 C548,150 540,196 518,214',true)+TL(560,120,['medial rotation ~90°','hilum: ventral → anteromedial'],{s:12,a:'start',c:'note'});
+ let s=TL(560,268,['ไม่มี signaling เฉพาะในบทที่แนบ','M: AGTR2 mutation อาจสัมพันธ์','กับ urinary tract anomalies'],{s:11,a:'start',c:'note'});
+ let t='';
+ let ad=AD(560,40,['Renal a. ชุดบนสุด → permanent renal a.','ชุดล่างไม่ involute → accessory renal a.'],{a:'start'})+AD(560,200,['หยุดเมื่อแตะ suprarenal gland (wk 9, M)'],{a:'start'});
+ return layers(b,a,s,t,ad)};
+
+DRAW.s7=()=>{
+ let b=T(400,26,'Nephrogenesis · mesenchymal-to-epithelial transition (L 16.6, M 12-7)',{s:14,c:'ptitle'});
+ const C=[100,250,400,550,700],ttl=['Cap mesenchyme','Renal vesicle','Comma body','S-shaped body','Nephron'];
+ C.forEach((cx,i)=>{b+=T(cx,56,ttl[i],{s:12,c:'sm'});
+  if(i<4){b+=TUBE(`M${cx-45},70 L${cx-45},140`,'ub','me',13)+`<path ${F('ub','me')} d="${blob(cx-45,150,12,10,i+1,.05)}"/><circle class="cav" cx="${cx-45}" cy="150" r="4"/>`}});
+ let cx=C[0];b+=cells(cx-45,154,38,26,26,'nep','me',131,2.6);
+ cx=C[1];b+=cells(cx-30,170,24,18,8,'nep','me',141,2)+`<path ${F('nep','me')} d="${blob(cx-4,184,22,19,3,.06)}"/><path class="cav" d="${blob(cx-4,184,8,7,5,.1)}"/>`;
+ cx=C[2];b+=TUBE(`M${cx-34},158 C${cx+10},150 ${cx+16},186 ${cx-4},196 C${cx-26},206 ${cx-22},226 ${cx+6},226`,'nep','me',13);
+ cx=C[3];b+=TUBE(`M${cx-36},156 C${cx+20},148 ${cx+22},190 ${cx-4},196 C${cx-30},202 ${cx-30},244 ${cx+14},238`,'nep','me',12)+tuft(cx+10,222,6,5)+K(`M${cx+30},214 C${cx+24},218 ${cx+20},220 ${cx+16},222`,'ves','me',3);
+ cx=C[4];b+=TUBE(`M${cx-45},70 L${cx-45},310`,'ub','me',13)+corpuscle(cx+25,118,18,Math.PI*.1)+
+  TUBE(`M${cx+25},137 C${cx+52},150 ${cx+4},160 ${cx+30},175 C${cx+52},186 ${cx+20},192 ${cx+20},204 L${cx+20},300 C${cx+20},314 ${cx},314 ${cx},300 L${cx},178 C${cx},162 ${cx+4},150 ${cx+6},140 C${cx-12},134 ${cx-26},131 ${cx-45},130`,'nep','me',7);
+ b+=T(cx+48,104,'Bowman',{s:11,a:'start'})+T(cx+58,192,'PCT',{s:11,a:'start'})+T(cx+28,268,'Henle',{s:11,a:'start'})+T(cx-6,226,'DCT',{s:11,a:'end'})+T(cx-52,290,'Collecting',{s:11,a:'end'})+T(cx-52,304,'tubule',{s:11,a:'end'});
+ b+=T(C[3]+30,250,'capillaries',{s:11,a:'start',c:'sm'});
+ const X=w=>60+(w-8)*(700/32);
+ let tl=`<line class="axis" x1="${X(8)}" y1="430" x2="${X(40)}" y2="430"/>`;
+ [8,12,16,20,24,28,32,36,40].forEach(w=>tl+=`<line class="axis" x1="${X(w)}" y1="426" x2="${X(w)}" y2="434"/><text class="axt" x="${X(w)}" y="448" text-anchor="middle">${w}</text>`);
+ tl+=`<text class="axt" x="${X(40)}" y="464" text-anchor="end">weeks post-fertilization</text>`;
+ tl+=`<rect ${F('nep','me')} x="${X(8)}" y="404" width="${X(36)-X(8)}" height="12" rx="6"/>`+T(X(22),400,'nephron formation (M: complete at term · L: until birth)',{s:11,c:'sm'});
+ tl+=`<rect ${F('mes','me','pale')} x="${X(8)}" y="374" width="${X(12)-X(8)}" height="10" rx="5"/>`+T(X(12)+6,384,'mesonephros degenerates (L: end mo 2 · M: end 1st trimester)',{s:11,a:'start',c:'sm'});
+ const mk=(w,y,txt,src)=>`<line class="lead" x1="${X(w)}" y1="${y}" x2="${X(w)}" y2="424"/><circle cx="${X(w)}" cy="${y}" r="4" style="fill:var(--src-${src.toLowerCase()})"/>`+T(X(w)+7,y+4,txt,{s:11,a:'start'});
+ tl+=mk(9,476,'M: GFR เริ่ม ~wk 9','M')+mk(10,494,'L: glomerular capillaries ~wk 10','L')+mk(12,512,'L: urine production wk 12','L')+mk(32,476,'M: glomeruli เพิ่มเร็วจนถึง wk 32','M');
+ b+=tl;
+ let a=C.slice(0,4).map(x=>AR(`M${x+52},190 L${x+92},190`,true)).join('')+AR(`M${C[4]-8},150 L${C[4]-38},134`,true)+T(C[4]-52,122,'open connection',{s:10,a:'end',c:'note'});
+ let s=G('wnt',C[0]-10,232,'WNT9B / WNT6','middle')+SA('wnt',C[0]-40,162,C[0]-14,188)+G('fgf',C[0]+30,96,'FGF2','start')+G('bmp',C[0]+30,122,'BMP7','start')+SA('fgf',C[0]-34,142,C[0]+18,100)+
+  G('wnt',C[1]+30,232,'WNT4','middle')+SA('wnt',C[1]+22,222,C[1]+10,198);
+ let t=TF(C[0]-50,280,'SIX2 (Gen)')+TF(C[0]-50,304,'WT1')+TF(C[1]-40,280,'PAX2')+TF(C[1]-40,304,'LHX1 (Gen)')+
+  `<g>${T(C[2]-50,282,'ECM switch (L):',{s:11,a:'start',c:'ptitle'})}${T(C[2]-50,298,'fibronectin, col I/III',{s:11,a:'start'})}${T(C[2]-50,312,'→ laminin + col IV',{s:11,a:'start'})}${T(C[2]-50,326,'+ syndecan, E-cadherin',{s:11,a:'start'})}</g>`;
+ let ad=AD(C[4],344,['→ adult nephron','L ≈1 M · M ≤2 M ต่อไต']);
+ return layers(b,a,s,t,ad)};
+
+DRAW.s8=()=>{
+ let b=T(200,26,'A · fetal kidney ~28 wk (M 12-8)',{s:14,c:'ptitle'})+T(600,26,'B · distal male urethra (L 16.33, M 12-26)',{s:14,c:'ptitle'});
+ b+=`<path ${F('adr','me')} d="M120,104 C126,62 176,40 212,46 C248,52 272,78 270,100 C240,90 160,90 120,104 Z"/><path ${F('adr','me','pale')} d="M138,98 C150,72 184,60 212,64 C238,68 252,84 252,96 C220,88 168,88 138,98 Z"/><path ${F('ncm','nc')} d="${blob(198,82,16,6,2,.1)}"/>`;
+ const kc=[186,222],kp=[];for(let i=0;i<48;i++){const a=i/48*Math.PI*2,c=Math.cos(a),sn=Math.sin(a);let rx=96,ry=136;
+  let r=1;if(c<0.55)r+=0.045*Math.abs(Math.sin(a*7));if(c>0.55){r-=0.42*Math.pow((c-0.55)/0.45,1.6)}
+  kp.push([kc[0]+c*rx*r,kc[1]+sn*ry*r])}
+ b+=`<path ${F('nep','me')} d="${smooth(kp)}"/>`+cells(150,222,58,110,40,'nep','me',151,1.7);
+ const pyr=[[-2.25,0],[-2.75,0],[Math.PI,0],[2.75,0],[2.25,0]];
+ pyr.forEach(([a])=>{const x=kc[0]+Math.cos(a)*64,y=kc[1]+Math.sin(a)*94;const dx=236-x,dy=222-y,L=Math.hypot(dx,dy),ux=dx/L,uy=dy/L;const len=L-30,tx=x+ux*len,ty=y+uy*len;
+  b+=`<path ${F('ub','me','pale')} d="M${(x-uy*20).toFixed(1)},${(y+ux*20).toFixed(1)} C${(x+ux*len*.5-uy*15).toFixed(1)},${(y+uy*len*.5+ux*15).toFixed(1)} ${(tx-uy*7).toFixed(1)},${(ty+ux*7).toFixed(1)} ${tx.toFixed(1)},${ty.toFixed(1)} C${(tx+uy*7).toFixed(1)},${(ty-ux*7).toFixed(1)} ${(x+ux*len*.5+uy*15).toFixed(1)},${(y+uy*len*.5-ux*15).toFixed(1)} ${(x+uy*20).toFixed(1)},${(y-ux*20).toFixed(1)} C${(x-ux*4+uy*8).toFixed(1)},${(y-uy*4-ux*8).toFixed(1)} ${(x-ux*4-uy*8).toFixed(1)},${(y-uy*4+ux*8).toFixed(1)} ${(x-uy*20).toFixed(1)},${(y+ux*20).toFixed(1)} Z"/>`;
+  const cx=tx+ux*3,cy=ty+uy*3;b+=`<path ${F('ub','me')} d="M${(cx-uy*11-ux*5).toFixed(1)},${(cy+ux*11-uy*5).toFixed(1)} Q${(cx+ux*7).toFixed(1)},${(cy+uy*7).toFixed(1)} ${(cx+uy*11-ux*5).toFixed(1)},${(cy-ux*11-uy*5).toFixed(1)} L${(cx+uy*6+ux*4).toFixed(1)},${(cy-ux*6+uy*4).toFixed(1)} Q${(cx+ux*9).toFixed(1)},${(cy+uy*9).toFixed(1)} ${(cx-uy*6+ux*4).toFixed(1)},${(cy+ux*6+uy*4).toFixed(1)} Z"/>`+
+   TUBE(`M${(cx+ux*8).toFixed(1)},${(cy+uy*8).toFixed(1)} L234,222`,'ub','me',5)});
+ b+=`<path ${F('ub','me')} d="M224,196 C252,196 268,212 268,226 C268,238 262,246 254,252 C250,270 252,290 254,300 L240,300 C238,286 236,268 236,254 C226,248 220,238 220,224 C220,210 214,196 224,196 Z"/><path class="cav" d="M232,208 C248,208 258,218 258,228 C258,236 252,240 246,242 L246,290 L244,290 L242,244 C236,240 230,234 230,226 C230,216 226,208 232,208 Z"/>`;
+ b+=TUBE('M247,300 C252,350 260,410 266,476','ub','me',9);
+ b+=T(70,92,'Suprarenal',{s:12,a:'start'})+T(70,106,'(ใหญ่มากในทารก · fetal zone)',{s:11,a:'start',c:'sm'})+T(186,384,'Fetal lobes (สร้างร่องบนผิว)',{s:13})+T(140,226,'Pyramid',{s:11,c:'sm'})+T(274,214,'Pelvis',{s:12,a:'start'})+T(272,468,'Ureter',{s:12,a:'start'})+T(204,196,'minor calyx',{s:10,a:'end',c:'sm'})+T(186,432,'Cortex = nephrons',{s:11,c:'sm'});
+ /* B: penis sagittal */
+ const shaft='M430,200 C520,196 600,196 676,202 C690,186 724,182 748,192 C776,204 788,232 782,256 C776,284 750,302 722,300 C706,298 690,292 680,286 C600,300 520,306 430,304 Z';
+ b+=`<path ${F('tis','mx')} d="${shaft}"/>`+`<path class="k lin-ecto g-ec" d="${shaft}" stroke-width="4"/>`;
+ b+=`<path ${F('ves','me','pale')} d="M436,212 C520,208 600,208 672,214 C676,224 676,234 670,240 C600,238 520,238 436,240 Z"/>`;
+ b+=`<path ${F('ugs','en','pale')} d="M436,252 C520,250 600,252 676,262 C700,262 720,258 740,250 C748,260 744,272 732,278 C708,288 690,282 676,282 C600,280 520,284 436,288 Z"/>`;
+ b+=TUBE('M432,268 C520,266 600,268 676,272 C696,272 712,270 726,266','ugs','en',9);
+ b+=`<path ${F('ugs','en')} d="${blob(736,264,8,6,5,.1)}"/><circle class="cav" cx="736" cy="264" r="3"/>`;
+ b+=TUBE('M782,252 C770,256 756,260 744,262','ecto','ec',8);
+ b+=`<path class="kedge" d="M676,202 C700,214 704,272 680,286" stroke-width="2"/><path class="thin" d="M700,190 C730,176 776,190 790,230"/>`;
+ b+=TL(560,330,['Spongy (penile) urethra','endoderm · phallic UGS'],{s:12})+T(750,320,'Glans',{s:12})+TL(780,150,['Ectodermal cord','โตเข้าด้านใน'],{s:12,a:'end'})+LD(762,172,766,252)+T(706,350,'navicular fossa',{s:11,a:'start',c:'sm'})+LD(718,344,736,268)+
+  T(540,226,'corpora cavernosa',{s:10,c:'sm'})+T(540,298,'corpus spongiosum',{s:10,c:'sm'})+T(698,184,'prepuce',{s:10,a:'end',c:'note'});
+ b+=`<rect class="inset" x="420" y="380" width="365" height="130" rx="10"/>`+T(432,400,'Fetal urine & bladder position',{s:12,a:'start',c:'ptitle'});
+ b+=`<circle class="lead" cx="500" cy="456" r="34" stroke-dasharray="4 3"/>`+T(500,426,'urine',{s:10,c:'sm'})+T(540,460,'AF',{s:10,a:'start',c:'sm'})+T(500,500,'swallow',{s:10,c:'sm'})+T(460,460,'gut',{s:10,a:'end',c:'sm'});
+ b+=TL(552,422,['L: urine → amniotic fluid → fetus','กลืน → recycle ผ่านไต; placenta','ทำหน้าที่ขับ waste แทน'],{s:11,a:'start'})+TL(552,470,['M: bladder อยู่ใน abdomen ในเด็ก,','~6 ปี เข้า greater pelvis, หลัง puberty','จึงเป็น pelvic organ'],{s:11,a:'start'});
+ let a=AR('M790,272 L756,270')+AR('M600,188 L660,188',true)+T(596,192,'urethral folds ปิด',{s:10,a:'end',c:'note'});
+ let s=G('shh',470,170,'SHH','start')+G('fgf',540,170,'FGF','start')+T(600,174,'+ HOX · M',{s:11,a:'start',c:'note'})+SA('shh',480,180,520,264);
+ let t=TF(440,140,'HOXA13 · HOXD13')+TF(570,140,'AR (androgen receptor)');
+ let ad=AD(186,410,['lobulation หายไป: L ในวัยทารก · M สิ้นปีแรก'])+AD(560,364,'→ urethra (ทั้งท่อ)');
+ return layers(b,a,s,t,ad)};
+
+/* ---------- stage data ---------- */
+const STAGES=[
+ {id:'s1',ori:[{n:'A',x:22,cx:200,o:{u:'Dorsal',d:'Ventral',l:'Lateral',r:'Lateral'},loc:'disc',lx:300,cap:'disc section'},{n:'B',x:422,cx:610,o:{u:'Dorsal',d:'Ventral',l:'Lateral',r:'Lateral'},loc:'tr',lx:700,cap:'transverse'}],wk:'Wk 3',cs:'CS 8–9 → 12',day:'d 18–26',crl:[1,5],t:'Intermediate mesoderm',short:'IM & folding',view:'Transverse sections · cartoon, not to scale',proc:['folding','migration'],dots:['nep','som','gut'],
+  notes:['Intermediate mesoderm (IM) อยู่ระหว่าง paraxial กับ lateral plate mesoderm ตลอดแนว dorsal body wall <span class="src M">M</span>',
+   'ช่วง lateral (horizontal) folding ใน wk 4 IM ถูกพาไปทาง ventral และ<b>หลุดจากการเชื่อมกับ somite</b> กลายเป็น longitudinal ridge ข้าง dorsal aorta = <b>urogenital ridge</b> <span class="src M">M</span>',
+   'ridge แบ่งเป็น <b>nephrogenic cord</b> (urinary) และ gonadal ridge (genital) ทั้ง urinary และ genital system จึงมาจาก mesodermal ridge เดียวกัน <span class="src L">L</span><span class="src M">M</span>',
+   'การสร้าง urogenital ridge ต้องอาศัย WT1, SF1 และ DAX1 <span class="src M">M</span>'],
+  cmp:[['Origin','L: common mesodermal ridge (IM) ที่ posterior abdominal wall','M: intermediate mesenchyme จาก dorsal body wall'],['Ridge genes','L: —','M: WT1, SF1, DAX1']],
+  adult:['kidL','kidR','pel','ureL','ureR','trig','dd'],adultNote:'IM ให้กำเนิด kidney ทั้งหมด (nephrons + collecting system ผ่าน mesonephric duct), ureter, gonad และ genital ducts'},
+ {id:'s2',ori:[{n:'Main',x:30,cx:220,o:{u:'Cranial',d:'Caudal',l:'Dorsal',r:'Ventral'},loc:'lat',lx:320,cap:'lateral strip'},{n:'Inset',x:448,cx:610,o:{u:'Dorsal',d:'Ventral',l:'Lateral',r:'Lateral'},loc:'tr2',lx:710,cap:'cervical cut'}],wk:'Wk 4 early',cs:'CS 10–12',day:'d 22–26',crl:[2,5],t:'Pronephros & nephric duct',short:'Pronephros',view:'Straightened lateral view + transverse inset',proc:['segmentation','migration','regression'],dots:['pro','mes','nep'],
+  notes:['ระบบไต 3 ชุดเกิด <b>cranial → caudal</b> และซ้อนกันเล็กน้อย: pronephros → mesonephros → metanephros <span class="src L">L</span><span class="src M">M</span>',
+   '<b>Pronephros</b>: กลุ่มเซลล์ solid ใน cervical region (nephrotomes) เป็น vestigial, nonfunctional <span class="src L">L</span>',
+   'ใน cervical–upper thoracic IM เป็น segmented ส่วน lower thoracic–sacral เป็น unsegmented = nephrogenic cord <span class="src L">L</span>',
+   'pronephric duct โตลงไปทาง caudal และเปิดเข้า cloaca แม้ pronephros จะ degenerate แต่ duct ส่วนใหญ่ถูกใช้ต่อโดย mesonephros <span class="src M">M</span>',
+   'ที่ ~day 21 nephric tubule เปิดเข้า intra-embryonic coelom และมี external/internal glomerulus <span class="src L">L</span>'],
+  cmp:[['Pronephros','L: 7–10 solid cell groups, cervical','M: a few cell clusters + tubular structures ที่คอ'],['Regression','L: หายหมดเมื่อสิ้น wk 4','M: degenerate เร็ว แต่ duct ยังอยู่']],
+  adult:['dd','ureL','ureR'],adultNote:'Pronephros ไม่มี adult derivative แต่ duct ของมันถูกใช้ต่อเป็น mesonephric duct ซึ่งต่อมาให้ ureteric bud และ ♂ genital ducts'},
+ {id:'s3',ori:[{n:'Main',x:30,cx:220,o:{u:'Cranial',d:'Caudal',l:'Dorsal',r:'Ventral'},loc:'lat',lx:320,cap:'lateral strip'},{n:'Inset',x:448,cx:600,o:{u:'Dorsal',d:'Ventral',l:'Lateral',r:'Medial'},loc:'tr',lx:710,cap:'thoracic cut'}],wk:'Wk 4 late – 5',cs:'CS 13–14',day:'d 28–32',crl:[4,7],t:'Mesonephros + ureteric bud',short:'Mesonephros',view:'Straightened lateral view + transverse inset of urogenital ridge',proc:['regression','budding','migration'],dots:['mes','ub','nep','gon'],
+  notes:['<b>Mesonephros</b> มาจาก IM ระดับ upper thoracic ถึง upper lumbar (L3) <span class="src L">L</span> tubule ยาวเป็นรูป S, ปลาย medial มี glomerulus + Bowman capsule = renal corpuscle ปลาย lateral เข้า <b>mesonephric (Wolffian) duct</b> <span class="src L">L</span>',
+   'ทำหน้าที่เป็น interim kidney ~4 สัปดาห์ มี glomeruli 10–50 ต่อข้าง <span class="src M">M</span>',
+   'ขณะ caudal tubules ยัง differentiate, cranial tubules เริ่ม degenerate. ♂: caudal tubules + duct คงอยู่เป็น genital ducts; ♀: หายไป <span class="src L">L</span>',
+   'gonad อยู่ด้าน medial ของ mesonephros รวมกันเป็น urogenital ridge <span class="src L">L</span>',
+   '<b>Ureteric bud</b> (metanephric diverticulum) งอกจาก mesonephric duct ใกล้ทางเข้า cloaca และ <b>metanephric blastema</b> มาจากส่วน caudal ของ nephrogenic cord <span class="src M">M</span>'],
+  cmp:[['Mesonephros เริ่ม','L: early wk 4 (ขณะ pronephros regress)','M: late wk 4'],['Glomeruli','L: —','M: 10–50 ต่อข้าง'],['Degenerate','L: ส่วนใหญ่หายสิ้นเดือนที่ 2','M: toward end of 1st trimester'],['Metanephros เริ่ม','L: wk 5','M: wk 5']],
+  adult:['dd','ureL','ureR','pel','kidL','kidR'],adultNote:'Mesonephric duct → ♂ epididymis, ductus deferens, ejaculatory duct (♀ Gartner duct remnant); bud → ureter และ collecting system'},
+ {id:'s4',ori:[{n:'A',x:22,cx:200,o:{u:'Cranio-dorsal',d:'Caudal'},loc:'caud',lx:300,cap:'sacral region'},{n:'B',x:422,cx:600,o:{u:'Lateral (convex)',d:'Medial (hilum)',l:'Cranial',r:'Caudal'},loc:'caud',lx:715,cap:'sacral region'}],wk:'Wk 5 – 6',cs:'CS 15–17',day:'d 33–41',crl:[7,14],t:'Reciprocal induction & branching',short:'Bud invades blastema',view:'Close-up of ureteric bud and metanephric blastema',proc:['induction','branching'],dots:['ub','nep','mes'],
+  notes:['Bud แทงเข้า metanephric blastema ซึ่ง molded คลุมปลาย bud เป็น cap <span class="src L">L</span> ปลายพองเป็น primitive renal pelvis แล้วแยกเป็น cranial/caudal portion = future major calyces <span class="src L">L</span>',
+   'แต่ละ calyx แตกแขนงต่อ (dichotomous) จนได้ ≥12 generations <span class="src L">L</span> stalk ของ bud = ureter <span class="src M">M</span>',
+   '<b>Reciprocal induction</b>: mesenchyme เหนี่ยวนำให้ bud แตกแขนง, ปลาย collecting tubule เหนี่ยวนำ mesenchyme ให้เกิด nephron <span class="src M">M</span>',
+   'WT1 ทำให้ mesenchyme competent ต่อการ induce; mesenchyme หลั่ง <b>GDNF</b> และ <b>HGF</b> → receptor <b>RET</b>, <b>MET</b> บน bud; bud หลั่ง <b>FGF2</b> + <b>BMP7</b> กัน apoptosis และกระตุ้น proliferation ของ mesenchyme <span class="src L">L</span>',
+   'PAX2, EYA1, SALL1 จำเป็นต่อการแสดงออกของ GDNF; การแตกแขนงต่อถูกคุมด้วย EMX2, PAX2 และ WNT/FGF/BMP; LHX1 และ PAX2 คุมการตอบสนองของ bud <span class="src M">M</span>'],
+  cmp:[['Major calyces','L: จาก division แรก (cranial + caudal)','M: first 4 generations รวมกัน'],['Minor calyces','L: gen 2 ขยายดูดกลืน gen 3–4','M: second 4 generations รวมกัน'],['Generations','L: ≥12; 1–3 ล้าน collecting tubules','M: repetitive branching']],
+  adult:['kidL','kidR','pel','ureL','ureR'],adultNote:'Bud → ureter, renal pelvis, major + minor calyces, collecting tubules/ducts; cap mesenchyme → nephrons'},
+ {id:'s5',ori:[{n:'A',x:14,cx:140,o:{u:'Cranial',d:'Caudal',l:'Ant.',r:'Post.'},loc:'caud',lx:212,cap:'lateral'},{n:'B',x:280,cx:400,o:{u:'Cranial',d:'Caudal',l:'Ant.',r:'Post.'},loc:'caud',lx:474,cap:'lateral'},{n:'C',x:556,cx:648,o:{u:'Cranial',d:'Caudal',l:'Left',r:'Right'},loc:'ventral',lx:728,cap:'from behind'}],wk:'Wk 6 – 7',cs:'CS 17–19',day:'d 41–48',crl:[11,18],t:'Cloaca septation & trigone',short:'Cloaca → bladder',view:'Lateral views (A, B) and dorsal view of bladder (C)',proc:['septation','incorporation','migration'],dots:['ugs','all','gut','mes','ub'],
+  notes:['Wk 4–7: <b>urorectal septum</b> (mesoderm) แบ่ง cloaca เป็น urogenital sinus (anterior) และ anorectal canal (posterior); ปลาย septum เป็น <b>perineal body</b> <span class="src L">L</span>',
+   'UGS แบ่งเป็น 3 ส่วน: <b>vesical</b> (bladder, ต่อกับ allantois), <b>pelvic</b> (♂ prostatic + membranous urethra, ♀ urethra ทั้งเส้น), <b>phallic</b> (โตไปทาง genital tubercle) <span class="src L">L</span><span class="src M">M</span>',
+   'ส่วนปลาย mesonephric ducts ถูกดูดกลืนเข้า dorsal wall ของ bladder → ureters เปิดเข้า bladder แยกกัน; orifices ของ ureter เลื่อน cranio-lateral ส่วน duct เลื่อนชิดกันเข้า prostatic urethra (♂ ejaculatory ducts) <span class="src L">L</span><span class="src M">M</span>',
+   'Allantois ตีบเป็น <b>urachus</b> → median umbilical ligament <span class="src L">L</span><span class="src M">M</span>',
+   'Bladder epithelium = endoderm; ชั้นอื่นของผนังมาจาก splanchnic mesenchyme <span class="src M">M</span>'],
+  cmp:[['Cloaca แบ่ง','L: wk 4–7','M: (Ch.11, ไม่อยู่ในบทที่แนบ)'],['Trigone','L: mucosa เป็น mesoderm (จาก mesonephric duct) แล้วถูกแทนด้วย endoderm','M: epithelium ทั้งหมดเป็น endoderm; duct ให้ connective tissue ของ trigone']],
+  adult:['blad','trig','ureth','urach','dd'],adultNote:'Vesical UGS → bladder; trigone จาก mesonephric duct; allantois → urachus → median umbilical ligament'},
+ {id:'s6',ori:[{n:'View',x:30,cx:330,o:{u:'Cranial',d:'Caudal',l:'Right (embryo)',r:'Left (embryo)'},loc:'ventral',lx:470,cap:'from front'}],wk:'Wk 6 – 9',cs:'CS 18–23 → fetal wk 9',day:'d 44 → ~63',crl:[13,50],t:'Ascent, rotation & renal arteries',short:'Ascent + rotation',view:'Ventral view; ghost outlines = earlier positions',proc:['ascent','rotation'],dots:['nep','ves','adr','ub'],
+  notes:['ไตเริ่มใน pelvis ชิดกัน ventral ต่อ sacrum แล้ว "ascend" เข้าสู่ abdomen <span class="src M">M</span> สาเหตุ: diminution of body curvature + growth ของ lumbar/sacral region <span class="src L">L</span>',
+   'ระหว่างทางไตผ่าน arterial fork ของ umbilical arteries <span class="src L">L</span>',
+   'Hilum เดิมหันไป ventral; ระหว่าง ascent หมุน <b>medial ~90°</b> จนหัน anteromedial เมื่อ wk 9 <span class="src M">M</span>',
+   'เลือดมาจาก vessel ใกล้ตัวตามระดับ แล้วได้ branch ใหม่จาก aorta ที่สูงขึ้นเรื่อยๆ ชุดล่าง involute; ตำแหน่งตายตัวเมื่อแตะ suprarenal gland (wk 9) <span class="src L">L</span><span class="src M">M</span>',
+   'Suprarenal: cortex จาก mesoderm, medulla จาก neural crest (sympathetic ganglion) <span class="src M">M</span>'],
+  cmp:[['Adult position','L: —','M: by wk 9'],['เลือดเลี้ยงแรก','L: pelvic branch of aorta','M: branches of common iliac aa.'],['Mechanism','L: body curvature ลด + lumbar/sacral growth','M: body caudal to kidneys grows away'],['Accessory renal a.','L: common','M: ~25% มี 2–4 aa.']],
+  adult:['kidL','kidR','ra','adrL','adrR','ureL','ureR'],adultNote:'Cranial-most aortic branches → permanent renal arteries; ถ้าชุดล่างไม่ involute → accessory (polar) arteries'},
+ {id:'s7',ori:[{n:'Within kidney',x:30,cx:330,o:{u:'Medulla / pelvis',d:'Cortex / capsule'},loc:'kidney',lx:470,cap:'cortex zone'}],wk:'Wk 8 – 12',cs:'Fetal wk 8–12',day:'',crl:[27,87],t:'Nephrogenesis & first urine',short:'Nephrogenesis',view:'Sequence of one excretory unit + to-scale week axis',proc:['induction','epithelialization','fusion'],dots:['nep','ub','ves','mes'],
+  notes:['ปลาย collecting tubule แต่ละอันมี metanephric tissue cap; cap → <b>renal vesicle</b> → S-shaped tubule; capillaries งอกเข้าแอ่งปลายหนึ่ง → glomerulus <span class="src L">L</span>',
+   'ปลาย proximal = Bowman capsule, ปลาย distal <b>เชื่อม (open connection)</b> กับ collecting tubule; ยืดเป็น PCT, loop of Henle, DCT <span class="src L">L</span>',
+   'ไตจึงมี 2 แหล่ง: metanephric mesoderm → nephron; ureteric bud → collecting system <span class="src L">L</span><span class="src M">M</span>',
+   'Bud หลั่ง WNT9B + WNT6 → PAX2 (condensation) และ WNT4 (epithelialize + form tubules) ใน mesenchyme; ECM เปลี่ยนเป็น laminin + type IV collagen <span class="src L">L</span> M: ต้องอาศัย BMP7 และ Wnt-4/β-catenin <span class="src M">M</span>',
+   'Mesonephros degenerate; urine ออกสู่ amniotic cavity <span class="src L">L</span>'],
+  cmp:[['Nephrogenesis เริ่ม','L: —','M: ~beginning of wk 8'],['Glomeruli/filtration','L: capillaries ~wk 10; urine wk 12','M: GFR ~wk 9 (functional ~4 wk หลังเริ่ม)'],['Glomeruli เพิ่ม','L: —','M: ค่อยๆ wk 10–18, เร็วจนถึง wk 32']],
+  adult:['kidL','kidR'],adultNote:'Nephron: Bowman capsule, PCT, loop of Henle, DCT (มาจาก metanephric mesoderm) ต่อกับ collecting duct (จาก bud)'},
+ {id:'s8',ori:[{n:'A',x:22,cx:200,o:{u:'Cranial',d:'Caudal',l:'Lateral',r:'Medial'},loc:'ventral',lx:300,cap:'from front'},{n:'B',x:422,cx:600,o:{u:'Dorsal',d:'Ventral',l:'Proximal',r:'Distal (tip)'},loc:'penis',lx:715,cap:'sagittal'}],wk:'Wk 12 → birth',cs:'Fetal',day:'',crl:[87,360],t:'Fetal kidney & urethra',short:'Fetal → birth',view:'Fetal kidney (A), distal male urethra (B), functional notes (C)',proc:['growth','canalization'],dots:['nep','ub','ugs','ecto','adr'],
+  notes:['Nephron สร้างต่อจนแรกเกิด ไม่เพิ่มจำนวนหลังคลอด; ไตใหญ่ขึ้นจาก nephron โต (M: PCT ยาวขึ้น + interstitium) <span class="src L">L</span><span class="src M">M</span>',
+   'ไตทารกเป็น <b>lobulated</b>; lobulation หายไปหลังคลอด <span class="src L">L</span><span class="src M">M</span>',
+   'Urethra epithelium ทั้งสองเพศมาจาก endoderm; CT + smooth muscle มาจาก visceral (splanchnic) mesoderm <span class="src L">L</span><span class="src M">M</span>',
+   '♂ distal urethra ใน glans: ectodermal cells จากปลาย glans งอกเข้าเป็น cord แล้วมี lumen → external meatus + navicular fossa <span class="src L">L</span><span class="src M">M</span>',
+   'สิ้นเดือนที่ 3 prostatic urethra งอก buds → prostate (♂); ♀ → urethral + paraurethral glands <span class="src L">L</span>'],
+  cmp:[['Nephrons/ไต','L: ~1 ล้าน','M: สูงสุด ~2 ล้าน'],['Lobulation หาย','L: during infancy','M: end of first year'],['Glanular urethra','L: เดือนที่ 4','M: รูป 11–14 wk'],['Urethral folds ปิด','L: สิ้นเดือนที่ 3','M: —'],['Hypospadias','L: 3–5 / 1,000 births','M: 1 / 125 male infants']],
+  adult:['kidL','kidR','ureth','meat','blad'],adultNote:'Urethra: endoderm (UGS) ยกเว้นส่วน navicular fossa ที่บุด้วย surface ectoderm'}
+];
+
+/* ---------- derivative table ---------- */
+const G2={ec:'Ectoderm',me:'Mesoderm',en:'Endoderm',nc:'Neural crest'};
+const gc=(...g)=>g.map(x=>`<span class="gchip"><i style="background:var(--g-${x})"></i>${G2[x]}</span>`).join(' ');
+const sr=(...s)=>s.map(x=>`<span class="src ${x==='Gen'?'G':x}">${x}</span>`).join(' ');
+const dl=(l,m)=>`<div class="dual"><span><span class="src L">L</span> ${l}</span><span><span class="src M">M</span> ${m}</span></div>`;
+const ROWS=[
+ ['s1','nep','Intermediate mesoderm → nephrogenic cord / urogenital ridge','Kidneys (nephrons), ureter + collecting system (ผ่าน mesonephric duct), gonads, genital ducts',gc('me'),'Wk 3–4; ridge เกิดหลัง lateral folding','WT1, SF1, DAX1 (ridge) <span class="src M">M</span>; OSR1, LHX1, PAX2/8 <span class="src G">Gen</span>',sr('L','M','Gen')],
+ ['s2','pro','Pronephros (nephrotomes)','ไม่มี (vestigial, nonfunctional)',gc('me'),dl('ต้น wk 4; หายสิ้น wk 4','ต้น wk 4'),dl('7–10 cell groups, cervical','a few cell clusters, neck'),sr('L','M')],
+ ['s2','mes','Pronephric (nephric) duct','ถูกใช้ต่อเป็น mesonephric duct',gc('me'),'Wk 4','PAX2, LHX1 <span class="src M">M</span>',sr('L','M')],
+ ['s3','mes','Mesonephric tubules','♂ efferent ductules, paradidymis; ♀ epoophoron, paroophoron',gc('me'),dl('ต้น wk 4 → ส่วนใหญ่หายสิ้นเดือน 2','ปลาย wk 4 → degenerate สิ้น 1st trimester'),'M: 10–50 glomeruli/ข้าง, ทำงาน ~4 wk',sr('L','M')],
+ ['s3','mes','Mesonephric (Wolffian) duct','♂ epididymis duct, ductus deferens, ejaculatory duct, seminal gland, appendix of epididymis; ♀ Gartner duct, appendix vesiculosa; ทั้งสองเพศ: ให้ ureteric bud',gc('me'),'Wk 4 → fetal','—',sr('L','M')],
+ ['s4','ub','Ureteric bud · stalk','Ureter',gc('me'),'Wk 5','GDNF → RET, HGF → MET <span class="src L">L</span>; LHX1, PAX2, HNF1B, FORMIN <span class="src M">M</span>',sr('L','M')],
+ ['s4','ub','Ureteric bud · ampulla & early branches','Renal pelvis, major calyces',gc('me'),'Wk 6',dl('first split → cranial + caudal major calyces','first 4 generations → major calices'),sr('L','M')],
+ ['s4','ub','Ureteric bud · next generations','Minor calyces',gc('me'),'Wk 6–7',dl('gen 2 ขยาย ดูดกลืน gen 3–4','second 4 generations → minor calices'),sr('L','M')],
+ ['s4','ub','Ureteric bud · later generations','Collecting tubules/ducts, renal pyramids (ปลายวิ่งเข้า minor calyx)',gc('me'),'Wk 6 → mo 5 (L: tubules ใหม่ที่ขอบจนสิ้นเดือน 5)',dl('≥12 generations; 1–3 million collecting tubules; GDNF/HGF ↔ RET/MET','EMX2, PAX2 + WNT/FGF/BMP; GDNF/RET ที่ tips'),sr('L','M')],
+ ['s7','nep','Metanephric blastema · cap mesenchyme','Nephron: Bowman capsule, PCT, loop of Henle, DCT',gc('me'),dl('wk 5 → birth','nephrogenesis ~wk 8 → term'),dl('WT1; FGF2 + BMP7 (survival); WNT9B/WNT6 → PAX2 + WNT4; laminin, col IV, syndecan, E-cadherin','WT1, PAX2, EYA1, SALL1, HOXA11/D11; BMP7, Wnt4/β-catenin'),sr('L','M')],
+ ['s7','ves','Glomerular capillaries','Glomerulus',gc('me'),dl('capillaries ~wk 10; urine wk 12','filtration ~wk 9'),'—',sr('L','M')],
+ ['s8','nep','Nephron number at birth','จำนวน nephron ถาวร (ไม่เพิ่มหลังคลอด)',gc('me'),dl('สร้างจนแรกเกิด','complete at term ยกเว้น premature'),dl('~1 million / kidney','up to 2 million / kidney'),sr('L','M')],
+ ['s8','nep','Fetal renal lobes','ผิวไตเรียบ (lobulation หาย)',gc('me'),dl('หายในวัยทารก','หายสิ้นปีแรก'),'—',sr('L','M')],
+ ['s6','ves','Sequential aortic branches to ascending kidney','Permanent renal artery; ถ้าชุดล่างคงอยู่ = accessory/polar renal a.',gc('me'),'Wk 6–9',dl('แรก: pelvic branch of aorta','แรก: common iliac aa.; ~25% มี accessory aa.'),sr('L','M')],
+ ['s6','nep','Metanephros position','ไตระดับ lumbar (retroperitoneal), hilum anteromedial',gc('me'),'M: ถึงตำแหน่งผู้ใหญ่ wk 9, หมุน medial ~90°',dl('diminution of body curvature + lumbar/sacral growth','growth of body caudal to kidneys; หยุดเมื่อแตะ suprarenal'),sr('L','M')],
+ ['s5','ugs','Cloaca','Urogenital sinus (anterior) + anorectal canal (posterior)',gc('en'),'L: wk 4–7','SHH, HOXA13/HOXD13 <span class="src G">Gen</span>',sr('L','Gen')],
+ ['s5','lpm','Urorectal septum','Perineal body',gc('me'),'Wk 4–7','—',sr('L','M')],
+ ['s5','ugs','UGS · vesical part','Urinary bladder (epithelium); ผนังจาก splanchnic mesoderm',gc('en','me'),'Wk 5–7 →','—',sr('L','M')],
+ ['s5','mes','Caudal mesonephric ducts (absorbed)','Trigone of bladder',gc('me','en'),'Wk 6–7',dl('mucosa เดิมเป็น mesoderm แล้วถูกแทนด้วย endoderm','epithelium = endoderm; duct ให้ CT ของ trigone'),sr('L','M')],
+ ['s5','all','Allantois (intra-embryonic part)','Urachus → median umbilical ligament',gc('en'),'Wk 5 → fetal','—',sr('L','M')],
+ ['s5','ugs','UGS · pelvic part','♂ prostatic + membranous urethra (+ bladder neck); ♀ urethra ทั้งเส้น',gc('en','me'),'Wk 7 →','—',sr('L','M')],
+ ['s8','ugs','UGS · phallic part (urethral plate)','♂ penile (spongy) urethra',gc('en'),'L: urethral folds ปิดสิ้นเดือน 3','HOX, FGF, SHH (external genitalia) <span class="src M">M</span>; androgens <span class="src M">M</span>',sr('L','M')],
+ ['s8','ecto','Ectodermal cord of glans','Navicular fossa epithelium + external urethral meatus',gc('ec'),dl('เดือนที่ 4','รูป 11–14 wk'),'—',sr('L','M')],
+ ['s8','ugs','Prostatic urethra endodermal buds','♂ prostate; ♀ urethral + paraurethral glands',gc('en'),'L: สิ้นเดือนที่ 3','M: (genital section) HOXA10/HOXA13 area',sr('L','M')],
+ ['s6','adr','Suprarenal cortex / medulla','Adrenal cortex / adrenal medulla',gc('me','nc'),'M: cortex wk 6; neural crest เข้ามา wk 7','—',sr('M')]
+];
+
+/* ---------- anomalies ---------- */
+const ANOM=[
+ {n:'Bilateral renal agenesis',th:'ไม่มีไตทั้งสองข้าง · Potter sequence',st:'s3',col:'ub',
+  step:'Ureteric bud ไม่เกิดหรือ degenerate, หรือ bud ไม่ interact กับ metanephric mesoderm (GDNF→RET ล้มเหลว) จึงไม่มี nephron ถูก induce <span class="src L">L</span><span class="src M">M</span>',
+  ter:'Gene: SALL1 (Townes-Brock), PAX2 (renal coloboma), EYA1 (branchio-oto-renal) <span class="src L">L</span>. Pregestational maternal diabetes เพิ่มความเสี่ยง; ACE inhibitor/ARB ช่วง 2nd–3rd trimester ทำ renal tubular dysgenesis + oligohydramnios ให้ภาพคล้ายกัน <span class="src G">Gen</span>',
+  cl:'Anuria → <b>oligohydramnios</b> → pulmonary hypoplasia, Potter facies (ตาห่าง, epicanthic folds, หูต่ำ, จมูกแบนกว้าง, คางถอย), club feet; เสียชีวิตไม่นานหลังคลอด. 85% มี defect อื่นร่วม (vagina/uterus, vas deferens, หัวใจ, tracheal/duodenal atresia, cleft lip/palate) <span class="src L">L</span><span class="src M">M</span>',
+  inc:dl('1 / 10,000 births','~1 / 3,000 births; ~20% ของ Potter syndrome')},
+ {n:'Unilateral renal agenesis',th:'ไม่มีไตข้างเดียว',st:'s3',col:'ub',
+  step:'เหมือน bilateral แต่เกิดข้างเดียว; อาจเกิดจาก involution in utero ของ cystic kidney เหลือ ureter ปลายตัน <span class="src M">M</span>',
+  ter:'Multifactorial <span class="src M">M</span>; maternal diabetes <span class="src G">Gen</span>',
+  cl:'มักไม่มีอาการ ไตอีกข้าง compensatory hypertrophy; ชาย > หญิง มักเป็นข้างซ้าย; สงสัยเมื่อทารกมี <b>single umbilical artery</b> <span class="src M">M</span>',
+  inc:dl('—','~1 / 1,000 neonates')},
+ {n:'Duplex kidney / bifid ureter',th:'ท่อไตแยกสอง / ไตเกิน',st:'s4',col:'ub',
+  step:'Ureteric bud แยกเร็วเกิน (partial → bifid ureter, complete → double ureter) หรือเกิด bud สองอัน → supernumerary kidney <span class="src L">L</span><span class="src M">M</span>',
+  ter:'ไม่มี teratogen เด่น <span class="src G">Gen</span>',
+  cl:'มักไม่มีอาการ ตรวจเจอจาก imaging; อาจมี ectopic ureter ร่วม (ดูการ์ดถัดไป) <span class="src L">L</span>',
+  inc:dl('—','duplication ของ abdominal ureter + pelvis "common"')},
+ {n:'Ectopic ureter',th:'ท่อไตเปิดผิดที่',st:'s5',col:'ub',
+  step:'Bud อันที่สองอยู่ต่ำ ถูกพาไปทาง caudal พร้อม mesonephric duct และ<b>ไม่ถูก incorporate เข้า trigone</b> จึงเปิดเข้าส่วน pelvic ของ UGS <span class="src L">L</span><span class="src M">M</span>',
+  ter:'ไม่มี teratogen เด่น <span class="src G">Gen</span>',
+  cl:'♀: เปิดที่ bladder neck, urethra, vagina, vestibule → <b>ปัสสาวะไหลซึมตลอดแม้ปัสสาวะปกติ</b> (Moore case 12-1: เด็กหญิง 4 ขวบยังเปียก) ♂: bladder neck, prostatic urethra, ductus deferens, prostatic utricle, seminal gland <span class="src M">M</span>',
+  inc:dl('rare','—')},
+ {n:'Pelvic / discoid kidney',th:'ไตค้างใน pelvis',st:'s6',col:'nep',
+  step:'ไตไม่ ascend ผ่าน arterial fork ของ umbilical arteries; ถ้าสองข้างชิดกันใน pelvis อาจ fuse เป็น discoid ("pancake") kidney <span class="src L">L</span><span class="src M">M</span>',
+  ter:'ไม่มี teratogen เด่น <span class="src G">Gen</span>',
+  cl:'มักไม่มีอาการ ได้เลือดจาก vessel ใกล้ตัว (internal/external iliac, aorta) หลายเส้น; adrenal ยังอยู่ตำแหน่งปกติเพราะเจริญแยก <span class="src L">L</span><span class="src M">M</span>',
+  inc:dl('—','—')},
+ {n:'Horseshoe kidney',th:'ไตรูปเกือกม้า',st:'s6',col:'nep',
+  step:'ไตถูกดันชิดกันขณะผ่าน arterial fork → <b>lower poles fuse</b>; ascent ถูกขวางโดย root ของ <b>inferior mesenteric artery</b> จึงค้างที่ระดับ lower lumbar; ureters ผ่าน ventral ต่อ isthmus <span class="src L">L</span><span class="src M">M</span>',
+  ter:'สัมพันธ์กับ Turner syndrome (~7%) <span class="src M">M</span>; trisomy 18 <span class="src G">Gen</span>',
+  cl:'มักไม่มีอาการ; ถ้าการไหลถูกขัดขวาง → obstruction และ/หรือ infection <span class="src M">M</span>',
+  inc:dl('1 / 600 people','0.2% of population')},
+ {n:'Crossed renal ectopia',th:'ไตข้ามไปอีกฝั่ง',st:'s6',col:'nep',
+  step:'ไตข้างหนึ่งข้ามไปอีกฝั่ง ± fusion; unilateral fused kidney: fuse หลังออกจาก pelvis แล้วตัวหนึ่งพาอีกตัวขึ้นไป <span class="src M">M</span>',
+  ter:'—',cl:'IVP เห็นไตสองอันอยู่ฝั่งขวาของ abdomen <span class="src M">M</span>',inc:dl('—','uncommon')},
+ {n:'Malrotated kidney',th:'ไตหมุนผิด',st:'s6',col:'nep',
+  step:'ไม่หมุน → hilum หันหน้า (embryonic position); หมุนเกิน → hilum หันหลัง; หมุนออก lateral → hilum หัน lateral <span class="src M">M</span>',
+  ter:'—',cl:'มักพบร่วมกับ ectopic kidney <span class="src M">M</span>',inc:dl('—','—')},
+ {n:'Accessory renal arteries',th:'หลอดเลือดไตเกิน',st:'s6',col:'ves',
+  step:'Embryonic vessels ระหว่าง ascent ไม่ involute <span class="src L">L</span><span class="src M">M</span>',
+  ter:'—',cl:'เป็น <b>end arteries</b>: ผูก/บาดเจ็บ → ischemia; polar artery ไป inferior pole อาจข้ามหน้า ureter → <b>hydronephrosis</b>; สำคัญต่อ renal transplant (Moore case 12-2) <span class="src M">M</span>',
+  inc:dl('common; มักจาก aorta เข้า superior/inferior pole','~25% ของไตผู้ใหญ่มี 2–4 renal aa.; พบบ่อยกว่า accessory veins 2 เท่า')},
+ {n:'Multicystic dysplastic kidney',th:'MCDK',st:'s4',col:'nep',
+  step:dl('nephron ไม่เกิด, bud ไม่แตกแขนง → ducts ล้อมด้วย undifferentiated cells; อาจ involute จน agenesis','ปัจจุบันเชื่อว่า cyst = ส่วนของ nephron ที่ขยาย (โดยเฉพาะ loop of Henle) ไม่ใช่การเชื่อมไม่ติด'),
+  ter:'—',cl:'อยู่ในกลุ่ม renal dysplasia ที่เป็นสาเหตุหลักของ dialysis/transplant ในเด็กเล็ก <span class="src L">L</span>; 75% เป็นข้างเดียว พยากรณ์ดี <span class="src M">M</span>',inc:dl('—','unilateral 75%')},
+ {n:'ARPKD',th:'Autosomal recessive polycystic kidney',st:'s4',col:'ub',
+  step:'Ciliopathy: cyst เกิดจาก <b>collecting ducts</b> (ส่วนจาก ureteric bud) <span class="src L">L</span>',
+  ter:'Gene: PKHD1 (fibrocystin) <span class="src G">Gen</span>',
+  cl:'ไตโตมากทั้งสองข้าง, cyst เล็กจำนวนมาก, renal failure ในวัยทารก/เด็ก; วินิจฉัยด้วย ultrasound in utero <span class="src L">L</span><span class="src M">M</span>',
+  inc:dl('1 / 5,000 births','—')},
+ {n:'ADPKD',th:'Autosomal dominant polycystic kidney',st:'s7',col:'nep',
+  step:'Ciliopathy: cyst เกิดได้จาก <b>ทุก segment ของ nephron</b> <span class="src L">L</span>',
+  ter:'Gene: PKD1 / PKD2 <span class="src G">Gen</span>',
+  cl:'มักไม่ไตวายจนถึงผู้ใหญ่; พบบ่อยกว่าแต่ progress ช้ากว่า ARPKD. Ciliopathy อื่น: Bardet-Biedl, Meckel-Gruber <span class="src L">L</span>',
+  inc:dl('1 / 500 – 1 / 1,000 births','—')},
+ {n:'Wilms tumor · WAGR · Denys-Drash',th:'มะเร็งไตในเด็ก',st:'s4',col:'nep',
+  step:'Mutation ของ <b>WT1</b> (11p13) ซึ่งทำให้ metanephric mesenchyme competent ต่อ induction <span class="src L">L</span>',
+  ter:'WAGR = microdeletion ครอบทั้ง PAX6 (aniridia) และ WT1 ซึ่งห่างกัน ~700 kb <span class="src L">L</span>',
+  cl:'มักเป็นก่อนอายุ 5 ปี อาจเกิดใน fetus; WAGR: Wilms, aniridia, gonadoblastoma, intellectual disability; Denys-Drash: renal failure, ambiguous genitalia, Wilms <span class="src L">L</span>',
+  inc:dl('—','—')},
+ {n:'Urachal fistula / cyst / sinus',th:'ความผิดปกติของ urachus',st:'s5',col:'all',
+  step:'Lumen ของ allantois (intra-embryonic) ไม่ปิด: ทั้งเส้น = fistula, เฉพาะจุด = cyst, ส่วนบนหรือล่าง = sinus <span class="src L">L</span><span class="src M">M</span>',
+  ter:'—',cl:'Fistula: <b>ปัสสาวะไหลจากสะดือ</b>; cyst มักเจอเมื่อติดเชื้อ/โตขึ้น; ~50% ของ remnant lumen ต่อกับ bladder <span class="src L">L</span><span class="src M">M</span>',inc:dl('—','fistula very rare')},
+ {n:'Exstrophy of the bladder',th:'กระเพาะปัสสาวะปลิ้นออกนอก',st:'s5',col:'ugs',
+  step:dl('lateral body wall folds ไม่ปิดที่ midline บริเวณ pelvis','mesoderm ไม่ migrate ระหว่าง ectoderm กับ endoderm ของผนังหน้าท้องส่วนล่าง แล้ว cloacal membrane แตก'),
+  ter:'ไม่มี teratogen เด่น <span class="src G">Gen</span>',
+  cl:'Posterior bladder mucosa + trigone + ureteric orifices เปิดออก, ปัสสาวะไหลซึม; <b>epispadias</b> เกือบเสมอ, pubic bones แยกกว้าง, inferior rectus หาย; พบมากในชาย <span class="src L">L</span><span class="src M">M</span>',
+  inc:dl('2 / 10,000 live births','1 / 10,000 – 40,000 births')},
+ {n:'Cloacal exstrophy',th:'Exstrophy of the cloaca',st:'s5',col:'ugs',
+  step:'Body wall ปิดไม่ได้รุนแรงกว่า bladder exstrophy + urorectal septum ผิดปกติ <span class="src L">L</span>; M: membrane แตกก่อน cloaca ถูกแบ่งเสร็จ → posterior bladder wall เปิดออก <span class="src M">M</span>',
+  ter:'—',cl:'Anal canal malformation, imperforate anus, genital swellings ห่างกันมาก → external genitalia ผิดปกติ <span class="src L">L</span>',inc:dl('1 / 30,000','—')},
+ {n:'Megacystis · posterior urethral valves',th:'กระเพาะปัสสาวะโตแต่กำเนิด',st:'s8',col:'ugs',
+  step:'ความผิดปกติของ ureteric bud (ร่วมกับ pelvis ขยาย) หรือ <b>posterior urethral valves</b> อุดทางออก <span class="src M">M</span>',
+  ter:'—',cl:'Ultrasound 18 wk: bladder โตจนดัน diaphragm; รักษาด้วย vesico-amniotic shunt (pigtail catheter); หลายรายเสียชีวิตหรือไตวายในเด็กเล็ก <span class="src M">M</span>; PUV พบในเพศชาย <span class="src G">Gen</span>',
+  inc:dl('—','—')},
+ {n:'Hypospadias',th:'รูเปิดท่อปัสสาวะอยู่ด้าน ventral',st:'s8',col:'ugs',
+  step:'Urethral folds fuse ไม่สมบูรณ์ <span class="src L">L</span>; androgen ไม่พอ/receptor ผิดปกติ → ectodermal cord ใน glans ไม่ canalize และ/หรือ folds ไม่ fuse <span class="src M">M</span>',
+  ter:'Genomic + environmental factors <span class="src M">M</span>; exposure ต่อ progestins/estrogens หรือ anti-androgenic endocrine disruptors <span class="src G">Gen</span>',
+  cl:'Glanular (พบบ่อยสุด), penile, penoscrotal, perineal; มักมี chordee; perineal type + cryptorchidism อาจถูกวินิจฉัยผิดเป็น 46,XY DSD <span class="src M">M</span>',
+  inc:dl('3–5 / 1,000 births','1 / 125 male infants; glanular + penile ~80%')}
+];
+
+/* ---------- adult svg ---------- */
+function adultSVG(on){
+ const h=id=>on.includes(id)?'':'adim';
+ let s=`<g class="${h('ra')}">${K('M150,30 L150,300','ves','me',9)}${K('M150,300 L116,350','ves','me',6)}${K('M150,300 L184,350','ves','me',6)}${K('M150,128 L118,132','ves','me',4)}${K('M150,128 L182,132','ves','me',4)}</g>`;
+ s+=`<path class="${h('adrL')} f lin-adr g-me" d="M78,82 L98,50 L114,84Z"/><path class="${h('adrR')} f lin-adr g-me" d="M186,84 L202,50 L222,82Z"/>`;
+ s+=`<path class="${h('kidR')} f lin-nep g-me" d="${bean(98,140,-30,50)}"/><path class="${h('kidL')} f lin-nep g-me" d="${bean(202,140,30,50)}"/>`;
+ s+=`<g class="${h('pel')}"><ellipse class="f lin-ub g-me" cx="116" cy="142" rx="8" ry="13"/><ellipse class="f lin-ub g-me" cx="184" cy="142" rx="8" ry="13"/>${K('M112,130 L98,116 M112,142 L94,142 M112,154 L98,168','ub','me',3)}${K('M188,130 L202,116 M188,142 L206,142 M188,154 L202,168','ub','me',3)}</g>`;
+ s+=`<g class="${h('ureR')}">${K('M118,154 C124,220 128,290 136,338','ub','me',5)}</g><g class="${h('ureL')}">${K('M182,154 C176,220 172,290 164,338','ub','me',5)}</g>`;
+ s+=`<g class="${h('urach')}">${K('M168,326 C200,296 228,258 244,222','all','en',3)}<circle class="cav" cx="248" cy="216" r="6"/></g>`;
+ s+=`<ellipse class="${h('blad')} f lin-ugs g-en" cx="150" cy="352" rx="46" ry="32"/><path class="${h('trig')} f lin-mes g-me" d="M136,340 L164,340 L150,372Z"/>`;
+ s+=`<rect class="${h('ureth')} f lin-ugs g-en" x="144" y="382" width="12" height="32" rx="4"/><circle class="${h('meat')} f lin-ecto g-ec" cx="150" cy="418" r="5"/>`;
+ s+=`<g class="${h('dd')}">${K('M98,392 C104,368 122,360 140,372','mes','me',3,'')}</g>`;
+ s+=T(150,22,'Aorta',{s:10,c:'sm'})+T(60,46,'Suprarenal',{s:10,c:'sm',a:'start'})+T(98,206,'Kidney',{s:11})+T(208,206,'Kidney',{s:11})+T(130,250,'Ureter',{s:10,a:'end',c:'sm'})+
+  T(256,206,'Median umb. lig.',{s:10,a:'end',c:'sm'})+T(150,356,'Bladder',{s:11})+T(166,394,'Urethra',{s:10,a:'start',c:'sm'})+T(90,404,'♂ ductus def.',{s:10,a:'start',c:'sm'})+T(150,336,'trigone',{s:9,c:'sm'})+T(196,132,'pelvis',{s:9,a:'start',c:'sm'})+T(170,426,'meatus',{s:9,a:'start',c:'sm'});
+ return s}
+
+/* ---------- state & render ---------- */
+const st={i:0,ori:true,arw:true,sig:true,tf:false,crl:true,adult:true,mode:'lin',filt:'all',q:'',af:'all'};
+try{const v=JSON.parse(localStorage.getItem('kub-atlas')||'{}');Object.assign(st,v)}catch(e){}
+function save(){try{localStorage.setItem('kub-atlas',JSON.stringify({ori:st.ori,arw:st.arw,sig:st.sig,tf:st.tf,crl:st.crl,adult:st.adult,mode:st.mode}))}catch(e){}}
+const $=id=>document.getElementById(id);
+
+function buildTimeline(){
+ $('tl').innerHTML=STAGES.map((s,i)=>`<button class="tl-btn" role="tab" id="tab-${s.id}" aria-controls="dia" aria-current="false"><span class="tl-wk">${s.wk}</span><span class="tl-cs">${s.cs}</span><span class="tl-t">${s.short}</span><span class="tl-dots">${s.dots.map(d=>`<i style="background:var(--c-${d})" title="${LIN[d]}"></i>`).join('')}</span></button>`).join('');
+ [...$('tl').children].forEach((b,i)=>b.addEventListener('click',()=>go(i)));
+}
+function go(i){st.i=i;render();try{history.replaceState(null,'','#'+STAGES[i].id)}catch(e){};const b=$('tl').children[i];b.scrollIntoView({block:'nearest',inline:'nearest',behavior:'smooth'})}
+
+function crlSVG(lo,hi){
+ const W=520,x=v=>14+Math.log10(v)/Math.log10(400)*(W-28);
+ let s=`<line class="axis" x1="${x(1)}" y1="26" x2="${x(400)}" y2="26"/>`;
+ [1,2,5,10,20,50,100,200,400].forEach(v=>s+=`<line class="axis" x1="${x(v)}" y1="22" x2="${x(v)}" y2="30"/><text class="axt" x="${x(v)}" y="41" text-anchor="middle">${v}</text>`);
+ STAGES.forEach((S,j)=>s+=`<rect x="${x(S.crl[0])}" y="${j===st.i?12:18}" width="${Math.max(3,x(S.crl[1])-x(S.crl[0]))}" height="${j===st.i?10:4}" rx="2" style="fill:${j===st.i?'var(--accent)':'var(--line)'}"/>`);
+ s+=`<text class="axt" x="${W-4}" y="10" text-anchor="end">mm (log)</text>`;
+ return s}
+
+function legend(){
+ const germ=Object.entries(GERM).map(([k,[n,v]])=>`<span><i class="sw" style="background:var(${v})"></i>${n}</span>`).join('');
+ const used=new Set();const html=DRAW[STAGES[st.i].id]();(html.match(/lin-([a-z]+)/g)||[]).forEach(m=>used.add(m.slice(4)));
+ const lin=Object.keys(LIN).filter(k=>used.has(k)).map(k=>`<span><i class="sw" style="background:var(--c-${k})"></i>${LIN[k]}</span>`).join('');
+ const sig=Object.entries(SIG).map(([k,s])=>`<span><svg width="18" height="18" viewBox="-11 -11 22 22"><path d="${s.p}" style="fill:var(${s.v})" stroke="var(--edge)" stroke-width="1"/></svg>${s.n}</span>`).join('');
+ return `<div><h4>Germ layer (ทั้งหน้า)</h4><div class="lg">${germ}</div></div>
+ <div><h4>${st.mode==='lin'?'Lineage · สีเดียวกันทุก stage':'Lineage (โหมดนี้ใช้สี germ layer)'}</h4><div class="lg">${lin}</div></div>
+ <div><h4>Signaling molecules</h4><div class="lg">${sig}<span><svg width="44" height="18"><rect x="2" y="2" width="40" height="14" rx="7" fill="var(--panel)" stroke="var(--ink)" stroke-dasharray="3 2"/></svg><i>TF</i></span><span><b style="font-family:var(--f-mono)">Y</b> receptor</span></div></div>`}
+
+function render(){
+ const S=STAGES[st.i];
+ [...$('tl').children].forEach((b,i)=>{b.setAttribute('aria-current',i===st.i);b.setAttribute('aria-selected',i===st.i)});
+ const svg=$('dia');svg.innerHTML=DRAW[S.id]()+oriBand(S.ori);
+ svg.setAttribute('class',`mode-${st.mode} ${st.ori?'':'hide-ori'} ${st.sig?'':'hide-sig'} ${st.tf?'':'hide-tf'} ${st.adult?'':'hide-adult'} ${st.arw?'':'hide-arw'}`);
+ svg.setAttribute('aria-label',`${S.wk}: ${S.t}`);
+ $('viewtag').textContent=S.view;
+ $('crlbox').hidden=!st.crl;
+ $('crlv').textContent=`≈ ${S.crl[0]}–${S.crl[1]} mm`;
+ $('crlsvg').innerHTML=crlSVG(...S.crl);
+ $('legend').innerHTML=legend();
+ $('smeta').innerHTML=`<span class="pill">${S.wk}</span><span class="pill">${S.cs}</span>${S.day?`<span class="pill">${S.day}</span>`:''}${st.crl?`<span class="pill">CRL ${S.crl[0]}–${S.crl[1]} mm</span>`:''}`;
+ $('stitle').textContent=S.t;
+ $('ssub').textContent=`Stage ${st.i+1} of 8`;
+ $('sproc').innerHTML=S.proc.map(p=>`<span>${p}</span>`).join('');
+ $('snotes').innerHTML=S.notes.map(n=>`<li>${n}</li>`).join('');
+ $('scmp').innerHTML=`<tr><th></th><td><span class="src L">L</span> Langman</td><td><span class="src M">M</span> Moore</td></tr>`+S.cmp.map(r=>`<tr><th>${r[0]}</th><td>${r[1].replace(/^L: /,'')}</td><td>${r[2].replace(/^M: /,'')}</td></tr>`).join('');
+ $('adultCard').hidden=!st.adult;
+ const ad=$('adult');ad.innerHTML=adultSVG(S.adult);ad.setAttribute('class','mode-'+st.mode);
+ $('adultNote').textContent=S.adultNote;
+ for(const [id,k] of [['t-ori','ori'],['t-arw','arw'],['t-sig','sig'],['t-tf','tf'],['t-crl','crl'],['t-adult','adult']])$(id).setAttribute('aria-pressed',st[k]);
+ $('m-lin').setAttribute('aria-pressed',st.mode==='lin');$('m-germ').setAttribute('aria-pressed',st.mode==='germ');
+ renderTable();renderCards();
+}
+function renderTable(){
+ const S=STAGES[st.i].id,q=st.q.toLowerCase();
+ $('f-all').setAttribute('aria-pressed',st.filt==='all');$('f-stage').setAttribute('aria-pressed',st.filt==='stage');
+ const rows=ROWS.filter(r=>(st.filt==='all'||r[0]===S)&&(!q||r.join(' ').toLowerCase().includes(q)));
+ $('tbody').innerHTML=rows.map(r=>`<tr class="${r[0]===S?'hl':''}"><td><span class="lin" style="background:var(--c-${r[1]})"></span>${r[2]}</td><td>${r[3]}</td><td>${r[4]}</td><td>${r[5]}</td><td>${r[6]}</td><td>${r[7]}</td></tr>`).join('')||`<tr><td colspan="6">ไม่พบแถวที่ตรงกับ "${st.q}" ลองคำอื่น หรือกด All</td></tr>`;
+}
+function renderCards(){
+ const opts=[['all','All'],...STAGES.map((s,i)=>[s.id,`${i+1} · ${s.short}`])];
+ $('afil').innerHTML=opts.map(([k,n])=>`<button class="fbtn" data-k="${k}" aria-pressed="${st.af===k}">${n}</button>`).join('');
+ [...$('afil').children].forEach(b=>b.onclick=()=>{st.af=b.dataset.k;renderCards()});
+ const list=ANOM.filter(a=>st.af==='all'||a.st===st.af);
+ $('cards').innerHTML=list.map(a=>{const si=STAGES.findIndex(s=>s.id===a.st);return `<article class="ac" style="border-top-color:var(--c-${a.col})">
+  <h3>${a.n}</h3><div class="th">${a.th}</div>
+  <dl><dt>ขั้นตอนที่ผิดพลาด</dt><dd>${a.step}</dd><dt>Teratogen / genetic association</dt><dd>${a.ter}</dd><dt>อาการ / ภาพทางคลินิก</dt><dd>${a.cl}</dd><dt>Incidence</dt><dd>${a.inc}</dd></dl>
+  <button class="go" data-i="${si}">ดู stage ${si+1}: ${STAGES[si].short} ↑</button></article>`}).join('')||'<p>ไม่มีการ์ดสำหรับ stage นี้</p>';
+ [...document.querySelectorAll('.go')].forEach(b=>b.onclick=()=>{go(+b.dataset.i);document.querySelector('.stage').scrollIntoView({behavior:'smooth',block:'start'})});
+}
+
+buildTimeline();
+for(const [id,k] of [['t-ori','ori'],['t-arw','arw'],['t-sig','sig'],['t-tf','tf'],['t-crl','crl'],['t-adult','adult']])$(id).onclick=()=>{st[k]=!st[k];save();render()};
+$('m-lin').onclick=()=>{st.mode='lin';save();render()};$('m-germ').onclick=()=>{st.mode='germ';save();render()};
+$('f-all').onclick=()=>{st.filt='all';renderTable()};$('f-stage').onclick=()=>{st.filt='stage';renderTable()};
+$('q').oninput=e=>{st.q=e.target.value;renderTable()};
+$('tl').addEventListener('keydown',e=>{if(e.key==='ArrowRight'){go(Math.min(7,st.i+1));$('tl').children[st.i].focus()}if(e.key==='ArrowLeft'){go(Math.max(0,st.i-1));$('tl').children[st.i].focus()}});
+st.i=Math.min(Math.max(0,st.i|0),7);
+{const k=STAGES.findIndex(x=>x.id===location.hash.slice(1));if(k>=0)st.i=k}
+render();
+window.addEventListener('hashchange',()=>{const k=STAGES.findIndex(x=>x.id===location.hash.slice(1));if(k>=0&&k!==st.i)go(k)});
+</script>
+
+</body></html>

@@ -1,0 +1,785 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>KUB Gross Anatomy</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media=\'all\'">
+<link rel="stylesheet" href="../design/sb.css">
+<style>
+/* Layout: sb-hero, vertical grouped contents (sidebar ≥1000px, drawer on phones), then a stage of [diagram card | notes card], lecture figures strip below.
+   Content colours (anatomy): artery, vein, lymph, nerve, kidney tissue, urinary tract, fat, fascia, muscle, bone, gland. */
+:root{
+  --a-art:#D23C3C; --a-vein:#2F64C8; --a-lymph:#2E9A50; --a-nerve:#D9A21B;
+  --a-cortex:#D98B74; --a-medulla:#B4564A; --a-uro:#E2B44C; --a-blad:#E9A08F; --a-fat:#F3D77A; --a-fat2:#F7E6A8;
+  --a-fascia:#4B5563; --a-perit:#4F86C6; --a-musc:#CF7468; --a-musc2:#E3A196; --a-bone:#ECE3CE; --a-gland:#E39A2D; --a-glandm:#9C5B2E;
+  --a-edge:rgba(20,16,14,.62); --a-cav:#FBF7F0; --a-skin:#F2DCCB; --a-prost:#C7A2C9;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}
+*{box-sizing:border-box}
+body{margin:0;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding:1rem max(16px,env(safe-area-inset-right,0px)) 5rem max(16px,env(safe-area-inset-left,0px))}
+.shell{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:1.25rem;align-items:start}
+.side{position:sticky;top:.75rem;max-height:calc(100vh - 1.5rem);overflow:auto;padding:.5rem;scrollbar-width:thin}
+.mbar{display:none}
+@media (max-width:1000px){.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}
+ .mbar{display:flex;position:sticky;top:0;z-index:20;gap:.5rem;align-items:center;margin:0 -16px;padding:.55rem 16px;background:color-mix(in srgb,var(--sb-bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--sb-line)}}
+.mbar .open{flex:1;min-width:0;display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:inherit;cursor:pointer;text-align:left}
+.mbar .open svg{flex:none;width:1.1rem;height:1.1rem;color:var(--sb-accent)}
+.mbar .open span{min-width:0;display:flex;flex-direction:column}
+.mbar .open small{font:700 .625rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.mbar .open b{font:600 .9375rem/1.25 var(--sb-font);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mbar .ar{flex:none;width:2.6rem;height:2.6rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:700 1rem var(--sb-font);cursor:pointer}
+.mbar .ar:disabled{opacity:.35}
+.drawer{position:fixed;inset:0;z-index:90;display:flex}
+.drawer[hidden]{display:none}
+.drawer .pane{width:min(86vw,22rem);height:100%;overflow:auto;background:var(--sb-bg);padding:calc(env(safe-area-inset-top,0px) + .75rem) .75rem calc(env(safe-area-inset-bottom,0px) + 1rem);box-shadow:4px 0 30px rgba(0,0,0,.2);animation:sl .18s ease-out}
+@keyframes sl{from{transform:translateX(-30px);opacity:.6}to{transform:none;opacity:1}}
+.drawer .dim{flex:1;background:rgba(0,0,0,.35)}
+.drawer .dh2{display:flex;justify-content:space-between;align-items:center;padding:.25rem .4rem .6rem}
+.drawer .dh2 b{font:750 1.125rem var(--sb-font)}
+.drawer .dh2 button{border:0;background:var(--sb-surface2);color:var(--sb-ink);border-radius:50%;width:2.25rem;height:2.25rem;font-size:1rem;cursor:pointer}
+.toc .prog{display:flex;align-items:center;gap:.5rem;font:500 .75rem var(--sb-font);color:var(--sb-muted);padding:0 .4rem .6rem}
+.toc .prog i{flex:1;height:.3rem;border-radius:1rem;background:var(--sb-surface2);overflow:hidden}
+.toc .prog i b{display:block;height:100%;background:var(--sb-accent)}
+.toc .g{margin-bottom:.25rem}
+.toc .gh{width:100%;display:flex;align-items:center;gap:.5rem;padding:.55rem .5rem;border:0;background:none;color:var(--sb-ink);font:700 .875rem var(--sb-font);cursor:pointer;border-radius:10px;text-align:left}
+.toc .gh:hover{background:var(--sb-surface2)}
+.toc .gh .n{margin-left:auto;font:600 .75rem var(--sb-mono);color:var(--sb-muted)}
+.toc .gh .cv{color:var(--sb-muted);transition:transform .15s;font-size:.75rem}
+.toc .g[data-open="true"] .gh .cv{transform:rotate(90deg)}
+.toc ul{list-style:none;margin:0 0 .35rem;padding:0 0 0 .55rem;border-left:2px solid var(--sb-line);margin-left:.95rem}
+.toc .g[data-open="false"] ul{display:none}
+.toc li a{display:flex;align-items:center;gap:.45rem;padding:.42rem .55rem;border-radius:9px;color:var(--sb-ink2);text-decoration:none;font:500 .875rem/1.3 var(--sb-font)}
+.toc li a:hover{background:var(--sb-surface2)}
+.toc li a[aria-current="true"]{background:var(--sb-ink);color:var(--sb-bg);font-weight:650}
+.toc li a .ck{flex:none;width:.95rem;height:.95rem;border-radius:50%;border:1.5px solid var(--sb-line);display:grid;place-items:center;font-size:.55rem;color:transparent}
+.toc li a .ck.on{background:var(--sb-good);border-color:var(--sb-good);color:#fff}
+.toc li a[aria-current="true"] .ck{border-color:var(--sb-bg)}
+.toc ol{list-style:none;margin:.1rem 0 .3rem 1.4rem;padding:0;display:grid;gap:.05rem}
+.toc ol a{padding:.28rem .5rem;font-size:.8125rem;color:var(--sb-muted)}
+.toc ol a:hover{color:var(--sb-ink)}
+.notes h3{scroll-margin-top:4.5rem}
+.stage{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1rem;margin-top:1rem;align-items:start}
+@media (max-width:1180px){.stage{grid-template-columns:minmax(0,1fr)}}
+.card{padding:1rem}
+.dh{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.dh h2{margin:0;font:750 1.25rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.dh .k{font:700 .6875rem/1 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-accent);margin-bottom:.25rem}
+.tools{display:flex;gap:.35rem;flex-wrap:wrap}
+.dia{border-radius:12px;background:var(--sb-plate);background-image:linear-gradient(var(--sb-grid) 1px,transparent 1px),linear-gradient(90deg,var(--sb-grid) 1px,transparent 1px);background-size:32px 32px;overflow:hidden}
+.dia svg{display:block;width:100%;height:auto}
+.notes h3{margin:.25rem 0 .5rem;font:700 1rem/1.3 var(--sb-font)}
+.notes ul{margin:0 0 .9rem;padding-left:1.1rem;display:grid;gap:.4rem}
+.notes li{font-size:.9375rem;color:var(--sb-ink2)}
+.notes li b{color:var(--sb-ink);font-weight:650}
+.notes .pearl{background:var(--sb-accent-soft);border-radius:12px;padding:.7rem .85rem;font-size:.875rem;color:var(--sb-ink);margin-bottom:.8rem}
+.notes .pearl b{color:var(--sb-accent)}
+.notes table{width:100%;border-collapse:collapse;font-size:.8125rem;margin:.25rem 0 .9rem}
+.notes th{text-align:left;padding:.4rem .35rem}
+.notes td{padding:.45rem .35rem;vertical-align:top;color:var(--sb-ink2)}
+.notes td:first-child{color:var(--sb-ink);font-weight:600;white-space:nowrap}
+.figs{margin-top:1rem}
+.steps{display:flex;gap:.6rem;margin-top:1rem}
+.steps button{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:.75rem .9rem;border-radius:14px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);cursor:pointer;text-align:left;font:inherit}
+.steps button.nx{align-items:flex-end;text-align:right}
+.steps small{font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.steps b{font:600 .9375rem var(--sb-font)}
+.steps .pg{flex:none;align-self:center;font:600 .8125rem var(--sb-mono);color:var(--sb-muted)}
+.figs h3{margin:0 0 .6rem;font:700 1rem var(--sb-font);display:flex;gap:.5rem;align-items:baseline}
+.figs h3 span{font:500 .8125rem var(--sb-font);color:var(--sb-muted)}
+.strip{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.35rem}
+.fig{flex:none;width:13rem;border:1px solid var(--sb-line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in;padding:0;text-align:left}
+.fig img{display:block;width:100%;height:9rem;object-fit:contain;background:#fff}
+.fig span{display:block;padding:.45rem .6rem;font:500 .75rem/1.3 var(--sb-font);color:#3D4450;background:#F5F6F8;border-top:1px solid #E3E6EB}
+.legend{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.7rem;font-size:.75rem;color:var(--sb-muted)}
+.legend i{display:inline-block;width:.75rem;height:.75rem;border-radius:3px;margin-right:.3rem;vertical-align:-.1rem;border:1px solid var(--a-edge)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.9);display:flex;flex-direction:column}
+.lb[hidden]{display:none}
+.lb .bar{display:flex;gap:.5rem;align-items:center;padding:calc(env(safe-area-inset-top,0px) + .6rem) 1rem .6rem;color:#fff}
+.lb .bar b{flex:1;font:600 .9375rem var(--sb-font)}
+.lb button{border:0;border-radius:10px;background:rgba(255,255,255,.14);color:#fff;font:700 1rem var(--sb-font);min-width:2.5rem;height:2.5rem;cursor:pointer}
+.lb .sc{flex:1;overflow:auto;display:block;touch-action:pan-x pan-y pinch-zoom}
+.lb .sc>*{display:block;margin:1rem auto;max-width:none}
+.lb{background:rgba(8,10,14,.96)}
+.lb img,.lb .zsvg{width:min(96vw,1000px);height:auto;background:#fff;border-radius:6px;transition:width .15s}
+.lb .zsvg{background:var(--sb-plate)}.lb .zsvg svg{display:block;width:100%;height:auto}
+.dia{cursor:zoom-in}
+/* svg */
+.t{font:600 12px var(--sb-font);fill:var(--sb-ink);paint-order:stroke;stroke:var(--sb-plate);stroke-width:3.2px;stroke-linejoin:round}
+.t.s{font-size:10.5px;font-weight:500}.t.m{fill:var(--sb-muted);font-weight:500}.t.b{font-size:14px;font-weight:750}.t.h{font-size:13px;font-weight:700;fill:var(--sb-accent)}
+.t.w{fill:#fff;stroke:rgba(0,0,0,.35);stroke-width:2.4px}
+.ld{fill:none;stroke:var(--sb-ink2);stroke-width:.9;opacity:.75}.ldd{fill:var(--sb-ink2)}
+.f{stroke:var(--a-edge);stroke-width:1.3;stroke-linejoin:round}
+.v,.vo{fill:none;stroke-linecap:round;stroke-linejoin:round}.vo{stroke:var(--a-edge)}
+.guide{stroke:var(--sb-muted);stroke-width:.8;stroke-dasharray:3 4;opacity:.45}
+.f.art{fill:var(--a-art)}.v.art{stroke:var(--a-art)}.f.vein{fill:var(--a-vein)}.v.vein{stroke:var(--a-vein)}.v.lymph{stroke:var(--a-lymph)}.f.lymph{fill:var(--a-lymph)}
+.v.nerve{stroke:var(--a-nerve)}.f.nerve{fill:var(--a-nerve)}.f.cortex{fill:var(--a-cortex)}.f.medulla{fill:var(--a-medulla)}.f.uro{fill:var(--a-uro)}.v.uro{stroke:var(--a-uro)}
+.f.blad{fill:var(--a-blad)}.f.fat{fill:var(--a-fat)}.f.fat2{fill:var(--a-fat2)}.f.musc{fill:var(--a-musc)}.f.musc2{fill:var(--a-musc2)}.v.musc{stroke:var(--a-musc)}
+.f.bone{fill:var(--a-bone)}.v.bone{stroke:var(--a-bone)}.f.gland{fill:var(--a-gland)}.f.glandm{fill:var(--a-glandm)}.f.cav{fill:var(--a-cav)}.f.skin{fill:var(--a-skin)}.f.prost{fill:var(--a-prost)}
+.fascia{fill:none;stroke:var(--a-fascia);stroke-width:2.2;stroke-dasharray:6 3}.perit{fill:none;stroke:var(--a-perit);stroke-width:2.6}
+.hatch{fill:url(#hatch)}
+.stone{fill:#8A8F99;stroke:var(--a-edge);stroke-width:1}
+.ring{fill:none;stroke:var(--sb-bad);stroke-width:2.2;stroke-dasharray:3 2}
+.num{fill:var(--sb-bad)}.numt{font:800 11px var(--sb-font);fill:#fff}
+.box{fill:var(--sb-surface);stroke:var(--sb-line);stroke-width:1.2}
+.box.ar{fill:color-mix(in srgb,var(--a-art) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-art) 55%,transparent)}
+.box.vn{fill:color-mix(in srgb,var(--a-vein) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-vein) 55%,transparent)}
+.box.gl{fill:color-mix(in srgb,#8E6CCB 18%,var(--sb-surface));stroke:color-mix(in srgb,#8E6CCB 60%,transparent)}
+.arw{fill:none;stroke:var(--sb-ink2);stroke-width:1.4;marker-end:url(#ah)}
+.zone{stroke:rgba(0,0,0,.25);stroke-width:.8}
+@media (prefers-reduced-motion:no-preference){.dia svg{animation:fi .25s ease-out}@keyframes fi{from{opacity:.4}to{opacity:1}}}
+/* continuous chapter flow */
+#flow{display:block}
+.ghead{margin:.5rem 0 1rem;padding:1rem 1.1rem;border-radius:var(--sb-r-lg);background:var(--sb-surface);border:1px solid var(--sb-line)}
+.ghead small{font:600 .75rem var(--sb-font);color:var(--sb-muted);letter-spacing:.04em}
+.ghead h2{margin:.2rem 0 .6rem;font:800 1.375rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.gchips{display:flex;flex-wrap:wrap;gap:.35rem}
+.gchips a{font:500 .8125rem var(--sb-font);color:var(--sb-ink2);text-decoration:none;padding:.3rem .65rem;border-radius:999px;background:var(--sb-surface2)}
+.gchips a:hover{color:var(--sb-ink)}
+.topic{scroll-margin-top:1rem;padding-bottom:1.75rem}
+.topic+.topic{padding-top:1.75rem;border-top:1px dashed var(--sb-line)}
+@media (max-width:1000px){.topic{scroll-margin-top:4.25rem}}
+.topic .stage{margin-top:0}
+.topic .figs{margin-top:1rem}
+.segc{display:inline-flex;gap:.35rem;flex-wrap:wrap}
+.steps{margin-top:.5rem}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Anatomy</div>
+    <h1>KUB Gross Anatomy</h1>
+    <p class="sb-lede">ไต ต่อมหมวกไต ท่อไต กระเพาะปัสสาวะ ท่อปัสสาวะ และผนังช่องท้องด้านหลัง เลือกหัวข้อจากสารบัญ (แนวตั้ง แบ่งตามอวัยวะ) ภาพวาดแต่ละหัวข้อเปิด/ปิดป้ายได้ และกดปุ่มป้ายในแอปเพื่อเล่นทาย label ด้านล่างมีรูปจริงจากเลคเชอร์ แตะเพื่อขยาย</p>
+    <div class="sb-sources"><span class="sb-src"><i class="lec">Lec</i>Gross anatomy of kidney, ureters, urinary bladder and urethra</span><span class="sb-src"><i class="grays">Gray</i>Gray's Anatomy for Students 4e · Ch 4 &amp; 5</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>
+/* ================= helpers ================= */
+const T=(x,y,s,o={})=>`<text class="t${o.c?" "+o.c:""}" x="${x}" y="${y}" text-anchor="${o.a||"middle"}"${o.s?` font-size="${o.s}"`:""}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:""}>${s}</text>`;
+const TL=(x,y,ls,o={})=>ls.map((l,i)=>T(x,y+i*(o.lh||14),l,o)).join("");
+const LD=(x1,y1,x2,y2)=>`<path class="ld" d="M${x1},${y1} L${x2},${y2}"/><circle class="ldd" cx="${x1}" cy="${y1}" r="1.8"/>`;
+const F=(c,d,x="")=>`<path class="f ${c}" d="${d}" ${x}/>`;
+const V=(c,d,w,x="")=>`<path class="vo" d="${d}" stroke-width="${w+2.2}" ${x}/><path class="v ${c}" d="${d}" stroke-width="${w}" ${x}/>`;
+const C=(c,cx,cy,r)=>`<circle class="f ${c}" cx="${cx}" cy="${cy}" r="${r}"/>`;
+const E=(c,cx,cy,rx,ry,rot=0)=>`<ellipse class="f ${c}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"${rot?` transform="rotate(${rot} ${cx} ${cy})"`:""}/>`;
+function sm(p,closed=true){const n=p.length,Q=i=>p[(i+n)%n];let d=`M${p[0][0].toFixed(1)},${p[0][1].toFixed(1)}`;const last=closed?n:n-1;
+ for(let i=0;i<last;i++){const a=closed?Q(i-1):p[Math.max(i-1,0)],b=Q(i),c=closed?Q(i+1):p[Math.min(i+1,n-1)],e=closed?Q(i+2):p[Math.min(i+2,n-1)];
+  d+=` C${(b[0]+(c[0]-a[0])/6).toFixed(1)},${(b[1]+(c[1]-a[1])/6).toFixed(1)} ${(c[0]-(e[0]-b[0])/6).toFixed(1)},${(c[1]-(e[1]-b[1])/6).toFixed(1)} ${c[0].toFixed(1)},${c[1].toFixed(1)}`}
+ return d+(closed?"Z":"")}
+function rot(p,cx,cy,a){const c=Math.cos(a),s=Math.sin(a);return p.map(([x,y])=>[cx+(x-cx)*c-(y-cy)*s,cy+(x-cx)*s+(y-cy)*c])}
+/* kidney bean: hilum on side (+1 right, -1 left), tilt in radians */
+function beanPts(cx,cy,w,h,side=1,tilt=0,n=26){const p=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2,ca=Math.cos(a),sa=Math.sin(a);let x=cx+ca*w/2,y=cy+sa*h/2;
+  if(ca*side>.55&&Math.abs(sa)<.5){x-=side*w*.2*(1-Math.abs(sa)/.5)}p.push([x,y])}return rot(p,cx,cy,tilt)}
+const bean=(...a)=>sm(beanPts(...a));
+const mir=(p,X=640)=>p.map(([x,y])=>[X-x,y]);
+const DEFS=`<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="transparent"/><line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,.75)" stroke-width="2"/></pattern>
+ <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" style="fill:var(--sb-ink2)"/></marker></defs>`;
+const svg=(body,vb="0 0 640 520")=>`<svg viewBox="${vb}" role="img" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}</svg>`;
+const S={g:'<b class="sbb grays">Gray</b>',l:'<b class="sbb lec">Lec</b>',x:'<b class="sbb gen">Gen</b>'};
+const LEG={art:["Artery","--a-art"],vein:["Vein","--a-vein"],lymph:["Lymph","--a-lymph"],nerve:["Nerve","--a-nerve"],cortex:["Cortex","--a-cortex"],medulla:["Medulla","--a-medulla"],uro:["Collecting system / ureter","--a-uro"],blad:["Bladder","--a-blad"],fat:["Fat","--a-fat"],musc:["Muscle","--a-musc"],bone:["Bone","--a-bone"],gland:["Suprarenal","--a-gland"]};
+let ST={labels:true,sex:"m",view:"ant",lymph:true,nerve:true};
+
+/* ================= shared pieces ================= */
+function vertebrae(x,levels,w=48,h=32){return levels.map(([n,y])=>`<rect class="f bone" x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="7"/>`).join("")}
+function ilium(side=1){const p=[[292,334],[236,304],[160,288],[104,300],[98,332],[140,362],[214,392],[262,408],[292,386]];return F("bone",sm(side>0?p:mir(p)))}
+
+/* ================= sections ================= */
+const SEC=[];
+const GN={"Kidney":"ไต · Kidney","Suprarenal gland":"ต่อมหมวกไต · Suprarenal","Ureter":"ท่อไต · Ureter","Bladder":"กระเพาะปัสสาวะ · Bladder","Urethra":"ท่อปัสสาวะ · Urethra","Posterior abdominal wall":"ผนังช่องท้องด้านหลัง","Clinical":"Clinical"};
+/* 1 · location */
+SEC.push({id:"loc",k:"Kidney",t:"Location & position",leg:["cortex","gland","art","vein","uro","musc","bone"],figs:[["loc-1","Retroperitoneal position (Gray Fig 4.149)"],["loc-2","Urinary system, anterior view"]],
+draw(){
+ const LV=[["T11",46],["T12",88],["L1",132],["L2",176],["L3",220],["L4",264],["L5",308]];
+ let b="";
+ b+=F("musc2","M58,104 C100,24 262,10 304,44 L336,44 C378,10 540,24 582,104 L570,112 C530,48 390,40 336,62 L304,62 C250,40 110,48 70,112 Z");
+ LV.forEach(([n,y])=>{b+=`<line class="guide" x1="40" y1="${y}" x2="600" y2="${y}"/>`+T(22,y+4,n,{c:"m s",a:"start"})});
+ b+=vertebrae(320,LV)+F("bone",sm([[292,326],[348,326],[352,360],[338,402],[320,428],[302,402],[288,360]]));
+ b+=ilium(1)+ilium(-1);
+ const ps=[[293,90],[284,150],[268,230],[250,310],[236,390],[230,452],[264,454],[270,392],[282,316],[296,236],[305,160],[305,92]];
+ b+=F("musc",sm(ps))+F("musc",sm(mir(ps)));
+ const ql=[[262,142],[214,146],[186,158],[178,250],[186,300],[244,300],[256,240]];
+ b+=F("musc2",sm(ql))+F("musc2",sm(mir(ql)));
+ b+=V("bone","M292,98 C250,102 210,120 178,152",8)+V("bone","M292,56 C238,62 180,94 130,142",8)+V("bone","M348,56 C402,62 460,94 510,142",8)+V("bone","M348,98 C390,102 430,120 462,152",8);
+ b+=F("cortex",bean(205,200,96,150,1,.18))+F("cortex",bean(435,180,96,150,-1,-.18));
+ b+=F("gland",sm([[190,134],[208,94],[236,126],[220,138]]))+F("gland",sm([[394,154],[398,118],[418,96],[438,100],[422,112],[410,132],[404,158]]));
+ b+=V("gonad vein","M262,330 C276,282 292,242 300,216",2.4)+V("vein","M402,330 C396,272 392,222 390,182",2.4);
+ b+=V("art","M326,152 C300,156 270,172 246,190",6);
+ b+=V("vein","M302,40 L302,282",17)+V("vein","M302,282 C290,310 276,336 262,372",11)+V("vein","M302,282 C320,306 344,330 368,364",11);
+ b+=V("art","M334,40 L334,264",15)+V("art","M334,264 C318,292 300,322 280,352",9)+V("art","M334,264 C350,292 368,322 388,352",9);
+ b+=V("art","M342,146 C366,150 388,160 404,170",6)+C("art",334,136,6);
+ b+=V("vein","M398,180 C368,176 340,164 308,160",7)+V("vein","M246,202 C264,194 284,182 298,174",7);
+ b+=V("uro","M244,212 C254,252 262,300 266,340 C268,372 272,404 296,452",4.5)+V("uro","M396,208 C390,252 380,300 376,340 C374,372 370,404 344,452",4.5);
+ b+=E("blad",320,468,42,26);
+ if(ST.labels){b+=T(320,30,"Diaphragm",{c:"s m"})+TL(150,84,["Right","suprarenal"],{a:"end",c:"s"})+LD(210,110,152,90)+TL(508,78,["Left","suprarenal"],{a:"start",c:"s"})+LD(420,104,506,84)+
+  T(204,212,"Right kidney",{c:"b"})+T(438,186,"Left kidney",{c:"b"})+T(120,150,"Rib XI",{a:"end",c:"s"})+T(166,170,"Rib XII",{a:"end",c:"s"})+T(518,150,"Rib XI",{a:"start",c:"s"})+T(472,172,"Rib XII",{a:"start",c:"s"})+
+  T(366,62,"Aorta",{a:"start",c:"s"})+T(282,62,"IVC",{a:"end",c:"s"})+T(372,128,"SMA",{a:"start",c:"s"})+LD(338,134,370,126)+
+  TL(632,252,["Left renal v.","ผ่านหน้า aorta","ใต้ SMA"],{a:"end",c:"s"})+LD(352,163,560,244)+TL(26,252,["Right renal a.","ผ่านหลัง IVC"],{a:"start",c:"s"})+LD(286,158,104,258)+
+  T(214,382,"Ureter",{a:"end",c:"s"})+LD(266,350,216,378)+T(320,502,"Urinary bladder",{c:"s"})+T(226,440,"Psoas major",{a:"end",c:"s"})+LD(244,424,228,436)+
+  TL(26,312,["Quadratus","lumborum"],{a:"start",c:"s"})+LD(196,270,92,308)}
+ return svg(b)},
+notes:()=>`<h3>ตำแหน่ง</h3><ul>
+ <li><b>Retroperitoneal</b> อยู่หลัง parietal peritoneum ใน extraperitoneal tissue ข้างกระดูกสันหลัง ${S.l}${S.g}</li>
+ <li>อยู่ระหว่าง <b>T12–L3</b> · <b>ไตขวาต่ำกว่าซ้าย</b> เพราะมีตับอยู่ด้านบน ${S.l}${S.g}</li>
+ <li>ไตซ้าย <b>ยาวและเพรียวกว่า</b> และอยู่ใกล้ midline มากกว่า ${S.g}</li>
+ <li>ขั้วบนไตขวาอยู่หน้า <b>rib XII</b> · ขั้วบนไตซ้ายอยู่หน้า <b>rib XI และ XII</b> → costodiaphragmatic recess ของ pleura ยื่นลงมาหลังไต ${S.g}</li>
+ <li>ขนาด ~ <b>10 × 5 × 2.5 cm</b> · Hilum อยู่ระดับ ~L1 ${S.l}${S.x}</li></ul>
+ <div class="pearl"><b>Surface marking:</b> ด้านหลัง ไตอยู่ข้าง spinous process T12–L3 · ขั้วบนไต 2 ข้างอยู่ใต้ rib XII/XI · ไตขยับลงได้ ~2–3 cm ตอนหายใจเข้า ${S.x}</div>
+ <h3>หลอดเลือดใหญ่</h3><ul>
+ <li><b>Right renal a.</b> ยาวกว่า และผ่าน <b>หลัง IVC</b> ${S.g}</li>
+ <li><b>Left renal v.</b> ยาวกว่า ผ่าน <b>หน้า aorta ใต้ SMA</b> → ถูกบีบได้ (nutcracker) ${S.g}</li></ul>`});
+
+/* 2 · relations */
+SEC.push({id:"rel",k:"Kidney",t:"Relations",tools:[["view",[["ant","Anterior"],["post","Posterior"]]]],figs:[["rel-1","Anterior & posterior relations (Gray Fig 4.150–4.151)"]],
+draw(){
+ let b="";const K1=beanPts(190,250,150,250,1,.1),K2=beanPts(450,236,150,250,-1,-.1);
+ b+=`<clipPath id="ck1"><path d="${sm(K1)}"/></clipPath><clipPath id="ck2"><path d="${sm(K2)}"/></clipPath>`;
+ const Z=(clip,pts,col,hatch,lab,lx,ly,o={})=>`<g clip-path="url(#${clip})"><path class="zone" d="M${pts.map(p=>p.join(",")).join(" L")}Z" style="fill:${col}"/>${hatch?`<path d="M${pts.map(p=>p.join(",")).join(" L")}Z" class="hatch"/>`:""}</g>`+(ST.labels&&lab?TL(lx,ly,lab,{c:"s "+(o.c||""),a:o.a||"middle"}):"");
+ if(ST.view==="ant"){
+  b+=Z("ck1",[[100,110],[268,110],[256,148],[206,160],[160,150]],"var(--a-gland)",0,["Suprarenal"],214,136)+
+   Z("ck1",[[100,150],[160,150],[206,160],[256,148],[275,168],[238,232],[206,262],[100,262]],"#A9584A",1,["Liver"],170,210,{c:"w"})+
+   Z("ck1",[[238,232],[275,168],[300,168],[300,330],[244,310],[226,262]],"#E7A35A",0,["Duodenum","(2nd part)"],262,250)+
+   Z("ck1",[[100,262],[206,262],[220,300],[196,400],[100,400]],"#6DAE8C",0,["Right colic","flexure"],156,322)+
+   Z("ck1",[[206,262],[226,262],[244,310],[300,330],[300,400],[196,400],[220,300]],"#E6A8B4",1,["Small","intestine"],244,346);
+  b+=Z("ck2",[[350,96],[440,96],[432,138],[392,160],[350,156]],"var(--a-gland)",0,["Suprarenal"],396,130)+
+   Z("ck2",[[350,156],[392,160],[432,138],[440,96],[478,96],[468,186],[410,206],[350,200]],"#D9727A",1,["Stomach"],420,176,{c:"w"})+
+   Z("ck2",[[440,96],[560,96],[560,206],[492,206],[468,186],[478,96]],"#8E5A9E",1,["Spleen"],512,160,{c:"w"})+
+   Z("ck2",[[350,200],[410,206],[468,186],[492,206],[560,206],[560,256],[350,262]],"#F0C36A",0,["Pancreas"],452,236)+
+   Z("ck2",[[462,256],[560,256],[560,400],[482,400]],"#6DAE8C",0,["Left colic","flexure /","desc. colon"],516,300)+
+   Z("ck2",[[350,262],[462,256],[482,400],[350,400]],"#E6A8B4",1,["Jejunum"],410,330);
+  b+=`<path class="f" d="${sm(K1)}" style="fill:none;stroke-width:2"/><path class="f" d="${sm(K2)}" style="fill:none;stroke-width:2"/>`;
+  
+  if(ST.labels)b+=T(190,44,"Right kidney · anterior",{c:"b"})+T(450,44,"Left kidney · anterior",{c:"b"})+
+   `<rect x="150" y="452" width="16" height="12" rx="2" style="fill:#999"/><rect x="150" y="452" width="16" height="12" class="hatch"/>`+T(174,462,"ลายขีด = มี peritoneum คั่น",{a:"start",c:"s"})+
+   `<rect x="370" y="452" width="16" height="12" rx="2" style="fill:#999"/>`+T(394,462,"ทึบ = ติดกับไตโดยตรง",{a:"start",c:"s"});
+ }else{
+  const post=(clip,cx,cy,ribs)=>{let s=Z(clip,[[cx-90,cy-140],[cx+90,cy-140],[cx+90,cy-52],[cx-90,cy-52]],"#C98F86",0,["Diaphragm"],cx,cy-80)+
+    Z(clip,[[cx-90,cy-52],[cx-28,cy-52],[cx-28,cy+150],[cx-90,cy+150]],"#CF7468",0,cx<320?["Transversus","abdominis"]:["Psoas","major"],cx-58,cy+70)+
+    Z(clip,[[cx-28,cy-52],[cx+30,cy-52],[cx+30,cy+150],[cx-28,cy+150]],"#E3A196",0,["Quadratus","lumborum"],cx,cy+20)+
+    Z(clip,[[cx+30,cy-52],[cx+90,cy-52],[cx+90,cy+150],[cx+30,cy+150]],"#CF7468",0,cx<320?["Psoas","major"]:["Transversus","abdominis"],cx+60,cy+70);
+   return s+ribs};
+  const nv=(cx,cy)=>V("nerve",`M${cx-100},${cy+40} L${cx+100},${cy+80}`,2.4)+V("nerve",`M${cx-100},${cy+82} L${cx+100},${cy+118}`,2.4);
+  b+=post("ck1",190,250,"")+post("ck2",450,236,"");
+  b+=`<path class="f" d="${sm(K1)}" style="fill:none;stroke-width:2"/><path class="f" d="${sm(K2)}" style="fill:none;stroke-width:2"/>`;
+  b+=V("bone","M96,150 C150,170 220,186 300,190",7)+V("bone","M96,190 C150,206 220,222 300,226",7)+V("bone","M344,168 C420,176 480,186 560,196",7);
+  b+=nv(190,250)+nv(450,236);
+  if(ST.labels)b+=T(190,44,"Left kidney · posterior",{c:"b"})+T(450,44,"Right kidney · posterior",{c:"b"})+T(90,146,"Rib XI",{a:"end",c:"s"})+T(90,194,"Rib XII",{a:"end",c:"s"})+T(566,200,"Rib XII",{a:"start",c:"s"})+
+   TL(26,300,["Subcostal n.","Iliohypogastric /","ilio-inguinal n."],{a:"start",c:"s"})+LD(110,292,72,300)+T(320,470,"มองจากด้านหลัง: ไตซ้ายอยู่ทางซ้ายของภาพ",{c:"s m"});
+ }
+ return svg(b)},
+notes:()=>`<h3>Anterior relations</h3><table><tr><th></th><th>ไตขวา</th><th>ไตซ้าย</th></tr>
+ <tr><td>ขั้วบน</td><td>Right suprarenal</td><td>Left suprarenal (medial) · stomach, spleen</td></tr>
+ <tr><td>กลาง</td><td>Liver (มี peritoneum คั่น) · 2nd part duodenum (ติดตรง)</td><td>Pancreas (ติดตรง)</td></tr>
+ <tr><td>ขั้วล่าง</td><td>Right colic flexure (lateral) · small intestine (medial)</td><td>Left colic flexure, desc. colon (lateral) · jejunum (medial)</td></tr></table>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">ตาม Gray Fig 4.150 ${S.g}</p>
+ <h3>Posterior relations</h3><ul>
+ <li>บน: <b>diaphragm</b> · ล่าง เรียงจาก medial → lateral: <b>psoas major → quadratus lumborum → transversus abdominis</b> ${S.g}${S.l}</li>
+ <li>ไตขวาอยู่หน้า <b>rib XII</b> · ไตซ้ายอยู่หน้า <b>rib XI–XII</b> ${S.g}</li>
+ <li>เส้นประสาทและหลอดเลือดที่ผ่านหลังไต: <b>subcostal vessels &amp; n., iliohypogastric n., ilio-inguinal n.</b> ${S.g}</li></ul>
+ <div class="pearl"><b>Clinical:</b> ฝีรอบไต (perinephric abscess) ระคายเคือง psoas → ปวดเวลายืดสะโพก (psoas sign) · ผ่าตัดไตจากด้านหลังต้องระวัง pleura ที่ลงมาถึง rib XII ${S.x}</div>`});
+
+/* 3 · fascia */
+SEC.push({id:"fascia",k:"Kidney",t:"Fat & fascia",leg:["cortex","fat","musc","bone","art","vein"],figs:[["fascia-1","Fat and fascia around the kidney (Gray Fig 4.152)"]],
+draw(){
+ let b="";
+ const body=[[320,62],[462,84],[568,164],[608,276],[590,386],[524,462],[420,496],[320,502],[220,496],[116,462],[50,386],[32,276],[72,164],[178,84]];
+ b+=F("musc2",sm(body))+F("cav",sm(body.map(([x,y])=>[320+(x-320)*.93,290+(y-290)*.9])));
+ b+=F("fat2",sm([[332,320],[420,300],[540,310],[566,360],[540,436],[452,446],[372,420]]))+F("fat2",sm(mir([[332,320],[420,300],[540,310],[566,360],[540,436],[452,446],[372,420]])));
+ b+=F("fat",sm([[396,300],[470,280],[546,300],[560,346],[528,392],[456,402],[396,380],[376,340]]));
+ b+=F("fat",sm(mir([[396,308],[470,288],[546,308],[560,352],[528,398],[456,408],[396,388],[376,348]])));
+ b+=`<path class="fascia" d="M562,342 C562,300 520,270 462,272 C414,274 380,296 352,322"/><path class="fascia" d="M562,342 C562,394 520,416 456,416 C420,416 400,404 388,388"/><path class="fascia" d="M562,342 C576,350 588,370 590,390"/>`;
+ b+=`<path class="fascia" d="M78,348 C78,304 120,278 178,280 C226,282 260,302 288,326"/><path class="fascia" d="M78,348 C78,400 120,422 184,422 C220,422 240,410 252,394"/>`;
+ b+=F("cortex",bean(466,340,124,74,-1,.32))+F("cortex",bean(174,348,124,74,1,-.32));
+ b+=C("bone",320,392,34)+F("bone","M308,420 L332,420 L328,478 L312,478 Z")+F("bone","M290,388 L238,402 L238,412 L290,402 Z")+F("bone","M350,388 L402,402 L402,412 L350,402 Z");
+ b+=E("musc",266,378,26,30,-20)+E("musc",374,378,26,30,20)+E("musc",218,428,40,22,-25)+E("musc",422,428,40,22,25)+E("musc",276,456,30,26)+E("musc",364,456,30,26);
+ b+=C("art",346,346,15)+E("vein",290,348,19,13);
+ b+=`<path class="perit" d="M72,250 C140,240 210,250 262,278 C292,296 352,296 380,278 C432,250 500,240 568,250"/>`;
+ b+=C("bowel",568,292,24).replace('class="f bowel"','class="f" style="fill:#7EB89A"')+C("bowel",72,296,24).replace('class="f bowel"','class="f" style="fill:#7EB89A"');
+ if(ST.labels)b+=T(470,346,"Kidney",{c:"b"})+TL(628,196,["Renal (fibrous)","capsule"],{a:"end",c:"s"})+LD(522,326,600,206)+
+  TL(628,470,["Perirenal","(perinephric) fat"],{a:"end",c:"s"})+LD(512,386,590,462)+TL(400,520-34,["Renal fascia (Gerota)"],{a:"start",c:"s"})+LD(470,416,430,480)+
+  TL(612,412,["Pararenal","fat"],{a:"end",c:"s"})+LD(548,410,584,416)+T(320,236,"Parietal peritoneum",{c:"s"})+T(568,262,"Desc. colon",{c:"s"})+T(72,266,"Asc. colon",{c:"s"})+
+  T(346,322,"Aorta",{c:"s"})+T(288,328,"IVC",{c:"s"})+T(262,346,"Psoas",{c:"s",a:"end"})+TL(178,470,["Quadratus","lumborum"],{c:"s"})+T(320,512,"Erector spinae",{c:"s m"})+
+  TL(616,120,["Transversalis","fascia"],{a:"end",c:"s"})+LD(588,382,608,128)+TL(30,140,["Anterolateral","abdominal wall"],{a:"start",c:"s"})+T(320,180,"Peritoneal cavity",{c:"m s"})+
+  `<g transform="translate(26,24)"><rect width="134" height="70" rx="8" class="box"/>`+T(10,18,"จากในออกนอก",{a:"start",c:"h"})+T(10,34,"1 capsule  2 perirenal fat",{a:"start",c:"s"})+T(10,48,"3 renal fascia",{a:"start",c:"s"})+T(10,62,"4 pararenal fat",{a:"start",c:"s"})+`</g>`;
+ return svg(b,"0 0 640 524")},
+notes:()=>`<h3>4 ชั้น (ในออกนอก)</h3><ul>
+ <li><b>1 · Renal (fibrous) capsule</b> แกะออกง่าย ยกเว้นเวลามีโรค ${S.g}</li>
+ <li><b>2 · Perirenal (perinephric) fat</b> ล้อมไตทั้งลูก ต่อเข้าไปใน hilum และ renal sinus ${S.g}</li>
+ <li><b>3 · Renal fascia (Gerota)</b> หุ้ม fat + ไต + <b>suprarenal</b> (แยกจากไตด้วย septum บางๆ) ${S.g}${S.l}
+  <ul><li>ด้านข้าง: anterior + posterior layer เชื่อมกัน ต่อกับ transversalis fascia</li>
+  <li>Medial: anterior layer คลุมหลอดเลือดที่ hilum ไปเชื่อมกับ connective tissue รอบ aorta/IVC · posterior layer ไปเชื่อม fascia ของ psoas</li>
+  <li>ด้านบน: เชื่อมกันเหนือ suprarenal → ต่อ fascia ของ diaphragm · ด้านล่าง: หุ้ม ureter ลงไป (เปิด)</li></ul></li>
+ <li><b>4 · Pararenal (paranephric) fat</b> อยู่ <b>หลังและหลังข้าง</b> ไต ${S.g}</li></ul>
+ <div class="pearl"><b>Clinical:</b> ต้องกรีด renal fascia ในการผ่าตัดไตทุกแบบ ${S.g} · เพราะ fascia ด้านล่างเปิด ไตที่ไขมันน้อย (ผอมมาก) ลงต่ำได้ (nephroptosis) และหนอง/เลือดรอบไตไหลลงไปตามแนว ureter ได้ ${S.x}</div>`});
+
+/* 4 · structure */
+SEC.push({id:"struct",k:"Kidney",t:"Internal structure",leg:["cortex","medulla","uro","fat","art","vein"],figs:[["struct-1","External features, anterior & posterior (Lec)"],["struct-2","Internal structure, coronal section (Gray Fig 4.153)"]],
+draw(){
+ let b="";const cx=300,cy=262,KP=beanPts(296,262,250,420,1,0,32);
+ b+=F("cortex",sm(KP));
+ b+=F("fat",sm([[350,120],[400,150],[420,200],[426,262],[420,324],[400,376],[350,404],[330,350],[324,262],[330,174]]));
+ const ang=[-100,-136,-168,168,136,100,-64,64];
+ const M1=[352,182],M2=[352,344],PV=[392,264];
+ ang.forEach(a=>{const r=a*Math.PI/180,ca=Math.cos(r),sa=Math.sin(r);
+  const bx=cx+ca*100,by=cy+sa*168,ax=cx+ca*44,ay=cy+sa*82,nx=-sa,ny=ca,hw=Math.abs(a)<70?24:34;
+  const p1=[bx+nx*hw,by+ny*hw],p2=[bx-nx*hw,by-ny*hw],mid=[bx+ca*10,by+sa*10];
+  b+=`<path class="f medulla" d="M${p1} Q${mid[0]+nx*0},${mid[1]} ${p2} L${ax},${ay} Z"/>`;
+  for(let k=-2;k<=2;k++)b+=`<path d="M${bx+nx*hw*k/3},${by+ny*hw*k/3} L${ax+(bx-ax)*.15},${ay+(by-ay)*.15}" style="stroke:rgba(0,0,0,.18);stroke-width:.8"/>`;
+  const tgt=a<-30&&a>-150?M1:a>30&&a<150?M2:PV;
+  b+=V("uro",`M${ax-ca*3},${ay-sa*3} Q${(ax+tgt[0])/2+nx*6},${(ay+tgt[1])/2+ny*6} ${tgt[0]},${tgt[1]}`,7);
+  b+=`<path class="f uro" d="M${ax+nx*13-ca*8},${ay+ny*13-sa*8} Q${ax+ca*6},${ay+sa*6} ${ax-nx*13-ca*8},${ay-ny*13-sa*8} L${ax-nx*8-ca*1},${ay-ny*8-sa*1} Q${ax+ca*2},${ay+sa*2} ${ax+nx*8-ca*1},${ay+ny*8-sa*1}Z"/>`});
+ b+=V("uro",`M${M1} Q372,214 ${PV}`,12)+V("uro",`M${M2} Q372,314 ${PV}`,12);
+ b+=F("uro",sm([[372,236],[402,232],[424,256],[428,292],[412,316],[396,300],[378,284]]));
+ b+=V("uro","M414,312 C424,360 436,420 446,508",11);
+ b+=V("art","M560,232 C500,232 450,236 424,240 C404,242 392,232 380,220",8)+V("art","M424,240 C410,250 398,262 390,276",5)+V("vein","M560,282 C500,282 456,280 430,282",10);
+ if(ST.labels)b+=TL(108,40,["Renal (fibrous)","capsule"],{a:"end",c:"s"})+LD(196,96,112,46)+T(132,94,"Renal cortex",{a:"end",c:"s"})+LD(190,120,134,98)+
+  TL(70,262,["Renal","column"],{a:"end",c:"s"})+LD(196,236,74,258)+TL(70,170,["Renal pyramid","(medulla)"],{a:"end",c:"s"})+LD(216,172,74,170)+
+  T(70,350,"Renal papilla",{a:"end",c:"s"})+LD(256,326,74,346)+T(70,420,"Minor calyx",{a:"end",c:"s"})+LD(274,364,74,416)+
+  T(470,150,"Major calyx",{a:"start",c:"s"})+LD(362,196,468,154)+T(470,184,"Renal sinus (fat)",{a:"start",c:"s"})+LD(410,196,468,188)+
+  T(470,330,"Renal pelvis",{a:"start",c:"s"})+LD(418,296,468,326)+T(470,440,"Ureter",{a:"start",c:"s"})+LD(436,420,468,436)+
+  T(566,226,"Renal a.",{a:"end",c:"s"})+T(566,302,"Renal v.",{a:"end",c:"s"})+T(536,370,"Hilum",{c:"h"})+LD(432,300,520,362);
+ return svg(b)},
+notes:()=>`<h3>ภายนอก</h3><ul>
+ <li>รูปถั่ว มีผิว anterior/posterior, ขั้วบน/ล่าง, ขอบ lateral/medial ${S.l}</li>
+ <li><b>Hilum</b>: ร่องแนวตั้งที่ขอบ medial · มี renal v., renal a., renal pelvis, lymphatics, nerves ผ่าน ${S.l}${S.g}</li>
+ <li>ลำดับที่ hilum จากหน้าไปหลัง: <b>Vein → Artery → Pelvis (VAP)</b> ${S.x}</li>
+ <li><b>Renal sinus</b> คือช่องด้านในที่ต่อจาก hilum มี perinephric fat ต่อเข้าไป ${S.g}</li></ul>
+ <h3>ภายใน</h3><ul>
+ <li><b>Cortex</b>: แถบสีอ่อนที่ล้อม medulla ทั้งหมด · ส่วนที่ยื่นลงไประหว่าง pyramid = <b>renal column</b> ${S.g}</li>
+ <li><b>Medulla</b> = <b>renal pyramids</b> · ฐานหันออกหา cortex ยอด (<b>papilla</b>) หันเข้า sinus ${S.g}</li>
+ <li>Papilla มีรูของ <b>papillary ducts</b> → <b>minor calyx</b> (ครอบ papilla) → หลาย minor รวมเป็น <b>major calyx</b> → 2–3 major รวมเป็น <b>renal pelvis</b> → ureter ${S.g}${S.l}</li></ul>
+ <div class="pearl"><b>Renal lobe</b> = 1 pyramid + cortex ที่ครอบ · ในทารกไตเป็นพู (fetal lobulation) และหายไปหลังคลอด ${S.x}</div>`});
+
+/* 5 · blood supply */
+SEC.push({id:"vessels",k:"Kidney",t:"Blood supply & segments",figs:[["vessels-1","Blood supply of kidney & segments (Lec)"]],
+draw(){
+ let b="";const SEG=[["Apical","#8E6CCB"],["Anterior superior","#4A90D9"],["Anterior inferior","#3FAE7A"],["Inferior","#E0B03A"],["Posterior","#E0715A"]];
+ const KA=beanPts(120,250,150,250,1,0),KB=beanPts(300,250,150,250,-1,0);
+ b+=`<clipPath id="ca"><path d="${sm(KA)}"/></clipPath><clipPath id="cb"><path d="${sm(KB)}"/></clipPath>`;
+ const band=(clip,y0,y1,col,x0=30,x1=400)=>`<rect clip-path="url(#${clip})" x="${x0}" y="${y0}" width="${x1-x0}" height="${y1-y0}" style="fill:${col}" class="zone"/>`;
+ b+=band("ca",100,168,SEG[0][1])+band("ca",168,250,SEG[1][1])+band("ca",250,322,SEG[2][1])+band("ca",322,400,SEG[3][1])+`<path clip-path="url(#ca)" d="M40,160 C60,200 60,300 46,340 L40,340 Z" style="fill:${SEG[4][1]}" class="zone"/>`;
+ b+=band("cb",100,168,SEG[0][1])+band("cb",168,322,SEG[4][1])+band("cb",322,400,SEG[3][1]);
+ b+=`<path class="f" d="${sm(KA)}" style="fill:none;stroke-width:2"/><path class="f" d="${sm(KB)}" style="fill:none;stroke-width:2"/>`;
+ b+=V("art","M200,246 L170,246",6)+V("art","M172,246 C150,220 128,180 112,140",3)+V("art","M172,246 C150,226 130,210 106,200",3)+V("art","M172,246 C150,264 130,286 108,292",3)+V("art","M172,246 C150,280 132,320 118,352",3);
+ b+=V("art","M222,246 L250,246",6)+V("art","M250,246 C270,246 288,250 304,252",3);
+ if(ST.labels){b+=T(120,74,"Anterior view",{c:"b"})+T(300,74,"Posterior view",{c:"b"})+T(120,90,"(right kidney)",{c:"s m"})+T(300,90,"(right kidney)",{c:"s m"});
+  SEG.forEach(([n,c],i)=>{b+=`<rect x="${40+(i%2)*170}" y="${428+Math.floor(i/2)*22}" width="14" height="14" rx="3" style="fill:${c}" class="zone"/>`+T(60+(i%2)*170,439+Math.floor(i/2)*22,n,{a:"start",c:"s"})});
+  b+=T(210,236,"Renal a.",{c:"s"})}
+ const A=["Aorta","Renal a.","Segmental a.","Interlobar a.","Arcuate a.","Cortical radiate a.","Afferent arteriole"],Vn=["IVC","Renal v.","Interlobar v.","Arcuate v.","Cortical radiate v.","Peritubular cap. / vasa recta","Efferent arteriole"];
+ const y0=30,dy=56,x1=420,x2=556,w=124;
+ A.forEach((n,i)=>{b+=`<rect class="box ar" x="${x1-w/2}" y="${y0+i*dy}" width="${w}" height="30" rx="15"/>`+T(x1,y0+i*dy+19,n,{c:"s"});if(i<A.length-1)b+=`<path class="arw" d="M${x1},${y0+i*dy+31} L${x1},${y0+(i+1)*dy-2}"/>`});
+ Vn.forEach((n,i)=>{const isEff=i===Vn.length-1;b+=`<rect class="box ${isEff?"ar":"vn"}" x="${x2-w/2+(i===5?-6:0)}" y="${y0+i*dy}" width="${w+(i===5?12:0)}" height="30" rx="15"/>`+T(x2,y0+i*dy+19,n,{c:"s"});if(i>0)b+=`<path class="arw" d="M${x2},${y0+i*dy-1} L${x2},${y0+(i-1)*dy+33}"/>`});
+ const gy=y0+7*dy+6;b+=`<rect class="box gl" x="${(x1+x2)/2-70}" y="${gy}" width="140" height="30" rx="15"/>`+T((x1+x2)/2,gy+19,"Glomerulus",{c:"s"})+`<path class="arw" d="M${x1},${y0+6*dy+31} L${x1+20},${gy-2}"/><path class="arw" d="M${x2-20},${gy-1} L${x2},${y0+6*dy+33}"/>`;
+ return svg(b)},
+notes:()=>`<h3>Arteries</h3><ul>
+ <li><b>Renal a.</b> แยกจากข้าง aorta ใต้ SMA ระดับ <b>L1–L2</b> · ซ้ายสูงกว่าเล็กน้อย · <b>ขวายาวกว่า ผ่านหลัง IVC</b> ${S.g}</li>
+ <li>ใกล้ hilum แยกเป็น <b>anterior division</b> (segment 1–3, 5 ตามสไลด์) และ <b>posterior division</b> (segment 4) ${S.l}${S.g}</li>
+ <li>5 segments: <b>apical, anterior superior, anterior inferior, inferior, posterior</b> · segmental a. เป็น <b>end artery</b> อุดตัน → segment นั้นตาย ${S.x}</li>
+ <li>สาย: segmental → interlobar → arcuate → <b>cortical radiate (interlobular)</b> → afferent → glomerulus → efferent → peritubular cap. / vasa recta ${S.l}</li>
+ <li><b>Accessory (extrahilar) renal a.</b> พบบ่อย มาจาก aorta เหนือหรือใต้เส้นหลัก ${S.g}</li>
+ <li>Renal a. ยังให้ <b>inferior suprarenal a.</b> และ <b>ureteric branch</b> ${S.l}</li></ul>
+ <h3>Veins</h3><ul>
+ <li>Renal v. อยู่ <b>หน้า</b> renal a. ทั้ง 2 ข้าง ${S.g}</li>
+ <li><b>Left renal v.</b> ยาวกว่า ผ่านหน้า aorta หลัง SMA · รับ <b>left gonadal v.</b> และ <b>left suprarenal v.</b> ${S.g}${S.l}</li></ul>
+ <div class="pearl"><b>Clinical:</b> left renal v. ถูกบีบระหว่าง SMA กับ aorta ได้ (nutcracker) → เลือดคั่งใน left gonadal v. → <b>left varicocele</b> · ระหว่าง anterior และ posterior segment มีแนวที่หลอดเลือดน้อย (Brödel line) ใช้เป็นแนวผ่าตัด ${S.g}${S.x}</div>`});
+
+/* 6 · lymph & nerves */
+SEC.push({id:"lnn",k:"Kidney",t:"Lymph & nerve supply",tools:[["lymph","Lymph"],["nerve","Nerves"]],leg:["lymph","nerve","art","cortex"],figs:[["lnn-1","Lymphatics of posterior abdominal wall (Lec)"],["lnn-2","Autonomic nerves of kidneys (Lec)"]],
+draw(){
+ let b="";
+ b+=F("cortex",bean(146,262,100,170,1,.12))+F("cortex",bean(494,252,100,170,-1,-.12));
+ b+=V("art","M320,30 L320,470",16)+V("art","M314,232 C270,236 230,246 186,258",6)+V("art","M326,226 C370,230 410,238 452,248",6)+C("art",320,96,7)+C("art",320,150,7)+C("art",320,360,6);
+ if(ST.lymph){
+  [[290,236],[350,230],[292,270],[348,268],[294,200],[346,196]].forEach(([x,y])=>b+=E("lymph",x,y,8,6));
+  [[320,86],[320,140],[320,350]].forEach(([x,y])=>b+=E("lymph",x+16,y,6,5));
+  b+=V("lymph","M192,262 C230,256 262,246 286,238",2)+V("lymph","M446,250 C410,244 378,236 356,232",2);
+  b+=`<path class="f" d="M290,196 C282,186 286,166 300,162 C312,160 314,178 312,196 Z" style="fill:color-mix(in srgb,var(--a-lymph) 40%,transparent);stroke-dasharray:3 2"/>`+V("lymph","M304,162 C306,120 302,70 306,20",2.2);
+ }
+ if(ST.nerve){
+  [240,400].forEach(x=>{b+=`<path d="M${x},30 L${x},470" style="stroke:var(--a-nerve);stroke-width:2.4;stroke-dasharray:1 0"/>`;for(let y=60;y<460;y+=44)b+=E("nerve",x,y,6,8)});
+  b+=E("nerve",298,108,12,9)+E("nerve",342,108,12,9)+E("nerve",300,222,9,7)+E("nerve",340,218,9,7);
+  b+=V("nerve","M240,104 C262,106 276,108 286,108",1.6)+V("nerve","M240,192 C262,200 280,212 292,220",1.6)+V("nerve","M400,104 C380,106 364,108 354,108",1.6)+V("nerve","M400,192 C376,198 360,208 348,216",1.6);
+  b+=`<path d="M300,230 C280,238 250,240 230,248 C214,252 200,256 190,258" style="fill:none;stroke:var(--a-nerve);stroke-width:1.4;stroke-dasharray:2 3"/><path d="M340,226 C370,230 410,236 450,246" style="fill:none;stroke:var(--a-nerve);stroke-width:1.4;stroke-dasharray:2 3"/>`;
+ }
+ if(ST.labels){b+=T(146,268,"Right kidney",{c:"s"})+T(494,258,"Left kidney",{c:"s"})+T(332,26,"Aorta",{a:"start",c:"s"});
+  if(ST.lymph)b+=TL(26,330,["Lateral aortic","(lumbar) nodes"],{a:"start",c:"s"})+LD(288,272,112,330)+TL(26,130,["Cisterna chyli","(L1–L2)"],{a:"start",c:"s"})+LD(296,180,108,134)+T(26,74,"→ thoracic duct",{a:"start",c:"s m"})+TL(360,370,["Pre-aortic nodes","(celiac/SMA/IMA)"],{a:"start",c:"s"})+LD(338,352,358,366);
+  if(ST.nerve)b+=TL(614,86,["Celiac","ganglion"],{a:"end",c:"s"})+LD(352,108,560,96)+TL(614,180,["Aorticorenal","ganglion"],{a:"end",c:"s"})+LD(348,218,560,186)+TL(614,320,["Renal plexus","(ตามแนว renal a.)"],{a:"end",c:"s"})+LD(430,242,560,316)+
+   TL(614,420,["Sympathetic trunk","+ lesser/least","splanchnic n."],{a:"end",c:"s"})+LD(402,400,520,418)}
+ return svg(b)},
+notes:()=>`<h3>Lymph</h3><ul><li>ไต → <b>lateral aortic (para-aortic / lumbar) nodes</b> รอบจุดแยกของ renal a. ${S.l}${S.g}</li>
+ <li>Lateral aortic nodes รับจากผนังลำตัว ไต suprarenal gonads → รวมเป็น <b>lumbar trunk</b> ซ้าย/ขวา ${S.l}</li>
+ <li>Pre-aortic nodes รับจากอวัยวะที่ celiac, SMA, IMA เลี้ยง → <b>intestinal trunk</b> ${S.l}</li>
+ <li><b>Cisterna chyli</b> = intestinal + lumbar trunks · อยู่หลังด้านขวาของ aorta หน้า L1–L2 · เป็นจุดเริ่ม thoracic duct ${S.l}</li></ul>
+ <h3>Nerves</h3><ul><li><b>Renal plexus</b> รับใยจาก <b>celiac plexus</b> (และ aorticorenal ganglion) วิ่งตาม renal a. ${S.l}</li>
+ <li>ใย visceral afferent จากไตและ ureter ส่วนบน กลับไประดับ <b>T12 (least splanchnic n.)</b> → ปวดร้าวที่ <b>flank</b> ${S.g}</li>
+ <li>Sympathetic ทำให้ afferent/efferent arteriole หดตัวและหลั่ง renin (β₁) — เชื่อมไป Nephron atlas ${S.x}</li></ul>`});
+
+/* 7 · suprarenal */
+SEC.push({id:"adrenal",k:"Suprarenal gland",t:"Suprarenal (adrenal) gland",leg:["gland","art","vein","cortex"],figs:[["adrenal-1","Arteries of suprarenal glands (Lec)"],["adrenal-2","Suprarenal arteries & veins (Gray Fig 4.163)"]],
+draw(){
+ let b="";
+ b+=F("cortex",bean(178,350,130,220,1,.15))+F("cortex",bean(466,330,130,220,-1,-.15));
+ b+=F("gland",sm([[140,236],[166,170],[196,140],[232,198],[236,240],[196,250]]))+F("glandm",sm([[176,226],[194,180],[214,218],[200,238]]));
+ b+=F("gland",sm([[408,200],[426,170],[452,170],[440,194],[428,236],[420,292],[408,320],[398,280],[398,236]]))+F("glandm",sm([[414,250],[420,210],[430,196],[426,232],[418,290]]));
+ b+=V("vein","M290,40 L290,480",18)+V("art","M334,40 L334,480",16);
+ b+=V("art","M330,62 C280,60 220,70 150,110",3.4)+V("art","M338,62 C390,60 440,74 500,112",3.4);
+ [[176,96],[196,92],[214,90]].forEach(([x,y])=>b+=V("art",`M${x},${y} C${x+2},${y+30} ${x+4},${y+48} ${x+6},${y+70}`,1.6));
+ [[452,90],[470,94],[488,100]].forEach(([x,y])=>b+=V("art",`M${x},${y} C${x-4},${y+40} ${x-10},${y+70} ${x-14},${y+96}`,1.6));
+ b+=V("art","M326,196 C290,196 250,204 226,214",2.4)+V("art","M342,192 C380,196 410,210 428,222",2.4);
+ b+=V("art","M326,320 C290,322 262,330 234,344",6)+V("art","M342,312 C380,314 400,320 420,328",6)+V("art","M250,338 C230,300 216,270 210,250",1.8)+V("art","M404,322 C414,300 418,280 418,260",1.8);
+ b+=V("vein","M214,226 C240,226 262,226 282,226",3.4)+V("vein","M412,300 C400,330 390,350 380,360",3)+V("vein","M420,370 C390,368 340,366 300,364",8);
+ if(ST.labels)b+=T(174,170,"Right suprarenal",{a:"end",c:"s"}).replace('x="174"','x="150"')+T(180,360,"Right kidney",{c:"s"})+T(470,340,"Left kidney",{c:"s"})+TL(470,170,["Left suprarenal","(semilunar)"],{a:"start",c:"s"})+TL(98,190,["(pyramid)"],{a:"end",c:"s m"})+
+  TL(26,52,["Inferior phrenic a.","→ superior suprarenal a."],{a:"start",c:"s"})+LD(160,104,98,62)+T(470,224,"Middle suprarenal a.",{a:"start",c:"s"})+LD(410,214,466,220)+TL(98,300,["Inferior","suprarenal a.","(from renal a.)"],{a:"end",c:"s"})+LD(222,300,104,306)+
+  TL(98,230,["R suprarenal v.","→ IVC (สั้น)"],{a:"end",c:"s"})+LD(256,226,102,232)+TL(560,400,["L suprarenal v.","→ L renal v."],{a:"start",c:"s"})+LD(400,340,556,396)+T(296,500,"IVC",{c:"s"})+T(334,500,"Aorta",{c:"s"})+
+  TL(26,470,["สีเข้มตรงกลาง = medulla","สีอ่อนรอบนอก = cortex"],{a:"start",c:"s m"});
+ return svg(b)},
+notes:()=>`<h3>รูปร่างและตำแหน่ง</h3><ul>
+ <li>อยู่ที่ขั้วบนไต ล้อมด้วย perinephric fat และอยู่ใน <b>renal fascia</b> แต่แยกจากไตด้วย septum บางๆ (ไตหย่อน ต่อมไม่ตาม) ${S.l}${S.g}</li>
+ <li><b>ขวา: pyramid</b> · หน้าคือ right lobe ของตับและ IVC · หลังคือ diaphragm ${S.l}${S.g}</li>
+ <li><b>ซ้าย: semilunar</b> ใหญ่กว่า · สัมพันธ์กับ stomach, pancreas, spleen, diaphragm ${S.l}${S.g}</li>
+ <li><b>Cortex</b> สร้าง steroid · <b>medulla</b> สร้าง epinephrine/norepinephrine ${S.l}</li></ul>
+ <h3>เลือด 3 แหล่ง เข้า · ออก 1 เส้น</h3><table><tr><th>Artery</th><th>มาจาก</th></tr>
+ <tr><td>Superior suprarenal</td><td>Inferior phrenic a. (หลายแขนง)</td></tr><tr><td>Middle suprarenal</td><td>Abdominal aorta (เหนือ renal a.)</td></tr><tr><td>Inferior suprarenal</td><td>Renal a.</td></tr></table>
+ <ul><li>Vein: <b>ขวา → IVC</b> (สั้นมาก) · <b>ซ้าย → left renal v.</b> ${S.l}${S.g}</li><li>Lymph → lateral aortic nodes ${S.l}</li>
+ <li>Nerve: <b>preganglionic sympathetic (T8–L1)</b> ผ่าน trunk และ celiac plexus <b>โดยไม่ synapse</b> ไปถึงเซลล์ medulla โดยตรง (medulla ทำหน้าที่เป็น postganglionic) ${S.g}${S.l}</li></ul>
+ <div class="pearl"><b>Clinical:</b> ตอนผ่าตัดเอาต่อมขวาออก right suprarenal v. สั้นและเข้า IVC ตรงๆ จึงฉีกขาดได้ง่าย ${S.x}</div>`});
+
+/* 8 · ureter */
+SEC.push({id:"ureter",k:"Ureter",t:"Ureter: course & constrictions",tools:[["sex",[["m","Male"],["f","Female"]]]],leg:["uro","art","vein","musc","bone"],figs:[["ureter-1","Ureters on the posterior abdominal wall (Lec)"],["ureter-2","Constrictions on IVU (Lec)"],["ureter-3","Blood supply of ureter (Gray Fig 4.155)"],["ureter-4","Lymphatics of ureter (Lec)"],["ureter-5","Nerves of ureter (Lec)"]],
+draw(){
+ let b="";const f=ST.sex==="f";
+ const ps=[[296,120],[284,180],[268,250],[252,330],[244,380],[262,384],[276,334],[292,252],[305,182],[306,120]];
+ b+=F("musc",sm(ps))+F("musc",sm(mir(ps)));
+ b+=ilium(1).replace("292,334","292,350")+ilium(-1);
+ b+=F("cortex",bean(196,120,90,140,1,.15))+F("cortex",bean(444,108,90,140,-1,-.15));
+ b+=V("vein","M302,20 L302,300",14)+V("art","M334,20 L334,280",13);
+ b+=V("art","M334,280 C318,300 300,320 282,340",8)+V("art","M282,340 C266,360 250,392 238,440",7)+V("art","M282,340 C292,370 300,400 304,430",5);
+ b+=V("art","M334,280 C350,300 368,320 384,340",8)+V("art","M384,340 C398,360 412,392 424,440",7)+V("art","M384,340 C374,370 366,400 360,430",5);
+ b+=V("art","M326,170 C300,190 280,240 262,300 C254,330 246,360 240,400",1.8)+V("art","M342,168 C366,190 384,240 400,300 C406,330 414,360 420,400",1.8);
+ const RU="M234,150 C246,200 258,250 266,300 C272,330 282,356 286,380 C282,410 272,440 284,470 C292,486 304,494 312,498",LU="M406,140 C394,190 382,250 374,300 C368,330 358,356 354,380 C358,410 368,440 356,470 C348,486 336,494 328,498";
+ b+=V("uro",RU,5)+V("uro",LU,5);
+ b+=E("blad",320,494,52,24);
+ if(f){b+=F("musc2",sm([[296,396],[344,396],[356,430],[340,462],[300,462],[284,430]]))+V("art","M298,428 C290,440 286,452 286,464 L312,466",3).replace("","")+V("art","M304,430 C298,450 290,462 282,468",3)+V("art","M360,430 C352,450 350,462 354,470",3)}
+ else{b+=V("vas","M230,330 C240,380 262,440 286,474 C296,486 306,492 312,494",3.4).replace(/class="v vas"/,'class="v" style="stroke:#8B6BB5"')+V("vas","M410,330 C400,380 378,440 354,474 C344,486 334,492 328,494",3.4).replace(/class="v vas"/,'class="v" style="stroke:#8B6BB5"')}
+ const ring=(x,y,n)=>`<circle class="ring" cx="${x}" cy="${y}" r="13"/><circle class="num" cx="${x+16}" cy="${y-12}" r="8"/><text class="numt" x="${x+16}" y="${y-8}" text-anchor="middle">${n}</text><ellipse class="stone" cx="${x}" cy="${y}" rx="4" ry="3"/>`;
+ b+=ring(236,154,1)+ring(404,144,1)+ring(281,350,2)+ring(359,350,2)+ring(306,494,3)+ring(334,494,3);
+ if(ST.labels)b+=T(196,124,"R kidney",{c:"s"})+T(444,112,"L kidney",{c:"s"})+TL(26,150,["① Ureteropelvic","junction"],{a:"start",c:"s"})+TL(26,340,["② Pelvic brim","(ข้าม common iliac","bifurcation)"],{a:"start",c:"s"})+
+  TL(26,470,["③ Entrance to","bladder (UVJ)"],{a:"start",c:"s"})+TL(616,220,["Gonadal vessels","ข้ามหน้า ureter"],{a:"end",c:"s"})+LD(394,250,532,228)+
+  TL(616,300,["Abdominal part","บน psoas major"],{a:"end",c:"s"})+LD(378,296,532,300)+TL(616,420,f?["Uterine a.","ข้ามเหนือ ureter","(water under","the bridge)"]:["Ductus deferens","ข้ามเหนือ ureter"],{a:"end",c:"s"})+LD(f?352:392,f?452:420,520,420)+
+  T(318,16,"IVC · Aorta",{c:"s m"});
+ return svg(b)},
+notes:()=>`<h3>ภาพรวม</h3><ul>
+ <li>ท่อกล้ามเนื้อ <b>retroperitoneal</b> ยาว <b>25–30 cm</b> นำปัสสาวะจาก renal pelvis ไป bladder ${S.l}</li>
+ <li>Surface marking: แนวห่างจาก spinous process L1 ไปทางข้าง 5 cm ลากถึง PSIS ${S.l}</li>
+ <li><b>Abdominal part</b>: UPJ → ข้าม bifurcation ของ common iliac a. วิ่งบนด้าน medial ของ <b>psoas major</b> ${S.l}${S.g}</li>
+ <li><b>Pelvic part</b>: pelvic brim → ureteric orifice · ถูกข้ามด้านบนโดย <b>ductus deferens (ชาย)</b> หรือ <b>uterine a. (หญิง)</b> ${S.l}</li>
+ <li>3 จุดแคบ: <b>UPJ · pelvic brim · ทางเข้า bladder</b> = จุดที่นิ่วติดบ่อย ${S.l}${S.g}</li></ul>
+ <h3>เลือด · lymph · nerve</h3><table><tr><th></th><th>Abdominal</th><th>Pelvic</th></tr>
+ <tr><td>Artery</td><td>Renal (ureteric br.), gonadal, aorta, common iliac — เข้าจาก <b>medial</b></td><td>แขนงของ internal iliac — เข้าจาก <b>lateral</b></td></tr>
+ <tr><td>Vein</td><td>Renal v., gonadal v.</td><td>Internal iliac v.</td></tr>
+ <tr><td>Lymph</td><td>Lateral aortic, common iliac</td><td>External &amp; internal iliac</td></tr></table>
+ <ul><li>แขนงแดงทุกเส้นแยกขึ้น-ลงต่อกันเป็นสายยาวบนผนัง ureter ${S.g}</li>
+ <li>Nerve: renal, aortic, superior &amp; inferior hypogastric plexus · afferent กลับไป <b>T11–L2</b> ${S.l}${S.g}</li></ul>
+ <div class="pearl"><b>Loin to groin:</b> ปวดจาก ureter บวม ร้าวไปผิวที่ T11–L2: หลังและข้างลำตัวใต้ซี่โครง, หัวหน่าว, scrotum/labia majora, ต้นขาด้านหน้า ${S.g} · ผ่าตัด hysterectomy เสี่ยงผูก ureter ไปพร้อม uterine a. ${S.g}</div>`});
+
+/* 9 · bladder */
+SEC.push({id:"bladder",k:"Bladder",t:"Urinary bladder",tools:[["sex",[["m","Male"],["f","Female"]]]],leg:["blad","uro","bone","musc"],figs:[["bladder-1","Bladder position, male & female (Lec)"],["bladder-2","Bladder surfaces (Gray Fig 5.41A)"],["bladder-3","Trigone (Gray Fig 5.41B)"],["bladder-4","Pubovesical & puboprostatic ligaments (Gray Fig 5.42)"],["bladder-5","Arteries of bladder (Lec)"],["bladder-6","Lymphatics (Lec)"],["bladder-7","Nerves: vesical plexus (Lec)"]],
+draw(){
+ let b="";const f=ST.sex==="f";
+ b+=F("blad",sm([[60,262],[150,190],[250,170],[296,214],[290,300],[220,338],[160,330]]))+`<path d="M60,262 L250,170" style="stroke:var(--a-edge);stroke-width:1;fill:none;opacity:.5"/><path d="M60,262 L220,338" style="stroke:var(--a-edge);stroke-width:1;fill:none;opacity:.5"/><path d="M250,170 L220,338" style="stroke:var(--a-edge);stroke-width:1;fill:none;opacity:.5"/>`;
+ b+=V("uro","M262,96 C266,130 268,160 262,180",5)+V("uro","M318,120 C312,160 304,200 294,230",5)+V("uro","M208,336 L204,384",6)+`<path d="M60,262 C46,220 36,170 30,120" style="fill:none;stroke:var(--a-fascia);stroke-width:2.2;stroke-dasharray:4 3"/>`;
+ b+=`<rect x="340" y="40" width="280" height="200" rx="18" class="f blad"/>`;
+ for(let i=0;i<9;i++){const x=356+i*30;b+=`<path d="M${x},${60+(i%2)*10} q8,40 -2,80 q-8,40 4,86" style="fill:none;stroke:rgba(0,0,0,.18);stroke-width:1.2"/>`}
+ b+=`<path d="M412,104 L548,104 L480,214 Z" style="fill:color-mix(in srgb,var(--a-blad) 70%,#fff);stroke:var(--a-edge);stroke-width:1"/>`+V("uro","M400,30 C404,60 408,86 412,104",4)+V("uro","M560,30 C556,60 552,86 548,104",4)+E("uro",412,104,6,4)+E("uro",548,104,6,4)+E("cav",480,214,8,6)+V("uro","M480,220 L480,262",8);
+ b+=`<path d="M412,104 Q480,92 548,104" style="fill:none;stroke:var(--a-edge);stroke-width:1.2;stroke-dasharray:3 2"/>`;
+ const sx=330,sy=280;
+ b+=F("bone",`M${sx+10},${sy+70} C${sx+30},${sy+60} ${sx+44},${sy+90} ${sx+38},${sy+150} C${sx+30},${sy+170} ${sx+12},${sy+170} ${sx+8},${sy+140} Z`);
+ b+=F("blad",sm([[sx+56,sy+120],[sx+70,sy+70],[sx+120,sy+56],[sx+160,sy+82],[sx+156,sy+138],[sx+110,sy+160],[sx+76,sy+156]]));
+ b+=F("musc2",sm([[sx+232,sy+40],[sx+262,sy+50],[sx+272,sy+120],[sx+262,sy+200],[sx+236,sy+210],[sx+222,sy+120]]));
+ if(f){b+=F("musc",sm([[sx+150,sy+40],[sx+186,sy+20],[sx+210,sy+40],[sx+204,sy+110],[sx+184,sy+170],[sx+170,sy+180],[sx+166,sy+110]]));
+  b+=`<path class="perit" d="M${sx+40},${sy+40} C${sx+80},${sy+40} ${sx+130},${sy+40} ${sx+152},${sy+70} C${sx+160},${sy+90} ${sx+156},${sy+70} ${sx+160},${sy+44} C${sx+176},${sy+6} ${sx+212},${sy+12} ${sx+214},${sy+60} C${sx+214},${sy+130} ${sx+216},${sy+150} ${sx+226},${sy+150} C${sx+236},${sy+130} ${sx+234},${sy+70} ${sx+250},${sy+30}"/>`;
+  b+=V("uro",`M${sx+86},${sy+156} C${sx+88},${sy+176} ${sx+92},${sy+196} ${sx+96},${sy+214}`,6)}
+ else{b+=F("prost",sm([[sx+70,sy+160],[sx+100,sy+156],[sx+120,sy+176],[sx+104,sy+204],[sx+76,sy+200]]))+F("musc",sm([[sx+150,sy+120],[sx+176,sy+116],[sx+186,sy+150],[sx+168,sy+170],[sx+152,sy+156]])).replace("musc","musc2");
+  b+=`<path class="perit" d="M${sx+40},${sy+40} C${sx+90},${sy+40} ${sx+140},${sy+40} ${sx+162},${sy+80} C${sx+176},${sy+108} ${sx+196},${sy+150} ${sx+212},${sy+148} C${sx+226},${sy+130} ${sx+226},${sy+70} ${sx+250},${sy+30}"/>`;
+  b+=V("uro",`M${sx+90},${sy+160} C${sx+92},${sy+186} ${sx+94},${sy+206} ${sx+100},${sy+230}`,6)}
+ b+=`<path d="M${sx+40},${sy+120} L${sx+72},${sy+158}" style="stroke:var(--a-fascia);stroke-width:3"/>`;
+ if(ST.labels)b+=T(170,40,"A · empty bladder (superolateral)",{c:"h"})+T(480,24,"B · trigone (anterior wall removed)",{c:"h"}).replace('y="24"','y="22"')+T(sx+150,sy-4,f?"C · female (sagittal)":"C · male (sagittal)",{c:"h"})+
+  TL(26,96,["Median umbilical","ligament (urachus)"],{a:"start",c:"s"})+T(56,280,"Apex",{a:"end",c:"s"})+T(160,214,"Superior surface",{c:"s"})+T(270,250,"Base",{c:"s"})+TL(130,300,["Inferolateral","surfaces"],{c:"s"})+T(228,372,"Neck → urethra",{a:"start",c:"s"})+T(262,90,"Ureters",{c:"s"})+
+  T(480,150,"Trigone",{c:"b"})+TL(412,128,["Ureteric","orifice"],{c:"s"})+TL(480,238,["Internal urethral orifice"],{c:"s"})+T(366,226,"Rugae",{a:"start",c:"s"})+T(480,98,"Interureteric ridge",{c:"s m"})+
+  T(sx+24,sy+190,"Pubis",{c:"s"})+T(sx+110,sy+112,"Bladder",{c:"s"})+T(sx+250,sy+226,"Rectum",{c:"s"})+(f?T(sx+186,sy+72,"Uterus",{c:"s"})+TL(sx+130,sy+30,["Vesicouterine","pouch"],{c:"s"})+TL(sx+210,sy+176,["Recto-uterine","pouch"],{c:"s",a:"middle"}):
+   T(sx+126,sy+206,"Prostate",{a:"start",c:"s"})+TL(sx+196,sy+186,["Rectovesical","pouch"],{c:"s"})+T(sx+170,sy+144,"SV",{c:"s"}))+TL(sx+6,sy+236,[f?"Pubovesical lig.":"Puboprostatic lig."],{a:"start",c:"s"})+T(sx+150,sy+30,"Peritoneum",{c:"s m"}).replace(`y="${sy+30}"`,`y="${sy+14}"`);
+ return svg(b)},
+notes:()=>`<h3>ตำแหน่ง</h3><ul><li>ที่พักปัสสาวะชั่วคราว อยู่ใน pelvic cavity · <b>หลัง pubic symphysis หน้า rectum</b> · อยู่ใต้ parietal peritoneum (extraperitoneal) ${S.l}</li>
+ <li>หญิง: <b>vesicouterine pouch</b> · ชาย: <b>rectovesical pouch</b> ${S.l}</li>
+ <li>ตอนว่างอยู่ในเชิงกราน ตอนเต็มขยายขึ้นไปใน abdomen · เด็กแรกเกิด bladder เกือบอยู่ใน abdomen ทั้งหมด ลงเชิงกรานหลัง puberty ${S.g}</li></ul>
+ <h3>รูปร่าง (pyramid 3 ด้านที่ล้มลง)</h3><ul>
+ <li><b>Apex</b> ชี้ไปบน pubic symphysis → <b>median umbilical ligament</b> (เศษของ urachus) ขึ้นไปถึงสะดือ ${S.l}${S.g}</li>
+ <li><b>Base</b> สามเหลี่ยมคว่ำ หันไปหลังล่าง: ureter เข้า 2 มุมบน · urethra ออกมุมล่าง ${S.l}${S.g}</li>
+ <li><b>Superior surface</b> โค้งเล็กน้อย พองขึ้นเมื่อเต็ม · <b>2 inferolateral surfaces</b> วางบน levator ani และ obturator internus ${S.g}</li>
+ <li><b>Trigone</b>: mucosa <b>เรียบและยึดแน่น</b> · ที่อื่น mucosa พับและหลวม (rugae) ${S.l}${S.g}</li>
+ <li><b>Neck</b> = ส่วนที่ยึดแน่นที่สุด · fibromuscular bands: <b>pubovesical lig. (หญิง)</b> / <b>puboprostatic lig. (ชาย)</b> ${S.l}${S.g}</li></ul>
+ <h3>เลือด · lymph · nerve</h3><table>
+ <tr><td>Artery</td><td>จาก internal iliac: <b>superior vesical a.</b> · <b>inferior vesical a. (ชาย) / vaginal a. (หญิง)</b> ${S.l}</td></tr>
+ <tr><td>Vein</td><td>Vesical venous plexus → internal iliac v. ${S.l}</td></tr>
+ <tr><td>Lymph</td><td>Superior &amp; inferolateral → <b>external iliac</b> · base → <b>internal iliac</b> · neck → <b>sacral</b> ${S.l}</td></tr>
+ <tr><td>Nerve</td><td><b>Vesical plexus</b> (จาก inferior hypogastric plexus) · parasympathetic <b>S2–S4</b> (pelvic splanchnic) → detrusor หดตัว · sympathetic <b>T10–L2</b> → ผ่อน detrusor, หด internal sphincter ${S.l}${S.x}</td></tr></table>
+ <div class="pearl"><b>Clinical:</b> suprapubic catheter แทงกลางลำตัวเหนือ pubic symphysis ~2 cm เข้า bladder ที่เต็ม <b>โดยไม่ผ่าน peritoneum</b> · มะเร็ง bladder ลามไป internal iliac nodes · นิ่วเล็กลงมาจาก ureter โตต่อใน bladder ได้ ${S.g}</div>`});
+
+/* 10 · urethra */
+SEC.push({id:"urethra",k:"Urethra",t:"Urethra",tools:[["sex",[["m","Male"],["f","Female"]]]],leg:["blad","uro","prost","musc"],figs:[["urethra-1","Urethra, female & male (Lec)"],["urethra-2","Female urethra (Gray Fig 5.45A)"],["urethra-3","Male urethra & prostatic part (Gray Fig 5.45B–C)"],["urethra-4","Blood & lymph of urethra (Lec)"],["urethra-5","Nerves (Lec)"]],
+draw(){
+ let b="";
+ if(ST.sex==="m"){
+  b+=F("blad",sm([[90,40],[230,36],[262,90],[240,150],[196,170],[150,168],[100,140],[76,90]]));
+  b+=`<rect x="160" y="166" width="70" height="14" rx="4" style="fill:#B8607A;stroke:var(--a-edge)"/>`;
+  b+=F("prost",sm([[146,184],[244,184],[256,226],[232,262],[160,262],[136,226]]));
+  b+=`<rect x="130" y="282" width="250" height="34" rx="6" style="fill:color-mix(in srgb,var(--a-musc) 30%,transparent);stroke:var(--a-edge);stroke-dasharray:4 3"/>`+`<rect x="130" y="316" width="250" height="6" style="fill:var(--a-fascia)"/>`;
+  b+=`<rect x="180" y="284" width="30" height="30" rx="6" style="fill:var(--a-musc);stroke:var(--a-edge)"/>`;
+  const SP="M196,322 C196,340 206,352 228,356 L380,356 C420,356 446,368 462,396 L512,480";
+  b+=V("spong",SP,30).replace('class="v spong"','class="v" style="stroke:#C99AB0"')+V("uro","M196,166 L196,322",6)+V("uro",SP,6);
+  b+=E("musc",232,352,22,16).replace('class="f musc"','class="f" style="fill:#C99AB0"')+F("musc",sm([[492,450],[536,446],[556,488],[530,512],[496,500]])).replace('class="f musc"','class="f" style="fill:#D7A7BC"')+E("uro",512,486,9,6);
+  b+=E("glandm",262,306,8,7).replace("glandm","prost");
+  const R=(x,y,w,h,n,c)=>`<g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="9" class="box"/>${T(x+10,y+16,n,{a:"start",c:"s"})}${T(x+10,y+30,c,{a:"start",c:"s m"})}</g>`;
+  if(ST.labels)b+=R(276,150,124,36,"1 Preprostatic","~1 cm · int. sphincter")+LD(232,174,276,166)+R(276,204,124,36,"2 Prostatic","3–4 cm")+LD(200,222,276,222)+R(400,262,130,36,"3 Membranous","0.5 cm · ext. sphincter")+LD(212,298,400,280)+
+   R(400,330,124,36,"4 Spongy (penile)","~15 cm")+LD(330,356,400,350)+TL(540,520-14,["Navicular fossa"],{a:"end",c:"s"})+LD(512,486,534,500)+T(160,96,"Bladder",{c:"b"})+TL(124,296,["Deep perineal","pouch"],{a:"end",c:"s"})+TL(124,330,["Perineal","membrane"],{a:"end",c:"s"})+
+   T(232,390,"Bulb",{c:"s"})+TL(274,318,["Bulbo-urethral","gland"],{a:"start",c:"s"})+T(452,412,"2nd bend (flaccid)",{a:"end",c:"s m"})+T(214,372,"1st bend",{a:"end",c:"s m"});
+  const ix=470,iy=24;b+=`<rect x="${ix}" y="${iy}" width="150" height="210" rx="14" class="box"/>`+F("prost",sm([[ix+20,iy+44],[ix+130,iy+44],[ix+140,iy+120],[ix+110,iy+190],[ix+40,iy+190],[ix+10,iy+120]]))+
+   `<rect x="${ix+58}" y="${iy+34}" width="34" height="164" rx="12" style="fill:var(--a-cav);stroke:var(--a-edge)"/><rect x="${ix+71}" y="${iy+40}" width="8" height="150" rx="4" style="fill:#D9A7BC"/>`+E("prost",ix+75,iy+118,12,16).replace("prost","glandm").replace('class="f glandm"','class="f" style="fill:#C98AA8"')+C("cav",ix+75,iy+114,2.6)+C("cav",ix+66,iy+124,2)+C("cav",ix+84,iy+124,2);
+  for(let k=0;k<5;k++)b+=C("cav",ix+63,iy+70+k*22,1.5)+C("cav",ix+87,iy+70+k*22,1.5);
+  if(ST.labels)b+=T(ix+75,iy+20,"Prostatic urethra (opened)",{c:"s h"})+TL(ix+146,iy+70,["Urethral","crest"],{a:"end",c:"s"})+TL(ix+146,iy+150,["Seminal","colliculus"],{a:"end",c:"s"})+TL(ix+6,iy+102,["Prostatic","utricle"],{a:"start",c:"s"})+TL(ix+6,iy+150,["Ejaculatory","ducts"],{a:"start",c:"s"})+TL(ix+6,iy+196,["Prostatic sinus"],{a:"start",c:"s m"});
+ }else{
+  b+=F("blad",sm([[150,40],[330,36],[372,100],[350,170],[300,196],[200,196],[150,170],[124,100]]));
+  b+=`<rect x="90" y="300" width="420" height="40" rx="6" style="fill:color-mix(in srgb,var(--a-musc) 30%,transparent);stroke:var(--a-edge);stroke-dasharray:4 3"/><rect x="90" y="340" width="420" height="6" style="fill:var(--a-fascia)"/>`;
+  b+=`<rect x="232" y="302" width="36" height="36" rx="8" style="fill:var(--a-musc);stroke:var(--a-edge)"/>`;
+  b+=V("uro","M250,194 C250,240 250,300 250,392",8)+E("cav",250,398,10,6);
+  b+=V("vag","M360,250 L360,410",26).replace('class="v vag"','class="v" style="stroke:#E0A3A8"')+E("cav",360,414,14,7);
+  b+=C("prost",272,384,7).replace("prost","fat")+C("prost",228,384,7).replace("prost","fat")+E("fat",410,388,14,10);
+  if(ST.labels)b+=T(250,110,"Bladder",{c:"b"})+TL(120,252,["Urethra ~4 cm","(สั้น ตรง)"],{a:"end",c:"s"})+LD(250,250,124,250)+TL(560,320,["Deep perineal pouch","+ external urethral","sphincter"],{a:"start",c:"s"}).replace(/x="560"/g,'x="520"')+LD(268,318,516,320)+
+   TL(80,360,["Perineal","membrane"],{a:"end",c:"s"})+TL(150,430,["External urethral orifice","(ใน vestibule หน้า vagina)"],{a:"start",c:"s"})+LD(250,400,232,422)+TL(140,384,["Skene's","glands"],{a:"end",c:"s"})+LD(222,384,144,384)+T(360,236,"Vagina",{c:"s"})+TL(440,396,["Greater vestibular","gland"],{a:"start",c:"s"});
+ }
+ return svg(b)},
+notes:()=>`<h3>ทั่วไป</h3><ul><li>ท่อผนังบาง นำปัสสาวะจาก base ของ bladder ไปเปิดที่ perineum ${S.l}${S.g}</li></ul>
+ <h3>หญิง</h3><ul><li>สั้น <b>~4 cm</b> โค้งเล็กน้อย ผ่าน <b>deep perineal pouch และ perineal membrane</b> ${S.l}${S.g}</li>
+ <li>เปิดใน <b>vestibule หน้า vagina</b> · มี <b>Skene's (para-urethral) glands</b> 2 ต่อมที่ปลาย · มี external urethral sphincter ${S.l}${S.g}</li></ul>
+ <h3>ชาย (~20 cm โค้ง 2 ที่)</h3><table><tr><th>ส่วน</th><th>ยาว</th><th>จุดสำคัญ</th></tr>
+ <tr><td>Preprostatic</td><td>1 cm</td><td>Internal urethral sphincter (smooth m.) กัน semen ไหลย้อนเข้า bladder</td></tr>
+ <tr><td>Prostatic</td><td>3–4 cm</td><td>Urethral crest, prostatic sinus (รูของ prostate ducts), <b>seminal colliculus</b>: prostatic utricle (homolog ของ uterus) + รูของ ejaculatory ducts</td></tr>
+ <tr><td>Membranous</td><td>0.5 cm</td><td>ผ่าน deep perineal pouch · <b>external urethral sphincter</b> (skeletal m.) · แคบที่สุด</td></tr>
+ <tr><td>Spongy</td><td>15 cm</td><td>ใน corpus spongiosum · bulb (รับ bulbo-urethral glands) · navicular fossa</td></tr></table>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.l}${S.g}</p>
+ <h3>เลือด · lymph · nerve</h3><ul><li>ชาย: inferior vesical, middle rectal a. · prostatic venous plexus · หญิง: internal pudendal &amp; vaginal vessels ${S.l}</li>
+ <li>Lymph ชาย: prostatic + membranous → <b>internal iliac</b> · spongy → <b>superficial &amp; deep inguinal</b> · หญิง → internal iliac ${S.l}</li>
+ <li>Nerve: ชาย prostatic plexus · หญิง vesical plexus (ทั้งคู่จาก inferior hypogastric plexus) ${S.l}</li></ul>
+ <div class="pearl"><b>Clinical:</b> urethra หญิงสั้น → bladder infection บ่อยกว่าชาย · ใส่สายสวนในชายต้องคำนึงถึงโค้ง 2 จุดและส่วน prostatic ที่โค้งไปหน้า ${S.g}</div>`});
+
+/* 11 · posterior wall muscles */
+SEC.push({id:"wall",k:"Posterior abdominal wall",t:"Muscles",leg:["musc","bone"],figs:[["wall-1","Posterior abdominal wall (Lec)"],["wall-2","Muscles, Netter (Lec)"],["wall-3","Psoas, iliacus, quadratus lumborum (Lec)"]],
+draw(){
+ let b="";const LV=[["T12",70],["L1",112],["L2",154],["L3",196],["L4",238],["L5",280]];
+ b+=F("musc2","M70,90 C120,20 270,20 304,52 L336,52 C370,20 520,20 570,90 L560,98 C520,50 380,46 336,66 L304,66 C262,46 120,50 80,98 Z");
+ b+=vertebrae(320,LV,46,32)+F("bone",sm([[294,300],[346,300],[350,334],[336,380],[320,404],[304,380],[290,334]]));
+ b+=ilium(1).replace(/292,334/,"292,320")+ilium(-1);
+ b+=V("musc","M306,62 C304,100 300,150 296,200",8)+V("musc","M334,62 C338,96 342,130 344,160",8);
+ const ps=[[294,82],[284,140],[268,214],[252,290],[238,360],[232,430],[270,436],[274,366],[284,296],[298,220],[306,150],[306,84]];
+ b+=F("musc",sm(ps))+F("musc",sm(mir(ps)))+V("bone","M296,120 C330,120 320,120 344,120",0.01).replace(/./,"")+V("musc2","M360,96 C362,160 372,240 390,330",4);
+ const ql=[[262,120],[208,124],[180,136],[176,240],[184,292],[246,290],[258,220]];b+=F("musc2",sm(ql))+F("musc2",sm(mir(ql)));
+ const il=[[236,300],[170,290],[116,302],[104,332],[150,366],[220,396],[244,394]];b+=F("musc",sm(il)).replace("musc","musc2").replace('class="f musc2"','class="f" style="fill:#D88A7E"')+F("musc",sm(mir(il))).replace('class="f musc"','class="f" style="fill:#D88A7E"');
+ b+=`<path d="M70,130 C80,200 92,260 104,310" style="fill:none;stroke:var(--a-musc);stroke-width:18;opacity:.55"/><path d="M570,130 C560,200 548,260 536,310" style="fill:none;stroke:var(--a-musc);stroke-width:18;opacity:.55"/>`;
+ b+=`<path d="M268,438 C300,470 340,470 372,438" style="fill:none;stroke:var(--a-fascia);stroke-width:2"/><path d="M118,330 L248,470" style="fill:none;stroke:var(--a-fascia);stroke-width:2"/><path d="M522,330 L392,470" style="fill:none;stroke:var(--a-fascia);stroke-width:2"/>`;
+ if(ST.labels)b+=T(320,30,"Diaphragm",{c:"s"})+TL(254,96,["Right","crus"],{a:"end",c:"s"})+LD(302,110,258,98)+TL(386,96,["Left","crus"],{a:"start",c:"s"})+LD(338,110,384,98)+
+  T(250,420,"Psoas major",{a:"end",c:"s"})+LD(256,400,252,416)+TL(400,276,["Psoas minor","(บางคนไม่มี)"],{a:"start",c:"s"})+LD(386,300,400,280)+TL(146,210,["Quadratus","lumborum"],{c:"s"})+T(160,338,"Iliacus",{c:"s"})+
+  TL(40,160,["Transversus","abdominis"],{a:"start",c:"s"})+T(520,440,"Inguinal ligament",{c:"s m"})+LV.map(([n,y])=>T(320,y+4,n,{c:"s m"})).join("");
+ return svg(b)},
+notes:()=>`<h3>4 มัด (ตามสไลด์)</h3><table><tr><th>Muscle</th><th>Origin → Insertion</th><th>Nerve · Action</th></tr>
+ <tr><td>Psoas major</td><td>Transverse process &amp; bodies T12–L5 + discs → <b>lesser trochanter</b></td><td>Anterior rami <b>L1–L3</b> · flex hip</td></tr>
+ <tr><td>Psoas minor</td><td>Bodies T12–L1 → pectineal line, iliopubic eminence</td><td>Anterior ramus L1 · weak lumbar flexion · <b>บางคนไม่มี</b></td></tr>
+ <tr><td>Iliacus</td><td>Upper 2/3 iliac fossa, ant. sacro-iliac &amp; iliolumbar lig., iliac crest → lesser trochanter</td><td><b>Femoral n. (L2–L4)</b> · flex hip</td></tr>
+ <tr><td>Quadratus lumborum</td><td>Transverse process L5, iliolumbar lig., iliac crest → TP L1–L4, inferior border rib 12</td><td>Anterior rami T12, L1–L4 · ดึงและยึด rib 12, เอียงลำตัว</td></tr></table>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.l}${S.g}</p>
+ <ul><li>Psoas major + iliacus = <b>iliopsoas</b> ใช้ tendon ร่วมไปที่ lesser trochanter ${S.l}</li>
+ <li>Diaphragm crura: right crus ลงถึง L3 · left crus ถึง L2 ${S.x}</li></ul>
+ <div class="pearl"><b>Clinical:</b> psoas อยู่ใน fascia ของตัวเอง ฝีจากกระดูกสันหลัง (เช่น TB) ไหลตาม psoas ลงไปโผล่ที่ต้นขาใต้ inguinal ligament ได้ (psoas abscess) ${S.x}</div>`});
+
+/* 12 · lumbar plexus */
+SEC.push({id:"plexus",k:"Posterior abdominal wall",t:"Lumbar plexus",leg:["musc","bone"],figs:[["plexus-1","Lumbar plexus in posterior abdominal wall (Lec)"],["plexus-2","Branches of lumbar plexus (Lec)"],["plexus-3","Nerves of posterior abdominal wall (Lec)"]],
+draw(){
+ let b="";const LV=[["T12",88],["L1",130],["L2",172],["L3",214],["L4",256],["L5",298]];
+ b+=vertebrae(230,LV,46,32)+F("bone",sm([[204,318],[256,318],[262,352],[246,400],[230,424],[214,400],[200,352]]));
+ const il=[[262,330],[340,300],[460,286],[540,304],[546,340],[486,372],[380,404],[300,420],[268,392]];b+=F("bone",sm(il));
+ const ps=[[262,96],[276,150],[296,230],[316,310],[330,390],[336,470],[300,474],[290,400],[274,320],[258,240],[250,160],[252,98]];b+=F("musc",sm(ps)).replace('class="f musc"','class="f" style="fill:var(--a-musc);opacity:.55"');
+ b+=F("musc2",sm([[262,120],[340,124],[372,140],[380,240],[372,290],[290,290],[270,220]])).replace('class="f musc2"','class="f" style="fill:var(--a-musc2);opacity:.6"');
+ b+=`<path d="M548,330 C500,400 430,450 352,488" style="fill:none;stroke:var(--a-fascia);stroke-width:2"/>`;
+ const N=[["Iliohypogastric","L1","#E07A1F","M262,138 C320,150 400,170 480,206 C520,224 556,250 590,276",["Skin posterolateral gluteal & pubic region","Int. oblique, transversus"]],
+  ["Ilio-inguinal","L1","#C9971A","M264,150 C326,168 400,198 470,246 C506,270 530,300 556,334",["Skin upper medial thigh, root of penis / mons, ant. scrotum / labia majora"]],
+  ["Genitofemoral","L1, L2","#2E9A50","M266,170 C290,190 300,230 304,280 C308,340 314,400 322,470",["Genital br.: ant. scrotum / labia, cremaster","Femoral br.: skin upper anterior thigh"]],
+  ["Lateral femoral cutaneous","L2, L3","#7C3AED","M268,210 C320,250 400,300 470,346 C500,366 520,382 534,398",["Skin anterior & lateral thigh to knee"]],
+  ["Femoral","L2–L4","#2563EB","M268,236 C300,290 318,350 330,420 C334,446 340,470 346,500",["Iliacus, pectineus, anterior thigh muscles","Skin anterior & medial thigh"]],
+  ["Obturator","L2–L4","#DB2777","M258,246 C250,300 246,360 252,420 C256,450 262,480 268,500",["Medial thigh muscles, obturator externus","Skin medial thigh"]],
+  ["Lumbosacral trunk","L4, L5","#64748B","M254,286 C246,330 238,380 226,440 C222,460 218,480 214,500",["→ sacral plexus"]]];
+ LV.forEach(([n,y],i)=>{b+=V("nerve",`M254,${y+16} L270,${y+20}`,3)});
+ N.forEach(([n,r,c,d])=>{b+=`<path d="${d}" style="fill:none;stroke:var(--a-edge);stroke-width:5.4;stroke-linecap:round"/><path d="${d}" style="fill:none;stroke:${c};stroke-width:3.4;stroke-linecap:round"/>`});
+ if(ST.labels){LV.forEach(([n,y])=>b+=T(190,y+4,n,{a:"end",c:"s m"}));
+  b+=T(594,268,"Iliohypogastric",{a:"end",c:"s"})+T(560,350,"Ilio-inguinal",{a:"start",c:"s"}).replace('text-anchor="start"','text-anchor="end"').replace('x="560"','x="600"')+T(322,486,"Genitofemoral",{a:"start",c:"s"}).replace('x="322"','x="326"')+
+  TL(540,404,["Lat. femoral","cutaneous"],{a:"start",c:"s"})+T(350,512,"Femoral",{a:"start",c:"s"})+T(268,512,"Obturator",{a:"end",c:"s"}).replace('x="268"','x="262"')+T(206,500,"Lumbosacral trunk",{a:"end",c:"s"})+
+  T(304,150,"Psoas major",{c:"s"})+TL(350,214,["Quadratus","lumborum"],{c:"s m"})+T(470,320,"Iliacus / iliac fossa",{c:"s m"})+T(470,470,"Inguinal lig.",{c:"s m"})+
+  `<g transform="translate(400,24)"><rect width="220" height="96" rx="10" class="box"/>`+T(12,20,"สัมพันธ์กับ psoas major",{a:"start",c:"h"})+T(12,40,"Anterior: genitofemoral",{a:"start",c:"s"})+T(12,58,"Medial: obturator, lumbosacral trunk",{a:"start",c:"s"})+TL(12,76,["Lateral: iliohypogastric, ilio-inguinal,","LFCN, femoral"],{a:"start",c:"s"})+`</g>`}
+ return svg(b)},
+notes:()=>`<h3>Lumbar plexus</h3><ul><li>เกิดจาก <b>anterior rami T12–L4</b> · อยู่ในเนื้อ psoas major หน้า quadratus lumborum ${S.l}${S.g}</li></ul>
+ <table><tr><th>Nerve</th><th>Root</th><th>วิ่ง / เลี้ยง</th></tr>
+ <tr><td>Iliohypogastric</td><td>L1</td><td>ขอบข้าง psoas → skin posterolateral gluteal &amp; pubic region · int. oblique, transversus</td></tr>
+ <tr><td>Ilio-inguinal</td><td>L1</td><td>ขอบข้าง psoas → skin upper medial thigh, root of penis/mons, ant. scrotum/labia majora</td></tr>
+ <tr><td>Genitofemoral</td><td>L1, L2</td><td><b>ทะลุผิวหน้า psoas</b> วิ่งใต้ psoas fascia · genital br. (scrotum/labia, cremaster) · femoral br. (skin upper ant. thigh)</td></tr>
+ <tr><td>Lateral femoral cutaneous</td><td>L2, L3</td><td>ขอบข้าง psoas หน้า iliacus → ใต้ inguinal lig. → skin anterior/lateral thigh ถึงเข่า</td></tr>
+ <tr><td>Femoral</td><td>L2–L4</td><td>ร่องระหว่าง psoas กับ iliacus → iliacus, pectineus, anterior thigh · skin anterior/medial thigh</td></tr>
+ <tr><td>Obturator</td><td>L2–L4</td><td><b>ขอบ medial</b> ของ psoas → lateral pelvic wall → ทะลุ obturator membrane → medial thigh</td></tr></table>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.l}${S.g}</p>
+ <div class="pearl"><b>จำ:</b> “I twice get laid on Fridays” → Iliohypogastric, Ilio-inguinal, Genitofemoral, LFCN, Obturator, Femoral · <b>Meralgia paresthetica</b> = LFCN ถูกกดใต้ inguinal lig. (ชาด้านข้างต้นขา) ${S.x}</div>`});
+
+/* 13 · aorta, IVC, lymph */
+SEC.push({id:"aorta",k:"Posterior abdominal wall",t:"Aorta, IVC & lymphatics",tools:[["lymph","Lymph"]],leg:["art","vein","lymph","cortex"],figs:[["aorta-1","Great vessels of posterior abdominal wall (Lec)"],["aorta-2","Abdominal aorta & branches (Gray Fig 4.164)"],["aorta-3","IVC and tributaries (Lec)"],["aorta-4","Lymphatics: pre-aortic, lateral aortic, cisterna chyli (Lec)"]],
+draw(){
+ let b="";const LV=[["T12",60],["L1",112],["L2",164],["L3",216],["L4",268],["L5",320]];
+ LV.forEach(([n,y])=>{b+=`<line class="guide" x1="40" y1="${y}" x2="600" y2="${y}"/>`+T(26,y+4,n,{a:"start",c:"s m"})});
+ b+=F("cortex",bean(170,170,80,130,1,.15)).replace('class="f cortex"','class="f cortex" style="opacity:.45"')+F("cortex",bean(470,150,80,130,-1,-.15)).replace('class="f cortex"','class="f cortex" style="opacity:.45"');
+ b+=V("vein","M292,20 L292,334",15)+V("vein","M292,334 C276,360 262,390 248,430",10)+V("vein","M292,334 C310,360 330,392 350,430",10);
+ b+=V("art","M336,40 L336,288",14)+V("art","M336,288 C320,320 304,360 288,410",9)+V("art","M336,288 C354,320 372,360 392,410",9)+V("art","M336,288 L336,400",3);
+ b+=V("art","M330,44 C300,36 270,30 230,34",3)+V("art","M342,44 C372,36 402,30 442,34",3);
+ b+=C("art",336,62,7)+C("art",336,108,7)+C("art",336,226,6);
+ b+=V("art","M330,104 L300,102",2)+V("art","M342,104 L372,102",2);
+ b+=V("art","M330,140 C290,142 240,150 204,166",5)+V("art","M342,136 C380,138 420,142 438,148",5);
+ b+=V("art","M330,172 C300,200 280,260 262,330",2)+V("art","M342,172 C372,200 392,260 410,330",2);
+ [124,176,228,268].forEach(y=>b+=V("art",`M330,${y} L312,${y+4}`,1.8)+V("art",`M342,${y} L360,${y+4}`,1.8));
+ b+=V("vein","M298,36 C320,26 340,24 360,26",3)+V("vein","M286,90 L254,94",2.4)+V("vein","M436,154 C400,150 340,146 300,146",7)+V("vein","M206,170 C236,160 262,154 286,150",7);
+ b+=V("vein","M412,100 C410,120 412,136 414,150",2)+V("vein","M262,330 C270,260 280,220 288,196",2)+V("vein","M410,330 C404,260 410,200 420,158",2);
+ if(ST.lymph){[[320,62],[320,108],[320,226]].forEach(([x,y])=>b+=E("lymph",x,y,6,5));[[358,150],[358,190],[358,240],[268,150],[268,190],[268,240]].forEach(([x,y])=>b+=E("lymph",x,y,7,5));
+  b+=`<path class="f" d="M300,128 C290,116 294,94 306,92 C318,92 320,110 316,128 Z" style="fill:color-mix(in srgb,var(--a-lymph) 40%,transparent);stroke-dasharray:3 2"/>`+V("lymph","M308,92 C310,60 306,30 310,6",2)}
+ if(ST.labels){b+=T(170,176,"R kidney",{c:"s m"})+T(470,156,"L kidney",{c:"s m"});
+  b+=TL(626,58,["Celiac trunk (T12)"],{a:"end",c:"s"})+LD(343,62,520,56)+TL(626,98,["SMA (L1)"],{a:"end",c:"s"})+LD(343,108,580,96)+T(626,226,"IMA (L3)",{a:"end",c:"s"})+LD(342,226,574,222)+
+  TL(626,130,["Renal a. (L1–L2)"],{a:"end",c:"s"})+TL(626,176,["Gonadal a. (L2)"],{a:"end",c:"s"})+LD(380,210,540,174)+TL(626,276,["Lumbar a. ×4"],{a:"end",c:"s"})+LD(360,272,560,274)+T(626,300,"Bifurcation (L4)",{a:"end",c:"s"})+LD(338,290,540,298)+
+  T(626,404,"Median sacral a.",{a:"end",c:"s"})+LD(338,396,530,402)+T(452,28,"Inferior phrenic a.",{a:"start",c:"s"})+TL(96,96,["Middle","suprarenal a."],{a:"start",c:"s"}).replace(/x="96"/g,'x="380"').replace(/text-anchor="start"/g,'text-anchor="start"')+
+  T(268,30,"IVC",{a:"end",c:"s"})+TL(60,84,["R suprarenal v.","→ IVC"],{a:"start",c:"s"})+LD(256,94,150,90)+TL(60,236,["R gonadal v.","→ IVC"],{a:"start",c:"s"})+LD(270,260,136,240)+TL(626,340,["L gonadal &","L suprarenal v.","→ L renal v."],{a:"end",c:"s"})+LD(412,300,536,340)+T(254,450,"Common iliac v. (L5)",{a:"end",c:"s"});
+  if(ST.lymph)b+=TL(60,132,["Cisterna chyli","(L1–L2, หลังขวา aorta)"],{a:"start",c:"s"})+LD(298,118,200,136)+TL(60,286,["Lateral aortic","(lumbar) nodes"],{a:"start",c:"s"})+LD(264,242,150,284)+T(326,512,"Pre-aortic nodes อยู่หน้า celiac, SMA, IMA",{c:"s m"})}
+ return svg(b,"0 0 640 524")},
+notes:()=>`<h3>Abdominal aorta (T12–L4)</h3><table><tr><th>กลุ่ม</th><th>แขนง</th></tr>
+ <tr><td>Visceral (anterior)</td><td><b>Celiac</b> (T12), <b>SMA</b> (L1), <b>IMA</b> (L3)</td></tr>
+ <tr><td>Visceral (paired)</td><td>Middle suprarenal, <b>renal (L1–L2)</b>, gonadal (testicular/ovarian)</td></tr>
+ <tr><td>Posterior</td><td>Inferior phrenic, lumbar ×4, median sacral</td></tr>
+ <tr><td>Terminal</td><td>Common iliac (แยกที่ L4)</td></tr></table>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.l}${S.g}</p>
+ <ul><li>Bifurcation ที่ L4 ตรงกับจุดใต้สะดือ ~2.5 cm หรือแนวเส้นต่อยอด iliac crest 2 ข้าง ${S.g}</li>
+ <li>หน้า aorta: pancreas + splenic v., <b>left renal v.</b>, 3rd part duodenum ${S.g}</li></ul>
+ <h3>IVC</h3><ul><li>รับ: common iliac v., lumbar v., <b>right</b> gonadal v., renal v., <b>right</b> suprarenal v., inferior phrenic v., hepatic v. ${S.l}</li>
+ <li><b>ยกเว้น</b> left gonadal v. และ left suprarenal v. → เข้า <b>left renal v.</b> ${S.l}</li></ul>
+ <h3>Lymph</h3><ul><li><b>Pre-aortic</b>: จากอวัยวะที่ celiac/SMA/IMA เลี้ยง → intestinal trunk ${S.l}</li>
+ <li><b>Lateral aortic (para-aortic/lumbar)</b>: จากผนังลำตัว ไต suprarenal testes/ovaries → lumbar trunk ซ้าย/ขวา ${S.l}</li>
+ <li><b>Cisterna chyli</b> = intestinal + lumbar trunks · หลังด้านขวาของ aorta หน้า L1–L2 · เริ่ม thoracic duct ${S.l}</li></ul>
+ <div class="pearl"><b>Clinical:</b> มะเร็งอัณฑะลามไป <b>para-aortic nodes</b> (ไม่ใช่ inguinal) เพราะ testis มาจากระดับไตตอนเป็นตัวอ่อน ${S.x}</div>`});
+
+/* 14 · clinical */
+SEC.push({id:"clinic",k:"Clinical",t:"Clinical correlations",figs:[["ureter-2","Ureteric constrictions on IVU (Lec)"]],
+draw(){
+ let b="";
+ const fig=(x,back)=>{let s=C("skin",x,56,26)+F("skin",`M${x-40},96 C${x-50},150 ${x-48},220 ${x-40},270 L${x-30},460 L${x-6},460 L${x},300 L${x+6},460 L${x+30},460 L${x+40},270 C${x+48},220 ${x+50},150 ${x+40},96 C${x+20},84 ${x-20},84 ${x-40},96Z`)+
+   F("skin",`M${x-40},100 C${x-62},150 ${x-70},210 ${x-74},270 L${x-62},272 C${x-56},214 ${x-50},168 ${x-40},140Z`)+F("skin",`M${x+40},100 C${x+62},150 ${x+70},210 ${x+74},270 L${x+62},272 C${x+56},214 ${x+50},168 ${x+40},140Z`);
+   const z=back?`M${x-40},180 C${x-20},176 ${x+20},176 ${x+40},180 L${x+40},250 C${x+20},246 ${x-20},246 ${x-40},250Z`:`M${x-40},210 C${x-30},240 ${x-20},262 ${x},272 C${x+20},262 ${x+30},240 ${x+40},210 L${x+40},300 L${x+26},330 L${x-26},330 L${x-40},300Z`;
+   return s+`<path d="${z}" style="fill:color-mix(in srgb,var(--sb-bad) 45%,transparent);stroke:var(--sb-bad);stroke-width:1;stroke-dasharray:3 2"/>`};
+ b+=fig(110,true)+fig(250,false);
+ b+=`<path d="M70,214 C90,236 150,260 210,300" style="fill:none;stroke:var(--sb-bad);stroke-width:2.4;marker-end:url(#ah)"/>`;
+ const card=(x,y,w,h,ttl,ls)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" class="box"/>`+T(x+12,y+20,ttl,{a:"start",c:"h"})+TL(x+12,y+38,ls,{a:"start",c:"s",lh:15});
+ b+=card(340,20,284,108,"นิ่วใน ureter",["ติดที่ ① UPJ ② pelvic brim ③ UVJ","ปวดร้าว loin → groin (T11–L2)","CT KUB = มาตรฐาน · US ในคนท้อง","ภาวะแทรกซ้อน: ติดเชื้อ อุดตัน ไตวาย"]);
+ b+=card(340,140,284,92,"Renal cell carcinoma",["มาจาก PCT epithelium","ลามเข้า renal v. → IVC → RA ได้","ฝั่งซ้ายอุด L renal v. → L varicocele"]);
+ b+=card(340,244,284,92,"Kidney transplant",["วางใน iliac fossa (extraperitoneal)","ต่อ external/internal iliac a. &amp; v.","ureter ฝังเฉียงเข้า bladder"]);
+ b+=card(340,348,284,76,"Nephrostomy",["ไตอยู่ลึกจากผิวหลังแค่ 2–3 cm","ใช้ US นำ ใส่สายเข้า renal pelvis"]);
+ b+=card(340,436,284,76,"Bladder / urethra",["Suprapubic cath. เหนือ symphysis 2 cm","หญิง UTI บ่อย (urethra สั้น)"]);
+ if(ST.labels)b+=T(110,490,"Back · loin",{c:"s"})+T(250,490,"Front · groin, pubis, thigh",{c:"s"})+T(180,16,"Referred pain from ureter: T11–L2",{c:"h"}).replace('y="16"','y="20"');
+ return svg(b,"0 0 640 524")},
+notes:()=>`<h3>ที่มา</h3><ul>
+ <li><b>นิ่ว</b>: ชายมากกว่าหญิง อายุ 20–60 ปี · ปวดจาก loin ร้าวลง groin ถึง scrotum/labia + hematuria · ตรวจ CT KUB (ขนาด ตำแหน่ง ระดับการอุดตัน) · US ใช้ในคนท้อง ${S.g}</li>
+ <li><b>RCC</b>: มาจาก proximal tubular epithelium · ลามเข้า renal v. และ IVC ได้ ซึ่งมะเร็งอื่นไม่ค่อยทำ · ~5% ของเนื้องอกในไตเป็น transitional cell จาก urothelium ของ pelvis ${S.g}</li>
+ <li><b>Urothelium</b> ตั้งแต่ calyx ถึง urethra ทำตัวเป็น “หน่วยเดียว” → เป็น TCC ที่ bladder ต้องตรวจทั้งทางเดินปัสสาวะ ${S.g}</li>
+ <li><b>Nephrostomy</b>: ระบายปัสสาวะเมื่อ ureter ส่วนปลายอุด (กันไตวายและติดเชื้อ) ${S.g}</li>
+ <li><b>Transplant</b>: iliac fossa อยู่ใกล้ผิวหน้าท้อง → ทำ US/Doppler และ biopsy ง่าย ฟื้นตัวเร็ว ${S.g}</li>
+ <li><b>Ureteric injury</b> ระหว่างผ่าตัดในอุ้งเชิงกราน (hysterectomy, colectomy) → ปัสสาวะรั่ว sepsis หรือ fistula ${S.g}</li>
+ <li><b>Bladder cancer</b>: มักเป็นหลายจุด ลามไป rectum/uterus/prostate และ internal iliac nodes ${S.g}</li></ul>
+ <div class="pearl">ดูกลไกการเกิดนิ่วและ AKI ต่อได้ใน <b>Nephron Pathway Atlas</b> ส่วน Kidney diseases</div>`});
+
+/* order follows Gray's Anatomy for Students: posterior abdominal wall → kidneys → ureters → suprarenal glands → vessels, lymphatics, nerves (Ch 4) → bladder, urethra (Ch 5) */
+GN["Vessels & nerves"]="หลอดเลือดใหญ่ น้ำเหลือง เส้นประสาท";
+SEC.forEach(s=>{if(s.id==="aorta"||s.id==="plexus")s.k="Vessels & nerves"});
+{const ORD=["wall","loc","rel","fascia","struct","vessels","lnn","ureter","adrenal","aorta","plexus","bladder","urethra","clinic"];SEC.sort((a,b)=>ORD.indexOf(a.id)-ORD.indexOf(b.id))}
+/* ================= render: one chapter = one continuous page ================= */
+const $=s=>document.querySelector(s);
+const SEENKEY="sb-anat-seen",FIGDIR="img/anat/";
+let cur=SEC[0],GRP=null,OBS=null;
+let SEEN={},OPEN={};try{SEEN=JSON.parse(localStorage.getItem(SEENKEY)||"{}")}catch(e){}
+const GROUPS=[...new Set(SEC.map(s=>s.k))];
+const gOf=s=>GROUPS.indexOf(s.k);
+function tocHTML(withHead){const n=Object.keys(SEEN).filter(k=>SEC.some(s=>s.id===k)).length;
+ const subs=[...document.querySelectorAll(`#notes-${cur.id} h3`)].map(h=>[h.id,h.textContent]);
+ return (withHead?`<div class="dh2"><b>สารบัญ</b><button type="button" id="dclose" aria-label="Close">✕</button></div>`:"")+
+ `<div class="prog"><i><b style="width:${n/SEC.length*100}%"></b></i>${n}/${SEC.length} หัวข้อ</div>`+
+ GROUPS.map(gk=>{const list=SEC.filter(s=>s.k===gk),open=OPEN[gk]??(gk===cur.k);
+  return `<div class="g" data-open="${open}"><button class="gh" type="button" data-g="${gk}"><span class="cv">▶</span>${GN[gk]||gk}<span class="n">${list.filter(s=>SEEN[s.id]).length}/${list.length}</span></button>
+  <ul>${list.map(s=>`<li><a href="#${s.id}" data-id="${s.id}" aria-current="${s===cur}"><span class="ck${SEEN[s.id]?" on":""}">✓</span>${s.t}</a>${s===cur&&subs.length>1?`<ol>${subs.map(([id,tx])=>`<li><a href="#${s.id}" data-sub="${id}">${tx}</a></li>`).join("")}</ol>`:""}</li>`).join("")}</ul></div>`}).join("")}
+function wireToc(root){root.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{const g=b.dataset.g,el=b.parentElement;OPEN[g]=el.dataset.open!=="true";el.dataset.open=OPEN[g]});
+ root.querySelectorAll("a[data-id]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();go(a.dataset.id,true,true)});
+ root.querySelectorAll("a[data-sub]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();const h=document.getElementById(a.dataset.sub);if(h)h.scrollIntoView({behavior:"smooth",block:"start"})});
+ const c=root.querySelector("#dclose");if(c)c.onclick=closeDrawer}
+function chips(){$("#side").innerHTML=tocHTML(false);wireToc($("#side"));
+ const i=SEC.indexOf(cur),list=SEC.filter(s=>s.k===cur.k);$("#mgrp").textContent=`${GN[cur.k]||cur.k} · ${list.indexOf(cur)+1}/${list.length}`;$("#mtop").textContent=cur.t;$("#mprev").disabled=i===0;$("#mnext").disabled=i===SEC.length-1;
+ const a=$("#side").querySelector('[aria-current="true"]');if(a){const r=a.getBoundingClientRect(),sr=$("#side").getBoundingClientRect();if(r.top<sr.top||r.bottom>sr.bottom)a.scrollIntoView({block:"nearest"})}}
+function openDrawer(){$("#dpane").innerHTML=tocHTML(true);wireToc($("#dpane"));$("#drawer").hidden=false;const a=$("#dpane").querySelector('[aria-current="true"]');if(a)a.scrollIntoView({block:"center"})}
+function closeDrawer(){$("#drawer").hidden=true}
+$("#mopen").onclick=openDrawer;$("#ddim").onclick=closeDrawer;
+$("#mprev").onclick=()=>{const i=SEC.indexOf(cur);if(i>0)go(SEC[i-1].id,true,true)};$("#mnext").onclick=()=>{const i=SEC.indexOf(cur);if(i<SEC.length-1)go(SEC[i+1].id,true,true)};
+function fixTools(s){(s.tools||[]).forEach(([k,o])=>{if(Array.isArray(o)&&!o.some(v=>v[0]===ST[k]))ST[k]=o[0][0]})}
+function tools(s){const el=document.getElementById("tools-"+s.id);if(!el)return;const tl=[["labels","Labels"]].concat((s.tools||[]).filter(t=>!Array.isArray(t[1])));
+ let h=tl.map(([k,l])=>`<button class="sb-chip" type="button" data-t="${k}" aria-pressed="${!!ST[k]}">${l}</button>`).join("");
+ (s.tools||[]).filter(t=>Array.isArray(t[1])).forEach(([k,opts])=>{h+=`<span class="segc">`+opts.map(([v,l])=>`<button class="sb-chip" type="button" data-s="${k}" data-v="${v}" aria-pressed="${ST[k]===v}">${l}</button>`).join("")+`</span>`});
+ el.innerHTML=h;const prev=cur;cur=s;if(s.ctrl){el.insertAdjacentHTML("beforeend",s.ctrl());if(s.wire)s.wire()}cur=prev;
+ el.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{ST[b.dataset.t]=!ST[b.dataset.t];SEC.filter(x=>x.k===s.k).forEach(draw)});
+ el.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{ST[b.dataset.s]=b.dataset.v;draw(s)})}
+function draw(s){const prev=cur;cur=s;const d=document.getElementById("dia-"+s.id);if(d)d.innerHTML=s.draw();tools(s);
+ const lg=document.getElementById("legend-"+s.id);if(lg)lg.innerHTML=(s.leg||[]).map(k=>LEG[k]?`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`:"").join("");cur=prev}
+function topicHTML(s){const figs=s.figs&&s.figs.length?`<section class="figs sb-card card"><h3>รูปจากเลคเชอร์ <span>${s.figs.length} รูป · แตะเพื่อขยาย</span></h3><div class="strip">${s.figs.map(([f,c])=>`<button class="fig" type="button" data-f="${f}" data-c="${c}"><img src="${FIGDIR}${f}.jpg" alt="${c}" loading="lazy"><span>${c}</span></button>`).join("")}</div></section>`:"";
+ return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><div class="stage">
+  <section class="sb-card card"><div class="dh"><div><div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2></div><div class="tools" id="tools-${s.id}"></div></div>
+   <div class="dia" id="dia-${s.id}" data-id="${s.id}"></div><div class="legend" id="legend-${s.id}"></div></section>
+  <aside class="sb-card card notes" id="notes-${s.id}"></aside></div>${figs}</article>`}
+function renderGroup(gk){GRP=gk;const list=SEC.filter(s=>s.k===gk),gi=GROUPS.indexOf(gk);
+ $("#flow").innerHTML=`<header class="ghead"><small>${GROUPS.length>1?`ส่วนที่ ${gi+1}/${GROUPS.length} · `:""}${list.length} หัวข้อ</small><h2>${GN[gk]||gk}</h2><div class="gchips">${list.map(s=>`<a href="#${s.id}" data-jump="${s.id}">${s.t}</a>`).join("")}</div></header>`+list.map(topicHTML).join("");
+ list.forEach(s=>{fixTools(s);const prev=cur;cur=s;const n=document.getElementById("notes-"+s.id);n.innerHTML=s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);cur=prev;draw(s)});
+ $("#flow").querySelectorAll("[data-jump]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.jump,true,true)});
+ $("#flow").querySelectorAll(".dia").forEach(d=>d.onclick=()=>openDia(SEC.find(s=>s.id===d.dataset.id)));
+ $("#flow").querySelectorAll(".fig").forEach(b=>b.onclick=()=>openLB(b.dataset.f,b.dataset.c));
+ const pv=GROUPS[gi-1],nx=GROUPS[gi+1];
+ $("#steps").innerHTML=(pv?`<button type="button" data-g="${pv}"><small>← ส่วนก่อนหน้า</small><b>${GN[pv]||pv}</b></button>`:"<span style='flex:1'></span>")+(nx?`<button type="button" class="nx" data-g="${nx}"><small>ส่วนถัดไป →</small><b>${GN[nx]||nx}</b></button>`:"<span style='flex:1'></span>");
+ $("#steps").querySelectorAll("button").forEach(b=>b.onclick=()=>{go(SEC.find(s=>s.k===b.dataset.g).id,true,"chapter")});
+ if(OBS)OBS.disconnect();
+ OBS=new IntersectionObserver(es=>{const vis=es.filter(e=>e.isIntersecting);if(!vis.length)return;const id=vis[0].target.dataset.id;if(id!==cur.id)setCur(SEC.find(s=>s.id===id),true)},{rootMargin:"-30% 0px -60% 0px"});
+ $("#flow").querySelectorAll(".topic").forEach(t=>OBS.observe(t))}
+function setCur(s,push){cur=s;SEEN[s.id]=1;try{localStorage.setItem(SEENKEY,JSON.stringify(SEEN))}catch(e){}chips();
+ if(push&&location.hash.slice(1)!==s.id)history.replaceState(null,"","#"+s.id)}
+function go(id,push,scroll){const s=SEC.find(x=>x.id===id)||SEC[0];const fresh=s.k!==GRP;if(fresh)renderGroup(s.k);setCur(s,push);
+ const el=scroll==="chapter"?$("#flow"):document.getElementById("t-"+s.id);if(el&&scroll)el.scrollIntoView({behavior:fresh?"auto":"smooth",block:"start"})}
+let Z=1,ZEL=null;function openLB(f,c){$("#lbsc").innerHTML=`<img id="lbi" alt="" src="${FIGDIR}${f}.jpg">`;ZEL=$("#lbi");$("#lbt").textContent=c;Z=1;$("#lb").hidden=false}
+function openDia(s){const prev=cur;cur=s;$("#lbsc").innerHTML=`<div class="zsvg">${s.draw()}</div>`;cur=prev;ZEL=$("#lbsc .zsvg");$("#lbt").textContent=s.t;Z=innerWidth<700?2.2:1;ZEL.style.width=Z===1?"":`${96*Z}vw`;$("#lb").hidden=false}
+$("#lbx").onclick=()=>$("#lb").hidden=true;$("#zi").onclick=()=>{Z=Math.min(4,Z*1.4);ZEL.style.width=`min(${96*Z}vw,${1000*Z}px)`};$("#zo").onclick=()=>{Z=Math.max(1,Z/1.4);ZEL.style.width=Z===1?"":`min(${96*Z}vw,${1000*Z}px)`};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("#lb").hidden=true;closeDrawer()}});
+window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(id&&SEC.some(s=>s.id===id))go(id,false,true)});
+go(location.hash.slice(1)||SEC[0].id,false,!!location.hash.slice(1));
+</script>
+</body>
+</html>

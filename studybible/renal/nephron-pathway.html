@@ -1,0 +1,1400 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png"><script src="../app.js" defer></script><title>Nephron Pathway Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media=\'all\'"><link rel="stylesheet" href="../design/sb.css"><style>
+/* Layout: nephron map (click a segment) → detailed cell close-up with colour-coded substances + optional concentration band → table → clinical cards */
+:root{
+  --bg:var(--sb-bg); --paper:var(--sb-surface); --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --halo:var(--sb-halo);
+  --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft);
+  --lumen:#fff6d6; --cell:#ffe4d6; --cell-edge:#cf7f62; --nuc:#e6dcfb; --nuc-edge:#9277d4; --mito:#ffd0c0; --mito-edge:#c0583c;
+  --isf:#e6f4f0; --blood:#e5484d; --blood-soft:#fbd7d8; --vein:#3f6fd8; --tube:#ffd98a; --tube-edge:#b8862b;
+  --cortex:#fbf0e7; --om:#f6ddcc; --im:#efc6ae;
+  /* substances */
+  --s-na:#1d4ed8; --s-k:#9333ea; --s-cl:#15803d; --s-hco3:#0d9488; --s-h:#dc2626; --s-ca:#ea580c; --s-mg:#65a30d;
+  --s-pi:#a16207; --s-glc:#db2777; --s-aa:#a21caf; --s-h2o:#0ea5e9; --s-urea:#ca8a04; --s-nh4:#4338ca; --s-org:#78716c; --s-co2:#94a3b8;
+  /* proteins */
+  --p-sym:#475569; --p-sym-f:#e2e8f0; --p-anti:#0f172a; --p-anti-f:#ffffff; --p-uni:#64748b; --p-uni-f:#f8fafc;
+  --p-pump:#a16207; --p-pump-f:#fde68a; --p-atp:#facc15; --p-ch:#6b7280; --p-rec:#be185d; --p-enz:#854d0e; --p-enz-f:#fef9c3; --p-jx:#57534e;
+  --f-display:var(--sb-font);
+  --f-body:var(--sb-font);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:var(--sb-bg); --paper:var(--sb-surface); --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --halo:var(--sb-halo);
+  --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft);
+  --lumen:#3a3420; --cell:#46302a; --cell-edge:#cf8f77; --nuc:#352d4d; --nuc-edge:#a690e6; --mito:#5a3328; --mito-edge:#e08a6c;
+  --isf:#1c3430; --blood:#ff6b6f; --blood-soft:#4a2224; --vein:#7aa2ff; --tube:#6b5627; --tube-edge:#e0b45c;
+  --cortex:#29231f; --om:#33281f; --im:#3f2c20;
+  --s-na:#7aa5ff; --s-k:#c79bff; --s-cl:#5fd68a; --s-hco3:#3fd6c4; --s-h:#ff6b6b; --s-ca:#ff9a52; --s-mg:#a8dc4a;
+  --s-pi:#e0b452; --s-glc:#ff7ab8; --s-aa:#e57ff0; --s-h2o:#5cc8ff; --s-urea:#f2c94c; --s-nh4:#9a95ff; --s-org:#c2b8b0; --s-co2:#b7c3d1;
+  --p-sym:#b7c4d4; --p-sym-f:#2c3846; --p-anti:#eef2f6; --p-anti-f:#1a2228; --p-uni:#9fb0c2; --p-uni-f:#222c35;
+  --p-pump:#f2c94c; --p-pump-f:#5a4614; --p-atp:#facc15; --p-ch:#a3adb6; --p-rec:#ff73ad; --p-enz:#f0c63c; --p-enz-f:#3d3416; --p-jx:#d6cfc8;
+  color-scheme:dark}}
+:root[data-theme="dark"],:root[data-theme="oled"]{
+  --bg:var(--sb-bg); --paper:var(--sb-surface); --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --halo:var(--sb-halo);
+  --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft);
+  --lumen:#3a3420; --cell:#46302a; --cell-edge:#cf8f77; --nuc:#352d4d; --nuc-edge:#a690e6; --mito:#5a3328; --mito-edge:#e08a6c;
+  --isf:#1c3430; --blood:#ff6b6f; --blood-soft:#4a2224; --vein:#7aa2ff; --tube:#6b5627; --tube-edge:#e0b45c;
+  --cortex:#29231f; --om:#33281f; --im:#3f2c20;
+  --s-na:#7aa5ff; --s-k:#c79bff; --s-cl:#5fd68a; --s-hco3:#3fd6c4; --s-h:#ff6b6b; --s-ca:#ff9a52; --s-mg:#a8dc4a;
+  --s-pi:#e0b452; --s-glc:#ff7ab8; --s-aa:#e57ff0; --s-h2o:#5cc8ff; --s-urea:#f2c94c; --s-nh4:#9a95ff; --s-org:#c2b8b0; --s-co2:#b7c3d1;
+  --p-sym:#b7c4d4; --p-sym-f:#2c3846; --p-anti:#eef2f6; --p-anti-f:#1a2228; --p-uni:#9fb0c2; --p-uni-f:#222c35;
+  --p-pump:#f2c94c; --p-pump-f:#5a4614; --p-atp:#facc15; --p-ch:#a3adb6; --p-rec:#ff73ad; --p-enz:#f0c63c; --p-enz-f:#3d3416; --p-jx:#d6cfc8;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:0.9375rem;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px;display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(1.75rem,4.4vw,40px)} h2{font-size:1.438rem} h3{font-size:1.062rem}
+.lede{color:var(--muted);max-width:72ch;margin:6px 0 0}
+.src{font-size:0.7812rem;color:var(--muted);letter-spacing:.02em}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll svg{display:block;width:100%;min-width:820px;height:auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 0.8125rem/1 var(--f-display);border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 12px 7px 7px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.tz-l{font:600 0.75rem/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);align-self:center;margin-right:4px}
+.chip.tp b{background:var(--isf)}
+a.chip{text-decoration:none}
+.golinks{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:0.8125rem}
+.golinks button{font:600 0.7812rem/1 var(--f-display);border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 10px;cursor:pointer}
+.chip b{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:50%;background:var(--tube);color:var(--ink);font-size:0.75rem}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.chip[aria-pressed="true"] b{background:var(--accent);color:#fff}
+.chip:focus-visible,.seg:focus-visible,.mk:focus-visible,.tog input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px}
+.tag{font:600 0.75rem/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:7px;background:var(--isf);color:var(--ink)}
+.pct{font-size:0.875rem;color:var(--muted);max-width:110ch}
+.bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.tog{display:inline-flex;align-items:center;gap:8px;font:600 0.875rem/1 var(--f-display);cursor:pointer;user-select:none}
+.tog input{appearance:none;width:42px;height:24px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;transition:background .2s;margin:0}
+.tog input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--paper);transition:left .2s}
+.tog input:checked{background:var(--accent)}
+.tog input:checked::after{left:21px}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px 20px}
+.legend h4{font:600 0.75rem/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.legend .row{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:0.8125rem}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.legend svg{width:22px;height:22px;min-width:0;flex:none}
+table{border-collapse:collapse;width:100%;font-size:0.8438rem;min-width:820px}
+th{font:600 0.75rem/1.2 var(--f-display);letter-spacing:.05em;text-transform:uppercase;text-align:left;color:var(--muted);padding:8px;border-bottom:2px solid var(--line)}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.row{cursor:pointer}
+tr.row.on td{background:var(--accent-soft)}
+td.nm{font-weight:700}
+td .sb{font-weight:700}
+.srcb{font:600 0.6875rem/1 var(--f-display);padding:4px 6px;border-radius:6px;background:var(--isf);white-space:nowrap}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg);min-width:0}
+.card h3{font-size:0.9688rem;margin-bottom:4px}
+.card p{margin:0;font-size:0.8438rem;color:var(--muted)}
+.note{font-size:0.7812rem;color:var(--muted);margin:0}
+/* SVG text */
+.h{paint-order:stroke;stroke:var(--halo);stroke-width:3.5px;stroke-linejoin:round}
+.t{font-family:var(--f-body);fill:var(--ink);font-size:12px;font-weight:700}
+.ts{font-family:var(--f-body);fill:var(--muted);font-size:10.5px;font-weight:600}
+.tb{font-family:var(--f-display);fill:var(--ink);font-size:14px;font-weight:600}
+.tz{font-family:var(--f-display);fill:var(--muted);font-size:12px;font-weight:600;letter-spacing:.12em}
+.ion{font-family:var(--f-body);font-size:12.5px;font-weight:700}
+.it{cursor:pointer}
+.it.faded{opacity:.28}
+.regcard{border:1.5px solid var(--p-rec);border-radius:14px;padding:12px 16px;background:var(--bg);margin-block:10px}
+.regcard h3{margin-bottom:6px}
+.regcard dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:0.875rem}
+.regcard dt{font:600 0.75rem/1.6 var(--f-display);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.regcard dd{margin:0}
+table.mx td.hit{cursor:pointer;color:var(--p-rec);font-weight:600}
+table.mx td.hit:hover{background:var(--accent-soft)}
+button.rgo{font:700 0.8125rem var(--f-body);background:none;border:0;color:var(--ink);cursor:pointer;padding:0;text-align:left}
+button.rgo:hover{color:var(--p-rec)}
+.regs .reg{opacity:.22;transition:opacity .2s}
+svg.regfocus .reg{opacity:.05}
+svg.regfocus .reg.on{opacity:1}
+.pool .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.pool.sel .ln{stroke-width:4.2}
+.pool .run{fill:none;stroke:var(--halo);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:2 10;animation:flow 1.1s linear infinite}
+@media (prefers-reduced-motion:reduce){.pool .run{animation:none}}
+.trace{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.trace .lbl{font:600 13px/1 var(--f-display);color:var(--muted);margin-right:4px}
+.trace button{font:700 0.8125rem/1 var(--f-body);border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 11px;cursor:pointer}
+.trace button[aria-pressed="true"]{border-color:currentColor;background:var(--accent-soft)}
+.mech{display:flex;flex-direction:column;gap:10px}
+.mrow{border:1px solid var(--line);border-left:5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);cursor:pointer}
+.mrow.on{border-color:var(--accent);background:var(--accent-soft)}
+.mrow h4{margin:0 0 6px;font:600 0.9375rem/1.2 var(--f-display)}
+.steps{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:0.8125rem}
+.steps span.st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-weight:600}
+.steps span.ar{color:var(--muted);font-weight:700}
+.routes ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.routes li{border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:0.8438rem;cursor:pointer;background:var(--bg)}
+.routes li.on{border-color:var(--accent);background:var(--accent-soft)}
+.routes li b{font-weight:700}
+.routes .cellw{font:600 0.6875rem/1 var(--f-display);padding:3px 7px;border-radius:999px;background:var(--cell);border:1px solid var(--cell-edge);margin:0 4px}
+.legend .sbtn{cursor:pointer;border-radius:6px;padding:2px 4px}
+.legend .sbtn.on{outline:2px solid currentColor}
+.it.hl .shape{stroke:var(--accent)!important;stroke-width:3.5}
+.it.hl .nmt{fill:var(--accent)}
+.seg{cursor:pointer}
+.seg.on .fill,.seg:hover .fill{stroke:var(--accent)}
+.flow{stroke-dasharray:3 14;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-34}}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}}
+.mk{cursor:pointer}
+.mk circle{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.mk text{font-family:var(--f-display);font-weight:700;font-size:12.5px;fill:var(--ink)}
+.mk.on circle{fill:var(--accent);stroke:var(--accent)}
+.mk.on text{fill:#fff}
+</style><style>/* Study Bible standard layer */
+
+html body{font-size:1rem}
+html body h1,html body h2,html body h3,html body h4{font-family:var(--sb-font);letter-spacing:-.015em;color:var(--sb-ink)}
+html body .sb-hero h1{font-size:clamp(1.75rem,4.2vw,2.5rem);font-weight:800;margin:0}
+html body .note{color:var(--sb-muted)}
+html body th{font:700 .6875rem/1.2 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted);border-bottom:1px solid var(--sb-line)}
+html body td{border-bottom:1px solid var(--sb-line)}
+html body select{font:500 .9375rem var(--sb-font);padding:.55rem .7rem;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface2);color:var(--sb-ink)}
+html body ::selection{background:var(--sb-accent-soft)}
+
+html body .wrap{padding-block:1rem 4.5rem;gap:1rem}
+html body .panel{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);box-shadow:var(--sb-shadow);padding:1.15rem;gap:.9rem}
+html body .panel h2,html body .head h2{font-size:1.25rem;font-weight:700;margin:0}
+html body h3{font-size:1.0625rem;font-weight:650}
+html body .chip,html body .trace button,html body a.go,html body button.go,html body .golinks button,html body button.rgo{font:500 .8125rem/1.1 var(--sb-font);border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink2);border-radius:999px}
+html body .chip[aria-pressed="true"]{background:var(--sb-ink);color:var(--sb-bg);border-color:var(--sb-ink)}
+html body .chip[aria-pressed="true"] b{background:var(--sb-accent);color:var(--sb-on-accent)}
+html body .chip b{background:var(--sb-surface2);color:var(--sb-ink)}
+html body .trace button[aria-pressed="true"]{border-color:currentColor;background:color-mix(in srgb,currentColor 12%,var(--sb-surface))}
+html body .trace .lbl,html body .tz-l,html body .legend h4{font:700 .6875rem/1.2 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+html body .tog{font:500 .875rem/1.2 var(--sb-font);color:var(--sb-ink2)}
+html body .tog input{background:var(--sb-surface2);border:1px solid var(--sb-line)}
+html body .tog input:checked{background:var(--sb-accent);border-color:var(--sb-accent)}
+html body .tag{font:700 .6875rem/1 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-accent);background:var(--sb-accent-soft);border:0;border-radius:6px;padding:.3rem .5rem}
+html body .kpi{background:var(--sb-surface2);border:0;border-radius:12px}
+html body .card{border-radius:var(--sb-r);border-color:var(--sb-line);background:var(--sb-surface)}
+html body .mrow,html body .routes li{border-radius:12px}
+html body .scroll{border-radius:12px}
+
+.tchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tchip{font:600 .8125rem/1 var(--f-display);border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.tchip i{width:10px;height:10px;border-radius:50%}
+.tchip[aria-pressed="true"]{border-color:currentColor;box-shadow:inset 0 0 0 1px currentColor;background:color-mix(in srgb,currentColor 10%,var(--paper))}
+#tmap .tbadge{cursor:pointer}#tmap .tbadge rect{stroke-width:1.5}
+#tmap .tbadge.r rect{fill:color-mix(in srgb,var(--sb-accent) 16%,var(--paper));stroke:var(--sb-accent)}
+#tmap .tbadge.s rect{fill:color-mix(in srgb,#C2410C 14%,var(--paper));stroke:#C2410C}
+#tmap .tbadge.rs rect{fill:color-mix(in srgb,#7C3AED 12%,var(--paper));stroke:#7C3AED}
+#tmap .tbadge.z rect{fill:var(--paper);stroke:var(--line);stroke-dasharray:4 3}
+#tmap .tbl{font:700 12px var(--f-display);fill:var(--ink)}
+#tmap .tbadge:hover rect,#tmap .tbadge:focus rect{stroke-width:3}
+.tgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px;margin-top:12px}
+@media (max-width:760px){.tgrid{grid-template-columns:1fr}}
+.tsum{margin:0 0 8px;font-size:.9rem}
+.trow{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:2px 10px;width:100%;padding:9px 12px;margin-bottom:6px;border-radius:12px;border:1px solid var(--line);border-left:4px solid var(--line);background:var(--paper)}
+.trow.r{border-left-color:var(--sb-accent)}.trow.s{border-left-color:#C2410C}.trow.rs{border-left-color:#7C3AED}.trow.z{opacity:.7}
+.trow:hover,.trow.hl,.trow:focus-visible{background:var(--sb-surface2,var(--isf))}
+.tdir{font:700 .6875rem/1.6 var(--f-display);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.trow.r .tdir{color:var(--sb-accent)}.trow.s .tdir{color:#C2410C}.trow.rs .tdir{color:#7C3AED}
+.tseg{font-weight:700;font-size:.9rem}.tpct{font-size:.95rem;text-align:right}
+.thow{grid-column:1/-1;font-size:.84rem;color:var(--ink)}.thow small{display:block;color:var(--muted);font-size:.76rem;margin-top:2px}
+.tgo{color:var(--muted);font-weight:400}#tracker .scroll svg{min-width:0;width:100%;height:auto}
+.trem h3{font-size:.9rem;margin:0 0 8px}
+.rrow{display:grid;grid-template-columns:5.5rem 1fr 3.6rem;align-items:center;gap:8px;font-size:.82rem;margin-bottom:6px}
+.rrow i{height:12px;border-radius:6px;background:var(--line);overflow:hidden;display:block}.rrow b{display:block;height:100%;border-radius:6px}
+.rrow em{font-style:normal;font-weight:700;text-align:right}
+</style>
+
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Physiology</div>
+    <h1>Nephron Pathway Atlas</h1>
+    <p class="sb-lede">กดเลขหรือท่อบนแผนที่เพื่อซูมดูเซลล์ของ segment นั้น สารแต่ละตัวมีสีประจำทั้งหน้า ส่วน carrier, pump, receptor แยกด้วยสีและรูปทรงตามชนิด ตัวที่ใช้ ATP มีป้าย ATP เปิดสวิตช์ Concentrations เพื่อดูความเข้มข้นใน lumen ในเซลล์ และใน interstitium</p>
+    <div class="sb-sources"><span class="sb-src"><i class="guyton">G</i>Guyton &amp; Hall 13e · Unit V (Ch 25–31)</span><span class="sb-src"><i class="boron">B</i>Boron &amp; Boulpaep 3e · Ch 33–40</span></div>
+  </header>
+
+  <section class="panel" aria-label="Nephron overview">
+    <div class="head"><h2>Pathway: renal artery → urine &amp; renal vein</h2></div>
+    <div class="scroll"><svg id="map" viewBox="0 0 1000 590" role="img" aria-label="Cartoon nephron with numbered segments"></svg></div>
+    <div class="chips" id="chips" role="toolbar" aria-label="Choose a segment"></div>
+    <div class="chips" id="topics" role="toolbar" aria-label="Whole-kidney topics"><span class="lbl tz-l">Whole-kidney topics</span></div>
+  </section>
+
+  <section class="panel" id="tracker" aria-label="Substance tracker"><a id="t-tracker"></a>
+<div class="head"><span class="tag">ติดตามสาร</span><h2>สารแต่ละตัวเคลื่อนที่ที่ไหนบ้าง</h2></div>
+<p class="note" style="margin:.2rem 0 .7rem">เลือกสาร แล้วดูทุกตำแหน่งตลอด nephron ที่สารนั้นถูกดูดกลับหรือหลั่ง พร้อมสัดส่วนของที่กรอง กดป้ายบนแผนที่หรือแถวในรายการเพื่อซูมเข้าเซลล์ของตำแหน่งนั้น โดยไฮไลต์เส้นทางของสารนั้นไว้ให้</p>
+<div class="tchips" id="t-chips" role="toolbar" aria-label="Choose a substance"></div>
+<div class="scroll"><svg id="tmap" viewBox="0 0 1000 590" role="img" aria-label="Where the selected substance moves"></svg></div>
+<div class="tgrid"><div id="t-list"></div><div id="t-rem" class="trem"></div></div>
+</section>
+<section class="panel" aria-live="polite" data-sb-focus>
+    <div class="head"><span class="tag" id="d-region"></span><h2 id="d-title"></h2></div>
+    <div class="pct" id="d-pct"></div>
+    <div class="bar">
+      <label class="tog"><input type="checkbox" id="t-conc"> Concentrations &amp; voltages</label>
+      <label class="tog"><input type="checkbox" id="t-flow" checked> Intracellular pathways</label>
+      <label class="tog"><input type="checkbox" id="t-reg" checked> Hormone &amp; nerve effects</label>
+      <label class="tog"><input type="checkbox" id="t-para" checked> Paracellular path</label>
+      <span class="note">ค่าความเข้มข้นเป็นค่าโดยประมาณจากตำรา หน่วย mM ถ้าไม่ได้ระบุอย่างอื่น</span>
+    </div>
+    <div class="trace" id="trace"></div>
+    <div class="scroll" id="d-draw"></div>
+    <div class="mech" id="d-mech" hidden></div>
+    <div class="routes"><h3>Transcellular routes</h3><p class="note">เส้นทางของสารแต่ละตัว: เข้าทางไหน → ผ่านเซลล์ / ปฏิกิริยา → ออกทางไหน กดแถวไหน, ปุ่ม Trace ด้านบนภาพ, ชื่อสารใน legend หรือ transporter ในรูป เพื่อดูเส้นทางของสารนั้นทีละตัว · ปุ่ม Regulators (สีชมพู) แสดงว่าฮอร์โมน/เส้นประสาทตัวนั้นไปกระตุ้น (+) หรือยับยั้ง (−) transporter ตัวไหน</p><ul id="d-routes"></ul></div>
+    <div class="legend" id="legend"></div>
+    <div class="scroll" id="d-table"><table><thead><tr><th>Location</th><th>Protein type</th><th>Name</th><th>What moves</th><th>Function / note</th><th>Text</th></tr></thead><tbody id="d-rows"></tbody></table></div>
+    <h3>Situations &amp; organs involved</h3>
+    <div class="cards" id="d-sit"></div>
+    <p class="note">Text column: G = Guyton &amp; Hall, B = Boron &amp; Boulpaep, G+B = both. Where the two books give different numbers, both are shown. Arrows: → toward interstitium/blood, ← toward lumen (or into the cell for uptake from blood).</p>
+  </section>
+</div>
+
+<script>
+/* ===== substances (colour-coded) ===== */
+const S={
+ Na:["Na⁺","--s-na"],K:["K⁺","--s-k"],Cl:["Cl⁻","--s-cl"],HCO3:["HCO₃⁻","--s-hco3"],H:["H⁺","--s-h"],Ca:["Ca²⁺","--s-ca"],Mg:["Mg²⁺","--s-mg"],
+ Pi:["HPO₄²⁻","--s-pi"],Glc:["Glucose","--s-glc"],AA:["Amino acid","--s-aa"],H2O:["H₂O","--s-h2o"],Urea:["Urea","--s-urea"],NH4:["NH₄⁺","--s-nh4"],NH3:["NH₃","--s-nh4"],
+ Org:["Organic ion","--s-org"],CO2:["CO₂","--s-co2"]};
+const SLEG=["Na","K","Cl","HCO3","H","Ca","Mg","Pi","Glc","AA","H2O","Urea","NH4","Org","CO2"];
+const scol=k=>S[k]?`var(${S[k][1]})`:"var(--ink)";
+/* ===== protein types ===== */
+const T={sym:"Co-transporter (symporter)",anti:"Exchanger (antiporter)",uni:"Uniporter / facilitated carrier",pump:"Pump (ATPase)",abc:"ABC transporter (ATP)",ch:"Channel",rec:"Receptor",enz:"Enzyme / protein",endo:"Endocytic receptor",jx:"Junction / pore",diff:"Diffusion / buffer",ves:"Vesicles"};
+const TCOL={sym:"--p-sym",anti:"--p-anti",uni:"--p-uni",pump:"--p-pump",abc:"--p-pump",ch:"--p-ch",rec:"--p-rec",enz:"--p-enz",endo:"--p-uni",jx:"--p-jx",diff:"--muted",ves:"--s-h2o"};
+const LOC={ap:"Apical",bl:"Basolateral",para:"Paracellular (tight junction)",in:"Intracellular",lu:"Lumen",is:"Interstitium / outside"};
+
+/* default concentrations */
+const IC=[["Na","≈15"],["K","≈120 (B) – 140 (G)"],["Cl","≈10–20"],["HCO3","≈15–20"],["Ca","≈100 nM"],["pH","≈7.1–7.2"],["Vm","≈ −70 mV"]];
+const PL=[["Na","142"],["K","4"],["Cl","105"],["HCO3","24"],["Ca","1.2 (ionized)"],["Glc","5"],["Urea","2.5–6"],["pH","7.4"],["Osm","≈290 mOsm"]];
+
+const P=[
+/* 1 */
+{id:"aff",n:1,title:"Renal artery → afferent arteriole + JG cells",region:"Cortex · vessel",kind:"vessel",left:"Blood (afferent arteriole)",cellName:"smooth muscle / granular (JG) cell",right:"Outside vessel (JGA)",
+ pct:"Kidneys get ~20% (B) to 22% (G) of cardiac output, ≈1100 mL/min. Autoregulation keeps GFR steady between ~75 and 160 mmHg (myogenic response + tubuloglomerular feedback).",
+ conc:{lu:[["P","≈100 → 60 mmHg"],["Hct","≈0.45"],["Na","142"],["K","4"],["Osm","≈290 mOsm"]],ic:[["Ca","≈100 nM → ↑ on stretch"],["Vm","≈ −40 to −60 mV"]],is:[["Na","142"],["Osm","≈290 mOsm"]]},
+ items:[
+  {side:"bl",type:"ch",name:"Stretch-activated cation channel",ions:[["Ca","l"]],note:"Myogenic: high pressure stretches the wall → Ca²⁺ enters → constriction",src:"G+B"},
+  {side:"bl",type:"rec",name:"α1-adrenergic receptor",hor:"NE",note:"Sympathetic constriction of afferent + efferent → RBF and GFR fall",src:"G+B"},
+  {side:"bl",type:"rec",name:"β1 receptor (JG cell)",hor:"NE",note:"Releases renin",src:"G+B"},
+  {side:"bl",type:"rec",name:"A1 adenosine receptor",hor:"Adenosine",note:"Tubuloglomerular feedback: adenosine from macula densa constricts the afferent arteriole",src:"B"},
+  {side:"bl",type:"rec",name:"AT1 receptor",hor:"Ang II",note:"Afferent responds less than efferent, so GFR is protected",src:"G+B"},
+  {side:"bl",type:"rec",name:"ANP receptor (NPR-A, cGMP)",hor:"ANP",note:"Dilates afferent, raises GFR, inhibits renin",src:"G+B"},
+  {side:"in",type:"enz",name:"Renin granules",sub:"Angiotensinogen → Ang I",note:"Released by low afferent pressure, low NaCl at macula densa (PGE₂, NO), β1 stimulation",src:"G+B"},
+  {side:"lu",type:"enz",name:"Endothelium: NO (eNOS), PGE₂ / PGI₂ (COX), bradykinin dilate; endothelin, thromboxane constrict",note:"Prostaglandins and NO buffer constrictor tone",src:"G+B"},
+  {side:"is",type:"diff",name:"Macula densa next door: high NaCl → ATP/adenosine → afferent constricts; low NaCl → PGE₂ + NO → renin",note:"See panel 10",src:"G+B"}],
+ sit:[["Autoregulation","Myogenic response + tubuloglomerular feedback keep RBF and GFR nearly constant."],["Hemorrhage, brain ischemia","Strong α1 activity cuts RBF and GFR to save volume for heart and brain."],["NSAIDs in volume depletion","Loss of prostaglandin dilation → GFR can fall sharply."],["Renal artery stenosis","Low afferent pressure → renin ↑ → Ang II ↑ → renovascular hypertension."],["High-protein diet (B)","Raises GFR; part of the effect is through tubuloglomerular feedback."]]},
+/* 2 */
+{id:"glom",n:2,title:"Glomerulus: filtration barrier",region:"Cortex · filter",kind:"filter",
+ pct:"GFR ≈ 125 mL/min ≈ 180 L/day; filtration fraction ≈ 20%. Barrier sorts by size (free < ~2 nm radius, almost none > ~4 nm) and by charge (anions held back more than neutral or cationic molecules of the same size).",
+ conc:{lu:[["Albumin","≈40 g/L"],["Na","142"],["Glc","5"],["Osm","≈290 mOsm"],["P_GC","≈60 mmHg (G)"],["π_GC","32 mmHg (G)"]],ic:[],is:[["Albumin","≈0"],["Na","≈142"],["Glc","5"],["Osm","≈290 mOsm"],["P_BS","≈18 mmHg"]]},
+ items:[
+  {side:"lu",loc:"Capillary endothelium",type:"jx",name:"Fenestrae (70–90 nm)",note:"Hold back blood cells; negative glycocalyx repels proteins",src:"G+B"},
+  {side:"lu",loc:"Basement membrane",type:"jx",name:"Basement membrane (type IV collagen, laminin, negatively charged proteoglycans)",note:"Main charge barrier",src:"G+B"},
+  {side:"lu",loc:"Podocytes",type:"jx",name:"Slit diaphragm between foot processes (nephrin)",note:"Final size barrier",src:"G+B"},
+  {side:"lu",loc:"Mesangial cells",type:"rec",name:"Mesangial cells (contractile)",note:"Contract with Ang II, AVP → lower Kf",src:"B"},
+  {side:"is",loc:"Forces",type:"diff",name:"Starling forces",note:"GFR = Kf × [(P_GC − P_BS) − (π_GC − π_BS)]; G: 60 − 18 − 32 = +10 mmHg",src:"G+B"}],
+ sit:[["Minimal change nephropathy","Loss of negative charge lets albumin through → proteinuria."],["Nephrotic syndrome","Protein loss → low plasma oncotic pressure → edema."],["Glomerulonephritis, diabetes, hypertension","Thickened or scarred barrier lowers Kf and GFR."],["Urinary obstruction","Raises Bowman’s pressure → GFR falls."],["Dehydration, myeloma","Higher plasma oncotic pressure lowers GFR."]]},
+/* 3 */
+{id:"eff",n:3,title:"Efferent arteriole → peritubular capillaries",region:"Cortex · vessel",kind:"vessel",left:"Blood (efferent arteriole)",cellName:"smooth muscle cell",right:"Interstitium around tubules",
+ pct:"Peritubular capillary: low hydrostatic (~13 mmHg) and high oncotic (~32 mmHg) pressure pull reabsorbed fluid into blood (G).",
+ conc:{lu:[["P","≈18 → 13 mmHg"],["Albumin","↑ (FF 20%)"],["π","≈32 mmHg"],["Osm","≈290 mOsm"]],ic:[["Vm","≈ −40 to −60 mV"]],is:[["P_if","≈6 mmHg"],["π_if","≈15 mmHg"],["Osm","≈290 mOsm"]]},
+ items:[
+  {side:"bl",type:"rec",name:"AT1 receptor",hor:"Ang II",note:"Efferent constriction keeps GFR up and lowers peritubular pressure → more reabsorption",src:"G+B"},
+  {side:"bl",type:"rec",name:"α1-adrenergic receptor",hor:"NE",note:"Sympathetic constriction",src:"G+B"},
+  {side:"lu",type:"diff",name:"Blood leaving the glomerulus is concentrated in protein (high oncotic pressure)",note:"Higher filtration fraction → more reabsorption",src:"G+B"},
+  {side:"is",type:"diff",name:"Starling forces pull fluid from interstitium into the capillary; high BP lowers this (pressure natriuresis)",note:"",src:"G+B"}],
+ sit:[["ACE inhibitors / ARBs with renal artery stenosis or heart failure","Removing Ang II dilates the efferent → GFR can drop."],["Pressure natriuresis","High arterial pressure → less proximal reabsorption."],["Volume depletion","Ang II ↑ → efferent constriction → more proximal reabsorption."]]},
+/* 4 */
+{id:"pt1",n:4,title:"Proximal tubule, early (S1)",region:"Cortex",kind:"epi",brush:true,mito:6,left:"Lumen (filtrate)",cellName:"S1 cell",right:"Interstitium",cap:"Peritubular capillary",
+ pct:"Whole PT reabsorbs ~65–67% of Na⁺, Cl⁻, K⁺, Ca²⁺, water; ~80% HCO₃⁻; ~100% glucose and amino acids. S1 is lumen-negative because Na⁺ enters with glucose and amino acids. Glucose Tm ≈ 375 mg/min (G) / ~400 mg/min (B).",
+ conc:{vte:"Vte ≈ −3 mV (lumen −) (B)",lu:[["Na","142"],["K","4"],["Cl","≈110"],["HCO3","24 → ↓"],["Glc","5 → ↓"],["Pi","≈1"],["Urea","≈5"],["pH","7.4"],["Osm","≈290 mOsm"]],ic:[["Na","≈15"],["K","≈120"],["Cl","≈10–20"],["HCO3","≈15–20"],["Glc","> plasma"],["pH","≈7.1–7.2"],["Vm","−67 apical / −70 baso"]],is:PL},
+ items:[
+  {side:"ap",type:"sym",name:"SGLT2 (1 Na⁺ : 1 glucose)",ions:[["Na","r"],["Glc","r"]],note:"~90% of glucose; secondary active",src:"G+B"},
+  {side:"ap",type:"anti",name:"NHE3 (Na⁺–H⁺ exchanger)",ions:[["Na","r"],["H","l"],["NH4","l",0,"(or NH₄⁺)"]],note:"Main H⁺ secretion; can carry NH₄⁺ instead of H⁺; Ang II and α1 stimulate, dopamine and PTH inhibit",src:"G+B"},
+  {side:"ap",type:"pump",name:"V-type H⁺ pump",ions:[["H","l"]],note:"Smaller share of proximal H⁺ secretion",src:"B"},
+  {side:"ap",type:"sym",name:"NaPi-IIa / IIc, PiT-2",ions:[["Na","r",3],["Pi","r"]],note:"Phosphate reabsorption (75–80%); PTH and FGF23 pull them out of the membrane",src:"G+B"},
+  {side:"ap",type:"sym",name:"B⁰AT1 (Na⁺ + neutral amino acid)",ions:[["Na","r"],["AA","r"]],note:"Defect = Hartnup disease",src:"B"},
+  {side:"ap",type:"anti",name:"b⁰,⁺AT / rBAT",ions:[["AA","r",0,"Cystine, Lys, Arg"],["AA","l",0,"neutral AA"]],note:"Defect = cystinuria",src:"B"},
+  {side:"ap",type:"sym",name:"PepT1 / PepT2",ions:[["H","r"],["AA","r",0,"di/tripeptide"]],note:"H⁺-coupled peptide uptake",src:"B"},
+  {side:"ap",type:"endo",name:"Megalin–cubilin endocytosis",ions:[["AA","r",0,"small proteins"]],note:"Filtered proteins taken up and digested in lysosomes",src:"G+B"},
+  {side:"ap",type:"ch",name:"Aquaporin-1 (AQP1)",ions:[["H2O","r"]],note:"Always open: water follows solute",src:"B"},
+  {side:"ap",type:"diff",name:"CO₂ diffuses in",ions:[["CO2","r"]],note:"CO₂ made by brush-border CA IV enters and feeds CA II",src:"G+B"},
+  {side:"para",type:"jx",name:"Leaky tight junction",ions:[["H2O","r"],["K","r"],["Ca","r"],["Mg","r"]],note:"Solvent drag; ~80% of PT Ca²⁺ is paracellular",src:"G+B"},
+  {side:"lu",type:"enz",name:"Carbonic anhydrase IV (brush border): HCO₃⁻ + H⁺ → H₂CO₃ → CO₂ + H₂O",note:"CO₂ diffuses into the cell",src:"G+B"},
+  {side:"in",type:"enz",rx:{in:["CO2"],out:["H","HCO3"]},name:"Carbonic anhydrase II",sub:"CO₂ + H₂O → H⁺ + HCO₃⁻",note:"Makes H⁺ to secrete and HCO₃⁻ to return",src:"G+B"},
+  {side:"in",type:"enz",rx:{out:["NH4","HCO3"]},name:"Glutaminase + PEPCK",sub:"Glutamine → 2 NH₄⁺ + α-KG → 2 new HCO₃⁻",note:"Rises in chronic acidosis and hypokalemia",src:"G+B"},
+  {side:"in",type:"enz",name:"1α-hydroxylase",sub:"25-OH-D → 1,25-(OH)₂D",note:"PTH stimulates; FGF23 inhibits",src:"G+B"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2]],note:"Powers all Na⁺-coupled uptake",src:"G+B"},
+  {side:"bl",type:"ch",name:"K⁺ channel",ions:[["K","r"]],note:"K⁺ that the pump brings in leaks back; sets the negative cell voltage",src:"B"},
+  {side:"bl",type:"uni",name:"GLUT2",ions:[["Glc","r"]],note:"Facilitated glucose exit",src:"G+B"},
+  {side:"bl",type:"sym",name:"NBCe1 (1 Na⁺ : 3 HCO₃⁻)",ions:[["Na","r"],["HCO3","r",3]],note:"Electrogenic HCO₃⁻ exit",src:"G+B"},
+  {side:"bl",type:"uni",name:"Amino acid exit (LAT2–4F2hc, y⁺LAT1)",ions:[["AA","r"]],note:"",src:"B"},
+  {side:"bl",type:"ch",name:"Aquaporin-1",ions:[["H2O","r"]],note:"",src:"B"},
+  {side:"bl",type:"rec",name:"AT1 receptor",hor:"Ang II",sig:"Gq → PKC",acts:[["NHE3","+"],["NBCe1","+"],["Na⁺-K⁺ pump","+"]],note:"Stimulates NHE3, Na⁺-K⁺ pump, NBCe1",src:"G+B"},
+  {side:"bl",type:"rec",name:"α1-adrenergic receptor",hor:"NE",sig:"Gq",acts:[["NHE3","+"],["Na⁺-K⁺ pump","+"]],note:"Renal sympathetic nerves raise PT Na⁺ reabsorption",src:"G+B"},
+  {side:"bl",type:"rec",name:"D1 dopamine receptor",hor:"Dopamine",sig:"Gs → cAMP",acts:[["NHE3","−"],["Na⁺-K⁺ pump","−"]],note:"Dopamine made locally by PT cells is natriuretic",src:"B"},
+  {side:"bl",type:"rec",name:"PTH receptor",hor:"PTH",sig:"Gs → cAMP, Gq → PKC",acts:[["NaPi","−"],["NHE3","−"],["1α-hydroxylase","+"]],note:"Less NaPi, less NHE3, more 1α-hydroxylase",src:"G+B"},
+  {side:"bl",type:"rec",name:"FGF receptor + Klotho",hor:"FGF23",acts:[["NaPi","−"],["1α-hydroxylase","−"]],note:"Bone-derived FGF23 causes phosphaturia",src:"B"}],
+ sit:[["Diabetes mellitus","Filtered glucose exceeds Tm → glucosuria and osmotic diuresis."],["SGLT2 inhibitors (B)","Block glucose reabsorption to treat type 2 diabetes."],["Renal glycosuria","SGLT defect: glucosuria with normal blood glucose."],["Cystinuria / Hartnup disease (B)","b⁰,⁺AT–rBAT or B⁰AT1 defects."],["Fanconi syndrome → proximal RTA","Global PT failure: glucose, amino acids, phosphate and HCO₃⁻ lost."],["Acetazolamide","Blocks carbonic anhydrase → HCO₃⁻ diuresis, mild acidosis."],["Hyperparathyroidism, high FGF23 (B)","NaPi removed → phosphaturia."],["Chronic acidosis","More glutamine metabolism → more NH₄⁺ and new HCO₃⁻."]]},
+/* 5 */
+{id:"pt3",n:5,title:"Proximal tubule, late (S2–S3)",region:"Cortex → outer medulla",kind:"epi",brush:true,mito:4,left:"Lumen (Cl⁻-rich, HCO₃⁻-poor)",cellName:"S2/S3 cell",right:"Interstitium",cap:"Peritubular capillary",
+ pct:"By now glucose, amino acids and most HCO₃⁻ are gone and luminal Cl⁻ is above plasma, so Cl⁻ is reabsorbed through the junction and by Cl⁻–base exchange. Vte turns lumen-positive. S2 is the main site of organic ion secretion.",
+ conc:{vte:"Vte ≈ +3 mV (lumen +) (B)",lu:[["Na","142"],["Cl","≈130 (> plasma)"],["HCO3","≈5–8"],["Glc","≈0"],["AA","≈0"],["Urea","↑ (water left)"],["pH","≈6.7"],["Osm","≈290 mOsm"]],ic:IC,is:PL},
+ items:[
+  {side:"ap",type:"sym",name:"SGLT1 (2 Na⁺ : 1 glucose)",ions:[["Na","r",2],["Glc","r"]],note:"Mops up the last glucose against a steep gradient",src:"G+B"},
+  {side:"ap",type:"anti",name:"NHE3",ions:[["Na","r"],["H","l"]],note:"",src:"G+B"},
+  {side:"ap",type:"anti",name:"CFEX (SLC26A6) Cl⁻–base exchanger",ions:[["Cl","r"],["Org","l",0,"formate, oxalate, OH⁻","base"]],note:"Transcellular Cl⁻ reabsorption with NHE3",src:"B"},
+  {side:"ap",type:"anti",name:"URAT1 / OAT4",ions:[["Org","r",0,"urate","urate"],["Org","l",0,"lactate, α-KG","aKG"]],note:"Urate reabsorption; probenecid and some NSAIDs block URAT1",src:"B"},
+  {side:"ap",type:"abc",name:"MRP2 / MRP4 (ABC)",ions:[["Org","l",0,"organic anions","OA"]],note:"ATP-driven secretion",src:"B"},
+  {side:"ap",type:"abc",name:"MDR1 (P-glycoprotein)",ions:[["Org","l",0,"organic cations, drugs","OC"]],note:"ATP-driven secretion",src:"B"},
+  {side:"ap",type:"anti",name:"MATE1 / MATE2-K",ions:[["H","r"],["Org","l",0,"OC⁺","OC"]],note:"Organic cation secretion",src:"B"},
+  {side:"ap",type:"ch",name:"Aquaporin-1",ions:[["H2O","r"]],note:"",src:"B"},
+  {side:"ap",type:"diff",name:"CO₂ diffuses in",ions:[["CO2","r"]],note:"",src:"G+B"},
+  {side:"para",type:"jx",name:"Leaky tight junction",ions:[["Cl","r"],["Na","r"],["H2O","r"],["Ca","r"]],note:"High luminal Cl⁻ and lumen-positive Vte drive paracellular Cl⁻ then Na⁺",src:"G+B"},
+  {side:"in",type:"enz",rx:{in:["CO2"],out:["H","HCO3"]},name:"Carbonic anhydrase II",sub:"CO₂ + H₂O → H⁺ + HCO₃⁻",note:"",src:"G+B"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2]],note:"",src:"G+B"},
+  {side:"bl",type:"uni",name:"GLUT1",ions:[["Glc","r"]],note:"",src:"G+B"},
+  {side:"bl",type:"sym",name:"K⁺–Cl⁻ co-transporter + Cl⁻ channel",ions:[["K","r"],["Cl","r"]],note:"Cl⁻ exit",src:"B"},
+  {side:"bl",type:"sym",name:"NBCe1",ions:[["Na","r"],["HCO3","r",3]],note:"",src:"G+B"},
+  {side:"bl",type:"anti",name:"OAT1 / OAT3",ions:[["Org","l",0,"PAH, penicillin, urate","OA"],["Org","r",0,"α-KG","aKG"]],note:"Uptake from blood, first step of anion secretion",src:"B"},
+  {side:"bl",type:"sym",name:"NaDC3",ions:[["Na","l",3],["Org","l",0,"α-KG","aKG"]],note:"Recharges the cell with α-KG for OAT1/3",src:"B"},
+  {side:"bl",type:"uni",name:"OCT2",ions:[["Org","l",0,"OC⁺ (e.g. cimetidine)","OC"]],note:"Uptake of organic cations from blood",src:"B"},
+  {side:"bl",type:"rec",name:"AT1 receptor",hor:"Ang II",sig:"Gq → PKC",acts:[["NHE3","+"]],note:"",src:"G+B"},
+  {side:"bl",type:"uni",name:"GLUT9 (SLC2A9)",ions:[["Org","r",0,"urate","urate"]],note:"Urate exit to blood",src:"B"}],
+ sit:[["PAH clearance","PAH is almost fully secreted in one pass → measures renal plasma flow."],["Probenecid (B)","Blocks OAT and URAT1 → raises penicillin levels and urate excretion."],["Gout / hyperuricemia","Urate handling by URAT1 and GLUT9."],["Drug interactions","Drugs sharing OAT/OCT/MATE compete for secretion."],["Oxalate stones","Oxalate moves through CFEX."]]},
+/* 6 */
+{id:"tdl",n:6,title:"Thin descending limb",region:"Medulla",kind:"epi",mito:1,left:"Lumen (getting concentrated)",cellName:"thin flat cell",right:"Medullary interstitium (hyperosmotic)",cap:"Vasa recta",
+ pct:"Water leaves through AQP1; solute stays, so osmolality rises toward ~1200 mOsm at the tip of long loops. Little active transport.",
+ conc:{vte:"Vte ≈ 0",lu:[["Osm","290 → ≈1200 at tip"],["Na","142 → ≈300"],["Cl","→ ≈300"],["Urea","↑ (UT-A2 entry)"]],ic:[["Osm","= interstitium"]],is:[["Osm","600 → 1200 mOsm"],["Na","≈300 (inner)"],["Urea","≈ half of osmolality (inner)"],["NH4","↑ toward papilla (B)"]]},
+ items:[
+  {side:"ap",type:"ch",name:"Aquaporin-1",ions:[["H2O","r"]],note:"Very water-permeable",src:"G+B"},
+  {side:"ap",type:"uni",name:"UT-A2 urea transporter",ions:[["Urea","l"]],note:"Urea from the medulla enters the loop (urea recycling)",src:"G+B"},
+  {side:"ap",type:"diff",name:"NH₃ / NH₄⁺ secretion (outer medulla)",ions:[["NH4","l"]],note:"Medullary NH₄⁺ recycles into the loop (B)",src:"B"},
+  {side:"bl",type:"ch",name:"Aquaporin-1",ions:[["H2O","r"]],note:"",src:"G+B"},
+  {side:"para",type:"jx",name:"Tight junction",ions:[["Na","l"]],note:"Mostly passive and paracellular Na⁺ movement",src:"B"},
+  {side:"lu",type:"diff",name:"Long loops of juxtamedullary nephrons reach the papilla; cortical nephrons have short loops",note:"",src:"G+B"}],
+ sit:[["Countercurrent multiplier","Water leaving here concentrates the fluid at the tip."],["Loop diuretics","Wash out the medullary gradient so less water leaves."]]},
+/* 7 */
+{id:"tal0",n:7,title:"Thin ascending limb",region:"Inner medulla",kind:"epi",mito:1,left:"Lumen (NaCl-rich)",cellName:"thin flat cell",right:"Medullary interstitium",cap:"Vasa recta",
+ pct:"Water-impermeable. NaCl leaves passively (Cl⁻ through ClC-K1, Na⁺ between cells), so the fluid starts to dilute.",
+ conc:{vte:"Vte small",lu:[["Osm","≈1200 → falls"],["Na","≈300 → ↓"],["Cl","≈300 → ↓"],["Urea","moderate"]],ic:[["Osm","≈ interstitium"]],is:[["Osm","≈1200 mOsm"],["Na","≈300"],["Urea","high"]]},
+ items:[
+  {side:"ap",type:"ch",name:"ClC-K1 Cl⁻ channel",ions:[["Cl","r"]],note:"",src:"B"},
+  {side:"bl",type:"ch",name:"ClC-K1 Cl⁻ channel",ions:[["Cl","r"]],note:"",src:"B"},
+  {side:"para",type:"jx",name:"Na⁺-permeable tight junction",ions:[["Na","r"]],note:"Passive paracellular Na⁺ exit",src:"B"},
+  {side:"lu",type:"diff",name:"No water channels: water stays in the lumen",note:"",src:"G+B"}],
+ sit:[["Inner medullary gradient","Passive NaCl exit here helps keep the inner medulla hyperosmotic."]]},
+/* 8 */
+{id:"tal",n:8,title:"Thick ascending limb (TAL)",region:"Outer medulla → cortex",kind:"epi",mito:9,left:"Lumen (+, becomes dilute)",cellName:"TAL cell",right:"Interstitium",cap:"Vasa recta",
+ pct:"Reabsorbs ~25% of Na⁺/Cl⁻, ~25–30% Ca²⁺, ~65% Mg²⁺ (G) and ~10% HCO₃⁻. Water-impermeable ‘diluting segment’ → fluid leaves at ~100–150 mOsm. About half of its Na⁺ goes between cells, pushed by the lumen-positive Vte (+8 mV G; +15 mV B).",
+ conc:{vte:"Vte ≈ +8 (G) to +15 mV (B), lumen +",lu:[["Na","≈100 (B) → ↓"],["Cl","↓"],["K","low (recycled)"],["Osm","→ ≈100–150 mOsm"]],ic:IC,is:[["Osm","600 → 290 mOsm"],["Na","↑ (medulla)"],["NH4","↑ (medulla)"]]},
+ items:[
+  {side:"ap",type:"sym",name:"NKCC2 (1 Na⁺ : 1 K⁺ : 2 Cl⁻)",ions:[["Na","r"],["K","r",0,"K⁺ (or NH₄⁺)"],["Cl","r",2]],note:"Furosemide and bumetanide block it; NH₄⁺ can take K⁺’s place",src:"G+B"},
+  {side:"ap",type:"anti",name:"NHE3",ions:[["Na","r"],["H","l"]],note:"HCO₃⁻ reabsorption",src:"G+B"},
+  {side:"ap",type:"ch",name:"ROMK K⁺ channel",ions:[["K","l"]],note:"K⁺ recycling keeps NKCC2 running and makes the lumen positive",src:"G+B"},
+  {side:"para",type:"jx",name:"Claudin-16 / -19 tight junction",ions:[["Na","r"],["Ca","r"],["Mg","r"],["K","r"]],note:"Cation-selective path driven by lumen-positive Vte",src:"B"},
+  {side:"in",type:"enz",rx:{in:["CO2"],out:["H","HCO3"]},name:"Carbonic anhydrase II",sub:"CO₂ + H₂O → H⁺ + HCO₃⁻",note:"",src:"G+B"},
+  {side:"in",type:"enz",rx:{out:["NH3"]},name:"NH₄⁺ → NH₃ + H⁺",sub:"NH₄⁺ from NKCC2 builds medullary NH₃",note:"Feeds the collecting duct (B)",src:"B"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2]],note:"Many mitochondria fuel it",src:"G+B"},
+  {side:"bl",type:"ch",name:"ClC-Kb + barttin Cl⁻ channel",ions:[["Cl","r"]],note:"Defect = Bartter types III/IV",src:"B"},
+  {side:"bl",type:"sym",name:"K⁺–Cl⁻ co-transporter (KCC4)",ions:[["K","r"],["Cl","r"]],note:"",src:"G+B"},
+  {side:"bl",type:"ch",name:"Kir4.1/5.1 K⁺ channel",ions:[["K","r"]],note:"Basolateral K⁺ exit; keeps the cell negative so Cl⁻ can leave via ClC-Kb",src:"Gen"},
+  {side:"bl",type:"anti",name:"Cl⁻–HCO₃⁻ exchanger",ions:[["HCO3","r"],["Cl","l"]],note:"",src:"G+B"},
+  {side:"bl",type:"diff",name:"NH₃ to medulla",ions:[["NH3","r"]],note:"",src:"B"},
+  {side:"bl",type:"rec",name:"Ca²⁺-sensing receptor (CaSR)",hor:"Ca²⁺",sig:"Gq",acts:[["NKCC2","−"],["ROMK","−"]],note:"High Ca²⁺/Mg²⁺ → inhibits NKCC2 and ROMK → less paracellular Ca²⁺/Mg²⁺ reabsorption",src:"B"},
+  {side:"bl",type:"rec",name:"PTH receptor",hor:"PTH",note:"More Ca²⁺ reabsorption",src:"G+B"},
+  {side:"bl",type:"rec",name:"V2 receptor",hor:"ADH",sig:"Gs → cAMP → PKA",acts:[["NKCC2","+"]],note:"AVP stimulates NKCC2 → bigger medullary gradient",src:"B"},
+  {side:"lu",type:"enz",name:"TAL cells secrete Tamm-Horsfall protein (uromodulin)",note:"Main protein of normal urine; forms casts",src:"B"},
+  {side:"is",type:"diff",name:"NaCl pumped out without water builds the medullary gradient (countercurrent multiplier)",note:"",src:"G+B"}],
+ sit:[["Loop diuretics","Block NKCC2 → Na⁺ loss, medullary washout (urine can’t be concentrated or diluted), hypokalemia, Ca²⁺ and Mg²⁺ wasting."],["Bartter syndrome","Defects in NKCC2, ROMK, ClC-Kb or barttin → salt wasting, hypokalemic alkalosis, high renin and aldosterone."],["Claudin-16/19 mutations (B)","Familial hypomagnesemia with hypercalciuria."],["Hypercalcemia","CaSR activation lowers TAL reabsorption → more Ca²⁺ excreted, weaker concentrating ability."],["Ammonium recycling (B)","NH₄⁺ taken up here builds medullary NH₃ for acid excretion."]]},
+/* 9 */
+{id:"md",n:9,title:"Macula densa (end of TAL)",region:"Cortex · JGA",kind:"epi",mito:2,left:"Lumen (NaCl ≈ 20–60)",cellName:"macula densa cell",right:"Mesangium → afferent arteriole & JG cells",cap:"Afferent arteriole",
+ pct:"Plaque of cells where the TAL touches its own glomerulus. Senses luminal NaCl through NKCC2 and signals the afferent arteriole (GFR) and JG cells (renin).",
+ conc:{vte:"Vte lumen +",lu:[["Na","≈20–60 (falls with low GFR)"],["Cl","≈20–60"],["Osm","hypotonic"]],ic:[["Na","rises with luminal NaCl"],["Cl","rises with luminal NaCl"]],is:[["Osm","≈290 mOsm"]]},
+ items:[
+  {side:"ap",type:"sym",name:"NKCC2 (NaCl sensor)",ions:[["Na","r"],["K","r"],["Cl","r",2]],note:"Loop diuretics block the sensor → renin rises",src:"G+B"},
+  {side:"ap",type:"ch",name:"ROMK",ions:[["K","l"]],note:"",src:"B"},
+  {side:"in",type:"enz",rx:{out:["atp"]},name:"High NaCl → ATP release",sub:"ATP → adenosine",note:"",src:"B"},
+  {side:"in",type:"enz",rx:{out:["pge"]},name:"Low NaCl → COX-2 (PGE₂) + nNOS (NO)",sub:"signals JG cells to release renin",note:"",src:"G+B"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2]],note:"",src:"G+B"},
+  {side:"bl",type:"diff",name:"ATP / adenosine out",ions:[["Org","r",0,"ATP, adenosine","atp"]],note:"Adenosine → A1 receptor on afferent → constriction → GFR falls",src:"B"},
+  {side:"bl",type:"diff",name:"PGE₂ + NO out",ions:[["Org","r",0,"PGE₂, NO","pge"]],note:"→ renin release from granular cells",src:"G+B"},
+  {side:"is",type:"diff",name:"Tubuloglomerular feedback: high NaCl delivery → afferent constricts → GFR falls back toward normal",note:"",src:"G+B"}],
+ sit:[["Tubuloglomerular feedback","Matches GFR to the reabsorptive capacity of the tubule."],["Loop diuretics","Block NaCl sensing → renin ↑."],["Volume depletion","Low NaCl at macula densa → afferent dilates + renin ↑."],["High-protein diet (B)","More PT reabsorption → less NaCl at macula densa → GFR ↑."]]},
+/* 10 */
+{id:"dct",n:10,title:"Distal convoluted tubule (DCT)",region:"Cortex",kind:"epi",mito:7,left:"Lumen (dilute)",cellName:"DCT cell",right:"Interstitium",cap:"Peritubular capillary",
+ pct:"Reabsorbs ~5–7% of filtered NaCl; fine-tunes Ca²⁺ (PTH) and Mg²⁺. Water-impermeable, so the fluid dilutes further (~100 mOsm).",
+ conc:{vte:"Vte ≈ −5 to +5 mV (B)",lu:[["Na","≈70 (B)"],["Cl","↓"],["Ca","low"],["Osm","≈100 mOsm"]],ic:IC,is:PL},
+ items:[
+  {side:"ap",type:"sym",name:"NCC (Na⁺–Cl⁻ co-transporter)",ions:[["Na","r"],["Cl","r"]],note:"Thiazides block; WNK4/SPAK regulate",src:"G+B"},
+  {side:"ap",type:"ch",name:"TRPV5 Ca²⁺ channel",ions:[["Ca","r"]],note:"PTH and calcitriol increase it",src:"G+B"},
+  {side:"ap",type:"ch",name:"TRPM6 Mg²⁺ channel",ions:[["Mg","r"]],note:"Mutation → hypomagnesemia",src:"B"},
+  {side:"in",type:"enz",rx:{via:["Ca"]},name:"Calbindin-D28k",sub:"shuttles Ca²⁺ across the cell",note:"Keeps free Ca²⁺ low; PTH upregulates",src:"B"},
+  {side:"in",type:"enz",acts:[["NCC","+"]],name:"WNK4 / SPAK kinases",sub:"set NCC activity",note:"Mutations cause familial hyperkalemic hypertension",src:"B"},
+  {side:"ap",type:"ch",name:"ROMK K⁺ channel (late DCT)",ions:[["K","l"]],note:"K⁺ secretion starts in DCT2; aldosterone and high flow increase it",src:"Gen"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2]],note:"",src:"G+B"},
+  {side:"bl",type:"ch",name:"Kir4.1/5.1 K⁺ channel",ions:[["K","r"]],note:"Senses plasma K⁺: low K⁺ → cell more negative → Cl⁻ leaves → WNK/SPAK switch NCC on ('K⁺ switch'). Loss = EAST/SeSAME syndrome (Gitelman-like)",src:"Gen"},
+  {side:"bl",type:"ch",name:"ClC-Kb Cl⁻ channel",ions:[["Cl","r"]],note:"",src:"B"},
+  {side:"bl",type:"pump",name:"PMCA1b Ca²⁺ pump",ions:[["Ca","r"]],note:"ATP-driven Ca²⁺ exit",src:"G+B"},
+  {side:"bl",type:"anti",name:"NCX1 (3 Na⁺ : 1 Ca²⁺)",ions:[["Ca","r"],["Na","l",3]],note:"Main Ca²⁺ exit; PTH upregulates",src:"G+B"},
+  {side:"bl",type:"rec",name:"PTH receptor",hor:"PTH",sig:"Gs → cAMP",acts:[["TRPV5","+"],["Calbindin","+"],["NCX1","+"]],note:"↑ TRPV5, calbindin, NCX1",src:"G+B"},
+  {side:"lu",type:"diff",name:"No water channels: fluid gets more dilute",note:"",src:"G+B"}],
+ sit:[["Thiazide diuretics","Block NCC → Na⁺ loss, hypokalemia, alkalosis, but less Ca²⁺ in urine (used for Ca²⁺ stones)."],["Gitelman syndrome","NCC defect: hypokalemic alkalosis, hypomagnesemia, hypocalciuria."],["Familial hyperkalemic hypertension (B)","WNK4 mutations over-activate NCC."],["Hypoparathyroidism","Low PTH → Ca²⁺ wasting."]]},
+/* 11 */
+{id:"pc",n:11,title:"Principal cell (connecting tubule + cortical collecting tubule)",region:"Cortex",kind:"epi",mito:3,left:"Lumen (−, K⁺ secreted)",cellName:"principal cell",right:"Interstitium",cap:"Peritubular capillary",
+ pct:"Na⁺ through ENaC makes the lumen negative (≈ −40 mV, B), which drives K⁺ secretion and paracellular Cl⁻ reabsorption. Aldosterone sets Na⁺/K⁺; ADH sets water.",
+ conc:{vte:"Vte ≈ −40 mV (lumen −) (B)",lu:[["Na","≈40 (B)"],["K","↑ (secreted)"],["Cl","low"],["Osm","100 (no ADH) → 290 (ADH)"]],ic:IC,is:PL},
+ items:[
+  {side:"ap",type:"ch",name:"ENaC (epithelial Na⁺ channel)",ions:[["Na","r"]],note:"Aldosterone ↑; amiloride, triamterene block",src:"G+B"},
+  {side:"ap",type:"ch",name:"ROMK K⁺ channel",ions:[["K","l"]],note:"Baseline K⁺ secretion",src:"G+B"},
+  {side:"ap",type:"ch",name:"BK (maxi-K) channel",ions:[["K","l"]],note:"Flow-activated K⁺ secretion",src:"B"},
+  {side:"ap",type:"ch",name:"Aquaporin-2",ions:[["H2O","r"]],note:"Inserted only with ADH",src:"G+B"},
+  {side:"para",type:"jx",name:"Tight junction",ions:[["Cl","r"]],note:"Lumen-negative Vte drives paracellular Cl⁻",src:"B"},
+  {side:"in",type:"rec",acts:[["ENaC","+"],["ROMK","+"],["Na⁺-K⁺ pump","+"]],name:"Mineralocorticoid receptor",sub:"Aldosterone → ↑ ENaC, ROMK, Na⁺-K⁺ pump",note:"Spironolactone, eplerenone block",src:"G+B"},
+  {side:"in",type:"enz",acts:[["ENaC","+"]],name:"SGK1 ⊣ Nedd4-2",sub:"keeps ENaC in the membrane",note:"Aldosterone induces SGK1; Liddle mutations stop Nedd4-2 removing ENaC",src:"B"},
+  {side:"in",type:"ves",name:"AQP2 vesicles",sub:"ADH → cAMP → PKA → insert",note:"",src:"G+B"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2]],note:"Loads K⁺ for secretion; aldosterone and high K⁺ stimulate",src:"G+B"},
+  {side:"bl",type:"ch",name:"Kir4.1/5.1 K⁺ channel",ions:[["K","r"]],note:"Some K⁺ recycles to blood",src:"B"},
+  {side:"bl",type:"ch",name:"AQP3 / AQP4",ions:[["H2O","r"]],note:"",src:"G+B"},
+  {side:"bl",type:"rec",name:"V2 receptor",hor:"ADH",sig:"Gs → cAMP → PKA",acts:[["AQP2 vesicles","+"],["Aquaporin-2","+"]],note:"Gs → cAMP → AQP2 insertion",src:"G+B"},
+  {side:"is",type:"rec",name:"Aldosterone (adrenal) diffuses in; Ang II and high plasma K⁺ raise it",note:"",src:"G+B"}],
+ sit:[["Primary aldosteronism (Conn)","Too much ENaC activity → Na⁺ retention, hypertension, hypokalemia, alkalosis."],["Addison disease","No aldosterone → Na⁺ loss, hyperkalemia, acidosis."],["Spironolactone, eplerenone, amiloride, triamterene","K⁺-sparing diuretics; risk of hyperkalemia."],["Liddle syndrome (B)","ENaC escapes Nedd4-2 → hypertension, hypokalemia."],["K⁺ secretion rises with","High plasma K⁺, aldosterone, high flow, low luminal Cl⁻ (B), alkalosis; acidosis lowers it."],["Central DI / nephrogenic DI / SIADH","No ADH or no V2 response → dilute polyuria; too much ADH → hyponatremia."]]},
+/* 12 */
+{id:"icA",n:12,title:"α-intercalated cell (acid secretion)",region:"Collecting tubule & duct",kind:"epi",mito:6,left:"Lumen (pH → 4.4–4.5)",cellName:"α-intercalated cell",right:"Interstitium",cap:"Peritubular capillary",
+ pct:"Only ~5% of total H⁺ secretion but sets the final urine pH (down to ~4.5 G / 4.4 B). Each H⁺ secreted adds one new HCO₃⁻ to blood.",
+ conc:{vte:"Vte lumen −",lu:[["pH","≈4.4–7"],["HCO3","≈0"],["K","↑"]],ic:IC,is:PL},
+ items:[
+  {side:"ap",type:"pump",name:"V-type H⁺ pump",ions:[["H","l"]],note:"Aldosterone stimulates",src:"G+B"},
+  {side:"ap",type:"pump",name:"H⁺-K⁺ pump",ions:[["H","l"],["K","r"]],note:"Reabsorbs K⁺ in K⁺ depletion",src:"G+B"},
+  {side:"ap",type:"ch",name:"RhCG (NH₃ gas channel)",ions:[["NH3","l"]],note:"NH₃ joins H⁺ → NH₄⁺",src:"B"},
+  {side:"ap",type:"ch",name:"Cl⁻ channel",ions:[["Cl","l"]],note:"Cl⁻ follows H⁺",src:"G"},
+  {side:"in",type:"enz",rx:{in:["CO2"],out:["H","HCO3"]},name:"Carbonic anhydrase II",sub:"CO₂ + H₂O → H⁺ + HCO₃⁻",note:"",src:"G+B"},
+  {side:"bl",type:"anti",name:"AE1 (Cl⁻–HCO₃⁻ exchanger)",ions:[["HCO3","r"],["Cl","l"]],note:"New HCO₃⁻ to blood",src:"G+B"},
+  {side:"bl",type:"ch",name:"Cl⁻ channel",ions:[["Cl","r"]],note:"Cl⁻ recycles",src:"B"},
+  {side:"bl",type:"rec",name:"Mineralocorticoid receptor",hor:"Aldosterone",acts:[["V-type H⁺ pump","+"]],note:"More H⁺ pumps; excess → alkalosis",src:"G+B"}],
+ sit:[["Metabolic acidosis","More H⁺ secretion and new HCO₃⁻."],["Hypokalemia","H⁺-K⁺ pump ↑: saves K⁺ but secretes H⁺ (alkalosis)."],["Distal RTA (B)","AE1 or H⁺-pump subunit mutations → urine can’t be acidified."]]},
+/* 13 */
+{id:"icB",n:13,title:"β-intercalated cell (HCO₃⁻ secretion)",region:"Collecting tubule",kind:"epi",mito:6,left:"Lumen",cellName:"β-intercalated cell",right:"Interstitium",cap:"Peritubular capillary",
+ pct:"Mirror image of α cells: H⁺ pump on the basolateral side, Cl⁻–HCO₃⁻ exchange (pendrin) on the apical side. Works in metabolic alkalosis; with NDCBE it also reabsorbs NaCl (B).",
+ conc:{vte:"Vte lumen −",lu:[["pH","↑ in alkalosis"],["HCO3","↑ (secreted)"],["Cl","↓"]],ic:IC,is:PL},
+ items:[
+  {side:"ap",type:"anti",name:"Pendrin (SLC26A4)",ions:[["Cl","r"],["HCO3","l"]],note:"HCO₃⁻ secretion",src:"G+B"},
+  {side:"ap",type:"anti",name:"NDCBE (SLC4A8)",ions:[["Na","r"],["HCO3","r",2],["Cl","l"]],note:"With pendrin → net NaCl reabsorption (B)",src:"B"},
+  {side:"in",type:"enz",rx:{in:["CO2"],out:["H","HCO3"]},name:"Carbonic anhydrase II",sub:"CO₂ + H₂O → H⁺ + HCO₃⁻",note:"",src:"G+B"},
+  {side:"bl",type:"pump",name:"V-type H⁺ pump",ions:[["H","r"]],note:"H⁺ back to blood",src:"G+B"},
+  {side:"ap",type:"ch",name:"BK (maxi-K) channel, BK-β4",ions:[["K","l"]],note:"Flow-induced K⁺ secretion also happens through intercalated cells",src:"Gen"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2]],note:"Brings in the K⁺ that BK secretes",src:"Gen"},
+  {side:"bl",type:"ch",name:"Cl⁻ channel",ions:[["Cl","r"]],note:"",src:"B"}],
+ sit:[["Metabolic alkalosis","β cells excrete the extra HCO₃⁻."],["Volume / aldosterone (B)","Pendrin + NDCBE add aldosterone-sensitive NaCl reabsorption."]]},
+/* 14 */
+{id:"mcd",n:14,title:"Medullary collecting duct (OMCD + IMCD)",region:"Medulla",kind:"epi",mito:3,left:"Lumen → urine",cellName:"IMCD cell",right:"Medullary interstitium (≈1200 mOsm)",cap:"Vasa recta",
+ pct:"Final say on water (ADH), urea (UT-A1/A3) and acid (NH₄⁺ trapping). Urine ranges 50–1200 mOsm and pH 4.4–8.",
+ conc:{vte:"Vte lumen −",lu:[["Osm","50–1200 mOsm"],["Urea","up to several hundred mM (ADH)"],["NH4","↑ (trapped)"],["pH","4.4–8"],["Na","variable"]],ic:[["Osm","≈ interstitium"],["pH","≈7.2"]],is:[["Osm","≈1200 mOsm (inner)"],["Na","≈300"],["Urea","≈ half of osmolality"],["NH4","high (B)"]]},
+ items:[
+  {side:"ap",type:"ch",name:"Aquaporin-2",ions:[["H2O","r"]],note:"ADH → concentrated urine",src:"G+B"},
+  {side:"ap",type:"uni",name:"UT-A1 urea transporter",ions:[["Urea","r"]],note:"ADH activates (IMCD)",src:"G+B"},
+  {side:"ap",type:"ch",name:"ENaC / Na⁺ channel",ions:[["Na","r"]],note:"ANP inhibits Na⁺ reabsorption here",src:"G+B"},
+  {side:"ap",type:"pump",name:"V-type H⁺ pump",ions:[["H","l"]],note:"",src:"G+B"},
+  {side:"ap",type:"pump",name:"H⁺-K⁺ pump",ions:[["H","l"],["K","r"]],note:"",src:"G+B"},
+  {side:"ap",type:"ch",name:"RhCG",ions:[["NH3","l"]],note:"NH₃ into lumen → trapped as NH₄⁺",src:"B"},
+  {side:"in",type:"enz",rx:{in:["CO2"],out:["H","HCO3"]},name:"Carbonic anhydrase II",sub:"CO₂ + H₂O → H⁺ + HCO₃⁻",note:"",src:"G+B"},
+  {side:"bl",type:"uni",name:"UT-A3 urea transporter",ions:[["Urea","r"]],note:"Urea into interstitium",src:"G+B"},
+  {side:"bl",type:"ch",name:"AQP3 / AQP4",ions:[["H2O","r"]],note:"",src:"G+B"},
+  {side:"bl",type:"pump",name:"Na⁺-K⁺ pump",ions:[["Na","r",3],["K","l",2,"2K⁺ (or NH₄⁺)"]],note:"Can carry NH₄⁺ in place of K⁺ (B)",src:"G+B"},
+  {side:"bl",type:"ch",name:"RhBG / RhCG",ions:[["NH3","l"]],note:"NH₃ from interstitium into cell",src:"B"},
+  {side:"bl",type:"anti",name:"AE1",ions:[["HCO3","r"],["Cl","l"]],note:"",src:"G+B"},
+  {side:"bl",type:"rec",name:"V2 receptor",hor:"ADH",sig:"Gs → cAMP → PKA",acts:[["Aquaporin-2","+"],["UT-A1","+"]],note:"↑ AQP2 and UT-A1",src:"G+B"},
+  {side:"bl",type:"rec",name:"ANP receptor",hor:"ANP",sig:"NPR-A → cGMP",acts:[["ENaC","−"]],note:"Natriuresis",src:"G+B"},
+  {side:"lu",type:"diff",name:"Buffers: NH₃ + H⁺ → NH₄⁺ (trapped); HPO₄²⁻ + H⁺ → H₂PO₄⁻ (titratable acid)",note:"Each NH₄⁺ excreted = one new HCO₃⁻ to blood",src:"G+B"},
+  {side:"is",type:"diff",name:"NaCl + urea up to ~1200 mOsm pulls water out; urea ≈ 40–50% of inner medullary osmolality",note:"",src:"G+B"}],
+ sit:[["Dehydration","High ADH → AQP2 + UT-A1 active → small volume of concentrated urine."],["Diabetes insipidus","No ADH or no V2 response → large dilute urine."],["Low-protein diet","Less urea → weaker gradient."],["Chronic acidosis","NH₄⁺ excretion is the main adaptive response."],["Distal RTA","Can’t acidify urine."]]},
+/* 15 */
+{id:"vr",n:15,title:"Vasa recta → renal vein",region:"Medulla · vessel",kind:"vessel",left:"Blood (vasa recta)",cellName:"vasa recta wall",right:"Medullary interstitium",
+ pct:"Medullary blood flow is small (1–2% of RBF in G; ≤5–10% in B). The hairpin shape lets blood exchange solute and water without washing out the gradient (countercurrent exchanger).",
+ conc:{lu:[["Osm","290 → ≈1200 at tip → back"],["Urea","↑ going down"],["Na","↑ going down"]],ic:[],is:[["Osm","≈1200 mOsm (tip)"],["Urea","high"]]},
+ items:[
+  {side:"ap",type:"uni",name:"UT-B (descending vasa recta, RBC)",ions:[["Urea","l"]],note:"Going down, blood gains urea",src:"B"},
+  {side:"ap",type:"ch",name:"Aquaporin-1 (descending vasa recta)",ions:[["H2O","r"]],note:"Going down, blood loses water",src:"B"},
+  {side:"ap",type:"jx",name:"Fenestrae (ascending vasa recta)",ions:[["Na","r",0,"NaCl"],["Urea","r"],["H2O","l"]],note:"Going up, blood gives solute back and regains water",src:"G+B"},
+  {side:"lu",type:"diff",name:"Renal vein returns reabsorbed water, Na⁺, new HCO₃⁻, glucose, amino acids, and renin, EPO, calcitriol",note:"",src:"G+B"},
+  {side:"is",type:"enz",name:"Interstitial fibroblast-like cells make erythropoietin when O₂ is low",note:"",src:"G+B"}],
+ sit:[["Countercurrent exchanger","Keeps the medullary gradient while still feeding the medulla."],["Medullary washout","High medullary flow carries solute away → weaker concentration."],["Chronic kidney disease","Less EPO → anemia."]]},
+/* 16 */
+{id:"org",n:16,title:"Other organs that talk to the kidney",region:"Whole body",kind:"organs",
+ pct:"Hormones and sensors outside the kidney that set what the transporters above do.",
+ items:[
+  {side:"is",loc:"Hypothalamus",type:"rec",name:"Osmoreceptors → ADH, thirst",mech:["Plasma osmolality ↑ (~1–2%)", "Osmoreceptors in the anterior hypothalamus (OVLT, AV3V) shrink", "Supraoptic + paraventricular neurons fire", "Thirst ↑ → drink water", "ADH released from posterior pituitary", "V2 → AQP2 in collecting duct → water kept", "Osmolality returns to normal"],note:"1–2% rise in osmolality → ADH",src:"G+B"},
+  {side:"is",loc:"Posterior pituitary",type:"rec",name:"ADH (AVP) → V2 (kidney), V1 (vessels)",mech:["ADH in blood", "V2 receptor (basolateral, principal cell) → Gs → cAMP → PKA", "AQP2 vesicles inserted in apical membrane", "UT-A1 / UT-A3 ↑ (IMCD); NKCC2 ↑ in TAL (B)", "Water + urea reabsorbed", "Urine up to ~1200 mOsm", "High levels: V1 → vasoconstriction"],note:"↑ osmolality, ↓ volume, nausea; ↓ alcohol, ANP",src:"G+B"},
+  {side:"is",loc:"Baroreceptors",type:"rec",name:"Carotid/aortic + atrial stretch receptors",mech:["BP or effective volume ↓", "Stretch receptors fire less", "Brainstem: sympathetic ↑, ADH ↑, ANP ↓", "α1: afferent + efferent constrict → RBF, GFR ↓", "α1: PT NHE3 + Na⁺-K⁺ pump ↑", "β1: JG cells release renin", "Na⁺ and water retained"],note:"Low volume → sympathetic, ADH, renin ↑",src:"G+B"},
+  {side:"is",loc:"Liver",type:"enz",name:"Angiotensinogen; glutamine and urea synthesis",mech:["Liver makes angiotensinogen continuously", "Renin (kidney) cuts it → Ang I", "Liver also packs amino-acid nitrogen into glutamine and urea", "PT takes up glutamine → NH₄⁺ + new HCO₃⁻ (↑ in acidosis)", "Urea → recycled to build the medullary gradient"],note:"Hepatorenal handling of nitrogen (B)",src:"G+B"},
+  {side:"is",loc:"Lung endothelium",type:"enz",name:"ACE: Ang I → Ang II",mech:["Ang I in blood", "ACE on lung (and kidney) endothelium", "Ang II", "AT1 on efferent > afferent → GFR kept up, peritubular pressure ↓", "PT: NHE3, NBCe1, Na⁺-K⁺ pump ↑", "Adrenal: aldosterone ↑; brain: thirst + ADH ↑", "ACE also breaks down bradykinin (ACE-inhibitor cough)"],note:"Also degrades bradykinin",src:"G+B"},
+  {side:"is",loc:"Adrenal cortex",type:"rec",name:"Aldosterone (Ang II, K⁺)",mech:["Ang II (AT1) or plasma K⁺ ↑", "Zona glomerulosa makes aldosterone", "Diffuses into principal cell → mineralocorticoid receptor", "Nucleus: SGK1 ↑ → Nedd4-2 blocked → more ENaC; ROMK + Na⁺-K⁺ pump ↑", "Na⁺ reabsorbed, K⁺ secreted; α-IC H⁺ pump ↑", "Volume ↑, plasma K⁺ ↓ (excess → alkalosis)"],note:"Na⁺ reabsorption, K⁺ and H⁺ secretion",src:"G+B"},
+  {side:"is",loc:"Sympathetic nerves",type:"rec",name:"α1 vessels, NHE3; β1 renin",mech:["Volume ↓, standing, stress, exercise", "Renal sympathetic nerves release NE", "α1 on arterioles → RBF, GFR ↓", "α1 on PT → NHE3 + Na⁺-K⁺ pump ↑", "β1 on JG cells → renin ↑ → Ang II", "Na⁺ and water retained"],note:"",src:"G+B"},
+  {side:"is",loc:"Heart (atria)",type:"rec",name:"ANP → GFR ↑, Na⁺ reabsorption ↓",mech:["Atria stretched by volume ↑", "Atrial myocytes release ANP", "NPR-A → cGMP", "Afferent dilates, efferent constricts → GFR ↑", "Medullary CD Na⁺ channels inhibited", "Renin, aldosterone, ADH ↓", "Natriuresis + diuresis"],note:"",src:"G+B"},
+  {side:"is",loc:"Parathyroid",type:"rec",name:"CaSR → PTH",mech:["Plasma ionized Ca²⁺ ↓", "CaSR on parathyroid senses it → PTH ↑", "PT: NaPi-IIa/IIc removed → phosphaturia", "PT: 1α-hydroxylase ↑ → calcitriol", "TAL + DCT: Ca²⁺ reabsorption ↑ (TRPV5, calbindin, NCX1)", "Plasma Ca²⁺ ↑, phosphate ↓"],note:"PTH: Ca²⁺ ↑ reabsorption, phosphate ↓",src:"G+B"},
+  {side:"is",loc:"Bone (osteocytes)",type:"rec",name:"FGF23 + Klotho",mech:["Plasma phosphate or calcitriol ↑", "Osteocytes secrete FGF23", "FGF receptor + Klotho in kidney", "PT: NaPi-IIa/IIc ↓ → phosphaturia", "1α-hydroxylase ↓ → calcitriol ↓", "Plasma phosphate ↓ (CKD: FGF23 very high)"],note:"↓ NaPi-IIa/IIc, ↓ 1α-hydroxylase",src:"B"},
+  {side:"is",loc:"Intestine",type:"rec",name:"Calcitriol → Ca²⁺, phosphate absorption",mech:["PT makes calcitriol (PTH-driven)", "Calcitriol → vitamin D receptor in enterocytes", "Ca²⁺ channels, calbindin, Ca²⁺ pump ↑", "Ca²⁺ and phosphate absorbed", "Plasma Ca²⁺ ↑ → PTH ↓ (feedback)"],note:"",src:"G+B"},
+  {side:"is",loc:"Muscle, liver, all cells",type:"pump",name:"Na⁺-K⁺ pump (internal K⁺ shift)",mech:["After a meal: insulin; or β2 agonists, aldosterone", "Na⁺-K⁺ pump in muscle + liver ↑", "K⁺ moves into cells within minutes", "Plasma K⁺ stays near 4 mM", "Kidney then adjusts K⁺ secretion over hours", "Insulin lack, acidosis, cell lysis, exercise, hyperosmolality → K⁺ leaves cells"],note:"Insulin, aldosterone, β2 agonists move K⁺ in",src:"G+B"},
+  {side:"is",loc:"All capillaries (G Ch 25)",type:"jx",name:"Clefts & pores: Starling exchange",mech:["Capillary hydrostatic pressure pushes fluid out", "Plasma oncotic pressure pulls fluid back", "Lymph returns the excess", "Capillary P ↑ (heart failure, renal Na⁺ retention), plasma protein ↓ (nephrotic, cirrhosis), permeability ↑ (burns), lymph block", "Interstitial fluid builds up → edema"],note:"Edema when the balance tips",src:"G"},
+  {side:"is",loc:"Bone marrow",type:"rec",name:"EPO from kidney → red cells",mech:["O₂ delivery to kidney ↓ (anemia, altitude, lung disease)", "Interstitial fibroblast-like cells sense low O₂", "Erythropoietin secreted", "EPO acts on erythroid progenitors in bone marrow", "Red cell production ↑ → O₂ delivery ↑", "CKD: EPO ↓ → anemia"],note:"",src:"G+B"}],
+ sit:[["Hemorrhage","Baroreceptors → sympathetic, renin, ADH ↑ → kidney saves Na⁺ and water."],["Heart failure","Low effective volume → RAAS and ADH ↑ → edema; ANP partly offsets."],["Hyperkalemia","Insulin deficiency, acidosis, cell lysis, exercise, high ECF osmolality shift K⁺ out of cells."],["Edema (G Ch 25)","High capillary pressure, low plasma protein, high permeability or blocked lymph."],["CKD-mineral bone disorder (B)","High FGF23, low calcitriol, secondary hyperparathyroidism."]]}
+,
+/* 17 acid–base */
+{id:"reg",n:17,topic:true,title:"Hormones & nerves acting on the kidney",region:"Extrinsic + local control",kind:"reg",links:["aff","pt1","tal","dct","pc","icA","mcd"],pct:"The tubule’s transporters are set by signals from outside the nephron: hormones (Ang II, aldosterone, ADH, ANP, PTH, calcitriol, FGF23), nerves (sympathetic NE, dopamine) and local factors (prostaglandins, NO, adenosine, endothelin). Pick a regulator to see where it comes from, what triggers it, its receptor and second messenger, and every segment it changes.",items:[],sit:[["ACE inhibitors / ARBs","Remove Ang II: lower BP and aldosterone, but GFR can fall in renal artery stenosis or heart failure."],["NSAIDs","Remove prostaglandin dilation: GFR falls when Ang II or NE is high (volume depletion, heart failure)."],["β-blockers","Less renin release from JG cells."],["Spironolactone / eplerenone","Block aldosterone at the mineralocorticoid receptor."],["Desmopressin / vaptans","V2 agonist treats central DI; V2 blockers (not in these texts) treat SIADH."]],html:"<h3>Who acts where</h3><p class=\"note\">Click a cell to open that segment. ↑ = stimulates, ↓ = inhibits.</p><div class=\"scroll\"><table class=\"mx\"><thead><tr><th>Regulator</th><th>Vessels / GFR</th><th>PT</th><th>TAL</th><th>DCT</th><th>Principal</th><th>Intercalated</th><th>Medullary CD</th></tr></thead><tbody><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"ang\">Angiotensin II</button></td><td class=\"hit\" data-go=\"aff\">Efferent ↑↑, GFR kept</td><td class=\"hit\" data-go=\"pt1\">Na⁺ reabs ↑</td><td></td><td></td><td class=\"hit\" data-go=\"pc\">via aldosterone</td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"aldo\">Aldosterone</button></td><td></td><td></td><td></td><td></td><td class=\"hit\" data-go=\"pc\">ENaC, ROMK, pump ↑</td><td class=\"hit\" data-go=\"icA\">H⁺ pump ↑</td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"adh\">ADH</button></td><td></td><td></td><td class=\"hit\" data-go=\"tal\">NKCC2 ↑ (B)</td><td></td><td class=\"hit\" data-go=\"pc\">AQP2 ↑</td><td></td><td class=\"hit\" data-go=\"mcd\">AQP2, UT-A1 ↑</td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"anp\">ANP</button></td><td class=\"hit\" data-go=\"aff\">GFR ↑, renin ↓</td><td></td><td></td><td></td><td></td><td></td><td class=\"hit\" data-go=\"mcd\">Na⁺ reabs ↓</td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"sym\">Sympathetic (NE)</button></td><td class=\"hit\" data-go=\"aff\">Constrict, renin ↑</td><td class=\"hit\" data-go=\"pt1\">NHE3 ↑</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"dopa\">Dopamine</button></td><td class=\"hit\" data-go=\"aff\">Dilate</td><td class=\"hit\" data-go=\"pt1\">NHE3, pump ↓</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"pth\">PTH</button></td><td></td><td class=\"hit\" data-go=\"pt1\">NaPi ↓, 1α-OHase ↑</td><td class=\"hit\" data-go=\"tal\">Ca²⁺ reabs ↑</td><td class=\"hit\" data-go=\"dct\">Ca²⁺ reabs ↑</td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"vitd\">Calcitriol</button></td><td></td><td></td><td></td><td class=\"hit\" data-go=\"dct\">TRPV5, calbindin ↑</td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"fgf\">FGF23</button></td><td></td><td class=\"hit\" data-go=\"pt1\">NaPi ↓, 1α-OHase ↓</td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"casr\">Ca²⁺ (CaSR)</button></td><td></td><td></td><td class=\"hit\" data-go=\"tal\">NKCC2, ROMK ↓</td><td></td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"pg\">Prostaglandins + NO</button></td><td class=\"hit\" data-go=\"aff\">Dilate; renin ↑</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"ado\">Adenosine</button></td><td class=\"hit\" data-go=\"aff\">Afferent constrict</td><td></td><td></td><td></td><td></td><td></td><td></td></tr><tr><td class=\"nm\"><button class=\"rgo\" data-reg=\"et\">Endothelin</button></td><td class=\"hit\" data-go=\"aff\">Constrict</td><td></td><td></td><td></td><td></td><td></td><td></td></tr></tbody></table></div>"},
+{id:"ab",n:18,topic:true,links:["pt1","tal","icA","icB","mcd"],title:"Acid–base handling by the kidney",region:"Whole nephron",kind:"acidbase",
+ pct:"Kidney does two jobs: (1) reclaims nearly all filtered HCO₃⁻ (≈4320 mmol/day), and (2) makes new HCO₃⁻ equal to the daily nonvolatile acid load (≈70 mmol/day in B; ≈80 mEq/day in G) by excreting H⁺ as titratable acid and NH₄⁺.",
+ items:[
+  {side:"ap",loc:"PT (≈80% of HCO₃⁻)",type:"anti",name:"NHE3",ions:[["Na","r"],["H","l"],["NH4","l",0,"(or NH₄⁺)"]],note:"Main proximal H⁺ secretion (~2/3); ↑ by Ang II, acidosis, ↑PCO₂",src:"G+B"},
+  {side:"ap",loc:"PT",type:"pump",name:"V-type H⁺ pump",ions:[["H","l"]],note:"Remaining proximal H⁺ secretion",src:"B"},
+  {side:"lu",loc:"PT lumen",type:"enz",name:"Carbonic anhydrase IV",ions:[],note:"HCO₃⁻ + H⁺ → CO₂ + H₂O at the brush border",src:"G+B"},
+  {side:"in",loc:"PT, TAL, IC cells",type:"enz",name:"Carbonic anhydrase II",ions:[],note:"CO₂ + H₂O → H⁺ + HCO₃⁻ inside the cell",src:"G+B"},
+  {side:"in",loc:"PT",type:"enz",name:"Glutaminase + PEPCK",ions:[],note:"Glutamine → 2 NH₄⁺ + 2 new HCO₃⁻; ↑ in chronic acidosis and hypokalemia",src:"G+B"},
+  {side:"bl",loc:"PT",type:"sym",name:"NBCe1 (1 Na⁺ : 3 HCO₃⁻)",ions:[["HCO3","r",3],["Na","r"]],note:"HCO₃⁻ exit to blood",src:"G+B"},
+  {side:"ap",loc:"TAL (≈10%)",type:"anti",name:"NHE3",ions:[["Na","r"],["H","l"]],note:"HCO₃⁻ reabsorption",src:"G+B"},
+  {side:"ap",loc:"TAL",type:"sym",name:"NKCC2 carrying NH₄⁺",ions:[["NH4","r"]],note:"NH₄⁺ replaces K⁺ → medullary NH₃/NH₄⁺ builds up",src:"B"},
+  {side:"ap",loc:"α-intercalated cell",type:"pump",name:"V-type H⁺ pump",ions:[["H","l"]],note:"Sets final urine pH (≈4.5 G / 4.4 B)",src:"G+B"},
+  {side:"ap",loc:"α-intercalated cell",type:"pump",name:"H⁺-K⁺ pump",ions:[["H","l"],["K","r"]],note:"↑ in K⁺ depletion",src:"G+B"},
+  {side:"bl",loc:"α-intercalated cell",type:"anti",name:"AE1",ions:[["HCO3","r"],["Cl","l"]],note:"New HCO₃⁻ to blood; defect → distal RTA",src:"G+B"},
+  {side:"ap",loc:"β-intercalated cell",type:"anti",name:"Pendrin",ions:[["HCO3","l"],["Cl","r"]],note:"HCO₃⁻ secretion in alkalosis",src:"G+B"},
+  {side:"ap",loc:"Medullary CD",type:"ch",name:"RhCG",ions:[["NH3","l"]],note:"NH₃ into lumen → trapped as NH₄⁺",src:"B"},
+  {side:"bl",loc:"Medullary CD",type:"ch",name:"RhBG / RhCG",ions:[["NH3","l"]],note:"NH₃ from interstitium",src:"B"},
+  {side:"lu",loc:"Urine",type:"diff",name:"Buffers: HPO₄²⁻ → H₂PO₄⁻ (titratable acid); NH₃ → NH₄⁺",ions:[],note:"Each H⁺ excreted on a buffer = one new HCO₃⁻ to blood",src:"G+B"}],
+ sit:[["Vomiting","Loss of HCl + volume contraction → metabolic alkalosis, kept going by Ang II, aldosterone and hypokalemia."],["Diarrhea","HCO₃⁻ lost in stool → normal anion gap (hyperchloremic) metabolic acidosis; kidney raises NH₄⁺."],["Diabetic ketoacidosis","Keto-acids use up HCO₃⁻ → high anion gap acidosis; deep breathing lowers PCO₂."],["Chronic kidney disease","Too little NH₄⁺ made → metabolic acidosis."],["Loop / thiazide diuretics","Volume contraction + hypokalemia → metabolic alkalosis."],["Acetazolamide","Blocks CA → HCO₃⁻ diuresis → metabolic acidosis."],["Primary aldosteronism","More H⁺ and K⁺ secretion → hypokalemic metabolic alkalosis."],["COPD (chronic respiratory acidosis)","High PCO₂ → kidney secretes more H⁺, makes more NH₄⁺, raises HCO₃⁻."]],
+ html:'<h3>What raises or lowers renal H⁺ secretion (G Table 30-2 + B Ch 39)</h3><div class="scroll"><table><thead><tr><th>Factor</th><th>H⁺ secretion / HCO₃⁻ reabsorption</th><th>How</th><th>Text</th></tr></thead><tbody>'
+ +'<tr><td class="nm">↑ PCO₂ (respiratory acidosis)</td><td>↑</td><td>Cell pH falls; NHE3 + NBCe1 ↑; H⁺ pumps inserted by exocytosis; chronic → more NH₄⁺</td><td><span class="srcb">G+B</span></td></tr>'
+ +'<tr><td class="nm">↓ pH / ↓ HCO₃⁻ (metabolic acidosis)</td><td>↑</td><td>Glutaminase + PEPCK ↑ → NH₄⁺ excretion can reach ~500 mEq/day (G)</td><td><span class="srcb">G+B</span></td></tr>'
+ +'<tr><td class="nm">↓ ECF volume</td><td>↑</td><td>Ang II, aldosterone, sympathetic → NHE3 ↑ (contraction alkalosis)</td><td><span class="srcb">G+B</span></td></tr>'
+ +'<tr><td class="nm">↑ Angiotensin II</td><td>↑</td><td>NHE3 and NBCe1 in PT</td><td><span class="srcb">G+B</span></td></tr>'
+ +'<tr><td class="nm">↑ Aldosterone</td><td>↑</td><td>H⁺ pump in α-IC; lumen-negative Vte from ENaC</td><td><span class="srcb">G+B</span></td></tr>'
+ +'<tr><td class="nm">Hypokalemia</td><td>↑</td><td>Cell acidification, NH₄⁺ synthesis ↑, H⁺-K⁺ pump ↑ → hypokalemic metabolic alkalosis</td><td><span class="srcb">G+B</span></td></tr>'
+ +'<tr><td class="nm">↓ PCO₂, ↑ pH, ↑ ECF volume, ↓ Ang II, ↓ aldosterone, hyperkalemia</td><td>↓</td><td>Opposite of above; in alkalosis β-IC secrete HCO₃⁻</td><td><span class="srcb">G+B</span></td></tr>'
+ +'</tbody></table></div>'
+ +'<h3>Primary acid–base disorders (G Table 30-3)</h3><p class="note">Normal arterial: pH 7.4 · [H⁺] 40 nEq/L · PCO₂ 40 mmHg · HCO₃⁻ 24 mEq/L</p><div class="scroll"><table><thead><tr><th>Disorder</th><th>pH</th><th>Primary change</th><th>Compensation</th><th>Examples</th></tr></thead><tbody>'
+ +'<tr><td class="nm">Respiratory acidosis</td><td>↓</td><td><b>↑ PCO₂</b></td><td>↑ HCO₃⁻ (kidney: H⁺ secretion + NH₄⁺ ↑)</td><td>Respiratory center damage, airway obstruction, pneumonia, emphysema</td></tr>'
+ +'<tr><td class="nm">Respiratory alkalosis</td><td>↑</td><td><b>↓ PCO₂</b></td><td>↓ HCO₃⁻ (kidney excretes HCO₃⁻)</td><td>High altitude, anxiety hyperventilation</td></tr>'
+ +'<tr><td class="nm">Metabolic acidosis</td><td>↓</td><td><b>↓ HCO₃⁻</b></td><td>↓ PCO₂ (hyperventilation) + more renal NH₄⁺</td><td>Diarrhea, DKA, lactic acidosis, renal failure, RTA, CA inhibitors</td></tr>'
+ +'<tr><td class="nm">Metabolic alkalosis</td><td>↑</td><td><b>↑ HCO₃⁻</b></td><td>↑ PCO₂ (hypoventilation) + renal HCO₃⁻ excretion</td><td>Vomiting, diuretics, mineralocorticoid excess, alkali intake</td></tr>'
+ +'</tbody></table></div>'
+ +'<h3>Anion gap (G)</h3><p class="note">Anion gap = [Na⁺] − ([Cl⁻] + [HCO₃⁻]) ≈ 144 − 108 − 24 = 12 mEq/L. Unmeasured anions are mainly albumin, phosphate, sulfate and organic anions.</p><div class="scroll"><table><thead><tr><th>High anion gap (normochloremic)</th><th>Normal anion gap (hyperchloremic)</th></tr></thead><tbody>'
+ +'<tr><td>Diabetic ketoacidosis · lactic acidosis · chronic renal failure · aspirin poisoning · methanol · ethylene glycol · starvation</td><td>Diarrhea · renal tubular acidosis · carbonic anhydrase inhibitors · Addison disease</td></tr></tbody></table></div>'
+ +'<h3>Renal tubular acidosis (B)</h3><div class="scroll"><table><thead><tr><th>Type</th><th>Where it fails</th><th>What happens</th></tr></thead><tbody>'
+ +'<tr><td class="nm">Type 2 · proximal</td><td>PT HCO₃⁻ reabsorption (NHE3, NBCe1, CA; often Fanconi)</td><td>HCO₃⁻ wasting until plasma HCO₃⁻ falls; urine can still be acidified; hypokalemia</td></tr>'
+ +'<tr><td class="nm">Type 1 · distal</td><td>α-intercalated H⁺ secretion (H⁺ pump, AE1)</td><td>Urine pH can’t drop; hypokalemia, kidney stones</td></tr>'
+ +'<tr><td class="nm">Type 4 · hyperkalemic</td><td>Low aldosterone or aldosterone resistance</td><td>Less H⁺ and K⁺ secretion, less NH₄⁺ → hyperkalemia + mild acidosis</td></tr>'
+ +'<tr><td class="nm">Type 3</td><td>Rare mix of types 1 and 2</td><td>—</td></tr></tbody></table></div>'}
+/* ===== whole-kidney topics ===== */
+,{id:"cc",n:19,topic:true,title:"Countercurrent system: concentrating & diluting urine",region:"Medulla · whole loop",kind:"cc",
+ links:["tdl","tal0","tal","pc","mcd","vr"],
+ pct:"Urine can range from ≈50 to ≈1200–1400 mOsm/L (G). The loop of Henle (countercurrent multiplier) builds the medullary gradient, the vasa recta (countercurrent exchanger) keep it, and ADH decides how much water the collecting duct takes back. The TAL can hold a ≈200 mOsm/L difference at each level; urea adds ≈40–50% of inner medullary osmolality.",
+ items:[],
+ sit:[["Central diabetes insipidus","No ADH → collecting duct stays water-tight → large volume of dilute urine (≈50 mOsm); desmopressin works."],["Nephrogenic diabetes insipidus","ADH present but V2/AQP2 fails (lithium, hypokalemia, hypercalcemia) → same picture, desmopressin fails."],["SIADH","ADH high despite low osmolality → concentrated urine, hyponatremia."],["Loop diuretics","Block NKCC2 → no new gradient → urine can’t be concentrated or diluted."],["Low-protein diet / malnutrition","Less urea → weaker inner medullary gradient → lower maximum concentration."],["Drinking seawater (G)","Seawater ≈1200 mOsm NaCl; kidneys can’t excrete it with less water than was drunk → dehydration."]],
+ html:'<h3>Tubule permeabilities (G Table 28-1)</h3><div class="scroll"><table><thead><tr><th>Segment</th><th>Active NaCl transport</th><th>H₂O</th><th>NaCl (passive)</th><th>Urea</th></tr></thead><tbody>'
+ +'<tr><td class="nm">Proximal tubule</td><td>++</td><td>++</td><td>+</td><td>+</td></tr>'
+ +'<tr><td class="nm">Thin descending limb</td><td>0</td><td>++</td><td>+</td><td>+</td></tr>'
+ +'<tr><td class="nm">Thin ascending limb</td><td>0</td><td>0</td><td>+</td><td>+</td></tr>'
+ +'<tr><td class="nm">Thick ascending limb</td><td>++</td><td>0</td><td>0</td><td>0</td></tr>'
+ +'<tr><td class="nm">Distal tubule</td><td>+</td><td>+ADH</td><td>0</td><td>0</td></tr>'
+ +'<tr><td class="nm">Cortical collecting tubule</td><td>+</td><td>+ADH</td><td>0</td><td>0</td></tr>'
+ +'<tr><td class="nm">Inner medullary collecting duct</td><td>+</td><td>+ADH</td><td>0</td><td>+ADH</td></tr></tbody></table></div>'
+ +'<h3>Numbers to know</h3><div class="scroll"><table><thead><tr><th>Quantity</th><th>Formula / value</th></tr></thead><tbody>'
+ +'<tr><td class="nm">Osmolar clearance</td><td>C<sub>osm</sub> = (U<sub>osm</sub> × V) / P<sub>osm</sub></td></tr>'
+ +'<tr><td class="nm">Free-water clearance</td><td>C<sub>H₂O</sub> = V − C<sub>osm</sub> · positive = dilute urine (water lost) · negative = concentrated urine (water kept)</td></tr>'
+ +'<tr><td class="nm">Obligatory urine volume (G)</td><td>≈600 mOsm/day solute ÷ max ≈1200 mOsm/L = ≈0.5 L/day</td></tr>'
+ +'<tr><td class="nm">Medullary blood flow</td><td>≈1–2% of RBF (G) · ≤5–10% (B)</td></tr></tbody></table></div>'},
+{id:"cl",n:20,topic:true,title:"Clearance & measuring kidney function",region:"Whole kidney",kind:"pins",
+ links:["glom","pt1","pt3","mcd"],
+ pct:"Clearance = the volume of plasma completely cleared of a substance per minute: C = (U × V) / P. Comparing a substance’s clearance with inulin’s tells you whether the tubule reabsorbs it (< GFR) or secretes it (> GFR).",
+ pins:[
+  {seg:"glom",k:"Na",title:"GFR = inulin clearance ≈125 mL/min",text:"Inulin is filtered only (not reabsorbed, secreted or made). Creatinine is close but slightly secreted, so creatinine clearance overestimates GFR a little."},
+  {seg:"pt1",k:"Glc",title:"Glucose: clearance ≈0 until Tm",text:"All filtered glucose is reabsorbed until the load passes Tm (≈375 mg/min G, ~400 B); threshold ≈200 mg/100 mL plasma, with splay before Tm."},
+  {seg:"pt3",k:"Org",title:"PAH ≈ renal plasma flow",text:"PAH is filtered and secreted; ≈90% is cleared in one pass. ERPF = C_PAH ≈585 mL/min; RPF = C_PAH ÷ E_PAH ≈650 mL/min; RBF = RPF ÷ (1 − Hct)."},
+  {seg:"mcd",k:"H2O",title:"Free-water clearance",text:"C_H₂O = V − C_osm. Positive with no ADH (dilute urine); negative with ADH (concentrated urine)."}],
+ items:[],
+ sit:[["Rising plasma creatinine","GFR must fall by about half before plasma creatinine doubles, so early kidney loss is easy to miss."],["Muscle mass","Creatinine production depends on muscle mass, so the same plasma creatinine means a different GFR in different people."],["Drugs that block creatinine secretion","Can raise plasma creatinine without a real fall in GFR."]],
+ html:'<h3>Clearance formulas (G Table 27-4)</h3><div class="scroll"><table><thead><tr><th>Term</th><th>Formula</th><th>Normal</th></tr></thead><tbody>'
+ +'<tr><td class="nm">GFR</td><td>U<sub>inulin</sub> × V / P<sub>inulin</sub></td><td>≈125 mL/min, 180 L/day</td></tr>'
+ +'<tr><td class="nm">Clearance ratio</td><td>C<sub>s</sub> / C<sub>inulin</sub> · 1 = filtered only · &lt; 1 = reabsorbed · &gt; 1 = secreted</td><td>Glucose 0 · Na⁺ &lt; 0.01 · PAH ≈5</td></tr>'
+ +'<tr><td class="nm">Effective renal plasma flow</td><td>U<sub>PAH</sub> × V / P<sub>PAH</sub></td><td>≈585 mL/min</td></tr>'
+ +'<tr><td class="nm">Renal plasma flow</td><td>C<sub>PAH</sub> / E<sub>PAH</sub> (E ≈ 0.9)</td><td>≈650 mL/min</td></tr>'
+ +'<tr><td class="nm">Renal blood flow</td><td>RPF / (1 − Hct)</td><td>≈1100–1200 mL/min</td></tr>'
+ +'<tr><td class="nm">Filtration fraction</td><td>GFR / RPF</td><td>≈0.19–0.20</td></tr>'
+ +'<tr><td class="nm">Excretion rate</td><td>U<sub>s</sub> × V</td><td>—</td></tr>'
+ +'<tr><td class="nm">Reabsorption rate</td><td>(GFR × P<sub>s</sub>) − (U<sub>s</sub> × V)</td><td>—</td></tr>'
+ +'<tr><td class="nm">Secretion rate</td><td>(U<sub>s</sub> × V) − (GFR × P<sub>s</sub>)</td><td>—</td></tr></tbody></table></div>'
+ +'<h3>GFR vs plasma creatinine (G)</h3>'+(()=>{let d="";for(let g=12;g<=125;g+=1){const x=60+g*4,y=230-(125/g)*20;d+=(d?" L":"M")+x+","+Math.max(20,y).toFixed(1)}return '<div class="scroll"><svg viewBox="0 0 640 270" style="min-width:420px;max-width:640px" role="img" aria-label="Plasma creatinine rises steeply as GFR falls"><line x1="60" y1="230" x2="620" y2="230" stroke="var(--line)"/><line x1="60" y1="20" x2="60" y2="230" stroke="var(--line)"/><path d="'+d+'" fill="none" stroke="var(--s-org)" stroke-width="3"/>'+[[125,1],[62.5,2],[31.25,4],[15.6,8]].map(([g,c])=>'<circle cx="'+(60+g*4)+'" cy="'+(230-c*20)+'" r="5" fill="var(--s-org)"/><text x="'+(60+g*4+8)+'" y="'+(230-c*20-6)+'" class="ts h">GFR '+g+' → '+c+' mg/dL</text>').join("")+'<text x="340" y="262" class="ts" text-anchor="middle">GFR (mL/min) →</text><text x="20" y="130" class="ts" transform="rotate(-90 20 130)" text-anchor="middle">Plasma creatinine</text></svg></div><p class="note">Halving GFR doubles plasma creatinine (production constant, filtered load = GFR × P<sub>cr</sub>).</p>'})()},
+{id:"vol",n:21,topic:true,title:"Control of osmolality, volume and ion balance",region:"Whole body ↔ nephron",kind:"pins",
+ links:["aff","pt1","tal","dct","pc","mcd","org"],
+ pct:"Two separate control loops: osmolality (sensed by osmoreceptors, fixed by changing water: ADH + thirst) and effective circulating volume (sensed by baroreceptors and the JGA, fixed by changing Na⁺: RAAS, sympathetic, ANP, pressure natriuresis). ADH responds to a ~1–2% change in osmolality but needs a larger (~5–10%) fall in volume or pressure.",
+ pins:[
+  {seg:"aff",k:"Na",title:"Pressure natriuresis + TGF",text:"A small rise in arterial pressure raises Na⁺ and water excretion a lot (renal–body fluid feedback sets long-term BP). TGF keeps GFR steady."},
+  {seg:"pt1",k:"Na",title:"Ang II, sympathetic → NHE3; glomerulotubular balance",text:"PT reabsorbs a constant fraction (~65%) when GFR changes, through peritubular Starling forces."},
+  {seg:"tal",k:"Cl",title:"ADH → NKCC2 (B)",text:"Bigger medullary gradient; loop diuretics act here."},
+  {seg:"dct",k:"Ca",title:"PTH → Ca²⁺ reabsorption",text:"TRPV5, calbindin, NCX1 ↑; thiazides lower Ca²⁺ excretion."},
+  {seg:"pc",k:"K",title:"Aldosterone → Na⁺ in, K⁺ out; ADH → AQP2",text:"Main site for K⁺ excretion and final Na⁺ / water adjustment."},
+  {seg:"mcd",k:"H2O",title:"ANP ↓ Na⁺; ADH → AQP2 + UT-A1",text:"Final urine volume and osmolality set here."}],
+ items:[],
+ sit:[["Hemorrhage","Volume ↓ → sympathetic, RAAS, ADH ↑ → Na⁺ and water kept; ADH also rises because pressure fell."],["Heart failure","‘Effective’ volume low despite high total ECF → RAAS + ADH ↑ → edema, hyponatremia."],["SIADH","Water kept, Na⁺ handling normal → hyponatremia with normal volume."],["Primary aldosteronism","Na⁺ escape after a few days limits volume gain (pressure natriuresis), but hypokalemia persists."],["Hyperkalemia emergencies","Insulin + glucose, β2 agonists move K⁺ into cells in minutes; the kidney removes it over hours."]],
+ html:'<h3>Two control loops</h3><div class="mech">'
+ +'<div class="mrow" style="border-left-color:var(--s-h2o)"><h4>Osmolality ↑ (water deficit)</h4><div class="steps"><span class="st">Plasma osmolality ↑ 1–2%</span><span class="ar">→</span><span class="st">Osmoreceptors (OVLT, AV3V) shrink</span><span class="ar">→</span><span class="st">ADH ↑ + thirst ↑</span><span class="ar">→</span><span class="st">AQP2 in collecting duct, drink water</span><span class="ar">→</span><span class="st">Water gained → osmolality ↓</span></div></div>'
+ +'<div class="mrow" style="border-left-color:var(--s-na)"><h4>Effective volume ↓ (Na⁺ deficit)</h4><div class="steps"><span class="st">Volume / pressure ↓</span><span class="ar">→</span><span class="st">Carotid, aortic, atrial receptors + JGA</span><span class="ar">→</span><span class="st">Sympathetic ↑, renin → Ang II → aldosterone ↑, ANP ↓</span><span class="ar">→</span><span class="st">GFR ↓, PT + distal Na⁺ reabsorption ↑</span><span class="ar">→</span><span class="st">Na⁺ (and water) kept → volume ↑</span></div></div></div>'
+ +'<h3>ADH and thirst (G Tables 28-2, 28-3)</h3><div class="scroll"><table><thead><tr><th></th><th>Increase</th><th>Decrease</th></tr></thead><tbody>'
+ +'<tr><td class="nm">ADH</td><td>↑ plasma osmolality, ↓ blood volume, ↓ BP, nausea, hypoxia, morphine, nicotine, cyclophosphamide</td><td>↓ osmolality, ↑ volume, ↑ BP, alcohol, clonidine, haloperidol</td></tr>'
+ +'<tr><td class="nm">Thirst</td><td>↑ osmolality, ↓ volume, ↓ BP, ↑ Ang II, dry mouth</td><td>↓ osmolality, ↑ volume, ↑ BP, ↓ Ang II, gastric distension</td></tr></tbody></table></div>'
+ +'<h3>K⁺ shifts between cells and ECF (G Table 29-1)</h3><div class="scroll"><table><thead><tr><th>Move K⁺ into cells (↓ plasma K⁺)</th><th>Move K⁺ out of cells (↑ plasma K⁺)</th></tr></thead><tbody><tr><td>Insulin · aldosterone · β-adrenergic stimulation · alkalosis</td><td>Insulin deficiency (diabetes) · aldosterone deficiency (Addison) · β-blockade · acidosis · cell lysis · strenuous exercise · ↑ ECF osmolarity</td></tr></tbody></table></div><p class="note">≈98% of body K⁺ is inside cells; ECF holds only ≈59 mEq at 4.2 mEq/L (G).</p>'
+ +'<h3>Ca²⁺ excretion (G Table 29-2)</h3><div class="scroll"><table><thead><tr><th>↓ Ca²⁺ excretion</th><th>↑ Ca²⁺ excretion</th></tr></thead><tbody><tr><td>↑ PTH · ↓ ECF volume · ↓ BP · ↑ plasma phosphate · metabolic alkalosis · vitamin D₃</td><td>↓ PTH · ↑ ECF volume · ↑ BP · ↓ plasma phosphate · metabolic acidosis</td></tr></tbody></table></div><p class="note">Plasma Ca²⁺: ≈50% ionized (G) / ≈45% (B), ≈40% protein-bound, ≈10% complexed; >99% of filtered Ca²⁺ is reabsorbed. Phosphate excretion is set mainly by its Tm in the PT (≈0.1 mM/min) and PTH/FGF23; Mg²⁺ mostly in the TAL.</p>'},
+{id:"diu",n:22,topic:true,title:"Diuretics: where each class acts",region:"Whole nephron",kind:"pins",
+ links:["pt1","pt3","tal","dct","pc"],
+ pct:"Diuretics work by blocking Na⁺ (or solute) reabsorption at one segment; the further down the nephron, the smaller the share of filtered Na⁺ left to block. Anything that raises Na⁺ delivery and flow to the principal cell raises K⁺ secretion (K⁺-wasting); blocking ENaC or aldosterone does the opposite (K⁺-sparing).",
+ pins:[
+  {seg:"pt1",k:"HCO3",title:"Carbonic anhydrase inhibitors (acetazolamide)",text:"Less H⁺ secretion → NaHCO₃ lost; mild diuresis, metabolic acidosis, K⁺ loss."},
+  {seg:"pt3",k:"H2O",title:"Osmotic diuretics (mannitol, urea, glucose in DM)",text:"Unreabsorbed solute holds water in PT and loop; used for cerebral edema."},
+  {seg:"tal",k:"Cl",title:"Loop diuretics (furosemide, ethacrynic acid, bumetanide)",text:"Block NKCC2: strongest (up to ~20–30% of filtered Na⁺), wash out medullary gradient; hypokalemia, alkalosis, Ca²⁺ + Mg²⁺ loss, ototoxicity."},
+  {seg:"dct",k:"Na",title:"Thiazides (chlorothiazide, hydrochlorothiazide)",text:"Block NCC: moderate (~5–10%); hypokalemia, alkalosis, less Ca²⁺ excretion, hyponatremia."},
+  {seg:"pc",k:"K",title:"K⁺-sparing: spironolactone, eplerenone (MR) · amiloride, triamterene (ENaC)",text:"Weak (~2–3%); block Na⁺ entry → K⁺ and H⁺ secretion fall → hyperkalemia, acidosis."}],
+ items:[],
+ sit:[["Hypokalemia with loop / thiazide","More Na⁺ and flow reach the principal cell + volume contraction raises aldosterone → K⁺ secreted."],["Combining a thiazide with a K⁺-sparing drug","Balances the K⁺ loss."],["Contraction alkalosis","Volume loss + aldosterone + hypokalemia keep HCO₃⁻ reabsorption high."],["Loop vs thiazide on Ca²⁺","Loop: Ca²⁺ excretion ↑ (used in hypercalcemia). Thiazide: Ca²⁺ excretion ↓ (used for Ca²⁺ stones)."]],
+ html:'<h3>Diuretic classes (G Table 31-1)</h3><div class="scroll"><table><thead><tr><th>Class</th><th>Mechanism</th><th>Site</th><th>Key effects</th></tr></thead><tbody>'
+ +'<tr><td class="nm">Osmotic (mannitol)</td><td>Unreabsorbed solute holds water</td><td>Mainly PT, loop</td><td>Water > Na⁺ loss</td></tr>'
+ +'<tr><td class="nm">Loop (furosemide, bumetanide)</td><td>Block Na⁺-K⁺-2Cl⁻ co-transport</td><td>Thick ascending limb</td><td>Strongest; K⁺, Ca²⁺, Mg²⁺ loss; no concentrating/diluting</td></tr>'
+ +'<tr><td class="nm">Thiazide</td><td>Block Na⁺-Cl⁻ co-transport</td><td>Early distal tubule</td><td>K⁺ loss; Ca²⁺ retention</td></tr>'
+ +'<tr><td class="nm">Carbonic anhydrase inhibitor (acetazolamide)</td><td>Less H⁺ secretion and HCO₃⁻ reabsorption</td><td>Proximal tubule</td><td>Metabolic acidosis</td></tr>'
+ +'<tr><td class="nm">Aldosterone antagonist (spironolactone, eplerenone)</td><td>Block mineralocorticoid receptor</td><td>Collecting tubule</td><td>K⁺-sparing; hyperkalemia</td></tr>'
+ +'<tr><td class="nm">Na⁺ channel blocker (triamterene, amiloride)</td><td>Block ENaC</td><td>Collecting tubule</td><td>K⁺-sparing; hyperkalemia</td></tr></tbody></table></div>'},
+{id:"dis",n:23,topic:true,title:"Kidney diseases: where they hit",region:"Whole nephron",kind:"pins",
+ links:["aff","glom","pt1","tal","dct","pc","icA"],
+ pct:"Acute kidney injury is grouped by where the problem is: before the kidney (prerenal), in it (intrarenal) or after it (postrenal). Chronic kidney disease is a progressive loss of nephrons that keeps going once nephron numbers fall far enough.",
+ pins:[
+  {seg:"aff",k:"H",title:"Prerenal AKI",text:"Low renal blood flow: hemorrhage, diarrhea, vomiting, burns, heart failure / MI, sepsis, anaphylaxis, renal artery stenosis. Tubules intact → urine Na⁺ low, urine concentrated."},
+  {seg:"glom",k:"H",title:"Glomerular disease",text:"Acute glomerulonephritis (post-streptococcal immune complexes), vasculitis; nephrotic syndrome (protein loss → low plasma protein → edema)."},
+  {seg:"pt1",k:"H",title:"Acute tubular necrosis + Fanconi",text:"Ischemia or toxins (heavy metals, ethylene glycol, insecticides, aminoglycosides, cisplatin) → tubular cells slough and block the lumen; Fanconi = global PT failure."},
+  {seg:"tal",k:"Cl",title:"Bartter syndrome",text:"NKCC2 / ROMK / ClC-Kb / barttin defects → salt wasting, hypokalemic alkalosis."},
+  {seg:"dct",k:"Na",title:"Gitelman syndrome",text:"NCC defect → milder salt wasting, hypokalemia, hypomagnesemia, low urine Ca²⁺."},
+  {seg:"pc",k:"K",title:"Liddle (B) · nephrogenic DI",text:"ENaC escapes removal → hypertension, hypokalemia. V2/AQP2 failure → dilute polyuria."},
+  {seg:"icA",k:"H",title:"Distal RTA",text:"α-intercalated cells can’t secrete H⁺ → acidosis, hypokalemia, stones."},
+  {seg:"urine",k:"Urea",title:"Postrenal AKI",text:"Obstruction of outflow: bilateral stones or clots, prostate enlargement, bladder obstruction."}],
+ items:[],
+ sit:[["Uremia","Urea, creatinine, uric acid, phenols, guanidines build up; edema, acidosis, hyperkalemia."],["Anemia of CKD","Less erythropoietin."],["Bone disease of CKD","Less calcitriol → low Ca²⁺ absorption → secondary hyperparathyroidism, osteomalacia."],["Hypertension","Kidney disease raises BP (Na⁺ retention, renin), and hypertension damages the kidney."],["Isosthenuria","Remaining nephrons can’t concentrate or dilute → urine fixed near plasma osmolality (specific gravity ≈1.008)."]],
+ html:'<h3>Chronic kidney disease: the vicious circle (G)</h3><div class="mech"><div class="mrow" style="border-left-color:var(--s-h)"><div class="steps"><span class="st">Primary damage (diabetes, hypertension, glomerulonephritis, polycystic kidney, pyelonephritis)</span><span class="ar">→</span><span class="st">Nephron number ↓</span><span class="ar">→</span><span class="st">Remaining nephrons: blood flow, GFR, pressure ↑ (adaptive)</span><span class="ar">→</span><span class="st">Glomerular sclerosis</span><span class="ar">→</span><span class="st">More nephrons lost</span><span class="ar">↺</span></div></div></div>'
+ +'<h3>AKI at a glance (G Tables 31-2, 31-3)</h3><div class="scroll"><table><thead><tr><th>Type</th><th>Where</th><th>Examples</th></tr></thead><tbody>'
+ +'<tr><td class="nm">Prerenal</td><td>Blood supply to the kidney</td><td>Volume loss (hemorrhage, diarrhea, vomiting, burns) · cardiac failure · peripheral vasodilation (sepsis, anaphylaxis) · renal artery problems</td></tr>'
+ +'<tr><td class="nm">Intrarenal</td><td>Glomeruli, tubules, interstitium</td><td>Glomerulonephritis, vasculitis · acute tubular necrosis (ischemia, toxins) · pyelonephritis, allergic interstitial nephritis</td></tr>'
+ +'<tr><td class="nm">Postrenal</td><td>Urinary outflow</td><td>Bilateral stones, clots · prostate enlargement · bladder outflow obstruction</td></tr></tbody></table></div>'},
+{id:"mic",n:24,topic:true,title:"Micturition: ureter → bladder → urethra",region:"Lower urinary tract",kind:"mic",
+ links:["mcd"],
+ pct:"Urine leaves the papilla into the calyces and is pushed down the ureters by peristalsis. The bladder fills at low pressure until ~300–400 mL, then stretch triggers the micturition reflex (a sacral cord reflex controlled by the pons and cortex).",
+ items:[],
+ sit:[["Atonic bladder","Sensory (dorsal root) fibres destroyed — crush injury, tabes dorsalis → no reflex → overflow incontinence."],["Automatic bladder","Spinal cord damage above the sacral segments → reflex returns but no voluntary control."],["Uninhibited neurogenic bladder","Loss of inhibitory signals (brain stem/cortex lesion) → frequent, uncontrolled voiding."],["Vesicoureteral reflux","Short intramural ureter → urine refluxes up → infection, damage."],["Ureteral stone","Severe pain + ureterorenal reflex → afferent constriction, less urine from that kidney."]],
+ html:'<h3>Micturition reflex (G)</h3><div class="mech"><div class="mrow" style="border-left-color:var(--s-urea)"><div class="steps"><span class="st">Bladder fills (≈300–400 mL)</span><span class="ar">→</span><span class="st">Stretch receptors → pelvic nerve (sensory) → sacral cord S2–S3</span><span class="ar">→</span><span class="st">Parasympathetic (pelvic nerve) → detrusor contracts</span><span class="ar">→</span><span class="st">More stretch → reflex is self-regenerative</span><span class="ar">→</span><span class="st">Pudendal inhibition relaxes external sphincter (if cortex allows)</span><span class="ar">→</span><span class="st">Voiding</span></div></div></div>'
+ +'<div class="scroll"><table><thead><tr><th>Nerve</th><th>Type</th><th>Role</th></tr></thead><tbody>'
+ +'<tr><td class="nm">Pelvic nerves (S2–S3)</td><td>Sensory + parasympathetic</td><td>Stretch signals in; detrusor contraction out</td></tr>'
+ +'<tr><td class="nm">Pudendal nerve</td><td>Somatic (skeletal muscle)</td><td>Voluntary control of the external sphincter</td></tr>'
+ +'<tr><td class="nm">Hypogastric nerves (L2)</td><td>Sympathetic</td><td>Mainly blood vessels; little role in contraction</td></tr></tbody></table></div>'}
+
+];
+const REGS=[
+ {id:"ang",name:"Angiotensin II",kind:"Hormone",src:"Renin (JG cells) → Ang I (liver angiotensinogen) → ACE (lung) → Ang II",stim:"↓ BP / volume, ↓ NaCl at macula densa, sympathetic β1",rec:"AT1 receptor · Gq → PLC → PKC",net:"Keeps GFR up, raises Na⁺ and water reabsorption, releases aldosterone and ADH, causes thirst → BP ↑",src2:"G+B",
+  pins:[{seg:"eff",k:"Na",title:"Efferent > afferent constriction",text:"Glomerular pressure and GFR kept up; peritubular pressure ↓ → more reabsorption."},{seg:"pt1",k:"Na",title:"PT: NHE3, NBCe1, Na⁺-K⁺ pump ↑",text:"Main tubular site; ACE inhibitors and ARBs remove it."},{seg:"pc",k:"K",title:"Via aldosterone (adrenal)",text:"ENaC ↑, K⁺ secretion ↑."}]},
+ {id:"aldo",name:"Aldosterone",kind:"Hormone (steroid)",src:"Adrenal cortex, zona glomerulosa",stim:"Ang II, ↑ plasma K⁺ (ACTH minor)",rec:"Mineralocorticoid receptor (intracellular) → gene transcription → SGK1 ↑ → Nedd4-2 blocked",net:"Na⁺ reabsorbed; K⁺ and H⁺ secreted",src2:"G+B",
+  pins:[{seg:"pc",k:"Na",title:"Principal cell: ENaC, ROMK, Na⁺-K⁺ pump ↑",text:"Na⁺ in, K⁺ out; lumen more negative."},{seg:"icA",k:"H",title:"α-intercalated: H⁺ pump ↑",text:"Excess aldosterone → metabolic alkalosis."}]},
+ {id:"adh",name:"ADH (vasopressin)",kind:"Hormone (peptide)",src:"Supraoptic + paraventricular nuclei → posterior pituitary",stim:"↑ osmolality (1–2%), ↓ volume or BP (larger change), nausea, Ang II; ↓ by alcohol, ANP",rec:"V2 (basolateral) · Gs → cAMP → PKA; V1 on vessels · Gq",net:"Water reabsorbed → concentrated urine, osmolality ↓",src2:"G+B",
+  pins:[{seg:"tal",k:"Cl",title:"TAL: NKCC2 ↑ (B)",text:"Bigger medullary gradient."},{seg:"pc",k:"H2O",title:"Principal cell: AQP2 inserted",text:"Cortical collecting duct becomes water-permeable."},{seg:"mcd",k:"Urea",title:"IMCD: AQP2 + UT-A1/A3",text:"Water and urea reabsorbed; urine up to ≈1200 mOsm."}]},
+ {id:"anp",name:"ANP (atrial natriuretic peptide)",kind:"Hormone (peptide)",src:"Atrial myocytes",stim:"Atrial stretch (volume ↑)",rec:"NPR-A · guanylyl cyclase → cGMP",net:"Natriuresis + diuresis; renin, aldosterone, ADH ↓",src2:"G+B",
+  pins:[{seg:"aff",k:"Na",title:"Afferent dilates, GFR ↑",text:"Efferent constricts slightly; renin release ↓."},{seg:"mcd",k:"Na",title:"Medullary CD: Na⁺ channels ↓",text:"Less Na⁺ reabsorbed at the end of the nephron."}]},
+ {id:"sym",name:"Sympathetic nerves (NE)",kind:"Neural",src:"Renal sympathetic nerves (T10–L1 outflow)",stim:"↓ BP via baroreceptors, stress, exercise, standing",rec:"α1 (Gq) on arterioles and PT · β1 (Gs) on JG cells",net:"RBF and GFR ↓, Na⁺ reabsorption ↑, renin ↑",src2:"G+B",
+  pins:[{seg:"aff",k:"Na",title:"α1: arterioles constrict; β1: renin ↑",text:"Severe activation (hemorrhage) can cut GFR sharply."},{seg:"pt1",k:"Na",title:"α1: NHE3 + Na⁺-K⁺ pump ↑",text:"Direct tubular Na⁺ retention."}]},
+ {id:"dopa",name:"Dopamine",kind:"Local / neural",src:"PT cells make it from L-DOPA; dopaminergic nerve fibres",stim:"High Na⁺ intake",rec:"D1 receptor · Gs → cAMP",net:"Renal vasodilation + natriuresis",src2:"B",
+  pins:[{seg:"aff",k:"Na",title:"Renal vasodilation",text:"RBF ↑."},{seg:"pt1",k:"Na",title:"PT: NHE3 + Na⁺-K⁺ pump ↓",text:"Less Na⁺ reabsorbed."}]},
+ {id:"pth",name:"PTH",kind:"Hormone (peptide)",src:"Parathyroid chief cells",stim:"↓ plasma ionized Ca²⁺ (CaSR)",rec:"PTH1 receptor · Gs → cAMP, Gq → PKC",net:"Ca²⁺ ↑, phosphate ↓",src2:"G+B",
+  pins:[{seg:"pt1",k:"Pi",title:"PT: NaPi ↓, 1α-hydroxylase ↑",text:"Phosphaturia; more calcitriol."},{seg:"tal",k:"Ca",title:"TAL: Ca²⁺ reabsorption ↑",text:"Paracellular path."},{seg:"dct",k:"Ca",title:"DCT: TRPV5, calbindin, NCX1 ↑",text:"Main fine control of Ca²⁺ excretion."}]},
+ {id:"vitd",name:"Calcitriol (1,25-(OH)₂D)",kind:"Hormone (steroid)",src:"Made in PT by 1α-hydroxylase",stim:"PTH, low phosphate; ↓ by FGF23",rec:"Vitamin D receptor (nuclear)",net:"Ca²⁺ and phosphate absorption from gut ↑",src2:"G+B",
+  pins:[{seg:"pt1",k:"Ca",title:"Made here",text:"1α-hydroxylase: 25-OH-D → 1,25-(OH)₂D."},{seg:"dct",k:"Ca",title:"DCT: TRPV5 + calbindin ↑",text:"More Ca²⁺ reabsorbed."}]},
+ {id:"fgf",name:"FGF23",kind:"Hormone (bone)",src:"Osteocytes",stim:"↑ phosphate, ↑ calcitriol",rec:"FGF receptor + Klotho",net:"Phosphate ↓, calcitriol ↓",src2:"B",
+  pins:[{seg:"pt1",k:"Pi",title:"PT: NaPi-IIa/IIc ↓, 1α-hydroxylase ↓",text:"Phosphaturia; very high in CKD."}]},
+ {id:"casr",name:"Extracellular Ca²⁺ (CaSR)",kind:"Ion sensor",src:"Plasma Ca²⁺ / Mg²⁺ itself",stim:"↑ Ca²⁺ or Mg²⁺",rec:"Ca²⁺-sensing receptor · Gq",net:"Less Ca²⁺/Mg²⁺ reabsorption, weaker concentrating",src2:"B",
+  pins:[{seg:"tal",k:"Ca",title:"TAL: NKCC2 + ROMK ↓",text:"Lumen less positive → paracellular Ca²⁺/Mg²⁺ ↓."}]},
+ {id:"pg",name:"Prostaglandins + NO",kind:"Local (autacoid)",src:"Endothelium; macula densa (COX-2, nNOS)",stim:"↓ renal perfusion, Ang II, NE",rec:"EP / IP receptors; NO → cGMP",net:"Vasodilation protects RBF/GFR; renin release",src2:"G+B",
+  pins:[{seg:"aff",k:"Na",title:"Afferent dilation",text:"Buffers constrictors; NSAIDs remove this."},{seg:"md",k:"Cl",title:"Low NaCl → PGE₂ + NO → renin",text:"Macula densa signal to JG cells."}]},
+ {id:"ado",name:"Adenosine / ATP",kind:"Local (TGF)",src:"Macula densa",stim:"↑ NaCl delivery to macula densa",rec:"A1 receptor on afferent arteriole",net:"Afferent constriction → GFR back toward normal",src2:"B",
+  pins:[{seg:"md",k:"Cl",title:"High NaCl → ATP → adenosine",text:"Tubuloglomerular feedback signal."},{seg:"aff",k:"Na",title:"A1: afferent constricts",text:"GFR ↓."}]},
+ {id:"et",name:"Endothelin",kind:"Local (autacoid)",src:"Damaged vascular endothelium",stim:"Vessel injury",rec:"Endothelin receptors",net:"Vasoconstriction → RBF, GFR ↓",src2:"G",
+  pins:[{seg:"aff",k:"Na",title:"Afferent + efferent constrict",text:"Toxemia of pregnancy, acute renal failure."}]}];
+
+const BODYURL="body-fluids.html";
+/* ===== helpers ===== */
+const NS="http://www.w3.org/2000/svg";
+function el(tag,a,parent){const e=document.createElementNS(NS,tag);for(const k in a)e.setAttribute(k,a[k]);if(parent)parent.appendChild(e);return e}
+function wrap(str,max){const w=str.split(" ");const L=[];let c="";for(const x of w){if((c+" "+x).trim().length>max&&c){L.push(c);c=x}else c=(c+" "+x).trim()}if(c)L.push(c);return L}
+function txt(parent,x,y,str,cls,anchor,max,lh){const t=el("text",{x,y,class:cls,"text-anchor":anchor||"start"},parent);const L=max?wrap(str,max):[str];L.forEach((l,i)=>{const s=el("tspan",{x,dy:i?(lh||14):0},t);s.textContent=l});return{node:t,n:L.length}}
+const ionLabel=io=>io[3]||((io[2]&&io[2]>1?io[2]:"")+(S[io[0]]?S[io[0]][0]:io[0]));
+const tcol=t=>`var(${TCOL[t]})`;
+function defs(svg){const d=el("defs",{},svg);
+  [...Object.keys(S),"ink","jx","rec"].forEach(k=>{const m=el("marker",{id:"ah-"+k,viewBox:"0 0 10 10",refX:8,refY:5,markerWidth:6,markerHeight:6,orient:"auto-start-reverse"},d);
+    el("path",{d:"M0,0 L10,5 L0,10 z",fill:k==="ink"?"var(--ink)":k==="jx"?"var(--p-jx)":k==="rec"?"var(--p-rec)":scol(k)},m)});}
+let SHOWCONC=false,SHOWPARA=true,SHOWFLOW=true,SHOWREG=true,EPS=null,POOLS=[],POS={};
+try{SHOWCONC=localStorage.getItem("na-conc")==="1";const f=localStorage.getItem("na-flow");if(f!==null)SHOWFLOW=f==="1";const rg=localStorage.getItem("na-reg");if(rg!==null)SHOWREG=rg==="1";const v=localStorage.getItem("na-para");if(v!==null)SHOWPARA=v==="1"}catch(e){}
+
+/* ===== map ===== */
+const SHORT={aff:"Afferent + JG cells",glom:"Glomerulus",eff:"Efferent + peritubular",pt1:"PT early (S1)",pt3:"PT late (S2–S3)",tdl:"Thin descending",tal0:"Thin ascending",tal:"Thick ascending (TAL)",md:"Macula densa",dct:"Distal convoluted (DCT)",pc:"Principal cell",icA:"α-intercalated",icB:"β-intercalated",mcd:"Medullary CD",vr:"Vasa recta + vein",org:"Other organs",ab:"Acid–base",cc:"Countercurrent",cl:"Clearance",vol:"Volume & osmolality",diu:"Diuretics",dis:"Kidney diseases",mic:"Micturition",reg:"Hormones & nerves"};
+const SEGS=[
+ {p:"aff",d:"M0,52 C200,52 340,52 418,84",w:13,c:"var(--blood)"},
+ {p:"eff",d:"M440,86 C462,56 500,40 560,40 q8,-12 16,0 t16,0 t16,0 t16,0 L700,40 C710,40 712,50 712,64",w:9,c:"var(--blood)"},
+ {p:"vr",d:"M712,64 L712,520 A14,14 0 0 0 740,520 L740,40 C740,28 760,22 1000,22",w:9,c:"var(--vein)"},
+ {p:"glom",circle:[400,120,44]},
+ {p:"pt1",d:"M362,142 C330,170 300,136 280,166",w:16,c:"var(--tube)"},
+ {p:"pt3",d:"M280,166 C260,196 250,230 300,232 C360,234 390,236 390,258",w:16,c:"var(--tube)"},
+ {p:"tdl",d:"M390,258 L390,505",w:7,c:"var(--tube)"},
+ {p:"tal0",d:"M390,505 A40,40 0 0 0 470,505 L470,392",w:7,c:"var(--tube)"},
+ {p:"tal",d:"M470,392 L470,150 C470,128 462,112 446,104",w:13,c:"var(--tube)"},
+ {p:"dct",d:"M452,96 C480,86 500,110 520,100 S560,70 580,100 S610,150 640,130 C670,112 700,130 780,150",w:12,c:"var(--tube)"},
+ {p:"pc",d:"M780,150 L780,256",w:15,c:"var(--tube)"},
+ {p:"mcd",d:"M780,256 L780,548",w:17,c:"var(--tube)"}];
+const MK={aff:[150,80],glom:[328,108],eff:[520,22],pt1:[312,184],pt3:[230,222],tdl:[428,440],tal0:[498,470],tal:[498,300],md:[432,186],dct:[620,176],pc:[822,168],icA:[822,200],icB:[822,232],mcd:[822,400],vr:[684,330]};
+const SEGOF={icA:"pc",icB:"pc",md:"tal"};
+function drawMap(){
+  const s=document.getElementById("map");defs(s);
+  el("rect",{x:0,y:0,width:1000,height:258,fill:"var(--cortex)"},s);
+  el("rect",{x:0,y:258,width:1000,height:146,fill:"var(--om)"},s);
+  el("rect",{x:0,y:404,width:1000,height:186,fill:"var(--im)"},s);
+  [258,404].forEach(y=>el("line",{x1:0,y1:y,x2:1000,y2:y,stroke:"var(--muted)","stroke-opacity":.5,"stroke-dasharray":"6 6"},s));
+  txt(s,14,248,"CORTEX","tz");txt(s,14,300,"OUTER MEDULLA","tz");txt(s,14,446,"INNER MEDULLA","tz");
+  [["≈300 mOsm",232],["≈600",330],["≈900",392],["≈1200 mOsm",578]].forEach(([l,y])=>txt(s,l.includes("300 ")?150:360,y,l,"ts h","end"));
+  txt(s,14,40,"Renal artery","tb h");txt(s,994,14,"Renal vein","tb h","end");
+  txt(s,350,214,"Glomerulus","t h","middle");txt(s,482,140,"Macula densa","ts h");
+  txt(s,250,146,"Proximal tubule","t h","end");txt(s,560,66,"Distal convoluted tubule","ts h");
+  const rot=(x,y,l)=>{const t=txt(s,x,y,l,"t h");t.node.setAttribute("transform",`rotate(-90 ${x} ${y})`)};
+  rot(378,486,"Thin descending");rot(458,360,"Thick ascending limb");rot(700,492,"Vasa recta");rot(804,380,"Collecting duct");rot(486,520,"Thin ascending");
+  for(const g of SEGS){
+    const grp=el("g",{class:"seg","data-p":g.p,tabindex:0,role:"button","aria-label":SHORT[g.p]},s);
+    el("title",{},grp).textContent=SHORT[g.p];
+    if(g.circle){const[cx,cy,r]=g.circle;el("circle",{cx,cy,r,class:"fill",fill:"var(--lumen)",stroke:"var(--tube-edge)","stroke-width":4},grp);
+      [[-14,-8],[8,-14],[16,6],[-6,12],[-18,10],[4,-2]].forEach(([dx,dy])=>el("circle",{cx:cx+dx,cy:cy+dy,r:10,fill:"var(--blood-soft)",stroke:"var(--blood)","stroke-width":2.5},grp));
+      el("circle",{cx,cy,r:r+8,fill:"transparent"},grp);continue}
+    el("path",{d:g.d,fill:"none",stroke:"var(--ink)","stroke-opacity":.55,"stroke-width":g.w+4,"stroke-linecap":"round","stroke-linejoin":"round"},grp);
+    el("path",{d:g.d,class:"fill",fill:"none",stroke:g.c,"stroke-width":g.w,"stroke-linecap":"round","stroke-linejoin":"round"},grp);
+    el("path",{d:g.d,class:"flow",fill:"none",stroke:"var(--paper)","stroke-opacity":.85,"stroke-width":Math.max(2,g.w/4),"stroke-linecap":"round"},grp);
+    el("path",{d:g.d,fill:"none",stroke:"transparent","stroke-width":28},grp);
+  }
+  el("path",{d:"M780,556 C772,568 772,580 780,582 C788,580 788,568 780,556 Z",fill:"var(--tube)",stroke:"var(--tube-edge)","stroke-width":2},s);
+  txt(s,794,580,"Urine","tb h");
+  for(const p of P){const pos=MK[p.id];if(!pos)continue;
+    const g=el("g",{class:"mk","data-p":p.id,tabindex:0,role:"button","aria-label":p.n+" "+SHORT[p.id],transform:`translate(${pos[0]},${pos[1]})`},s);
+    el("title",{},g).textContent=SHORT[p.id];el("circle",{r:13},g);txt(g,0,4.5,String(p.n),"","middle");}
+  const og=el("g",{class:"mk","data-p":"org",tabindex:0,role:"button","aria-label":"16 Other organs",transform:"translate(20,472)"},s);
+  el("rect",{x:0,y:0,width:190,height:84,rx:14,fill:"var(--paper)",stroke:"var(--ink)","stroke-width":1.5},og);
+  const oc=el("g",{transform:"translate(22,22)"},og);el("circle",{r:13},oc);txt(oc,0,4.5,"16","","middle");
+  const ab=el("g",{class:"mk","data-p":"ab",tabindex:0,role:"button","aria-label":"18 Acid–base",transform:"translate(20,318)"},s);
+  el("rect",{x:0,y:0,width:190,height:84,rx:14,fill:"var(--paper)",stroke:"var(--ink)","stroke-width":1.5},ab);
+  const ac=el("g",{transform:"translate(22,22)"},ab);el("circle",{r:13},ac);txt(ac,0,4.5,"18","","middle");
+  txt(ab,42,27,"Acid–base","tb");txt(ab,14,52,"H⁺ secretion · new HCO₃⁻","ts");txt(ab,14,68,"NH₄⁺ · disorders · RTA","ts");
+  txt(og,42,27,"Other organs","tb");txt(og,14,52,"brain · heart · adrenal · liver","ts");txt(og,14,68,"lung · parathyroid · bone","ts");
+  s.addEventListener("click",e=>{const g=e.target.closest("[data-p]");if(g)select(g.dataset.p)});
+  s.addEventListener("keydown",e=>{if(e.key==="Enter"||e.key===" "){const g=e.target.closest("[data-p]");if(g){e.preventDefault();select(g.dataset.p)}}});
+}
+
+/* ===== cell close-up ===== */
+const W=1100,AP=270,BL=830,CX=550;
+function shapeH(it){const k=(it.ions||[]).length;
+  if(it.type==="rec")return 30;
+  if(it.type==="pump")return Math.max(19,k*9+10)*2+26;
+  if(it.type==="abc")return Math.max(32,k*18+12)+26;
+  return Math.max(32,k*18+12)}
+function itemH(it){return Math.max(shapeH(it),wrap(it.name,20).length*14+(it.sig&&SHOWREG?13:0))+18}
+function atp(g,x,y){el("circle",{cx:x,cy:y,r:11,fill:"var(--p-atp)",stroke:"var(--p-pump)","stroke-width":1.5},g);
+  const t=txt(g,x,y+3,"ATP","","middle");t.node.setAttribute("style","font:700 8.5px var(--f-body);fill:#422006")}
+function chColor(it){const ks=[...new Set((it.ions||[]).map(i=>i[0]==="NH3"?"NH4":i[0]))];return ks.length===1?scol(ks[0]):"var(--p-ch)"}
+function drawItem(g,it,x,y,side){
+  const s=side==="ap"?-1:1,ions=it.ions||[],k=ions.length;
+  if(it.type==="rec"){
+    el("rect",{class:"shape",x:x-6,y:y-10,width:12,height:20,rx:4,fill:"var(--p-rec)",stroke:"var(--p-rec)"},g);
+    el("path",{d:`M${x},${y} L${x+s*20},${y} M${x+s*20},${y} L${x+s*32},${y-10} M${x+s*20},${y} L${x+s*32},${y+10}`,stroke:"var(--p-rec)","stroke-width":4.5,"stroke-linecap":"round",fill:"none"},g);
+    el("circle",{cx:x+s*43,cy:y,r:8,fill:"var(--paper)",stroke:"var(--p-rec)","stroke-width":2.5},g);
+    if(it.hor)txt(g,x+s*56,y+4,it.hor,"ion h",s>0?"start":"end").node.setAttribute("style","fill:var(--p-rec)");
+  }else{
+    const h=Math.max(32,k*18+12);
+    if(["sym","anti","uni","endo","abc"].includes(it.type)){
+      const t=it.type==="endo"?"uni":it.type,stroke=it.type==="abc"?"var(--p-pump)":tcol(t),fill=it.type==="abc"?"var(--p-pump-f)":`var(${TCOL[t]}-f)`;
+      el("rect",{class:"shape",x:x-16,y:y-h/2,width:32,height:h,rx:it.type==="uni"||it.type==="endo"?16:9,fill,stroke,"stroke-width":2.5,"stroke-dasharray":it.type==="uni"?"5 3":"none"},g);
+      if(it.type==="endo"){el("circle",{cx:x-s*30,cy:y+h/2-4,r:7,fill:"none",stroke:"var(--p-uni)","stroke-width":2},g)}
+      if(it.type==="abc")atp(g,x,y+h/2+14);
+    }else if(it.type==="ch"||it.type==="jx"){const c=it.type==="jx"?"var(--p-jx)":chColor(it);
+      el("rect",{class:"shape",x:x-18,y:y-h/2,width:11,height:h,rx:5,fill:c,"fill-opacity":.45,stroke:c,"stroke-width":2},g);
+      el("rect",{x:x+7,y:y-h/2,width:11,height:h,rx:5,fill:c,"fill-opacity":.45,stroke:c,"stroke-width":2},g);
+    }else if(it.type==="pump"){const r=Math.max(19,k*9+10);
+      el("circle",{class:"shape",cx:x,cy:y,r,fill:"var(--p-pump-f)",stroke:"var(--p-pump)","stroke-width":2.5},g);atp(g,x,y+r+14);
+    }else el("circle",{class:"shape",cx:x,cy:y,r:6,fill:"none",stroke:"var(--muted)","stroke-width":2,"stroke-dasharray":"2 2"},g);
+    ions.forEach((io,i)=>{const yy=y+(i-(k-1)/2)*18,xo=x+s*74,xi=x-s*30,lo=Math.min(xo,xi),hi=Math.max(xo,xi),r=io[1]==="r";
+      el("line",{x1:r?lo:hi,y1:yy,x2:r?hi:lo,y2:yy,stroke:scol(io[0]),"stroke-width":3,"marker-end":`url(#ah-${io[0]})`,"stroke-dasharray":it.type==="diff"?"5 4":"none"},g);
+      txt(g,x+s*80,yy+4,ionLabel(io),"ion h",s>0?"start":"end").node.setAttribute("fill",scol(io[0]));
+      if(EPS&&it.type!=="jx"){const role=side==="ap"?(r?"src":"snk"):(r?"snk":"src");EPS.push({pool:io[4]||io[0],key:io[0],lab:ionLabel(io),role,side,x:x-s*30,y:yy,i:it.idx})}});
+  }
+  const L=wrap(it.name,20);txt(g,x-s*40,y-(L.length-1)*7+4,it.name,"t h nmt",s>0?"end":"start",20,14);
+  if(it.sig&&SHOWREG){const t=txt(g,x-s*40,y+(L.length-1)*7+17,it.sig,"ts h",s>0?"end":"start");t.node.setAttribute("style","fill:var(--p-rec)")}
+  POS[it.idx]={x,y,side};
+}
+function mito(svg,x,y){el("ellipse",{cx:x,cy:y,rx:17,ry:8,fill:"var(--mito)",stroke:"var(--mito-edge)","stroke-width":1.5},svg);
+  el("path",{d:`M${x-11},${y} l4,-5 l4,10 l4,-10 l4,10 l4,-5`,fill:"none",stroke:"var(--mito-edge)","stroke-width":1.2},svg)}
+function concBand(svg,p,cols){
+  if(!SHOWCONC||!p.conc)return 0;
+  const c=p.conc,boxes=[["Lumen"+(cols.lname?" ("+cols.lname+")":""),c.lu||[],8,cols.ap-16,c.vte],["Cell (ICF)",c.ic||[],cols.ap+20,cols.bl-cols.ap-40],["Interstitium / plasma",c.is||[],cols.bl+8,W-cols.bl-16]];
+  const rows=Math.max(...boxes.map(b=>b[1].length+(b[4]?1:0)),1),H=56+rows*18;
+  boxes.forEach(([title,list,x,w,vte])=>{if(!list.length&&!vte)return;
+    el("rect",{x,y:6,width:w,height:H-12,rx:12,fill:"var(--paper)",stroke:"var(--line)","stroke-width":1.5},svg);
+    txt(svg,x+12,26,title,"tb");let y=46;
+    if(vte){txt(svg,x+12,y,vte,"ion").node.setAttribute("style","fill:var(--accent)");y+=18}
+    list.forEach(([k,v])=>{const t=el("text",{x:x+12,y,class:"ion"},svg);const a=el("tspan",{},t);a.textContent=(S[k]?S[k][0]:k)+"  ";a.setAttribute("fill",scol(k));
+      const b=el("tspan",{fill:"var(--ink)","font-weight":"500"},t);b.textContent=v;y+=18});});
+  return H;
+}
+function drawCell(p){
+  const box=document.getElementById("d-draw");box.innerHTML="";
+  POOLS=[];renderRoutes(p);
+  if(p.kind==="filter")return drawFilter(p,box);
+  if(p.kind==="organs")return drawOrgans(p,box);
+  if(p.kind==="acidbase")return drawAcidBase(p,box);
+  if(p.kind==="pins")return drawPins(p,box);
+  if(p.kind==="cc")return drawCC(p,box);
+  if(p.kind==="mic")return drawMic(p,box);
+  if(p.kind==="reg")return drawReg(p,box);
+  const vessel=p.kind==="vessel";
+  const it=p.items.map((x,i)=>Object.assign({},x,{idx:i}));
+  const by=sd=>it.filter(x=>x.side===sd);
+  const ap=by("ap"),bl=by("bl"),inn=by("in"),lu=by("lu"),is=by("is"),pa=by("para");
+  const Y0=100,sum=a=>a.reduce((t,x)=>t+itemH(x),0);
+  const span=Math.max(sum(ap),sum(bl),inn.length*100+20,260);
+  const cellB=Y0+span+(vessel?70:110);
+  const chipH=a=>a.reduce((t,x)=>t+wrap(x.name,64).length*15+10,0);
+  const mainH=cellB+34+Math.max(chipH(lu),chipH(is),0)+10;
+  const svg=el("svg",{role:"img","aria-label":"Cell close-up: "+p.title},box);defs(svg);
+  const CH=concBand(svg,p,{ap:AP,bl:BL});
+  svg.setAttribute("viewBox",`0 0 ${W} ${CH+mainH}`);
+  const m=el("g",{transform:`translate(0,${CH})`},svg);
+  el("rect",{x:0,y:0,width:AP,height:mainH,fill:vessel?"var(--blood-soft)":"var(--lumen)"},m);
+  el("rect",{x:AP,y:0,width:W-AP,height:mainH,fill:"var(--isf)"},m);
+  if(!vessel){el("rect",{x:1012,y:34,width:60,height:mainH-50,rx:30,fill:"var(--blood-soft)",stroke:"var(--blood)","stroke-width":2},m);
+    for(let y=80;y<mainH-60;y+=110)el("ellipse",{cx:1042,cy:y,rx:16,ry:9,fill:"var(--blood)","fill-opacity":.75},m);
+    txt(m,W-6,22,p.cap,"ts h","end");}
+  txt(m,14,24,p.left,"tb h",null,30,16);
+  txt(m,BL+14,24,p.right,"tb h",null,vessel?30:20,16);
+  el("rect",{x:AP,y:4,width:BL-AP,height:56,rx:18,fill:"var(--cell)",stroke:"var(--cell-edge)","stroke-width":2,"fill-opacity":.7},m);
+  el("rect",{x:AP,y:76,width:BL-AP,height:cellB-76,rx:26,fill:"var(--cell)",stroke:"var(--cell-edge)","stroke-width":3},m);
+  el("path",{d:`M${AP+2},62 l5,7 l5,-7 l5,7 l5,-7 l5,7 l5,-7 l5,7 l5,-7`,fill:"none",stroke:"var(--p-jx)","stroke-width":3},m);
+  el("line",{x1:BL+7,y1:70,x2:BL+7,y2:cellB,stroke:"var(--cell-edge)","stroke-width":2,"stroke-dasharray":"2 5"},m);
+  if(p.brush)for(let y=88;y<cellB-14;y+=11)el("rect",{x:AP-15,y,width:16,height:6,rx:3,fill:"var(--cell)",stroke:"var(--cell-edge)","stroke-width":1},m);
+  const cy=cellB-52;
+  el("ellipse",{cx:CX,cy,rx:70,ry:34,fill:"var(--nuc)",stroke:"var(--nuc-edge)","stroke-width":2},m);
+  el("circle",{cx:CX-18,cy:cy-6,r:4,fill:"var(--ink)"},m);el("circle",{cx:CX+18,cy:cy-6,r:4,fill:"var(--ink)"},m);
+  el("path",{d:`M${CX-14},${cy+7} Q${CX},${cy+19} ${CX+14},${cy+7}`,fill:"none",stroke:"var(--ink)","stroke-width":2.5,"stroke-linecap":"round"},m);
+  el("circle",{cx:CX-30,cy:cy+6,r:5,fill:"var(--accent)","fill-opacity":.35},m);el("circle",{cx:CX+30,cy:cy+6,r:5,fill:"var(--accent)","fill-opacity":.35},m);
+  txt(m,CX,cy-42,p.cellName,"ts h","middle");
+  const nm=p.mito||0;for(let i=0;i<nm;i++){const left=i%2===0,j=Math.floor(i/2);mito(m,left?CX-110-j*46:CX+110+j*46,cellB-(j%2?62:36))}
+  txt(m,AP+12,cellB-10,vessel?"luminal side":"apical","ts h");txt(m,BL-12,cellB-10,vessel?"outer side":"basolateral","ts h","end");
+  EPS=vessel?null:[];POS={};const fl=el("g",{class:"flows"},m);
+  const mk=x=>el("g",{class:"it","data-idx":x.idx},m);
+  pa.forEach(x=>{const g=mk(x);if(!SHOWPARA)return;
+    if(x.ions&&x.ions.length){el("line",{x1:120,y1:69,x2:W-120,y2:69,stroke:"var(--p-jx)","stroke-width":2.5,"marker-end":"url(#ah-jx)"},g);
+      const t=el("text",{x:AP+48,y:50,class:"ion h"},g);const a=el("tspan",{fill:"var(--ink)"},t);a.textContent=x.name+": ";
+      x.ions.forEach((io,i)=>{const s=el("tspan",{fill:scol(io[0])},t);s.textContent=ionLabel(io)+(io[1]==="l"?" ←":"")+(i<x.ions.length-1?",  ":"")});}
+    else txt(g,AP+48,50,x.name+": little back-leak","t h");});
+  const place=(arr,side,x)=>{const tot=sum(arr),extra=arr.length?(span-tot)/arr.length:0;let yc=Y0;
+    arr.forEach(it=>{const h=itemH(it)+extra;const off=(it.type==="pump"||it.type==="abc")?-12:0;drawItem(mk(it),it,x,yc+h/2+off,side);yc+=h})};
+  place(ap,"ap",AP);place(bl,"bl",BL);
+  inn.forEach((x,j)=>{const g=mk(x),y=Y0+28+j*100;
+    if(x.type==="rec")el("rect",{class:"shape",x:CX-15,y:y-15,width:30,height:30,rx:9,fill:"var(--paper)",stroke:"var(--p-rec)","stroke-width":3},g);
+    else if(x.type==="ves")[[-12,-4],[0,-10],[12,-4],[-6,8],[8,8]].forEach(([dx,dy],i)=>el("circle",{class:i?"":"shape",cx:CX+dx,cy:y+dy,r:6,fill:"var(--paper)",stroke:"var(--s-h2o)","stroke-width":2.5},g));
+    else{const pts=[...Array(6)].map((_,a)=>{const an=Math.PI/3*a;return(CX+17*Math.cos(an))+","+(y+17*Math.sin(an))}).join(" ");el("polygon",{class:"shape",points:pts,fill:"var(--p-enz-f)",stroke:"var(--p-enz)","stroke-width":2.5},g)}
+    const t=txt(g,CX,y+34,x.name,"t h nmt","middle",24,14);if(x.sub)txt(g,CX,y+34+t.n*14,x.sub,"ts h","middle",34,13);POS[x.idx]={x:CX,y,side:"in"};
+    if(EPS&&x.rx){(x.rx.out||[]).forEach(k=>EPS.push({pool:k,key:k,role:"src",side:"in",x:CX,y,i:x.idx,hub:1}));(x.rx.in||[]).forEach(k=>EPS.push({pool:k,key:k,role:"snk",side:"in",x:CX,y,i:x.idx,hub:1}));(x.rx.via||[]).forEach(k=>EPS.push({pool:k,key:k,role:"via",side:"in",x:CX,y,i:x.idx,hub:1}))}});
+  let yl=cellB+30;const y0=yl;
+  const chip=(x,x0,pre)=>{const g=mk(x);el("rect",{class:"shape",x:x0,y:yl-10,width:11,height:11,rx:3,fill:tcol(x.type)},g);const t=txt(g,x0+18,yl,pre+x.name,"t h nmt",null,64,15);yl+=t.n*15+10;};
+  lu.forEach(x=>chip(x,14,vessel?"Blood: ":"Lumen: "));yl=y0;is.forEach(x=>chip(x,566,vessel?"Outside: ":"Interstitium: "));
+  POOLS=[];window.__ov=0;if(EPS&&SHOWFLOW)drawFlows(fl,p);
+  if(SHOWREG)drawRegLines(m,p);renderRoutes(p);applyTrace();
+  svg.addEventListener("click",e=>{const g=e.target.closest(".it");if(g)hl(+g.dataset.idx)});
+}
+const POOLNAME={OA:"Organic anions (PAH, drugs)",OC:"Organic cations (drugs)",aKG:"α-Ketoglutarate",urate:"Urate",base:"Formate / oxalate",atp:"ATP / adenosine",pge:"PGE₂ / NO"};
+const POOLKEY={OA:"Org",OC:"Org",aKG:"Org",urate:"Org",base:"Org",atp:"Org",pge:"Org"};
+const ORDER=["Na","H","HCO3","K","Cl","Ca","Mg","Glc","AA","Pi","H2O","Urea","NH4","NH3","CO2"];
+function drawFlows(g,p){
+  const by={};EPS.forEach(e=>{(by[e.pool]=by[e.pool]||[]).push(e)});
+  const keys=Object.keys(by).sort((a,b)=>{const ia=ORDER.indexOf(POOLKEY[a]?"zz":a),ib=ORDER.indexOf(POOLKEY[b]?"zz":b);return (ia<0?99:ia)-(ib<0?99:ib)});
+  const pools=[];
+  keys.forEach(pool=>{const L=by[pool].map(e=>Object.assign({},e)),src=L.filter(e=>e.role==="src"),snk=L.filter(e=>e.role==="snk"),via=L.find(e=>e.role==="via");
+    if(!via&&(!src.length||!snk.length))return;pools.push({pool,L,src,snk,via})});
+  /* hub endpoints: give each pool leaving the same enzyme its own row */
+  const hubs={};pools.forEach(pl=>pl.L.forEach(e=>{if(e.hub&&!pl.via)(hubs[e.i]=hubs[e.i]||[]).push(e)}));
+  Object.values(hubs).forEach(arr=>{const n=arr.length;arr.forEach((e,k)=>{e.y+=(k-(n-1)/2)*11})});
+  /* lanes: left lanes for pools fed mostly from the apical side, spread evenly, never on the enzyme column */
+  const free=pools.filter(pl=>!pl.via);
+  free.forEach(pl=>{pl.bal=pl.L.reduce((a,e)=>a+(e.side==="ap"?1:e.side==="bl"?-1:0),0)/pl.L.length});
+  free.sort((a,b)=>b.bal-a.bal);
+  const n=free.length,lo=AP+120,hi=BL-120,gap=28,span=(CX-gap-lo)+(hi-CX-gap),cand=[];
+  for(let k=0;k<n;k++){const t=n===1?0.3:k/(n-1);let d=t*span,x=lo+d;if(x>CX-gap)x=CX+gap+(d-(CX-gap-lo));cand.push(Math.round(x))}
+  free.forEach((pl,k)=>pl.lx=cand[k]);pools.forEach(pl=>{if(pl.via)pl.lx=CX});
+  const H=[],V=[];
+  const hitH=(y,a,b)=>H.some(h=>Math.abs(h.y-y)<5&&Math.min(b,h.b)-Math.max(a,h.a)>1);
+  const hitV=(x,a,b)=>V.some(v=>Math.abs(v.x-x)<4&&Math.min(b,v.b)-Math.max(a,v.a)>1);
+  pools.forEach(pl=>{const ys=pl.L.map(e=>e.y);V.push({x:pl.lx,a:Math.min(...ys)-30,b:Math.max(...ys)+30,pool:pl.pool})});
+  const DY=[0];for(let k=6;k<=96;k+=6)DY.push(k,-k);
+  POOLS=[];
+  pools.forEach((pl,pi)=>{const {pool,src,snk,via,lx}=pl,key=POOLKEY[pool]||pool,c=scol(key);
+    pl.items=[...new Set(pl.L.map(e=>e.i))];POOLS.push({pool,key,src,snk,via,items:pl.items});
+    const pg=el("g",{class:"pool","data-pool":pool},g);const route=[];
+    const lay=(e,isSnk)=>{if(via&&e.hub)return;
+      const x0=e.hub?(e.x+(lx<e.x?-19:19)):e.x,dir=e.side==="ap"?1:e.side==="bl"?-1:(lx>x0?1:-1);
+      let best=null;
+      const OFF=[];for(let o=12;o<Math.abs(lx-x0)-6;o+=8)OFF.push(o);if(!OFF.length)OFF.push(6);
+      for(const off of OFF){for(const dy of DY){const sx=x0+dir*off,yy=e.y+dy,a=Math.min(sx,lx),b=Math.max(sx,lx);
+        const okH=!hitH(yy,a,b)&&(dy===0?!hitH(e.y,Math.min(x0,lx),Math.max(x0,lx)):!hitH(e.y,Math.min(x0,sx),Math.max(x0,sx)));
+        const okV=dy===0||!hitV(sx,Math.min(e.y,yy),Math.max(e.y,yy));
+        if(okH&&okV){best={off,dy};break}}if(best)break}
+      if(!best&&e.hub){for(const dy of DY){if(Math.abs(dy)<24)continue;const yy=e.y+dy,sy=e.y+(dy>0?17:-17);
+          if(!hitV(CX,Math.min(sy,yy),Math.max(sy,yy))&&!hitH(yy,Math.min(CX,lx),Math.max(CX,lx))){
+            H.push({y:yy,a:Math.min(CX,lx),b:Math.max(CX,lx)});V.push({x:CX,a:Math.min(sy,yy),b:Math.max(sy,yy)});
+            route.push({pts:[[CX,sy],[CX,yy],[lx,yy]],isSnk,y:yy,x0:CX,e:Object.assign({},e,{y:sy})});return}}}
+      if(!best){best={off:14,dy:0};window.__fb=(window.__fb||[]).concat(pool)}
+      const sx=x0+dir*best.off,yy=e.y+best.dy;
+      if(best.dy===0)H.push({y:e.y,a:Math.min(x0,lx),b:Math.max(x0,lx)});
+      else{H.push({y:e.y,a:Math.min(x0,sx),b:Math.max(x0,sx)});H.push({y:yy,a:Math.min(sx,lx),b:Math.max(sx,lx)});V.push({x:sx,a:Math.min(e.y,yy),b:Math.max(e.y,yy)})}
+      const pts=best.dy===0?[[x0,e.y],[lx,e.y]]:[[x0,e.y],[sx,e.y],[sx,yy],[lx,yy]];
+      route.push({pts,isSnk,y:yy,x0,e})};
+    src.forEach(e=>lay(e,false));snk.forEach(e=>lay(e,true));
+    const ry=route.map(r=>r.y).concat(via?[via.y]:[]),y0=Math.min(...ry),y1=Math.max(...ry);
+    if(y1>y0)el("line",{class:"ln",x1:lx,y1:y0,x2:lx,y2:y1,stroke:c},pg);
+    route.forEach(r=>{let pts=r.pts.slice();if(r.isSnk){pts=pts.reverse();const L=pts[pts.length-1],Pv=pts[pts.length-2];if(L[1]===Pv[1])L[0]+= (L[0]>Pv[0]?-6:6)}
+      const d="M"+pts.map(q=>q.join(",")).join(" L");
+      el("path",{class:"ln",d,stroke:c,"marker-end":r.isSnk?`url(#ah-${S[key]?key:"ink"})`:"none"},pg);el("path",{class:"run",d},pg);
+      if(!r.isSnk)el("circle",{cx:r.x0,cy:r.e.y,r:4,fill:c},pg);
+      el("circle",{cx:lx,cy:r.y,r:3.5,fill:c,stroke:"var(--halo)","stroke-width":1.5},pg)});
+    const lab=POOLNAME[pool]?POOLNAME[pool].split(" (")[0]:(S[pool]?S[pool][0]:pool);
+    const below=pi%2===1,t=txt(pg,lx,below?y1+16:y0-9,lab,"ion h","middle");t.node.setAttribute("fill",c);
+  });
+  /* self-check for overlapping runs between different substances */
+  window.__ov=0;const segs=[];
+  g.querySelectorAll(".pool").forEach(pg=>pg.querySelectorAll("path.ln,line.ln").forEach(ln=>{let P=[];if(ln.tagName==="line")P=[[+ln.getAttribute("x1"),+ln.getAttribute("y1")],[+ln.getAttribute("x2"),+ln.getAttribute("y2")]];else P=ln.getAttribute("d").slice(1).split(" L").map(q=>q.split(",").map(Number));
+    for(let k=1;k<P.length;k++)segs.push({pool:pg.dataset.pool,a:P[k-1],b:P[k]})}));
+  for(let a=0;a<segs.length;a++)for(let b=a+1;b<segs.length;b++){const A=segs[a],B=segs[b];if(A.pool===B.pool)continue;
+    const hA=A.a[1]===A.b[1],hB=B.a[1]===B.b[1],vA=A.a[0]===A.b[0],vB=B.a[0]===B.b[0];
+    if(hA&&hB&&Math.abs(A.a[1]-B.a[1])<4){const o=Math.min(Math.max(A.a[0],A.b[0]),Math.max(B.a[0],B.b[0]))-Math.max(Math.min(A.a[0],A.b[0]),Math.min(B.a[0],B.b[0]));if(o>2)window.__ov++}
+    if(vA&&vB&&Math.abs(A.a[0]-B.a[0])<4){const o=Math.min(Math.max(A.a[1],A.b[1]),Math.max(B.a[1],B.b[1]))-Math.max(Math.min(A.a[1],A.b[1]),Math.min(B.a[1],B.b[1]));if(o>2)window.__ov++}}
+}
+function renderRoutes(p){
+  const ul=document.getElementById("d-routes"),tr=document.getElementById("trace");if(!ul)return;ul.innerHTML="";tr.innerHTML="";
+  if(!POOLS.length){ul.innerHTML='<li style="cursor:default">ส่วนนี้ไม่มีเส้นทางผ่านเซลล์ (เป็นหลอดเลือด, filter, organ map หรือปิดสวิตช์ไว้)</li>';tr.hidden=true;return}
+  tr.hidden=false;const l=document.createElement("span");l.className="lbl";l.textContent="Trace:";tr.appendChild(l);
+  const nm=e=>p.items[e.i].name;
+  const grp=(arr,side)=>[...new Set(arr.filter(e=>e.side===side).map(nm))].join(" · ");
+  POOLS.forEach(pl=>{const label=POOLNAME[pl.pool]||(S[pl.pool]?S[pl.pool][0]:pl.pool);
+    const b=document.createElement("button");b.dataset.pool=pl.pool;b.style.color=scol(pl.key);b.textContent=label;b.addEventListener("click",()=>setTrace(pl.pool));tr.appendChild(b);
+    const li=document.createElement("li");li.dataset.pool=pl.pool;
+    const sA=grp(pl.src,"ap"),sB=grp(pl.src,"bl"),sH=grp(pl.src,"in"),ins=[];if(sA)ins.push(`lumen → ${sA}`);if(sB)ins.push(`blood → ${sB}`);if(sH)ins.push(`made by ${sH}`);
+    const kA=grp(pl.snk,"ap"),kB=grp(pl.snk,"bl"),kH=grp(pl.snk,"in"),outs=[];if(kB)outs.push(`${kB} → blood`);if(kA)outs.push(`${kA} → lumen`);if(kH)outs.push(`used by ${kH}`);
+    const via=`<span class="cellw">${pl.via?nm(pl.via):"cell"}</span>`;
+    li.innerHTML=`<b style="color:${scol(pl.key)}">${label}</b>: ${ins.join(" ; ")} ⟶ ${via} ⟶ ${outs.join(" ; ")}`;
+    li.addEventListener("click",()=>setTrace(pl.pool));ul.appendChild(li)});
+  const all=document.createElement("button");all.dataset.pool="all";all.textContent="All";all.style.color="var(--ink)";all.addEventListener("click",()=>setTrace("all"));tr.appendChild(all);
+  const regs=p.items.map((x,i)=>[x,i]).filter(([x])=>x.acts&&x.acts.length);
+  if(regs.length&&SHOWREG){const l2=document.createElement("span");l2.className="lbl";l2.style.marginLeft="12px";l2.textContent="Regulators:";tr.appendChild(l2);
+    regs.forEach(([x,i])=>{const b=document.createElement("button");b.dataset.reg=i;b.textContent=(x.hor||x.name.split(" ")[0])+" ("+x.acts.map(a=>a[1]).join("")+")";b.style.color="var(--p-rec)";b.title=x.name;b.addEventListener("click",()=>hl(i));tr.appendChild(b)})}
+}
+let TRACE=null;
+function setTrace(t){TRACE=t;applyTrace()}
+function applyTrace(){
+  const svg=document.querySelector("#d-draw svg");if(!svg||!cur)return;
+  if(TRACE!=="all"&&!POOLS.some(x=>x.pool===TRACE))TRACE=POOLS.length?POOLS[0].pool:null;
+  svg.querySelectorAll(".pool").forEach(g=>{const on=TRACE==="all"||g.dataset.pool===TRACE;g.style.display=on?"":"none";g.classList.toggle("sel",TRACE!=="all"&&on)});
+  const pl=POOLS.find(x=>x.pool===TRACE);
+  svg.querySelectorAll(".it").forEach(g=>{const i=+g.dataset.idx,it=cur.items[i];g.classList.toggle("faded",!!pl&&!!it&&["ap","bl","in"].includes(it.side)&&!pl.items.includes(i)&&it.type!=="rec"&&!it.acts)});
+  document.querySelectorAll("#trace button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.pool===TRACE));
+  document.querySelectorAll("#d-routes li").forEach(li=>li.classList.toggle("on",li.dataset.pool===TRACE));
+  document.querySelectorAll(".legend .sbtn").forEach(b=>b.classList.toggle("on",!!pl&&pl.key===b.dataset.k));
+}
+function renderMech(p){const box=document.getElementById("d-mech");box.innerHTML="";
+  if(p.links){box.hidden=false;const d=document.createElement("div");d.className="golinks";d.innerHTML="<span class='tz-l'>Open segment</span>";p.links.forEach(id=>{const q=P.find(x=>x.id===id);if(!q)return;const b=document.createElement("button");b.textContent=q.n+" · "+SHORT[id];b.addEventListener("click",()=>{select(id);document.getElementById("d-title").scrollIntoView({behavior:"smooth",block:"start"})});d.appendChild(b)});box.appendChild(d)}
+  if(p.html){box.hidden=false;box.insertAdjacentHTML("beforeend",p.html);return}
+  if(p.kind!=="organs"){if(!p.links)box.hidden=true;return}box.hidden=false;
+  const h=document.createElement("h3");h.textContent="Mechanism: organ → kidney";box.appendChild(h);
+  p.items.forEach((x,i)=>{if(!x.mech)return;const r=document.createElement("div");r.className="mrow";r.dataset.idx=i;r.style.borderLeftColor=tcol(x.type);
+    const t=document.createElement("h4");t.textContent=x.loc+" · "+x.name;r.appendChild(t);
+    const st=document.createElement("div");st.className="steps";
+    x.mech.forEach((m,k)=>{if(k){const a=document.createElement("span");a.className="ar";a.textContent="→";st.appendChild(a)}const b=document.createElement("span");b.className="st";b.textContent=m;st.appendChild(b)});
+    r.appendChild(st);r.addEventListener("click",()=>hl(i));box.appendChild(r)});
+}
+function drawAcidBase(p,box){
+  const H=905,svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Acid–base handling by the kidney"},box);defs(svg);
+  el("rect",{x:0,y:0,width:W,height:H,fill:"var(--paper)"},svg);
+  const T=(g,x,y,str,cls,anc,col,max)=>{const t=txt(g,x,y,str,cls+" h",anc,max,13);if(col)t.node.setAttribute("fill",col);return t};
+  const A=(g,x1,y1,x2,y2,k,dash)=>el("line",{x1,y1,x2,y2,stroke:scol(k),"stroke-width":3,"marker-end":`url(#ah-${k})`,"stroke-dasharray":dash?"5 4":"none"},g);
+  /* ---- 1. along the nephron ---- */
+  T(svg,16,26,"1 · Along the nephron: where H⁺ is secreted and filtered HCO₃⁻ (≈4320 mmol/day) is reclaimed","tb");
+  const segs=[["Proximal tubule",60,480,80,"NHE3 (~2/3) + H⁺ pump; CA IV in lumen, CA II in cell; glutamine → NH₄⁺ + new HCO₃⁻"],["TAL",480,680,10,"NHE3; NH₄⁺ rides NKCC2 → medulla"],["DCT",680,820,6,"Na⁺–H⁺ exchange, H⁺ pump"],["Collecting duct",820,1040,4,"α-IC: H⁺ pump, H⁺-K⁺ pump · β-IC: HCO₃⁻ out · NH₃ trapped as NH₄⁺"]];
+  el("line",{x1:60,y1:156,x2:1040,y2:156,stroke:"var(--tube-edge)","stroke-width":30,"stroke-linecap":"round"},svg);
+  segs.forEach(([nm,a,b,pc,mech],i)=>{const cx=(a+b)/2;
+    el("line",{x1:a+(i?2:0),y1:156,x2:b-2,y2:156,stroke:"var(--tube)","stroke-width":24,"stroke-linecap":i===0||i===3?"round":"butt"},svg);
+    const h=pc*0.7;el("rect",{x:cx-28,y:116-h,width:56,height:h,rx:5,fill:"var(--s-hco3)","fill-opacity":.85},svg);
+    T(svg,cx,112-h-4,"≈"+pc+"%","ion","middle","var(--s-hco3)");
+    T(svg,cx,136,nm,"t","middle");
+    T(svg,cx,196,mech,"ts","middle",null,Math.round((b-a)/6.2));});
+  T(svg,1050,66,"of filtered HCO₃⁻","ts","end","var(--s-hco3)");
+  [[60,"pH 7.4"],[480,"≈6.7"],[1040,"4.4–8"]].forEach(([x,l])=>{el("rect",{x:x-30,y:146,width:60,height:20,rx:10,fill:"var(--paper)",stroke:"var(--s-h)","stroke-width":1.5},svg);T(svg,x,160,l,"ion","middle","var(--s-h)")});
+  T(svg,1040,262,"minimum urine pH ≈4.5 (G) / 4.4 (B); PT can only reach ≈6.7","ts","end");
+  /* ---- 2. daily balance ---- */
+  T(svg,16,300,"2 · Daily balance: excreting the nonvolatile acid load = making new HCO₃⁻","tb");
+  const B=(x,y,w,h,col,t1,t2)=>{el("rect",{x,y,width:w,height:h,rx:14,fill:"var(--bg)",stroke:col,"stroke-width":2.5},svg);T(svg,x+12,y+24,t1,"t",null,col);T(svg,x+12,y+44,t2,"ts",null,null,Math.floor((w-24)/6.1))};
+  B(16,322,240,124,scol("H"),"Nonvolatile acid load","≈70 mmol/day (B: ≈40 from metabolism + ≈30 from diet and stool base loss) · ≈80 mEq/day (G)");
+  A(svg,258,384,284,384,"H");
+  B(288,322,210,124,scol("HCO3"),"Buffered by ECF HCO₃⁻","Each H⁺ uses up one HCO₃⁻ → CO₂ breathed out");
+  A(svg,500,384,526,384,"HCO3");
+  B(530,322,226,124,"var(--ink)","Kidney replaces it","Net acid excretion (NAE) = titratable acid + NH₄⁺ − urine HCO₃⁻ = new HCO₃⁻ added to blood");
+  A(svg,758,368,786,352,"H");A(svg,758,400,786,428,"NH4");
+  B(790,316,294,68,scol("Pi"),"Titratable acid (H₂PO₄⁻, creatinine, urate)","≈30 mmol/day (B) · ≈30–40 mEq/day (G)");
+  B(790,392,294,82,scol("NH4"),"NH₄⁺","≈40 mmol/day, ≈60% of NAE (B) · can rise to ≈500 mEq/day in chronic acidosis (G)");
+  T(svg,790,494,"Urine HCO₃⁻ ≈ 0 normally (all filtered HCO₃⁻ reclaimed)","ts",null,"var(--s-hco3)");
+  /* ---- 3. three mechanisms ---- */
+  T(svg,16,532,"3 · Three cellular mechanisms","tb");
+  const P3=(x0,title,note)=>{const g=el("g",{},svg),y=550;
+    el("rect",{x:x0,y,width:344,height:330,rx:14,fill:"var(--isf)",stroke:"var(--line)"},g);
+    el("rect",{x:x0,y,width:102,height:330,rx:14,fill:"var(--lumen)"},g);el("rect",{x:x0+88,y,width:14,height:330,fill:"var(--lumen)"},g);
+    el("rect",{x:x0+104,y:y+40,width:136,height:230,rx:18,fill:"var(--cell)",stroke:"var(--cell-edge)","stroke-width":2.5},g);
+    T(g,x0+12,y+22,title,"t");T(g,x0+51,y+290,"lumen","ts","middle");T(g,x0+172,y+290,"cell","ts","middle");T(g,x0+292,y+290,"blood","ts","middle");
+    T(g,x0+12,y+312,note,"ts",null,null,52);return {g,x0,y}};
+  const carrier=(g,x,y,lab,pump)=>{if(pump){el("circle",{cx:x,cy:y,r:13,fill:"var(--p-pump-f)",stroke:"var(--p-pump)","stroke-width":2},g);el("circle",{cx:x+16,cy:y+14,r:8,fill:"var(--p-atp)"},g);const a=txt(g,x+16,y+17,"ATP","","middle");a.node.setAttribute("style","font:700 6.5px var(--f-body);fill:#422006")}
+    else el("rect",{x:x-9,y:y-14,width:18,height:28,rx:6,fill:"var(--p-anti-f)",stroke:"var(--p-anti)","stroke-width":2},g);
+    T(g,x,y-18,lab,"ts","middle","var(--ink)")};
+  /* panel 1 */
+  let q=P3(16,"HCO₃⁻ reabsorption (no net acid out)","Secreted H⁺ just turns filtered HCO₃⁻ into CO₂; the cell rebuilds it. No net H⁺ is excreted.");
+  let {g,x0,y}=q;
+  T(g,x0+51,y+130,"Filtered HCO₃⁻","ion","middle",scol("HCO3"));T(g,x0+51,y+148,"+ H⁺","ion","middle",scol("H"));T(g,x0+51,y+166,"↓ CA IV","ts","middle");T(g,x0+51,y+184,"CO₂ + H₂O","ion","middle",scol("CO2"));
+  A(g,x0+84,y+190,x0+130,y+170,"CO2",true);
+  T(g,x0+172,y+130,"CO₂ + H₂O","ion","middle",scol("CO2"));T(g,x0+172,y+148,"↓ CA II","ts","middle");T(g,x0+172,y+166,"H⁺ + HCO₃⁻","ion","middle","var(--ink)");
+  carrier(g,x0+104,y+78,"NHE3");A(g,x0+40,y+70,x0+132,y+70,"Na");T(g,x0+136,y+74,"Na⁺","ion",null,scol("Na"));A(g,x0+160,y+88,x0+60,y+88,"H");T(g,x0+52,y+92,"H⁺","ion","end",scol("H"));
+  carrier(g,x0+240,y+222,"NBCe1");A(g,x0+200,y+222,x0+300,y+222,"HCO3");T(g,x0+304,y+214,"HCO₃⁻","ion",null,scol("HCO3"));
+  /* panel 2 */
+  q=P3(378,"Titratable acid → new HCO₃⁻","Each H₂PO₄⁻ (or other buffer) excreted carries out one H⁺ and leaves one new HCO₃⁻ in blood.");({g,x0,y}=q);
+  T(g,x0+172,y+80,"CO₂ + H₂O","ion","middle",scol("CO2"));T(g,x0+172,y+98,"↓ CA II","ts","middle");T(g,x0+172,y+116,"H⁺ + HCO₃⁻","ion","middle","var(--ink)");
+  carrier(g,x0+104,y+150,"H⁺ pump",true);A(g,x0+150,y+150,x0+84,y+150,"H");
+  T(g,x0+51,y+120,"HPO₄²⁻","ion","middle",scol("Pi"));T(g,x0+51,y+172,"+ H⁺","ion","middle",scol("H"));T(g,x0+51,y+192,"↓","ts","middle");T(g,x0+51,y+212,"H₂PO₄⁻","ion","middle",scol("Pi"));
+  A(g,x0+51,y+222,x0+51,y+262,"Pi");T(g,x0+60,y+258,"urine","ts");
+  carrier(g,x0+240,y+222,"AE1");A(g,x0+200,y+222,x0+300,y+222,"HCO3");T(g,x0+300,y+214,"new HCO₃⁻","ion","middle",scol("HCO3"));
+  /* panel 3 */
+  q=P3(740,"Ammonium → new HCO₃⁻","Counts only if NH₄⁺ leaves in urine; NH₄⁺ returned to blood is made into urea by the liver, using the HCO₃⁻ up (B).");({g,x0,y}=q);
+  A(g,x0+300,y+80,x0+200,y+80,"AA");T(g,x0+300,y+70,"glutamine","ion","middle",scol("AA"));
+  T(g,x0+172,y+104,"glutaminase","ts","middle");T(g,x0+172,y+122,"+ PEPCK","ts","middle");
+  T(g,x0+172,y+146,"2 NH₄⁺","ion","middle",scol("NH4"));T(g,x0+172,y+166,"2 HCO₃⁻","ion","middle",scol("HCO3"));
+  carrier(g,x0+104,y+146,"NHE3");A(g,x0+144,y+142,x0+84,y+142,"NH4");
+  T(g,x0+51,y+174,"NH₄⁺","ion","middle",scol("NH4"));T(g,x0+51,y+194,"→ TAL → medulla","ts","middle");T(g,x0+51,y+210,"→ CD: NH₃ + H⁺","ts","middle");T(g,x0+51,y+226,"→ NH₄⁺ trapped","ts","middle");A(g,x0+51,y+234,x0+51,y+266,"NH4");
+  carrier(g,x0+240,y+222,"NBCe1");A(g,x0+200,y+222,x0+300,y+222,"HCO3");T(g,x0+300,y+214,"new HCO₃⁻","ion","middle",scol("HCO3"));
+}
+/* ===== topic renderers ===== */
+const PINXY=Object.assign({},MK,{glom:[400,120],urine:[780,572]});
+function miniMap(g,ox,oy,sc,hi){
+  const m=el("g",{transform:`translate(${ox},${oy}) scale(${sc})`},g);
+  el("rect",{x:0,y:0,width:1000,height:258,fill:"var(--cortex)"},m);el("rect",{x:0,y:258,width:1000,height:146,fill:"var(--om)"},m);el("rect",{x:0,y:404,width:1000,height:186,fill:"var(--im)"},m);
+  SEGS.forEach(sg=>{const on=hi.includes(sg.p);
+    if(sg.circle){const[cx,cy,r]=sg.circle;el("circle",{cx,cy,r,fill:"var(--lumen)",stroke:on?"var(--accent)":"var(--tube-edge)","stroke-width":on?7:4},m);return}
+    el("path",{d:sg.d,fill:"none",stroke:"var(--ink)","stroke-opacity":.45,"stroke-width":sg.w+4,"stroke-linecap":"round","stroke-linejoin":"round"},m);
+    el("path",{d:sg.d,fill:"none",stroke:on?"var(--accent)":sg.c,"stroke-width":sg.w,"stroke-linecap":"round","stroke-linejoin":"round","stroke-opacity":on?1:.8},m)});
+  el("path",{d:"M780,556 C772,568 772,580 780,582 C788,580 788,568 780,556 Z",fill:"var(--tube)",stroke:"var(--tube-edge)","stroke-width":2},m);
+  return m}
+function drawPins(p,box){
+  const sc=.6,ox=10,oy=46,BX=640,BW=W-BX-12;
+  const svg=el("svg",{role:"img","aria-label":p.title+" on the nephron"},box);defs(svg);
+  const hs=p.pins.map(pn=>18+wrap(pn.text,62).length*14+wrap(pn.title,44).length*16+14);
+  const H=Math.max(oy+590*sc+20,46+hs.reduce((a,b)=>a+b+10,0)+10);
+  svg.setAttribute("viewBox",`0 0 ${W} ${H}`);
+  el("rect",{x:0,y:0,width:W,height:H,fill:"var(--paper)"},svg);
+  txt(svg,16,28,"Where it happens on the nephron · click a pin or box to open that segment","tb");
+  miniMap(svg,ox,oy,sc,p.pins.map(x=>x.seg));
+  let y=46;
+  p.pins.forEach((pn,i)=>{const c=scol(pn.k),[mx,my]=PINXY[pn.seg]||[0,0],px=ox+mx*sc,py=oy+my*sc,h=hs[i];
+    const g=el("g",{class:"mk","data-go":pn.seg,role:"button",tabindex:0,"aria-label":pn.title},svg);
+    el("path",{d:`M${px},${py} C${px+120},${py} ${BX-60},${y+h/2} ${BX},${y+h/2}`,fill:"none",stroke:c,"stroke-width":1.6,"stroke-opacity":.6},g);
+    el("rect",{x:BX,y,width:BW,height:h,rx:12,fill:"var(--bg)",stroke:c,"stroke-width":2},g);
+    const t=txt(g,BX+14,y+22,(i+1)+". "+pn.title,"t h",null,44,16);t.node.setAttribute("fill",c);
+    txt(g,BX+14,y+22+t.n*16+2,pn.text,"ts h",null,62,14);
+    const pc=el("g",{transform:`translate(${px},${py})`},g);el("circle",{r:11,style:`fill:${c};stroke:var(--halo)`},pc);
+    const nt=txt(pc,0,4,String(i+1),"","middle");nt.node.setAttribute("style","fill:#fff;font:700 11px var(--f-display)");
+    y+=h+10;});
+  svg.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g&&P.find(x=>x.id===g.dataset.go))select(g.dataset.go)});
+}
+let CCADH=true;
+function drawCC(p,box){
+  const bar=document.createElement("label");bar.className="tog";bar.innerHTML='<input type="checkbox" id="t-adh"> ADH present';box.appendChild(bar);
+  const cb=bar.querySelector("input");cb.checked=CCADH;cb.addEventListener("change",()=>{CCADH=cb.checked;drawCell(p)});
+  const H=600,svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Countercurrent multiplier and exchanger"},box);defs(svg);
+  const Z=[[0,190,"var(--cortex)","CORTEX","300"],[190,350,"var(--om)","OUTER MEDULLA","600"],[350,H,"var(--im)","INNER MEDULLA","900 → 1200"]];
+  Z.forEach(([a,b,c,l,o])=>{el("rect",{x:0,y:a,width:W,height:b-a,fill:c},svg);txt(svg,14,a+22,l,"tz");txt(svg,W-14,a+22,"interstitium ≈"+o+" mOsm","ts h","end")});
+  const tube=(d,w,id)=>{const g=el("g",{class:"mk","data-go":id,role:"button",tabindex:0},svg);el("path",{d,fill:"none",stroke:"var(--ink)","stroke-opacity":.5,"stroke-width":w+4,"stroke-linecap":"round","stroke-linejoin":"round"},g);el("path",{d,fill:"none",stroke:"var(--tube)","stroke-width":w,"stroke-linecap":"round","stroke-linejoin":"round"},g);return g};
+  tube("M300,70 L300,520",9,"tdl");tube("M300,520 A40,40 0 0 0 380,520 L380,350",9,"tal0");tube("M380,350 L380,80",16,"tal");tube("M380,80 C380,50 400,46 430,46 L600,46 C640,46 650,70 650,100",14,"dct");tube("M650,100 L650,350",16,"pc");tube("M650,350 L650,560",18,"mcd");
+  const vg=el("g",{class:"mk","data-go":"vr",role:"button",tabindex:0},svg);
+  el("path",{d:"M820,70 L820,520 A30,30 0 0 0 880,520 L880,70",fill:"none",stroke:"var(--blood)","stroke-width":9,"stroke-linecap":"round"},vg);
+  [["Thin descending",292,300,"end"],["Thin ascending",388,470,"start"],["Thick ascending (NaCl out, no water)",388,250,"start"],["Distal tubule",520,36,"middle"],["Collecting duct",664,345,"start"],["Vasa recta",850,62,"middle"]].forEach(([l,x,y,a])=>txt(svg,x,y,l,"t h",a));
+  const pill=(x,y,v,col)=>{el("rect",{x:x-26,y:y-11,width:52,height:22,rx:11,fill:"var(--paper)",stroke:col||"var(--ink)","stroke-width":1.5},svg);txt(svg,x,y+4,String(v),"ion","middle").node.setAttribute("fill",col||"var(--ink)")};
+  [[110,300],[270,600],[430,900],[520,1200]].forEach(([y,v])=>pill(300,y,v));
+  [[500,1200],[430,"≈900"],[300,"≈400"],[120,100]].forEach(([y,v])=>pill(380,y,v));
+  pill(500,46,100);
+  const cd=CCADH?[[130,300],[270,600],[430,900],[540,1200]]:[[130,100],[270,"≈90"],[430,"≈70"],[540,50]];
+  cd.forEach(([y,v])=>pill(650,y,v,"var(--s-h2o)"));
+  [[110,300],[270,600],[430,900],[525,1200]].forEach(([y,v])=>pill(820,y,v,"var(--blood)"));
+  [[110,"≈325"],[270,"≈650"],[430,"≈950"]].forEach(([y,v])=>pill(880,y,v,"var(--blood)"));
+  const A=(x1,y1,x2,y2,k,dash)=>el("line",{x1,y1,x2,y2,stroke:scol(k),"stroke-width":3,"marker-end":`url(#ah-${k})`,"stroke-dasharray":dash?"5 4":"none"},svg);
+  [190,350,470].forEach(y=>{A(306,y,346,y,"H2O");});txt(svg,326,182,"H₂O","ion h","middle").node.setAttribute("fill",scol("H2O"));
+  [150,230,310].forEach(y=>A(374,y,334,y,"Na"));txt(svg,354,142,"NaCl","ion h","middle").node.setAttribute("fill",scol("Na"));
+  if(CCADH){[200,300,400,480].forEach(y=>A(658,y,708,y,"H2O"));txt(svg,700,192,"H₂O (AQP2)","ion h").node.setAttribute("fill",scol("H2O"));}
+  else txt(svg,668,200,"no ADH: water stays in","ts h");
+  A(642,500,560,470,"Urea",!CCADH);A(560,470,306,420,"Urea",!CCADH);txt(svg,520,500,"urea recycling: UT-A1/A3 out → UT-A2 in","ts h","middle").node.setAttribute("fill",scol("Urea"));
+  A(780,240,814,240,"Na");A(814,300,780,300,"H2O");txt(svg,797,226,"NaCl, urea in","ts h","middle");txt(svg,797,322,"H₂O out","ts h","middle");
+  A(886,300,926,300,"Na");A(926,240,886,240,"H2O");txt(svg,906,226,"H₂O in","ts h","middle");txt(svg,906,322,"NaCl, urea out","ts h","middle");
+  txt(svg,650,H-6,CCADH?"urine ≈1200 mOsm, small volume":"urine ≈50 mOsm, large volume","t h","middle").node.setAttribute("fill",scol("H2O"));
+  svg.addEventListener("click",e=>{const g=e.target.closest("[data-go]");if(g)select(g.dataset.go)});
+}
+function drawMic(p,box){
+  const H=460,svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Bladder, sphincters and nerves"},box);defs(svg);
+  el("rect",{x:0,y:0,width:W,height:H,fill:"var(--paper)"},svg);
+  const g=el("g",{class:"mk","data-go":"mcd",role:"button",tabindex:0},svg);
+  el("path",{d:"M60,40 C80,120 150,150 220,170",fill:"none",stroke:"var(--tube-edge)","stroke-width":10,"stroke-linecap":"round"},g);
+  el("path",{d:"M540,40 C520,120 450,150 380,170",fill:"none",stroke:"var(--tube-edge)","stroke-width":10,"stroke-linecap":"round"},g);
+  txt(svg,60,30,"ureter (peristalsis)","ts h");txt(svg,540,30,"ureter","ts h","end");
+  el("path",{d:"M300,130 C420,130 470,220 440,300 C420,350 360,370 330,380 L330,410 L270,410 L270,380 C240,370 180,350 160,300 C130,220 180,130 300,130 Z",fill:"var(--lumen)",stroke:"var(--cell-edge)","stroke-width":8},svg);
+  el("path",{d:"M220,170 L250,190 M380,170 L350,190",stroke:"var(--tube-edge)","stroke-width":6,"stroke-linecap":"round"},svg);
+  el("path",{d:"M255,330 L300,360 L345,330",fill:"none",stroke:"var(--s-org)","stroke-width":3,"stroke-dasharray":"4 3"},svg);txt(svg,300,320,"trigone","ts h","middle");
+  el("rect",{x:268,y:378,width:64,height:12,rx:4,fill:"var(--s-ca)","fill-opacity":.6},svg);txt(svg,344,388,"internal sphincter (smooth)","ts h");
+  el("rect",{x:262,y:420,width:76,height:14,rx:4,fill:"var(--s-na)","fill-opacity":.6},svg);txt(svg,344,432,"external sphincter (skeletal)","ts h");
+  el("rect",{x:288,y:390,width:24,height:60,fill:"var(--lumen)",stroke:"var(--cell-edge)","stroke-width":3},svg);txt(svg,300,455,"urethra","ts h","middle");
+  txt(svg,300,240,"detrusor muscle","t h","middle");txt(svg,300,258,"(smooth muscle, gap junctions)","ts h","middle");
+  const N=(x1,y1,x2,y2,lab,col,y)=>{el("path",{d:`M${x1},${y1} C${(x1+x2)/2},${y1} ${(x1+x2)/2},${y2} ${x2},${y2}`,fill:"none",stroke:col,"stroke-width":3.5},svg);txt(svg,(x1+x2)/2,(y1+y2)/2-8,lab,"t h","middle").node.setAttribute("fill",col)};
+  el("rect",{x:860,y:150,width:200,height:160,rx:16,fill:"var(--nuc)",stroke:"var(--nuc-edge)","stroke-width":2},svg);
+  txt(svg,960,180,"Spinal cord","tb","middle");txt(svg,960,204,"L2 (sympathetic)","ts","middle");txt(svg,960,250,"S2–S3 sacral","ts","middle");txt(svg,960,290,"pons + cortex: facilitate / inhibit","ts","middle",null,24);
+  N(860,200,440,220,"Hypogastric n. (sympathetic) → vessels","var(--s-k)",192);
+  N(860,250,445,290,"Pelvic n. (sensory stretch + parasympathetic → detrusor)","var(--s-cl)",242);
+  N(860,300,340,428,"Pudendal n. (somatic → external sphincter)","var(--s-na)",314);
+  const cx=830,cy=440;txt(svg,cx,350,"Cystometrogram (G)","t h");
+  el("line",{x1:cx,y1:cy,x2:cx+230,y2:cy,stroke:"var(--line)"},svg);el("line",{x1:cx,y1:cy,x2:cx,y2:cy-80,stroke:"var(--line)"},svg);
+  el("path",{d:`M${cx},${cy} L${cx+15},${cy-25} L${cx+140},${cy-32} C${cx+170},${cy-34} ${cx+190},${cy-55} ${cx+225},${cy-80}`,fill:"none",stroke:"var(--s-urea)","stroke-width":3},svg);
+  [[cx+80,cy-30],[cx+120,cy-32],[cx+160,cy-38]].forEach(([x,y])=>el("path",{d:`M${x},${y} l4,-28 l4,28`,fill:"none",stroke:"var(--s-urea)","stroke-width":1.5,"stroke-dasharray":"3 2"},svg));
+  txt(svg,cx+2,cy+16,"0","ts");txt(svg,cx+15,cy+16,"30–50","ts","middle");txt(svg,cx+150,cy+16,"300–400 mL","ts","middle");txt(svg,cx-6,cy-60,"pressure","ts","end");
+  svg.addEventListener("click",e=>{const gg=e.target.closest("[data-go]");if(gg)select(gg.dataset.go)});
+}
+function drawRegLines(m,p){
+  const g=el("g",{class:"regs"},m);
+  p.items.forEach((it,i)=>{if(!it.acts||!POS[i])return;const A=POS[i];
+    const ax=A.side==="bl"?A.x-8:A.side==="in"?A.x+(A.x<BL?20:0):A.x,ay=A.y;
+    it.acts.forEach(([nm,sg],k)=>{const j=p.items.findIndex((t,jj)=>jj!==i&&t.name.includes(nm)&&POS[jj]);if(j<0)return;const T=POS[j];
+      const tx=T.side==="ap"?T.x+24:T.side==="bl"?T.x-24:T.x+(ax<T.x?-22:22),ty=T.y+(k-(it.acts.length-1)/2)*4;
+      const dx=Math.max(60,Math.abs(ax-tx)*.45),c1x=ax+(tx<ax?-dx:dx),c2x=tx+(tx<ax?dx:-dx);
+      const lg=el("g",{class:"reg","data-i":i},g);
+      el("path",{d:`M${ax},${ay} C${c1x},${ay} ${c2x},${ty} ${tx},${ty}`,fill:"none",stroke:"var(--p-rec)","stroke-width":2,"stroke-dasharray":"6 4","marker-end":"url(#ah-rec)"},lg);
+      const bx=.125*ax+.375*c1x+.375*c2x+.125*tx,by=.5*ay+.5*ty;
+      el("circle",{cx:bx,cy:by,r:8.5,fill:"var(--paper)",stroke:"var(--p-rec)","stroke-width":2},lg);
+      const t=txt(lg,bx,by+4.5,sg,"","middle");t.node.setAttribute("style","font:700 13px var(--f-body);fill:var(--p-rec)")});});
+}
+let REGSEL="ang";
+function drawReg(p,box){
+  const bar=document.createElement("div");bar.className="trace";bar.innerHTML='<span class="lbl">Regulator:</span>';
+  REGS.forEach(r=>{const b=document.createElement("button");b.textContent=r.name;b.setAttribute("aria-pressed",r.id===REGSEL);b.style.color="var(--p-rec)";b.addEventListener("click",()=>{REGSEL=r.id;drawCell(p)});bar.appendChild(b)});
+  box.appendChild(bar);
+  const R=REGS.find(r=>r.id===REGSEL);
+  const card=document.createElement("div");card.className="regcard";
+  card.innerHTML=`<h3>${R.name} <span class="srcb">${R.kind} · ${R.src2}</span></h3><dl><dt>Made by</dt><dd>${R.src}</dd><dt>Triggered by</dt><dd>${R.stim}</dd><dt>Receptor · signal</dt><dd>${R.rec}</dd><dt>Net result</dt><dd><b>${R.net}</b></dd></dl>`;
+  box.appendChild(card);
+  drawPins({title:R.name,pins:R.pins},box);
+}
+function drawFilter(p,box){
+  const svg=el("svg",{role:"img","aria-label":"Glomerular filtration barrier"},box);defs(svg);
+  const CH=concBand(svg,p,{ap:360,bl:470,lname:"capillary plasma"}),H=480;
+  svg.setAttribute("viewBox",`0 0 ${W} ${CH+H}`);const m=el("g",{transform:`translate(0,${CH})`},svg);
+  el("rect",{x:0,y:0,width:360,height:H,fill:"var(--blood-soft)"},m);el("rect",{x:360,y:0,width:W-360,height:H,fill:"var(--lumen)"},m);
+  txt(m,14,26,"Glomerular capillary (blood)","tb h");txt(m,490,26,"Bowman’s space (filtrate → proximal tubule)","tb h");
+  const L=[0,1,2].map(i=>el("g",{class:"it","data-idx":i},m));
+  for(let y=60;y<400;y+=40){el("rect",{class:"shape",x:360,y,width:20,height:26,rx:6,fill:"var(--cell)",stroke:"var(--cell-edge)","stroke-width":2},L[0]);
+    el("rect",{class:"shape",x:434,y,width:30,height:26,rx:13,fill:"var(--nuc)",stroke:"var(--nuc-edge)","stroke-width":2},L[2]);}
+  el("rect",{class:"shape",x:390,y:56,width:34,height:350,rx:6,fill:"var(--p-jx)","fill-opacity":.15,stroke:"var(--p-jx)","stroke-width":1.5},L[1]);
+  for(let y=74;y<400;y+=26)txt(L[1],407,y,"−","ion","middle").node.setAttribute("style","fill:var(--p-rec);font-size:16px");
+  const rows=[[["H2O"]],[["Na","K","Cl"]],[["Glc"]],[null,"Red blood cell","stopped by endothelium",388],[["AA"]],[null,"Albumin (−)","repelled by negative charge",420],[["HCO3"]],[["Urea"]]];
+  rows.forEach((r,i)=>{const y=93+i*40;
+    if(r[0]){const k=r[0][0];el("line",{x1:190,y1:y,x2:600,y2:y,stroke:scol(k),"stroke-width":3,"marker-end":`url(#ah-${k})`},m);
+      const t=el("text",{x:182,y:y+4,class:"ion h","text-anchor":"end"},m);r[0].forEach((kk,j)=>{const s=el("tspan",{fill:scol(kk)},t);s.textContent=S[kk][0]+(j<r[0].length-1?" ":"")});}
+    else{const stop=r[3];
+      if(r[1].startsWith("Red"))el("ellipse",{cx:150,cy:y,rx:16,ry:10,fill:"var(--blood)"},m);else{el("circle",{cx:150,cy:y,r:11,fill:"var(--p-rec)","fill-opacity":.35,stroke:"var(--p-rec)"},m);txt(m,150,y+5,"−","ion","middle")}
+      el("line",{x1:172,y1:y,x2:stop-6,y2:y,stroke:"var(--p-rec)","stroke-width":2.5,"stroke-dasharray":"5 4"},m);
+      txt(m,stop,y+6,"✕","tb","middle").node.setAttribute("style","fill:var(--p-rec);font-size:18px");
+      txt(m,128,y+4,r[1],"t h","end");txt(m,610,y+4,r[2],"ts h");}});
+  txt(m,610,97,"freely filtered (radius < ~2 nm)","ts h");
+  txt(m,370,428,"endothelium (fenestrae)","ts h","middle");txt(m,407,446,"basement membrane (−)","ts h","middle");txt(m,450,464,"podocyte slit diaphragm","ts h","middle");
+  const mg=el("g",{class:"it","data-idx":3},m);el("rect",{class:"shape",x:470,y:415,width:22,height:22,rx:6,fill:"var(--paper)",stroke:"var(--p-rec)","stroke-width":2},mg);txt(mg,500,431,"mesangial cells (contract → ↓Kf)","ts h");
+  const fg=el("g",{class:"it","data-idx":4},m);
+  el("rect",{class:"shape",x:790,y:130,width:290,height:210,rx:16,fill:"var(--paper)",stroke:"var(--line)","stroke-width":1.5},fg);
+  txt(fg,806,158,"Net filtration pressure (G)","tb");
+  [["P_GC  glomerular hydrostatic","+60"],["P_BS  Bowman’s hydrostatic","−18"],["π_GC  glomerular oncotic","−32"],["π_BS  Bowman’s oncotic","≈0"],["Net (mmHg)","+10"]].forEach(([a,b],i)=>{txt(fg,806,188+i*24,a,"t");txt(fg,1064,188+i*24,b,"ion","end").node.setAttribute("fill","var(--ink)")});
+  txt(fg,806,322,"GFR = Kf × net ≈ 125 mL/min","t");
+  svg.addEventListener("click",e=>{const g=e.target.closest(".it");if(g)hl(+g.dataset.idx)});
+}
+function drawOrgans(p,box){
+  const H=470,svg=el("svg",{viewBox:`0 0 ${W} ${H}`,role:"img","aria-label":"Organs that signal to the kidney"},box);defs(svg);
+  el("rect",{x:0,y:0,width:W,height:H,fill:"var(--isf)"},svg);
+  const k=el("g",{transform:"translate(60,10)"},svg);
+  el("path",{d:"M490,110 C575,104 612,170 596,214 C584,244 556,238 556,258 C556,292 590,322 536,340 C468,360 392,330 392,226 C392,150 430,114 490,110 Z",fill:"var(--blood-soft)",stroke:"var(--blood)","stroke-width":3},k);
+  el("circle",{cx:470,cy:210,r:5,fill:"var(--ink)"},k);el("circle",{cx:520,cy:210,r:5,fill:"var(--ink)"},k);
+  el("path",{d:"M474,230 Q495,246 516,230",fill:"none",stroke:"var(--ink)","stroke-width":3,"stroke-linecap":"round"},k);
+  txt(k,494,300,"Kidney","tb","middle");
+  const half=Math.ceil(p.items.length/2);
+  p.items.forEach((x,i)=>{const left=i<half,row=left?i:i-half,bx=left?16:W-236,by=12+row*64;
+    const g=el("g",{class:"it","data-idx":i},svg);
+    el("rect",{class:"shape",x:bx,y:by,width:220,height:54,rx:14,fill:"var(--paper)",stroke:tcol(x.type),"stroke-width":2},g);
+    txt(g,bx+12,by+21,x.loc,"tb");txt(g,bx+12,by+38,x.name,"ts",null,38,12);
+    const sx=left?bx+220:bx,sy=by+27,tx=left?458:668,ty=170+row*22;
+    el("line",{x1:sx,y1:sy,x2:tx,y2:ty,stroke:tcol(x.type),"stroke-width":2,"stroke-opacity":.7,"marker-end":"url(#ah-ink)"},g);});
+  svg.addEventListener("click",e=>{const g=e.target.closest(".it");if(g)hl(+g.dataset.idx)});
+}
+
+/* ===== detail + table ===== */
+let cur=null;
+function hl(i){document.querySelectorAll("#d-draw .it").forEach(g=>g.classList.toggle("hl",+g.dataset.idx===i));
+  {const sv=document.querySelector("#d-draw svg"),rl=sv?sv.querySelectorAll(".reg"):[];let any=false;rl.forEach(r=>{const on=+r.dataset.i===i;r.classList.toggle("on",on);any=any||on});if(sv)sv.classList.toggle("regfocus",any);
+   document.querySelectorAll("#trace button[data-reg]").forEach(b=>b.setAttribute("aria-pressed",+b.dataset.reg===i))}
+  document.querySelectorAll("#d-mech .mrow").forEach(r=>{const on=+r.dataset.idx===i;r.classList.toggle("on",on);if(on)r.scrollIntoView({block:"nearest",behavior:"smooth"})});
+  const pl=POOLS.find(x=>x.pool===TRACE&&x.items.includes(i))||POOLS.find(x=>x.items.includes(i));if(pl){TRACE=pl.pool;applyTrace()}
+  document.querySelectorAll("#d-rows tr").forEach(r=>r.classList.toggle("on",+r.dataset.idx===i));}
+function moves(p,x){if(x.type==="rec"||x.acts){const a=(x.acts||[]).map(([n,sg])=>`${sg==="+"?"⊕":"⊖"} ${n}`).join("<br>");return (x.hor?`binds <span class="sb">${x.hor}</span>`:"")+(x.sig?`<br><span style="color:var(--p-rec)">${x.sig}</span>`:"")+(a?`<br>${a}`:"")||"—"}
+  const vessel=p.kind==="vessel";
+  return (x.ions||[]).map(io=>`<span class="sb" style="color:${scol(io[0])}">${ionLabel(io)}</span> ${io[1]==="r"?(vessel?"→ out":"→ blood"):(vessel?"← in":"← lumen / into cell")}`).join("<br>")||"—"}
+function select(id){
+  const p=P.find(x=>x.id===id);if(!p)return;cur=p;
+  document.querySelectorAll("#chips .chip,#topics .chip").forEach(c=>c.setAttribute("aria-pressed",c.dataset.p===id));
+  const sid=SEGOF[id]||id;
+  document.querySelectorAll("#map .seg").forEach(g=>g.classList.toggle("on",g.dataset.p===sid));
+  document.querySelectorAll("#map .mk").forEach(g=>g.classList.toggle("on",g.dataset.p===id));
+  document.getElementById("d-title").textContent=p.n+" · "+p.title;
+  document.getElementById("d-region").textContent=p.region;
+  document.getElementById("d-pct").textContent=p.pct;
+  TRACE=null;drawCell(p);renderMech(p);
+  document.getElementById("d-table").hidden=!p.items.length;
+  try{if(location.hash!=="#"+id)history.replaceState(null,"","#"+id)}catch(e){}
+  const tb=document.getElementById("d-rows");tb.innerHTML="";
+  p.items.forEach((x,i)=>{const tr=document.createElement("tr");tr.className="row";tr.dataset.idx=i;
+    const tc=x.type==="ch"?chColor(x):x.type==="abc"?"var(--p-pump)":tcol(x.type);
+    tr.innerHTML=`<td>${x.loc||LOC[x.side]}</td><td><span class="dot" style="background:${tc}"></span>${T[x.type]}${x.type==="pump"||x.type==="abc"?" · ATP":""}</td><td class="nm"></td><td>${moves(p,x)}</td><td></td><td><span class="srcb">${x.src||"G+B"}</span></td>`;
+    tr.children[2].textContent=x.name;tr.children[4].textContent=[x.sub,x.note].filter(Boolean).join(". ");
+    tr.addEventListener("click",()=>hl(i));tb.appendChild(tr);});
+  const sc=document.getElementById("d-sit");sc.innerHTML="";
+  p.sit.forEach(([h,t])=>{const d=document.createElement("div");d.className="card";d.innerHTML="<h3></h3><p></p>";d.firstChild.textContent=h;d.lastChild.textContent=t;sc.appendChild(d)});
+}
+function legend(){
+  const lg=document.getElementById("legend");
+  const a=document.createElement("div");a.innerHTML="<h4>Substances</h4>";const ra=document.createElement("div");ra.className="row";
+  SLEG.forEach(k=>{const s=document.createElement("span");s.className="sbtn";s.dataset.k=k;s.setAttribute("role","button");s.tabIndex=0;s.title="Trace "+S[k][0];
+    s.addEventListener("click",()=>{const pl=POOLS.find(x=>x.key===k);if(pl)setTrace(pl.pool)});
+    s.style.color=scol(k);s.innerHTML=`<i style="background:${scol(k)}"></i>`;s.append(S[k][0]+(k==="NH4"?" / NH₃":""));ra.appendChild(s)});a.appendChild(ra);
+  const b=document.createElement("div");b.innerHTML="<h4>Membrane proteins</h4>";const rb=document.createElement("div");rb.className="row";
+  const icons={sym:`<rect x="5" y="2" width="12" height="18" rx="4" fill="var(--p-sym-f)" stroke="var(--p-sym)" stroke-width="2"/>`,
+    anti:`<rect x="5" y="2" width="12" height="18" rx="4" fill="var(--p-anti-f)" stroke="var(--p-anti)" stroke-width="2"/>`,
+    uni:`<rect x="5" y="2" width="12" height="18" rx="6" fill="var(--p-uni-f)" stroke="var(--p-uni)" stroke-width="2" stroke-dasharray="3 2"/>`,
+    pump:`<circle cx="11" cy="9" r="7" fill="var(--p-pump-f)" stroke="var(--p-pump)" stroke-width="2"/><circle cx="11" cy="18" r="4" fill="var(--p-atp)"/>`,
+    abc:`<rect x="5" y="1" width="12" height="13" rx="4" fill="var(--p-pump-f)" stroke="var(--p-pump)" stroke-width="2"/><circle cx="11" cy="18" r="4" fill="var(--p-atp)"/>`,
+    ch:`<rect x="3" y="2" width="6" height="18" rx="3" fill="var(--s-na)" fill-opacity=".45" stroke="var(--s-na)" stroke-width="1.5"/><rect x="13" y="2" width="6" height="18" rx="3" fill="var(--s-na)" fill-opacity=".45" stroke="var(--s-na)" stroke-width="1.5"/>`,
+    rec:`<path d="M3,11 H11 M11,11 L17,5 M11,11 L17,17" stroke="var(--p-rec)" stroke-width="3" stroke-linecap="round" fill="none"/>`,
+    enz:`<polygon points="19,11 15,18 7,18 3,11 7,4 15,4" fill="var(--p-enz-f)" stroke="var(--p-enz)" stroke-width="2"/>`,
+    jx:`<path d="M2,11 l3,-4 l3,8 l3,-8 l3,8 l3,-8 l3,4" stroke="var(--p-jx)" stroke-width="2" fill="none"/>`};
+  const names={sym:"Co-transporter",anti:"Exchanger",uni:"Uniporter",pump:"Pump + ATP",abc:"ABC transporter + ATP",ch:"Channel (coloured by its ion; grey = non-selective)",rec:"Receptor",enz:"Enzyme",jx:"Tight junction"};
+  Object.keys(icons).forEach(k=>{const s=document.createElement("span");s.innerHTML=`<svg viewBox="0 0 22 22">${icons[k]}</svg>`;s.append(names[k]);rb.appendChild(s)});b.appendChild(rb);
+  lg.append(a,b);
+}
+function init(){
+  drawMap();legend();
+  const ch=document.getElementById("chips");
+  const tpc=document.getElementById("topics");
+  P.forEach(p=>{const b=document.createElement("button");b.className="chip"+(p.topic?" tp":"");b.dataset.p=p.id;b.setAttribute("aria-pressed","false");b.innerHTML=`<b>${p.n}</b>`;b.append(SHORT[p.id]);b.addEventListener("click",()=>select(p.id));(p.topic?tpc:ch).appendChild(b)});
+  const bf=document.createElement("a");bf.className="chip tp";bf.href=BODYURL;bf.innerHTML="<b>↗</b>Body fluids page";tpc.appendChild(bf);
+  const tc=document.getElementById("t-conc"),tp=document.getElementById("t-para");tc.checked=SHOWCONC;tp.checked=SHOWPARA;
+  tc.addEventListener("change",()=>{SHOWCONC=tc.checked;try{localStorage.setItem("na-conc",SHOWCONC?"1":"0")}catch(e){}if(cur)drawCell(cur)});
+  const tg=document.getElementById("t-reg");tg.checked=SHOWREG;tg.addEventListener("change",()=>{SHOWREG=tg.checked;try{localStorage.setItem("na-reg",SHOWREG?"1":"0")}catch(e){}if(cur)select(cur.id)});
+  const tf=document.getElementById("t-flow");tf.checked=SHOWFLOW;
+  tf.addEventListener("change",()=>{SHOWFLOW=tf.checked;try{localStorage.setItem("na-flow",SHOWFLOW?"1":"0")}catch(e){}if(cur)select(cur.id)});
+  tp.addEventListener("change",()=>{SHOWPARA=tp.checked;try{localStorage.setItem("na-para",SHOWPARA?"1":"0")}catch(e){}if(cur)drawCell(cur)});
+  document.getElementById("d-mech").addEventListener("click",e=>{const c=e.target.closest("[data-go]");if(c){select(c.dataset.go);document.getElementById("d-title").scrollIntoView({behavior:"smooth",block:"start"});return}const r=e.target.closest("[data-reg]");if(r){REGSEL=r.dataset.reg;select("reg");document.getElementById("d-title").scrollIntoView({behavior:"smooth",block:"start"})}});
+  const h=(location.hash||"").slice(1);select(P.find(x=>x.id===h)?h:"pt1");if(h==="tracker"){try{history.replaceState(null,"","#tracker")}catch(e){}setTimeout(()=>{const t=document.getElementById("tracker");if(t)t.scrollIntoView({block:"start"})},60)}
+  window.addEventListener("hashchange",()=>{const h=location.hash.slice(1);if(P.find(x=>x.id===h)&&(!cur||cur.id!==h))select(h)});
+}
+init();
+
+/* ===== Substance tracker: pick a substance → every place it moves along the nephron ===== */
+const TRK={
+ Na:{sum:"กรองทั้งหมด ~25,000 mEq/วัน ขับออก <1% · ตัวที่คุมละเอียดคือ DCT และ collecting duct",
+  steps:[["pt1,pt3","r","65%","NHE3, SGLT2, NaPi ที่ S1 · NaCl ทั้งผ่านเซลล์และ paracellular ที่ S2–S3 · Na⁺/K⁺-ATPase ด้าน basolateral"],["tdl","0","~0","แทบไม่ผ่าน Na⁺"],["tal0","r","น้อย","passive เพราะ NaCl ใน lumen สูง"],["tal,md","r","25%","NKCC2 · ส่วนหนึ่ง paracellular (lumen +)"],["dct","r","5%","NCC (thiazide)"],["pc","r","3–5%","ENaC · aldosterone เพิ่ม"],["mcd","r","น้อย","ENaC · ANP ยับยั้ง"]],
+  rem:[["Filtered",100],["หลัง PT",35],["หลัง loop",10],["หลัง DCT",5],["Urine","<1",0.6]]},
+ Cl:{sum:"ตาม Na⁺ เกือบทุกช่วง · PT ช่วงหลังดูดผ่าน paracellular เพราะ Cl⁻ ใน lumen สูงขึ้น",
+  steps:[["pt1,pt3","r","65%","Cl⁻–base exchanger · paracellular ช่วง S2–S3"],["tal,md","r","25%","NKCC2 → ClC-Kb ด้าน basolateral"],["dct","r","~5%","NCC"],["pc,icB","r","น้อย","pendrin (β-IC) · paracellular"]],
+  rem:[["Filtered",100],["หลัง PT",35],["หลัง loop",10],["หลัง DCT",5],["Urine","<1",0.8]]},
+ K:{sum:"ส่วนต้นดูดกลับเกือบหมด ส่วนที่ขับออกมาจากการ <b>หลั่ง</b> ที่ late DCT และ principal cell จึงคุมได้ตั้งแต่ 1% ถึงมากกว่า 80%",
+  steps:[["pt1,pt3","r","65%","paracellular ตามน้ำ (solvent drag)"],["tal,md","r","25–30%","NKCC2 · ROMK หมุน K⁺ กลับเข้า lumen สร้าง lumen + · ด้าน basolateral ออกทาง Kir4.1/5.1 และ KCC4"],["dct","s","แปรผัน","ROMK เริ่มหลั่งที่ late DCT · Kir4.1/5.1 ด้าน basolateral รับรู้ K⁺ ในเลือดแล้วปรับ NCC (K⁺ switch)"],["pc","s","แปรผัน","ROMK หลั่งตลอด (aldosterone, K⁺ สูง เพิ่ม) · BK หลั่งเมื่อ flow สูง · Kir4.1/5.1 ด้าน basolateral"],["icA","r","เมื่อขาด K⁺","H⁺/K⁺-ATPase ดูดกลับ"],["icB","s","เมื่อ flow สูง","BK (β4) หลั่ง K⁺"],["mcd","rs","น้อย","สมดุลการหลั่งและดูดกลับ"]],
+  rem:[["Filtered",100],["หลัง PT",35],["หลัง loop",8],["Urine","1–80+",15]]},
+ HCO3:{sum:"ต้องดูดกลับเกือบทั้งหมด แล้วสร้าง HCO₃⁻ ใหม่เพื่อชดเชยกรดที่ร่างกายผลิต",
+  steps:[["pt1,pt3","r","80%","NHE3 + carbonic anhydrase · NBCe1 ด้าน basolateral"],["tal,md","r","10%","NHE3"],["dct,icA","r","6–10%","H⁺-ATPase · AE1 ด้าน basolateral (สร้าง HCO₃⁻ ใหม่)"],["icB","s","ตอนเป็น alkalosis","pendrin หลั่ง HCO₃⁻"]],
+  rem:[["Filtered",100],["หลัง PT",20],["หลัง loop",10],["Urine","~0",0.3]]},
+ H:{sum:"หลั่งเข้า lumen เพื่อจับ HCO₃⁻ ที่กรองมา และไปกับ buffer (phosphate, NH₃) เป็น titratable acid และ NH₄⁺",
+  steps:[["pt1,pt3","s","ส่วนใหญ่","NHE3 (secondary active) · V-type H⁺ pump"],["tal,md","s","บางส่วน","NHE3"],["icA","s","pH ปัสสาวะได้ถึง ~4.5","H⁺-ATPase, H⁺/K⁺-ATPase (primary active) · aldosterone เพิ่ม"],["icB","r","ตอนเป็น alkalosis","H⁺-ATPase ด้าน basolateral"]],
+  rem:null},
+ Ca:{sum:"ส่วนใหญ่ดูดกลับแบบ paracellular ตามน้ำและ Na⁺ · DCT คือจุดที่ PTH คุมละเอียด",
+  steps:[["pt1,pt3","r","65%","paracellular ตามน้ำ"],["tal,md","r","25–30%","paracellular จาก lumen + · CaSR ยับยั้ง · loop diuretic → ขับ Ca²⁺ มากขึ้น"],["dct","r","4–9%","TRPV5 → calbindin → NCX1/PMCA · PTH, calcitriol, thiazide เพิ่ม"],["pc","0","~0","แทบไม่ดูด"]],
+  rem:[["Filtered",100],["หลัง PT",35],["หลัง loop",8],["หลัง DCT","~1–2",1.5],["Urine","~1",1]]},
+ Mg:{sum:"ต่างจาก ion อื่น: ที่ดูดมากที่สุดคือ TAL ไม่ใช่ PT",
+  steps:[["pt1,pt3","r","15%","paracellular"],["tal,md","r","65–70%","paracellular ผ่าน claudin-16/19 (lumen +)"],["dct","r","5–10%","TRPM6 · ปรับละเอียด"]],
+  rem:[["Filtered",100],["หลัง PT",85],["หลัง loop",17],["Urine","~5",5]]},
+ Pi:{sum:"PT ดูดเป็นหลัก · PTH และ FGF23 ดึง NaPi ออกจาก membrane → ขับ phosphate มากขึ้น",
+  steps:[["pt1,pt3","r","75–80%","NaPi-IIa/IIc, PiT-2 (Na⁺-coupled) · PTH, FGF23 ยับยั้ง"],["dct","r","~10%","Na⁺-coupled"]],
+  rem:[["Filtered",100],["หลัง PT",22],["หลัง loop",22],["Urine","10–20",15]]},
+ Glc:{sum:"ปกติดูดกลับหมดที่ PT · ถ้าเกิน transport maximum (~375 mg/min) จะออกมาในปัสสาวะ",
+  steps:[["pt1","r","~90%","SGLT2 (1 Na⁺ : 1 glucose) → GLUT2"],["pt3","r","~10%","SGLT1 (2 Na⁺ : 1 glucose) → GLUT1"]],
+  rem:[["Filtered",100],["หลัง S1",10],["หลัง PT",0],["Urine",0]]},
+ AA:{sum:"ดูดกลับเกือบหมดที่ PT ด้วย Na⁺- หรือ H⁺-coupled transporter หลายตัว",
+  steps:[["pt1,pt3","r","~100%","B⁰AT1 (Hartnup), b⁰,⁺AT/rBAT (cystinuria), PepT1/2, megalin–cubilin (โปรตีนเล็ก)"]],
+  rem:[["Filtered",100],["หลัง PT","~0",0.5]]},
+ H2O:{sum:"ส่วนต้นดูดแบบ obligatory ตาม solute · ส่วนท้ายดูดตาม ADH จึงคุมความเข้มข้นของปัสสาวะได้",
+  steps:[["pt1,pt3","r","65%","AQP1 · iso-osmotic"],["tdl","r","15–20%","AQP1 · ถูกดึงด้วย medullary interstitium ที่เข้มข้น"],["tal0,tal,md","0","0","ไม่ให้น้ำผ่าน (diluting segment)"],["dct","0","~0","ไม่ให้น้ำผ่าน"],["pc","r","ขึ้นกับ ADH","AQP2 (ADH, V2) · AQP3/4 ด้าน basolateral"],["mcd","r","ขึ้นกับ ADH","AQP2 · ปัสสาวะเข้มข้นได้ถึง ~1200 mOsm"]],
+  rem:[["Filtered",100],["หลัง PT",35],["หลัง loop",15],["Urine","0.5–10",1]]},
+ Urea:{sum:"ดูดกลับแบบ passive ครึ่งหนึ่ง แล้ววนอยู่ใน medulla (urea recycling) ช่วยสร้าง gradient",
+  steps:[["pt1,pt3","r","~50%","passive ตามน้ำ"],["tdl,tal0","s","recycling","UT-A2 · urea จาก interstitium กลับเข้า loop"],["tal,dct,pc","0","0","ไม่ให้ urea ผ่าน (แม้มี ADH)"],["mcd","r","ขึ้นกับ ADH","UT-A1/A3 → inner medullary interstitium"]],
+  rem:[["Filtered",100],["หลัง PT",50],["Urine","40–60",50]]},
+ NH4:{sum:"สร้างใหม่จาก glutamine ที่ PT · วนผ่าน medulla · ถูกขังใน lumen ของ collecting duct → ขับกรดออก",
+  steps:[["pt1,pt3","s","สร้าง + หลั่ง","glutamine → NH₄⁺ + HCO₃⁻ ใหม่ · ออกทาง NHE3 (แทน H⁺)"],["tal,md","r","ดูดเข้า medulla","NKCC2 (NH₄⁺ แทน K⁺)"],["icA,mcd","s","diffusion trapping","NH₃ ผ่าน Rhcg + H⁺ ที่หลั่ง → NH₄⁺ ออกไม่ได้"]],
+  rem:null},
+ Org:{sum:"ยาและสาร organic ส่วนใหญ่ถูก <b>หลั่ง</b> ที่ PT (S2) · PAH ถูกดึงออก ~90% จึงใช้วัด renal plasma flow",
+  steps:[["pt3","s","หลั่ง","organic anion: OAT1/3 (basolateral) → MRP2/4 (apical) · organic cation: OCT2 → MATE"],["pt1","r","บางส่วน","urate ผ่าน URAT1 (มีทั้งดูดกลับและหลั่ง)"]],
+  rem:null}
+};
+const TRKORDER=["Na","K","Cl","HCO3","H","Ca","Mg","Pi","Glc","AA","H2O","Urea","NH4","Org"];
+let TK=null;try{TK=localStorage.getItem("na-trk")}catch(e){}if(!TRK[TK])TK="Na";
+function trkProteins(ids,k){const out=[];ids.forEach(id=>{const p=P.find(x=>x.id===id);if(!p)return;p.items.forEach(it=>{if((it.ions||[]).some(io=>io[0]===k||(k==="Org"&&POOLKEY[io[0]]==="Org"))&&!out.includes(it.name))out.push(it.name)})});return out}
+function trkDraw(){const k=TK,D=TRK[k],svg=document.getElementById("tmap");svg.innerHTML="";const F=innerWidth<700?1.75:1;svg.setAttribute("viewBox",F>1?"215 20 760 570":"0 0 1000 590");defs(svg);const col=scol(k);
+ el("rect",{x:0,y:0,width:1000,height:258,fill:"var(--cortex)"},svg);el("rect",{x:0,y:258,width:1000,height:146,fill:"var(--om)"},svg);el("rect",{x:0,y:404,width:1000,height:186,fill:"var(--im)"},svg);
+ txt(svg,14,248,"CORTEX","tz");txt(svg,14,300,"OUTER MEDULLA","tz");txt(svg,14,446,"INNER MEDULLA","tz");
+ const segOn={};D.steps.forEach(([ids,dir])=>{if(dir==="0")return;ids.split(",").forEach(id=>{segOn[SEGOF[id]||id]=dir})});
+ for(const g of SEGS){if(g.p==="aff"||g.p==="eff"||g.p==="vr")continue;
+  const grp=el("g",{class:"tseg","data-p":g.p},svg);
+  if(g.circle){const[cx,cy,r]=g.circle;el("circle",{cx,cy,r,fill:"var(--lumen)",stroke:"var(--tube-edge)","stroke-width":3,opacity:.5},grp);continue}
+  el("path",{d:g.d,fill:"none",stroke:"var(--ink)","stroke-opacity":.25,"stroke-width":g.w+4,"stroke-linecap":"round"},grp);
+  const on=segOn[g.p];el("path",{d:g.d,fill:"none",stroke:on?col:"var(--tube)","stroke-opacity":on?1:.45,"stroke-width":on?g.w+2:g.w,"stroke-linecap":"round","stroke-linejoin":"round"},grp);
+  if(on)el("path",{d:g.d,class:"flow",fill:"none",stroke:"var(--paper)","stroke-opacity":.8,"stroke-width":Math.max(2,g.w/4),"stroke-linecap":"round"},grp)}
+ txt(svg,794,580,"Urine","tb h");
+ /* badges */
+ const placed=[];D.steps.forEach(([ids,dir,pct],i)=>{const id=ids.split(",")[0],pos=MK[id];if(!pos)return;let x=pos[0]+18,y=pos[1]-14;
+  while(placed.some(([px,py])=>Math.abs(px-x)<120*F&&Math.abs(py-y)<30*F))y+=32*F;placed.push([x,y]);
+  const lab=(dir==="r"?"↩ ดูดกลับ ":dir==="s"?"↪ หลั่ง ":dir==="rs"?"⇄ ":"✕ ")+pct;const w=Math.min(260*F,(lab.length*7.2+22)*F);if(x+w>(F>1?972:996))x=(F>1?972:996)-w;
+  const g=el("g",{class:"tbadge "+(dir==="r"?"r":dir==="s"?"s":dir==="0"?"z":"rs"),"data-i":i,role:"button",tabindex:0,transform:`translate(${x},${y})`},svg);
+  el("rect",{x:0,y:-14*F,width:w,height:24*F,rx:12*F},g);const tt=txt(g,11*F,3*F,lab,"tbl");tt.node.style.fontSize=(12*F)+"px"});
+ /* list */
+ const L=document.getElementById("t-list");
+ L.innerHTML=`<p class="tsum">${D.sum}</p>`+D.steps.map(([ids,dir,pct,how],i)=>{const idl=ids.split(","),pr=trkProteins(idl,k);
+  return `<button type="button" class="trow ${dir==="r"?"r":dir==="s"?"s":dir==="0"?"z":"rs"}" data-i="${i}" data-go="${idl[0]}"><span class="tdir">${dir==="r"?"ดูดกลับ":dir==="s"?"หลั่ง":dir==="rs"?"ทั้งสองทาง":"ไม่ผ่าน"}</span><span class="tseg">${idl.map(x=>SHORT[x]).join(" · ")}</span><b class="tpct">${pct} <span class="tgo">›</span></b><span class="thow">${how}${pr.length?`<small>${pr.slice(0,5).join(" · ")}</small>`:""}</span></button>`}).join("");
+ L.querySelectorAll(".trow").forEach(b=>b.onclick=()=>trkGo(b.dataset.go));
+ svg.querySelectorAll(".tbadge").forEach(g=>{const go=()=>trkGo(D.steps[+g.dataset.i][0].split(",")[0]);g.onclick=go;g.onkeydown=e=>{if(e.key==="Enter")go()};
+  g.onmouseenter=()=>L.querySelector(`.trow[data-i="${g.dataset.i}"]`).classList.add("hl");g.onmouseleave=()=>L.querySelectorAll(".hl").forEach(x=>x.classList.remove("hl"))});
+ /* remaining load */
+ const R=document.getElementById("t-rem");
+ if(!D.rem){R.hidden=true}else{R.hidden=false;R.innerHTML=`<h3>เหลืออยู่ใน tubule (% ของที่กรอง)</h3>`+D.rem.map(([l,v,vv])=>{const n=typeof v==="number"?v:vv;return `<div class="rrow"><span>${l}</span><i><b style="width:${Math.max(1.5,n)}%;background:${col}"></b></i><em>${v}%</em></div>`}).join("")+`<p class="note">ค่าประมาณจาก Guyton &amp; Hall · ปริมาณจริงขึ้นกับอาหารและฮอร์โมน</p>`}
+ document.querySelectorAll("#t-chips .tchip").forEach(b=>b.setAttribute("aria-pressed",b.dataset.k===k))}
+function trkGo(id){select(id);const pl=TK==="Org"?(POOLS.find(x=>x.pool==="OA")||POOLS.find(x=>POOLKEY[x.pool])):POOLS.find(x=>x.key===TK);if(pl)setTrace(pl.pool);
+ const d=document.querySelector("[data-sb-focus]");if(d)d.scrollIntoView({behavior:"smooth",block:"start"})}
+function trkInit(){const c=document.getElementById("t-chips");
+ TRKORDER.forEach(k=>{const b=document.createElement("button");b.type="button";b.className="tchip";b.dataset.k=k;b.style.color=scol(k);b.innerHTML=`<i style="background:${scol(k)}"></i>`;b.append(S[k][0]);
+  b.onclick=()=>{TK=k;try{localStorage.setItem("na-trk",k)}catch(e){}trkDraw()};c.appendChild(b)});trkDraw();let W=innerWidth<700;addEventListener("resize",()=>{const w=innerWidth<700;if(w!==W){W=w;trkDraw()}})}
+trkInit();
+
+</script>
