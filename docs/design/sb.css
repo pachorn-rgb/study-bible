@@ -64,3 +64,8 @@ body{background:var(--sb-bg)!important;color:var(--sb-ink);font-family:var(--sb-
 .sbb.guyton{background:var(--sb-src-guyton)}.sbb.boron{background:var(--sb-src-boron)}.sbb.langman{background:var(--sb-src-langman)}.sbb.moore{background:var(--sb-src-moore)}.sbb.grays{background:var(--sb-src-grays)}.sbb.lec{background:var(--sb-src-lec)}.sbb.gen{background:var(--sb-src-gen)}.sbb.fa{background:var(--sb-src-fa)}.sbb.junq{background:var(--sb-src-junq)}.sbb.wheat{background:var(--sb-src-wheat)}.sbb.difiore{background:var(--sb-src-difiore)}.sbb.robbins{background:var(--sb-src-robbins)}.sbb.harrison{background:var(--sb-src-harrison)}
 :root[data-theme="dark"] .sbb,:root[data-theme="oled"] .sbb{color:#0B0D11}
 @media (prefers-color-scheme:dark){:root:not([data-theme="light"]) .sbb{color:#0B0D11}}
+/* pharmacology sources */
+:root{--sb-src-katzung:#0F766E;--sb-src-pt:#BE185D}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--sb-src-katzung:#5EEAD4;--sb-src-pt:#F9A8D4}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--sb-src-katzung:#5EEAD4;--sb-src-pt:#F9A8D4}
+.sb-src i.katzung,.sbb.katzung{background:var(--sb-src-katzung)}.sb-src i.pt,.sbb.pt{background:var(--sb-src-pt)}

@@ -1,0 +1,653 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Renal Pharmacology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media=\'all\'">
+<link rel="stylesheet" href="../design/sb.css">
+<style>
+/* Layout: sb-hero, vertical grouped contents (sidebar ≥1000px, drawer on phones), then a stage of [diagram card | notes card], lecture figures strip below.
+   Content colours (anatomy): artery, vein, lymph, nerve, kidney tissue, urinary tract, fat, fascia, muscle, bone, gland. */
+:root{
+  --a-art:#D23C3C; --a-vein:#2F64C8; --a-lymph:#2E9A50; --a-nerve:#D9A21B;
+  --a-cortex:#D98B74; --a-medulla:#B4564A; --a-uro:#E2B44C; --a-blad:#E9A08F; --a-fat:#F3D77A; --a-fat2:#F7E6A8;
+  --a-fascia:#4B5563; --a-perit:#4F86C6; --a-musc:#CF7468; --a-musc2:#E3A196; --a-bone:#ECE3CE; --a-gland:#E39A2D; --a-glandm:#9C5B2E;
+  --a-edge:rgba(20,16,14,.62); --a-cav:#FBF7F0; --a-skin:#F2DCCB; --a-prost:#C7A2C9;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}
+*{box-sizing:border-box}
+body{margin:0;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding:1rem max(16px,env(safe-area-inset-right,0px)) 5rem max(16px,env(safe-area-inset-left,0px))}
+.shell{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:1.25rem;align-items:start}
+.side{position:sticky;top:.75rem;max-height:calc(100vh - 1.5rem);overflow:auto;padding:.5rem;scrollbar-width:thin}
+.mbar{display:none}
+@media (max-width:1000px){.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}
+ .mbar{display:flex;position:sticky;top:0;z-index:20;gap:.5rem;align-items:center;margin:0 -16px;padding:.55rem 16px;background:color-mix(in srgb,var(--sb-bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--sb-line)}}
+.mbar .open{flex:1;min-width:0;display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:inherit;cursor:pointer;text-align:left}
+.mbar .open svg{flex:none;width:1.1rem;height:1.1rem;color:var(--sb-accent)}
+.mbar .open span{min-width:0;display:flex;flex-direction:column}
+.mbar .open small{font:700 .625rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.mbar .open b{font:600 .9375rem/1.25 var(--sb-font);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mbar .ar{flex:none;width:2.6rem;height:2.6rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:700 1rem var(--sb-font);cursor:pointer}
+.mbar .ar:disabled{opacity:.35}
+.drawer{position:fixed;inset:0;z-index:90;display:flex}
+.drawer[hidden]{display:none}
+.drawer .pane{width:min(86vw,22rem);height:100%;overflow:auto;background:var(--sb-bg);padding:calc(env(safe-area-inset-top,0px) + .75rem) .75rem calc(env(safe-area-inset-bottom,0px) + 1rem);box-shadow:4px 0 30px rgba(0,0,0,.2);animation:sl .18s ease-out}
+@keyframes sl{from{transform:translateX(-30px);opacity:.6}to{transform:none;opacity:1}}
+.drawer .dim{flex:1;background:rgba(0,0,0,.35)}
+.drawer .dh2{display:flex;justify-content:space-between;align-items:center;padding:.25rem .4rem .6rem}
+.drawer .dh2 b{font:750 1.125rem var(--sb-font)}
+.drawer .dh2 button{border:0;background:var(--sb-surface2);color:var(--sb-ink);border-radius:50%;width:2.25rem;height:2.25rem;font-size:1rem;cursor:pointer}
+.toc .prog{display:flex;align-items:center;gap:.5rem;font:500 .75rem var(--sb-font);color:var(--sb-muted);padding:0 .4rem .6rem}
+.toc .prog i{flex:1;height:.3rem;border-radius:1rem;background:var(--sb-surface2);overflow:hidden}
+.toc .prog i b{display:block;height:100%;background:var(--sb-accent)}
+.toc .g{margin-bottom:.25rem}
+.toc .gh{width:100%;display:flex;align-items:center;gap:.5rem;padding:.55rem .5rem;border:0;background:none;color:var(--sb-ink);font:700 .875rem var(--sb-font);cursor:pointer;border-radius:10px;text-align:left}
+.toc .gh:hover{background:var(--sb-surface2)}
+.toc .gh .n{margin-left:auto;font:600 .75rem var(--sb-mono);color:var(--sb-muted)}
+.toc .gh .cv{color:var(--sb-muted);transition:transform .15s;font-size:.75rem}
+.toc .g[data-open="true"] .gh .cv{transform:rotate(90deg)}
+.toc ul{list-style:none;margin:0 0 .35rem;padding:0 0 0 .55rem;border-left:2px solid var(--sb-line);margin-left:.95rem}
+.toc .g[data-open="false"] ul{display:none}
+.toc li a{display:flex;align-items:center;gap:.45rem;padding:.42rem .55rem;border-radius:9px;color:var(--sb-ink2);text-decoration:none;font:500 .875rem/1.3 var(--sb-font)}
+.toc li a:hover{background:var(--sb-surface2)}
+.toc li a[aria-current="true"]{background:var(--sb-ink);color:var(--sb-bg);font-weight:650}
+.toc li a .ck{flex:none;width:.95rem;height:.95rem;border-radius:50%;border:1.5px solid var(--sb-line);display:grid;place-items:center;font-size:.55rem;color:transparent}
+.toc li a .ck.on{background:var(--sb-good);border-color:var(--sb-good);color:#fff}
+.toc li a[aria-current="true"] .ck{border-color:var(--sb-bg)}
+.toc ol{list-style:none;margin:.1rem 0 .3rem 1.4rem;padding:0;display:grid;gap:.05rem}
+.toc ol a{padding:.28rem .5rem;font-size:.8125rem;color:var(--sb-muted)}
+.toc ol a:hover{color:var(--sb-ink)}
+.notes h3{scroll-margin-top:4.5rem}
+.stage{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1rem;margin-top:1rem;align-items:start}
+@media (max-width:1180px){.stage{grid-template-columns:minmax(0,1fr)}}
+.card{padding:1rem}
+.dh{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.dh h2{margin:0;font:750 1.25rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.dh .k{font:700 .6875rem/1 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-accent);margin-bottom:.25rem}
+.tools{display:flex;gap:.35rem;flex-wrap:wrap}
+.dia{border-radius:12px;background:var(--sb-plate);background-image:linear-gradient(var(--sb-grid) 1px,transparent 1px),linear-gradient(90deg,var(--sb-grid) 1px,transparent 1px);background-size:32px 32px;overflow:hidden}
+.dia svg{display:block;width:100%;height:auto}
+.notes h3{margin:.25rem 0 .5rem;font:700 1rem/1.3 var(--sb-font)}
+.notes ul{margin:0 0 .9rem;padding-left:1.1rem;display:grid;gap:.4rem}
+.notes li{font-size:.9375rem;color:var(--sb-ink2)}
+.notes li b{color:var(--sb-ink);font-weight:650}
+.notes .pearl{background:var(--sb-accent-soft);border-radius:12px;padding:.7rem .85rem;font-size:.875rem;color:var(--sb-ink);margin-bottom:.8rem}
+.notes .pearl b{color:var(--sb-accent)}
+.notes table{width:100%;border-collapse:collapse;font-size:.8125rem;margin:.25rem 0 .9rem}
+.notes th{text-align:left;padding:.4rem .35rem}
+.notes td{padding:.45rem .35rem;vertical-align:top;color:var(--sb-ink2)}
+.notes td:first-child{color:var(--sb-ink);font-weight:600;white-space:nowrap}
+.figs{margin-top:1rem}
+.steps{display:flex;gap:.6rem;margin-top:1rem}
+.steps button{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:.75rem .9rem;border-radius:14px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);cursor:pointer;text-align:left;font:inherit}
+.steps button.nx{align-items:flex-end;text-align:right}
+.steps small{font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.steps b{font:600 .9375rem var(--sb-font)}
+.steps .pg{flex:none;align-self:center;font:600 .8125rem var(--sb-mono);color:var(--sb-muted)}
+.figs h3{margin:0 0 .6rem;font:700 1rem var(--sb-font);display:flex;gap:.5rem;align-items:baseline}
+.figs h3 span{font:500 .8125rem var(--sb-font);color:var(--sb-muted)}
+.strip{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.35rem}
+.fig{flex:none;width:13rem;border:1px solid var(--sb-line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in;padding:0;text-align:left}
+.fig img{display:block;width:100%;height:9rem;object-fit:contain;background:#fff}
+.fig span{display:block;padding:.45rem .6rem;font:500 .75rem/1.3 var(--sb-font);color:#3D4450;background:#F5F6F8;border-top:1px solid #E3E6EB}
+.legend{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.7rem;font-size:.75rem;color:var(--sb-muted)}
+.legend i{display:inline-block;width:.75rem;height:.75rem;border-radius:3px;margin-right:.3rem;vertical-align:-.1rem;border:1px solid var(--a-edge)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.9);display:flex;flex-direction:column}
+.lb[hidden]{display:none}
+.lb .bar{display:flex;gap:.5rem;align-items:center;padding:calc(env(safe-area-inset-top,0px) + .6rem) 1rem .6rem;color:#fff}
+.lb .bar b{flex:1;font:600 .9375rem var(--sb-font)}
+.lb button{border:0;border-radius:10px;background:rgba(255,255,255,.14);color:#fff;font:700 1rem var(--sb-font);min-width:2.5rem;height:2.5rem;cursor:pointer}
+.lb .sc{flex:1;overflow:auto;display:block;touch-action:pan-x pan-y pinch-zoom}
+.lb .sc>*{display:block;margin:1rem auto;max-width:none}
+.lb{background:rgba(8,10,14,.96)}
+.lb img,.lb .zsvg{width:min(96vw,1000px);height:auto;background:#fff;border-radius:6px;transition:width .15s}
+.lb .zsvg{background:var(--sb-plate)}.lb .zsvg svg{display:block;width:100%;height:auto}
+.dia{cursor:zoom-in}
+/* svg */
+.t{font:600 12px var(--sb-font);fill:var(--sb-ink);paint-order:stroke;stroke:var(--sb-plate);stroke-width:3.2px;stroke-linejoin:round}
+.t.s{font-size:10.5px;font-weight:500}.t.m{fill:var(--sb-muted);font-weight:500}.t.b{font-size:14px;font-weight:750}.t.h{font-size:13px;font-weight:700;fill:var(--sb-accent)}
+.t.w{fill:#fff;stroke:rgba(0,0,0,.35);stroke-width:2.4px}
+.ld{fill:none;stroke:var(--sb-ink2);stroke-width:.9;opacity:.75}.ldd{fill:var(--sb-ink2)}
+.f{stroke:var(--a-edge);stroke-width:1.3;stroke-linejoin:round}
+.v,.vo{fill:none;stroke-linecap:round;stroke-linejoin:round}.vo{stroke:var(--a-edge)}
+.guide{stroke:var(--sb-muted);stroke-width:.8;stroke-dasharray:3 4;opacity:.45}
+.f.art{fill:var(--a-art)}.v.art{stroke:var(--a-art)}.f.vein{fill:var(--a-vein)}.v.vein{stroke:var(--a-vein)}.v.lymph{stroke:var(--a-lymph)}.f.lymph{fill:var(--a-lymph)}
+.v.nerve{stroke:var(--a-nerve)}.f.nerve{fill:var(--a-nerve)}.f.cortex{fill:var(--a-cortex)}.f.medulla{fill:var(--a-medulla)}.f.uro{fill:var(--a-uro)}.v.uro{stroke:var(--a-uro)}
+.f.blad{fill:var(--a-blad)}.f.fat{fill:var(--a-fat)}.f.fat2{fill:var(--a-fat2)}.f.musc{fill:var(--a-musc)}.f.musc2{fill:var(--a-musc2)}.v.musc{stroke:var(--a-musc)}
+.f.bone{fill:var(--a-bone)}.v.bone{stroke:var(--a-bone)}.f.gland{fill:var(--a-gland)}.f.glandm{fill:var(--a-glandm)}.f.cav{fill:var(--a-cav)}.f.skin{fill:var(--a-skin)}.f.prost{fill:var(--a-prost)}
+.fascia{fill:none;stroke:var(--a-fascia);stroke-width:2.2;stroke-dasharray:6 3}.perit{fill:none;stroke:var(--a-perit);stroke-width:2.6}
+.hatch{fill:url(#hatch)}
+.stone{fill:#8A8F99;stroke:var(--a-edge);stroke-width:1}
+.ring{fill:none;stroke:var(--sb-bad);stroke-width:2.2;stroke-dasharray:3 2}
+.num{fill:var(--sb-bad)}.numt{font:800 11px var(--sb-font);fill:#fff}
+.box{fill:var(--sb-surface);stroke:var(--sb-line);stroke-width:1.2}
+.box.ar{fill:color-mix(in srgb,var(--a-art) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-art) 55%,transparent)}
+.box.vn{fill:color-mix(in srgb,var(--a-vein) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-vein) 55%,transparent)}
+.box.gl{fill:color-mix(in srgb,#8E6CCB 18%,var(--sb-surface));stroke:color-mix(in srgb,#8E6CCB 60%,transparent)}
+.arw{fill:none;stroke:var(--sb-ink2);stroke-width:1.4;marker-end:url(#ah)}
+.zone{stroke:rgba(0,0,0,.25);stroke-width:.8}
+@media (prefers-reduced-motion:no-preference){.dia svg{animation:fi .25s ease-out}@keyframes fi{from{opacity:.4}to{opacity:1}}}
+:root{--s-na:#1d4ed8;--s-k:#9333ea;--s-cl:#15803d;--s-h2o:#0ea5e9;--s-glc:#db2777;--s-h:#dc2626;--s-hco3:#0d9488;--s-urea:#ca8a04;--s-ca:#ea580c;--s-pi:#a16207;--s-nh4:#4338ca;--s-org:#78716c;
+ --p-lumen:#FFF7E6;--p-blood:#FDECEC;--p-cell:#F3E8DF;--p-memb:#E9D5FF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-na:#7aa5ff;--s-k:#c79bff;--s-cl:#5fd68a;--s-h2o:#5cc8ff;--s-glc:#ff7ab8;--s-h:#ff6b6b;--s-hco3:#3fd6c4;--s-urea:#f2c94c;--s-ca:#ff9a52;--s-pi:#e0b452;--s-nh4:#9a95ff;--s-org:#c2b8b0;--p-lumen:#2A2618;--p-blood:#2E1C1F;--p-cell:#2A2420;--p-memb:#2E2340}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--s-na:#7aa5ff;--s-k:#c79bff;--s-cl:#5fd68a;--s-h2o:#5cc8ff;--s-glc:#ff7ab8;--s-h:#ff6b6b;--s-hco3:#3fd6c4;--s-urea:#f2c94c;--s-ca:#ff9a52;--s-pi:#e0b452;--s-nh4:#9a95ff;--s-org:#c2b8b0;--p-lumen:#2A2618;--p-blood:#2E1C1F;--p-cell:#2A2420;--p-memb:#2E2340}
+:root{--s-h2o2:color-mix(in srgb,var(--s-h2o) 70%,var(--sb-surface));--s-h2o3:color-mix(in srgb,var(--s-h2o) 50%,var(--sb-surface));--s-h2o4:color-mix(in srgb,var(--s-h2o) 35%,var(--sb-surface));
+ --s-na2:color-mix(in srgb,var(--s-na) 70%,var(--sb-surface));--s-na3:color-mix(in srgb,var(--s-na) 50%,var(--sb-surface));--s-na4:color-mix(in srgb,var(--s-na) 35%,var(--sb-surface));
+ --s-k2:color-mix(in srgb,var(--s-k) 65%,var(--sb-surface));--s-ca2:color-mix(in srgb,var(--s-ca) 65%,var(--sb-surface));--s-ca3:color-mix(in srgb,var(--s-ca) 40%,var(--sb-surface));
+ --s-hco32:color-mix(in srgb,var(--s-hco3) 65%,var(--sb-surface));--s-hco33:color-mix(in srgb,var(--s-hco3) 40%,var(--sb-surface))}
+.plot{fill:var(--sb-surface);stroke:none}.gl{stroke:var(--sb-grid);stroke-width:1}.ax{fill:none;stroke:var(--sb-ink2);stroke-width:1.4}
+.ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:var(--sb-ink)}.ln.alt{stroke:var(--sb-muted)}.ln.gfr{stroke:var(--s-na)}.ln.uo{stroke:var(--s-h2o)}.ln.filt{stroke:var(--s-org)}.ln.reab{stroke:var(--s-hco3)}.ln.excr{stroke:var(--s-glc)}.ln.spike{stroke:var(--s-h);stroke-width:2}.ln.iso{stroke:var(--sb-muted);stroke-width:1.2;opacity:.6}
+.gl.th{stroke:var(--sb-muted);stroke-dasharray:4 4}.gl.now{stroke:var(--sb-accent);stroke-width:2;stroke-dasharray:5 4}
+.band{fill:var(--sb-accent);opacity:.1}.pt{fill:var(--sb-accent);stroke:var(--sb-surface);stroke-width:2.5}.pt2{fill:var(--s-h2o);stroke:var(--sb-surface);stroke-width:2.5}
+.lumen{fill:var(--p-lumen);stroke:var(--sb-line)}.blood{fill:var(--p-blood);stroke:var(--sb-line)}.cell{fill:var(--p-cell);stroke:var(--sb-ink2);stroke-width:1.4}.memb{fill:var(--p-memb)}
+.tr circle{fill:var(--sb-surface);stroke:var(--sb-ink2);stroke-width:1.6}.tr.pump circle{fill:#FDE68A;stroke:#B45309}.tr.ch circle{fill:var(--sb-surface2)}.tr.ex circle{stroke-dasharray:3 2}
+.flux{fill:none;stroke-width:2.6;stroke-linecap:round}
+.t.atp{font:800 8px var(--sb-font);fill:#7C2D12;stroke:none}.t.ion{font:800 9px var(--sb-font);fill:#fff;stroke:none}.t.ionl{font-weight:700;stroke-width:2.6px}
+.t.bh{font-size:12.5px;font-weight:750}.t.bb{font-size:17px;font-weight:800}.t.bad{fill:var(--sb-bad);font-weight:800}.t.w{fill:#fff;stroke:none;font-weight:700}
+.seg{stroke:var(--sb-surface);stroke-width:1.5}
+.tube{fill:none;stroke:var(--s-urea);stroke-width:14;stroke-linecap:round;stroke-linejoin:round;opacity:.55}.tube.big{stroke-width:30;opacity:.35;stroke:var(--s-org)}.tube.thick{stroke:var(--s-na);opacity:.35;stroke-width:38}.tube.cd{stroke:var(--s-nh4);opacity:.3}
+.cap{fill:none;stroke:var(--a-art);stroke-width:10;opacity:.45;stroke-linecap:round}.urine{fill:var(--s-urea)}
+.force{opacity:.85}.force.push{fill:var(--a-art)}.force.pull{fill:var(--s-na)}
+.vess{fill:none;stroke:var(--a-art);stroke-linecap:round}.vess.v{stroke:var(--a-vein)}.glom{fill:color-mix(in srgb,var(--a-art) 25%,var(--sb-surface));stroke:var(--a-art);stroke-width:2}
+.cbar{fill:var(--sb-surface2)}.cbar.on{fill:var(--sb-accent)}
+.tbox{stroke:var(--sb-line)}.tbox.d{fill:color-mix(in srgb,var(--s-h2o) 22%,var(--sb-surface))}.tbox.i{fill:color-mix(in srgb,var(--s-urea) 22%,var(--sb-surface))}.tbox.a{fill:color-mix(in srgb,var(--s-na) 20%,var(--sb-surface))}
+.vr{fill:none;stroke:var(--a-art);stroke-width:12;opacity:.45}
+.phbar{fill:url(#phg)}.dsite{fill:var(--sb-bad);stroke:var(--sb-surface);stroke-width:3}
+.arw.art{stroke:var(--a-art)}.arw.vein{stroke:var(--a-vein)}.arw.h2o{stroke:var(--s-h2o)}.arw.na{stroke:var(--s-na)}.arw.urea{stroke:var(--s-urea)}.arw.x{stroke:var(--sb-bad);stroke-dasharray:4 3}
+.ion{stroke:var(--sb-surface);stroke-width:1.5}
+.tools .sl{display:flex;flex-direction:column;gap:.15rem;min-width:9.5rem;flex:1 1 9.5rem;font:500 .8125rem var(--sb-font);color:var(--sb-ink2)}
+.tools .sl b{color:var(--sb-ink);font-family:var(--sb-mono)}.tools .sl input{width:100%;accent-color:var(--sb-accent)}
+.tools select{font:500 .875rem var(--sb-font);padding:.4rem .6rem;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink)}
+.figs[hidden]{display:none}
+
+/* continuous chapter flow */
+#flow{display:block}
+.ghead{margin:.5rem 0 1rem;padding:1rem 1.1rem;border-radius:var(--sb-r-lg);background:var(--sb-surface);border:1px solid var(--sb-line)}
+.ghead small{font:600 .75rem var(--sb-font);color:var(--sb-muted);letter-spacing:.04em}
+.ghead h2{margin:.2rem 0 .6rem;font:800 1.375rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.gchips{display:flex;flex-wrap:wrap;gap:.35rem}
+.gchips a{font:500 .8125rem var(--sb-font);color:var(--sb-ink2);text-decoration:none;padding:.3rem .65rem;border-radius:999px;background:var(--sb-surface2)}
+.gchips a:hover{color:var(--sb-ink)}
+.topic{scroll-margin-top:1rem;padding-bottom:1.75rem}
+.topic+.topic{padding-top:1.75rem;border-top:1px dashed var(--sb-line)}
+@media (max-width:1000px){.topic{scroll-margin-top:4.25rem}}
+.topic .stage{margin-top:0}
+.topic .figs{margin-top:1rem}
+.segc{display:inline-flex;gap:.35rem;flex-wrap:wrap}
+.steps{margin-top:.5rem}
+
+/* ---- pharmacology atlas standard ----
+   action colour code (same in every pharmacology atlas) · group palette for the mind map · target-map materials.
+   Materials are mixed from the app's own --sb-* tokens so every map follows the light / dark / OLED theme and the accent. */
+:root{
+ --d-ag:#3E8E66;--d-bl:#C0564C;--d-inh:#BF7A36;--d-mab:#7663B5;--d-st:#A3883A;--d-mod:#4A79B0;
+ --g0:#64748B;--g1:#0E8A7E;--g2:#3F5BD8;--g3:#C2760C;--g4:#B83280;--g5:#7048C9;--g6:#0B83B5;--g7:#5E8A16;--g8:#C2493A;
+ --sb-src-katzung:#0F766E;--sb-src-pt:#BE185D}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --d-ag:#7CC9A0;--d-bl:#E58C83;--d-inh:#E3A66A;--d-mab:#A99AE6;--d-st:#D6BC70;--d-mod:#86AEE0;
+ --g0:#94A3B8;--g1:#3DD6C4;--g2:#8EA2FF;--g3:#F5B14A;--g4:#F28BC4;--g5:#B79BFF;--g6:#56C7F2;--g7:#A6D65A;--g8:#FF8E7E;
+ --sb-src-katzung:#5EEAD4;--sb-src-pt:#F9A8D4}}
+:root[data-theme="dark"],:root[data-theme="oled"]{
+ --d-ag:#7CC9A0;--d-bl:#E58C83;--d-inh:#E3A66A;--d-mab:#A99AE6;--d-st:#D6BC70;--d-mod:#86AEE0;
+ --g0:#94A3B8;--g1:#3DD6C4;--g2:#8EA2FF;--g3:#F5B14A;--g4:#F28BC4;--g5:#B79BFF;--g6:#56C7F2;--g7:#A6D65A;--g8:#FF8E7E;
+ --sb-src-katzung:#5EEAD4;--sb-src-pt:#F9A8D4}
+:root{
+ --p-tint:#C9826F;
+ --p-cell:color-mix(in srgb,var(--p-tint) 16%,var(--sb-surface2));--p-cell-hi:color-mix(in srgb,var(--p-tint) 6%,var(--sb-surface));
+ --p-epi:color-mix(in srgb,var(--p-tint) 22%,var(--sb-surface2));--p-epi-hi:color-mix(in srgb,var(--p-tint) 10%,var(--sb-surface));
+ --p-lum:var(--sb-surface2);--p-lum-hi:var(--sb-surface);
+ --p-th2:color-mix(in srgb,var(--d-mod) 16%,var(--sb-surface2));--p-th2-hi:var(--sb-surface);
+ --p-eos:color-mix(in srgb,var(--d-bl) 14%,var(--sb-surface2));--p-eos-hi:var(--sb-surface);
+ --p-mast:color-mix(in srgb,var(--d-mab) 16%,var(--sb-surface2));--p-mast-hi:var(--sb-surface);
+ --p-gr:color-mix(in srgb,var(--d-st) 14%,var(--sb-surface2));--p-gr-hi:var(--sb-surface);
+ --p-tube:color-mix(in srgb,#C79A5E 24%,var(--sb-surface2));--p-tube-hi:color-mix(in srgb,#C79A5E 10%,var(--sb-surface));
+ --p-cx:var(--sb-surface);--p-med:color-mix(in srgb,var(--p-tint) 9%,var(--sb-surface2));
+ --p-enz:var(--sb-surface);--p-nerve:color-mix(in srgb,#C9A03A 75%,var(--sb-ink2));--p-blood:color-mix(in srgb,var(--d-bl) 80%,var(--sb-surface))}
+.sbb.katzung,.sb-src i.katzung{background:var(--sb-src-katzung)}.sbb.pt,.sb-src i.pt{background:var(--sb-src-pt)}
+/* hero stats */
+.pstats{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.9rem;font:500 .8125rem var(--sb-font);color:var(--sb-muted)}
+.pstats b{font:800 1.25rem/1 var(--sb-font);color:var(--sb-ink);margin-right:.3rem;font-variant-numeric:tabular-nums}
+/* topic header drug chips */
+.dchips{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.45rem}
+.dchips span{font:600 .75rem var(--sb-font);padding:.18rem .55rem;border-radius:999px;background:var(--sb-surface2);color:var(--sb-ink2)}
+/* target-map materials */
+.p-lum{stroke:var(--sb-line)}.p-epi{stroke:color-mix(in srgb,var(--p-epi) 55%,#7a4a30 45%);stroke-width:.8}
+.p-cellm{stroke:color-mix(in srgb,#C0504A 50%,transparent);stroke-width:1.6}
+.p-gr{stroke:color-mix(in srgb,var(--d-st) 55%,transparent);stroke-width:1.2}
+.p-enz{fill:var(--p-enz);stroke:var(--sb-ink2);stroke-width:1.2}
+.p-rec{fill:var(--sb-ink2);stroke:var(--sb-plate);stroke-width:1.5}
+.p-imm{stroke:color-mix(in srgb,var(--sb-ink) 22%,transparent);stroke-width:1.2}
+.p-nerve{fill:none;stroke:var(--p-nerve);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.p-ach{fill:var(--p-nerve)}
+.p-ige{fill:none;stroke:var(--d-mab);stroke-width:2.2;stroke-linecap:round}
+.p-enz.hot,.p-gr.hot{stroke:var(--sb-accent);stroke-width:2}
+.glow{fill:var(--sb-accent);opacity:.12}.hring{fill:none;stroke:var(--sb-accent);stroke-width:1.6}
+/* pills: tonal chip in the app's surface, action colour on the icon and edge; others fade back */
+.pill.ag{--pc:var(--d-ag)}.pill.bl{--pc:var(--d-bl)}.pill.inh{--pc:var(--d-inh)}.pill.mab{--pc:var(--d-mab)}.pill.st{--pc:var(--d-st)}.pill.mod{--pc:var(--d-mod)}
+.pill rect{fill:color-mix(in srgb,var(--pc) 13%,var(--sb-surface));stroke:color-mix(in srgb,var(--pc) 55%,transparent);stroke-width:1.1}
+.pill .pic{fill:var(--pc)}.pill .pig{fill:none;stroke:var(--sb-surface);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.pill.mod .pig{fill:var(--sb-surface)}
+.t.pl{font:650 11px var(--sb-font);fill:var(--sb-ink);stroke:none}
+.pill.off{opacity:.32}.pill.off rect{fill:var(--sb-surface);stroke:var(--sb-line)}.pill.off .pic{fill:var(--sb-muted)}.pill.off .t.pl{fill:var(--sb-muted)}
+.pill{transition:opacity .25s}
+.stepn{fill:var(--sb-ink)}.stepn.ar{fill:var(--a-art)}.stepn.gl{fill:#8E6CCB}.stepn.vn{fill:var(--a-vein)}.t.sn{font:800 11px var(--sb-font);fill:var(--sb-bg);stroke:none}
+.legend i{border-radius:50%}
+.p-blood{fill:none;stroke:var(--p-blood);stroke-width:5;stroke-linecap:round;opacity:.75}
+.p-tube{stroke:color-mix(in srgb,#B07A3C 60%,transparent);stroke-width:1.4}
+/* ---- mind map ---- */
+.mmcard{padding:1.1rem 1.1rem 1.4rem}
+.mmhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:.5rem;margin-bottom:1rem}
+.mmhead h2{margin:0;font:800 1.375rem/1.2 var(--sb-font);letter-spacing:-.015em}
+.mmhead p{margin:0;font-size:.8125rem;color:var(--sb-muted)}
+.mmlegend{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-size:.75rem;color:var(--sb-muted);margin-top:1rem}
+.mmlegend i{display:inline-block;width:.6rem;height:.6rem;border-radius:50%;margin-right:.3rem}
+.mmwrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:2.4rem;align-items:center}
+.mmlinks{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.mmlinks .lk1{fill:none;stroke-width:3;opacity:.55}.mmlinks .lk2{fill:none;stroke-width:1.6;opacity:.45}
+.mmside{display:flex;flex-direction:column;gap:1.1rem;position:relative}
+.mmb{display:flex;align-items:center;gap:2.1rem}.mmb.l{flex-direction:row-reverse}
+.mmg{flex:none;width:8.6rem;display:flex;flex-direction:column;gap:.15rem;align-items:flex-start;text-align:left;padding:.6rem .75rem;border-radius:14px;border:1.5px solid var(--gc);background:color-mix(in srgb,var(--gc) 13%,var(--sb-surface));color:var(--sb-ink);cursor:pointer;font:inherit;transition:transform .15s}
+.mmg b{font:750 .8125rem/1.25 var(--sb-font)}.mmg small{font:600 .6875rem var(--sb-mono);color:var(--gc)}
+.mml{flex:1;min-width:0;display:flex;flex-direction:column;gap:.35rem}
+.mmleaf{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;text-align:left;padding:.42rem .65rem .42rem .75rem;border-radius:11px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);cursor:pointer;font:inherit;transition:border-color .15s,transform .15s,box-shadow .15s}
+.mmleaf::before{content:"";position:absolute;left:0;top:.45rem;bottom:.45rem;width:3px;border-radius:3px;background:var(--gc);opacity:.85}
+.mmleaf .mt{font:650 .8125rem/1.25 var(--sb-font)}
+.mmleaf .md{font:500 .6875rem/1.3 var(--sb-font);color:var(--sb-muted)}
+.mmleaf .ma{position:absolute;right:.5rem;top:.5rem;display:flex;gap:.2rem;align-items:center}
+.mmleaf .ma i{width:.45rem;height:.45rem;border-radius:50%}
+.mmleaf .ma em{display:none;font:800 .625rem var(--sb-font);font-style:normal;color:#fff;background:var(--gc);border-radius:50%;width:.95rem;height:.95rem;place-items:center;margin-left:.15rem}
+.mmleaf.seen .ma em{display:grid}.mmleaf.seen{border-color:color-mix(in srgb,var(--gc) 55%,var(--sb-line))}
+.mmleaf .mt,.mmleaf .md{padding-right:2.2rem}
+.mmleaf:hover,.mmg:hover{transform:translateY(-1px)}.mmleaf:hover{border-color:var(--gc);box-shadow:0 4px 14px -6px color-mix(in srgb,var(--gc) 60%,transparent)}
+.mmleaf:focus-visible,.mmg:focus-visible{outline:2px solid var(--sb-accent);outline-offset:2px}
+.mmroot{display:grid;place-items:center}
+.mmrc{position:relative;width:9.5rem;height:9.5rem;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 35% 30%,var(--sb-surface),var(--sb-surface2));box-shadow:0 10px 30px -14px rgba(0,0,0,.35)}
+.mmrc svg{position:absolute;inset:0;width:100%;height:100%}
+.mmrc .rtrack{fill:none;stroke:var(--sb-line);stroke-width:5}.mmrc .rbar{fill:none;stroke:var(--sb-accent);stroke-width:5;stroke-linecap:round}
+.mmrc div{display:flex;flex-direction:column;align-items:center;gap:.1rem}
+.mmrc small{font:700 .6875rem var(--sb-font);letter-spacing:.08em;text-transform:uppercase;color:var(--sb-accent)}
+.mmrc b{font:800 1rem var(--sb-font)}.mmrc span{font:600 .6875rem var(--sb-mono);color:var(--sb-muted)}
+.mmb.hot .mmg{transform:translateY(-1px);box-shadow:0 0 0 3px color-mix(in srgb,var(--gc) 25%,transparent)}
+@media (prefers-reduced-motion:reduce){.mmleaf,.mmg,.pill{transition:none}}
+/* phone / narrow: same map as a tree */
+.mmwrap.tree{display:flex;flex-direction:column;gap:1rem;align-items:stretch}
+.mmwrap.tree .mmroot{order:-1}.mmwrap.tree .mmside{display:contents}
+.mmwrap.tree .mmside.r .mmb{order:1}.mmwrap.tree .mmside.l .mmb{order:2}
+.mmwrap.tree .mmrc{width:7.5rem;height:7.5rem}
+.mmwrap.tree .mmb,.mmwrap.tree .mmb.l{flex-direction:column;align-items:stretch;gap:.45rem}
+.mmwrap.tree .mmg{width:auto;flex-direction:row;justify-content:space-between;align-items:center}
+.mmwrap.tree .mml{margin-left:.9rem;padding-left:.8rem;border-left:2px solid color-mix(in srgb,var(--gc) 50%,transparent)}
+.p-mucus{fill:color-mix(in srgb,#A7B46A 26%,var(--sb-surface));stroke:color-mix(in srgb,#A7B46A 55%,transparent);stroke-width:1.1}
+.shell.ov{grid-template-columns:minmax(0,1fr)}.shell.ov .side{display:none}
+/* nephron map */
+.zone{stroke:none}.zone.cx{fill:var(--p-cx)}.zone.om{fill:color-mix(in srgb,var(--p-med) 55%,var(--p-cx))}.zone.im{fill:var(--p-med)}
+.p-bow{fill:color-mix(in srgb,var(--p-tube) 45%,var(--sb-plate));stroke:color-mix(in srgb,#B07A3C 60%,transparent);stroke-width:1.4}
+.p-glom{fill:color-mix(in srgb,var(--p-blood) 30%,var(--sb-plate));stroke:var(--p-blood);stroke-width:1.2}
+.p-tubeo{fill:none;stroke:color-mix(in srgb,#B98B52 45%,var(--sb-surface2));stroke-width:20;stroke-linecap:round;stroke-linejoin:round}
+.p-tubei{fill:none;stroke:var(--p-tube-hi);stroke-width:13;stroke-linecap:round;stroke-linejoin:round}
+.p-blood.eff{opacity:.55}
+/* electrolyte grid */
+.lg{stroke:none;fill:var(--sb-surface2)}
+.lg.l1{fill:color-mix(in srgb,var(--g1) 16%,var(--sb-surface))}.lg.l2{fill:color-mix(in srgb,var(--g1) 30%,var(--sb-surface))}.lg.l3{fill:color-mix(in srgb,var(--g1) 45%,var(--sb-surface))}.lg.l4{fill:color-mix(in srgb,var(--g1) 60%,var(--sb-surface))}.lg.l5{fill:color-mix(in srgb,var(--g1) 75%,var(--sb-surface))}
+.lg.neg,.lg.dn{fill:color-mix(in srgb,var(--g2) 28%,var(--sb-surface))}.lg.acid{fill:color-mix(in srgb,var(--d-bl) 24%,var(--sb-surface))}.lg.alk{fill:color-mix(in srgb,var(--g2) 24%,var(--sb-surface))}.lg.up{fill:color-mix(in srgb,var(--d-inh) 26%,var(--sb-surface))}
+.mmwrap.tree .mmrc b{font-size:.875rem}.mmrc b{font-size:.9375rem}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Pharmacology</div>
+    <h1>Renal Pharmacology</h1>
+    <p class="sb-lede">เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · ยาขับปัสสาวะเรียงตาม Katzung บทที่ 15 ตามแนว nephron จากต้นไปปลาย ต่อด้วย ACEi/ARB (บท 11) และการรักษาโรคไต น้ำ เกลือแร่ กรด–ด่าง จาก Pharmacotherapy</p>
+    <div class="sb-sources"><span class="sb-src"><i class="katzung">K</i>Katzung 16e · Ch 15, 11</span><span class="sb-src"><i class="pt">PT</i>Pharmacotherapy 5e · Ch 25–28</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>
+/* ================= helpers ================= */
+const T=(x,y,s,o={})=>`<text class="t${o.c?" "+o.c:""}" x="${x}" y="${y}" text-anchor="${o.a||"middle"}"${o.s?` font-size="${o.s}"`:""}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:""}>${s}</text>`;
+const TL=(x,y,ls,o={})=>ls.map((l,i)=>T(x,y+i*(o.lh||14),l,o)).join("");
+const LD=(x1,y1,x2,y2)=>`<path class="ld" d="M${x1},${y1} L${x2},${y2}"/><circle class="ldd" cx="${x1}" cy="${y1}" r="1.8"/>`;
+const F=(c,d,x="")=>`<path class="f ${c}" d="${d}" ${x}/>`;
+const V=(c,d,w,x="")=>`<path class="vo" d="${d}" stroke-width="${w+2.2}" ${x}/><path class="v ${c}" d="${d}" stroke-width="${w}" ${x}/>`;
+const C=(c,cx,cy,r)=>`<circle class="f ${c}" cx="${cx}" cy="${cy}" r="${r}"/>`;
+const E=(c,cx,cy,rx,ry,rot=0)=>`<ellipse class="f ${c}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"${rot?` transform="rotate(${rot} ${cx} ${cy})"`:""}/>`;
+function sm(p,closed=true){const n=p.length,Q=i=>p[(i+n)%n];let d=`M${p[0][0].toFixed(1)},${p[0][1].toFixed(1)}`;const last=closed?n:n-1;
+ for(let i=0;i<last;i++){const a=closed?Q(i-1):p[Math.max(i-1,0)],b=Q(i),c=closed?Q(i+1):p[Math.min(i+1,n-1)],e=closed?Q(i+2):p[Math.min(i+2,n-1)];
+  d+=` C${(b[0]+(c[0]-a[0])/6).toFixed(1)},${(b[1]+(c[1]-a[1])/6).toFixed(1)} ${(c[0]-(e[0]-b[0])/6).toFixed(1)},${(c[1]-(e[1]-b[1])/6).toFixed(1)} ${c[0].toFixed(1)},${c[1].toFixed(1)}`}
+ return d+(closed?"Z":"")}
+function rot(p,cx,cy,a){const c=Math.cos(a),s=Math.sin(a);return p.map(([x,y])=>[cx+(x-cx)*c-(y-cy)*s,cy+(x-cx)*s+(y-cy)*c])}
+/* kidney bean: hilum on side (+1 right, -1 left), tilt in radians */
+function beanPts(cx,cy,w,h,side=1,tilt=0,n=26){const p=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2,ca=Math.cos(a),sa=Math.sin(a);let x=cx+ca*w/2,y=cy+sa*h/2;
+  if(ca*side>.55&&Math.abs(sa)<.5){x-=side*w*.2*(1-Math.abs(sa)/.5)}p.push([x,y])}return rot(p,cx,cy,tilt)}
+const bean=(...a)=>sm(beanPts(...a));
+const mir=(p,X=640)=>p.map(([x,y])=>[X-x,y]);
+const DEFS=`<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sb-ink2)"/></marker><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sb-ink2)"/></marker><linearGradient id="phg" x1="0" x2="1"><stop offset="0" stop-color="#ef4444"/><stop offset=".45" stop-color="#22c55e"/><stop offset=".55" stop-color="#22c55e"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>`;
+const svg=(body,vb="0 0 640 520")=>`<svg viewBox="${vb}" role="img" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}</svg>`;
+
+
+
+const PHARM={"sys": "Renal"};
+/* ================= pharmacology core (shared by every pharmacology atlas) ================= */
+const S={k:'<b class="sbb katzung">K</b>',p:'<b class="sbb pt">PT</b>',x:'<b class="sbb gen">Gen</b>'};
+const LEG={ag:["Agonist / activator","--d-ag"],bl:["Antagonist / blocker","--d-bl"],inh:["Enzyme / transporter inhibitor","--d-inh"],mab:["Monoclonal antibody","--d-mab"],st:["Steroid / hormone","--d-st"],mod:["Other / modulator","--d-mod"]};
+let ST={labels:true,all:false};
+let HL=[];
+const SEC=[],GN={};
+const on=k=>ST.all||HL.includes(k);
+const tbl=(h,rows)=>`<table>${h?`<tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>`:""}${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table>`;
+function wrapT(x,y,s,n,c,lh=16,a="start"){const w=String(s).split(" ");const L=[];let cur="";w.forEach(t=>{if((cur+" "+t).trim().length>n&&cur){L.push(cur);cur=t}else cur=(cur+" "+t).trim()});if(cur)L.push(cur);
+ return L.map((l,i)=>T(x,y+i*lh,l,{a,c})).join("")}
+/* gradients + soft shadow/glow used by every target map */
+const GR=(id,a,b,r)=>r?`<radialGradient id="${id}" cx=".38" cy=".32" r=".85"><stop offset="0" style="stop-color:var(${a})"/><stop offset="1" style="stop-color:var(${b})"/></radialGradient>`
+ :`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${a})"/><stop offset="1" style="stop-color:var(${b})"/></linearGradient>`;
+const PDEFS=`<defs>${GR("gCell","--p-cell-hi","--p-cell",1)}${GR("gEpi","--p-epi-hi","--p-epi")}${GR("gTh2","--p-th2-hi","--p-th2",1)}${GR("gEos","--p-eos-hi","--p-eos",1)}${GR("gMast","--p-mast-hi","--p-mast",1)}${GR("gGr","--p-gr-hi","--p-gr")}${GR("gLum","--p-lum-hi","--p-lum")}${GR("gTube","--p-tube-hi","--p-tube")}${GR("gCx","--p-cx","--p-med")}
+<filter id="fGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="fSh" x="-20%" y="-40%" width="140%" height="200%"><feDropShadow dx="0" dy="1.6" stdDeviation="1.8" flood-opacity=".25"/></filter></defs>`;
+const psvg=(b,vb)=>svg(PDEFS+b,vb);
+/* action glyphs drawn inside each pill */
+const ICON={ag:'<path d="M-3.6,0 H3.6 M0,-3.6 V3.6"/>',bl:'<path d="M-3,-4 V4 M-3,0 H4"/>',inh:'<path d="M-3,-3 L3,3 M3,-3 L-3,3"/>',mab:'<path d="M0,4.2 V0.2 M0,0.2 L-3.6,-3.8 M0,0.2 L3.6,-3.8"/>',st:'<path d="M-3.6,-2 L0,-4.1 L3.6,-2 L3.6,2 L0,4.1 L-3.6,2Z"/>',mod:'<circle r="2.4"/>'};
+function pill(x,y,lab,kind,key,force){const w=Math.max(60,lab.length*6.3+36);const a=force||on(key);const x0=x-w/2;
+ return `<g class="pill ${kind}${a?" on":" off"}"><rect x="${x0}" y="${y-12}" width="${w}" height="24" rx="12"/><circle class="pic" cx="${x0+13}" cy="${y}" r="8"/><g class="pig" transform="translate(${x0+13},${y})">${ICON[kind]}</g>${T(x0+27,y+4,lab,{a:"start",c:"pl"})}</g>`}
+const glow=(x,y,key,r=15)=>on(key)?`<circle class="glow" cx="${x}" cy="${y}" r="${r+3}"/><circle class="hring" cx="${x}" cy="${y}" r="${r+3}"/>`:"";
+const rec=(x,y,lab,vert)=>`<rect class="p-rec" x="${x-(vert?9:7)}" y="${y-(vert?7:9)}" width="${vert?18:14}" height="${vert?14:18}" rx="5"/>`+(ST.labels&&lab?T(x,y-(vert?12:14),lab,{c:"s"}):"");
+const arr=(d,c="")=>`<path class="arw ${c}" d="${d}"/>`;
+const cellC=(x,y,r,g,lab,sub)=>`<circle class="p-imm" cx="${x}" cy="${y}" r="${r}" fill="url(#${g})"/>`+T(x,y+(sub?-1:4),lab,{c:"bh"})+(sub?T(x,y+13,sub,{c:"s m"}):"");
+function cards(R,o={}){const W=o.w||640,hh=o.h||(R.length>6?50:R.length>4?58:66),gap=8;let b="",y=14;
+ R.forEach(([n,dd,c])=>{b+=`<rect class="box ${c||""}" x="16" y="${y}" width="${W-32}" height="${hh}" rx="12"/>`+T(32,y+hh/2-4,n,{a:"start",c:"bh"})+T(32,y+hh/2+14,dd,{a:"start",c:"s"});y+=hh+gap});
+ if(o.foot){b+=T(W/2,y+14,o.foot,{c:"h"});y+=24}return psvg(b,`0 0 ${W} ${y+6}`)}
+function flowD(R,W=640){let b="",y=14;R.forEach(([n,dd,c],i)=>{b+=`<rect class="box ${c||""}" x="40" y="${y}" width="${W-80}" height="58" rx="14"/>`+`<circle class="stepn ${c||""}" cx="64" cy="${y+29}" r="12"/>`+T(64,y+33,i+1,{c:"sn"})+T(W/2+12,y+25,n,{c:"bh"})+T(W/2+12,y+44,dd,{c:"s"});
+ if(i<R.length-1)b+=arr(`M${W/2},${y+60} L${W/2},${y+76}`);y+=80});return psvg(b,`0 0 ${W} ${y}`)}
+const MAPTOOLS=[["all","Show all drugs"]];
+
+/* ---------- overview mind map: the landing view of every pharmacology atlas ---------- */
+let MMRO=null;
+function mindMap(){const gs=GROUPS.filter(g=>g!=="0"),half=Math.ceil(gs.length/2),tops=SEC.filter(s=>!s.mind),n=tops.filter(s=>SEEN[s.id]).length,C=2*Math.PI*52;
+ const block=(g,side)=>{const list=SEC.filter(s=>s.k===g),gi=GROUPS.indexOf(g),done=list.filter(s=>SEEN[s.id]).length;
+  return `<div class="mmb ${side}" style="--gc:var(--g${gi})"><button class="mmg" type="button" data-go="${list[0].id}"><b>${GN[g]}</b><small>${done}/${list.length}</small></button><div class="mml">${list.map(s=>`<button class="mmleaf${SEEN[s.id]?" seen":""}" type="button" data-go="${s.id}"><span class="mt">${s.mm||s.t}</span>${s.drugs?`<span class="md">${s.drugs.split(" · ").slice(0,3).join(" · ")}</span>`:""}<span class="ma">${(s.act||[]).map(a=>`<i style="background:var(--d-${a})" title="${LEG[a][0]}"></i>`).join("")}<em>✓</em></span></button>`).join("")}</div></div>`};
+ setTimeout(mmInit,0);
+ return `<div class="mmwrap" id="mmwrap"><svg class="mmlinks" id="mmlinks" aria-hidden="true"></svg>
+ <div class="mmside l">${gs.slice(half).map(g=>block(g,"l")).join("")}</div>
+ <div class="mmroot"><div class="mmrc"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rtrack" cx="60" cy="60" r="52"/>${n?`<circle class="rbar" cx="60" cy="60" r="52" stroke-dasharray="${C*n/tops.length} ${C}" transform="rotate(-90 60 60)"/>`:""}</svg><div><small>${PHARM.sys}</small><b>Pharmacology</b><span>${n}/${tops.length} seen</span></div></div></div>
+ <div class="mmside r">${gs.slice(0,half).map(g=>block(g,"r")).join("")}</div></div>`}
+function mmInit(){const w=document.getElementById("mmwrap");if(!w)return;mmLinks();if(!MMRO&&window.ResizeObserver){MMRO=new ResizeObserver(()=>mmLinks())}if(MMRO){MMRO.disconnect();MMRO.observe(w)}}
+function mmLinks(){const w=document.getElementById("mmwrap"),sv=document.getElementById("mmlinks");if(!w||!sv)return;
+ const tree=w.clientWidth<860;w.classList.toggle("tree",tree);if(tree){sv.innerHTML="";return}
+ const R=w.getBoundingClientRect(),rel=el=>{const r=el.getBoundingClientRect();return{l:r.left-R.left,r:r.right-R.left,y:r.top-R.top+r.height/2}};
+ const root=rel(w.querySelector(".mmrc"));let p="";
+ const cv=(x1,y1,x2,y2,c,cls)=>{const m=(x1+x2)/2;return `<path class="${cls}" style="stroke:${c}" d="M${x1},${y1} C${m},${y1} ${m},${y2} ${x2},${y2}"/>`};
+ w.querySelectorAll(".mmb").forEach(b=>{const r=b.classList.contains("r"),c=getComputedStyle(b).getPropertyValue("--gc"),g=rel(b.querySelector(".mmg"));
+  p+=r?cv(root.r-6,root.y,g.l,g.y,c,"lk1"):cv(root.l+6,root.y,g.r,g.y,c,"lk1");
+  b.querySelectorAll(".mmleaf").forEach(lf=>{const q=rel(lf);p+=r?cv(g.r,g.y,q.l,q.y,c,"lk2"):cv(g.l,g.y,q.r,q.y,c,"lk2")})});
+ sv.setAttribute("width",R.width);sv.setAttribute("height",R.height);sv.innerHTML=p}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;e.preventDefault();go(b.dataset.go,true,true)});
+document.addEventListener("pointerover",e=>{const b=e.target.closest(".mmb");document.querySelectorAll(".mmb.hot").forEach(x=>x!==b&&x.classList.remove("hot"));if(b)b.classList.add("hot")});
+
+/* called after the atlas content is defined */
+function pharmFinish(){GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
+ const el=document.getElementById("pstats");if(el){const tops=SEC.filter(s=>!s.mind),drugs=new Set();tops.forEach(s=>(s.drugs||"").split(" · ").forEach(d=>d&&drugs.add(d)));
+  el.innerHTML=`<span><b>${new Set(tops.map(s=>s.k)).size}</b> กลุ่ม</span><span><b>${tops.length}</b> หัวข้อ</span><span><b>${drugs.size}+</b> ยาต้นแบบ</span>`}}
+
+/* ================= Renal pharmacology ================= */
+Object.assign(ST,{});
+/* ---------- master nephron map: every drug sits on its transporter ---------- */
+function nephronMap(){let b="";const hot=k=>on(k)?" hot":"";
+ /* zones */
+ b+=`<rect class="zone cx" x="10" y="14" width="740" height="170" rx="14"/><rect class="zone om" x="10" y="184" width="740" height="130"/><rect class="zone im" x="10" y="314" width="740" height="140" rx="14"/>`;
+ b+=T(22,34,"Cortex",{a:"start",c:"s m"})+T(22,206,"Outer medulla",{a:"start",c:"s m"})+T(22,336,"Inner medulla",{a:"start",c:"s m"})+T(22,352,"osmolality ↑",{a:"start",c:"s m"});
+ /* vessels + glomerulus */
+ b+=`<path class="p-blood" d="M20,150 C50,140 60,120 72,104"/><path class="p-blood eff" d="M104,120 C112,146 116,160 120,176"/>`;
+ b+=T(24,170,"afferent",{a:"start",c:"s m"})+T(126,186,"efferent (AT₁)",{a:"start",c:"s m"})+glow(114,150,"at1",11);
+ b+=`<circle class="p-bow" cx="90" cy="92" r="38"/><circle class="p-glom" cx="88" cy="94" r="24"/>`+T(88,98,"Glom",{c:"s"});
+ /* tube: PCT → thin descending → loop → TAL → DCT → CD */
+ const tube="M126,88 C150,58 176,122 200,90 S246,58 270,92 S296,118 300,140 L300,396 C300,430 360,430 360,396 L360,160 C360,128 392,120 420,128 S470,140 500,118 S540,100 560,104";
+ b+=`<path class="p-tubeo" d="${tube}"/><path class="p-tubei" d="${tube}"/><path class="p-tubeo" d="M560,96 L560,446"/><path class="p-tubei" d="M560,96 L560,446"/>`;
+ b+=T(206,128,"PCT · 65% Na⁺",{c:"bh"})+T(292,300,"thin descending",{a:"end",c:"s"})+T(292,316,"(H₂O ออก)",{a:"end",c:"s m"});
+ b+=T(368,372,"TAL · 15–25%",{a:"start",c:"bh"})+T(440,96,"DCT · 4–8%",{c:"bh"})+T(548,436,"Collecting duct · 2–5%",{a:"end",c:"bh"});
+ /* targets */
+ b+=glow(172,86,"ca")+rec(172,86,"",false)+T(172,66,"CA",{c:"s"});
+ b+=glow(246,76,"sglt2")+rec(246,76,"",false)+T(246,56,"SGLT2",{c:"s"});
+ b+=glow(300,230,"osm",14)+glow(200,90,"osm",14);
+ b+=glow(360,262,"nkcc2")+rec(360,262,"NKCC2",true);
+ b+=glow(470,132,"ncc")+rec(470,132,"",true)+T(470,158,"NCC",{c:"s"});
+ b+=glow(560,198,"enac")+rec(560,198,"",true)+T(548,202,"ENaC",{a:"end",c:"s"});
+ b+=glow(560,244,"mr")+`<rect class="p-enz${hot("mr")}" x="508" y="234" width="40" height="20" rx="6"/>`+T(528,248,"MR",{c:"s"})+T(548,272,"← aldosterone",{a:"end",c:"s m"});
+ b+=glow(560,356,"v2")+rec(560,356,"",true)+T(548,350,"V₂ → AQP2",{a:"end",c:"s"})+T(548,366,"← ADH",{a:"end",c:"s m"});
+ /* pills */
+ b+=pill(150,30,"Acetazolamide","inh","ca");
+ b+=pill(214,154,"SGLT2 inhibitors","inh","sglt2");
+ b+=pill(212,214,"Mannitol","mod","osm");
+ b+=pill(440,292,"Loop diuretics","inh","nkcc2");
+ b+=pill(458,180,"Thiazides","inh","ncc");
+ b+=pill(664,198,"Amiloride · Triamterene","bl","enac");
+ b+=pill(664,244,"Spironolactone · Eplerenone","bl","mr");
+ b+=pill(664,340,"Tolvaptan · Conivaptan","bl","v2");
+ b+=pill(664,376,"Desmopressin","ag","v2d");
+ b+=pill(92,238,"ACEi · ARB","bl","at1");
+ if(on("v2d"))b+=glow(560,356,"v2d");
+ return psvg(b,"0 0 760 464")}
+const NMAP=keys=>()=>{HL=keys;return nephronMap()};
+const NT=[["all","Show all drugs"]];
+
+/* diuretic electrolyte grid (Katzung Table 15-2 + Ca/Mg text) */
+function lyteGrid(){const C=["NaCl","NaHCO₃","K⁺","Body pH","Ca²⁺ ในปัสสาวะ"],R=[["CA inhibitors",["+","+++","+","↓ acidosis","↑"]],["Loop",["++++","0","+","↑ alkalosis","↑"]],["Thiazides",["++","+","+","↑ alkalosis","↓"]],["Loop + thiazide",["+++++","+","++","↑ alkalosis","—"]],["K⁺-sparing",["+","(+)","−","↓ acidosis","—"]]];
+ const x0=170,cw=100,rh=50;let b="";C.forEach((c,i)=>b+=T(x0+cw*i+cw/2,30,c,{c:"bh"}));
+ R.forEach(([n,v],j)=>{const y=44+j*rh;b+=T(20,y+30,n,{a:"start",c:"bh"});v.forEach((t,i)=>{const lvl=(t.match(/\+/g)||[]).length,neg=t==="−",x=x0+cw*i;
+  const cls=i===3?(t.includes("acid")?"acid":"alk"):i===4?(t==="↑"?"up":t==="↓"?"dn":"z"):neg?"neg":"l"+Math.min(lvl,5);
+  b+=`<rect class="lg ${cls}" x="${x+3}" y="${y+4}" width="${cw-6}" height="${rh-8}" rx="9"/>`+T(x+cw/2,y+30,t,{c:"bh"})})});
+ b+=T(340,312,"+ = ขับออกเพิ่ม · − = ขับออกลดลง · 0 = ไม่เปลี่ยน",{c:"s m"});return psvg(b,"0 0 680 324")}
+
+Object.assign(GN,{a:"Foundations",b:"Diuretics",c:"Water & RAAS",d:"Using diuretics",e:"Treating kidney disease",f:"Fluids, K⁺, Na⁺ & acid–base"});
+
+/* ---------- a · foundations ---------- */
+SEC.push({id:"nephron",k:"a",t:"Nephron drug map",mm:"Nephron drug map",drugs:"",act:[],tools:NT,leg:["inh","bl","ag","mod"],draw:NMAP(["ca","sglt2","osm","nkcc2","ncc","enac","mr","v2","v2d","at1"]),
+notes:()=>`<div class="pearl">ยาแต่ละกลุ่มวางอยู่บน transporter ที่มันออกฤทธิ์ · ในหัวข้ออื่น ยาของหัวข้อนั้นจะสว่าง กด <b>Show all drugs</b> เพื่อดูทั้งหมด</div>
+ <h3>Na⁺ ถูกดูดกลับที่ไหน</h3>${tbl(["Segment","% filtered Na⁺","Transporter → ยา"],[["PCT","65% (+ HCO₃⁻ 85%, glucose ~100%)","NHE3/CA → acetazolamide · SGLT2 → gliflozin"],["Thin descending","น้ำอย่างเดียว","aquaporin (mannitol ต้าน)"],["TAL","15–25%","NKCC2 → loop diuretics"],["DCT","4–8%","NCC → thiazides"],["Collecting tubule","2–5%","ENaC → amiloride · MR → spironolactone · V₂ → vaptans"]])}${S.k}
+ <h3>หลักที่ใช้ได้ทุกกลุ่ม</h3><ul><li>ยาส่วนใหญ่ต้อง <b>ถูกหลั่งเข้า lumen ที่ proximal tubule</b> (organic acid transporter) ถึงจะออกฤทธิ์ → NSAID, probenecid แข่งการหลั่ง ${S.k}</li>
+ <li>ยาที่เพิ่ม Na⁺ ไปถึง collecting duct → K⁺ และ H⁺ ถูกหลั่งมากขึ้น → <b>hypokalemic metabolic alkalosis</b> ${S.k}</li><li>ยิ่งออกฤทธิ์ต้น nephron ส่วนปลายยิ่งชดเชยได้ ประสิทธิภาพจึงขึ้นกับ segment ที่ดูดกลับมากและส่วนปลายชดเชยไม่ทัน ${S.k}</li></ul>`});
+
+SEC.push({id:"lytes",k:"a",t:"Urine & blood changes by diuretic",mm:"Electrolyte effects",drugs:"",act:[],leg:[],draw:lyteGrid,
+notes:()=>`<h3>อ่านตาราง</h3><ul><li><b>Loop</b> ขับ NaCl มากที่สุด · Ca²⁺ และ Mg²⁺ ถูกขับมากขึ้น (เสีย lumen-positive potential) ${S.k}</li><li><b>Thiazide</b> ลดการขับ Ca²⁺ (ดูดกลับมากขึ้น) แต่ hypomagnesemia เกิดได้มากกว่า loop ${S.k}</li>
+ <li><b>CA inhibitor</b> และ <b>K⁺-sparing</b> → hyperchloremic metabolic acidosis ${S.k}</li><li>Loop + thiazide → ขับ NaCl เสริมกันแรงมาก และเสีย K⁺ มาก ${S.k}</li></ul>
+ <h3>Mnemonic ช่วยจำ</h3><ul><li>"Loops Lose Ca²⁺" · thiazide เก็บ Ca²⁺ ${S.x}</li><li>Hyper-GLUC ของ thiazide: hyperGlycemia, hyperLipidemia, hyperUricemia, hyperCalcemia ${S.x}</li></ul>`});
+
+/* ---------- b · diuretics ---------- */
+SEC.push({id:"cai",k:"b",t:"Carbonic anhydrase inhibitors",mm:"CA inhibitors",drugs:"acetazolamide · methazolamide · dorzolamide",act:["inh"],tools:NT,leg:["inh"],draw:NMAP(["ca"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง carbonic anhydrase ใน PCT → ดูดกลับ NaHCO₃ ไม่ได้ → alkaline diuresis ${S.k}</li><li>ยับยั้งได้ ~85% ของ HCO₃⁻ ที่ PCT แต่ทั้งไต ~45% · ฤทธิ์ diuretic <b>หมดใน 2–3 วัน</b> (HCO₃⁻ ใน filtrate ลด) ${S.k}</li></ul>
+ <h3>PK</h3><ul><li>Oral ดูดซึมดี · urine pH ขึ้นใน 30 นาที สูงสุด 2 ชม. อยู่ 12 ชม. · ขับทาง PCT S2 → ลดขนาดในไตเสื่อม ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li><b>Glaucoma</b> (ลด aqueous humor) · topical dorzolamide, brinzolamide ${S.k}</li><li><b>Acute mountain sickness</b> (125 mg bid ก็พอ) · central sleep apnea ${S.k}</li>
+ <li><b>Metabolic alkalosis</b> ในคนที่ให้ volume ไม่ได้ เช่น HF ที่ใช้ diuretic มาก ${S.k}</li><li>Urinary alkalinization (cystine pH 7–7.5, uric acid 6–6.5) แต่ได้ผลแค่ 2–3 วัน · idiopathic intracranial HTN, CSF leak ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>Hyperchloremic metabolic acidosis · <b>calcium phosphate stones</b> · เสีย K⁺ และ phosphate ${S.k}</li><li>ง่วง, paresthesia · sulfonamide hypersensitivity (DRESS, bone marrow suppression) ${S.k}</li></ul>
+ <div class="pearl">ห้ามใน <b>cirrhosis</b>: ปัสสาวะด่าง → NH₄⁺ เปลี่ยนเป็น NH₃ ถูกดูดกลับ → hyperammonemia, hepatic encephalopathy ${S.k}</div>`});
+
+SEC.push({id:"sglt2",k:"b",t:"SGLT2 inhibitors",mm:"SGLT2 inhibitors",drugs:"dapagliflozin · empagliflozin · canagliflozin",act:["inh"],tools:NT,leg:["inh"],draw:NMAP(["sglt2"]),
+notes:()=>`<h3>กลไก</h3><ul><li>SGLT2 ใน PCT ดูดกลับ glucose ~90% · ยาทำให้ขับ glucose ได้ 30–50% ของที่กรอง → glycosuria + natriuresis เล็กน้อย ${S.k}</li><li>Angiotensin II เพิ่มการสร้าง SGLT2 ผ่าน AT₁ ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li><b>Cardio- และ renoprotection</b> ตอนนี้เป็นข้อบ่งใช้หลัก มากกว่าเบาหวาน ${S.k}</li><li>Dapagliflozin อนุมัติใน HFrEF ทั้งมีและไม่มีเบาหวาน ${S.k}</li><li>DM: HbA1c ลด 0.5–1% · น้ำหนักลด ~3 kg · SBP ลด ~5 mmHg ${S.k}</li></ul>
+ <h3>ทำไมปกป้องไต</h3><ul><li>ลด intraglomerular pressure คล้าย ACEi → <b>GFR ลดช่วงแรก</b> แล้วชะลอ CKD ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li><b>Genital fungal infection</b> (ผู้หญิงเพิ่ม ~6 เท่า), UTI เพิ่มเล็กน้อย ${S.k}</li><li>Hypoglycemia น้อย · มีรายงาน AKI ${S.k}</li><li>Euglycemic DKA ${S.x}</li></ul>
+ <div class="pearl">Rifampin ลด exposure ของ dapagliflozin ~22% ${S.k}</div>`});
+
+SEC.push({id:"osmotic",k:"b",t:"Osmotic diuretics",mm:"Osmotic diuretics",drugs:"mannitol",act:["mod"],tools:NT,leg:["mod"],draw:NMAP(["osm"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ถูกกรองแต่ไม่ถูกดูดกลับ → ดึงน้ำไว้ใน <b>PCT และ thin descending limb</b> (ส่วนที่น้ำผ่านได้) · ต้าน ADH ใน collecting tubule ${S.k}</li><li>ขับน้ำมากกว่า Na⁺ → ในที่สุด hypernatremia ${S.k}</li></ul>
+ <h3>PK</h3><ul><li>ต้องให้ <b>IV</b> (กินแล้วเป็น osmotic diarrhea) · ไม่ถูก metabolize ขับใน 30–60 นาที ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li>ลด <b>intracranial pressure</b> และ intraocular pressure ก่อนผ่าตัดตา: 1–2 g/kg IV · ICP ลดใน 60–90 นาที ${S.k}</li><li>บางคนใช้กัน dialysis disequilibrium (หลักฐานน้อย) ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li><b>ECF expansion</b> ก่อนขับ → อันตรายใน HF (pulmonary edema) ${S.k}</li><li>Dehydration, hypernatremia, hyperkalemia · ไตวายมาก → mannitol ค้าง → hyponatremia ${S.k}</li><li><b>AKI</b> ~6–7% ${S.k}</li></ul>`});
+
+SEC.push({id:"loop",k:"b",t:"Loop diuretics",mm:"Loop diuretics",drugs:"furosemide · bumetanide · torsemide · ethacrynic acid",act:["inh"],tools:NT,leg:["inh"],draw:NMAP(["nkcc2"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง <b>NKCC2</b> ที่ TAL → ขับ NaCl มากที่สุด (efficacy สูงสุด) ${S.k}</li><li>เสีย lumen-positive potential → ขับ <b>Ca²⁺ และ Mg²⁺</b> มากขึ้น ${S.k}</li><li>เหนี่ยวนำ COX-2 → PGE₂ ช่วยฤทธิ์ · <b>NSAID ลดฤทธิ์</b> · ลด LV filling pressure ก่อนปัสสาวะออก ${S.k}</li></ul>
+ <h3>ขนาดเทียบเท่า</h3>${tbl(["ยา","oral/วัน","เทียบเท่า"],[["Furosemide","20–80 mg","20 mg (bioavailability แปรผัน)"],["Torsemide","5–20 mg","10 mg · ออกฤทธิ์ 4–6 ชม."],["Bumetanide","0.5–2 mg","0.5 mg"],["Ethacrynic acid","50–200 mg","~50 mg · ไม่ใช่ sulfonamide"]])}${S.k}
+ <h3>ใช้เมื่อ</h3><ul><li><b>Acute pulmonary edema</b> และ edema อื่น ๆ · HTN ที่มีไตเสื่อม ${S.k}</li><li><b>Hypercalcemia</b> (คู่กับ saline) · <b>hyperkalemia</b> · anion overdose (Br⁻, F⁻, I⁻) ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li><b>Hypokalemic metabolic alkalosis</b> · hypomagnesemia · hyperuricemia/gout · dehydration ${S.k}</li><li><b>Ototoxicity</b> (NKCC1 ในหูชั้นใน) โดยเฉพาะร่วม aminoglycoside ${S.k}</li><li>Sulfonamide allergy (rash, interstitial nephritis) · ใช้ ethacrynic acid แทน ${S.k}</li></ul>
+ <div class="pearl">AKI: loop ช่วยเพิ่มปัสสาวะและขับ K⁺ แต่ <b>ไม่ป้องกันหรือย่นระยะ AKI</b> ${S.k}${S.p}</div>`});
+
+SEC.push({id:"thiazide",k:"b",t:"Thiazides",mm:"Thiazides",drugs:"hydrochlorothiazide · chlorthalidone · indapamide · metolazone",act:["inh"],tools:NT,leg:["inh"],draw:NMAP(["ncc"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง <b>NCC</b> ที่ DCT · <b>เพิ่ม</b> การดูดกลับ Ca²⁺ (Na⁺ ในเซลล์ลด → Na⁺/Ca²⁺ exchange เพิ่ม) ${S.k}</li><li>ฤทธิ์อาศัย prostaglandin เช่นกัน · NSAID ลดฤทธิ์ ${S.k}</li></ul>
+ <h3>ยาในกลุ่ม</h3><ul><li>HCTZ 25–100 mg · chlorthalidone 25–50 mg (ออกฤทธิ์นาน, มีฤทธิ์ CA inhibitor) · chlorothiazide ตัวเดียวที่ให้ IV · indapamide ขับทางน้ำดีเป็นหลัก · metolazone = sulfonamide คล้าย thiazide ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li>(1) Hypertension (2) heart failure (3) <b>นิ่วจาก idiopathic hypercalciuria</b> (4) <b>nephrogenic DI</b> ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>Hypokalemic metabolic alkalosis · <b>hyponatremia</b> (ผู้หญิงสูงอายุ) ${S.k}</li><li>Hyperglycemia (HCTZ &gt;50 mg/d; ผ่าน K-ATP channel ใน β cell, แย่ลงเมื่อ K⁺ ต่ำ) · LDL ↑ 5–15% · uric acid ↑ · เปิดโปง hypercalcemia ${S.k}</li>
+ <li>Sulfonamide allergy, photosensitivity · <b>skin cancer</b> เพิ่มขึ้น · hypomagnesemia ${S.k}</li></ul>
+ <div class="pearl">ใช้ thiazide/amiloride รักษา <b>lithium-induced nephrogenic DI</b> แต่ต้องเฝ้าระดับ Li⁺ เพราะ diuretic ลดการขับ Li⁺ ${S.k}</div>`});
+
+SEC.push({id:"ksparing",k:"b",t:"K⁺-sparing diuretics",mm:"K⁺-sparing diuretics",drugs:"spironolactone · eplerenone · finerenone · amiloride · triamterene",act:["bl"],tools:NT,leg:["bl"],draw:NMAP(["enac","mr"]),
+notes:()=>`<h3>2 กลไก</h3><ul><li><b>MR antagonist</b>: spironolactone (steroid, active metabolite canrenone นาน), eplerenone (selective กว่า), finerenone (non-steroidal) ${S.k}</li><li><b>ENaC blocker</b>: amiloride (ไม่ถูก metabolize), triamterene (ตับ, ครึ่งชีวิตสั้น) ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li><b>Hyperaldosteronism</b> ทั้ง primary (Conn) และ secondary (HF, cirrhosis, nephrotic) ${S.k}</li><li>HFrEF: spironolactone (RALES), eplerenone หลัง MI ลดตาย ~15% ${S.k}</li>
+ <li>แก้ hypokalemia จาก loop/thiazide · <b>Liddle syndrome</b> → amiloride · Li⁺-induced NDI → amiloride ${S.k}</li><li>Spironolactone: acne, female-pattern hair loss · finerenone ลด albuminuria ใน CKD + DM ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li><b>Hyperkalemia</b> (เสี่ยงมากในไตเสื่อม หรือใช้ร่วม ACEi, ARB, β-blocker, NSAID, aliskiren) ${S.k}</li><li>Hyperchloremic metabolic acidosis (คล้าย type IV RTA) ${S.k}</li>
+ <li>Spironolactone: <b>gynecomastia</b>, impotence (anti-androgen) · eplerenone ไม่มี ${S.k}</li><li>Triamterene: นิ่ว, AKI เมื่อใช้ร่วม indomethacin ${S.k}</li></ul>
+ <div class="pearl">หยุด oral K⁺ เมื่อเริ่ม K⁺-sparing · eplerenone ระดับสูงขึ้นมากกับ CYP3A4 inhibitor ${S.k}</div>`});
+
+/* ---------- c · water & RAAS ---------- */
+SEC.push({id:"adh",k:"c",t:"ADH antagonists & agonists",mm:"ADH drugs (vaptans · DDAVP)",drugs:"tolvaptan · conivaptan · desmopressin · demeclocycline",act:["bl","ag"],tools:NT,leg:["bl","ag"],draw:NMAP(["v2","v2d"]),
+notes:()=>`<h3>Vaptans (ADH receptor antagonists)</h3><ul><li><b>Tolvaptan</b> (oral, V₂ selective, t½ 12–24 ชม.) · <b>conivaptan</b> (IV, V₁a + V₂) ${S.k}</li><li>Demeclocycline, lithium ลด cAMP ที่ ADH กระตุ้น (กลไกไม่ชัด) ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li><b>SIADH</b> เมื่อจำกัดน้ำไม่ได้ผล: tolvaptan 7.5–60 mg/d หรือ demeclocycline 600–1200 mg/d ${S.k}</li><li>Hyponatremia ใน HF (conivaptan ลด SVR ผ่าน V₁a) · cirrhosis ${S.k}</li><li><b>ADPKD</b>: tolvaptan ชะลอไตโตและไตเสื่อม ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>Nephrogenic DI, <b>hypernatremia</b> ถ้าไม่เฝ้า Na⁺ · กระหายน้ำ ปากแห้ง ${S.k}</li><li>Tolvaptan: <b>LFT ↑</b> (ขนาดสูงใน ADPKD) · boxed warning ให้เริ่มใน รพ. · เลี่ยง strong CYP3A4 inhibitor ${S.k}${S.p}</li></ul>
+ <h3>Desmopressin (V₂ agonist)</h3><ul><li>ADH หรือ analog ได้ผลเฉพาะ <b>central DI</b> · nephrogenic DI ใช้ thiazide ${S.k}</li><li>ใช้ใน nocturnal enuresis, hemophilia A/von Willebrand disease ${S.x}</li></ul>`});
+
+SEC.push({id:"raas",k:"c",t:"ACE inhibitors, ARBs & aliskiren (kidney)",mm:"RAAS blockers",drugs:"enalapril · lisinopril · losartan · valsartan · aliskiren",act:["bl","inh"],tools:NT,leg:["bl"],draw:NMAP(["at1"]),
+notes:()=>`<h3>กลไก</h3><ul><li><b>ACEi</b>: ยับยั้ง ACE → Ang II ↓ และ bradykinin ↑ · <b>ARB</b>: บล็อก AT₁ (ไม่มีผลต่อ bradykinin) · <b>aliskiren</b>: ยับยั้ง renin โดยตรง ${S.k}</li>
+ <li>Efferent arteriole ขยาย → <b>intraglomerular pressure ↓</b> → ลด proteinuria และชะลอไตเสื่อม แม้ BP ไม่ลด ${S.k}</li></ul>
+ <h3>ใช้ใน CKD</h3><ul><li>ยาความดันที่เลือกเป็นอันดับแรกใน CKD ที่มี albuminuria ${S.p}</li><li>ตรวจ SCr, K⁺, BP ภายใน 1 สัปดาห์หลังเริ่ม · <b>SCr ↑ &gt;30%</b>, K⁺ สูง หรือ BP ต่ำ → หยุด/เปลี่ยน ${S.p}</li><li>ปรับขนาดทุก 1–3 เดือนจนถึงขนาดสูงสุดที่ทนได้ ${S.p}</li></ul>
+ <h3>ADR · ข้อห้าม</h3><ul><li>Hyperkalemia · <b>AKI ใน bilateral renal artery stenosis</b> หรือไตข้างเดียวตีบ ${S.k}</li><li>ACEi: <b>ไอแห้ง, angioedema</b> (bradykinin, substance P) · captopril: neutropenia, proteinuria, รสเปลี่ยน ${S.k}</li>
+ <li><b>ห้ามในครรภ์</b> (fetal hypotension, anuria, renal failure) ${S.k}</li><li>ACEi + ARB หรือ + aliskiren: ไม่ได้ประโยชน์เพิ่มและมี ADR มากขึ้น ${S.k}</li></ul>
+ <div class="pearl">ทุกตัวยกเว้น lisinopril เป็น prodrug · ACEi ส่วนใหญ่ขับทางไต (ยกเว้น fosinopril, moexipril) → ลดขนาด ${S.k}</div>`});
+
+/* ---------- d · using diuretics ---------- */
+SEC.push({id:"resist",k:"d",t:"Diuretic combinations & resistance",mm:"Combos & resistance",drugs:"metolazone · chlorothiazide IV",act:["inh"],leg:[],
+draw:()=>flowD([["Dose ให้ถึง และถี่พอ","loop t½ สั้น 2–6 ชม. → Na⁺ retention ระหว่าง dose · พิจารณา continuous infusion"],["เพิ่ม thiazide (sequential blockade)","metolazone หรือ chlorothiazide IV · DCT ดูดกลับเพิ่มเมื่อ TAL ถูกบล็อก","gl"],["เฝ้าใกล้ชิด","น้ำออกมาก · เสีย K⁺ มาก อาจต้องให้ K⁺ IV","ar"],["Hypokalemia แก้ไม่ได้","จำกัด NaCl, KCl → เพิ่ม K⁺-sparing (ระวังไตเสื่อม + ACEi)","vn"]]),
+notes:()=>`<h3>ทำไม loop + thiazide เสริมกัน</h3><ul><li>บล็อก TAL แล้ว DCT ดูดกลับมากขึ้น (และกลับกัน) · thiazide ยังมี natriuresis เล็กน้อยที่ proximal tubule ${S.k}</li><li>Metolazone นิยมใช้ แต่ thiazide อื่นขนาดเทียบเท่าก็น่าจะได้ผล ${S.k}</li>
+ <li>Outpatient: เริ่ม metolazone 2.5 mg สัปดาห์ละครั้งแล้วค่อยเพิ่ม ${S.k}</li><li>ให้ thiazide 30–60 นาทีก่อน loop ${S.p}</li></ul>
+ <h3>ใช้ diuretic ตามภาวะ</h3><ul><li><b>Edema</b>: ขับช้า ๆ ไม่ให้ effective arterial volume ลดจนอวัยวะขาดเลือด ${S.k}</li><li><b>Hypercalcemia</b>: saline + furosemide 80–120 mg IV, ปรับ saline ตามปัสสาวะ ${S.k}</li><li><b>Nephrogenic DI</b>: thiazide (+ จำกัดเกลือ) · Li⁺-induced: amiloride ${S.k}</li></ul>
+ <div class="pearl">การเพิ่ม thiazide ให้ loop ได้ diuresis มากกว่าเพิ่ม spironolactone ${S.k}</div>`});
+
+/* ---------- e · treating kidney disease ---------- */
+SEC.push({id:"aki",k:"e",t:"AKI: drugs that help and drugs that harm",mm:"AKI",drugs:"",act:[],leg:[],
+draw:()=>cards([["Prerenal: isotonic crystalloid","0.9% NaCl เติม intravascular volume · D5W กระจายไปทุก compartment","vn"],["Loop diuretics","ใช้แก้ volume overload เท่านั้น · ไม่ป้องกัน AKI อาจทำให้แย่ลง","gl"],["ไม่แนะนำ","low-dose dopamine (0.5–3 mcg/kg/min) · fenoldopam · ANP","ar"],["หยุด/เลี่ยงยาเป็นพิษต่อไต","aminoglycoside · amphotericin B · NSAID · ACEi/ARB · calcineurin inhibitor · contrast","ar"],["ลดความเสี่ยง","aminoglycoside วันละครั้ง · lipid amphotericin · IV fluid ก่อน contrast",""]]),
+notes:()=>`<h3>ยาที่ทำให้ไตวาย</h3><ul><li>Prerenal ผ่าน hemodynamics: <b>NSAID</b> (ตัด prostaglandin ที่ขยาย afferent) · <b>ACEi/ARB</b> (efferent ขยาย) ${S.p}</li><li>ATN: aminoglycoside, contrast, amphotericin B · calcineurin inhibitor (cyclosporine, tacrolimus) ${S.p}</li></ul>
+ <h3>ป้องกัน</h3><ul><li>Aminoglycoside: <b>extended-interval (once-daily)</b> ลด AKI · vancomycin + aminoglycoside เสี่ยงมากขึ้น ${S.p}</li><li>Amphotericin: lipid formulations ในคนเสี่ยง + NS ${S.p}</li>
+ <li><b>Contrast-induced AKI</b>: IV isotonic NaCl หรือ NaHCO₃ เริ่ม 3–12 ชม. ก่อน · nonionic contrast ในคนเสี่ยง · N-acetylcysteine ผลไม่แน่นอน ${S.p}</li></ul>
+ <h3>รักษา</h3><ul><li>Diuretic resistance: เพิ่มขนาด, ให้ continuous infusion หรือเพิ่ม metolazone/HCTZ ${S.p}</li><li>ปรับขนาดยาทุกตัวตามการทำงานของไตที่เปลี่ยนเร็ว ${S.p}</li></ul>`});
+
+SEC.push({id:"ckd",k:"e",t:"CKD: slowing progression",mm:"CKD progression",drugs:"ACEi · ARB · SGLT2 inhibitors · finerenone",act:["bl","inh"],leg:[],
+draw:()=>cards([["ACEi หรือ ARB","ลด proteinuria · ใช้ถึงขนาดสูงสุดที่ทนได้ · ไม่ใช้คู่กัน","vn"],["SGLT2 inhibitor","GFR ลดช่วงแรกแล้วชะลอ CKD · ใช้ได้ถึง GFR ~30 ในการศึกษา","gl"],["MR antagonist","eplerenone/finerenone ลด albuminuria ใน DM (ระวัง K⁺)","gl"],["ควบคุมเบาหวาน","HbA1c เป้า <7% ลด albuminuria",""],["ส่งต่อ nephrologist","CKD G4 → เตรียม renal replacement therapy","ar"]]),
+notes:()=>`<h3>ACEi/ARB</h3><ul><li>ยาความดันที่เลือกเป็นอันดับแรกใน CKD + albuminuria · ใช้ร่วมกันเต็มขนาดไม่แนะนำ ${S.p}</li><li>ติดตาม SCr, K⁺, BP ใน 1 สัปดาห์ · SCr ↑ &gt;30% ให้หยุด ${S.p}</li></ul>
+ <h3>Renal & cardiac protection</h3><ul><li>SGLT2 inhibitor: ผล renoprotection เป็น class effect · CREDENCE, EMPA-REG รวมคน GFR ≥30 ${S.k}</li><li>MR antagonist ลด albuminuria ใน DM · finerenone hyperkalemia น้อยกว่า spironolactone ${S.k}</li></ul>
+ <h3>ติดตาม</h3><ul><li>G3a ตรวจทุก 12 เดือนจนพบ albuminuria แล้วถี่ขึ้น 4–6 เดือน · ระยะหลัง ทุก 3–6 เดือน ${S.p}</li></ul>`});
+
+SEC.push({id:"anemia",k:"e",t:"CKD: anemia (iron · ESA)",mm:"Anemia of CKD",drugs:"ferrous sulfate · iron sucrose · epoetin alfa · darbepoetin",act:["ag","mod"],leg:[],
+draw:()=>flowD([["เช็ก TSat และ ferritin","TSat <30% และ ferritin <500 ng/mL → ให้ iron ก่อน"],["Iron","ไม่ dialysis: oral 200 mg elemental Fe/วัน 1–3 เดือน · HD: IV iron","vn"],["ESA ถ้า Hb ยังต่ำ","SC ดีกว่า IV · Hb ไม่ขึ้น 1 g/dL ใน 4 สัปดาห์ → เพิ่ม 25%","gl"],["อย่าให้สูงเกิน","Hb ไม่เกิน 11.5 g/dL · ขึ้นเร็วเกิน → ลด ESA 25%","ar"],["ติดตาม","Hb ทุกเดือน (dialysis) / 3 เดือน · iron ทุก 3 เดือน","" ]]),
+notes:()=>`<h3>สาเหตุ</h3><ul><li>ไตสร้าง EPO 90% · nephron ลด → EPO ลด ${S.p}</li></ul>
+ <h3>Iron</h3><ul><li><b>First-line</b> = เติม iron · oral ถูกกว่า ใช้ใน non-dialysis · HD เสียเหล็ก 1–2 g/ปี → IV ${S.p}</li><li>IV iron ทุกตัวอาจ anaphylaxis โดยเฉพาะ <b>iron dextran</b> (test dose 25 mg) ${S.p}</li></ul>
+ <h3>ESA</h3><ul><li>Epoetin alfa, darbepoetin, CERA (methoxy PEG-epoetin β) ประสิทธิภาพเท่ากัน ${S.p}</li><li>ADR: <b>ความดันสูง</b> (ระวังถ้า &gt;180/100) · ชัก · pure red cell aplasia ${S.p}</li><li>ESA เพิ่มความต้องการเหล็ก → มักต้องให้ iron ต่อ ${S.p}</li></ul>`});
+
+SEC.push({id:"mbd",k:"e",t:"CKD: mineral & bone disorder",mm:"CKD-MBD",drugs:"sevelamer · calcium acetate · lanthanum · calcitriol · cinacalcet",act:["mod","ag"],leg:[],
+draw(){let b="";const box=(x,y,w,h,t,s,c="")=>`<rect class="box ${c}" x="${x}" y="${y}" width="${w}" height="${h}" rx="12"/>`+T(x+w/2,y+24,t,{c:"bh"})+(s?T(x+w/2,y+42,s,{c:"s m"}):"");
+ b+=box(230,16,180,52,"GFR ↓","phosphate คั่ง · calcitriol ↓","ar")+arr("M320,70 L320,104")+box(200,106,240,52,"PTH ↑ (secondary HPT)","Ca²⁺ ↓ · PO₄ ↑ · 1,25-D ↓","ar")+arr("M320,160 L320,196")+box(230,198,180,46,"CKD-MBD","bone · vascular calcification","");
+ b+=pill(110,70,"Phosphate binders","mod","x",true)+T(110,96,"sevelamer · lanthanum",{c:"s"})+T(110,112,"Ca acetate/carbonate",{c:"s"})+T(110,128,"ferric citrate",{c:"s"})+arr("M168,70 L228,40");
+ b+=pill(540,90,"Vitamin D analogs","ag","x",true)+T(540,116,"calcitriol · paricalcitol",{c:"s"})+T(540,132,"doxercalciferol",{c:"s"})+arr("M486,98 L442,124");
+ b+=pill(540,186,"Calcimimetics","ag","x",true)+T(540,212,"cinacalcet (PO)",{c:"s"})+T(540,228,"etelcalcetide (IV)",{c:"s"})+arr("M490,186 L442,140");
+ return psvg(b,"0 0 640 256")},
+notes:()=>`<h3>Phosphate binders (กินพร้อมอาหาร)</h3>${tbl(["กลุ่ม","จุดเด่น · ข้อเสีย"],[["Calcium acetate/carbonate","ถูก · Ca²⁺ สูง, vascular calcification"],["Sevelamer","ไม่มี Ca/Al · ลด LDL · GI ADR"],["Lanthanum","ไม่มี Ca · คลื่นไส้"],["Ferric citrate, sucroferric oxyhydroxide","iron-based · pill น้อยกว่า"],["Aluminum","ไม่ใช้ระยะยาว: encephalopathy, bone disease"]])}${S.p}
+ <h3>Vitamin D</h3><ul><li>G3: ergocalciferol/cholecalciferol · G4–5: <b>activated</b> (calcitriol, doxercalciferol, paricalcitol) ลด PTH ${S.p}</li><li>เพิ่มการดูดซึม Ca และ PO₄ → hypercalcemia/hyperphosphatemia · ต้องให้ Ca, PO₄ ปกติก่อน ${S.p}</li></ul>
+ <h3>Calcimimetics</h3><ul><li>เพิ่มความไวของ CaSR ที่ parathyroid → PTH ↓ และ Ca²⁺ ↓ · ใช้เมื่อ Ca/PO₄ สูง หรือใช้ vitamin D ไม่ได้ ${S.p}</li><li>Cinacalcet: คลื่นไส้อาเจียน · etelcalcetide IV หลัง HD · ระวังชัก (Ca ต่ำ) ${S.p}</li></ul>`});
+
+/* ---------- f · fluids, K, Na, acid–base ---------- */
+SEC.push({id:"hyperk",k:"f",t:"Hyperkalemia & hypokalemia",mm:"K⁺ disorders",drugs:"calcium chloride · insulin · albuterol · patiromer · KCl",act:["mod","ag"],leg:[],
+draw:()=>flowD([["1 · Stabilize myocardium","K⁺ >7 หรือ ECG เปลี่ยน → calcium IV · onset 1–2 นาที อยู่ 10–30 นาที","ar"],["2 · Shift K⁺ เข้าเซลล์","insulin + dextrose (30 นาที, 2–6 ชม.) · albuterol ขนาดสูง · ± NaHCO₃","gl"],["3 · เอา K⁺ ออกจากร่างกาย","loop diuretic · SPS · patiromer · dialysis","vn"],["Hypokalemia: KCl","IV >10 mEq/hr ต้อง monitor ECG · สูงสุด 40 mEq/hr ทาง central line",""]]),
+notes:()=>`<h3>Hyperkalemia 3 ขั้น</h3><ul><li><b>Calcium</b> (เช่น CaCl₂ 1 g) ไม่ได้ลด K⁺ แค่กัน arrhythmia · ระวัง hypercalcemia เมื่อให้ซ้ำ ${S.p}</li><li><b>Insulin + dextrose</b>: D50 25 g หรือ D10 + regular insulin 20 units · onset 30 นาที ${S.p}</li>
+ <li>ขั้น 1–2 เป็นแค่ซื้อเวลา ต้องตามด้วยการขับ K⁺ ${S.p}</li><li><b>Sodium polystyrene sulfonate</b> 15–60 g/วัน · <b>colonic necrosis</b> (โดยเฉพาะกับ sorbitol) ${S.p}</li><li><b>Patiromer</b>: ใช้แบบไม่เร่งด่วน ผู้ป่วยนอก ${S.p} · sodium zirconium cyclosilicate ${S.k}</li></ul>
+ <h3>ยาที่ทำให้ K⁺ สูง</h3><ul><li>K⁺-sparing, ACEi/ARB, aliskiren, β-blocker, NSAID โดยเฉพาะในไตเสื่อม ${S.k}</li></ul>
+ <h3>Hypokalemia</h3><ul><li>สาเหตุยา: loop, thiazide, CA inhibitor, β₂ agonist ${S.k}</li><li>KCl IV: เกิน 10 mEq/hr ต้อง cardiac monitor · ความเข้มข้นสูงสุด 80 mEq/L ทาง central line ${S.p}</li></ul>`});
+
+SEC.push({id:"sodium",k:"f",t:"Hyponatremia & hypernatremia",mm:"Na⁺ disorders",drugs:"3% NaCl · tolvaptan · conivaptan · 0.9% NaCl",act:["mod","bl"],leg:[],
+draw:()=>cards([["Hypovolemic hyponatremia","ให้ Na⁺ + น้ำ (0.9% NaCl) · คำนวณ Na⁺ deficit","vn"],["Euvolemic (SIADH) / hypervolemic","จำกัดน้ำ → vaptan (tolvaptan เริ่มใน รพ.) · demeclocycline","gl"],["Severe: Na⁺ <110 หรือชัก/โคม่า","3% NaCl · คำนวณ Na⁺ ที่จะเปลี่ยนต่อ 1 L","ar"],["Hypernatremia","คำนวณ TBW deficit · ให้ hypotonic fluid ใน 48–72 ชม.",""],["ห้ามแก้เร็ว","hyper: ≤0.5 mEq/L/hr (≤6–8/24 ชม.) → cerebral edema","ar"]]),
+notes:()=>`<h3>Hyponatremia</h3><ul><li>Hypertonic saline ใช้เมื่อ Na⁺ &lt;110 และ/หรือมีอาการรุนแรง ${S.p}</li><li><b>Tolvaptan</b>: Na⁺ &lt;125 หรือมีอาการและจำกัดน้ำไม่ได้ผล · เริ่ม 15 mg ปรับถึง 60 mg · boxed warning เริ่มใน รพ. ${S.p}</li>
+ <li>Conivaptan IV · ห้ามใช้ vaptan ใน hypovolemic ${S.p}</li><li>Thiazide เป็นสาเหตุที่พบบ่อยของ hyponatremia ใน รพ. ${S.k}</li></ul>
+ <h3>Hypernatremia</h3><ul><li>สาเหตุ: เสียน้ำ, mannitol, DI (lithium, phenytoin), hypertonic saline เกิน ${S.p}</li><li>แก้เร็วเกิน → <b>cerebral edema</b>, ตาย ${S.p}</li></ul>
+ <div class="pearl">แก้ hyponatremia เรื้อรังเร็วเกิน → osmotic demyelination ${S.x}</div>`});
+
+SEC.push({id:"acidbase",k:"f",t:"Acid–base: drug therapy",mm:"Acid–base drugs",drugs:"sodium bicarbonate · citrate · acetazolamide",act:["mod","inh"],leg:[],
+draw:()=>cards([["Metabolic acidosis: แก้ต้นเหตุก่อน","lactic, ketoacidosis มักไม่ต้องให้ NaHCO₃","vn"],["NaHCO₃ เมื่อ","pH <7.15 หรือไตสร้าง HCO₃⁻ ไม่ได้ · ไตวาย, RTA, ethylene glycol, methanol, salicylate","gl"],["ให้แค่ครึ่ง deficit","เป้า HCO₃⁻ >10 · ระวัง volume overload, Na⁺↑, K⁺↓, Ca²⁺↓","ar"],["Chronic acidosis","K citrate/citric acid หรือ Na citrate/citric acid",""],["Metabolic alkalosis","saline-responsive → NaCl + K⁺ · ต้องขับต่อ → acetazolamide 250 mg q6–12h","vn"]]),
+notes:()=>`<h3>Metabolic acidosis</h3><ul><li>บทบาทของ NaHCO₃ ยังถกเถียง · ใช้เมื่อ pH &lt;7.15 หรือไตสร้าง HCO₃⁻ ไม่ได้ ${S.p}</li><li>HCO₃⁻ deficit = [(2.4/HCO₃⁻) + 0.4] × น้ำหนัก × ΔHCO₃⁻ · ให้ไม่เกินครึ่งก่อน ติดตาม blood gas ${S.p}</li><li>THAM เลิกผลิตในสหรัฐ (2016) ${S.p}</li></ul>
+ <h3>Metabolic alkalosis</h3><ul><li>Saline-responsive (diuretic, อาเจียน): NaCl + K⁺ · saline-resistant: แก้ mineralocorticoid excess ${S.p}</li><li><b>Acetazolamide</b> สำหรับคนที่ยังต้องขับน้ำแต่ HCO₃⁻ สูงขึ้น · ค่อย ๆ ได้ผล ไม่ใช่แก้เฉียบพลัน ${S.p}${S.k}</li></ul>
+ <h3>ยาที่ทำให้เกิด</h3><ul><li>Acidosis: CA inhibitor, K⁺-sparing · alkalosis: loop, thiazide, corticosteroid ${S.k}${S.p}</li></ul>`});
+
+pharmFinish();
+/* ================= render: one chapter = one continuous page ================= */
+const $=s=>document.querySelector(s);
+const SEENKEY="sb-pharm-renal-seen",FIGDIR="img/";
+let cur=SEC[0],GRP=null,OBS=null;
+let SEEN={},OPEN={};try{SEEN=JSON.parse(localStorage.getItem(SEENKEY)||"{}")}catch(e){}
+const GROUPS=[...new Set(SEC.map(s=>s.k))];
+const gOf=s=>GROUPS.indexOf(s.k);
+function tocHTML(withHead){const n=Object.keys(SEEN).filter(k=>SEC.some(s=>s.id===k)).length;
+ const subs=[...document.querySelectorAll(`#notes-${cur.id} h3`)].map(h=>[h.id,h.textContent]);
+ return (withHead?`<div class="dh2"><b>สารบัญ</b><button type="button" id="dclose" aria-label="Close">✕</button></div>`:"")+
+ `<div class="prog"><i><b style="width:${n/SEC.length*100}%"></b></i>${n}/${SEC.length} หัวข้อ</div>`+
+ GROUPS.map(gk=>{const list=SEC.filter(s=>s.k===gk),open=OPEN[gk]??(gk===cur.k);
+  return `<div class="g" data-open="${open}"><button class="gh" type="button" data-g="${gk}"><span class="cv">▶</span>${GN[gk]||gk}<span class="n">${list.filter(s=>SEEN[s.id]).length}/${list.length}</span></button>
+  <ul>${list.map(s=>`<li><a href="#${s.id}" data-id="${s.id}" aria-current="${s===cur}"><span class="ck${SEEN[s.id]?" on":""}">✓</span>${s.t}</a>${s===cur&&subs.length>1?`<ol>${subs.map(([id,tx])=>`<li><a href="#${s.id}" data-sub="${id}">${tx}</a></li>`).join("")}</ol>`:""}</li>`).join("")}</ul></div>`}).join("")}
+function wireToc(root){root.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{const g=b.dataset.g,el=b.parentElement;OPEN[g]=el.dataset.open!=="true";el.dataset.open=OPEN[g]});
+ root.querySelectorAll("a[data-id]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();go(a.dataset.id,true,true)});
+ root.querySelectorAll("a[data-sub]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();const h=document.getElementById(a.dataset.sub);if(h)h.scrollIntoView({behavior:"smooth",block:"start"})});
+ const c=root.querySelector("#dclose");if(c)c.onclick=closeDrawer}
+function chips(){$("#side").innerHTML=tocHTML(false);wireToc($("#side"));
+ const i=SEC.indexOf(cur),list=SEC.filter(s=>s.k===cur.k);$("#mgrp").textContent=`${GN[cur.k]||cur.k} · ${list.indexOf(cur)+1}/${list.length}`;$("#mtop").textContent=cur.t;$("#mprev").disabled=i===0;$("#mnext").disabled=i===SEC.length-1;
+ const a=$("#side").querySelector('[aria-current="true"]');if(a){const r=a.getBoundingClientRect(),sr=$("#side").getBoundingClientRect();if(r.top<sr.top||r.bottom>sr.bottom)a.scrollIntoView({block:"nearest"})}}
+function openDrawer(){$("#dpane").innerHTML=tocHTML(true);wireToc($("#dpane"));$("#drawer").hidden=false;const a=$("#dpane").querySelector('[aria-current="true"]');if(a)a.scrollIntoView({block:"center"})}
+function closeDrawer(){$("#drawer").hidden=true}
+$("#mopen").onclick=openDrawer;$("#ddim").onclick=closeDrawer;
+$("#mprev").onclick=()=>{const i=SEC.indexOf(cur);if(i>0)go(SEC[i-1].id,true,true)};$("#mnext").onclick=()=>{const i=SEC.indexOf(cur);if(i<SEC.length-1)go(SEC[i+1].id,true,true)};
+function fixTools(s){(s.tools||[]).forEach(([k,o])=>{if(Array.isArray(o)&&!o.some(v=>v[0]===ST[k]))ST[k]=o[0][0]})}
+function tools(s){const el=document.getElementById("tools-"+s.id);if(!el)return;const tl=[["labels","Labels"]].concat((s.tools||[]).filter(t=>!Array.isArray(t[1])));
+ let h=tl.map(([k,l])=>`<button class="sb-chip" type="button" data-t="${k}" aria-pressed="${!!ST[k]}">${l}</button>`).join("");
+ (s.tools||[]).filter(t=>Array.isArray(t[1])).forEach(([k,opts])=>{h+=`<span class="segc">`+opts.map(([v,l])=>`<button class="sb-chip" type="button" data-s="${k}" data-v="${v}" aria-pressed="${ST[k]===v}">${l}</button>`).join("")+`</span>`});
+ el.innerHTML=h;const prev=cur;cur=s;if(s.ctrl){el.insertAdjacentHTML("beforeend",s.ctrl());if(s.wire)s.wire()}cur=prev;
+ el.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{ST[b.dataset.t]=!ST[b.dataset.t];SEC.filter(x=>x.k===s.k).forEach(draw)});
+ el.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{ST[b.dataset.s]=b.dataset.v;draw(s)})}
+function draw(s){const prev=cur;cur=s;const d=document.getElementById("dia-"+s.id);if(d)d.innerHTML=s.draw();tools(s);
+ const lg=document.getElementById("legend-"+s.id);if(lg)lg.innerHTML=(s.leg||[]).map(k=>LEG[k]?`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`:"").join("");cur=prev}
+function topicHTML(s){if(s.mind)return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><section class="sb-card card mmcard"><div class="mmhead"><div><div class="k" style="color:var(--g0);font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase">Overview</div><h2>${PHARM.sys} drug classes</h2></div><p>แตะกลุ่มหรือหัวข้อเพื่อไปที่เนื้อหา · ✓ = อ่านแล้ว</p></div><div id="dia-${s.id}"></div><div class="mmlegend">${Object.keys(LEG).map(k=>`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`).join("")}</div></section></article>`;const figs=s.figs&&s.figs.length?`<section class="figs sb-card card"><h3>รูปจากเลคเชอร์ <span>${s.figs.length} รูป · แตะเพื่อขยาย</span></h3><div class="strip">${s.figs.map(([f,c])=>`<button class="fig" type="button" data-f="${f}" data-c="${c}"><img src="${FIGDIR}${f}.jpg" alt="${c}" loading="lazy"><span>${c}</span></button>`).join("")}</div></section>`:"";
+ return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><div class="stage">
+  <section class="sb-card card"><div class="dh"><div><div class="k" style="color:var(--g${GROUPS.indexOf(s.k)})">${GN[s.k]||s.k}</div><h2>${s.t}</h2>${s.drugs?`<div class="dchips">${s.drugs.split(" · ").map(d=>`<span>${d}</span>`).join("")}</div>`:""}</div><div class="tools" id="tools-${s.id}"></div></div>
+   <div class="dia" id="dia-${s.id}" data-id="${s.id}"></div><div class="legend" id="legend-${s.id}"></div></section>
+  <aside class="sb-card card notes" id="notes-${s.id}"></aside></div>${figs}</article>`}
+function renderGroup(gk){GRP=gk;document.querySelector(".shell").classList.toggle("ov",gk==="0");const list=SEC.filter(s=>s.k===gk),gi=GROUPS.indexOf(gk);
+ $("#flow").innerHTML=(gk==="0"?"":`<header class="ghead"><small>${GROUPS.length>1?`ส่วนที่ ${gi+1}/${GROUPS.length} · `:""}${list.length} หัวข้อ</small><h2>${GN[gk]||gk}</h2><div class="gchips">${list.map(s=>`<a href="#${s.id}" data-jump="${s.id}">${s.t}</a>`).join("")}</div></header>`)+list.map(topicHTML).join("");
+ list.forEach(s=>{fixTools(s);const prev=cur;cur=s;const n=document.getElementById("notes-"+s.id);if(n){n.innerHTML=s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);}cur=prev;draw(s)});
+ $("#flow").querySelectorAll("[data-jump]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.jump,true,true)});
+ $("#flow").querySelectorAll(".dia").forEach(d=>d.onclick=()=>openDia(SEC.find(s=>s.id===d.dataset.id)));
+ $("#flow").querySelectorAll(".fig").forEach(b=>b.onclick=()=>openLB(b.dataset.f,b.dataset.c));
+ const pv=GROUPS[gi-1],nx=GROUPS[gi+1],NV=window.NAV||{};
+ const btn=(g,dir)=>g?`<button type="button" class="${dir>0?"nx":""}" data-g="${g}"><small>${dir>0?"ส่วนถัดไป →":"← ส่วนก่อนหน้า"}</small><b>${GN[g]||g}</b></button>`:"";
+ const abtn=(a,dir)=>a?`<button type="button" class="${dir>0?"nx":""}" data-atlas="${a.m}" data-href="${a.f}"><small>${dir>0?"บทถัดไป →":"← บทก่อนหน้า"}</small><b>${a.t}</b></button>`:"<span style='flex:1'></span>";
+ $("#steps").innerHTML=(pv?btn(pv,-1):abtn(NV.prev,-1))+(nx?btn(nx,1):abtn(NV.next,1));
+ $("#steps").querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{go(SEC.find(s=>s.k===b.dataset.g).id,true,"chapter")});
+ $("#steps").querySelectorAll("[data-atlas]").forEach(b=>b.onclick=()=>{if(window.parent!==window)parent.postMessage({sb:"open",m:b.dataset.atlas},"*");else location.href=b.dataset.href});
+ if(OBS)OBS.disconnect();
+ OBS=new IntersectionObserver(es=>{const vis=es.filter(e=>e.isIntersecting);if(!vis.length)return;const id=vis[0].target.dataset.id;if(id!==cur.id)setCur(SEC.find(s=>s.id===id),true)},{rootMargin:"-30% 0px -60% 0px"});
+ $("#flow").querySelectorAll(".topic").forEach(t=>OBS.observe(t))}
+function setCur(s,push){cur=s;SEEN[s.id]=1;try{localStorage.setItem(SEENKEY,JSON.stringify(SEEN))}catch(e){}chips();
+ if(push&&location.hash.slice(1)!==s.id)history.replaceState(null,"","#"+s.id)}
+function go(id,push,scroll){const s=SEC.find(x=>x.id===id)||SEC[0];const fresh=s.k!==GRP;if(fresh)renderGroup(s.k);setCur(s,push);
+ const el=scroll==="chapter"?$("#flow"):document.getElementById("t-"+s.id);if(el&&scroll)el.scrollIntoView({behavior:fresh?"auto":"smooth",block:"start"})}
+let Z=1,ZEL=null;function openLB(f,c){$("#lbsc").innerHTML=`<img id="lbi" alt="" src="${FIGDIR}${f}.jpg">`;ZEL=$("#lbi");$("#lbt").textContent=c;Z=1;$("#lb").hidden=false}
+function openDia(s){const prev=cur;cur=s;$("#lbsc").innerHTML=`<div class="zsvg">${s.draw()}</div>`;cur=prev;ZEL=$("#lbsc .zsvg");$("#lbt").textContent=s.t;Z=innerWidth<700?2.2:1;ZEL.style.width=Z===1?"":`${96*Z}vw`;$("#lb").hidden=false}
+$("#lbx").onclick=()=>$("#lb").hidden=true;$("#zi").onclick=()=>{Z=Math.min(4,Z*1.4);ZEL.style.width=`min(${96*Z}vw,${1000*Z}px)`};$("#zo").onclick=()=>{Z=Math.max(1,Z/1.4);ZEL.style.width=Z===1?"":`min(${96*Z}vw,${1000*Z}px)`};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("#lb").hidden=true;closeDrawer()}});
+window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(id&&SEC.some(s=>s.id===id))go(id,false,true)});
+go(location.hash.slice(1)||"map",false,!!location.hash.slice(1));
+
+</script>
+</body>
+</html>

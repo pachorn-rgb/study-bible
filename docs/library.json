@@ -1,1 +1,3311 @@
-{"owner":"ภัทร","sections":[{"id":"gp","name":"General Principles","th":"หลักการพื้นฐาน","chapters":[{"id":"biochem","name":"Biochemistry","th":"ชีวเคมี","color":"#65A30D","glyph":"dna","subs":["Molecular","Cellular","Laboratory Techniques","Genetics","Nutrition","Metabolism"],"modules":[],"checklist":[],"resources":[]},{"id":"immuno","name":"Immunology","th":"ภูมิคุ้มกันวิทยา","color":"#0891B2","glyph":"antibody","subs":["Lymphoid Structures","Cellular Components","Immune Responses","Immunosuppressants"],"modules":[],"checklist":[],"resources":[]},{"id":"micro","name":"Microbiology","th":"จุลชีววิทยา","color":"#059669","glyph":"microbe","subs":["Basic Bacteriology","Clinical Bacteriology","Mycology","Parasitology","Virology","Systems","Antimicrobials"],"modules":[],"checklist":[],"resources":[]},{"id":"patho","name":"Pathology","th":"พยาธิวิทยา","color":"#C026D3","glyph":"scope","subs":["Cellular Injury","Inflammation","Neoplasia","Aging"],"modules":[],"checklist":[],"resources":[]},{"id":"pharm","name":"Pharmacology","th":"เภสัชวิทยา","color":"#EA580C","glyph":"pill","subs":["Pharmacokinetics & Pharmacodynamics","Autonomic Drugs","Toxicities & Miscellaneous"],"modules":[],"checklist":[],"resources":[]},{"id":"phs","name":"Public Health Sciences","th":"สาธารณสุขศาสตร์","color":"#64748B","glyph":"chart","subs":["Epidemiology & Biostatistics","Ethics","Communication Skills","Healthcare Delivery"],"modules":[],"checklist":[],"resources":[]}]},{"id":"os","name":"Organ Systems","th":"ระบบอวัยวะ","chapters":[{"id":"cvs","name":"Cardiovascular","th":"ระบบหัวใจและหลอดเลือด","color":"#E11D48","glyph":"heart","subs":["Embryology","Anatomy","Physiology","Pathology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"endo","name":"Endocrine","th":"ระบบต่อมไร้ท่อ","color":"#7C3AED","glyph":"gland","subs":["Embryology","Anatomy","Physiology","Pathology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"gi","name":"Gastrointestinal","th":"ระบบทางเดินอาหาร","color":"#D97706","glyph":"gut","subs":["Embryology","Anatomy","Physiology","Pathology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"heme","name":"Hematology & Oncology","th":"โลหิตวิทยาและมะเร็ง","color":"#DC2626","glyph":"cell","subs":["Embryology","Anatomy","Physiology","Pathology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"msk","name":"Musculoskeletal, Skin & CT","th":"กล้ามเนื้อ กระดูก ผิวหนัง","color":"#78716C","glyph":"bone","subs":["Anatomy & Physiology","Pathology","Dermatology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"neuro","name":"Neurology & Special Senses","th":"ระบบประสาทและอวัยวะรับสัมผัส","color":"#0D9488","glyph":"neuron","subs":["Embryology","Anatomy & Physiology","Pathology","Otology","Ophthalmology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"psych","name":"Psychiatry","th":"จิตเวชศาสตร์","color":"#4F46E5","glyph":"mind","subs":["Psychology","Pathology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"renal","name":"Renal","th":"ระบบไตและทางเดินปัสสาวะ","color":"#BE185D","glyph":"kidney","subs":["Embryology","Anatomy","Histology","Physiology","Pathology","Pharmacology"],"modules":[{"id":"renal-ch25","title":"Ch 25 · The Body Fluid Compartments","subs":["Physiology"],"src":"Guyton & Hall Ch 25","href":"renal/renal-ch25.html","thumb":"thumbs/renal-ch25.jpg","desc":"สมดุลน้ำเข้าออก ICF/ECF/plasma ส่วนประกอบไอออน indicator-dilution osmolarity การเคลื่อนของน้ำเมื่อให้ saline (ลองปรับได้) hypo/hypernatremia และ edema","tags":[],"topics":[["Water balance","balance"],["Compartments","compartments"],["Composition","composition"],["Measuring volumes","measure"],["Osmosis & tonicity","osmosis"],["Fluid shifts","shifts"],["Na⁺ disorders","natremia"],["Edema","edema"]],"ref":{"b":"guyton","l":"G","ch":"Ch 25","sort":25}},{"id":"renal-ch26","title":"Ch 26 · Urine Formation I: GFR, RBF & Micturition","subs":["Physiology"],"src":"Guyton & Hall Ch 26","href":"renal/renal-ch26.html","thumb":"thumbs/renal-ch26.jpg","desc":"การกรองที่ glomerulus แรงที่กำหนด GFR การไหลของเลือดไปไตและการควบคุม autoregulation และการขับปัสสาวะ","tags":[],"topics":[["Kidney functions & physiologic anatomy","overview"],["Micturition","micturition"],["Urine formation: filtration, reabsorption, secretion","urineform"],["GFR & its determinants","gfr"],["Renal blood flow & physiologic control","rbf"],["Autoregulation & TGF","autoreg"]],"ref":{"b":"guyton","l":"G","ch":"Ch 26","sort":26}},{"id":"renal-ch27","title":"Ch 27 · Urine Formation II: Tubular Reabsorption & Secretion","subs":["Physiology"],"src":"Guyton & Hall Ch 27","href":"renal/renal-ch27.html","thumb":"thumbs/renal-ch27.jpg","desc":"primary/secondary active transport, Tm, การดูดกลับและหลั่งใน PCT loop distal CD การควบคุม และ clearance","tags":[],"topics":[["Transport mechanisms & Tm","transport"],["Proximal tubule","pct"],["Loop of Henle","loop"],["Distal tubule & collecting duct","distal"],["Where things are reabsorbed","segments"],["Regulation of tubular reabsorption","regulation"],["Renal clearance","clearance"]],"ref":{"b":"guyton","l":"G","ch":"Ch 27","sort":27}},{"id":"renal-ch28","title":"Ch 28 · Urine Concentration & Dilution; Osmolarity & Na⁺","subs":["Physiology"],"src":"Guyton & Hall Ch 28","href":"renal/renal-ch28.html","thumb":"thumbs/renal-ch28.jpg","desc":"ปัสสาวะเจือจาง/เข้มข้น countercurrent multiplier urea vasa recta free water ADH และความกระหาย","tags":[],"topics":[["Forming dilute urine","dilute"],["Conserving water: concentrated urine","concreq"],["Countercurrent multiplier","countercurrent"],["Urea recycling & vasa recta","urea"],["Free water clearance & concentrating disorders","concentrate"],["Osmoreceptor–ADH & thirst","adh"]],"ref":{"b":"guyton","l":"G","ch":"Ch 28","sort":28}},{"id":"renal-ch29","title":"Ch 29 · K⁺, Ca²⁺, PO₄, Mg²⁺; Blood & ECF Volume","subs":["Physiology"],"src":"Guyton & Hall Ch 29","href":"renal/renal-ch29.html","thumb":"thumbs/renal-ch29.jpg","desc":"การกระจายและการขับ K⁺, Ca²⁺ PO₄ Mg²⁺, pressure natriuresis, Ang II aldosterone ANP","tags":[],"topics":[["Potassium balance","potassium"],["Calcium, phosphate & magnesium","capimg"],["Pressure natriuresis & volume control","volume"],["Ang II, aldosterone & ANP","raas"]],"ref":{"b":"guyton","l":"G","ch":"Ch 29","sort":29}},{"id":"renal-ch30","title":"Ch 30 · Acid–Base Regulation","subs":["Physiology"],"src":"Guyton & Hall Ch 30","href":"renal/renal-ch30.html","thumb":"thumbs/renal-ch30.jpg","desc":"buffer, Henderson–Hasselbalch, การชดเชยทางการหายใจ, การหลั่ง H⁺ ที่ไต, ammonia, anion gap","tags":[],"topics":[["Buffers & Henderson–Hasselbalch","buffers"],["Respiratory regulation","resp"],["Renal H⁺ secretion & new HCO₃⁻","renalacid"],["Phosphate & ammonia buffers","ammonia"],["Acid–base disorders","abd"]],"ref":{"b":"guyton","l":"G","ch":"Ch 30","sort":30}},{"id":"renal-ch31","title":"Ch 31 · Diuretics & Kidney Diseases","subs":["Physiology"],"src":"Guyton & Hall Ch 31","href":"renal/renal-ch31.html","thumb":"thumbs/renal-ch31.jpg","desc":"กลุ่มยาขับปัสสาวะ, AKI ทั้ง 3 แบบ, CKD และ vicious cycle, specific tubular disorders, dialysis","tags":[],"topics":[["Diuretics","diuretics"],["Acute kidney injury","aki"],["Chronic kidney disease","ckd"],["Specific tubular disorders & dialysis","tubular"]],"ref":{"b":"guyton","l":"G","ch":"Ch 31","sort":31}},{"id":"kub-embryology","title":"KUB Embryology Atlas","subs":["Embryology"],"src":"Langman · Moore","href":"renal/kub-embryology.html","thumb":"thumbs/kub-embryology.jpg","desc":"จาก intermediate mesoderm สู่ไต ureter bladder urethra 8 stage พร้อม signaling, transcription factor และ anomaly","tags":["pronephros","mesonephros","metanephros","ureteric bud","cloaca","trigone","ascent","nephrogenesis","WT1","GDNF","horseshoe kidney","Potter","anomalies"],"topics":[],"ref":{"b":"langman","l":"L","ch":"Ch 16","sort":16}},{"id":"kub-anatomy","title":"KUB Gross Anatomy","subs":["Anatomy"],"src":"Lecture · Gray's Anatomy for Students","href":"renal/kub-anatomy.html","thumb":"thumbs/kub-anatomy.jpg","desc":"ตำแหน่ง ความสัมพันธ์ fascia โครงสร้างภายใน หลอดเลือด ต่อมหมวกไต ท่อไต กระเพาะปัสสาวะ ท่อปัสสาวะ และผนังช่องท้องด้านหลัง พร้อมรูปจากเลคเชอร์","tags":["retroperitoneal","hilum","Gerota","renal fascia","segmental artery","suprarenal","adrenal","ureter","constriction","trigone","urethra","psoas","quadratus lumborum","lumbar plexus","aorta","IVC","cisterna chyli","nutcracker"],"topics":[["Muscles","wall"],["Location","loc"],["Relations","rel"],["Fat & fascia","fascia"],["Internal structure","struct"],["Blood supply","vessels"],["Lymph & nerves","lnn"],["Ureter","ureter"],["Suprarenal","adrenal"],["Aorta & IVC","aorta"],["Lumbar plexus","plexus"],["Bladder","bladder"],["Urethra","urethra"],["Clinical","clinic"]],"ref":{"b":"grays","l":"Gray","ch":"Ch 4–5","sort":4}},{"id":"kub-histology","title":"KUB Histology","subs":["Histology"],"src":"Junqueira · Wheater · diFiore","href":"renal/kub-histology.html","thumb":"thumbs/kub-histology.jpg","desc":"ไตและทางเดินปัสสาวะใต้กล้อง วาดแบบสไลด์ H&E/PAS ตั้งแต่ low power ถึง EM พร้อมวิธีแยก PCT DCT CD thin limb และ urothelium บนสไลด์","tags":["histology","H&E","PAS","renal corpuscle","podocyte","GBM","slit diaphragm","nephrin","mesangial","macula densa","juxtaglomerular","lacis","PCT","brush border","DCT","collecting duct","principal cell","intercalated cell","vasa recta","urothelium","umbrella cell","uroplakin","ureter","detrusor","urethra","area cribrosa","medullary ray"],"topics":[["Low power","lowpower"],["Blood supply","vessels"],["Renal corpuscle","corpuscle"],["Filtration barrier","barrier"],["PCT vs DCT","pctdct"],["Medulla","medulla"],["JGA","jga"],["Collecting duct","cd"],["Slide ID","slideid"],["Urothelium","urothelium"],["Ureter","ureter"],["Bladder","bladder"],["Clinical","clinical"]],"ref":{"b":"junq","l":"J","ch":"Ch 19","sort":19}},{"id":"nephron-pathway","title":"Nephron Pathway Atlas","subs":["Physiology","Pathology","Pharmacology"],"src":"Guyton & Hall · Boron & Boulpaep","href":"renal/nephron-pathway.html","thumb":"thumbs/nephron-pathway.jpg","desc":"แผนที่ transporter แบบโต้ตอบ: ทุก channel, pump, enzyme, receptor ตั้งแต่ renal artery ผ่าน nephron ถึง renal vein ใช้คู่กับ Renal Physiology","tags":["transporter","channel","pump","receptor","hormone","acid-base","diuretic","clearance","countercurrent","GFR","RAAS","ADH","aldosterone","NKCC2","ENaC","aquaporin"],"topics":[["ติดตามสาร: สารแต่ละตัวเคลื่อนที่ที่ไหน","tracker"],["Glomerulus","glom"],["Proximal tubule","pt1"],["Thick ascending limb","tal"],["DCT","dct"],["Principal cell","pc"],["Collecting duct","mcd"],["Hormones & nerves","reg"],["Acid–base","ab"],["Countercurrent","cc"],["Clearance","cl"],["Volume & osmolality","vol"],["Diuretics","diu"],["Kidney diseases","dis"],["Micturition","mic"]],"ref":{"b":"guyton","l":"G","ch":"Ch 26–31","sort":31.5}},{"id":"robbins-ch20","title":"Ch 20 · The Kidney","subs":["Pathology"],"src":"Robbins & Cotran 10e Ch 20","href":"renal/robbins-ch20.html","thumb":"thumbs/robbins-ch20.jpg","desc":"โรคไตทั้งบทตาม Robbins: glomerular disease ทุกชนิดสลับดู EM · IF · LM ได้ lupus class เลือกได้ ATN pyelonephritis TIN หลอดเลือด ซีสต์ นิ่ว และเนื้องอก","tags":[],"topics":[["Clinical manifestations & syndromes","syndromes"],["Glomerular responses to injury","glomresp"],["Pathogenesis: immune complexes & anti-GBM","immune"],["Podocyte injury & progression","progression"],["Acute postinfectious GN","psgn"],["Crescentic GN (RPGN)","rpgn"],["IgA nephropathy & HSP","iga"],["Hereditary nephritis (Alport) & thin BM","alport"],["Nephrotic syndrome: causes","nephrotic"],["Membranous nephropathy","membranous"],["Minimal change disease","mcd"],["Focal segmental glomerulosclerosis","fsgs"],["MPGN & C3 glomerulopathy","mpgn"],["Lupus nephritis","lupus"],["Diabetic nephropathy","diabetic"],["Other systemic glomerular disease","systemic"],["Acute tubular injury / necrosis","atn"],["Pyelonephritis & UTI","pyelo"],["Drug-induced & other TIN","tin"],["Nephrosclerosis (hypertensive)","nephrosclerosis"],["Thrombotic microangiopathies & other vascular","tma"],["Congenital anomalies","congenital"],["Cystic diseases","cystic"],["Obstruction & hydronephrosis","obstruction"],["Urolithiasis","stones"],["Benign renal tumors","benign"],["Renal cell carcinoma","rcc"],["Wilms tumor (nephroblastoma)","wilms"]],"ref":{"b":"robbins","l":"R","ch":"Ch 20","sort":120}},{"id":"robbins-ch21","title":"Ch 21 · The Lower Urinary Tract","subs":["Pathology"],"src":"Robbins & Cotran 10e Ch 21","href":"renal/robbins-ch21.html","thumb":"thumbs/robbins-ch21.jpg","desc":"ureter bladder urethra: cystitis หลายแบบ metaplasia urothelial neoplasm pathway grading และ TNM staging ที่เลือกดูความลึกได้","tags":[],"topics":[["Ureter: congenital anomalies & tumors","ureter"],["Obstructive lesions & retroperitoneal fibrosis","ureterobs"],["Bladder: congenital anomalies","bladdercong"],["Cystitis","cystitis"],["Metaplastic lesions","metaplasia"],["Urothelial neoplasms: pathways & risk","urothelial"],["Noninvasive urothelial tumors: grading","grading"],["Invasive carcinoma: pathologic staging","staging"],["Other bladder tumors","othertum"],["Urethra: inflammation & tumors","urethra"]],"ref":{"b":"robbins","l":"R","ch":"Ch 21","sort":121}},{"id":"harrison-ch319","title":"Ch 319 · Approach to the Patient with Renal Disease","subs":["Pathology"],"src":"Harrison 22e Ch 319","href":"renal/harrison-ch319.html","thumb":"thumbs/harrison-ch319.jpg","desc":"Harrison บทที่ 319: Prerenal · intrinsic · postrenal · Nephritic vs nephrotic: clinical clues · Hematuria & lower urinary tract","tags":[],"topics":[["Prerenal · intrinsic · postrenal","ap-aki"],["Nephritic vs nephrotic: clinical clues","ap-syn"],["Hematuria & lower urinary tract","ap-hem"]],"ref":{"b":"harrison","l":"H","ch":"Ch 319","sort":319}},{"id":"harrison-ch320","title":"Ch 320 · Cell Biology & Physiology of the Kidney","subs":["Pathology"],"src":"Harrison 22e Ch 320","href":"renal/harrison-ch320.html","thumb":"thumbs/harrison-ch320.jpg","desc":"Harrison บทที่ 320: Segmental transport · Inherited tubular disorders (Table 320-1) · Sodium & water balance","tags":[],"topics":[["Segmental transport","cb-seg"],["Inherited tubular disorders (Table 320-1)","cb-inh"],["Sodium & water balance","cb-na"]],"ref":{"b":"harrison","l":"H","ch":"Ch 320","sort":320}},{"id":"harrison-ch321","title":"Ch 321 · Acute Kidney Injury","subs":["Pathology"],"src":"Harrison 22e Ch 321","href":"renal/harrison-ch321.html","thumb":"thumbs/harrison-ch321.jpg","desc":"Harrison บทที่ 321: Definition & KDIGO staging · Causes: prerenal · intrinsic · postrenal · Diagnostics: urinalysis & FENa · Complications & management","tags":[],"topics":[["Definition & KDIGO staging","aki-def"],["Causes: prerenal · intrinsic · postrenal","aki-cause"],["Diagnostics: urinalysis & FENa","aki-dx"],["Complications & management","aki-mx"]],"ref":{"b":"harrison","l":"H","ch":"Ch 321","sort":321}},{"id":"harrison-ch322","title":"Ch 322 · Chronic Kidney Disease","subs":["Pathology"],"src":"Harrison 22e Ch 322","href":"renal/harrison-ch322.html","thumb":"thumbs/harrison-ch322.jpg","desc":"Harrison บทที่ 322: KDIGO staging: GFR × albuminuria · Fluid, electrolyte & acid–base · CKD–mineral bone disorder · CV, hematologic & other manifestations · Slowing progression & preparing for RRT","tags":[],"topics":[["KDIGO staging: GFR × albuminuria","ckd-stage"],["Fluid, electrolyte & acid–base","ckd-lyte"],["CKD–mineral bone disorder","ckd-mbd"],["CV, hematologic & other manifestations","ckd-sys"],["Slowing progression & preparing for RRT","ckd-slow"]],"ref":{"b":"harrison","l":"H","ch":"Ch 322","sort":322}},{"id":"harrison-ch323","title":"Ch 323 · Dialysis","subs":["Pathology"],"src":"Harrison 22e Ch 323","href":"renal/harrison-ch323.html","thumb":"thumbs/harrison-ch323.jpg","desc":"Harrison บทที่ 323: Hemodialysis · Complications of hemodialysis · Peritoneal dialysis","tags":[],"topics":[["Hemodialysis","hd"],["Complications of hemodialysis","hdcx"],["Peritoneal dialysis","pd"]],"ref":{"b":"harrison","l":"H","ch":"Ch 323","sort":323}},{"id":"harrison-ch324","title":"Ch 324 · Interventional Nephrology","subs":["Pathology"],"src":"Harrison 22e Ch 324","href":"renal/harrison-ch324.html","thumb":"thumbs/harrison-ch324.jpg","desc":"Harrison บทที่ 324: Dialysis access: assessment & intervention","tags":[],"topics":[["Dialysis access: assessment & intervention","ivn"]],"ref":{"b":"harrison","l":"H","ch":"Ch 324","sort":324}},{"id":"harrison-ch325","title":"Ch 325 · Kidney Transplantation","subs":["Pathology"],"src":"Harrison 22e Ch 325","href":"renal/harrison-ch325.html","thumb":"thumbs/harrison-ch325.jpg","desc":"Harrison บทที่ 325: Immunology of rejection · Maintenance immunosuppression · Infections & malignancy after transplant","tags":[],"topics":[["Immunology of rejection","tx-imm"],["Maintenance immunosuppression","tx-drug"],["Infections & malignancy after transplant","tx-inf"]],"ref":{"b":"harrison","l":"H","ch":"Ch 325","sort":325}},{"id":"harrison-ch326","title":"Ch 326 · Glomerular Diseases","subs":["Pathology"],"src":"Harrison 22e Ch 326","href":"renal/harrison-ch326.html","thumb":"thumbs/harrison-ch326.jpg","desc":"Harrison บทที่ 326: Measuring proteinuria · Clinical patterns of glomerular disease · Treatment by disease","tags":[],"topics":[["Measuring proteinuria","gd-prot"],["Clinical patterns of glomerular disease","gd-pat"],["Treatment by disease","gd-tx"]],"ref":{"b":"harrison","l":"H","ch":"Ch 326","sort":326}},{"id":"harrison-ch327","title":"Ch 327 · Polycystic & Inherited Tubular Diseases","subs":["Pathology"],"src":"Harrison 22e Ch 327","href":"renal/harrison-ch327.html","thumb":"thumbs/harrison-ch327.jpg","desc":"Harrison บทที่ 327: ADPKD · ARPKD · Other inherited cystic & tubular diseases","tags":[],"topics":[["ADPKD","pkd-ad"],["ARPKD","pkd-ar"],["Other inherited cystic & tubular diseases","pkd-oth"]],"ref":{"b":"harrison","l":"H","ch":"Ch 327","sort":327}},{"id":"harrison-ch328","title":"Ch 328 · Tubulointerstitial Diseases","subs":["Pathology"],"src":"Harrison 22e Ch 328","href":"renal/harrison-ch328.html","thumb":"thumbs/harrison-ch328.jpg","desc":"Harrison บทที่ 328: Acute interstitial nephritis · Systemic & immune-mediated TIN · Chronic tubulointerstitial nephropathies","tags":[],"topics":[["Acute interstitial nephritis","tin-ain"],["Systemic & immune-mediated TIN","tin-imm"],["Chronic tubulointerstitial nephropathies","tin-chronic"]],"ref":{"b":"harrison","l":"H","ch":"Ch 328","sort":328}},{"id":"harrison-ch329","title":"Ch 329 · Thrombotic Renovascular Disorders","subs":["Pathology"],"src":"Harrison 22e Ch 329","href":"renal/harrison-ch329.html","thumb":"thumbs/harrison-ch329.jpg","desc":"Harrison บทที่ 329: Thrombotic microangiopathies · Scleroderma renal crisis & renal vein thrombosis","tags":[],"topics":[["Thrombotic microangiopathies","tma-types"],["Scleroderma renal crisis & renal vein thrombosis","tma-ssc"]],"ref":{"b":"harrison","l":"H","ch":"Ch 329","sort":329}},{"id":"harrison-ch330","title":"Ch 330 · Nephrolithiasis","subs":["Pathology"],"src":"Harrison 22e Ch 330","href":"renal/harrison-ch330.html","thumb":"thumbs/harrison-ch330.jpg","desc":"Harrison บทที่ 330: Stone types & urine pH · Risk factors & diet · Acute colic & prevention","tags":[],"topics":[["Stone types & urine pH","st-type"],["Risk factors & diet","st-risk"],["Acute colic & prevention","st-mx"]],"ref":{"b":"harrison","l":"H","ch":"Ch 330","sort":330}},{"id":"harrison-ch331","title":"Ch 331 · Urinary Tract Obstruction","subs":["Pathology"],"src":"Harrison 22e Ch 331","href":"renal/harrison-ch331.html","thumb":"thumbs/harrison-ch331.jpg","desc":"Harrison บทที่ 331: Causes by level · Pathophysiology · Diagnosis, relief & recovery","tags":[],"topics":[["Causes by level","uo-cause"],["Pathophysiology","uo-phys"],["Diagnosis, relief & recovery","uo-dx"]],"ref":{"b":"harrison","l":"H","ch":"Ch 331","sort":331}}],"checklist":[{"id":"kub-embryology:s1","sub":"Embryology","t":"Wk 3 · Intermediate mesoderm","link":{"m":"kub-embryology","h":"s1"}},{"id":"kub-embryology:s2","sub":"Embryology","t":"Wk 4 early · Pronephros & nephric duct","link":{"m":"kub-embryology","h":"s2"}},{"id":"kub-embryology:s3","sub":"Embryology","t":"Wk 4 late – 5 · Mesonephros + ureteric bud","link":{"m":"kub-embryology","h":"s3"}},{"id":"kub-embryology:s4","sub":"Embryology","t":"Wk 5 – 6 · Reciprocal induction & branching","link":{"m":"kub-embryology","h":"s4"}},{"id":"kub-embryology:s5","sub":"Embryology","t":"Wk 6 – 7 · Cloaca septation & trigone","link":{"m":"kub-embryology","h":"s5"}},{"id":"kub-embryology:s6","sub":"Embryology","t":"Wk 6 – 9 · Ascent, rotation & renal arteries","link":{"m":"kub-embryology","h":"s6"}},{"id":"kub-embryology:s7","sub":"Embryology","t":"Wk 8 – 12 · Nephrogenesis & first urine","link":{"m":"kub-embryology","h":"s7"}},{"id":"kub-embryology:s8","sub":"Embryology","t":"Wk 12 → birth · Fetal kidney & urethra","link":{"m":"kub-embryology","h":"s8"}},{"id":"kub-anatomy:wall","sub":"Anatomy","t":"Muscles","link":{"m":"kub-anatomy","h":"wall"}},{"id":"kub-anatomy:loc","sub":"Anatomy","t":"Location & position","link":{"m":"kub-anatomy","h":"loc"}},{"id":"kub-anatomy:rel","sub":"Anatomy","t":"Relations","link":{"m":"kub-anatomy","h":"rel"}},{"id":"kub-anatomy:fascia","sub":"Anatomy","t":"Fat & fascia","link":{"m":"kub-anatomy","h":"fascia"}},{"id":"kub-anatomy:struct","sub":"Anatomy","t":"Internal structure","link":{"m":"kub-anatomy","h":"struct"}},{"id":"kub-anatomy:vessels","sub":"Anatomy","t":"Blood supply & segments","link":{"m":"kub-anatomy","h":"vessels"}},{"id":"kub-anatomy:lnn","sub":"Anatomy","t":"Lymph & nerve supply","link":{"m":"kub-anatomy","h":"lnn"}},{"id":"kub-anatomy:ureter","sub":"Anatomy","t":"Ureter: course & constrictions","link":{"m":"kub-anatomy","h":"ureter"}},{"id":"kub-anatomy:adrenal","sub":"Anatomy","t":"Suprarenal (adrenal) gland","link":{"m":"kub-anatomy","h":"adrenal"}},{"id":"kub-anatomy:aorta","sub":"Anatomy","t":"Aorta, IVC & lymphatics","link":{"m":"kub-anatomy","h":"aorta"}},{"id":"kub-anatomy:plexus","sub":"Anatomy","t":"Lumbar plexus","link":{"m":"kub-anatomy","h":"plexus"}},{"id":"kub-anatomy:bladder","sub":"Anatomy","t":"Urinary bladder","link":{"m":"kub-anatomy","h":"bladder"}},{"id":"kub-anatomy:urethra","sub":"Anatomy","t":"Urethra","link":{"m":"kub-anatomy","h":"urethra"}},{"id":"kub-anatomy:clinic","sub":"Anatomy","t":"Clinical correlations","link":{"m":"kub-anatomy","h":"clinic"}},{"id":"kub-histology:lowpower","sub":"Histology","t":"Kidney at low power","link":{"m":"kub-histology","h":"lowpower"}},{"id":"kub-histology:nephron","sub":"Histology","t":"Uriniferous tubule map","link":{"m":"kub-histology","h":"nephron"}},{"id":"kub-histology:vessels","sub":"Histology","t":"Blood supply & interstitium","link":{"m":"kub-histology","h":"vessels"}},{"id":"kub-histology:corpuscle","sub":"Histology","t":"Renal corpuscle (LM)","link":{"m":"kub-histology","h":"corpuscle"}},{"id":"kub-histology:barrier","sub":"Histology","t":"Filtration barrier (EM)","link":{"m":"kub-histology","h":"barrier"}},{"id":"kub-histology:mesangium","sub":"Histology","t":"Mesangium","link":{"m":"kub-histology","h":"mesangium"}},{"id":"kub-histology:pctdct","sub":"Histology","t":"PCT vs DCT (cortex)","link":{"m":"kub-histology","h":"pctdct"}},{"id":"kub-histology:pctem","sub":"Histology","t":"PCT cell ultrastructure","link":{"m":"kub-histology","h":"pctem"}},{"id":"kub-histology:medulla","sub":"Histology","t":"Medulla: loops, vasa recta, CD","link":{"m":"kub-histology","h":"medulla"}},{"id":"kub-histology:jga","sub":"Histology","t":"Juxtaglomerular apparatus","link":{"m":"kub-histology","h":"jga"}},{"id":"kub-histology:cd","sub":"Histology","t":"Collecting duct & papilla","link":{"m":"kub-histology","h":"cd"}},{"id":"kub-histology:slideid","sub":"Histology","t":"Slide ID cheat sheet","link":{"m":"kub-histology","h":"slideid"}},{"id":"kub-histology:urothelium","sub":"Histology","t":"Urothelium","link":{"m":"kub-histology","h":"urothelium"}},{"id":"kub-histology:ureter","sub":"Histology","t":"Ureter (transverse)","link":{"m":"kub-histology","h":"ureter"}},{"id":"kub-histology:bladder","sub":"Histology","t":"Bladder wall","link":{"m":"kub-histology","h":"bladder"}},{"id":"kub-histology:urethra","sub":"Histology","t":"Urethra","link":{"m":"kub-histology","h":"urethra"}},{"id":"kub-histology:clinical","sub":"Histology","t":"Histology in disease","link":{"m":"kub-histology","h":"clinical"}},{"id":"renal-ch25:balance","sub":"Physiology","t":"Water intake & output","link":{"m":"renal-ch25","h":"balance"}},{"id":"renal-ch25:compartments","sub":"Physiology","t":"Body fluid compartments","link":{"m":"renal-ch25","h":"compartments"}},{"id":"renal-ch25:composition","sub":"Physiology","t":"Composition of ECF & ICF","link":{"m":"renal-ch25","h":"composition"}},{"id":"renal-ch25:measure","sub":"Physiology","t":"Measuring compartment volumes","link":{"m":"renal-ch25","h":"measure"}},{"id":"renal-ch25:osmosis","sub":"Physiology","t":"Osmosis, osmolarity & tonicity","link":{"m":"renal-ch25","h":"osmosis"}},{"id":"renal-ch25:shifts","sub":"Physiology","t":"Fluid shifts after adding saline","link":{"m":"renal-ch25","h":"shifts"}},{"id":"renal-ch25:natremia","sub":"Physiology","t":"Hyponatremia & hypernatremia","link":{"m":"renal-ch25","h":"natremia"}},{"id":"renal-ch25:edema","sub":"Physiology","t":"Edema & safety factors","link":{"m":"renal-ch25","h":"edema"}},{"id":"renal-ch26:overview","sub":"Physiology","t":"Kidney functions & physiologic anatomy","link":{"m":"renal-ch26","h":"overview"}},{"id":"renal-ch26:micturition","sub":"Physiology","t":"Micturition","link":{"m":"renal-ch26","h":"micturition"}},{"id":"renal-ch26:urineform","sub":"Physiology","t":"Urine formation: filtration, reabsorption, secretion","link":{"m":"renal-ch26","h":"urineform"}},{"id":"renal-ch26:gfr","sub":"Physiology","t":"GFR & its determinants","link":{"m":"renal-ch26","h":"gfr"}},{"id":"renal-ch26:rbf","sub":"Physiology","t":"Renal blood flow & physiologic control","link":{"m":"renal-ch26","h":"rbf"}},{"id":"renal-ch26:autoreg","sub":"Physiology","t":"Autoregulation & TGF","link":{"m":"renal-ch26","h":"autoreg"}},{"id":"renal-ch27:transport","sub":"Physiology","t":"Transport mechanisms & Tm","link":{"m":"renal-ch27","h":"transport"}},{"id":"renal-ch27:pct","sub":"Physiology","t":"Proximal tubule","link":{"m":"renal-ch27","h":"pct"}},{"id":"renal-ch27:loop","sub":"Physiology","t":"Loop of Henle","link":{"m":"renal-ch27","h":"loop"}},{"id":"renal-ch27:distal","sub":"Physiology","t":"Distal tubule & collecting duct","link":{"m":"renal-ch27","h":"distal"}},{"id":"renal-ch27:segments","sub":"Physiology","t":"Where things are reabsorbed","link":{"m":"renal-ch27","h":"segments"}},{"id":"renal-ch27:regulation","sub":"Physiology","t":"Regulation of tubular reabsorption","link":{"m":"renal-ch27","h":"regulation"}},{"id":"renal-ch27:clearance","sub":"Physiology","t":"Renal clearance","link":{"m":"renal-ch27","h":"clearance"}},{"id":"renal-ch28:dilute","sub":"Physiology","t":"Forming dilute urine","link":{"m":"renal-ch28","h":"dilute"}},{"id":"renal-ch28:concreq","sub":"Physiology","t":"Conserving water: concentrated urine","link":{"m":"renal-ch28","h":"concreq"}},{"id":"renal-ch28:countercurrent","sub":"Physiology","t":"Countercurrent multiplier","link":{"m":"renal-ch28","h":"countercurrent"}},{"id":"renal-ch28:urea","sub":"Physiology","t":"Urea recycling & vasa recta","link":{"m":"renal-ch28","h":"urea"}},{"id":"renal-ch28:concentrate","sub":"Physiology","t":"Free water clearance & concentrating disorders","link":{"m":"renal-ch28","h":"concentrate"}},{"id":"renal-ch28:adh","sub":"Physiology","t":"Osmoreceptor–ADH & thirst","link":{"m":"renal-ch28","h":"adh"}},{"id":"renal-ch29:potassium","sub":"Physiology","t":"Potassium balance","link":{"m":"renal-ch29","h":"potassium"}},{"id":"renal-ch29:capimg","sub":"Physiology","t":"Calcium, phosphate & magnesium","link":{"m":"renal-ch29","h":"capimg"}},{"id":"renal-ch29:volume","sub":"Physiology","t":"Pressure natriuresis & volume control","link":{"m":"renal-ch29","h":"volume"}},{"id":"renal-ch29:raas","sub":"Physiology","t":"Ang II, aldosterone & ANP","link":{"m":"renal-ch29","h":"raas"}},{"id":"renal-ch30:buffers","sub":"Physiology","t":"Buffers & Henderson–Hasselbalch","link":{"m":"renal-ch30","h":"buffers"}},{"id":"renal-ch30:resp","sub":"Physiology","t":"Respiratory regulation","link":{"m":"renal-ch30","h":"resp"}},{"id":"renal-ch30:renalacid","sub":"Physiology","t":"Renal H⁺ secretion & new HCO₃⁻","link":{"m":"renal-ch30","h":"renalacid"}},{"id":"renal-ch30:ammonia","sub":"Physiology","t":"Phosphate & ammonia buffers","link":{"m":"renal-ch30","h":"ammonia"}},{"id":"renal-ch30:abd","sub":"Physiology","t":"Acid–base disorders","link":{"m":"renal-ch30","h":"abd"}},{"id":"renal-ch31:diuretics","sub":"Physiology","t":"Diuretics","link":{"m":"renal-ch31","h":"diuretics"}},{"id":"renal-ch31:aki","sub":"Physiology","t":"Acute kidney injury","link":{"m":"renal-ch31","h":"aki"}},{"id":"renal-ch31:ckd","sub":"Physiology","t":"Chronic kidney disease","link":{"m":"renal-ch31","h":"ckd"}},{"id":"renal-ch31:tubular","sub":"Physiology","t":"Specific tubular disorders & dialysis","link":{"m":"renal-ch31","h":"tubular"}},{"id":"robbins-ch20:syndromes","sub":"Pathology","t":"Clinical manifestations & syndromes","link":{"m":"robbins-ch20","h":"syndromes"}},{"id":"robbins-ch20:glomresp","sub":"Pathology","t":"Glomerular responses to injury","link":{"m":"robbins-ch20","h":"glomresp"}},{"id":"robbins-ch20:immune","sub":"Pathology","t":"Pathogenesis: immune complexes & anti-GBM","link":{"m":"robbins-ch20","h":"immune"}},{"id":"robbins-ch20:progression","sub":"Pathology","t":"Podocyte injury & progression","link":{"m":"robbins-ch20","h":"progression"}},{"id":"robbins-ch20:psgn","sub":"Pathology","t":"Acute postinfectious GN","link":{"m":"robbins-ch20","h":"psgn"}},{"id":"robbins-ch20:rpgn","sub":"Pathology","t":"Crescentic GN (RPGN)","link":{"m":"robbins-ch20","h":"rpgn"}},{"id":"robbins-ch20:iga","sub":"Pathology","t":"IgA nephropathy & HSP","link":{"m":"robbins-ch20","h":"iga"}},{"id":"robbins-ch20:alport","sub":"Pathology","t":"Hereditary nephritis (Alport) & thin BM","link":{"m":"robbins-ch20","h":"alport"}},{"id":"robbins-ch20:nephrotic","sub":"Pathology","t":"Nephrotic syndrome: causes","link":{"m":"robbins-ch20","h":"nephrotic"}},{"id":"robbins-ch20:membranous","sub":"Pathology","t":"Membranous nephropathy","link":{"m":"robbins-ch20","h":"membranous"}},{"id":"robbins-ch20:mcd","sub":"Pathology","t":"Minimal change disease","link":{"m":"robbins-ch20","h":"mcd"}},{"id":"robbins-ch20:fsgs","sub":"Pathology","t":"Focal segmental glomerulosclerosis","link":{"m":"robbins-ch20","h":"fsgs"}},{"id":"robbins-ch20:mpgn","sub":"Pathology","t":"MPGN & C3 glomerulopathy","link":{"m":"robbins-ch20","h":"mpgn"}},{"id":"robbins-ch20:lupus","sub":"Pathology","t":"Lupus nephritis","link":{"m":"robbins-ch20","h":"lupus"}},{"id":"robbins-ch20:diabetic","sub":"Pathology","t":"Diabetic nephropathy","link":{"m":"robbins-ch20","h":"diabetic"}},{"id":"robbins-ch20:systemic","sub":"Pathology","t":"Other systemic glomerular disease","link":{"m":"robbins-ch20","h":"systemic"}},{"id":"robbins-ch20:atn","sub":"Pathology","t":"Acute tubular injury / necrosis","link":{"m":"robbins-ch20","h":"atn"}},{"id":"robbins-ch20:pyelo","sub":"Pathology","t":"Pyelonephritis & UTI","link":{"m":"robbins-ch20","h":"pyelo"}},{"id":"robbins-ch20:tin","sub":"Pathology","t":"Drug-induced & other TIN","link":{"m":"robbins-ch20","h":"tin"}},{"id":"robbins-ch20:nephrosclerosis","sub":"Pathology","t":"Nephrosclerosis (hypertensive)","link":{"m":"robbins-ch20","h":"nephrosclerosis"}},{"id":"robbins-ch20:tma","sub":"Pathology","t":"Thrombotic microangiopathies & other vascular","link":{"m":"robbins-ch20","h":"tma"}},{"id":"robbins-ch20:congenital","sub":"Pathology","t":"Congenital anomalies","link":{"m":"robbins-ch20","h":"congenital"}},{"id":"robbins-ch20:cystic","sub":"Pathology","t":"Cystic diseases","link":{"m":"robbins-ch20","h":"cystic"}},{"id":"robbins-ch20:obstruction","sub":"Pathology","t":"Obstruction & hydronephrosis","link":{"m":"robbins-ch20","h":"obstruction"}},{"id":"robbins-ch20:stones","sub":"Pathology","t":"Urolithiasis","link":{"m":"robbins-ch20","h":"stones"}},{"id":"robbins-ch20:benign","sub":"Pathology","t":"Benign renal tumors","link":{"m":"robbins-ch20","h":"benign"}},{"id":"robbins-ch20:rcc","sub":"Pathology","t":"Renal cell carcinoma","link":{"m":"robbins-ch20","h":"rcc"}},{"id":"robbins-ch20:wilms","sub":"Pathology","t":"Wilms tumor (nephroblastoma)","link":{"m":"robbins-ch20","h":"wilms"}},{"id":"robbins-ch21:ureter","sub":"Pathology","t":"Ureter: congenital anomalies & tumors","link":{"m":"robbins-ch21","h":"ureter"}},{"id":"robbins-ch21:ureterobs","sub":"Pathology","t":"Obstructive lesions & retroperitoneal fibrosis","link":{"m":"robbins-ch21","h":"ureterobs"}},{"id":"robbins-ch21:bladdercong","sub":"Pathology","t":"Bladder: congenital anomalies","link":{"m":"robbins-ch21","h":"bladdercong"}},{"id":"robbins-ch21:cystitis","sub":"Pathology","t":"Cystitis","link":{"m":"robbins-ch21","h":"cystitis"}},{"id":"robbins-ch21:metaplasia","sub":"Pathology","t":"Metaplastic lesions","link":{"m":"robbins-ch21","h":"metaplasia"}},{"id":"robbins-ch21:urothelial","sub":"Pathology","t":"Urothelial neoplasms: pathways & risk","link":{"m":"robbins-ch21","h":"urothelial"}},{"id":"robbins-ch21:grading","sub":"Pathology","t":"Noninvasive urothelial tumors: grading","link":{"m":"robbins-ch21","h":"grading"}},{"id":"robbins-ch21:staging","sub":"Pathology","t":"Invasive carcinoma: pathologic staging","link":{"m":"robbins-ch21","h":"staging"}},{"id":"robbins-ch21:othertum","sub":"Pathology","t":"Other bladder tumors","link":{"m":"robbins-ch21","h":"othertum"}},{"id":"robbins-ch21:urethra","sub":"Pathology","t":"Urethra: inflammation & tumors","link":{"m":"robbins-ch21","h":"urethra"}},{"id":"harrison-ch319:ap-aki","sub":"Pathology","t":"Prerenal · intrinsic · postrenal","link":{"m":"harrison-ch319","h":"ap-aki"}},{"id":"harrison-ch319:ap-syn","sub":"Pathology","t":"Nephritic vs nephrotic: clinical clues","link":{"m":"harrison-ch319","h":"ap-syn"}},{"id":"harrison-ch319:ap-hem","sub":"Pathology","t":"Hematuria & lower urinary tract","link":{"m":"harrison-ch319","h":"ap-hem"}},{"id":"harrison-ch320:cb-seg","sub":"Pathology","t":"Segmental transport","link":{"m":"harrison-ch320","h":"cb-seg"}},{"id":"harrison-ch320:cb-inh","sub":"Pathology","t":"Inherited tubular disorders (Table 320-1)","link":{"m":"harrison-ch320","h":"cb-inh"}},{"id":"harrison-ch320:cb-na","sub":"Pathology","t":"Sodium & water balance","link":{"m":"harrison-ch320","h":"cb-na"}},{"id":"harrison-ch321:aki-def","sub":"Pathology","t":"Definition & KDIGO staging","link":{"m":"harrison-ch321","h":"aki-def"}},{"id":"harrison-ch321:aki-cause","sub":"Pathology","t":"Causes: prerenal · intrinsic · postrenal","link":{"m":"harrison-ch321","h":"aki-cause"}},{"id":"harrison-ch321:aki-dx","sub":"Pathology","t":"Diagnostics: urinalysis & FENa","link":{"m":"harrison-ch321","h":"aki-dx"}},{"id":"harrison-ch321:aki-mx","sub":"Pathology","t":"Complications & management","link":{"m":"harrison-ch321","h":"aki-mx"}},{"id":"harrison-ch322:ckd-stage","sub":"Pathology","t":"KDIGO staging: GFR × albuminuria","link":{"m":"harrison-ch322","h":"ckd-stage"}},{"id":"harrison-ch322:ckd-lyte","sub":"Pathology","t":"Fluid, electrolyte & acid–base","link":{"m":"harrison-ch322","h":"ckd-lyte"}},{"id":"harrison-ch322:ckd-mbd","sub":"Pathology","t":"CKD–mineral bone disorder","link":{"m":"harrison-ch322","h":"ckd-mbd"}},{"id":"harrison-ch322:ckd-sys","sub":"Pathology","t":"CV, hematologic & other manifestations","link":{"m":"harrison-ch322","h":"ckd-sys"}},{"id":"harrison-ch322:ckd-slow","sub":"Pathology","t":"Slowing progression & preparing for RRT","link":{"m":"harrison-ch322","h":"ckd-slow"}},{"id":"harrison-ch323:hd","sub":"Pathology","t":"Hemodialysis","link":{"m":"harrison-ch323","h":"hd"}},{"id":"harrison-ch323:hdcx","sub":"Pathology","t":"Complications of hemodialysis","link":{"m":"harrison-ch323","h":"hdcx"}},{"id":"harrison-ch323:pd","sub":"Pathology","t":"Peritoneal dialysis","link":{"m":"harrison-ch323","h":"pd"}},{"id":"harrison-ch324:ivn","sub":"Pathology","t":"Dialysis access: assessment & intervention","link":{"m":"harrison-ch324","h":"ivn"}},{"id":"harrison-ch325:tx-imm","sub":"Pathology","t":"Immunology of rejection","link":{"m":"harrison-ch325","h":"tx-imm"}},{"id":"harrison-ch325:tx-drug","sub":"Pathology","t":"Maintenance immunosuppression","link":{"m":"harrison-ch325","h":"tx-drug"}},{"id":"harrison-ch325:tx-inf","sub":"Pathology","t":"Infections & malignancy after transplant","link":{"m":"harrison-ch325","h":"tx-inf"}},{"id":"harrison-ch326:gd-prot","sub":"Pathology","t":"Measuring proteinuria","link":{"m":"harrison-ch326","h":"gd-prot"}},{"id":"harrison-ch326:gd-pat","sub":"Pathology","t":"Clinical patterns of glomerular disease","link":{"m":"harrison-ch326","h":"gd-pat"}},{"id":"harrison-ch326:gd-tx","sub":"Pathology","t":"Treatment by disease","link":{"m":"harrison-ch326","h":"gd-tx"}},{"id":"harrison-ch327:pkd-ad","sub":"Pathology","t":"ADPKD","link":{"m":"harrison-ch327","h":"pkd-ad"}},{"id":"harrison-ch327:pkd-ar","sub":"Pathology","t":"ARPKD","link":{"m":"harrison-ch327","h":"pkd-ar"}},{"id":"harrison-ch327:pkd-oth","sub":"Pathology","t":"Other inherited cystic & tubular diseases","link":{"m":"harrison-ch327","h":"pkd-oth"}},{"id":"harrison-ch328:tin-ain","sub":"Pathology","t":"Acute interstitial nephritis","link":{"m":"harrison-ch328","h":"tin-ain"}},{"id":"harrison-ch328:tin-imm","sub":"Pathology","t":"Systemic & immune-mediated TIN","link":{"m":"harrison-ch328","h":"tin-imm"}},{"id":"harrison-ch328:tin-chronic","sub":"Pathology","t":"Chronic tubulointerstitial nephropathies","link":{"m":"harrison-ch328","h":"tin-chronic"}},{"id":"harrison-ch329:tma-types","sub":"Pathology","t":"Thrombotic microangiopathies","link":{"m":"harrison-ch329","h":"tma-types"}},{"id":"harrison-ch329:tma-ssc","sub":"Pathology","t":"Scleroderma renal crisis & renal vein thrombosis","link":{"m":"harrison-ch329","h":"tma-ssc"}},{"id":"harrison-ch330:st-type","sub":"Pathology","t":"Stone types & urine pH","link":{"m":"harrison-ch330","h":"st-type"}},{"id":"harrison-ch330:st-risk","sub":"Pathology","t":"Risk factors & diet","link":{"m":"harrison-ch330","h":"st-risk"}},{"id":"harrison-ch330:st-mx","sub":"Pathology","t":"Acute colic & prevention","link":{"m":"harrison-ch330","h":"st-mx"}},{"id":"harrison-ch331:uo-cause","sub":"Pathology","t":"Causes by level","link":{"m":"harrison-ch331","h":"uo-cause"}},{"id":"harrison-ch331:uo-phys","sub":"Pathology","t":"Pathophysiology","link":{"m":"harrison-ch331","h":"uo-phys"}},{"id":"harrison-ch331:uo-dx","sub":"Pathology","t":"Diagnosis, relief & recovery","link":{"m":"harrison-ch331","h":"uo-dx"}},{"id":"renal-33","sub":"Pathology","t":"Urinary incontinence","link":{"m":"renal-ch26","h":"micturition"}},{"id":"renal-47","sub":"Pharmacology","t":"Diuretics: site of action","link":{"m":"renal-ch31","h":"diuretics"}},{"id":"renal-48","sub":"Pharmacology","t":"Mannitol","link":{"m":"nephron-pathway","h":"diu"}},{"id":"renal-49","sub":"Pharmacology","t":"Acetazolamide","link":{"m":"nephron-pathway","h":"diu"}},{"id":"renal-50","sub":"Pharmacology","t":"Loop diuretics","link":{"m":"nephron-pathway","h":"diu"}},{"id":"renal-51","sub":"Pharmacology","t":"Thiazide diuretics","link":{"m":"nephron-pathway","h":"diu"}},{"id":"renal-52","sub":"Pharmacology","t":"Potassium-sparing diuretics","link":{"m":"nephron-pathway","h":"diu"}},{"id":"renal-53","sub":"Pharmacology","t":"Diuretics: electrolyte changes","link":{"m":"nephron-pathway","h":"diu"}},{"id":"renal-54","sub":"Pharmacology","t":"ACE inhibitors","link":{"m":"nephron-pathway","h":"reg"}},{"id":"renal-55","sub":"Pharmacology","t":"Angiotensin II receptor blockers","link":{"m":"nephron-pathway","h":"reg"}},{"id":"renal-56","sub":"Pharmacology","t":"Aliskiren","link":{"m":"nephron-pathway","h":"reg"}}],"resources":[{"title":"Renal transport table (Google Sheet)","href":"https://docs.google.com/spreadsheets/d/1n-DToTPwewWlV3XKwIMjP4qFsvZy2eZJgXpTsjyLc7U/edit"}],"course":"240-324"},{"id":"repro","name":"Reproductive","th":"ระบบสืบพันธุ์","color":"#DB2777","glyph":"repro","subs":["Embryology","Anatomy","Physiology","Pathology","Pharmacology"],"modules":[],"checklist":[],"resources":[]},{"id":"resp","name":"Respiratory","th":"ระบบหายใจ","color":"#0284C7","glyph":"lung","subs":["Embryology","Anatomy","Physiology","Pathology","Pharmacology"],"modules":[],"checklist":[],"resources":[]}]}],"alias":{"renal-0":"kub-embryology:s1","renal-1":"kub-embryology:s3","renal-2":"kub-embryology:s6","renal-3":"kub-embryology:s3","renal-4":"kub-embryology:s4","renal-5":"kub-embryology:s4","renal-6":"kub-embryology:s8","renal-57":"kub-anatomy:loc","renal-58":"kub-anatomy:rel","renal-59":"kub-anatomy:fascia","renal-60":"kub-anatomy:struct","renal-61":"kub-anatomy:vessels","renal-62":"kub-anatomy:adrenal","renal-63":"kub-anatomy:ureter","renal-64":"kub-anatomy:bladder","renal-65":"kub-anatomy:urethra","renal-66":"kub-anatomy:wall","renal-67":"kub-anatomy:plexus","renal-68":"kub-anatomy:aorta","renal-7":"kub-anatomy:struct","renal-8":"kub-anatomy:ureter","renal-9":"kub-anatomy:ureter","renal-69":"kub-histology:lowpower","renal-70":"kub-histology:corpuscle","renal-71":"kub-histology:barrier","renal-72":"kub-histology:mesangium","renal-73":"kub-histology:jga","renal-74":"kub-histology:pctdct","renal-75":"kub-histology:pctem","renal-76":"kub-histology:medulla","renal-77":"kub-histology:cd","renal-78":"kub-histology:urothelium","renal-79":"kub-histology:ureter","renal-80":"kub-histology:vessels","renal-10":"renal-ch25:compartments","renal-11":"renal-ch26:gfr","renal-12":"renal-ch27:clearance","renal-13":"renal-ch26:gfr","renal-14":"renal-ch27:clearance","renal-15":"renal-ch26:gfr","renal-16":"renal-ch27:transport","renal-17":"renal-ch27:segments","renal-18":"renal-ch31:tubular","renal-19":"renal-ch30:abd","renal-20":"renal-ch29:raas","renal-21":"renal-ch26:overview","renal-22":"renal-ch27:regulation","renal-23":"renal-ch29:potassium","renal-24":"renal-ch29:capimg","renal-25":"renal-ch30:buffers","renal-26":"renal-ch30:renalacid","renal-81":"renal-ch25:shifts","renal-82":"renal-ch25:natremia","renal-83":"renal-ch26:autoreg","renal-84":"renal-ch26:rbf","renal-85":"renal-ch27:transport","renal-86":"renal-ch27:loop","renal-87":"renal-ch28:countercurrent","renal-88":"renal-ch28:adh","renal-89":"renal-ch29:capimg","renal-90":"renal-ch29:volume","renal-91":"renal-ch30:renalacid","renal-92":"renal-ch31:ckd","renal-27":"harrison-ch321:aki-dx","renal-28":"robbins-ch20:glomresp","renal-29":"robbins-ch20:psgn","renal-30":"robbins-ch20:nephrotic","renal-31":"robbins-ch20:stones","renal-32":"robbins-ch20:obstruction","renal-34":"robbins-ch21:cystitis","renal-35":"robbins-ch20:pyelo","renal-36":"harrison-ch321:aki-def","renal-37":"robbins-ch20:tin","renal-38":"robbins-ch20:atn","renal-39":"robbins-ch20:pyelo","renal-40":"harrison-ch322:ckd-sys","renal-41":"harrison-ch322:ckd-mbd","renal-42":"robbins-ch20:cystic","renal-43":"robbins-ch20:rcc","renal-44":"robbins-ch20:benign","renal-45":"robbins-ch20:wilms","renal-46":"robbins-ch21:urothelial"}}
+{
+ "owner": "ภัทร",
+ "sections": [
+  {
+   "id": "gp",
+   "name": "General Principles",
+   "th": "หลักการพื้นฐาน",
+   "chapters": [
+    {
+     "id": "biochem",
+     "name": "Biochemistry",
+     "th": "ชีวเคมี",
+     "color": "#65A30D",
+     "glyph": "dna",
+     "subs": [
+      "Molecular",
+      "Cellular",
+      "Laboratory Techniques",
+      "Genetics",
+      "Nutrition",
+      "Metabolism"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "immuno",
+     "name": "Immunology",
+     "th": "ภูมิคุ้มกันวิทยา",
+     "color": "#0891B2",
+     "glyph": "antibody",
+     "subs": [
+      "Lymphoid Structures",
+      "Cellular Components",
+      "Immune Responses",
+      "Immunosuppressants"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "micro",
+     "name": "Microbiology",
+     "th": "จุลชีววิทยา",
+     "color": "#059669",
+     "glyph": "microbe",
+     "subs": [
+      "Basic Bacteriology",
+      "Clinical Bacteriology",
+      "Mycology",
+      "Parasitology",
+      "Virology",
+      "Systems",
+      "Antimicrobials"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "patho",
+     "name": "Pathology",
+     "th": "พยาธิวิทยา",
+     "color": "#C026D3",
+     "glyph": "scope",
+     "subs": [
+      "Cellular Injury",
+      "Inflammation",
+      "Neoplasia",
+      "Aging"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "pharm",
+     "name": "Pharmacology",
+     "th": "เภสัชวิทยา",
+     "color": "#EA580C",
+     "glyph": "pill",
+     "subs": [
+      "Pharmacokinetics & Pharmacodynamics",
+      "Autonomic Drugs",
+      "Toxicities & Miscellaneous"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "phs",
+     "name": "Public Health Sciences",
+     "th": "สาธารณสุขศาสตร์",
+     "color": "#64748B",
+     "glyph": "chart",
+     "subs": [
+      "Epidemiology & Biostatistics",
+      "Ethics",
+      "Communication Skills",
+      "Healthcare Delivery"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    }
+   ]
+  },
+  {
+   "id": "os",
+   "name": "Organ Systems",
+   "th": "ระบบอวัยวะ",
+   "chapters": [
+    {
+     "id": "cvs",
+     "name": "Cardiovascular",
+     "th": "ระบบหัวใจและหลอดเลือด",
+     "color": "#E11D48",
+     "glyph": "heart",
+     "subs": [
+      "Embryology",
+      "Anatomy",
+      "Physiology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "endo",
+     "name": "Endocrine",
+     "th": "ระบบต่อมไร้ท่อ",
+     "color": "#7C3AED",
+     "glyph": "gland",
+     "subs": [
+      "Embryology",
+      "Anatomy",
+      "Physiology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "gi",
+     "name": "Gastrointestinal",
+     "th": "ระบบทางเดินอาหาร",
+     "color": "#D97706",
+     "glyph": "gut",
+     "subs": [
+      "Embryology",
+      "Anatomy",
+      "Physiology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "heme",
+     "name": "Hematology & Oncology",
+     "th": "โลหิตวิทยาและมะเร็ง",
+     "color": "#DC2626",
+     "glyph": "cell",
+     "subs": [
+      "Embryology",
+      "Anatomy",
+      "Physiology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "msk",
+     "name": "Musculoskeletal, Skin & CT",
+     "th": "กล้ามเนื้อ กระดูก ผิวหนัง",
+     "color": "#78716C",
+     "glyph": "bone",
+     "subs": [
+      "Anatomy & Physiology",
+      "Pathology",
+      "Dermatology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "neuro",
+     "name": "Neurology & Special Senses",
+     "th": "ระบบประสาทและอวัยวะรับสัมผัส",
+     "color": "#0D9488",
+     "glyph": "neuron",
+     "subs": [
+      "Embryology",
+      "Anatomy & Physiology",
+      "Pathology",
+      "Otology",
+      "Ophthalmology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "psych",
+     "name": "Psychiatry",
+     "th": "จิตเวชศาสตร์",
+     "color": "#4F46E5",
+     "glyph": "mind",
+     "subs": [
+      "Psychology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "renal",
+     "name": "Renal",
+     "th": "ระบบไตและทางเดินปัสสาวะ",
+     "color": "#BE185D",
+     "glyph": "kidney",
+     "subs": [
+      "Embryology",
+      "Anatomy",
+      "Histology",
+      "Physiology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [
+      {
+       "id": "renal-ch25",
+       "title": "Ch 25 · The Body Fluid Compartments",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 25",
+       "href": "renal/renal-ch25.html",
+       "thumb": "thumbs/renal-ch25.jpg",
+       "desc": "สมดุลน้ำเข้าออก ICF/ECF/plasma ส่วนประกอบไอออน indicator-dilution osmolarity การเคลื่อนของน้ำเมื่อให้ saline (ลองปรับได้) hypo/hypernatremia และ edema",
+       "tags": [],
+       "topics": [
+        [
+         "Water balance",
+         "balance"
+        ],
+        [
+         "Compartments",
+         "compartments"
+        ],
+        [
+         "Composition",
+         "composition"
+        ],
+        [
+         "Measuring volumes",
+         "measure"
+        ],
+        [
+         "Osmosis & tonicity",
+         "osmosis"
+        ],
+        [
+         "Fluid shifts",
+         "shifts"
+        ],
+        [
+         "Na⁺ disorders",
+         "natremia"
+        ],
+        [
+         "Edema",
+         "edema"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 25",
+        "sort": 25
+       }
+      },
+      {
+       "id": "renal-ch26",
+       "title": "Ch 26 · Urine Formation I: GFR, RBF & Micturition",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 26",
+       "href": "renal/renal-ch26.html",
+       "thumb": "thumbs/renal-ch26.jpg",
+       "desc": "การกรองที่ glomerulus แรงที่กำหนด GFR การไหลของเลือดไปไตและการควบคุม autoregulation และการขับปัสสาวะ",
+       "tags": [],
+       "topics": [
+        [
+         "Kidney functions & physiologic anatomy",
+         "overview"
+        ],
+        [
+         "Micturition",
+         "micturition"
+        ],
+        [
+         "Urine formation: filtration, reabsorption, secretion",
+         "urineform"
+        ],
+        [
+         "GFR & its determinants",
+         "gfr"
+        ],
+        [
+         "Renal blood flow & physiologic control",
+         "rbf"
+        ],
+        [
+         "Autoregulation & TGF",
+         "autoreg"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 26",
+        "sort": 26
+       }
+      },
+      {
+       "id": "renal-ch27",
+       "title": "Ch 27 · Urine Formation II: Tubular Reabsorption & Secretion",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 27",
+       "href": "renal/renal-ch27.html",
+       "thumb": "thumbs/renal-ch27.jpg",
+       "desc": "primary/secondary active transport, Tm, การดูดกลับและหลั่งใน PCT loop distal CD การควบคุม และ clearance",
+       "tags": [],
+       "topics": [
+        [
+         "Transport mechanisms & Tm",
+         "transport"
+        ],
+        [
+         "Proximal tubule",
+         "pct"
+        ],
+        [
+         "Loop of Henle",
+         "loop"
+        ],
+        [
+         "Distal tubule & collecting duct",
+         "distal"
+        ],
+        [
+         "Where things are reabsorbed",
+         "segments"
+        ],
+        [
+         "Regulation of tubular reabsorption",
+         "regulation"
+        ],
+        [
+         "Renal clearance",
+         "clearance"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 27",
+        "sort": 27
+       }
+      },
+      {
+       "id": "renal-ch28",
+       "title": "Ch 28 · Urine Concentration & Dilution; Osmolarity & Na⁺",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 28",
+       "href": "renal/renal-ch28.html",
+       "thumb": "thumbs/renal-ch28.jpg",
+       "desc": "ปัสสาวะเจือจาง/เข้มข้น countercurrent multiplier urea vasa recta free water ADH และความกระหาย",
+       "tags": [],
+       "topics": [
+        [
+         "Forming dilute urine",
+         "dilute"
+        ],
+        [
+         "Conserving water: concentrated urine",
+         "concreq"
+        ],
+        [
+         "Countercurrent multiplier",
+         "countercurrent"
+        ],
+        [
+         "Urea recycling & vasa recta",
+         "urea"
+        ],
+        [
+         "Free water clearance & concentrating disorders",
+         "concentrate"
+        ],
+        [
+         "Osmoreceptor–ADH & thirst",
+         "adh"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 28",
+        "sort": 28
+       }
+      },
+      {
+       "id": "renal-ch29",
+       "title": "Ch 29 · K⁺, Ca²⁺, PO₄, Mg²⁺; Blood & ECF Volume",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 29",
+       "href": "renal/renal-ch29.html",
+       "thumb": "thumbs/renal-ch29.jpg",
+       "desc": "การกระจายและการขับ K⁺, Ca²⁺ PO₄ Mg²⁺, pressure natriuresis, Ang II aldosterone ANP",
+       "tags": [],
+       "topics": [
+        [
+         "Potassium balance",
+         "potassium"
+        ],
+        [
+         "Calcium, phosphate & magnesium",
+         "capimg"
+        ],
+        [
+         "Pressure natriuresis & volume control",
+         "volume"
+        ],
+        [
+         "Ang II, aldosterone & ANP",
+         "raas"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 29",
+        "sort": 29
+       }
+      },
+      {
+       "id": "renal-ch30",
+       "title": "Ch 30 · Acid–Base Regulation",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 30",
+       "href": "renal/renal-ch30.html",
+       "thumb": "thumbs/renal-ch30.jpg",
+       "desc": "buffer, Henderson–Hasselbalch, การชดเชยทางการหายใจ, การหลั่ง H⁺ ที่ไต, ammonia, anion gap",
+       "tags": [],
+       "topics": [
+        [
+         "Buffers & Henderson–Hasselbalch",
+         "buffers"
+        ],
+        [
+         "Respiratory regulation",
+         "resp"
+        ],
+        [
+         "Renal H⁺ secretion & new HCO₃⁻",
+         "renalacid"
+        ],
+        [
+         "Phosphate & ammonia buffers",
+         "ammonia"
+        ],
+        [
+         "Acid–base disorders",
+         "abd"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 30",
+        "sort": 30
+       }
+      },
+      {
+       "id": "renal-ch31",
+       "title": "Ch 31 · Diuretics & Kidney Diseases",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 31",
+       "href": "renal/renal-ch31.html",
+       "thumb": "thumbs/renal-ch31.jpg",
+       "desc": "กลุ่มยาขับปัสสาวะ, AKI ทั้ง 3 แบบ, CKD และ vicious cycle, specific tubular disorders, dialysis",
+       "tags": [],
+       "topics": [
+        [
+         "Diuretics",
+         "diuretics"
+        ],
+        [
+         "Acute kidney injury",
+         "aki"
+        ],
+        [
+         "Chronic kidney disease",
+         "ckd"
+        ],
+        [
+         "Specific tubular disorders & dialysis",
+         "tubular"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 31",
+        "sort": 31
+       }
+      },
+      {
+       "id": "kub-embryology",
+       "title": "KUB Embryology Atlas",
+       "subs": [
+        "Embryology"
+       ],
+       "src": "Langman · Moore",
+       "href": "renal/kub-embryology.html",
+       "thumb": "thumbs/kub-embryology.jpg",
+       "desc": "จาก intermediate mesoderm สู่ไต ureter bladder urethra 8 stage พร้อม signaling, transcription factor และ anomaly",
+       "tags": [
+        "pronephros",
+        "mesonephros",
+        "metanephros",
+        "ureteric bud",
+        "cloaca",
+        "trigone",
+        "ascent",
+        "nephrogenesis",
+        "WT1",
+        "GDNF",
+        "horseshoe kidney",
+        "Potter",
+        "anomalies"
+       ],
+       "topics": [],
+       "ref": {
+        "b": "langman",
+        "l": "L",
+        "ch": "Ch 16",
+        "sort": 16
+       }
+      },
+      {
+       "id": "kub-anatomy",
+       "title": "KUB Gross Anatomy",
+       "subs": [
+        "Anatomy"
+       ],
+       "src": "Lecture · Gray's Anatomy for Students",
+       "href": "renal/kub-anatomy.html",
+       "thumb": "thumbs/kub-anatomy.jpg",
+       "desc": "ตำแหน่ง ความสัมพันธ์ fascia โครงสร้างภายใน หลอดเลือด ต่อมหมวกไต ท่อไต กระเพาะปัสสาวะ ท่อปัสสาวะ และผนังช่องท้องด้านหลัง พร้อมรูปจากเลคเชอร์",
+       "tags": [
+        "retroperitoneal",
+        "hilum",
+        "Gerota",
+        "renal fascia",
+        "segmental artery",
+        "suprarenal",
+        "adrenal",
+        "ureter",
+        "constriction",
+        "trigone",
+        "urethra",
+        "psoas",
+        "quadratus lumborum",
+        "lumbar plexus",
+        "aorta",
+        "IVC",
+        "cisterna chyli",
+        "nutcracker"
+       ],
+       "topics": [
+        [
+         "Muscles",
+         "wall"
+        ],
+        [
+         "Location",
+         "loc"
+        ],
+        [
+         "Relations",
+         "rel"
+        ],
+        [
+         "Fat & fascia",
+         "fascia"
+        ],
+        [
+         "Internal structure",
+         "struct"
+        ],
+        [
+         "Blood supply",
+         "vessels"
+        ],
+        [
+         "Lymph & nerves",
+         "lnn"
+        ],
+        [
+         "Ureter",
+         "ureter"
+        ],
+        [
+         "Suprarenal",
+         "adrenal"
+        ],
+        [
+         "Aorta & IVC",
+         "aorta"
+        ],
+        [
+         "Lumbar plexus",
+         "plexus"
+        ],
+        [
+         "Bladder",
+         "bladder"
+        ],
+        [
+         "Urethra",
+         "urethra"
+        ],
+        [
+         "Clinical",
+         "clinic"
+        ]
+       ],
+       "ref": {
+        "b": "grays",
+        "l": "Gray",
+        "ch": "Ch 4–5",
+        "sort": 4
+       }
+      },
+      {
+       "id": "kub-histology",
+       "title": "KUB Histology",
+       "subs": [
+        "Histology"
+       ],
+       "src": "Junqueira · Wheater · diFiore",
+       "href": "renal/kub-histology.html",
+       "thumb": "thumbs/kub-histology.jpg",
+       "desc": "ไตและทางเดินปัสสาวะใต้กล้อง วาดแบบสไลด์ H&E/PAS ตั้งแต่ low power ถึง EM พร้อมวิธีแยก PCT DCT CD thin limb และ urothelium บนสไลด์",
+       "tags": [
+        "histology",
+        "H&E",
+        "PAS",
+        "renal corpuscle",
+        "podocyte",
+        "GBM",
+        "slit diaphragm",
+        "nephrin",
+        "mesangial",
+        "macula densa",
+        "juxtaglomerular",
+        "lacis",
+        "PCT",
+        "brush border",
+        "DCT",
+        "collecting duct",
+        "principal cell",
+        "intercalated cell",
+        "vasa recta",
+        "urothelium",
+        "umbrella cell",
+        "uroplakin",
+        "ureter",
+        "detrusor",
+        "urethra",
+        "area cribrosa",
+        "medullary ray"
+       ],
+       "topics": [
+        [
+         "Low power",
+         "lowpower"
+        ],
+        [
+         "Blood supply",
+         "vessels"
+        ],
+        [
+         "Renal corpuscle",
+         "corpuscle"
+        ],
+        [
+         "Filtration barrier",
+         "barrier"
+        ],
+        [
+         "PCT vs DCT",
+         "pctdct"
+        ],
+        [
+         "Medulla",
+         "medulla"
+        ],
+        [
+         "JGA",
+         "jga"
+        ],
+        [
+         "Collecting duct",
+         "cd"
+        ],
+        [
+         "Slide ID",
+         "slideid"
+        ],
+        [
+         "Urothelium",
+         "urothelium"
+        ],
+        [
+         "Ureter",
+         "ureter"
+        ],
+        [
+         "Bladder",
+         "bladder"
+        ],
+        [
+         "Clinical",
+         "clinical"
+        ]
+       ],
+       "ref": {
+        "b": "junq",
+        "l": "J",
+        "ch": "Ch 19",
+        "sort": 19
+       }
+      },
+      {
+       "id": "nephron-pathway",
+       "title": "Nephron Pathway Atlas",
+       "subs": [
+        "Physiology",
+        "Pathology",
+        "Pharmacology"
+       ],
+       "src": "Guyton & Hall · Boron & Boulpaep",
+       "href": "renal/nephron-pathway.html",
+       "thumb": "thumbs/nephron-pathway.jpg",
+       "desc": "แผนที่ transporter แบบโต้ตอบ: ทุก channel, pump, enzyme, receptor ตั้งแต่ renal artery ผ่าน nephron ถึง renal vein ใช้คู่กับ Renal Physiology",
+       "tags": [
+        "transporter",
+        "channel",
+        "pump",
+        "receptor",
+        "hormone",
+        "acid-base",
+        "diuretic",
+        "clearance",
+        "countercurrent",
+        "GFR",
+        "RAAS",
+        "ADH",
+        "aldosterone",
+        "NKCC2",
+        "ENaC",
+        "aquaporin"
+       ],
+       "topics": [
+        [
+         "ติดตามสาร: สารแต่ละตัวเคลื่อนที่ที่ไหน",
+         "tracker"
+        ],
+        [
+         "Glomerulus",
+         "glom"
+        ],
+        [
+         "Proximal tubule",
+         "pt1"
+        ],
+        [
+         "Thick ascending limb",
+         "tal"
+        ],
+        [
+         "DCT",
+         "dct"
+        ],
+        [
+         "Principal cell",
+         "pc"
+        ],
+        [
+         "Collecting duct",
+         "mcd"
+        ],
+        [
+         "Hormones & nerves",
+         "reg"
+        ],
+        [
+         "Acid–base",
+         "ab"
+        ],
+        [
+         "Countercurrent",
+         "cc"
+        ],
+        [
+         "Clearance",
+         "cl"
+        ],
+        [
+         "Volume & osmolality",
+         "vol"
+        ],
+        [
+         "Diuretics",
+         "diu"
+        ],
+        [
+         "Kidney diseases",
+         "dis"
+        ],
+        [
+         "Micturition",
+         "mic"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 26–31",
+        "sort": 31.5
+       }
+      },
+      {
+       "id": "robbins-ch20",
+       "title": "Ch 20 · The Kidney",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins & Cotran 10e Ch 20",
+       "href": "renal/robbins-ch20.html",
+       "thumb": "thumbs/robbins-ch20.jpg",
+       "desc": "โรคไตทั้งบทตาม Robbins: glomerular disease ทุกชนิดสลับดู EM · IF · LM ได้ lupus class เลือกได้ ATN pyelonephritis TIN หลอดเลือด ซีสต์ นิ่ว และเนื้องอก",
+       "tags": [],
+       "topics": [
+        [
+         "Clinical manifestations & syndromes",
+         "syndromes"
+        ],
+        [
+         "Glomerular responses to injury",
+         "glomresp"
+        ],
+        [
+         "Pathogenesis: immune complexes & anti-GBM",
+         "immune"
+        ],
+        [
+         "Podocyte injury & progression",
+         "progression"
+        ],
+        [
+         "Acute postinfectious GN",
+         "psgn"
+        ],
+        [
+         "Crescentic GN (RPGN)",
+         "rpgn"
+        ],
+        [
+         "IgA nephropathy & HSP",
+         "iga"
+        ],
+        [
+         "Hereditary nephritis (Alport) & thin BM",
+         "alport"
+        ],
+        [
+         "Nephrotic syndrome: causes",
+         "nephrotic"
+        ],
+        [
+         "Membranous nephropathy",
+         "membranous"
+        ],
+        [
+         "Minimal change disease",
+         "mcd"
+        ],
+        [
+         "Focal segmental glomerulosclerosis",
+         "fsgs"
+        ],
+        [
+         "MPGN & C3 glomerulopathy",
+         "mpgn"
+        ],
+        [
+         "Lupus nephritis",
+         "lupus"
+        ],
+        [
+         "Diabetic nephropathy",
+         "diabetic"
+        ],
+        [
+         "Other systemic glomerular disease",
+         "systemic"
+        ],
+        [
+         "Acute tubular injury / necrosis",
+         "atn"
+        ],
+        [
+         "Pyelonephritis & UTI",
+         "pyelo"
+        ],
+        [
+         "Drug-induced & other TIN",
+         "tin"
+        ],
+        [
+         "Nephrosclerosis (hypertensive)",
+         "nephrosclerosis"
+        ],
+        [
+         "Thrombotic microangiopathies & other vascular",
+         "tma"
+        ],
+        [
+         "Congenital anomalies",
+         "congenital"
+        ],
+        [
+         "Cystic diseases",
+         "cystic"
+        ],
+        [
+         "Obstruction & hydronephrosis",
+         "obstruction"
+        ],
+        [
+         "Urolithiasis",
+         "stones"
+        ],
+        [
+         "Benign renal tumors",
+         "benign"
+        ],
+        [
+         "Renal cell carcinoma",
+         "rcc"
+        ],
+        [
+         "Wilms tumor (nephroblastoma)",
+         "wilms"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Ch 20",
+        "sort": 120
+       }
+      },
+      {
+       "id": "robbins-ch21",
+       "title": "Ch 21 · The Lower Urinary Tract",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins & Cotran 10e Ch 21",
+       "href": "renal/robbins-ch21.html",
+       "thumb": "thumbs/robbins-ch21.jpg",
+       "desc": "ureter bladder urethra: cystitis หลายแบบ metaplasia urothelial neoplasm pathway grading และ TNM staging ที่เลือกดูความลึกได้",
+       "tags": [],
+       "topics": [
+        [
+         "Ureter: congenital anomalies & tumors",
+         "ureter"
+        ],
+        [
+         "Obstructive lesions & retroperitoneal fibrosis",
+         "ureterobs"
+        ],
+        [
+         "Bladder: congenital anomalies",
+         "bladdercong"
+        ],
+        [
+         "Cystitis",
+         "cystitis"
+        ],
+        [
+         "Metaplastic lesions",
+         "metaplasia"
+        ],
+        [
+         "Urothelial neoplasms: pathways & risk",
+         "urothelial"
+        ],
+        [
+         "Noninvasive urothelial tumors: grading",
+         "grading"
+        ],
+        [
+         "Invasive carcinoma: pathologic staging",
+         "staging"
+        ],
+        [
+         "Other bladder tumors",
+         "othertum"
+        ],
+        [
+         "Urethra: inflammation & tumors",
+         "urethra"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Ch 21",
+        "sort": 121
+       }
+      },
+      {
+       "id": "harrison-ch319",
+       "title": "Ch 319 · Approach to the Patient with Renal Disease",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 319",
+       "href": "renal/harrison-ch319.html",
+       "thumb": "thumbs/harrison-ch319.jpg",
+       "desc": "Harrison บทที่ 319: Prerenal · intrinsic · postrenal · Nephritic vs nephrotic: clinical clues · Hematuria & lower urinary tract",
+       "tags": [],
+       "topics": [
+        [
+         "Prerenal · intrinsic · postrenal",
+         "ap-aki"
+        ],
+        [
+         "Nephritic vs nephrotic: clinical clues",
+         "ap-syn"
+        ],
+        [
+         "Hematuria & lower urinary tract",
+         "ap-hem"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 319",
+        "sort": 319
+       }
+      },
+      {
+       "id": "harrison-ch320",
+       "title": "Ch 320 · Cell Biology & Physiology of the Kidney",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 320",
+       "href": "renal/harrison-ch320.html",
+       "thumb": "thumbs/harrison-ch320.jpg",
+       "desc": "Harrison บทที่ 320: Segmental transport · Inherited tubular disorders (Table 320-1) · Sodium & water balance",
+       "tags": [],
+       "topics": [
+        [
+         "Segmental transport",
+         "cb-seg"
+        ],
+        [
+         "Inherited tubular disorders (Table 320-1)",
+         "cb-inh"
+        ],
+        [
+         "Sodium & water balance",
+         "cb-na"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 320",
+        "sort": 320
+       }
+      },
+      {
+       "id": "harrison-ch321",
+       "title": "Ch 321 · Acute Kidney Injury",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 321",
+       "href": "renal/harrison-ch321.html",
+       "thumb": "thumbs/harrison-ch321.jpg",
+       "desc": "Harrison บทที่ 321: Definition & KDIGO staging · Causes: prerenal · intrinsic · postrenal · Diagnostics: urinalysis & FENa · Complications & management",
+       "tags": [],
+       "topics": [
+        [
+         "Definition & KDIGO staging",
+         "aki-def"
+        ],
+        [
+         "Causes: prerenal · intrinsic · postrenal",
+         "aki-cause"
+        ],
+        [
+         "Diagnostics: urinalysis & FENa",
+         "aki-dx"
+        ],
+        [
+         "Complications & management",
+         "aki-mx"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 321",
+        "sort": 321
+       }
+      },
+      {
+       "id": "harrison-ch322",
+       "title": "Ch 322 · Chronic Kidney Disease",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 322",
+       "href": "renal/harrison-ch322.html",
+       "thumb": "thumbs/harrison-ch322.jpg",
+       "desc": "Harrison บทที่ 322: KDIGO staging: GFR × albuminuria · Fluid, electrolyte & acid–base · CKD–mineral bone disorder · CV, hematologic & other manifestations · Slowing progression & preparing for RRT",
+       "tags": [],
+       "topics": [
+        [
+         "KDIGO staging: GFR × albuminuria",
+         "ckd-stage"
+        ],
+        [
+         "Fluid, electrolyte & acid–base",
+         "ckd-lyte"
+        ],
+        [
+         "CKD–mineral bone disorder",
+         "ckd-mbd"
+        ],
+        [
+         "CV, hematologic & other manifestations",
+         "ckd-sys"
+        ],
+        [
+         "Slowing progression & preparing for RRT",
+         "ckd-slow"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 322",
+        "sort": 322
+       }
+      },
+      {
+       "id": "harrison-ch323",
+       "title": "Ch 323 · Dialysis",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 323",
+       "href": "renal/harrison-ch323.html",
+       "thumb": "thumbs/harrison-ch323.jpg",
+       "desc": "Harrison บทที่ 323: Hemodialysis · Complications of hemodialysis · Peritoneal dialysis",
+       "tags": [],
+       "topics": [
+        [
+         "Hemodialysis",
+         "hd"
+        ],
+        [
+         "Complications of hemodialysis",
+         "hdcx"
+        ],
+        [
+         "Peritoneal dialysis",
+         "pd"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 323",
+        "sort": 323
+       }
+      },
+      {
+       "id": "harrison-ch324",
+       "title": "Ch 324 · Interventional Nephrology",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 324",
+       "href": "renal/harrison-ch324.html",
+       "thumb": "thumbs/harrison-ch324.jpg",
+       "desc": "Harrison บทที่ 324: Dialysis access: assessment & intervention",
+       "tags": [],
+       "topics": [
+        [
+         "Dialysis access: assessment & intervention",
+         "ivn"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 324",
+        "sort": 324
+       }
+      },
+      {
+       "id": "harrison-ch325",
+       "title": "Ch 325 · Kidney Transplantation",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 325",
+       "href": "renal/harrison-ch325.html",
+       "thumb": "thumbs/harrison-ch325.jpg",
+       "desc": "Harrison บทที่ 325: Immunology of rejection · Maintenance immunosuppression · Infections & malignancy after transplant",
+       "tags": [],
+       "topics": [
+        [
+         "Immunology of rejection",
+         "tx-imm"
+        ],
+        [
+         "Maintenance immunosuppression",
+         "tx-drug"
+        ],
+        [
+         "Infections & malignancy after transplant",
+         "tx-inf"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 325",
+        "sort": 325
+       }
+      },
+      {
+       "id": "harrison-ch326",
+       "title": "Ch 326 · Glomerular Diseases",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 326",
+       "href": "renal/harrison-ch326.html",
+       "thumb": "thumbs/harrison-ch326.jpg",
+       "desc": "Harrison บทที่ 326: Measuring proteinuria · Clinical patterns of glomerular disease · Treatment by disease",
+       "tags": [],
+       "topics": [
+        [
+         "Measuring proteinuria",
+         "gd-prot"
+        ],
+        [
+         "Clinical patterns of glomerular disease",
+         "gd-pat"
+        ],
+        [
+         "Treatment by disease",
+         "gd-tx"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 326",
+        "sort": 326
+       }
+      },
+      {
+       "id": "harrison-ch327",
+       "title": "Ch 327 · Polycystic & Inherited Tubular Diseases",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 327",
+       "href": "renal/harrison-ch327.html",
+       "thumb": "thumbs/harrison-ch327.jpg",
+       "desc": "Harrison บทที่ 327: ADPKD · ARPKD · Other inherited cystic & tubular diseases",
+       "tags": [],
+       "topics": [
+        [
+         "ADPKD",
+         "pkd-ad"
+        ],
+        [
+         "ARPKD",
+         "pkd-ar"
+        ],
+        [
+         "Other inherited cystic & tubular diseases",
+         "pkd-oth"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 327",
+        "sort": 327
+       }
+      },
+      {
+       "id": "harrison-ch328",
+       "title": "Ch 328 · Tubulointerstitial Diseases",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 328",
+       "href": "renal/harrison-ch328.html",
+       "thumb": "thumbs/harrison-ch328.jpg",
+       "desc": "Harrison บทที่ 328: Acute interstitial nephritis · Systemic & immune-mediated TIN · Chronic tubulointerstitial nephropathies",
+       "tags": [],
+       "topics": [
+        [
+         "Acute interstitial nephritis",
+         "tin-ain"
+        ],
+        [
+         "Systemic & immune-mediated TIN",
+         "tin-imm"
+        ],
+        [
+         "Chronic tubulointerstitial nephropathies",
+         "tin-chronic"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 328",
+        "sort": 328
+       }
+      },
+      {
+       "id": "harrison-ch329",
+       "title": "Ch 329 · Thrombotic Renovascular Disorders",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 329",
+       "href": "renal/harrison-ch329.html",
+       "thumb": "thumbs/harrison-ch329.jpg",
+       "desc": "Harrison บทที่ 329: Thrombotic microangiopathies · Scleroderma renal crisis & renal vein thrombosis",
+       "tags": [],
+       "topics": [
+        [
+         "Thrombotic microangiopathies",
+         "tma-types"
+        ],
+        [
+         "Scleroderma renal crisis & renal vein thrombosis",
+         "tma-ssc"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 329",
+        "sort": 329
+       }
+      },
+      {
+       "id": "harrison-ch330",
+       "title": "Ch 330 · Nephrolithiasis",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 330",
+       "href": "renal/harrison-ch330.html",
+       "thumb": "thumbs/harrison-ch330.jpg",
+       "desc": "Harrison บทที่ 330: Stone types & urine pH · Risk factors & diet · Acute colic & prevention",
+       "tags": [],
+       "topics": [
+        [
+         "Stone types & urine pH",
+         "st-type"
+        ],
+        [
+         "Risk factors & diet",
+         "st-risk"
+        ],
+        [
+         "Acute colic & prevention",
+         "st-mx"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 330",
+        "sort": 330
+       }
+      },
+      {
+       "id": "harrison-ch331",
+       "title": "Ch 331 · Urinary Tract Obstruction",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Harrison 22e Ch 331",
+       "href": "renal/harrison-ch331.html",
+       "thumb": "thumbs/harrison-ch331.jpg",
+       "desc": "Harrison บทที่ 331: Causes by level · Pathophysiology · Diagnosis, relief & recovery",
+       "tags": [],
+       "topics": [
+        [
+         "Causes by level",
+         "uo-cause"
+        ],
+        [
+         "Pathophysiology",
+         "uo-phys"
+        ],
+        [
+         "Diagnosis, relief & recovery",
+         "uo-dx"
+        ]
+       ],
+       "ref": {
+        "b": "harrison",
+        "l": "H",
+        "ch": "Ch 331",
+        "sort": 331
+       }
+      },
+      {
+       "id": "pharm-renal",
+       "title": "Renal Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 15, 11 · Pharmacotherapy 5e Ch 25–28",
+       "href": "renal/pharm-renal.html",
+       "thumb": "thumbs/pharm-renal.jpg",
+       "desc": "แผนที่กลุ่มยาไต: diuretic ทุกกลุ่มบนแผนที่ nephron, ADH drugs, ACEi/ARB, การใช้ diuretic ร่วมกัน และการรักษา AKI, CKD (anemia, MBD), K⁺, Na⁺, กรด–ด่าง",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Nephron drug map",
+         "nephron"
+        ],
+        [
+         "Urine & blood changes by diuretic",
+         "lytes"
+        ],
+        [
+         "Carbonic anhydrase inhibitors",
+         "cai"
+        ],
+        [
+         "SGLT2 inhibitors",
+         "sglt2"
+        ],
+        [
+         "Osmotic diuretics",
+         "osmotic"
+        ],
+        [
+         "Loop diuretics",
+         "loop"
+        ],
+        [
+         "Thiazides",
+         "thiazide"
+        ],
+        [
+         "K⁺-sparing diuretics",
+         "ksparing"
+        ],
+        [
+         "ADH antagonists & agonists",
+         "adh"
+        ],
+        [
+         "ACE inhibitors, ARBs & aliskiren (kidney)",
+         "raas"
+        ],
+        [
+         "Diuretic combinations & resistance",
+         "resist"
+        ],
+        [
+         "AKI: drugs that help and drugs that harm",
+         "aki"
+        ],
+        [
+         "CKD: slowing progression",
+         "ckd"
+        ],
+        [
+         "CKD: anemia (iron · ESA)",
+         "anemia"
+        ],
+        [
+         "CKD: mineral & bone disorder",
+         "mbd"
+        ],
+        [
+         "Hyperkalemia & hypokalemia",
+         "hyperk"
+        ],
+        [
+         "Hyponatremia & hypernatremia",
+         "sodium"
+        ],
+        [
+         "Acid–base: drug therapy",
+         "acidbase"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 15",
+        "sort": 15
+       }
+      }
+     ],
+     "checklist": [
+      {
+       "id": "kub-embryology:s1",
+       "sub": "Embryology",
+       "t": "Wk 3 · Intermediate mesoderm",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s1"
+       }
+      },
+      {
+       "id": "kub-embryology:s2",
+       "sub": "Embryology",
+       "t": "Wk 4 early · Pronephros & nephric duct",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s2"
+       }
+      },
+      {
+       "id": "kub-embryology:s3",
+       "sub": "Embryology",
+       "t": "Wk 4 late – 5 · Mesonephros + ureteric bud",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s3"
+       }
+      },
+      {
+       "id": "kub-embryology:s4",
+       "sub": "Embryology",
+       "t": "Wk 5 – 6 · Reciprocal induction & branching",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s4"
+       }
+      },
+      {
+       "id": "kub-embryology:s5",
+       "sub": "Embryology",
+       "t": "Wk 6 – 7 · Cloaca septation & trigone",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s5"
+       }
+      },
+      {
+       "id": "kub-embryology:s6",
+       "sub": "Embryology",
+       "t": "Wk 6 – 9 · Ascent, rotation & renal arteries",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s6"
+       }
+      },
+      {
+       "id": "kub-embryology:s7",
+       "sub": "Embryology",
+       "t": "Wk 8 – 12 · Nephrogenesis & first urine",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s7"
+       }
+      },
+      {
+       "id": "kub-embryology:s8",
+       "sub": "Embryology",
+       "t": "Wk 12 → birth · Fetal kidney & urethra",
+       "link": {
+        "m": "kub-embryology",
+        "h": "s8"
+       }
+      },
+      {
+       "id": "kub-anatomy:wall",
+       "sub": "Anatomy",
+       "t": "Muscles",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "wall"
+       }
+      },
+      {
+       "id": "kub-anatomy:loc",
+       "sub": "Anatomy",
+       "t": "Location & position",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "loc"
+       }
+      },
+      {
+       "id": "kub-anatomy:rel",
+       "sub": "Anatomy",
+       "t": "Relations",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "rel"
+       }
+      },
+      {
+       "id": "kub-anatomy:fascia",
+       "sub": "Anatomy",
+       "t": "Fat & fascia",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "fascia"
+       }
+      },
+      {
+       "id": "kub-anatomy:struct",
+       "sub": "Anatomy",
+       "t": "Internal structure",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "struct"
+       }
+      },
+      {
+       "id": "kub-anatomy:vessels",
+       "sub": "Anatomy",
+       "t": "Blood supply & segments",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "vessels"
+       }
+      },
+      {
+       "id": "kub-anatomy:lnn",
+       "sub": "Anatomy",
+       "t": "Lymph & nerve supply",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "lnn"
+       }
+      },
+      {
+       "id": "kub-anatomy:ureter",
+       "sub": "Anatomy",
+       "t": "Ureter: course & constrictions",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "ureter"
+       }
+      },
+      {
+       "id": "kub-anatomy:adrenal",
+       "sub": "Anatomy",
+       "t": "Suprarenal (adrenal) gland",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "adrenal"
+       }
+      },
+      {
+       "id": "kub-anatomy:aorta",
+       "sub": "Anatomy",
+       "t": "Aorta, IVC & lymphatics",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "aorta"
+       }
+      },
+      {
+       "id": "kub-anatomy:plexus",
+       "sub": "Anatomy",
+       "t": "Lumbar plexus",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "plexus"
+       }
+      },
+      {
+       "id": "kub-anatomy:bladder",
+       "sub": "Anatomy",
+       "t": "Urinary bladder",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "bladder"
+       }
+      },
+      {
+       "id": "kub-anatomy:urethra",
+       "sub": "Anatomy",
+       "t": "Urethra",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "urethra"
+       }
+      },
+      {
+       "id": "kub-anatomy:clinic",
+       "sub": "Anatomy",
+       "t": "Clinical correlations",
+       "link": {
+        "m": "kub-anatomy",
+        "h": "clinic"
+       }
+      },
+      {
+       "id": "kub-histology:lowpower",
+       "sub": "Histology",
+       "t": "Kidney at low power",
+       "link": {
+        "m": "kub-histology",
+        "h": "lowpower"
+       }
+      },
+      {
+       "id": "kub-histology:nephron",
+       "sub": "Histology",
+       "t": "Uriniferous tubule map",
+       "link": {
+        "m": "kub-histology",
+        "h": "nephron"
+       }
+      },
+      {
+       "id": "kub-histology:vessels",
+       "sub": "Histology",
+       "t": "Blood supply & interstitium",
+       "link": {
+        "m": "kub-histology",
+        "h": "vessels"
+       }
+      },
+      {
+       "id": "kub-histology:corpuscle",
+       "sub": "Histology",
+       "t": "Renal corpuscle (LM)",
+       "link": {
+        "m": "kub-histology",
+        "h": "corpuscle"
+       }
+      },
+      {
+       "id": "kub-histology:barrier",
+       "sub": "Histology",
+       "t": "Filtration barrier (EM)",
+       "link": {
+        "m": "kub-histology",
+        "h": "barrier"
+       }
+      },
+      {
+       "id": "kub-histology:mesangium",
+       "sub": "Histology",
+       "t": "Mesangium",
+       "link": {
+        "m": "kub-histology",
+        "h": "mesangium"
+       }
+      },
+      {
+       "id": "kub-histology:pctdct",
+       "sub": "Histology",
+       "t": "PCT vs DCT (cortex)",
+       "link": {
+        "m": "kub-histology",
+        "h": "pctdct"
+       }
+      },
+      {
+       "id": "kub-histology:pctem",
+       "sub": "Histology",
+       "t": "PCT cell ultrastructure",
+       "link": {
+        "m": "kub-histology",
+        "h": "pctem"
+       }
+      },
+      {
+       "id": "kub-histology:medulla",
+       "sub": "Histology",
+       "t": "Medulla: loops, vasa recta, CD",
+       "link": {
+        "m": "kub-histology",
+        "h": "medulla"
+       }
+      },
+      {
+       "id": "kub-histology:jga",
+       "sub": "Histology",
+       "t": "Juxtaglomerular apparatus",
+       "link": {
+        "m": "kub-histology",
+        "h": "jga"
+       }
+      },
+      {
+       "id": "kub-histology:cd",
+       "sub": "Histology",
+       "t": "Collecting duct & papilla",
+       "link": {
+        "m": "kub-histology",
+        "h": "cd"
+       }
+      },
+      {
+       "id": "kub-histology:slideid",
+       "sub": "Histology",
+       "t": "Slide ID cheat sheet",
+       "link": {
+        "m": "kub-histology",
+        "h": "slideid"
+       }
+      },
+      {
+       "id": "kub-histology:urothelium",
+       "sub": "Histology",
+       "t": "Urothelium",
+       "link": {
+        "m": "kub-histology",
+        "h": "urothelium"
+       }
+      },
+      {
+       "id": "kub-histology:ureter",
+       "sub": "Histology",
+       "t": "Ureter (transverse)",
+       "link": {
+        "m": "kub-histology",
+        "h": "ureter"
+       }
+      },
+      {
+       "id": "kub-histology:bladder",
+       "sub": "Histology",
+       "t": "Bladder wall",
+       "link": {
+        "m": "kub-histology",
+        "h": "bladder"
+       }
+      },
+      {
+       "id": "kub-histology:urethra",
+       "sub": "Histology",
+       "t": "Urethra",
+       "link": {
+        "m": "kub-histology",
+        "h": "urethra"
+       }
+      },
+      {
+       "id": "kub-histology:clinical",
+       "sub": "Histology",
+       "t": "Histology in disease",
+       "link": {
+        "m": "kub-histology",
+        "h": "clinical"
+       }
+      },
+      {
+       "id": "renal-ch25:balance",
+       "sub": "Physiology",
+       "t": "Water intake & output",
+       "link": {
+        "m": "renal-ch25",
+        "h": "balance"
+       }
+      },
+      {
+       "id": "renal-ch25:compartments",
+       "sub": "Physiology",
+       "t": "Body fluid compartments",
+       "link": {
+        "m": "renal-ch25",
+        "h": "compartments"
+       }
+      },
+      {
+       "id": "renal-ch25:composition",
+       "sub": "Physiology",
+       "t": "Composition of ECF & ICF",
+       "link": {
+        "m": "renal-ch25",
+        "h": "composition"
+       }
+      },
+      {
+       "id": "renal-ch25:measure",
+       "sub": "Physiology",
+       "t": "Measuring compartment volumes",
+       "link": {
+        "m": "renal-ch25",
+        "h": "measure"
+       }
+      },
+      {
+       "id": "renal-ch25:osmosis",
+       "sub": "Physiology",
+       "t": "Osmosis, osmolarity & tonicity",
+       "link": {
+        "m": "renal-ch25",
+        "h": "osmosis"
+       }
+      },
+      {
+       "id": "renal-ch25:shifts",
+       "sub": "Physiology",
+       "t": "Fluid shifts after adding saline",
+       "link": {
+        "m": "renal-ch25",
+        "h": "shifts"
+       }
+      },
+      {
+       "id": "renal-ch25:natremia",
+       "sub": "Physiology",
+       "t": "Hyponatremia & hypernatremia",
+       "link": {
+        "m": "renal-ch25",
+        "h": "natremia"
+       }
+      },
+      {
+       "id": "renal-ch25:edema",
+       "sub": "Physiology",
+       "t": "Edema & safety factors",
+       "link": {
+        "m": "renal-ch25",
+        "h": "edema"
+       }
+      },
+      {
+       "id": "renal-ch26:overview",
+       "sub": "Physiology",
+       "t": "Kidney functions & physiologic anatomy",
+       "link": {
+        "m": "renal-ch26",
+        "h": "overview"
+       }
+      },
+      {
+       "id": "renal-ch26:micturition",
+       "sub": "Physiology",
+       "t": "Micturition",
+       "link": {
+        "m": "renal-ch26",
+        "h": "micturition"
+       }
+      },
+      {
+       "id": "renal-ch26:urineform",
+       "sub": "Physiology",
+       "t": "Urine formation: filtration, reabsorption, secretion",
+       "link": {
+        "m": "renal-ch26",
+        "h": "urineform"
+       }
+      },
+      {
+       "id": "renal-ch26:gfr",
+       "sub": "Physiology",
+       "t": "GFR & its determinants",
+       "link": {
+        "m": "renal-ch26",
+        "h": "gfr"
+       }
+      },
+      {
+       "id": "renal-ch26:rbf",
+       "sub": "Physiology",
+       "t": "Renal blood flow & physiologic control",
+       "link": {
+        "m": "renal-ch26",
+        "h": "rbf"
+       }
+      },
+      {
+       "id": "renal-ch26:autoreg",
+       "sub": "Physiology",
+       "t": "Autoregulation & TGF",
+       "link": {
+        "m": "renal-ch26",
+        "h": "autoreg"
+       }
+      },
+      {
+       "id": "renal-ch27:transport",
+       "sub": "Physiology",
+       "t": "Transport mechanisms & Tm",
+       "link": {
+        "m": "renal-ch27",
+        "h": "transport"
+       }
+      },
+      {
+       "id": "renal-ch27:pct",
+       "sub": "Physiology",
+       "t": "Proximal tubule",
+       "link": {
+        "m": "renal-ch27",
+        "h": "pct"
+       }
+      },
+      {
+       "id": "renal-ch27:loop",
+       "sub": "Physiology",
+       "t": "Loop of Henle",
+       "link": {
+        "m": "renal-ch27",
+        "h": "loop"
+       }
+      },
+      {
+       "id": "renal-ch27:distal",
+       "sub": "Physiology",
+       "t": "Distal tubule & collecting duct",
+       "link": {
+        "m": "renal-ch27",
+        "h": "distal"
+       }
+      },
+      {
+       "id": "renal-ch27:segments",
+       "sub": "Physiology",
+       "t": "Where things are reabsorbed",
+       "link": {
+        "m": "renal-ch27",
+        "h": "segments"
+       }
+      },
+      {
+       "id": "renal-ch27:regulation",
+       "sub": "Physiology",
+       "t": "Regulation of tubular reabsorption",
+       "link": {
+        "m": "renal-ch27",
+        "h": "regulation"
+       }
+      },
+      {
+       "id": "renal-ch27:clearance",
+       "sub": "Physiology",
+       "t": "Renal clearance",
+       "link": {
+        "m": "renal-ch27",
+        "h": "clearance"
+       }
+      },
+      {
+       "id": "renal-ch28:dilute",
+       "sub": "Physiology",
+       "t": "Forming dilute urine",
+       "link": {
+        "m": "renal-ch28",
+        "h": "dilute"
+       }
+      },
+      {
+       "id": "renal-ch28:concreq",
+       "sub": "Physiology",
+       "t": "Conserving water: concentrated urine",
+       "link": {
+        "m": "renal-ch28",
+        "h": "concreq"
+       }
+      },
+      {
+       "id": "renal-ch28:countercurrent",
+       "sub": "Physiology",
+       "t": "Countercurrent multiplier",
+       "link": {
+        "m": "renal-ch28",
+        "h": "countercurrent"
+       }
+      },
+      {
+       "id": "renal-ch28:urea",
+       "sub": "Physiology",
+       "t": "Urea recycling & vasa recta",
+       "link": {
+        "m": "renal-ch28",
+        "h": "urea"
+       }
+      },
+      {
+       "id": "renal-ch28:concentrate",
+       "sub": "Physiology",
+       "t": "Free water clearance & concentrating disorders",
+       "link": {
+        "m": "renal-ch28",
+        "h": "concentrate"
+       }
+      },
+      {
+       "id": "renal-ch28:adh",
+       "sub": "Physiology",
+       "t": "Osmoreceptor–ADH & thirst",
+       "link": {
+        "m": "renal-ch28",
+        "h": "adh"
+       }
+      },
+      {
+       "id": "renal-ch29:potassium",
+       "sub": "Physiology",
+       "t": "Potassium balance",
+       "link": {
+        "m": "renal-ch29",
+        "h": "potassium"
+       }
+      },
+      {
+       "id": "renal-ch29:capimg",
+       "sub": "Physiology",
+       "t": "Calcium, phosphate & magnesium",
+       "link": {
+        "m": "renal-ch29",
+        "h": "capimg"
+       }
+      },
+      {
+       "id": "renal-ch29:volume",
+       "sub": "Physiology",
+       "t": "Pressure natriuresis & volume control",
+       "link": {
+        "m": "renal-ch29",
+        "h": "volume"
+       }
+      },
+      {
+       "id": "renal-ch29:raas",
+       "sub": "Physiology",
+       "t": "Ang II, aldosterone & ANP",
+       "link": {
+        "m": "renal-ch29",
+        "h": "raas"
+       }
+      },
+      {
+       "id": "renal-ch30:buffers",
+       "sub": "Physiology",
+       "t": "Buffers & Henderson–Hasselbalch",
+       "link": {
+        "m": "renal-ch30",
+        "h": "buffers"
+       }
+      },
+      {
+       "id": "renal-ch30:resp",
+       "sub": "Physiology",
+       "t": "Respiratory regulation",
+       "link": {
+        "m": "renal-ch30",
+        "h": "resp"
+       }
+      },
+      {
+       "id": "renal-ch30:renalacid",
+       "sub": "Physiology",
+       "t": "Renal H⁺ secretion & new HCO₃⁻",
+       "link": {
+        "m": "renal-ch30",
+        "h": "renalacid"
+       }
+      },
+      {
+       "id": "renal-ch30:ammonia",
+       "sub": "Physiology",
+       "t": "Phosphate & ammonia buffers",
+       "link": {
+        "m": "renal-ch30",
+        "h": "ammonia"
+       }
+      },
+      {
+       "id": "renal-ch30:abd",
+       "sub": "Physiology",
+       "t": "Acid–base disorders",
+       "link": {
+        "m": "renal-ch30",
+        "h": "abd"
+       }
+      },
+      {
+       "id": "renal-ch31:diuretics",
+       "sub": "Physiology",
+       "t": "Diuretics",
+       "link": {
+        "m": "renal-ch31",
+        "h": "diuretics"
+       }
+      },
+      {
+       "id": "renal-ch31:aki",
+       "sub": "Physiology",
+       "t": "Acute kidney injury",
+       "link": {
+        "m": "renal-ch31",
+        "h": "aki"
+       }
+      },
+      {
+       "id": "renal-ch31:ckd",
+       "sub": "Physiology",
+       "t": "Chronic kidney disease",
+       "link": {
+        "m": "renal-ch31",
+        "h": "ckd"
+       }
+      },
+      {
+       "id": "renal-ch31:tubular",
+       "sub": "Physiology",
+       "t": "Specific tubular disorders & dialysis",
+       "link": {
+        "m": "renal-ch31",
+        "h": "tubular"
+       }
+      },
+      {
+       "id": "robbins-ch20:syndromes",
+       "sub": "Pathology",
+       "t": "Clinical manifestations & syndromes",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "syndromes"
+       }
+      },
+      {
+       "id": "robbins-ch20:glomresp",
+       "sub": "Pathology",
+       "t": "Glomerular responses to injury",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "glomresp"
+       }
+      },
+      {
+       "id": "robbins-ch20:immune",
+       "sub": "Pathology",
+       "t": "Pathogenesis: immune complexes & anti-GBM",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "immune"
+       }
+      },
+      {
+       "id": "robbins-ch20:progression",
+       "sub": "Pathology",
+       "t": "Podocyte injury & progression",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "progression"
+       }
+      },
+      {
+       "id": "robbins-ch20:psgn",
+       "sub": "Pathology",
+       "t": "Acute postinfectious GN",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "psgn"
+       }
+      },
+      {
+       "id": "robbins-ch20:rpgn",
+       "sub": "Pathology",
+       "t": "Crescentic GN (RPGN)",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "rpgn"
+       }
+      },
+      {
+       "id": "robbins-ch20:iga",
+       "sub": "Pathology",
+       "t": "IgA nephropathy & HSP",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "iga"
+       }
+      },
+      {
+       "id": "robbins-ch20:alport",
+       "sub": "Pathology",
+       "t": "Hereditary nephritis (Alport) & thin BM",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "alport"
+       }
+      },
+      {
+       "id": "robbins-ch20:nephrotic",
+       "sub": "Pathology",
+       "t": "Nephrotic syndrome: causes",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "nephrotic"
+       }
+      },
+      {
+       "id": "robbins-ch20:membranous",
+       "sub": "Pathology",
+       "t": "Membranous nephropathy",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "membranous"
+       }
+      },
+      {
+       "id": "robbins-ch20:mcd",
+       "sub": "Pathology",
+       "t": "Minimal change disease",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "mcd"
+       }
+      },
+      {
+       "id": "robbins-ch20:fsgs",
+       "sub": "Pathology",
+       "t": "Focal segmental glomerulosclerosis",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "fsgs"
+       }
+      },
+      {
+       "id": "robbins-ch20:mpgn",
+       "sub": "Pathology",
+       "t": "MPGN & C3 glomerulopathy",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "mpgn"
+       }
+      },
+      {
+       "id": "robbins-ch20:lupus",
+       "sub": "Pathology",
+       "t": "Lupus nephritis",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "lupus"
+       }
+      },
+      {
+       "id": "robbins-ch20:diabetic",
+       "sub": "Pathology",
+       "t": "Diabetic nephropathy",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "diabetic"
+       }
+      },
+      {
+       "id": "robbins-ch20:systemic",
+       "sub": "Pathology",
+       "t": "Other systemic glomerular disease",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "systemic"
+       }
+      },
+      {
+       "id": "robbins-ch20:atn",
+       "sub": "Pathology",
+       "t": "Acute tubular injury / necrosis",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "atn"
+       }
+      },
+      {
+       "id": "robbins-ch20:pyelo",
+       "sub": "Pathology",
+       "t": "Pyelonephritis & UTI",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "pyelo"
+       }
+      },
+      {
+       "id": "robbins-ch20:tin",
+       "sub": "Pathology",
+       "t": "Drug-induced & other TIN",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "tin"
+       }
+      },
+      {
+       "id": "robbins-ch20:nephrosclerosis",
+       "sub": "Pathology",
+       "t": "Nephrosclerosis (hypertensive)",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "nephrosclerosis"
+       }
+      },
+      {
+       "id": "robbins-ch20:tma",
+       "sub": "Pathology",
+       "t": "Thrombotic microangiopathies & other vascular",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "tma"
+       }
+      },
+      {
+       "id": "robbins-ch20:congenital",
+       "sub": "Pathology",
+       "t": "Congenital anomalies",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "congenital"
+       }
+      },
+      {
+       "id": "robbins-ch20:cystic",
+       "sub": "Pathology",
+       "t": "Cystic diseases",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "cystic"
+       }
+      },
+      {
+       "id": "robbins-ch20:obstruction",
+       "sub": "Pathology",
+       "t": "Obstruction & hydronephrosis",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "obstruction"
+       }
+      },
+      {
+       "id": "robbins-ch20:stones",
+       "sub": "Pathology",
+       "t": "Urolithiasis",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "stones"
+       }
+      },
+      {
+       "id": "robbins-ch20:benign",
+       "sub": "Pathology",
+       "t": "Benign renal tumors",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "benign"
+       }
+      },
+      {
+       "id": "robbins-ch20:rcc",
+       "sub": "Pathology",
+       "t": "Renal cell carcinoma",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "rcc"
+       }
+      },
+      {
+       "id": "robbins-ch20:wilms",
+       "sub": "Pathology",
+       "t": "Wilms tumor (nephroblastoma)",
+       "link": {
+        "m": "robbins-ch20",
+        "h": "wilms"
+       }
+      },
+      {
+       "id": "robbins-ch21:ureter",
+       "sub": "Pathology",
+       "t": "Ureter: congenital anomalies & tumors",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "ureter"
+       }
+      },
+      {
+       "id": "robbins-ch21:ureterobs",
+       "sub": "Pathology",
+       "t": "Obstructive lesions & retroperitoneal fibrosis",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "ureterobs"
+       }
+      },
+      {
+       "id": "robbins-ch21:bladdercong",
+       "sub": "Pathology",
+       "t": "Bladder: congenital anomalies",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "bladdercong"
+       }
+      },
+      {
+       "id": "robbins-ch21:cystitis",
+       "sub": "Pathology",
+       "t": "Cystitis",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "cystitis"
+       }
+      },
+      {
+       "id": "robbins-ch21:metaplasia",
+       "sub": "Pathology",
+       "t": "Metaplastic lesions",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "metaplasia"
+       }
+      },
+      {
+       "id": "robbins-ch21:urothelial",
+       "sub": "Pathology",
+       "t": "Urothelial neoplasms: pathways & risk",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "urothelial"
+       }
+      },
+      {
+       "id": "robbins-ch21:grading",
+       "sub": "Pathology",
+       "t": "Noninvasive urothelial tumors: grading",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "grading"
+       }
+      },
+      {
+       "id": "robbins-ch21:staging",
+       "sub": "Pathology",
+       "t": "Invasive carcinoma: pathologic staging",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "staging"
+       }
+      },
+      {
+       "id": "robbins-ch21:othertum",
+       "sub": "Pathology",
+       "t": "Other bladder tumors",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "othertum"
+       }
+      },
+      {
+       "id": "robbins-ch21:urethra",
+       "sub": "Pathology",
+       "t": "Urethra: inflammation & tumors",
+       "link": {
+        "m": "robbins-ch21",
+        "h": "urethra"
+       }
+      },
+      {
+       "id": "harrison-ch319:ap-aki",
+       "sub": "Pathology",
+       "t": "Prerenal · intrinsic · postrenal",
+       "link": {
+        "m": "harrison-ch319",
+        "h": "ap-aki"
+       }
+      },
+      {
+       "id": "harrison-ch319:ap-syn",
+       "sub": "Pathology",
+       "t": "Nephritic vs nephrotic: clinical clues",
+       "link": {
+        "m": "harrison-ch319",
+        "h": "ap-syn"
+       }
+      },
+      {
+       "id": "harrison-ch319:ap-hem",
+       "sub": "Pathology",
+       "t": "Hematuria & lower urinary tract",
+       "link": {
+        "m": "harrison-ch319",
+        "h": "ap-hem"
+       }
+      },
+      {
+       "id": "harrison-ch320:cb-seg",
+       "sub": "Pathology",
+       "t": "Segmental transport",
+       "link": {
+        "m": "harrison-ch320",
+        "h": "cb-seg"
+       }
+      },
+      {
+       "id": "harrison-ch320:cb-inh",
+       "sub": "Pathology",
+       "t": "Inherited tubular disorders (Table 320-1)",
+       "link": {
+        "m": "harrison-ch320",
+        "h": "cb-inh"
+       }
+      },
+      {
+       "id": "harrison-ch320:cb-na",
+       "sub": "Pathology",
+       "t": "Sodium & water balance",
+       "link": {
+        "m": "harrison-ch320",
+        "h": "cb-na"
+       }
+      },
+      {
+       "id": "harrison-ch321:aki-def",
+       "sub": "Pathology",
+       "t": "Definition & KDIGO staging",
+       "link": {
+        "m": "harrison-ch321",
+        "h": "aki-def"
+       }
+      },
+      {
+       "id": "harrison-ch321:aki-cause",
+       "sub": "Pathology",
+       "t": "Causes: prerenal · intrinsic · postrenal",
+       "link": {
+        "m": "harrison-ch321",
+        "h": "aki-cause"
+       }
+      },
+      {
+       "id": "harrison-ch321:aki-dx",
+       "sub": "Pathology",
+       "t": "Diagnostics: urinalysis & FENa",
+       "link": {
+        "m": "harrison-ch321",
+        "h": "aki-dx"
+       }
+      },
+      {
+       "id": "harrison-ch321:aki-mx",
+       "sub": "Pathology",
+       "t": "Complications & management",
+       "link": {
+        "m": "harrison-ch321",
+        "h": "aki-mx"
+       }
+      },
+      {
+       "id": "harrison-ch322:ckd-stage",
+       "sub": "Pathology",
+       "t": "KDIGO staging: GFR × albuminuria",
+       "link": {
+        "m": "harrison-ch322",
+        "h": "ckd-stage"
+       }
+      },
+      {
+       "id": "harrison-ch322:ckd-lyte",
+       "sub": "Pathology",
+       "t": "Fluid, electrolyte & acid–base",
+       "link": {
+        "m": "harrison-ch322",
+        "h": "ckd-lyte"
+       }
+      },
+      {
+       "id": "harrison-ch322:ckd-mbd",
+       "sub": "Pathology",
+       "t": "CKD–mineral bone disorder",
+       "link": {
+        "m": "harrison-ch322",
+        "h": "ckd-mbd"
+       }
+      },
+      {
+       "id": "harrison-ch322:ckd-sys",
+       "sub": "Pathology",
+       "t": "CV, hematologic & other manifestations",
+       "link": {
+        "m": "harrison-ch322",
+        "h": "ckd-sys"
+       }
+      },
+      {
+       "id": "harrison-ch322:ckd-slow",
+       "sub": "Pathology",
+       "t": "Slowing progression & preparing for RRT",
+       "link": {
+        "m": "harrison-ch322",
+        "h": "ckd-slow"
+       }
+      },
+      {
+       "id": "harrison-ch323:hd",
+       "sub": "Pathology",
+       "t": "Hemodialysis",
+       "link": {
+        "m": "harrison-ch323",
+        "h": "hd"
+       }
+      },
+      {
+       "id": "harrison-ch323:hdcx",
+       "sub": "Pathology",
+       "t": "Complications of hemodialysis",
+       "link": {
+        "m": "harrison-ch323",
+        "h": "hdcx"
+       }
+      },
+      {
+       "id": "harrison-ch323:pd",
+       "sub": "Pathology",
+       "t": "Peritoneal dialysis",
+       "link": {
+        "m": "harrison-ch323",
+        "h": "pd"
+       }
+      },
+      {
+       "id": "harrison-ch324:ivn",
+       "sub": "Pathology",
+       "t": "Dialysis access: assessment & intervention",
+       "link": {
+        "m": "harrison-ch324",
+        "h": "ivn"
+       }
+      },
+      {
+       "id": "harrison-ch325:tx-imm",
+       "sub": "Pathology",
+       "t": "Immunology of rejection",
+       "link": {
+        "m": "harrison-ch325",
+        "h": "tx-imm"
+       }
+      },
+      {
+       "id": "harrison-ch325:tx-drug",
+       "sub": "Pathology",
+       "t": "Maintenance immunosuppression",
+       "link": {
+        "m": "harrison-ch325",
+        "h": "tx-drug"
+       }
+      },
+      {
+       "id": "harrison-ch325:tx-inf",
+       "sub": "Pathology",
+       "t": "Infections & malignancy after transplant",
+       "link": {
+        "m": "harrison-ch325",
+        "h": "tx-inf"
+       }
+      },
+      {
+       "id": "harrison-ch326:gd-prot",
+       "sub": "Pathology",
+       "t": "Measuring proteinuria",
+       "link": {
+        "m": "harrison-ch326",
+        "h": "gd-prot"
+       }
+      },
+      {
+       "id": "harrison-ch326:gd-pat",
+       "sub": "Pathology",
+       "t": "Clinical patterns of glomerular disease",
+       "link": {
+        "m": "harrison-ch326",
+        "h": "gd-pat"
+       }
+      },
+      {
+       "id": "harrison-ch326:gd-tx",
+       "sub": "Pathology",
+       "t": "Treatment by disease",
+       "link": {
+        "m": "harrison-ch326",
+        "h": "gd-tx"
+       }
+      },
+      {
+       "id": "harrison-ch327:pkd-ad",
+       "sub": "Pathology",
+       "t": "ADPKD",
+       "link": {
+        "m": "harrison-ch327",
+        "h": "pkd-ad"
+       }
+      },
+      {
+       "id": "harrison-ch327:pkd-ar",
+       "sub": "Pathology",
+       "t": "ARPKD",
+       "link": {
+        "m": "harrison-ch327",
+        "h": "pkd-ar"
+       }
+      },
+      {
+       "id": "harrison-ch327:pkd-oth",
+       "sub": "Pathology",
+       "t": "Other inherited cystic & tubular diseases",
+       "link": {
+        "m": "harrison-ch327",
+        "h": "pkd-oth"
+       }
+      },
+      {
+       "id": "harrison-ch328:tin-ain",
+       "sub": "Pathology",
+       "t": "Acute interstitial nephritis",
+       "link": {
+        "m": "harrison-ch328",
+        "h": "tin-ain"
+       }
+      },
+      {
+       "id": "harrison-ch328:tin-imm",
+       "sub": "Pathology",
+       "t": "Systemic & immune-mediated TIN",
+       "link": {
+        "m": "harrison-ch328",
+        "h": "tin-imm"
+       }
+      },
+      {
+       "id": "harrison-ch328:tin-chronic",
+       "sub": "Pathology",
+       "t": "Chronic tubulointerstitial nephropathies",
+       "link": {
+        "m": "harrison-ch328",
+        "h": "tin-chronic"
+       }
+      },
+      {
+       "id": "harrison-ch329:tma-types",
+       "sub": "Pathology",
+       "t": "Thrombotic microangiopathies",
+       "link": {
+        "m": "harrison-ch329",
+        "h": "tma-types"
+       }
+      },
+      {
+       "id": "harrison-ch329:tma-ssc",
+       "sub": "Pathology",
+       "t": "Scleroderma renal crisis & renal vein thrombosis",
+       "link": {
+        "m": "harrison-ch329",
+        "h": "tma-ssc"
+       }
+      },
+      {
+       "id": "harrison-ch330:st-type",
+       "sub": "Pathology",
+       "t": "Stone types & urine pH",
+       "link": {
+        "m": "harrison-ch330",
+        "h": "st-type"
+       }
+      },
+      {
+       "id": "harrison-ch330:st-risk",
+       "sub": "Pathology",
+       "t": "Risk factors & diet",
+       "link": {
+        "m": "harrison-ch330",
+        "h": "st-risk"
+       }
+      },
+      {
+       "id": "harrison-ch330:st-mx",
+       "sub": "Pathology",
+       "t": "Acute colic & prevention",
+       "link": {
+        "m": "harrison-ch330",
+        "h": "st-mx"
+       }
+      },
+      {
+       "id": "harrison-ch331:uo-cause",
+       "sub": "Pathology",
+       "t": "Causes by level",
+       "link": {
+        "m": "harrison-ch331",
+        "h": "uo-cause"
+       }
+      },
+      {
+       "id": "harrison-ch331:uo-phys",
+       "sub": "Pathology",
+       "t": "Pathophysiology",
+       "link": {
+        "m": "harrison-ch331",
+        "h": "uo-phys"
+       }
+      },
+      {
+       "id": "harrison-ch331:uo-dx",
+       "sub": "Pathology",
+       "t": "Diagnosis, relief & recovery",
+       "link": {
+        "m": "harrison-ch331",
+        "h": "uo-dx"
+       }
+      },
+      {
+       "id": "renal-33",
+       "sub": "Pathology",
+       "t": "Urinary incontinence",
+       "link": {
+        "m": "renal-ch26",
+        "h": "micturition"
+       }
+      },
+      {
+       "id": "renal-47",
+       "sub": "Pharmacology",
+       "t": "Diuretics: site of action",
+       "link": {
+        "m": "renal-ch31",
+        "h": "diuretics"
+       }
+      },
+      {
+       "id": "renal-48",
+       "sub": "Pharmacology",
+       "t": "Mannitol",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "diu"
+       }
+      },
+      {
+       "id": "renal-49",
+       "sub": "Pharmacology",
+       "t": "Acetazolamide",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "diu"
+       }
+      },
+      {
+       "id": "renal-50",
+       "sub": "Pharmacology",
+       "t": "Loop diuretics",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "diu"
+       }
+      },
+      {
+       "id": "renal-51",
+       "sub": "Pharmacology",
+       "t": "Thiazide diuretics",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "diu"
+       }
+      },
+      {
+       "id": "renal-52",
+       "sub": "Pharmacology",
+       "t": "Potassium-sparing diuretics",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "diu"
+       }
+      },
+      {
+       "id": "renal-53",
+       "sub": "Pharmacology",
+       "t": "Diuretics: electrolyte changes",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "diu"
+       }
+      },
+      {
+       "id": "renal-54",
+       "sub": "Pharmacology",
+       "t": "ACE inhibitors",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "reg"
+       }
+      },
+      {
+       "id": "renal-55",
+       "sub": "Pharmacology",
+       "t": "Angiotensin II receptor blockers",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "reg"
+       }
+      },
+      {
+       "id": "renal-56",
+       "sub": "Pharmacology",
+       "t": "Aliskiren",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "reg"
+       }
+      }
+     ],
+     "resources": [
+      {
+       "title": "Renal transport table (Google Sheet)",
+       "href": "https://docs.google.com/spreadsheets/d/1n-DToTPwewWlV3XKwIMjP4qFsvZy2eZJgXpTsjyLc7U/edit"
+      }
+     ],
+     "course": "240-324"
+    },
+    {
+     "id": "repro",
+     "name": "Reproductive",
+     "th": "ระบบสืบพันธุ์",
+     "color": "#DB2777",
+     "glyph": "repro",
+     "subs": [
+      "Embryology",
+      "Anatomy",
+      "Physiology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [],
+     "checklist": [],
+     "resources": []
+    },
+    {
+     "id": "resp",
+     "name": "Respiratory",
+     "th": "ระบบหายใจ",
+     "color": "#0284C7",
+     "glyph": "lung",
+     "subs": [
+      "Embryology",
+      "Anatomy",
+      "Physiology",
+      "Pathology",
+      "Pharmacology"
+     ],
+     "modules": [
+      {
+       "id": "pharm-resp",
+       "title": "Respiratory Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 20 · Pharmacotherapy 5e Ch 14–16, 63",
+       "href": "resp/pharm-resp.html",
+       "thumb": "thumbs/pharm-resp.jpg",
+       "desc": "แผนที่กลุ่มยาระบบหายใจ: bronchodilator, ICS, leukotriene, biologics, antihistamine, ยาแก้ไอ/เสมหะ, CFTR modulator, PAH และการรักษา asthma/COPD · ยาทุกกลุ่มวางบนแผนที่เป้าหมายเดียวกัน",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Pathogenesis & drug targets",
+         "targets"
+        ],
+        [
+         "Inhaled delivery & devices",
+         "delivery"
+        ],
+        [
+         "β₂ agonists (SABA · LABA)",
+         "beta2"
+        ],
+        [
+         "Antimuscarinics (SAMA · LAMA)",
+         "antimusc"
+        ],
+        [
+         "Methylxanthines & PDE4 inhibitors",
+         "pde"
+        ],
+        [
+         "Corticosteroids (ICS · systemic)",
+         "steroids"
+        ],
+        [
+         "Leukotriene modifiers",
+         "lt"
+        ],
+        [
+         "Mast cell stabilizers",
+         "cromolyn"
+        ],
+        [
+         "Monoclonal antibodies for severe asthma",
+         "biologics"
+        ],
+        [
+         "H₁ antihistamines & decongestants",
+         "antihist"
+        ],
+        [
+         "Cough & mucus",
+         "cough"
+        ],
+        [
+         "CFTR modulators (cystic fibrosis)",
+         "cftr"
+        ],
+        [
+         "Pulmonary arterial hypertension",
+         "pah"
+        ],
+        [
+         "Chronic asthma: stepwise therapy",
+         "chronicasthma"
+        ],
+        [
+         "Acute asthma exacerbation",
+         "acuteasthma"
+        ],
+        [
+         "Stable COPD: GOLD groups",
+         "stablecopd"
+        ],
+        [
+         "COPD exacerbation",
+         "copdexac"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 20",
+        "sort": 20
+       }
+      }
+     ],
+     "checklist": [],
+     "resources": []
+    }
+   ]
+  }
+ ],
+ "alias": {
+  "renal-0": "kub-embryology:s1",
+  "renal-1": "kub-embryology:s3",
+  "renal-2": "kub-embryology:s6",
+  "renal-3": "kub-embryology:s3",
+  "renal-4": "kub-embryology:s4",
+  "renal-5": "kub-embryology:s4",
+  "renal-6": "kub-embryology:s8",
+  "renal-57": "kub-anatomy:loc",
+  "renal-58": "kub-anatomy:rel",
+  "renal-59": "kub-anatomy:fascia",
+  "renal-60": "kub-anatomy:struct",
+  "renal-61": "kub-anatomy:vessels",
+  "renal-62": "kub-anatomy:adrenal",
+  "renal-63": "kub-anatomy:ureter",
+  "renal-64": "kub-anatomy:bladder",
+  "renal-65": "kub-anatomy:urethra",
+  "renal-66": "kub-anatomy:wall",
+  "renal-67": "kub-anatomy:plexus",
+  "renal-68": "kub-anatomy:aorta",
+  "renal-7": "kub-anatomy:struct",
+  "renal-8": "kub-anatomy:ureter",
+  "renal-9": "kub-anatomy:ureter",
+  "renal-69": "kub-histology:lowpower",
+  "renal-70": "kub-histology:corpuscle",
+  "renal-71": "kub-histology:barrier",
+  "renal-72": "kub-histology:mesangium",
+  "renal-73": "kub-histology:jga",
+  "renal-74": "kub-histology:pctdct",
+  "renal-75": "kub-histology:pctem",
+  "renal-76": "kub-histology:medulla",
+  "renal-77": "kub-histology:cd",
+  "renal-78": "kub-histology:urothelium",
+  "renal-79": "kub-histology:ureter",
+  "renal-80": "kub-histology:vessels",
+  "renal-10": "renal-ch25:compartments",
+  "renal-11": "renal-ch26:gfr",
+  "renal-12": "renal-ch27:clearance",
+  "renal-13": "renal-ch26:gfr",
+  "renal-14": "renal-ch27:clearance",
+  "renal-15": "renal-ch26:gfr",
+  "renal-16": "renal-ch27:transport",
+  "renal-17": "renal-ch27:segments",
+  "renal-18": "renal-ch31:tubular",
+  "renal-19": "renal-ch30:abd",
+  "renal-20": "renal-ch29:raas",
+  "renal-21": "renal-ch26:overview",
+  "renal-22": "renal-ch27:regulation",
+  "renal-23": "renal-ch29:potassium",
+  "renal-24": "renal-ch29:capimg",
+  "renal-25": "renal-ch30:buffers",
+  "renal-26": "renal-ch30:renalacid",
+  "renal-81": "renal-ch25:shifts",
+  "renal-82": "renal-ch25:natremia",
+  "renal-83": "renal-ch26:autoreg",
+  "renal-84": "renal-ch26:rbf",
+  "renal-85": "renal-ch27:transport",
+  "renal-86": "renal-ch27:loop",
+  "renal-87": "renal-ch28:countercurrent",
+  "renal-88": "renal-ch28:adh",
+  "renal-89": "renal-ch29:capimg",
+  "renal-90": "renal-ch29:volume",
+  "renal-91": "renal-ch30:renalacid",
+  "renal-92": "renal-ch31:ckd",
+  "renal-27": "harrison-ch321:aki-dx",
+  "renal-28": "robbins-ch20:glomresp",
+  "renal-29": "robbins-ch20:psgn",
+  "renal-30": "robbins-ch20:nephrotic",
+  "renal-31": "robbins-ch20:stones",
+  "renal-32": "robbins-ch20:obstruction",
+  "renal-34": "robbins-ch21:cystitis",
+  "renal-35": "robbins-ch20:pyelo",
+  "renal-36": "harrison-ch321:aki-def",
+  "renal-37": "robbins-ch20:tin",
+  "renal-38": "robbins-ch20:atn",
+  "renal-39": "robbins-ch20:pyelo",
+  "renal-40": "harrison-ch322:ckd-sys",
+  "renal-41": "harrison-ch322:ckd-mbd",
+  "renal-42": "robbins-ch20:cystic",
+  "renal-43": "robbins-ch20:rcc",
+  "renal-44": "robbins-ch20:benign",
+  "renal-45": "robbins-ch20:wilms",
+  "renal-46": "robbins-ch21:urothelial"
+ }
+}
