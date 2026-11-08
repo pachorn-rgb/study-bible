@@ -272,7 +272,106 @@
       "Pathology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-heme",
+       "title": "Hematology & Oncology Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 33, 34, 54 · Pharmacotherapy 5e Ch 10, 66–68, 88",
+       "href": "heme/pharm-heme.html",
+       "thumb": "thumbs/pharm-heme.jpg",
+       "desc": "แผนที่กลุ่มยาเลือดและมะเร็ง: heparin, warfarin, DOAC, reversal, antiplatelet, thrombolytic, ยาแก้ภาวะซีด/เม็ดเลือดต่ำ, chemotherapy ทุกกลุ่มตาม cell cycle, targeted therapy และพิษของยาเคมีบำบัด",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Coagulation & platelet drug map",
+         "coagmap"
+        ],
+        [
+         "Heparin & HIT",
+         "heparin"
+        ],
+        [
+         "Warfarin",
+         "warfarin"
+        ],
+        [
+         "Heparin vs warfarin",
+         "hepvswar"
+        ],
+        [
+         "Direct coagulation factor inhibitors",
+         "doac"
+        ],
+        [
+         "Antiplatelets",
+         "antiplt"
+        ],
+        [
+         "Thrombolytics",
+         "lytic"
+        ],
+        [
+         "Agents for anemias & cytopenias",
+         "hematinic"
+        ],
+        [
+         "Cancer therapy: cell cycle & targets",
+         "cycle"
+        ],
+        [
+         "Antitumor antibiotics",
+         "antibiotic"
+        ],
+        [
+         "Antimetabolites",
+         "antimet"
+        ],
+        [
+         "Alkylating agents & platinum",
+         "alkyl"
+        ],
+        [
+         "Microtubule & topoisomerase inhibitors",
+         "mitosis"
+        ],
+        [
+         "Hormonal therapy: tamoxifen & others",
+         "tamox"
+        ],
+        [
+         "Anticancer monoclonal antibodies",
+         "mabs"
+        ],
+        [
+         "Small molecule inhibitors",
+         "smi"
+        ],
+        [
+         "Chemotoxicity amelioration",
+         "ameliorate"
+        ],
+        [
+         "Key chemotoxicities",
+         "keytox"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 34",
+        "sort": 34
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
