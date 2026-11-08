@@ -193,7 +193,114 @@
       "Dermatology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-msk",
+       "title": "MSK & Skin Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 36, 42, 61 · Pharmacotherapy 5e Ch 56–59, 64–65",
+       "href": "msk/pharm-msk.html",
+       "thumb": "thumbs/pharm-msk.jpg",
+       "desc": "แผนที่กลุ่มยา MSK และผิวหนัง: NSAIDs, acetaminophen, DMARDs, bisphosphonate และยาสร้างกระดูก, ยา gout, biologics, ยาผิวหนัง (steroid, acne, psoriasis, imiquimod) และการรักษา RA, OA, osteoporosis",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Arachidonic acid pathway & drug targets",
+         "aa"
+        ],
+        [
+         "Acetaminophen",
+         "apap"
+        ],
+        [
+         "Aspirin",
+         "aspirin"
+        ],
+        [
+         "Celecoxib (COX-2 selective)",
+         "coxib"
+        ],
+        [
+         "NSAIDs",
+         "nsaids"
+        ],
+        [
+         "Conventional DMARDs",
+         "dmards"
+        ],
+        [
+         "Bisphosphonates",
+         "bisph"
+        ],
+        [
+         "Teriparatide, denosumab & romosozumab",
+         "anabolic"
+        ],
+        [
+         "Chronic gout: urate-lowering therapy",
+         "goutchronic"
+        ],
+        [
+         "Acute gout flare",
+         "goutacute"
+        ],
+        [
+         "TNF-α inhibitors",
+         "tnf"
+        ],
+        [
+         "Other RA biologics & JAK inhibitors",
+         "ra-bio"
+        ],
+        [
+         "Psoriasis biologics",
+         "psobio"
+        ],
+        [
+         "Skin drug target map",
+         "skinmap"
+        ],
+        [
+         "Topical corticosteroids",
+         "tcs"
+        ],
+        [
+         "Acne drugs",
+         "acne"
+        ],
+        [
+         "Psoriasis: topical & systemic",
+         "psotop"
+        ],
+        [
+         "Imiquimod & actinic keratosis drugs",
+         "imiq"
+        ],
+        [
+         "Rheumatoid arthritis treatment",
+         "ra"
+        ],
+        [
+         "Osteoarthritis & osteoporosis treatment",
+         "oa-op"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 36",
+        "sort": 36
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
