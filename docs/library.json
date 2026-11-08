@@ -126,7 +126,102 @@
       "Pathology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-cvs",
+       "title": "Cardiovascular Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 11–14, 35 · Pharmacotherapy 5e Ch 5–12",
+       "href": "cvs/pharm-cvs.html",
+       "thumb": "thumbs/pharm-cvs.jpg",
+       "desc": "แผนที่กลุ่มยาหัวใจและหลอดเลือด: ความดันสูงตามโรคร่วม, CCB, vasodilator, hypertensive emergency, nitrates, antianginal, heart failure (ARNI, digoxin), ยาลดไขมัน และ antiarrhythmics ครบทุก class",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Cardiovascular agents & molecular targets",
+         "cvmap"
+        ],
+        [
+         "Hypertension treatment",
+         "htn"
+        ],
+        [
+         "Calcium channel blockers",
+         "ccb"
+        ],
+        [
+         "Hydralazine & minoxidil",
+         "vasodil"
+        ],
+        [
+         "Hypertensive emergency",
+         "htnemerg"
+        ],
+        [
+         "Nitrates",
+         "nitrates"
+        ],
+        [
+         "Antianginal therapy & ranolazine",
+         "antianginal"
+        ],
+        [
+         "Heart failure drugs & sacubitril",
+         "hf"
+        ],
+        [
+         "Digoxin",
+         "digoxin"
+        ],
+        [
+         "Statins",
+         "statins"
+        ],
+        [
+         "Bile acid resins, ezetimibe & PCSK9 inhibitors",
+         "nonstatin"
+        ],
+        [
+         "Fibrates, niacin & omega-3",
+         "tg"
+        ],
+        [
+         "Class I: Na⁺ channel blockers",
+         "class1"
+        ],
+        [
+         "Class II: β-blockers",
+         "class2"
+        ],
+        [
+         "Class III: K⁺ channel blockers",
+         "class3"
+        ],
+        [
+         "Class IV & other antiarrhythmics",
+         "class4"
+        ],
+        [
+         "HFrEF: guideline-directed therapy",
+         "hfrx"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 11",
+        "sort": 11
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },

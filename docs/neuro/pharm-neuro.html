@@ -365,7 +365,7 @@ const psvg=(b,vb)=>svg(PDEFS+b,vb);
 const ICON={ag:'<path d="M-3.6,0 H3.6 M0,-3.6 V3.6"/>',bl:'<path d="M-3,-4 V4 M-3,0 H4"/>',inh:'<path d="M-3,-3 L3,3 M3,-3 L-3,3"/>',mab:'<path d="M0,4.2 V0.2 M0,0.2 L-3.6,-3.8 M0,0.2 L3.6,-3.8"/>',st:'<path d="M-3.6,-2 L0,-4.1 L3.6,-2 L3.6,2 L0,4.1 L-3.6,2Z"/>',mod:'<circle r="2.4"/>'};
 function pill(x,y,lab,kind,key,force){const w=Math.max(60,lab.length*6.3+36);const a=force||on(key);const x0=x-w/2;
  return `<g class="pill ${kind}${a?" on":" off"}"><rect x="${x0}" y="${y-12}" width="${w}" height="24" rx="12"/><circle class="pic" cx="${x0+13}" cy="${y}" r="8"/><g class="pig" transform="translate(${x0+13},${y})">${ICON[kind]}</g>${T(x0+27,y+4,lab,{a:"start",c:"pl"})}</g>`}
-const glow=(x,y,key,r=15)=>on(key)?`<circle class="glow" cx="${x}" cy="${y}" r="${r+3}"/><circle class="hring" cx="${x}" cy="${y}" r="${r+3}"/>`:"";
+const glow=(x,y,key,r=15)=>onA(key)?`<circle class="glow" cx="${x}" cy="${y}" r="${r+3}"/><circle class="hring" cx="${x}" cy="${y}" r="${r+3}"/>`:"";
 const rec=(x,y,lab,vert)=>`<rect class="p-rec" x="${x-(vert?9:7)}" y="${y-(vert?7:9)}" width="${vert?18:14}" height="${vert?14:18}" rx="5"/>`+(ST.labels&&lab?T(x,y-(vert?12:14),lab,{c:"s"}):"");
 const arr=(d,c="")=>`<path class="arw ${c}" d="${d}"/>`;
 const cellC=(x,y,r,g,lab,sub)=>`<circle class="p-imm" cx="${x}" cy="${y}" r="${r}" fill="url(#${g})"/>`+T(x,y+(sub?-1:4),lab,{c:"bh"})+(sub?T(x,y+13,sub,{c:"s m"}):"");
