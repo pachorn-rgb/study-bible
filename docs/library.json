@@ -3718,7 +3718,74 @@
       "Pathology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-repro",
+       "title": "Reproductive Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 37, 40 · Pharmacotherapy 5e Ch 47–52",
+       "href": "repro/pharm-repro.html",
+       "thumb": "thumbs/pharm-repro.jpg",
+       "desc": "แผนที่กลุ่มยาระบบสืบพันธุ์: GnRH analogs, estrogens, SERMs, aromatase inhibitors, progestins, contraception, testosterone, antiandrogens, oxytocics/tocolytics, BPH และ erectile dysfunction",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Control of reproductive hormones",
+         "hpg"
+        ],
+        [
+         "GnRH analogs & degarelix",
+         "gnrh"
+        ],
+        [
+         "Estrogens",
+         "estrogen"
+        ],
+        [
+         "SERMs & aromatase inhibitors",
+         "serm"
+        ],
+        [
+         "Progestins & antiprogestins",
+         "progestin"
+        ],
+        [
+         "Contraception",
+         "contra"
+        ],
+        [
+         "Testosterone & danazol",
+         "androgen"
+        ],
+        [
+         "Antiandrogens",
+         "antiandrogen"
+        ],
+        [
+         "Oxytocics & tocolytics",
+         "labor"
+        ],
+        [
+         "BPH & erectile dysfunction drugs",
+         "uro"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 40",
+        "sort": 40
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
