@@ -255,7 +255,78 @@
       "Pathology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-gi",
+       "title": "Gastrointestinal Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 62 · Pharmacotherapy 5e Ch 17–22",
+       "href": "gi/pharm-gi.html",
+       "thumb": "thumbs/pharm-gi.jpg",
+       "desc": "แผนที่กลุ่มยาทางเดินอาหาร: H₂ blocker, PPI, antacid, mucosal protectant, octreotide, ยา IBD, antidiarrheal, antiemetic, laxative, orlistat และการรักษา GERD/PUD/H. pylori, cirrhosis",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "GI drug target map",
+         "gimap"
+        ],
+        [
+         "H₂ blockers & proton pump inhibitors",
+         "acid"
+        ],
+        [
+         "Antacids, bismuth, sucralfate & misoprostol",
+         "mucosal"
+        ],
+        [
+         "Octreotide",
+         "octreotide"
+        ],
+        [
+         "Sulfasalazine & IBD therapy",
+         "ibd"
+        ],
+        [
+         "Loperamide, diphenoxylate & antidiarrheals",
+         "antidiar"
+        ],
+        [
+         "Antiemetics",
+         "antiemetic"
+        ],
+        [
+         "Anticonstipation drugs",
+         "laxative"
+        ],
+        [
+         "Orlistat & anti-obesity drugs",
+         "orlistat"
+        ],
+        [
+         "GERD, PUD & H. pylori",
+         "pud"
+        ],
+        [
+         "Portal hypertension & cirrhosis",
+         "cirrhosis"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 62",
+        "sort": 62
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
