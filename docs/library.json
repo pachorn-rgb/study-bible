@@ -768,7 +768,78 @@
       "Pathology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-psych",
+       "title": "Psychiatry Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 29, 30, 32 · Pharmacotherapy 5e Ch 36–42",
+       "href": "psych/pharm-psych.html",
+       "thumb": "thumbs/pharm-psych.jpg",
+       "desc": "แผนที่กลุ่มยาจิตเวช: stimulants, antipsychotics, lithium, buspirone, SSRI/SNRI, TCA, MAOI, atypical antidepressants, ยาเลิกบุหรี่/opioid/alcohol และการเลือกยาตามโรค",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Psychiatric drug target map",
+         "psymap"
+        ],
+        [
+         "CNS stimulants",
+         "stim"
+        ],
+        [
+         "Antipsychotics",
+         "antipsych"
+        ],
+        [
+         "Lithium",
+         "lithium"
+        ],
+        [
+         "Buspirone & anxiolytics",
+         "buspirone"
+        ],
+        [
+         "SSRIs & SNRIs",
+         "ssri"
+        ],
+        [
+         "Tricyclic antidepressants",
+         "tca"
+        ],
+        [
+         "MAO inhibitors",
+         "maoi"
+        ],
+        [
+         "Atypical antidepressants",
+         "atypicalad"
+        ],
+        [
+         "Smoking, opioid & alcohol use disorder",
+         "sud"
+        ],
+        [
+         "Choosing psychiatric drugs",
+         "psyrx"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 30",
+        "sort": 30
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
