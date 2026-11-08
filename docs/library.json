@@ -318,7 +318,102 @@
       "Ophthalmology",
       "Pharmacology"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-neuro",
+       "title": "Neurology Pharmacology",
+       "subs": [
+        "Pharmacology"
+       ],
+       "src": "Katzung 16e Ch 21–28, 31 · Pharmacotherapy 5e Ch 29–35, 61",
+       "href": "neuro/pharm-neuro.html",
+       "thumb": "thumbs/pharm-neuro.jpg",
+       "desc": "แผนที่กลุ่มยาระบบประสาท: anticonvulsants, ยานอนหลับ, triptans, Parkinson, Alzheimer/ALS/HD, local & general anesthetics, NM blockers, muscle relaxants, opioids และ glaucoma",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Neuron & synapse drug map",
+         "neuromap"
+        ],
+        [
+         "Narrow-spectrum: phenytoin, carbamazepine, gabapentinoids",
+         "aed-focal"
+        ],
+        [
+         "Ethosuximide (absence)",
+         "aed-absence"
+        ],
+        [
+         "Broad-spectrum: valproate, lamotrigine, levetiracetam, topiramate",
+         "aed-broad"
+        ],
+        [
+         "Barbiturates & benzodiazepines",
+         "barb-bzd"
+        ],
+        [
+         "Insomnia therapy",
+         "insomnia"
+        ],
+        [
+         "Triptans & migraine drugs",
+         "triptans"
+        ],
+        [
+         "Parkinson disease therapy",
+         "pd"
+        ],
+        [
+         "Alzheimer, ALS & Huntington drugs",
+         "neurodeg"
+        ],
+        [
+         "Local anesthetics",
+         "localanes"
+        ],
+        [
+         "General anesthetics",
+         "genanes"
+        ],
+        [
+         "Neuromuscular blocking drugs",
+         "nmb"
+        ],
+        [
+         "Skeletal muscle relaxants",
+         "relax"
+        ],
+        [
+         "Opioid analgesics",
+         "opioids"
+        ],
+        [
+         "Tramadol, mixed agonists & capsaicin",
+         "mixed"
+        ],
+        [
+         "Glaucoma therapy",
+         "glaucoma"
+        ],
+        [
+         "Status epilepticus",
+         "status"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 24",
+        "sort": 24
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
