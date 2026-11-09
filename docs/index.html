@@ -129,6 +129,10 @@ button{font:inherit;color:inherit;cursor:pointer;background:none;border:0;paddin
 .tabs::-webkit-scrollbar{display:none}
 .tab{flex:none;border-radius:999px;padding:.4rem .85rem;font-weight:500;font-size:.875rem;background:var(--surface);box-shadow:var(--shadow);color:var(--ink2)}
 .tab[aria-pressed="true"]{background:var(--ink);color:var(--bg)}
+.tab.soon{color:var(--muted);background:transparent;box-shadow:inset 0 0 0 1.5px var(--line)}.tab.soon[aria-pressed="true"]{background:var(--surface2);color:var(--ink2);box-shadow:none}
+.soonbox{border:1.5px dashed var(--line);border-radius:14px;padding:1.25rem 1rem;color:var(--muted);font-size:.875rem;text-align:center;margin-top:.5rem}
+.soonrow{display:flex;flex-wrap:wrap;gap:.4rem;align-items:center;margin-top:1.5rem;font-size:.8125rem;color:var(--muted)}.soonrow span{margin-right:.25rem}
+.soonrow button{border:1.5px dashed var(--line);border-radius:999px;padding:.25rem .7rem;color:var(--muted);font-size:.8125rem;background:none}
 .atl{display:grid;grid-template-columns:repeat(auto-fill,minmax(16rem,1fr));gap:.75rem}
 .atlas{background:var(--surface);border-radius:var(--r);box-shadow:var(--shadow);overflow:hidden;display:flex;flex-direction:column}
 .atlas .shot{display:block;aspect-ratio:16/8;overflow:hidden;background:var(--surface2)}
@@ -407,7 +411,7 @@ mark{background:color-mix(in srgb,var(--accent) 30%,transparent);color:inherit;b
 const STR={
  th:{tabHome:"หน้าหลัก",tabLibrary:"คลัง",tabReview:"ทบทวน",tabMe:"ฉัน",back:"กลับ",level:"เลเวล",xpTo:"อีก {n} XP ถึงเลเวล {l}",
   streak:"{n} วันติด",due:"ครบกำหนด",newT:"ใหม่",mastered:"แม่นแล้ว",startRun:"เริ่มรอบทบทวน",runK:"รอบนี้",cards:"การ์ด",
-  cont:"อ่านต่อ",library:"คลัง",chapters:"บท",empty:"ยังไม่มีเนื้อหา",atlases:"Atlases",topics:"หัวข้อ",all:"ทั้งหมด",
+  cont:"อ่านต่อ",library:"คลัง",chapters:"บท",empty:"ยังไม่มีเนื้อหา",soonSub:"รอเนื้อหา",soonT:"ยังไม่มีเนื้อหาในหมวดนี้ — เพิ่ม atlas แล้วจะขึ้นที่นี่",atlases:"Atlases",topics:"หัวข้อ",all:"ทั้งหมด",
   mastery:"ความแม่น",search:"ค้นหา",searchPh:"ค้นคำในทุก atlas, หัวข้อ, คำถาม",noRes:"ไม่พบผลลัพธ์",inAtlas:"ใน {a}",
   open:"เปิดใน atlas",openAtlas:"เปิด atlas",save:"บันทึก",saved:"บันทึกไว้",unsave:"เอาออก",savedT:"บันทึกแล้ว",removedT:"เอาออกแล้ว",
   again:"ยังไม่ได้",hard:"พอได้",good:"ได้",againS:"เจอเร็วๆ นี้",hardS:"เจออีก 1 วัน",goodS:"ทิ้งไว้นานขึ้น",
@@ -435,7 +439,7 @@ const STR={
   savedEmpty:"กดไอคอนบันทึกที่ atlas หรือหัวข้อ เพื่อเก็บไว้ที่นี่",sections0:"ส่วนใน atlas"},
  en:{tabHome:"Home",tabLibrary:"Library",tabReview:"Review",tabMe:"Me",back:"Back",level:"Level",xpTo:"{n} XP to level {l}",
   streak:"{n}-day streak",due:"Due",newT:"New",mastered:"Mastered",startRun:"Start a review run",runK:"This run",cards:"cards",
-  cont:"Continue",library:"Library",chapters:"Chapters",empty:"No content yet",atlases:"Atlases",topics:"Topics",all:"All",
+  cont:"Continue",library:"Library",chapters:"Chapters",empty:"No content yet",soonSub:"Coming soon",soonT:"Nothing here yet — atlases added to this discipline will appear here",atlases:"Atlases",topics:"Topics",all:"All",
   mastery:"Mastery",search:"Search",searchPh:"Search every atlas, topic, question",noRes:"No results",inAtlas:"in {a}",
   open:"Open in atlas",openAtlas:"Open atlas",save:"Save",saved:"Saved",unsave:"Remove",savedT:"Saved",removedT:"Removed",
   again:"Again",hard:"Hard",good:"Good",againS:"see soon",hardS:"see tomorrow",goodS:"push it back",
@@ -662,7 +666,8 @@ function topicRow(x,showCh){
 function chapter(id){
   const c=chap(id);if(!c){location.hash="#/library";return}
   if(id!==lastChap){curSub="all";lastChap=id}
-  const subs=c.subs.filter(s=>c.modules.some(m=>m.subs.includes(s))||c.checklist.some(x=>x.sub===s));
+  const has=s=>c.modules.some(m=>m.subs.includes(s))||c.checklist.some(x=>x.sub===s);
+  const subs=c.subs.filter(has),soon=c.subs.filter(s=>!has(s));
   const mods=curSub==="all"?c.modules:c.modules.filter(m=>m.subs.includes(curSub));
   const ck=curSub==="all"?c.checklist:c.checklist.filter(x=>x.sub===curSub);
   const groups=[...new Set(ck.map(x=>x.sub))];
@@ -672,11 +677,13 @@ function chapter(id){
    <div class="chead"><span class="gl">${g(c.glyph)}</span><div><h1>${esc(chName(c))}</h1>${c.checklist.length?`<span class="stars">${starsH(c)}</span>`:""}${chSub(c)?`<p>${esc(chSub(c))}</p>`:""}</div></div>
    ${c.modules.length||c.checklist.length?`<div class="mstat"><div><b>${Math.round(mastery(c.checklist)*100)}%</b><span>${t("mastery")}</span></div><div><b>${c.modules.length}</b><span>${t("atlases")}</span></div><div><b>${due}</b><span>${t("due")}</span></div></div>
     ${c.checklist.length?`<a class="btn wide" style="margin-top:.75rem" href="#/review/${c.id}">${I.play}${t("startRun")}</a>${curSub==="all"?bossCard(c):""}`:""}`:`<div class="empty">${t("empty")}</div>`}
-   ${subs.length>1?`<div class="tabs">${["all",...subs].map(s=>`<button class="tab" type="button" data-sub="${esc(s)}" aria-pressed="${s===curSub}">${s==="all"?t("all"):esc(s)}</button>`).join("")}</div>`:""}
+   ${c.subs.length>1?`<div class="tabs">${["all",...c.subs].map(s=>`<button class="tab${s!=="all"&&!has(s)?" soon":""}" type="button" data-sub="${esc(s)}" aria-pressed="${s===curSub}">${s==="all"?t("all"):esc(s)}</button>`).join("")}</div>`:""}
    ${c.modules.length?`<div class="sorter"><div class="seg" data-sortk>${[["book",t("sortBook")],["az","A–Z"]].map(([k,l])=>`<button type="button" data-v="${k}" aria-pressed="${S.sortK===k}">${l}</button>`).join("")}</div>
     <button class="sbtn" type="button" id="sdir" aria-label="${t("sortDir")}">${S.sortD>0?"↑":"↓"}</button><span class="sp"></span>
     <div class="seg" data-viewk>${[["list",t("vList")],["cards",t("vCards")]].map(([k,l])=>`<button type="button" data-v="${k}" aria-pressed="${S.viewK===k}">${l}</button>`).join("")}</div></div>`:""}
    ${(curSub==="all"?subs:[curSub]).map(sb=>discBlock(c,sb)).join("")}
+   ${curSub!=="all"&&!has(curSub)?`<section class="disc"><div class="dhd"><div><b>${esc(curSub)}</b><span>${t("soonSub")}</span></div></div><div class="soonbox">${t("soonT")}</div></section>`:""}
+   ${curSub==="all"&&soon.length&&(subs.length||c.modules.length)?`<div class="soonrow"><span>${t("soonSub")}</span>${soon.map(s=>`<button type="button" data-sub="${esc(s)}">${esc(s)}</button>`).join("")}</div>`:""}
    ${c.resources&&c.resources.length&&curSub==="all"?`<div class="cap">Links</div><div class="group">${c.resources.map(r=>`<a class="row" href="${r.href}" target="_blank" rel="noopener"><span class="tx"><b>${esc(r.title)}</b></span>${I.ext}</a>`).join("")}</div>`:""}
   </div>`;
   $("#cback").onclick=()=>goBack("#/library");

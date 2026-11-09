@@ -831,6 +831,7 @@
      "subs": [
       "Embryology",
       "Anatomy",
+      "Histology",
       "Physiology",
       "Pathology",
       "Pharmacology"
@@ -1097,6 +1098,7 @@
      "subs": [
       "Embryology",
       "Anatomy",
+      "Histology",
       "Physiology",
       "Pathology",
       "Pharmacology"
@@ -1298,6 +1300,7 @@
      "subs": [
       "Embryology",
       "Anatomy",
+      "Histology",
       "Physiology",
       "Pathology",
       "Pharmacology"
@@ -1486,6 +1489,7 @@
      "subs": [
       "Embryology",
       "Anatomy",
+      "Histology",
       "Physiology",
       "Pathology",
       "Pharmacology"
@@ -5281,8 +5285,8 @@
        "sub": "Pharmacology",
        "t": "Diuretics: site of action",
        "link": {
-        "m": "renal-ch31",
-        "h": "diuretics"
+        "m": "pharm-renal",
+        "h": "nephron"
        }
       },
       {
@@ -5290,8 +5294,8 @@
        "sub": "Pharmacology",
        "t": "Mannitol",
        "link": {
-        "m": "nephron-pathway",
-        "h": "diu"
+        "m": "pharm-renal",
+        "h": "osmotic"
        }
       },
       {
@@ -5299,8 +5303,8 @@
        "sub": "Pharmacology",
        "t": "Acetazolamide",
        "link": {
-        "m": "nephron-pathway",
-        "h": "diu"
+        "m": "pharm-renal",
+        "h": "cai"
        }
       },
       {
@@ -5308,8 +5312,8 @@
        "sub": "Pharmacology",
        "t": "Loop diuretics",
        "link": {
-        "m": "nephron-pathway",
-        "h": "diu"
+        "m": "pharm-renal",
+        "h": "loop"
        }
       },
       {
@@ -5317,8 +5321,8 @@
        "sub": "Pharmacology",
        "t": "Thiazide diuretics",
        "link": {
-        "m": "nephron-pathway",
-        "h": "diu"
+        "m": "pharm-renal",
+        "h": "thiazide"
        }
       },
       {
@@ -5326,8 +5330,8 @@
        "sub": "Pharmacology",
        "t": "Potassium-sparing diuretics",
        "link": {
-        "m": "nephron-pathway",
-        "h": "diu"
+        "m": "pharm-renal",
+        "h": "ksparing"
        }
       },
       {
@@ -5335,8 +5339,8 @@
        "sub": "Pharmacology",
        "t": "Diuretics: electrolyte changes",
        "link": {
-        "m": "nephron-pathway",
-        "h": "diu"
+        "m": "pharm-renal",
+        "h": "lytes"
        }
       },
       {
@@ -5344,8 +5348,8 @@
        "sub": "Pharmacology",
        "t": "ACE inhibitors",
        "link": {
-        "m": "nephron-pathway",
-        "h": "reg"
+        "m": "pharm-renal",
+        "h": "raas"
        }
       },
       {
@@ -5353,8 +5357,8 @@
        "sub": "Pharmacology",
        "t": "Angiotensin II receptor blockers",
        "link": {
-        "m": "nephron-pathway",
-        "h": "reg"
+        "m": "pharm-renal",
+        "h": "raas"
        }
       },
       {
@@ -5362,8 +5366,98 @@
        "sub": "Pharmacology",
        "t": "Aliskiren",
        "link": {
-        "m": "nephron-pathway",
-        "h": "reg"
+        "m": "pharm-renal",
+        "h": "raas"
+       }
+      },
+      {
+       "id": "pharm-renal:sglt2",
+       "sub": "Pharmacology",
+       "t": "SGLT2 inhibitors",
+       "link": {
+        "m": "pharm-renal",
+        "h": "sglt2"
+       }
+      },
+      {
+       "id": "pharm-renal:adh",
+       "sub": "Pharmacology",
+       "t": "ADH antagonists & agonists",
+       "link": {
+        "m": "pharm-renal",
+        "h": "adh"
+       }
+      },
+      {
+       "id": "pharm-renal:resist",
+       "sub": "Pharmacology",
+       "t": "Diuretic combinations & resistance",
+       "link": {
+        "m": "pharm-renal",
+        "h": "resist"
+       }
+      },
+      {
+       "id": "pharm-renal:aki",
+       "sub": "Pharmacology",
+       "t": "AKI: drugs that help and drugs that harm",
+       "link": {
+        "m": "pharm-renal",
+        "h": "aki"
+       }
+      },
+      {
+       "id": "pharm-renal:ckd",
+       "sub": "Pharmacology",
+       "t": "CKD: slowing progression",
+       "link": {
+        "m": "pharm-renal",
+        "h": "ckd"
+       }
+      },
+      {
+       "id": "pharm-renal:anemia",
+       "sub": "Pharmacology",
+       "t": "CKD: anemia (iron · ESA)",
+       "link": {
+        "m": "pharm-renal",
+        "h": "anemia"
+       }
+      },
+      {
+       "id": "pharm-renal:mbd",
+       "sub": "Pharmacology",
+       "t": "CKD: mineral & bone disorder",
+       "link": {
+        "m": "pharm-renal",
+        "h": "mbd"
+       }
+      },
+      {
+       "id": "pharm-renal:hyperk",
+       "sub": "Pharmacology",
+       "t": "Hyperkalemia & hypokalemia",
+       "link": {
+        "m": "pharm-renal",
+        "h": "hyperk"
+       }
+      },
+      {
+       "id": "pharm-renal:sodium",
+       "sub": "Pharmacology",
+       "t": "Hyponatremia & hypernatremia",
+       "link": {
+        "m": "pharm-renal",
+        "h": "sodium"
+       }
+      },
+      {
+       "id": "pharm-renal:acidbase",
+       "sub": "Pharmacology",
+       "t": "Acid–base: drug therapy",
+       "link": {
+        "m": "pharm-renal",
+        "h": "acidbase"
        }
       }
      ],
@@ -5384,6 +5478,7 @@
      "subs": [
       "Embryology",
       "Anatomy",
+      "Histology",
       "Physiology",
       "Pathology",
       "Pharmacology"
@@ -5559,6 +5654,7 @@
      "subs": [
       "Embryology",
       "Anatomy",
+      "Histology",
       "Physiology",
       "Pathology",
       "Pharmacology"
