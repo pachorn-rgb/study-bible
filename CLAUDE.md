@@ -18,13 +18,14 @@ Sources and build scripts are in `src/` — see `src/README.md`. Never hand-edit
 8. Independent fact-check of new content before pushing.
 
 ## References (integrate, no primary/secondary book)
-Topic headings follow **First Aid for the USMLE Step 1**; content integrates these books, each fact badged with its source:
+Topic headings follow **First Aid for the USMLE Step 1**, with clinical topics added from **First Aid for the USMLE Step 2 CK**; content integrates these books, each fact badged with its source:
 - Anatomy: Gray's Anatomy + Grant's Atlas + Netter
 - Embryology: Langman + The Developing Human (Moore)
 - Histology: Wheater + Junqueira + diFiore
 - Physiology: Guyton & Hall + Boron
 - Pathology: Robbins
 - Pharmacology: Katzung + Pharmacotherapy (Principles & Practice)
+- Every discipline: Harrison as a supplementary clinical source (badge H)
 The user will announce changes to this list.
 
 ## Patch notes
