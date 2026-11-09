@@ -3639,6 +3639,10 @@
          "lytes"
         ],
         [
+         "Sodium disorders: clinical work-up",
+         "nawork"
+        ],
+        [
          "Buffers & Henderson–Hasselbalch",
          "buffers"
         ],
@@ -3837,6 +3841,10 @@
         [
          "Pyelonephritis & UTI",
          "pyelo"
+        ],
+        [
+         "Interstitial cystitis (bladder pain syndrome)",
+         "ic"
         ],
         [
          "Cystic diseases",
@@ -5674,6 +5682,15 @@
        }
       },
       {
+       "id": "renal-patho-2:ic",
+       "sub": "Pathology",
+       "t": "Interstitial cystitis (bladder pain syndrome)",
+       "link": {
+        "m": "renal-patho-2",
+        "h": "ic"
+       }
+      },
+      {
        "id": "renal-patho-3:papnec",
        "sub": "Pathology",
        "t": "Renal papillary & diffuse cortical necrosis",
@@ -5716,6 +5733,15 @@
        "link": {
         "m": "renal-physio-3",
         "h": "rta"
+       }
+      },
+      {
+       "id": "renal-physio-3:nawork",
+       "sub": "Physiology",
+       "t": "Sodium disorders: clinical work-up",
+       "link": {
+        "m": "renal-physio-3",
+        "h": "nawork"
        }
       }
      ],
