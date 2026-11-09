@@ -32,7 +32,7 @@ const dot=(x,y,r,c)=>`<circle cx="${x}" cy="${y}" r="${r}" style="fill:${c}"/>`;
 /* ================= 4-chamber heart =================
    local box 0..360 × 0..350, wrap with heartAt(x,y,scale,o).
    o: {c:{ra,rv,la,lv,ao,pa}, lvk (LV cavity scale: <1 concentric, >1 dilated), rvk, lvw (wall shade), sept (septal bulge), asd, vsd, pda, override,
-       eff (effusion), constr, lab, flows:[[x1,y1,x2,y2,colour,cx,cy]], hot:[chambers to ring], myx, veg, noPA, noAo, tga, truncus, tvatresia} */
+       eff (effusion), constr, lab, flows:[[x1,y1,x2,y2,colour,cx,cy]], hot:[chambers to ring], myx, veg (vegetation), thr (mural thrombus), noPA, noAo, tga, truncus, tvatresia} */
 function heart(o={}){const c=Object.assign({ra:CV.dx,rv:CV.dx,pa:CV.dx,la:CV.ox,lv:CV.ox,ao:CV.ox,svc:CV.dx},o.c||{});const k=o.lvk||1,kr=o.rvk||1;let b="";
  const sc=(pts,cx,cy,f)=>pts.map(([x,y])=>[cx+(x-cx)*f,cy+(y-cy)*f]);
  const hk=k>1?1+(k-1)*.45:1;
@@ -86,6 +86,7 @@ function heart(o={}){const c=Object.assign({ra:CV.dx,rv:CV.dx,pa:CV.dx,la:CV.ox,
  if(o.tapvr)b+=tube("M312,150 C346,120 330,22 220,18 C160,16 130,30 118,52",CV.ox,11);
  /* myxoma */
  if(o.myx)b+=`<path d="${sm([[268,128],[292,120],[306,140],[300,176],[288,198],[272,186],[264,156]])}" style="fill:#E9DFAE;stroke:#A08C3C;stroke-width:1.4"/>`+`<path d="M276,126 C262,128 254,134 250,140" style="stroke:#A08C3C;stroke-width:3"/>`;
+ if(o.thr)o.thr.forEach(([x,y,r])=>b+=`<path d="${sm([[x-r,y],[x-r*.4,y-r*.9],[x+r*.5,y-r*.7],[x+r,y+r*.1],[x+r*.3,y+r*.9],[x-r*.6,y+r*.7]])}" style="fill:#8E2A35;stroke:#5E1A22;stroke-width:1.2"/>`);
  if(o.veg)o.veg.forEach(([x,y,r])=>b+=`<path d="${sm([[x-r,y],[x-r*.4,y-r*.9],[x+r*.5,y-r*.7],[x+r,y+r*.1],[x+r*.3,y+r*.9],[x-r*.6,y+r*.7]])}" style="fill:#F1E3B8;stroke:#A6853A;stroke-width:1.2"/>`+dot(x-r*.2,y,1.6,"#7A5BC7")+dot(x+r*.3,y-r*.3,1.4,"#7A5BC7"));
  /* hot rings */
  const ctr={ra:[124,152],la:[286,140],rv:[142,248],lv:[260,256],ao:[232,84],pa:[180,140]};

@@ -6,7 +6,7 @@ Object.assign(GN,{a:"Heart failure & shock",b:"Endocarditis & valves",c:"Pericar
 Object.assign(ST,{cm:"dcm",hf:"hfref",sh:"cardio",tp:"tamp",ie:"acute",rf:"acute",vv:"as",pc:"acute",my:"viral",tm:"myx",vl:"gca",vm:"pan",vs:"gpa"});
 
 /* ---------- 1. cardiomyopathies ---------- */
-const CM={dcm:{n:"Dilated cardiomyopathy",s:"systolic dysfunction · EF < 40%",o:{lvk:1.3,rvk:1.12,veg:[[284,302,9]]},sar:"series",
+const CM={dcm:{n:"Dilated cardiomyopathy",s:"systolic dysfunction · EF < 40%",o:{lvk:1.3,rvk:1.12,thr:[[284,302,9]]},sar:"series",
   r:["พบบ่อยสุด (~90%) · มักไม่ทราบสาเหตุหรือทางพันธุกรรม (TTN)","alcohol, cocaine, doxorubicin, coxsackie B, Chagas, peripartum, hemochromatosis, thyrotoxicosis, wet beriberi","HF, S₃, MR/TR murmur, CXR: balloon heart","eccentric hypertrophy · mural thrombus ได้"]},
  hcm:{n:"Hypertrophic cardiomyopathy",s:"diastolic dysfunction · EF ปกติ/สูง",o:{lvk:.62,lvh:true,sept:true,flows:[[248,216,226,206,"#FFD23F"]]},sar:"parallel",
   r:["AD · ยีน sarcomere (β-myosin heavy chain, MYBPC3)","asymmetric septal hypertrophy · myofiber disarray","SAM ของ mitral → LVOT obstruction (HOCM)","S₄ · systolic murmur ดังขึ้นเมื่อ preload ↓","syncope ตอนออกแรง · SCD ในนักกีฬาอายุน้อย"]},
@@ -280,7 +280,7 @@ function vtD(){const C=[["Infantile hemangioma","เนื้องอกหล�
 SEC.push({id:"cardiomyo",k:"a",t:"Cardiomyopathies",mm:"Cardiomyopathies",leg:[],tools:[["cm",[["dcm","Dilated"],["hcm","Hypertrophic"],["rcm","Restrictive"],["tako","Takotsubo"]]]],draw:cmD,
 notes:()=>`<ul><li><b>Dilated</b>: systolic dysfunction · eccentric hypertrophy (sarcomere ต่อแบบ series) · สาเหตุ: idiopathic/familial (TTN), alcohol, cocaine, doxorubicin, coxsackie B, Chagas, ischemia, hemochromatosis, sarcoidosis, thyrotoxicosis, wet beriberi, peripartum ${S.fa}</li>
 <li>Athlete's heart ห้องโตเพื่อเพิ่ม SV และ CO · ไม่ใช่โรค ${S.fa}</li>
-<li><b>Hypertrophic</b>: 60–70% เป็น AD (β-MHC, myosin-binding protein C) · concentric (series → parallel) เน้น septum · <b>myofiber disarray</b> ${S.fa} · ห้องเล็กเป็นรูปกล้วย ${S.r}</li>
+<li><b>Hypertrophic</b>: 60–70% เป็น AD (β-MHC, myosin-binding protein C) · concentric hypertrophy (sarcomere ต่อแบบ parallel) เน้น septum · <b>myofiber disarray</b> ${S.fa} · ห้องเล็กเป็นรูปกล้วย ${S.r}</li>
 <li>HOCM: SAM ของ mitral ดึงไปชน septum → LVOT obstruction · รักษา β-blocker หรือ verapamil · <b>เลี่ยงยาลด preload</b> (diuretic, vasodilator) · ICD ถ้าเสี่ยงสูง ${S.fa}</li>
 <li><b>Restrictive</b>: PLEASe Help · amyloid ให้ ECG low voltage แม้ผนังหนา · Löffler = eosinophil ใน myocardium (hypereosinophilic syndrome) ${S.fa}</li>
 <li><b>Takotsubo</b>: apical ballooning หลังเครียดหนัก ${S.fa}</li>

@@ -100,4 +100,4 @@ DXL=[["Restrictive cardiomyopathy","cardiomyopathy"],["Takotsubo cardiomyopathy"
  ["Subacute infective endocarditis","endocardial"],["Nonbacterial thrombotic endocarditis","endocardial"],["Libman-Sacks endocarditis","endocardial"],["Rheumatic mitral stenosis","endocardial"],["Calcific aortic stenosis","endocardial"],["Mitral valve prolapse","endocardial"],["Aortic regurgitation","endocardial"],
  ["Cardiac rhabdomyoma","cardiac tumor"],["Metastatic melanoma to the heart","cardiac tumor"],
  ["Microscopic polyangiitis","vasculitis"],["Eosinophilic granulomatosis with polyangiitis","vasculitis"],["Cryoglobulinemic vasculitis","vasculitis"],["Hypersensitivity vasculitis","vasculitis"],
- ["Hereditary hemorrhagic telangiectasia","vascular malformation"],["Kaposi sarcoma","vascular malformation"],["Bacillary angiomatosis","vascular malformation"]]
+ ["Hereditary hemorrhagic telangiectasia","vascular malformation"],["Kaposi sarcoma","vascular tumor"],["Bacillary angiomatosis","vascular tumor"]]
