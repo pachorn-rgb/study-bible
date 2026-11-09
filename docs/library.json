@@ -2979,7 +2979,40 @@
         "Potter",
         "anomalies"
        ],
-       "topics": [],
+       "topics": [
+        [
+         "Intermediate mesoderm",
+         "s1"
+        ],
+        [
+         "Pronephros & nephric duct",
+         "s2"
+        ],
+        [
+         "Mesonephros + ureteric bud",
+         "s3"
+        ],
+        [
+         "Reciprocal induction & branching",
+         "s4"
+        ],
+        [
+         "Cloaca septation & trigone",
+         "s5"
+        ],
+        [
+         "Ascent, rotation & renal arteries",
+         "s6"
+        ],
+        [
+         "Nephrogenesis & first urine",
+         "s7"
+        ],
+        [
+         "Fetal kidney & urethra",
+         "s8"
+        ]
+       ],
        "ref": {
         "b": "langman",
         "l": "L",
@@ -3019,10 +3052,6 @@
        ],
        "topics": [
         [
-         "Muscles",
-         "wall"
-        ],
-        [
          "Location",
          "loc"
         ],
@@ -3049,6 +3078,10 @@
         [
          "Ureter",
          "ureter"
+        ],
+        [
+         "Muscles",
+         "wall"
         ],
         [
          "Suprarenal",

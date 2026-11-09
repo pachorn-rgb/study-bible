@@ -718,7 +718,10 @@ notes:()=>`<h3>ที่มา</h3><ul>
 /* order follows Gray's Anatomy for Students: posterior abdominal wall → kidneys → ureters → suprarenal glands → vessels, lymphatics, nerves (Ch 4) → bladder, urethra (Ch 5) */
 GN["Vessels & nerves"]="หลอดเลือดใหญ่ น้ำเหลือง เส้นประสาท";
 SEC.forEach(s=>{if(s.id==="aorta"||s.id==="plexus")s.k="Vessels & nerves"});
-{const ORD=["wall","loc","rel","fascia","struct","vessels","lnn","ureter","adrenal","aorta","plexus","bladder","urethra","clinic"];SEC.sort((a,b)=>ORD.indexOf(a.id)-ORD.indexOf(b.id))}
+/* First Aid order: renal anatomy = kidney & glomerular structure, course of ureters; everything else is supplementary (เสริม) */
+{const ORD=["loc","rel","fascia","struct","vessels","lnn","ureter","wall","adrenal","aorta","plexus","bladder","urethra","clinic"];SEC.sort((a,b)=>ORD.indexOf(a.id)-ORD.indexOf(b.id));
+ const CORE={loc:"fa1",rel:"fa1",fascia:"fa1",struct:"fa1",vessels:"fa1",lnn:"fa1",ureter:"fa2"};GN.fa1="Kidney anatomy & glomerular structure";GN.fa2="Course of ureters";
+ SEC.forEach(s=>{if(CORE[s.id])s.k=CORE[s.id];else{const nk="x-"+s.k;GN[nk]="เสริม · "+(GN[s.k]||s.k);s.k=nk}})}
 /* ================= render: one chapter = one continuous page ================= */
 const $=s=>document.querySelector(s);
 const SEENKEY="sb-anat-seen",FIGDIR="img/anat/";
