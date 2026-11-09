@@ -24,7 +24,7 @@ const svg=(body,vb="0 0 640 520")=>`<svg viewBox="${vb}" role="img" xmlns="http:
 
 
 /* ================= pharmacology core (shared by every pharmacology atlas) ================= */
-const S={k:'<b class="sbb katzung">K</b>',p:'<b class="sbb pt">PT</b>',r:'<b class="sbb robbins">R</b>',fa:'<b class="sbb fa">FA</b>',h:'<b class="sbb harrison">H</b>',x:'<b class="sbb gen">Gen</b>'};
+const S={k:'<b class="sbb katzung">K</b>',p:'<b class="sbb pt">PT</b>',r:'<b class="sbb robbins">R</b>',fa:'<b class="sbb fa">FA</b>',g:'<b class="sbb guyton">G</b>',b:'<b class="sbb boron">B</b>',h:'<b class="sbb harrison">H</b>',x:'<b class="sbb gen">Gen</b>'};
 const LEG={ag:["Agonist / activator","--d-ag"],bl:["Antagonist / blocker","--d-bl"],inh:["Enzyme / transporter inhibitor","--d-inh"],mab:["Monoclonal antibody","--d-mab"],st:["Steroid / hormone","--d-st"],mod:["Other / modulator","--d-mod"]};
 let ST={labels:true,all:false};
 let HL=[];

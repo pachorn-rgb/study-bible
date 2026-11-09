@@ -1,0 +1,30 @@
+{
+ "id": "cvs-physio-2",
+ "kind": "physio",
+ "sys": "Cardiovascular",
+ "title_tag": "Cardiac Electrophysiology & Circulatory Control",
+ "eyebrow": "Cardiovascular · Physiology",
+ "h1": "Electrophysiology & Circulatory Control",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Guyton & Hall และ Boron เสริมคลินิกจาก Harrison · ลองกดดู ion currents, ECG แต่ละช่วง, baroreflex, Swan-Ganz และเลื่อน Starling forces จนเกิด edema",
+ "sources": [
+  ["guyton", "G", "Guyton & Hall · Ch 10–11, 16–19, 21"],
+  ["boron", "B", "Boron & Boulpaep · Ch 20, 21, 23, 24"],
+  ["fa", "FA", "First Aid Step 1 · CVS Physiology"],
+  ["harrison", "H", "Harrison 22e · Ch 246–247"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "cvs",
+  "folder": "cvs",
+  "subs": ["Physiology"],
+  "title": "Electrophysiology & Circulatory Control",
+  "src": "Guyton & Hall Ch 10–11, 16–19, 21 · Boron Ch 20, 21, 23, 24",
+  "desc": "Action potential ของ ventricle และ pacemaker, conduction system กับ ECG, refractory period, axis, ANP/BNP, baroreceptor และ chemoreceptor, ความดันในหัวใจและ PCWP, pressure natriuresis, autoregulation, Starling forces, edema และ coronary flow",
+  "ch": "Ch 10–21",
+  "sort": 21,
+  "refb": "guyton",
+  "refl": "G",
+  "tags": ["physiology"]
+ },
+ "draft": false
+}

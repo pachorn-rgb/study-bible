@@ -1,0 +1,49 @@
+{
+ "id": "cvs-patho-2",
+ "kind": "patho",
+ "sys": "Cardiovascular",
+ "eyebrow": "Cardiovascular · Pathology",
+ "draft": true,
+ "title_tag": "Ischemic Heart Disease & Arrhythmias",
+ "h1": "Ischemic Heart Disease & Arrhythmias",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins (บท 12) เสริมด้วย First Aid Step 2 CK และ Harrison · ลองเลื่อนเวลาดู MI เปลี่ยนไป และแตะเลือก ECG",
+ "sources": [
+  [
+   "robbins",
+   "R",
+   "Robbins & Cotran 10e · Ch 12"
+  ],
+  [
+   "fa",
+   "FA",
+   "First Aid Step 1 2025 · Step 2 CK"
+  ],
+  [
+   "harrison",
+   "H",
+   "Harrison 22e · AF, ACS"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "cvs",
+  "folder": "cvs",
+  "subs": [
+   "Pathology"
+  ],
+  "title": "Ischemic Heart Disease & Arrhythmias",
+  "src": "Robbins Ch 12 · First Aid CV Pathology · Step 2 CK",
+  "desc": "angina ถึง STEMI, coronary steal, sudden cardiac death, MI evolution ตามเวลา (H&E + gross), troponin/CK-MB, ECG localization, narrow/wide-complex tachycardia, channelopathies, AV block, MI complications, ACS work-up · ส่วนเสริม ACS pathogenesis และ AF stroke risk",
+  "ch": "Robbins Ch 12",
+  "sort": 13,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": [
+   "pathology"
+  ]
+ }
+}

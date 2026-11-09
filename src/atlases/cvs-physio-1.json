@@ -1,0 +1,30 @@
+{
+ "id": "cvs-physio-1",
+ "kind": "physio",
+ "sys": "Cardiovascular",
+ "title_tag": "Cardiac Mechanics & Hemodynamics",
+ "eyebrow": "Cardiovascular · Physiology",
+ "h1": "Cardiac Mechanics & Hemodynamics",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Guyton & Hall และ Boron เสริมการตรวจข้างเตียงจาก Harrison · PV loop, Starling curve, CO–VR curve และ Wiggers diagram ลองเลื่อนค่าหรือกดเปลี่ยนภาวะได้",
+ "sources": [
+  ["guyton", "G", "Guyton & Hall · Ch 9, 14, 15, 20, 23"],
+  ["boron", "B", "Boron & Boulpaep · Ch 17, 19, 22"],
+  ["fa", "FA", "First Aid Step 1 · CVS Physiology"],
+  ["harrison", "H", "Harrison 22e · Ch 246"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "cvs",
+  "folder": "cvs",
+  "subs": ["Physiology"],
+  "title": "Cardiac Mechanics & Hemodynamics",
+  "src": "Guyton & Hall Ch 9, 14, 15, 20, 23 · Boron Ch 17, 19, 22",
+  "desc": "Cardiac output และตัวกำหนด, contractility, Laplace, สมการ CO/EF/MAP, Starling curve, Poiseuille, CO–VR curves, PV loop แบบปรับค่าได้, Wiggers diagram, JVP, PV loop ในโรคลิ้นหัวใจ, S2 splitting, maneuvers และ murmurs",
+  "ch": "Ch 9–23",
+  "sort": 20,
+  "refb": "guyton",
+  "refl": "G",
+  "tags": ["physiology"]
+ },
+ "draft": false
+}

@@ -1,0 +1,49 @@
+{
+ "id": "cvs-patho-1",
+ "kind": "patho",
+ "sys": "Cardiovascular",
+ "eyebrow": "Cardiovascular · Pathology",
+ "draft": true,
+ "title_tag": "Congenital Heart Disease & Arteries",
+ "h1": "Congenital Heart Disease, Hypertension & Arteries",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins (บท 11–12) เสริมด้วย First Aid Step 2 CK · หลายหัวข้อแตะเลือกโรคหรือเลื่อนค่าได้",
+ "sources": [
+  [
+   "robbins",
+   "R",
+   "Robbins & Cotran 10e · Ch 11–12"
+  ],
+  [
+   "fa",
+   "FA",
+   "First Aid Step 1 2025 · Step 2 CK"
+  ],
+  [
+   "harrison",
+   "H",
+   "Harrison 22e · Cardiology"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "cvs",
+  "folder": "cvs",
+  "subs": [
+   "Pathology"
+  ],
+  "title": "Congenital Heart Disease, Hypertension & Arteries",
+  "src": "Robbins Ch 11–12 · First Aid CV Pathology",
+  "desc": "R→L shunts (5 T's), L→R shunts, Eisenmenger, coarctation, CHD associations, hypertension และ end-organ damage, hyperlipidemia signs, atherosclerosis, cholesterol emboli, arteriolosclerosis, aortic aneurysm, dissection, subclavian steal · ส่วนเสริม vascular wall response และ BP regulation",
+  "ch": "Robbins Ch 11–12",
+  "sort": 12,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": [
+   "pathology"
+  ]
+ }
+}
