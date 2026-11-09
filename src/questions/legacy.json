@@ -3887,6 +3887,18 @@
     ],
     "a": 2,
     "e": "Casts form in tubules, so they indicate upper-tract (renal) inflammation, not bladder infection."
+   },
+   {
+    "q": "A 62-year-old man is admitted with septic shock requiring norepinephrine for 2 days. His creatinine rises from 1.0 to 3.4 mg/dL, urine sodium is 58 mEq/L and FENa is 3.1%. Urine microscopy will most likely show:",
+    "o": [
+     "Muddy brown granular epithelial casts",
+     "Red blood cell casts with dysmorphic RBCs",
+     "White blood cell casts with eosinophils",
+     "Only occasional bland hyaline casts"
+    ],
+    "a": 0,
+    "e": "Prolonged hypotension causes ischemic ATN: FENa > 2% and muddy brown granular casts from sloughed tubular cells. Bland hyaline casts with FENa < 1% fit prerenal azotemia.",
+    "d": 3
    }
   ],
   "robbins-ch20:glomresp": [
@@ -3933,6 +3945,18 @@
     ],
     "a": 0,
     "e": "Membranous nephropathy (anti-PLA2R)."
+   },
+   {
+    "q": "A 38-year-old man has periorbital and leg edema. Urine protein is 7.2 g/24 h, serum albumin 1.9 g/dL and total cholesterol 390 mg/dL. His hyperlipidemia is best explained by:",
+    "o": [
+     "Increased intestinal absorption of fat",
+     "Increased hepatic lipoprotein synthesis",
+     "Urinary excretion of cholesterol esters",
+     "Reduced bile acid loss in the stool"
+    ],
+    "a": 1,
+    "e": "In nephrotic syndrome low oncotic pressure drives hepatic lipoprotein synthesis (with impaired lipid catabolism). Lipids are not lost in urine in amounts that explain the picture; lipiduria is a consequence, not the cause.",
+    "d": 3
    }
   ],
   "robbins-ch20:psgn": [
@@ -3979,6 +4003,18 @@
     ],
     "a": 3,
     "e": "Type IV collagen defect (often X-linked); 'basket-weave' GBM splitting on EM. Can't see, can't pee, can't hear a bee."
+   },
+   {
+    "q": "A 9-year-old boy has smoky urine and periorbital edema 3 weeks after a skin infection. BP is 150/95 mm Hg, urine shows RBC casts and serum C3 is low. Electron microscopy of a kidney biopsy would most likely show:",
+    "o": [
+     "Diffuse effacement of foot processes only",
+     "Ribbon-like deposits within the lamina densa",
+     "Subepithelial electron-dense humps",
+     "Mesangial deposits staining for IgA"
+    ],
+    "a": 2,
+    "e": "Poststreptococcal GN shows subepithelial 'humps' of immune complexes. Ribbon-like intramembranous deposits are dense deposit disease (C3 glomerulopathy).",
+    "d": 3
    }
   ],
   "robbins-ch20:nephrotic": [
@@ -4014,6 +4050,18 @@
     ],
     "a": 2,
     "e": "FSGS: segmental sclerosis; most common primary nephrotic cause in Black and Hispanic adults. HIV causes the collapsing variant."
+   },
+   {
+    "q": "A 34-year-old man who injects heroin has 5.8 g/day proteinuria, serum albumin 2.4 g/dL, BP 152/94 mm Hg and creatinine 1.6 mg/dL. Light microscopy of a kidney biopsy would most likely show:",
+    "o": [
+     "Normal-appearing glomeruli throughout",
+     "Diffuse GBM thickening with silver spikes",
+     "Nodular mesangial matrix (K–W nodules)",
+     "Sclerosis of portions of some glomeruli"
+    ],
+    "a": 3,
+    "e": "Heroin use is a classic secondary cause of FSGS: segmental sclerosis in a subset of glomeruli. Normal light microscopy would point to minimal change disease.",
+    "d": 3
    }
   ],
   "robbins-ch20:stones": [
@@ -4060,6 +4108,18 @@
     ],
     "a": 2,
     "e": "Cystinuria (defective COLA transporter in PCT) — treat with alkalinization, hydration, chelating agents."
+   },
+   {
+    "q": "A 41-year-old woman with Crohn disease who had 90 cm of ileum resected has recurrent calcium oxalate stones. 24-hour urine shows high oxalate with normal calcium. The main mechanism is:",
+    "o": [
+     "Unbound oxalate absorbed as fat binds calcium",
+     "Increased hepatic synthesis of oxalate",
+     "Excess PTH-driven urinary calcium loss",
+     "Colonization by urease-producing bacteria"
+    ],
+    "a": 0,
+    "e": "Fat malabsorption leaves luminal calcium bound to fatty acids, so free oxalate is absorbed in the colon (enteric hyperoxaluria). Hepatic oxalate overproduction is primary hyperoxaluria, a genetic disorder.",
+    "d": 3
    }
   ],
   "robbins-ch20:obstruction": [
@@ -4106,6 +4166,18 @@
     ],
     "a": 2,
     "e": "Pressure transmitted back causes compression atrophy of the cortex and medulla."
+   },
+   {
+    "q": "A 74-year-old man with weak stream and nocturia has a post-void residual of 900 mL, bilateral hydronephrosis and creatinine 2.9 mg/dL. The earliest functional derangement caused by this process is:",
+    "o": [
+     "Nephrotic-range glomerular proteinuria",
+     "Impaired tubular concentrating ability",
+     "Red blood cell casts in the urine",
+     "Renin-driven severe hypertension"
+    ],
+    "a": 1,
+    "e": "Early obstruction mainly damages tubular function, so concentrating ability falls first (polyuria, nocturia). Glomerular findings such as heavy proteinuria or RBC casts are not features of obstruction.",
+    "d": 3
    }
   ],
   "robbins-ch21:cystitis": [
@@ -4185,6 +4257,18 @@
     ],
     "a": 3,
     "e": "CIS clinically mimics interstitial cystitis."
+   },
+   {
+    "q": "A 21-year-old sexually active woman has dysuria and frequency without fever. Urine nitrite is negative and leukocyte esterase positive; culture grows gram-positive, catalase-positive, coagulase-negative cocci resistant to novobiocin. The organism is:",
+    "o": [
+     "Staphylococcus epidermidis",
+     "Enterococcus faecalis",
+     "Staphylococcus saprophyticus",
+     "Streptococcus agalactiae"
+    ],
+    "a": 2,
+    "e": "Novobiocin-resistant coagulase-negative staph in a young sexually active woman is S. saprophyticus, the second most common cause of cystitis. S. epidermidis is novobiocin-sensitive.",
+    "d": 2
    }
   ],
   "robbins-ch20:pyelo": [
@@ -4275,6 +4359,18 @@
     ],
     "a": 2,
     "e": "Sloughed papillae may appear in the urine or cause ureteric obstruction."
+   },
+   {
+    "q": "A 27-year-old woman has fever of 39.2 °C, right flank pain and costovertebral angle tenderness. Urinalysis shows pyuria, bacteriuria and WBC casts; culture grows Escherichia coli. The infection most likely reached the kidney by:",
+    "o": [
+     "Hematogenous seeding from blood",
+     "Lymphatic spread from the colon",
+     "Direct extension from the bowel",
+     "Ascending spread from the bladder"
+    ],
+    "a": 3,
+    "e": "Acute pyelonephritis is usually ascending: gut flora colonize the urethra and bladder, then reach the kidney (helped by reflux). Hematogenous spread is uncommon and involves organisms like S. aureus.",
+    "d": 3
    }
   ],
   "harrison-ch321:aki-def": [
@@ -4321,6 +4417,18 @@
     ],
     "a": 1,
     "e": "Tubules work and avidly reabsorb Na⁺ and urea: BUN/Cr > 20, FENa < 1%, high urine osmolality."
+   },
+   {
+    "q": "A 68-year-old man's creatinine rises from a baseline of 1.0 to 2.3 mg/dL within 48 hours after abdominal surgery. Urine output has been 0.4 mL/kg/h for the past 8 hours. His AKI is classified as:",
+    "o": [
+     "KDIGO stage 2",
+     "KDIGO stage 1",
+     "KDIGO stage 3",
+     "Not AKI by KDIGO"
+    ],
+    "a": 0,
+    "e": "Creatinine 2.0–2.9 × baseline = stage 2; the urine output (< 0.5 mL/kg/h for 6–12 h) alone would be stage 1, and the higher stage is assigned.",
+    "d": 2
    }
   ],
   "robbins-ch20:tin": [
@@ -4367,6 +4475,18 @@
     ],
     "a": 2,
     "e": "Eosinophiluria and WBC casts with fever and rash."
+   },
+   {
+    "q": "A 64-year-old woman started omeprazole 3 weeks ago. She now has low-grade fever and a faint rash; creatinine has risen from 0.9 to 2.4 mg/dL and urine shows pyuria with WBC casts. A kidney biopsy would most likely show:",
+    "o": [
+     "Cellular crescents in most glomeruli",
+     "Interstitial infiltrate rich in eosinophils",
+     "Subepithelial immune complex deposits",
+     "Fibrinoid necrosis of small arterioles"
+    ],
+    "a": 1,
+    "e": "Drug-induced acute interstitial nephritis: interstitial edema with lymphocytes, macrophages and eosinophils, sparing glomeruli. Crescents indicate RPGN, which presents with RBC casts.",
+    "d": 3
    }
   ],
   "robbins-ch20:atn": [
@@ -4413,6 +4533,18 @@
     ],
     "a": 2,
     "e": "Direct tubular toxicity (aminoglycosides, contrast, myoglobin, heavy metals); basement membrane usually preserved so cells regenerate."
+   },
+   {
+    "q": "A 60-year-old man receives gentamicin for 10 days for Pseudomonas bacteremia. His creatinine rises from 1.1 to 3.0 mg/dL with granular casts and FENa 2.8%. The nephron segment most directly injured is the:",
+    "o": [
+     "Thin descending limb",
+     "Medullary collecting duct",
+     "Proximal convoluted tubule",
+     "Glomerular podocyte layer"
+    ],
+    "a": 2,
+    "e": "Aminoglycosides are taken up by proximal tubular cells and cause nephrotoxic ATN there. Podocyte injury would cause proteinuria, not granular casts with a high FENa.",
+    "d": 3
    }
   ],
   "harrison-ch322:ckd-sys": [
@@ -4492,6 +4624,18 @@
     ],
     "a": 1,
     "e": "Iron (TSAT, ferritin) is needed for response."
+   },
+   {
+    "q": "A 60-year-old woman with CKD stage G4 reports fatigue. Hemoglobin is 8.9 g/dL with normal MCV; ferritin 350 ng/mL, transferrin saturation 30%, B12 and folate normal. The most appropriate treatment is:",
+    "o": [
+     "Oral folic acid supplements",
+     "Intramuscular vitamin B12",
+     "Hydroxyurea to raise HbF",
+     "Erythropoiesis-stimulating agent"
+    ],
+    "a": 3,
+    "e": "Anemia of CKD is from erythropoietin deficiency; with iron stores replete, an ESA is indicated. B12 and folate are normal, so replacing them adds nothing.",
+    "d": 3
    }
   ],
   "harrison-ch322:ckd-mbd": [
@@ -4571,6 +4715,18 @@
     ],
     "a": 3,
     "e": "Vascular calcification with skin necrosis, almost exclusively in advanced CKD; a devastating condition in ESKD patients."
+   },
+   {
+    "q": "A 58-year-old man on hemodialysis for 6 years has bone pain. Calcium is 8.1 mg/dL, phosphate 7.2 mg/dL and PTH 850 pg/mL; hand films show subperiosteal resorption. A bone biopsy would most likely show:",
+    "o": [
+     "Osteoclastic resorption with marrow fibrosis",
+     "Low turnover with very few bone cells",
+     "Wide seams of unmineralized osteoid alone",
+     "Mosaic lamellar bone with cement lines"
+    ],
+    "a": 0,
+    "e": "Very high PTH from secondary hyperparathyroidism produces high-turnover osteitis fibrosa cystica. Low turnover with few cells is adynamic bone disease from oversuppressed PTH.",
+    "d": 3
    }
   ],
   "robbins-ch20:cystic": [
@@ -4617,6 +4773,18 @@
     ],
     "a": 1,
     "e": "Risk of renal cell carcinoma rises."
+   },
+   {
+    "q": "A 36-year-old man has hypertension, intermittent hematuria and bilateral palpable flank masses. His father died of a subarachnoid hemorrhage. The most likely defective protein is encoded on chromosome 16 and is:",
+    "o": [
+     "Fibrocystin",
+     "Polycystin-1",
+     "Uromodulin",
+     "Hamartin"
+    ],
+    "a": 1,
+    "e": "ADPKD is caused mostly by PKD1 (polycystin-1, chromosome 16); PKD2 (polycystin-2) accounts for the rest. Fibrocystin (PKHD1, chromosome 6) is the ARPKD protein.",
+    "d": 3
    }
   ],
   "robbins-ch20:rcc": [
@@ -4652,6 +4820,18 @@
     ],
     "a": 0,
     "e": "Also obesity, male sex, hypertension; von Hippel–Lindau → bilateral RCC."
+   },
+   {
+    "q": "A 63-year-old man who smokes has painless hematuria and a left flank mass. Hemoglobin is 18.6 g/dL. Nephrectomy shows a yellow tumor of cells with clear cytoplasm. The most likely initiating genetic event is:",
+    "o": [
+     "Gain of MET on chromosome 7",
+     "Loss of WT1 on chromosome 11p",
+     "Loss of VHL on chromosome 3p",
+     "Loss of TSC2 on chromosome 16p"
+    ],
+    "a": 2,
+    "e": "Clear cell RCC begins with loss of the VHL tumor suppressor (3p), which stabilizes HIF and raises VEGF and EPO (hence polycythemia). MET activation drives papillary RCC.",
+    "d": 3
    }
   ],
   "robbins-ch20:benign": [
@@ -4698,6 +4878,18 @@
     ],
     "a": 1,
     "e": "Usually excised because it cannot reliably be distinguished from RCC (especially chromophobe RCC) preoperatively."
+   },
+   {
+    "q": "A 32-year-old woman with seizures and facial angiofibromas has an incidental 3-cm renal mass that contains macroscopic fat on CT. The tumor is composed mainly of:",
+    "o": [
+     "Mitochondria-rich oncocytes",
+     "Blastema, stroma and epithelium",
+     "Lipid-laden clear tubular cells",
+     "Vessels, smooth muscle and fat"
+    ],
+    "a": 3,
+    "e": "Tuberous sclerosis is associated with angiomyolipoma, made of abnormal vessels, smooth muscle and fat. Oncocytes characterize oncocytoma, which contains no fat.",
+    "d": 3
    }
   ],
   "robbins-ch20:wilms": [
@@ -4744,6 +4936,18 @@
     ],
     "a": 2,
     "e": "Denys–Drash (WT1 mutation): early nephrotic syndrome from diffuse mesangial sclerosis and male pseudohermaphroditism (gonadal dysgenesis). WAGR = WT1 deletion; Beckwith–Wiedemann = WT2."
+   },
+   {
+    "q": "A 3-year-old boy with a history of omphalocele, macroglossia and right hemihypertrophy has a large left flank mass that does not cross the midline. The underlying genetic defect is most likely:",
+    "o": [
+     "Imprinting defect at 11p15.5",
+     "Deletion of WT1 at 11p13",
+     "Germline RB1 loss at 13q14",
+     "MYCN amplification on 2p"
+    ],
+    "a": 0,
+    "e": "Beckwith–Wiedemann syndrome (WT2 locus, imprinting at 11p15.5) predisposes to Wilms tumor. WT1 deletion at 11p13 is WAGR syndrome, which features aniridia.",
+    "d": 3
    }
   ],
   "robbins-ch21:urothelial": [
@@ -4823,6 +5027,18 @@
     ],
     "a": 0,
     "e": "CIS pathway with early TP53/RB mutations gives rise to most muscle-invasive cancers."
+   },
+   {
+    "q": "A 64-year-old man who worked 30 years in a dye factory and smokes has painless gross hematuria. Cystoscopy shows a papillary tumor on the lateral bladder wall. Biopsy most likely shows:",
+    "o": [
+     "Squamous cell carcinoma",
+     "Urothelial carcinoma",
+     "Primary adenocarcinoma",
+     "Small cell carcinoma"
+    ],
+    "a": 1,
+    "e": "Smoking and aromatic amines (aniline dyes) cause urothelial carcinoma, > 90% of bladder cancers. Squamous cell carcinoma is linked to schistosomiasis and chronic irritation.",
+    "d": 2
    }
   ],
   "robbins-ch20:syndromes": [
@@ -4847,6 +5063,18 @@
     ],
     "a": 2,
     "e": "RPGN = nephritic picture + rapid GFR loss over days–weeks; morphologically crescents in most glomeruli."
+   },
+   {
+    "q": "A 70-year-old woman with heart failure has BUN 48 mg/dL and creatinine 1.9 mg/dL found on routine labs. She has no nausea, pericarditis, neuropathy or other symptoms. This state is best termed:",
+    "o": [
+     "Uremia",
+     "Nephritic syndrome",
+     "Azotemia",
+     "End-stage kidney disease"
+    ],
+    "a": 2,
+    "e": "Azotemia is a biochemical rise in BUN and creatinine; it becomes uremia only when clinical signs (GI, neuropathy, pericarditis) appear.",
+    "d": 2
    }
   ],
   "robbins-ch20:immune": [
@@ -4882,6 +5110,18 @@
     ],
     "a": 3,
     "e": "Primary MN: in situ immune complexes with podocyte antigen PLA2R (70–80%), less often THSD7A."
+   },
+   {
+    "q": "A 28-year-old woman with SLE has hematuria and 2 g/day proteinuria. Immunofluorescence of a biopsy shows granular IgG and C3 along capillary walls and mesangium. Her glomerular injury is mainly caused by:",
+    "o": [
+     "Antibodies to a collagen IV antigen",
+     "Cytotoxic T cells against podocytes",
+     "ANCA-activated neutrophils alone",
+     "Deposition of circulating immune complexes"
+    ],
+    "a": 3,
+    "e": "Granular deposits indicate immune complexes, in lupus largely formed in the circulation (DNA–anti-DNA) and trapped in glomeruli. Anti-GBM antibodies give a linear pattern.",
+    "d": 3
    }
   ],
   "robbins-ch20:progression": [
@@ -4906,6 +5146,18 @@
     ],
     "a": 2,
     "e": "Adaptive hyperfiltration raises glomerular capillary pressure; ACEi/ARB dilate the efferent arteriole and lower it."
+   },
+   {
+    "q": "A 45-year-old man lost one kidney in a car accident; the other is scarred from childhood reflux. Years later he has 2.5 g/day proteinuria and rising creatinine. Biopsy of his remaining glomeruli most likely shows:",
+    "o": [
+     "Secondary FSGS from hyperfiltration",
+     "PLA2R-positive membranous lesions",
+     "Normal glomeruli with effaced podocytes",
+     "Mesangial IgA immune deposits"
+    ],
+    "a": 0,
+    "e": "Loss of nephron mass causes adaptive hyperfiltration in the remaining glomeruli, leading to secondary FSGS and progressive decline. Normal glomeruli with effacement describes minimal change disease.",
+    "d": 3
    }
   ],
   "robbins-ch20:rpgn": [
@@ -4941,6 +5193,18 @@
     ],
     "a": 2,
     "e": "Anti-GBM antibodies cross-react with alveolar basement membrane → pulmonary hemorrhage."
+   },
+   {
+    "q": "A 58-year-old man has chronic sinusitis, hemoptysis and creatinine rising from 1.2 to 4.1 mg/dL over 3 weeks. Biopsy shows crescents in most glomeruli with little immunoglobulin on immunofluorescence. His autoantibody most likely targets:",
+    "o": [
+     "Myeloperoxidase",
+     "Proteinase 3",
+     "Type IV collagen",
+     "Phospholipase A2 receptor"
+    ],
+    "a": 1,
+    "e": "Sinus, lung and kidney involvement with pauci-immune crescentic GN = granulomatosis with polyangiitis, PR3-ANCA (c-ANCA). MPO-ANCA is typical of microscopic polyangiitis.",
+    "d": 3
    }
   ],
   "robbins-ch20:iga": [
@@ -4976,6 +5240,18 @@
     ],
     "a": 0,
     "e": "HSP (IgA vasculitis) has mesangial IgA deposition identical to IgA nephropathy plus purpura, GI and joint symptoms."
+   },
+   {
+    "q": "A 6-year-old boy has palpable purpura over the buttocks and legs, colicky abdominal pain, knee arthralgia and microscopic hematuria 1 week after a cold. A skin biopsy of a lesion would most likely show:",
+    "o": [
+     "Granulomas in medium-sized arteries",
+     "Linear IgG along the basement membrane",
+     "Small-vessel vasculitis with IgA deposits",
+     "Necrotizing arteritis without deposits"
+    ],
+    "a": 2,
+    "e": "Henoch–Schönlein purpura (IgA vasculitis) is a leukocytoclastic small-vessel vasculitis with IgA deposits, sharing its renal lesion with IgA nephropathy.",
+    "d": 3
    }
   ],
   "robbins-ch20:alport": [
@@ -5000,6 +5276,18 @@
     ],
     "a": 3,
     "e": "Benign familial hematuria: heterozygous COL4A3/A4, GBM 150–250 nm, normal function."
+   },
+   {
+    "q": "A 19-year-old man has had microscopic hematuria since childhood and now has bilateral sensorineural hearing loss. A maternal uncle is on dialysis. Electron microscopy of a kidney biopsy would most likely show:",
+    "o": [
+     "Diffuse effacement of foot processes only",
+     "Subepithelial humps along capillary loops",
+     "Dense ribbon-like deposits in the GBM",
+     "Splitting and lamination of the lamina densa"
+    ],
+    "a": 3,
+    "e": "X-linked Alport syndrome (COL4A5) gives an irregularly thickened GBM with splitting into a 'basket-weave' pattern. Subepithelial humps are seen in postinfectious GN.",
+    "d": 3
    }
   ],
   "robbins-ch20:membranous": [
@@ -5035,6 +5323,18 @@
     ],
     "a": 1,
     "e": "Secondary MN: HBV, HCV, syphilis, malaria, solid tumors, SLE, NSAIDs, penicillamine, gold."
+   },
+   {
+    "q": "A 66-year-old man who smokes has 9 kg weight loss and new nephrotic syndrome. Biopsy shows diffuse GBM thickening with subepithelial deposits; serum anti-PLA2R is negative. The most likely underlying cause is:",
+    "o": [
+     "Occult solid carcinoma",
+     "Hodgkin lymphoma",
+     "Heroin injection",
+     "Recent streptococcal infection"
+    ],
+    "a": 0,
+    "e": "Anti-PLA2R–negative membranous nephropathy in an older smoker with weight loss suggests secondary disease from a solid tumor (lung, colon). Hodgkin lymphoma is linked to minimal change disease.",
+    "d": 3
    }
   ],
   "robbins-ch20:mcd": [
@@ -5070,6 +5370,18 @@
     ],
     "a": 3,
     "e": ">90% of children with MCD respond to steroids; relapses may occur but prognosis is excellent."
+   },
+   {
+    "q": "A 5-year-old boy has periorbital and scrotal edema. Urine protein is 4+ with no hematuria, BP is normal, serum albumin is 1.8 g/dL and complement levels are normal. The most appropriate next step is:",
+    "o": [
+     "Percutaneous kidney biopsy",
+     "Empiric oral corticosteroids",
+     "Start cyclophosphamide",
+     "Begin plasma exchange"
+    ],
+    "a": 1,
+    "e": "A typical child with nephrotic syndrome most likely has minimal change disease and is treated with steroids without biopsy. Biopsy is reserved for steroid resistance or atypical features.",
+    "d": 3
    }
   ],
   "robbins-ch20:fsgs": [
@@ -5105,6 +5417,18 @@
     ],
     "a": 0,
     "e": "FSGS: nonselective proteinuria, hematuria, HT, poor steroid response, ~50% ESRD in 10 years."
+   },
+   {
+    "q": "A 40-year-old man has nephrotic syndrome with hematuria and hypertension that does not respond to 12 weeks of prednisone. Light microscopy shows sclerosis in part of some glomeruli. Immunofluorescence would most likely show:",
+    "o": [
+     "Linear IgG along all capillaries",
+     "Granular IgG with PLA2R staining",
+     "IgM and C3 in sclerotic segments",
+     "Dominant mesangial IgA deposits"
+    ],
+    "a": 2,
+    "e": "In FSGS, IgM and C3 are trapped nonspecifically in sclerotic segments; this is not an immune complex disease. Granular IgG with PLA2R is membranous nephropathy.",
+    "d": 3
    }
   ],
   "robbins-ch20:mpgn": [
@@ -5140,6 +5464,18 @@
     ],
     "a": 0,
     "e": "Chronic HCV (± cryoglobulins), HBV, endocarditis, SLE and CLL/lymphoma cause MPGN."
+   },
+   {
+    "q": "A 48-year-old woman with hepatitis C has palpable purpura, arthralgia, hematuria with RBC casts and 3 g/day proteinuria. C4 is low and serum cryoglobulins are present. Light microscopy of a kidney biopsy would most likely show:",
+    "o": [
+     "Silver-stain spikes on the GBM",
+     "Kimmelstiel–Wilson nodules",
+     "Normal-appearing glomeruli",
+     "Tram-track duplication of the GBM"
+    ],
+    "a": 3,
+    "e": "HCV-related cryoglobulinemia causes immune-complex MPGN with lobular glomeruli and double-contoured ('tram-track') GBM. Spikes are membranous nephropathy.",
+    "d": 3
    }
   ],
   "robbins-ch20:lupus": [
@@ -5175,6 +5511,18 @@
     ],
     "a": 3,
     "e": "Class V = membranous lupus nephritis with subepithelial deposits → nephrotic syndrome."
+   },
+   {
+    "q": "A 26-year-old woman with SLE has RBC casts, 2.5 g/day proteinuria, rising creatinine, low C3 and C4 and high anti-dsDNA. Biopsy shows endocapillary proliferation in 70% of glomeruli with wire loops. The best initial treatment is:",
+    "o": [
+     "Steroids plus mycophenolate",
+     "Hydroxychloroquine alone",
+     "ACE inhibitor alone",
+     "Plasma exchange alone"
+    ],
+    "a": 0,
+    "e": "Class IV (diffuse) lupus nephritis requires induction immunosuppression: glucocorticoids with mycophenolate (or cyclophosphamide). Hydroxychloroquine is background therapy, not induction.",
+    "d": 3
    }
   ],
   "robbins-ch20:diabetic": [
@@ -5210,6 +5558,18 @@
     ],
     "a": 3,
     "e": "Nodular glomerulosclerosis in diabetes: PAS-positive nodules of mesangial matrix."
+   },
+   {
+    "q": "A 57-year-old woman with type 2 diabetes for 18 years has retinopathy and 2 g/day albuminuria. Biopsy shows nodular PAS-positive mesangial lesions and hyaline arteriolosclerosis. These changes are mainly driven by:",
+    "o": [
+     "Immune complex deposition in mesangium",
+     "Nonenzymatic glycation of matrix proteins",
+     "Deposition of misfolded light chains",
+     "Antibodies against podocyte PLA2R"
+    ],
+    "a": 1,
+    "e": "Chronic hyperglycemia forms advanced glycation end products that cross-link matrix, thickening the GBM and expanding the mesangium (Kimmelstiel–Wilson nodules). Light-chain deposition is a nodular mimic in myeloma.",
+    "d": 3
    }
   ],
   "robbins-ch20:systemic": [
@@ -5234,6 +5594,18 @@
     ],
     "a": 3,
     "e": "Table 20.10: carcinomas → membranous; Hodgkin → MCD; leukemia/lymphoma → MPGN."
+   },
+   {
+    "q": "A 62-year-old woman with rheumatoid arthritis for 15 years develops nephrotic syndrome. A biopsy shows glomerular deposits with apple-green birefringence on Congo red. The deposited protein is derived from:",
+    "o": [
+     "Immunoglobulin light chain",
+     "Transthyretin",
+     "Serum amyloid A",
+     "β2-microglobulin"
+    ],
+    "a": 2,
+    "e": "Chronic inflammation (RA) causes reactive AA amyloidosis from the acute-phase protein SAA. AL amyloid from light chains is seen in plasma cell dyscrasias.",
+    "d": 3
    }
   ],
   "robbins-ch20:nephrosclerosis": [
@@ -5258,6 +5630,18 @@
     ],
     "a": 2,
     "e": "Hyaline arteriolosclerosis → ischemic atrophy and small kidneys with a finely granular cortical surface."
+   },
+   {
+    "q": "A 45-year-old man has headache and blurred vision. BP is 240/140 mm Hg, fundoscopy shows papilledema and creatinine has risen to 3.2 mg/dL with hematuria. Renal arterioles would most likely show:",
+    "o": [
+     "Homogeneous pink hyaline wall thickening",
+     "Granulomatous inflammation of the media",
+     "Beaded fibromuscular medial ridges",
+     "Concentric onion-skin intimal thickening"
+    ],
+    "a": 3,
+    "e": "Malignant hypertension produces hyperplastic ('onion-skin') arteriolosclerosis with fibrinoid necrosis. Hyaline arteriolosclerosis is benign nephrosclerosis.",
+    "d": 3
    }
   ],
   "robbins-ch20:tma": [
@@ -5293,6 +5677,18 @@
     ],
     "a": 1,
     "e": "Renal artery stenosis: atherosclerosis in older men; FMD in young women, with a 'string of beads' appearance on angiography."
+   },
+   {
+    "q": "A 4-year-old girl has bloody diarrhea after visiting a petting zoo. A week later she has pallor, petechiae and oliguria; smear shows schistocytes, platelets 40,000/µL and creatinine 2.8 mg/dL. The primary mechanism of her renal injury is:",
+    "o": [
+     "Toxin-mediated endothelial cell injury",
+     "Autoantibody against ADAMTS13",
+     "Mutation in complement factor H",
+     "Antibodies against platelet GPIIb/IIIa"
+    ],
+    "a": 0,
+    "e": "Shiga toxin from STEC damages glomerular endothelium, triggering microthrombi (typical HUS). ADAMTS13 autoantibodies cause TTP; factor H mutations cause atypical HUS.",
+    "d": 3
    }
   ],
   "robbins-ch20:congenital": [
@@ -5317,6 +5713,18 @@
     ],
     "a": 2,
     "e": "No urine → oligohydramnios → Potter sequence (pulmonary hypoplasia); incompatible with life."
+   },
+   {
+    "q": "A 30-year-old woman has an incidental CT finding of two kidneys joined at their lower poles, lying lower than normal in the abdomen. During embryonic ascent, this fused kidney was trapped beneath the:",
+    "o": [
+     "Superior mesenteric artery",
+     "Inferior mesenteric artery",
+     "Celiac trunk",
+     "Aortic bifurcation"
+    ],
+    "a": 1,
+    "e": "Horseshoe kidney (usually lower-pole fusion) is caught under the IMA during ascent. It is usually asymptomatic but predisposes to obstruction, stones and infection.",
+    "d": 3
    }
   ],
   "robbins-ch21:ureter": [
@@ -5341,6 +5749,18 @@
     ],
     "a": 1,
     "e": "Ureteral tumors resemble those of the pelvis and bladder — mostly urothelial carcinomas, often multifocal."
+   },
+   {
+    "q": "A 2-month-old boy had unilateral left hydronephrosis on prenatal ultrasound. Postnatal imaging shows a dilated left renal pelvis with a normal-caliber ureter and a normal bladder; voiding cystourethrogram is normal. The most likely diagnosis is:",
+    "o": [
+     "Posterior urethral valves",
+     "Vesicoureteral reflux",
+     "UPJ obstruction",
+     "Obstructing ureterocele"
+    ],
+    "a": 2,
+    "e": "A dilated pelvis with a normal ureter localizes the block to the ureteropelvic junction, the most common cause of hydronephrosis in children. Valves cause bilateral hydronephrosis with an abnormal bladder.",
+    "d": 2
    }
   ],
   "robbins-ch21:ureterobs": [
@@ -5365,6 +5785,18 @@
     ],
     "a": 1,
     "e": "Unilateral = proximal causes; bilateral = distal causes such as nodular prostatic hyperplasia."
+   },
+   {
+    "q": "A 58-year-old man with prior autoimmune pancreatitis has low back pain and creatinine 2.4 mg/dL. CT shows a periaortic soft-tissue mass encasing both ureters with bilateral hydronephrosis; serum IgG4 is high. Biopsy of the mass would most likely show:",
+    "o": [
+     "Noncaseating granulomas with giant cells",
+     "Sheets of monotonous atypical lymphocytes",
+     "Macrophages with Michaelis–Gutmann bodies",
+     "Storiform fibrosis with IgG4 plasma cells"
+    ],
+    "a": 3,
+    "e": "IgG4-related retroperitoneal fibrosis shows storiform fibrosis, obliterative phlebitis and many IgG4-positive plasma cells. Michaelis–Gutmann bodies define malakoplakia.",
+    "d": 3
    }
   ],
   "robbins-ch21:bladdercong": [
@@ -5389,6 +5821,18 @@
     ],
     "a": 2,
     "e": "Thin wall allows early extension."
+   },
+   {
+    "q": "A 2-week-old boy has clear fluid draining from his umbilicus that increases when he cries; the fluid has a high urea concentration. The most likely diagnosis is:",
+    "o": [
+     "Patent urachus",
+     "Vitelline duct fistula",
+     "Omphalocele",
+     "Bladder exstrophy"
+    ],
+    "a": 0,
+    "e": "Urine at the umbilicus means a persistent allantois–urachus tract to the bladder dome. A vitelline duct fistula drains meconium, not urine.",
+    "d": 2
    }
   ],
   "robbins-ch21:metaplasia": [
@@ -5413,6 +5857,18 @@
     ],
     "a": 1,
     "e": "Goblet cell (intestinal) metaplasia, when extensive and multifocal, can progress to adenocarcinoma."
+   },
+   {
+    "q": "A 52-year-old woman with chronic recurrent cystitis has small nodules on cystoscopy. Biopsy shows nests of urothelium in the lamina propria with central lumens lined by cuboidal and columnar cells, without atypia. The diagnosis is:",
+    "o": [
+     "Inverted urothelial papilloma",
+     "Cystitis glandularis",
+     "Urothelial carcinoma in situ",
+     "Squamous metaplasia"
+    ],
+    "a": 1,
+    "e": "Brunn nests with central gland-like lumens are cystitis glandularis, a reactive change; extensive intestinal-type change is a risk for adenocarcinoma. CIS shows malignant cells in flat urothelium.",
+    "d": 2
    }
   ],
   "robbins-ch21:grading": [
@@ -5448,6 +5904,18 @@
     ],
     "a": 0,
     "e": "High-grade papillary UC: dyscohesive anaplastic cells, frequent mitoses."
+   },
+   {
+    "q": "A 67-year-old man who smokes has microscopic hematuria and positive urine cytology. Cystoscopy shows velvety red patches; biopsy shows flat urothelium replaced by large, pleomorphic, hyperchromatic cells without invasion. The most appropriate treatment is:",
+    "o": [
+     "Cystoscopic surveillance alone",
+     "Systemic platinum chemotherapy",
+     "Intravesical BCG instillation",
+     "External beam radiotherapy"
+    ],
+    "a": 2,
+    "e": "This is urothelial carcinoma in situ, a high-grade flat lesion that often progresses to invasion; intravesical BCG is standard first-line therapy. Surveillance alone undertreats it.",
+    "d": 3
    }
   ],
   "robbins-ch21:staging": [
@@ -5483,6 +5951,18 @@
     ],
     "a": 2,
     "e": "Painless hematuria; investigate with cystoscopy and urine cytology."
+   },
+   {
+    "q": "A 70-year-old man has a bladder tumor resected. Pathology shows urothelial carcinoma invading through the muscularis propria into the perivesical fat, seen only microscopically, without nodal involvement. The pathologic T stage is:",
+    "o": [
+     "pT2b",
+     "pT1",
+     "pT4a",
+     "pT3a"
+    ],
+    "a": 3,
+    "e": "Microscopic invasion of perivesical tissue = pT3a (macroscopic = pT3b). pT2b is invasion of the outer half of the muscularis propria.",
+    "d": 2
    }
   ],
   "robbins-ch21:othertum": [
@@ -5507,6 +5987,18 @@
     ],
     "a": 1,
     "e": "Like small-cell lung cancer."
+   },
+   {
+    "q": "A 61-year-old man has hematuria and passes mucus in his urine. Cystoscopy shows a mass at the bladder dome; histology shows mucin-secreting glandular epithelium without urothelial carcinoma components. The most likely diagnosis is:",
+    "o": [
+     "Urachal adenocarcinoma",
+     "Urothelial carcinoma",
+     "Embryonal rhabdomyosarcoma",
+     "Small cell carcinoma"
+    ],
+    "a": 0,
+    "e": "A glandular mucin-secreting tumor at the dome arises from urachal remnants. Urothelial carcinoma is far commoner overall but is not purely glandular.",
+    "d": 2
    }
   ],
   "robbins-ch21:urethra": [
@@ -5531,6 +6023,18 @@
     ],
     "a": 2,
     "e": "Proximal → urothelial; distal → squamous (HPV); adenocarcinoma infrequent, mostly in women."
+   },
+   {
+    "q": "A 24-year-old man has dysuria and a watery urethral discharge, followed 3 weeks later by conjunctivitis and a swollen knee. Gram stain of the discharge shows neutrophils but no organisms. The most likely triggering organism is:",
+    "o": [
+     "Neisseria gonorrhoeae",
+     "Chlamydia trachomatis",
+     "Treponema pallidum",
+     "Trichomonas vaginalis"
+    ],
+    "a": 1,
+    "e": "Nongonococcal urethritis followed by conjunctivitis and arthritis is reactive arthritis, most often after C. trachomatis. Gonorrhea would show gram-negative intracellular diplococci.",
+    "d": 3
    }
   ],
   "harrison-ch319:ap-aki": [
@@ -5555,6 +6059,18 @@
     ],
     "a": 1,
     "e": "Urea is reabsorbed along with water while creatinine is not, so urea clearance < creatinine clearance when tubular water reabsorption increases."
+   },
+   {
+    "q": "A 78-year-old woman has had vomiting for 3 days. BP is 92/58 mm Hg with dry mucous membranes; BUN is 64 mg/dL, creatinine 2.0 mg/dL, urine sodium 9 mEq/L and the sediment is bland. The most appropriate next step is:",
+    "o": [
+     "Intravenous furosemide",
+     "Urgent hemodialysis",
+     "Isotonic saline infusion",
+     "Percutaneous kidney biopsy"
+    ],
+    "a": 2,
+    "e": "BUN:Cr > 20, low urine Na and a bland sediment indicate prerenal azotemia from volume loss; restoring perfusion with isotonic fluid reverses it. Diuretics would worsen hypovolemia.",
+    "d": 3
    }
   ],
   "harrison-ch319:ap-syn": [
@@ -5579,6 +6095,18 @@
     ],
     "a": 3,
     "e": "Tissue ischemia from severe hypoalbuminemia."
+   },
+   {
+    "q": "A 35-year-old man has cola-colored urine and ankle swelling. BP is 162/100 mm Hg; urinalysis shows dysmorphic RBCs and RBC casts, protein excretion is 1.2 g/day and creatinine has risen to 2.1 mg/dL. His presentation is best classified as:",
+    "o": [
+     "Nephrotic syndrome",
+     "Tubular proteinuria",
+     "Isolated hematuria",
+     "Nephritic syndrome"
+    ],
+    "a": 3,
+    "e": "Hematuria with RBC casts, hypertension, sub-nephrotic proteinuria and falling GFR define the nephritic pattern. Nephrotic syndrome requires > 3.5 g/day proteinuria with hypoalbuminemia.",
+    "d": 2
    }
   ],
   "harrison-ch319:ap-hem": [
@@ -5603,6 +6131,18 @@
     ],
     "a": 1,
     "e": "Exercise-induced hematuria resolves; retest after rest."
+   },
+   {
+    "q": "A 22-year-old soldier collapses with muscle pain after a long march in the heat. His urine is tea-colored; dipstick is 3+ for blood but microscopy shows 0–2 RBCs/hpf. The dipstick result is best explained by:",
+    "o": [
+     "Myoglobin in the urine",
+     "Lysis of glomerular RBCs",
+     "Bilirubin in the urine",
+     "Porphyrins in the urine"
+    ],
+    "a": 0,
+    "e": "The heme dipstick detects myoglobin (and hemoglobin) as well as RBCs; heme-positive urine without RBCs after exertional muscle injury indicates myoglobinuria from rhabdomyolysis.",
+    "d": 2
    }
   ],
   "harrison-ch320:cb-seg": [
@@ -5627,6 +6167,18 @@
     ],
     "a": 1,
     "e": "V2 receptor → cAMP → AQP2 to the apical membrane."
+   },
+   {
+    "q": "A 58-year-old woman with hypertension has recurrent calcium stones and hypercalciuria. She is started on a drug that lowers BP and reduces urinary calcium excretion. Its molecular target is:",
+    "o": [
+     "NKCC2 in the thick ascending limb",
+     "NCC in the distal convoluted tubule",
+     "ENaC in the collecting duct",
+     "Carbonic anhydrase in the proximal tubule"
+    ],
+    "a": 1,
+    "e": "Thiazides block NCC in the DCT and increase calcium reabsorption, lowering urinary calcium. Loop diuretics (NKCC2) do the opposite and increase calcium excretion.",
+    "d": 3
    }
   ],
   "harrison-ch320:cb-inh": [
@@ -5662,6 +6214,18 @@
     ],
     "a": 0,
     "e": "Gordon syndrome (PHA-2): WNK/KLHL3/CUL3 mutations increase NCC activity."
+   },
+   {
+    "q": "An 8-year-old boy has polyuria, growth delay and normal BP. Labs show K⁺ 2.6 mEq/L, HCO₃⁻ 32 mEq/L, high renin and aldosterone, high urinary calcium and nephrocalcinosis on ultrasound. The most likely defective transporter is:",
+    "o": [
+     "NCC in the distal convoluted tubule",
+     "ENaC (gain of function)",
+     "NKCC2 in the thick ascending limb",
+     "Pendrin in intercalated cells"
+    ],
+    "a": 2,
+    "e": "Bartter syndrome mimics loop diuretics: hypokalemic alkalosis with hypercalciuria. Gitelman (NCC) gives hypocalciuria and hypomagnesemia; ENaC gain (Liddle) causes hypertension with low renin.",
+    "d": 3
    }
   ],
   "harrison-ch320:cb-na": [
@@ -5686,6 +6250,18 @@
     ],
     "a": 3,
     "e": "Regulated by RAAS, sympathetic activity, natriuretic peptides."
+   },
+   {
+    "q": "A 70-year-old man with small cell lung cancer has confusion. He is euvolemic; serum Na⁺ is 122 mEq/L, serum osmolality 255 mOsm/kg, urine osmolality 480 mOsm/kg and urine Na⁺ 50 mEq/L. His hyponatremia mainly reflects:",
+    "o": [
+     "Renal salt wasting from low aldosterone",
+     "Sodium loss from the GI tract",
+     "Excess water intake alone",
+     "Water retention from excess ADH"
+    ],
+    "a": 3,
+    "e": "SIADH: ADH-driven water retention dilutes plasma Na⁺ in a euvolemic patient with inappropriately concentrated urine. Primary polydipsia would give maximally dilute urine (< 100 mOsm/kg).",
+    "d": 3
    }
   ],
   "harrison-ch321:aki-cause": [
@@ -5721,6 +6297,18 @@
     ],
     "a": 1,
     "e": "SCr rises in 1–2 days, peaks 3–5 days, recovers by ~7 days."
+   },
+   {
+    "q": "A 68-year-old smoker with refractory hypertension and an abdominal bruit is started on lisinopril. Within a week his creatinine rises from 1.3 to 2.5 mg/dL; urine sediment is bland. The mechanism of his AKI is:",
+    "o": [
+     "Loss of efferent arteriolar constriction",
+     "Afferent arteriolar vasoconstriction",
+     "Allergic interstitial inflammation",
+     "Tubular obstruction by crystals"
+    ],
+    "a": 0,
+    "e": "With bilateral renal artery stenosis, GFR depends on angiotensin II constricting the efferent arteriole; an ACE inhibitor removes it and GFR falls. Afferent constriction is the NSAID/calcineurin mechanism.",
+    "d": 3
    }
   ],
   "harrison-ch321:aki-mx": [
@@ -5756,6 +6344,18 @@
     ],
     "a": 0,
     "e": "May need up to 10 L/day of fluid."
+   },
+   {
+    "q": "A 66-year-old man with oliguric AKI has K⁺ 7.1 mEq/L. ECG shows peaked T waves and a widened QRS. The first drug to give, and its effect, is:",
+    "o": [
+     "IV insulin: shifts K⁺ into the cells",
+     "IV calcium: stabilizes cardiac membranes",
+     "Patiromer: binds K⁺ in the colon",
+     "Furosemide: increases urinary K⁺ loss"
+    ],
+    "a": 1,
+    "e": "With ECG changes, IV calcium is given first to stabilize the myocardium within minutes; it does not lower K⁺. Insulin with glucose follows to shift K⁺ intracellularly.",
+    "d": 3
    }
   ],
   "harrison-ch322:ckd-stage": [
@@ -5780,6 +6380,18 @@
     ],
     "a": 1,
     "e": "Both axes independently increase mortality, CV death and progression."
+   },
+   {
+    "q": "A 60-year-old woman with type 2 diabetes has an eGFR of 52 mL/min/1.73 m² on two measurements 4 months apart and a urine albumin-to-creatinine ratio of 420 mg/g. Her CKD category is:",
+    "o": [
+     "G3b A2",
+     "G2 A3",
+     "G3a A3",
+     "G3a A2"
+    ],
+    "a": 2,
+    "e": "eGFR 45–59 = G3a; ACR > 300 mg/g = A3 (severely increased). A2 is 30–300 mg/g.",
+    "d": 2
    }
   ],
   "harrison-ch322:ckd-lyte": [
@@ -5804,6 +6416,18 @@
     ],
     "a": 2,
     "e": "Reduced ammoniagenesis limits acid excretion; anion-gap acidosis appears as GFR falls further."
+   },
+   {
+    "q": "A 62-year-old man with diabetic CKD (eGFR 45) has K⁺ 5.9 mEq/L and a normal anion gap metabolic acidosis. Plasma renin and aldosterone are both low, and urine pH is 5.2. The most likely disorder is:",
+    "o": [
+     "Type 1 (distal) RTA",
+     "Type 2 (proximal) RTA",
+     "Uremic anion gap acidosis",
+     "Type 4 (hyperkalemic) RTA"
+    ],
+    "a": 3,
+    "e": "Hyporeninemic hypoaldosteronism in diabetic CKD causes type 4 RTA: hyperkalemia with NAGMA and preserved ability to acidify urine. Type 1 RTA has urine pH > 5.5 and usually hypokalemia.",
+    "d": 2
    }
   ],
   "harrison-ch322:ckd-slow": [
@@ -5839,6 +6463,18 @@
     ],
     "a": 3,
     "e": "130/80 mmHg."
+   },
+   {
+    "q": "A 56-year-old woman with type 2 diabetes has eGFR 48 mL/min/1.73 m² and ACR 600 mg/g despite maximal-dose losartan; BP is 128/78 mm Hg. The best addition to slow CKD progression is:",
+    "o": [
+     "Empagliflozin",
+     "Lisinopril",
+     "Hydrochlorothiazide",
+     "Amlodipine"
+    ],
+    "a": 0,
+    "e": "SGLT2 inhibitors restore tubuloglomerular feedback (afferent constriction), lowering intraglomerular pressure and slowing CKD. Adding an ACE inhibitor to an ARB raises hyperkalemia and AKI risk without benefit.",
+    "d": 2
    }
   ],
   "harrison-ch323:hd": [
@@ -5874,6 +6510,18 @@
     ],
     "a": 0,
     "e": "Diabetes accounts for ~45% of new ESKD cases (Harrison Ch 323)."
+   },
+   {
+    "q": "A 58-year-old man on thrice-weekly hemodialysis gains 3 kg of fluid between sessions. Removal of this excess fluid during treatment occurs mainly by:",
+    "o": [
+     "Diffusion down concentration gradients",
+     "A hydrostatic pressure gradient",
+     "An osmotic gradient from dextrose",
+     "Adsorption onto the dialyzer membrane"
+    ],
+    "a": 1,
+    "e": "Fluid is removed by ultrafiltration, driven by a transmembrane hydrostatic pressure gradient; solutes like urea are removed by diffusion. Dextrose-driven osmotic ultrafiltration is how peritoneal dialysis removes fluid.",
+    "d": 2
    }
   ],
   "harrison-ch323:hdcx": [
@@ -5898,6 +6546,18 @@
     ],
     "a": 1,
     "e": "Avoid >13 mL/kg per h."
+   },
+   {
+    "q": "A 19-year-old with newly diagnosed ESKD and BUN 180 mg/dL develops headache, vomiting and a seizure near the end of his first, long hemodialysis session. The mechanism is:",
+    "o": [
+     "Air embolism through the venous line",
+     "Hypoglycemia from glucose-free dialysate",
+     "Cerebral edema from rapid urea removal",
+     "Anaphylaxis to the dialyzer membrane"
+    ],
+    "a": 2,
+    "e": "Dialysis disequilibrium: rapid lowering of plasma urea leaves brain osmolality higher, drawing water into the brain. It is prevented by short, gentle initial sessions.",
+    "d": 3
    }
   ],
   "harrison-ch323:pd": [
@@ -5922,6 +6582,18 @@
     ],
     "a": 3,
     "e": "Used as last fill in CCPD or longest dwell in CAPD."
+   },
+   {
+    "q": "A 52-year-old woman on peritoneal dialysis has abdominal pain and cloudy effluent. Effluent WBC count is 450/mm³ with 85% neutrophils; there is no exit-site discharge. The most likely organism is:",
+    "o": [
+     "Escherichia coli",
+     "Pseudomonas aeruginosa",
+     "Candida albicans",
+     "Staphylococcus epidermidis"
+    ],
+    "a": 3,
+    "e": "PD peritonitis is most often from skin flora (coagulase-negative staphylococci) introduced at exchanges. Gram-negative or fungal peritonitis is less common and suggests bowel source or prior antibiotics.",
+    "d": 3
    }
   ],
   "harrison-ch324:ivn": [
@@ -5946,6 +6618,18 @@
     ],
     "a": 2,
     "e": "Banding creates a controlled inflow stenosis."
+   },
+   {
+    "q": "A 60-year-old man on hemodialysis via a left arm AV fistula has progressive swelling of the entire left arm and face, with dilated veins over the chest wall. Fistula pressures are high during dialysis. The most likely cause is:",
+    "o": [
+     "Central venous stenosis",
+     "Arterial inflow stenosis",
+     "Fistula aneurysm",
+     "Hand ischemia (steal)"
+    ],
+    "a": 0,
+    "e": "Whole-arm edema with chest wall collaterals means venous outflow is blocked centrally, often after prior central catheters. Steal causes hand pain and pallor, not swelling.",
+    "d": 2
    }
   ],
   "harrison-ch325:tx-imm": [
@@ -5981,6 +6665,18 @@
     ],
     "a": 3,
     "e": "CD4 → class II; CD8 → class I."
+   },
+   {
+    "q": "A 45-year-old man has a rising creatinine 3 months after a deceased-donor kidney transplant. Biopsy shows interstitial lymphocytes invading tubular epithelium (tubulitis); C4d staining is negative and donor-specific antibodies are absent. The diagnosis is:",
+    "o": [
+     "Antibody-mediated rejection",
+     "Acute T-cell-mediated rejection",
+     "Hyperacute rejection",
+     "Chronic allograft nephropathy"
+    ],
+    "a": 1,
+    "e": "Tubulitis with interstitial lymphocytes and no C4d/DSA is acute cellular rejection, driven by T cells recognizing donor HLA. C4d-positive capillaritis indicates antibody-mediated rejection.",
+    "d": 2
    }
   ],
   "harrison-ch325:tx-drug": [
@@ -6016,6 +6712,18 @@
     ],
     "a": 1,
     "e": "Costimulation blockade: binds CD80/CD86 on APCs, preventing CD28 costimulation."
+   },
+   {
+    "q": "A 52-year-old woman on a three-drug regimen after kidney transplant develops tremor, new-onset diabetes, hyperkalemia and hypertension. Trough level of one drug is high. That drug acts by:",
+    "o": [
+     "Inhibiting mTOR, blocking IL-2 signaling",
+     "Inhibiting IMP dehydrogenase in lymphocytes",
+     "Inhibiting calcineurin, ↓ IL-2 transcription",
+     "Blocking CD80/86 binding to T-cell CD28"
+    ],
+    "a": 2,
+    "e": "Tremor, diabetes, hyperkalemia and hypertension are classic tacrolimus toxicity; it binds FKBP-12 and inhibits calcineurin, blocking IL-2 gene transcription. mTOR inhibitors act downstream of the IL-2 receptor.",
+    "d": 3
    }
   ],
   "harrison-ch325:tx-inf": [
@@ -6051,6 +6759,18 @@
     ],
     "a": 0,
     "e": "EBV-driven."
+   },
+   {
+    "q": "Ten weeks after a kidney transplant, a 50-year-old man (donor CMV-positive, recipient CMV-negative) has fever, leukopenia and elevated transaminases. Blood PCR shows a high viral load. The best treatment is:",
+    "o": [
+     "Acyclovir",
+     "Trimethoprim–sulfamethoxazole",
+     "Fluconazole",
+     "Valganciclovir"
+    ],
+    "a": 3,
+    "e": "CMV disease peaks 1–6 months after transplant, especially D+/R−; ganciclovir or valganciclovir is the treatment. Acyclovir has poor CMV activity.",
+    "d": 3
    }
   ],
   "harrison-ch326:gd-prot": [
@@ -6075,6 +6795,18 @@
     ],
     "a": 2,
     "e": "Normal urine (total protein < 150 mg/day) is mostly tubular uromodulin (Tamm–Horsfall) and filtered low-molecular-weight proteins; albumin is a minority (~20–60%). In glomerular proteinuria albumin becomes the dominant protein."
+   },
+   {
+    "q": "A 45-year-old man with type 1 diabetes has a urine dipstick negative for protein, but a spot urine albumin-to-creatinine ratio of 120 mg/g on two occasions. This finding is classified as:",
+    "o": [
+     "Moderately increased albuminuria",
+     "Severely increased albuminuria",
+     "Nephrotic-range proteinuria",
+     "Normal albumin excretion"
+    ],
+    "a": 0,
+    "e": "ACR 30–300 mg/g (formerly microalbuminuria) is moderately increased albuminuria (A2), often below dipstick sensitivity. It is the earliest clinical sign of diabetic kidney disease.",
+    "d": 2
    }
   ],
   "harrison-ch326:gd-pat": [
@@ -6099,6 +6831,18 @@
     ],
     "a": 3,
     "e": "With anti-GBM disease, thin BM disease, nail-patella."
+   },
+   {
+    "q": "A 65-year-old man with a prosthetic valve has 4 weeks of fever; blood cultures grow Staphylococcus aureus. He develops hematuria with RBC casts, low C3 and creatinine 2.3 mg/dL. The kidney lesion is most likely:",
+    "o": [
+     "Anti-GBM antibody-mediated GN",
+     "Infection-related immune complex GN",
+     "Minimal change nephropathy",
+     "Primary membranous nephropathy"
+    ],
+    "a": 1,
+    "e": "Endocarditis causes an infection-associated nephritic syndrome with low complement from circulating immune complexes. Anti-GBM disease has normal complement and linear IgG.",
+    "d": 2
    }
   ],
   "harrison-ch326:gd-tx": [
@@ -6134,6 +6878,18 @@
     ],
     "a": 3,
     "e": "Reduces proteinuria in IgAN at risk of progression."
+   },
+   {
+    "q": "A 50-year-old man has chronic sinusitis, lung nodules, RBC casts and creatinine 3.2 mg/dL. PR3-ANCA is positive and biopsy shows pauci-immune crescentic GN. The most appropriate induction therapy is:",
+    "o": [
+     "Targeted-release budesonide",
+     "Eculizumab infusion therapy",
+     "Glucocorticoids plus rituximab",
+     "ACE inhibitor monotherapy"
+    ],
+    "a": 2,
+    "e": "ANCA-associated GN is induced with glucocorticoids plus rituximab or cyclophosphamide. Budesonide is for IgA nephropathy and eculizumab for atypical HUS.",
+    "d": 3
    }
   ],
   "harrison-ch327:pkd-ad": [
@@ -6169,6 +6925,18 @@
     ],
     "a": 2,
     "e": "V2 antagonist: lowers cAMP, which drives cyst growth."
+   },
+   {
+    "q": "A 38-year-old woman with ADPKD has eGFR 70 mL/min/1.73 m² and rapidly enlarging kidneys on MRI. She starts a drug that slows cyst growth by lowering cAMP in collecting duct cells. Which monitoring is most important?",
+    "o": [
+     "Serum potassium",
+     "Complete blood count",
+     "Thyroid function",
+     "Serum aminotransferases"
+    ],
+    "a": 3,
+    "e": "Tolvaptan (V2 antagonist) can cause serious liver injury, so liver enzymes are checked regularly; its other main effect is aquaresis with thirst and polyuria.",
+    "d": 3
    }
   ],
   "harrison-ch327:pkd-ar": [
@@ -6193,6 +6961,18 @@
     ],
     "a": 3,
     "e": "Leads to portal hypertension."
+   },
+   {
+    "q": "A newborn has respiratory distress, flattened facies and massively enlarged echogenic kidneys; pregnancy was complicated by oligohydramnios and both parents are healthy. The renal cysts in this disorder arise mainly from the:",
+    "o": [
+     "Collecting ducts",
+     "Proximal tubules",
+     "Bowman capsule",
+     "Loops of Henle"
+    ],
+    "a": 0,
+    "e": "ARPKD (PKHD1) causes radially arranged fusiform dilation of collecting ducts throughout the cortex and medulla; survivors develop congenital hepatic fibrosis.",
+    "d": 3
    }
   ],
   "harrison-ch327:pkd-oth": [
@@ -6217,6 +6997,18 @@
     ],
     "a": 3,
     "e": "Autosomal dominant tubulointerstitial kidney disease."
+   },
+   {
+    "q": "A 12-year-old girl has polyuria, polydipsia, growth failure and anemia; creatinine is 2.6 mg/dL with bland urine. Ultrasound shows normal-sized echogenic kidneys with small corticomedullary cysts, and she has retinal degeneration. The likely diagnosis is:",
+    "o": [
+     "ARPKD",
+     "Nephronophthisis",
+     "ADPKD",
+     "Medullary sponge kidney"
+    ],
+    "a": 1,
+    "e": "Nephronophthisis is an autosomal recessive ciliopathy with a salt-wasting, concentrating defect, small corticomedullary cysts and ESKD in childhood (Senior–Løken with retinal disease). Medullary sponge kidney is benign with normal function.",
+    "d": 2
    }
   ],
   "harrison-ch328:tin-ain": [
@@ -6241,6 +7033,18 @@
     ],
     "a": 3,
     "e": "Then steroids if no improvement in ~1 week or rapid progression."
+   },
+   {
+    "q": "A 68-year-old woman develops AKI 3 weeks after starting nafcillin. Biopsy shows interstitial edema with lymphocytes and eosinophils. The drug was stopped, but after 7 days her creatinine is still rising. The next best step is:",
+    "o": [
+     "Begin hemodialysis now",
+     "Rechallenge at a lower dose",
+     "Start oral glucocorticoids",
+     "Start cyclophosphamide"
+    ],
+    "a": 2,
+    "e": "If biopsy-proven drug-induced AIN does not improve after withdrawal, glucocorticoids may hasten recovery. Re-exposure is contraindicated, and there is no dialysis indication.",
+    "d": 3
    }
   ],
   "harrison-ch328:tin-imm": [
@@ -6265,6 +7069,18 @@
     ],
     "a": 0,
     "e": "Absolute indication for steroids in adults."
+   },
+   {
+    "q": "A 40-year-old woman has bilateral hilar adenopathy, calcium 11.8 mg/dL and creatinine 2.2 mg/dL with sterile pyuria. A kidney biopsy would most likely show:",
+    "o": [
+     "Eosinophilic drug-induced TIN",
+     "Crescentic anti-GBM nephritis",
+     "Lymphocytic TIN of Sjögren",
+     "Noncaseating granulomatous TIN"
+    ],
+    "a": 3,
+    "e": "Sarcoidosis causes granulomatous interstitial nephritis and hypercalcemia from macrophage 1α-hydroxylase. Lymphocytic TIN without granulomas is typical of Sjögren syndrome.",
+    "d": 3
    }
   ],
   "harrison-ch328:tin-chronic": [
@@ -6300,6 +7116,18 @@
     ],
     "a": 2,
     "e": "Table 328-3."
+   },
+   {
+    "q": "A 50-year-old man with bipolar disorder has taken lithium at therapeutic levels for 20 years. He passes 5 L of urine daily; urine osmolality is 150 mOsm/kg and does not rise after desmopressin. The mechanism is:",
+    "o": [
+     "Reduced collecting-duct response to ADH",
+     "Deficient ADH release from the pituitary",
+     "Osmotic diuresis from glycosuria",
+     "Excess water intake (polydipsia)"
+    ],
+    "a": 0,
+    "e": "Lithium enters principal cells via ENaC and down-regulates AQP2, causing nephrogenic DI. Central DI would respond to desmopressin.",
+    "d": 3
    }
   ],
   "harrison-ch329:tma-types": [
@@ -6335,6 +7163,18 @@
     ],
     "a": 1,
     "e": "Supportive measures."
+   },
+   {
+    "q": "A 35-year-old woman has fever, confusion and petechiae. Hemoglobin is 7.8 g/dL with schistocytes, platelets 18,000/µL, LDH high and creatinine 1.6 mg/dL. ADAMTS13 activity is < 5%. The most appropriate treatment is:",
+    "o": [
+     "Platelet transfusion",
+     "Urgent plasma exchange",
+     "Eculizumab alone",
+     "Supportive care only"
+    ],
+    "a": 1,
+    "e": "Acquired TTP (anti-ADAMTS13) is treated with urgent plasma exchange plus glucocorticoids (± caplacizumab). Eculizumab is for complement-mediated (atypical) HUS.",
+    "d": 3
    }
   ],
   "harrison-ch329:tma-ssc": [
@@ -6359,6 +7199,18 @@
     ],
     "a": 1,
     "e": "12% diffuse vs 2% limited."
+   },
+   {
+    "q": "A 45-year-old woman with rapidly progressive diffuse skin thickening, recently started on high-dose prednisone, has BP 210/120 mm Hg, schistocytes and rising creatinine. The autoantibody most associated with this complication is:",
+    "o": [
+     "Anticentromere antibody",
+     "Anti-dsDNA antibody",
+     "Anti-RNA polymerase III",
+     "Anti-Jo-1 antibody"
+    ],
+    "a": 2,
+    "e": "Scleroderma renal crisis is associated with early diffuse disease, anti-RNA polymerase III and high-dose glucocorticoids. Anticentromere marks limited disease with low renal-crisis risk.",
+    "d": 3
    }
   ],
   "harrison-ch330:st-type": [
@@ -6394,6 +7246,18 @@
     ],
     "a": 3,
     "e": "Cystinuria."
+   },
+   {
+    "q": "A 55-year-old man with gout has renal colic. The stone is not visible on plain x-ray but is seen on CT; urine pH is 5.0 on repeated samples. The best long-term therapy to dissolve and prevent these stones is:",
+    "o": [
+     "Hydrochlorothiazide",
+     "Ammonium chloride",
+     "Calcium carbonate",
+     "Potassium citrate"
+    ],
+    "a": 3,
+    "e": "Radiolucent stones in persistently acidic urine are uric acid; alkalinizing urine with potassium citrate dissolves and prevents them. Thiazides target hypercalciuric calcium stones.",
+    "d": 3
    }
   ],
   "harrison-ch330:st-risk": [
@@ -6418,6 +7282,18 @@
     ],
     "a": 1,
     "e": "Harrison: at least 2 L/day."
+   },
+   {
+    "q": "A 40-year-old man with recurrent calcium oxalate stones follows a strict low-calcium diet. His 24-hour urine shows volume 1.1 L, high oxalate and normal calcium. The most appropriate dietary advice is:",
+    "o": [
+     "Normal dietary calcium intake",
+     "Stricter calcium restriction",
+     "High animal-protein intake",
+     "Daily vitamin C supplements"
+    ],
+    "a": 0,
+    "e": "Dietary calcium binds oxalate in the gut, so a low-calcium diet raises oxalate absorption and stone risk; also aim for ≥ 2 L/day urine. Vitamin C is metabolized to oxalate.",
+    "d": 2
    }
   ],
   "harrison-ch330:st-mx": [
@@ -6453,6 +7329,18 @@
     ],
     "a": 3,
     "e": "Medical expulsive therapy."
+   },
+   {
+    "q": "A 50-year-old woman has left flank pain, fever of 39.4 °C and BP 88/56 mm Hg. CT shows an 8-mm obstructing proximal ureteral stone with hydronephrosis. After starting antibiotics, the next step is:",
+    "o": [
+     "Tamsulosin and outpatient follow-up",
+     "Urgent ureteral stent or nephrostomy",
+     "Shock wave lithotripsy today",
+     "Repeat CT in 2 weeks"
+    ],
+    "a": 1,
+    "e": "An infected obstructed kidney is a urologic emergency requiring prompt decompression; definitive stone treatment is deferred. Medical expulsive therapy is only for uncomplicated small stones.",
+    "d": 3
    }
   ],
   "harrison-ch331:uo-cause": [
@@ -6477,6 +7365,18 @@
     ],
     "a": 3,
     "e": "Unilateral hydroureter/hydronephrosis. Lesions at or below the bladder cause bilateral involvement."
+   },
+   {
+    "q": "A 48-year-old woman has postcoital and intermenstrual bleeding, pelvic pain and creatinine 3.1 mg/dL. Ultrasound shows bilateral hydronephrosis with a normal bladder. The most likely cause of obstruction is:",
+    "o": [
+     "Bilateral ureteral calculi",
+     "Posterior urethral valves",
+     "Invasive cervical carcinoma",
+     "Ureteropelvic junction stenosis"
+    ],
+    "a": 2,
+    "e": "Locally advanced cervical cancer invades the parametrium and compresses both ureters, a classic cause of bilateral hydronephrosis in women. Bilateral simultaneous stones are rare.",
+    "d": 2
    }
   ],
   "harrison-ch331:uo-phys": [
@@ -6501,6 +7401,18 @@
     ],
     "a": 1,
     "e": "High BUN/Cr, concentrated urine, Na retention."
+   },
+   {
+    "q": "A 72-year-old man with prostatic enlargement reports 3.5 L/day of urine and nocturia; ultrasound shows bilateral hydronephrosis. Urine osmolality is 240 mOsm/kg and does not rise after desmopressin. The polyuria is best explained by:",
+    "o": [
+     "Lack of pituitary ADH secretion",
+     "Osmotic diuresis from glucose",
+     "Primary excess water intake",
+     "Acquired renal resistance to ADH"
+    ],
+    "a": 3,
+    "e": "Partial obstruction damages tubules and down-regulates AQP2, causing an acquired nephrogenic DI-like concentrating defect. Central DI would respond to desmopressin.",
+    "d": 3
    }
   ],
   "harrison-ch331:uo-dx": [
@@ -6536,6 +7448,18 @@
     ],
     "a": 1,
     "e": "Hypotonic urine rich in Na, K, PO₄, Mg."
+   },
+   {
+    "q": "A 76-year-old man has suprapubic pain and has not voided for 18 hours. The bladder is palpable to the umbilicus, creatinine is 3.8 mg/dL and ultrasound shows bilateral hydronephrosis. The best initial step is:",
+    "o": [
+     "Urethral bladder catheterization",
+     "Bilateral nephrostomy tubes",
+     "Urgent hemodialysis",
+     "Percutaneous kidney biopsy"
+    ],
+    "a": 0,
+    "e": "Bladder outlet obstruction is relieved first with a urethral (or suprapubic) catheter; watch for postobstructive diuresis afterward. Nephrostomies are for obstruction above the bladder.",
+    "d": 2
    }
   ]
  },
