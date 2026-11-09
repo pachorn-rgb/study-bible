@@ -83,7 +83,7 @@ function coeqD(){const edv=ST.edv,esv=Math.min(ST.esv,edv-5),hr=ST.hr,sv=edv-esv
  /* readouts */
  const card=(x,y,t,v,u,n,ok)=>RB(x,y,148,82,ok?CV.vol:CV.bad,{p:ok?12:16})+T(x+12,y+22,t,{a:"start",c:"s m"})+CT(x+12,y+52,v,CV.ink,{a:"start",s:24,wt:800})+T(x+12+String(v).length*14+6,y+52,u,{a:"start",c:"s"})+T(x+12,y+72,n,{a:"start",c:"s m"});
  b+=card(326,10,"SV = EDV − ESV",sv,"mL","ปกติ ~70",sv>=50&&sv<=100)+card(482,10,"EF = SV / EDV",r0(ef),"%","ปกติ 50–70%",ef>=50&&ef<=75)+card(326,100,"CO = SV × HR",f1c(co),"L/min","ปกติ ~5",co>=4&&co<=8)+card(482,100,"Heart rate",hr,"/min","diastole สั้นลงเมื่อ HR สูง",hr>=50&&hr<=100);
- const efm=ef<40?"EF < 40% → แบบ HFrEF (systolic)":ef<50?"EF 41–49% → mildly reduced":"EF ≥ 50% → preserved (diastolic HF ยังเกิดได้)";b+=T(478,206,efm,{c:"s"});
+ const efm=ef<=40?"EF ≤ 40% → แบบ HFrEF (systolic)":ef<50?"EF 41–49% → mildly reduced":"EF ≥ 50% → preserved (diastolic HF ยังเกิดได้)";b+=T(478,206,efm,{c:"s"});
  /* arterial pulse with PP & MAP */
  const A=AX(340,226,270,110,[0,1],[60,130],[],[80,100,120],"","mmHg",{yo:30});b+=A.g;
  const ap=MONO([[0,80],[.08,80],[.2,120],[.32,108],[.36,100],[.38,104],[.6,90],[.8,82],[.88,80],[1,118]]);
@@ -263,7 +263,7 @@ function vdD(){const D=VD[ST.vd];let b="";const A=AX(64,30,270,260,[0,240],[0,22
 const SPL={phys:{t:"Physiologic splitting",E:[300,306],I:[296,340],s:"หายใจเข้า → venous return เข้าหัวใจขวา ↑ → RV ejection ยาวขึ้น → P2 ช้าลง (A2–P2 ห่าง)"},
  wide:{t:"Wide splitting",E:[300,334],I:[300,366],s:"RV ปล่อยเลือดช้าอยู่แล้ว (pulmonic stenosis, RBBB) → แยกตลอด และกว้างขึ้นตอนหายใจเข้า"},
  fixed:{t:"Fixed splitting",E:[300,348],I:[300,348],s:"ASD: left→right shunt ทำให้ RV ปริมาตรสูงตลอด → แยกเท่าเดิมทั้งเข้าและออก"},
- par:{t:"Paradoxical splitting",E:[346,300],I:[336,324],s:"A2 ช้ากว่า P2 (aortic stenosis, LBBB) → แยกตอนหายใจออก และแคบลง/หายตอนหายใจเข้า"}};
+ par:{t:"Paradoxical splitting",E:[346,300],I:[333,327],s:"A2 ช้ากว่า P2 (aortic stenosis, LBBB) → แยกตอนหายใจออก และแคบลง/หายตอนหายใจเข้า"}};
 function splD(){const S=SPL[ST.sp];let b="";
  const row=(y,lab,[a2,p2])=>{let g=`<rect x="20" y="${y-34}" width="600" height="80" rx="16" style="fill:${tint(lab==="Inspiration"?CV.bl:CV.mut,10)};stroke:var(--sb-line)"/>`+T(36,y-12,lab,{a:"start",c:"bh"});
   g+=SP(`M110,${y+10} H600`,CV.line,1.5);

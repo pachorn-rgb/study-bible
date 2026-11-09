@@ -211,7 +211,7 @@ function acsD(){const p=ST.ap;let b="";const on=k=>k==="all"||k===p;
  const box=(x,y,w,h,t,s,k,c)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" style="fill:color-mix(in srgb,${c} ${on(k)?16:5}%,var(--sb-surface));stroke:${on(k)?c:"var(--sb-line)"};stroke-width:${on(k)?1.8:1};opacity:${on(k)?1:.55}"/>`+T(x+w/2,y+20,t,{c:"bh"})+wrapT(x+w/2,y+37,s,Math.floor(w/6),"s",14,"middle");
  b+=box(170,6,300,56,"เจ็บหน้าอกสงสัย ACS","12-lead ECG ภายใน 10 นาที + troponin","all",CV.acc);
  b+=Ln(250,62,130,86,CV.mut)+Ln(390,62,510,86,CV.mut);
- b+=box(10,86,240,56,"ST elevation / LBBB ใหม่","= STEMI","stemi",CV.bad)+box(390,86,240,56,"ไม่มี ST elevation","troponin ซ้ำ (hs) → NSTEMI vs UA","nste","#D9692F");
+ b+=box(10,86,240,56,"ST elevation / STEMI equivalent","= STEMI → reperfusion","stemi",CV.bad)+box(390,86,240,56,"ไม่มี ST elevation","troponin ซ้ำ (hs) → NSTEMI vs UA","nste","#D9692F");
  b+=box(10,156,240,92,"Reperfusion ด่วน","PCI ภายใน 90 นาที (ดีที่สุด) · ถ้า PCI เกิน 120 นาที → fibrinolysis ภายใน 12 ชม.","stemi",CV.bad);
  b+=box(390,156,240,92,"Risk stratify","TIMI / GRACE · เสี่ยงสูงหรืออาการไม่หยุด → angiography เร็ว","nste","#D9692F");
  b+=Ln(130,142,130,156,CV.mut)+Ln(510,142,510,156,CV.mut);
@@ -311,7 +311,8 @@ notes:()=>`<ul><li>UA/NSTEMI: anticoagulant (heparin) + antiplatelet (aspirin + 
 <li>เป้าหมายเวลา: door-to-balloon &lt; 90 นาที · ถ้า PCI ไม่ได้ภายใน 120 นาทีและไม่มีข้อห้าม ให้ fibrinolysis (ประโยชน์ถึง 12 ชม. หลังเริ่มเจ็บ) ${S.fa}</li>
 <li>ข้อห้าม fibrinolysis: เคยมีเลือดออกในสมอง, ischemic stroke ไม่นาน, เลือดออกภายใน, ความดันสูงมาก, บาดเจ็บ/ผ่าตัดใหญ่ไม่นาน ${S.fa}</li>
 <li>Risk score (TIMI, GRACE) ช่วยตัดสินใจทำ angiography เร็วใน NSTE-ACS ${S.fa}</li>
-<li>RV infarct: ห้าม nitrate/diuretic ให้ IV fluid รักษา preload ${S.fa}</li></ul>`});
+<li>RV infarct: ห้าม nitrate/diuretic ให้ IV fluid รักษา preload ${S.fa}</li>
+<li>STEMI equivalent ที่ต้อง reperfusion เหมือนกัน: posterior MI (ST ↓ ใน V1–V3), LBBB/paced rhythm ที่เข้าเกณฑ์ Sgarbossa หรือมี shock/ventricular arrhythmia · ตำราเก่าถือ LBBB ใหม่ทุกรายเป็น STEMI แต่แนวทางปัจจุบันไม่ถือเช่นนั้นแล้ว ${S.h}</li></ul>`});
 
 SEC.push({id:"ihd-path",k:"b",t:"Pathogenesis of acute coronary syndromes",mm:"ACS pathogenesis",leg:[],draw:ihdpD,
 notes:()=>`<ul><li>ACS ส่วนใหญ่เริ่มจาก plaque ที่ตีบไม่มาก (&lt; 50–75%) แต่เปราะ แล้ว<b>เปลี่ยนสภาพเฉียบพลัน</b> (แตก กร่อน เลือดออกใน plaque) ${S.r}</li>

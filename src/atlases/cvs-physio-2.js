@@ -309,7 +309,7 @@ notes:()=>`<ul><li>ค่าปกติ (mmHg): RA < 5 · RV 25/< 5 · PA 25/8�
 <li><b>PCWP</b> ใช้ประมาณ <b>LA pressure</b> ได้ดี ยกเว้น <b>mitral stenosis</b> ที่ PCWP > LV end-diastolic pressure ${S.fa}</li>
 <li>วัดด้วย pulmonary artery (Swan-Ganz) catheter: ใส่ผ่าน RA → RV → PA แล้วจุด balloon ให้อุดแขนงเล็ก (wedge) ${S.fa}</li>
 <li>ความดันในปอดต่ำมากเทียบ systemic: mean PA ~16 · pulmonary capillary ~7 mmHg ${S.g}</li>
-<li>ที่ปลายสาย (bedside) JVP เป็น cm H₂O: 1.36 cm H₂O = 1 mmHg ${S.h}</li></ul>`});
+<li>ข้างเตียงวัด JVP เป็น cm H₂O: 1.36 cm H₂O = 1 mmHg ${S.h}</li></ul>`});
 SEC.push({id:"longbp",k:"b",t:"Long-term BP control: pressure natriuresis",mm:"Renal–body fluid control",leg:[],tools:[["kid",[["n","Normal kidney"],["ckd","Impaired kidney"]]]],ctrl:()=>SL("salt","Salt intake",1,6,.5,"× normal"),wire:()=>WIRE(),draw:longD,
 notes:()=>`<ul><li>ความดันระยะยาวถูกกำหนดโดยไต: ความดันสูงขึ้น → ขับ Na⁺ และน้ำมากขึ้น (<b>pressure natriuresis/diuresis</b>) จน output = intake ที่ <b>equilibrium point</b> ${S.g}</li>
 <li>Baroreflex ตอบสนองเร็วแต่ reset ได้ · กลไกไต–ของเหลวชดเชยได้ไม่จำกัด (infinite gain) ในระยะยาว ${S.g}</li>
