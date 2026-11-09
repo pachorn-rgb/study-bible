@@ -46,8 +46,9 @@ function stealD(){const vd=ST.st==="vd";let b="";
 /* ---------- 3. SCD & chronic IHD ---------- */
 function scdD(){let b="";
  b+=T(10,22,"Sudden cardiac death: สาเหตุ",{a:"start",c:"bh"});
- const C=[["Coronary artery disease","สูงสุด ~70%",70,CV.ox],["Cardiomyopathy","hypertrophic, dilated",14,CV.violet],["Myocarditis","คนอายุ < 40",6,CV.gold],["Coronary anomalies","",4,CV.teal],["Channelopathies","long QT, Brugada",4,"#0B83B5"]];
- C.forEach(([n,s,v,c],i)=>{const y=40+i*42;b+=T(10,y+14,n,{a:"start",c:"s"})+`<rect x="150" y="${y}" width="160" height="22" rx="8" style="fill:var(--sb-surface2)"/><rect x="150" y="${y}" width="${Math.max(10,v/70*160)}" height="22" rx="8" style="fill:${c}"/>`+T(150,y+36,s,{a:"start",c:"s m"})});
+ b+=T(10,52,"Coronary artery disease",{a:"start",c:"bh"})+`<rect x="10" y="62" width="300" height="24" rx="8" style="fill:var(--sb-surface2)"/><rect x="10" y="62" width="210" height="24" rx="8" style="fill:${CV.ox}"/>`+T(115,78,"สูงถึง ~70%",{c:"s w"});
+ const C=[["Cardiomyopathy","hypertrophic · dilated",CV.violet],["Myocarditis","สำคัญในคนอายุ < 40",CV.gold],["Coronary anomalies","",CV.teal],["Channelopathies","long QT · Brugada","#0B83B5"]];
+ C.forEach(([n,s,c],i)=>{const y=106+i*36;b+=`<circle cx="18" cy="${y+6}" r="5" style="fill:${c}"/>`+T(30,y+10,n,{a:"start",c:"s"})+T(300,y+10,s,{a:"end",c:"s m"})});
  b+=`<rect x="10" y="256" width="300" height="56" rx="14" style="fill:color-mix(in srgb,var(--sb-bad) 10%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-bad) 45%,transparent)"/>`+T(24,278,"กลไกสุดท้าย: VT → VF",{a:"start",c:"bh"})+T(24,296,"ป้องกันด้วย ICD ในผู้เสี่ยงสูง",{a:"start",c:"s"});
  b+=strip(330,6,304,76,[[0,0,1]],2.2,{fib:t=>.42*Math.sin(2*Math.PI*5.6*t+Math.sin(t*9))*(.6+.4*Math.sin(t*3.1))+.12*Math.sin(2*Math.PI*9.3*t),n:500,base:.5,lab:"VF"});
  b+=cardBox(330,96,304,104,"Myocardial hibernation",["LV บีบตัวลดลงจาก ischemia เรื้อรัง (เลือดไม่พอนาน)","กลับดีได้หลัง revascularization"],CV.dx);
@@ -153,7 +154,7 @@ const RH={
  psvt:{n:"Paroxysmal SVT",w:()=>runBeats([...Array(11)].map((_,i)=>.2+i*.36),{p:false,qt:.24,tw:.045}),
   r:["Regular narrow-complex ~180/min · P มักมองไม่เห็น","re-entry ใน AV node บ่อยสุด","ใจสั่นทันที เวียนหัว เหงื่อออก","หยุดด้วย vagal maneuver / adenosine · หายขาดด้วย ablation"]},
  wpw:{n:"Wolff-Parkinson-White",w:()=>runBeats([.4,1.3,2.2,3.1,4],{pr:.1,delta:true}),
-  r:["Bundle of Kent ข้าม AV node","PR สั้น + delta wave + QRS กว้าง","เสี่ยง re-entrant SVT (orthodromic/antidromic)","รักษา: procainamide, ibutilide","ห้าม AV nodal blocker ถ้ามี AF ร่วม"]},
+  r:["Bundle of Kent ข้าม AV node","PR สั้น + delta wave + QRS กว้าง","เสี่ยง re-entrant SVT (orthodromic/antidromic)","รักษา: procainamide, ibutilide","หลีกเลี่ยง AV nodal blocker (adenosine, CCB, β-blocker)"]},
  vt:{n:"Ventricular tachycardia",w:()=>runBeats([...Array(11)].map((_,i)=>.2+i*.38),{p:false,wide:true,a:1.1,qt:.26}),
   r:["Wide QRS สม่ำเสมอ > 100/min","structural heart disease: แผลเป็น MI, cardiomyopathy","เสี่ยง sudden cardiac death"]},
  tdp:{n:"Torsades de pointes",w:()=>[],fib:t=>(.18+.85*Math.abs(Math.sin(Math.PI*t/1.9)))*Math.sin(2*Math.PI*4.2*t),

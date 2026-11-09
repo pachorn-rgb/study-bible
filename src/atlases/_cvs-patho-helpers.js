@@ -3,7 +3,7 @@
 const CV={ox:"var(--a-art)",dx:"var(--a-vein)",mx:"color-mix(in srgb,var(--a-art) 52%,var(--a-vein))",mus:"var(--a-musc)",mus2:"var(--a-musc2)",edge:"var(--a-edge)",
  ink:"var(--sb-ink)",ink2:"var(--sb-ink2)",mut:"var(--sb-muted)",line:"var(--sb-line)",sf:"var(--sb-surface)",sf2:"var(--sb-surface2)",acc:"var(--sb-accent)",bad:"var(--sb-bad)",good:"var(--sb-good)",
  fl:"#E9C46A",gold:"#D99A2B",teal:"#0E8A7E",violet:"#7A5BC7"};
-const HE={bg:"#FBEFF3",cy:"#F2B9CB",cyX:"#E47FA3",mem:"#C45C82",nu:"#5E4FA3",nuD:"#36296E",col:"#F7DCE6",colB:"#9FA6D8",rbc:"#D9455F",ink:"#3B2D4A"};
+const HE={bg:"#FBEFF3",cy:"#F2B9CB",cyX:"#E47FA3",mem:"#C45C82",nu:"#5E4FA3",nuL:"#8C7FC4",nuD:"#36296E",col:"#F7DCE6",colB:"#9FA6D8",rbc:"#D9455F",ink:"#3B2D4A"};
 const nLines=(s,n)=>{let L=1,cur="";String(s).split(" ").forEach(t=>{if((cur+" "+t).trim().length>n&&cur){L++;cur=t}else cur=(cur+" "+t).trim()});return L};
 const sty=(f,s="none",w=1.2,x="")=>`style="fill:${f};stroke:${s};stroke-width:${w}${x?";"+x:""}"`;
 const P=(d,f,s=CV.edge,w=1.2,x="")=>`<path d="${d}" ${sty(f,s,w,x)}/>`;
@@ -66,7 +66,7 @@ function heart(o={}){const c=Object.assign({ra:CV.dx,rv:CV.dx,pa:CV.dx,la:CV.ox,
  if(o.sept)b+=`<path d="M206,214 C238,224 246,250 228,282 C218,272 210,250 206,214Z" style="fill:url(#gMyo);stroke:var(--a-edge);stroke-width:1"/>`;
  /* valves */
  const leaf=(x1,y1,x2,y2)=>`<path d="M${x1},${y1} L${x2},${y2}" style="stroke:#FFF7EE;stroke-width:3.2;stroke-linecap:round"/>`;
- if(o.tvatresia)b+=`<path d="M100,196 L170,196" style="stroke:url(#gMyo);stroke-width:9"/>`+`<path d="M100,196 L170,196" style="stroke:var(--a-edge);stroke-width:1;stroke-dasharray:3 3"/>`;
+ if(o.tvatresia)b+=`<path d="M100,196 L170,196" style="stroke:var(--a-musc);stroke-width:9"/>`+`<path d="M100,196 L170,196" style="stroke:var(--a-edge);stroke-width:1;stroke-dasharray:3 3"/>`;
  else if(o.ebstein)b+=leaf(108,232,130,252)+leaf(170,214,150,250);
  else b+=leaf(108,194,128,212)+leaf(172,194,152,212);
  b+=leaf(226,182,244,202)+leaf(298,180,282,200);
@@ -80,7 +80,7 @@ function heart(o={}){const c=Object.assign({ra:CV.dx,rv:CV.dx,pa:CV.dx,la:CV.ox,
  else{ if(!o.noAo)b+=tube("M236,206 C234,150 222,104 230,76 C244,34 302,32 318,90",c.ao,24);
   if(!o.noPA)b+=tube("M176,206 C170,152 180,120 198,102",c.pa,22)+tube("M198,102 C184,94 162,94 146,100",c.pa,15)+tube("M198,102 C222,96 248,104 270,112",c.pa,15);}
  if(o.ps)b+=`<path d="M160,178 C168,184 168,192 160,198 Z M192,176 C182,184 182,192 192,198 Z" style="fill:var(--a-musc);stroke:var(--a-edge);stroke-width:1"/>`;
- if(o.coarc)b+=`<path d="M300,58 L320,72" style="stroke:url(#gMyo);stroke-width:8"/>`;
+ if(o.coarc)b+=`<path d="M300,58 L320,72" style="stroke:var(--a-musc);stroke-width:8"/>`;
  if(o.pda)b+=tube("M262,108 C268,92 278,76 290,60",o.pdac||CV.mx,9);
  if(o.override)b+=`<ellipse cx="206" cy="210" rx="16" ry="9" ${sty(CV.mx,CV.edge,1)}/>`;
  if(o.tapvr)b+=tube("M312,150 C346,120 330,22 220,18 C160,16 130,30 118,52",CV.ox,11);

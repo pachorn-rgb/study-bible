@@ -235,7 +235,7 @@ function anD(){const a=ST.an==="aaa";let b="",b0="";
   b+=TD(645,208,"cystic medial degeneration",{w:700})+TD(645,222,"elastic fibers ขาด + pool ของ proteoglycan",{s:10});}
  else{const r=rng(17);for(let k=0;k<46;k++)b+=dot(545+r()*200,64+r()*110,3.2,HE.nuD);
   b+=`<rect x="545" y="44" width="200" height="16" style="fill:#F3DCA0;opacity:.7"/>`+TD(645,208,"transmural inflammation",{w:700})+TD(645,222,"lymphocyte/macrophage + MMP ย่อย ECM",{s:10});}
- b+=`</g>`;b+=infoPanel(400,206,236,a?"AAA":"TAA",null,a?["บุหรี่ = ปัจจัยเสี่ยงแรงสุด","ชาย สูงอายุ ประวัติครอบครัว","pulsatile mass · แตก: ปวด + ช็อก","ตำแหน่งใต้ renal artery"]:["HTN · bicuspid AV · Marfan","Loeys–Dietz, Ehlers–Danlos","3° syphilis: tree-bark aorta","aortic root dilation → AR"],a?CV.ox:CV.violet);
+ b+=`</g>`;b+=infoPanel(400,240,236,a?"AAA":"TAA",null,a?["บุหรี่ = ปัจจัยเสี่ยงแรงสุด","ชาย สูงอายุ ประวัติครอบครัว","pulsatile mass · แตก: ปวด + ช็อก","ตำแหน่งใต้ renal artery"]:["HTN · bicuspid AV · Marfan","Loeys–Dietz, Ehlers–Danlos","3° syphilis: tree-bark aorta","aortic root dilation → AR"],a?CV.ox:CV.violet);
  return psvg(b,"0 0 640 506")}
 
 /* ---------- 13. aortic dissection ---------- */
@@ -269,7 +269,7 @@ function ssD(){const ex=ST.ss==="ex";let b="";
  b+=`<path d="M414,214 C420,222 424,226 430,232 M420,244 C424,236 428,232 436,226" style="stroke:var(--a-musc);stroke-width:7;fill:none;stroke-linecap:round"/>`+tag(426,266,"stenosis","var(--sb-bad)",{w:72});
  b+=Ar(166,136,190,108,"#fff",2.4);
  b+=ex?Ar(400,96,488,160,"var(--sb-bad)",4,{cx:470,cy:102}):Ar(488,160,400,96,"#fff",2.4,{cx:470,cy:102});
- b+=T(300,30,"basilar",{c:"s m"})+T(222,24,"R carotid",{c:"s m"})+T(336,24,"L carotid",{a:"start",c:"s m"})+T(40,206,"R subclavian",{a:"start",c:"s m"})+T(140,140,"R vertebral",{a:"end",c:"s m"})+T(512,150,"L vertebral",{a:"start",c:"s m"})+T(620,200,"L subclavian → แขน",{a:"end",c:"s m"});
+ b+=T(300,30,"basilar",{c:"s m"})+T(222,24,"R carotid",{c:"s m"})+T(336,24,"L carotid",{a:"start",c:"s m"})+T(40,206,"R subclavian",{a:"start",c:"s m"})+T(140,140,"R vertebral",{a:"end",c:"s m"})+T(512,150,"L vertebral",{a:"start",c:"s m"})+T(632,160,"L subclavian → แขน",{a:"end",c:"s m"});
  if(ex)b+=T(486,94,"ไหลกลับทิศ",{a:"start",c:"bh"});
  b+=`<rect x="10" y="240" width="170" height="74" rx="14" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(24,262,"SBP แขนขวา vs ซ้าย",{a:"start",c:"bh"})+`<text x="24" y="296" style="font:800 20px var(--sb-mono);fill:var(--sb-ink)">140 / 115</text>`;
  b+=`<rect x="462" y="240" width="170" height="74" rx="14" style="fill:color-mix(in srgb,${ex?"var(--sb-bad)":"var(--sb-accent)"} 10%,var(--sb-surface));stroke:color-mix(in srgb,${ex?"var(--sb-bad)":"var(--sb-accent)"} 45%,transparent)"/>`+T(476,262,ex?"ใช้แขนซ้าย":"พัก",{a:"start",c:"bh"})+wrapT(476,280,ex?"แขนขโมยเลือดจาก vertebrobasilar → เวียนหัว vertigo":"แขนซ้ายได้เลือดพอ ไม่มีอาการ",26,"s",14);
@@ -310,6 +310,7 @@ notes:()=>`<div class="pearl">เลื่อน slider: shunt L→R นาน�
 <ul><li>เกิดได้กับ VSD, ASD, PDA ที่ไม่ได้แก้ · เร็วหรือช้าขึ้นกับขนาด shunt ${S.fa}</li>
 <li>ผนัง pulmonary arteriole หนา: medial hypertrophy → intimal proliferation → plexiform lesion · เมื่อถึงขั้นนี้ถือว่า <b>กลับคืนไม่ได้</b> จึงต้องแก้ shunt ก่อน ${S.r}</li>
 <li>อาการ: late cyanosis, <b>clubbing</b>, <b>polycythemia</b> (ไตตอบสนองต่อ hypoxemia) · RVH ${S.fa}</li>
+<li>ตัวเลขความดันและ PVR ในภาพเป็นค่าตัวอย่างเพื่อให้เห็นแนวโน้ม ${S.x}</li>
 <li>PDA ที่กลับทิศ → เขียวเฉพาะ<b>ขา</b> เพราะเลือดดำเข้าที่ aorta หลังแขนงไปแขน (differential cyanosis) ${S.fa}</li></ul>`});
 
 SEC.push({id:"coarct",k:"a",t:"Coarctation of the aorta & PPHN",mm:"Coarctation",leg:[],tools:[["co",[["post","Adult · postductal"],["pre","Infant · preductal"]]]],draw:coD,

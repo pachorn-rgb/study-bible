@@ -1,0 +1,44 @@
+{
+ "id": "cvs-patho-3",
+ "kind": "patho",
+ "sys": "Cardiovascular",
+ "title_tag": "Myocardium, Valves & Vasculitis",
+ "eyebrow": "Cardiovascular · Pathology",
+ "h1": "Myocardium, Valves, Pericardium & Vasculitis",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid (vasculitis จากบท Musculoskeletal) เนื้อหาจาก Robbins (บท 11–12) · แตะเลือกโรคเพื่อดูหัวใจ เสียง murmur และ PV loop เปลี่ยนไป",
+ "sources": [
+  [
+   "robbins",
+   "R",
+   "Robbins & Cotran 10e · Ch 11–12"
+  ],
+  [
+   "fa",
+   "FA",
+   "First Aid Step 1 2025"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "cvs",
+  "folder": "cvs",
+  "subs": [
+   "Pathology"
+  ],
+  "title": "Myocardium, Valves, Pericardium & Vasculitis",
+  "src": "Robbins Ch 11–12 · First Aid CV Pathology",
+  "desc": "cardiomyopathies, heart failure (PV loop), shock, tamponade, syncope, infective endocarditis, rheumatic fever, valve lesions และ murmur, pericarditis, myocarditis, HHT, cardiac tumors, vasculitis ขนาดใหญ่ กลาง เล็ก · ส่วนเสริม vascular tumors และโรคหลอดเลือดดำ",
+  "ch": "Robbins Ch 11–12",
+  "sort": 14,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": [
+   "pathology"
+  ]
+ },
+ "draft": false
+}
