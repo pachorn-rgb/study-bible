@@ -694,6 +694,88 @@
         "ch": "Ch 3",
         "sort": 3
        }
+      },
+      {
+       "id": "pharm-tox",
+       "title": "Drug Reactions & Miscellaneous",
+       "subs": [
+        "Toxicities & Miscellaneous"
+       ],
+       "src": "Katzung 16e Ch 4, 66",
+       "href": "pharm/pharm-tox.html",
+       "thumb": "thumbs/pharm-tox.jpg",
+       "desc": "อาการไม่พึงประสงค์ของยาแยกตามระบบ, CYP450 inducers/inhibitors, sulfa drugs, คำลงท้ายชื่อยา และส่วนเสริม teratogens กับ pharmacogenomics (HLA, TPMT, G6PD)",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Cardiovascular drug reactions",
+         "cardio"
+        ],
+        [
+         "Endocrine & reproductive drug reactions",
+         "endorx"
+        ],
+        [
+         "GI & hepatic drug reactions",
+         "girx"
+        ],
+        [
+         "Hematologic drug reactions",
+         "hemerx"
+        ],
+        [
+         "Musculoskeletal & skin drug reactions",
+         "mskrx"
+        ],
+        [
+         "Neurologic drug reactions",
+         "neurorx"
+        ],
+        [
+         "Renal, GU & respiratory drug reactions",
+         "renalrx"
+        ],
+        [
+         "Multiorgan drug reactions",
+         "multirx"
+        ],
+        [
+         "Cytochrome P-450 interactions",
+         "cyp"
+        ],
+        [
+         "Sulfa drugs",
+         "sulfa"
+        ],
+        [
+         "Drug name suffixes",
+         "names"
+        ],
+        [
+         "Teratogenic drugs",
+         "terato"
+        ],
+        [
+         "Pharmacogenomics: HLA & enzyme variants",
+         "pgx"
+        ],
+        [
+         "Toxicology & specific antidotes (เติมเอง)",
+         "toxpending"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 66",
+        "sort": 66
+       }
       }
      ],
      "checklist": [
@@ -794,6 +876,123 @@
        "link": {
         "m": "pharm-gp",
         "h": "pdei"
+       }
+      },
+      {
+       "id": "pharm-tox:cardio",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Cardiovascular drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "cardio"
+       }
+      },
+      {
+       "id": "pharm-tox:endorx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Endocrine & reproductive drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "endorx"
+       }
+      },
+      {
+       "id": "pharm-tox:girx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "GI & hepatic drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "girx"
+       }
+      },
+      {
+       "id": "pharm-tox:hemerx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Hematologic drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "hemerx"
+       }
+      },
+      {
+       "id": "pharm-tox:mskrx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Musculoskeletal & skin drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "mskrx"
+       }
+      },
+      {
+       "id": "pharm-tox:neurorx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Neurologic drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "neurorx"
+       }
+      },
+      {
+       "id": "pharm-tox:renalrx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Renal, GU & respiratory drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "renalrx"
+       }
+      },
+      {
+       "id": "pharm-tox:multirx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Multiorgan drug reactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "multirx"
+       }
+      },
+      {
+       "id": "pharm-tox:cyp",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Cytochrome P-450 interactions",
+       "link": {
+        "m": "pharm-tox",
+        "h": "cyp"
+       }
+      },
+      {
+       "id": "pharm-tox:sulfa",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Sulfa drugs",
+       "link": {
+        "m": "pharm-tox",
+        "h": "sulfa"
+       }
+      },
+      {
+       "id": "pharm-tox:names",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Drug name suffixes",
+       "link": {
+        "m": "pharm-tox",
+        "h": "names"
+       }
+      },
+      {
+       "id": "pharm-tox:terato",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Teratogenic drugs",
+       "link": {
+        "m": "pharm-tox",
+        "h": "terato"
+       }
+      },
+      {
+       "id": "pharm-tox:pgx",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Pharmacogenomics: HLA & enzyme variants",
+       "link": {
+        "m": "pharm-tox",
+        "h": "pgx"
        }
       }
      ],

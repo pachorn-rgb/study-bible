@@ -1,0 +1,571 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Drug Reactions & Miscellaneous</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<style>
+/* Layout: sb-hero, vertical grouped contents (sidebar ≥1000px, drawer on phones), then a stage of [diagram card | notes card], lecture figures strip below.
+   Content colours (anatomy): artery, vein, lymph, nerve, kidney tissue, urinary tract, fat, fascia, muscle, bone, gland. */
+:root{
+  --a-art:#D23C3C; --a-vein:#2F64C8; --a-lymph:#2E9A50; --a-nerve:#D9A21B;
+  --a-cortex:#D98B74; --a-medulla:#B4564A; --a-uro:#E2B44C; --a-blad:#E9A08F; --a-fat:#F3D77A; --a-fat2:#F7E6A8;
+  --a-fascia:#4B5563; --a-perit:#4F86C6; --a-musc:#CF7468; --a-musc2:#E3A196; --a-bone:#ECE3CE; --a-gland:#E39A2D; --a-glandm:#9C5B2E;
+  --a-edge:rgba(20,16,14,.62); --a-cav:#FBF7F0; --a-skin:#F2DCCB; --a-prost:#C7A2C9;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--a-edge:rgba(0,0,0,.75);--a-cav:#1A1E26;--a-bone:#D9CFB8;--a-skin:#5A4A42;--a-fascia:#C4C9D2;--a-perit:#7FB0EA;--a-art:#E25555;--a-vein:#5B8BE8}
+*{box-sizing:border-box}
+body{margin:0;line-height:1.55}
+.wrap{max-width:1240px;margin:0 auto;padding:1rem max(16px,env(safe-area-inset-right,0px)) 5rem max(16px,env(safe-area-inset-left,0px))}
+.shell{display:grid;grid-template-columns:16rem minmax(0,1fr);gap:1.25rem;align-items:start}
+.side{position:sticky;top:.75rem;max-height:calc(100vh - 1.5rem);overflow:auto;padding:.5rem;scrollbar-width:thin}
+.mbar{display:none}
+@media (max-width:1000px){.shell{grid-template-columns:minmax(0,1fr)}.side{display:none}
+ .mbar{display:flex;position:sticky;top:0;z-index:20;gap:.5rem;align-items:center;margin:0 -16px;padding:.55rem 16px;background:color-mix(in srgb,var(--sb-bg) 94%,transparent);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);border-bottom:1px solid var(--sb-line)}}
+.mbar .open{flex:1;min-width:0;display:flex;align-items:center;gap:.6rem;padding:.55rem .8rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:inherit;cursor:pointer;text-align:left}
+.mbar .open svg{flex:none;width:1.1rem;height:1.1rem;color:var(--sb-accent)}
+.mbar .open span{min-width:0;display:flex;flex-direction:column}
+.mbar .open small{font:700 .625rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.mbar .open b{font:600 .9375rem/1.25 var(--sb-font);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mbar .ar{flex:none;width:2.6rem;height:2.6rem;border-radius:12px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);font:700 1rem var(--sb-font);cursor:pointer}
+.mbar .ar:disabled{opacity:.35}
+.drawer{position:fixed;inset:0;z-index:90;display:flex}
+.drawer[hidden]{display:none}
+.drawer .pane{width:min(86vw,22rem);height:100%;overflow:auto;background:var(--sb-bg);padding:calc(env(safe-area-inset-top,0px) + .75rem) .75rem calc(env(safe-area-inset-bottom,0px) + 1rem);box-shadow:4px 0 30px rgba(0,0,0,.2);animation:sl .18s ease-out}
+@keyframes sl{from{transform:translateX(-30px);opacity:.6}to{transform:none;opacity:1}}
+.drawer .dim{flex:1;background:rgba(0,0,0,.35)}
+.drawer .dh2{display:flex;justify-content:space-between;align-items:center;padding:.25rem .4rem .6rem}
+.drawer .dh2 b{font:750 1.125rem var(--sb-font)}
+.drawer .dh2 button{border:0;background:var(--sb-surface2);color:var(--sb-ink);border-radius:50%;width:2.25rem;height:2.25rem;font-size:1rem;cursor:pointer}
+.toc .prog{display:flex;align-items:center;gap:.5rem;font:500 .75rem var(--sb-font);color:var(--sb-muted);padding:0 .4rem .6rem}
+.toc .prog i{flex:1;height:.3rem;border-radius:1rem;background:var(--sb-surface2);overflow:hidden}
+.toc .prog i b{display:block;height:100%;background:var(--sb-accent)}
+.toc .g{margin-bottom:.25rem}
+.toc .gh{width:100%;display:flex;align-items:center;gap:.5rem;padding:.55rem .5rem;border:0;background:none;color:var(--sb-ink);font:700 .875rem var(--sb-font);cursor:pointer;border-radius:10px;text-align:left}
+.toc .gh:hover{background:var(--sb-surface2)}
+.toc .gh .n{margin-left:auto;font:600 .75rem var(--sb-mono);color:var(--sb-muted)}
+.toc .gh .cv{color:var(--sb-muted);transition:transform .15s;font-size:.75rem}
+.toc .g[data-open="true"] .gh .cv{transform:rotate(90deg)}
+.toc ul{list-style:none;margin:0 0 .35rem;padding:0 0 0 .55rem;border-left:2px solid var(--sb-line);margin-left:.95rem}
+.toc .g[data-open="false"] ul{display:none}
+.toc li a{display:flex;align-items:center;gap:.45rem;padding:.42rem .55rem;border-radius:9px;color:var(--sb-ink2);text-decoration:none;font:500 .875rem/1.3 var(--sb-font)}
+.toc li a:hover{background:var(--sb-surface2)}
+.toc li a[aria-current="true"]{background:var(--sb-ink);color:var(--sb-bg);font-weight:650}
+.toc li a .ck{flex:none;width:.95rem;height:.95rem;border-radius:50%;border:1.5px solid var(--sb-line);display:grid;place-items:center;font-size:.55rem;color:transparent}
+.toc li a .ck.on{background:var(--sb-good);border-color:var(--sb-good);color:#fff}
+.toc li a[aria-current="true"] .ck{border-color:var(--sb-bg)}
+.toc ol{list-style:none;margin:.1rem 0 .3rem 1.4rem;padding:0;display:grid;gap:.05rem}
+.toc ol a{padding:.28rem .5rem;font-size:.8125rem;color:var(--sb-muted)}
+.toc ol a:hover{color:var(--sb-ink)}
+.notes h3{scroll-margin-top:4.5rem}
+.stage{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1rem;margin-top:1rem;align-items:start}
+@media (max-width:1180px){.stage{grid-template-columns:minmax(0,1fr)}}
+.card{padding:1rem}
+.dh{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin-bottom:.6rem}
+.dh h2{margin:0;font:750 1.25rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.dh .k{font:700 .6875rem/1 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-accent);margin-bottom:.25rem}
+.tools{display:flex;gap:.35rem;flex-wrap:wrap}
+.dia{border-radius:12px;background:var(--sb-plate);background-image:linear-gradient(var(--sb-grid) 1px,transparent 1px),linear-gradient(90deg,var(--sb-grid) 1px,transparent 1px);background-size:32px 32px;overflow:hidden}
+.dia svg{display:block;width:100%;height:auto}
+.notes h3{margin:.25rem 0 .5rem;font:700 1rem/1.3 var(--sb-font)}
+.notes ul{margin:0 0 .9rem;padding-left:1.1rem;display:grid;gap:.4rem}
+.notes li{font-size:.9375rem;color:var(--sb-ink2)}
+.notes li b{color:var(--sb-ink);font-weight:650}
+.notes .pearl{background:var(--sb-accent-soft);border-radius:12px;padding:.7rem .85rem;font-size:.875rem;color:var(--sb-ink);margin-bottom:.8rem}
+.notes .pearl b{color:var(--sb-accent)}
+.notes table{width:100%;border-collapse:collapse;font-size:.8125rem;margin:.25rem 0 .9rem}
+.notes th{text-align:left;padding:.4rem .35rem}
+.notes td{padding:.45rem .35rem;vertical-align:top;color:var(--sb-ink2)}
+.notes td:first-child{color:var(--sb-ink);font-weight:600;white-space:nowrap}
+.figs{margin-top:1rem}
+.steps{display:flex;gap:.6rem;margin-top:1rem}
+.steps button{flex:1;display:flex;flex-direction:column;align-items:flex-start;gap:.15rem;padding:.75rem .9rem;border-radius:14px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);cursor:pointer;text-align:left;font:inherit}
+.steps button.nx{align-items:flex-end;text-align:right}
+.steps small{font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+.steps b{font:600 .9375rem var(--sb-font)}
+.steps .pg{flex:none;align-self:center;font:600 .8125rem var(--sb-mono);color:var(--sb-muted)}
+.figs h3{margin:0 0 .6rem;font:700 1rem var(--sb-font);display:flex;gap:.5rem;align-items:baseline}
+.figs h3 span{font:500 .8125rem var(--sb-font);color:var(--sb-muted)}
+.strip{display:flex;gap:.6rem;overflow-x:auto;padding-bottom:.35rem}
+.fig{flex:none;width:13rem;border:1px solid var(--sb-line);border-radius:12px;overflow:hidden;background:#fff;cursor:zoom-in;padding:0;text-align:left}
+.fig img{display:block;width:100%;height:9rem;object-fit:contain;background:#fff}
+.fig span{display:block;padding:.45rem .6rem;font:500 .75rem/1.3 var(--sb-font);color:#3D4450;background:#F5F6F8;border-top:1px solid #E3E6EB}
+.legend{display:flex;flex-wrap:wrap;gap:.35rem .9rem;margin-top:.7rem;font-size:.75rem;color:var(--sb-muted)}
+.legend i{display:inline-block;width:.75rem;height:.75rem;border-radius:3px;margin-right:.3rem;vertical-align:-.1rem;border:1px solid var(--a-edge)}
+.lb{position:fixed;inset:0;z-index:100;background:rgba(8,10,14,.9);display:flex;flex-direction:column}
+.lb[hidden]{display:none}
+.lb .bar{display:flex;gap:.5rem;align-items:center;padding:calc(env(safe-area-inset-top,0px) + .6rem) 1rem .6rem;color:#fff}
+.lb .bar b{flex:1;font:600 .9375rem var(--sb-font)}
+.lb button{border:0;border-radius:10px;background:rgba(255,255,255,.14);color:#fff;font:700 1rem var(--sb-font);min-width:2.5rem;height:2.5rem;cursor:pointer}
+.lb .sc{flex:1;overflow:auto;display:block;touch-action:pan-x pan-y pinch-zoom}
+.lb .sc>*{display:block;margin:1rem auto;max-width:none}
+.lb{background:rgba(8,10,14,.96)}
+.lb img,.lb .zsvg{width:min(96vw,1000px);height:auto;background:#fff;border-radius:6px;transition:width .15s}
+.lb .zsvg{background:var(--sb-plate)}.lb .zsvg svg{display:block;width:100%;height:auto}
+.dia{cursor:zoom-in}
+/* svg */
+.t{font:600 12px var(--sb-font);fill:var(--sb-ink);paint-order:stroke;stroke:var(--sb-plate);stroke-width:3.2px;stroke-linejoin:round}
+.t.s{font-size:10.5px;font-weight:500}.t.m{fill:var(--sb-muted);font-weight:500}.t.b{font-size:14px;font-weight:750}.t.h{font-size:13px;font-weight:700;fill:var(--sb-accent)}
+.t.w{fill:#fff;stroke:rgba(0,0,0,.35);stroke-width:2.4px}
+.ld{fill:none;stroke:var(--sb-ink2);stroke-width:.9;opacity:.75}.ldd{fill:var(--sb-ink2)}
+.f{stroke:var(--a-edge);stroke-width:1.3;stroke-linejoin:round}
+.v,.vo{fill:none;stroke-linecap:round;stroke-linejoin:round}.vo{stroke:var(--a-edge)}
+.guide{stroke:var(--sb-muted);stroke-width:.8;stroke-dasharray:3 4;opacity:.45}
+.f.art{fill:var(--a-art)}.v.art{stroke:var(--a-art)}.f.vein{fill:var(--a-vein)}.v.vein{stroke:var(--a-vein)}.v.lymph{stroke:var(--a-lymph)}.f.lymph{fill:var(--a-lymph)}
+.v.nerve{stroke:var(--a-nerve)}.f.nerve{fill:var(--a-nerve)}.f.cortex{fill:var(--a-cortex)}.f.medulla{fill:var(--a-medulla)}.f.uro{fill:var(--a-uro)}.v.uro{stroke:var(--a-uro)}
+.f.blad{fill:var(--a-blad)}.f.fat{fill:var(--a-fat)}.f.fat2{fill:var(--a-fat2)}.f.musc{fill:var(--a-musc)}.f.musc2{fill:var(--a-musc2)}.v.musc{stroke:var(--a-musc)}
+.f.bone{fill:var(--a-bone)}.v.bone{stroke:var(--a-bone)}.f.gland{fill:var(--a-gland)}.f.glandm{fill:var(--a-glandm)}.f.cav{fill:var(--a-cav)}.f.skin{fill:var(--a-skin)}.f.prost{fill:var(--a-prost)}
+.fascia{fill:none;stroke:var(--a-fascia);stroke-width:2.2;stroke-dasharray:6 3}.perit{fill:none;stroke:var(--a-perit);stroke-width:2.6}
+.hatch{fill:url(#hatch)}
+.stone{fill:#8A8F99;stroke:var(--a-edge);stroke-width:1}
+.ring{fill:none;stroke:var(--sb-bad);stroke-width:2.2;stroke-dasharray:3 2}
+.num{fill:var(--sb-bad)}.numt{font:800 11px var(--sb-font);fill:#fff}
+.box{fill:var(--sb-surface);stroke:var(--sb-line);stroke-width:1.2}
+.box.ar{fill:color-mix(in srgb,var(--a-art) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-art) 55%,transparent)}
+.box.vn{fill:color-mix(in srgb,var(--a-vein) 14%,var(--sb-surface));stroke:color-mix(in srgb,var(--a-vein) 55%,transparent)}
+.box.gl{fill:color-mix(in srgb,#8E6CCB 18%,var(--sb-surface));stroke:color-mix(in srgb,#8E6CCB 60%,transparent)}
+.arw{fill:none;stroke:var(--sb-ink2);stroke-width:1.4;marker-end:url(#ah)}
+.zone{stroke:rgba(0,0,0,.25);stroke-width:.8}
+@media (prefers-reduced-motion:no-preference){.dia svg{animation:fi .25s ease-out}@keyframes fi{from{opacity:.4}to{opacity:1}}}
+:root{--s-na:#1d4ed8;--s-k:#9333ea;--s-cl:#15803d;--s-h2o:#0ea5e9;--s-glc:#db2777;--s-h:#dc2626;--s-hco3:#0d9488;--s-urea:#ca8a04;--s-ca:#ea580c;--s-pi:#a16207;--s-nh4:#4338ca;--s-org:#78716c;
+ --p-lumen:#FFF7E6;--p-blood:#FDECEC;--p-cell:#F3E8DF;--p-memb:#E9D5FF}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--s-na:#7aa5ff;--s-k:#c79bff;--s-cl:#5fd68a;--s-h2o:#5cc8ff;--s-glc:#ff7ab8;--s-h:#ff6b6b;--s-hco3:#3fd6c4;--s-urea:#f2c94c;--s-ca:#ff9a52;--s-pi:#e0b452;--s-nh4:#9a95ff;--s-org:#c2b8b0;--p-lumen:#2A2618;--p-blood:#2E1C1F;--p-cell:#2A2420;--p-memb:#2E2340}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--s-na:#7aa5ff;--s-k:#c79bff;--s-cl:#5fd68a;--s-h2o:#5cc8ff;--s-glc:#ff7ab8;--s-h:#ff6b6b;--s-hco3:#3fd6c4;--s-urea:#f2c94c;--s-ca:#ff9a52;--s-pi:#e0b452;--s-nh4:#9a95ff;--s-org:#c2b8b0;--p-lumen:#2A2618;--p-blood:#2E1C1F;--p-cell:#2A2420;--p-memb:#2E2340}
+:root{--s-h2o2:color-mix(in srgb,var(--s-h2o) 70%,var(--sb-surface));--s-h2o3:color-mix(in srgb,var(--s-h2o) 50%,var(--sb-surface));--s-h2o4:color-mix(in srgb,var(--s-h2o) 35%,var(--sb-surface));
+ --s-na2:color-mix(in srgb,var(--s-na) 70%,var(--sb-surface));--s-na3:color-mix(in srgb,var(--s-na) 50%,var(--sb-surface));--s-na4:color-mix(in srgb,var(--s-na) 35%,var(--sb-surface));
+ --s-k2:color-mix(in srgb,var(--s-k) 65%,var(--sb-surface));--s-ca2:color-mix(in srgb,var(--s-ca) 65%,var(--sb-surface));--s-ca3:color-mix(in srgb,var(--s-ca) 40%,var(--sb-surface));
+ --s-hco32:color-mix(in srgb,var(--s-hco3) 65%,var(--sb-surface));--s-hco33:color-mix(in srgb,var(--s-hco3) 40%,var(--sb-surface))}
+.plot{fill:var(--sb-surface);stroke:none}.gl{stroke:var(--sb-grid);stroke-width:1}.ax{fill:none;stroke:var(--sb-ink2);stroke-width:1.4}
+.ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round;stroke:var(--sb-ink)}.ln.alt{stroke:var(--sb-muted)}.ln.gfr{stroke:var(--s-na)}.ln.uo{stroke:var(--s-h2o)}.ln.filt{stroke:var(--s-org)}.ln.reab{stroke:var(--s-hco3)}.ln.excr{stroke:var(--s-glc)}.ln.spike{stroke:var(--s-h);stroke-width:2}.ln.iso{stroke:var(--sb-muted);stroke-width:1.2;opacity:.6}
+.gl.th{stroke:var(--sb-muted);stroke-dasharray:4 4}.gl.now{stroke:var(--sb-accent);stroke-width:2;stroke-dasharray:5 4}
+.band{fill:var(--sb-accent);opacity:.1}.pt{fill:var(--sb-accent);stroke:var(--sb-surface);stroke-width:2.5}.pt2{fill:var(--s-h2o);stroke:var(--sb-surface);stroke-width:2.5}
+.lumen{fill:var(--p-lumen);stroke:var(--sb-line)}.blood{fill:var(--p-blood);stroke:var(--sb-line)}.cell{fill:var(--p-cell);stroke:var(--sb-ink2);stroke-width:1.4}.memb{fill:var(--p-memb)}
+.tr circle{fill:var(--sb-surface);stroke:var(--sb-ink2);stroke-width:1.6}.tr.pump circle{fill:#FDE68A;stroke:#B45309}.tr.ch circle{fill:var(--sb-surface2)}.tr.ex circle{stroke-dasharray:3 2}
+.flux{fill:none;stroke-width:2.6;stroke-linecap:round}
+.t.atp{font:800 8px var(--sb-font);fill:#7C2D12;stroke:none}.t.ion{font:800 9px var(--sb-font);fill:#fff;stroke:none}.t.ionl{font-weight:700;stroke-width:2.6px}
+.t.bh{font-size:12.5px;font-weight:750}.t.bb{font-size:17px;font-weight:800}.t.bad{fill:var(--sb-bad);font-weight:800}.t.w{fill:#fff;stroke:none;font-weight:700}
+.seg{stroke:var(--sb-surface);stroke-width:1.5}
+.tube{fill:none;stroke:var(--s-urea);stroke-width:14;stroke-linecap:round;stroke-linejoin:round;opacity:.55}.tube.big{stroke-width:30;opacity:.35;stroke:var(--s-org)}.tube.thick{stroke:var(--s-na);opacity:.35;stroke-width:38}.tube.cd{stroke:var(--s-nh4);opacity:.3}
+.cap{fill:none;stroke:var(--a-art);stroke-width:10;opacity:.45;stroke-linecap:round}.urine{fill:var(--s-urea)}
+.force{opacity:.85}.force.push{fill:var(--a-art)}.force.pull{fill:var(--s-na)}
+.vess{fill:none;stroke:var(--a-art);stroke-linecap:round}.vess.v{stroke:var(--a-vein)}.glom{fill:color-mix(in srgb,var(--a-art) 25%,var(--sb-surface));stroke:var(--a-art);stroke-width:2}
+.cbar{fill:var(--sb-surface2)}.cbar.on{fill:var(--sb-accent)}
+.tbox{stroke:var(--sb-line)}.tbox.d{fill:color-mix(in srgb,var(--s-h2o) 22%,var(--sb-surface))}.tbox.i{fill:color-mix(in srgb,var(--s-urea) 22%,var(--sb-surface))}.tbox.a{fill:color-mix(in srgb,var(--s-na) 20%,var(--sb-surface))}
+.vr{fill:none;stroke:var(--a-art);stroke-width:12;opacity:.45}
+.phbar{fill:url(#phg)}.dsite{fill:var(--sb-bad);stroke:var(--sb-surface);stroke-width:3}
+.arw.art{stroke:var(--a-art)}.arw.vein{stroke:var(--a-vein)}.arw.h2o{stroke:var(--s-h2o)}.arw.na{stroke:var(--s-na)}.arw.urea{stroke:var(--s-urea)}.arw.x{stroke:var(--sb-bad);stroke-dasharray:4 3}
+.ion{stroke:var(--sb-surface);stroke-width:1.5}
+.tools .sl{display:flex;flex-direction:column;gap:.15rem;min-width:9.5rem;flex:1 1 9.5rem;font:500 .8125rem var(--sb-font);color:var(--sb-ink2)}
+.tools .sl b{color:var(--sb-ink);font-family:var(--sb-mono)}.tools .sl input{width:100%;accent-color:var(--sb-accent)}
+.tools select{font:500 .875rem var(--sb-font);padding:.4rem .6rem;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink)}
+.figs[hidden]{display:none}
+
+/* continuous chapter flow */
+#flow{display:block}
+.ghead{margin:.5rem 0 1rem;padding:1rem 1.1rem;border-radius:var(--sb-r-lg);background:var(--sb-surface);border:1px solid var(--sb-line)}
+.ghead small{font:600 .75rem var(--sb-font);color:var(--sb-muted);letter-spacing:.04em}
+.ghead h2{margin:.2rem 0 .6rem;font:800 1.375rem/1.25 var(--sb-font);letter-spacing:-.015em}
+.gchips{display:flex;flex-wrap:wrap;gap:.35rem}
+.gchips a{font:500 .8125rem var(--sb-font);color:var(--sb-ink2);text-decoration:none;padding:.3rem .65rem;border-radius:999px;background:var(--sb-surface2)}
+.gchips a:hover{color:var(--sb-ink)}
+.topic{scroll-margin-top:1rem;padding-bottom:1.75rem}
+.topic+.topic{padding-top:1.75rem;border-top:1px dashed var(--sb-line)}
+@media (max-width:1000px){.topic{scroll-margin-top:4.25rem}}
+.topic .stage{margin-top:0}
+.topic .figs{margin-top:1rem}
+.segc{display:inline-flex;gap:.35rem;flex-wrap:wrap}
+.steps{margin-top:.5rem}
+
+/* ---- pharmacology atlas standard ----
+   action colour code (same in every pharmacology atlas) · group palette for the mind map · target-map materials.
+   Materials are mixed from the app's own --sb-* tokens so every map follows the light / dark / OLED theme and the accent. */
+:root{
+ --d-ag:#3E8E66;--d-bl:#C0564C;--d-inh:#BF7A36;--d-mab:#7663B5;--d-st:#A3883A;--d-mod:#4A79B0;
+ --g0:#64748B;--g1:#0E8A7E;--g2:#3F5BD8;--g3:#C2760C;--g4:#B83280;--g5:#7048C9;--g6:#0B83B5;--g7:#5E8A16;--g8:#C2493A;
+ --sb-src-katzung:#0F766E;--sb-src-pt:#BE185D}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+ --d-ag:#7CC9A0;--d-bl:#E58C83;--d-inh:#E3A66A;--d-mab:#A99AE6;--d-st:#D6BC70;--d-mod:#86AEE0;
+ --g0:#94A3B8;--g1:#3DD6C4;--g2:#8EA2FF;--g3:#F5B14A;--g4:#F28BC4;--g5:#B79BFF;--g6:#56C7F2;--g7:#A6D65A;--g8:#FF8E7E;
+ --sb-src-katzung:#5EEAD4;--sb-src-pt:#F9A8D4}}
+:root[data-theme="dark"],:root[data-theme="oled"]{
+ --d-ag:#7CC9A0;--d-bl:#E58C83;--d-inh:#E3A66A;--d-mab:#A99AE6;--d-st:#D6BC70;--d-mod:#86AEE0;
+ --g0:#94A3B8;--g1:#3DD6C4;--g2:#8EA2FF;--g3:#F5B14A;--g4:#F28BC4;--g5:#B79BFF;--g6:#56C7F2;--g7:#A6D65A;--g8:#FF8E7E;
+ --sb-src-katzung:#5EEAD4;--sb-src-pt:#F9A8D4}
+:root{
+ --p-tint:#C9826F;
+ --p-cell:color-mix(in srgb,var(--p-tint) 16%,var(--sb-surface2));--p-cell-hi:color-mix(in srgb,var(--p-tint) 6%,var(--sb-surface));
+ --p-epi:color-mix(in srgb,var(--p-tint) 22%,var(--sb-surface2));--p-epi-hi:color-mix(in srgb,var(--p-tint) 10%,var(--sb-surface));
+ --p-lum:var(--sb-surface2);--p-lum-hi:var(--sb-surface);
+ --p-th2:color-mix(in srgb,var(--d-mod) 16%,var(--sb-surface2));--p-th2-hi:var(--sb-surface);
+ --p-eos:color-mix(in srgb,var(--d-bl) 14%,var(--sb-surface2));--p-eos-hi:var(--sb-surface);
+ --p-mast:color-mix(in srgb,var(--d-mab) 16%,var(--sb-surface2));--p-mast-hi:var(--sb-surface);
+ --p-gr:color-mix(in srgb,var(--d-st) 14%,var(--sb-surface2));--p-gr-hi:var(--sb-surface);
+ --p-tube:color-mix(in srgb,#C79A5E 24%,var(--sb-surface2));--p-tube-hi:color-mix(in srgb,#C79A5E 10%,var(--sb-surface));
+ --p-cx:var(--sb-surface);--p-med:color-mix(in srgb,var(--p-tint) 9%,var(--sb-surface2));
+ --p-enz:var(--sb-surface);--p-nerve:color-mix(in srgb,#C9A03A 75%,var(--sb-ink2));--p-blood:color-mix(in srgb,var(--d-bl) 80%,var(--sb-surface))}
+.sbb.katzung,.sb-src i.katzung{background:var(--sb-src-katzung)}.sbb.pt,.sb-src i.pt{background:var(--sb-src-pt)}
+/* hero stats */
+.pstats{display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;margin-top:.9rem;font:500 .8125rem var(--sb-font);color:var(--sb-muted)}
+.pstats b{font:800 1.25rem/1 var(--sb-font);color:var(--sb-ink);margin-right:.3rem;font-variant-numeric:tabular-nums}
+/* topic header drug chips */
+.dchips{display:flex;flex-wrap:wrap;gap:.3rem;margin-top:.45rem}
+.dchips span{font:600 .75rem var(--sb-font);padding:.18rem .55rem;border-radius:999px;background:var(--sb-surface2);color:var(--sb-ink2)}
+/* target-map materials */
+.p-lum{stroke:var(--sb-line)}.p-epi{stroke:color-mix(in srgb,var(--p-epi) 55%,#7a4a30 45%);stroke-width:.8}
+.p-cellm{stroke:color-mix(in srgb,#C0504A 50%,transparent);stroke-width:1.6}
+.p-gr{stroke:color-mix(in srgb,var(--d-st) 55%,transparent);stroke-width:1.2}
+.p-enz{fill:var(--p-enz);stroke:var(--sb-ink2);stroke-width:1.2}
+.p-rec{fill:var(--sb-ink2);stroke:var(--sb-plate);stroke-width:1.5}
+.p-imm{stroke:color-mix(in srgb,var(--sb-ink) 22%,transparent);stroke-width:1.2}
+.p-nerve{fill:none;stroke:var(--p-nerve);stroke-width:4;stroke-linecap:round;stroke-linejoin:round}.p-ach{fill:var(--p-nerve)}
+.p-ige{fill:none;stroke:var(--d-mab);stroke-width:2.2;stroke-linecap:round}
+.p-enz.hot,.p-gr.hot{stroke:var(--sb-accent);stroke-width:2}
+.glow{fill:var(--sb-accent);opacity:.12}.hring{fill:none;stroke:var(--sb-accent);stroke-width:1.6}
+/* pills: tonal chip in the app's surface, action colour on the icon and edge; others fade back */
+.pill.ag{--pc:var(--d-ag)}.pill.bl{--pc:var(--d-bl)}.pill.inh{--pc:var(--d-inh)}.pill.mab{--pc:var(--d-mab)}.pill.st{--pc:var(--d-st)}.pill.mod{--pc:var(--d-mod)}
+.pill rect{fill:color-mix(in srgb,var(--pc) 13%,var(--sb-surface));stroke:color-mix(in srgb,var(--pc) 55%,transparent);stroke-width:1.1}
+.pill .pic{fill:var(--pc)}.pill .pig{fill:none;stroke:var(--sb-surface);stroke-width:1.9;stroke-linecap:round;stroke-linejoin:round}.pill.mod .pig{fill:var(--sb-surface)}
+.t.pl{font:650 11px var(--sb-font);fill:var(--sb-ink);stroke:none}
+.pill.off{opacity:.32}.pill.off rect{fill:var(--sb-surface);stroke:var(--sb-line)}.pill.off .pic{fill:var(--sb-muted)}.pill.off .t.pl{fill:var(--sb-muted)}
+.pill{transition:opacity .25s}
+.stepn{fill:var(--sb-ink)}.stepn.ar{fill:var(--a-art)}.stepn.gl{fill:#8E6CCB}.stepn.vn{fill:var(--a-vein)}.t.sn{font:800 11px var(--sb-font);fill:var(--sb-bg);stroke:none}
+.legend i{border-radius:50%}
+.p-blood{fill:none;stroke:var(--p-blood);stroke-width:5;stroke-linecap:round;opacity:.75}
+.p-tube{stroke:color-mix(in srgb,#B07A3C 60%,transparent);stroke-width:1.4}
+/* ---- mind map ---- */
+.mmcard{padding:1.1rem 1.1rem 1.4rem}
+.mmhead{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:.5rem;margin-bottom:1rem}
+.mmhead h2{margin:0;font:800 1.375rem/1.2 var(--sb-font);letter-spacing:-.015em}
+.mmhead p{margin:0;font-size:.8125rem;color:var(--sb-muted)}
+.mmlegend{display:flex;flex-wrap:wrap;gap:.3rem .9rem;font-size:.75rem;color:var(--sb-muted);margin-top:1rem}
+.mmlegend i{display:inline-block;width:.6rem;height:.6rem;border-radius:50%;margin-right:.3rem}
+.mmwrap{position:relative;display:grid;grid-template-columns:minmax(0,1fr) auto minmax(0,1fr);column-gap:2.4rem;align-items:center}
+.mmlinks{position:absolute;inset:0;pointer-events:none;overflow:visible}
+.mmlinks .lk1{fill:none;stroke-width:3;opacity:.55}.mmlinks .lk2{fill:none;stroke-width:1.6;opacity:.45}
+.mmside{display:flex;flex-direction:column;gap:1.1rem;position:relative}
+.mmb{display:flex;align-items:center;gap:2.1rem}.mmb.l{flex-direction:row-reverse}
+.mmg{flex:none;width:8.6rem;display:flex;flex-direction:column;gap:.15rem;align-items:flex-start;text-align:left;padding:.6rem .75rem;border-radius:14px;border:1.5px solid var(--gc);background:color-mix(in srgb,var(--gc) 13%,var(--sb-surface));color:var(--sb-ink);cursor:pointer;font:inherit;transition:transform .15s}
+.mmg b{font:750 .8125rem/1.25 var(--sb-font)}.mmg small{font:600 .6875rem var(--sb-mono);color:var(--gc)}
+.mml{flex:1;min-width:0;display:flex;flex-direction:column;gap:.35rem}
+.mmleaf{position:relative;display:flex;flex-direction:column;align-items:flex-start;gap:.1rem;text-align:left;padding:.42rem .65rem .42rem .75rem;border-radius:11px;border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink);cursor:pointer;font:inherit;transition:border-color .15s,transform .15s,box-shadow .15s}
+.mmleaf::before{content:"";position:absolute;left:0;top:.45rem;bottom:.45rem;width:3px;border-radius:3px;background:var(--gc);opacity:.85}
+.mmleaf .mt{font:650 .8125rem/1.25 var(--sb-font)}
+.mmleaf .md{font:500 .6875rem/1.3 var(--sb-font);color:var(--sb-muted)}
+.mmleaf .ma{position:absolute;right:.5rem;top:.5rem;display:flex;gap:.2rem;align-items:center}
+.mmleaf .ma i{width:.45rem;height:.45rem;border-radius:50%}
+.mmleaf .ma em{display:none;font:800 .625rem var(--sb-font);font-style:normal;color:#fff;background:var(--gc);border-radius:50%;width:.95rem;height:.95rem;place-items:center;margin-left:.15rem}
+.mmleaf.seen .ma em{display:grid}.mmleaf.seen{border-color:color-mix(in srgb,var(--gc) 55%,var(--sb-line))}
+.mmleaf .mt,.mmleaf .md{padding-right:2.2rem}
+.mmleaf:hover,.mmg:hover{transform:translateY(-1px)}.mmleaf:hover{border-color:var(--gc);box-shadow:0 4px 14px -6px color-mix(in srgb,var(--gc) 60%,transparent)}
+.mmleaf:focus-visible,.mmg:focus-visible{outline:2px solid var(--sb-accent);outline-offset:2px}
+.mmroot{display:grid;place-items:center}
+.mmrc{position:relative;width:9.5rem;height:9.5rem;border-radius:50%;display:grid;place-items:center;text-align:center;background:radial-gradient(circle at 35% 30%,var(--sb-surface),var(--sb-surface2));box-shadow:0 10px 30px -14px rgba(0,0,0,.35)}
+.mmrc svg{position:absolute;inset:0;width:100%;height:100%}
+.mmrc .rtrack{fill:none;stroke:var(--sb-line);stroke-width:5}.mmrc .rbar{fill:none;stroke:var(--sb-accent);stroke-width:5;stroke-linecap:round}
+.mmrc div{display:flex;flex-direction:column;align-items:center;gap:.1rem}
+.mmrc small{font:700 .6875rem var(--sb-font);letter-spacing:.08em;text-transform:uppercase;color:var(--sb-accent)}
+.mmrc b{font:800 1rem var(--sb-font)}.mmrc span{font:600 .6875rem var(--sb-mono);color:var(--sb-muted)}
+.mmb.hot .mmg{transform:translateY(-1px);box-shadow:0 0 0 3px color-mix(in srgb,var(--gc) 25%,transparent)}
+@media (prefers-reduced-motion:reduce){.mmleaf,.mmg,.pill{transition:none}}
+/* phone / narrow: same map as a tree */
+.mmwrap.tree{display:flex;flex-direction:column;gap:1rem;align-items:stretch}
+.mmwrap.tree .mmroot{order:-1}.mmwrap.tree .mmside{display:contents}
+.mmwrap.tree .mmside.r .mmb{order:1}.mmwrap.tree .mmside.l .mmb{order:2}
+.mmwrap.tree .mmrc{width:7.5rem;height:7.5rem}
+.mmwrap.tree .mmb,.mmwrap.tree .mmb.l{flex-direction:column;align-items:stretch;gap:.45rem}
+.mmwrap.tree .mmg{width:auto;flex-direction:row;justify-content:space-between;align-items:center}
+.mmwrap.tree .mml{margin-left:.9rem;padding-left:.8rem;border-left:2px solid color-mix(in srgb,var(--gc) 50%,transparent)}
+.p-mucus{fill:color-mix(in srgb,#A7B46A 26%,var(--sb-surface));stroke:color-mix(in srgb,#A7B46A 55%,transparent);stroke-width:1.1}
+.shell.ov{grid-template-columns:minmax(0,1fr)}.shell.ov .side{display:none}
+/* nephron map */
+.zone{stroke:none}.zone.cx{fill:var(--p-cx)}.zone.om{fill:color-mix(in srgb,var(--p-med) 55%,var(--p-cx))}.zone.im{fill:var(--p-med)}
+.p-bow{fill:color-mix(in srgb,var(--p-tube) 45%,var(--sb-plate));stroke:color-mix(in srgb,#B07A3C 60%,transparent);stroke-width:1.4}
+.p-glom{fill:color-mix(in srgb,var(--p-blood) 30%,var(--sb-plate));stroke:var(--p-blood);stroke-width:1.2}
+.p-tubeo{fill:none;stroke:color-mix(in srgb,#B98B52 45%,var(--sb-surface2));stroke-width:20;stroke-linecap:round;stroke-linejoin:round}
+.p-tubei{fill:none;stroke:var(--p-tube-hi);stroke-width:13;stroke-linecap:round;stroke-linejoin:round}
+.p-blood.eff{opacity:.55}
+/* electrolyte grid */
+.lg{stroke:none;fill:var(--sb-surface2)}
+.lg.l1{fill:color-mix(in srgb,var(--g1) 16%,var(--sb-surface))}.lg.l2{fill:color-mix(in srgb,var(--g1) 30%,var(--sb-surface))}.lg.l3{fill:color-mix(in srgb,var(--g1) 45%,var(--sb-surface))}.lg.l4{fill:color-mix(in srgb,var(--g1) 60%,var(--sb-surface))}.lg.l5{fill:color-mix(in srgb,var(--g1) 75%,var(--sb-surface))}
+.lg.neg,.lg.dn{fill:color-mix(in srgb,var(--g2) 28%,var(--sb-surface))}.lg.acid{fill:color-mix(in srgb,var(--d-bl) 24%,var(--sb-surface))}.lg.alk{fill:color-mix(in srgb,var(--g2) 24%,var(--sb-surface))}.lg.up{fill:color-mix(in srgb,var(--d-inh) 26%,var(--sb-surface))}
+.mmwrap.tree .mmrc b{font-size:.875rem}.mmrc b{font-size:.9375rem}
+.lane{stroke:var(--sb-line);stroke-width:1}
+.p-panel{fill:color-mix(in srgb,var(--sb-surface) 70%,transparent);stroke:var(--sb-line);stroke-width:1}
+.t.pt{fill:var(--sb-muted);font-size:11.5px;letter-spacing:.04em}
+.p-enz.cellb{fill:var(--p-cell);stroke:color-mix(in srgb,var(--p-tint) 45%,transparent)}
+.p-enz.soft{fill:var(--sb-surface2);stroke:var(--sb-line)}
+/* supplementary (เสริม) branches: beyond the First Aid core */
+.mmb.ext .mmg{border-style:dashed;background:var(--sb-surface)}
+.mmb.ext .mmleaf{border-style:dashed;background:color-mix(in srgb,var(--sb-surface) 60%,transparent)}
+.mmb.ext .mmleaf::before{opacity:.45}
+
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">General Principles · Pharmacology</div>
+    <h1>Drug Reactions & Miscellaneous</h1>
+    <p class="sb-lede">เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 4, 66) และความรู้ทั่วไป</p>
+    <div class="sb-sources"><span class="sb-src"><i class="katzung">K</i>Katzung 16e · Ch 4, 66</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>
+/* ================= helpers ================= */
+const T=(x,y,s,o={})=>`<text class="t${o.c?" "+o.c:""}" x="${x}" y="${y}" text-anchor="${o.a||"middle"}"${o.s?` font-size="${o.s}"`:""}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:""}>${s}</text>`;
+const TL=(x,y,ls,o={})=>ls.map((l,i)=>T(x,y+i*(o.lh||14),l,o)).join("");
+const LD=(x1,y1,x2,y2)=>`<path class="ld" d="M${x1},${y1} L${x2},${y2}"/><circle class="ldd" cx="${x1}" cy="${y1}" r="1.8"/>`;
+const F=(c,d,x="")=>`<path class="f ${c}" d="${d}" ${x}/>`;
+const V=(c,d,w,x="")=>`<path class="vo" d="${d}" stroke-width="${w+2.2}" ${x}/><path class="v ${c}" d="${d}" stroke-width="${w}" ${x}/>`;
+const C=(c,cx,cy,r)=>`<circle class="f ${c}" cx="${cx}" cy="${cy}" r="${r}"/>`;
+const E=(c,cx,cy,rx,ry,rot=0)=>`<ellipse class="f ${c}" cx="${cx}" cy="${cy}" rx="${rx}" ry="${ry}"${rot?` transform="rotate(${rot} ${cx} ${cy})"`:""}/>`;
+function sm(p,closed=true){const n=p.length,Q=i=>p[(i+n)%n];let d=`M${p[0][0].toFixed(1)},${p[0][1].toFixed(1)}`;const last=closed?n:n-1;
+ for(let i=0;i<last;i++){const a=closed?Q(i-1):p[Math.max(i-1,0)],b=Q(i),c=closed?Q(i+1):p[Math.min(i+1,n-1)],e=closed?Q(i+2):p[Math.min(i+2,n-1)];
+  d+=` C${(b[0]+(c[0]-a[0])/6).toFixed(1)},${(b[1]+(c[1]-a[1])/6).toFixed(1)} ${(c[0]-(e[0]-b[0])/6).toFixed(1)},${(c[1]-(e[1]-b[1])/6).toFixed(1)} ${c[0].toFixed(1)},${c[1].toFixed(1)}`}
+ return d+(closed?"Z":"")}
+function rot(p,cx,cy,a){const c=Math.cos(a),s=Math.sin(a);return p.map(([x,y])=>[cx+(x-cx)*c-(y-cy)*s,cy+(x-cx)*s+(y-cy)*c])}
+/* kidney bean: hilum on side (+1 right, -1 left), tilt in radians */
+function beanPts(cx,cy,w,h,side=1,tilt=0,n=26){const p=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2,ca=Math.cos(a),sa=Math.sin(a);let x=cx+ca*w/2,y=cy+sa*h/2;
+  if(ca*side>.55&&Math.abs(sa)<.5){x-=side*w*.2*(1-Math.abs(sa)/.5)}p.push([x,y])}return rot(p,cx,cy,tilt)}
+const bean=(...a)=>sm(beanPts(...a));
+const mir=(p,X=640)=>p.map(([x,y])=>[X-x,y]);
+const DEFS=`<defs><marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sb-ink2)"/></marker><marker id="ah2" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="5" markerHeight="5" orient="auto"><path d="M0,0 L10,5 L0,10 z" style="fill:var(--sb-ink2)"/></marker><linearGradient id="phg" x1="0" x2="1"><stop offset="0" stop-color="#ef4444"/><stop offset=".45" stop-color="#22c55e"/><stop offset=".55" stop-color="#22c55e"/><stop offset="1" stop-color="#6366f1"/></linearGradient></defs>`;
+const svg=(body,vb="0 0 640 520")=>`<svg viewBox="${vb}" role="img" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}</svg>`;
+
+
+
+const PHARM={"sys": "Toxicities & Miscellaneous"};
+/* ================= pharmacology core (shared by every pharmacology atlas) ================= */
+const S={k:'<b class="sbb katzung">K</b>',p:'<b class="sbb pt">PT</b>',x:'<b class="sbb gen">Gen</b>'};
+const LEG={ag:["Agonist / activator","--d-ag"],bl:["Antagonist / blocker","--d-bl"],inh:["Enzyme / transporter inhibitor","--d-inh"],mab:["Monoclonal antibody","--d-mab"],st:["Steroid / hormone","--d-st"],mod:["Other / modulator","--d-mod"]};
+let ST={labels:true,all:false};
+let HL=[];
+const SEC=[],GN={};
+const on=k=>ST.all||HL.includes(k);
+const tbl=(h,rows)=>`<table>${h?`<tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>`:""}${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table>`;
+function wrapT(x,y,s,n,c,lh=16,a="start"){const w=String(s).split(" ");const L=[];let cur="";w.forEach(t=>{if((cur+" "+t).trim().length>n&&cur){L.push(cur);cur=t}else cur=(cur+" "+t).trim()});if(cur)L.push(cur);
+ return L.map((l,i)=>T(x,y+i*lh,l,{a,c})).join("")}
+/* gradients + soft shadow/glow used by every target map */
+const GR=(id,a,b,r)=>r?`<radialGradient id="${id}" cx=".38" cy=".32" r=".85"><stop offset="0" style="stop-color:var(${a})"/><stop offset="1" style="stop-color:var(${b})"/></radialGradient>`
+ :`<linearGradient id="${id}" x1="0" y1="0" x2="0" y2="1"><stop offset="0" style="stop-color:var(${a})"/><stop offset="1" style="stop-color:var(${b})"/></linearGradient>`;
+const PDEFS=`<defs>${GR("gCell","--p-cell-hi","--p-cell",1)}${GR("gEpi","--p-epi-hi","--p-epi")}${GR("gTh2","--p-th2-hi","--p-th2",1)}${GR("gEos","--p-eos-hi","--p-eos",1)}${GR("gMast","--p-mast-hi","--p-mast",1)}${GR("gGr","--p-gr-hi","--p-gr")}${GR("gLum","--p-lum-hi","--p-lum")}${GR("gTube","--p-tube-hi","--p-tube")}${GR("gCx","--p-cx","--p-med")}
+<filter id="fGlow" x="-80%" y="-80%" width="260%" height="260%"><feGaussianBlur stdDeviation="5"/></filter>
+<filter id="fSh" x="-20%" y="-40%" width="140%" height="200%"><feDropShadow dx="0" dy="1.6" stdDeviation="1.8" flood-opacity=".25"/></filter></defs>`;
+const psvg=(b,vb)=>svg(PDEFS+b,vb);
+/* action glyphs drawn inside each pill */
+const ICON={ag:'<path d="M-3.6,0 H3.6 M0,-3.6 V3.6"/>',bl:'<path d="M-3,-4 V4 M-3,0 H4"/>',inh:'<path d="M-3,-3 L3,3 M3,-3 L-3,3"/>',mab:'<path d="M0,4.2 V0.2 M0,0.2 L-3.6,-3.8 M0,0.2 L3.6,-3.8"/>',st:'<path d="M-3.6,-2 L0,-4.1 L3.6,-2 L3.6,2 L0,4.1 L-3.6,2Z"/>',mod:'<circle r="2.4"/>'};
+function pill(x,y,lab,kind,key,force){const w=Math.max(60,lab.length*6.3+36);const a=force||on(key);const x0=x-w/2;
+ return `<g class="pill ${kind}${a?" on":" off"}"><rect x="${x0}" y="${y-12}" width="${w}" height="24" rx="12"/><circle class="pic" cx="${x0+13}" cy="${y}" r="8"/><g class="pig" transform="translate(${x0+13},${y})">${ICON[kind]}</g>${T(x0+27,y+4,lab,{a:"start",c:"pl"})}</g>`}
+const glow=(x,y,key,r=15)=>onA(key)?`<circle class="glow" cx="${x}" cy="${y}" r="${r+3}"/><circle class="hring" cx="${x}" cy="${y}" r="${r+3}"/>`:"";
+const rec=(x,y,lab,vert)=>`<rect class="p-rec" x="${x-(vert?9:7)}" y="${y-(vert?7:9)}" width="${vert?18:14}" height="${vert?14:18}" rx="5"/>`+(ST.labels&&lab?T(x,y-(vert?12:14),lab,{c:"s"}):"");
+const arr=(d,c="")=>`<path class="arw ${c}" d="${d}"/>`;
+const cellC=(x,y,r,g,lab,sub)=>`<circle class="p-imm" cx="${x}" cy="${y}" r="${r}" fill="url(#${g})"/>`+T(x,y+(sub?-1:4),lab,{c:"bh"})+(sub?T(x,y+13,sub,{c:"s m"}):"");
+function cards(R,o={}){const W=o.w||640,hh=o.h||(R.length>6?50:R.length>4?58:66),gap=8;let b="",y=14;
+ R.forEach(([n,dd,c])=>{b+=`<rect class="box ${c||""}" x="16" y="${y}" width="${W-32}" height="${hh}" rx="12"/>`+T(32,y+hh/2-4,n,{a:"start",c:"bh"})+T(32,y+hh/2+14,dd,{a:"start",c:"s"});y+=hh+gap});
+ if(o.foot){b+=T(W/2,y+14,o.foot,{c:"h"});y+=24}return psvg(b,`0 0 ${W} ${y+6}`)}
+function flowD(R,W=640){let b="",y=14;R.forEach(([n,dd,c],i)=>{b+=`<rect class="box ${c||""}" x="40" y="${y}" width="${W-80}" height="58" rx="14"/>`+`<circle class="stepn ${c||""}" cx="64" cy="${y+29}" r="12"/>`+T(64,y+33,i+1,{c:"sn"})+T(W/2+12,y+25,n,{c:"bh"})+T(W/2+12,y+44,dd,{c:"s"});
+ if(i<R.length-1)b+=arr(`M${W/2},${y+60} L${W/2},${y+76}`);y+=80});return psvg(b,`0 0 ${W} ${y}`)}
+const MAPTOOLS=[["all","Show all drugs"]];
+
+/* ---------- overview mind map: the landing view of every pharmacology atlas ---------- */
+let MMRO=null;
+function mindMap(){const gs=GROUPS.filter(g=>g!=="0"),half=Math.ceil(gs.length/2),tops=SEC.filter(s=>!s.mind),n=tops.filter(s=>SEEN[s.id]).length,C=2*Math.PI*52;
+ const block=(g,side)=>{const list=SEC.filter(s=>s.k===g),gi=GROUPS.indexOf(g),done=list.filter(s=>SEEN[s.id]).length;
+  return `<div class="mmb ${side}${g[0]==="x"?" ext":""}" style="--gc:var(--g${gi})"><button class="mmg" type="button" data-go="${list[0].id}"><b>${GN[g]}</b><small>${done}/${list.length}</small></button><div class="mml">${list.map(s=>`<button class="mmleaf${SEEN[s.id]?" seen":""}" type="button" data-go="${s.id}"><span class="mt">${s.mm||s.t}</span>${s.drugs?`<span class="md">${s.drugs.split(" · ").slice(0,3).join(" · ")}</span>`:""}<span class="ma">${(s.act||[]).map(a=>`<i style="background:var(--d-${a})" title="${LEG[a][0]}"></i>`).join("")}<em>✓</em></span></button>`).join("")}</div></div>`};
+ setTimeout(mmInit,0);
+ return `<div class="mmwrap" id="mmwrap"><svg class="mmlinks" id="mmlinks" aria-hidden="true"></svg>
+ <div class="mmside l">${gs.slice(half).map(g=>block(g,"l")).join("")}</div>
+ <div class="mmroot"><div class="mmrc"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rtrack" cx="60" cy="60" r="52"/>${n?`<circle class="rbar" cx="60" cy="60" r="52" stroke-dasharray="${C*n/tops.length} ${C}" transform="rotate(-90 60 60)"/>`:""}</svg><div><small>${PHARM.sys}</small><b>Pharmacology</b><span>${n}/${tops.length} seen</span></div></div></div>
+ <div class="mmside r">${gs.slice(0,half).map(g=>block(g,"r")).join("")}</div></div>`}
+function mmInit(){const w=document.getElementById("mmwrap");if(!w)return;mmLinks();if(!MMRO&&window.ResizeObserver){MMRO=new ResizeObserver(()=>mmLinks())}if(MMRO){MMRO.disconnect();MMRO.observe(w)}}
+function mmLinks(){const w=document.getElementById("mmwrap"),sv=document.getElementById("mmlinks");if(!w||!sv)return;
+ const tree=w.clientWidth<860;w.classList.toggle("tree",tree);if(tree){sv.innerHTML="";return}
+ const R=w.getBoundingClientRect(),rel=el=>{const r=el.getBoundingClientRect();return{l:r.left-R.left,r:r.right-R.left,y:r.top-R.top+r.height/2}};
+ const root=rel(w.querySelector(".mmrc"));let p="";
+ const cv=(x1,y1,x2,y2,c,cls)=>{const m=(x1+x2)/2;return `<path class="${cls}" style="stroke:${c}" d="M${x1},${y1} C${m},${y1} ${m},${y2} ${x2},${y2}"/>`};
+ w.querySelectorAll(".mmb").forEach(b=>{const r=b.classList.contains("r"),c=getComputedStyle(b).getPropertyValue("--gc"),g=rel(b.querySelector(".mmg"));
+  p+=r?cv(root.r-6,root.y,g.l,g.y,c,"lk1"):cv(root.l+6,root.y,g.r,g.y,c,"lk1");
+  b.querySelectorAll(".mmleaf").forEach(lf=>{const q=rel(lf);p+=r?cv(g.r,g.y,q.l,q.y,c,"lk2"):cv(g.l,g.y,q.r,q.y,c,"lk2")})});
+ sv.setAttribute("width",R.width);sv.setAttribute("height",R.height);sv.innerHTML=p}
+document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!b)return;e.preventDefault();go(b.dataset.go,true,true)});
+document.addEventListener("pointerover",e=>{const b=e.target.closest(".mmb");document.querySelectorAll(".mmb.hot").forEach(x=>x!==b&&x.classList.remove("hot"));if(b)b.classList.add("hot")});
+
+/* called after the atlas content is defined */
+function pharmFinish(){
+ /* First Aid = core path; anything listed in EXTRA becomes a "เสริม" group after the core */
+ if(typeof EXTRA!=="undefined"&&EXTRA.length){const core=[],ext=[];SEC.forEach(s=>{if(EXTRA.includes(s.id)){s.extra=true;const nk="x"+s.k;if(!GN[nk])GN[nk]="เสริม · "+GN[s.k].replace(/^เสริม · /,"");s.k=nk;ext.push(s)}else core.push(s)});
+  SEC.length=0;core.forEach(s=>SEC.push(s));const ord=[...new Set(ext.map(s=>s.k))];ord.forEach(k=>ext.filter(s=>s.k===k).forEach(s=>SEC.push(s)))}
+ GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
+ const el=document.getElementById("pstats");if(el){const tops=SEC.filter(s=>!s.mind),drugs=new Set();tops.forEach(s=>(s.drugs||"").split(" · ").forEach(d=>d&&drugs.add(d)));
+  el.innerHTML=`<span><b>${new Set(tops.map(s=>s.k)).size}</b> กลุ่ม</span><span><b>${tops.length}</b> หัวข้อ</span>${drugs.size?`<span><b>${drugs.size}+</b> ยาต้นแบบ</span>`:""}`}}
+
+/* ---------- auto-layout target map: sites (panels) → targets → drugs ----------
+   spec: [{n:"Heart",s:"myocyte",tone:"cell",t:[{k:"key",l:"β₁ receptor",d:[["Metoprolol","bl"],...]}]}] */
+const TONE={cell:"gCell",epi:"gEpi",blue:"gTh2",rose:"gEos",violet:"gMast",gold:"gGr",tube:"gTube",plain:"gLum"};
+function laneMap(spec,o={}){const W=760,cols=o.cols||Math.min(3,spec.length),gap=12,lw=(W-20-(cols-1)*gap)/cols;let b="",y0=10;
+ const pw=l=>Math.max(60,l.length*6.3+36);
+ for(let r=0;r<spec.length;r+=cols){const row=spec.slice(r,r+cols);
+  const lay=row.map(p=>{let y=50;const items=p.t.map(t=>{const lines=[[]];let x=0;t.d.forEach(d=>{const w=pw(d[0]);if(x+w>lw-20&&lines[lines.length-1].length){lines.push([]);x=0}lines[lines.length-1].push([d,x,w]);x+=w+6});
+    const it={t,y,lines};y+=34+lines.length*28;return it});return {p,items,h:y+4}});
+  const H=Math.max(...lay.map(l=>l.h));
+  lay.forEach((l,i)=>{const x0=10+i*(lw+gap);
+   b+=`<rect class="lane" x="${x0}" y="${y0}" width="${lw}" height="${H}" rx="16" fill="url(#${TONE[l.p.tone||"cell"]})"/>`+T(x0+14,y0+24,l.p.n,{a:"start",c:"bh"})+(l.p.s?T(x0+14,y0+40,l.p.s,{a:"start",c:"s m"}):"");
+   l.items.forEach(it=>{const yy=y0+it.y;b+=glow(x0+20,yy+8,it.t.k,9)+`<rect class="p-rec" x="${x0+13}" y="${yy+1}" width="14" height="14" rx="4"/>`+T(x0+34,yy+13,it.t.l,{a:"start",c:"s"});
+    it.lines.forEach((ln,j)=>ln.forEach(([d,dx,w])=>{b+=pill(x0+12+dx+w/2,yy+36+j*28,d[0],d[1],d[2]||it.t.k)}))})});
+  y0+=H+gap}
+ return psvg(b,`0 0 ${W} ${y0}`)}
+const LMAP=(spec,o)=>keys=>()=>{HL=keys;return laneMap(spec,o)};
+
+/* compact drawing helpers for system target maps */
+const panel=(x,y,w,h,t)=>`<rect class="p-panel" x="${x}" y="${y}" width="${w}" height="${h}" rx="16"/>`+T(x+14,y+22,t,{a:"start",c:"bh pt"});
+const nb=(x,y,w,h,t,s,cls="")=>`<rect class="p-enz ${cls}" x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="9"/>`+T(x,y+(s?-2:4),t,{c:"bh"})+(s?T(x,y+12,s,{c:"s m"}):"");
+const onA=k=>Array.isArray(k)?k.some(on):on(k);
+const nbh=(x,y,w,h,t,s,key,cls="")=>nb(x,y,w,h,t,s,cls+(onA(key)?" hot":""))+(onA(key)?`<rect class="glow" x="${x-w/2-6}" y="${y-h/2-6}" width="${w+12}" height="${h+12}" rx="13"/>`:"");
+const ln=(x1,y1,x2,y2)=>arr(`M${x1},${y1} L${x2},${y2}`);
+const MAPOF=(fn)=>keys=>()=>{HL=keys;return fn()};
+
+/* ================= General principles: toxicities (adverse effects) & miscellaneous ================= */
+Object.assign(GN,{a:"Drug reactions by system",b:"Drug interactions & classes",c:"Drug names",d:"Safety"});
+
+SEC.push({id:"cardio",k:"a",t:"Cardiovascular drug reactions",mm:"Cardiovascular",drugs:"",act:[],leg:[],
+draw:()=>cards([["Coronary vasospasm","cocaine · amphetamines · sumatriptan · ergot alkaloids","vn"],["Cutaneous flushing","vancomycin · adenosine · niacin · CCBs · echinocandins · nitrates",""],["Dilated cardiomyopathy","anthracyclines (doxorubicin, daunorubicin) · trastuzumab","ar"],["Torsades (↑ QT): antiarrhythmics & anti-infectives","class IA & III antiarrhythmics · macrolides · fluoroquinolones · azoles","vn"],["Torsades (↑ QT): CNS & GI drugs","antipsychotics (haloperidol) · TCAs · methadone · ondansetron","vn"]]),
+notes:()=>`<ul><li><b>Vancomycin infusion reaction</b> (เดิมเรียก red man) = histamine release ไม่ใช่ IgE → ลดได้ด้วยให้ช้าลงและ antihistamine ${S.x}</li><li>Anthracycline cardiotoxicity สะสมตามขนาดยา · dexrazoxane ช่วยป้องกัน · trastuzumab cardiotoxicity มักกลับคืนได้ ${S.k}</li>
+<li>ยาที่ยืด QT เสี่ยงมากขึ้นเมื่อมี <b>hypokalemia, hypomagnesemia</b> หรือใช้ยายืด QT หลายตัวร่วมกัน ${S.x}</li></ul>`});
+
+SEC.push({id:"endorx",k:"a",t:"Endocrine & reproductive drug reactions",mm:"Endocrine & reproductive",drugs:"",act:[],leg:[],
+draw:()=>cards([["Adrenal insufficiency","หยุด glucocorticoid ระยะยาวทันที (HPA suppression)",""],["Diabetes insipidus (nephrogenic)","lithium · demeclocycline","ar"],["SIADH","carbamazepine · cyclophosphamide · SSRIs",""],["Gynecomastia","spironolactone · ketoconazole · cimetidine · GnRH analogs · estrogens","gl"],["Hyperglycemia","tacrolimus · protease inhibitors · niacin · thiazides · glucocorticoids",""],["Hyperprolactinemia","typical antipsychotics · risperidone · metoclopramide · methyldopa","vn"],["Hypothyroidism","lithium · amiodarone · sulfonamides",""]]),
+notes:()=>`<ul><li>Hot flashes: <b>tamoxifen</b>, clomiphene, aromatase inhibitors, GnRH analogs ${S.x}</li><li>Amiodarone มี iodine สูง → ทำให้ได้ทั้ง hypo- และ hyperthyroidism ${S.k}</li><li>ยา D₂ antagonist ตัด tonic inhibition ของ dopamine ต่อ prolactin ${S.x}</li></ul>`});
+
+SEC.push({id:"girx",k:"a",t:"GI & hepatic drug reactions",mm:"GI & hepatic",drugs:"",act:[],leg:[],
+draw:()=>cards([["Acute cholestatic hepatitis, jaundice","macrolides (erythromycin) · amoxicillin–clavulanate",""],["Focal to massive hepatic necrosis","halothane · amanita · valproate · acetaminophen (high dose)","vn"],["Drug-induced hepatitis","isoniazid · rifampin · pyrazinamide · statins · fibrates",""],["Pancreatitis","didanosine · glucocorticoids · alcohol · valproate · azathioprine · diuretics","ar"],["Pill-induced esophagitis","bisphosphonates · NSAIDs · K⁺ chloride · tetracyclines",""],["Pseudomembranous colitis","clindamycin · ampicillin · cephalosporins · fluoroquinolones · PPIs","gl"]]),
+notes:()=>`<ul><li>ป้องกัน pill esophagitis: ดื่มน้ำเต็มแก้วและนั่ง/ยืนตรงหลังกินยา ${S.x}</li><li>C. difficile เกิดจากยาที่ทำลาย normal flora · PPIs เพิ่มความเสี่ยงด้วย ${S.x}</li></ul>`});
+
+SEC.push({id:"hemerx",k:"a",t:"Hematologic drug reactions",mm:"Hematologic",drugs:"",act:[],leg:[],
+draw:()=>cards([["Agranulocytosis","clozapine · carbamazepine · PTU · methimazole · dapsone · colchicine","vn"],["Aplastic anemia","carbamazepine · methimazole · NSAIDs · chloramphenicol · felbamate","vn"],["Direct Coombs+ hemolytic anemia","penicillins · cephalosporins · methyldopa",""],["Hemolysis in G6PD deficiency","sulfonamides · dapsone · primaquine · nitrofurantoin · rasburicase · quinine","ar"],["Megaloblastic anemia","methotrexate · phenytoin · trimethoprim · hydroxyurea · 5-FU",""],["Thrombocytopenia","heparin (HIT) · quinine · linezolid · indinavir",""]]),
+notes:()=>`<ul><li>Agranulocytosis ต้องสงสัยเมื่อมี <b>ไข้ เจ็บคอ</b> ระหว่างใช้ยา → หยุดยาและตรวจ CBC ${S.x}</li><li>Megaloblastic จากยาส่วนใหญ่เกิดจากรบกวน <b>folate</b> หรือ DNA synthesis ${S.k}</li><li>G6PD deficiency → NADPH ↓ → glutathione ต่ำ → RBC ทนต่อ oxidant stress ไม่ได้ (Heinz bodies, bite cells) ${S.x}</li></ul>`});
+
+SEC.push({id:"mskrx",k:"a",t:"Musculoskeletal & skin drug reactions",mm:"MSK & skin",drugs:"",act:[],leg:[],
+draw:()=>cards([["Gingival hyperplasia","phenytoin · Ca²⁺ channel blockers · cyclosporine",""],["Myopathy","statins · fibrates · niacin · colchicine · glucocorticoids · daptomycin","ar"],["Osteoporosis","glucocorticoids · heparin (long-term) · PPIs · anticonvulsants",""],["Photosensitivity","sulfonamides · amiodarone · tetracyclines · fluoroquinolones · thiazides","gl"],["Stevens–Johnson syndrome","lamotrigine · carbamazepine · phenytoin · allopurinol · sulfonamides","vn"],["Tendon rupture · teeth discoloration","fluoroquinolones · tetracyclines",""]]),
+notes:()=>`<ul><li>Fat redistribution: protease inhibitors, glucocorticoids ${S.x}</li><li>Hyperuricemia/gout: thiazides, loop diuretics, pyrazinamide, niacin, cyclosporine ${S.x}</li><li>SJS มักเกิดภายใน 1–3 สัปดาห์แรก · บางยาสัมพันธ์กับ HLA (ดูหัวข้อ Pharmacogenomics) ${S.x}</li></ul>`});
+
+SEC.push({id:"neurorx",k:"a",t:"Neurologic drug reactions",mm:"Neurologic",drugs:"",act:[],leg:[],
+draw:()=>cards([["Cinchonism (tinnitus, headache, vertigo)","quinine · quinidine",""],["Parkinsonism","antipsychotics · metoclopramide · reserpine","ar"],["Peripheral neuropathy","isoniazid · vincristine · platinum · phenytoin · stavudine","gl"],["Idiopathic intracranial hypertension","vitamin A · tetracyclines · growth hormone · isotretinoin",""],["Seizures (↓ threshold)","bupropion · imipenem · isoniazid · tramadol · enflurane","vn"],["Tardive dyskinesia","antipsychotics · metoclopramide",""]]),
+notes:()=>`<ul><li>Visual disturbances: ethambutol (optic neuritis, red–green), digoxin (yellow vision), hydroxychloroquine (retinopathy), PDE5 inhibitors (blue tint), vigabatrin (visual field loss) ${S.x}</li><li>Isoniazid neuropathy ป้องกันด้วย <b>pyridoxine (B6)</b> ${S.k}</li></ul>`});
+
+SEC.push({id:"renalrx",k:"a",t:"Renal, GU & respiratory drug reactions",mm:"Renal, GU & respiratory",drugs:"",act:[],leg:[],
+draw:()=>cards([["Fanconi syndrome","cisplatin · ifosfamide · expired tetracyclines · tenofovir",""],["Hemorrhagic cystitis","cyclophosphamide · ifosfamide (acrolein)","vn"],["Interstitial nephritis","penicillins (methicillin) · NSAIDs · PPIs · diuretics · rifampin · sulfonamides","ar"],["Drug-induced lupus","hydralazine · procainamide · isoniazid · minocycline · TNF-α inhibitors",""],["Dry cough","ACE inhibitors (bradykinin ↑)","gl"],["Pulmonary fibrosis","bleomycin · busulfan · amiodarone · methotrexate · nitrofurantoin",""]]),
+notes:()=>`<ul><li>Hemorrhagic cystitis ป้องกันด้วย <b>mesna</b> + hydration ${S.k}</li><li>Drug-induced lupus มักมี <b>anti-histone</b> antibody และไม่ค่อยมีไตอักเสบ ${S.x}</li><li>ACEi cough → เปลี่ยนเป็น ARB ${S.x}</li></ul>`});
+
+SEC.push({id:"multirx",k:"a",t:"Multiorgan drug reactions",mm:"Multiorgan",drugs:"",act:[],leg:[],
+draw:()=>cards([["Antimuscarinic effects","atropine · TCAs · first-gen H₁ blockers · antipsychotics · benztropine","ar"],["Disulfiram-like reaction (with alcohol)","metronidazole · some cephalosporins · procarbazine · 1st-gen sulfonylureas",""],["Nephrotoxicity & ototoxicity","aminoglycosides · vancomycin · loop diuretics · cisplatin","vn"]]),
+notes:()=>`<ul><li>Antimuscarinic: ปากแห้ง ผิวแห้งร้อน ม่านตาขยาย ปัสสาวะคั่ง สับสน — ระวังในผู้สูงอายุ ${S.x}</li><li>Disulfiram-like = ยับยั้ง aldehyde dehydrogenase → acetaldehyde คั่ง → หน้าแดง คลื่นไส้ ใจสั่น ${S.x}</li><li>Cisplatin ป้องกัน nephrotoxicity ด้วย hydration (chloride diuresis) และ amifostine ${S.k}</li></ul>`});
+
+SEC.push({id:"cyp",k:"b",t:"Cytochrome P-450 interactions",mm:"CYP450",drugs:"",act:[],leg:[],
+draw:()=>cards([["Inducers (↓ ระดับยาอื่น)","rifampin · carbamazepine · phenytoin · phenobarbital · St John’s wort","gl"],["Inducers (อื่นๆ)","griseofulvin · chronic alcohol use · nevirapine","gl"],["Inhibitors: anti-infectives","ritonavir · ketoconazole · fluconazole · clarithromycin · erythromycin · isoniazid","vn"],["Inhibitors: others","amiodarone · cimetidine · grapefruit juice · valproate · omeprazole","vn"],["Substrates (narrow index)","warfarin · theophylline · cyclosporine · tacrolimus · statins · OCPs","ar"]]),
+notes:()=>`<ul><li><b>CYP3A4</b> metabolize ยามากที่สุด · CYP2D6, 2C9, 2C19 มี polymorphism สำคัญ ${S.k}</li><li>Inducer ต้องใช้เวลาเป็นวัน–สัปดาห์ (สร้างเอนไซม์ใหม่) · inhibitor มีผลเร็ว ${S.k}</li><li>ตัวอย่างสำคัญ: rifampin + OCP → ยาคุมล้มเหลว · macrolide/azole + statin → myopathy · amiodarone + warfarin → INR ↑ ${S.k}</li><li>Prodrug ที่ต้องอาศัย CYP: clopidogrel (2C19), codeine (2D6), tamoxifen (2D6) ${S.k}</li></ul>`});
+
+SEC.push({id:"sulfa",k:"b",t:"Sulfa drugs",mm:"Sulfa drugs",drugs:"",act:[],leg:[],
+draw:()=>cards([["Antibiotics","sulfonamides (TMP-SMX) · sulfadiazine · dapsone (sulfone, cross-reacts)",""],["Diuretics","furosemide · bumetanide · thiazides · acetazolamide","gl"],["Others","sulfasalazine · sulfonylureas · celecoxib · probenecid",""]],{foot:"Ethacrynic acid = loop diuretic ที่ไม่มี sulfa"}),
+notes:()=>`<ul><li>แพ้ sulfa: ไข้, UTI-like interstitial nephritis, SJS, hemolysis ใน G6PD, thrombocytopenia, urticaria ${S.x}</li><li>Cross-reactivity ระหว่าง sulfonamide antibiotics กับ non-antibiotic sulfa ต่ำในทางคลินิก แต่ข้อสอบมักถามรายชื่อกลุ่มนี้ ${S.x}</li></ul>`});
+
+SEC.push({id:"names",k:"c",t:"Drug name suffixes",mm:"Name suffixes",drugs:"",act:[],leg:[],
+draw:()=>cards([["-azole · -afungin · -vir · -cycline","antifungal (ergosterol) · echinocandin · antiviral · tetracycline",""],["-olol · -pril · -sartan · -dipine","β-blocker · ACE inhibitor · ARB · DHP Ca²⁺ blocker","gl"],["-statin · -gliflozin · -gliptin · -glutide","HMG-CoA reductase inh. · SGLT2 inh. · DPP-4 inh. · GLP-1 agonist",""],["-tinib · -mab · -cept","tyrosine kinase inhibitor · monoclonal antibody · receptor fusion protein","ar"],["-prazole · -tidine · -setron","PPI · H₂ blocker · 5-HT₃ antagonist",""],["-triptan · -curium/-curonium · -caine","5-HT₁B/1D agonist · nondepolarizing NM blocker · local anesthetic","vn"]]),
+notes:()=>`${tbl(["Monoclonal antibody","ความหมาย"],[["-ximab","chimeric (mouse + human)"],["-zumab","humanized"],["-umab","fully human"]])}${S.x}
+ <ul><li>-terol = β₂ agonist · -osin = α₁ blocker · -dronate = bisphosphonate · -parin = heparin · -xaban = Xa inhibitor · -plase = thrombolytic ${S.x}</li></ul>`});
+
+SEC.push({id:"terato",k:"d",t:"Teratogenic drugs",mm:"Teratogens",drugs:"",act:[],leg:[],
+draw:()=>cards([["ACE inhibitors · ARBs","renal damage, oligohydramnios (2nd–3rd trimester)","vn"],["Valproate · carbamazepine","neural tube defects","vn"],["Isotretinoin · vitamin A excess","craniofacial, CNS, cardiac defects",""],["Warfarin","bone & cartilage defects, CNS hemorrhage — ใช้ heparin แทน","ar"],["Lithium","Ebstein anomaly",""],["Methotrexate · mycophenolate","abortion, multiple anomalies",""],["Tetracyclines · aminoglycosides","teeth discoloration · CN VIII toxicity","gl"]]),
+notes:()=>`<ul><li>ช่วงเสี่ยงที่สุดคือ <b>สัปดาห์ที่ 3–8</b> (organogenesis) ${S.x}</li><li>Phenytoin → fetal hydantoin syndrome · DES → clear cell adenocarcinoma ช่องคลอด · thalidomide → limb defects ${S.x}</li><li>ทางเลือกที่ปลอดภัยกว่าในครรภ์: labetalol/nifedipine/methyldopa สำหรับ HTN, heparin/LMWH สำหรับ anticoagulation ${S.x}</li></ul>`});
+
+SEC.push({id:"pgx",k:"d",t:"Pharmacogenomics: HLA & enzyme variants",mm:"Pharmacogenomics",drugs:"",act:[],leg:[],
+draw:()=>cards([["HLA-B*57:01","abacavir → hypersensitivity (ตรวจก่อนให้ยา)","vn"],["HLA-B*15:02","carbamazepine, phenytoin → SJS/TEN (ประชากรเอเชีย)","vn"],["HLA-B*58:01","allopurinol → SJS/TEN, DRESS","vn"],["TPMT / NUDT15 deficiency","azathioprine, 6-MP → myelosuppression",""],["G6PD deficiency","oxidant drugs → hemolysis","ar"],["Slow acetylators (NAT2)","isoniazid, hydralazine, procainamide → toxicity, drug-induced lupus",""],["CYP2C19 poor metabolizer","clopidogrel ไม่ได้ผล","gl"]]),
+notes:()=>`<ul><li>ประเทศไทยแนะนำตรวจ <b>HLA-B*15:02</b> ก่อน carbamazepine และ <b>HLA-B*58:01</b> ก่อน allopurinol ${S.x}</li><li>Pseudocholinesterase deficiency → succinylcholine ออกฤทธิ์นาน (apnea หลังผ่าตัด) ${S.k}</li></ul>`});
+
+SEC.push({id:"toxpending",k:"d",t:"Toxicology & specific antidotes (เติมเอง)",mm:"เติมเอง",drugs:"",act:[],leg:[],
+draw:()=>cards([["ส่วนนี้เว้นไว้ให้เติมจากสรุปของตัวเอง","ยังไม่มีเนื้อหา",""]]),
+notes:()=>`<p>หัวข้อนี้ยังว่าง — เติมเนื้อหาจากสรุปของตัวเองได้ที่นี่</p>`});
+
+const EXTRA=["terato","pgx","toxpending"];
+
+pharmFinish();
+/* ================= render: one chapter = one continuous page ================= */
+const $=s=>document.querySelector(s);
+const SEENKEY="sb-pharm-tox-seen",FIGDIR="img/";
+let cur=SEC[0],GRP=null,OBS=null;
+let SEEN={},OPEN={};try{SEEN=JSON.parse(localStorage.getItem(SEENKEY)||"{}")}catch(e){}
+const GROUPS=[...new Set(SEC.map(s=>s.k))];
+const gOf=s=>GROUPS.indexOf(s.k);
+function tocHTML(withHead){const n=Object.keys(SEEN).filter(k=>SEC.some(s=>s.id===k)).length;
+ const subs=[...document.querySelectorAll(`#notes-${cur.id} h3`)].map(h=>[h.id,h.textContent]);
+ return (withHead?`<div class="dh2"><b>สารบัญ</b><button type="button" id="dclose" aria-label="Close">✕</button></div>`:"")+
+ `<div class="prog"><i><b style="width:${n/SEC.length*100}%"></b></i>${n}/${SEC.length} หัวข้อ</div>`+
+ GROUPS.map(gk=>{const list=SEC.filter(s=>s.k===gk),open=OPEN[gk]??(gk===cur.k);
+  return `<div class="g" data-open="${open}"><button class="gh" type="button" data-g="${gk}"><span class="cv">▶</span>${GN[gk]||gk}<span class="n">${list.filter(s=>SEEN[s.id]).length}/${list.length}</span></button>
+  <ul>${list.map(s=>`<li><a href="#${s.id}" data-id="${s.id}" aria-current="${s===cur}"><span class="ck${SEEN[s.id]?" on":""}">✓</span>${s.t}</a>${s===cur&&subs.length>1?`<ol>${subs.map(([id,tx])=>`<li><a href="#${s.id}" data-sub="${id}">${tx}</a></li>`).join("")}</ol>`:""}</li>`).join("")}</ul></div>`}).join("")}
+function wireToc(root){root.querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{const g=b.dataset.g,el=b.parentElement;OPEN[g]=el.dataset.open!=="true";el.dataset.open=OPEN[g]});
+ root.querySelectorAll("a[data-id]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();go(a.dataset.id,true,true)});
+ root.querySelectorAll("a[data-sub]").forEach(a=>a.onclick=e=>{e.preventDefault();closeDrawer();const h=document.getElementById(a.dataset.sub);if(h)h.scrollIntoView({behavior:"smooth",block:"start"})});
+ const c=root.querySelector("#dclose");if(c)c.onclick=closeDrawer}
+function chips(){$("#side").innerHTML=tocHTML(false);wireToc($("#side"));
+ const i=SEC.indexOf(cur),list=SEC.filter(s=>s.k===cur.k);$("#mgrp").textContent=`${GN[cur.k]||cur.k} · ${list.indexOf(cur)+1}/${list.length}`;$("#mtop").textContent=cur.t;$("#mprev").disabled=i===0;$("#mnext").disabled=i===SEC.length-1;
+ const a=$("#side").querySelector('[aria-current="true"]');if(a){const r=a.getBoundingClientRect(),sr=$("#side").getBoundingClientRect();if(r.top<sr.top||r.bottom>sr.bottom)a.scrollIntoView({block:"nearest"})}}
+function openDrawer(){$("#dpane").innerHTML=tocHTML(true);wireToc($("#dpane"));$("#drawer").hidden=false;const a=$("#dpane").querySelector('[aria-current="true"]');if(a)a.scrollIntoView({block:"center"})}
+function closeDrawer(){$("#drawer").hidden=true}
+$("#mopen").onclick=openDrawer;$("#ddim").onclick=closeDrawer;
+$("#mprev").onclick=()=>{const i=SEC.indexOf(cur);if(i>0)go(SEC[i-1].id,true,true)};$("#mnext").onclick=()=>{const i=SEC.indexOf(cur);if(i<SEC.length-1)go(SEC[i+1].id,true,true)};
+function fixTools(s){(s.tools||[]).forEach(([k,o])=>{if(Array.isArray(o)&&!o.some(v=>v[0]===ST[k]))ST[k]=o[0][0]})}
+function tools(s){const el=document.getElementById("tools-"+s.id);if(!el)return;const tl=[["labels","Labels"]].concat((s.tools||[]).filter(t=>!Array.isArray(t[1])));
+ let h=tl.map(([k,l])=>`<button class="sb-chip" type="button" data-t="${k}" aria-pressed="${!!ST[k]}">${l}</button>`).join("");
+ (s.tools||[]).filter(t=>Array.isArray(t[1])).forEach(([k,opts])=>{h+=`<span class="segc">`+opts.map(([v,l])=>`<button class="sb-chip" type="button" data-s="${k}" data-v="${v}" aria-pressed="${ST[k]===v}">${l}</button>`).join("")+`</span>`});
+ el.innerHTML=h;const prev=cur;cur=s;if(s.ctrl){el.insertAdjacentHTML("beforeend",s.ctrl());if(s.wire)s.wire()}cur=prev;
+ el.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{ST[b.dataset.t]=!ST[b.dataset.t];SEC.filter(x=>x.k===s.k).forEach(draw)});
+ el.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{ST[b.dataset.s]=b.dataset.v;draw(s)})}
+function draw(s){const prev=cur;cur=s;const d=document.getElementById("dia-"+s.id);if(d)d.innerHTML=s.draw();tools(s);
+ const lg=document.getElementById("legend-"+s.id);if(lg)lg.innerHTML=(s.leg||[]).map(k=>LEG[k]?`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`:"").join("");cur=prev}
+function topicHTML(s){if(s.mind)return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><section class="sb-card card mmcard"><div class="mmhead"><div><div class="k" style="color:var(--g0);font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase">Overview</div><h2>${PHARM.sys} drug classes</h2></div><p>แตะกลุ่มหรือหัวข้อเพื่อไปที่เนื้อหา · ✓ = อ่านแล้ว</p></div><div id="dia-${s.id}"></div><div class="mmlegend">${Object.keys(LEG).map(k=>`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`).join("")}</div></section></article>`;const figs=s.figs&&s.figs.length?`<section class="figs sb-card card"><h3>รูปจากเลคเชอร์ <span>${s.figs.length} รูป · แตะเพื่อขยาย</span></h3><div class="strip">${s.figs.map(([f,c])=>`<button class="fig" type="button" data-f="${f}" data-c="${c}"><img src="${FIGDIR}${f}.jpg" alt="${c}" loading="lazy"><span>${c}</span></button>`).join("")}</div></section>`:"";
+ return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><div class="stage">
+  <section class="sb-card card"><div class="dh"><div><div class="k" style="color:var(--g${GROUPS.indexOf(s.k)})">${GN[s.k]||s.k}</div><h2>${s.t}</h2>${s.drugs?`<div class="dchips">${s.drugs.split(" · ").map(d=>`<span>${d}</span>`).join("")}</div>`:""}</div><div class="tools" id="tools-${s.id}"></div></div>
+   <div class="dia" id="dia-${s.id}" data-id="${s.id}"></div><div class="legend" id="legend-${s.id}"></div></section>
+  <aside class="sb-card card notes" id="notes-${s.id}"></aside></div>${figs}</article>`}
+function renderGroup(gk){GRP=gk;document.querySelector(".shell").classList.toggle("ov",gk==="0");const list=SEC.filter(s=>s.k===gk),gi=GROUPS.indexOf(gk);
+ $("#flow").innerHTML=(gk==="0"?"":`<header class="ghead"><small>${GROUPS.length>1?`ส่วนที่ ${gi+1}/${GROUPS.length} · `:""}${list.length} หัวข้อ</small><h2>${GN[gk]||gk}</h2><div class="gchips">${list.map(s=>`<a href="#${s.id}" data-jump="${s.id}">${s.t}</a>`).join("")}</div></header>`)+list.map(topicHTML).join("");
+ list.forEach(s=>{fixTools(s);const prev=cur;cur=s;const n=document.getElementById("notes-"+s.id);if(n){n.innerHTML=s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);}cur=prev;draw(s)});
+ $("#flow").querySelectorAll("[data-jump]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.jump,true,true)});
+ $("#flow").querySelectorAll(".dia").forEach(d=>d.onclick=()=>openDia(SEC.find(s=>s.id===d.dataset.id)));
+ $("#flow").querySelectorAll(".fig").forEach(b=>b.onclick=()=>openLB(b.dataset.f,b.dataset.c));
+ const pv=GROUPS[gi-1],nx=GROUPS[gi+1],NV=window.NAV||{};
+ const btn=(g,dir)=>g?`<button type="button" class="${dir>0?"nx":""}" data-g="${g}"><small>${dir>0?"ส่วนถัดไป →":"← ส่วนก่อนหน้า"}</small><b>${GN[g]||g}</b></button>`:"";
+ const abtn=(a,dir)=>a?`<button type="button" class="${dir>0?"nx":""}" data-atlas="${a.m}" data-href="${a.f}"><small>${dir>0?"บทถัดไป →":"← บทก่อนหน้า"}</small><b>${a.t}</b></button>`:"<span style='flex:1'></span>";
+ $("#steps").innerHTML=(pv?btn(pv,-1):abtn(NV.prev,-1))+(nx?btn(nx,1):abtn(NV.next,1));
+ $("#steps").querySelectorAll("[data-g]").forEach(b=>b.onclick=()=>{go(SEC.find(s=>s.k===b.dataset.g).id,true,"chapter")});
+ $("#steps").querySelectorAll("[data-atlas]").forEach(b=>b.onclick=()=>{if(window.parent!==window)parent.postMessage({sb:"open",m:b.dataset.atlas},"*");else location.href=b.dataset.href});
+ if(OBS)OBS.disconnect();
+ OBS=new IntersectionObserver(es=>{const vis=es.filter(e=>e.isIntersecting);if(!vis.length)return;const id=vis[0].target.dataset.id;if(id!==cur.id)setCur(SEC.find(s=>s.id===id),true)},{rootMargin:"-30% 0px -60% 0px"});
+ $("#flow").querySelectorAll(".topic").forEach(t=>OBS.observe(t))}
+function setCur(s,push){cur=s;SEEN[s.id]=1;try{localStorage.setItem(SEENKEY,JSON.stringify(SEEN))}catch(e){}chips();
+ if(push&&location.hash.slice(1)!==s.id)history.replaceState(null,"","#"+s.id)}
+function go(id,push,scroll){const s=SEC.find(x=>x.id===id)||SEC[0];const fresh=s.k!==GRP;if(fresh)renderGroup(s.k);setCur(s,push);
+ const el=scroll==="chapter"?$("#flow"):document.getElementById("t-"+s.id);if(el&&scroll)el.scrollIntoView({behavior:fresh?"auto":"smooth",block:"start"})}
+let Z=1,ZEL=null;function openLB(f,c){$("#lbsc").innerHTML=`<img id="lbi" alt="" src="${FIGDIR}${f}.jpg">`;ZEL=$("#lbi");$("#lbt").textContent=c;Z=1;$("#lb").hidden=false}
+function openDia(s){const prev=cur;cur=s;$("#lbsc").innerHTML=`<div class="zsvg">${s.draw()}</div>`;cur=prev;ZEL=$("#lbsc .zsvg");$("#lbt").textContent=s.t;Z=innerWidth<700?2.2:1;ZEL.style.width=Z===1?"":`${96*Z}vw`;$("#lb").hidden=false}
+$("#lbx").onclick=()=>$("#lb").hidden=true;$("#zi").onclick=()=>{Z=Math.min(4,Z*1.4);ZEL.style.width=`min(${96*Z}vw,${1000*Z}px)`};$("#zo").onclick=()=>{Z=Math.max(1,Z/1.4);ZEL.style.width=Z===1?"":`min(${96*Z}vw,${1000*Z}px)`};
+document.addEventListener("keydown",e=>{if(e.key==="Escape"){$("#lb").hidden=true;closeDrawer()}});
+window.addEventListener("hashchange",()=>{const id=location.hash.slice(1);if(id&&SEC.some(s=>s.id===id))go(id,false,true)});
+go(location.hash.slice(1)||"map",false,!!location.hash.slice(1));
+
+</script>
+</body>
+</html>
