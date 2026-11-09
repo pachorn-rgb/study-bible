@@ -61,8 +61,10 @@ def build_page(aid):
             f'<script>\n{content}\npharmFinish();\n</script>\n'
             '<script src="../atlas/render.js"></script>\n</body>\n</html>\n')
     folder = DOCS / meta["lib"]["folder"]; folder.mkdir(exist_ok=True)
-    (folder / f"{aid}.html").write_text(page)
-    return folder / f"{aid}.html"
+    # drafts get a .draft.html name (git-ignored) so they never reach the published site
+    out = folder / (f"{aid}.draft.html" if meta.get("draft") else f"{aid}.html")
+    out.write_text(page)
+    return out
 
 
 if __name__ == "__main__":
