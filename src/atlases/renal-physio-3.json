@@ -5,12 +5,17 @@
  "title_tag": "Electrolytes & Acid–Base",
  "eyebrow": "Renal · Physiology",
  "h1": "Electrolytes & Acid–Base",
- "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Guyton & Hall · บางหัวข้อลองเลื่อนค่าได้",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Guyton & Hall และ Boron · บางหัวข้อลองเลื่อนค่าได้",
  "sources": [
   [
    "guyton",
    "G",
    "Guyton & Hall · Ch 25–31"
+  ],
+  [
+   "boron",
+   "B",
+   "Boron & Boulpaep · Ch 33–40"
   ],
   [
    "gen",
@@ -25,7 +30,7 @@
    "Physiology"
   ],
   "title": "Electrolytes & Acid–Base",
-  "src": "Guyton & Hall Ch 29–31",
+  "src": "Guyton & Hall · Boron Ch 29–31",
   "desc": "K⁺ balance, Ca²⁺/PO₄/Mg²⁺, Na⁺ ผิดปกติ, อาการ electrolyte ต่ำ/สูง, buffers, การชดเชยทางหายใจและไต, acid–base disorders, RTA",
   "ch": "Ch 29–31",
   "sort": 30,

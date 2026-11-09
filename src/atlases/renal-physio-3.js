@@ -1,5 +1,6 @@
 /* Renal Physiology III · Electrolytes & acid–base — First Aid order, Guyton sections + FA-only topics */
 //@include _renal-guyton-base.js
+//@include _renal-boron.js
 Object.assign(GN,{a:"Potassium & electrolytes",b:"Acid–base"});
 (()=>{const G={potassium:"a",capimg:"a",natremia:"a",buffers:"b",resp:"b",renalacid:"b",ammonia:"b",abd:"b"};
  const M={potassium:"K⁺ balance & shifts",capimg:"Ca²⁺ · PO₄ · Mg²⁺",natremia:"Hypo/hypernatremia",buffers:"Buffers · H–H",resp:"Respiratory control",renalacid:"Renal H⁺ & new HCO₃⁻",ammonia:"Phosphate & NH₃ buffers",abd:"Acid–base disorders"};
@@ -22,5 +23,4 @@ SEC.splice(SEC.findIndex(s=>s.id==="abd")+1,0,{id:"rta",k:"b",t:"Renal tubular a
  notes:()=>`<ul><li>ทุกชนิดเป็น <b>normal anion gap (hyperchloremic) metabolic acidosis</b> ${S.x}</li>
 <li>จำ K⁺: type 1 และ 2 ต่ำ · type 4 สูง · แยก 1 กับ 2 ด้วย urine pH (type 1 ทำปัสสาวะเป็นกรดไม่ได้เลย) ${S.x}</li>
 <li>Type 4 พบบ่อยที่สุดในผู้ใหญ่ โดยเฉพาะเบาหวานที่มีไตเสื่อม ${S.x}</li></ul>`});
-
-
+applyBoron();

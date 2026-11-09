@@ -1,5 +1,6 @@
 /* Renal Physiology II · Tubular transport & hormones — First Aid order, Guyton sections + FA-only topics */
 //@include _renal-guyton-base.js
+//@include _renal-boron.js
 Object.assign(GN,{a:"Nephron transport",b:"Tubular defects",c:"Hormones & the kidney",d:"Concentration & dilution"});
 (()=>{const G={transport:"a",pct:"a",loop:"a",distal:"a",segments:"a",tubular:"b",raas:"c",adh:"c",regulation:"c",volume:"c",
   dilute:"d",concreq:"d",countercurrent:"d",urea:"d",concentrate:"d"};
@@ -27,3 +28,4 @@ SEC.push({id:"endofx",k:"c",t:"Kidney endocrine functions & JGA",mm:"Endocrine f
 <li>NSAIDs + ACE inhibitor ในคนที่เลือดไปไตน้อย: afferent หดเพราะขาด PG และ efferent ขยายเพราะขาด Ang II → GFR ตก ${S.x}</li></ul>`});
 
 const EXTRA=["dilute","concreq","countercurrent","urea","concentrate","volume"];
+applyBoron();
