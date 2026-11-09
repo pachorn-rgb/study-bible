@@ -15,20 +15,20 @@
    {
     "q": "Urge incontinence from detrusor overactivity is treated with:",
     "o": [
-     "Antimuscarinics (e.g., oxybutynin) or β₃ agonist (mirabegron)",
-     "α₁ antagonists",
-     "Bethanechol",
-     "Kegel exercises only"
+     "Antimuscarinics or β₃ agonists (mirabegron)",
+     "α₁ antagonists such as tamsulosin",
+     "Cholinergic agonists such as bethanechol",
+     "Midurethral sling to support the urethra"
     ],
     "a": 0,
-    "e": "Overflow incontinence (incomplete emptying) uses catheterization; bethanechol helps an underactive detrusor."
+    "e": "Antimuscarinics (e.g., oxybutynin) or β₃ agonists (mirabegron) relax the detrusor. Overflow incontinence (incomplete emptying) uses catheterization; bethanechol helps an underactive detrusor; slings treat stress incontinence."
    },
    {
     "q": "Overflow incontinence results from:",
     "o": [
-     "Fistula",
-     "Weak pelvic floor",
-     "Detrusor overactivity",
+     "Vesicovaginal fistula bypassing the sphincter",
+     "Weak pelvic floor with urethral hypermobility",
+     "Detrusor overactivity with involuntary contractions",
      "Incomplete emptying (obstruction or atonic bladder)"
     ],
     "a": 3,
@@ -38,9 +38,9 @@
     "q": "A spinal cord transection above the sacral segments produces after spinal shock:",
     "o": [
      "Automatic (reflex) bladder",
-     "Uninhibited bladder",
-     "Normal micturition",
-     "Atonic bladder"
+     "Uninhibited neurogenic bladder",
+     "Normal voluntary micturition",
+     "Atonic (denervated) bladder"
     ],
     "a": 0,
     "e": "Sacral reflex intact but no brain control (Guyton)."
@@ -61,9 +61,9 @@
    {
     "q": "Mannitol acts mainly at the:",
     "o": [
-     "Macula densa",
-     "Cortical collecting duct",
-     "Distal convoluted tubule",
+     "Macula densa and juxtaglomerular cells",
+     "Cortical and medullary collecting ducts",
+     "Distal convoluted tubule and connecting tubule",
      "Proximal tubule and thin descending limb"
     ],
     "a": 3,
@@ -83,10 +83,10 @@
    {
     "q": "Loop diuretics produce the greatest natriuresis because the TAL:",
     "o": [
-     "Has no transporters",
-     "Reabsorbs ~25% of filtered Na⁺",
-     "Is downstream of the CD",
-     "Is permeable to water"
+     "Reabsorbs most filtered glucose via SGLT2",
+     "Normally reabsorbs ~25% of filtered Na⁺",
+     "Is where ADH inserts aquaporin-2 channels",
+     "Is highly permeable to water"
     ],
     "a": 1,
     "e": "Up to 20–30% of filtered Na⁺ can be excreted."
@@ -107,10 +107,10 @@
    {
     "q": "Mannitol is used to:",
     "o": [
-     "Treat hyperkalemia",
+     "Treat hyperkalemia by shifting K⁺ into cells",
      "Reduce intracranial or intraocular pressure",
-     "Prevent stones",
-     "Treat heart failure"
+     "Prevent recurrent calcium kidney stones",
+     "Treat edema in congestive heart failure"
     ],
     "a": 1,
     "e": "Osmotic agent draws water out of tissues."
@@ -118,21 +118,21 @@
    {
     "q": "Mannitol increases urine flow by:",
     "o": [
-     "Blocking ADH",
-     "Blocking NKCC2",
-     "Inhibiting carbonic anhydrase",
-     "Raising tubular fluid osmolarity, limiting water reabsorption"
+     "Blocking ADH at V2 receptors",
+     "Blocking NKCC2 in the thick ascending limb",
+     "Inhibiting proximal carbonic anhydrase",
+     "Raising tubular fluid osmolarity"
     ],
     "a": 3,
-    "e": "Filtered, not reabsorbed."
+    "e": "Filtered, not reabsorbed: it raises tubular fluid osmolarity and so limits water reabsorption."
    },
    {
     "q": "A serious adverse effect of mannitol is:",
     "o": [
-     "Hypokalemia only",
-     "Ototoxicity",
+     "Hypercalcemia from reduced Ca²⁺ excretion",
+     "Ototoxicity with rapid IV dosing",
      "Pulmonary edema from ECF expansion",
-     "Hyperuricemia"
+     "Hyperuricemia precipitating gout"
     ],
     "a": 2,
     "e": "Contraindicated in anuria and heart failure."
@@ -164,9 +164,9 @@
    {
     "q": "A use of acetazolamide is:",
     "o": [
-     "Hyperkalemia",
-     "Diabetes insipidus",
-     "Heart failure first-line",
+     "Emergency treatment of hyperkalemia",
+     "Nephrogenic diabetes insipidus",
+     "First-line therapy for heart failure",
      "Acute mountain sickness prophylaxis"
     ],
     "a": 3,
@@ -177,10 +177,10 @@
    {
     "q": "Furosemide inhibits which transporter?",
     "o": [
-     "ENaC",
+     "Epithelial Na⁺ channel (ENaC) in principal cells",
      "Na⁺/K⁺/2Cl⁻ cotransporter (NKCC2)",
-     "Carbonic anhydrase",
-     "Na⁺/Cl⁻ cotransporter"
+     "Carbonic anhydrase in the PCT",
+     "Na⁺/Cl⁻ cotransporter (NCC)"
     ],
     "a": 1,
     "e": "Abolishes the medullary gradient; also stimulates PGE release (blunted by NSAIDs)."
@@ -199,12 +199,12 @@
    {
     "q": "A patient with a sulfa allergy needs a loop diuretic. Best choice:",
     "o": [
-     "Ethacrynic acid",
-     "Torsemide",
      "Bumetanide",
-     "Furosemide"
+     "Furosemide",
+     "Chlorthalidone",
+     "Ethacrynic acid"
     ],
-    "a": 0,
+    "a": 3,
     "e": "Ethacrynic acid is not a sulfonamide but is more ototoxic and can cause hyperuricemia."
    }
   ],
@@ -223,10 +223,10 @@
    {
     "q": "Which is an adverse effect of thiazides?",
     "o": [
-     "Hyperkalemia",
-     "Ototoxicity",
+     "Hyperkalemia and hypermagnesemia",
+     "Ototoxicity and hypocalcemia",
      "Hyperglycemia and hyperuricemia",
-     "Hypercalciuria"
+     "Hypercalciuria and kidney stones"
     ],
     "a": 2,
     "e": "HyperGLUC: hyperGlycemia, hyperLipidemia, hyperUricemia, hyperCalcemia; also hypokalemia, hyponatremia, metabolic alkalosis."
@@ -234,10 +234,10 @@
    {
     "q": "Paradoxical use of a thiazide treats which disorder?",
     "o": [
-     "SIADH",
+     "Syndrome of inappropriate ADH",
      "Nephrogenic diabetes insipidus",
-     "Hypercalcemia",
-     "Central DI"
+     "Hypercalcemia of malignancy",
+     "Primary (psychogenic) polydipsia"
     ],
     "a": 1,
     "e": "Mild volume depletion ↑ proximal Na⁺/water reabsorption → less water reaches the collecting duct."
@@ -282,10 +282,10 @@
    {
     "q": "Which diuretics cause metabolic ALKALOSIS?",
     "o": [
-     "Amiloride",
-     "Spironolactone",
+     "Amiloride and triamterene",
+     "Spironolactone and eplerenone",
      "Loop diuretics and thiazides",
-     "Acetazolamide"
+     "Acetazolamide and methazolamide"
     ],
     "a": 2,
     "e": "Volume contraction (↑ AT II → NHE3) and K⁺ loss (H⁺ shifts into cells, ↑ H⁺ secretion). Acetazolamide and K⁺-sparing agents cause acidosis."
@@ -328,10 +328,10 @@
    {
     "q": "ACE inhibitors are contraindicated in:",
     "o": [
-     "Heart failure",
+     "Heart failure with reduced EF",
      "Bilateral renal artery stenosis",
-     "Post-MI remodeling",
-     "Diabetic nephropathy"
+     "Post-MI left ventricular remodeling",
+     "Diabetic nephropathy with albuminuria"
     ],
     "a": 1,
     "e": "GFR depends on efferent constriction by AT II; blocking it can cause AKI. Also contraindicated in pregnancy (fetal renal damage) and hereditary angioedema."
@@ -420,10 +420,10 @@
    {
     "q": "Aliskiren should be avoided with ACE inhibitors or ARBs in patients with:",
     "o": [
-     "Gout",
+     "Gouty arthritis",
      "Diabetes mellitus",
-     "Asthma",
-     "Glaucoma"
+     "Bronchial asthma",
+     "Open-angle glaucoma"
     ],
     "a": 1,
     "e": "Combining RAAS blockers raises risk of hyperkalemia, hypotension and AKI."
@@ -466,10 +466,10 @@
    {
     "q": "Metanephric mesenchyme normally forms which part of the nephron?",
     "o": [
-     "Collecting duct",
-     "Ureter",
-     "Renal pelvis",
-     "Glomerulus through distal convoluted tubule"
+     "Collecting ducts and minor calyces",
+     "Ureter and renal pelvis",
+     "Trigone of the bladder",
+     "Glomerulus through distal tubule"
     ],
     "a": 3,
     "e": "Reciprocal induction with the ureteric bud makes the metanephric mesenchyme form glomerulus → PCT → loop of Henle → DCT."
@@ -490,10 +490,10 @@
    {
     "q": "The pronephros appears in week 4 and:",
     "o": [
-     "Forms the adult kidney",
+     "Persists to form the adult kidney",
      "Is nonfunctional and regresses",
-     "Becomes the bladder",
-     "Forms the ureter"
+     "Becomes the urinary bladder",
+     "Forms the definitive ureter"
     ],
     "a": 1,
     "e": "Rudimentary, cervical, regresses by end of week 4."
@@ -536,10 +536,10 @@
    {
     "q": "The primary cause of the flattened face and limb deformities in Potter sequence is:",
     "o": [
-     "Maternal diabetes",
+     "Poorly controlled maternal diabetes",
      "Oligohydramnios compressing the fetus",
-     "Teratogenic drugs",
-     "Chromosomal defect"
+     "Teratogenic drug exposure in utero",
+     "An underlying chromosomal trisomy"
     ],
     "a": 1,
     "e": "Lack of fetal urine → oligohydramnios → compression and pulmonary hypoplasia."
@@ -547,10 +547,10 @@
    {
     "q": "The usual cause of death in Potter sequence is:",
     "o": [
-     "Cardiac defect",
+     "Congenital heart defect",
      "Pulmonary hypoplasia",
-     "Renal failure",
-     "Sepsis"
+     "Intracranial hemorrhage",
+     "Neonatal sepsis"
     ],
     "a": 1,
     "e": "Amniotic fluid is needed for lung development."
@@ -581,9 +581,9 @@
     "q": "The ureteric bud normally induces which tissue to form nephrons?",
     "o": [
      "Metanephric blastema (mesenchyme)",
-     "Mesonephric duct",
-     "Paramesonephric duct",
-     "Urogenital sinus"
+     "Mesonephric (Wolffian) duct",
+     "Paramesonephric (Müllerian) duct",
+     "Urogenital sinus endoderm"
     ],
     "a": 0,
     "e": "Reciprocal induction between ureteric bud and metanephric mesenchyme."
@@ -593,10 +593,10 @@
    {
     "q": "Multicystic dysplastic kidney is caused by:",
     "o": [
-     "Abnormal interaction between the ureteric bud and metanephric mesenchyme",
-     "Autosomal recessive PKHD1 mutation",
+     "Failed ureteric bud–metanephric mesenchyme induction",
+     "Autosomal recessive PKHD1 (fibrocystin) mutation",
      "Obstruction at the ureterovesical junction in adults",
-     "Vesicoureteral reflux"
+     "High-grade vesicoureteral reflux in infancy"
     ],
     "a": 0,
     "e": "MCDK is a nonfunctional kidney of cysts and connective tissue from failed induction; it is usually unilateral and non-inherited."
@@ -604,9 +604,9 @@
    {
     "q": "A newborn has a unilateral flank mass of noncommunicating cysts with no function on imaging. Prognosis is good when:",
     "o": [
-     "There is oligohydramnios",
-     "Both kidneys are involved",
-     "The liver has fibrosis",
+     "There is associated oligohydramnios",
+     "Both kidneys are similarly involved",
+     "The liver shows congenital fibrosis",
      "The contralateral kidney is normal"
     ],
     "a": 3,
@@ -626,9 +626,9 @@
    {
     "q": "MCDK results from abnormal interaction between:",
     "o": [
-     "Gonad and kidney",
-     "Pronephros and mesonephros",
-     "Cloaca and allantois",
+     "Gonadal ridge and mesonephros",
+     "Pronephros and the caudal mesonephric duct",
+     "Urorectal septum and cloaca",
      "Ureteric bud and metanephric mesenchyme"
     ],
     "a": 3,
@@ -637,31 +637,31 @@
    {
     "q": "A duplex collecting system arises from:",
     "o": [
-     "Bifurcation of the ureteric bud before it enters the metanephric blastema",
-     "Persistent urachus",
-     "Failure of the urorectal septum",
-     "Fusion of the kidney poles"
+     "Ureteric bud splitting before it meets the blastema",
+     "Persistent urachus from incomplete allantois closure",
+     "Failure of the urorectal septum to divide the cloaca",
+     "Fusion of the lower kidney poles"
     ],
     "a": 0,
-    "e": "Bifid ureter or two ureters drain one kidney. It is strongly associated with vesicoureteral reflux and ureterocele."
+    "e": "The ureteric bud bifurcates before it enters the metanephric blastema. Bifid ureter or two ureters drain one kidney. It is strongly associated with vesicoureteral reflux and ureterocele."
    },
    {
     "q": "In a complete duplex system, which ureter (Weigert–Meyer rule) typically obstructs?",
     "o": [
-     "Neither; duplex systems never obstruct",
      "Lower-pole ureter, inserting superolaterally",
-     "Upper-pole ureter, inserting ectopically and inferomedially",
-     "Both ureters equally"
+     "Both ureters, at a common orifice",
+     "Upper-pole ureter, inserting inferomedially",
+     "Lower-pole ureter, inserting inferomedially"
     ],
     "a": 2,
-    "e": "Upper pole: inserts low and medial and tends to obstruct (ureterocele). Lower pole: inserts higher and laterally and tends to reflux."
+    "e": "Upper pole: inserts ectopically, low and medial, and tends to obstruct (ureterocele). Lower pole: inserts higher and laterally and tends to reflux."
    },
    {
     "q": "A bifid (partially duplicated) ureter results from:",
     "o": [
-     "Failure of ascent",
-     "Two ureteric buds",
-     "Persistent urachus",
+     "Failure of ascent from the pelvis",
+     "Two separate ureteric buds from one duct",
+     "Persistent patency of the urachus",
      "Early splitting of a single ureteric bud"
     ],
     "a": 3,
@@ -670,23 +670,23 @@
    {
     "q": "In a complete duplex system, the upper-pole ureter typically:",
     "o": [
-     "Drains the lower pole",
-     "Refluxes",
-     "Inserts ectopically inferomedially and tends to obstruct (ureterocele)",
-     "Is absent"
+     "Drains the lower pole of the kidney",
+     "Inserts superolaterally and tends to reflux",
+     "Inserts inferomedially and tends to obstruct",
+     "Is congenitally absent on that side"
     ],
     "a": 2,
-    "e": "Weigert–Meyer rule: upper pole obstructs, lower pole refluxes."
+    "e": "Weigert–Meyer rule: the upper-pole ureter inserts ectopically and inferomedially and obstructs (ureterocele); the lower pole refluxes."
    }
   ],
   "kub-embryology:s5": [
    {
     "q": "The urorectal septum divides the cloaca into:",
     "o": [
-     "Bladder and urethra",
-     "Ureter and pelvis",
+     "Bladder and the definitive pelvic urethra",
+     "Ureteric bud and nephric duct",
      "Urogenital sinus and anorectal canal",
-     "Allantois and urachus"
+     "Urachus and the vitelline duct"
     ],
     "a": 2,
     "e": "Anterior urogenital sinus, posterior anorectal canal."
@@ -694,8 +694,8 @@
    {
     "q": "The trigone of the bladder is initially derived from:",
     "o": [
-     "Ectoderm",
-     "Allantois",
+     "Surface ectoderm of the cloacal membrane",
+     "Allantoic endoderm (future urachus)",
      "Endoderm of the urogenital sinus",
      "Incorporated mesonephric ducts (mesoderm)"
     ],
@@ -705,13 +705,13 @@
    {
     "q": "A persistent allantois/urachus can cause:",
     "o": [
-     "Urachal fistula with urine leaking from the umbilicus",
-     "Hypospadias",
-     "Posterior urethral valves",
-     "Horseshoe kidney"
+     "Urine leaking from the umbilicus",
+     "Hypospadias with a ventral meatus",
+     "Posterior urethral valves in boys",
+     "Horseshoe kidney below the IMA"
     ],
     "a": 0,
-    "e": "Urachal fistula, cyst or sinus."
+    "e": "Urachal fistula (urine leaking from the umbilicus), cyst or sinus."
    }
   ],
   "kub-embryology:s6": [
@@ -764,9 +764,9 @@
    {
     "q": "Fetal urine begins to be produced at about:",
     "o": [
-     "Birth",
-     "Week 20",
-     "Week 4",
+     "At birth",
+     "Week 20–22",
+     "Week 4–5",
      "Week 10–12"
     ],
     "a": 3,
@@ -810,10 +810,10 @@
    {
     "q": "Posterior urethral valves are best diagnosed after birth by:",
     "o": [
-     "Renal biopsy",
-     "Cystoscopy only",
+     "Percutaneous renal biopsy",
+     "Renal ultrasound alone",
      "Voiding cystourethrogram",
-     "Serum creatinine"
+     "Serial serum creatinine"
     ],
     "a": 2,
     "e": "VCUG shows a dilated posterior urethra and valve leaflets."
@@ -835,9 +835,9 @@
     "q": "Psoas major inserts onto the:",
     "o": [
      "Lesser trochanter of the femur",
-     "Greater trochanter",
-     "Iliac crest",
-     "Pectineal line"
+     "Greater trochanter of the femur",
+     "Inner lip of the iliac crest",
+     "Pectineal line of the femur"
     ],
     "a": 0,
     "e": "It shares this insertion with iliacus (iliopsoas)."
@@ -856,10 +856,10 @@
    {
     "q": "Quadratus lumborum attaches superiorly to:",
     "o": [
-     "Iliac crest",
-     "Sacrum",
+     "Iliac crest and iliolumbar ligament",
+     "Lateral sacrum and sacroiliac ligament",
      "12th rib and lumbar transverse processes",
-     "Lesser trochanter"
+     "Lesser trochanter of the femur"
     ],
     "a": 2,
     "e": "Inferiorly to the iliac crest and iliolumbar ligament."
@@ -867,10 +867,10 @@
    {
     "q": "The psoas major is innervated by:",
     "o": [
-     "Subcostal nerve",
+     "Subcostal nerve (T12)",
      "Anterior rami of L1–L3",
-     "Obturator nerve",
-     "Femoral nerve"
+     "Obturator nerve (L2–L4)",
+     "Femoral nerve (L2–L4)"
     ],
     "a": 1,
     "e": "Direct branches from lumbar anterior rami."
@@ -903,9 +903,9 @@
     "q": "During deep inspiration, the kidneys:",
     "o": [
      "Move downward by about 2–3 cm",
-     "Move upward",
-     "Do not move",
-     "Rotate 90°"
+     "Move upward with the ribs",
+     "Stay fixed by the renal fascia",
+     "Rotate about 90° medially"
     ],
     "a": 0,
     "e": "They move with the diaphragm."
@@ -926,13 +926,13 @@
    {
     "q": "Which structure contacts the anterior surface of the right kidney directly, without peritoneum between them?",
     "o": [
-     "Liver",
-     "Descending (2nd) part of the duodenum",
-     "Stomach",
-     "Jejunum"
+     "Right lobe of the liver",
+     "2nd part of the duodenum",
+     "Pyloric part of the stomach",
+     "Proximal jejunal loops"
     ],
     "a": 1,
-    "e": "The duodenum is retroperitoneal; the liver and small intestine are separated from the kidney by peritoneum."
+    "e": "The descending (2nd) part of the duodenum is retroperitoneal; the liver and small intestine are separated from the kidney by peritoneum."
    },
    {
     "q": "Moving medial to lateral, which muscle is the most lateral posterior relation of the kidney?",
@@ -948,10 +948,10 @@
    {
     "q": "Which nerve passes posterior to the kidney on quadratus lumborum?",
     "o": [
-     "Genitofemoral",
-     "Obturator",
+     "Genitofemoral and lateral femoral cutaneous",
+     "Obturator and the lumbosacral trunk",
      "Subcostal, iliohypogastric and ilio-inguinal",
-     "Femoral"
+     "Femoral and accessory obturator"
     ],
     "a": 2,
     "e": "Relevant to referred pain."
@@ -959,10 +959,10 @@
    {
     "q": "The left kidney is related anteriorly to all EXCEPT:",
     "o": [
-     "Stomach",
+     "Body of the stomach",
      "Duodenum (2nd part)",
      "Spleen",
-     "Pancreas"
+     "Tail of the pancreas"
     ],
     "a": 1,
     "e": "The second part of the duodenum lies anterior to the right kidney."
@@ -984,30 +984,30 @@
     "q": "Relative to the renal fascia, the suprarenal gland is:",
     "o": [
      "Outside it, in the pararenal fat",
-     "Inside the renal capsule",
-     "Intraperitoneal",
-     "Inside it, separated from the kidney by a thin septum"
+     "Inside the fibrous renal capsule",
+     "Intraperitoneal, in the lesser sac",
+     "Inside it, in a separate compartment"
     ],
     "a": 3,
-    "e": "So a ptotic kidney can drop without taking the suprarenal gland with it."
+    "e": "It lies inside the renal fascia but is separated from the kidney by a thin septum, so a ptotic kidney can drop without taking the suprarenal gland with it."
    },
    {
     "q": "Pararenal fat lies:",
     "o": [
-     "Inside the renal capsule",
-     "Between renal fascia and peritoneum/posterior abdominal wall",
+     "Inside the renal fascia",
+     "Outside the renal fascia",
      "Within the renal sinus",
-     "Around the ureter only"
+     "Deep to the renal capsule"
     ],
     "a": 1,
-    "e": "Perirenal fat is inside the renal fascia."
+    "e": "Pararenal fat lies outside the renal fascia, between it and the peritoneum/posterior abdominal wall. Perirenal fat is inside the renal fascia."
    },
    {
     "q": "Renal fascia is open:",
     "o": [
-     "Nowhere",
-     "Laterally",
-     "Superiorly",
+     "Nowhere; it is a closed sac",
+     "Laterally behind the colon",
+     "Superiorly at the diaphragm",
      "Inferiorly along the ureter"
     ],
     "a": 3,
@@ -1029,9 +1029,9 @@
    {
     "q": "Minor calyces receive urine directly from the:",
     "o": [
-     "Renal columns",
-     "Arcuate vessels",
-     "Major calyces",
+     "Renal columns between the pyramids",
+     "Cortical collecting ducts in medullary rays",
+     "Major calyces of the renal pelvis",
      "Papillary ducts opening on a renal papilla"
     ],
     "a": 3,
@@ -1041,9 +1041,9 @@
     "q": "Renal columns are extensions of:",
     "o": [
      "Cortex between renal pyramids",
-     "Renal sinus fat",
-     "Medulla into cortex",
-     "Calyces"
+     "Renal sinus fat into the hilum",
+     "Medulla extending into the cortex",
+     "Calyces between the papillae"
     ],
     "a": 0,
     "e": "Cortical tissue between pyramids."
@@ -1084,13 +1084,13 @@
    {
     "q": "Which renal region is most sensitive to hypoxic injury?",
     "o": [
-     "Inner medullary collecting duct",
-     "Renal capsule",
-     "Glomerulus",
-     "Straight segment of PT and thick ascending limb in the outer medulla"
+     "Inner medulla (papillary collecting ducts)",
+     "Superficial cortex (subcapsular nephrons)",
+     "Glomerular tuft (podocytes and endothelium)",
+     "Outer medulla (PT straight segment and TAL)"
     ],
     "a": 3,
-    "e": "These segments have high metabolic demand and low O₂ supply, so ischemia hits them first (ATN)."
+    "e": "The straight segment of the PT and the thick ascending limb in the outer medulla have high metabolic demand and low O₂ supply, so ischemia hits them first (ATN)."
    }
   ],
   "kub-anatomy:vessels": [
@@ -1132,8 +1132,8 @@
    {
     "q": "Lymph from the kidneys drains mainly to:",
     "o": [
-     "Axillary nodes",
-     "Inguinal nodes",
+     "Common iliac nodes",
+     "Superficial and deep inguinal nodes",
      "Lateral aortic (lumbar) nodes",
      "Internal iliac nodes"
     ],
@@ -1189,13 +1189,13 @@
    {
     "q": "Vesicoureteral reflux is primarily due to:",
     "o": [
-     "Long submucosal tunnel",
-     "Urethral stricture",
-     "Detrusor overactivity only",
-     "Short intramural segment of the ureter in the bladder wall"
+     "Long oblique submucosal tunnel at the trigone",
+     "Acquired urethral stricture",
+     "Isolated detrusor overactivity",
+     "Short intramural ureteric segment"
     ],
     "a": 3,
-    "e": "A short, laterally placed ureteric insertion lacks the flap-valve effect, so urine refluxes; it predisposes to recurrent UTI and pyelonephritis."
+    "e": "A short intramural segment of the ureter in the bladder wall (short, laterally placed insertion) lacks the flap-valve effect, so urine refluxes; it predisposes to recurrent UTI and pyelonephritis."
    },
    {
     "q": "A child with recurrent pyelonephritis is investigated for reflux. The diagnostic test of choice is:",
@@ -1223,9 +1223,9 @@
     "q": "The main long-term risk of untreated VUR is:",
     "o": [
      "Reflux nephropathy (renal scarring)",
-     "Stones",
-     "Urethral stricture",
-     "Bladder cancer"
+     "Recurrent calcium oxalate stones",
+     "Posterior urethral stricture",
+     "Urothelial carcinoma of the bladder"
     ],
     "a": 0,
     "e": "Recurrent pyelonephritis scars the kidney → hypertension and CKD."
@@ -1314,13 +1314,13 @@
    {
     "q": "The cisterna chyli lies:",
     "o": [
-     "Anterior to the aorta at L4",
-     "Lateral to the left kidney",
-     "Anterior to L1–L2, posterior and to the right of the aorta",
+     "At L4, anterior to the aortic bifurcation",
+     "Beside the left renal vein, left of the aorta",
+     "At L1–L2, right of and behind the aorta",
      "In the posterior mediastinum at T8"
     ],
     "a": 2,
-    "e": "It receives the intestinal and lumbar trunks and begins the thoracic duct."
+    "e": "It lies anterior to L1–L2, posterior and to the right of the aorta. It receives the intestinal and lumbar trunks and begins the thoracic duct."
    }
   ],
   "kub-anatomy:plexus": [
@@ -1408,10 +1408,10 @@
    {
     "q": "The ejaculatory ducts open onto the:",
     "o": [
-     "Bulb of the penis",
-     "Navicular fossa",
+     "Bulbar part of the spongy urethra",
+     "Navicular fossa of the distal urethra",
      "Seminal colliculus of the prostatic urethra",
-     "Membranous urethra"
+     "Membranous urethra within the external sphincter"
     ],
     "a": 2,
     "e": "The prostatic utricle opens in the middle of the colliculus with an ejaculatory duct on each side."
@@ -1443,13 +1443,13 @@
    {
     "q": "During hysterectomy the ureter is at risk where it passes:",
     "o": [
-     "Under the uterine artery ('water under the bridge')",
-     "Over the psoas",
-     "Behind the IVC",
+     "Under the uterine artery",
+     "Over the psoas major",
+     "Behind the inferior vena cava",
      "Through the renal sinus"
     ],
     "a": 0,
-    "e": "Classic site of iatrogenic ureter injury."
+    "e": "'Water under the bridge': the classic site of iatrogenic ureter injury."
    }
   ],
   "kub-histology:lowpower": [
@@ -1478,10 +1478,10 @@
    {
     "q": "A renal lobule consists of:",
     "o": [
-     "One medullary ray with the cortical tissue around it",
-     "One minor calyx and its papilla",
-     "One pyramid and its cortical cap",
-     "One segmental artery territory"
+     "A medullary ray and surrounding cortex",
+     "A minor calyx and its renal papilla",
+     "A pyramid and its overlying cortical cap",
+     "The territory of one segmental artery"
     ],
     "a": 0,
     "e": "Lobe = pyramid + overlying cortex. Lobule = a medullary ray + surrounding cortex drained by one collecting duct system."
@@ -1502,10 +1502,10 @@
    {
     "q": "The uriniferous tubule consists of:",
     "o": [
-     "Glomerulus plus PCT",
+     "Renal corpuscle plus PCT",
      "Nephron plus collecting duct",
-     "Nephron only",
-     "Collecting duct only"
+     "Nephron without its corpuscle",
+     "Collecting tubule and duct only"
     ],
     "a": 1,
     "e": "Different embryologic origins: metanephric blastema and ureteric bud."
@@ -1526,13 +1526,13 @@
    {
     "q": "Blood in the arcuate arteries flows next into:",
     "o": [
-     "Vasa recta",
+     "Descending vasa recta",
      "Interlobar arteries",
-     "Interlobular (cortical radial) arteries",
+     "Interlobular arteries",
      "Afferent arterioles"
     ],
     "a": 2,
-    "e": "Interlobar → arcuate → interlobular → afferent arteriole → glomerulus → efferent arteriole."
+    "e": "Interlobar → arcuate → interlobular (cortical radial) → afferent arteriole → glomerulus → efferent arteriole."
    },
    {
     "q": "Vasa recta arise from efferent arterioles of:",
@@ -1560,9 +1560,9 @@
     "q": "Sickle cell disease classically injures the renal papilla because:",
     "o": [
      "Vasa recta have low O₂ tension and high osmolality",
-     "Glomeruli are hypoxic",
-     "Collecting ducts lack blood supply",
-     "Urothelium is thin"
+     "Glomerular capillaries have the lowest O₂ tension",
+     "Collecting ducts lack any capillary blood supply",
+     "The papillary urothelium is unusually thin"
     ],
     "a": 0,
     "e": "Hypoxic, hypertonic medulla promotes sickling in the vasa recta → papillary necrosis."
@@ -1596,8 +1596,8 @@
     "o": [
      "The afferent arteriole enters",
      "The macula densa contacts the arterioles",
-     "Filtrate drains into the proximal convoluted tubule",
-     "Lacis cells are found"
+     "Filtrate drains into the PCT",
+     "Extraglomerular mesangial cells lie"
     ],
     "a": 2,
     "e": "Vascular pole = arterioles; urinary (tubular) pole = capsular space opens into the PCT."
@@ -1607,9 +1607,9 @@
    {
     "q": "A boy has hematuria, hearing loss and lens dislocation with a COL4A5 mutation. Which structure is abnormal on EM?",
     "o": [
-     "Slit diaphragms",
-     "Endothelial fenestrae",
-     "Pedicels",
+     "Podocyte slit diaphragms",
+     "Endothelial cell fenestrae",
+     "Podocyte foot processes",
      "Glomerular basement membrane"
     ],
     "a": 3,
@@ -1629,9 +1629,9 @@
    {
     "q": "The negatively charged layers of the GBM that repel anionic proteins are the:",
     "o": [
-     "Mesangial matrix",
-     "Lamina densa",
-     "Endothelial nuclei",
+     "Mesangial matrix and cells",
+     "Lamina densa (central electron-dense layer)",
+     "Endothelial cell nuclei",
      "Laminae rarae interna and externa"
     ],
     "a": 3,
@@ -1676,9 +1676,9 @@
     "q": "Mesangial cells lie where?",
     "o": [
      "Between capillary loops where podocytes are absent",
-     "Lining the parietal layer",
-     "In the wall of the efferent arteriole",
-     "Between pedicels"
+     "Lining the parietal layer of Bowman capsule as squamous cells",
+     "Within the media of the efferent arteriole",
+     "Between interdigitating podocyte pedicels"
     ],
     "a": 0,
     "e": "They support capillaries on surfaces not covered by podocytes, sharing a basement membrane with the endothelium."
@@ -1688,10 +1688,10 @@
    {
     "q": "Compared with the PCT, the DCT in cross-section shows:",
     "o": [
-     "Taller cells with a dense brush border",
+     "Taller, redder cells with a dense brush border",
      "Pale cells with sharp cell borders",
      "Squamous cells with RBCs in the lumen",
-     "Smaller, paler cells, more nuclei and a clear wide lumen"
+     "Smaller, paler cells and a clear lumen"
     ],
     "a": 3,
     "e": "DCT: smaller, less eosinophilic cells, no brush border, more nuclei per section, empty lumen."
@@ -1699,9 +1699,9 @@
    {
     "q": "Why do PCT cells stain so eosinophilic?",
     "o": [
-     "Many secretory granules",
-     "Glycogen stores",
-     "Abundant rough ER",
+     "Many zymogen-like apical secretory granules",
+     "Abundant cytoplasmic glycogen stores",
+     "Abundant rough ER for protein export",
      "Numerous mitochondria in basal infoldings"
     ],
     "a": 3,
@@ -1756,9 +1756,9 @@
    {
     "q": "Leaky tight junctions in the PCT allow:",
     "o": [
-     "No water flow",
-     "Glucose secretion",
-     "Only K⁺ secretion",
+     "Transcellular water flow via AQP2 alone",
+     "Secretion of glucose back into the lumen",
+     "Selective paracellular K⁺ secretion",
      "Paracellular movement of water and solutes"
     ],
     "a": 3,
@@ -1767,10 +1767,10 @@
    {
     "q": "The PCT stains intensely eosinophilic in H&E because of:",
     "o": [
-     "Melanin",
+     "Melanin granules",
      "Many mitochondria",
-     "Glycogen",
-     "Mucus"
+     "Glycogen deposits",
+     "Apical mucin"
     ],
     "a": 1,
     "e": "Mitochondria within basal infoldings."
@@ -1780,13 +1780,13 @@
    {
     "q": "In the medulla, how is a thin limb of Henle told apart from a vasa recta capillary?",
     "o": [
-     "Thin limb contains RBCs",
-     "Thin limb has a brush border",
-     "Vasa recta is lined by cuboidal cells",
-     "Thin limb epithelium is slightly thicker and its lumen lacks RBCs"
+     "Thinner epithelium and RBCs in the lumen",
+     "A short apical brush border on its cells",
+     "Pericytes surrounding the thin limb wall",
+     "Thicker epithelium and no RBCs in the lumen"
     ],
     "a": 3,
-    "e": "Both are squamous, but capillaries are thinner and usually contain erythrocytes."
+    "e": "Thin limb epithelium is slightly thicker and its lumen lacks RBCs. Both are squamous, but capillaries are thinner and usually contain erythrocytes."
    },
    {
     "q": "Tamm-Horsfall protein (uromodulin), the matrix of urinary casts, is made by:",
@@ -1827,9 +1827,9 @@
     "q": "Macula densa cells are distinguished on a slide by:",
     "o": [
      "Tall, crowded cells with apically placed nuclei",
-     "A brush border",
-     "Binucleate dome-shaped cells",
-     "Many flattened nuclei"
+     "Cuboidal cells with a prominent brush border",
+     "Binucleate dome-shaped cells bulging into the lumen",
+     "Many flattened nuclei along a thin wall"
     ],
     "a": 0,
     "e": "Macula densa: closely packed columnar cells of the distal tubule with apical nuclei and basal Golgi."
@@ -1851,12 +1851,12 @@
     "q": "An antibody to aquaporin-2 would stain which cells most intensely after ADH?",
     "o": [
      "Podocytes",
-     "Macula densa",
-     "Collecting duct principal cells",
-     "PCT cells"
+     "Macula densa cells",
+     "Principal cells",
+     "Intercalated cells"
     ],
     "a": 2,
-    "e": "ADH inserts AQP2-containing vesicles into the apical membrane of principal cells."
+    "e": "ADH inserts AQP2-containing vesicles into the apical membrane of collecting duct principal cells."
    },
    {
     "q": "Collecting duct cells are recognized on H&E by:",
@@ -1886,9 +1886,9 @@
     "q": "A medullary tubule with pale cells and sharp cell borders is most likely a:",
     "o": [
      "Collecting duct",
-     "TAL",
-     "Thin limb",
-     "PCT"
+     "Thick ascending limb",
+     "Thin limb of Henle",
+     "Proximal tubule"
     ],
     "a": 0,
     "e": "Principal cells have few organelles and distinct lateral borders."
@@ -1909,24 +1909,24 @@
    {
     "q": "Plaques of uroplakin in the apical membrane of umbrella cells serve to:",
     "o": [
-     "Move urine by cilia",
-     "Absorb water from urine",
-     "Form an osmotic barrier and let the surface fold and unfold",
-     "Secrete mucus"
+     "Move urine by coordinated ciliary beating",
+     "Absorb water from urine via aquaporins",
+     "Seal the barrier while allowing distension",
+     "Secrete mucus that protects the surface"
     ],
     "a": 2,
-    "e": "Rigid uroplakin plaques joined by hinges fold into vesicles when empty and unfold when full, keeping the barrier intact."
+    "e": "They form an osmotic barrier: rigid uroplakin plaques joined by hinges fold into vesicles when empty and unfold when full, keeping the barrier intact."
    },
    {
     "q": "When the bladder fills, the urothelium:",
     "o": [
-     "Becomes thicker",
-     "Changes into simple columnar",
-     "Loses its basement membrane",
-     "Thins from about 5–7 to 2–3 cell layers with flattened umbrella cells"
+     "Thickens as umbrella cells become cuboidal",
+     "Changes into simple columnar epithelium",
+     "Loses its basement membrane as it stretches",
+     "Thins to 2–3 layers with flat umbrella cells"
     ],
     "a": 3,
-    "e": "Cells shift laterally and flatten; full urothelium can mimic stratified squamous."
+    "e": "It thins from about 5–7 to 2–3 cell layers; cells shift laterally and flatten, and full urothelium can mimic stratified squamous."
    },
    {
     "q": "Which part of the urinary system has epithelial membranes with stiffened protein plaques?",
@@ -1977,10 +1977,10 @@
    {
     "q": "A ureter in cross-section has a star-shaped lumen because:",
     "o": [
-     "The mucosa folds longitudinally when the lumen is empty",
-     "Of fixation artifact only",
-     "It has villi",
-     "Its muscle is striated"
+     "Its mucosa folds when the lumen is empty",
+     "Fixation shrinks the surrounding adventitia",
+     "Its mucosa bears finger-like villi",
+     "Its striated muscle contracts in spirals"
     ],
     "a": 0,
     "e": "Longitudinal mucosal folds form when the undistended ureter contracts."
@@ -1990,9 +1990,9 @@
    {
     "q": "The detrusor muscle is arranged as:",
     "o": [
-     "Single circular layer",
-     "Two layers only",
-     "Striated muscle",
+     "Inner circular, middle longitudinal, outer circular",
+     "Inner circular and outer longitudinal layers",
+     "Striated skeletal muscle in three layers",
      "Inner longitudinal, middle circular, outer longitudinal"
     ],
     "a": 3,
@@ -2014,10 +2014,10 @@
    {
     "q": "The female urethra is lined proximally by urothelium and distally by:",
     "o": [
-     "Simple columnar",
+     "Simple columnar with goblet cells",
      "Non-keratinized stratified squamous",
-     "Cuboidal",
-     "Pseudostratified ciliated"
+     "Stratified cuboidal epithelium",
+     "Pseudostratified ciliated columnar"
     ],
     "a": 1,
     "e": "Junqueira Ch 19."
@@ -2025,10 +2025,10 @@
    {
     "q": "The membranous urethra in males passes through the:",
     "o": [
-     "Prostate",
+     "Prostate gland and its capsule",
      "External urethral sphincter (striated)",
-     "Corpus spongiosum",
-     "Bladder neck"
+     "Corpus spongiosum of the penis",
+     "Internal sphincter at the bladder neck"
     ],
     "a": 1,
     "e": "Lined by stratified/pseudostratified columnar epithelium."
@@ -2049,9 +2049,9 @@
    {
     "q": "In acute pyelonephritis neutrophils accumulate especially in the:",
     "o": [
-     "Glomeruli",
-     "Arcuate arteries",
-     "Renal capsule",
+     "Glomeruli and Bowman space",
+     "Arcuate arteries and veins",
+     "Renal capsule and perirenal fat",
      "Collecting ducts and interstitium"
     ],
     "a": 3,
@@ -2154,13 +2154,13 @@
    {
     "q": "Plasma has slightly higher cation concentration than interstitial fluid because of:",
     "o": [
-     "Active pumping",
-     "Lymph flow",
-     "Gibbs–Donnan effect of negatively charged plasma proteins",
-     "Higher water content"
+     "Active Na⁺ pumping by capillary endothelium",
+     "Continuous lymph flow out of the interstitium",
+     "Gibbs–Donnan effect of plasma proteins",
+     "Higher water content of plasma"
     ],
     "a": 2,
-    "e": "Proteins retain cations in plasma."
+    "e": "Negatively charged plasma proteins retain cations in plasma (Gibbs–Donnan effect)."
    }
   ],
   "renal-ch25:measure": [
@@ -2168,9 +2168,9 @@
     "q": "Which indicator measures plasma volume?",
     "o": [
      "Evans blue (T-1824) or ¹²⁵I-albumin",
-     "⁵¹Cr-RBC",
-     "D₂O",
-     "Inulin"
+     "⁵¹Cr-labeled red blood cells",
+     "Heavy water (D₂O) or tritiated water (³H₂O)",
+     "Inulin or radioactive sulfate"
     ],
     "a": 0,
     "e": "These bind albumin and stay in plasma."
@@ -2179,9 +2179,9 @@
     "q": "Interstitial fluid volume is calculated as:",
     "o": [
      "TBW × 0.4",
-     "TBW − ICF",
+     "TBW − ICF volume",
      "ECF − plasma volume",
-     "Blood − plasma"
+     "ECF − total blood volume"
     ],
     "a": 2,
     "e": "Table 25-3."
@@ -2237,10 +2237,10 @@
    {
     "q": "Two liters of 3% NaCl are infused into a 70-kg man. After osmotic equilibrium, which is true?",
     "o": [
-     "ICF volume increases",
+     "ICF volume increases and ECF volume decreases",
      "ECF volume increases and ICF volume decreases",
-     "Both volumes decrease",
-     "Plasma osmolarity falls"
+     "Both ECF and ICF volumes increase equally",
+     "Plasma osmolarity falls below normal"
     ],
     "a": 1,
     "e": "Hypertonic saline raises ECF osmolarity, pulling water out of cells: ECF ↑, ICF ↓ (Guyton: ECF 19 L, ICF 25 L, 313.9 mOsm/L)."
@@ -2259,10 +2259,10 @@
    {
     "q": "Why does 5% dextrose behave like free water after infusion?",
     "o": [
-     "It stays in plasma",
-     "It is excreted unchanged",
+     "It stays in the plasma compartment",
+     "It is excreted unchanged in urine",
      "Glucose is metabolized, leaving water",
-     "It is hypertonic"
+     "It is markedly hypertonic to plasma"
     ],
     "a": 2,
     "e": "Glucose enters cells and is metabolized, so the net effect is adding solute-free water."
@@ -2281,10 +2281,10 @@
    {
     "q": "A solute that crosses cell membranes freely (urea) at the same osmolarity as plasma is:",
     "o": [
-     "Isotonic and isosmotic",
+     "Isosmotic and effectively isotonic",
      "Isosmotic but effectively hypotonic",
      "Hyperosmotic and hypertonic",
-     "Hypertonic"
+     "Hyperosmotic but effectively isotonic"
     ],
     "a": 1,
     "e": "Tonicity depends on impermeant solutes; urea equilibrates across membranes, so cells eventually swell."
@@ -2327,10 +2327,10 @@
    {
     "q": "Edema in nephrotic syndrome is mainly due to:",
     "o": [
-     "Increased capillary permeability",
-     "Lymphatic obstruction",
+     "Increased capillary permeability to protein",
+     "Lymphatic obstruction by fibrosis",
      "Decreased plasma colloid osmotic pressure",
-     "Increased venous pressure only"
+     "Increased capillary hydrostatic pressure"
     ],
     "a": 2,
     "e": "Loss of albumin lowers plasma oncotic pressure, increasing net filtration into tissues."
@@ -2340,10 +2340,10 @@
    {
     "q": "Which is NOT a cause of increased capillary filtration?",
     "o": [
-     "Burns",
+     "Burns damaging capillaries",
      "Increased plasma proteins",
-     "Venous obstruction",
-     "Heart failure"
+     "Deep venous obstruction",
+     "Congestive heart failure"
     ],
     "a": 1,
     "e": "Low (not high) plasma proteins cause edema."
@@ -2352,9 +2352,9 @@
     "q": "Lymphatic obstruction from filariasis causes edema because:",
     "o": [
      "Protein accumulates in the interstitium",
-     "Capillary pressure falls",
-     "Plasma proteins rise",
-     "Kf falls"
+     "Capillary hydrostatic pressure falls",
+     "Plasma protein concentration rises",
+     "Capillary filtration coefficient falls"
     ],
     "a": 0,
     "e": "Lymph cannot return protein and fluid."
@@ -2376,9 +2376,9 @@
     "q": "Which kidney cell type makes erythropoietin in response to hypoxia?",
     "o": [
      "Interstitial (peritubular) fibroblasts",
-     "Juxtaglomerular cells",
-     "Podocytes",
-     "Intercalated cells"
+     "Juxtaglomerular (granular) cells",
+     "Visceral epithelial cells (podocytes)",
+     "Collecting duct intercalated cells"
     ],
     "a": 0,
     "e": "EPO comes from peritubular interstitial cells. CKD → normocytic anemia."
@@ -2421,9 +2421,9 @@
    {
     "q": "On a cystometrogram, pressure rises sharply after bladder volume exceeds about:",
     "o": [
-     "50 mL",
-     "1000 mL",
-     "100 mL",
+     "50–100 mL",
+     "700–800 mL",
+     "150–200 mL",
      "300–400 mL"
     ],
     "a": 3,
@@ -2445,10 +2445,10 @@
    {
     "q": "Excretion rate equals:",
     "o": [
-     "Filtration + reabsorption",
-     "Reabsorption − secretion",
+     "Filtration + reabsorption − secretion",
+     "Reabsorption − filtration + secretion",
      "Filtration − reabsorption + secretion",
-     "Secretion − filtration"
+     "Filtration − secretion − reabsorption"
     ],
     "a": 2,
     "e": "The four processes of urine formation."
@@ -2480,9 +2480,9 @@
    {
     "q": "Loss of which component of the glomerular filtration barrier best explains selective albuminuria?",
     "o": [
-     "Mesangial cells",
-     "Bowman capsule parietal layer",
-     "Fenestrated endothelium",
+     "Mesangial cells and matrix",
+     "Parietal epithelium of Bowman capsule",
+     "Fenestrae of the capillary endothelium",
      "Negative charge of the basement membrane"
     ],
     "a": 3,
@@ -2513,10 +2513,10 @@
    {
     "q": "Albumin is restricted from filtration mainly because of its:",
     "o": [
-     "Positive charge",
+     "Positive charge and lipid solubility",
      "Negative charge plus size",
-     "Lipid solubility",
-     "Size alone"
+     "High lipid solubility",
+     "Molecular size alone"
     ],
     "a": 1,
     "e": "Albumin (6 nm) is smaller than pores (~8 nm) but repelled by negative charges."
@@ -2535,10 +2535,10 @@
    {
     "q": "Creatinine clearance overestimates GFR because creatinine is:",
     "o": [
-     "Bound to albumin",
+     "Partly bound to plasma albumin",
      "Moderately secreted by the tubules",
-     "Reabsorbed in the PCT",
-     "Metabolized by the kidney"
+     "Partly reabsorbed in the PCT",
+     "Partly metabolized by tubule cells"
     ],
     "a": 1,
     "e": "A small amount is secreted, so clearance > true GFR by roughly 10–20%."
@@ -2579,13 +2579,13 @@
    {
     "q": "A patient takes high-dose NSAIDs. What happens at the afferent arteriole?",
     "o": [
-     "No change",
+     "No change in tone or GFR",
      "Efferent dilation → ↓ GFR only",
-     "Dilation → ↑ GFR",
-     "Constriction from loss of prostaglandins → ↓ RPF and ↓ GFR"
+     "Dilation → ↑ RPF and ↑ GFR",
+     "Constriction → ↓ RPF and ↓ GFR"
     ],
     "a": 3,
-    "e": "Prostaglandins dilate the afferent arteriole; NSAIDs remove this and can precipitate AKI, especially with ACE inhibitors and diuretics."
+    "e": "Prostaglandins dilate the afferent arteriole; NSAIDs remove this, so it constricts (↓ RPF, ↓ GFR) and can precipitate AKI, especially with ACE inhibitors and diuretics."
    },
    {
     "q": "Ureteral obstruction changes GFR mainly by:",
@@ -2614,10 +2614,10 @@
    {
     "q": "NSAIDs can precipitate acute kidney injury in volume-depleted patients because they block:",
     "o": [
-     "Angiotensin II",
-     "ADH",
+     "Angiotensin II that constricts the efferent arteriole",
+     "ADH that inserts aquaporins in collecting ducts",
      "Prostaglandins that dilate the afferent arteriole",
-     "Aldosterone"
+     "Aldosterone that drives Na⁺ reabsorption"
     ],
     "a": 2,
     "e": "Prostaglandins buffer vasoconstriction; blocking them lowers RBF and GFR."
@@ -2636,10 +2636,10 @@
    {
     "q": "Strong sympathetic activation (severe hemorrhage) causes:",
     "o": [
-     "Constriction of renal arterioles and decreased GFR",
-     "No change",
-     "Efferent dilation",
-     "Increased GFR"
+     "Arteriolar constriction and ↓ GFR",
+     "No change, owing to autoregulation",
+     "Efferent dilation, preserved GFR",
+     "Afferent dilation and ↑ GFR"
     ],
     "a": 0,
     "e": "Intense sympathetic stimulation constricts renal arterioles, lowering RBF and GFR."
@@ -2660,10 +2660,10 @@
    {
     "q": "Decreased NaCl at the macula densa causes:",
     "o": [
-     "Decreased angiotensin II",
+     "Decreased renin and angiotensin II",
      "Afferent dilation and increased renin release",
-     "Efferent dilation",
-     "Afferent constriction"
+     "Efferent dilation and decreased renin",
+     "Afferent constriction and decreased glomerular filtration"
     ],
     "a": 1,
     "e": "Tubuloglomerular feedback dilates the afferent arteriole and stimulates renin → Ang II constricts the efferent."
@@ -2671,9 +2671,9 @@
    {
     "q": "The myogenic mechanism responds to:",
     "o": [
-     "Luminal NaCl",
-     "Plasma osmolarity",
-     "ADH",
+     "Luminal NaCl at the macula densa",
+     "Plasma osmolarity changes",
+     "Circulating ADH levels",
      "Stretch of the arteriolar wall"
     ],
     "a": 3,
@@ -2682,13 +2682,13 @@
    {
     "q": "A high-protein meal increases GFR because:",
     "o": [
-     "Kf decreases",
-     "Plasma oncotic pressure rises",
-     "More Na⁺ is reabsorbed with amino acids in the PCT, so less NaCl reaches the macula densa",
-     "Amino acids dilate the efferent"
+     "Kf falls as mesangial cells contract",
+     "Plasma oncotic pressure rises after absorption",
+     "Amino acid–Na⁺ cotransport lowers macula densa NaCl",
+     "Amino acids directly dilate the efferent arteriole"
     ],
     "a": 2,
-    "e": "Reduced macula densa NaCl triggers TGF-mediated afferent dilation."
+    "e": "More Na⁺ is reabsorbed with amino acids in the PCT, so less NaCl reaches the macula densa; TGF-mediated afferent dilation raises GFR."
    }
   ],
   "renal-ch27:transport": [
@@ -2706,10 +2706,10 @@
    {
     "q": "Glucose is reabsorbed in the proximal tubule mainly by:",
     "o": [
-     "Aquaporin-2",
-     "Paracellular diffusion",
+     "Apical GLUT2 facilitated diffusion",
+     "Paracellular solvent drag",
      "Na⁺/glucose cotransport (SGLT2)",
-     "Primary active H⁺ pump"
+     "Primary active H⁺–glucose pump"
     ],
     "a": 2,
     "e": "SGLT2 in the early PCT reabsorbs most glucose; SGLT2 inhibitors (-gliflozins) cause glucosuria."
@@ -2739,13 +2739,13 @@
    {
     "q": "Glucose appears in urine before Tm is reached because of:",
     "o": [
-     "Glucose secretion",
-     "PAH competition",
-     "Splay: nephrons differ in Tm and filtered load",
-     "Low GFR"
+     "Tubular glucose secretion",
+     "Competition with PAH",
+     "Splay among nephrons",
+     "A falling GFR"
     ],
     "a": 2,
-    "e": "Threshold (~200 mg/min) is below Tm because not all nephrons saturate together."
+    "e": "Splay: nephrons differ in Tm and filtered load, so threshold (~200 mg/min) is below Tm because not all nephrons saturate together."
    },
    {
     "q": "SGLT2 in the PCT is an example of:",
@@ -2785,13 +2785,13 @@
    {
     "q": "Along the PCT, the TF/P ratio of inulin rises because:",
     "o": [
-     "Inulin is reabsorbed",
-     "Water is reabsorbed while inulin remains",
-     "GFR rises",
-     "Inulin is secreted"
+     "Inulin is slowly reabsorbed",
+     "Water is reabsorbed, inulin is not",
+     "Plasma inulin falls along the tubule",
+     "Inulin is secreted by PCT cells"
     ],
     "a": 1,
-    "e": "TF/P inulin indexes water reabsorption."
+    "e": "Water is reabsorbed while inulin remains, so TF/P inulin indexes water reabsorption."
    },
    {
     "q": "Organic anions such as penicillin and PAH are secreted in the:",
@@ -2821,9 +2821,9 @@
     "q": "The lumen-positive potential in the TAL drives paracellular reabsorption of:",
     "o": [
      "Mg²⁺ and Ca²⁺",
-     "Urea",
-     "HCO₃⁻",
-     "Glucose"
+     "Urea and water",
+     "HCO₃⁻ and Cl⁻",
+     "Glucose and urea"
     ],
     "a": 0,
     "e": "K⁺ back-leak through ROMK makes the lumen ~+8 mV, pushing cations between cells."
@@ -2855,10 +2855,10 @@
    {
     "q": "Aldosterone acts on principal cells to:",
     "o": [
-     "Secrete HCO₃⁻",
+     "Secrete HCO₃⁻ and reabsorb Cl⁻",
      "Increase Na⁺ reabsorption and K⁺ secretion",
-     "Decrease ENaC",
-     "Increase urea permeability"
+     "Decrease ENaC and increase Na⁺ excretion",
+     "Increase urea and water permeability"
     ],
     "a": 1,
     "e": "Increases Na⁺/K⁺-ATPase, ENaC and ROMK."
@@ -2890,9 +2890,9 @@
    {
     "q": "Which nephron segment reabsorbs most of the filtered Na⁺, glucose, amino acids, and HCO₃⁻?",
     "o": [
-     "Thick ascending limb",
-     "Distal convoluted tubule",
-     "Collecting duct",
+     "Thick ascending limb of Henle",
+     "Early distal convoluted tubule",
+     "Cortical collecting duct",
      "Early proximal convoluted tubule"
     ],
     "a": 3,
@@ -2925,10 +2925,10 @@
    {
     "q": "PTH acts on the kidney to:",
     "o": [
-     "Insert AQP2",
-     "↑ phosphate reabsorption in the PCT",
-     "↓ Ca²⁺ reabsorption in the DCT",
-     "↑ Ca²⁺ reabsorption in the DCT and ↓ phosphate reabsorption in the PCT"
+     "Insert AQP2 into collecting duct cells",
+     "↑ phosphate and Ca²⁺ reabsorption in the PCT",
+     "↓ Ca²⁺ (DCT) and ↑ phosphate (PCT) reabsorption",
+     "↑ Ca²⁺ (DCT) and ↓ phosphate (PCT) reabsorption"
     ],
     "a": 3,
     "e": "PTH: ↑ Ca²⁺ (DCT), ↓ PO₄³⁻ (blocks NaPi in PCT), ↑ 1α-hydroxylase."
@@ -2947,13 +2947,13 @@
    {
     "q": "ANP released from atrial stretch causes:",
     "o": [
-     "Efferent dilation and ↓ GFR",
-     "Afferent dilation, efferent constriction and ↓ Na⁺ reabsorption → natriuresis",
-     "Renin release",
-     "↑ ENaC activity"
+     "Efferent dilation, afferent constriction, ↓ GFR and Na⁺ retention",
+     "Afferent dilation, efferent constriction, natriuresis",
+     "Renin release and aldosterone secretion",
+     "↑ ENaC activity and Na⁺ retention"
     ],
     "a": 1,
-    "e": "ANP/BNP → ↑ GFR and natriuresis; 'aldosterone escape' in primary hyperaldosteronism."
+    "e": "ANP/BNP: afferent dilation, efferent constriction and ↓ Na⁺ reabsorption → ↑ GFR and natriuresis; 'aldosterone escape' in primary hyperaldosteronism."
    }
   ],
   "renal-ch27:clearance": [
@@ -3005,9 +3005,9 @@
     "q": "Effective renal plasma flow is estimated using the clearance of:",
     "o": [
      "Para-aminohippuric acid (PAH)",
-     "Glucose",
-     "Inulin",
-     "Albumin"
+     "Glucose at normal plasma levels",
+     "Inulin (a filtered polysaccharide)",
+     "Radiolabeled albumin"
     ],
     "a": 0,
     "e": "PAH is filtered and secreted almost completely in one pass; it slightly underestimates true RPF."
@@ -3074,10 +3074,10 @@
    {
     "q": "The two requirements for forming concentrated urine are:",
     "o": [
-     "Low GFR and low ADH",
+     "Low ADH and a hyperosmotic medullary interstitium",
      "High ADH and a hyperosmotic medullary interstitium",
-     "High GFR and high aldosterone",
-     "Low ADH and low medullary osmolarity"
+     "High GFR and high plasma aldosterone",
+     "High ADH and an iso-osmotic medullary interstitium"
     ],
     "a": 1,
     "e": "Guyton Ch 28."
@@ -3096,13 +3096,13 @@
    {
     "q": "Drinking seawater worsens dehydration because:",
     "o": [
-     "Seawater is hypotonic",
-     "It blocks ADH",
-     "It causes diarrhea only",
-     "Its salt load (~1200 mOsm/L) exceeds what the kidney can concentrate"
+     "Seawater is hypotonic, causing water intoxication",
+     "It blocks ADH release from the posterior pituitary",
+     "It acts mainly by causing osmotic diarrhea",
+     "Its salt load exceeds maximal urine concentration"
     ],
     "a": 3,
-    "e": "Extra water must be excreted to remove the salt."
+    "e": "Its salt load (~1200 mOsm/L) exceeds what the kidney can concentrate; extra water must be excreted to remove the salt."
    }
   ],
   "renal-ch28:countercurrent": [
@@ -3120,21 +3120,21 @@
    {
     "q": "Urea contributes to medullary hyperosmolality mainly through:",
     "o": [
-     "Filtration only",
-     "Active transport in the TAL",
-     "Passive reabsorption from inner medullary collecting ducts via UT-A1/A3",
-     "Secretion in the PCT"
+     "Filtration alone, without reabsorption",
+     "Active urea transport by TAL cells",
+     "Passive IMCD reabsorption via UT-A1/A3",
+     "Active urea secretion into the PCT"
     ],
     "a": 2,
-    "e": "ADH increases urea permeability in the inner medullary collecting duct."
+    "e": "Urea is passively reabsorbed from inner medullary collecting ducts via UT-A1/A3; ADH increases urea permeability there."
    },
    {
     "q": "The vasa recta preserve the medullary gradient because they:",
     "o": [
      "Act as countercurrent exchangers with low flow",
-     "Pump NaCl actively",
-     "Carry 50% of RBF",
-     "Are impermeable"
+     "Actively pump NaCl into the interstitium",
+     "Carry about half of total renal blood flow to the medulla",
+     "Are impermeable to water and solutes"
     ],
     "a": 0,
     "e": "Hairpin loops and sluggish flow minimize washout of solute."
@@ -3142,13 +3142,13 @@
    {
     "q": "A low-protein diet reduces maximal urine concentrating ability because:",
     "o": [
-     "TAL is blocked",
-     "Less urea is available for the medullary interstitium",
-     "GFR rises",
-     "ADH falls"
+     "NaCl transport in the TAL is blocked",
+     "Less urea is available to the medulla",
+     "GFR rises and washes out the medulla",
+     "ADH secretion falls with less protein"
     ],
     "a": 1,
-    "e": "Urea supplies 40–50% of inner medullary osmolality."
+    "e": "Less urea is available for the medullary interstitium; urea supplies 40–50% of inner medullary osmolality."
    }
   ],
   "renal-ch28:urea": [
@@ -3203,8 +3203,8 @@
    {
     "q": "ADH secretion is most sensitive to:",
     "o": [
-     "Plasma glucose",
-     "Plasma K⁺",
+     "A 1% change in plasma glucose",
+     "A 1% change in plasma potassium",
      "A 1% change in plasma osmolarity",
      "A 1% fall in blood volume"
     ],
@@ -3214,9 +3214,9 @@
    {
     "q": "Free water clearance is negative when:",
     "o": [
-     "ADH is absent",
-     "GFR is zero",
-     "Urine is hypo-osmotic",
+     "ADH is absent from plasma",
+     "GFR falls toward zero",
+     "Urine is hypo-osmotic to plasma",
      "Urine is hyperosmotic to plasma"
     ],
     "a": 3,
@@ -3237,9 +3237,9 @@
     "q": "Nephrogenic diabetes insipidus is caused by:",
     "o": [
      "Failure of the kidney to respond to ADH",
-     "Lack of ADH",
-     "Excess ADH",
-     "Excess aldosterone"
+     "Lack of ADH from the posterior pituitary",
+     "Excess ADH from an ectopic source",
+     "Excess aldosterone from an adrenal adenoma"
     ],
     "a": 0,
     "e": "V2 receptor/AQP2 defects or drugs like lithium."
@@ -3282,10 +3282,10 @@
    {
     "q": "Insulin lowers plasma K⁺ by:",
     "o": [
-     "Increasing renal excretion",
+     "Increasing renal K⁺ excretion via ROMK",
      "Stimulating Na⁺/K⁺-ATPase to move K⁺ into cells",
-     "Blocking ROMK",
-     "Increasing aldosterone"
+     "Blocking ROMK channels in the collecting duct",
+     "Increasing aldosterone secretion"
     ],
     "a": 1,
     "e": "Used acutely with glucose in hyperkalemia."
@@ -3294,9 +3294,9 @@
     "q": "Which shifts K⁺ OUT of cells?",
     "o": [
      "Insulin deficiency and hyperosmolarity",
-     "β2-agonists",
-     "Alkalosis",
-     "Aldosterone"
+     "β₂-adrenergic agonists such as albuterol",
+     "Metabolic alkalosis and insulin excess",
+     "Aldosterone and epinephrine"
     ],
     "a": 0,
     "e": "Also acidosis, cell lysis and strenuous exercise."
@@ -3318,9 +3318,9 @@
     "q": "Overly rapid correction of chronic hyponatremia risks:",
     "o": [
      "Osmotic demyelination syndrome",
-     "Cerebral edema",
-     "Rhabdomyolysis",
-     "Hyperkalemic arrest"
+     "Cerebral edema and herniation",
+     "Rhabdomyolysis with myoglobinuria",
+     "Hyperkalemic cardiac arrest"
     ],
     "a": 0,
     "e": "Correcting hyponatremia too fast causes osmotic demyelination ('from low to high, your pons will die'). Correcting hypernatremia too fast causes cerebral edema."
@@ -3329,9 +3329,9 @@
     "q": "Hypomagnesemia makes hypokalemia refractory because Mg²⁺ normally:",
     "o": [
      "Inhibits ROMK K⁺ secretion in the distal nephron",
-     "Blocks aldosterone synthesis",
-     "Stimulates insulin secretion",
-     "Activates ENaC"
+     "Blocks aldosterone synthesis in the adrenal zona glomerulosa",
+     "Stimulates insulin release from β cells",
+     "Activates ENaC in the collecting duct"
     ],
     "a": 0,
     "e": "Low Mg²⁺ removes the brake on ROMK, so renal K⁺ wasting continues until Mg²⁺ is replaced."
@@ -3361,9 +3361,9 @@
    {
     "q": "Most filtered Mg²⁺ is reabsorbed in the:",
     "o": [
-     "PCT",
+     "Proximal convoluted tubule",
      "Collecting duct",
-     "DCT",
+     "Distal convoluted tubule",
      "Thick ascending limb"
     ],
     "a": 3,
@@ -3375,30 +3375,30 @@
     "q": "Long-term arterial pressure is set mainly by:",
     "o": [
      "Cardiac output alone",
-     "ANP",
-     "The renal-body fluid feedback (pressure natriuresis)",
+     "Atrial natriuretic peptide",
+     "Renal pressure natriuresis",
      "Baroreceptor reflexes"
     ],
     "a": 2,
-    "e": "Pressure settles where renal output equals intake on the renal function curve."
+    "e": "The renal-body fluid feedback (pressure natriuresis): pressure settles where renal output equals intake on the renal function curve."
    },
    {
     "q": "'Aldosterone escape' refers to:",
     "o": [
-     "Loss of aldosterone's K⁺ effect",
-     "Adrenal tumor regression",
-     "Return of Na⁺ excretion to normal despite continued aldosterone excess",
-     "ADH suppression"
+     "Loss of aldosterone's K⁺-wasting effect over time",
+     "Spontaneous regression of the adrenal adenoma",
+     "Na⁺ excretion normalizing despite high aldosterone",
+     "Suppression of ADH despite hypernatremia"
     ],
     "a": 2,
-    "e": "Rising arterial pressure causes pressure natriuresis that offsets Na⁺ retention; hypokalemia persists."
+    "e": "Na⁺ excretion returns to normal despite continued aldosterone excess: rising arterial pressure causes pressure natriuresis that offsets Na⁺ retention; hypokalemia persists."
    },
    {
     "q": "If angiotensin II cannot be suppressed during a high-salt diet, the result is:",
     "o": [
-     "No change in pressure",
-     "Hyponatremia",
-     "Hypovolemia",
+     "No change in arterial pressure or volume",
+     "Dilutional hyponatremia with normal pressure",
+     "Hypovolemia from excess natriuresis",
      "Salt-sensitive increase in arterial pressure"
     ],
     "a": 3,
@@ -3432,12 +3432,12 @@
     "q": "Angiotensin II acts on the proximal tubule to:",
     "o": [
      "Insert aquaporin-2",
-     "↑ Na⁺/H⁺ exchange → ↑ Na⁺, HCO₃⁻ and water reabsorption",
+     "↑ Na⁺/H⁺ exchange (NHE3)",
      "Inhibit Na⁺/H⁺ exchange",
-     "Block ENaC"
+     "Block apical ENaC"
     ],
     "a": 1,
-    "e": "AT II stimulates NHE3 (can cause contraction alkalosis), constricts the efferent arteriole, releases aldosterone and ADH, and drives thirst."
+    "e": "AT II stimulates NHE3 → ↑ Na⁺, HCO₃⁻ and water reabsorption (can cause contraction alkalosis); it also constricts the efferent arteriole, releases aldosterone and ADH, and drives thirst."
    },
    {
     "q": "ACE also degrades which vasodilator, explaining cough and angioedema with ACE inhibitors?",
@@ -3455,10 +3455,10 @@
    {
     "q": "pH 7.25, PaCO₂ 28, HCO₃⁻ 12. Expected PaCO₂ by Winter's formula is ~26 ± 2. This is:",
     "o": [
-     "Respiratory alkalosis",
-     "Metabolic alkalosis",
+     "Primary respiratory alkalosis with renal compensation",
+     "Metabolic alkalosis with respiratory compensation",
      "Metabolic acidosis with appropriate respiratory compensation",
-     "Metabolic acidosis with respiratory acidosis"
+     "Metabolic acidosis with concurrent respiratory acidosis"
     ],
     "a": 2,
     "e": "Winter's: 1.5(12) + 8 = 26 ± 2; measured 28 is within range, so compensation is appropriate."
@@ -3477,9 +3477,9 @@
    {
     "q": "Vomiting causes metabolic alkalosis that is maintained by:",
     "o": [
-     "Hyperventilation",
-     "↑ Renal HCO₃⁻ excretion",
-     "Diarrhea",
+     "Compensatory hyperventilation lowering PaCO₂",
+     "↑ Renal HCO₃⁻ excretion via pendrin",
+     "Concurrent diarrhea with HCO₃⁻ loss",
      "Volume contraction → ↑ aldosterone and AT II"
     ],
     "a": 3,
@@ -3501,10 +3501,10 @@
    {
     "q": "Respiratory compensation for metabolic acidosis is incomplete because:",
     "o": [
-     "Kidneys block it",
-     "The lungs fatigue",
+     "The kidneys actively oppose it",
+     "Respiratory muscles quickly fatigue",
      "Stimulus fades as pH approaches normal",
-     "CO₂ is not a buffer"
+     "CO₂ cannot act as a buffer"
     ],
     "a": 2,
     "e": "Feedback gain ~1–3, corrects 50–75%."
@@ -3514,10 +3514,10 @@
    {
     "q": "Type 1 (distal) RTA is characterized by:",
     "o": [
-     "Urine pH < 5.5 and hyperkalemia",
-     "Fanconi syndrome",
+     "Urine pH < 5.5, hyperkalemia, low aldosterone",
+     "Fanconi syndrome with glucosuria and aminoaciduria",
      "Hyperkalemia from aldosterone deficiency",
-     "Urine pH > 5.5 and hypokalemia with calcium phosphate stones"
+     "Urine pH > 5.5, hypokalemia, calcium phosphate stones"
     ],
     "a": 3,
     "e": "Defect in α-intercalated cell H⁺ secretion; causes include amphotericin B, analgesic nephropathy, autoimmune disease."
@@ -3536,10 +3536,10 @@
    {
     "q": "Type 2 (proximal) RTA is associated with:",
     "o": [
-     "Calcium phosphate stones",
-     "Hyperkalemia",
+     "Calcium phosphate stones and nephrocalcinosis",
+     "Hyperkalemia with hypoaldosteronism",
      "Fanconi syndrome and hypophosphatemic rickets",
-     "Amphotericin B"
+     "Amphotericin B toxicity to collecting ducts"
     ],
     "a": 2,
     "e": "Defective PCT HCO₃⁻ reabsorption; urine pH < 5.5 once plasma HCO₃⁻ is depleted. Hypokalemia."
@@ -3569,9 +3569,9 @@
    {
     "q": "In chronic acidosis, the most adaptable renal mechanism is:",
     "o": [
-     "Urea excretion",
-     "Bicarbonate secretion",
-     "Phosphate buffer",
+     "Urea recycling in the medulla",
+     "Bicarbonate secretion by β cells",
+     "Titratable phosphate buffer",
      "Ammonium excretion from glutamine"
     ],
     "a": 3,
@@ -3580,9 +3580,9 @@
    {
     "q": "Primary active H⁺ secretion that can lower urine pH to 4.5 occurs in:",
     "o": [
-     "Podocytes",
-     "TAL",
-     "PCT",
+     "Glomerular podocytes",
+     "Thick ascending limb",
+     "Proximal convoluted tubule cells",
      "Type A intercalated cells"
     ],
     "a": 3,
@@ -3591,10 +3591,10 @@
    {
     "q": "Hypokalemia tends to cause:",
     "o": [
-     "Decreased NH₄⁺",
-     "No acid-base effect",
+     "Decreased NH₄⁺ production and acidosis",
+     "No effect on renal H⁺ or HCO₃⁻ handling",
      "Increased H⁺ secretion and metabolic alkalosis",
-     "Metabolic acidosis"
+     "Decreased H⁺ secretion and metabolic acidosis"
     ],
     "a": 2,
     "e": "Table 30-2: hypokalemia stimulates H⁺ secretion and HCO₃⁻ reabsorption."
@@ -3616,9 +3616,9 @@
     "q": "Net acid excretion equals:",
     "o": [
      "NH₄⁺ + titratable acid − urinary HCO₃⁻",
-     "Urine pH × volume",
-     "H⁺ secreted in PCT",
-     "Filtered HCO₃⁻"
+     "Urine pH × urine flow rate",
+     "Total H⁺ secreted by the proximal tubule",
+     "Filtered HCO₃⁻ minus excreted NH₄⁺"
     ],
     "a": 0,
     "e": "Each unit generates one new HCO₃⁻."
@@ -3626,13 +3626,13 @@
    {
     "q": "Titratable acid mainly reflects H⁺ bound to:",
     "o": [
-     "Phosphate (HPO₄²⁻ → H₂PO₄⁻)",
+     "Phosphate (HPO₄²⁻)",
      "Urea",
-     "NH₃",
-     "Albumin"
+     "Ammonia (NH₃ → NH₄⁺)",
+     "Filtered albumin"
     ],
     "a": 0,
-    "e": "Measured by titrating urine back to pH 7.4."
+    "e": "HPO₄²⁻ + H⁺ → H₂PO₄⁻. Titratable acid is measured by titrating urine back to pH 7.4."
    }
   ],
   "renal-ch30:abd": [
@@ -3650,9 +3650,9 @@
    {
     "q": "Hypertension with ↑ aldosterone and ↓ renin suggests:",
     "o": [
-     "Renal artery stenosis",
-     "Bartter syndrome",
-     "Renin-secreting tumor",
+     "Unilateral renal artery stenosis",
+     "Bartter syndrome (NKCC2 defect)",
+     "Renin-secreting juxtaglomerular tumor",
      "Primary hyperaldosteronism (Conn)"
     ],
     "a": 3,
@@ -3661,10 +3661,10 @@
    {
     "q": "Renal artery stenosis typically causes:",
     "o": [
-     "Hypotension",
+     "Hypotension with high renin",
      "Hypertension with high renin",
-     "Hyperkalemia",
-     "Low renin hypertension"
+     "Hyperkalemia with low aldosterone",
+     "Hypertension with low renin"
     ],
     "a": 1,
     "e": "Reduced perfusion → renin ↑ → Ang II and aldosterone ↑."
@@ -3672,10 +3672,10 @@
    {
     "q": "Liddle syndrome presents with:",
     "o": [
-     "Normal BP and hyperkalemia",
-     "Hypotension and hyperkalemia",
+     "Normal BP, hyperkalemia, high renin and aldosterone",
+     "Hypotension, hyperkalemia, high renin, low aldosterone",
      "Hypertension, hypokalemia, low renin and low aldosterone",
-     "High renin, high aldosterone"
+     "Hypertension, hypokalemia, high renin and aldosterone"
     ],
     "a": 2,
     "e": "ENaC gain of function mimics hyperaldosteronism with suppressed RAAS."
@@ -3696,34 +3696,34 @@
    {
     "q": "Spironolactone acts by:",
     "o": [
-     "Osmotic effect",
-     "Blocking ENaC",
-     "Blocking NCC",
-     "Competing with aldosterone at the mineralocorticoid receptor"
+     "Exerting an osmotic effect in the tubule",
+     "Blocking ENaC in principal cells",
+     "Blocking NCC in the distal tubule",
+     "Blocking the mineralocorticoid receptor"
     ],
     "a": 3,
-    "e": "K⁺-sparing."
+    "e": "It competes with aldosterone at the mineralocorticoid receptor; K⁺-sparing."
    },
    {
     "q": "The natriuretic effect of a diuretic diminishes after a few days because:",
     "o": [
-     "GFR rises",
-     "Reduced ECF volume activates compensatory Na⁺ retention",
-     "Tolerance to the drug",
-     "The drug is excreted faster"
+     "GFR rises and outstrips the drug's tubular effect",
+     "ECF contraction triggers Na⁺ retention",
+     "Pharmacologic tolerance develops",
+     "The drug is excreted more rapidly"
     ],
     "a": 1,
-    "e": "RAAS and sympathetic activation (Guyton Ch 31)."
+    "e": "Reduced ECF volume activates compensatory Na⁺ retention via RAAS and sympathetic activation (Guyton Ch 31)."
    }
   ],
   "renal-ch31:aki": [
    {
     "q": "Prerenal acute kidney injury is caused by:",
     "o": [
-     "Aminoglycosides",
+     "Aminoglycoside toxicity",
      "Decreased renal blood flow",
-     "Ureteral stones",
-     "Glomerulonephritis"
+     "Bilateral ureteral stones",
+     "Acute glomerulonephritis"
     ],
     "a": 1,
     "e": "e.g., hemorrhage, heart failure, shock."
@@ -3732,9 +3732,9 @@
     "q": "In ATN the tubular epithelium can regenerate in 10–20 days if:",
     "o": [
      "The basement membrane is preserved",
-     "The glomeruli are intact",
-     "Dialysis is avoided",
-     "GFR is normal"
+     "The glomeruli remain fully intact",
+     "Dialysis is avoided during recovery",
+     "GFR stays normal throughout"
     ],
     "a": 0,
     "e": "Guyton Ch 31."
@@ -3742,10 +3742,10 @@
    {
     "q": "A life-threatening effect of anuria lasting more than a few days is:",
     "o": [
-     "Alkalosis",
-     "Hypokalemia",
+     "Metabolic alkalosis",
+     "Hypokalemia and alkalosis",
      "Hyperkalemia and acidosis",
-     "Hypernatremia"
+     "Hypernatremia and hypovolemia"
     ],
     "a": 2,
     "e": "Death can occur within 8–14 days without treatment."
@@ -3755,9 +3755,9 @@
    {
     "q": "The two leading causes of end-stage renal disease are:",
     "o": [
-     "Glomerulonephritis and PKD",
-     "Stones and infection",
-     "Lupus and amyloid",
+     "Glomerulonephritis and polycystic disease",
+     "Kidney stones and chronic infection",
+     "Lupus nephritis and amyloidosis",
      "Diabetes mellitus and hypertension"
     ],
     "a": 3,
@@ -3766,21 +3766,21 @@
    {
     "q": "The 'vicious cycle' of CKD is driven by:",
     "o": [
-     "Hypotension",
-     "Increased EPO",
-     "Low protein intake",
-     "Hyperfiltration and increased glomerular pressure in surviving nephrons"
+     "Systemic hypotension and hypoperfusion",
+     "Excess erythropoietin and polycythemia",
+     "Low protein intake causing malnutrition",
+     "Hyperfiltration in surviving nephrons"
     ],
     "a": 3,
-    "e": "Surviving nephrons hypertrophy; glomerular hypertension leads to sclerosis."
+    "e": "Surviving nephrons hypertrophy and hyperfilter; increased glomerular pressure leads to sclerosis."
    },
    {
     "q": "Anemia in CKD is mainly due to:",
     "o": [
-     "Iron overload",
+     "Iron overload from transfusions",
      "Decreased erythropoietin",
-     "Bleeding",
-     "Hemolysis only"
+     "Chronic GI bleeding",
+     "Folate deficiency"
     ],
     "a": 1,
     "e": "Damaged kidneys produce less EPO."
@@ -3799,22 +3799,22 @@
    {
     "q": "Osteomalacia in CKD results from:",
     "o": [
-     "Excess vitamin D",
-     "Low PTH",
-     "Reduced 1,25-(OH)₂D₃ and phosphate retention with secondary hyperparathyroidism",
-     "Hypercalcemia"
+     "Excess vitamin D from supplements",
+     "Increased renal phosphate excretion",
+     "Low calcitriol and phosphate retention",
+     "Excess intestinal calcium absorption"
     ],
     "a": 2,
-    "e": "Renal osteodystrophy."
+    "e": "Reduced 1,25-(OH)₂D₃ and phosphate retention with secondary hyperparathyroidism: renal osteodystrophy."
    }
   ],
   "renal-ch31:tubular": [
    {
     "q": "A child has hypokalemia, metabolic alkalosis, hypercalciuria and normal BP. The defect affects which transporter?",
     "o": [
-     "ENaC (Liddle)",
-     "NCC in the DCT (Gitelman)",
-     "SGLT2",
+     "ENaC in the collecting duct (Liddle)",
+     "NCC in the distal convoluted tubule (Gitelman)",
+     "SGLT2 in the proximal tubule (glucosuria)",
      "NKCC2 in the thick ascending limb (Bartter)"
     ],
     "a": 3,
@@ -6588,10 +6588,10 @@
      },
      "q": "What does electron microscopy show?",
      "o": [
-      "Subepithelial humps",
-      "Mesangial IgA deposits",
-      "Split, laminated GBM",
-      "Effacement (fusion) of podocyte foot processes"
+      "Subepithelial immune-complex humps",
+      "Electron-dense mesangial IgA deposits",
+      "Split, laminated basket-weave GBM",
+      "Podocyte foot-process effacement"
      ],
      "a": 3,
      "e": "MCD: diffuse foot-process effacement of podocytes; LM and IF are normal.",
@@ -6601,10 +6601,10 @@
      "info": null,
      "q": "Which part of the filtration barrier is chiefly disrupted?",
      "o": [
-      "Endothelial fenestrae",
-      "Podocyte slit diaphragms and their negative charge",
-      "Mesangial matrix",
-      "Parietal epithelium"
+      "Endothelial fenestrae and glycocalyx",
+      "Podocyte slit diaphragm and polyanion",
+      "Mesangial cells and their matrix",
+      "Parietal epithelium of Bowman capsule"
      ],
      "a": 1,
      "e": "Loss of the podocyte slit diaphragm/polyanion barrier lets albumin leak (selective proteinuria).",
@@ -6675,7 +6675,7 @@
      "o": [
       "Calcium oxalate",
       "Cystine",
-      "Struvite",
+      "Calcium phosphate",
       "Uric acid"
      ],
      "a": 0,
@@ -6732,10 +6732,10 @@
      "info": null,
      "q": "Which segments are most vulnerable to ischemia?",
      "o": [
-      "Glomerulus and DCT",
-      "Collecting duct in the papilla",
+      "Glomerulus and distal convoluted tubule",
+      "Papillary collecting ducts and thin limbs in the inner medulla",
       "Proximal straight tubule and TAL in the outer medulla",
-      "Parietal epithelium"
+      "Parietal epithelium of Bowman capsule"
      ],
      "a": 2,
      "e": "The pars recta and TAL have high O₂ demand in a poorly perfused outer medulla.",
@@ -6761,10 +6761,10 @@
      "info": null,
      "q": "The granular casts are made of a matrix protein secreted by the:",
      "o": [
-      "Principal cells",
-      "PCT",
+      "Collecting duct principal cells",
+      "Proximal convoluted tubule",
       "Thick ascending limb",
-      "Podocytes"
+      "Glomerular podocytes"
      ],
      "a": 2,
      "e": "Casts form on a Tamm-Horsfall (uromodulin) matrix secreted by the TAL.",
@@ -6820,10 +6820,10 @@
      },
      "q": "Expected histology:",
      "o": [
-      "Foot-process effacement only",
+      "Diffuse podocyte foot-process effacement",
       "Neutrophils in collecting ducts and interstitium",
-      "Crescents in Bowman space",
-      "Kimmelstiel–Wilson nodules"
+      "Fibrocellular crescents in Bowman space",
+      "Nodular Kimmelstiel–Wilson glomerulosclerosis"
      ],
      "a": 1,
      "e": "Acute pyelonephritis: neutrophils fill tubules (especially collecting ducts) and interstitium.",
@@ -6905,10 +6905,10 @@
      "info": null,
      "q": "Hyaline arteriolosclerosis in diabetes classically affects:",
      "o": [
-      "Afferent arteriole only",
-      "Efferent arteriole only",
-      "Both afferent and efferent arterioles",
-      "Interlobar arteries only"
+      "The afferent arteriole only",
+      "The efferent arteriole only",
+      "Afferent and efferent arterioles",
+      "Interlobar and arcuate arteries"
      ],
      "a": 2,
      "e": "Diabetes involves both arterioles; hypertension mainly the afferent.",
@@ -6929,10 +6929,10 @@
     {
      "q": "What is the most likely diagnosis?",
      "o": [
-      "IgA nephropathy",
+      "IgA nephropathy (Berger disease)",
       "Poststreptococcal glomerulonephritis",
       "Minimal change disease",
-      "Alport syndrome"
+      "Hereditary nephritis (Alport syndrome)"
      ],
      "a": 1,
      "e": "Nephritic syndrome 2–4 weeks after group A strep skin or throat infection. IgA nephropathy follows a URI within days."
@@ -6951,10 +6951,10 @@
     {
      "q": "Which serum finding is expected?",
      "o": [
-      "High C3",
-      "Positive ANCA",
-      "Anti-GBM antibodies",
-      "Low C3 with elevated anti-DNase B / ASO titers"
+      "High C3 with normal ASO titers",
+      "Positive p-ANCA (anti-MPO) titers",
+      "Anti-GBM antibodies with normal C3",
+      "Low C3 and high ASO/anti-DNase B"
      ],
      "a": 3,
      "e": "Immune complexes activate complement; anti-DNase B is more reliable after skin infection."
@@ -6984,10 +6984,10 @@
     {
      "q": "What is the expected outcome?",
      "o": [
-      "Recurrence with every URI",
+      "Recurrent gross hematuria with every URI",
       "Rapid progression to ESRD in most children",
-      "Lifelong steroid dependence",
-      "Most children recover completely with supportive care"
+      "Lifelong dependence on corticosteroids",
+      "Full recovery with supportive care"
      ],
      "a": 3,
      "e": "Children usually recover; adults more often develop RPGR or CKD."

@@ -56,6 +56,10 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
 { const seen = new Map();
   for (const [tid, qs] of ix.parts.flatMap(c => Object.entries(J(`q/${c}.json`).topics || {}))) qs.forEach(q => { const k = q.q.trim().toLowerCase();
     if (seen.has(k)) bad(`duplicate question stem in ${tid} and ${seen.get(k)}: ${q.q.slice(0, 50)}`); else seen.set(k, tid) }) }
+{ /* length tell: keyed option conspicuously the longest (see src/test/tells.py) */
+  let n = 0, t = 0; for (const c of ix.parts) for (const qs of Object.values(J(`q/${c}.json`).topics || {})) qs.forEach(q => {
+    const L = q.o.map(x => x.length), s = [...L].sort((a, b) => b - a); t++; if (L[q.a] === s[0] && s[0] > 1.25 * s[1]) n++ });
+  if (n / t > 0.03) bad(`${n}/${t} MCQs have the answer as the clearly longest option (> 3%) — run python3 src/test/tells.py`) }
 console.log(`data: ${chs.length} chapters · ${mods.size} atlases · ${items.size} topics · ${nq} MCQs`);
 
 /* ---------- 2. pages ---------- */
