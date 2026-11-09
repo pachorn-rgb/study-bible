@@ -507,7 +507,7 @@ const chap=id=>chapters().find(c=>c.id===id);
 const modules=()=>chapters().flatMap(c=>c.modules.map(m=>({...m,ch:c})));
 const modById=id=>modules().find(m=>m.id===id);
 const items=()=>chapters().flatMap(c=>c.checklist.map(x=>({...x,ch:c})));
-/* scope = organ chapter id ("renal") or one book chapter / atlas ("m:renal-ch26") */
+/* scope = organ chapter id ("renal") or one book chapter / atlas ("m:renal-physio-1") */
 const inScope=(x,sc)=>!sc||(sc.startsWith("m:")?!!(x.link&&x.link.m===sc.slice(2)):x.ch.id===sc);
 const scopeChap=sc=>!sc?null:sc.startsWith("m:")?(modById(sc.slice(2))||{}).ch:chap(sc);
 const itemById=id=>items().find(x=>x.id===id);

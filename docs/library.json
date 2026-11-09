@@ -2955,306 +2955,6 @@
      ],
      "modules": [
       {
-       "id": "renal-ch25",
-       "title": "Ch 25 · The Body Fluid Compartments",
-       "subs": [
-        "Physiology"
-       ],
-       "src": "Guyton & Hall Ch 25",
-       "href": "renal/renal-ch25.html",
-       "thumb": "thumbs/renal-ch25.jpg",
-       "desc": "สมดุลน้ำเข้าออก ICF/ECF/plasma ส่วนประกอบไอออน indicator-dilution osmolarity การเคลื่อนของน้ำเมื่อให้ saline (ลองปรับได้) hypo/hypernatremia และ edema",
-       "tags": [],
-       "topics": [
-        [
-         "Water balance",
-         "balance"
-        ],
-        [
-         "Compartments",
-         "compartments"
-        ],
-        [
-         "Composition",
-         "composition"
-        ],
-        [
-         "Measuring volumes",
-         "measure"
-        ],
-        [
-         "Osmosis & tonicity",
-         "osmosis"
-        ],
-        [
-         "Fluid shifts",
-         "shifts"
-        ],
-        [
-         "Na⁺ disorders",
-         "natremia"
-        ],
-        [
-         "Edema",
-         "edema"
-        ]
-       ],
-       "ref": {
-        "b": "guyton",
-        "l": "G",
-        "ch": "Ch 25",
-        "sort": 25
-       }
-      },
-      {
-       "id": "renal-ch26",
-       "title": "Ch 26 · Urine Formation I: GFR, RBF & Micturition",
-       "subs": [
-        "Physiology"
-       ],
-       "src": "Guyton & Hall Ch 26",
-       "href": "renal/renal-ch26.html",
-       "thumb": "thumbs/renal-ch26.jpg",
-       "desc": "การกรองที่ glomerulus แรงที่กำหนด GFR การไหลของเลือดไปไตและการควบคุม autoregulation และการขับปัสสาวะ",
-       "tags": [],
-       "topics": [
-        [
-         "Kidney functions & physiologic anatomy",
-         "overview"
-        ],
-        [
-         "Micturition",
-         "micturition"
-        ],
-        [
-         "Urine formation: filtration, reabsorption, secretion",
-         "urineform"
-        ],
-        [
-         "GFR & its determinants",
-         "gfr"
-        ],
-        [
-         "Renal blood flow & physiologic control",
-         "rbf"
-        ],
-        [
-         "Autoregulation & TGF",
-         "autoreg"
-        ]
-       ],
-       "ref": {
-        "b": "guyton",
-        "l": "G",
-        "ch": "Ch 26",
-        "sort": 26
-       }
-      },
-      {
-       "id": "renal-ch27",
-       "title": "Ch 27 · Urine Formation II: Tubular Reabsorption & Secretion",
-       "subs": [
-        "Physiology"
-       ],
-       "src": "Guyton & Hall Ch 27",
-       "href": "renal/renal-ch27.html",
-       "thumb": "thumbs/renal-ch27.jpg",
-       "desc": "primary/secondary active transport, Tm, การดูดกลับและหลั่งใน PCT loop distal CD การควบคุม และ clearance",
-       "tags": [],
-       "topics": [
-        [
-         "Transport mechanisms & Tm",
-         "transport"
-        ],
-        [
-         "Proximal tubule",
-         "pct"
-        ],
-        [
-         "Loop of Henle",
-         "loop"
-        ],
-        [
-         "Distal tubule & collecting duct",
-         "distal"
-        ],
-        [
-         "Where things are reabsorbed",
-         "segments"
-        ],
-        [
-         "Regulation of tubular reabsorption",
-         "regulation"
-        ],
-        [
-         "Renal clearance",
-         "clearance"
-        ]
-       ],
-       "ref": {
-        "b": "guyton",
-        "l": "G",
-        "ch": "Ch 27",
-        "sort": 27
-       }
-      },
-      {
-       "id": "renal-ch28",
-       "title": "Ch 28 · Urine Concentration & Dilution; Osmolarity & Na⁺",
-       "subs": [
-        "Physiology"
-       ],
-       "src": "Guyton & Hall Ch 28",
-       "href": "renal/renal-ch28.html",
-       "thumb": "thumbs/renal-ch28.jpg",
-       "desc": "ปัสสาวะเจือจาง/เข้มข้น countercurrent multiplier urea vasa recta free water ADH และความกระหาย",
-       "tags": [],
-       "topics": [
-        [
-         "Forming dilute urine",
-         "dilute"
-        ],
-        [
-         "Conserving water: concentrated urine",
-         "concreq"
-        ],
-        [
-         "Countercurrent multiplier",
-         "countercurrent"
-        ],
-        [
-         "Urea recycling & vasa recta",
-         "urea"
-        ],
-        [
-         "Free water clearance & concentrating disorders",
-         "concentrate"
-        ],
-        [
-         "Osmoreceptor–ADH & thirst",
-         "adh"
-        ]
-       ],
-       "ref": {
-        "b": "guyton",
-        "l": "G",
-        "ch": "Ch 28",
-        "sort": 28
-       }
-      },
-      {
-       "id": "renal-ch29",
-       "title": "Ch 29 · K⁺, Ca²⁺, PO₄, Mg²⁺; Blood & ECF Volume",
-       "subs": [
-        "Physiology"
-       ],
-       "src": "Guyton & Hall Ch 29",
-       "href": "renal/renal-ch29.html",
-       "thumb": "thumbs/renal-ch29.jpg",
-       "desc": "การกระจายและการขับ K⁺, Ca²⁺ PO₄ Mg²⁺, pressure natriuresis, Ang II aldosterone ANP",
-       "tags": [],
-       "topics": [
-        [
-         "Potassium balance",
-         "potassium"
-        ],
-        [
-         "Calcium, phosphate & magnesium",
-         "capimg"
-        ],
-        [
-         "Pressure natriuresis & volume control",
-         "volume"
-        ],
-        [
-         "Ang II, aldosterone & ANP",
-         "raas"
-        ]
-       ],
-       "ref": {
-        "b": "guyton",
-        "l": "G",
-        "ch": "Ch 29",
-        "sort": 29
-       }
-      },
-      {
-       "id": "renal-ch30",
-       "title": "Ch 30 · Acid–Base Regulation",
-       "subs": [
-        "Physiology"
-       ],
-       "src": "Guyton & Hall Ch 30",
-       "href": "renal/renal-ch30.html",
-       "thumb": "thumbs/renal-ch30.jpg",
-       "desc": "buffer, Henderson–Hasselbalch, การชดเชยทางการหายใจ, การหลั่ง H⁺ ที่ไต, ammonia, anion gap",
-       "tags": [],
-       "topics": [
-        [
-         "Buffers & Henderson–Hasselbalch",
-         "buffers"
-        ],
-        [
-         "Respiratory regulation",
-         "resp"
-        ],
-        [
-         "Renal H⁺ secretion & new HCO₃⁻",
-         "renalacid"
-        ],
-        [
-         "Phosphate & ammonia buffers",
-         "ammonia"
-        ],
-        [
-         "Acid–base disorders",
-         "abd"
-        ]
-       ],
-       "ref": {
-        "b": "guyton",
-        "l": "G",
-        "ch": "Ch 30",
-        "sort": 30
-       }
-      },
-      {
-       "id": "renal-ch31",
-       "title": "Ch 31 · Diuretics & Kidney Diseases",
-       "subs": [
-        "Physiology"
-       ],
-       "src": "Guyton & Hall Ch 31",
-       "href": "renal/renal-ch31.html",
-       "thumb": "thumbs/renal-ch31.jpg",
-       "desc": "กลุ่มยาขับปัสสาวะ, AKI ทั้ง 3 แบบ, CKD และ vicious cycle, specific tubular disorders, dialysis",
-       "tags": [],
-       "topics": [
-        [
-         "Diuretics",
-         "diuretics"
-        ],
-        [
-         "Acute kidney injury",
-         "aki"
-        ],
-        [
-         "Chronic kidney disease",
-         "ckd"
-        ],
-        [
-         "Specific tubular disorders & dialysis",
-         "tubular"
-        ]
-       ],
-       "ref": {
-        "b": "guyton",
-        "l": "G",
-        "ch": "Ch 31",
-        "sort": 31
-       }
-      },
-      {
        "id": "kub-embryology",
        "title": "KUB Embryology Atlas",
        "subs": [
@@ -4302,6 +4002,256 @@
         "ch": "Ch 15",
         "sort": 15
        }
+      },
+      {
+       "id": "renal-physio-1",
+       "title": "Fluids, Filtration & Clearance",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 25–26",
+       "href": "renal/renal-physio-1.html",
+       "thumb": "thumbs/renal-physio-1.jpg",
+       "desc": "ช่องน้ำในร่างกาย, osmolarity, GFR และตัวกำหนด, renal blood flow, autoregulation และ TGF, clearance · ส่วนเสริม edema และ micturition",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Water intake & output",
+         "balance"
+        ],
+        [
+         "Body fluid compartments",
+         "compartments"
+        ],
+        [
+         "Composition of ECF & ICF",
+         "composition"
+        ],
+        [
+         "Measuring compartment volumes",
+         "measure"
+        ],
+        [
+         "Osmosis, osmolarity & tonicity",
+         "osmosis"
+        ],
+        [
+         "Fluid shifts after adding saline",
+         "shifts"
+        ],
+        [
+         "Kidney functions & physiologic anatomy",
+         "overview"
+        ],
+        [
+         "Urine formation: filtration, reabsorption, secretion",
+         "urineform"
+        ],
+        [
+         "GFR & its determinants",
+         "gfr"
+        ],
+        [
+         "Renal blood flow & physiologic control",
+         "rbf"
+        ],
+        [
+         "Autoregulation & TGF",
+         "autoreg"
+        ],
+        [
+         "Renal clearance",
+         "clearance"
+        ],
+        [
+         "Edema & safety factors",
+         "edema"
+        ],
+        [
+         "Micturition",
+         "micturition"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 25–26",
+        "sort": 25
+       }
+      },
+      {
+       "id": "renal-physio-2",
+       "title": "Tubular Transport & Hormones",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 27–29",
+       "href": "renal/renal-physio-2.html",
+       "thumb": "thumbs/renal-physio-2.jpg",
+       "desc": "การขนส่งในแต่ละส่วนของ nephron, glucose Tm, tubular disorders เทียบลักษณะ, RAAS, ADH, ANP, หน้าที่ต่อมไร้ท่อของไตและ JGA · ส่วนเสริม concentration & dilution",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Transport mechanisms & Tm",
+         "transport"
+        ],
+        [
+         "Proximal tubule",
+         "pct"
+        ],
+        [
+         "Loop of Henle",
+         "loop"
+        ],
+        [
+         "Distal tubule & collecting duct",
+         "distal"
+        ],
+        [
+         "Where things are reabsorbed",
+         "segments"
+        ],
+        [
+         "Specific tubular disorders & dialysis",
+         "tubular"
+        ],
+        [
+         "Features of renal disorders",
+         "features"
+        ],
+        [
+         "Ang II, aldosterone & ANP",
+         "raas"
+        ],
+        [
+         "Osmoreceptor–ADH & thirst",
+         "adh"
+        ],
+        [
+         "Regulation of tubular reabsorption",
+         "regulation"
+        ],
+        [
+         "Kidney endocrine functions & JGA",
+         "endofx"
+        ],
+        [
+         "Pressure natriuresis & volume control",
+         "volume"
+        ],
+        [
+         "Forming dilute urine",
+         "dilute"
+        ],
+        [
+         "Conserving water: concentrated urine",
+         "concreq"
+        ],
+        [
+         "Countercurrent multiplier",
+         "countercurrent"
+        ],
+        [
+         "Urea recycling & vasa recta",
+         "urea"
+        ],
+        [
+         "Free water clearance & concentrating disorders",
+         "concentrate"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 27–29",
+        "sort": 27
+       }
+      },
+      {
+       "id": "renal-physio-3",
+       "title": "Electrolytes & Acid–Base",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 29–31",
+       "href": "renal/renal-physio-3.html",
+       "thumb": "thumbs/renal-physio-3.jpg",
+       "desc": "K⁺ balance, Ca²⁺/PO₄/Mg²⁺, Na⁺ ผิดปกติ, อาการ electrolyte ต่ำ/สูง, buffers, การชดเชยทางหายใจและไต, acid–base disorders, RTA · ส่วนเสริม AKI และ CKD",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Potassium balance",
+         "potassium"
+        ],
+        [
+         "Calcium, phosphate & magnesium",
+         "capimg"
+        ],
+        [
+         "Hyponatremia & hypernatremia",
+         "natremia"
+        ],
+        [
+         "Electrolyte disturbances",
+         "lytes"
+        ],
+        [
+         "Buffers & Henderson–Hasselbalch",
+         "buffers"
+        ],
+        [
+         "Respiratory regulation",
+         "resp"
+        ],
+        [
+         "Renal H⁺ secretion & new HCO₃⁻",
+         "renalacid"
+        ],
+        [
+         "Phosphate & ammonia buffers",
+         "ammonia"
+        ],
+        [
+         "Acid–base disorders",
+         "abd"
+        ],
+        [
+         "Renal tubular acidosis",
+         "rta"
+        ],
+        [
+         "Acute kidney injury",
+         "aki"
+        ],
+        [
+         "Chronic kidney disease",
+         "ckd"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 29–31",
+        "sort": 30
+       }
       }
      ],
      "checklist": [
@@ -4661,7 +4611,7 @@
        "sub": "Physiology",
        "t": "Water intake & output",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-1",
         "h": "balance"
        }
       },
@@ -4670,7 +4620,7 @@
        "sub": "Physiology",
        "t": "Body fluid compartments",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-1",
         "h": "compartments"
        }
       },
@@ -4679,7 +4629,7 @@
        "sub": "Physiology",
        "t": "Composition of ECF & ICF",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-1",
         "h": "composition"
        }
       },
@@ -4688,7 +4638,7 @@
        "sub": "Physiology",
        "t": "Measuring compartment volumes",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-1",
         "h": "measure"
        }
       },
@@ -4697,7 +4647,7 @@
        "sub": "Physiology",
        "t": "Osmosis, osmolarity & tonicity",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-1",
         "h": "osmosis"
        }
       },
@@ -4706,7 +4656,7 @@
        "sub": "Physiology",
        "t": "Fluid shifts after adding saline",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-1",
         "h": "shifts"
        }
       },
@@ -4715,7 +4665,7 @@
        "sub": "Physiology",
        "t": "Hyponatremia & hypernatremia",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-3",
         "h": "natremia"
        }
       },
@@ -4724,7 +4674,7 @@
        "sub": "Physiology",
        "t": "Edema & safety factors",
        "link": {
-        "m": "renal-ch25",
+        "m": "renal-physio-1",
         "h": "edema"
        }
       },
@@ -4733,7 +4683,7 @@
        "sub": "Physiology",
        "t": "Kidney functions & physiologic anatomy",
        "link": {
-        "m": "renal-ch26",
+        "m": "renal-physio-1",
         "h": "overview"
        }
       },
@@ -4742,7 +4692,7 @@
        "sub": "Physiology",
        "t": "Micturition",
        "link": {
-        "m": "renal-ch26",
+        "m": "renal-physio-1",
         "h": "micturition"
        }
       },
@@ -4751,7 +4701,7 @@
        "sub": "Physiology",
        "t": "Urine formation: filtration, reabsorption, secretion",
        "link": {
-        "m": "renal-ch26",
+        "m": "renal-physio-1",
         "h": "urineform"
        }
       },
@@ -4760,7 +4710,7 @@
        "sub": "Physiology",
        "t": "GFR & its determinants",
        "link": {
-        "m": "renal-ch26",
+        "m": "renal-physio-1",
         "h": "gfr"
        }
       },
@@ -4769,7 +4719,7 @@
        "sub": "Physiology",
        "t": "Renal blood flow & physiologic control",
        "link": {
-        "m": "renal-ch26",
+        "m": "renal-physio-1",
         "h": "rbf"
        }
       },
@@ -4778,7 +4728,7 @@
        "sub": "Physiology",
        "t": "Autoregulation & TGF",
        "link": {
-        "m": "renal-ch26",
+        "m": "renal-physio-1",
         "h": "autoreg"
        }
       },
@@ -4787,7 +4737,7 @@
        "sub": "Physiology",
        "t": "Transport mechanisms & Tm",
        "link": {
-        "m": "renal-ch27",
+        "m": "renal-physio-2",
         "h": "transport"
        }
       },
@@ -4796,7 +4746,7 @@
        "sub": "Physiology",
        "t": "Proximal tubule",
        "link": {
-        "m": "renal-ch27",
+        "m": "renal-physio-2",
         "h": "pct"
        }
       },
@@ -4805,7 +4755,7 @@
        "sub": "Physiology",
        "t": "Loop of Henle",
        "link": {
-        "m": "renal-ch27",
+        "m": "renal-physio-2",
         "h": "loop"
        }
       },
@@ -4814,7 +4764,7 @@
        "sub": "Physiology",
        "t": "Distal tubule & collecting duct",
        "link": {
-        "m": "renal-ch27",
+        "m": "renal-physio-2",
         "h": "distal"
        }
       },
@@ -4823,7 +4773,7 @@
        "sub": "Physiology",
        "t": "Where things are reabsorbed",
        "link": {
-        "m": "renal-ch27",
+        "m": "renal-physio-2",
         "h": "segments"
        }
       },
@@ -4832,7 +4782,7 @@
        "sub": "Physiology",
        "t": "Regulation of tubular reabsorption",
        "link": {
-        "m": "renal-ch27",
+        "m": "renal-physio-2",
         "h": "regulation"
        }
       },
@@ -4841,7 +4791,7 @@
        "sub": "Physiology",
        "t": "Renal clearance",
        "link": {
-        "m": "renal-ch27",
+        "m": "renal-physio-1",
         "h": "clearance"
        }
       },
@@ -4850,7 +4800,7 @@
        "sub": "Physiology",
        "t": "Forming dilute urine",
        "link": {
-        "m": "renal-ch28",
+        "m": "renal-physio-2",
         "h": "dilute"
        }
       },
@@ -4859,7 +4809,7 @@
        "sub": "Physiology",
        "t": "Conserving water: concentrated urine",
        "link": {
-        "m": "renal-ch28",
+        "m": "renal-physio-2",
         "h": "concreq"
        }
       },
@@ -4868,7 +4818,7 @@
        "sub": "Physiology",
        "t": "Countercurrent multiplier",
        "link": {
-        "m": "renal-ch28",
+        "m": "renal-physio-2",
         "h": "countercurrent"
        }
       },
@@ -4877,7 +4827,7 @@
        "sub": "Physiology",
        "t": "Urea recycling & vasa recta",
        "link": {
-        "m": "renal-ch28",
+        "m": "renal-physio-2",
         "h": "urea"
        }
       },
@@ -4886,7 +4836,7 @@
        "sub": "Physiology",
        "t": "Free water clearance & concentrating disorders",
        "link": {
-        "m": "renal-ch28",
+        "m": "renal-physio-2",
         "h": "concentrate"
        }
       },
@@ -4895,7 +4845,7 @@
        "sub": "Physiology",
        "t": "Osmoreceptor–ADH & thirst",
        "link": {
-        "m": "renal-ch28",
+        "m": "renal-physio-2",
         "h": "adh"
        }
       },
@@ -4904,7 +4854,7 @@
        "sub": "Physiology",
        "t": "Potassium balance",
        "link": {
-        "m": "renal-ch29",
+        "m": "renal-physio-3",
         "h": "potassium"
        }
       },
@@ -4913,7 +4863,7 @@
        "sub": "Physiology",
        "t": "Calcium, phosphate & magnesium",
        "link": {
-        "m": "renal-ch29",
+        "m": "renal-physio-3",
         "h": "capimg"
        }
       },
@@ -4922,7 +4872,7 @@
        "sub": "Physiology",
        "t": "Pressure natriuresis & volume control",
        "link": {
-        "m": "renal-ch29",
+        "m": "renal-physio-2",
         "h": "volume"
        }
       },
@@ -4931,7 +4881,7 @@
        "sub": "Physiology",
        "t": "Ang II, aldosterone & ANP",
        "link": {
-        "m": "renal-ch29",
+        "m": "renal-physio-2",
         "h": "raas"
        }
       },
@@ -4940,7 +4890,7 @@
        "sub": "Physiology",
        "t": "Buffers & Henderson–Hasselbalch",
        "link": {
-        "m": "renal-ch30",
+        "m": "renal-physio-3",
         "h": "buffers"
        }
       },
@@ -4949,7 +4899,7 @@
        "sub": "Physiology",
        "t": "Respiratory regulation",
        "link": {
-        "m": "renal-ch30",
+        "m": "renal-physio-3",
         "h": "resp"
        }
       },
@@ -4958,7 +4908,7 @@
        "sub": "Physiology",
        "t": "Renal H⁺ secretion & new HCO₃⁻",
        "link": {
-        "m": "renal-ch30",
+        "m": "renal-physio-3",
         "h": "renalacid"
        }
       },
@@ -4967,7 +4917,7 @@
        "sub": "Physiology",
        "t": "Phosphate & ammonia buffers",
        "link": {
-        "m": "renal-ch30",
+        "m": "renal-physio-3",
         "h": "ammonia"
        }
       },
@@ -4976,7 +4926,7 @@
        "sub": "Physiology",
        "t": "Acid–base disorders",
        "link": {
-        "m": "renal-ch30",
+        "m": "renal-physio-3",
         "h": "abd"
        }
       },
@@ -4985,8 +4935,8 @@
        "sub": "Physiology",
        "t": "Diuretics",
        "link": {
-        "m": "renal-ch31",
-        "h": "diuretics"
+        "m": "pharm-renal",
+        "h": "nephron"
        }
       },
       {
@@ -4994,7 +4944,7 @@
        "sub": "Physiology",
        "t": "Acute kidney injury",
        "link": {
-        "m": "renal-ch31",
+        "m": "renal-physio-3",
         "h": "aki"
        }
       },
@@ -5003,7 +4953,7 @@
        "sub": "Physiology",
        "t": "Chronic kidney disease",
        "link": {
-        "m": "renal-ch31",
+        "m": "renal-physio-3",
         "h": "ckd"
        }
       },
@@ -5012,7 +4962,7 @@
        "sub": "Physiology",
        "t": "Specific tubular disorders & dialysis",
        "link": {
-        "m": "renal-ch31",
+        "m": "renal-physio-2",
         "h": "tubular"
        }
       },
@@ -5714,7 +5664,7 @@
        "sub": "Pathology",
        "t": "Urinary incontinence",
        "link": {
-        "m": "renal-ch26",
+        "m": "renal-physio-1",
         "h": "micturition"
        }
       },
@@ -5896,6 +5846,42 @@
        "link": {
         "m": "pharm-renal",
         "h": "acidbase"
+       }
+      },
+      {
+       "id": "renal-physio-2:features",
+       "sub": "Physiology",
+       "t": "Features of renal disorders",
+       "link": {
+        "m": "renal-physio-2",
+        "h": "features"
+       }
+      },
+      {
+       "id": "renal-physio-2:endofx",
+       "sub": "Physiology",
+       "t": "Kidney endocrine functions & JGA",
+       "link": {
+        "m": "renal-physio-2",
+        "h": "endofx"
+       }
+      },
+      {
+       "id": "renal-physio-3:lytes",
+       "sub": "Physiology",
+       "t": "Electrolyte disturbances",
+       "link": {
+        "m": "renal-physio-3",
+        "h": "lytes"
+       }
+      },
+      {
+       "id": "renal-physio-3:rta",
+       "sub": "Physiology",
+       "t": "Renal tubular acidosis",
+       "link": {
+        "m": "renal-physio-3",
+        "h": "rta"
        }
       }
      ],
@@ -6352,89 +6338,5 @@
     }
    ]
   }
- ],
- "alias": {
-  "renal-0": "kub-embryology:s1",
-  "renal-1": "kub-embryology:s3",
-  "renal-2": "kub-embryology:s6",
-  "renal-3": "kub-embryology:s3",
-  "renal-4": "kub-embryology:s4",
-  "renal-5": "kub-embryology:s4",
-  "renal-6": "kub-embryology:s8",
-  "renal-57": "kub-anatomy:loc",
-  "renal-58": "kub-anatomy:rel",
-  "renal-59": "kub-anatomy:fascia",
-  "renal-60": "kub-anatomy:struct",
-  "renal-61": "kub-anatomy:vessels",
-  "renal-62": "kub-anatomy:adrenal",
-  "renal-63": "kub-anatomy:ureter",
-  "renal-64": "kub-anatomy:bladder",
-  "renal-65": "kub-anatomy:urethra",
-  "renal-66": "kub-anatomy:wall",
-  "renal-67": "kub-anatomy:plexus",
-  "renal-68": "kub-anatomy:aorta",
-  "renal-7": "kub-anatomy:struct",
-  "renal-8": "kub-anatomy:ureter",
-  "renal-9": "kub-anatomy:ureter",
-  "renal-69": "kub-histology:lowpower",
-  "renal-70": "kub-histology:corpuscle",
-  "renal-71": "kub-histology:barrier",
-  "renal-72": "kub-histology:mesangium",
-  "renal-73": "kub-histology:jga",
-  "renal-74": "kub-histology:pctdct",
-  "renal-75": "kub-histology:pctem",
-  "renal-76": "kub-histology:medulla",
-  "renal-77": "kub-histology:cd",
-  "renal-78": "kub-histology:urothelium",
-  "renal-79": "kub-histology:ureter",
-  "renal-80": "kub-histology:vessels",
-  "renal-10": "renal-ch25:compartments",
-  "renal-11": "renal-ch26:gfr",
-  "renal-12": "renal-ch27:clearance",
-  "renal-13": "renal-ch26:gfr",
-  "renal-14": "renal-ch27:clearance",
-  "renal-15": "renal-ch26:gfr",
-  "renal-16": "renal-ch27:transport",
-  "renal-17": "renal-ch27:segments",
-  "renal-18": "renal-ch31:tubular",
-  "renal-19": "renal-ch30:abd",
-  "renal-20": "renal-ch29:raas",
-  "renal-21": "renal-ch26:overview",
-  "renal-22": "renal-ch27:regulation",
-  "renal-23": "renal-ch29:potassium",
-  "renal-24": "renal-ch29:capimg",
-  "renal-25": "renal-ch30:buffers",
-  "renal-26": "renal-ch30:renalacid",
-  "renal-81": "renal-ch25:shifts",
-  "renal-82": "renal-ch25:natremia",
-  "renal-83": "renal-ch26:autoreg",
-  "renal-84": "renal-ch26:rbf",
-  "renal-85": "renal-ch27:transport",
-  "renal-86": "renal-ch27:loop",
-  "renal-87": "renal-ch28:countercurrent",
-  "renal-88": "renal-ch28:adh",
-  "renal-89": "renal-ch29:capimg",
-  "renal-90": "renal-ch29:volume",
-  "renal-91": "renal-ch30:renalacid",
-  "renal-92": "renal-ch31:ckd",
-  "renal-27": "harrison-ch321:aki-dx",
-  "renal-28": "robbins-ch20:glomresp",
-  "renal-29": "robbins-ch20:psgn",
-  "renal-30": "robbins-ch20:nephrotic",
-  "renal-31": "robbins-ch20:stones",
-  "renal-32": "robbins-ch20:obstruction",
-  "renal-34": "robbins-ch21:cystitis",
-  "renal-35": "robbins-ch20:pyelo",
-  "renal-36": "harrison-ch321:aki-def",
-  "renal-37": "robbins-ch20:tin",
-  "renal-38": "robbins-ch20:atn",
-  "renal-39": "robbins-ch20:pyelo",
-  "renal-40": "harrison-ch322:ckd-sys",
-  "renal-41": "harrison-ch322:ckd-mbd",
-  "renal-42": "robbins-ch20:cystic",
-  "renal-43": "robbins-ch20:rcc",
-  "renal-44": "robbins-ch20:benign",
-  "renal-45": "robbins-ch20:wilms",
-  "renal-46": "robbins-ch21:urothelial"
- }
+ ]
 }

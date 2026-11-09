@@ -1,7 +1,7 @@
 /* Med Study Bible service worker.
    To publish an update: change VERSION (any new string). Installed apps
    download the new files in the background and show "New version" banner. */
-const VERSION = "6.27";
+const VERSION = "6.28";
 const CACHE = "bible-" + VERSION;
 const FONT_CACHE = "bible-fonts";
 const FILES = [
@@ -15,7 +15,6 @@ const FILES = [
  "index.html",
  "library.json",
  "manifest.json",
- "renal/body-fluids.html",
  "renal/harrison-ch319.html",
  "renal/harrison-ch320.html",
  "renal/harrison-ch321.html",
@@ -33,18 +32,9 @@ const FILES = [
  "renal/kub-embryology.html",
  "renal/kub-histology.html",
  "renal/nephron-pathway.html",
- "renal/renal-ch25.html",
- "renal/renal-ch26.html",
- "renal/renal-ch27.html",
- "renal/renal-ch28.html",
- "renal/renal-ch29.html",
- "renal/renal-ch30.html",
- "renal/renal-ch31.html",
- "renal/renal-physiology.html",
  "renal/robbins-ch20.html",
  "renal/robbins-ch21.html",
  "search-index.json",
- "thumbs/body-fluids.jpg",
  "thumbs/harrison-ch319.jpg",
  "thumbs/harrison-ch320.jpg",
  "thumbs/harrison-ch321.jpg",
@@ -62,13 +52,6 @@ const FILES = [
  "thumbs/kub-embryology.jpg",
  "thumbs/kub-histology.jpg",
  "thumbs/nephron-pathway.jpg",
- "thumbs/renal-ch25.jpg",
- "thumbs/renal-ch26.jpg",
- "thumbs/renal-ch27.jpg",
- "thumbs/renal-ch28.jpg",
- "thumbs/renal-ch29.jpg",
- "thumbs/renal-ch30.jpg",
- "thumbs/renal-ch31.jpg",
  "thumbs/robbins-ch20.jpg",
  "thumbs/robbins-ch21.jpg",
  "resp/pharm-resp.html",
@@ -118,7 +101,13 @@ const FILES = [
  "q/resp.json",
  "patho/patho-injury.html",
  "thumbs/patho-injury.jpg",
- "q/patho.json"
+ "q/patho.json",
+ "renal/renal-physio-1.html",
+ "thumbs/renal-physio-1.jpg",
+ "renal/renal-physio-2.html",
+ "thumbs/renal-physio-2.jpg",
+ "renal/renal-physio-3.html",
+ "thumbs/renal-physio-3.jpg"
 ];
 /* figure images (renal/img/**) are cached the first time they are viewed, so installing stays light */
 self.addEventListener("install", e => {
