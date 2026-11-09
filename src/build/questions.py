@@ -38,6 +38,18 @@ def shuf(q, o, a, e, d=None, key=""):
     return out
 
 
+FIXED = ("both", "neither", "all of", "none of", "above")
+
+
+def balance(q, tid):
+    """Legacy hand-written questions (no generator) were mostly keyed B. Re-order options into a fixed
+    permutation keyed on the stem (idempotent: canonical sort first), unless an option refers to the others."""
+    if any(w in o.lower() for o in q["o"] for w in FIXED): return q
+    right = q["o"][q["a"]]; base = sorted(q["o"])
+    r = random.Random(int(hashlib.md5((tid + q["q"]).encode()).hexdigest()[:8], 16)); r.shuffle(base)
+    return {**q, "o": base, "a": base.index(right)}
+
+
 def drafts():
     return {p.stem for p in (SRC / "atlases").glob("*.json") if json.loads(p.read_text()).get("draft")}
 
@@ -111,6 +123,12 @@ def apply():
             assert t in ids, (i, t)
             s = shuf(q, o, a, e, key=i + str(k)); s["info"] = {"th": ith, "en": ien} if ith else None; s["t"] = t; st.append(s)
         b = P(ch); b["cases"] = [x for x in b["cases"] if x["id"] != i] + [{"id": i, "ch": ch, "title": {"th": th, "en": en}, "stem": {"th": sth, "en": sen}, "steps": st}]
+    gen = {f"{load_py(f).M}:{h}" for f in (SRC / "questions").glob("*.py") if f.name != "cases.py" for h in load_py(f).T}
+    for b in parts.values():
+        for tid, qs in b["topics"].items():
+            if tid not in gen: b["topics"][tid] = [balance(q, tid) for q in qs]
+        for k in b["cases"]:
+            if k["id"] not in {c[1] for c in cs}: k["steps"] = [balance(st, k["id"]) for st in k["steps"]]
     (DOCS / "library.json").write_text(json.dumps(lib, ensure_ascii=False, indent=1))
     write_bank(idx, parts)
     print("generated MCQs", n, "· parts", idx["parts"])

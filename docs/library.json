@@ -5664,6 +5664,60 @@
        }
       },
       {
+       "id": "nephron-pathway:tracker",
+       "sub": "Physiology",
+       "t": "ติดตามสาร: สารแต่ละตัวเคลื่อนที่ที่ไหน",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "tracker"
+       }
+      },
+      {
+       "id": "nephron-pathway:pt1",
+       "sub": "Physiology",
+       "t": "Proximal tubule",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "pt1"
+       }
+      },
+      {
+       "id": "nephron-pathway:tal",
+       "sub": "Physiology",
+       "t": "Thick ascending limb",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "tal"
+       }
+      },
+      {
+       "id": "nephron-pathway:dct",
+       "sub": "Physiology",
+       "t": "DCT",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "dct"
+       }
+      },
+      {
+       "id": "nephron-pathway:pc",
+       "sub": "Physiology",
+       "t": "Principal cell",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "pc"
+       }
+      },
+      {
+       "id": "nephron-pathway:mcd",
+       "sub": "Physiology",
+       "t": "Collecting duct",
+       "link": {
+        "m": "nephron-pathway",
+        "h": "mcd"
+       }
+      },
+      {
        "id": "renal-patho-1:casts",
        "sub": "Pathology",
        "t": "Urinary casts & glomerular nomenclature",

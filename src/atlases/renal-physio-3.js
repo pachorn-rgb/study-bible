@@ -25,11 +25,11 @@ SEC.splice(SEC.findIndex(s=>s.id==="lytes")+1,0,{id:"nawork",k:"a",t:"Sodium dis
   b+=box(100,112,170,"Osm สูง > 295","glucose, mannitol")+box(290,112,180,"Osm ปกติ","lipid/protein สูง (pseudo)")+box(600,112,190,"Osm ต่ำ < 280","hypotonic → ดู volume","vn");
   b+=ln(410,54,100,92)+ln(410,54,290,92)+ln(410,54,600,92);
   b+=box(450,200,130,"Hypovolemic","")+box(600,200,130,"Euvolemic","")+box(750,200,130,"Hypervolemic","");b+=ln(600,136,450,180)+ln(600,136,600,180)+ln(600,136,750,180);
-  b+=wrapT(388,238,"FENa < 1%: GI loss, burns, third space",22,"s")+wrapT(388,290,"> 2%: diuretics, adrenal insufficiency",22,"s")+wrapT(538,238,"urine osm > 100: SIADH, hypothyroid",20,"s")+wrapT(538,290,"< 100: polydipsia, beer potomania",20,"s")+wrapT(688,238,"FENa < 1%: HF, cirrhosis, nephrotic",20,"s")+wrapT(688,290,"> 2%: AKI / CKD",20,"s");
+  b+=wrapT(388,238,"FENa < 1%: GI loss, burns, third space",22,"s")+wrapT(388,290,"> 2%: diuretics, 1° adrenal insufficiency",22,"s")+wrapT(538,238,"urine osm > 100: SIADH, hypothyroid, 2° adrenal insuff.",20,"s")+wrapT(538,290,"< 100: polydipsia, beer potomania",20,"s")+wrapT(688,238,"FENa < 1%: HF, cirrhosis, nephrotic",20,"s")+wrapT(688,290,"> 2%: AKI / CKD",20,"s");
   return svg(b,"0 0 830 340")},
  notes:()=>`<h3>Hyponatremia</h3><ul><li>เริ่มที่ <b>serum osmolality</b>: สูงแปลว่ามีสารอื่นดึงน้ำ (เช่น น้ำตาลสูง: Na⁺ ลดราว 1.6 mEq/L ต่อ glucose ที่เพิ่ม 100 mg/dL) · ปกติ = pseudohyponatremia ${S.fa}</li>
 <li>Hypotonic แยกตาม volume แล้วใช้ FENa หรือ urine osmolality ตามแผนภาพ ${S.fa}</li>
-<li>รักษา: hypovolemic ให้ NS · euvolemic/hypervolemic จำกัดน้ำ ± diuretic · ชักหรือ Na⁺ ต่ำมากให้ 3% saline · เรื้อรังแก้ไม่เกิน 8–10 mEq/L ต่อวัน (osmotic demyelination) ${S.fa}</li></ul>
+<li>รักษา: hypovolemic ให้ NS · euvolemic/hypervolemic จำกัดน้ำ ± diuretic · ชักหรือ Na⁺ ต่ำมากให้ 3% saline · เรื้อรังแก้ไม่เกิน 10–12 mEq/L ต่อ 24 ชม. (ผู้เสี่ยงสูง เช่น ติดสุรา ขาดอาหาร K⁺ ต่ำ ไม่เกิน 8) เพื่อกัน osmotic demyelination ${S.fa}</li></ul>
 <h3>Hypernatremia</h3><ul><li>ส่วนใหญ่เกิดจาก<b>เสียน้ำ</b> มากกว่าได้ Na⁺ เกิน · คนที่ดื่มน้ำเองไม่ได้ (ทารก ผู้ป่วยใส่ท่อ ผู้สูงอายุติดเตียง) เสี่ยงสูง ${S.fa}</li>
 <li>Urine osm ต่ำ < 300 → DI (แยก central/nephrogenic ด้วย water deprivation + desmopressin) · สูง > 600 → เสียน้ำนอกไต หรือได้ Na⁺ เกิน ${S.fa}</li>
 <li>Free water deficit = TBW × (Na⁺/140 − 1) · แก้ภาวะเรื้อรังช้าๆ ไม่เกิน 0.5 mEq/L/ชม. (กัน cerebral edema) · ถ้า volume ต่ำและสัญญาณชีพไม่คงที่ ให้ NS ก่อน ${S.fa}</li></ul>`});

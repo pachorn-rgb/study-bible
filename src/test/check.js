@@ -37,7 +37,9 @@ for (const c of ix.parts) {
   for (const [tid, qs] of Object.entries(p.topics || {})) {
     if (!items.has(tid)) bad(`q/${c}: topic ${tid} has no checklist item`);
     qs.forEach((q, i) => { mcq(q, `${tid}#${i}`); nq++ });
+    if (qs.length < 2) bad(`${tid}: needs at least 2 MCQs`);
   }
+  if (!p.boss && chs.find(x => x.id === c)?.checklist.length) bad(`${c}: chapter has topics but no boss`);
   if (p.boss) { if (!(p.boss.qs || []).length) bad(`${c}: boss without questions`); p.boss.qs.forEach((q, i) => mcq(q, `boss ${c}#${i}`));
     if (p.boss.pass > p.boss.qs.length) bad(`${c}: boss pass mark above question count`) }
   for (const k of p.cases || []) k.steps.forEach((s, i) => { mcq(s, `case ${k.id}#${i}`); if (!items.has(s.t)) bad(`case ${k.id}#${i}: topic ${s.t} missing`) });
@@ -49,8 +51,11 @@ if (!/^const VERSION = "[^"]+";$/m.test(sw)) bad("sw.js: VERSION line missing or
   if (!cl.length || cl[0].v !== v) bad(`changelog.json: newest entry (${cl[0] && cl[0].v}) must match sw.js VERSION ${v} — write the patch notes`);
   cl.forEach(e => { if (!e.v || !(e.th || []).length) bad(`changelog.json: entry ${e.v} has no notes`) }) }
 try { new Function(sw) } catch (e) { bad("sw.js: syntax error " + e.message) }
-for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), "atlas/core.js", "atlas/render.js", "atlas/atlas.css", ...[...mods.values()].map(m => m.href.split("#")[0])])
+for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.readdirSync(path.join(DOCS, "atlas")).map(f => "atlas/" + f), ...[...mods.values()].map(m => m.href.split("#")[0])])
   if (!sw.includes(`"${f}"`)) bad(`sw.js does not precache ${f}`);
+{ const seen = new Map();
+  for (const [tid, qs] of ix.parts.flatMap(c => Object.entries(J(`q/${c}.json`).topics || {}))) qs.forEach(q => { const k = q.q.trim().toLowerCase();
+    if (seen.has(k)) bad(`duplicate question stem in ${tid} and ${seen.get(k)}: ${q.q.slice(0, 50)}`); else seen.set(k, tid) }) }
 console.log(`data: ${chs.length} chapters · ${mods.size} atlases · ${items.size} topics · ${nq} MCQs`);
 
 /* ---------- 2. pages ---------- */

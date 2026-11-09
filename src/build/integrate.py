@@ -60,7 +60,7 @@ fs.writeFileSync('%s/idx.json',JSON.stringify(out));await b.close()})();""" % (D
     si["built"] = datetime.datetime.now(datetime.timezone.utc).strftime("%Y-%m-%dT%H:%M:%S.000Z")
     (DOCS / "search-index.json").write_text(json.dumps(si, ensure_ascii=False, separators=(",", ":")))
     files = []
-    for i in ids: files += [f'{meta(i)["lib"]["folder"]}/{i}.html', f"thumbs/{i}.jpg"]
+    for i in ids: files += [f'{meta(i)["lib"]["folder"]}/{i}.html', f"thumbs/{i}.jpg"] + [f"atlas/{c}" for c in meta(i).get("css", [])]
     sw_add(files)
     print("integrated", ids)
 
