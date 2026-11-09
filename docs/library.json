@@ -244,77 +244,6 @@
      ],
      "modules": [
       {
-       "id": "pharm-gp",
-       "title": "PK/PD & Autonomic Drugs",
-       "subs": [
-        "Pharmacokinetics & Pharmacodynamics",
-        "Autonomic Drugs"
-       ],
-       "src": "Katzung 16e Ch 1–10",
-       "href": "pharm/pharm-gp.html",
-       "thumb": "thumbs/pharm-gp.jpg",
-       "desc": "หลักเภสัชวิทยา: enzyme kinetics, pharmacokinetics (F, Vd, CL, t½, dosing), metabolism, CYP450, dose–response และยา autonomic ทั้ง cholinergic และ adrenergic บนแผนที่ระบบประสาทอัตโนมัติ",
-       "tags": [
-        "pharmacology"
-       ],
-       "topics": [
-        [
-         "Drug class map",
-         "map"
-        ],
-        [
-         "Enzyme kinetics",
-         "enzyme"
-        ],
-        [
-         "Pharmacokinetics",
-         "pk"
-        ],
-        [
-         "Drug metabolism & elimination",
-         "metab"
-        ],
-        [
-         "Efficacy, potency & receptor binding",
-         "pd"
-        ],
-        [
-         "Autonomic receptors & drug map",
-         "ansmap"
-        ],
-        [
-         "Cholinomimetic agents",
-         "cholino"
-        ],
-        [
-         "Muscarinic antagonists",
-         "antimusc"
-        ],
-        [
-         "Sympathomimetics",
-         "symp"
-        ],
-        [
-         "Sympatholytics: α₂ agonists & α-blockers",
-         "sympatholytic"
-        ],
-        [
-         "β-blockers",
-         "bblock"
-        ],
-        [
-         "Phosphodiesterase inhibitors",
-         "pdei"
-        ]
-       ],
-       "ref": {
-        "b": "katzung",
-        "l": "K",
-        "ch": "Ch 3",
-        "sort": 3
-       }
-      },
-      {
        "id": "pharm-micro-link",
        "title": "Antimicrobials",
        "subs": [
@@ -466,6 +395,77 @@
         "l": "K",
         "ch": "Ch 55",
         "sort": 55
+       }
+      },
+      {
+       "id": "pharm-gp",
+       "title": "PK/PD & Autonomic Drugs",
+       "subs": [
+        "Pharmacokinetics & Pharmacodynamics",
+        "Autonomic Drugs"
+       ],
+       "src": "Katzung 16e Ch 1–10",
+       "href": "pharm/pharm-gp.html",
+       "thumb": "thumbs/pharm-gp.jpg",
+       "desc": "หลักเภสัชวิทยา: enzyme kinetics, pharmacokinetics (F, Vd, CL, t½, dosing), metabolism, CYP450, dose–response และยา autonomic ทั้ง cholinergic และ adrenergic บนแผนที่ระบบประสาทอัตโนมัติ",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Enzyme kinetics",
+         "enzyme"
+        ],
+        [
+         "Pharmacokinetics",
+         "pk"
+        ],
+        [
+         "Drug metabolism & elimination",
+         "metab"
+        ],
+        [
+         "Efficacy, potency & receptor binding",
+         "pd"
+        ],
+        [
+         "Autonomic receptors & drug map",
+         "ansmap"
+        ],
+        [
+         "Cholinomimetic agents",
+         "cholino"
+        ],
+        [
+         "Muscarinic antagonists",
+         "antimusc"
+        ],
+        [
+         "Sympathomimetics",
+         "symp"
+        ],
+        [
+         "Sympatholytics: α₂ agonists & α-blockers",
+         "sympatholytic"
+        ],
+        [
+         "β-blockers",
+         "bblock"
+        ],
+        [
+         "Phosphodiesterase inhibitors",
+         "pdei"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 3",
+        "sort": 3
        }
       }
      ],
@@ -848,10 +848,6 @@
          "lytic"
         ],
         [
-         "Agents for anemias & cytopenias",
-         "hematinic"
-        ],
-        [
          "Cancer therapy: cell cycle & targets",
          "cycle"
         ],
@@ -890,6 +886,10 @@
         [
          "Key chemotoxicities",
          "keytox"
+        ],
+        [
+         "Agents for anemias & cytopenias",
+         "hematinic"
         ]
        ],
        "ref": {
@@ -979,12 +979,16 @@
          "tnf"
         ],
         [
-         "Other RA biologics & JAK inhibitors",
-         "ra-bio"
-        ],
-        [
          "Psoriasis biologics",
          "psobio"
+        ],
+        [
+         "Imiquimod & actinic keratosis drugs",
+         "imiq"
+        ],
+        [
+         "Other RA biologics & JAK inhibitors",
+         "ra-bio"
         ],
         [
          "Skin drug target map",
@@ -1001,10 +1005,6 @@
         [
          "Psoriasis: topical & systemic",
          "psotop"
-        ],
-        [
-         "Imiquimod & actinic keratosis drugs",
-         "imiq"
         ],
         [
          "Rheumatoid arthritis treatment",
@@ -2522,12 +2522,12 @@
          "ksparing"
         ],
         [
-         "SGLT2 inhibitors",
-         "sglt2"
-        ],
-        [
          "ACE inhibitors, ARBs & aliskiren (kidney)",
          "raas"
+        ],
+        [
+         "SGLT2 inhibitors",
+         "sglt2"
         ],
         [
          "ADH antagonists & agonists",
@@ -4208,10 +4208,6 @@
          "targets"
         ],
         [
-         "Inhaled delivery & devices",
-         "delivery"
-        ],
-        [
          "β₂ agonists (SABA · LABA)",
          "beta2"
         ],
@@ -4236,10 +4232,6 @@
          "pde"
         ],
         [
-         "Mast cell stabilizers",
-         "cromolyn"
-        ],
-        [
          "H₁ antihistamines & decongestants",
          "antihist"
         ],
@@ -4248,12 +4240,20 @@
          "cough"
         ],
         [
-         "CFTR modulators (cystic fibrosis)",
-         "cftr"
-        ],
-        [
          "Pulmonary arterial hypertension",
          "pah"
+        ],
+        [
+         "Inhaled delivery & devices",
+         "delivery"
+        ],
+        [
+         "Mast cell stabilizers",
+         "cromolyn"
+        ],
+        [
+         "CFTR modulators (cystic fibrosis)",
+         "cftr"
         ],
         [
          "Chronic asthma: stepwise therapy",

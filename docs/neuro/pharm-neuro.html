@@ -299,6 +299,10 @@ body{margin:0;line-height:1.55}
 .t.pt{fill:var(--sb-muted);font-size:11.5px;letter-spacing:.04em}
 .p-enz.cellb{fill:var(--p-cell);stroke:color-mix(in srgb,var(--p-tint) 45%,transparent)}
 .p-enz.soft{fill:var(--sb-surface2);stroke:var(--sb-line)}
+/* supplementary (เสริม) branches: beyond the First Aid core */
+.mmb.ext .mmg{border-style:dashed;background:var(--sb-surface)}
+.mmb.ext .mmleaf{border-style:dashed;background:color-mix(in srgb,var(--sb-surface) 60%,transparent)}
+.mmb.ext .mmleaf::before{opacity:.45}
 
 </style>
 </head>
@@ -380,7 +384,7 @@ const MAPTOOLS=[["all","Show all drugs"]];
 let MMRO=null;
 function mindMap(){const gs=GROUPS.filter(g=>g!=="0"),half=Math.ceil(gs.length/2),tops=SEC.filter(s=>!s.mind),n=tops.filter(s=>SEEN[s.id]).length,C=2*Math.PI*52;
  const block=(g,side)=>{const list=SEC.filter(s=>s.k===g),gi=GROUPS.indexOf(g),done=list.filter(s=>SEEN[s.id]).length;
-  return `<div class="mmb ${side}" style="--gc:var(--g${gi})"><button class="mmg" type="button" data-go="${list[0].id}"><b>${GN[g]}</b><small>${done}/${list.length}</small></button><div class="mml">${list.map(s=>`<button class="mmleaf${SEEN[s.id]?" seen":""}" type="button" data-go="${s.id}"><span class="mt">${s.mm||s.t}</span>${s.drugs?`<span class="md">${s.drugs.split(" · ").slice(0,3).join(" · ")}</span>`:""}<span class="ma">${(s.act||[]).map(a=>`<i style="background:var(--d-${a})" title="${LEG[a][0]}"></i>`).join("")}<em>✓</em></span></button>`).join("")}</div></div>`};
+  return `<div class="mmb ${side}${g[0]==="x"?" ext":""}" style="--gc:var(--g${gi})"><button class="mmg" type="button" data-go="${list[0].id}"><b>${GN[g]}</b><small>${done}/${list.length}</small></button><div class="mml">${list.map(s=>`<button class="mmleaf${SEEN[s.id]?" seen":""}" type="button" data-go="${s.id}"><span class="mt">${s.mm||s.t}</span>${s.drugs?`<span class="md">${s.drugs.split(" · ").slice(0,3).join(" · ")}</span>`:""}<span class="ma">${(s.act||[]).map(a=>`<i style="background:var(--d-${a})" title="${LEG[a][0]}"></i>`).join("")}<em>✓</em></span></button>`).join("")}</div></div>`};
  setTimeout(mmInit,0);
  return `<div class="mmwrap" id="mmwrap"><svg class="mmlinks" id="mmlinks" aria-hidden="true"></svg>
  <div class="mmside l">${gs.slice(half).map(g=>block(g,"l")).join("")}</div>
@@ -400,7 +404,11 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!
 document.addEventListener("pointerover",e=>{const b=e.target.closest(".mmb");document.querySelectorAll(".mmb.hot").forEach(x=>x!==b&&x.classList.remove("hot"));if(b)b.classList.add("hot")});
 
 /* called after the atlas content is defined */
-function pharmFinish(){GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
+function pharmFinish(){
+ /* First Aid = core path; anything listed in EXTRA becomes a "เสริม" group after the core */
+ if(typeof EXTRA!=="undefined"&&EXTRA.length){const core=[],ext=[];SEC.forEach(s=>{if(EXTRA.includes(s.id)){s.extra=true;const nk="x"+s.k;if(!GN[nk])GN[nk]="เสริม · "+GN[s.k].replace(/^เสริม · /,"");s.k=nk;ext.push(s)}else core.push(s)});
+  SEC.length=0;core.forEach(s=>SEC.push(s));const ord=[...new Set(ext.map(s=>s.k))];ord.forEach(k=>ext.filter(s=>s.k===k).forEach(s=>SEC.push(s)))}
+ GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
  const el=document.getElementById("pstats");if(el){const tops=SEC.filter(s=>!s.mind),drugs=new Set();tops.forEach(s=>(s.drugs||"").split(" · ").forEach(d=>d&&drugs.add(d)));
   el.innerHTML=`<span><b>${new Set(tops.map(s=>s.k)).size}</b> กลุ่ม</span><span><b>${tops.length}</b> หัวข้อ</span><span><b>${drugs.size}+</b> ยาต้นแบบ</span>`}}
 
@@ -558,6 +566,8 @@ notes:()=>`${tbl(["กลุ่ม","ยา","กลไก","ADR"],[["Prostaglan
 SEC.push({id:"status",k:"g",t:"Status epilepticus",mm:"Status epilepticus",drugs:"",act:[],leg:[],
 draw:()=>flowD([["0–5 นาที: ABC, glucose","ให้ thiamine ก่อน glucose ถ้าสงสัย alcohol",""],["Benzodiazepine","lorazepam IV · หรือ midazolam IM · หรือ diazepam","vn"],["ยังชัก: second-line IV","fosphenytoin 15–20 mg PE/kg · หรือ valproate · หรือ levetiracetam","gl"],["Refractory","ICU · intubation · continuous midazolam หรือ propofol","ar"]]),
 notes:()=>`<ul><li>Benzodiazepine เป็นยาตัวแรก ${S.p}${S.k}</li><li>Fosphenytoin 15–20 mg PE/kg IV · ติดตาม BP และ ECG ${S.p}</li><li>Phenytoin IV เร็วเกิน → hypotension, arrhythmia · fosphenytoin ปลอดภัยกว่า ${S.k}</li></ul>`});
+
+const EXTRA=["status"];
 
 pharmFinish();
 /* ================= render: one chapter = one continuous page ================= */
