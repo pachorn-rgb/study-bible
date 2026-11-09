@@ -3893,13 +3893,13 @@
    {
     "q": "Which feature defines nephrotic syndrome?",
     "o": [
-     "Pyuria with WBC casts",
-     "Isolated microscopic hematuria",
-     "Hematuria with RBC casts and hypertension",
-     "Proteinuria > 3.5 g/day with hypoalbuminemia, hyperlipidemia and edema"
+     "Hematuria with RBC casts, hypertension and oliguria",
+     "Pyuria with WBC casts, fever and flank pain",
+     "Proteinuria > 3.5 g/day with hypoalbuminemia and edema",
+     "Isolated microscopic hematuria with normal function"
     ],
-    "a": 3,
-    "e": "Nephritic = inflammation (hematuria, RBC casts, HTN, azotemia). Nephrotic = podocyte damage (massive proteinuria)."
+    "a": 2,
+    "e": "Nephrotic = podocyte damage: proteinuria > 3.5 g/day, hypoalbuminemia, edema, hyperlipidemia. Nephritic = inflammation (hematuria, RBC casts, HTN, azotemia)."
    },
    {
     "q": "Nephrotic patients are hypercoagulable mainly because they lose:",
@@ -3915,23 +3915,23 @@
    {
     "q": "Nephritic syndrome is characterized by:",
     "o": [
+     "Proteinuria > 3.5 g/day with hypoalbuminemia and edema",
      "Hematuria with RBC casts, hypertension and oliguria",
-     "Hyperlipidemia and fatty casts",
-     "Glucosuria",
-     "Proteinuria > 3.5 g/day only"
+     "Hyperlipidemia with fatty casts and oval fat bodies",
+     "Pyuria with WBC casts and urine eosinophils"
     ],
-    "a": 0,
+    "a": 1,
     "e": "Inflammation damages the GBM, letting RBCs through."
    },
    {
     "q": "'Spike and dome' on EM with subepithelial deposits suggests:",
     "o": [
-     "Minimal change",
+     "Membranous nephropathy",
+     "Minimal change disease",
      "Alport syndrome",
-     "IgA nephropathy",
-     "Membranous nephropathy"
+     "IgA nephropathy"
     ],
-    "a": 3,
+    "a": 0,
     "e": "Membranous nephropathy (anti-PLA2R)."
    }
   ],
@@ -3997,20 +3997,20 @@
     "q": "Anti-PLA2R antibodies with spike-and-dome subepithelial deposits indicate:",
     "o": [
      "Minimal change disease",
-     "Amyloidosis",
-     "Primary membranous nephropathy",
-     "Diabetic nephropathy"
+     "Focal segmental glomerulosclerosis",
+     "Diabetic nephropathy",
+     "Primary membranous nephropathy"
     ],
-    "a": 2,
+    "a": 3,
     "e": "Most common primary nephrotic cause in white adults. Secondary causes: SLE, hepatitis B/C, NSAIDs, solid tumors."
    },
    {
     "q": "Nephrotic syndrome in a patient with HIV, heroin use or sickle cell disease is most likely:",
     "o": [
      "Minimal change disease",
-     "Membranous nephropathy",
+     "Primary membranous nephropathy",
      "Focal segmental glomerulosclerosis",
-     "IgA nephropathy"
+     "IgA nephropathy (Berger disease)"
     ],
     "a": 2,
     "e": "FSGS: segmental sclerosis; most common primary nephrotic cause in Black and Hispanic adults. HIV causes the collapsing variant."
@@ -4020,24 +4020,24 @@
    {
     "q": "The most common type of kidney stone is:",
     "o": [
+     "Calcium phosphate",
      "Calcium oxalate",
-     "Struvite",
      "Uric acid",
-     "Cystine"
+     "Struvite"
     ],
-    "a": 0,
+    "a": 1,
     "e": "Calcium stones (oxalate > phosphate) are most common; risks include hypercalciuria and low citrate."
    },
    {
     "q": "Staghorn calculi in alkaline urine with a urease-positive organism are made of:",
     "o": [
-     "Ammonium magnesium phosphate (struvite)",
      "Cystine",
-     "Calcium oxalate",
+     "Calcium oxalate monohydrate",
+     "Magnesium ammonium phosphate",
      "Uric acid"
     ],
-    "a": 0,
-    "e": "Proteus, Klebsiella, Staph saprophyticus split urea → NH₃ → alkaline urine. Treat infection and remove stone."
+    "a": 2,
+    "e": "Struvite (ammonium magnesium phosphate). Proteus, Klebsiella, Staph saprophyticus split urea → NH₃ → alkaline urine. Treat infection and remove stone."
    },
    {
     "q": "Radiolucent stones forming in acidic urine in a patient with gout or tumor lysis are:",
@@ -4089,23 +4089,23 @@
     "q": "Unilateral hydronephrosis from a stone usually:",
     "o": [
      "Raises serum creatinine markedly",
-     "Causes anuria",
-     "Leaves creatinine near normal because the other kidney compensates",
-     "Causes metabolic alkalosis"
+     "Leaves serum creatinine near normal",
+     "Causes anuria and acute kidney failure",
+     "Causes a hypokalemic metabolic alkalosis"
     ],
-    "a": 2,
-    "e": "Bilateral obstruction or a single kidney is needed for renal failure."
+    "a": 1,
+    "e": "The contralateral kidney compensates, so creatinine stays near normal. Bilateral obstruction or a single kidney is needed for renal failure."
    },
    {
     "q": "Prolonged obstruction leads to:",
     "o": [
-     "Cortical hypertrophy",
-     "Increased GFR",
-     "Glomerular crescents",
-     "Compression atrophy of the cortex and medulla"
+     "Compensatory cortical hypertrophy",
+     "A sustained increase in GFR",
+     "Atrophy of the renal parenchyma",
+     "Glomerular crescent formation"
     ],
-    "a": 3,
-    "e": "Pressure transmitted back damages renal parenchyma."
+    "a": 2,
+    "e": "Pressure transmitted back causes compression atrophy of the cortex and medulla."
    }
   ],
   "robbins-ch21:cystitis": [
@@ -4134,23 +4134,23 @@
    {
     "q": "A positive nitrite test indicates:",
     "o": [
-     "Gram-negative bacteria that reduce nitrate",
-     "White cells in urine",
-     "Blood in urine",
-     "Glucose"
+     "Leukocytes releasing esterase in urine",
+     "Hemoglobin or red cells in the urine",
+     "Glucose spilling into the urine",
+     "Nitrate-reducing bacteria (e.g., E. coli)"
     ],
-    "a": 0,
-    "e": "E. coli and other Enterobacteriaceae convert nitrate to nitrite."
+    "a": 3,
+    "e": "Gram-negative bacteria (E. coli and other Enterobacteriaceae) convert nitrate to nitrite."
    },
    {
     "q": "Sterile pyuria suggests:",
     "o": [
-     "Diabetes",
-     "E. coli cystitis",
-     "Urethritis (Chlamydia/gonorrhea) or TB",
-     "Proteus infection"
+     "Uncomplicated E. coli cystitis",
+     "Chlamydia/gonococcal urethritis or TB",
+     "Proteus pyelonephritis with stones",
+     "Klebsiella catheter-associated UTI"
     ],
-    "a": 2,
+    "a": 1,
     "e": "WBCs without growth on standard culture."
    },
    {
@@ -4167,10 +4167,10 @@
    {
     "q": "Hemorrhagic cystitis is associated with:",
     "o": [
-     "Lithium",
-     "Schistosoma mansoni",
-     "Thiazides",
-     "Cyclophosphamide, adenovirus and BK virus"
+     "Lithium and demeclocycline",
+     "Schistosoma mansoni infection",
+     "Thiazides or loop diuretics",
+     "Cyclophosphamide or adenovirus"
     ],
     "a": 3,
     "e": "Cytotoxic drugs (cyclophosphamide) and adenovirus/BK virus cause hemorrhagic cystitis."
@@ -4202,10 +4202,10 @@
    {
     "q": "Chronic pyelonephritis shows coarse asymmetric corticomedullary scarring and thyroidization of the kidney due to:",
     "o": [
-     "IgA deposition",
-     "Recurrent infection with reflux or obstruction",
-     "Diabetes alone",
-     "Hypertension alone"
+     "Mesangial IgA immune-complex deposition",
+     "Recurrent infection with reflux/obstruction",
+     "Hyaline arteriolosclerosis from diabetes",
+     "Hypertensive arteriolar nephrosclerosis"
     ],
     "a": 1,
     "e": "Tubules contain eosinophilic casts resembling thyroid follicles."
@@ -4224,12 +4224,12 @@
    {
     "q": "Xanthogranulomatous pyelonephritis is classically associated with:",
     "o": [
-     "E. coli",
-     "Lupus",
-     "Proteus infection and staghorn calculi",
-     "Viral infection"
+     "Lupus nephritis with immune deposits",
+     "Proteus infection with staghorn calculi",
+     "Renal TB with caseating granulomas",
+     "BK polyomavirus infection after transplant"
     ],
-    "a": 2,
+    "a": 1,
     "e": "Foamy macrophages; can mimic tumor."
    },
    {
@@ -4246,35 +4246,35 @@
    {
     "q": "Papillary necrosis is particularly likely because the papillae have:",
     "o": [
-     "Abundant collateral circulation",
-     "Poor blood supply from vasa recta in a hypertonic environment",
-     "No tubules",
+     "Abundant collateral supply from capsular arteries",
+     "Sparse vasa recta supply in a hypertonic milieu",
+     "No tubular epithelium, only connective tissue",
      "Direct arterial supply from interlobar arteries"
     ],
     "a": 1,
-    "e": "Low O₂ and hypertonicity make the papillae vulnerable (e.g., sickling)."
+    "e": "Poor blood supply from the vasa recta plus a hypertonic environment: low O₂ and hypertonicity make the papillae vulnerable (e.g., sickling)."
    },
    {
     "q": "Causes of renal papillary necrosis include:",
     "o": [
-     "Lupus only",
-     "Hypertension only",
-     "Hypercalcemia only",
-     "Sickle cell, diabetes, analgesic abuse, pyelonephritis"
+     "Minimal change disease and IgA nephropathy",
+     "Hypercalcemia and hyperparathyroidism",
+     "Sickle cell disease and analgesic abuse",
+     "Lithium therapy and nephrogenic DI"
     ],
-    "a": 3,
+    "a": 2,
     "e": "Mnemonic SAAD: Sickle cell, Acute pyelonephritis, Analgesics, Diabetes."
    },
    {
     "q": "Papillary necrosis presents with:",
     "o": [
-     "Hypertension only",
-     "Polycythemia",
-     "Gross hematuria and flank pain, possibly sloughed papillae in urine",
-     "Painless proteinuria"
+     "Hypertension with hypokalemia",
+     "Polycythemia with an abdominal mass",
+     "Gross hematuria and flank pain",
+     "Painless proteinuria with edema"
     ],
     "a": 2,
-    "e": "Sloughed papilla may cause ureteric obstruction."
+    "e": "Sloughed papillae may appear in the urine or cause ureteric obstruction."
    }
   ],
   "harrison-ch321:aki-def": [
@@ -4303,10 +4303,10 @@
    {
     "q": "Postrenal AKI is suggested by:",
     "o": [
-     "Muddy brown casts",
+     "Muddy brown granular casts in urine",
      "Bilateral hydronephrosis on ultrasound",
-     "FENa < 1% with normal sediment",
-     "Eosinophiluria"
+     "FENa < 1% with a normal urine sediment",
+     "Urine eosinophils with WBC casts"
     ],
     "a": 1,
     "e": "Obstruction distends collecting systems."
@@ -4314,20 +4314,20 @@
    {
     "q": "Prerenal azotemia typically shows:",
     "o": [
-     "Granular casts",
-     "BUN/Cr > 20, FENa < 1%, high urine osmolality",
-     "Isosthenuria",
-     "FENa > 2%"
+     "Muddy brown granular casts",
+     "BUN/Cr > 20 with FENa < 1%",
+     "Isosthenuric urine (~300 mOsm/kg)",
+     "FENa > 2% with BUN/Cr < 15"
     ],
     "a": 1,
-    "e": "Tubules work and avidly reabsorb Na⁺ and urea."
+    "e": "Tubules work and avidly reabsorb Na⁺ and urea: BUN/Cr > 20, FENa < 1%, high urine osmolality."
    }
   ],
   "robbins-ch20:tin": [
    {
     "q": "Fever, rash, eosinophilia and pyuria with WBC casts days after starting a drug suggest:",
     "o": [
-     "Acute tubular necrosis",
+     "Ischemic acute tubular necrosis",
      "Minimal change disease",
      "Acute interstitial nephritis",
      "Prerenal azotemia"
@@ -4349,23 +4349,23 @@
    {
     "q": "Drugs commonly causing acute interstitial nephritis include:",
     "o": [
-     "Statins only",
-     "Penicillins, NSAIDs, PPIs, diuretics",
-     "Heparin",
-     "Insulin"
+     "Statins, insulin and heparin",
+     "Penicillins, PPIs and NSAIDs",
+     "Digoxin, levothyroxine, insulin",
+     "Metoprolol, amlodipine, insulin"
     ],
     "a": 1,
-    "e": "Hypersensitivity (type IV) reaction in the interstitium."
+    "e": "Hypersensitivity (type IV) reaction in the interstitium. Common culprits: penicillins, NSAIDs, PPIs, diuretics, rifampin, sulfonamides."
    },
    {
     "q": "A characteristic urine finding in drug-induced AIN is:",
     "o": [
-     "Eosinophils (WBC casts)",
-     "Fatty casts",
-     "Muddy brown casts",
-     "RBC casts"
+     "Fatty casts and oval fat bodies",
+     "Muddy brown granular casts",
+     "Eosinophils with WBC casts",
+     "Dysmorphic RBCs with RBC casts"
     ],
-    "a": 0,
+    "a": 2,
     "e": "Eosinophiluria and WBC casts with fever and rash."
    }
   ],
@@ -4384,35 +4384,35 @@
    {
     "q": "The maintenance phase of ATN is notable for:",
     "o": [
-     "Proteinuria > 3.5 g/day",
-     "Oliguria with hyperkalemia and metabolic acidosis",
+     "Nephrotic-range proteinuria",
+     "Oliguria with hyperkalemia",
      "Normal urine output and sodium",
      "Polyuria with hypokalemia"
     ],
     "a": 1,
-    "e": "Recovery phase: tubules regenerate → polyuria and risk of hypokalemia."
+    "e": "Maintenance phase: oliguria, hyperkalemia and metabolic acidosis. Recovery phase: tubules regenerate → polyuria and risk of hypokalemia."
    },
    {
     "q": "Ischemic ATN preferentially injures the:",
     "o": [
-     "Glomerulus",
-     "Collecting duct",
-     "Urothelium",
-     "Proximal straight tubule and TAL"
+     "Glomerular capillary endothelium",
+     "Proximal straight tubule and TAL",
+     "Cortical collecting duct principal cells",
+     "Papillary urothelium"
     ],
-    "a": 3,
+    "a": 1,
     "e": "High O₂ demand in the outer medulla."
    },
    {
     "q": "Nephrotoxic ATN is caused by:",
     "o": [
-     "Thiazides",
-     "Aminoglycosides, contrast, myoglobin, heavy metals",
-     "Insulin",
-     "Penicillin only"
+     "Thiazides and loop diuretics",
+     "Penicillins and proton-pump inhibitors",
+     "Aminoglycosides and myoglobin",
+     "Insulin and corticosteroids"
     ],
-    "a": 1,
-    "e": "Direct tubular toxicity; basement membrane usually preserved so cells regenerate."
+    "a": 2,
+    "e": "Direct tubular toxicity (aminoglycosides, contrast, myoglobin, heavy metals); basement membrane usually preserved so cells regenerate."
    }
   ],
   "harrison-ch322:ckd-sys": [
@@ -4452,10 +4452,10 @@
    {
     "q": "Hyperkalemia in kidney failure occurs because:",
     "o": [
-     "Insulin rises",
-     "Reduced K⁺ excretion",
-     "K⁺ intake rises",
-     "Alkalosis"
+     "Rising insulin levels",
+     "Reduced renal K⁺ excretion",
+     "Increased aldosterone secretion",
+     "Metabolic alkalosis"
     ],
     "a": 1,
     "e": "Fewer nephrons to secrete K⁺."
@@ -4463,23 +4463,23 @@
    {
     "q": "The primary cause of anemia in CKD is:",
     "o": [
-     "Hemolysis",
-     "Insufficient erythropoietin production",
-     "Iron deficiency",
-     "B12 deficiency"
+     "Chronic hemolysis from uremia",
+     "Dietary iron deficiency",
+     "Vitamin B12 deficiency",
+     "Erythropoietin deficiency"
     ],
-    "a": 1,
-    "e": "Normocytic anemia from stage 3, almost universal by stage 4."
+    "a": 3,
+    "e": "Insufficient erythropoietin production: normocytic anemia from stage 3, almost universal by stage 4."
    },
    {
     "q": "The leading cause of death in CKD is:",
     "o": [
+     "Sepsis from infection",
      "Cardiovascular disease",
-     "Infection",
-     "Malignancy",
-     "Hyperkalemia"
+     "Solid-organ malignancy",
+     "Uremic encephalopathy"
     ],
-    "a": 0,
+    "a": 1,
     "e": "CVD is the leading cause of morbidity and mortality."
    },
    {
@@ -4499,9 +4499,9 @@
     "q": "Renal osteodystrophy develops because CKD causes:",
     "o": [
      "↑ Calcitriol and hypercalcemia",
-     "↑ Renal calcium excretion only",
-     "↓ Calcitriol and phosphate retention → secondary hyperparathyroidism",
-     "↓ PTH"
+     "↑ Renal calcium and phosphate excretion",
+     "↓ Calcitriol and phosphate retention",
+     "↓ PTH secretion and hypophosphatemia"
     ],
     "a": 2,
     "e": "Hypocalcemia + hyperphosphatemia + ↓ vitamin D → ↑ PTH → bone resorption (osteitis fibrosa cystica)."
@@ -4509,10 +4509,10 @@
    {
     "q": "In CKD-mineral bone disease, FGF23 is:",
     "o": [
-     "Unchanged",
-     "Increased, lowering calcitriol and promoting phosphaturia",
-     "Decreased",
-     "Secreted by the kidney itself"
+     "Unchanged until dialysis",
+     "Increased early in CKD",
+     "Decreased early in CKD",
+     "Secreted mainly by the kidney"
     ],
     "a": 1,
     "e": "Osteocyte FGF23 rises early to excrete phosphate and inhibits 1α-hydroxylase."
@@ -4520,21 +4520,21 @@
    {
     "q": "Secondary hyperparathyroidism in CKD is driven by:",
     "o": [
-     "Phosphate retention, low calcitriol and hypocalcemia",
-     "High vitamin D",
-     "Hypercalcemia",
-     "Low phosphate"
+     "Excess calcitriol and hypercalcemia",
+     "Phosphate retention and low calcitriol",
+     "Hypophosphatemia and high calcitriol",
+     "Hypercalcemia and low FGF23"
     ],
-    "a": 0,
-    "e": "All stimulate PTH."
+    "a": 1,
+    "e": "Phosphate retention, low calcitriol and the resulting hypocalcemia all stimulate PTH."
    },
    {
     "q": "Osteitis fibrosa cystica in CKD is due to:",
     "o": [
-     "Vitamin A excess",
-     "High PTH bone resorption",
-     "Low PTH",
-     "Aluminum only"
+     "Excess vitamin A intake",
+     "PTH-driven bone resorption",
+     "Low PTH (adynamic bone)",
+     "Aluminum deposition in bone"
     ],
     "a": 1,
     "e": "High-turnover renal bone disease."
@@ -4564,13 +4564,13 @@
    {
     "q": "Calciphylaxis is:",
     "o": [
-     "Benign skin calcification",
-     "Caused by hypocalcemia",
-     "A form of nephrolithiasis",
-     "Vascular calcification with skin necrosis, almost exclusively in advanced CKD"
+     "Benign dystrophic skin calcification",
+     "Ectopic calcification caused by hypocalcemia",
+     "Calcium phosphate nephrolithiasis",
+     "Vascular calcification with skin necrosis"
     ],
     "a": 3,
-    "e": "A devastating condition in ESKD patients."
+    "e": "Vascular calcification with skin necrosis, almost exclusively in advanced CKD; a devastating condition in ESKD patients."
    }
   ],
   "robbins-ch20:cystic": [
@@ -4578,9 +4578,9 @@
     "q": "Bilateral enlarged kidneys with cysts, hematuria and flank pain in an adult with a family history and berry aneurysms:",
     "o": [
      "Autosomal dominant polycystic kidney disease",
-     "Simple cysts",
-     "Autosomal recessive PKD",
-     "Medullary sponge kidney"
+     "Multiple simple cortical cysts",
+     "Autosomal recessive polycystic kidney disease",
+     "Medullary sponge kidney (dilated ducts)"
     ],
     "a": 0,
     "e": "PKD1 (chr 16) or PKD2 (chr 4). Associations: berry aneurysms, mitral valve prolapse, hepatic cysts, diverticulosis. Tolvaptan slows progression."
@@ -4610,10 +4610,10 @@
    {
     "q": "Acquired cystic kidney disease is seen in:",
     "o": [
-     "Pyelonephritis",
+     "Chronic pyelonephritis",
      "Long-term dialysis patients",
      "Children with ARPKD",
-     "Horseshoe kidney"
+     "Patients with horseshoe kidney"
     ],
     "a": 1,
     "e": "Risk of renal cell carcinoma rises."
@@ -4623,12 +4623,12 @@
    {
     "q": "Renal cell carcinoma (clear cell) arises from which cells?",
     "o": [
+     "Glomerular visceral epithelium (podocytes)",
      "Proximal convoluted tubule cells",
-     "Podocytes",
-     "Collecting duct cells",
-     "Transitional epithelium"
+     "Collecting duct intercalated cells",
+     "Transitional epithelium of the pelvis"
     ],
-    "a": 0,
+    "a": 1,
     "e": "Polygonal clear cells filled with lipid and carbohydrate; associated with VHL gene deletion on chromosome 3."
    },
    {
@@ -4669,9 +4669,9 @@
    {
     "q": "Renal oncocytoma arises from:",
     "o": [
-     "Podocytes",
-     "PCT cells",
-     "Urothelium",
+     "Glomerular podocytes",
+     "Proximal convoluted tubule cells",
+     "Urothelium of the renal pelvis",
      "Collecting duct intercalated cells"
     ],
     "a": 3,
@@ -4691,22 +4691,22 @@
    {
     "q": "Management of a suspected oncocytoma is usually:",
     "o": [
-     "Observation only",
-     "Surgical excision (cannot reliably exclude RCC)",
-     "Chemotherapy",
-     "Radiation"
+     "Imaging follow-up alone",
+     "Surgical excision",
+     "Systemic chemotherapy",
+     "External beam radiation"
     ],
     "a": 1,
-    "e": "Hard to distinguish from chromophobe RCC preoperatively."
+    "e": "Usually excised because it cannot reliably be distinguished from RCC (especially chromophobe RCC) preoperatively."
    }
   ],
   "robbins-ch20:wilms": [
    {
     "q": "Most common renal malignancy of early childhood presenting as a large palpable unilateral flank mass:",
     "o": [
-     "Renal cell carcinoma",
-     "Neuroblastoma",
-     "Oncocytoma",
+     "Clear cell renal cell carcinoma",
+     "Neuroblastoma (adrenal medulla)",
+     "Renal oncocytoma",
      "Wilms tumor (nephroblastoma)"
     ],
     "a": 3,
@@ -4715,9 +4715,9 @@
    {
     "q": "WAGR syndrome includes Wilms tumor, aniridia, genitourinary anomalies and:",
     "o": [
-     "Retinal angiomas",
-     "Café-au-lait spots",
-     "Macroglossia only",
+     "Retinal hemangioblastomas",
+     "Café-au-lait macules",
+     "Macroglossia and organomegaly",
      "Range of developmental delays"
     ],
     "a": 3,
@@ -4737,13 +4737,13 @@
    {
     "q": "WT1 mutations in Denys–Drash syndrome cause Wilms tumor plus:",
     "o": [
-     "Hearing loss",
-     "Aniridia",
-     "Early nephrotic syndrome (mesangial sclerosis) and male pseudohermaphroditism",
-     "Hemihypertrophy"
+     "Sensorineural hearing loss and lens defects",
+     "Aniridia and intellectual disability",
+     "Early nephrotic syndrome and gonadal dysgenesis",
+     "Hemihyperplasia, macroglossia and omphalocele"
     ],
     "a": 2,
-    "e": "WAGR = WT1 deletion; Beckwith–Wiedemann = WT2."
+    "e": "Denys–Drash (WT1 mutation): early nephrotic syndrome from diffuse mesangial sclerosis and male pseudohermaphroditism (gonadal dysgenesis). WAGR = WT1 deletion; Beckwith–Wiedemann = WT2."
    }
   ],
   "robbins-ch21:urothelial": [
@@ -4783,12 +4783,12 @@
    {
     "q": "Squamous cell carcinoma of the bladder is associated with:",
     "o": [
-     "Cyclophosphamide only",
-     "Smoking only",
-     "Aniline dyes only",
-     "Schistosoma haematobium infection"
+     "Schistosoma mansoni infection",
+     "Helicobacter pylori infection",
+     "Schistosoma haematobium infection",
+     "Epstein–Barr virus infection"
     ],
-    "a": 3,
+    "a": 2,
     "e": "Chronic irritation → squamous metaplasia."
    },
    {
@@ -4805,10 +4805,10 @@
    {
     "q": "Non-muscle-invasive papillary urothelial tumors commonly carry:",
     "o": [
-     "WT1 deletion",
-     "TP53 and RB loss early",
+     "WT1 deletion on chromosome 11p",
+     "Early TP53 and RB loss-of-function",
      "FGFR3 and RAS gain-of-function",
-     "VHL loss"
+     "VHL loss on chromosome 3p"
     ],
     "a": 2,
     "e": "Papillary pathway: FGFR3/RAS/PI3K; frequent recurrence but only ~20% progress to muscle invasion."
@@ -4840,23 +4840,23 @@
    {
     "q": "Rapidly progressive glomerulonephritis is defined clinically by:",
     "o": [
-     "Proteinuria >3.5 g/day",
+     "Proteinuria > 3.5 g/day with hypoalbuminemia",
      "Slowly progressive azotemia over years",
-     "Nephritic syndrome with rapid decline in GFR over days–weeks",
-     "Isolated hematuria after URI"
+     "Nephritic syndrome with GFR loss over weeks",
+     "Isolated hematuria 1–2 days after a URI"
     ],
     "a": 2,
-    "e": "RPGN = nephritic picture + rapid GFR loss; morphologically crescents in most glomeruli."
+    "e": "RPGN = nephritic picture + rapid GFR loss over days–weeks; morphologically crescents in most glomeruli."
    }
   ],
   "robbins-ch20:immune": [
    {
     "q": "Linear IgG along the GBM on immunofluorescence indicates antibodies against:",
     "o": [
-     "Streptococcal SpeB",
+     "Streptococcal exotoxin B (SpeB)",
      "Galactose-deficient IgA1",
      "α3 NC1 domain of type IV collagen",
-     "PLA2R on podocytes"
+     "PLA2R on podocyte membranes"
     ],
     "a": 2,
     "e": "Anti-GBM disease: in situ antibodies against the α3 chain NC1 domain of type IV collagen produce a linear pattern."
@@ -4864,12 +4864,12 @@
    {
     "q": "Why do subepithelial deposits cause little inflammation compared with subendothelial deposits?",
     "o": [
-     "The GBM separates them from circulating leukocytes",
-     "They are IgA only",
-     "They are cleared by mesangial cells",
-     "They lack complement"
+     "They consist of IgA rather than IgG",
+     "Mesangial cells rapidly phagocytose them",
+     "The GBM separates them from blood leukocytes",
+     "They contain no complement components"
     ],
-    "a": 0,
+    "a": 2,
     "e": "Subepithelial deposits sit outside the GBM, away from blood leukocytes, so proteinuria dominates (e.g., membranous)."
    },
    {
@@ -4899,10 +4899,10 @@
    {
     "q": "ACE inhibitors slow progression of CKD mainly by:",
     "o": [
-     "Blocking SGLT2",
-     "Dilating the afferent arteriole",
-     "Reducing intraglomerular pressure via efferent dilation",
-     "Suppressing B cells"
+     "Blocking proximal SGLT2",
+     "Afferent arteriolar dilation",
+     "Efferent arteriolar dilation",
+     "Immune suppression of B cells"
     ],
     "a": 2,
     "e": "Adaptive hyperfiltration raises glomerular capillary pressure; ACEi/ARB dilate the efferent arteriole and lower it."
@@ -4923,13 +4923,13 @@
    {
     "q": "Crescents are formed mainly by:",
     "o": [
-     "Podocyte hyperplasia only",
-     "Mesangial cells and IgA",
-     "Fibroblasts from the interstitium",
-     "Parietal epithelial cells and monocytes/macrophages, driven by fibrin"
+     "Visceral podocytes and neutrophils",
+     "Mesangial cells with IgA deposits",
+     "Interstitial fibroblasts and mast cells",
+     "Parietal epithelial cells and macrophages"
     ],
     "a": 3,
-    "e": "Fibrin leakage into Bowman space stimulates parietal cell proliferation and macrophage influx."
+    "e": "Fibrin leakage into Bowman space stimulates parietal epithelial cell proliferation and monocyte/macrophage influx."
    },
    {
     "q": "Goodpasture syndrome differs from renal-limited anti-GBM disease by the presence of:",
@@ -4993,10 +4993,10 @@
    {
     "q": "Thin basement membrane nephropathy typically presents with:",
     "o": [
-     "RPGN",
-     "Nephrotic syndrome",
-     "Hearing loss and ESRD",
-     "Persistent asymptomatic hematuria with normal renal function"
+     "Rapidly progressive glomerulonephritis",
+     "Nephrotic syndrome with hypoalbuminemia",
+     "Hearing loss with progression to ESRD",
+     "Asymptomatic hematuria, normal renal function"
     ],
     "a": 3,
     "e": "Benign familial hematuria: heterozygous COL4A3/A4, GBM 150–250 nm, normal function."
@@ -5006,10 +5006,10 @@
    {
     "q": "Silver stain showing 'spikes' along the GBM is characteristic of:",
     "o": [
-     "FSGS",
-     "PSGN",
+     "Focal segmental glomerulosclerosis",
+     "Poststreptococcal glomerulonephritis",
      "Membranous nephropathy",
-     "MPGN"
+     "Membranoproliferative GN"
     ],
     "a": 2,
     "e": "GBM material grows between subepithelial deposits, forming spikes."
@@ -5028,10 +5028,10 @@
    {
     "q": "Which is a cause of secondary membranous nephropathy?",
     "o": [
-     "Hodgkin lymphoma",
-     "Hepatitis B and carcinoma of lung/colon",
-     "HIV",
-     "Heroin"
+     "HIV infection and heroin use",
+     "Hepatitis B and lung/colon carcinoma",
+     "Sickle cell disease and obesity",
+     "Hodgkin lymphoma and lithium"
     ],
     "a": 1,
     "e": "Secondary MN: HBV, HCV, syphilis, malaria, solid tumors, SLE, NSAIDs, penicillamine, gold."
@@ -5063,9 +5063,9 @@
    {
     "q": "The best predictor of good prognosis in childhood nephrotic syndrome is:",
     "o": [
-     "Low C3",
-     "Hematuria",
-     "Hypertension",
+     "Low serum C3 complement",
+     "Microscopic hematuria",
+     "Elevated blood pressure",
      "Response to corticosteroids"
     ],
     "a": 3,
@@ -5077,9 +5077,9 @@
     "q": "Collapsing glomerulopathy with tubular microcysts is classically seen in:",
     "o": [
      "HIV-associated nephropathy",
-     "Amyloidosis",
-     "Alport syndrome",
-     "Diabetes"
+     "Systemic AA amyloidosis",
+     "X-linked Alport syndrome",
+     "Diabetic nephropathy"
     ],
     "a": 0,
     "e": "HIVAN: collapsing variant of FSGS with podocyte hyperplasia and microcystic tubules."
@@ -5111,10 +5111,10 @@
    {
     "q": "'Tram-track' double contour of capillary walls results from:",
     "o": [
-     "Mesangial interposition and new basement membrane",
-     "Fibrin crescents",
-     "Spike formation",
-     "Amyloid fibrils"
+     "Mesangial interposition with new GBM",
+     "Fibrin-driven crescent formation",
+     "GBM spikes between subepithelial deposits",
+     "Amyloid fibril deposition in the wall"
     ],
     "a": 0,
     "e": "In MPGN, mesangial cells extend into the capillary wall and lay down new BM → duplicated contour."
@@ -5122,10 +5122,10 @@
    {
     "q": "Dense deposit disease is caused by:",
     "o": [
-     "Dysregulated alternative complement pathway (e.g., C3 nephritic factor)",
-     "Galactose-deficient IgA1",
-     "COL4A5 mutation",
-     "Anti-PLA2R"
+     "Alternative complement pathway dysregulation",
+     "Galactose-deficient IgA1 immune complexes",
+     "COL4A5 mutation in type IV collagen",
+     "Anti-PLA2R autoantibodies on podocytes"
     ],
     "a": 0,
     "e": "C3 glomerulopathy: C3NeF stabilizes C3 convertase → low C3 and C3-only deposits."
@@ -5134,9 +5134,9 @@
     "q": "Secondary immune-complex MPGN is most classically associated with:",
     "o": [
      "Hepatitis C with cryoglobulinemia",
-     "Alport syndrome",
-     "Analgesic abuse",
-     "Hodgkin lymphoma"
+     "Alport syndrome (COL4A5)",
+     "Analgesic abuse with papillary necrosis",
+     "Heroin use and HIV"
     ],
     "a": 0,
     "e": "Chronic HCV (± cryoglobulins), HBV, endocarditis, SLE and CLL/lymphoma cause MPGN."
@@ -5157,9 +5157,9 @@
    {
     "q": "'Wire loop' lesions in lupus are due to:",
     "o": [
-     "Nodular sclerosis",
-     "Subepithelial spikes",
-     "Mesangial IgA",
+     "Nodular mesangial matrix sclerosis",
+     "Subepithelial deposits with spikes",
+     "Mesangial IgA immune deposits",
      "Large subendothelial immune deposits"
     ],
     "a": 3,
@@ -5168,13 +5168,13 @@
    {
     "q": "Lupus class V nephritis presents mainly as:",
     "o": [
-     "RPGN",
+     "Rapidly progressive GN",
      "Nephritic syndrome",
      "Isolated hematuria",
-     "Nephrotic syndrome (membranous pattern)"
+     "Nephrotic syndrome"
     ],
     "a": 3,
-    "e": "Class V = membranous lupus nephritis with subepithelial deposits."
+    "e": "Class V = membranous lupus nephritis with subepithelial deposits → nephrotic syndrome."
    }
   ],
   "robbins-ch20:diabetic": [
@@ -5192,10 +5192,10 @@
    {
     "q": "Diabetic hyaline arteriolosclerosis characteristically affects:",
     "o": [
-     "Afferent arteriole only",
+     "Afferent arterioles but not efferent",
      "Both afferent and efferent arterioles",
-     "Interlobar arteries only",
-     "Veins"
+     "Interlobar and arcuate arteries",
+     "Peritubular capillaries and venules"
     ],
     "a": 1,
     "e": "Involvement of efferent arterioles is characteristic of diabetes."
@@ -5203,13 +5203,13 @@
    {
     "q": "Kimmelstiel–Wilson lesions are:",
     "o": [
-     "Cholesterol emboli",
-     "Subepithelial deposits",
-     "Fibrin crescents",
-     "PAS-positive nodular mesangial matrix expansion"
+     "Cholesterol emboli in arcuate arteries",
+     "Subepithelial immune-complex deposits",
+     "Fibrin-rich cellular crescents",
+     "Nodular mesangial matrix expansion"
     ],
     "a": 3,
-    "e": "Nodular glomerulosclerosis in diabetes."
+    "e": "Nodular glomerulosclerosis in diabetes: PAS-positive nodules of mesangial matrix."
    }
   ],
   "robbins-ch20:systemic": [
@@ -5252,20 +5252,20 @@
     "q": "Benign nephrosclerosis is characterized by:",
     "o": [
      "Fibrinoid necrosis of arterioles",
-     "Wedge-shaped infarcts",
-     "Hyaline arteriolosclerosis and finely granular small kidneys",
-     "Cortical abscesses"
+     "Wedge-shaped cortical infarcts",
+     "Hyaline arteriolosclerosis",
+     "Multiple cortical abscesses"
     ],
     "a": 2,
-    "e": "Hyaline arteriolosclerosis → ischemic atrophy and a finely granular cortical surface."
+    "e": "Hyaline arteriolosclerosis → ischemic atrophy and small kidneys with a finely granular cortical surface."
    }
   ],
   "robbins-ch20:tma": [
    {
     "q": "A child develops bloody diarrhea, then hemolytic anemia with schistocytes, thrombocytopenia and AKI. The likely cause is:",
     "o": [
-     "Factor H mutation",
-     "Anti-GBM",
+     "Complement factor H mutation",
+     "Anti-GBM autoantibodies",
      "ADAMTS13 autoantibody",
      "Shiga toxin–producing E. coli"
     ],
@@ -5286,13 +5286,13 @@
    {
     "q": "Fibromuscular dysplasia of the renal artery typically affects:",
     "o": [
-     "Young women, 'string of beads' appearance",
-     "Diabetics",
+     "Older diabetic patients",
+     "Young women ('string of beads')",
      "Older men with atherosclerosis",
      "Children with Wilms tumor"
     ],
-    "a": 0,
-    "e": "Renal artery stenosis: atherosclerosis in older men; FMD in young women."
+    "a": 1,
+    "e": "Renal artery stenosis: atherosclerosis in older men; FMD in young women, with a 'string of beads' appearance on angiography."
    }
   ],
   "robbins-ch20:congenital": [
@@ -5310,22 +5310,22 @@
    {
     "q": "Bilateral renal agenesis leads to:",
     "o": [
-     "Hydronephrosis",
-     "Horseshoe kidney",
-     "Potter sequence and is incompatible with life",
+     "Bilateral hydronephrosis",
+     "A fused horseshoe kidney",
+     "Lethal Potter sequence",
      "Compensatory hypertrophy"
     ],
     "a": 2,
-    "e": "No urine → oligohydramnios → Potter sequence (pulmonary hypoplasia)."
+    "e": "No urine → oligohydramnios → Potter sequence (pulmonary hypoplasia); incompatible with life."
    }
   ],
   "robbins-ch21:ureter": [
    {
     "q": "The most common cause of hydronephrosis in infants and children is:",
     "o": [
-     "Retroperitoneal fibrosis",
+     "Idiopathic retroperitoneal fibrosis",
      "Ureteropelvic junction obstruction",
-     "Stones",
+     "Obstructing urinary calculi",
      "Posterior urethral valves"
     ],
     "a": 1,
@@ -5347,9 +5347,9 @@
    {
     "q": "Sclerosing retroperitoneal fibrosis is in a subset of patients related to:",
     "o": [
-     "ANCA",
+     "ANCA-associated vasculitis",
      "IgA vasculitis",
-     "Amyloidosis",
+     "AA amyloidosis",
      "IgG4-related disease"
     ],
     "a": 3,
@@ -5358,13 +5358,13 @@
    {
     "q": "Bilateral ureteral obstruction most often arises from:",
     "o": [
-     "Pregnancy alone",
-     "Distal causes such as nodular prostatic hyperplasia",
-     "Ureteral polyps",
-     "Proximal intrinsic lesions like stones"
+     "Ureteral fibroepithelial polyps",
+     "Nodular prostatic hyperplasia",
+     "Calculi in the renal pelvis",
+     "Renal pelvic urothelial carcinoma"
     ],
     "a": 1,
-    "e": "Unilateral = proximal causes; bilateral = distal causes such as BPH."
+    "e": "Unilateral = proximal causes; bilateral = distal causes such as nodular prostatic hyperplasia."
    }
   ],
   "robbins-ch21:bladdercong": [
@@ -5382,10 +5382,10 @@
    {
     "q": "Carcinoma arising in a bladder diverticulum tends to present at higher stage because:",
     "o": [
-     "They secrete PTHrP",
-     "Diverticula lack urothelium",
+     "Tumors in diverticula secrete PTHrP",
+     "Diverticula lack a urothelial lining",
      "The muscularis propria is thin or absent",
-     "They are always multifocal"
+     "Diverticula drain to para-aortic nodes"
     ],
     "a": 2,
     "e": "Thin wall allows early extension."
@@ -5419,13 +5419,13 @@
    {
     "q": "Urothelial carcinoma in situ is characterized by:",
     "o": [
-     "Cytologically malignant cells within a flat urothelium, often dyscohesive",
-     "Benign inverted cords",
+     "Benign cords of cells growing inward",
      "A papillary mass with fibrovascular cores",
+     "Malignant cells in a flat urothelium",
      "Thick urothelium without atypia"
     ],
-    "a": 0,
-    "e": "CIS: flat, malignant cells, may show pagetoid spread; cells shed into urine (cytology)."
+    "a": 2,
+    "e": "CIS: cytologically malignant cells within a flat urothelium, often dyscohesive; may show pagetoid spread; cells shed into urine (cytology)."
    },
    {
     "q": "A papillary tumor with thickened urothelium but minimal atypia is classified as:",
@@ -5465,9 +5465,9 @@
    {
     "q": "The key prognostic and treatment distinction in bladder cancer is:",
     "o": [
-     "Smoker vs non-smoker",
-     "Male vs female",
-     "Papillary vs flat",
+     "Current smoker vs never-smoker",
+     "Papillary vs flat growth pattern",
+     "Single vs multifocal tumors",
      "Muscle-invasive vs non-muscle-invasive"
     ],
     "a": 3,
@@ -5489,21 +5489,21 @@
    {
     "q": "A child has a grape-like polypoid mass protruding into the bladder. Diagnosis:",
     "o": [
-     "Malakoplakia",
-     "Embryonal rhabdomyosarcoma (sarcoma botryoides)",
+     "Inflammatory malakoplakia",
+     "Embryonal rhabdomyosarcoma",
      "Leiomyosarcoma",
      "Urothelial papilloma"
     ],
     "a": 1,
-    "e": "Most common bladder sarcoma in childhood."
+    "e": "Sarcoma botryoides: the most common bladder sarcoma in childhood."
    },
    {
     "q": "Small-cell carcinoma of the bladder is strongly associated with loss of:",
     "o": [
-     "FGFR3",
+     "FGFR3 and HRAS",
      "TP53 and RB",
-     "KIT",
-     "VHL"
+     "KIT and PDGFRA",
+     "VHL and PBRM1"
     ],
     "a": 1,
     "e": "Like small-cell lung cancer."
@@ -5525,9 +5525,9 @@
     "q": "Carcinomas of the distal urethra are most often:",
     "o": [
      "Adenocarcinoma",
-     "Small cell",
-     "Squamous cell, HPV-related",
-     "Urothelial"
+     "Small cell carcinoma",
+     "Squamous cell carcinoma",
+     "Urothelial carcinoma"
     ],
     "a": 2,
     "e": "Proximal → urothelial; distal → squamous (HPV); adenocarcinoma infrequent, mostly in women."
@@ -5548,13 +5548,13 @@
    {
     "q": "An elevated BUN/creatinine ratio in prerenal states occurs because:",
     "o": [
-     "GFR rises",
-     "Urea is reabsorbed with water while creatinine is not",
-     "Creatinine is secreted",
-     "Urea production falls"
+     "GFR rises and clears creatinine faster",
+     "Urea is reabsorbed but creatinine is not",
+     "Hepatic urea production falls",
+     "Muscle creatinine release increases"
     ],
     "a": 1,
-    "e": "Urea clearance < creatinine clearance when tubular water reabsorption increases."
+    "e": "Urea is reabsorbed along with water while creatinine is not, so urea clearance < creatinine clearance when tubular water reabsorption increases."
    }
   ],
   "harrison-ch319:ap-syn": [
@@ -5585,10 +5585,10 @@
    {
     "q": "A 55-year-old has new microscopic hematuria without proteinuria or casts. The next step is:",
     "o": [
-     "Urologic evaluation including cystoscopy",
-     "Start ACE inhibitor",
-     "Observe only",
-     "Kidney biopsy"
+     "Urologic workup with cystoscopy",
+     "Start an ACE inhibitor and recheck",
+     "Observation with yearly urinalysis",
+     "Percutaneous kidney biopsy"
     ],
     "a": 0,
     "e": "New hematuria in the 4th decade or later warrants urologic evaluation and cystoscopy."
@@ -5596,10 +5596,10 @@
    {
     "q": "Hematuria after strenuous exercise should be:",
     "o": [
-     "Biopsied",
+     "Evaluated by kidney biopsy",
      "Rechecked after 1–2 weeks of rest",
-     "Treated with steroids",
-     "Ignored entirely"
+     "Treated with oral corticosteroids",
+     "Ignored without any follow-up"
     ],
     "a": 1,
     "e": "Exercise-induced hematuria resolves; retest after rest."
@@ -5644,10 +5644,10 @@
    {
     "q": "Hypertension with hypokalemia and suppressed renin and aldosterone, responsive to amiloride:",
     "o": [
-     "Gitelman",
-     "Bartter",
+     "Gitelman syndrome",
+     "Bartter syndrome",
      "Liddle syndrome",
-     "PHA-1"
+     "Pseudohypoaldosteronism type 1"
     ],
     "a": 2,
     "e": "Gain-of-function ENaC."
@@ -5655,23 +5655,23 @@
    {
     "q": "Hypertension with hyperkalemia and acidosis responsive to thiazide:",
     "o": [
-     "Gordon syndrome (PHA-2, WNK)",
-     "Liddle",
-     "Nephrogenic DI",
-     "Bartter"
+     "Gordon syndrome (PHA type 2)",
+     "Liddle syndrome",
+     "Nephrogenic diabetes insipidus",
+     "Bartter syndrome"
     ],
     "a": 0,
-    "e": "WNK/KLHL3/CUL3 mutations increase NCC activity."
+    "e": "Gordon syndrome (PHA-2): WNK/KLHL3/CUL3 mutations increase NCC activity."
    }
   ],
   "harrison-ch320:cb-na": [
    {
     "q": "Plasma Na⁺ concentration primarily reflects:",
     "o": [
-     "Aldosterone level",
-     "Total body sodium",
+     "Plasma aldosterone level",
+     "Total body sodium content",
      "Water balance / tonicity",
-     "ECF volume"
+     "ECF volume status"
     ],
     "a": 2,
     "e": "Disorders of Na⁺ concentration are disorders of water; ECF volume reflects total body Na⁺."
@@ -5679,9 +5679,9 @@
    {
     "q": "ECF volume is determined mainly by:",
     "o": [
-     "Plasma K⁺",
+     "Plasma K⁺ concentration",
      "Plasma osmolality",
-     "ADH alone",
+     "ADH secretion",
      "Total body Na⁺ content"
     ],
     "a": 3,
@@ -5703,10 +5703,10 @@
    {
     "q": "Why can NSAIDs precipitate AKI in a patient with heart failure?",
     "o": [
-     "They obstruct tubules",
-     "They constrict the efferent arteriole",
-     "They block prostaglandin-mediated afferent dilation",
-     "They cause ATN directly"
+     "They precipitate as crystals in tubules",
+     "They block angiotensin II efferent constriction",
+     "They block afferent prostaglandin vasodilation",
+     "They cause direct toxic tubular necrosis"
     ],
     "a": 2,
     "e": "Autoregulation in low perfusion depends on afferent PG-mediated dilation and efferent Ang II constriction."
@@ -5714,10 +5714,10 @@
    {
     "q": "Contrast-associated AKI typically:",
     "o": [
-     "Causes RBC casts",
-     "Peaks at 3–5 days and recovers within 7 days",
-     "Lasts months",
-     "Is always oliguric"
+     "Peaks within the first 6 hours",
+     "Peaks at 3–5 days, then recovers",
+     "Persists for several months",
+     "Causes RBC casts and hematuria"
     ],
     "a": 1,
     "e": "SCr rises in 1–2 days, peaks 3–5 days, recovers by ~7 days."
@@ -5727,10 +5727,10 @@
    {
     "q": "Which is an indication for urgent dialysis in AKI?",
     "o": [
-     "BUN 40 mg/dL",
-     "Hyaline casts",
+     "BUN of 40 mg/dL alone",
+     "Hyaline casts in the urine",
      "Refractory hyperkalemia",
-     "FENa >2%"
+     "FENa above 2%"
     ],
     "a": 2,
     "e": "Refractory volume overload, hyperkalemia, acidosis, some toxins, uremic complications (pericarditis, encephalopathy, bleeding)."
@@ -5750,9 +5750,9 @@
     "q": "Initial management of rhabdomyolysis-induced AKI:",
     "o": [
      "Early aggressive volume repletion",
-     "Immediate dialysis in all",
-     "Fluid restriction",
-     "Loop diuretics first"
+     "Immediate hemodialysis",
+     "Fluid restriction to 1 L/day",
+     "Loop diuretics as first-line"
     ],
     "a": 0,
     "e": "May need up to 10 L/day of fluid."
@@ -5773,10 +5773,10 @@
    {
     "q": "In the KDIGO heat map, risk of CKD progression increases with:",
     "o": [
-     "Only falling GFR",
-     "Both falling GFR and increasing albuminuria",
-     "Only albuminuria",
-     "Neither"
+     "Falling GFR but not albuminuria",
+     "Falling GFR and rising albuminuria",
+     "Rising albuminuria but not GFR loss",
+     "Neither GFR nor albuminuria"
     ],
     "a": 1,
     "e": "Both axes independently increase mortality, CV death and progression."
@@ -5810,24 +5810,24 @@
    {
     "q": "SGLT2 inhibitors reduce intraglomerular pressure by:",
     "o": [
-     "Activating tubuloglomerular feedback → afferent constriction",
-     "Lowering cardiac output",
-     "Blocking aldosterone",
-     "Efferent dilation"
+     "Afferent arteriolar constriction",
+     "Efferent arteriolar dilation",
+     "Mineralocorticoid receptor blockade",
+     "Reducing systemic cardiac output"
     ],
     "a": 0,
-    "e": "More NaCl reaches the macula densa → TGF → afferent vasoconstriction."
+    "e": "More NaCl reaches the macula densa → tubuloglomerular feedback → afferent vasoconstriction."
    },
    {
     "q": "Combining an ACE inhibitor with an ARB in CKD:",
     "o": [
-     "Is required in diabetes",
-     "Should be avoided (more AKI and cardiac events)",
-     "Is recommended for maximal protection",
-     "Has no effect"
+     "Is standard in diabetic CKD",
+     "Should generally be avoided",
+     "Gives maximal renoprotection",
+     "Has no clinical effect"
     ],
     "a": 1,
-    "e": "Dual RAS blockade increases harm."
+    "e": "Dual RAS blockade increases harm (more AKI and cardiac events)."
    },
    {
     "q": "Target BP in proteinuric CKD per Harrison:",
@@ -5848,10 +5848,10 @@
      "Active transport",
      "Convection",
      "Osmosis",
-     "Diffusion across a semipermeable membrane"
+     "Diffusion"
     ],
     "a": 3,
-    "e": "Diffusion down concentration gradients; ultrafiltration removes water."
+    "e": "Diffusion across a semipermeable membrane, down concentration gradients; ultrafiltration removes water."
    },
    {
     "q": "The vascular access with the longest patency and lowest infection rate:",
@@ -5867,13 +5867,13 @@
    {
     "q": "The leading cause of ESKD in the United States:",
     "o": [
-     "Diabetes mellitus (~45% of new cases)",
+     "Diabetes mellitus",
      "Glomerulonephritis",
-     "Hypertension",
-     "PKD"
+     "Hypertensive nephrosclerosis",
+     "Polycystic kidney disease"
     ],
     "a": 0,
-    "e": "Harrison Ch 323."
+    "e": "Diabetes accounts for ~45% of new ESKD cases (Harrison Ch 323)."
    }
   ],
   "harrison-ch323:hdcx": [
@@ -5939,12 +5939,12 @@
    {
     "q": "An access with excessively high flow can be treated by:",
     "o": [
-     "Thrombolysis",
-     "Angioplasty",
-     "Ligation always",
-     "Banding of the inflow"
+     "Catheter-directed thrombolysis",
+     "Balloon angioplasty of the inflow",
+     "Banding of the inflow",
+     "Outflow vein stent placement"
     ],
-    "a": 3,
+    "a": 2,
     "e": "Banding creates a controlled inflow stenosis."
    }
   ],
@@ -5952,10 +5952,10 @@
    {
     "q": "Hyperacute rejection is caused by:",
     "o": [
-     "Preformed antibodies against ABO or HLA",
-     "BK virus",
+     "Preformed ABO/HLA antibodies",
+     "BK polyomavirus reactivation",
      "Calcineurin inhibitor toxicity",
-     "CD8 T cells"
+     "Donor-reactive CD8 T cells"
     ],
     "a": 0,
     "e": "Prevented by ABO matching and crossmatch."
@@ -5988,7 +5988,7 @@
     "q": "Tacrolimus binds:",
     "o": [
      "IMPDH",
-     "FKBP-12 and inhibits calcineurin",
+     "FKBP-12",
      "Cyclophilin",
      "CD80/86"
     ],
@@ -6009,13 +6009,13 @@
    {
     "q": "Belatacept prevents T-cell activation by:",
     "o": [
-     "Blocking IL-2 receptor",
-     "Binding CD80/CD86 to prevent CD28 costimulation",
-     "Depleting B cells",
-     "Inhibiting mTOR"
+     "Blocking the IL-2 receptor α chain",
+     "Blocking CD28 costimulation",
+     "Depleting CD20+ B cells",
+     "Inhibiting mTOR signaling"
     ],
     "a": 1,
-    "e": "Costimulation blockade."
+    "e": "Costimulation blockade: binds CD80/CD86 on APCs, preventing CD28 costimulation."
    }
   ],
   "harrison-ch325:tx-inf": [
@@ -6033,10 +6033,10 @@
    {
     "q": "The most common malignancies after kidney transplantation are:",
     "o": [
-     "Leukemia",
-     "Lung cancer",
+     "Acute myeloid leukemia",
+     "Lung adenocarcinoma",
      "Skin and lip cancers",
-     "Lymphoma"
+     "Post-transplant lymphoma"
     ],
     "a": 2,
     "e": "Surveillance and UV protection."
@@ -6069,9 +6069,9 @@
     "q": "Albumin accounts for what fraction of urinary protein?",
     "o": [
      "100%",
-     "90%",
+     "70–90%",
      "20–60%",
-     "5%"
+     "1–5%"
     ],
     "a": 2,
     "e": "Table 326-1 footnote."
@@ -6081,7 +6081,7 @@
    {
     "q": "Which is a pulmonary–renal syndrome?",
     "o": [
-     "Thin BM disease",
+     "Thin basement membrane disease",
      "Membranous nephropathy",
      "Granulomatosis with polyangiitis",
      "Minimal change disease"
@@ -6162,23 +6162,23 @@
    {
     "q": "Tolvaptan slows ADPKD by:",
     "o": [
-     "Blocking SGLT2",
-     "Inhibiting renin",
-     "Blocking vasopressin V2 receptors, lowering cAMP",
-     "Inhibiting mTOR"
+     "Blocking proximal tubule SGLT2",
+     "Directly inhibiting renin",
+     "Blocking vasopressin V2 receptors",
+     "Inhibiting mTOR in cyst epithelium"
     ],
     "a": 2,
-    "e": "V2 antagonist."
+    "e": "V2 antagonist: lowers cAMP, which drives cyst growth."
    }
   ],
   "harrison-ch327:pkd-ar": [
    {
     "q": "ARPKD is caused by mutations in:",
     "o": [
-     "TSC2",
+     "TSC2 (tuberin)",
      "PKHD1 (fibrocystin)",
-     "UMOD",
-     "PKD1"
+     "UMOD (uromodulin)",
+     "PKD1 (polycystin-1)"
     ],
     "a": 1,
     "e": "All clinical presentations."
@@ -6247,13 +6247,13 @@
    {
     "q": "Sjögren syndrome renal involvement typically causes:",
     "o": [
-     "Nephrotic syndrome",
-     "Papillary necrosis",
-     "RPGN",
-     "Lymphocytic TIN with distal RTA and nephrogenic DI"
+     "Minimal change nephrotic syndrome",
+     "Papillary necrosis with hematuria",
+     "Crescentic RPGN with RBC casts",
+     "Lymphocytic TIN with distal RTA"
     ],
     "a": 3,
-    "e": "Most common renal manifestation."
+    "e": "Most common renal manifestation; may also cause nephrogenic DI."
    },
    {
     "q": "TIN with uveitis (TINU) is treated with:",
@@ -6271,10 +6271,10 @@
    {
     "q": "Herbal weight-loss preparations causing interstitial fibrosis and urothelial carcinoma contain:",
     "o": [
-     "Lithium",
-     "Lead",
+     "Lithium carbonate",
+     "Lead acetate",
      "Aristolochic acid",
-     "Ephedra"
+     "Ephedra alkaloids"
     ],
     "a": 2,
     "e": "Aristolochic acid nephropathy (Chinese herbal / Balkan nephropathy)."
@@ -6283,8 +6283,8 @@
     "q": "Chronic lithium therapy most characteristically causes:",
     "o": [
      "Nephrotic syndrome",
-     "Hyperkalemic RTA",
-     "Stones",
+     "Hyperkalemic (type 4) RTA",
+     "Calcium oxalate nephrolithiasis",
      "Nephrogenic diabetes insipidus"
     ],
     "a": 3,
@@ -6341,13 +6341,13 @@
    {
     "q": "Scleroderma renal crisis presents with:",
     "o": [
-     "Nephrotic syndrome",
-     "AKI, abrupt hypertension and a bland sediment",
-     "Hypotension",
+     "Nephrotic syndrome with edema",
+     "AKI with abrupt hypertension",
+     "AKI with profound hypotension",
      "Hematuria with RBC casts"
     ],
     "a": 1,
-    "e": "Treat with ACE inhibitors."
+    "e": "AKI with abrupt hypertension and a bland sediment. Treat with ACE inhibitors."
    },
    {
     "q": "Scleroderma renal crisis occurs in what proportion of diffuse systemic sclerosis?",
@@ -6376,13 +6376,13 @@
    {
     "q": "Staghorn calculi in a patient with recurrent Proteus UTIs are composed of:",
     "o": [
-     "Struvite (magnesium ammonium phosphate)",
+     "Struvite",
      "Calcium oxalate",
      "Uric acid",
      "Cystine"
     ],
     "a": 0,
-    "e": "Urease raises urine pH >8."
+    "e": "Struvite = magnesium ammonium phosphate. Urease raises urine pH >8."
    },
    {
     "q": "Hexagonal crystals in urine indicate:",
@@ -6400,10 +6400,10 @@
    {
     "q": "Higher dietary calcium intake is associated with:",
     "o": [
-     "No effect",
+     "No effect on stone risk",
      "Lower risk of calcium oxalate stones",
-     "Only uric acid stones",
-     "Higher stone risk"
+     "More uric acid stone formation",
+     "Higher risk of calcium oxalate stones"
     ],
     "a": 1,
     "e": "Dietary calcium binds oxalate in the gut; supplements may differ."
@@ -6424,8 +6424,8 @@
    {
     "q": "The imaging of choice for suspected renal colic:",
     "o": [
-     "Plain X-ray",
-     "MRI",
+     "Plain KUB X-ray",
+     "MRI urography",
      "Noncontrast CT",
      "IV urogram"
     ],
@@ -6459,37 +6459,37 @@
    {
     "q": "The most common cause of bilateral hydronephrosis in boys:",
     "o": [
+     "Bilateral Wilms tumor",
+     "Ureteropelvic junction obstruction",
      "Posterior urethral valves",
-     "Wilms tumor",
-     "UPJ obstruction",
-     "Stones"
+     "Bilateral urinary calculi"
     ],
-    "a": 0,
+    "a": 2,
     "e": "Harrison Ch 331."
    },
    {
     "q": "Obstruction above the bladder typically produces:",
     "o": [
-     "Urinary retention",
-     "No dilation",
+     "Acute urinary retention",
+     "No upper-tract dilation",
      "Bilateral hydronephrosis",
-     "Unilateral hydroureter/hydronephrosis"
+     "Unilateral hydronephrosis"
     ],
     "a": 3,
-    "e": "Lesions at or below the bladder cause bilateral involvement."
+    "e": "Unilateral hydroureter/hydronephrosis. Lesions at or below the bladder cause bilateral involvement."
    }
   ],
   "harrison-ch331:uo-phys": [
    {
     "q": "Partial bilateral urinary obstruction often causes:",
     "o": [
-     "Distal RTA, hyperkalemia and salt wasting",
-     "SIADH",
-     "Hypercalcemia",
-     "Proximal RTA and hypokalemia"
+     "Hyperkalemic distal RTA",
+     "SIADH with hyponatremia",
+     "PTH-mediated hypercalcemia",
+     "Proximal RTA with hypokalemia"
     ],
     "a": 0,
-    "e": "Plus acquired nephrogenic DI."
+    "e": "Hyperkalemic distal RTA with salt wasting, plus acquired nephrogenic DI."
    },
    {
     "q": "Acute partial bilateral obstruction can mimic:",
@@ -6508,12 +6508,12 @@
     "q": "Hydronephrosis may be absent on ultrasound despite obstruction when:",
     "o": [
      "Patient is volume overloaded",
-     "Bladder is full",
-     "Obstruction <48 h or retroperitoneal fibrosis",
-     "Obstruction is chronic"
+     "The bladder is distended and full",
+     "Very early obstruction (<48 h)",
+     "Obstruction has lasted for weeks"
     ],
     "a": 2,
-    "e": "Also volume contraction, staghorn calculi, infiltrative disease."
+    "e": "Very early obstruction (<48 h) or retroperitoneal fibrosis; also volume contraction, staghorn calculi, infiltrative disease."
    },
    {
     "q": "After how long of complete obstruction is recovery of GFR unlikely?",
