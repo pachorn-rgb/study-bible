@@ -29,10 +29,13 @@ def load_py(p):
     sp = importlib.util.spec_from_file_location(p.stem, p); m = importlib.util.module_from_spec(sp); sp.loader.exec_module(m); return m
 
 
-def shuf(q, o, a, e, key):
+def shuf(q, o, a, e, d=None, key=""):
+    """d = optional difficulty 1 (recall) · 2 (one-step vignette) · 3 (two-step vignette)."""
     assert 0 <= a < len(o), (key, q)
     r = random.Random(int(hashlib.md5(key.encode()).hexdigest()[:8], 16)); idx = list(range(len(o))); r.shuffle(idx)
-    return {"q": q, "o": [o[i] for i in idx], "a": idx.index(a), "e": e}
+    out = {"q": q, "o": [o[i] for i in idx], "a": idx.index(a), "e": e}
+    if d: out["d"] = d
+    return out
 
 
 def drafts():
@@ -106,7 +109,7 @@ def apply():
         st = []
         for k, (ith, ien, q, o, a, e, t) in enumerate(steps):
             assert t in ids, (i, t)
-            s = shuf(q, o, a, e, i + str(k)); s["info"] = {"th": ith, "en": ien} if ith else None; s["t"] = t; st.append(s)
+            s = shuf(q, o, a, e, key=i + str(k)); s["info"] = {"th": ith, "en": ien} if ith else None; s["t"] = t; st.append(s)
         b = P(ch); b["cases"] = [x for x in b["cases"] if x["id"] != i] + [{"id": i, "ch": ch, "title": {"th": th, "en": en}, "stem": {"th": sth, "en": sen}, "steps": st}]
     (DOCS / "library.json").write_text(json.dumps(lib, ensure_ascii=False, indent=1))
     write_bank(idx, parts)
