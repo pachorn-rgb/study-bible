@@ -7,7 +7,7 @@ qs=[
 ("His tremor, hypertension and rising creatinine suggest:",["Calcineurin inhibitor toxicity","Mycophenolate toxicity","Acute steroid withdrawal","Hyperacute antibody rejection"],0,"Check trough level; biopsy may be needed to exclude rejection."),
 ("A drug that would raise tacrolimus levels:",["Clarithromycin","Rifampin","Carbamazepine","St John’s wort"],0,"Clarithromycin and azole antifungals (ketoconazole) are CYP3A4 inhibitors; inducers lower levels and risk rejection."),
 ("Mycophenolate acts by:",["IMPDH inhibition → ↓ guanine synthesis","Calcineurin inhibition → ↓ IL-2","mTOR inhibition → G1 cell-cycle arrest","Anti-CD20 → B-cell depletion"],0,"Inhibits IMP dehydrogenase, which lymphocytes depend on; GI upset, cytopenias; teratogenic."),
-("Which immunosuppressant is nephro-sparing and may replace tacrolimus?",["Sirolimus (or belatacept)","Cyclosporine (cyclophilin)","Azathioprine (purine analog)","Basiliximab (anti-CD25)"],0,"Sirolimus is not nephrotoxic but causes hyperlipidemia and poor wound healing."),
+("Which immunosuppressant is nephro-sparing and may replace tacrolimus?",["Sirolimus (or belatacept)","Cyclosporine (cyclophilin)","Voclosporin (calcineurin inhibitor)","Basiliximab (anti-CD25)"],0,"Sirolimus (mTOR inhibitor) and belatacept are not nephrotoxic and are used to minimize calcineurin inhibitors; sirolimus causes hyperlipidemia and poor wound healing. Basiliximab is induction only."),
 ("Long-term prednisone in transplant recipients causes:",["Hyperglycemia, osteoporosis, infections","Hyperkalemia and hypoglycemia","Gingival hyperplasia and hirsutism","Pulmonary fibrosis and hearing loss"],0,"Cushingoid effects."),
 ],pass_=4)
 T={

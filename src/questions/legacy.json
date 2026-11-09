@@ -1605,7 +1605,7 @@
   ],
   "kub-histology:barrier": [
    {
-    "q": "A boy has hematuria, hearing loss and lens dislocation with a COL4A5 mutation. Which structure is abnormal on EM?",
+    "q": "A boy has hematuria, hearing loss and anterior lenticonus with a COL4A5 mutation. Which structure is abnormal on EM?",
     "o": [
      "Podocyte slit diaphragms",
      "Endothelial cell fenestrae",
@@ -1689,7 +1689,7 @@
     "q": "Compared with the PCT, the DCT in cross-section shows:",
     "o": [
      "Taller, redder cells with a dense brush border",
-     "Pale cells with sharp cell borders",
+     "Columnar cells interspersed with goblet cells",
      "Squamous cells with RBCs in the lumen",
      "Smaller, paler cells and a clear lumen"
     ],
@@ -3956,7 +3956,7 @@
      "IgA nephropathy"
     ],
     "a": 0,
-    "e": "Type II hypersensitivity; linear IgG on IF; RPGR with pulmonary hemorrhage."
+    "e": "Type II hypersensitivity; linear IgG on IF; RPGN with pulmonary hemorrhage."
    },
    {
     "q": "Gross hematuria 1–2 days after a URI with mesangial IgA deposits is:",
@@ -5356,7 +5356,7 @@
     "e": "Elevated IgG4 and IgG4-positive plasma cells; also drugs (ergot, β-blockers), inflammation, malignancy, or idiopathic (Ormond)."
    },
    {
-    "q": "Bilateral ureteral obstruction most often arises from:",
+    "q": "Bilateral hydronephrosis most often arises from:",
     "o": [
      "Ureteral fibroepithelial polyps",
      "Nodular prostatic hyperplasia",
@@ -5773,9 +5773,9 @@
    {
     "q": "In the KDIGO heat map, risk of CKD progression increases with:",
     "o": [
-     "Falling GFR but not albuminuria",
+     "Falling GFR only; albuminuria adds no risk",
      "Falling GFR and rising albuminuria",
-     "Rising albuminuria but not GFR loss",
+     "Rising albuminuria only; GFR adds no risk",
      "Neither GFR nor albuminuria"
     ],
     "a": 1,
@@ -6990,7 +6990,7 @@
       "Full recovery with supportive care"
      ],
      "a": 3,
-     "e": "Children usually recover; adults more often develop RPGR or CKD."
+     "e": "Children usually recover; adults more often develop RPGN or CKD."
     }
    ]
   }

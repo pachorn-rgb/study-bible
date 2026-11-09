@@ -73,7 +73,7 @@ G("iga","c","IgA nephropathy & HSP",{em:{mes:true},if:"mesangial",lm:{prolif:tru
  <li>~25–50% ค่อยๆ เป็น CKD ใน 20 ปี ${S.r}</li></ul>
  <h3>Henoch–Schönlein purpura (IgA vasculitis)</h3><ul><li>เด็ก 3–8 ปี · purpura ที่ก้น/ขา · ปวดท้อง/GI bleed · arthralgia · ไต: mesangial IgA เหมือน IgA nephropathy ${S.r}</li></ul>`);
 G("alport","c","Hereditary nephritis (Alport) & thin BM",{em:{split:true},if:"none",lm:{normal:false},sum:[["Alport","X-linked COL4A5 (~85%) · GBM split/basket-weave · หูหนวก ตา"],["Thin BM","COL4A3/A4 heterozygous · benign familial hematuria"]]},
-()=>`<h3>Alport syndrome</h3><ul><li>Hematuria → proteinuria → ESRD · <b>sensorineural deafness</b> · ตา: lens dislocation, cataract, corneal dystrophy ${S.r}</li>
+()=>`<h3>Alport syndrome</h3><ul><li>Hematuria → proteinuria → ESRD · <b>sensorineural deafness</b> · ตา: anterior lenticonus, lens dislocation, cataract, corneal dystrophy ${S.r}</li>
  <li>~85% <b>X-linked</b> (COL4A5) · ชายเป็น ESRD 20–50 ปี · ที่เหลือ autosomal (COL4A3/COL4A4) ${S.r}</li>
  <li>EM: GBM บางหนาสลับ แตกเป็นชั้น (<b>basket-weave</b>) ${S.r}</li></ul>
  <h3>Thin basement membrane nephropathy</h3><ul><li>พบบ่อย (5% ของประชากร) · asymptomatic hematuria · GBM บาง 150–250 nm · heterozygous COL4A3/A4 · ไตทำงานปกติ ${S.r}</li></ul>`);
