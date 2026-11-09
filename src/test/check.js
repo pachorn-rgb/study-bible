@@ -44,6 +44,8 @@ for (const c of ix.parts) {
   for (const d of p.dx || []) { if ((d.clues || []).length !== 6) bad(`dx ${d.id}: needs 6 clues`); if (d.link && !items.has(d.link) && !mods.has(d.link.split(":")[0])) bad(`dx ${d.id}: link ${d.link} missing`) }
 }
 const sw = fs.readFileSync(path.join(DOCS, "sw.js"), "utf8");
+if (!/^const VERSION = "[^"]+";$/m.test(sw)) bad("sw.js: VERSION line missing or malformed");
+try { new Function(sw) } catch (e) { bad("sw.js: syntax error " + e.message) }
 for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), "atlas/core.js", "atlas/render.js", "atlas/atlas.css", ...[...mods.values()].map(m => m.href.split("#")[0])])
   if (!sw.includes(`"${f}"`)) bad(`sw.js does not precache ${f}`);
 console.log(`data: ${chs.length} chapters · ${mods.size} atlases · ${items.size} topics · ${nq} MCQs`);
