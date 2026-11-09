@@ -58,7 +58,7 @@ function pharmFinish(){
  /* First Aid = core path; anything listed in EXTRA becomes a "เสริม" group after the core */
  if(typeof EXTRA!=="undefined"&&EXTRA.length){const core=[],ext=[];SEC.forEach(s=>{if(EXTRA.includes(s.id)){s.extra=true;const nk="x"+s.k;if(!GN[nk])GN[nk]="เสริม · "+GN[s.k].replace(/^เสริม · /,"");s.k=nk;ext.push(s)}else core.push(s)});
   SEC.length=0;core.forEach(s=>SEC.push(s));const ord=[...new Set(ext.map(s=>s.k))];ord.forEach(k=>ext.filter(s=>s.k===k).forEach(s=>SEC.push(s)))}
- GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
+ GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:PHARM.root&&PHARM.root!=="Pharmacology"?"Topic map":"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
  const el=document.getElementById("pstats");if(el){const tops=SEC.filter(s=>!s.mind),drugs=new Set();tops.forEach(s=>(s.drugs||"").split(" · ").forEach(d=>d&&drugs.add(d)));
   el.innerHTML=`<span><b>${new Set(tops.map(s=>s.k)).size}</b> กลุ่ม</span><span><b>${tops.length}</b> หัวข้อ</span>${drugs.size?`<span><b>${drugs.size}+</b> ยาต้นแบบ</span>`:""}`}}
 
