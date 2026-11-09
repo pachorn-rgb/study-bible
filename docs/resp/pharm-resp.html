@@ -294,6 +294,11 @@ body{margin:0;line-height:1.55}
 .lg.l1{fill:color-mix(in srgb,var(--g1) 16%,var(--sb-surface))}.lg.l2{fill:color-mix(in srgb,var(--g1) 30%,var(--sb-surface))}.lg.l3{fill:color-mix(in srgb,var(--g1) 45%,var(--sb-surface))}.lg.l4{fill:color-mix(in srgb,var(--g1) 60%,var(--sb-surface))}.lg.l5{fill:color-mix(in srgb,var(--g1) 75%,var(--sb-surface))}
 .lg.neg,.lg.dn{fill:color-mix(in srgb,var(--g2) 28%,var(--sb-surface))}.lg.acid{fill:color-mix(in srgb,var(--d-bl) 24%,var(--sb-surface))}.lg.alk{fill:color-mix(in srgb,var(--g2) 24%,var(--sb-surface))}.lg.up{fill:color-mix(in srgb,var(--d-inh) 26%,var(--sb-surface))}
 .mmwrap.tree .mmrc b{font-size:.875rem}.mmrc b{font-size:.9375rem}
+.lane{stroke:var(--sb-line);stroke-width:1}
+.p-panel{fill:color-mix(in srgb,var(--sb-surface) 70%,transparent);stroke:var(--sb-line);stroke-width:1}
+.t.pt{fill:var(--sb-muted);font-size:11.5px;letter-spacing:.04em}
+.p-enz.cellb{fill:var(--p-cell);stroke:color-mix(in srgb,var(--p-tint) 45%,transparent)}
+.p-enz.soft{fill:var(--sb-surface2);stroke:var(--sb-line)}
 
 </style>
 </head>
@@ -302,7 +307,7 @@ body{margin:0;line-height:1.55}
   <header class="sb-hero">
     <div class="sb-eyebrow">Respiratory · Pharmacology</div>
     <h1>Respiratory Pharmacology</h1>
-    <p class="sb-lede">เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · กลุ่มยาเรียงตาม Katzung บทที่ 20 (และบท 16, 17, 31) ต่อด้วยการรักษาตามโรคจาก Pharmacotherapy · ในแผนที่เป้าหมาย ยาของหัวข้อนั้นจะสว่าง</p>
+    <p class="sb-lede">เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 20, 16, 17, 31) และ Pharmacotherapy</p>
     <div class="sb-sources"><span class="sb-src"><i class="katzung">K</i>Katzung 16e · Ch 20, 16, 17, 31</span><span class="sb-src"><i class="pt">PT</i>Pharmacotherapy 5e · Ch 14–16, 63</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
     <div class="pstats" id="pstats"></div>
   </header>
@@ -360,7 +365,7 @@ const psvg=(b,vb)=>svg(PDEFS+b,vb);
 const ICON={ag:'<path d="M-3.6,0 H3.6 M0,-3.6 V3.6"/>',bl:'<path d="M-3,-4 V4 M-3,0 H4"/>',inh:'<path d="M-3,-3 L3,3 M3,-3 L-3,3"/>',mab:'<path d="M0,4.2 V0.2 M0,0.2 L-3.6,-3.8 M0,0.2 L3.6,-3.8"/>',st:'<path d="M-3.6,-2 L0,-4.1 L3.6,-2 L3.6,2 L0,4.1 L-3.6,2Z"/>',mod:'<circle r="2.4"/>'};
 function pill(x,y,lab,kind,key,force){const w=Math.max(60,lab.length*6.3+36);const a=force||on(key);const x0=x-w/2;
  return `<g class="pill ${kind}${a?" on":" off"}"><rect x="${x0}" y="${y-12}" width="${w}" height="24" rx="12"/><circle class="pic" cx="${x0+13}" cy="${y}" r="8"/><g class="pig" transform="translate(${x0+13},${y})">${ICON[kind]}</g>${T(x0+27,y+4,lab,{a:"start",c:"pl"})}</g>`}
-const glow=(x,y,key,r=15)=>on(key)?`<circle class="glow" cx="${x}" cy="${y}" r="${r+3}"/><circle class="hring" cx="${x}" cy="${y}" r="${r+3}"/>`:"";
+const glow=(x,y,key,r=15)=>onA(key)?`<circle class="glow" cx="${x}" cy="${y}" r="${r+3}"/><circle class="hring" cx="${x}" cy="${y}" r="${r+3}"/>`:"";
 const rec=(x,y,lab,vert)=>`<rect class="p-rec" x="${x-(vert?9:7)}" y="${y-(vert?7:9)}" width="${vert?18:14}" height="${vert?14:18}" rx="5"/>`+(ST.labels&&lab?T(x,y-(vert?12:14),lab,{c:"s"}):"");
 const arr=(d,c="")=>`<path class="arw ${c}" d="${d}"/>`;
 const cellC=(x,y,r,g,lab,sub)=>`<circle class="p-imm" cx="${x}" cy="${y}" r="${r}" fill="url(#${g})"/>`+T(x,y+(sub?-1:4),lab,{c:"bh"})+(sub?T(x,y+13,sub,{c:"s m"}):"");
@@ -398,6 +403,31 @@ document.addEventListener("pointerover",e=>{const b=e.target.closest(".mmb");doc
 function pharmFinish(){GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
  const el=document.getElementById("pstats");if(el){const tops=SEC.filter(s=>!s.mind),drugs=new Set();tops.forEach(s=>(s.drugs||"").split(" · ").forEach(d=>d&&drugs.add(d)));
   el.innerHTML=`<span><b>${new Set(tops.map(s=>s.k)).size}</b> กลุ่ม</span><span><b>${tops.length}</b> หัวข้อ</span><span><b>${drugs.size}+</b> ยาต้นแบบ</span>`}}
+
+/* ---------- auto-layout target map: sites (panels) → targets → drugs ----------
+   spec: [{n:"Heart",s:"myocyte",tone:"cell",t:[{k:"key",l:"β₁ receptor",d:[["Metoprolol","bl"],...]}]}] */
+const TONE={cell:"gCell",epi:"gEpi",blue:"gTh2",rose:"gEos",violet:"gMast",gold:"gGr",tube:"gTube",plain:"gLum"};
+function laneMap(spec,o={}){const W=760,cols=o.cols||Math.min(3,spec.length),gap=12,lw=(W-20-(cols-1)*gap)/cols;let b="",y0=10;
+ const pw=l=>Math.max(60,l.length*6.3+36);
+ for(let r=0;r<spec.length;r+=cols){const row=spec.slice(r,r+cols);
+  const lay=row.map(p=>{let y=50;const items=p.t.map(t=>{const lines=[[]];let x=0;t.d.forEach(d=>{const w=pw(d[0]);if(x+w>lw-20&&lines[lines.length-1].length){lines.push([]);x=0}lines[lines.length-1].push([d,x,w]);x+=w+6});
+    const it={t,y,lines};y+=34+lines.length*28;return it});return {p,items,h:y+4}});
+  const H=Math.max(...lay.map(l=>l.h));
+  lay.forEach((l,i)=>{const x0=10+i*(lw+gap);
+   b+=`<rect class="lane" x="${x0}" y="${y0}" width="${lw}" height="${H}" rx="16" fill="url(#${TONE[l.p.tone||"cell"]})"/>`+T(x0+14,y0+24,l.p.n,{a:"start",c:"bh"})+(l.p.s?T(x0+14,y0+40,l.p.s,{a:"start",c:"s m"}):"");
+   l.items.forEach(it=>{const yy=y0+it.y;b+=glow(x0+20,yy+8,it.t.k,9)+`<rect class="p-rec" x="${x0+13}" y="${yy+1}" width="14" height="14" rx="4"/>`+T(x0+34,yy+13,it.t.l,{a:"start",c:"s"});
+    it.lines.forEach((ln,j)=>ln.forEach(([d,dx,w])=>{b+=pill(x0+12+dx+w/2,yy+36+j*28,d[0],d[1],d[2]||it.t.k)}))})});
+  y0+=H+gap}
+ return psvg(b,`0 0 ${W} ${y0}`)}
+const LMAP=(spec,o)=>keys=>()=>{HL=keys;return laneMap(spec,o)};
+
+/* compact drawing helpers for system target maps */
+const panel=(x,y,w,h,t)=>`<rect class="p-panel" x="${x}" y="${y}" width="${w}" height="${h}" rx="16"/>`+T(x+14,y+22,t,{a:"start",c:"bh pt"});
+const nb=(x,y,w,h,t,s,cls="")=>`<rect class="p-enz ${cls}" x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="9"/>`+T(x,y+(s?-2:4),t,{c:"bh"})+(s?T(x,y+12,s,{c:"s m"}):"");
+const onA=k=>Array.isArray(k)?k.some(on):on(k);
+const nbh=(x,y,w,h,t,s,key,cls="")=>nb(x,y,w,h,t,s,cls+(onA(key)?" hot":""))+(onA(key)?`<rect class="glow" x="${x-w/2-6}" y="${y-h/2-6}" width="${w+12}" height="${h+12}" rx="13"/>`:"");
+const ln=(x1,y1,x2,y2)=>arr(`M${x1},${y1} L${x2},${y2}`);
+const MAPOF=(fn)=>keys=>()=>{HL=keys;return fn()};
 
 /* ---------- master airway map: every drug sits on its target ---------- */
 function airwayMap(){let b="";const W=760,hot=k=>on(k)?" hot":"";
@@ -634,6 +664,12 @@ notes:()=>`<h3>ต่างจาก asthma exacerbation</h3><ul><li>อัต�
  <ul><li>Procalcitonin อาจช่วยตัดสินใจ ${S.p}</li><li>เสี่ยงกำเริบซ้ำสูงใน 8 สัปดาห์แรก ${S.p}</li></ul>`});
 
 window.NAV={"prev":null,"next":null};
+
+/* First Aid order */
+(function(){const O=["targets","delivery","beta2","steroids","antimusc","lt","biologics","pde","cromolyn","antihist","cough","cftr","pah","chronicasthma","acuteasthma","stablecopd","copdexac"];
+ ["beta2","steroids","antimusc","lt","biologics","pde","cromolyn"].forEach(id=>SEC.find(s=>s.id===id).k="b");
+ GN.b="Asthma drugs";GN.e="H₁ blockers, cough & decongestants";delete GN.c;delete GN.d;
+ SEC.sort((a,b)=>O.indexOf(a.id)-O.indexOf(b.id))})();
 
 pharmFinish();
 /* ================= render: one chapter = one continuous page ================= */

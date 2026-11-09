@@ -36,7 +36,62 @@
       "Immune Responses",
       "Immunosuppressants"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-immuno",
+       "title": "Immunosuppressants",
+       "subs": [
+        "Immunosuppressants"
+       ],
+       "src": "Katzung 16e Ch 55",
+       "href": "immuno/pharm-immuno.html",
+       "thumb": "thumbs/pharm-immuno.jpg",
+       "desc": "แผนที่ยากดภูมิคุ้มกันบนขั้นตอน T-cell activation: cyclosporine, tacrolimus, sirolimus, basiliximab, azathioprine, mycophenolate, glucocorticoid, recombinant cytokines และ therapeutic antibodies",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Immunosuppressant targets",
+         "tcell"
+        ],
+        [
+         "Cyclosporine & tacrolimus",
+         "cni"
+        ],
+        [
+         "Sirolimus & basiliximab",
+         "mtor"
+        ],
+        [
+         "Azathioprine & mycophenolate",
+         "antimetab"
+        ],
+        [
+         "Glucocorticoids as immunosuppressants",
+         "gc"
+        ],
+        [
+         "Recombinant cytokines & clinical uses",
+         "cytokine"
+        ],
+        [
+         "Therapeutic antibodies",
+         "abs"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 55",
+        "sort": 55
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
@@ -55,7 +110,106 @@
       "Systems",
       "Antimicrobials"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-micro",
+       "title": "Antimicrobials",
+       "subs": [
+        "Antimicrobials"
+       ],
+       "src": "Katzung 16e Ch 43–53 · Pharmacotherapy 5e",
+       "href": "micro/pharm-micro.html",
+       "thumb": "thumbs/pharm-micro.jpg",
+       "desc": "แผนที่ยาต้านจุลชีพ: penicillin, cephalosporin, carbapenem, vancomycin, protein synthesis inhibitors, folate antagonists, FQ, metronidazole, ยา TB, prophylaxis, antifungals, antiparasitics, antimalarials, antivirals, HIV, hepatitis B/C",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Antibacterial therapy: drug targets",
+         "bactmap"
+        ],
+        [
+         "Penicillins & β-lactamase inhibitors",
+         "penicillin"
+        ],
+        [
+         "Cephalosporins, carbapenems & aztreonam",
+         "ceph"
+        ],
+        [
+         "Vancomycin, daptomycin & polymyxins",
+         "vanco"
+        ],
+        [
+         "Aminoglycosides",
+         "aminogly"
+        ],
+        [
+         "Tetracyclines & tigecycline",
+         "tetra"
+        ],
+        [
+         "Macrolides & clindamycin",
+         "macro"
+        ],
+        [
+         "Linezolid & chloramphenicol",
+         "linezolid"
+        ],
+        [
+         "Sulfonamides, dapsone & trimethoprim",
+         "folate"
+        ],
+        [
+         "Fluoroquinolones & metronidazole",
+         "fq"
+        ],
+        [
+         "Antimycobacterial therapy",
+         "tb"
+        ],
+        [
+         "Antimicrobial prophylaxis",
+         "prophylaxis"
+        ],
+        [
+         "Antifungal therapy",
+         "fungmap"
+        ],
+        [
+         "Antiprotozoal & antihelminthic drugs",
+         "antiparasite"
+        ],
+        [
+         "Antimalarials",
+         "malaria"
+        ],
+        [
+         "Antiviral therapy",
+         "virmap"
+        ],
+        [
+         "HIV therapy",
+         "hiv"
+        ],
+        [
+         "Hepatitis B & C therapy",
+         "hep"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 43",
+        "sort": 43
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
@@ -86,7 +240,79 @@
       "Autonomic Drugs",
       "Toxicities & Miscellaneous"
      ],
-     "modules": [],
+     "modules": [
+      {
+       "id": "pharm-gp",
+       "title": "PK/PD & Autonomic Drugs",
+       "subs": [
+        "Pharmacokinetics & Pharmacodynamics",
+        "Autonomic Drugs"
+       ],
+       "src": "Katzung 16e Ch 1–10",
+       "href": "pharm/pharm-gp.html",
+       "thumb": "thumbs/pharm-gp.jpg",
+       "desc": "หลักเภสัชวิทยา: enzyme kinetics, pharmacokinetics (F, Vd, CL, t½, dosing), metabolism, CYP450, dose–response และยา autonomic ทั้ง cholinergic และ adrenergic บนแผนที่ระบบประสาทอัตโนมัติ",
+       "tags": [
+        "pharmacology"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Enzyme kinetics",
+         "enzyme"
+        ],
+        [
+         "Pharmacokinetics",
+         "pk"
+        ],
+        [
+         "Drug metabolism & elimination",
+         "metab"
+        ],
+        [
+         "Efficacy, potency & receptor binding",
+         "pd"
+        ],
+        [
+         "Autonomic receptors & drug map",
+         "ansmap"
+        ],
+        [
+         "Cholinomimetic agents",
+         "cholino"
+        ],
+        [
+         "Muscarinic antagonists",
+         "antimusc"
+        ],
+        [
+         "Sympathomimetics",
+         "symp"
+        ],
+        [
+         "Sympatholytics: α₂ agonists & α-blockers",
+         "sympatholytic"
+        ],
+        [
+         "β-blockers",
+         "bblock"
+        ],
+        [
+         "Phosphodiesterase inhibitors",
+         "pdei"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 3",
+        "sort": 3
+       }
+      }
+     ],
      "checklist": [],
      "resources": []
     },
@@ -2120,16 +2346,12 @@
          "lytes"
         ],
         [
-         "Carbonic anhydrase inhibitors",
-         "cai"
-        ],
-        [
-         "SGLT2 inhibitors",
-         "sglt2"
-        ],
-        [
          "Osmotic diuretics",
          "osmotic"
+        ],
+        [
+         "Carbonic anhydrase inhibitors",
+         "cai"
         ],
         [
          "Loop diuretics",
@@ -2144,12 +2366,16 @@
          "ksparing"
         ],
         [
-         "ADH antagonists & agonists",
-         "adh"
+         "SGLT2 inhibitors",
+         "sglt2"
         ],
         [
          "ACE inhibitors, ARBs & aliskiren (kidney)",
          "raas"
+        ],
+        [
+         "ADH antagonists & agonists",
+         "adh"
         ],
         [
          "Diuretic combinations & resistance",
@@ -3834,28 +4060,28 @@
          "beta2"
         ],
         [
-         "Antimuscarinics (SAMA · LAMA)",
-         "antimusc"
-        ],
-        [
-         "Methylxanthines & PDE4 inhibitors",
-         "pde"
-        ],
-        [
          "Corticosteroids (ICS · systemic)",
          "steroids"
+        ],
+        [
+         "Antimuscarinics (SAMA · LAMA)",
+         "antimusc"
         ],
         [
          "Leukotriene modifiers",
          "lt"
         ],
         [
-         "Mast cell stabilizers",
-         "cromolyn"
-        ],
-        [
          "Monoclonal antibodies for severe asthma",
          "biologics"
+        ],
+        [
+         "Methylxanthines & PDE4 inhibitors",
+         "pde"
+        ],
+        [
+         "Mast cell stabilizers",
+         "cromolyn"
         ],
         [
          "H₁ antihistamines & decongestants",
