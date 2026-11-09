@@ -92,7 +92,71 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-immuno:tcell",
+       "sub": "Immunosuppressants",
+       "t": "Immunosuppressant targets",
+       "link": {
+        "m": "pharm-immuno",
+        "h": "tcell"
+       }
+      },
+      {
+       "id": "pharm-immuno:cni",
+       "sub": "Immunosuppressants",
+       "t": "Cyclosporine & tacrolimus",
+       "link": {
+        "m": "pharm-immuno",
+        "h": "cni"
+       }
+      },
+      {
+       "id": "pharm-immuno:mtor",
+       "sub": "Immunosuppressants",
+       "t": "Sirolimus & basiliximab",
+       "link": {
+        "m": "pharm-immuno",
+        "h": "mtor"
+       }
+      },
+      {
+       "id": "pharm-immuno:antimetab",
+       "sub": "Immunosuppressants",
+       "t": "Azathioprine & mycophenolate",
+       "link": {
+        "m": "pharm-immuno",
+        "h": "antimetab"
+       }
+      },
+      {
+       "id": "pharm-immuno:gc",
+       "sub": "Immunosuppressants",
+       "t": "Glucocorticoids as immunosuppressants",
+       "link": {
+        "m": "pharm-immuno",
+        "h": "gc"
+       }
+      },
+      {
+       "id": "pharm-immuno:cytokine",
+       "sub": "Immunosuppressants",
+       "t": "Recombinant cytokines & clinical uses",
+       "link": {
+        "m": "pharm-immuno",
+        "h": "cytokine"
+       }
+      },
+      {
+       "id": "pharm-immuno:abs",
+       "sub": "Immunosuppressants",
+       "t": "Therapeutic antibodies",
+       "link": {
+        "m": "pharm-immuno",
+        "h": "abs"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -210,7 +274,170 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-micro:bactmap",
+       "sub": "Antimicrobials",
+       "t": "Antibacterial therapy: drug targets",
+       "link": {
+        "m": "pharm-micro",
+        "h": "bactmap"
+       }
+      },
+      {
+       "id": "pharm-micro:penicillin",
+       "sub": "Antimicrobials",
+       "t": "Penicillins & β-lactamase inhibitors",
+       "link": {
+        "m": "pharm-micro",
+        "h": "penicillin"
+       }
+      },
+      {
+       "id": "pharm-micro:ceph",
+       "sub": "Antimicrobials",
+       "t": "Cephalosporins, carbapenems & aztreonam",
+       "link": {
+        "m": "pharm-micro",
+        "h": "ceph"
+       }
+      },
+      {
+       "id": "pharm-micro:vanco",
+       "sub": "Antimicrobials",
+       "t": "Vancomycin, daptomycin & polymyxins",
+       "link": {
+        "m": "pharm-micro",
+        "h": "vanco"
+       }
+      },
+      {
+       "id": "pharm-micro:aminogly",
+       "sub": "Antimicrobials",
+       "t": "Aminoglycosides",
+       "link": {
+        "m": "pharm-micro",
+        "h": "aminogly"
+       }
+      },
+      {
+       "id": "pharm-micro:tetra",
+       "sub": "Antimicrobials",
+       "t": "Tetracyclines & tigecycline",
+       "link": {
+        "m": "pharm-micro",
+        "h": "tetra"
+       }
+      },
+      {
+       "id": "pharm-micro:macro",
+       "sub": "Antimicrobials",
+       "t": "Macrolides & clindamycin",
+       "link": {
+        "m": "pharm-micro",
+        "h": "macro"
+       }
+      },
+      {
+       "id": "pharm-micro:linezolid",
+       "sub": "Antimicrobials",
+       "t": "Linezolid & chloramphenicol",
+       "link": {
+        "m": "pharm-micro",
+        "h": "linezolid"
+       }
+      },
+      {
+       "id": "pharm-micro:folate",
+       "sub": "Antimicrobials",
+       "t": "Sulfonamides, dapsone & trimethoprim",
+       "link": {
+        "m": "pharm-micro",
+        "h": "folate"
+       }
+      },
+      {
+       "id": "pharm-micro:fq",
+       "sub": "Antimicrobials",
+       "t": "Fluoroquinolones & metronidazole",
+       "link": {
+        "m": "pharm-micro",
+        "h": "fq"
+       }
+      },
+      {
+       "id": "pharm-micro:tb",
+       "sub": "Antimicrobials",
+       "t": "Antimycobacterial therapy",
+       "link": {
+        "m": "pharm-micro",
+        "h": "tb"
+       }
+      },
+      {
+       "id": "pharm-micro:prophylaxis",
+       "sub": "Antimicrobials",
+       "t": "Antimicrobial prophylaxis",
+       "link": {
+        "m": "pharm-micro",
+        "h": "prophylaxis"
+       }
+      },
+      {
+       "id": "pharm-micro:fungmap",
+       "sub": "Antimicrobials",
+       "t": "Antifungal therapy",
+       "link": {
+        "m": "pharm-micro",
+        "h": "fungmap"
+       }
+      },
+      {
+       "id": "pharm-micro:antiparasite",
+       "sub": "Antimicrobials",
+       "t": "Antiprotozoal & antihelminthic drugs",
+       "link": {
+        "m": "pharm-micro",
+        "h": "antiparasite"
+       }
+      },
+      {
+       "id": "pharm-micro:malaria",
+       "sub": "Antimicrobials",
+       "t": "Antimalarials",
+       "link": {
+        "m": "pharm-micro",
+        "h": "malaria"
+       }
+      },
+      {
+       "id": "pharm-micro:virmap",
+       "sub": "Antimicrobials",
+       "t": "Antiviral therapy",
+       "link": {
+        "m": "pharm-micro",
+        "h": "virmap"
+       }
+      },
+      {
+       "id": "pharm-micro:hiv",
+       "sub": "Antimicrobials",
+       "t": "HIV therapy",
+       "link": {
+        "m": "pharm-micro",
+        "h": "hiv"
+       }
+      },
+      {
+       "id": "pharm-micro:hep",
+       "sub": "Antimicrobials",
+       "t": "Hepatitis B & C therapy",
+       "link": {
+        "m": "pharm-micro",
+        "h": "hep"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -469,7 +696,107 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-gp:enzyme",
+       "sub": "Pharmacokinetics & Pharmacodynamics",
+       "t": "Enzyme kinetics",
+       "link": {
+        "m": "pharm-gp",
+        "h": "enzyme"
+       }
+      },
+      {
+       "id": "pharm-gp:pk",
+       "sub": "Pharmacokinetics & Pharmacodynamics",
+       "t": "Pharmacokinetics",
+       "link": {
+        "m": "pharm-gp",
+        "h": "pk"
+       }
+      },
+      {
+       "id": "pharm-gp:metab",
+       "sub": "Pharmacokinetics & Pharmacodynamics",
+       "t": "Drug metabolism & elimination",
+       "link": {
+        "m": "pharm-gp",
+        "h": "metab"
+       }
+      },
+      {
+       "id": "pharm-gp:pd",
+       "sub": "Pharmacokinetics & Pharmacodynamics",
+       "t": "Efficacy, potency & receptor binding",
+       "link": {
+        "m": "pharm-gp",
+        "h": "pd"
+       }
+      },
+      {
+       "id": "pharm-gp:ansmap",
+       "sub": "Autonomic Drugs",
+       "t": "Autonomic receptors & drug map",
+       "link": {
+        "m": "pharm-gp",
+        "h": "ansmap"
+       }
+      },
+      {
+       "id": "pharm-gp:cholino",
+       "sub": "Autonomic Drugs",
+       "t": "Cholinomimetic agents",
+       "link": {
+        "m": "pharm-gp",
+        "h": "cholino"
+       }
+      },
+      {
+       "id": "pharm-gp:antimusc",
+       "sub": "Autonomic Drugs",
+       "t": "Muscarinic antagonists",
+       "link": {
+        "m": "pharm-gp",
+        "h": "antimusc"
+       }
+      },
+      {
+       "id": "pharm-gp:symp",
+       "sub": "Autonomic Drugs",
+       "t": "Sympathomimetics",
+       "link": {
+        "m": "pharm-gp",
+        "h": "symp"
+       }
+      },
+      {
+       "id": "pharm-gp:sympatholytic",
+       "sub": "Autonomic Drugs",
+       "t": "Sympatholytics: α₂ agonists & α-blockers",
+       "link": {
+        "m": "pharm-gp",
+        "h": "sympatholytic"
+       }
+      },
+      {
+       "id": "pharm-gp:bblock",
+       "sub": "Autonomic Drugs",
+       "t": "β-blockers",
+       "link": {
+        "m": "pharm-gp",
+        "h": "bblock"
+       }
+      },
+      {
+       "id": "pharm-gp:pdei",
+       "sub": "Autonomic Drugs",
+       "t": "Phosphodiesterase inhibitors",
+       "link": {
+        "m": "pharm-gp",
+        "h": "pdei"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -604,7 +931,161 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-cvs:cvmap",
+       "sub": "Pharmacology",
+       "t": "Cardiovascular agents & molecular targets",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "cvmap"
+       }
+      },
+      {
+       "id": "pharm-cvs:htn",
+       "sub": "Pharmacology",
+       "t": "Hypertension treatment",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "htn"
+       }
+      },
+      {
+       "id": "pharm-cvs:ccb",
+       "sub": "Pharmacology",
+       "t": "Calcium channel blockers",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "ccb"
+       }
+      },
+      {
+       "id": "pharm-cvs:vasodil",
+       "sub": "Pharmacology",
+       "t": "Hydralazine & minoxidil",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "vasodil"
+       }
+      },
+      {
+       "id": "pharm-cvs:htnemerg",
+       "sub": "Pharmacology",
+       "t": "Hypertensive emergency",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "htnemerg"
+       }
+      },
+      {
+       "id": "pharm-cvs:nitrates",
+       "sub": "Pharmacology",
+       "t": "Nitrates",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "nitrates"
+       }
+      },
+      {
+       "id": "pharm-cvs:antianginal",
+       "sub": "Pharmacology",
+       "t": "Antianginal therapy & ranolazine",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "antianginal"
+       }
+      },
+      {
+       "id": "pharm-cvs:hf",
+       "sub": "Pharmacology",
+       "t": "Heart failure drugs & sacubitril",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "hf"
+       }
+      },
+      {
+       "id": "pharm-cvs:digoxin",
+       "sub": "Pharmacology",
+       "t": "Digoxin",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "digoxin"
+       }
+      },
+      {
+       "id": "pharm-cvs:statins",
+       "sub": "Pharmacology",
+       "t": "Statins",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "statins"
+       }
+      },
+      {
+       "id": "pharm-cvs:nonstatin",
+       "sub": "Pharmacology",
+       "t": "Bile acid resins, ezetimibe & PCSK9 inhibitors",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "nonstatin"
+       }
+      },
+      {
+       "id": "pharm-cvs:tg",
+       "sub": "Pharmacology",
+       "t": "Fibrates, niacin & omega-3",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "tg"
+       }
+      },
+      {
+       "id": "pharm-cvs:class1",
+       "sub": "Pharmacology",
+       "t": "Class I: Na⁺ channel blockers",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "class1"
+       }
+      },
+      {
+       "id": "pharm-cvs:class2",
+       "sub": "Pharmacology",
+       "t": "Class II: β-blockers",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "class2"
+       }
+      },
+      {
+       "id": "pharm-cvs:class3",
+       "sub": "Pharmacology",
+       "t": "Class III: K⁺ channel blockers",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "class3"
+       }
+      },
+      {
+       "id": "pharm-cvs:class4",
+       "sub": "Pharmacology",
+       "t": "Class IV & other antiarrhythmics",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "class4"
+       }
+      },
+      {
+       "id": "pharm-cvs:hfrx",
+       "sub": "Pharmacology",
+       "t": "HFrEF: guideline-directed therapy",
+       "link": {
+        "m": "pharm-cvs",
+        "h": "hfrx"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -696,7 +1177,116 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-endo:endomap",
+       "sub": "Pharmacology",
+       "t": "Endocrine drug target map",
+       "link": {
+        "m": "pharm-endo",
+        "h": "endomap"
+       }
+      },
+      {
+       "id": "pharm-endo:insulin",
+       "sub": "Pharmacology",
+       "t": "Insulin preparations",
+       "link": {
+        "m": "pharm-endo",
+        "h": "insulin"
+       }
+      },
+      {
+       "id": "pharm-endo:sensitizer",
+       "sub": "Pharmacology",
+       "t": "Metformin & pioglitazone",
+       "link": {
+        "m": "pharm-endo",
+        "h": "sensitizer"
+       }
+      },
+      {
+       "id": "pharm-endo:secretagog",
+       "sub": "Pharmacology",
+       "t": "Sulfonylureas & meglitinides",
+       "link": {
+        "m": "pharm-endo",
+        "h": "secretagog"
+       }
+      },
+      {
+       "id": "pharm-endo:incretin",
+       "sub": "Pharmacology",
+       "t": "GLP-1 agonists, DPP-4 inhibitors & pramlintide",
+       "link": {
+        "m": "pharm-endo",
+        "h": "incretin"
+       }
+      },
+      {
+       "id": "pharm-endo:glucose-other",
+       "sub": "Pharmacology",
+       "t": "SGLT2 & α-glucosidase inhibitors",
+       "link": {
+        "m": "pharm-endo",
+        "h": "glucose-other"
+       }
+      },
+      {
+       "id": "pharm-endo:thionamide",
+       "sub": "Pharmacology",
+       "t": "Thionamides",
+       "link": {
+        "m": "pharm-endo",
+        "h": "thionamide"
+       }
+      },
+      {
+       "id": "pharm-endo:thyroxine",
+       "sub": "Pharmacology",
+       "t": "Levothyroxine & liothyronine",
+       "link": {
+        "m": "pharm-endo",
+        "h": "thyroxine"
+       }
+      },
+      {
+       "id": "pharm-endo:pituitary",
+       "sub": "Pharmacology",
+       "t": "Hypothalamic & pituitary drugs",
+       "link": {
+        "m": "pharm-endo",
+        "h": "pituitary"
+       }
+      },
+      {
+       "id": "pharm-endo:adrenal",
+       "sub": "Pharmacology",
+       "t": "Glucocorticoids, fludrocortisone & adrenal inhibitors",
+       "link": {
+        "m": "pharm-endo",
+        "h": "adrenal"
+       }
+      },
+      {
+       "id": "pharm-endo:calcium",
+       "sub": "Pharmacology",
+       "t": "Cinacalcet, sevelamer & cation exchange resins",
+       "link": {
+        "m": "pharm-endo",
+        "h": "calcium"
+       }
+      },
+      {
+       "id": "pharm-endo:dmrx",
+       "sub": "Pharmacology",
+       "t": "Type 2 diabetes treatment",
+       "link": {
+        "m": "pharm-endo",
+        "h": "dmrx"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -784,7 +1374,107 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-gi:gimap",
+       "sub": "Pharmacology",
+       "t": "GI drug target map",
+       "link": {
+        "m": "pharm-gi",
+        "h": "gimap"
+       }
+      },
+      {
+       "id": "pharm-gi:acid",
+       "sub": "Pharmacology",
+       "t": "H₂ blockers & proton pump inhibitors",
+       "link": {
+        "m": "pharm-gi",
+        "h": "acid"
+       }
+      },
+      {
+       "id": "pharm-gi:mucosal",
+       "sub": "Pharmacology",
+       "t": "Antacids, bismuth, sucralfate & misoprostol",
+       "link": {
+        "m": "pharm-gi",
+        "h": "mucosal"
+       }
+      },
+      {
+       "id": "pharm-gi:octreotide",
+       "sub": "Pharmacology",
+       "t": "Octreotide",
+       "link": {
+        "m": "pharm-gi",
+        "h": "octreotide"
+       }
+      },
+      {
+       "id": "pharm-gi:ibd",
+       "sub": "Pharmacology",
+       "t": "Sulfasalazine & IBD therapy",
+       "link": {
+        "m": "pharm-gi",
+        "h": "ibd"
+       }
+      },
+      {
+       "id": "pharm-gi:antidiar",
+       "sub": "Pharmacology",
+       "t": "Loperamide, diphenoxylate & antidiarrheals",
+       "link": {
+        "m": "pharm-gi",
+        "h": "antidiar"
+       }
+      },
+      {
+       "id": "pharm-gi:antiemetic",
+       "sub": "Pharmacology",
+       "t": "Antiemetics",
+       "link": {
+        "m": "pharm-gi",
+        "h": "antiemetic"
+       }
+      },
+      {
+       "id": "pharm-gi:laxative",
+       "sub": "Pharmacology",
+       "t": "Anticonstipation drugs",
+       "link": {
+        "m": "pharm-gi",
+        "h": "laxative"
+       }
+      },
+      {
+       "id": "pharm-gi:orlistat",
+       "sub": "Pharmacology",
+       "t": "Orlistat & anti-obesity drugs",
+       "link": {
+        "m": "pharm-gi",
+        "h": "orlistat"
+       }
+      },
+      {
+       "id": "pharm-gi:pud",
+       "sub": "Pharmacology",
+       "t": "GERD, PUD & H. pylori",
+       "link": {
+        "m": "pharm-gi",
+        "h": "pud"
+       }
+      },
+      {
+       "id": "pharm-gi:cirrhosis",
+       "sub": "Pharmacology",
+       "t": "Portal hypertension & cirrhosis",
+       "link": {
+        "m": "pharm-gi",
+        "h": "cirrhosis"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -900,7 +1590,170 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-heme:coagmap",
+       "sub": "Pharmacology",
+       "t": "Coagulation & platelet drug map",
+       "link": {
+        "m": "pharm-heme",
+        "h": "coagmap"
+       }
+      },
+      {
+       "id": "pharm-heme:heparin",
+       "sub": "Pharmacology",
+       "t": "Heparin & HIT",
+       "link": {
+        "m": "pharm-heme",
+        "h": "heparin"
+       }
+      },
+      {
+       "id": "pharm-heme:warfarin",
+       "sub": "Pharmacology",
+       "t": "Warfarin",
+       "link": {
+        "m": "pharm-heme",
+        "h": "warfarin"
+       }
+      },
+      {
+       "id": "pharm-heme:hepvswar",
+       "sub": "Pharmacology",
+       "t": "Heparin vs warfarin",
+       "link": {
+        "m": "pharm-heme",
+        "h": "hepvswar"
+       }
+      },
+      {
+       "id": "pharm-heme:doac",
+       "sub": "Pharmacology",
+       "t": "Direct coagulation factor inhibitors",
+       "link": {
+        "m": "pharm-heme",
+        "h": "doac"
+       }
+      },
+      {
+       "id": "pharm-heme:antiplt",
+       "sub": "Pharmacology",
+       "t": "Antiplatelets",
+       "link": {
+        "m": "pharm-heme",
+        "h": "antiplt"
+       }
+      },
+      {
+       "id": "pharm-heme:lytic",
+       "sub": "Pharmacology",
+       "t": "Thrombolytics",
+       "link": {
+        "m": "pharm-heme",
+        "h": "lytic"
+       }
+      },
+      {
+       "id": "pharm-heme:cycle",
+       "sub": "Pharmacology",
+       "t": "Cancer therapy: cell cycle & targets",
+       "link": {
+        "m": "pharm-heme",
+        "h": "cycle"
+       }
+      },
+      {
+       "id": "pharm-heme:antibiotic",
+       "sub": "Pharmacology",
+       "t": "Antitumor antibiotics",
+       "link": {
+        "m": "pharm-heme",
+        "h": "antibiotic"
+       }
+      },
+      {
+       "id": "pharm-heme:antimet",
+       "sub": "Pharmacology",
+       "t": "Antimetabolites",
+       "link": {
+        "m": "pharm-heme",
+        "h": "antimet"
+       }
+      },
+      {
+       "id": "pharm-heme:alkyl",
+       "sub": "Pharmacology",
+       "t": "Alkylating agents & platinum",
+       "link": {
+        "m": "pharm-heme",
+        "h": "alkyl"
+       }
+      },
+      {
+       "id": "pharm-heme:mitosis",
+       "sub": "Pharmacology",
+       "t": "Microtubule & topoisomerase inhibitors",
+       "link": {
+        "m": "pharm-heme",
+        "h": "mitosis"
+       }
+      },
+      {
+       "id": "pharm-heme:tamox",
+       "sub": "Pharmacology",
+       "t": "Hormonal therapy: tamoxifen & others",
+       "link": {
+        "m": "pharm-heme",
+        "h": "tamox"
+       }
+      },
+      {
+       "id": "pharm-heme:mabs",
+       "sub": "Pharmacology",
+       "t": "Anticancer monoclonal antibodies",
+       "link": {
+        "m": "pharm-heme",
+        "h": "mabs"
+       }
+      },
+      {
+       "id": "pharm-heme:smi",
+       "sub": "Pharmacology",
+       "t": "Small molecule inhibitors",
+       "link": {
+        "m": "pharm-heme",
+        "h": "smi"
+       }
+      },
+      {
+       "id": "pharm-heme:ameliorate",
+       "sub": "Pharmacology",
+       "t": "Chemotoxicity amelioration",
+       "link": {
+        "m": "pharm-heme",
+        "h": "ameliorate"
+       }
+      },
+      {
+       "id": "pharm-heme:keytox",
+       "sub": "Pharmacology",
+       "t": "Key chemotoxicities",
+       "link": {
+        "m": "pharm-heme",
+        "h": "keytox"
+       }
+      },
+      {
+       "id": "pharm-heme:hematinic",
+       "sub": "Pharmacology",
+       "t": "Agents for anemias & cytopenias",
+       "link": {
+        "m": "pharm-heme",
+        "h": "hematinic"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -1023,7 +1876,188 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-msk:aa",
+       "sub": "Pharmacology",
+       "t": "Arachidonic acid pathway & drug targets",
+       "link": {
+        "m": "pharm-msk",
+        "h": "aa"
+       }
+      },
+      {
+       "id": "pharm-msk:apap",
+       "sub": "Pharmacology",
+       "t": "Acetaminophen",
+       "link": {
+        "m": "pharm-msk",
+        "h": "apap"
+       }
+      },
+      {
+       "id": "pharm-msk:aspirin",
+       "sub": "Pharmacology",
+       "t": "Aspirin",
+       "link": {
+        "m": "pharm-msk",
+        "h": "aspirin"
+       }
+      },
+      {
+       "id": "pharm-msk:coxib",
+       "sub": "Pharmacology",
+       "t": "Celecoxib (COX-2 selective)",
+       "link": {
+        "m": "pharm-msk",
+        "h": "coxib"
+       }
+      },
+      {
+       "id": "pharm-msk:nsaids",
+       "sub": "Pharmacology",
+       "t": "NSAIDs",
+       "link": {
+        "m": "pharm-msk",
+        "h": "nsaids"
+       }
+      },
+      {
+       "id": "pharm-msk:dmards",
+       "sub": "Pharmacology",
+       "t": "Conventional DMARDs",
+       "link": {
+        "m": "pharm-msk",
+        "h": "dmards"
+       }
+      },
+      {
+       "id": "pharm-msk:bisph",
+       "sub": "Pharmacology",
+       "t": "Bisphosphonates",
+       "link": {
+        "m": "pharm-msk",
+        "h": "bisph"
+       }
+      },
+      {
+       "id": "pharm-msk:anabolic",
+       "sub": "Pharmacology",
+       "t": "Teriparatide, denosumab & romosozumab",
+       "link": {
+        "m": "pharm-msk",
+        "h": "anabolic"
+       }
+      },
+      {
+       "id": "pharm-msk:goutchronic",
+       "sub": "Pharmacology",
+       "t": "Chronic gout: urate-lowering therapy",
+       "link": {
+        "m": "pharm-msk",
+        "h": "goutchronic"
+       }
+      },
+      {
+       "id": "pharm-msk:goutacute",
+       "sub": "Pharmacology",
+       "t": "Acute gout flare",
+       "link": {
+        "m": "pharm-msk",
+        "h": "goutacute"
+       }
+      },
+      {
+       "id": "pharm-msk:tnf",
+       "sub": "Pharmacology",
+       "t": "TNF-α inhibitors",
+       "link": {
+        "m": "pharm-msk",
+        "h": "tnf"
+       }
+      },
+      {
+       "id": "pharm-msk:psobio",
+       "sub": "Pharmacology",
+       "t": "Psoriasis biologics",
+       "link": {
+        "m": "pharm-msk",
+        "h": "psobio"
+       }
+      },
+      {
+       "id": "pharm-msk:imiq",
+       "sub": "Pharmacology",
+       "t": "Imiquimod & actinic keratosis drugs",
+       "link": {
+        "m": "pharm-msk",
+        "h": "imiq"
+       }
+      },
+      {
+       "id": "pharm-msk:ra-bio",
+       "sub": "Pharmacology",
+       "t": "Other RA biologics & JAK inhibitors",
+       "link": {
+        "m": "pharm-msk",
+        "h": "ra-bio"
+       }
+      },
+      {
+       "id": "pharm-msk:skinmap",
+       "sub": "Pharmacology",
+       "t": "Skin drug target map",
+       "link": {
+        "m": "pharm-msk",
+        "h": "skinmap"
+       }
+      },
+      {
+       "id": "pharm-msk:tcs",
+       "sub": "Pharmacology",
+       "t": "Topical corticosteroids",
+       "link": {
+        "m": "pharm-msk",
+        "h": "tcs"
+       }
+      },
+      {
+       "id": "pharm-msk:acne",
+       "sub": "Pharmacology",
+       "t": "Acne drugs",
+       "link": {
+        "m": "pharm-msk",
+        "h": "acne"
+       }
+      },
+      {
+       "id": "pharm-msk:psotop",
+       "sub": "Pharmacology",
+       "t": "Psoriasis: topical & systemic",
+       "link": {
+        "m": "pharm-msk",
+        "h": "psotop"
+       }
+      },
+      {
+       "id": "pharm-msk:ra",
+       "sub": "Pharmacology",
+       "t": "Rheumatoid arthritis treatment",
+       "link": {
+        "m": "pharm-msk",
+        "h": "ra"
+       }
+      },
+      {
+       "id": "pharm-msk:oa-op",
+       "sub": "Pharmacology",
+       "t": "Osteoarthritis & osteoporosis treatment",
+       "link": {
+        "m": "pharm-msk",
+        "h": "oa-op"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -1136,7 +2170,161 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-neuro:neuromap",
+       "sub": "Pharmacology",
+       "t": "Neuron & synapse drug map",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "neuromap"
+       }
+      },
+      {
+       "id": "pharm-neuro:aed-focal",
+       "sub": "Pharmacology",
+       "t": "Narrow-spectrum: phenytoin, carbamazepine, gabapentinoids",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "aed-focal"
+       }
+      },
+      {
+       "id": "pharm-neuro:aed-absence",
+       "sub": "Pharmacology",
+       "t": "Ethosuximide (absence)",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "aed-absence"
+       }
+      },
+      {
+       "id": "pharm-neuro:aed-broad",
+       "sub": "Pharmacology",
+       "t": "Broad-spectrum: valproate, lamotrigine, levetiracetam, topiramate",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "aed-broad"
+       }
+      },
+      {
+       "id": "pharm-neuro:barb-bzd",
+       "sub": "Pharmacology",
+       "t": "Barbiturates & benzodiazepines",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "barb-bzd"
+       }
+      },
+      {
+       "id": "pharm-neuro:insomnia",
+       "sub": "Pharmacology",
+       "t": "Insomnia therapy",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "insomnia"
+       }
+      },
+      {
+       "id": "pharm-neuro:triptans",
+       "sub": "Pharmacology",
+       "t": "Triptans & migraine drugs",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "triptans"
+       }
+      },
+      {
+       "id": "pharm-neuro:pd",
+       "sub": "Pharmacology",
+       "t": "Parkinson disease therapy",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "pd"
+       }
+      },
+      {
+       "id": "pharm-neuro:neurodeg",
+       "sub": "Pharmacology",
+       "t": "Alzheimer, ALS & Huntington drugs",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "neurodeg"
+       }
+      },
+      {
+       "id": "pharm-neuro:localanes",
+       "sub": "Pharmacology",
+       "t": "Local anesthetics",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "localanes"
+       }
+      },
+      {
+       "id": "pharm-neuro:genanes",
+       "sub": "Pharmacology",
+       "t": "General anesthetics",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "genanes"
+       }
+      },
+      {
+       "id": "pharm-neuro:nmb",
+       "sub": "Pharmacology",
+       "t": "Neuromuscular blocking drugs",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "nmb"
+       }
+      },
+      {
+       "id": "pharm-neuro:relax",
+       "sub": "Pharmacology",
+       "t": "Skeletal muscle relaxants",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "relax"
+       }
+      },
+      {
+       "id": "pharm-neuro:opioids",
+       "sub": "Pharmacology",
+       "t": "Opioid analgesics",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "opioids"
+       }
+      },
+      {
+       "id": "pharm-neuro:mixed",
+       "sub": "Pharmacology",
+       "t": "Tramadol, mixed agonists & capsaicin",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "mixed"
+       }
+      },
+      {
+       "id": "pharm-neuro:glaucoma",
+       "sub": "Pharmacology",
+       "t": "Glaucoma therapy",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "glaucoma"
+       }
+      },
+      {
+       "id": "pharm-neuro:status",
+       "sub": "Pharmacology",
+       "t": "Status epilepticus",
+       "link": {
+        "m": "pharm-neuro",
+        "h": "status"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -1222,7 +2410,107 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-psych:psymap",
+       "sub": "Pharmacology",
+       "t": "Psychiatric drug target map",
+       "link": {
+        "m": "pharm-psych",
+        "h": "psymap"
+       }
+      },
+      {
+       "id": "pharm-psych:stim",
+       "sub": "Pharmacology",
+       "t": "CNS stimulants",
+       "link": {
+        "m": "pharm-psych",
+        "h": "stim"
+       }
+      },
+      {
+       "id": "pharm-psych:antipsych",
+       "sub": "Pharmacology",
+       "t": "Antipsychotics",
+       "link": {
+        "m": "pharm-psych",
+        "h": "antipsych"
+       }
+      },
+      {
+       "id": "pharm-psych:lithium",
+       "sub": "Pharmacology",
+       "t": "Lithium",
+       "link": {
+        "m": "pharm-psych",
+        "h": "lithium"
+       }
+      },
+      {
+       "id": "pharm-psych:buspirone",
+       "sub": "Pharmacology",
+       "t": "Buspirone & anxiolytics",
+       "link": {
+        "m": "pharm-psych",
+        "h": "buspirone"
+       }
+      },
+      {
+       "id": "pharm-psych:ssri",
+       "sub": "Pharmacology",
+       "t": "SSRIs & SNRIs",
+       "link": {
+        "m": "pharm-psych",
+        "h": "ssri"
+       }
+      },
+      {
+       "id": "pharm-psych:tca",
+       "sub": "Pharmacology",
+       "t": "Tricyclic antidepressants",
+       "link": {
+        "m": "pharm-psych",
+        "h": "tca"
+       }
+      },
+      {
+       "id": "pharm-psych:maoi",
+       "sub": "Pharmacology",
+       "t": "MAO inhibitors",
+       "link": {
+        "m": "pharm-psych",
+        "h": "maoi"
+       }
+      },
+      {
+       "id": "pharm-psych:atypicalad",
+       "sub": "Pharmacology",
+       "t": "Atypical antidepressants",
+       "link": {
+        "m": "pharm-psych",
+        "h": "atypicalad"
+       }
+      },
+      {
+       "id": "pharm-psych:sud",
+       "sub": "Pharmacology",
+       "t": "Smoking, opioid & alcohol use disorder",
+       "link": {
+        "m": "pharm-psych",
+        "h": "sud"
+       }
+      },
+      {
+       "id": "pharm-psych:psyrx",
+       "sub": "Pharmacology",
+       "t": "Choosing psychiatric drugs",
+       "link": {
+        "m": "pharm-psych",
+        "h": "psyrx"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -4168,7 +5456,98 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-repro:hpg",
+       "sub": "Pharmacology",
+       "t": "Control of reproductive hormones",
+       "link": {
+        "m": "pharm-repro",
+        "h": "hpg"
+       }
+      },
+      {
+       "id": "pharm-repro:gnrh",
+       "sub": "Pharmacology",
+       "t": "GnRH analogs & degarelix",
+       "link": {
+        "m": "pharm-repro",
+        "h": "gnrh"
+       }
+      },
+      {
+       "id": "pharm-repro:estrogen",
+       "sub": "Pharmacology",
+       "t": "Estrogens",
+       "link": {
+        "m": "pharm-repro",
+        "h": "estrogen"
+       }
+      },
+      {
+       "id": "pharm-repro:serm",
+       "sub": "Pharmacology",
+       "t": "SERMs & aromatase inhibitors",
+       "link": {
+        "m": "pharm-repro",
+        "h": "serm"
+       }
+      },
+      {
+       "id": "pharm-repro:progestin",
+       "sub": "Pharmacology",
+       "t": "Progestins & antiprogestins",
+       "link": {
+        "m": "pharm-repro",
+        "h": "progestin"
+       }
+      },
+      {
+       "id": "pharm-repro:contra",
+       "sub": "Pharmacology",
+       "t": "Contraception",
+       "link": {
+        "m": "pharm-repro",
+        "h": "contra"
+       }
+      },
+      {
+       "id": "pharm-repro:androgen",
+       "sub": "Pharmacology",
+       "t": "Testosterone & danazol",
+       "link": {
+        "m": "pharm-repro",
+        "h": "androgen"
+       }
+      },
+      {
+       "id": "pharm-repro:antiandrogen",
+       "sub": "Pharmacology",
+       "t": "Antiandrogens",
+       "link": {
+        "m": "pharm-repro",
+        "h": "antiandrogen"
+       }
+      },
+      {
+       "id": "pharm-repro:labor",
+       "sub": "Pharmacology",
+       "t": "Oxytocics & tocolytics",
+       "link": {
+        "m": "pharm-repro",
+        "h": "labor"
+       }
+      },
+      {
+       "id": "pharm-repro:uro",
+       "sub": "Pharmacology",
+       "t": "BPH & erectile dysfunction drugs",
+       "link": {
+        "m": "pharm-repro",
+        "h": "uro"
+       }
+      }
+     ],
      "resources": []
     },
     {
@@ -4280,7 +5659,161 @@
        }
       }
      ],
-     "checklist": [],
+     "checklist": [
+      {
+       "id": "pharm-resp:targets",
+       "sub": "Pharmacology",
+       "t": "Pathogenesis & drug targets",
+       "link": {
+        "m": "pharm-resp",
+        "h": "targets"
+       }
+      },
+      {
+       "id": "pharm-resp:beta2",
+       "sub": "Pharmacology",
+       "t": "β₂ agonists (SABA · LABA)",
+       "link": {
+        "m": "pharm-resp",
+        "h": "beta2"
+       }
+      },
+      {
+       "id": "pharm-resp:steroids",
+       "sub": "Pharmacology",
+       "t": "Corticosteroids (ICS · systemic)",
+       "link": {
+        "m": "pharm-resp",
+        "h": "steroids"
+       }
+      },
+      {
+       "id": "pharm-resp:antimusc",
+       "sub": "Pharmacology",
+       "t": "Antimuscarinics (SAMA · LAMA)",
+       "link": {
+        "m": "pharm-resp",
+        "h": "antimusc"
+       }
+      },
+      {
+       "id": "pharm-resp:lt",
+       "sub": "Pharmacology",
+       "t": "Leukotriene modifiers",
+       "link": {
+        "m": "pharm-resp",
+        "h": "lt"
+       }
+      },
+      {
+       "id": "pharm-resp:biologics",
+       "sub": "Pharmacology",
+       "t": "Monoclonal antibodies for severe asthma",
+       "link": {
+        "m": "pharm-resp",
+        "h": "biologics"
+       }
+      },
+      {
+       "id": "pharm-resp:pde",
+       "sub": "Pharmacology",
+       "t": "Methylxanthines & PDE4 inhibitors",
+       "link": {
+        "m": "pharm-resp",
+        "h": "pde"
+       }
+      },
+      {
+       "id": "pharm-resp:antihist",
+       "sub": "Pharmacology",
+       "t": "H₁ antihistamines & decongestants",
+       "link": {
+        "m": "pharm-resp",
+        "h": "antihist"
+       }
+      },
+      {
+       "id": "pharm-resp:cough",
+       "sub": "Pharmacology",
+       "t": "Cough & mucus",
+       "link": {
+        "m": "pharm-resp",
+        "h": "cough"
+       }
+      },
+      {
+       "id": "pharm-resp:pah",
+       "sub": "Pharmacology",
+       "t": "Pulmonary arterial hypertension",
+       "link": {
+        "m": "pharm-resp",
+        "h": "pah"
+       }
+      },
+      {
+       "id": "pharm-resp:delivery",
+       "sub": "Pharmacology",
+       "t": "Inhaled delivery & devices",
+       "link": {
+        "m": "pharm-resp",
+        "h": "delivery"
+       }
+      },
+      {
+       "id": "pharm-resp:cromolyn",
+       "sub": "Pharmacology",
+       "t": "Mast cell stabilizers",
+       "link": {
+        "m": "pharm-resp",
+        "h": "cromolyn"
+       }
+      },
+      {
+       "id": "pharm-resp:cftr",
+       "sub": "Pharmacology",
+       "t": "CFTR modulators (cystic fibrosis)",
+       "link": {
+        "m": "pharm-resp",
+        "h": "cftr"
+       }
+      },
+      {
+       "id": "pharm-resp:chronicasthma",
+       "sub": "Pharmacology",
+       "t": "Chronic asthma: stepwise therapy",
+       "link": {
+        "m": "pharm-resp",
+        "h": "chronicasthma"
+       }
+      },
+      {
+       "id": "pharm-resp:acuteasthma",
+       "sub": "Pharmacology",
+       "t": "Acute asthma exacerbation",
+       "link": {
+        "m": "pharm-resp",
+        "h": "acuteasthma"
+       }
+      },
+      {
+       "id": "pharm-resp:stablecopd",
+       "sub": "Pharmacology",
+       "t": "Stable COPD: GOLD groups",
+       "link": {
+        "m": "pharm-resp",
+        "h": "stablecopd"
+       }
+      },
+      {
+       "id": "pharm-resp:copdexac",
+       "sub": "Pharmacology",
+       "t": "COPD exacerbation",
+       "link": {
+        "m": "pharm-resp",
+        "h": "copdexac"
+       }
+      }
+     ],
      "resources": []
     }
    ]
