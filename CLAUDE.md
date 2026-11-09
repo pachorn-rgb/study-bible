@@ -2,6 +2,8 @@
 
 The app lives in `docs/` (GitHub Pages). It exists to **review, test and challenge**, so every new atlas or new content must also feed the game layer — never ship an atlas alone.
 
+**Benchmark = the Renal chapter.** Every system must end up with the same feature set as Renal: discipline tabs, review topics, MCQs, boss, several Case Ladder cases, Dx Daily entries (once pathology exists), resources.
+
 ## Checklist for every new atlas / content
 1. **Atlas page** in `docs/<system>/`, plus module entry in `library.json` (thumb, topics, ref).
 2. **Review topics**: one `checklist` item per atlas topic in the chapter (`{id:"<module>:<hash>", sub, t, link:{m,h}}`). Without these the chapter has no stars, review run, boss or scope entry.
