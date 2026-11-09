@@ -44,6 +44,18 @@
     ],
     "a": 0,
     "e": "Sacral reflex intact but no brain control (Guyton)."
+   },
+   {
+    "q": "A 74-year-old woman with long-standing diabetic neuropathy reports frequent small-volume urine leakage day and night without urgency. Her bladder is palpable after voiding, and the post-void residual volume is 450 mL. What is the underlying mechanism of her incontinence?",
+    "o": [
+     "Detrusor underactivity with incomplete emptying",
+     "Involuntary detrusor contractions during filling",
+     "Urethral hypermobility from pelvic floor weakness",
+     "Inability to reach the toilet from poor mobility"
+    ],
+    "a": 0,
+    "e": "A large post-void residual with dribbling is overflow incontinence from an atonic (neuropathic) bladder. Involuntary detrusor contractions cause urge incontinence, with sudden urgency and a normal residual.",
+    "d": 2
    }
   ],
   "renal-47": [
@@ -90,6 +102,18 @@
     ],
     "a": 1,
     "e": "Up to 20–30% of filtered Na⁺ can be excreted."
+   },
+   {
+    "q": "A 56-year-old man with alcoholic cirrhosis has tense ascites and a low urine Na⁺/K⁺ ratio. He is started on the diuretic of first choice for this condition, which counteracts his secondary hyperaldosteronism. At which nephron site does this drug act?",
+    "o": [
+     "Cortical collecting duct",
+     "Thick ascending limb",
+     "Early distal convoluted tubule",
+     "Proximal convoluted tubule"
+    ],
+    "a": 0,
+    "e": "Spironolactone is first-line for cirrhotic ascites and blocks the mineralocorticoid receptor in principal cells of the cortical collecting duct. Loop diuretics (thick ascending limb) are added second.",
+    "d": 3
    }
   ],
   "renal-48": [
@@ -136,6 +160,18 @@
     ],
     "a": 2,
     "e": "Contraindicated in anuria and heart failure."
+   },
+   {
+    "q": "A 67-year-old man with a history of heart failure has a traumatic brain injury with signs of raised intracranial pressure and receives a large IV dose of mannitol. Two hours later he is dyspneic, with bibasilar crackles and an elevated JVP. What is the most likely mechanism?",
+    "o": [
+     "Water shift from cells into the ECF",
+     "Direct negative inotropic effect",
+     "Complement-mediated capillary leak",
+     "Aldosterone-driven Na⁺ retention"
+    ],
+    "a": 0,
+    "e": "Mannitol stays in the ECF and pulls water out of cells, transiently expanding ECF volume and precipitating pulmonary edema in heart failure. It does not depress the myocardium directly.",
+    "d": 3
    }
   ],
   "renal-49": [
@@ -171,6 +207,18 @@
     ],
     "a": 3,
     "e": "Metabolic acidosis stimulates ventilation; also glaucoma."
+   },
+   {
+    "q": "A 32-year-old woman takes a drug before trekking to 5000 m to prevent altitude sickness. After 3 days she notes tingling in her fingers. Her urine pH is 7.5 and her serum HCO₃⁻ is 18 mEq/L with a normal anion gap. The drug's main effect results from inhibition of which process?",
+    "o": [
+     "Proximal tubular HCO₃⁻ reabsorption",
+     "Distal tubular Na⁺–Cl⁻ cotransport",
+     "Thick ascending limb Na⁺–K⁺–2Cl⁻ entry",
+     "Collecting duct aldosterone signalling"
+    ],
+    "a": 0,
+    "e": "Acetazolamide inhibits carbonic anhydrase in the PCT, causing bicarbonaturia (alkaline urine) and a hyperchloremic metabolic acidosis that stimulates ventilation at altitude. Thiazides act on the distal Na⁺–Cl⁻ cotransporter and cause alkalosis.",
+    "d": 3
    }
   ],
   "renal-50": [
@@ -206,6 +254,18 @@
     ],
     "a": 3,
     "e": "Ethacrynic acid is not a sulfonamide but is more ototoxic and can cause hyperuricemia."
+   },
+   {
+    "q": "A 66-year-old woman with acute decompensated heart failure receives repeated high-dose IV boluses of a diuretic that is also used to treat hypercalcemia. She then reports tinnitus and reduced hearing. Which transporter does this drug inhibit?",
+    "o": [
+     "Na⁺/K⁺/2Cl⁻ cotransporter (NKCC2)",
+     "Na⁺/Cl⁻ cotransporter (NCC)",
+     "Epithelial Na⁺ channel (ENaC)",
+     "Na⁺/H⁺ exchanger (NHE3)"
+    ],
+    "a": 0,
+    "e": "Furosemide blocks NKCC2 in the thick ascending limb, increasing Ca²⁺ excretion; it is ototoxic, especially with rapid high doses. NCC is the thiazide target, and thiazides reduce urinary Ca²⁺.",
+    "d": 3
    }
   ],
   "renal-51": [
@@ -241,6 +301,18 @@
     ],
     "a": 1,
     "e": "Mild volume depletion ↑ proximal Na⁺/water reabsorption → less water reaches the collecting duct."
+   },
+   {
+    "q": "A 52-year-old man starts a first-line antihypertensive. Six weeks later he has a hot, swollen first metatarsophalangeal joint. Labs: uric acid 9.8 mg/dL, Ca²⁺ 10.8 mg/dL, glucose 128 mg/dL, K⁺ 3.3 mEq/L. Which drug was most likely started?",
+    "o": [
+     "Hydrochlorothiazide",
+     "Lisinopril",
+     "Amlodipine",
+     "Losartan potassium"
+    ],
+    "a": 0,
+    "e": "Thiazides cause hyperuricemia (gout), hypercalcemia, hyperglycemia and hypokalemia. Losartan is mildly uricosuric and tends to raise rather than lower K⁺.",
+    "d": 2
    }
   ],
   "renal-52": [
@@ -276,6 +348,18 @@
     ],
     "a": 1,
     "e": "Amiloride blocks lithium entry into principal cells via ENaC."
+   },
+   {
+    "q": "A 61-year-old man with heart failure (EF 30%) takes lisinopril and furosemide. A drug is added to reduce mortality. Four weeks later he has tender breast enlargement and a serum K⁺ of 5.6 mEq/L. What is the mechanism of the added drug?",
+    "o": [
+     "Competitive mineralocorticoid receptor antagonism",
+     "Direct blockade of ENaC in principal cells",
+     "Inhibition of Na⁺–Cl⁻ cotransport in the DCT",
+     "Selective vasopressin V2 receptor antagonism"
+    ],
+    "a": 0,
+    "e": "Spironolactone improves survival in HFrEF; it blocks the aldosterone receptor and, through antiandrogen effects, causes gynecomastia. Amiloride blocks ENaC directly and does not cause gynecomastia.",
+    "d": 3
    }
   ],
   "renal-53": [
@@ -322,6 +406,18 @@
     ],
     "a": 2,
     "e": "Abolishing the lumen-positive voltage reduces paracellular Mg²⁺ and Ca²⁺ reabsorption."
+   },
+   {
+    "q": "A 63-year-old woman takes a diuretic for edema. Labs: Na⁺ 137 mEq/L, K⁺ 3.1 mEq/L, HCO₃⁻ 31 mEq/L, Mg²⁺ 1.3 mg/dL, and 24-hour urine calcium is increased. Which diuretic is she most likely taking?",
+    "o": [
+     "Spironolactone",
+     "Hydrochlorothiazide",
+     "Furosemide",
+     "Acetazolamide"
+    ],
+    "a": 2,
+    "e": "Loop diuretics cause hypokalemic metabolic alkalosis, hypomagnesemia and hypercalciuria. Thiazides cause the same alkalosis but decrease urinary calcium.",
+    "d": 2
    }
   ],
   "renal-54": [
@@ -357,6 +453,18 @@
     ],
     "a": 1,
     "e": "Loss of negative feedback raises renin; ACE blockade lowers AT II. Also ↓ GFR, ↑ K⁺."
+   },
+   {
+    "q": "A 64-year-old man with diabetes and hypertension has bruits over both flanks. One week after he starts lisinopril, his creatinine rises from 1.0 to 2.4 mg/dL. What is the most likely mechanism?",
+    "o": [
+     "Loss of angiotensin II efferent constriction",
+     "Loss of prostaglandin afferent dilation",
+     "Direct toxic injury to tubular cells",
+     "Drug-induced allergic interstitial nephritis"
+    ],
+    "a": 0,
+    "e": "With bilateral renal artery stenosis, GFR depends on angiotensin II constricting the efferent arteriole; ACE inhibition removes it and GFR falls. Loss of prostaglandin afferent dilation is the NSAID mechanism.",
+    "d": 3
    }
   ],
   "renal-55": [
@@ -403,6 +511,18 @@
     ],
     "a": 3,
     "e": "Fetal renal toxicity."
+   },
+   {
+    "q": "A 33-year-old woman whose hypertension is well controlled on losartan has a positive pregnancy test at 7 weeks. She is switched to labetalol. The main fetal risk of continuing her original drug is:",
+    "o": [
+     "Neural tube defects",
+     "Ebstein anomaly",
+     "Limb reduction (phocomelia)",
+     "Fetal renal dysgenesis"
+    ],
+    "a": 3,
+    "e": "ARBs and ACE inhibitors are fetotoxic: they impair fetal renal development, causing oligohydramnios and its sequelae. Ebstein anomaly is linked to lithium, and neural tube defects to valproate.",
+    "d": 2
    }
   ],
   "renal-56": [
@@ -449,6 +569,18 @@
     ],
     "a": 2,
     "e": "Reduced aldosterone; contraindicated in pregnancy."
+   },
+   {
+    "q": "A 58-year-old man with hypertension is started on aliskiren. Compared with baseline, which laboratory pattern is expected after several weeks?",
+    "o": [
+     "↑ Plasma renin activity, ↓ angiotensin II",
+     "↓ Plasma renin activity, ↓ angiotensin II",
+     "↑ Plasma renin activity, ↑ angiotensin II",
+     "↓ Plasma renin activity, ↑ angiotensin II"
+    ],
+    "a": 1,
+    "e": "Aliskiren blocks renin's catalytic site, so plasma renin activity and angiotensin II both fall even though renin concentration rises. ACE inhibitors raise PRA while lowering angiotensin II.",
+    "d": 2
    }
   ],
   "kub-embryology:s1": [
@@ -484,6 +616,18 @@
     ],
     "a": 2,
     "e": "The UPJ canalizes last; incomplete canalization is the most common pathologic cause of prenatal hydronephrosis."
+   },
+   {
+    "q": "A 16-year-old girl has primary amenorrhea with normal breast development and pubic hair. Pelvic imaging shows an absent uterus and upper vagina, normal ovaries, and absence of the right kidney. Her genital-duct and renal anomalies share origin from which embryonic region?",
+    "o": [
+     "Intermediate mesoderm",
+     "Paraxial mesoderm",
+     "Lateral plate mesoderm",
+     "Surface ectoderm"
+    ],
+    "a": 0,
+    "e": "The kidneys, gonads and genital ducts all derive from intermediate mesoderm, so Müllerian agenesis (MRKH) often coexists with renal anomalies. Paraxial mesoderm forms somites (vertebrae, skeletal muscle).",
+    "d": 3
    }
   ],
   "kub-embryology:s2": [
@@ -508,6 +652,18 @@
     ],
     "a": 2,
     "e": "It later gives off the ureteric bud near its cloacal end."
+   },
+   {
+    "q": "A 29-year-old man is evaluated for infertility. Examination shows an absent left vas deferens; ultrasound shows an absent left kidney. Sweat chloride and CFTR testing are normal. Both anomalies most likely reflect abnormal development of which structure?",
+    "o": [
+     "Paramesonephric (Müllerian) duct",
+     "Mesonephric (Wolffian) duct",
+     "Urogenital sinus",
+     "Genital tubercle"
+    ],
+    "a": 1,
+    "e": "The mesonephric duct forms the vas deferens and also gives rise to the ureteric bud, so an early defect causes ipsilateral absence of the vas deferens and renal agenesis. The paramesonephric duct regresses in males.",
+    "d": 3
    }
   ],
   "kub-embryology:s3": [
@@ -587,6 +743,18 @@
     ],
     "a": 0,
     "e": "Reciprocal induction between ureteric bud and metanephric mesenchyme."
+   },
+   {
+    "q": "A 20-week prenatal ultrasound shows anhydramnios, no visible kidneys in either renal fossa, and a bladder that never fills. Which developmental event most likely failed?",
+    "o": [
+     "Septation of the cloaca by the urorectal septum",
+     "Fusion of the metanephric blastemas at the lower poles",
+     "Outgrowth of the ureteric bud from the mesonephric duct",
+     "Canalization of the ureter at the pelvic junction"
+    ],
+    "a": 2,
+    "e": "Bilateral renal agenesis results from failure of the ureteric buds to form, so the metanephric blastema is never induced and no fetal urine is made (Potter sequence). UPJ canalization failure causes hydronephrosis, not absent kidneys.",
+    "d": 3
    }
   ],
   "kub-embryology:s4": [
@@ -677,6 +845,18 @@
     ],
     "a": 2,
     "e": "Weigert–Meyer rule: the upper-pole ureter inserts ectopically and inferomedially and obstructs (ureterocele); the lower pole refluxes."
+   },
+   {
+    "q": "A 5-year-old girl voids normally but is constantly damp with urine throughout the day. Imaging shows a complete duplex collecting system on the left. Which finding best explains her symptoms?",
+    "o": [
+     "Upper-pole ureter opening below the sphincter",
+     "Lower-pole ureter opening below the sphincter",
+     "Upper-pole ureter refluxing at the trigone",
+     "Lower-pole ureter refluxing at the trigone"
+    ],
+    "a": 0,
+    "e": "By the Weigert–Meyer rule, the upper-pole ureter inserts inferomedially and may be ectopic distal to the external sphincter in girls, causing continuous dribbling with normal voids. The lower-pole ureter typically refluxes.",
+    "d": 3
    }
   ],
   "kub-embryology:s5": [
@@ -712,6 +892,18 @@
     ],
     "a": 0,
     "e": "Urachal fistula (urine leaking from the umbilicus), cyst or sinus."
+   },
+   {
+    "q": "A 54-year-old man has painless hematuria. Cystoscopy shows a mass at the bladder dome, and biopsy shows mucin-secreting adenocarcinoma. This tumor most likely arose from a remnant of which embryonic structure?",
+    "o": [
+     "Mesonephric duct",
+     "Urogenital sinus",
+     "Cloacal membrane",
+     "Urachus (allantois)"
+    ],
+    "a": 3,
+    "e": "Urachal remnants lie at the bladder dome and can give rise to adenocarcinoma. The urogenital sinus forms most of the bladder, which normally gives rise to urothelial carcinoma.",
+    "d": 2
    }
   ],
   "kub-embryology:s6": [
@@ -758,6 +950,18 @@
     ],
     "a": 2,
     "e": "Abnormal ureter course predisposes to obstruction, infection and stones; also Wilms tumor risk."
+   },
+   {
+    "q": "A 14-year-old girl with short stature, a webbed neck and primary amenorrhea has abdominal ultrasound showing kidneys fused across the midline at their lower poles, lying lower than normal. The kidneys failed to ascend because they were trapped by which structure?",
+    "o": [
+     "Superior mesenteric artery",
+     "Inferior mesenteric artery",
+     "Celiac trunk",
+     "Common iliac artery"
+    ],
+    "a": 1,
+    "e": "A horseshoe kidney (associated with Turner syndrome) ascends until the fused isthmus catches beneath the inferior mesenteric artery. The SMA arises higher and is the structure compressing the left renal vein in nutcracker syndrome.",
+    "d": 2
    }
   ],
   "kub-embryology:s7": [
@@ -782,6 +986,18 @@
     ],
     "a": 3,
     "e": "No new nephrons form after ~34–36 weeks; kidneys grow by enlarging."
+   },
+   {
+    "q": "A man born at 26 weeks' gestation develops hypertension and early chronic kidney disease in his twenties, earlier than his term-born siblings. Which developmental factor most likely contributed?",
+    "o": [
+     "Persistent mesonephric glomeruli",
+     "Absent fetal urine production",
+     "Unbranched ureteric bud tree",
+     "Low nephron endowment at birth"
+    ],
+    "a": 3,
+    "e": "Nephrogenesis continues until about weeks 34–36, so very preterm birth leaves fewer nephrons, predisposing to hyperfiltration, hypertension and CKD. Fetal urine production begins around week 10–12, well before this birth.",
+    "d": 3
    }
   ],
   "kub-embryology:s8": [
@@ -828,6 +1044,18 @@
     ],
     "a": 1,
     "e": "Membranous folds in the posterior (prostatic) urethra obstruct outflow."
+   },
+   {
+    "q": "A newborn boy has a distended bladder, a weak urinary stream and bilateral hydronephrosis. Voiding cystourethrography shows a dilated posterior urethra with an abrupt narrowing. Pregnancy was complicated by severe oligohydramnios. In severe cases, the main cause of neonatal death is:",
+    "o": [
+     "Urosepsis",
+     "Pulmonary hypoplasia",
+     "Hyperkalemic arrhythmia",
+     "Bladder rupture"
+    ],
+    "a": 1,
+    "e": "Posterior urethral valves reduce fetal urine output and cause oligohydramnios, which impairs lung development; pulmonary hypoplasia is the main cause of early death. Infection and renal failure are later problems.",
+    "d": 3
    }
   ],
   "kub-anatomy:wall": [
@@ -874,6 +1102,18 @@
     ],
     "a": 1,
     "e": "Direct branches from lumbar anterior rami."
+   },
+   {
+    "q": "A 34-year-old man who injects drugs has fever and lower back pain and walks with his right hip held flexed. CT shows a fluid collection within the right psoas major. Which maneuver most likely worsens his pain?",
+    "o": [
+     "Passive internal rotation of the flexed hip",
+     "Resisted extension of the knee",
+     "Passive abduction of the hip",
+     "Passive extension of the hip"
+    ],
+    "a": 3,
+    "e": "A psoas abscess makes stretching the inflamed muscle painful, so passive hip extension provokes pain (psoas sign). Pain on internal rotation of the flexed hip is the obturator sign.",
+    "d": 2
    }
   ],
   "kub-anatomy:loc": [
@@ -920,6 +1160,18 @@
     ],
     "a": 1,
     "e": "Transpyloric plane (L1)."
+   },
+   {
+    "q": "A 47-year-old woman has a percutaneous nephrolithotomy through an upper-pole access above the 12th rib. Afterwards she is short of breath, with absent breath sounds at the right base. Which structure was most likely injured?",
+    "o": [
+     "Costodiaphragmatic recess of pleura",
+     "Right lobe of the liver",
+     "Hepatic flexure of the colon",
+     "Second part of the duodenum"
+    ],
+    "a": 0,
+    "e": "The upper pole lies at T12, behind the diaphragm and the costodiaphragmatic recess of pleura, so supracostal access risks pneumothorax or hydrothorax. The colon and duodenum lie anterior to the kidney, not on a posterior track.",
+    "d": 2
    }
   ],
   "kub-anatomy:rel": [
@@ -966,6 +1218,18 @@
     ],
     "a": 1,
     "e": "The second part of the duodenum lies anterior to the right kidney."
+   },
+   {
+    "q": "After an open right nephrectomy through a flank incision, a 59-year-old man has numbness over the suprapubic skin and the upper lateral buttock. Which nerve, lying posterior to the kidney on quadratus lumborum, was most likely injured?",
+    "o": [
+     "Genitofemoral nerve",
+     "Obturator nerve",
+     "Iliohypogastric nerve",
+     "Lateral femoral cutaneous nerve"
+    ],
+    "a": 2,
+    "e": "The iliohypogastric nerve (L1) runs behind the kidney on quadratus lumborum and supplies the suprapubic skin and the lateral gluteal region. The genitofemoral nerve lies on the anterior surface of psoas and supplies the scrotum/labia and the upper anterior thigh.",
+    "d": 2
    }
   ],
   "kub-anatomy:fascia": [
@@ -1012,6 +1276,18 @@
     ],
     "a": 3,
     "e": "Infection or fluid may track inferiorly into the pelvis."
+   },
+   {
+    "q": "A 62-year-old man with diabetes has a perinephric abscess. CT shows the collection tracking downward along the psoas toward the pelvis, but it has not crossed to the opposite side. Why can the infection spread inferiorly?",
+    "o": [
+     "Renal fascia layers are unfused inferiorly",
+     "Renal fascia is open across the midline",
+     "Perirenal fat opens into the peritoneum",
+     "Renal capsule is absent at the lower pole"
+    ],
+    "a": 0,
+    "e": "The anterior and posterior layers of renal fascia are fused above and laterally but open inferiorly around the ureter, so perirenal fluid can track down into the pelvis. Medially, the fascia attaches around the great vessels and limits spread across the midline.",
+    "d": 2
    }
   ],
   "kub-anatomy:struct": [
@@ -1091,6 +1367,18 @@
     ],
     "a": 3,
     "e": "The straight segment of the PT and the thick ascending limb in the outer medulla have high metabolic demand and low O₂ supply, so ischemia hits them first (ATN)."
+   },
+   {
+    "q": "A surgeon performing a left nephrectomy approaches the renal hilum from the front. Which hilar structure is encountered first?",
+    "o": [
+     "Renal artery",
+     "Renal pelvis",
+     "Ureter",
+     "Renal vein"
+    ],
+    "a": 3,
+    "e": "At the hilum the order from anterior to posterior is vein, artery, then pelvis (VAP), so the renal vein lies most anterior. The pelvis is the most posterior.",
+    "d": 2
    }
   ],
   "kub-anatomy:vessels": [
@@ -1126,6 +1414,18 @@
     ],
     "a": 1,
     "e": "There are no effective anastomoses between segments."
+   },
+   {
+    "q": "A 19-year-old man has recurrent episodes of left flank pain after drinking large volumes of beer. CT angiography shows a dilated renal pelvis with a normal-caliber ureter and a vessel crossing anterior to the ureteropelvic junction. The vessel is most likely:",
+    "o": [
+     "Left testicular (gonadal) vein",
+     "Inferior mesenteric artery",
+     "Accessory lower-pole renal artery",
+     "Left common iliac artery"
+    ],
+    "a": 2,
+    "e": "Accessory (polar) renal arteries are end arteries that enter the lower pole directly and can compress the UPJ, causing intermittent obstruction with diuresis. The gonadal vein crosses the ureter lower down and does not cause UPJ obstruction.",
+    "d": 2
    }
   ],
   "kub-anatomy:lnn": [
@@ -1150,6 +1450,18 @@
     ],
     "a": 2,
     "e": "Sympathetic afferents with the renal plexus enter T10–L1."
+   },
+   {
+    "q": "A 63-year-old man has a 7-cm renal cell carcinoma of the right kidney. During staging, which lymph nodes are expected to be involved first?",
+    "o": [
+     "Lateral aortic (para-aortic) nodes",
+     "Internal iliac (pelvic) nodes",
+     "Superficial inguinal nodes",
+     "Celiac (preaortic) nodes"
+    ],
+    "a": 0,
+    "e": "Renal lymphatics follow the renal vessels to the lateral aortic (lumbar) nodes. Internal iliac nodes drain pelvic organs such as the bladder base.",
+    "d": 2
    }
   ],
   "kub-anatomy:ureter": [
@@ -1251,6 +1563,18 @@
     ],
     "a": 2,
     "e": "The ureter lies ~2 cm lateral to the cervix, just beneath the uterine artery, so it can be clamped or ligated with it."
+   },
+   {
+    "q": "A 35-year-old man has sudden colicky right flank pain radiating to the groin and microscopic hematuria. Non-contrast CT shows a 5-mm stone. At which site is it most likely to lodge?",
+    "o": [
+     "Ureteropelvic junction",
+     "Pelvic brim at iliac vessels",
+     "Ureterovesical junction",
+     "Crossing of gonadal vessels"
+    ],
+    "a": 2,
+    "e": "The ureterovesical junction, where the ureter passes obliquely through the bladder wall, is the narrowest point and the most common site of stone impaction. The gonadal vessel crossing is not one of the physiologic narrowings.",
+    "d": 2
    }
   ],
   "kub-anatomy:adrenal": [
@@ -1286,6 +1610,18 @@
     ],
     "a": 0,
     "e": "The medulla acts like a modified sympathetic ganglion."
+   },
+   {
+    "q": "A 46-year-old woman with resistant hypertension and K⁺ 2.9 mEq/L has suppressed renin and high aldosterone. She undergoes adrenal vein sampling via the femoral vein. To reach the left adrenal vein, the catheter must pass through which vessel?",
+    "o": [
+     "Splenic vein",
+     "Left renal vein",
+     "Left inferior phrenic artery",
+     "Left gonadal vein"
+    ],
+    "a": 1,
+    "e": "The left suprarenal vein drains into the left renal vein, whereas the right drains directly into the IVC (short, and harder to cannulate). The left gonadal vein also enters the left renal vein but does not receive adrenal blood.",
+    "d": 3
    }
   ],
   "kub-anatomy:aorta": [
@@ -1321,6 +1657,18 @@
     ],
     "a": 2,
     "e": "It lies anterior to L1–L2, posterior and to the right of the aorta. It receives the intestinal and lumbar trunks and begins the thoracic duct."
+   },
+   {
+    "q": "A 71-year-old male smoker has a pulsatile periumbilical mass. CT shows an infrarenal abdominal aortic aneurysm extending down to the aortic bifurcation. At which vertebral level does the aorta normally bifurcate?",
+    "o": [
+     "T12",
+     "L1",
+     "S1",
+     "L4"
+    ],
+    "a": 3,
+    "e": "The abdominal aorta bifurcates into the common iliac arteries at about L4, roughly at the level of the umbilicus. The renal arteries arise at about L1–L2.",
+    "d": 2
    }
   ],
   "kub-anatomy:plexus": [
@@ -1356,6 +1704,18 @@
     ],
     "a": 3,
     "e": "It runs under the inguinal ligament near the ASIS; compression causes meralgia paresthetica."
+   },
+   {
+    "q": "A 68-year-old man on warfarin develops a large retroperitoneal hematoma in the iliopsoas. He has weak knee extension, an absent patellar reflex and numbness of the anterior thigh. Which nerve is compressed?",
+    "o": [
+     "Femoral nerve",
+     "Obturator nerve",
+     "Sciatic nerve",
+     "Lateral femoral cutaneous nerve"
+    ],
+    "a": 0,
+    "e": "The femoral nerve (L2–L4) emerges from the lateral border of psoas and runs in the groove between psoas and iliacus, where a hematoma compresses it, causing quadriceps weakness and loss of the knee jerk. The obturator nerve supplies the hip adductors.",
+    "d": 2
    }
   ],
   "kub-anatomy:bladder": [
@@ -1391,6 +1751,18 @@
     ],
     "a": 3,
     "e": "Superior and inferolateral surfaces → external iliac; neck → sacral nodes."
+   },
+   {
+    "q": "A 24-year-old man with a full bladder after drinking alcohol is kicked in the lower abdomen. Cystography shows contrast outlining loops of bowel and the paracolic gutters. Which part of the bladder is most likely ruptured?",
+    "o": [
+     "Neck, near the internal sphincter",
+     "Trigone, between ureteric orifices",
+     "Dome, covered by peritoneum",
+     "Anterior wall, in retropubic space"
+    ],
+    "a": 2,
+    "e": "A blow to a distended bladder ruptures its weakest, peritoneum-covered dome, causing intraperitoneal extravasation. Anterior or neck injuries (often with pelvic fracture) are extraperitoneal.",
+    "d": 2
    }
   ],
   "kub-anatomy:urethra": [
@@ -1426,6 +1798,18 @@
     ],
     "a": 3,
     "e": "The internal (smooth) sphincter is at the preprostatic part."
+   },
+   {
+    "q": "A 22-year-old man falls astride a beam. He has blood at the urethral meatus and swelling of the scrotum and penis that extends onto the lower anterior abdominal wall but not into the thighs. Which part of the urethra is injured?",
+    "o": [
+     "Membranous urethra",
+     "Prostatic urethra",
+     "Spongy (bulbar) urethra",
+     "Preprostatic urethra"
+    ],
+    "a": 2,
+    "e": "A straddle injury ruptures the bulbar spongy urethra; urine spreads in the superficial perineal space under Colles fascia, which is continuous with Scarpa fascia but attached to the fascia lata, sparing the thighs. Membranous injuries follow pelvic fractures.",
+    "d": 2
    }
   ],
   "kub-anatomy:clinic": [
@@ -1450,6 +1834,18 @@
     ],
     "a": 0,
     "e": "'Water under the bridge': the classic site of iatrogenic ureter injury."
+   },
+   {
+    "q": "A 63-year-old man has a new left-sided varicocele that does not decompress when he lies supine. He also reports intermittent hematuria and has a palpable left flank mass. What is the most likely cause of the varicocele?",
+    "o": [
+     "Tumor thrombus in the left renal vein",
+     "Idiopathic gonadal vein incompetence",
+     "IVC compression by a hepatic mass",
+     "Left testicular torsion with congestion"
+    ],
+    "a": 0,
+    "e": "The left gonadal vein drains into the left renal vein, so renal cell carcinoma extending into that vein obstructs gonadal outflow. An idiopathic varicocele decompresses when supine.",
+    "d": 2
    }
   ],
   "kub-histology:lowpower": [
@@ -1496,6 +1892,18 @@
     ],
     "a": 3,
     "e": "Openings of the papillary ducts (ducts of Bellini) give the papilla tip a perforated appearance: the area cribrosa."
+   },
+   {
+    "q": "A needle biopsy is taken from a 42-year-old woman with nephrotic-range proteinuria. The pathologist reports that the core contains only collecting ducts, thin limbs of Henle and vasa recta, with no renal corpuscles. Which region was sampled?",
+    "o": [
+     "Cortical labyrinth",
+     "Inner medulla",
+     "Renal column",
+     "Subcapsular cortex"
+    ],
+    "a": 1,
+    "e": "The inner medulla contains only thin limbs, collecting ducts and vasa recta. Renal corpuscles lie in the cortical labyrinth and the renal columns, so the biopsy is inadequate to assess glomerular disease.",
+    "d": 2
    }
   ],
   "kub-histology:nephron": [
@@ -1520,6 +1928,18 @@
     ],
     "a": 2,
     "e": "Thin limbs are squamous; TAL and DCT are cuboidal."
+   },
+   {
+    "q": "A 67-year-old man develops AKI after prolonged hypotension during surgery. Biopsy shows necrosis and sloughing of cuboidal cells with brush borders, concentrated in the outer medulla. Which segment is most affected?",
+    "o": [
+     "Thin descending limb",
+     "Inner medullary collecting duct",
+     "Distal convoluted tubule",
+     "Straight part of proximal tubule"
+    ],
+    "a": 3,
+    "e": "Ischemic ATN preferentially injures the straight part of the proximal tubule (brush border) and the thick ascending limb in the hypoxic outer medulla. Thin limbs are simple squamous and lack a brush border.",
+    "d": 2
    }
   ],
   "kub-histology:vessels": [
@@ -1566,6 +1986,18 @@
     ],
     "a": 0,
     "e": "Hypoxic, hypertonic medulla promotes sickling in the vasa recta → papillary necrosis."
+   },
+   {
+    "q": "A renal biopsy from a 61-year-old man with long-standing hypertension shows many globally sclerosed glomeruli. The tubules downstream of these glomeruli are atrophic. Which anatomic fact best explains the tubular atrophy?",
+    "o": [
+     "Peritubular capillaries arise from efferent arterioles",
+     "Cortical tubules are fed by interlobular arteries",
+     "Vasa recta are the only supply of cortical tubules",
+     "Tubular cells draw their oxygen from filtrate"
+    ],
+    "a": 0,
+    "e": "Blood reaches the cortical peritubular capillaries only after passing through the glomerulus via the efferent arteriole, so glomerular obliteration starves its downstream tubules. The vasa recta supply the medulla, not cortical tubules.",
+    "d": 3
    }
   ],
   "kub-histology:corpuscle": [
@@ -1601,6 +2033,18 @@
     ],
     "a": 2,
     "e": "Vascular pole = arterioles; urinary (tubular) pole = capsular space opens into the PCT."
+   },
+   {
+    "q": "A 23-year-old man has hemoptysis and hematuria, and his creatinine rises over 3 weeks. Renal biopsy shows crescents in most glomeruli with linear IgG along the GBM. The crescents are formed mainly by proliferation of which cells?",
+    "o": [
+     "Podocytes (visceral epithelial cells)",
+     "Parietal epithelial cells of Bowman capsule",
+     "Intraglomerular mesangial cells",
+     "Fenestrated endothelial cells"
+    ],
+    "a": 1,
+    "e": "Crescents in rapidly progressive GN (here Goodpasture) form from proliferating parietal epithelial cells plus infiltrating monocytes/macrophages and fibrin in Bowman space. Mesangial proliferation is typical of IgA nephropathy.",
+    "d": 3
    }
   ],
   "kub-histology:barrier": [
@@ -1647,6 +2091,18 @@
     ],
     "a": 2,
     "e": "Filtration fraction ≈ 20%; GFR ≈ 125 mL/min (180 L/day)."
+   },
+   {
+    "q": "A newborn of Finnish descent has massive proteinuria and generalized edema; the placenta was unusually large. The defect most likely involves which component of the filtration barrier?",
+    "o": [
+     "Type IV collagen of the GBM",
+     "Heparan sulfate of the laminae rarae",
+     "Endothelial fenestrae",
+     "Podocyte slit diaphragm"
+    ],
+    "a": 3,
+    "e": "Congenital nephrotic syndrome of the Finnish type is caused by NPHS1 mutations in nephrin, the main protein of the slit diaphragm. Type IV collagen defects cause Alport syndrome, with hematuria rather than massive neonatal proteinuria.",
+    "d": 3
    }
   ],
   "kub-histology:mesangium": [
@@ -1682,6 +2138,18 @@
     ],
     "a": 0,
     "e": "They support capillaries on surfaces not covered by podocytes, sharing a basement membrane with the endothelium."
+   },
+   {
+    "q": "A 20-year-old man has painless gross hematuria 2 days after an upper respiratory infection. Biopsy immunofluorescence shows granular deposits of IgA. Where are the deposits mainly located?",
+    "o": [
+     "Subepithelial space",
+     "Mesangium",
+     "Subendothelial space",
+     "Tubular basement membrane"
+    ],
+    "a": 1,
+    "e": "IgA nephropathy is defined by mesangial IgA deposits with mesangial cell proliferation. Subepithelial humps are typical of post-streptococcal GN, which follows infection by 2–3 weeks.",
+    "d": 3
    }
   ],
   "kub-histology:pctdct": [
@@ -1728,6 +2196,18 @@
     ],
     "a": 3,
     "e": "The PCT is the longest segment, so it is cut more often around corpuscles."
+   },
+   {
+    "q": "A renal biopsy from a 55-year-old with ischemic AKI shows many cortical tubules with flattened cells that have lost their PAS-positive apical border. A few intact tubules with smaller, paler cells and wide, clear lumens lie next to the vascular pole, where their wall forms the macula densa. The intact tubules are:",
+    "o": [
+     "Distal convoluted tubules",
+     "Proximal convoluted tubules",
+     "Thin descending limbs",
+     "Papillary ducts"
+    ],
+    "a": 0,
+    "e": "DCT cells are smaller and paler, lack a brush border and contact the vascular pole at the macula densa. The injured tubules with PAS-positive brush borders are proximal convoluted tubules.",
+    "d": 2
    }
   ],
   "kub-histology:pctem": [
@@ -1774,6 +2254,18 @@
     ],
     "a": 1,
     "e": "Mitochondria within basal infoldings."
+   },
+   {
+    "q": "A 72-year-old woman receives gentamicin for 10 days. Her creatinine rises, and urinalysis shows muddy brown granular casts. The drug accumulates in proximal tubule cells mainly by which mechanism?",
+    "o": [
+     "Na⁺-coupled secondary active cotransport",
+     "Paracellular diffusion via tight junctions",
+     "Facilitated diffusion through GLUT2",
+     "Megalin-mediated apical endocytosis"
+    ],
+    "a": 3,
+    "e": "Filtered aminoglycosides bind megalin on the PCT brush border and are taken up by endocytosis, accumulating in lysosomes and causing ATN. Paracellular movement does not concentrate drug inside cells.",
+    "d": 3
    }
   ],
   "kub-histology:medulla": [
@@ -1809,6 +2301,18 @@
     ],
     "a": 1,
     "e": "Thin descending limb lets water leave into the hyperosmotic interstitium; the ascending limbs are water-tight."
+   },
+   {
+    "q": "A 66-year-old man with bone pain, anemia and hypercalcemia develops AKI. Biopsy shows large, fractured, eosinophilic casts in distal tubules surrounded by giant cells. The casts form when light chains bind a protein secreted by which segment?",
+    "o": [
+     "Proximal convoluted tubule",
+     "Thick ascending limb",
+     "Medullary collecting duct",
+     "Thin descending limb"
+    ],
+    "a": 1,
+    "e": "Myeloma cast nephropathy results from light chains binding Tamm–Horsfall protein (uromodulin), which is secreted by the thick ascending limb. The PCT reabsorbs light chains but does not make the cast matrix.",
+    "d": 3
    }
   ],
   "kub-histology:jga": [
@@ -1844,6 +2348,18 @@
     ],
     "a": 3,
     "e": "Macula densa = chemoreceptor for luminal NaCl (tubuloglomerular feedback); JG cells act as baroreceptors."
+   },
+   {
+    "q": "A 15-year-old boy has severe hypertension (190/115 mmHg), K⁺ 2.8 mEq/L, very high plasma renin activity and normal renal arteries on angiography. CT shows a 2-cm well-circumscribed renal cortical tumor. The tumor most likely arises from which cells?",
+    "o": [
+     "Macula densa epithelial cells",
+     "Modified afferent arteriolar smooth muscle",
+     "Extraglomerular mesangial (lacis) cells",
+     "Principal cells of the collecting duct"
+    ],
+    "a": 1,
+    "e": "A juxtaglomerular cell tumor (reninoma) arises from the renin-secreting granular cells, which are modified smooth muscle cells of the afferent arteriole. Macula densa cells sense NaCl but do not secrete renin.",
+    "d": 3
    }
   ],
   "kub-histology:cd": [
@@ -1879,6 +2395,18 @@
     ],
     "a": 1,
     "e": "α-intercalated cells secrete H⁺; β-intercalated cells secrete HCO₃⁻. Both are darker and mitochondria-rich."
+   },
+   {
+    "q": "A 47-year-old woman on long-term lithium has a urine output of 6 L/day. Urine osmolality stays at 120 mOsm/kg after desmopressin. Lithium enters and damages which cells through ENaC?",
+    "o": [
+     "Type A intercalated cells",
+     "Type B intercalated cells",
+     "Principal cells",
+     "Macula densa cells"
+    ],
+    "a": 2,
+    "e": "Lithium enters collecting duct principal cells via ENaC and reduces aquaporin-2 expression, causing nephrogenic DI; amiloride limits this entry. Intercalated cells handle acid–base, not ADH-regulated water transport.",
+    "d": 3
    }
   ],
   "kub-histology:slideid": [
@@ -1903,6 +2431,18 @@
     ],
     "a": 1,
     "e": "Thin limbs look similar but lack RBCs."
+   },
+   {
+    "q": "A resected renal papilla from a 58-year-old with chronic analgesic use shows papillary necrosis. At the tip, intact areas show large ducts lined by tall columnar cells with pale cytoplasm opening onto the surface. These ducts are:",
+    "o": [
+     "Papillary ducts (of Bellini)",
+     "Thin descending limbs",
+     "Thick ascending limbs of Henle",
+     "Vasa recta capillaries"
+    ],
+    "a": 0,
+    "e": "Papillary ducts are the terminal collecting ducts, lined by tall pale columnar cells, opening at the area cribrosa. Thin limbs are lined by simple squamous cells and are small.",
+    "d": 2
    }
   ],
   "kub-histology:urothelium": [
@@ -1938,6 +2478,18 @@
     ],
     "a": 3,
     "e": "Umbrella cells of the bladder urothelium carry uroplakin plaques."
+   },
+   {
+    "q": "Cystoscopy for microscopic hematuria in a 64-year-old man is normal. A biopsy taken while the bladder was distended shows urothelium only 2–3 cells thick, with flattened surface cells. What is the best interpretation?",
+    "o": [
+     "Squamous metaplasia from irritation",
+     "Denudation from carcinoma in situ",
+     "Atrophy from chronic catheterization",
+     "Normal urothelium flattened by stretch"
+    ],
+    "a": 3,
+    "e": "Urothelium thins to 2–3 layers with flattened umbrella cells when the bladder is distended; this is normal. Squamous metaplasia would show stratified squamous cells, often keratinized.",
+    "d": 2
    }
   ],
   "kub-histology:ureter": [
@@ -1984,6 +2536,18 @@
     ],
     "a": 0,
     "e": "Longitudinal mucosal folds form when the undistended ureter contracts."
+   },
+   {
+    "q": "A pathologist examines a ureter removed in a nephroureterectomy specimen. One cross-section shows a muscularis with inner longitudinal, middle circular and outer longitudinal layers. This section most likely comes from the:",
+    "o": [
+     "Lower third of the ureter",
+     "Upper third of the ureter",
+     "Renal pelvis",
+     "Ureteropelvic junction"
+    ],
+    "a": 0,
+    "e": "The ureter has two muscle layers (inner longitudinal, outer circular) in its upper two-thirds and gains an outer longitudinal layer in its lower third. The renal pelvis and UPJ have the two-layer pattern.",
+    "d": 2
    }
   ],
   "kub-histology:bladder": [
@@ -2008,6 +2572,18 @@
     ],
     "a": 2,
     "e": "Peritoneum covers the dome."
+   },
+   {
+    "q": "A transurethral resection specimen from a 69-year-old smoker shows high-grade urothelial carcinoma. To decide whether the tumor is muscle-invasive (stage T2), which layer must be present in the specimen?",
+    "o": [
+     "Lamina propria",
+     "Muscularis mucosae fascicles",
+     "Detrusor (muscularis propria)",
+     "Perivesical adipose tissue"
+    ],
+    "a": 2,
+    "e": "Muscle-invasive bladder cancer means invasion of the detrusor (muscularis propria), so it must be sampled for staging. Invasion of the thin, discontinuous muscularis mucosae is still non-muscle-invasive (T1).",
+    "d": 2
    }
   ],
   "kub-histology:urethra": [
@@ -2032,6 +2608,18 @@
     ],
     "a": 1,
     "e": "Lined by stratified/pseudostratified columnar epithelium."
+   },
+   {
+    "q": "A 26-year-old man has purulent urethral discharge from gonococcal urethritis. The organism adheres to the epithelium lining most of the spongy urethra. Which epithelium is this?",
+    "o": [
+     "Urothelium (transitional)",
+     "Keratinized stratified squamous",
+     "Simple cuboidal",
+     "Pseudostratified columnar"
+    ],
+    "a": 3,
+    "e": "Most of the spongy urethra is lined by pseudostratified (to stratified) columnar epithelium, becoming stratified squamous at the navicular fossa. Urothelium lines the prostatic urethra.",
+    "d": 2
    }
   ],
   "kub-histology:clinical": [
@@ -2056,6 +2644,18 @@
     ],
     "a": 3,
     "e": "Ascending infection reaches the papilla first."
+   },
+   {
+    "q": "A 4-year-old boy has periorbital and leg edema, with proteinuria of 4 g/day and a normal creatinine. Light microscopy of a renal biopsy is unremarkable. Which electron microscopy finding is expected?",
+    "o": [
+     "Subepithelial electron-dense humps",
+     "Diffuse podocyte foot process effacement",
+     "Split, basket-weave basement membrane",
+     "Mesangial electron-dense deposits"
+    ],
+    "a": 1,
+    "e": "Minimal change disease shows normal light microscopy with diffuse effacement of podocyte foot processes on EM. Subepithelial humps are seen in post-streptococcal GN.",
+    "d": 3
    }
   ],
   "renal-ch25:balance": [
@@ -2091,6 +2691,18 @@
     ],
     "a": 0,
     "e": "Sweat can reach ~5000 mL/day (Table 25-1)."
+   },
+   {
+    "q": "A 30-year-old man with 40% second- and third-degree burns needs much more IV fluid than expected, even though he has no fever and normal urine output. What is the main mechanism of his increased water loss?",
+    "o": [
+     "Increased sweat gland activity",
+     "Increased respiratory water loss",
+     "Loss of the cornified skin layer",
+     "Increased renal free water excretion"
+    ],
+    "a": 2,
+    "e": "The cornified layer normally limits insensible evaporation from the skin; when burns destroy it, evaporative loss can rise to several liters per day. Sweat glands are destroyed, not stimulated, in deep burns.",
+    "d": 2
    }
   ],
   "renal-ch25:compartments": [
@@ -2137,6 +2749,18 @@
     ],
     "a": 0,
     "e": "ICF cannot be measured directly (Table 25-3)."
+   },
+   {
+    "q": "An 82-year-old woman becomes dehydrated more quickly than her 25-year-old grandson during a heat wave. Compared with him, her total body water as a percentage of body weight is lower mainly because of her:",
+    "o": [
+     "Higher proportion of adipose tissue",
+     "Larger plasma protein concentration",
+     "Higher intracellular K⁺ content",
+     "Greater bone mineral density"
+    ],
+    "a": 0,
+    "e": "Fat contains little water, so women and older people (more fat, less muscle) have a lower TBW percentage (about 50% or less vs. 60%). Bone density in the elderly is usually lower, not higher.",
+    "d": 2
    }
   ],
   "renal-ch25:composition": [
@@ -2161,6 +2785,18 @@
     ],
     "a": 2,
     "e": "Negatively charged plasma proteins retain cations in plasma (Gibbs–Donnan effect)."
+   },
+   {
+    "q": "A 35-year-old man is pulled from earthquake rubble after his legs were trapped for 8 hours. Soon after the release, he develops peaked T waves and a wide QRS complex. Release of which ion from damaged cells explains these findings?",
+    "o": [
+     "Sodium",
+     "Chloride",
+     "Calcium",
+     "Potassium"
+    ],
+    "a": 3,
+    "e": "K⁺ is the major intracellular cation, and crush injury (rhabdomyolysis) releases it into the ECF, causing hyperkalemia. Na⁺ is mainly extracellular, and Ca²⁺ actually falls as it deposits in injured muscle.",
+    "d": 2
    }
   ],
   "renal-ch25:measure": [
@@ -2196,6 +2832,18 @@
     ],
     "a": 2,
     "e": "100/7.1 ≈ 14 L ≈ ECF."
+   },
+   {
+    "q": "In a 70-kg volunteer, 10 mg of Evans blue is injected IV. After mixing, the plasma concentration is 3.33 mg/L; the hematocrit is 45%. What is the total blood volume?",
+    "o": [
+     "About 3.0 L",
+     "About 5.5 L",
+     "About 6.7 L",
+     "About 1.4 L"
+    ],
+    "a": 1,
+    "e": "Plasma volume = 10 mg ÷ 3.33 mg/L = 3.0 L, and blood volume = plasma volume ÷ (1 − Hct) = 3.0 ÷ 0.55 ≈ 5.5 L. Answering 3.0 L stops at plasma volume.",
+    "d": 3
    }
   ],
   "renal-ch25:osmosis": [
@@ -2231,6 +2879,18 @@
     ],
     "a": 3,
     "e": "About 308 mOsm/L, effectively isotonic."
+   },
+   {
+    "q": "A 66-year-old man with uncontrolled diabetes has plasma glucose 900 mg/dL, Na⁺ 132 mEq/L and confusion. What happens to the volume of his brain cells?",
+    "o": [
+     "Swell, because plasma Na⁺ is low",
+     "Shrink, as glucose is an effective osmole",
+     "No change, as glucose is an ineffective osmole",
+     "Swell, because glucose enters the cells"
+    ],
+    "a": 1,
+    "e": "Without insulin, glucose stays extracellular and acts as an effective osmole, drawing water out of cells (high effective osmolality despite low measured Na⁺). Urea, not glucose, is the classic ineffective osmole.",
+    "d": 3
    }
   ],
   "renal-ch25:shifts": [
@@ -2288,6 +2948,18 @@
     ],
     "a": 1,
     "e": "Tonicity depends on impermeant solutes; urea equilibrates across membranes, so cells eventually swell."
+   },
+   {
+    "q": "A 28-year-old hiker is lost in the desert without water for 2 days, losing mainly pure water. Compared with normal, which change in body fluids is expected?",
+    "o": [
+     "↓ ECF, ↑ ICF, ↓ osmolarity",
+     "↓ ECF, ↓ ICF, ↑ osmolarity",
+     "↓ ECF, no ICF change, same osmolarity",
+     "↑ ECF, ↓ ICF, ↑ osmolarity"
+    ],
+    "a": 1,
+    "e": "Water loss raises ECF osmolarity, which draws water out of cells, so both compartments shrink and osmolarity rises. Isotonic losses (such as diarrhea) shrink only the ECF.",
+    "d": 2
    }
   ],
   "renal-ch25:natremia": [
@@ -2334,6 +3006,18 @@
     ],
     "a": 2,
     "e": "Loss of albumin lowers plasma oncotic pressure, increasing net filtration into tissues."
+   },
+   {
+    "q": "A 64-year-old smoker with small cell lung cancer is confused. He appears euvolemic. Na⁺ is 121 mEq/L, plasma osmolality 252 mOsm/kg, and urine osmolality 480 mOsm/kg. His confusion is best explained by:",
+    "o": [
+     "Water moving out of brain cells",
+     "Demyelination of pontine neurons",
+     "Water moving into brain cells",
+     "Hypercalcemia from PTHrP release"
+    ],
+    "a": 2,
+    "e": "SIADH causes hypo-osmotic overhydration, so water moves into brain cells and causes cerebral edema. Pontine demyelination results from overly rapid correction, not from the hyponatremia itself.",
+    "d": 3
    }
   ],
   "renal-ch25:edema": [
@@ -2369,6 +3053,18 @@
     ],
     "a": 3,
     "e": "Potential spaces collect effusions."
+   },
+   {
+    "q": "A 52-year-old woman develops gradually increasing, firm, non-pitting swelling of her right arm 1 year after mastectomy with axillary lymph node dissection. What is the main mechanism?",
+    "o": [
+     "↑ Capillary hydrostatic pressure",
+     "↓ Plasma colloid osmotic pressure",
+     "↑ Capillary permeability",
+     "Impaired lymphatic return of protein"
+    ],
+    "a": 3,
+    "e": "Removing axillary nodes blocks lymph drainage, so filtered protein accumulates in the interstitium and holds fluid (lymphedema). Low plasma oncotic pressure would cause generalized, pitting edema.",
+    "d": 2
    }
   ],
   "renal-ch26:overview": [
@@ -2404,6 +3100,18 @@
     ],
     "a": 2,
     "e": "Guyton lists renal gluconeogenesis as a kidney function."
+   },
+   {
+    "q": "A 58-year-old man with stage 4 CKD has fatigue and Hb 8.9 g/dL with normocytic red cells, a low reticulocyte count and normal iron studies. The deficient hormone is normally produced by which cells?",
+    "o": [
+     "Peritubular interstitial fibroblasts",
+     "Juxtaglomerular granular cells",
+     "Proximal tubule epithelial cells",
+     "Macula densa epithelial cells"
+    ],
+    "a": 0,
+    "e": "Erythropoietin is made by peritubular interstitial fibroblast-like cells in the cortex and outer medulla in response to hypoxia. JG cells secrete renin, and PCT cells make calcitriol.",
+    "d": 3
    }
   ],
   "renal-ch26:micturition": [
@@ -2439,6 +3147,18 @@
     ],
     "a": 1,
     "e": "e.g., crush injury of sacral roots, tabes dorsalis → overflow incontinence."
+   },
+   {
+    "q": "A 61-year-old man with long-standing diabetes has a large, painless bladder and dribbling incontinence. On cystometry, the bladder fills to 900 mL with little rise in pressure and no sensation of fullness. Which lesion best explains these findings?",
+    "o": [
+     "Damage to pudendal motor fibers",
+     "Damage to bladder afferent fibers",
+     "Lesion of the pontine micturition center",
+     "Damage to hypogastric sympathetic fibers"
+    ],
+    "a": 1,
+    "e": "Diabetic neuropathy destroys sensory (afferent) fibers from the bladder, abolishing the stretch-triggered micturition reflex and producing an atonic, overfilled bladder. A lesion above the sacral cord instead produces a reflex (spastic) bladder.",
+    "d": 3
    }
   ],
   "renal-ch26:urineform": [
@@ -2474,6 +3194,18 @@
     ],
     "a": 3,
     "e": "180 − 160.5 ≈ 19.5 L/day."
+   },
+   {
+    "q": "A patient with neurosyphilis receives high-dose IV penicillin together with probenecid so that serum penicillin levels stay higher for longer. Probenecid achieves this by inhibiting which renal process?",
+    "o": [
+     "Glomerular filtration of the drug",
+     "Tubular reabsorption of the drug",
+     "Proximal tubular secretion",
+     "Distal tubular reabsorption"
+    ],
+    "a": 2,
+    "e": "Penicillin is excreted largely by organic anion secretion in the PCT, and probenecid competes for this transporter, reducing excretion. Glomerular filtration is unaffected.",
+    "d": 2
    }
   ],
   "renal-ch26:gfr": [
@@ -2597,6 +3329,18 @@
     ],
     "a": 1,
     "e": "Back-pressure raises P(BS), opposing filtration and lowering GFR."
+   },
+   {
+    "q": "A 74-year-old woman taking lisinopril and furosemide for heart failure starts high-dose ibuprofen for knee pain. One week later her creatinine has risen from 1.1 to 2.3 mg/dL. Which combination of arteriolar changes best explains the fall in GFR?",
+    "o": [
+     "Afferent dilation and efferent constriction",
+     "Afferent constriction and efferent dilation",
+     "Afferent dilation and efferent dilation",
+     "Afferent constriction and efferent constriction"
+    ],
+    "a": 1,
+    "e": "NSAIDs remove prostaglandin dilation of the afferent arteriole, and ACE inhibitors remove angiotensin II constriction of the efferent arteriole; both lower glomerular pressure. Diuretic-induced volume depletion makes the kidney depend on both mechanisms.",
+    "d": 3
    }
   ],
   "renal-ch26:rbf": [
@@ -2643,6 +3387,18 @@
     ],
     "a": 0,
     "e": "Intense sympathetic stimulation constricts renal arterioles, lowering RBF and GFR."
+   },
+   {
+    "q": "A 23-year-old woman has 3 days of severe vomiting and is volume depleted. Her renal plasma flow falls more than her GFR, so her filtration fraction rises. What best explains the increased filtration fraction?",
+    "o": [
+     "Prostaglandin-mediated afferent dilation",
+     "Angiotensin II-mediated efferent constriction",
+     "Increased glomerular capillary permeability",
+     "Decreased Bowman space hydrostatic pressure"
+    ],
+    "a": 1,
+    "e": "Angiotensin II preferentially constricts the efferent arteriole, lowering RPF while maintaining glomerular pressure and GFR, so GFR/RPF rises. Afferent dilation would raise both RPF and GFR.",
+    "d": 3
    }
   ],
   "renal-ch26:autoreg": [
@@ -2689,6 +3445,18 @@
     ],
     "a": 2,
     "e": "More Na⁺ is reabsorbed with amino acids in the PCT, so less NaCl reaches the macula densa; TGF-mediated afferent dilation raises GFR."
+   },
+   {
+    "q": "A 56-year-old man with type 2 diabetes and albuminuria starts empagliflozin. His eGFR falls by about 4 mL/min/1.73 m² in the first weeks and then stabilizes, with slower progression over time. What is the mechanism of the initial fall?",
+    "o": [
+     "Reduced angiotensin II, dilating efferents",
+     "Volume depletion lowering cardiac output",
+     "Direct podocyte injury by the drug",
+     "↑ Macula densa NaCl, constricting afferents"
+    ],
+    "a": 3,
+    "e": "SGLT2 inhibition raises NaCl delivery to the macula densa, which restores tubuloglomerular feedback, constricts the afferent arteriole and reduces hyperfiltration. Efferent dilation is the mechanism of ACE inhibitors and ARBs.",
+    "d": 3
    }
   ],
   "renal-ch27:transport": [
@@ -2768,6 +3536,18 @@
     ],
     "a": 3,
     "e": "Pinocytosis at the brush border, then lysosomal digestion."
+   },
+   {
+    "q": "A healthy 21-year-old has 2+ glucose on a routine urine dipstick. Fasting glucose is 84 mg/dL and HbA1c 5.0%; there is no aminoaciduria, phosphaturia or acidosis. A mutation in which transporter is most likely?",
+    "o": [
+     "NKCC2 (Na⁺–K⁺–2Cl⁻ cotransporter)",
+     "SGLT2 (Na⁺–glucose cotransporter)",
+     "NCC (Na⁺–Cl⁻ cotransporter)",
+     "NHE3 (Na⁺–H⁺ exchanger)"
+    ],
+    "a": 1,
+    "e": "Isolated familial renal glucosuria results from SLC5A2 (SGLT2) mutations that lower the glucose Tm, so glucose appears in urine at normal plasma levels. Generalized PCT dysfunction would suggest Fanconi syndrome.",
+    "d": 2
    }
   ],
   "renal-ch27:pct": [
@@ -2803,6 +3583,18 @@
     ],
     "a": 3,
     "e": "Organic anion transporters on the basolateral membrane."
+   },
+   {
+    "q": "A 48-year-old man starts cimetidine. Two weeks later his serum creatinine has risen from 1.0 to 1.3 mg/dL, with unchanged urine output, a normal urinalysis and an unchanged cystatin C. What is the most likely mechanism?",
+    "o": [
+     "Reduced glomerular filtration rate",
+     "Inhibited tubular creatinine secretion",
+     "Drug-induced interstitial nephritis",
+     "Increased creatinine production"
+    ],
+    "a": 1,
+    "e": "Cimetidine (like trimethoprim) blocks proximal tubular secretion of creatinine, raising serum creatinine without changing true GFR (cystatin C unchanged). Interstitial nephritis would produce an abnormal urinalysis.",
+    "d": 3
    }
   ],
   "renal-ch27:loop": [
@@ -2849,6 +3641,18 @@
     ],
     "a": 1,
     "e": "NCC is the thiazide target."
+   },
+   {
+    "q": "A 70-year-old woman on long-term high-dose furosemide has muscle cramps and Mg²⁺ of 1.2 mg/dL. Her diet and bowel habits are normal. What is the main mechanism of her hypomagnesemia?",
+    "o": [
+     "Inhibition of TRPM6 in the distal tubule",
+     "Increased PTH-mediated Mg²⁺ excretion",
+     "Loss of lumen-positive potential in the TAL",
+     "Decreased Mg²⁺ absorption in the gut"
+    ],
+    "a": 2,
+    "e": "Most filtered Mg²⁺ is reabsorbed paracellularly in the TAL, driven by the lumen-positive potential that depends on NKCC2 and K⁺ recycling; loop diuretics abolish it. TRPM6 in the DCT handles only a small fraction.",
+    "d": 3
    }
   ],
   "renal-ch27:distal": [
@@ -2884,6 +3688,18 @@
     ],
     "a": 3,
     "e": "UT-A1/UT-A3."
+   },
+   {
+    "q": "A 39-year-old man with HIV is treated with high-dose trimethoprim-sulfamethoxazole for Pneumocystis pneumonia. On day 5, serum K⁺ is 6.1 mEq/L with normal aldosterone levels. Trimethoprim raises K⁺ by blocking which structure?",
+    "o": [
+     "NKCC2 in the thick ascending limb",
+     "ENaC in principal cells",
+     "H⁺-ATPase in α-intercalated cells",
+     "NCC in the distal convoluted tubule"
+    ],
+    "a": 1,
+    "e": "Trimethoprim acts like amiloride, blocking ENaC in principal cells; this reduces the lumen-negative potential that drives K⁺ secretion through ROMK. Blocking NKCC2 would cause hypokalemia.",
+    "d": 3
    }
   ],
   "renal-ch27:segments": [
@@ -2919,6 +3735,18 @@
     ],
     "a": 1,
     "e": "Aldosterone ↑ ENaC and Na⁺/K⁺-ATPase in principal cells, also ↑ K⁺ secretion. ADH inserts AQP2."
+   },
+   {
+    "q": "A 9-year-old boy has recurrent kidney stones, and his urine microscopy shows hexagonal crystals. Urine amino acid analysis shows excess cystine, ornithine, lysine and arginine. The defective transporter is located in which segment?",
+    "o": [
+     "Proximal convoluted tubule",
+     "Thick ascending limb",
+     "Distal convoluted tubule",
+     "Medullary collecting duct"
+    ],
+    "a": 0,
+    "e": "Cystinuria is a defect of the dibasic amino acid transporter in the PCT, where nearly all filtered amino acids are reabsorbed. The distal segments reabsorb almost no amino acids.",
+    "d": 3
    }
   ],
   "renal-ch27:regulation": [
@@ -2954,6 +3782,18 @@
     ],
     "a": 1,
     "e": "ANP/BNP: afferent dilation, efferent constriction and ↓ Na⁺ reabsorption → ↑ GFR and natriuresis; 'aldosterone escape' in primary hyperaldosteronism."
+   },
+   {
+    "q": "A 53-year-old woman with kidney stones has serum Ca²⁺ 11.8 mg/dL, phosphate 2.1 mg/dL and an elevated PTH. Which renal action of PTH best explains her low phosphate?",
+    "o": [
+     "Active phosphate secretion by the collecting duct",
+     "Inhibition of Na⁺–phosphate cotransport in the PCT",
+     "Increased phosphate filtration from a higher GFR",
+     "Stimulation of phosphate uptake into the bone matrix"
+    ],
+    "a": 1,
+    "e": "PTH reduces NaPi-IIa cotransporters in the PCT, causing phosphaturia and hypophosphatemia, while it increases Ca²⁺ reabsorption in the DCT. The collecting duct does not secrete phosphate.",
+    "d": 3
    }
   ],
   "renal-ch27:clearance": [
@@ -3044,6 +3884,18 @@
     ],
     "a": 1,
     "e": "Normally ~125/650 ≈ 0.2."
+   },
+   {
+    "q": "In a 40-year-old man, urine inulin is 25 mg/mL, plasma inulin 0.2 mg/mL, urine PAH 12.5 mg/mL, plasma PAH 0.02 mg/mL, and urine flow 1 mL/min. What is his filtration fraction?",
+    "o": [
+     "0.10",
+     "0.16",
+     "0.20",
+     "0.25"
+    ],
+    "a": 2,
+    "e": "GFR = (25 × 1) ÷ 0.2 = 125 mL/min and ERPF = (12.5 × 1) ÷ 0.02 = 625 mL/min, so FF = 125 ÷ 625 = 0.20. Mixing up the PAH values gives the wrong ratios.",
+    "d": 3
    }
   ],
   "renal-ch28:dilute": [
@@ -3068,6 +3920,18 @@
     ],
     "a": 0,
     "e": "Hypo-osmotic regardless of ADH."
+   },
+   {
+    "q": "A 34-year-old woman with schizophrenia drinks about 12 L of water a day. Her Na⁺ is 129 mEq/L and urine osmolality 55 mOsm/kg. Her ability to make such dilute urine depends mainly on NaCl reabsorption without water in which segment?",
+    "o": [
+     "Proximal convoluted tubule",
+     "Thick ascending limb",
+     "Thin descending limb",
+     "Medullary collecting duct"
+    ],
+    "a": 1,
+    "e": "The thick ascending limb (with the early distal tubule) reabsorbs NaCl while being impermeable to water, so it is the diluting segment; without ADH the collecting duct stays impermeable. The thin descending limb is permeable to water.",
+    "d": 3
    }
   ],
   "renal-ch28:concreq": [
@@ -3103,6 +3967,18 @@
     ],
     "a": 3,
     "e": "Its salt load (~1200 mOsm/L) exceeds what the kidney can concentrate; extra water must be excreted to remove the salt."
+   },
+   {
+    "q": "A 24-year-old man with sickle cell trait has nocturia. After overnight water deprivation, his urine osmolality reaches only 450 mOsm/kg, while ADH levels and the response to desmopressin are normal. Which requirement for concentrating urine has been lost?",
+    "o": [
+     "Adequate ADH secretion",
+     "Responsiveness of V2 receptors",
+     "Hyperosmotic medullary interstitium",
+     "Normal glomerular filtration rate"
+    ],
+    "a": 2,
+    "e": "Sickling in the hypoxic, hypertonic vasa recta damages them and dissipates the medullary osmotic gradient, so water cannot be drawn out even with normal ADH (hyposthenuria). Normal ADH levels and a normal desmopressin response rule out the ADH and V2 options.",
+    "d": 3
    }
   ],
   "renal-ch28:countercurrent": [
@@ -3149,6 +4025,18 @@
     ],
     "a": 1,
     "e": "Less urea is available for the medullary interstitium; urea supplies 40–50% of inner medullary osmolality."
+   },
+   {
+    "q": "A 70-year-old man on high-dose furosemide undergoes water deprivation for another reason. His urine osmolality stays near 300 mOsm/kg despite high plasma ADH. What best explains his inability to concentrate urine?",
+    "o": [
+     "Blocked TAL NaCl transport abolishes the medullary gradient",
+     "Blocked ADH release from the posterior pituitary gland",
+     "Blocked aquaporin-2 insertion in the collecting duct",
+     "Blocked urea transport in inner medullary ducts"
+    ],
+    "a": 0,
+    "e": "Loop diuretics stop NaCl transport in the TAL, which drives the countercurrent multiplier, so the medullary gradient collapses and urine becomes near-isosmotic. Plasma ADH is high, so release is not the problem.",
+    "d": 3
    }
   ],
   "renal-ch28:urea": [
@@ -3173,6 +4061,18 @@
     ],
     "a": 3,
     "e": "Traps urea in the inner medulla."
+   },
+   {
+    "q": "A 30-year-old man with primary polydipsia has been drinking about 10 L/day for months. During a supervised water deprivation test, urine osmolality reaches only 600 mOsm/kg despite high ADH. What best explains the impaired concentrating ability?",
+    "o": [
+     "Antibodies against vasopressin V2 receptors",
+     "Washout of medullary solute by high flow",
+     "Loss of nephrons from interstitial fibrosis",
+     "Downregulation of hypothalamic osmoreceptors"
+    ],
+    "a": 1,
+    "e": "Chronic high water flow increases medullary blood and tubular flow, washing out NaCl and urea from the interstitium and lowering maximal urine osmolality. ADH is high, so the hypothalamic and receptor options do not fit.",
+    "d": 3
    }
   ],
   "renal-ch28:concentrate": [
@@ -3197,6 +4097,18 @@
     ],
     "a": 1,
     "e": "Central DI responds to ADH analog."
+   },
+   {
+    "q": "A 26-year-old man has passed 8 L of urine per day since a head injury. Serum Na⁺ is 149 mEq/L. Urine osmolality is 90 mOsm/kg after water deprivation and rises to 480 mOsm/kg after desmopressin. What is the most likely diagnosis?",
+    "o": [
+     "Nephrogenic diabetes insipidus",
+     "Central diabetes insipidus",
+     "Primary polydipsia",
+     "Osmotic diuresis"
+    ],
+    "a": 1,
+    "e": "Failure to concentrate urine with water deprivation, followed by a large rise after desmopressin, indicates ADH deficiency (central DI), here after head trauma. Nephrogenic DI does not respond to desmopressin.",
+    "d": 2
    }
   ],
   "renal-ch28:adh": [
@@ -3254,6 +4166,18 @@
     ],
     "a": 1,
     "e": "600 ÷ 1200 = 0.5 L/day."
+   },
+   {
+    "q": "A 25-year-old woman loses about 25% of her blood volume in a car crash. Her plasma osmolality is normal, yet her plasma ADH is markedly elevated. This ADH release is mediated mainly by:",
+    "o": [
+     "Osmoreceptors in the anterior hypothalamus",
+     "Baroreceptor input from low blood volume",
+     "Angiotensin II inhibition of the hypothalamus",
+     "Atrial stretch receptors sensing distension"
+    ],
+    "a": 1,
+    "e": "A volume or pressure fall of more than about 10% strongly stimulates ADH through arterial baroreceptors and atrial receptors, even when osmolality is normal. Osmoreceptors respond to small rises in osmolality, which is normal here.",
+    "d": 2
    }
   ],
   "renal-ch29:potassium": [
@@ -3300,6 +4224,18 @@
     ],
     "a": 0,
     "e": "Also acidosis, cell lysis and strenuous exercise."
+   },
+   {
+    "q": "A 19-year-old with type 1 diabetes has DKA, with glucose 520 mg/dL and K⁺ 5.9 mEq/L. After IV insulin, his K⁺ falls to 3.1 mEq/L. Before treatment, his elevated K⁺ reflected:",
+    "o": [
+     "Increased total body potassium stores",
+     "Reduced distal secretion from low aldosterone",
+     "Shift out of cells from insulin lack and hyperosmolarity",
+     "Excess dietary potassium intake"
+    ],
+    "a": 2,
+    "e": "Insulin deficiency and hyperosmolarity shift K⁺ out of cells, so serum K⁺ is high even though total body K⁺ is depleted by osmotic diuresis. Insulin then drives K⁺ back into cells and unmasks the deficit.",
+    "d": 3
    }
   ],
   "renal-ch29:capimg": [
@@ -3368,6 +4304,18 @@
     ],
     "a": 3,
     "e": "The TAL reabsorbs ~65% of filtered magnesium (paracellular)."
+   },
+   {
+    "q": "A 22-year-old woman having a panic attack is breathing rapidly and develops perioral tingling and carpopedal spasm. Her total serum calcium is normal. What best explains her symptoms?",
+    "o": [
+     "↓ PTH secretion from alkalosis",
+     "↑ Albumin binding lowers ionized Ca²⁺",
+     "↑ Renal Ca²⁺ loss from hyperventilation",
+     "↓ Total body Ca²⁺ from bone deposition"
+    ],
+    "a": 1,
+    "e": "Respiratory alkalosis frees negative binding sites on albumin, which then bind more Ca²⁺, lowering the ionized fraction while total calcium is unchanged. Changes in PTH or renal handling are too slow to explain acute symptoms.",
+    "d": 3
    }
   ],
   "renal-ch29:volume": [
@@ -3414,6 +4362,18 @@
     ],
     "a": 2,
     "e": "ANP increases Na⁺ excretion and inhibits renin; its role is modest."
+   },
+   {
+    "q": "A healthy 30-year-old man increases his sodium intake from 50 to 200 mmol/day. Within 3–4 days, his sodium excretion matches intake with only a small rise in ECF volume and almost no change in arterial pressure. What mainly prevents a rise in blood pressure?",
+    "o": [
+     "Increased aldosterone secretion",
+     "Increased ADH secretion",
+     "Increased renal sympathetic activity",
+     "Suppression of angiotensin II formation"
+    ],
+    "a": 3,
+    "e": "A high salt intake suppresses renin and angiotensin II, which lowers Na⁺ reabsorption and lets the kidney excrete the load with minimal pressure rise. If angiotensin II stayed high, the pressure would become salt-sensitive.",
+    "d": 2
    }
   ],
   "renal-ch29:raas": [
@@ -3449,6 +4409,18 @@
     ],
     "a": 0,
     "e": "ACE inhibitors raise bradykinin."
+   },
+   {
+    "q": "A 35-year-old woman has a BP of 172/104 mmHg, an epigastric bruit and a 'string of beads' appearance of the right renal artery on angiography. Her plasma renin activity is elevated. Why is renin increased?",
+    "o": [
+     "↓ Afferent pressure sensed by JG cells",
+     "↑ NaCl delivery sensed by macula densa",
+     "↑ Atrial stretch with ANP release",
+     "↓ Sympathetic activity at β₁ receptors"
+    ],
+    "a": 0,
+    "e": "Fibromuscular dysplasia narrows the renal artery, so the intrarenal baroreceptor (JG cells) senses low afferent pressure and secretes renin. Increased NaCl at the macula densa suppresses renin.",
+    "d": 3
    }
   ],
   "renal-ch30:buffers": [
@@ -3484,6 +4456,18 @@
     ],
     "a": 3,
     "e": "Loss of HCl and volume; RAAS keeps HCO₃⁻ reabsorption high (saline-responsive alkalosis)."
+   },
+   {
+    "q": "A 9-year-old has had 3 days of profuse watery diarrhea. Labs: pH 7.29, PaCO₂ 30 mmHg, HCO₃⁻ 14 mEq/L, Na⁺ 138, Cl⁻ 114 mEq/L. Which is the best description of the acid–base status?",
+    "o": [
+     "High anion gap metabolic acidosis, compensated",
+     "Normal anion gap metabolic acidosis, compensated",
+     "Normal anion gap acidosis with respiratory acidosis",
+     "High anion gap acidosis with respiratory alkalosis"
+    ],
+    "a": 1,
+    "e": "The anion gap is 138 − (114 + 14) = 10 (normal), as expected from GI HCO₃⁻ loss, and Winter's formula predicts PaCO₂ 1.5 × 14 + 8 = 29 ± 2, so compensation is appropriate. A PaCO₂ above that range would indicate a coexisting respiratory acidosis.",
+    "d": 3
    }
   ],
   "renal-ch30:resp": [
@@ -3508,6 +4492,18 @@
     ],
     "a": 2,
     "e": "Feedback gain ~1–3, corrects 50–75%."
+   },
+   {
+    "q": "A 30-year-old woman has vomited repeatedly for 4 days. ABG: pH 7.50, HCO₃⁻ 36 mEq/L, PaCO₂ 48 mmHg. The PaCO₂ of 48 mmHg best reflects:",
+    "o": [
+     "Coexisting primary respiratory acidosis",
+     "Coexisting primary respiratory alkalosis",
+     "Appropriate respiratory compensation",
+     "Compensation that has fully normalized pH"
+    ],
+    "a": 2,
+    "e": "In metabolic alkalosis, expected PaCO₂ ≈ 40 + 0.7 × (36 − 24) ≈ 48 mmHg, so hypoventilation here is appropriate compensation. Compensation never returns pH fully to normal, and pH 7.50 is still alkalemic.",
+    "d": 3
    }
   ],
   "renal-ch30:renalacid": [
@@ -3598,6 +4594,18 @@
     ],
     "a": 2,
     "e": "Table 30-2: hypokalemia stimulates H⁺ secretion and HCO₃⁻ reabsorption."
+   },
+   {
+    "q": "A 36-year-old woman with Sjögren syndrome has recurrent calcium phosphate stones. Labs show K⁺ 3.0 mEq/L and a normal anion gap metabolic acidosis, while urine pH is 6.5. Which transporter is functionally defective?",
+    "o": [
+     "Na⁺/H⁺ exchanger of PCT cells",
+     "Aldosterone receptor of principal cells",
+     "Na⁺/K⁺/2Cl⁻ cotransporter of the TAL",
+     "H⁺-ATPase of α-intercalated cells"
+    ],
+    "a": 3,
+    "e": "Distal (type 1) RTA, which is associated with Sjögren syndrome, reflects failure of α-intercalated cells to secrete H⁺, so urine pH cannot fall below 5.5. A defect in proximal H⁺ secretion/HCO₃⁻ reabsorption causes type 2 RTA, in which urine can still be acidified.",
+    "d": 3
    }
   ],
   "renal-ch30:ammonia": [
@@ -3633,6 +4641,18 @@
     ],
     "a": 0,
     "e": "HPO₄²⁻ + H⁺ → H₂PO₄⁻. Titratable acid is measured by titrating urine back to pH 7.4."
+   },
+   {
+    "q": "A 63-year-old man with diabetic nephropathy (eGFR 45) has K⁺ 5.8 mEq/L, a normal anion gap metabolic acidosis and a urine pH of 5.0. Low renin and aldosterone are found. His acidosis is mainly due to:",
+    "o": [
+     "Failure of α-intercalated H⁺ secretion",
+     "Hyperkalemia suppressing ammoniagenesis",
+     "Proximal tubular HCO₃⁻ wasting",
+     "Gastrointestinal HCO₃⁻ loss"
+    ],
+    "a": 1,
+    "e": "In type 4 RTA, hypoaldosteronism causes hyperkalemia, which suppresses proximal ammoniagenesis and lowers NH₄⁺ excretion, so net acid excretion falls even though urine pH can drop below 5.5. Distal H⁺ secretion failure (type 1) gives a urine pH above 5.5.",
+    "d": 3
    }
   ],
   "renal-ch30:abd": [
@@ -3679,6 +4699,18 @@
     ],
     "a": 2,
     "e": "ENaC gain of function mimics hyperaldosteronism with suppressed RAAS."
+   },
+   {
+    "q": "A 17-year-old girl with self-induced vomiting has pH 7.52, HCO₃⁻ 38 mEq/L, K⁺ 2.9 mEq/L and a urine chloride of 8 mEq/L. Which treatment best corrects her acid–base disorder?",
+    "o": [
+     "Oral acetazolamide",
+     "Oral spironolactone",
+     "IV hydrochloric acid",
+     "IV 0.9% saline with KCl"
+    ],
+    "a": 3,
+    "e": "A low urine Cl⁻ indicates saline-responsive (chloride-depleted) metabolic alkalosis, maintained by volume contraction and hypokalemia; restoring Cl⁻, volume and K⁺ lets the kidney excrete HCO₃⁻. Spironolactone is used for saline-resistant, mineralocorticoid-driven alkalosis.",
+    "d": 3
    }
   ],
   "renal-ch31:diuretics": [
@@ -3714,6 +4746,18 @@
     ],
     "a": 1,
     "e": "Reduced ECF volume activates compensatory Na⁺ retention via RAAS and sympathetic activation (Guyton Ch 31)."
+   },
+   {
+    "q": "A 49-year-old man has hypertension, K⁺ 3.0 mEq/L, high aldosterone with suppressed renin, and bilateral adrenal hyperplasia on imaging. Surgery is not indicated. Which drug is the treatment of choice?",
+    "o": [
+     "Amiloride",
+     "Spironolactone",
+     "Hydrochlorothiazide",
+     "Furosemide"
+    ],
+    "a": 1,
+    "e": "Bilateral hyperaldosteronism is treated medically with a mineralocorticoid receptor antagonist (spironolactone or eplerenone). Amiloride blocks ENaC and is an alternative, but it does not block the aldosterone receptor.",
+    "d": 2
    }
   ],
   "renal-ch31:aki": [
@@ -3749,6 +4793,18 @@
     ],
     "a": 2,
     "e": "Death can occur within 8–14 days without treatment."
+   },
+   {
+    "q": "A 72-year-old man has prolonged hypotension during cardiac surgery and becomes oliguric. Urine shows muddy brown granular casts; urine Na⁺ is 45 mEq/L, FENa 3% and urine osmolality 310 mOsm/kg. What is the most likely diagnosis?",
+    "o": [
+     "Prerenal azotemia",
+     "Postrenal obstruction",
+     "Acute interstitial nephritis",
+     "Acute tubular necrosis"
+    ],
+    "a": 3,
+    "e": "Muddy brown casts, FENa above 2% and isosthenuric urine show that the tubules cannot conserve Na⁺ or concentrate urine, which is ischemic ATN. Prerenal azotemia has FENa below 1% and concentrated urine.",
+    "d": 2
    }
   ],
   "renal-ch31:ckd": [
@@ -3806,6 +4862,18 @@
     ],
     "a": 2,
     "e": "Reduced 1,25-(OH)₂D₃ and phosphate retention with secondary hyperparathyroidism: renal osteodystrophy."
+   },
+   {
+    "q": "A 61-year-old woman with stage 4 CKD has bone pain. Labs: Ca²⁺ 8.0 mg/dL, phosphate 6.4 mg/dL, PTH 480 pg/mL. What is the main mechanism of her elevated PTH?",
+    "o": [
+     "Autonomous parathyroid adenoma",
+     "Phosphate retention and ↓ calcitriol",
+     "Ectopic PTHrP from a tumor",
+     "Excess vitamin D supplementation"
+    ],
+    "a": 1,
+    "e": "In CKD, phosphate retention and reduced 1α-hydroxylation (low calcitriol) lower ionized Ca²⁺ and directly stimulate the parathyroids (secondary hyperparathyroidism). An adenoma causes hypercalcemia with hypophosphatemia.",
+    "d": 3
    }
   ],
   "renal-ch31:tubular": [
@@ -3852,6 +4920,18 @@
     ],
     "a": 1,
     "e": "Causes include Wilson disease, ifosfamide, cisplatin, expired tetracyclines, multiple myeloma and lead."
+   },
+   {
+    "q": "A 24-year-old woman has muscle cramps and fatigue. BP is normal. Labs: K⁺ 2.9 mEq/L, HCO₃⁻ 30 mEq/L, Mg²⁺ 1.2 mg/dL, with low urinary calcium. Her condition mimics the chronic effect of which drug?",
+    "o": [
+     "Furosemide",
+     "Amiloride",
+     "Acetazolamide",
+     "Chlorthalidone"
+    ],
+    "a": 3,
+    "e": "Gitelman syndrome (an NCC defect in the DCT) mimics thiazide or thiazide-like (chlorthalidone) use: hypokalemic alkalosis, hypomagnesemia and hypocalciuria. Bartter syndrome mimics furosemide and causes hypercalciuria.",
+    "d": 3
    }
   ],
   "harrison-ch321:aki-dx": [
