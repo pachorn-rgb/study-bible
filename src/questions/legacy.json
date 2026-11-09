@@ -6066,7 +6066,7 @@
     "e": "Table 326-1; not detected by dipstick."
    },
    {
-    "q": "Albumin accounts for what fraction of urinary protein?",
+    "q": "In normal urine, albumin accounts for what fraction of total urinary protein?",
     "o": [
      "100%",
      "70–90%",
@@ -6074,7 +6074,7 @@
      "1–5%"
     ],
     "a": 2,
-    "e": "Table 326-1 footnote."
+    "e": "Normal urine (total protein < 150 mg/day) is mostly tubular uromodulin (Tamm–Horsfall) and filtered low-molecular-weight proteins; albumin is a minority (~20–60%). In glomerular proteinuria albumin becomes the dominant protein."
    }
   ],
   "harrison-ch326:gd-pat": [
