@@ -16,7 +16,7 @@
 <link rel="apple-touch-icon" href="icons/icon-180.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="design/sb.css">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media=\'all\'">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
 <script src="app.js" defer></script>
 <style>
 /* Layout: native-style app shell. Large titles, grouped lists, bottom tab bar, full-screen atlas viewer and review run. All sizes in rem so the font-size setting scales everything. */
@@ -230,7 +230,7 @@ mark{background:color-mix(in srgb,var(--accent) 30%,transparent);color:inherit;b
 .bosscard .btn[disabled]{background:var(--surface2);color:var(--muted)}
 .bodycard{margin-top:.9rem;background:var(--surface);border-radius:1.25rem;box-shadow:var(--shadow);display:grid;grid-template-columns:8.5rem 1fr;gap:.75rem;padding:.75rem .9rem .75rem .5rem;align-items:center}
 .bm svg{width:100%;height:auto;display:block}
-.sil *{fill:var(--surface2);stroke:var(--line);stroke-width:1.5}
+.sil *{fill:var(--surface2);stroke-linejoin:round}.sil .o *{stroke:var(--line);stroke-width:2.6}.sil .f *{stroke:none}
 .org *{fill:var(--line);stroke:none}
 .org .ln{fill:none!important;stroke:var(--surface);stroke-width:1.4;stroke-linecap:round}
 .org path[fill="none"]{fill:none!important;stroke:var(--line)}
@@ -599,26 +599,26 @@ function playerCard(){
 }
 function starsOf(c){if(!c.checklist.length)return[0,0,0];return[c.checklist.every(x=>S.T[x.id])?1:0,mastery(c.checklist)>=.8?1:0,S.boss[c.id]?1:0]}
 function starsH(c){return starsOf(c).map(s=>`<i class="${s?"on":""}">${I.star}</i>`).join("")}
-/* body map: organ shapes in a 240×430 front view */
+/* body map: ~7.5-head front view (240 wide); hips at mid-height, limbs mirrored */
 const ORG={
- psych:'<path d="M84,22 C92,4 148,4 156,22" fill="none" stroke-width="5" stroke-linecap="round"/>',
- neuro:'<path d="M98,44 C96,28 108,20 120,20 C134,20 145,28 143,44 C142,52 134,56 120,56 C106,56 99,52 98,44Z"/><path class="ln" d="M120,22 V54 M106,32 C110,36 110,40 105,44 M134,32 C130,36 130,40 135,44"/>',
- endo:'<path d="M112,94 C106,90 104,98 108,102 C112,105 116,102 120,99 C124,102 128,105 132,102 C136,98 134,90 128,94 C125,96 122,97 120,97 C118,97 115,96 112,94Z"/><circle cx="102" cy="198" r="4"/><circle cx="138" cy="198" r="4"/>',
- resp:'<path d="M112,112 C100,110 88,122 85,142 C82,162 84,176 92,180 C100,183 110,178 113,170 Z"/><path d="M128,112 C140,110 152,122 155,142 C158,162 156,176 148,180 C140,183 130,178 127,170 Z"/><path class="ln" d="M120,100 V118 M120,118 L112,126 M120,118 L128,126"/>',
- cvs:'<path d="M122,146 C122,138 132,136 135,143 C138,136 148,140 146,149 C144,158 132,166 128,170 C124,164 122,156 122,146Z"/><path class="ln" d="M126,140 C126,128 120,124 116,124"/>',
- gi:'<path d="M86,182 C100,178 118,180 124,186 C122,196 108,202 92,200 C86,196 84,190 86,182Z"/><path d="M134,182 C148,178 156,186 152,198 C148,206 138,206 132,202 C128,198 130,190 134,182Z"/><path d="M102,212 C110,206 132,206 140,212 C146,220 144,236 138,242 C130,248 112,248 104,242 C96,236 96,220 102,212Z"/><path class="ln" d="M108,220 C116,216 126,224 134,218 M108,230 C116,226 126,234 134,228 M110,240 C118,236 124,240 132,236"/>',
- heme:'<path d="M156,184 C162,182 166,188 165,196 C164,204 158,206 155,202 C153,196 152,188 156,184Z"/>',
- renal:'<path d="M88,206 C80,208 78,222 82,232 C86,240 96,238 96,230 C94,226 98,222 96,216 C95,210 92,205 88,206Z"/><path d="M152,206 C160,208 162,222 158,232 C154,240 144,238 144,230 C146,226 142,222 144,216 C145,210 148,205 152,206Z"/><path class="ln" d="M95,228 C100,244 108,256 112,262 M145,228 C140,244 132,256 128,262"/><ellipse cx="120" cy="266" rx="11" ry="8"/>',
- repro:'<path d="M108,278 C110,276 130,276 132,278 C134,284 128,292 120,294 C112,292 106,284 108,278Z"/><circle cx="102" cy="282" r="4.5"/><circle cx="138" cy="282" r="4.5"/>',
- msk:'<path d="M70,104 C60,110 54,150 48,200 C44,232 40,254 38,268 L48,270 C52,250 58,226 64,204 C68,184 72,160 76,140 Z"/><path d="M170,104 C180,110 186,150 192,200 C196,232 200,254 202,268 L192,270 C188,250 182,226 176,204 C172,184 168,160 164,140 Z"/><path d="M90,300 C92,340 94,380 92,420 L108,420 C110,380 114,340 116,304 Z"/><path d="M150,300 C148,340 146,380 148,420 L132,420 C130,380 126,340 124,304 Z"/>'
+ psych:'<path d="M95,10 C102,-2 138,-2 145,10" fill="none" stroke-width="4.5" stroke-linecap="round"/>',
+ neuro:'<path d="M103,34 C101,22 109,14 120,14 C131,14 139,22 137,34 C136,42 129,47 120,47 C111,47 104,42 103,34Z"/><path class="ln" d="M120,16 V45 M108,25 C112,29 112,34 107,38 M132,25 C128,29 128,34 133,38"/>',
+ endo:'<path d="M113,82 C109,79 107,85 110,88 C113,90 116,88 120,86 C124,88 127,90 130,88 C133,85 131,79 127,82 C124,84 122,84 120,84 C118,84 116,84 113,82Z"/><circle cx="96" cy="166" r="3.6"/><circle cx="144" cy="166" r="3.6"/>',
+ resp:'<path d="M115,98 C103,96 93,106 91,122 C89,138 91,148 97,151 C105,153 113,148 115,142Z"/><path d="M125,98 C137,96 147,106 149,122 C151,138 149,148 143,151 C135,153 127,148 125,142Z"/><path class="ln" d="M120,86 V101 M120,101 L113,107 M120,101 L127,107"/>',
+ cvs:'<path d="M119,122 C119,114 128,112 130,118 C133,112 141,116 140,124 C138,132 129,138 125,142 C121,136 119,130 119,122Z"/><path class="ln" d="M124,116 C124,106 118,104 114,105"/>',
+ gi:'<path d="M92,153 C104,149 120,151 125,156 C123,165 110,169 97,168 C91,165 89,159 92,153Z"/><path d="M131,153 C143,150 150,157 147,166 C144,172 136,172 131,169 C128,165 128,159 131,153Z"/><path d="M101,186 C109,181 131,181 139,186 C145,193 144,206 138,211 C130,216 110,216 102,211 C96,206 95,193 101,186Z"/><path class="ln" d="M106,193 C114,189 126,197 134,191 M106,202 C114,198 126,206 134,200"/>',
+ heme:'<path d="M150,145 C155,143 158,148 157,155 C156,160 151,161 149,158 C148,154 147,149 150,145Z"/>',
+ renal:'<path d="M94,169 C88,170 86,180 89,187 C92,192 99,191 99,185 C97,182 100,179 99,175 C98,171 97,168 94,169Z"/><path d="M146,169 C152,170 154,180 151,187 C148,192 141,191 141,185 C143,182 140,179 141,175 C142,171 143,168 146,169Z"/><path class="ln" d="M98,186 C104,200 110,210 114,216 M142,186 C136,200 130,210 126,216"/><ellipse cx="120" cy="219" rx="8.5" ry="6"/>',
+ repro:'<path d="M111,227 C113,225 127,225 129,227 C130,232 126,236 120,237 C114,236 110,232 111,227Z"/><circle cx="104" cy="229" r="3.4"/><circle cx="136" cy="229" r="3.4"/>',
+ msk:'<path d="M76,92 C66,96 61,108 60,124 L56,170 C54,192 52,212 51,228 C49,240 50,252 55,256 C60,258 64,250 63,238 C64,220 67,200 69,180 L75,136 C76,124 78,114 80,108 Z"/><path d="M76,92 C66,96 61,108 60,124 L56,170 C54,192 52,212 51,228 C49,240 50,252 55,256 C60,258 64,250 63,238 C64,220 67,200 69,180 L75,136 C76,124 78,114 80,108 Z" transform="matrix(-1 0 0 1 240 0)"/><path d="M84,226 C81,256 82,290 87,326 C89,352 90,380 91,404 C90,413 84,419 86,424 L108,424 C109,416 106,408 106,398 C107,370 109,344 111,320 C113,292 116,262 118,240 Z"/><path d="M84,226 C81,256 82,290 87,326 C89,352 90,380 91,404 C90,413 84,419 86,424 L108,424 C109,416 106,408 106,398 C107,370 109,344 111,320 C113,292 116,262 118,240 Z" transform="matrix(-1 0 0 1 240 0)"/>'
 };
-const BODY='<circle cx="120" cy="40" r="30"/><path d="M110,68 L110,86 C96,90 80,92 72,100 C66,108 66,124 70,140 L80,180 C82,214 84,250 88,298 L152,298 C156,250 158,214 160,180 L170,140 C174,124 174,108 168,100 C160,92 144,90 130,86 L130,68 Z"/>';
+const BODY='<g class="o"><ellipse cx="120" cy="38" rx="22" ry="28"/><path d="M109,58 C109,67 108,73 106,79 C96,81 84,84 77,90 C72,95 72,103 79,109 C82,128 84,150 87,172 C85,190 82,206 83,224 C93,233 107,239 120,240 C133,239 147,233 157,224 C158,206 155,190 153,172 C156,150 158,128 161,109 C168,103 168,95 163,90 C156,84 144,81 134,79 C132,73 131,67 131,58 Z"/><path d="M76,92 C66,96 61,108 60,124 L56,170 C54,192 52,212 51,228 C49,240 50,252 55,256 C60,258 64,250 63,238 C64,220 67,200 69,180 L75,136 C76,124 78,114 80,108 Z"/><path d="M76,92 C66,96 61,108 60,124 L56,170 C54,192 52,212 51,228 C49,240 50,252 55,256 C60,258 64,250 63,238 C64,220 67,200 69,180 L75,136 C76,124 78,114 80,108 Z" transform="matrix(-1 0 0 1 240 0)"/><path d="M84,226 C81,256 82,290 87,326 C89,352 90,380 91,404 C90,413 84,419 86,424 L108,424 C109,416 106,408 106,398 C107,370 109,344 111,320 C113,292 116,262 118,240 Z"/><path d="M84,226 C81,256 82,290 87,326 C89,352 90,380 91,404 C90,413 84,419 86,424 L108,424 C109,416 106,408 106,398 C107,370 109,344 111,320 C113,292 116,262 118,240 Z" transform="matrix(-1 0 0 1 240 0)"/></g><g class="f"><ellipse cx="120" cy="38" rx="22" ry="28"/><path d="M109,58 C109,67 108,73 106,79 C96,81 84,84 77,90 C72,95 72,103 79,109 C82,128 84,150 87,172 C85,190 82,206 83,224 C93,233 107,239 120,240 C133,239 147,233 157,224 C158,206 155,190 153,172 C156,150 158,128 161,109 C168,103 168,95 163,90 C156,84 144,81 134,79 C132,73 131,67 131,58 Z"/><path d="M76,92 C66,96 61,108 60,124 L56,170 C54,192 52,212 51,228 C49,240 50,252 55,256 C60,258 64,250 63,238 C64,220 67,200 69,180 L75,136 C76,124 78,114 80,108 Z"/><path d="M76,92 C66,96 61,108 60,124 L56,170 C54,192 52,212 51,228 C49,240 50,252 55,256 C60,258 64,250 63,238 C64,220 67,200 69,180 L75,136 C76,124 78,114 80,108 Z" transform="matrix(-1 0 0 1 240 0)"/><path d="M84,226 C81,256 82,290 87,326 C89,352 90,380 91,404 C90,413 84,419 86,424 L108,424 C109,416 106,408 106,398 C107,370 109,344 111,320 C113,292 116,262 118,240 Z"/><path d="M84,226 C81,256 82,290 87,326 C89,352 90,380 91,404 C90,413 84,419 86,424 L108,424 C109,416 106,408 106,398 C107,370 109,344 111,320 C113,292 116,262 118,240 Z" transform="matrix(-1 0 0 1 240 0)"/></g>';
 function bodyMap(){
   const os=chapters().filter(c=>ORG[c.id]);
   const shape=c=>{const live=c.modules.length||c.checklist.length,m=mastery(c.checklist),op=live?(.22+.78*m):0;
     return `<a href="#/c/${c.id}" class="org${live?" live":""}" style="--c:${c.color};--op:${op.toFixed(2)}" aria-label="${esc(chName(c))}">${ORG[c.id]}</a>`};
   const gp=LIB.sections[0].chapters;
-  return `<div class="bodycard"><div class="bm"><svg viewBox="30 0 180 430" role="img" aria-label="${t("bodyMap")}"><g class="sil">${BODY}</g>${os.map(shape).join("")}</svg></div>
+  return `<div class="bodycard"><div class="bm"><svg viewBox="40 -6 160 436" role="img" aria-label="${t("bodyMap")}"><g class="sil">${BODY}</g>${os.map(shape).join("")}</svg></div>
    <div class="bside"><b>${t("bodyMap")}</b><span>${t("bodySub")}</span>
     <div class="blist">${os.filter(c=>c.modules.length).map(c=>`<a href="#/c/${c.id}" style="--c:${c.color}"><i></i>${esc(chName(c))}<em class="mono">${Math.round(mastery(c.checklist)*100)}%</em><span class="stars">${starsH(c)}</span></a>`).join("")}</div>
     <div class="gp">${gp.map(c=>{const m=mastery(c.checklist),live=c.modules.length;return `<a href="#/c/${c.id}" class="gpb${live?" live":""}" style="--c:${c.color};--op:${(.22+.78*m).toFixed(2)}" title="${esc(chName(c))}">${g(c.glyph)}</a>`}).join("")}</div></div></div>`;
