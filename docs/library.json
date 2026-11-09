@@ -1352,6 +1352,428 @@
         "ch": "Ch 11",
         "sort": 11
        }
+      },
+      {
+       "id": "cvs-physio-1",
+       "title": "Cardiac Mechanics & Hemodynamics",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 9, 14, 15, 20, 23 · Boron Ch 17, 19, 22",
+       "href": "cvs/cvs-physio-1.html",
+       "thumb": "thumbs/cvs-physio-1.jpg",
+       "desc": "Cardiac output และตัวกำหนด, contractility, Laplace, สมการ CO/EF/MAP, Starling curve, Poiseuille, CO–VR curves, PV loop แบบปรับค่าได้, Wiggers diagram, JVP, PV loop ในโรคลิ้นหัวใจ, S2 splitting, maneuvers และ murmurs",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Cardiac output variables & contractility",
+         "cov"
+        ],
+        [
+         "Myocardial O₂ demand & Laplace's law",
+         "o2d"
+        ],
+        [
+         "Cardiac output equations",
+         "coeq"
+        ],
+        [
+         "Frank–Starling curves",
+         "starling"
+        ],
+        [
+         "Resistance, pressure & flow",
+         "flow"
+        ],
+        [
+         "Pressure, area & velocity along the vascular tree",
+         "vtree"
+        ],
+        [
+         "Cardiac & vascular function curves",
+         "vfc"
+        ],
+        [
+         "Pressure–volume loop",
+         "pvloop"
+        ],
+        [
+         "Cardiac cycle (Wiggers diagram) & heart sounds",
+         "wiggers"
+        ],
+        [
+         "Jugular venous pulse",
+         "jvp"
+        ],
+        [
+         "PV loops in valvular disease",
+         "pvvalve"
+        ],
+        [
+         "Splitting of S2",
+         "split"
+        ],
+        [
+         "Auscultation sites & bedside maneuvers",
+         "ausc"
+        ],
+        [
+         "Heart murmurs",
+         "murmurs"
+        ],
+        [
+         "Compliance & the arterial pulse",
+         "compl"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 9–23",
+        "sort": 20
+       }
+      },
+      {
+       "id": "cvs-physio-2",
+       "title": "Electrophysiology & Circulatory Control",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 10–11, 16–19, 21 · Boron Ch 20, 21, 23, 24",
+       "href": "cvs/cvs-physio-2.html",
+       "thumb": "thumbs/cvs-physio-2.jpg",
+       "desc": "Action potential ของ ventricle และ pacemaker, conduction system กับ ECG, refractory period, axis, ANP/BNP, baroreceptor และ chemoreceptor, ความดันในหัวใจและ PCWP, pressure natriuresis, autoregulation, Starling forces, edema และ coronary flow",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Myocardial (ventricular) action potential",
+         "apv"
+        ],
+        [
+         "Pacemaker action potential",
+         "app"
+        ],
+        [
+         "Conduction system & the ECG",
+         "ecg"
+        ],
+        [
+         "Refractory periods & conduction velocity",
+         "refr"
+        ],
+        [
+         "Natriuretic peptides (ANP & BNP)",
+         "natri"
+        ],
+        [
+         "Baroreceptors & chemoreceptors",
+         "baro"
+        ],
+        [
+         "Normal cardiac pressures & PCWP",
+         "press"
+        ],
+        [
+         "Autoregulation of blood flow by organ",
+         "autoreg"
+        ],
+        [
+         "Capillary fluid exchange (Starling forces)",
+         "starlingf"
+        ],
+        [
+         "Edema: mechanisms & safety factors",
+         "edema"
+        ],
+        [
+         "ECG leads, axis & rate",
+         "ecgread"
+        ],
+        [
+         "Long-term BP control: pressure natriuresis",
+         "longbp"
+        ],
+        [
+         "Coronary circulation",
+         "coronary"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 10–21",
+        "sort": 21
+       }
+      },
+      {
+       "id": "cvs-patho-1",
+       "title": "Congenital Heart Disease, Hypertension & Arteries",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 11–12 · First Aid CV Pathology",
+       "href": "cvs/cvs-patho-1.html",
+       "thumb": "thumbs/cvs-patho-1.jpg",
+       "desc": "R→L shunts (5 T's), L→R shunts, Eisenmenger, coarctation, CHD associations, hypertension และ end-organ damage, hyperlipidemia signs, atherosclerosis, cholesterol emboli, arteriolosclerosis, aortic aneurysm, dissection, subclavian steal · ส่วนเสริม vascular wall response และ BP regulation",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Right-to-left shunts: the 5 T's",
+         "chd-rl"
+        ],
+        [
+         "Left-to-right shunts: VSD · ASD · PDA",
+         "chd-lr"
+        ],
+        [
+         "Eisenmenger syndrome",
+         "eisen"
+        ],
+        [
+         "Coarctation of the aorta & PPHN",
+         "coarct"
+        ],
+        [
+         "Congenital cardiac defect associations",
+         "chd-assoc"
+        ],
+        [
+         "Hypertension: definition & causes",
+         "htn"
+        ],
+        [
+         "Hypertensive end-organ damage & emergency",
+         "htn-organ"
+        ],
+        [
+         "Hyperlipidemia signs",
+         "lipid"
+        ],
+        [
+         "Atherosclerosis",
+         "athero"
+        ],
+        [
+         "Cholesterol emboli syndrome",
+         "chol-emb"
+        ],
+        [
+         "Arteriolosclerosis & medial calcific sclerosis",
+         "arteriolo"
+        ],
+        [
+         "Aortic aneurysm",
+         "aneurysm"
+        ],
+        [
+         "Aortic dissection & traumatic rupture",
+         "dissection"
+        ],
+        [
+         "Subclavian steal syndrome",
+         "subclavian"
+        ],
+        [
+         "Vascular wall response to injury",
+         "vwall"
+        ],
+        [
+         "Blood pressure regulation & mechanisms of hypertension",
+         "bp-reg"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 11–12",
+        "sort": 12
+       }
+      },
+      {
+       "id": "cvs-patho-2",
+       "title": "Ischemic Heart Disease & Arrhythmias",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 12 · First Aid CV Pathology · Step 2 CK",
+       "href": "cvs/cvs-patho-2.html",
+       "thumb": "thumbs/cvs-patho-2.jpg",
+       "desc": "angina ถึง STEMI, coronary steal, sudden cardiac death, MI evolution ตามเวลา (H&E + gross), troponin/CK-MB, ECG localization, narrow/wide-complex tachycardia, channelopathies, AV block, MI complications, ACS work-up · ส่วนเสริม ACS pathogenesis และ AF stroke risk",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Angina & the acute coronary syndrome spectrum",
+         "cad"
+        ],
+        [
+         "Coronary steal syndrome",
+         "steal"
+        ],
+        [
+         "Sudden cardiac death & chronic ischemic heart disease",
+         "scd"
+        ],
+        [
+         "Evolution of myocardial infarction",
+         "mi-evo"
+        ],
+        [
+         "Diagnosis of MI: troponin, CK-MB & ECG",
+         "mi-dx"
+        ],
+        [
+         "ECG localization of STEMI",
+         "ecg-loc"
+        ],
+        [
+         "Narrow-complex tachycardias",
+         "narrow"
+        ],
+        [
+         "Wide-complex tachycardias & channelopathies",
+         "wide"
+        ],
+        [
+         "Conduction blocks & premature beats",
+         "blocks"
+        ],
+        [
+         "Myocardial infarction complications",
+         "mi-comp"
+        ],
+        [
+         "Acute coronary syndrome: work-up & treatment",
+         "acs"
+        ],
+        [
+         "Pathogenesis of acute coronary syndromes",
+         "ihd-path"
+        ],
+        [
+         "Atrial fibrillation: stroke prevention (CHA₂DS₂-VASc)",
+         "af-care"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 12",
+        "sort": 13
+       }
+      },
+      {
+       "id": "cvs-patho-3",
+       "title": "Myocardium, Valves, Pericardium & Vasculitis",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 11–12 · First Aid CV Pathology",
+       "href": "cvs/cvs-patho-3.html",
+       "thumb": "thumbs/cvs-patho-3.jpg",
+       "desc": "cardiomyopathies, heart failure (PV loop), shock, tamponade, syncope, infective endocarditis, rheumatic fever, valve lesions และ murmur, pericarditis, myocarditis, HHT, cardiac tumors, vasculitis ขนาดใหญ่ กลาง เล็ก · ส่วนเสริม vascular tumors และโรคหลอดเลือดดำ",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Cardiomyopathies",
+         "cardiomyo"
+        ],
+        [
+         "Heart failure",
+         "hf"
+        ],
+        [
+         "Shock",
+         "shock"
+        ],
+        [
+         "Cardiac tamponade & pulsus paradoxus",
+         "tamponade"
+        ],
+        [
+         "Syncope",
+         "syncope"
+        ],
+        [
+         "Infective endocarditis & NBTE",
+         "ie"
+        ],
+        [
+         "Rheumatic fever & rheumatic heart disease",
+         "rheumatic"
+        ],
+        [
+         "Valvular heart disease",
+         "valves"
+        ],
+        [
+         "Acute & constrictive pericarditis",
+         "pericard"
+        ],
+        [
+         "Myocarditis",
+         "myocarditis"
+        ],
+        [
+         "Hereditary hemorrhagic telangiectasia & AVM",
+         "hht"
+        ],
+        [
+         "Cardiac tumors",
+         "tumors"
+        ],
+        [
+         "Large-vessel vasculitis",
+         "vasc-large"
+        ],
+        [
+         "Medium-vessel vasculitis",
+         "vasc-med"
+        ],
+        [
+         "Small-vessel vasculitis",
+         "vasc-small"
+        ],
+        [
+         "Vascular tumors & venous disease",
+         "vasc-tumor"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 11–12",
+        "sort": 14
+       }
       }
      ],
      "checklist": [
@@ -1506,6 +1928,663 @@
        "link": {
         "m": "pharm-cvs",
         "h": "hfrx"
+       }
+      },
+      {
+       "id": "cvs-patho-1:chd-rl",
+       "sub": "Pathology",
+       "t": "Right-to-left shunts: the 5 T's",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "chd-rl"
+       }
+      },
+      {
+       "id": "cvs-patho-1:chd-lr",
+       "sub": "Pathology",
+       "t": "Left-to-right shunts: VSD · ASD · PDA",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "chd-lr"
+       }
+      },
+      {
+       "id": "cvs-patho-1:eisen",
+       "sub": "Pathology",
+       "t": "Eisenmenger syndrome",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "eisen"
+       }
+      },
+      {
+       "id": "cvs-patho-1:coarct",
+       "sub": "Pathology",
+       "t": "Coarctation of the aorta & PPHN",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "coarct"
+       }
+      },
+      {
+       "id": "cvs-patho-1:chd-assoc",
+       "sub": "Pathology",
+       "t": "Congenital cardiac defect associations",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "chd-assoc"
+       }
+      },
+      {
+       "id": "cvs-patho-1:htn",
+       "sub": "Pathology",
+       "t": "Hypertension: definition & causes",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "htn"
+       }
+      },
+      {
+       "id": "cvs-patho-1:htn-organ",
+       "sub": "Pathology",
+       "t": "Hypertensive end-organ damage & emergency",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "htn-organ"
+       }
+      },
+      {
+       "id": "cvs-patho-1:lipid",
+       "sub": "Pathology",
+       "t": "Hyperlipidemia signs",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "lipid"
+       }
+      },
+      {
+       "id": "cvs-patho-1:athero",
+       "sub": "Pathology",
+       "t": "Atherosclerosis",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "athero"
+       }
+      },
+      {
+       "id": "cvs-patho-1:chol-emb",
+       "sub": "Pathology",
+       "t": "Cholesterol emboli syndrome",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "chol-emb"
+       }
+      },
+      {
+       "id": "cvs-patho-1:arteriolo",
+       "sub": "Pathology",
+       "t": "Arteriolosclerosis & medial calcific sclerosis",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "arteriolo"
+       }
+      },
+      {
+       "id": "cvs-patho-1:aneurysm",
+       "sub": "Pathology",
+       "t": "Aortic aneurysm",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "aneurysm"
+       }
+      },
+      {
+       "id": "cvs-patho-1:dissection",
+       "sub": "Pathology",
+       "t": "Aortic dissection & traumatic rupture",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "dissection"
+       }
+      },
+      {
+       "id": "cvs-patho-1:subclavian",
+       "sub": "Pathology",
+       "t": "Subclavian steal syndrome",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "subclavian"
+       }
+      },
+      {
+       "id": "cvs-patho-1:vwall",
+       "sub": "Pathology",
+       "t": "Vascular wall response to injury",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "vwall"
+       }
+      },
+      {
+       "id": "cvs-patho-1:bp-reg",
+       "sub": "Pathology",
+       "t": "Blood pressure regulation & mechanisms of hypertension",
+       "link": {
+        "m": "cvs-patho-1",
+        "h": "bp-reg"
+       }
+      },
+      {
+       "id": "cvs-patho-2:cad",
+       "sub": "Pathology",
+       "t": "Angina & the acute coronary syndrome spectrum",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "cad"
+       }
+      },
+      {
+       "id": "cvs-patho-2:steal",
+       "sub": "Pathology",
+       "t": "Coronary steal syndrome",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "steal"
+       }
+      },
+      {
+       "id": "cvs-patho-2:scd",
+       "sub": "Pathology",
+       "t": "Sudden cardiac death & chronic ischemic heart disease",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "scd"
+       }
+      },
+      {
+       "id": "cvs-patho-2:mi-evo",
+       "sub": "Pathology",
+       "t": "Evolution of myocardial infarction",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "mi-evo"
+       }
+      },
+      {
+       "id": "cvs-patho-2:mi-dx",
+       "sub": "Pathology",
+       "t": "Diagnosis of MI: troponin, CK-MB & ECG",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "mi-dx"
+       }
+      },
+      {
+       "id": "cvs-patho-2:ecg-loc",
+       "sub": "Pathology",
+       "t": "ECG localization of STEMI",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "ecg-loc"
+       }
+      },
+      {
+       "id": "cvs-patho-2:narrow",
+       "sub": "Pathology",
+       "t": "Narrow-complex tachycardias",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "narrow"
+       }
+      },
+      {
+       "id": "cvs-patho-2:wide",
+       "sub": "Pathology",
+       "t": "Wide-complex tachycardias & channelopathies",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "wide"
+       }
+      },
+      {
+       "id": "cvs-patho-2:blocks",
+       "sub": "Pathology",
+       "t": "Conduction blocks & premature beats",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "blocks"
+       }
+      },
+      {
+       "id": "cvs-patho-2:mi-comp",
+       "sub": "Pathology",
+       "t": "Myocardial infarction complications",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "mi-comp"
+       }
+      },
+      {
+       "id": "cvs-patho-2:acs",
+       "sub": "Pathology",
+       "t": "Acute coronary syndrome: work-up & treatment",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "acs"
+       }
+      },
+      {
+       "id": "cvs-patho-2:ihd-path",
+       "sub": "Pathology",
+       "t": "Pathogenesis of acute coronary syndromes",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "ihd-path"
+       }
+      },
+      {
+       "id": "cvs-patho-2:af-care",
+       "sub": "Pathology",
+       "t": "Atrial fibrillation: stroke prevention (CHA₂DS₂-VASc)",
+       "link": {
+        "m": "cvs-patho-2",
+        "h": "af-care"
+       }
+      },
+      {
+       "id": "cvs-patho-3:cardiomyo",
+       "sub": "Pathology",
+       "t": "Cardiomyopathies",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "cardiomyo"
+       }
+      },
+      {
+       "id": "cvs-patho-3:hf",
+       "sub": "Pathology",
+       "t": "Heart failure",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "hf"
+       }
+      },
+      {
+       "id": "cvs-patho-3:shock",
+       "sub": "Pathology",
+       "t": "Shock",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "shock"
+       }
+      },
+      {
+       "id": "cvs-patho-3:tamponade",
+       "sub": "Pathology",
+       "t": "Cardiac tamponade & pulsus paradoxus",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "tamponade"
+       }
+      },
+      {
+       "id": "cvs-patho-3:syncope",
+       "sub": "Pathology",
+       "t": "Syncope",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "syncope"
+       }
+      },
+      {
+       "id": "cvs-patho-3:ie",
+       "sub": "Pathology",
+       "t": "Infective endocarditis & NBTE",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "ie"
+       }
+      },
+      {
+       "id": "cvs-patho-3:rheumatic",
+       "sub": "Pathology",
+       "t": "Rheumatic fever & rheumatic heart disease",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "rheumatic"
+       }
+      },
+      {
+       "id": "cvs-patho-3:valves",
+       "sub": "Pathology",
+       "t": "Valvular heart disease",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "valves"
+       }
+      },
+      {
+       "id": "cvs-patho-3:pericard",
+       "sub": "Pathology",
+       "t": "Acute & constrictive pericarditis",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "pericard"
+       }
+      },
+      {
+       "id": "cvs-patho-3:myocarditis",
+       "sub": "Pathology",
+       "t": "Myocarditis",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "myocarditis"
+       }
+      },
+      {
+       "id": "cvs-patho-3:hht",
+       "sub": "Pathology",
+       "t": "Hereditary hemorrhagic telangiectasia & AVM",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "hht"
+       }
+      },
+      {
+       "id": "cvs-patho-3:tumors",
+       "sub": "Pathology",
+       "t": "Cardiac tumors",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "tumors"
+       }
+      },
+      {
+       "id": "cvs-patho-3:vasc-large",
+       "sub": "Pathology",
+       "t": "Large-vessel vasculitis",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "vasc-large"
+       }
+      },
+      {
+       "id": "cvs-patho-3:vasc-med",
+       "sub": "Pathology",
+       "t": "Medium-vessel vasculitis",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "vasc-med"
+       }
+      },
+      {
+       "id": "cvs-patho-3:vasc-small",
+       "sub": "Pathology",
+       "t": "Small-vessel vasculitis",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "vasc-small"
+       }
+      },
+      {
+       "id": "cvs-patho-3:vasc-tumor",
+       "sub": "Pathology",
+       "t": "Vascular tumors & venous disease",
+       "link": {
+        "m": "cvs-patho-3",
+        "h": "vasc-tumor"
+       }
+      },
+      {
+       "id": "cvs-physio-1:cov",
+       "sub": "Physiology",
+       "t": "Cardiac output variables & contractility",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "cov"
+       }
+      },
+      {
+       "id": "cvs-physio-1:o2d",
+       "sub": "Physiology",
+       "t": "Myocardial O₂ demand & Laplace's law",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "o2d"
+       }
+      },
+      {
+       "id": "cvs-physio-1:coeq",
+       "sub": "Physiology",
+       "t": "Cardiac output equations",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "coeq"
+       }
+      },
+      {
+       "id": "cvs-physio-1:starling",
+       "sub": "Physiology",
+       "t": "Frank–Starling curves",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "starling"
+       }
+      },
+      {
+       "id": "cvs-physio-1:flow",
+       "sub": "Physiology",
+       "t": "Resistance, pressure & flow",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "flow"
+       }
+      },
+      {
+       "id": "cvs-physio-1:vtree",
+       "sub": "Physiology",
+       "t": "Pressure, area & velocity along the vascular tree",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "vtree"
+       }
+      },
+      {
+       "id": "cvs-physio-1:vfc",
+       "sub": "Physiology",
+       "t": "Cardiac & vascular function curves",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "vfc"
+       }
+      },
+      {
+       "id": "cvs-physio-1:compl",
+       "sub": "Physiology",
+       "t": "Compliance & the arterial pulse",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "compl"
+       }
+      },
+      {
+       "id": "cvs-physio-1:pvloop",
+       "sub": "Physiology",
+       "t": "Pressure–volume loop",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "pvloop"
+       }
+      },
+      {
+       "id": "cvs-physio-1:wiggers",
+       "sub": "Physiology",
+       "t": "Cardiac cycle (Wiggers diagram) & heart sounds",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "wiggers"
+       }
+      },
+      {
+       "id": "cvs-physio-1:jvp",
+       "sub": "Physiology",
+       "t": "Jugular venous pulse",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "jvp"
+       }
+      },
+      {
+       "id": "cvs-physio-1:pvvalve",
+       "sub": "Physiology",
+       "t": "PV loops in valvular disease",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "pvvalve"
+       }
+      },
+      {
+       "id": "cvs-physio-1:split",
+       "sub": "Physiology",
+       "t": "Splitting of S2",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "split"
+       }
+      },
+      {
+       "id": "cvs-physio-1:ausc",
+       "sub": "Physiology",
+       "t": "Auscultation sites & bedside maneuvers",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "ausc"
+       }
+      },
+      {
+       "id": "cvs-physio-1:murmurs",
+       "sub": "Physiology",
+       "t": "Heart murmurs",
+       "link": {
+        "m": "cvs-physio-1",
+        "h": "murmurs"
+       }
+      },
+      {
+       "id": "cvs-physio-2:apv",
+       "sub": "Physiology",
+       "t": "Myocardial (ventricular) action potential",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "apv"
+       }
+      },
+      {
+       "id": "cvs-physio-2:app",
+       "sub": "Physiology",
+       "t": "Pacemaker action potential",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "app"
+       }
+      },
+      {
+       "id": "cvs-physio-2:ecg",
+       "sub": "Physiology",
+       "t": "Conduction system & the ECG",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "ecg"
+       }
+      },
+      {
+       "id": "cvs-physio-2:refr",
+       "sub": "Physiology",
+       "t": "Refractory periods & conduction velocity",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "refr"
+       }
+      },
+      {
+       "id": "cvs-physio-2:ecgread",
+       "sub": "Physiology",
+       "t": "ECG leads, axis & rate",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "ecgread"
+       }
+      },
+      {
+       "id": "cvs-physio-2:natri",
+       "sub": "Physiology",
+       "t": "Natriuretic peptides (ANP & BNP)",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "natri"
+       }
+      },
+      {
+       "id": "cvs-physio-2:baro",
+       "sub": "Physiology",
+       "t": "Baroreceptors & chemoreceptors",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "baro"
+       }
+      },
+      {
+       "id": "cvs-physio-2:press",
+       "sub": "Physiology",
+       "t": "Normal cardiac pressures & PCWP",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "press"
+       }
+      },
+      {
+       "id": "cvs-physio-2:longbp",
+       "sub": "Physiology",
+       "t": "Long-term BP control: pressure natriuresis",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "longbp"
+       }
+      },
+      {
+       "id": "cvs-physio-2:autoreg",
+       "sub": "Physiology",
+       "t": "Autoregulation of blood flow by organ",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "autoreg"
+       }
+      },
+      {
+       "id": "cvs-physio-2:starlingf",
+       "sub": "Physiology",
+       "t": "Capillary fluid exchange (Starling forces)",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "starlingf"
+       }
+      },
+      {
+       "id": "cvs-physio-2:edema",
+       "sub": "Physiology",
+       "t": "Edema: mechanisms & safety factors",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "edema"
+       }
+      },
+      {
+       "id": "cvs-physio-2:coronary",
+       "sub": "Physiology",
+       "t": "Coronary circulation",
+       "link": {
+        "m": "cvs-physio-2",
+        "h": "coronary"
        }
       }
      ],

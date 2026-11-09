@@ -1,5 +1,16 @@
 [
  {
+  "v": "6.39",
+  "date": "2026-11-10",
+  "th": [
+   "ระบบหัวใจและหลอดเลือดมีแถบ Physiology และ Pathology แล้ว: atlas ใหม่ 5 เล่ม เรียงตาม First Aid",
+   "Physiology (Guyton + Boron): Cardiac output, Starling, PV loop ที่เลื่อน preload/afterload/contractility ได้, Wiggers, JVP, การฟังเสียงหัวใจและ maneuver, action potential, ECG, baroreflex, Starling forces",
+   "Pathology (Robbins + FA, Harrison เสริม): โรคหัวใจแต่กำเนิด, ความดันสูง, atherosclerosis, aneurysm/dissection, ischemic heart disease (ไทม์ไลน์ MI เลื่อนดูได้, ECG 19 จังหวะ, ตำแหน่ง infarct 12 lead), cardiomyopathy, heart failure, shock, endocarditis, valve, pericarditis, vasculitis",
+   "ข้อสอบใหม่ 226 ข้อ (โจทย์ผู้ป่วย 77 ข้อ), Dx Daily โรคหัวใจ 28 โรค, Case Ladder เพิ่ม 2 เคส (MI, aortic stenosis) · ทุกหัวข้อได้ดาว เข้าทบทวน เกม และสอบ",
+   "ตรวจข้อเท็จจริงแยกแล้ว แก้ 9 จุด เช่น ปรับเกณฑ์ STEMI equivalent ตามแนวทางปัจจุบัน (LBBB ใหม่ไม่ถือเป็น STEMI เสมอไป)"
+  ]
+ },
+ {
   "v": "6.38",
   "date": "2026-11-09",
   "th": [
