@@ -17,6 +17,7 @@ src/
 python3 src/build/build.py <id>        # docs/atlas/* (shared engine) + docs/<folder>/<id>.html
 python3 src/build/integrate.py <id>    # thumbnail, library.json entry, search index, sw.js cache + version bump
 python3 src/build/questions.py        # review topics (checklist) + MCQs/boss/cases/Dx → docs/q/*.json
+# then add the patch-note entry for the new sw.js VERSION at the top of docs/changelog.json
 node src/test/check.js                 # data + page smoke test; must print "all checks passed"
 ```
 `"draft": true` in an atlas json keeps it out of the app: build.py writes it as `<id>.draft.html` (git-ignored) for local preview only.

@@ -17,6 +17,20 @@ Sources and build scripts are in `src/` — see `src/README.md`. Never hand-edit
 7. Search index, `sw.js` FILES + `VERSION` (done by `integrate.py`).
 8. Independent fact-check of new content before pushing.
 
+## References (integrate, no primary/secondary book)
+Topic headings follow **First Aid for the USMLE Step 1**; content integrates these books, each fact badged with its source:
+- Anatomy: Gray's Anatomy + Grant's Atlas + Netter
+- Embryology: Langman + The Developing Human (Moore)
+- Histology: Wheater + Junqueira + diFiore
+- Physiology: Guyton & Hall + Boron
+- Pathology: Robbins
+- Pharmacology: Katzung + Pharmacotherapy (Principles & Practice)
+The user will announce changes to this list.
+
+## Patch notes
+Every release (sw.js VERSION bump) needs a matching entry at the top of `docs/changelog.json` (`{v, date, th:[...]}`) written for the user in Thai.
+The app shows unseen entries on open and the full history in Settings › มีอะไรใหม่. `check.js` fails if the newest entry ≠ VERSION.
+
 ## Style
 - Chapters and headings follow First Aid (USMLE) order; extra content goes in a "เสริม" group.
 - Same theme and standard across all atlases; no lecturer names anywhere.

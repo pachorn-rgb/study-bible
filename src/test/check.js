@@ -45,6 +45,9 @@ for (const c of ix.parts) {
 }
 const sw = fs.readFileSync(path.join(DOCS, "sw.js"), "utf8");
 if (!/^const VERSION = "[^"]+";$/m.test(sw)) bad("sw.js: VERSION line missing or malformed");
+{ const cl = J("changelog.json"), v = (sw.match(/^const VERSION = "([^"]+)";$/m) || [])[1];
+  if (!cl.length || cl[0].v !== v) bad(`changelog.json: newest entry (${cl[0] && cl[0].v}) must match sw.js VERSION ${v} — write the patch notes`);
+  cl.forEach(e => { if (!e.v || !(e.th || []).length) bad(`changelog.json: entry ${e.v} has no notes`) }) }
 try { new Function(sw) } catch (e) { bad("sw.js: syntax error " + e.message) }
 for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), "atlas/core.js", "atlas/render.js", "atlas/atlas.css", ...[...mods.values()].map(m => m.href.split("#")[0])])
   if (!sw.includes(`"${f}"`)) bad(`sw.js does not precache ${f}`);

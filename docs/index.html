@@ -378,6 +378,7 @@ mark{background:color-mix(in srgb,var(--accent) 30%,transparent);color:inherit;b
 @keyframes fade{from{opacity:.5;transform:translateY(3px)}to{opacity:1;transform:none}}
 @media (prefers-reduced-motion:reduce){.fade{animation:none}}
 @media (min-width:44rem){.tiles{grid-template-columns:repeat(4,1fr)}}
+.pnlist{max-height:60vh;overflow:auto;margin:.25rem 0 1rem}.pn{padding:.75rem 0;border-bottom:1px solid var(--line)}.pn:last-child{border:0}.pnh{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:.35rem}.pnh span{color:var(--muted);font-size:.8125rem}.pn ul{margin:0;padding-left:1.1rem}.pn li{margin:.25rem 0;font-size:.9375rem;line-height:1.5}
 </style>
 </head>
 <body>
@@ -411,7 +412,7 @@ mark{background:color-mix(in srgb,var(--accent) 30%,transparent);color:inherit;b
 const STR={
  th:{tabHome:"หน้าหลัก",tabLibrary:"คลัง",tabReview:"ทบทวน",tabMe:"ฉัน",back:"กลับ",level:"เลเวล",xpTo:"อีก {n} XP ถึงเลเวล {l}",
   streak:"{n} วันติด",due:"ครบกำหนด",newT:"ใหม่",mastered:"แม่นแล้ว",startRun:"เริ่มรอบทบทวน",runK:"รอบนี้",cards:"การ์ด",
-  cont:"อ่านต่อ",library:"คลัง",chapters:"บท",empty:"ยังไม่มีเนื้อหา",soonSub:"รอเนื้อหา",soonT:"ยังไม่มีเนื้อหาในหมวดนี้ — เพิ่ม atlas แล้วจะขึ้นที่นี่",atlases:"Atlases",topics:"หัวข้อ",all:"ทั้งหมด",
+  cont:"อ่านต่อ",library:"คลัง",chapters:"บท",empty:"ยังไม่มีเนื้อหา",whatsNew:"มีอะไรใหม่",gotIt:"เข้าใจแล้ว",soonSub:"รอเนื้อหา",soonT:"ยังไม่มีเนื้อหาในหมวดนี้ — เพิ่ม atlas แล้วจะขึ้นที่นี่",atlases:"Atlases",topics:"หัวข้อ",all:"ทั้งหมด",
   mastery:"ความแม่น",search:"ค้นหา",searchPh:"ค้นคำในทุก atlas, หัวข้อ, คำถาม",noRes:"ไม่พบผลลัพธ์",inAtlas:"ใน {a}",
   open:"เปิดใน atlas",openAtlas:"เปิด atlas",save:"บันทึก",saved:"บันทึกไว้",unsave:"เอาออก",savedT:"บันทึกแล้ว",removedT:"เอาออกแล้ว",
   again:"ยังไม่ได้",hard:"พอได้",good:"ได้",againS:"เจอเร็วๆ นี้",hardS:"เจออีก 1 วัน",goodS:"ทิ้งไว้นานขึ้น",
@@ -439,7 +440,7 @@ const STR={
   savedEmpty:"กดไอคอนบันทึกที่ atlas หรือหัวข้อ เพื่อเก็บไว้ที่นี่",sections0:"ส่วนใน atlas"},
  en:{tabHome:"Home",tabLibrary:"Library",tabReview:"Review",tabMe:"Me",back:"Back",level:"Level",xpTo:"{n} XP to level {l}",
   streak:"{n}-day streak",due:"Due",newT:"New",mastered:"Mastered",startRun:"Start a review run",runK:"This run",cards:"cards",
-  cont:"Continue",library:"Library",chapters:"Chapters",empty:"No content yet",soonSub:"Coming soon",soonT:"Nothing here yet — atlases added to this discipline will appear here",atlases:"Atlases",topics:"Topics",all:"All",
+  cont:"Continue",library:"Library",chapters:"Chapters",empty:"No content yet",whatsNew:"What’s new",gotIt:"Got it",soonSub:"Coming soon",soonT:"Nothing here yet — atlases added to this discipline will appear here",atlases:"Atlases",topics:"Topics",all:"All",
   mastery:"Mastery",search:"Search",searchPh:"Search every atlas, topic, question",noRes:"No results",inAtlas:"in {a}",
   open:"Open in atlas",openAtlas:"Open atlas",save:"Save",saved:"Saved",unsave:"Remove",savedT:"Saved",removedT:"Removed",
   again:"Again",hard:"Hard",good:"Good",againS:"see soon",hardS:"see tomorrow",goodS:"push it back",
@@ -466,7 +467,7 @@ const STR={
   uBlitz:"Blitz mode",uExam:"Exam mode",uOled:"Black theme",uAcc2:"Violet + rose accents",uAcc3:"Orange + gold accents",uRank:"Rank {r}",lvAt:"Level {l}",lqDone:"Label quiz: {c}/{n} correct",
   savedEmpty:"Tap the save icon on an atlas or topic to keep it here",sections0:"Atlas sections"}
 };
-const VERSION="4.0";
+let VERSION="",CHANGELOG=[];
 
 /* ================= state ================= */
 const KEY="sb-state-v3";
@@ -820,7 +821,8 @@ function settings(){
    <button class="row" type="button" id="rst"><span class="tx"><b class="danger">${t("sReset")}</b></span></button></div>
   <p class="foot">${t("sDataFoot")}</p>
   <div class="cap">${t("sAbout")}</div>
-  <div class="group"><div class="row"><span class="tx"><b>${t("sVersion")}</b></span><span class="val mono">${VERSION}</span></div></div></div>`;
+  <div class="group"><button class="row" type="button" id="wn"><span class="tx"><b>${t("whatsNew")}</b></span>${I.chev}</button><div class="row"><span class="tx"><b>${t("sVersion")}</b></span><span class="val mono">${VERSION}</span></div></div></div>`;
+  $("#wn").onclick=()=>showNotes(CHANGELOG,t("whatsNew"));
   $("#stback").onclick=()=>goBack("#/me");
   $("#nm").onchange=e=>{S.name=e.target.value.trim();persist()};
   view.querySelectorAll("[data-seg]").forEach(sg=>sg.querySelectorAll("button").forEach(b=>b.onclick=()=>{
@@ -1169,6 +1171,12 @@ function openTopic(id){
 }
 function openSheet(html){$("#sheet").innerHTML=`<div class="grab"></div>`+html;$("#scrim").hidden=false;$("#sheet").querySelectorAll("[data-close]").forEach(a=>a.addEventListener("click",closeSheet))}
 function closeSheet(){$("#scrim").hidden=true}
+/* ---------- patch notes: shown once after each update; full history in Settings ---------- */
+const vNum=v=>(v||"0").split(".").map(Number).reduce((a,x,i)=>a+x/Math.pow(1000,i),0);
+function notesH(list){return list.map(e=>`<div class="pn"><div class="pnh"><b>v${esc(e.v)}</b><span>${esc(e.date||"")}</span></div><ul>${(e[S.lang]||e.th||[]).map(x=>`<li>${esc(x)}</li>`).join("")}</ul></div>`).join("")}
+function showNotes(list,title){openSheet(`<h3>${title}</h3><div class="pnlist">${notesH(list)}</div><button class="btn wide" type="button" data-close>${t("gotIt")}</button>`)}
+function whatsNew(){if(!CHANGELOG.length)return;const latest=CHANGELOG[0].v;if(S.seenV===latest)return;
+ const fresh=S.seenV?CHANGELOG.filter(e=>vNum(e.v)>vNum(S.seenV)).slice(0,6):CHANGELOG.slice(0,1);S.seenV=latest;persist();if(fresh.length)showNotes(fresh,t("whatsNew"))}
 $("#scrim").addEventListener("click",e=>{if(e.target.id==="scrim")closeSheet()});
 document.addEventListener("keydown",e=>{if(e.key==="Escape")closeSheet()});
 document.addEventListener("click",e=>{const r=e.target.closest("[data-topic]");if(r){e.preventDefault();openTopic(r.dataset.topic)}});
@@ -1213,7 +1221,7 @@ let QB={topics:{},boss:{}};
 function loadQB(){const E={topics:{},boss:{},cases:[],dx:{},dxl:[]};
  return fetch("q/index.json").then(r=>r.json()).then(ix=>Promise.all(ix.parts.map(c=>fetch("q/"+c+".json").then(r=>r.json()).then(p=>[c,p]).catch(()=>null))).then(ps=>{
   E.dxl=ix.dxl||[];ps.forEach(x=>{if(!x)return;const[c,p]=x;Object.assign(E.topics,p.topics||{});if(p.boss)E.boss[c]=p.boss;E.cases.push(...(p.cases||[]));if(p.dx&&p.dx.length)E.dx[c]=p.dx});return E})).catch(()=>E)}
-Promise.all([fetch("library.json").then(r=>r.json()),loadQB()]).then(([d,q])=>{LIB=d;QB=q;if(d.alias){let ch=0;for(const[o,n]of Object.entries(d.alias)){if(S.T[o]){if(!S.T[n]||(S.T[o].l||0)>(S.T[n].l||0))S.T[n]=S.T[o];delete S.T[o];ch=1}}if(ch)persist()}const fz=applyFreezes();stack.push(location.hash||"#/");render();if(fz)setTimeout(()=>toast(t("freezeUsed",{n:fz})),600)})
+Promise.all([fetch("library.json").then(r=>r.json()),loadQB(),fetch("changelog.json").then(r=>r.json()).catch(()=>[])]).then(([d,q,cl])=>{LIB=d;QB=q;CHANGELOG=cl;VERSION=(cl[0]||{}).v||"";if(d.alias){let ch=0;for(const[o,n]of Object.entries(d.alias)){if(S.T[o]){if(!S.T[n]||(S.T[o].l||0)>(S.T[n].l||0))S.T[n]=S.T[o];delete S.T[o];ch=1}}if(ch)persist()}const fz=applyFreezes();stack.push(location.hash||"#/");render();setTimeout(whatsNew,700);if(fz)setTimeout(()=>toast(t("freezeUsed",{n:fz})),600)})
  .catch(()=>{view.innerHTML='<div class="empty">Could not load the library. Check your connection and reopen.</div>'});
 </script>
 </body>
