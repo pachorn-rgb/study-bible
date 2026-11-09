@@ -1,7 +1,7 @@
 /* Med Study Bible service worker.
    To publish an update: change VERSION (any new string). Installed apps
    download the new files in the background and show "New version" banner. */
-const VERSION = "6.30";
+const VERSION = "6.31";
 const CACHE = "bible-" + VERSION;
 const FONT_CACHE = "bible-fonts";
 const FILES = [
@@ -15,45 +15,15 @@ const FILES = [
  "index.html",
  "library.json",
  "manifest.json",
- "renal/harrison-ch319.html",
- "renal/harrison-ch320.html",
- "renal/harrison-ch321.html",
- "renal/harrison-ch322.html",
- "renal/harrison-ch323.html",
- "renal/harrison-ch324.html",
- "renal/harrison-ch325.html",
- "renal/harrison-ch326.html",
- "renal/harrison-ch327.html",
- "renal/harrison-ch328.html",
- "renal/harrison-ch329.html",
- "renal/harrison-ch330.html",
- "renal/harrison-ch331.html",
  "renal/kub-anatomy.html",
  "renal/kub-embryology.html",
  "renal/kub-histology.html",
  "renal/nephron-pathway.html",
- "renal/robbins-ch20.html",
- "renal/robbins-ch21.html",
  "search-index.json",
- "thumbs/harrison-ch319.jpg",
- "thumbs/harrison-ch320.jpg",
- "thumbs/harrison-ch321.jpg",
- "thumbs/harrison-ch322.jpg",
- "thumbs/harrison-ch323.jpg",
- "thumbs/harrison-ch324.jpg",
- "thumbs/harrison-ch325.jpg",
- "thumbs/harrison-ch326.jpg",
- "thumbs/harrison-ch327.jpg",
- "thumbs/harrison-ch328.jpg",
- "thumbs/harrison-ch329.jpg",
- "thumbs/harrison-ch330.jpg",
- "thumbs/harrison-ch331.jpg",
  "thumbs/kub-anatomy.jpg",
  "thumbs/kub-embryology.jpg",
  "thumbs/kub-histology.jpg",
  "thumbs/nephron-pathway.jpg",
- "thumbs/robbins-ch20.jpg",
- "thumbs/robbins-ch21.jpg",
  "resp/pharm-resp.html",
  "renal/pharm-renal.html",
  "thumbs/pharm-resp.jpg",
@@ -108,7 +78,13 @@ const FILES = [
  "thumbs/renal-physio-2.jpg",
  "renal/renal-physio-3.html",
  "thumbs/renal-physio-3.jpg",
- "changelog.json"
+ "changelog.json",
+ "renal/renal-patho-1.html",
+ "thumbs/renal-patho-1.jpg",
+ "renal/renal-patho-2.html",
+ "thumbs/renal-patho-2.jpg",
+ "renal/renal-patho-3.html",
+ "thumbs/renal-patho-3.jpg"
 ];
 /* figure images (renal/img/**) are cached the first time they are viewed, so installing stays light */
 self.addEventListener("install", e => {

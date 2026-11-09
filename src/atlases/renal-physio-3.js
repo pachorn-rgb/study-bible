@@ -1,8 +1,8 @@
 /* Renal Physiology III · Electrolytes & acid–base — First Aid order, Guyton sections + FA-only topics */
 //@include _renal-guyton-base.js
-Object.assign(GN,{a:"Potassium & electrolytes",b:"Acid–base",c:"Kidney disease (Guyton)"});
-(()=>{const G={potassium:"a",capimg:"a",natremia:"a",buffers:"b",resp:"b",renalacid:"b",ammonia:"b",abd:"b",aki:"c",ckd:"c"};
- const M={potassium:"K⁺ balance & shifts",capimg:"Ca²⁺ · PO₄ · Mg²⁺",natremia:"Hypo/hypernatremia",buffers:"Buffers · H–H",resp:"Respiratory control",renalacid:"Renal H⁺ & new HCO₃⁻",ammonia:"Phosphate & NH₃ buffers",abd:"Acid–base disorders",aki:"AKI",ckd:"CKD"};
+Object.assign(GN,{a:"Potassium & electrolytes",b:"Acid–base"});
+(()=>{const G={potassium:"a",capimg:"a",natremia:"a",buffers:"b",resp:"b",renalacid:"b",ammonia:"b",abd:"b"};
+ const M={potassium:"K⁺ balance & shifts",capimg:"Ca²⁺ · PO₄ · Mg²⁺",natremia:"Hypo/hypernatremia",buffers:"Buffers · H–H",resp:"Respiratory control",renalacid:"Renal H⁺ & new HCO₃⁻",ammonia:"Phosphate & NH₃ buffers",abd:"Acid–base disorders"};
  const m=new Map(SEC.map(s=>[s.id,s]));SEC.length=0;Object.keys(G).forEach(id=>{const s=m.get(id);s.k=G[id];s.mm=M[id];SEC.push(s)})})();
 
 /* ---------- First Aid topics not covered by the Guyton sections ---------- */
@@ -23,4 +23,4 @@ SEC.splice(SEC.findIndex(s=>s.id==="abd")+1,0,{id:"rta",k:"b",t:"Renal tubular a
 <li>จำ K⁺: type 1 และ 2 ต่ำ · type 4 สูง · แยก 1 กับ 2 ด้วย urine pH (type 1 ทำปัสสาวะเป็นกรดไม่ได้เลย) ${S.x}</li>
 <li>Type 4 พบบ่อยที่สุดในผู้ใหญ่ โดยเฉพาะเบาหวานที่มีไตเสื่อม ${S.x}</li></ul>`});
 
-const EXTRA=["aki","ckd"];
+

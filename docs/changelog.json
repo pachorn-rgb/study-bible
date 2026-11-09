@@ -1,9 +1,68 @@
 [
- {"v":"6.30","date":"2026-11-09","th":["มีหน้า “มีอะไรใหม่” ขึ้นเมื่อเปิดแอปหลังอัปเดต และดูย้อนหลังได้ที่ ตั้งค่า › มีอะไรใหม่","แก้เนื้อหาจากการตรวจความถูกต้อง: ตำแหน่ง macula densa และ aldosterone ใน SIADH"]},
- {"v":"6.28","date":"2026-11-09","th":["Renal Physiology จัดใหม่ตาม First Aid เหลือ 3 atlas: Fluids, Filtration & Clearance · Tubular Transport & Hormones · Electrolytes & Acid–Base","เพิ่มหัวข้อ Features of renal disorders, Kidney endocrine functions & JGA, Electrolyte disturbances, RTA พร้อมข้อสอบ","ลบหน้า Guyton บทที่ 25–31 เดิม ความคืบหน้าย้ายไปหัวข้อใหม่ครบ"]},
- {"v":"6.27","date":"2026-11-09","th":["Atlas แต่ละชนิด (ยา, พยาธิ, สรีระ ฯลฯ) แสดงชื่อแผนที่และคำอธิบายให้ตรงชนิด","Atlas พยาธิใช้ชื่อ “Topic map” แทน “Drug class map”"]},
- {"v":"6.24","date":"2026-11-09","th":["ใหม่: Cellular Injury (General Pathology) ภาพวาดแบบ H&E, ภาพที่กดเล่นได้, Robbins + Harrison","ข้อสอบ 45 ข้อรวมโจทย์เคสแบบ USMLE · Boss · Case Ladder · 4 โรคใหม่ในเกมทายโรค","เกมทายโรค: คำใบ้ข้อ 5 เปลี่ยนเป็น “การตรวจพิเศษ” ใช้ได้ทุกระบบ"]},
- {"v":"6.22","date":"2026-11-09","th":["ใหม่: Drug Reactions & Miscellaneous ในหมวด Toxicities ของเภสัชวิทยา (อาการไม่พึงประสงค์ตามระบบ, CYP450, sulfa, ชื่อยา, teratogens, HLA)"]},
- {"v":"6.19","date":"2026-11-09","th":["ทุกบทมีแถบเลือกสาขา (Embryology, Anatomy, …) สาขาที่ยังไม่มีเนื้อหาแสดงเป็นแถบเส้นประ","เพิ่มหัวข้อทบทวนยาไต 10 หัวข้อ"]},
- {"v":"6.18","date":"2026-11-09","th":["ทุกบทเภสัชวิทยามีดาว รอบทบทวน Boss และ Case Ladder เหมือนไต: หัวข้อทบทวน 169 หัวข้อ ข้อสอบ 338 ข้อ"]}
+ {
+  "v": "6.31",
+  "date": "2026-11-09",
+  "th": [
+   "Renal Pathology จัดใหม่ตาม First Aid เหลือ 3 atlas: Glomerular Disease · Urinary Tract: Stones, Infection & Tumors · Kidney Injury & Failure (Robbins + Harrison)",
+   "เพิ่มหัวข้อ Urinary casts & nomenclature, Urinary incontinence, Papillary & cortical necrosis พร้อมข้อสอบ",
+   "ลบหน้า Robbins บทที่ 20–21 และ Harrison บทที่ 319–331 เดิม ความคืบหน้าและเกมทายโรคย้ายไปหัวข้อใหม่ครบ",
+   "Renal Physiology: เอา AKI/CKD ส่วนเสริมออก เพราะอยู่ใน Kidney Injury & Failure แล้ว"
+  ]
+ },
+ {
+  "v": "6.30",
+  "date": "2026-11-09",
+  "th": [
+   "มีหน้า “มีอะไรใหม่” ขึ้นเมื่อเปิดแอปหลังอัปเดต และดูย้อนหลังได้ที่ ตั้งค่า › มีอะไรใหม่",
+   "แก้เนื้อหาจากการตรวจความถูกต้อง: ตำแหน่ง macula densa และ aldosterone ใน SIADH"
+  ]
+ },
+ {
+  "v": "6.28",
+  "date": "2026-11-09",
+  "th": [
+   "Renal Physiology จัดใหม่ตาม First Aid เหลือ 3 atlas: Fluids, Filtration & Clearance · Tubular Transport & Hormones · Electrolytes & Acid–Base",
+   "เพิ่มหัวข้อ Features of renal disorders, Kidney endocrine functions & JGA, Electrolyte disturbances, RTA พร้อมข้อสอบ",
+   "ลบหน้า Guyton บทที่ 25–31 เดิม ความคืบหน้าย้ายไปหัวข้อใหม่ครบ"
+  ]
+ },
+ {
+  "v": "6.27",
+  "date": "2026-11-09",
+  "th": [
+   "Atlas แต่ละชนิด (ยา, พยาธิ, สรีระ ฯลฯ) แสดงชื่อแผนที่และคำอธิบายให้ตรงชนิด",
+   "Atlas พยาธิใช้ชื่อ “Topic map” แทน “Drug class map”"
+  ]
+ },
+ {
+  "v": "6.24",
+  "date": "2026-11-09",
+  "th": [
+   "ใหม่: Cellular Injury (General Pathology) ภาพวาดแบบ H&E, ภาพที่กดเล่นได้, Robbins + Harrison",
+   "ข้อสอบ 45 ข้อรวมโจทย์เคสแบบ USMLE · Boss · Case Ladder · 4 โรคใหม่ในเกมทายโรค",
+   "เกมทายโรค: คำใบ้ข้อ 5 เปลี่ยนเป็น “การตรวจพิเศษ” ใช้ได้ทุกระบบ"
+  ]
+ },
+ {
+  "v": "6.22",
+  "date": "2026-11-09",
+  "th": [
+   "ใหม่: Drug Reactions & Miscellaneous ในหมวด Toxicities ของเภสัชวิทยา (อาการไม่พึงประสงค์ตามระบบ, CYP450, sulfa, ชื่อยา, teratogens, HLA)"
+  ]
+ },
+ {
+  "v": "6.19",
+  "date": "2026-11-09",
+  "th": [
+   "ทุกบทมีแถบเลือกสาขา (Embryology, Anatomy, …) สาขาที่ยังไม่มีเนื้อหาแสดงเป็นแถบเส้นประ",
+   "เพิ่มหัวข้อทบทวนยาไต 10 หัวข้อ"
+  ]
+ },
+ {
+  "v": "6.18",
+  "date": "2026-11-09",
+  "th": [
+   "ทุกบทเภสัชวิทยามีดาว รอบทบทวน Boss และ Case Ladder เหมือนไต: หัวข้อทบทวน 169 หัวข้อ ข้อสอบ 338 ข้อ"
+  ]
+ }
 ]

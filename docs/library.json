@@ -3298,614 +3298,6 @@
        }
       },
       {
-       "id": "robbins-ch20",
-       "title": "Ch 20 · The Kidney",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Robbins & Cotran 10e Ch 20",
-       "href": "renal/robbins-ch20.html",
-       "thumb": "thumbs/robbins-ch20.jpg",
-       "desc": "โรคไตทั้งบทตาม Robbins: glomerular disease ทุกชนิดสลับดู EM · IF · LM ได้ lupus class เลือกได้ ATN pyelonephritis TIN หลอดเลือด ซีสต์ นิ่ว และเนื้องอก",
-       "tags": [],
-       "topics": [
-        [
-         "Clinical manifestations & syndromes",
-         "syndromes"
-        ],
-        [
-         "Glomerular responses to injury",
-         "glomresp"
-        ],
-        [
-         "Pathogenesis: immune complexes & anti-GBM",
-         "immune"
-        ],
-        [
-         "Podocyte injury & progression",
-         "progression"
-        ],
-        [
-         "Acute postinfectious GN",
-         "psgn"
-        ],
-        [
-         "Crescentic GN (RPGN)",
-         "rpgn"
-        ],
-        [
-         "IgA nephropathy & HSP",
-         "iga"
-        ],
-        [
-         "Hereditary nephritis (Alport) & thin BM",
-         "alport"
-        ],
-        [
-         "Nephrotic syndrome: causes",
-         "nephrotic"
-        ],
-        [
-         "Membranous nephropathy",
-         "membranous"
-        ],
-        [
-         "Minimal change disease",
-         "mcd"
-        ],
-        [
-         "Focal segmental glomerulosclerosis",
-         "fsgs"
-        ],
-        [
-         "MPGN & C3 glomerulopathy",
-         "mpgn"
-        ],
-        [
-         "Lupus nephritis",
-         "lupus"
-        ],
-        [
-         "Diabetic nephropathy",
-         "diabetic"
-        ],
-        [
-         "Other systemic glomerular disease",
-         "systemic"
-        ],
-        [
-         "Acute tubular injury / necrosis",
-         "atn"
-        ],
-        [
-         "Pyelonephritis & UTI",
-         "pyelo"
-        ],
-        [
-         "Drug-induced & other TIN",
-         "tin"
-        ],
-        [
-         "Nephrosclerosis (hypertensive)",
-         "nephrosclerosis"
-        ],
-        [
-         "Thrombotic microangiopathies & other vascular",
-         "tma"
-        ],
-        [
-         "Congenital anomalies",
-         "congenital"
-        ],
-        [
-         "Cystic diseases",
-         "cystic"
-        ],
-        [
-         "Obstruction & hydronephrosis",
-         "obstruction"
-        ],
-        [
-         "Urolithiasis",
-         "stones"
-        ],
-        [
-         "Benign renal tumors",
-         "benign"
-        ],
-        [
-         "Renal cell carcinoma",
-         "rcc"
-        ],
-        [
-         "Wilms tumor (nephroblastoma)",
-         "wilms"
-        ]
-       ],
-       "ref": {
-        "b": "robbins",
-        "l": "R",
-        "ch": "Ch 20",
-        "sort": 120
-       }
-      },
-      {
-       "id": "robbins-ch21",
-       "title": "Ch 21 · The Lower Urinary Tract",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Robbins & Cotran 10e Ch 21",
-       "href": "renal/robbins-ch21.html",
-       "thumb": "thumbs/robbins-ch21.jpg",
-       "desc": "ureter bladder urethra: cystitis หลายแบบ metaplasia urothelial neoplasm pathway grading และ TNM staging ที่เลือกดูความลึกได้",
-       "tags": [],
-       "topics": [
-        [
-         "Ureter: congenital anomalies & tumors",
-         "ureter"
-        ],
-        [
-         "Obstructive lesions & retroperitoneal fibrosis",
-         "ureterobs"
-        ],
-        [
-         "Bladder: congenital anomalies",
-         "bladdercong"
-        ],
-        [
-         "Cystitis",
-         "cystitis"
-        ],
-        [
-         "Metaplastic lesions",
-         "metaplasia"
-        ],
-        [
-         "Urothelial neoplasms: pathways & risk",
-         "urothelial"
-        ],
-        [
-         "Noninvasive urothelial tumors: grading",
-         "grading"
-        ],
-        [
-         "Invasive carcinoma: pathologic staging",
-         "staging"
-        ],
-        [
-         "Other bladder tumors",
-         "othertum"
-        ],
-        [
-         "Urethra: inflammation & tumors",
-         "urethra"
-        ]
-       ],
-       "ref": {
-        "b": "robbins",
-        "l": "R",
-        "ch": "Ch 21",
-        "sort": 121
-       }
-      },
-      {
-       "id": "harrison-ch319",
-       "title": "Ch 319 · Approach to the Patient with Renal Disease",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 319",
-       "href": "renal/harrison-ch319.html",
-       "thumb": "thumbs/harrison-ch319.jpg",
-       "desc": "Harrison บทที่ 319: Prerenal · intrinsic · postrenal · Nephritic vs nephrotic: clinical clues · Hematuria & lower urinary tract",
-       "tags": [],
-       "topics": [
-        [
-         "Prerenal · intrinsic · postrenal",
-         "ap-aki"
-        ],
-        [
-         "Nephritic vs nephrotic: clinical clues",
-         "ap-syn"
-        ],
-        [
-         "Hematuria & lower urinary tract",
-         "ap-hem"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 319",
-        "sort": 319
-       }
-      },
-      {
-       "id": "harrison-ch320",
-       "title": "Ch 320 · Cell Biology & Physiology of the Kidney",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 320",
-       "href": "renal/harrison-ch320.html",
-       "thumb": "thumbs/harrison-ch320.jpg",
-       "desc": "Harrison บทที่ 320: Segmental transport · Inherited tubular disorders (Table 320-1) · Sodium & water balance",
-       "tags": [],
-       "topics": [
-        [
-         "Segmental transport",
-         "cb-seg"
-        ],
-        [
-         "Inherited tubular disorders (Table 320-1)",
-         "cb-inh"
-        ],
-        [
-         "Sodium & water balance",
-         "cb-na"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 320",
-        "sort": 320
-       }
-      },
-      {
-       "id": "harrison-ch321",
-       "title": "Ch 321 · Acute Kidney Injury",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 321",
-       "href": "renal/harrison-ch321.html",
-       "thumb": "thumbs/harrison-ch321.jpg",
-       "desc": "Harrison บทที่ 321: Definition & KDIGO staging · Causes: prerenal · intrinsic · postrenal · Diagnostics: urinalysis & FENa · Complications & management",
-       "tags": [],
-       "topics": [
-        [
-         "Definition & KDIGO staging",
-         "aki-def"
-        ],
-        [
-         "Causes: prerenal · intrinsic · postrenal",
-         "aki-cause"
-        ],
-        [
-         "Diagnostics: urinalysis & FENa",
-         "aki-dx"
-        ],
-        [
-         "Complications & management",
-         "aki-mx"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 321",
-        "sort": 321
-       }
-      },
-      {
-       "id": "harrison-ch322",
-       "title": "Ch 322 · Chronic Kidney Disease",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 322",
-       "href": "renal/harrison-ch322.html",
-       "thumb": "thumbs/harrison-ch322.jpg",
-       "desc": "Harrison บทที่ 322: KDIGO staging: GFR × albuminuria · Fluid, electrolyte & acid–base · CKD–mineral bone disorder · CV, hematologic & other manifestations · Slowing progression & preparing for RRT",
-       "tags": [],
-       "topics": [
-        [
-         "KDIGO staging: GFR × albuminuria",
-         "ckd-stage"
-        ],
-        [
-         "Fluid, electrolyte & acid–base",
-         "ckd-lyte"
-        ],
-        [
-         "CKD–mineral bone disorder",
-         "ckd-mbd"
-        ],
-        [
-         "CV, hematologic & other manifestations",
-         "ckd-sys"
-        ],
-        [
-         "Slowing progression & preparing for RRT",
-         "ckd-slow"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 322",
-        "sort": 322
-       }
-      },
-      {
-       "id": "harrison-ch323",
-       "title": "Ch 323 · Dialysis",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 323",
-       "href": "renal/harrison-ch323.html",
-       "thumb": "thumbs/harrison-ch323.jpg",
-       "desc": "Harrison บทที่ 323: Hemodialysis · Complications of hemodialysis · Peritoneal dialysis",
-       "tags": [],
-       "topics": [
-        [
-         "Hemodialysis",
-         "hd"
-        ],
-        [
-         "Complications of hemodialysis",
-         "hdcx"
-        ],
-        [
-         "Peritoneal dialysis",
-         "pd"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 323",
-        "sort": 323
-       }
-      },
-      {
-       "id": "harrison-ch324",
-       "title": "Ch 324 · Interventional Nephrology",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 324",
-       "href": "renal/harrison-ch324.html",
-       "thumb": "thumbs/harrison-ch324.jpg",
-       "desc": "Harrison บทที่ 324: Dialysis access: assessment & intervention",
-       "tags": [],
-       "topics": [
-        [
-         "Dialysis access: assessment & intervention",
-         "ivn"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 324",
-        "sort": 324
-       }
-      },
-      {
-       "id": "harrison-ch325",
-       "title": "Ch 325 · Kidney Transplantation",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 325",
-       "href": "renal/harrison-ch325.html",
-       "thumb": "thumbs/harrison-ch325.jpg",
-       "desc": "Harrison บทที่ 325: Immunology of rejection · Maintenance immunosuppression · Infections & malignancy after transplant",
-       "tags": [],
-       "topics": [
-        [
-         "Immunology of rejection",
-         "tx-imm"
-        ],
-        [
-         "Maintenance immunosuppression",
-         "tx-drug"
-        ],
-        [
-         "Infections & malignancy after transplant",
-         "tx-inf"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 325",
-        "sort": 325
-       }
-      },
-      {
-       "id": "harrison-ch326",
-       "title": "Ch 326 · Glomerular Diseases",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 326",
-       "href": "renal/harrison-ch326.html",
-       "thumb": "thumbs/harrison-ch326.jpg",
-       "desc": "Harrison บทที่ 326: Measuring proteinuria · Clinical patterns of glomerular disease · Treatment by disease",
-       "tags": [],
-       "topics": [
-        [
-         "Measuring proteinuria",
-         "gd-prot"
-        ],
-        [
-         "Clinical patterns of glomerular disease",
-         "gd-pat"
-        ],
-        [
-         "Treatment by disease",
-         "gd-tx"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 326",
-        "sort": 326
-       }
-      },
-      {
-       "id": "harrison-ch327",
-       "title": "Ch 327 · Polycystic & Inherited Tubular Diseases",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 327",
-       "href": "renal/harrison-ch327.html",
-       "thumb": "thumbs/harrison-ch327.jpg",
-       "desc": "Harrison บทที่ 327: ADPKD · ARPKD · Other inherited cystic & tubular diseases",
-       "tags": [],
-       "topics": [
-        [
-         "ADPKD",
-         "pkd-ad"
-        ],
-        [
-         "ARPKD",
-         "pkd-ar"
-        ],
-        [
-         "Other inherited cystic & tubular diseases",
-         "pkd-oth"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 327",
-        "sort": 327
-       }
-      },
-      {
-       "id": "harrison-ch328",
-       "title": "Ch 328 · Tubulointerstitial Diseases",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 328",
-       "href": "renal/harrison-ch328.html",
-       "thumb": "thumbs/harrison-ch328.jpg",
-       "desc": "Harrison บทที่ 328: Acute interstitial nephritis · Systemic & immune-mediated TIN · Chronic tubulointerstitial nephropathies",
-       "tags": [],
-       "topics": [
-        [
-         "Acute interstitial nephritis",
-         "tin-ain"
-        ],
-        [
-         "Systemic & immune-mediated TIN",
-         "tin-imm"
-        ],
-        [
-         "Chronic tubulointerstitial nephropathies",
-         "tin-chronic"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 328",
-        "sort": 328
-       }
-      },
-      {
-       "id": "harrison-ch329",
-       "title": "Ch 329 · Thrombotic Renovascular Disorders",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 329",
-       "href": "renal/harrison-ch329.html",
-       "thumb": "thumbs/harrison-ch329.jpg",
-       "desc": "Harrison บทที่ 329: Thrombotic microangiopathies · Scleroderma renal crisis & renal vein thrombosis",
-       "tags": [],
-       "topics": [
-        [
-         "Thrombotic microangiopathies",
-         "tma-types"
-        ],
-        [
-         "Scleroderma renal crisis & renal vein thrombosis",
-         "tma-ssc"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 329",
-        "sort": 329
-       }
-      },
-      {
-       "id": "harrison-ch330",
-       "title": "Ch 330 · Nephrolithiasis",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 330",
-       "href": "renal/harrison-ch330.html",
-       "thumb": "thumbs/harrison-ch330.jpg",
-       "desc": "Harrison บทที่ 330: Stone types & urine pH · Risk factors & diet · Acute colic & prevention",
-       "tags": [],
-       "topics": [
-        [
-         "Stone types & urine pH",
-         "st-type"
-        ],
-        [
-         "Risk factors & diet",
-         "st-risk"
-        ],
-        [
-         "Acute colic & prevention",
-         "st-mx"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 330",
-        "sort": 330
-       }
-      },
-      {
-       "id": "harrison-ch331",
-       "title": "Ch 331 · Urinary Tract Obstruction",
-       "subs": [
-        "Pathology"
-       ],
-       "src": "Harrison 22e Ch 331",
-       "href": "renal/harrison-ch331.html",
-       "thumb": "thumbs/harrison-ch331.jpg",
-       "desc": "Harrison บทที่ 331: Causes by level · Pathophysiology · Diagnosis, relief & recovery",
-       "tags": [],
-       "topics": [
-        [
-         "Causes by level",
-         "uo-cause"
-        ],
-        [
-         "Pathophysiology",
-         "uo-phys"
-        ],
-        [
-         "Diagnosis, relief & recovery",
-         "uo-dx"
-        ]
-       ],
-       "ref": {
-        "b": "harrison",
-        "l": "H",
-        "ch": "Ch 331",
-        "sort": 331
-       }
-      },
-      {
        "id": "pharm-renal",
        "title": "Renal Pharmacology",
        "subs": [
@@ -4188,7 +3580,7 @@
        "src": "Guyton & Hall Ch 29–31",
        "href": "renal/renal-physio-3.html",
        "thumb": "thumbs/renal-physio-3.jpg",
-       "desc": "K⁺ balance, Ca²⁺/PO₄/Mg²⁺, Na⁺ ผิดปกติ, อาการ electrolyte ต่ำ/สูง, buffers, การชดเชยทางหายใจและไต, acid–base disorders, RTA · ส่วนเสริม AKI และ CKD",
+       "desc": "K⁺ balance, Ca²⁺/PO₄/Mg²⁺, Na⁺ ผิดปกติ, อาการ electrolyte ต่ำ/สูง, buffers, การชดเชยทางหายใจและไต, acid–base disorders, RTA",
        "tags": [
         "physiology"
        ],
@@ -4236,14 +3628,6 @@
         [
          "Renal tubular acidosis",
          "rta"
-        ],
-        [
-         "Acute kidney injury",
-         "aki"
-        ],
-        [
-         "Chronic kidney disease",
-         "ckd"
         ]
        ],
        "ref": {
@@ -4251,6 +3635,396 @@
         "l": "G",
         "ch": "Ch 29–31",
         "sort": 30
+       }
+      },
+      {
+       "id": "renal-patho-1",
+       "title": "Glomerular Disease",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 20 · Harrison Ch 319, 326",
+       "href": "renal/renal-patho-1.html",
+       "thumb": "thumbs/renal-patho-1.jpg",
+       "desc": "casts และคำเรียกรอยโรค, nephritic (PSGN, RPGN, IgA, Alport, MPGN), nephrotic (MCD, FSGS, membranous, diabetic), lupus และ amyloid · ส่วนเสริม การรักษาและ hematuria",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Urinary casts & glomerular nomenclature",
+         "casts"
+        ],
+        [
+         "Clinical manifestations & syndromes",
+         "syndromes"
+        ],
+        [
+         "Nephritic vs nephrotic: clinical clues",
+         "ap-syn"
+        ],
+        [
+         "Clinical patterns of glomerular disease",
+         "gd-pat"
+        ],
+        [
+         "Pathogenesis: immune complexes & anti-GBM",
+         "immune"
+        ],
+        [
+         "Glomerular responses to injury",
+         "glomresp"
+        ],
+        [
+         "Acute postinfectious GN",
+         "psgn"
+        ],
+        [
+         "Crescentic GN (RPGN)",
+         "rpgn"
+        ],
+        [
+         "IgA nephropathy & HSP",
+         "iga"
+        ],
+        [
+         "Hereditary nephritis (Alport) & thin BM",
+         "alport"
+        ],
+        [
+         "MPGN & C3 glomerulopathy",
+         "mpgn"
+        ],
+        [
+         "Nephrotic syndrome: causes",
+         "nephrotic"
+        ],
+        [
+         "Minimal change disease",
+         "mcd"
+        ],
+        [
+         "Focal segmental glomerulosclerosis",
+         "fsgs"
+        ],
+        [
+         "Membranous nephropathy",
+         "membranous"
+        ],
+        [
+         "Diabetic nephropathy",
+         "diabetic"
+        ],
+        [
+         "Lupus nephritis",
+         "lupus"
+        ],
+        [
+         "Other systemic glomerular disease",
+         "systemic"
+        ],
+        [
+         "Measuring proteinuria",
+         "gd-prot"
+        ],
+        [
+         "Podocyte injury & progression",
+         "progression"
+        ],
+        [
+         "Treatment by disease",
+         "gd-tx"
+        ],
+        [
+         "Hematuria & lower urinary tract",
+         "ap-hem"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 20 · Harrison Ch 319, 326",
+        "sort": 20
+       }
+      },
+      {
+       "id": "renal-patho-2",
+       "title": "Urinary Tract: Stones, Infection & Tumors",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 20–21 · Harrison Ch 327, 330, 331",
+       "href": "renal/renal-patho-2.html",
+       "thumb": "thumbs/renal-patho-2.jpg",
+       "desc": "นิ่ว, hydronephrosis, incontinence, cystitis และ pyelonephritis, ADPKD/ARPKD, RCC, oncocytoma, Wilms, urothelial carcinoma · ส่วนเสริม ความผิดปกติแต่กำเนิดและท่อปัสสาวะ",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Urolithiasis",
+         "stones"
+        ],
+        [
+         "Stone types & urine pH",
+         "st-type"
+        ],
+        [
+         "Risk factors & diet",
+         "st-risk"
+        ],
+        [
+         "Obstruction & hydronephrosis",
+         "obstruction"
+        ],
+        [
+         "Causes by level",
+         "uo-cause"
+        ],
+        [
+         "Pathophysiology",
+         "uo-phys"
+        ],
+        [
+         "Urinary incontinence",
+         "incont"
+        ],
+        [
+         "Cystitis",
+         "cystitis"
+        ],
+        [
+         "Pyelonephritis & UTI",
+         "pyelo"
+        ],
+        [
+         "Cystic diseases",
+         "cystic"
+        ],
+        [
+         "ADPKD",
+         "pkd-ad"
+        ],
+        [
+         "ARPKD",
+         "pkd-ar"
+        ],
+        [
+         "Renal cell carcinoma",
+         "rcc"
+        ],
+        [
+         "Benign renal tumors",
+         "benign"
+        ],
+        [
+         "Wilms tumor (nephroblastoma)",
+         "wilms"
+        ],
+        [
+         "Urothelial neoplasms: pathways & risk",
+         "urothelial"
+        ],
+        [
+         "Other bladder tumors",
+         "othertum"
+        ],
+        [
+         "Acute colic & prevention",
+         "st-mx"
+        ],
+        [
+         "Diagnosis, relief & recovery",
+         "uo-dx"
+        ],
+        [
+         "Obstructive lesions & retroperitoneal fibrosis",
+         "ureterobs"
+        ],
+        [
+         "Urethra: inflammation & tumors",
+         "urethra"
+        ],
+        [
+         "Other inherited cystic & tubular diseases",
+         "pkd-oth"
+        ],
+        [
+         "Inherited tubular disorders (Table 320-1)",
+         "cb-inh"
+        ],
+        [
+         "Congenital anomalies",
+         "congenital"
+        ],
+        [
+         "Bladder: congenital anomalies",
+         "bladdercong"
+        ],
+        [
+         "Noninvasive urothelial tumors: grading",
+         "grading"
+        ],
+        [
+         "Invasive carcinoma: pathologic staging",
+         "staging"
+        ],
+        [
+         "Metaplastic lesions",
+         "metaplasia"
+        ],
+        [
+         "Ureter: congenital anomalies & tumors",
+         "ureter"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 20–21 · Harrison Ch 327, 330, 331",
+        "sort": 21
+       }
+      },
+      {
+       "id": "renal-patho-3",
+       "title": "Kidney Injury & Failure",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 20 · Harrison Ch 321–325, 328, 329",
+       "href": "renal/renal-patho-3.html",
+       "thumb": "thumbs/renal-patho-3.jpg",
+       "desc": "AKI (prerenal, intrinsic, postrenal, FENa), AIN, ATN, papillary necrosis, CKD และผลแทรกซ้อน, renal osteodystrophy, renovascular disease · ส่วนเสริม dialysis และ transplant",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Prerenal · intrinsic · postrenal",
+         "ap-aki"
+        ],
+        [
+         "Definition & KDIGO staging",
+         "aki-def"
+        ],
+        [
+         "Causes: prerenal · intrinsic · postrenal",
+         "aki-cause"
+        ],
+        [
+         "Diagnostics: urinalysis & FENa",
+         "aki-dx"
+        ],
+        [
+         "Acute interstitial nephritis",
+         "tin-ain"
+        ],
+        [
+         "Drug-induced & other TIN",
+         "tin"
+        ],
+        [
+         "Acute tubular injury / necrosis",
+         "atn"
+        ],
+        [
+         "Renal papillary & diffuse cortical necrosis",
+         "papnec"
+        ],
+        [
+         "KDIGO staging: GFR × albuminuria",
+         "ckd-stage"
+        ],
+        [
+         "Fluid, electrolyte & acid–base",
+         "ckd-lyte"
+        ],
+        [
+         "CKD–mineral bone disorder",
+         "ckd-mbd"
+        ],
+        [
+         "CV, hematologic & other manifestations",
+         "ckd-sys"
+        ],
+        [
+         "Nephrosclerosis (hypertensive)",
+         "nephrosclerosis"
+        ],
+        [
+         "Thrombotic microangiopathies & other vascular",
+         "tma"
+        ],
+        [
+         "Thrombotic microangiopathies",
+         "tma-types"
+        ],
+        [
+         "Scleroderma renal crisis & renal vein thrombosis",
+         "tma-ssc"
+        ],
+        [
+         "Complications & management",
+         "aki-mx"
+        ],
+        [
+         "Systemic & immune-mediated TIN",
+         "tin-imm"
+        ],
+        [
+         "Chronic tubulointerstitial nephropathies",
+         "tin-chronic"
+        ],
+        [
+         "Slowing progression & preparing for RRT",
+         "ckd-slow"
+        ],
+        [
+         "Hemodialysis",
+         "hd"
+        ],
+        [
+         "Complications of hemodialysis",
+         "hdcx"
+        ],
+        [
+         "Peritoneal dialysis",
+         "pd"
+        ],
+        [
+         "Dialysis access: assessment & intervention",
+         "ivn"
+        ],
+        [
+         "Immunology of rejection",
+         "tx-imm"
+        ],
+        [
+         "Maintenance immunosuppression",
+         "tx-drug"
+        ],
+        [
+         "Infections & malignancy after transplant",
+         "tx-inf"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 20 · Harrison Ch 321–325, 328, 329",
+        "sort": 22
        }
       }
      ],
@@ -4944,8 +4718,8 @@
        "sub": "Physiology",
        "t": "Acute kidney injury",
        "link": {
-        "m": "renal-physio-3",
-        "h": "aki"
+        "m": "renal-patho-3",
+        "h": "aki-def"
        }
       },
       {
@@ -4953,8 +4727,8 @@
        "sub": "Physiology",
        "t": "Chronic kidney disease",
        "link": {
-        "m": "renal-physio-3",
-        "h": "ckd"
+        "m": "renal-patho-3",
+        "h": "ckd-stage"
        }
       },
       {
@@ -4971,7 +4745,7 @@
        "sub": "Pathology",
        "t": "Clinical manifestations & syndromes",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "syndromes"
        }
       },
@@ -4980,7 +4754,7 @@
        "sub": "Pathology",
        "t": "Glomerular responses to injury",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "glomresp"
        }
       },
@@ -4989,7 +4763,7 @@
        "sub": "Pathology",
        "t": "Pathogenesis: immune complexes & anti-GBM",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "immune"
        }
       },
@@ -4998,7 +4772,7 @@
        "sub": "Pathology",
        "t": "Podocyte injury & progression",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "progression"
        }
       },
@@ -5007,7 +4781,7 @@
        "sub": "Pathology",
        "t": "Acute postinfectious GN",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "psgn"
        }
       },
@@ -5016,7 +4790,7 @@
        "sub": "Pathology",
        "t": "Crescentic GN (RPGN)",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "rpgn"
        }
       },
@@ -5025,7 +4799,7 @@
        "sub": "Pathology",
        "t": "IgA nephropathy & HSP",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "iga"
        }
       },
@@ -5034,7 +4808,7 @@
        "sub": "Pathology",
        "t": "Hereditary nephritis (Alport) & thin BM",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "alport"
        }
       },
@@ -5043,7 +4817,7 @@
        "sub": "Pathology",
        "t": "Nephrotic syndrome: causes",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "nephrotic"
        }
       },
@@ -5052,7 +4826,7 @@
        "sub": "Pathology",
        "t": "Membranous nephropathy",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "membranous"
        }
       },
@@ -5061,7 +4835,7 @@
        "sub": "Pathology",
        "t": "Minimal change disease",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "mcd"
        }
       },
@@ -5070,7 +4844,7 @@
        "sub": "Pathology",
        "t": "Focal segmental glomerulosclerosis",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "fsgs"
        }
       },
@@ -5079,7 +4853,7 @@
        "sub": "Pathology",
        "t": "MPGN & C3 glomerulopathy",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "mpgn"
        }
       },
@@ -5088,7 +4862,7 @@
        "sub": "Pathology",
        "t": "Lupus nephritis",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "lupus"
        }
       },
@@ -5097,7 +4871,7 @@
        "sub": "Pathology",
        "t": "Diabetic nephropathy",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "diabetic"
        }
       },
@@ -5106,7 +4880,7 @@
        "sub": "Pathology",
        "t": "Other systemic glomerular disease",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-1",
         "h": "systemic"
        }
       },
@@ -5115,7 +4889,7 @@
        "sub": "Pathology",
        "t": "Acute tubular injury / necrosis",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-3",
         "h": "atn"
        }
       },
@@ -5124,7 +4898,7 @@
        "sub": "Pathology",
        "t": "Pyelonephritis & UTI",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "pyelo"
        }
       },
@@ -5133,7 +4907,7 @@
        "sub": "Pathology",
        "t": "Drug-induced & other TIN",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-3",
         "h": "tin"
        }
       },
@@ -5142,7 +4916,7 @@
        "sub": "Pathology",
        "t": "Nephrosclerosis (hypertensive)",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-3",
         "h": "nephrosclerosis"
        }
       },
@@ -5151,7 +4925,7 @@
        "sub": "Pathology",
        "t": "Thrombotic microangiopathies & other vascular",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-3",
         "h": "tma"
        }
       },
@@ -5160,7 +4934,7 @@
        "sub": "Pathology",
        "t": "Congenital anomalies",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "congenital"
        }
       },
@@ -5169,7 +4943,7 @@
        "sub": "Pathology",
        "t": "Cystic diseases",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "cystic"
        }
       },
@@ -5178,7 +4952,7 @@
        "sub": "Pathology",
        "t": "Obstruction & hydronephrosis",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "obstruction"
        }
       },
@@ -5187,7 +4961,7 @@
        "sub": "Pathology",
        "t": "Urolithiasis",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "stones"
        }
       },
@@ -5196,7 +4970,7 @@
        "sub": "Pathology",
        "t": "Benign renal tumors",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "benign"
        }
       },
@@ -5205,7 +4979,7 @@
        "sub": "Pathology",
        "t": "Renal cell carcinoma",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "rcc"
        }
       },
@@ -5214,7 +4988,7 @@
        "sub": "Pathology",
        "t": "Wilms tumor (nephroblastoma)",
        "link": {
-        "m": "robbins-ch20",
+        "m": "renal-patho-2",
         "h": "wilms"
        }
       },
@@ -5223,7 +4997,7 @@
        "sub": "Pathology",
        "t": "Ureter: congenital anomalies & tumors",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "ureter"
        }
       },
@@ -5232,7 +5006,7 @@
        "sub": "Pathology",
        "t": "Obstructive lesions & retroperitoneal fibrosis",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "ureterobs"
        }
       },
@@ -5241,7 +5015,7 @@
        "sub": "Pathology",
        "t": "Bladder: congenital anomalies",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "bladdercong"
        }
       },
@@ -5250,7 +5024,7 @@
        "sub": "Pathology",
        "t": "Cystitis",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "cystitis"
        }
       },
@@ -5259,7 +5033,7 @@
        "sub": "Pathology",
        "t": "Metaplastic lesions",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "metaplasia"
        }
       },
@@ -5268,7 +5042,7 @@
        "sub": "Pathology",
        "t": "Urothelial neoplasms: pathways & risk",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "urothelial"
        }
       },
@@ -5277,7 +5051,7 @@
        "sub": "Pathology",
        "t": "Noninvasive urothelial tumors: grading",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "grading"
        }
       },
@@ -5286,7 +5060,7 @@
        "sub": "Pathology",
        "t": "Invasive carcinoma: pathologic staging",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "staging"
        }
       },
@@ -5295,7 +5069,7 @@
        "sub": "Pathology",
        "t": "Other bladder tumors",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "othertum"
        }
       },
@@ -5304,7 +5078,7 @@
        "sub": "Pathology",
        "t": "Urethra: inflammation & tumors",
        "link": {
-        "m": "robbins-ch21",
+        "m": "renal-patho-2",
         "h": "urethra"
        }
       },
@@ -5313,7 +5087,7 @@
        "sub": "Pathology",
        "t": "Prerenal · intrinsic · postrenal",
        "link": {
-        "m": "harrison-ch319",
+        "m": "renal-patho-3",
         "h": "ap-aki"
        }
       },
@@ -5322,7 +5096,7 @@
        "sub": "Pathology",
        "t": "Nephritic vs nephrotic: clinical clues",
        "link": {
-        "m": "harrison-ch319",
+        "m": "renal-patho-1",
         "h": "ap-syn"
        }
       },
@@ -5331,7 +5105,7 @@
        "sub": "Pathology",
        "t": "Hematuria & lower urinary tract",
        "link": {
-        "m": "harrison-ch319",
+        "m": "renal-patho-1",
         "h": "ap-hem"
        }
       },
@@ -5340,8 +5114,8 @@
        "sub": "Pathology",
        "t": "Segmental transport",
        "link": {
-        "m": "harrison-ch320",
-        "h": "cb-seg"
+        "m": "renal-physio-2",
+        "h": "segments"
        }
       },
       {
@@ -5349,7 +5123,7 @@
        "sub": "Pathology",
        "t": "Inherited tubular disorders (Table 320-1)",
        "link": {
-        "m": "harrison-ch320",
+        "m": "renal-patho-2",
         "h": "cb-inh"
        }
       },
@@ -5358,8 +5132,8 @@
        "sub": "Pathology",
        "t": "Sodium & water balance",
        "link": {
-        "m": "harrison-ch320",
-        "h": "cb-na"
+        "m": "renal-physio-2",
+        "h": "adh"
        }
       },
       {
@@ -5367,7 +5141,7 @@
        "sub": "Pathology",
        "t": "Definition & KDIGO staging",
        "link": {
-        "m": "harrison-ch321",
+        "m": "renal-patho-3",
         "h": "aki-def"
        }
       },
@@ -5376,7 +5150,7 @@
        "sub": "Pathology",
        "t": "Causes: prerenal · intrinsic · postrenal",
        "link": {
-        "m": "harrison-ch321",
+        "m": "renal-patho-3",
         "h": "aki-cause"
        }
       },
@@ -5385,7 +5159,7 @@
        "sub": "Pathology",
        "t": "Diagnostics: urinalysis & FENa",
        "link": {
-        "m": "harrison-ch321",
+        "m": "renal-patho-3",
         "h": "aki-dx"
        }
       },
@@ -5394,7 +5168,7 @@
        "sub": "Pathology",
        "t": "Complications & management",
        "link": {
-        "m": "harrison-ch321",
+        "m": "renal-patho-3",
         "h": "aki-mx"
        }
       },
@@ -5403,7 +5177,7 @@
        "sub": "Pathology",
        "t": "KDIGO staging: GFR × albuminuria",
        "link": {
-        "m": "harrison-ch322",
+        "m": "renal-patho-3",
         "h": "ckd-stage"
        }
       },
@@ -5412,7 +5186,7 @@
        "sub": "Pathology",
        "t": "Fluid, electrolyte & acid–base",
        "link": {
-        "m": "harrison-ch322",
+        "m": "renal-patho-3",
         "h": "ckd-lyte"
        }
       },
@@ -5421,7 +5195,7 @@
        "sub": "Pathology",
        "t": "CKD–mineral bone disorder",
        "link": {
-        "m": "harrison-ch322",
+        "m": "renal-patho-3",
         "h": "ckd-mbd"
        }
       },
@@ -5430,7 +5204,7 @@
        "sub": "Pathology",
        "t": "CV, hematologic & other manifestations",
        "link": {
-        "m": "harrison-ch322",
+        "m": "renal-patho-3",
         "h": "ckd-sys"
        }
       },
@@ -5439,7 +5213,7 @@
        "sub": "Pathology",
        "t": "Slowing progression & preparing for RRT",
        "link": {
-        "m": "harrison-ch322",
+        "m": "renal-patho-3",
         "h": "ckd-slow"
        }
       },
@@ -5448,7 +5222,7 @@
        "sub": "Pathology",
        "t": "Hemodialysis",
        "link": {
-        "m": "harrison-ch323",
+        "m": "renal-patho-3",
         "h": "hd"
        }
       },
@@ -5457,7 +5231,7 @@
        "sub": "Pathology",
        "t": "Complications of hemodialysis",
        "link": {
-        "m": "harrison-ch323",
+        "m": "renal-patho-3",
         "h": "hdcx"
        }
       },
@@ -5466,7 +5240,7 @@
        "sub": "Pathology",
        "t": "Peritoneal dialysis",
        "link": {
-        "m": "harrison-ch323",
+        "m": "renal-patho-3",
         "h": "pd"
        }
       },
@@ -5475,7 +5249,7 @@
        "sub": "Pathology",
        "t": "Dialysis access: assessment & intervention",
        "link": {
-        "m": "harrison-ch324",
+        "m": "renal-patho-3",
         "h": "ivn"
        }
       },
@@ -5484,7 +5258,7 @@
        "sub": "Pathology",
        "t": "Immunology of rejection",
        "link": {
-        "m": "harrison-ch325",
+        "m": "renal-patho-3",
         "h": "tx-imm"
        }
       },
@@ -5493,7 +5267,7 @@
        "sub": "Pathology",
        "t": "Maintenance immunosuppression",
        "link": {
-        "m": "harrison-ch325",
+        "m": "renal-patho-3",
         "h": "tx-drug"
        }
       },
@@ -5502,7 +5276,7 @@
        "sub": "Pathology",
        "t": "Infections & malignancy after transplant",
        "link": {
-        "m": "harrison-ch325",
+        "m": "renal-patho-3",
         "h": "tx-inf"
        }
       },
@@ -5511,7 +5285,7 @@
        "sub": "Pathology",
        "t": "Measuring proteinuria",
        "link": {
-        "m": "harrison-ch326",
+        "m": "renal-patho-1",
         "h": "gd-prot"
        }
       },
@@ -5520,7 +5294,7 @@
        "sub": "Pathology",
        "t": "Clinical patterns of glomerular disease",
        "link": {
-        "m": "harrison-ch326",
+        "m": "renal-patho-1",
         "h": "gd-pat"
        }
       },
@@ -5529,7 +5303,7 @@
        "sub": "Pathology",
        "t": "Treatment by disease",
        "link": {
-        "m": "harrison-ch326",
+        "m": "renal-patho-1",
         "h": "gd-tx"
        }
       },
@@ -5538,7 +5312,7 @@
        "sub": "Pathology",
        "t": "ADPKD",
        "link": {
-        "m": "harrison-ch327",
+        "m": "renal-patho-2",
         "h": "pkd-ad"
        }
       },
@@ -5547,7 +5321,7 @@
        "sub": "Pathology",
        "t": "ARPKD",
        "link": {
-        "m": "harrison-ch327",
+        "m": "renal-patho-2",
         "h": "pkd-ar"
        }
       },
@@ -5556,7 +5330,7 @@
        "sub": "Pathology",
        "t": "Other inherited cystic & tubular diseases",
        "link": {
-        "m": "harrison-ch327",
+        "m": "renal-patho-2",
         "h": "pkd-oth"
        }
       },
@@ -5565,7 +5339,7 @@
        "sub": "Pathology",
        "t": "Acute interstitial nephritis",
        "link": {
-        "m": "harrison-ch328",
+        "m": "renal-patho-3",
         "h": "tin-ain"
        }
       },
@@ -5574,7 +5348,7 @@
        "sub": "Pathology",
        "t": "Systemic & immune-mediated TIN",
        "link": {
-        "m": "harrison-ch328",
+        "m": "renal-patho-3",
         "h": "tin-imm"
        }
       },
@@ -5583,7 +5357,7 @@
        "sub": "Pathology",
        "t": "Chronic tubulointerstitial nephropathies",
        "link": {
-        "m": "harrison-ch328",
+        "m": "renal-patho-3",
         "h": "tin-chronic"
        }
       },
@@ -5592,7 +5366,7 @@
        "sub": "Pathology",
        "t": "Thrombotic microangiopathies",
        "link": {
-        "m": "harrison-ch329",
+        "m": "renal-patho-3",
         "h": "tma-types"
        }
       },
@@ -5601,7 +5375,7 @@
        "sub": "Pathology",
        "t": "Scleroderma renal crisis & renal vein thrombosis",
        "link": {
-        "m": "harrison-ch329",
+        "m": "renal-patho-3",
         "h": "tma-ssc"
        }
       },
@@ -5610,7 +5384,7 @@
        "sub": "Pathology",
        "t": "Stone types & urine pH",
        "link": {
-        "m": "harrison-ch330",
+        "m": "renal-patho-2",
         "h": "st-type"
        }
       },
@@ -5619,7 +5393,7 @@
        "sub": "Pathology",
        "t": "Risk factors & diet",
        "link": {
-        "m": "harrison-ch330",
+        "m": "renal-patho-2",
         "h": "st-risk"
        }
       },
@@ -5628,7 +5402,7 @@
        "sub": "Pathology",
        "t": "Acute colic & prevention",
        "link": {
-        "m": "harrison-ch330",
+        "m": "renal-patho-2",
         "h": "st-mx"
        }
       },
@@ -5637,7 +5411,7 @@
        "sub": "Pathology",
        "t": "Causes by level",
        "link": {
-        "m": "harrison-ch331",
+        "m": "renal-patho-2",
         "h": "uo-cause"
        }
       },
@@ -5646,7 +5420,7 @@
        "sub": "Pathology",
        "t": "Pathophysiology",
        "link": {
-        "m": "harrison-ch331",
+        "m": "renal-patho-2",
         "h": "uo-phys"
        }
       },
@@ -5655,7 +5429,7 @@
        "sub": "Pathology",
        "t": "Diagnosis, relief & recovery",
        "link": {
-        "m": "harrison-ch331",
+        "m": "renal-patho-2",
         "h": "uo-dx"
        }
       },
@@ -5846,6 +5620,33 @@
        "link": {
         "m": "pharm-renal",
         "h": "acidbase"
+       }
+      },
+      {
+       "id": "renal-patho-1:casts",
+       "sub": "Pathology",
+       "t": "Urinary casts & glomerular nomenclature",
+       "link": {
+        "m": "renal-patho-1",
+        "h": "casts"
+       }
+      },
+      {
+       "id": "renal-patho-2:incont",
+       "sub": "Pathology",
+       "t": "Urinary incontinence",
+       "link": {
+        "m": "renal-patho-2",
+        "h": "incont"
+       }
+      },
+      {
+       "id": "renal-patho-3:papnec",
+       "sub": "Pathology",
+       "t": "Renal papillary & diffuse cortical necrosis",
+       "link": {
+        "m": "renal-patho-3",
+        "h": "papnec"
        }
       },
       {
