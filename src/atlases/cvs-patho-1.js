@@ -359,7 +359,7 @@ notes:()=>`<div class="pearl">โรคของ <b>intima</b> ใน elastic ar
 
 SEC.push({id:"chol-emb",k:"c",t:"Cholesterol emboli syndrome",mm:"Cholesterol emboli",leg:[],draw:ceD,
 notes:()=>`<ul><li>Plaque ใน aorta แตก ปล่อยผลึก cholesterol ไปอุด artery เล็ก + กระตุ้นอักเสบ ${S.fa}</li>
-<li>มักเกิด<b>หลังสวนหลอดเลือด</b> (angiography, angioplasty, endovascular graft) หรือหลังให้ anticoagulant ${S.fa}</li>
+<li>มักเกิด<b>หลังสวนหลอดเลือด</b> (angiography, angioplasty, endovascular graft) ${S.fa} · หรือหลังให้ anticoagulant/thrombolytic ${S.x}</li>
 <li>อาการ: livedo reticularis, blue toe, AKI, ลำไส้ขาดเลือด, stroke · <b>ชีพจรส่วนปลายยังคลำได้</b> ${S.fa}</li>
 <li>ใน biopsy เห็น<b>ช่องว่างรูปเข็มสองด้านนูน</b> (cholesterol cleft) ใน arteriole · อาจมี eosinophilia และ complement ต่ำ ${S.x}</li></ul>`});
 
