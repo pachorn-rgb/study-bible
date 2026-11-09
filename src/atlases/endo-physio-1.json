@@ -1,0 +1,30 @@
+{
+ "id": "endo-physio-1",
+ "kind": "physio",
+ "sys": "Endocrine",
+ "title_tag": "Pituitary, Thyroid & Calcium Hormones",
+ "eyebrow": "Endocrine · Physiology",
+ "h1": "Pituitary, Thyroid & Calcium Hormones",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Guyton & Hall และ Boron เสริมคลินิกจาก Harrison · กดดู feedback ของแต่ละแกน, เลื่อน osmolality ดู ADH, บล็อกขั้นสังเคราะห์ thyroid, เลื่อน Ca²⁺ ดูเส้น PTH และปรับ pH/albumin ดู ionized Ca²⁺",
+ "sources": [
+  ["guyton", "G", "Guyton & Hall · Ch 74–76, 79, 82"],
+  ["boron", "B", "Boron & Boulpaep · Ch 40, 47–49, 52, 56"],
+  ["fa", "FA", "First Aid Step 1 · Endocrine Physiology"],
+  ["harrison", "H", "Harrison 22e · Ch 392–394, 421–422"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "endo",
+  "folder": "endo",
+  "subs": ["Physiology"],
+  "title": "Pituitary, Thyroid & Calcium Hormones",
+  "src": "Guyton & Hall Ch 74–76, 79 · Boron Ch 47–49, 52",
+  "desc": "Hypothalamic–pituitary axes, GH/IGF-1, ADH (V1/V2, osmolality curve), prolactin, การสังเคราะห์ thyroid hormone, TBG และ deiodinases, ฤทธิ์ 7 B's, PTH กับ CaSR, Ca²⁺ อิสระกับ pH/albumin, vitamin D, FGF23 และ calcitonin",
+  "ch": "Ch 74–79",
+  "sort": 10,
+  "refb": "guyton",
+  "refl": "G",
+  "tags": ["physiology"]
+ },
+ "draft": false
+}

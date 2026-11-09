@@ -1,0 +1,534 @@
+/* ================= Endocrine Physiology I · Hypothalamus–pituitary, thyroid & calcium hormones =================
+   First Aid Step 1 2025 (Endocrine · Physiology, pp. 332–337; anatomy p. 331 for pituitary context) order ·
+   Guyton & Hall 12e Ch 74–76, 79 (+ Ch 82 lactation) · Boron & Boulpaep Ch 40, 47–49, 52 (+ Ch 56) ·
+   Harrison 22e Ch 392–394, 421–422. All drawings are original schematics. */
+//@include _cvs-physio-kit.js
+Object.assign(GN,{a:"Hypothalamus & pituitary",b:"Thyroid",c:"Calcium & phosphate"});
+Object.assign(ST,{ax:"all",gm:"adult",adh:"n",posm:290,pr:"n",tb:"none",tbg:"n",ts:"eu",pt:"n",ica:1.2,ph:7.4,alb:4,vd:"n",cx:"pth"});
+
+/* ---------- endocrine drawing kit (colours = theme tokens) ---------- */
+const EN={hy:CV.vi,ap:CV.pk,pp:CV.bl,th:CV.tl,ad:CV.or,gon:CV.rd,liv:CV.ol,kid:CV.lv,gut:CV.cy,bone:CV.ink2};
+/* coloured node: box + bold title + muted subtitle */
+const NODE=(x,y,w,h,c,t,s,o={})=>RB(x,y,w,h,c,{r:o.r??12,p:o.p??14,sw:o.sw,dash:o.dash,fill:o.fill})+(t?T(x+w/2,y+(s?h/2-1:h/2+4),t,{c:o.big?"b":"bh"}):"")+(s?T(x+w/2,y+h/2+14,s,{c:"s m"}):"");
+/* inhibitory arrow: line ending in a bar */
+function INH(x1,y1,x2,y2,c,w=1.8,o={}){const a=Math.atan2(y2-y1,x2-x1),px=Math.sin(a)*7,py=-Math.cos(a)*7;
+ return SP(`M${x1},${y1} L${x2},${y2}`,c,w,o)+SP(`M${(x2-px).toFixed(1)},${(y2-py).toFixed(1)} L${(x2+px).toFixed(1)},${(y2+py).toFixed(1)}`,c,w+1.2,{op:o.op})}
+/* curved arrow through a control point */
+function CAW(x1,y1,cx,cy,x2,y2,c,w=1.6,o={}){const a=Math.atan2(y2-cy,x2-cx),h=o.h||8,bx=x2-h*Math.cos(a),by=y2-h*Math.sin(a);
+ return SP(`M${x1},${y1} Q${cx},${cy} ${bx.toFixed(1)},${by.toFixed(1)}`,c,w,o)+`<path d="M${x2},${y2} L${(bx+h*.55*Math.sin(a)).toFixed(1)},${(by-h*.55*Math.cos(a)).toFixed(1)} L${(bx-h*.55*Math.sin(a)).toFixed(1)},${(by+h*.55*Math.cos(a)).toFixed(1)}Z" style="fill:${c}${o.op!=null?";opacity:"+o.op:""}"/>`}
+const ION=(x,y,t,k,r=10)=>`<circle cx="${x}" cy="${y}" r="${r}" style="fill:var(--s-${k});stroke:var(--sb-plate);stroke-width:1.5"/>`+T(x,y+3.5,t,{c:"ion"});
+const SGN=(x,y,s,c)=>DOT(x,y,8,c,{sw:1.5})+`<text x="${x}" y="${y+4}" text-anchor="middle" style="font:800 12px var(--sb-font);fill:var(--sb-plate)">${s}</text>`;
+/* horizontal meter: value v on 0..1, optional normal band [a,b] */
+function MET(x,y,w,lab,v,c,o={}){const vv=Math.max(0,Math.min(1,v));let g=T(x,y-6,lab,{a:"start",c:"s"})+`<rect x="${x}" y="${y}" width="${w}" height="12" rx="6" style="fill:var(--sb-surface2)"/>`;
+ if(o.n)g+=`<rect x="${x+w*o.n[0]}" y="${y-2}" width="${w*(o.n[1]-o.n[0])}" height="16" rx="4" style="fill:none;stroke:${CV.mut};stroke-width:1;stroke-dasharray:3 2"/>`;
+ g+=`<rect x="${x}" y="${y}" width="${(w*vv).toFixed(1)}" height="12" rx="6" style="fill:${c}"/>`;if(o.t)g+=T(x+w,y-6,o.t,{a:"end",c:"bh"});return g}
+const DIM=(on,s)=>on?s:`<g style="opacity:.22">${s}</g>`;
+const CAP=(y,s)=>RB(14,y,612,34,CV.acc,{p:9,r:17})+T(320,y+22,s,{c:"s"});
+
+/* ---------- 1. hypothalamic–pituitary hormones ---------- */
+const AXES=[
+ {k:"hpa",c:CV.or,rh:[["CRH","+"]],cell:"Corticotroph",ph:"ACTH",tg:"Adrenal cortex",out:"Cortisol",fb:"cortisol ⊣ CRH + ACTH"},
+ {k:"hpt",c:CV.tl,rh:[["TRH","+"]],cell:"Thyrotroph",ph:"TSH",tg:"Thyroid",out:"T₄ → T₃",fb:"T₃/T₄ ⊣ TRH + TSH"},
+ {k:"hpg",c:CV.rd,rh:[["GnRH","+"]],cell:"Gonadotroph",ph:"LH · FSH",tg:"Gonads",out:"Sex steroids",fb:"steroids ⊣ GnRH/LH · inhibin ⊣ FSH"},
+ {k:"gh",c:CV.ol,rh:[["GHRH","+"],["SST","−"]],cell:"Somatotroph",ph:"GH",tg:"Liver",out:"IGF-1",fb:"IGF-1 ⊣ GH + GHRH, ↑ SST"},
+ {k:"prl",c:CV.pk,rh:[["DA","−"],["TRH","+"]],cell:"Lactotroph",ph:"PRL",tg:"Breast",out:"Milk",fb:"PRL ↑ dopamine (short loop)"},
+ {k:"post",c:CV.bl,rh:[["SON","ADH"]],cell:"Axon terminal",ph:"ADH",tg:"Collecting duct",out:"H₂O|reabsorption",fb:"↓ Posm → ↓ ADH"},
+ {k:"post",c:CV.cy,rh:[["PVN","OT"]],cell:"Axon terminal",ph:"Oxytocin",tg:"Uterus · breast",out:"Contraction|let-down",fb:"positive feedback"}];
+function hpD(){const s=ST.ax;let b="";const W=86,X=i=>16+i*W+W/2;
+ /* hypothalamus */
+ b+=`<path d="${sm([[16,40],[200,22],[440,20],[624,38],[620,118],[440,128],[200,128],[18,116]])}" style="fill:${tint(EN.hy,10)};stroke:color-mix(in srgb,${EN.hy} 50%,transparent);stroke-width:1.4"/>`;
+ b+=T(28,38,"HYPOTHALAMUS",{a:"start",c:"s m"})+T(612,38,"supraoptic · paraventricular nuclei",{a:"end",c:"s m"});
+ /* pituitary lobes */
+ b+=`<path d="${sm([[22,206],[200,192],[436,200],[440,250],[420,300],[220,312],[30,300],[18,250]])}" style="fill:${tint(EN.ap,10)};stroke:color-mix(in srgb,${EN.ap} 50%,transparent);stroke-width:1.4"/>`;
+ b+=`<path d="${sm([[452,200],[540,194],[622,204],[620,300],[540,310],[456,300]])}" style="fill:${tint(EN.pp,10)};stroke:color-mix(in srgb,${EN.pp} 50%,transparent);stroke-width:1.4"/>`;
+ b+=T(30,206,"ANTERIOR",{a:"start",c:"s m"})+T(532,206,"POSTERIOR",{c:"s m"});
+ /* stains */
+ b+=SP(`M${X(0)-34},344 H${X(2)+34}`,CV.vi,2)+T(X(1.5),360,"Basophils",{c:"s"})+SP(`M${X(3)-34},344 H${X(4)+34}`,CV.rd,2)+T(X(3.5),360,"Acidophils",{c:"s"});
+ AXES.forEach((a,i)=>{const on=s==="all"||s===a.k,x=X(i);let g="";
+  /* releasing hormones */
+  a.rh.forEach(([n,sg],j)=>{const yy=a.rh.length>1?70+j*28:82;if(i>=5){g+=TAG(x,64,n,a.c,{w:44})+T(x,92,sg+" made here",{c:"s m"})}
+   else g+=TAG(x-6,yy,n,sg==="−"?CV.bad:a.c,{w:n.length*7+22})+SGN(x+n.length*3.5+14,yy,sg==="−"?"−":"+",sg==="−"?CV.bad:CV.good)});
+  /* transport: portal capillaries vs axons */
+  if(i<5){g+=SP(`M${x-6},132 C${x-16},150 ${x+4},168 ${x-6},190`,CV.lv,2.4,{op:.8})+SP(`M${x+6},132 C${x+16},150 ${x-4},168 ${x+6},190`,CV.ra,2,{op:.6})}
+  else g+=SP(`M${x},104 V196`,CV.ink2,2.4)+DOT(x,196,4,CV.ink2,{sw:0});
+  g+=T(x,226,a.cell,{c:"s m"})+TAG(x,250,a.ph,a.c,{w:Math.max(46,a.ph.length*7.2+18)});
+  if(i===0)g+=T(x,276,"POMC → ACTH",{c:"s m"})+T(x,288,"MSH · β-endorphin",{c:"s m"});
+  if(i===2)g+=T(x,280,"α-subunit ร่วม",{c:"s m"});
+  if(i===5||i===6)g+=T(x,280,"เก็บ + หลั่ง",{c:"s m"});
+  g+=AW(x,i===0||i===2||i>4?296:264,x,386,a.c,1.8);
+  g+=NODE(x-40,388,80,40,a.c,"","")+T(x,412,a.tg,{c:a.tg.length>12?"s":"bh"});
+  const ol=a.out.split("|");g+=AW(x,430,x,446,a.c,1.6)+ol.map((t,j)=>CT(x,462+j*13,t,a.c,{s:ol.length>1?10:11,wt:800})).join("");
+  if(on&&s!=="all"){g+=`<path d="M${x+40},456 C${x+80},440 ${x+70},180 ${x+44},96" style="fill:none;stroke:${CV.bad};stroke-width:2;stroke-dasharray:6 4"/>`+SGN(x+46,96,a.k==="post"&&i===6?"+":"−",a.k==="post"&&i===6?CV.good:CV.bad)}
+  b+=DIM(on,g)});
+ b+=T(160,170,"hypophyseal portal veins",{c:"s m"})+T(540,160,"axons",{c:"s m"})+T(540,174,"(+ neurophysins)",{c:"s m"});
+ const cap={all:"แตะแต่ละแกนด้านบนเพื่อดู feedback loop · ⊕ = กระตุ้น · ⊖ = ยับยั้ง",hpa:"Stress / circadian → CRH → ACTH → cortisol · cortisol ยับยั้งทั้ง hypothalamus และ pituitary",hpt:"TRH → TSH → T₄/T₃ · T₃ (จาก T₄ ใน pituitary) ยับยั้ง TSH เป็นหลัก",hpg:"GnRH ต้องหลั่งเป็นจังหวะ (pulsatile) · ให้ต่อเนื่องจะกดแกนนี้",gh:"GHRH ⊕ / somatostatin ⊖ → GH → IGF-1 จากตับ ยับยั้งย้อนกลับหลายชั้น",prl:"ต่างจากแกนอื่น: hypothalamus 'ยับยั้ง' prolactin ด้วย dopamine เป็นหลัก",post:"ADH / oxytocin สร้างใน hypothalamus แล้วส่งตาม axon มาเก็บที่ posterior pituitary"}[s];
+ b+=CAP(482,cap);
+ return svg(b,"0 0 640 524")}
+
+/* ---------- 2. growth hormone ---------- */
+const GHM={adol:{a:1,base:.6,igf:1,t:"Adolescent"},adult:{a:.55,base:.35,igf:.7,t:"Adult"},old:{a:.22,base:.2,igf:.38,t:"Elderly"},fast:{a:.9,base:1.6,igf:.35,t:"Fasting"},obese:{a:.2,base:.15,igf:.65,t:"Obesity"}};
+function ghD(){const m=GHM[ST.gm];let b="";
+ b+=FRAME(10,10,620,232)+T(24,32,"GH ใน 24 ชั่วโมง (pulsatile) เทียบ IGF-1",{a:"start",c:"bh"});
+ const A=AX(70,46,540,150,[0,24],[0,12],[],[],"","",{});b+=A.g;
+ ["08","12","16","20","00","04","08"].forEach((l,i)=>b+=`<line class="gl" x1="${A.X(i*4)}" y1="46" x2="${A.X(i*4)}" y2="196"/>`+T(A.X(i*4),A.Y(0)+15,l+":00",{c:"s m"}));
+ b+=`<rect x="${A.X(15)}" y="46" width="${A.X(22)-A.X(15)}" height="150" style="fill:${tint(EN.hy,12)}"/>`+T(A.X(18.5),60,"sleep",{c:"s m"});
+ const P=[[1.5,3],[4.5,2.5],[7.5,4],[10.5,2.6],[15.6,10],[17.6,5],[19.8,3.4],[22.4,2.2]];
+ const ex=ST.gm!=="old"&&ST.gm!=="obese";const gh=t=>m.base+P.reduce((s,[c,h])=>s+h*m.a*Math.exp(-((t-c)*(t-c))/(2*.18*.18)),0)+(ex?3.2*m.a*Math.exp(-((t-9.2)*(t-9.2))/(2*.25*.25)):0)+(ST.gm==="fast"?P.reduce((s,[c,h])=>s+2.2*Math.exp(-((t-c-1.4)*(t-c-1.4))/(2*.16*.16)),0):0);
+ b+=SF(FN(A,gh,0,24,400)+` L${A.X(24)},${A.Y(0)} L${A.X(0)},${A.Y(0)}Z`,EN.ap,.14)+SP(FN(A,gh,0,24,400),EN.ap,2.2);
+ b+=SP(`M${A.X(0)},${A.Y(m.igf*6)} H${A.X(24)}`,EN.liv,3,{dash:"10 5"})+CT(A.X(.4),A.Y(m.igf*6)-7,"IGF-1 (t½ ~20 h) ระดับคงที่",EN.liv,{a:"start",s:11});
+ if(ex)b+=T(A.X(9.2),A.Y(Math.min(11.5,gh(9.2)))-6,"exercise",{c:"s m"});
+ b+=CT(A.X(15.6),A.Y(Math.min(11.6,gh(15.6)))-6,"deep sleep burst",EN.ap,{s:11});
+ b+=TAG(560,30,m.t,EN.ap,{w:100});
+ /* regulation */
+ b+=FRAME(10,252,300,238)+T(24,274,"การควบคุม",{a:"start",c:"bh"});
+ b+=NODE(100,286,110,36,EN.hy,"Hypothalamus","")+NODE(100,350,110,36,EN.ap,"Somatotroph","")+NODE(100,426,110,40,EN.liv,"Liver","IGF-1");
+ b+=AW(135,322,135,348,CV.good,1.8)+T(129,338,"GHRH",{a:"end",c:"s"})+INH(175,322,175,346,CV.bad,1.8)+T(181,338,"SST",{a:"start",c:"s"});
+ b+=AW(155,386,155,424,EN.ap,2)+T(161,408,"GH",{a:"start",c:"bh"});
+ b+=CAW(210,446,262,412,212,372,CV.bad,1.6,{dash:"4 3"})+CAW(210,440,300,356,212,304,CV.bad,1.6,{dash:"4 3"})+T(262,462,"IGF-1 ⊣ GH",{c:"s"})+T(258,280,"⊣ GHRH · ↑ SST",{c:"s"});
+ b+=TAG(52,368,"Ghrelin",CV.cy,{w:74})+T(52,390,"กระเพาะ",{c:"s m"})+AW(90,368,98,368,CV.good,1.6,{h:6});
+ /* effects */
+ b+=FRAME(320,252,310,238)+T(334,274,"ฤทธิ์ 2 ทาง",{a:"start",c:"bh"});
+ b+=RB(334,286,282,92,EN.ap,{p:10})+T(346,306,"GH โดยตรง · JAK2 (นาที–ชั่วโมง)",{a:"start",c:"bh"});
+ ["↑ lipolysis → fatty acids ใช้เป็นพลังงาน","↓ glucose uptake ที่กล้ามเนื้อ (insulin resistance)","↑ gluconeogenesis ที่ตับ → diabetogenic"].forEach((t,i)=>b+=T(346,326+i*18,"• "+t,{a:"start",c:"s"}));
+ b+=RB(334,388,282,92,EN.liv,{p:10})+T(346,408,"ผ่าน IGF-1 · receptor tyrosine kinase",{a:"start",c:"bh"});
+ ["chondrocyte ที่ epiphyseal plate → ยาวขึ้น","↑ protein synthesis · amino acid uptake","กระดูกหนาขึ้น (periosteum) แม้ plate ปิดแล้ว"].forEach((t,i)=>b+=T(346,428+i*18,"• "+t,{a:"start",c:"s"}));
+ return svg(b,"0 0 640 500")}
+
+/* ---------- 3. ADH ---------- */
+const ADHM={n:{thr:280,sl:.3,t:"Normal"},hypo:{thr:273,sl:.5,t:"Hypovolemia"},cdi:{thr:280,sl:.04,t:"AVP deficiency (central DI)"},ndi:{thr:280,sl:.4,t:"AVP resistance (nephrogenic DI)"}};
+function adhD(){const m=ADHM[ST.adh],po=ST.posm;let b="";const avp=(M,x)=>Math.max(.3,Math.min(12,.3+M.sl*Math.max(0,x-M.thr)*(1+Math.max(0,x-M.thr)/25)));
+ const A=AX(66,40,270,220,[265,315],[0,12],[270,280,290,300,310],[0,4,8,12],"Plasma osmolality (mOsm/kg)","Plasma AVP (pg/mL)");b+=FRAME(10,10,340,300)+T(24,30,"ADH ตอบสนองต่อ osmolality",{a:"start",c:"bh"})+A.g;
+ Object.keys(ADHM).filter(k=>k!=="ndi").forEach(k=>{const M=ADHM[k],on=k===ST.adh||(k==="n"&&ST.adh==="ndi");b+=SP(FN(A,x=>avp(M,x),265,315,120),k==="n"?CV.ink:k==="hypo"?CV.or:CV.bad,on?3:1.4,{op:on?1:.3,dash:k==="cdi"?"6 4":""})});
+ b+=SP(`M${A.X(m.thr)},${A.Y(0)} V${A.Y(12)}`,CV.mut,1,{dash:"3 3"})+T(A.X(m.thr)+4,A.Y(11),`threshold ~${m.thr}`,{a:"start",c:"s m"});
+ const v=avp(m,po);b+=DOT(A.X(po),A.Y(v),7,CV.acc)+SP(`M${A.X(po)},${A.Y(0)} V${A.Y(v)}`,CV.acc,1.2,{dash:"4 3"});
+ /* principal cell */
+ const cx=360;b+=FRAME(cx,10,270,300)+T(cx+14,30,"Principal cell · collecting duct",{a:"start",c:"bh"});
+ b+=`<rect x="${cx+60}" y="50" width="150" height="200" rx="14" style="fill:${tint(EN.kid,10)};stroke:color-mix(in srgb,${EN.kid} 50%,transparent);stroke-width:1.4"/>`;
+ b+=T(cx+30,150,"lumen",{c:"s m",r:-90})+T(cx+244,150,"blood",{c:"s m",r:90});
+ const res=ST.adh==="ndi",lowA=v<1.2;
+ b+=`<rect x="${cx+196}" y="80" width="26" height="22" rx="7" style="fill:${res?tint(CV.bad,30):EN.pp};stroke:${res?CV.bad:EN.pp}"/>`+T(cx+209,95,"V2",{c:"w"});
+ if(res)b+=CT(cx+236,76,"✕",CV.bad,{s:16,wt:800});
+ b+=DOT(cx+254,91,9,EN.pp,{sw:1.5})+T(cx+254,94.5,"ADH",{c:"ion"});
+ const act=!res&&!lowA;
+ ["Gs","cAMP","PKA"].forEach((t,i)=>{b+=RB(cx+140,112+i*30,52,22,EN.pp,{r:11,p:act?28:8})+T(cx+166,127+i*30,t,{c:"s"})});
+ b+=AW(cx+192,100,cx+176,112,EN.pp,1.4,{h:5,op:act?1:.3});
+ const nIns=act?Math.min(5,Math.round(v/2)+1):0;
+ for(let i=0;i<5;i++){const y=70+i*34,ins=i<nIns;b+=ins?`<rect x="${cx+56}" y="${y}" width="10" height="18" rx="4" style="fill:var(--s-h2o)"/>`:`<circle cx="${cx+104}" cy="${y+9}" r="8" style="fill:none;stroke:var(--s-h2o);stroke-width:1.6;stroke-dasharray:3 2"/>`}
+ b+=T(cx+104,248,"AQP2 vesicles",{c:"s m"})+`<rect x="${cx+206}" y="150" width="10" height="18" rx="4" style="fill:var(--s-h2o);opacity:.7"/>`+T(cx+214,186,"AQP3/4",{c:"s m"});
+ if(nIns)for(let i=0;i<nIns;i++)b+=AW(cx+20,79+i*34,cx+52,79+i*34,"var(--s-h2o)",1.8,{h:6});
+ b+=T(cx+135,290,act?`AQP2 แทรกที่ apical ${nIns}/5 → ดูดน้ำกลับ`:res?"V2 ไม่ตอบสนอง → ไม่มี AQP2 แทรก":"ADH ต่ำ → apical แทบไม่ซึมน้ำ",{c:"s"});
+ /* readouts */
+ const uo=res?60+120*(1-Math.exp(-v/3)):50+1150*(1-Math.exp(-v/3.5)),vol=Math.min(18,600/uo);
+ const card=(x,t,val,u,ok)=>RB(x,322,196,70,ok?CV.vol:CV.bad,{p:ok?12:16})+T(x+12,342,t,{a:"start",c:"s m"})+CT(x+12,374,val,CV.ink,{a:"start",s:22,wt:800})+T(x+184,374,u,{a:"end",c:"s"});
+ b+=card(14,"Plasma AVP",f1c(v),"pg/mL",v>=.8||po<283)+card(222,"Urine osmolality",r0(uo),"mOsm/kg",uo>300||po<283)+card(430,"Urine volume (600 mOsm/d)",f1c(vol),"L/day",vol<3.5);
+ b+=RB(14,404,300,70,EN.pp,{p:9})+T(26,424,"V2 (collecting duct)",{a:"start",c:"bh"})+T(26,442,"Gs → cAMP → AQP2 แทรก apical",{a:"start",c:"s"})+T(26,459,"= ฤทธิ์หลัก: คุม osmolality",{a:"start",c:"s m"});
+ b+=RB(326,404,300,70,CV.lv,{p:9})+T(338,424,"V1 (vascular smooth muscle)",{a:"start",c:"bh"})+T(338,442,"Gq → IP₃ → Ca²⁺ → vasoconstriction",{a:"start",c:"s"})+T(338,459,"เด่นเมื่อ ADH สูงมาก (hypovolemia)",{a:"start",c:"s m"});
+ return svg(b,"0 0 640 484")}
+
+/* ---------- 4. prolactin ---------- */
+const PRM={n:{da:.7,trh:.3,prl:.2,gn:.75,t:"Dopamine กด lactotroph ตลอดเวลา (tonic inhibition)"},
+ suck:{da:.2,trh:.3,prl:.9,gn:.25,t:"Suckling → สัญญาณผ่าน spinal cord กด DA neuron → PRL พุ่ง 10–20 เท่า + กด GnRH"},
+ ap:{da:.7,trh:.3,prl:.85,gn:.35,blk:1,t:"Antipsychotic / metoclopramide บล็อก D₂ ที่ lactotroph → PRL ↑ → galactorrhea"},
+ hypo:{da:.7,trh:.85,prl:.6,gn:.5,t:"1°/2° hypothyroidism: TRH สูงกระตุ้น lactotroph → PRL ↑ เล็กน้อย"},
+ stalk:{da:.05,trh:.3,prl:.7,gn:.4,cut:1,t:"กดก้าน pituitary: dopamine ลงไม่ถึง → PRL ↑ ขณะที่ hormone อื่นลดลง"},
+ ren:{da:.7,trh:.3,prl:.6,gn:.5,t:"Renal failure: กำจัด prolactin ได้น้อยลง → PRL ↑"}};
+function prD(){const m=PRM[ST.pr];let b="";
+ b+=`<path d="${sm([[24,34],[300,20],[600,34],[604,112],[300,124],[26,112]])}" style="fill:${tint(EN.hy,10)};stroke:color-mix(in srgb,${EN.hy} 45%,transparent);stroke-width:1.3"/>`+T(30,46,"HYPOTHALAMUS",{a:"start",c:"s m"});
+ b+=NODE(56,58,130,46,EN.hy,"Arcuate DA neuron","tuberoinfundibular",{p:10+m.da*30})+NODE(250,58,110,46,EN.hy,"TRH neuron","PVN",{p:10+m.trh*30})+NODE(440,58,150,46,CV.rd,"GnRH neuron","pulsatile",{p:10+m.gn*25});
+ /* lactotroph */
+ b+=`<ellipse cx="200" cy="230" rx="88" ry="54" style="fill:${tint(EN.ap,12+m.prl*25)};stroke:${EN.ap};stroke-width:1.6"/>`+T(200,222,"Lactotroph",{c:"bh"})+T(200,238,"anterior pituitary",{c:"s m"});
+ b+=`<rect x="152" y="174" width="26" height="18" rx="6" style="fill:${m.blk?tint(CV.bad,30):EN.hy};stroke:${m.blk?CV.bad:EN.hy}"/>`+T(165,187,"D₂",{c:"w"});
+ if(m.blk)b+=CT(140,176,"✕",CV.bad,{s:15,wt:800});
+ b+=INH(121,104,160,172,CV.bad,1.6+m.da*3.4,{op:m.cut?.25:1})+T(112,140,"dopamine",{a:"end",c:"s"});
+ if(m.cut)b+=SP("M118,150 L154,128",CV.bad,3)+SP("M118,128 L154,150",CV.bad,3)+T(150,160,"stalk compression",{a:"start",c:"s m"});
+ b+=AW(296,104,248,178,CV.good,1+m.trh*3)+T(286,146,"TRH",{a:"start",c:"s"});
+ b+=CT(316,214,"estrogen ⊕",EN.gon,{a:"start",s:11})+AW(312,218,286,224,EN.gon,1.4,{h:6});
+ /* PRL output */
+ const w=1.4+m.prl*5;b+=AW(200,284,200,346,EN.ap,w)+TAG(250,318,"Prolactin",EN.ap,{w:84});
+ b+=NODE(110,350,180,58,EN.ap,"Breast · alveolar cells","lactogenesis (JAK2–STAT5)");
+ b+=CAW(288,240,420,250,500,108,CV.bad,1.4+m.prl*2.4,{dash:"5 4"})+T(372,286,"PRL ⊣ GnRH",{c:"s"});
+ b+=CAW(120,200,40,150,72,108,CV.mut,1.4,{dash:"3 3"})+T(26,186,"short loop:",{a:"start",c:"s m"})+T(26,198,"PRL ↑ DA",{a:"start",c:"s m"});
+ b+=AW(515,104,515,160,CV.rd,1+m.gn*3)+NODE(450,162,130,40,CV.rd,"LH · FSH","")+AW(515,202,515,232,CV.rd,1+m.gn*3)+NODE(430,234,170,48,CV.rd,"Ovulation · spermatogenesis","");
+ /* inputs */
+ b+=NODE(370,300,250,40,CV.cy,"Nipple stimulation / suckling","",{p:ST.pr==="suck"?30:10})+CAW(370,306,300,280,186,108,CV.cy,ST.pr==="suck"?2.6:1.2,{dash:"5 4",op:ST.pr==="suck"?1:.4});
+ b+=NODE(370,350,250,40,CV.ink2,"Renal clearance","",{p:ST.pr==="ren"?24:6});
+ /* meters */
+ b+=FRAME(10,420,620,74);b+=MET(26,446,180,"Dopamine tone",m.da,EN.hy,{n:[.6,.8]})+MET(226,446,180,"Prolactin",m.prl,EN.ap,{n:[.1,.3]})+MET(426,446,180,"GnRH → LH/FSH",m.gn,CV.rd,{n:[.65,.85]});
+ b+=T(320,484,m.t,{c:"s"});
+ return svg(b,"0 0 640 500")}
+
+/* ---------- 5. thyroid hormone synthesis ---------- */
+const TBM={none:{t:"TSH → cAMP กระตุ้นทุกขั้น: trapping, Tg, TPO, endocytosis, การหลั่ง"},
+ nis:{x:[2],t:"Perchlorate / thiocyanate แย่ง NIS → iodide เข้าไม่ได้ · Tg ยังสร้างแต่ไม่มี I → TSH ↑ → goiter"},
+ tpo:{x:[4,5],t:"PTU / methimazole ยับยั้ง TPO: oxidation, organification และ coupling · PTU ยังลด 5′-deiodinase นอกต่อม"},
+ wc:{x:[4,6],t:"Iodide เกินมาก (Wolff–Chaikoff) → organification หยุดชั่วคราว + endocytosis colloid ชะงัก → T₄/T₃ หลั่งลด"},
+ tsh:{up:1,t:"TSH ↑ หรือ TSI (Graves) จับ TSH receptor → ทุกขั้นเร่ง + เซลล์โต (hypertrophy)"}};
+/* iodinated thyroglobulin chain in the colloid */
+function TG(){let g=SP("M24,404 C50,370 80,440 110,400 S160,380 176,410",CV.or,5,{op:.35});const lab=["MIT","DIT","T₄","DIT","T₃"];
+ lab.forEach((l,i)=>{const x=34+i*34,y=[396,410,402,396,406][i];g+=DOT(x,y,12,l[0]==="T"?EN.th:CV.or,{sw:1.5})+`<text x="${x}" y="${y+3.5}" text-anchor="middle" style="font:800 8px var(--sb-font);fill:var(--sb-plate)">${l}</text>`});
+ return g+T(95,446,"thyroglobulin (Tg) ใน colloid",{c:"s"})}
+function thsD(){const m=TBM[ST.tb],bad=k=>(m.x||[]).includes(k);let b="";
+ /* colloid, cell, capillary */
+ b+=`<rect x="10" y="20" width="170" height="440" rx="20" style="fill:${tint(CV.or,12)};stroke:color-mix(in srgb,${CV.or} 45%,transparent)"/>`+T(95,44,"Colloid (follicle lumen)",{c:"bh"});
+ b+=`<rect x="190" y="20" width="300" height="440" rx="22" style="fill:${tint(EN.th,m.up?22:10)};stroke:color-mix(in srgb,${EN.th} 55%,transparent);stroke-width:1.6"/>`+T(340,44,"Follicular cell",{c:"bh"});
+ b+=`<rect x="500" y="20" width="130" height="440" rx="20" style="fill:${tint(CV.lv,10)};stroke:color-mix(in srgb,${CV.lv} 40%,transparent)"/>`+T(565,44,"Capillary",{c:"bh"});
+ b+=`<ellipse cx="340" cy="360" rx="40" ry="28" style="fill:${tint(CV.vi,16)};stroke:${CV.vi}"/>`+T(340,364,"nucleus",{c:"s m"});
+ const st=(n,x,y,c)=>DOT(x,y,11,bad(n)?CV.bad:c,{sw:2})+`<text x="${x}" y="${y+4}" text-anchor="middle" style="font:800 11px var(--sb-font);fill:var(--sb-plate)">${n}</text>`+(bad(n)?CT(x+16,y-8,"✕",CV.bad,{s:16,wt:800}):"");
+ /* 1 Tg synthesis */
+ b+=RB(262,300,74,30,CV.vi,{r:10,p:14})+T(299,320,"RER/Golgi",{c:"s"})+AW(262,316,186,372,CV.vi,1.8)+st(1,232,318,CV.vi)+TG();
+ /* 2 NIS */
+ b+=`<rect x="478" y="96" width="24" height="34" rx="8" style="fill:${bad(2)?tint(CV.bad,30):EN.th};stroke:${bad(2)?CV.bad:EN.th}"/>`+T(490,88,"NIS",{c:"bh"})+st(2,462,80,EN.th);
+ b+=ION(560,104,"I⁻","h",11)+ION(560,128,"Na","na",10)+T(590,108,"×1",{a:"start",c:"s m"})+T(590,132,"×2",{a:"start",c:"s m"});
+ if(!bad(2))b+=AW(544,112,506,112,EN.th,2)+AW(470,112,380,112,EN.th,2,{op:.8});
+ /* 3 pendrin */
+ b+=`<rect x="178" y="96" width="24" height="34" rx="8" style="fill:${EN.th};stroke:${EN.th}"/>`+T(190,88,"pendrin",{c:"s"})+st(3,224,80,EN.th)+(bad(2)?"":AW(370,112,206,112,EN.th,2,{op:.7}));
+ /* 4 TPO */
+ b+=RB(20,140,150,70,CV.or,{p:bad(4)?30:16})+T(95,160,"TPO + H₂O₂ (DUOX2)",{c:"bh"})+T(95,178,"I⁻ → I (oxidation)",{c:"s"})+T(95,196,"Tg-tyrosine → MIT / DIT",{c:"s"})+st(4,174,152,CV.or);
+ if(bad(4))b+=CT(95,226,"organification หยุด",CV.bad,{s:11});
+ /* 5 coupling */
+ b+=RB(20,236,150,70,CV.or,{p:bad(5)?30:12})+T(95,256,"Coupling (TPO)",{c:"bh"})+T(95,274,"DIT + DIT → T₄",{c:"s"})+T(95,292,"MIT + DIT → T₃",{c:"s"})+st(5,174,248,CV.or);
+ /* 6 endocytosis + lysosome */
+ b+=`<circle cx="232" cy="200" r="16" style="fill:${tint(CV.or,30)};stroke:${CV.or}"/>`+AW(176,206,214,202,CV.or,1.8,{op:bad(6)?.25:1})+st(6,232,168,CV.or);
+ b+=`<circle cx="320" cy="214" r="22" style="fill:${tint(CV.vi,24)};stroke:${CV.vi}"/>`+AW(248,204,296,210,CV.or,1.6,{op:bad(6)?.25:1});
+ b+=T(320,252,"lysosome · proteolysis",{c:"s"})+T(320,267,"ปล่อย T₄, T₃ · MIT/DIT",{c:"s m"})+T(320,281,"→ deiodinase (I ใช้ซ้ำ)",{c:"s m"});
+ /* 7 secretion */
+ b+=AW(344,214,494,214,EN.th,2.6,{op:bad(6)?.3:1})+st(7,420,196,EN.th)+TAG(565,206,"T₄ ≫ T₃",EN.th,{w:78})+T(565,230,"~90 : 10",{c:"s m"})+T(565,246,"(MCT8)",{c:"s m"});
+ /* TSH receptor */
+ b+=`<rect x="478" y="300" width="24" height="34" rx="8" style="fill:${EN.ap};stroke:${EN.ap}"/>`+T(470,292,"TSH-R",{a:"end",c:"bh"})+TAG(565,318,m.up?"TSH / TSI ↑":"TSH",EN.ap,{w:m.up?96:56});
+ ["Gs","cAMP"].forEach((t,i)=>b+=RB(408,342+i*30,52,22,EN.ap,{r:11,p:m.up?32:12})+T(434,357+i*30,t,{c:"s"}));
+ b+=AW(478,320,454,342,EN.ap,1.4,{h:6})+T(434,412,"เร่งทุกขั้น",{c:"s m"});
+ b+=CAP(470,m.t);
+ return svg(b,"0 0 640 514")}
+
+/* ---------- 6. thyroid axis, binding proteins & deiodinases ---------- */
+const TGM={n:{tbg:.5,tt4:.5,ft4:.5,tsh:.45,t3:.5,rt3:.3,t:"Euthyroid: free T₄ อยู่ในช่วงปกติ · TSH ปกติ"},
+ up:{tbg:.85,tt4:.8,ft4:.5,tsh:.45,t3:.62,rt3:.35,t:"TBG ↑ (pregnancy, oral estrogen, hepatitis): total T₄ ↑ แต่ free T₄ และ TSH ปกติ"},
+ dn:{tbg:.18,tt4:.22,ft4:.5,tsh:.45,t3:.38,rt3:.28,t:"TBG ↓ (glucocorticoids, nephrotic syndrome): total T₄ ↓ แต่ free T₄ และ TSH ปกติ"},
+ sick:{tbg:.45,tt4:.45,ft4:.5,tsh:.42,t3:.15,rt3:.8,t:"Nonthyroidal illness: 5′-deiodination ลด → T₃ ↓ · rT₃ ↑ · T₄ และ TSH ปกติ"},
+ pri:{tbg:.5,tt4:.15,ft4:.12,tsh:.95,t3:.25,rt3:.15,t:"Primary hypothyroidism: free T₄ ↓ → feedback หาย → TSH ↑"},
+ gr:{tbg:.5,tt4:.92,ft4:.92,tsh:.03,t3:.95,rt3:.4,t:"Graves (TSI): free T₄/T₃ ↑ → TSH ถูกกดจนต่ำมาก"}};
+function thrD(){const m=TGM[ST.tbg];let b="";
+ /* axis */
+ b+=FRAME(10,10,300,350)+T(24,32,"Axis + deiodinases",{a:"start",c:"bh"});
+ b+=NODE(40,46,120,36,EN.hy,"Hypothalamus","TRH")+NODE(40,112,120,40,EN.ap,"Thyrotroph","D2: T₄ → T₃")+NODE(40,186,120,38,EN.th,"Thyroid","T₄ 90% · T₃ 10%");
+ b+=AW(100,82,100,110,CV.good,1.8)+AW(100,152,100,184,EN.ap,1.4+m.tsh*3)+T(108,172,"TSH",{a:"start",c:"s"});
+ b+=CAW(160,206,230,150,160,132,CV.bad,1.4+(1-m.tsh)*2,{dash:"4 3"})+T(204,166,"T₃ ⊣",{a:"start",c:"s"})+CAW(160,196,262,110,160,64,CV.bad,1.2,{dash:"4 3",op:.7});
+ b+=AW(100,224,100,256,EN.th,2);
+ b+=NODE(30,258,90,46,CV.ol,"D1","ตับ · ไต")+NODE(130,258,80,46,EN.ap,"D2","pit · CNS")+NODE(220,258,80,46,CV.mut,"D3","inner ring");
+ b+=T(75,320,"T₄ → T₃",{c:"s"})+T(170,320,"T₄ → T₃ local",{c:"s"})+T(260,320,"T₄ → rT₃",{c:"s"})+T(160,346,"T₃ เป็นตัวออกฤทธิ์ (จับ receptor แน่นกว่า)",{c:"s m"});
+ /* binding */
+ b+=FRAME(320,10,310,170)+T(334,32,"T₄ ในพลาสมา",{a:"start",c:"bh"});
+ const bw=270,bx=340,tb=m.tbg;const seg=[["TBG",.55+.35*(tb-.5),EN.th],["TTR",.15,CV.cy],["albumin",.12,CV.ol]];let x=bx;const tot=seg.reduce((s,a)=>s+a[1],0);
+ seg.forEach(([n,f,c])=>{const w=f/tot*bw;b+=`<rect x="${x}" y="48" width="${w-2}" height="34" rx="6" style="fill:${tint(c,40)};stroke:${c}"/>`+T(x+w/2,70,n,{c:"s"});x+=w});
+ b+=`<rect x="${bx+bw+2}" y="48" width="6" height="34" rx="3" style="fill:${CV.acc}"/>`+T(bx+bw+5,98,"free",{c:"s"});
+ b+=T(340,118,"T₄ จับโปรตีน >99.9% · free ~0.02%",{a:"start",c:"s"})+T(340,136,"T₃ จับน้อยกว่า (~99.5%) → ออกสู่เซลล์เร็วกว่า",{a:"start",c:"s"})+T(340,154,"t½: T₄ ~6–8 วัน · T₃ ~1 วัน",{a:"start",c:"s m"});
+ /* meters */
+ b+=FRAME(320,190,310,170)+T(334,212,"ค่าตรวจ (แถบประ = ช่วงปกติ)",{a:"start",c:"bh"});
+ [["TBG",m.tbg,EN.th],["Total T₄",m.tt4,EN.th],["Free T₄",m.ft4,CV.acc],["TSH",m.tsh,EN.ap],["T₃",m.t3,CV.ol],["rT₃",m.rt3,CV.mut]].forEach(([l,v,c],i)=>{const col=i%2,row=Math.floor(i/2);b+=MET(336+col*150,240+row*42,130,l,v,c,{n:[.35,.65]})});
+ b+=CAP(372,m.t);
+ return svg(b,"0 0 640 416")}
+
+/* ---------- 7. thyroid hormone actions (7 B's) ---------- */
+const TB7=[["Brain maturation","สมองพัฒนา (ทารก)","ขาด → cretinism","—"],["Bone growth","ร่วมกับ GH / IGF-1","เตี้ย · bone age ช้า","bone turnover ↑"],["β-adrenergic","β₁ ที่หัวใจ ↑","HR ↓ · CO ↓","HR ↑ · CO ↑ · ใจสั่น"],["Basal metabolic rate","Na⁺/K⁺-ATPase · O₂ ใช้ ↑","ขี้หนาว · BMR ↓","ขี้ร้อน · BMR ↑"],["Blood sugar","glycogenolysis · gluconeogenesis ↑","—","glucose ↑ หลังอาหาร"],["Break down lipids","lipolysis ↑","cholesterol ↑","น้ำหนักลด · lipid ↓"],["Babies' surfactant","ปอดทารก","—","—"]];
+function thaD(){const s=ST.ts;let b="";const cx=320,cy=262,R=104;
+ b+=`<circle cx="${cx}" cy="${cy}" r="${R}" style="fill:${tint(EN.th,10)};stroke:color-mix(in srgb,${EN.th} 50%,transparent);stroke-width:1.6"/>`;
+ b+=`<circle cx="${cx}" cy="${cy+30}" r="48" style="fill:${tint(CV.vi,14)};stroke:${CV.vi}"/>`+T(cx,cy+68,"nucleus",{c:"s m"});
+ b+=TAG(cx,30,"free T₄",EN.th,{w:70})+AW(cx,42,cx,cy-R+6,EN.th,2)+T(cx+8,cy-R-14,"MCT8",{a:"start",c:"s m"});
+ b+=RB(cx-62,cy-70,50,24,EN.ap,{r:12,p:22})+T(cx-37,cy-54,"D2",{c:"s"})+AW(cx-10,cy-58,cx+16,cy-58,EN.th,1.8)+TAG(cx+38,cy-58,"T₃",EN.th,{w:36});
+ b+=AW(cx-4,cy-92,cx-30,cy-72,EN.th,1.6,{h:6})+AW(cx+38,cy-44,cx+14,cy+2,EN.th,1.8);
+ b+=RB(cx-40,cy+10,40,20,EN.th,{r:8,p:40})+T(cx-20,cy+24,"TR",{c:"s"})+RB(cx,cy+10,40,20,CV.vi,{r:8,p:30})+T(cx+20,cy+24,"RXR",{c:"s"});
+ b+=SP(`M${cx-40},${cy+38} H${cx+40}`,CV.ink2,3)+T(cx,cy+52,"TRE → mRNA",{c:"s"});
+ const pos=[[14,24],[14,138],[14,252],[14,366],[466,82],[466,196],[466,310]],w=160,hh=96;
+ TB7.forEach(([n,d,hy,hp],i)=>{const [x,y]=pos[i],c=[CV.vi,CV.ol,CV.lv,CV.or,"var(--s-glc)",CV.cy,CV.bl][i];
+  const eff=s==="eu"?d:s==="hypo"?hy:hp,hot=s!=="eu"&&eff!=="—";
+  const ex=x<cx?x+w:x,ey=y+hh/2,dx=ex-cx,dy=ey-cy,L=Math.hypot(dx,dy);
+  b+=SP(`M${ex},${ey} L${(cx+dx/L*R).toFixed(1)},${(cy+dy/L*R).toFixed(1)}`,c,1.3,{dash:"3 3",op:.7})+DOT(cx+dx/L*R,cy+dy/L*R,3.5,c,{sw:0});
+  b+=RB(x,y,w,hh,c,{p:hot?24:12,sw:hot?2:1.3})+T(x+12,y+22,n,{a:"start",c:"bh"})+(eff==="—"?T(x+12,y+46,"ไม่เด่น",{a:"start",c:"s m"}):wrapT(x+12,y+46,eff,24,"s",15))});
+ b+=CAP(474,{eu:"7 B's: T₃ ออกฤทธิ์ผ่าน nuclear receptor → ฤทธิ์ช้าแต่ยาวนาน (T₄ ใช้เวลาหลายวัน)",hypo:"Hypothyroidism: ทุกระบบช้าลง · BMR ↓ ทนหนาวไม่ได้ · HR ช้า",hyper:"Thyrotoxicosis: β-adrenergic sensitivity ↑ → β-blocker บรรเทาอาการได้"}[s]);
+ return svg(b,"0 0 640 518")}
+
+/* ---------- 8. PTH ---------- */
+const PTM={n:{set:1.17,mx:1,t:"Normal: ionized Ca²⁺ ลดนิดเดียว → PTH เพิ่มชัน (sigmoid ผ่าน CaSR)"},
+ fhh:{set:1.36,mx:1,t:"FHH (CaSR loss-of-function): set point เลื่อนขวา → ต้อง Ca²⁺ สูงกว่าจึงกด PTH ได้"},
+ mgl:{set:1.22,mx:1.1,t:"Mg²⁺ ต่ำเล็กน้อย → PTH หลั่ง ↑"},
+ mgs:{set:1.17,mx:.25,t:"Mg²⁺ ต่ำรุนแรง → หลั่ง PTH ไม่ได้ + ดื้อ PTH → hypocalcemia ที่แก้ด้วย Ca อย่างเดียวไม่หาย"}};
+function pthD(){const m=PTM[ST.pt],ca=ST.ica;let b="";const f=(M,x)=>Math.min(100,M.mx*(5+95/(1+Math.pow(x/M.set,22))));
+ b+=FRAME(10,10,330,330)+T(24,32,"PTH secretion vs ionized Ca²⁺",{a:"start",c:"bh"});
+ const A=AX(62,46,256,224,[.8,1.6],[0,110],[.8,1,1.2,1.4,1.6],[0,50,100],"Ionized Ca²⁺ (mM)","PTH (% max)",{yo:34});b+=A.g;
+ b+=`<rect x="${A.X(1.1)}" y="46" width="${A.X(1.3)-A.X(1.1)}" height="224" style="fill:${tint(CV.vol,14)}"/>`+T(A.X(1.2),60,"ช่วงปกติ",{c:"s m"});
+ ["n","fhh","mgs"].forEach(k=>{const on=k===ST.pt||k==="n";b+=SP(FN(A,x=>f(PTM[k],x),.8,1.6,160),k==="n"?CV.ink:k==="fhh"?CV.or:CV.bad,on?3:1.3,{op:on?1:.3,dash:k==="mgs"?"6 4":""})});
+ if(ST.pt==="mgl")b+=SP(FN(A,x=>f(m,x),.8,1.6,160),CV.vi,3);
+ const v=f(m,ca);b+=DOT(A.X(ca),A.Y(v),7,CV.acc)+TAG(A.X(ca),A.Y(v)-20,`${r0(v)}%`,CV.acc,{w:46});
+ /* targets */
+ const pw=Math.max(.15,v/100);b+=FRAME(350,10,280,330)+T(364,32,"PTH ออกฤทธิ์ที่",{a:"start",c:"bh"});
+ const org=(y,c,n,ls)=>RB(364,y,252,86,c,{p:8+pw*22})+T(376,y+20,n,{a:"start",c:"bh"})+ls.map((l,i)=>T(376,y+40+i*17,"• "+l,{a:"start",c:"s"})).join("");
+ b+=org(44,CV.ink2,"Bone · osteoblast/osteocyte",["RANKL ↑ → osteoclast → Ca²⁺ + PO₄³⁻ ออก","ให้เป็นช่วง (intermittent) → สร้างกระดูก"]);
+ b+=org(138,EN.kid,"Kidney",["DCT: Ca²⁺ reabsorption ↑","PCT: PO₄³⁻ reabsorption ↓ (NaPi ↓)","PCT: 1α-hydroxylase ↑ → calcitriol"]);
+ b+=org(246,EN.gut,"Gut (ทางอ้อม)",["calcitriol → ดูด Ca²⁺ + PO₄³⁻ ↑"]);
+ /* net */
+ b+=FRAME(10,350,620,64);[["Serum Ca²⁺","↑",CV.good],["Serum PO₄³⁻","↓",CV.bad],["Urine PO₄³⁻","↑",CV.or],["Urine cAMP","↑",EN.pp]].forEach(([l,a,c],i)=>{const x=40+i*150;b+=T(x,374,l,{a:"start",c:"s m"})+CT(x,400,a,c,{a:"start",s:20,wt:800})});
+ b+=CAP(424,m.t);
+ return svg(b,"0 0 640 468")}
+
+/* ---------- 9. calcium in plasma: pH & albumin ---------- */
+function caD(){const ph=ST.ph,al=ST.alb;let b="";
+ const bound=.96*al/4+.5*(ph-7.4)*al/4,ion=1.08-.5*(ph-7.4),cx=.36,tot=ion+bound+cx,mg=v=>v*4;
+ b+=FRAME(10,10,620,150)+T(24,32,"Total plasma Ca²⁺ แยกเป็น 3 ส่วน",{a:"start",c:"bh"});
+ const W=560,sc=W/(3.4);let x=40;[["Ionized (free)",ion,"var(--s-ca)"],["Albumin-bound",bound,CV.ol],["Anion-complexed",cx,CV.mut]].forEach(([n,v,c])=>{const w=v*sc;b+=`<rect x="${x}" y="50" width="${Math.max(2,w-2).toFixed(1)}" height="40" rx="8" style="fill:${tint(c,55)};stroke:${c}"/>`+(w>70?T(x+w/2,68,n,{c:"s"})+T(x+w/2,83,`${f1c(mg(v))} mg/dL · ${r0(v/tot*100)}%`,{c:"s m"}):"");x+=w});
+ b+=T(x-cx*sc/2,104,"anion",{c:"s m"});b+=T(40,124,`Total ${f1c(mg(tot))} mg/dL · Ionized ${(ion).toFixed(2)} mM`,{a:"start",c:"bh"});
+ const low=ion<1.0;b+=low?TAG(560,120,"tetany risk",CV.bad,{w:96}):TAG(560,120,"ionized OK",CV.vol,{w:96});
+ b+=T(40,146,`corrected Ca ≈ measured + 0.8 × (4 − albumin) = ${f1c(mg(tot)+.8*(4-al))} mg/dL`,{a:"start",c:"s m"});
+ /* albumin cartoon */
+ b+=FRAME(10,170,620,220)+T(24,192,"Albumin: H⁺ แย่งที่จับกับ Ca²⁺",{a:"start",c:"bh"});
+ const nA=Math.max(2,Math.round(al*1.5)),hfrac=Math.max(0,Math.min(1,.5-(ph-7.4)*2.5));
+ for(let i=0;i<nA;i++){const ax=60+i*(540/nA)+20,ay=290;b+=`<ellipse cx="${ax}" cy="${ay}" rx="26" ry="38" style="fill:${tint(CV.ol,22)};stroke:${CV.ol}"/>`;
+  for(let j=0;j<4;j++){const sx=ax+(j%2?14:-14),sy=ay-20+Math.floor(j/2)*34,isH=((i*4+j)*.618)%1<hfrac;b+=isH?ION(sx,sy,"H⁺","h",8):ION(sx,sy,"Ca","ca",8)}}
+ for(let k=0;k<Math.round(ion*9);k++)b+=ION(70+((k*97)%520),214+((k*37)%3)*12,"Ca","ca",7);b+=T(612,206,"free Ca²⁺",{a:"end",c:"s m"});
+ b+=T(320,350,ph<7.36?"Acidemia: H⁺ จับ albumin มาก → Ca²⁺ หลุดเป็น free ↑":ph>7.44?"Alkalemia: albumin จับ Ca²⁺ มากขึ้น → free Ca²⁺ ↓ → ชา เกร็ง carpopedal spasm":"pH ปกติ",{c:"s"});
+ b+=T(320,372,`albumin ${f1c(al)} g/dL · pH ${ph.toFixed(2)}`,{c:"s m"});
+ b+=CAP(400,"Albumin เปลี่ยน → total Ca เปลี่ยน แต่ ionized คงที่ (PTH ไม่เปลี่ยน) · pH เปลี่ยน → ionized เปลี่ยน → PTH เปลี่ยน");
+ return svg(b,"0 0 640 444")}
+
+/* ---------- 10. vitamin D & FGF23 ---------- */
+const VDM={n:{pth:.45,fgf:.45,po:.5,ca:.5,c1:.5,t:"1α-hydroxylase ที่ PCT เป็นจุดควบคุม: PTH ⊕ · PO₄³⁻ ต่ำ ⊕ · FGF23 ⊖ · calcitriol ⊖"},
+ lowca:{pth:.9,fgf:.4,po:.4,ca:.25,c1:.85,t:"Ca²⁺ ต่ำ → PTH ↑ → 1α-hydroxylase ↑ → calcitriol ↑ → ดูด Ca²⁺ จากลำไส้มากขึ้น"},
+ hipo:{pth:.5,fgf:.9,po:.85,ca:.5,c1:.25,t:"PO₄³⁻ สูง → osteocyte หลั่ง FGF23 → ขับ PO₄³⁻ ทางปัสสาวะ + กด calcitriol"},
+ ckd:{pth:.95,fgf:.95,po:.9,ca:.3,c1:.12,t:"CKD: nephron ลด → calcitriol ↓ · PO₄³⁻ คั่ง · FGF23 ↑ → PTH ↑ (secondary hyperparathyroidism)"}};
+function vdD(){const m=VDM[ST.vd];let b="";
+ const nd=(x,y,w,c,t,s,p)=>NODE(x,y,w,48,c,t,s,{p});
+ b+=nd(14,20,150,"var(--s-org)","Skin","7-DHC + UVB → D₃",14)+nd(14,82,150,CV.ol,"Diet","D₂ / D₃",12);
+ b+=AW(164,44,214,74,CV.ink2,1.6)+AW(164,106,214,92,CV.ink2,1.6);
+ b+=nd(216,58,150,EN.liv,"Liver","25-hydroxylase",14)+AW(366,82,410,82,EN.liv,2)+TAG(470,82,"25(OH)D",EN.liv,{w:96})+T(470,108,"รูปสะสม · วัดระดับ vitamin D",{c:"s m"})+T(470,122,"t½ ~2–3 สัปดาห์",{c:"s m"});
+ /* kidney */
+ b+=`<path d="${bean(320,226,250,108,-1,0)}" style="fill:${tint(EN.kid,10+m.c1*14)};stroke:color-mix(in srgb,${EN.kid} 55%,transparent);stroke-width:1.6"/>`+T(250,190,"Kidney · PCT",{c:"bh"});
+ b+=AW(470,134,380,196,EN.liv,2)+RB(250,206,140,34,EN.kid,{r:17,p:14+m.c1*40,sw:2})+T(320,227,"1α-hydroxylase",{c:"bh"});
+ b+=RB(250,252,140,28,CV.mut,{r:14,p:10})+T(320,270,"24-hydroxylase → inactive",{c:"s"});
+ /* regulators */
+ b+=AW(104,214,248,222,CV.good,1+m.pth*3)+TAG(80,214,"PTH",CV.vi,{w:50})+T(80,238,"Ca²⁺ ต่ำ",{c:"s m"});
+ b+=AW(104,276,250,232,CV.good,1+(1-m.po)*3)+TAG(80,276,"PO₄³⁻ ↓",CV.or,{w:66});
+ b+=INH(560,214,392,224,CV.bad,1+m.fgf*3)+TAG(582,214,"FGF23",CV.rd,{w:62})+T(582,238,"osteocyte · PO₄³⁻ สูง",{c:"s m"});
+ b+=INH(420,326,394,246,CV.bad,1.4)+T(428,300,"feedback ⊖",{a:"start",c:"s m"});
+ /* calcitriol */
+ b+=AW(320,282,320,322,EN.kid,2+m.c1*3)+TAG(320,334,"1,25(OH)₂D · calcitriol",EN.kid,{w:180});
+ const tg=(x,c,t,ls)=>AW(320,346,x+85,374,c,1.6)+RB(x,376,170,94,c,{p:12})+T(x+12,396,t,{a:"start",c:"bh"})+ls.map((l,i)=>T(x+12,416+i*17,"• "+l,{a:"start",c:"s"})).join("");
+ b+=tg(14,EN.gut,"Gut (duodenum)",["TRPV6 · calbindin ↑","ดูด Ca²⁺ + PO₄³⁻ ↑"])+tg(235,"var(--s-urea)","Bone",["mineralization ปกติ","ระดับสูง → resorption"])+tg(456,EN.pp,"Parathyroid · kidney",["กด PTH transcription","FGF23 ↑ (loop)"]);
+ /* FGF23 action strip */
+ b+=RB(14,482,612,46,CV.rd,{p:10})+T(26,502,"FGF23 (+ Klotho): NaPi-IIa/IIc ที่ PCT ↓ → phosphaturia · 1α-hydroxylase ↓",{a:"start",c:"s"})+T(26,519,"สูงผิดปกติ → hypophosphatemic rickets / osteomalacia",{a:"start",c:"s m"});
+ b+=FRAME(10,538,620,58);[["PTH",m.pth,CV.vi],["FGF23",m.fgf,CV.rd],["Calcitriol",m.c1,EN.kid],["PO₄³⁻",m.po,CV.or]].forEach(([l,v,c],i)=>b+=MET(26+i*152,562,130,l,v,c,{n:[.35,.6]}));
+ b+=CAP(604,m.t);
+ return svg(b,"0 0 640 648")}
+
+/* ---------- 11. calcitonin + summary of Ca/PO₄ hormones ---------- */
+const CXH=[["pth","PTH","Chief cells","Ca²⁺ ↓ (CaSR)",["resorption ↑","Ca²⁺ reabs ↑ (DCT)","PO₄³⁻ reabs ↓ (PCT)","ทางอ้อม (calcitriol)"],"↑","↓",CV.vi],
+ ["vitd","Calcitriol","PCT (1α-OHase)","PTH ↑ · PO₄³⁻ ↓",["mineralization","Ca²⁺ reabs ↑ (อ่อน)","PO₄³⁻ reabs ↑ (อ่อน)","Ca²⁺ + PO₄³⁻ ดูด ↑"],"↑","↑",EN.kid],
+ ["ct","Calcitonin","C cells (thyroid)","Ca²⁺ ↑",["osteoclast ↓","ผลน้อย","ผลน้อย","ผลน้อย"],"↓ (ชั่วคราว)","—",EN.th],
+ ["fgf","FGF23","Osteocytes","PO₄³⁻ ↑ · calcitriol ↑",["—","—","PO₄³⁻ reabs ↓","PO₄³⁻ ดูด ↓"],"—","↓",CV.rd]];
+function ctD(){const s=ST.cx;let b="";
+ /* C-cell mini */
+ b+=FRAME(10,10,620,150)+T(24,32,"Parafollicular (C) cell → calcitonin",{a:"start",c:"bh"});
+ b+=`<ellipse cx="90" cy="96" rx="44" ry="26" style="fill:${tint(EN.th,10)};stroke:${EN.th}"/>`+T(90,100,"follicle",{c:"s m"});
+ b+=`<circle cx="150" cy="96" r="16" style="fill:${tint(EN.th,40)};stroke:${EN.th};stroke-width:1.6"/>`+T(150,128,"C cell",{c:"s"});
+ b+=ION(196,62,"Ca","ca",10)+T(214,58,"Ca²⁺ ↑",{a:"start",c:"s"})+AW(196,74,166,88,"var(--s-ca)",1.6,{h:6});
+ b+=AW(168,96,250,96,EN.th,2.4)+TAG(300,96,"Calcitonin",EN.th,{w:92});
+ b+=`<ellipse cx="440" cy="96" rx="40" ry="22" style="fill:${tint(CV.vi,20)};stroke:${CV.vi}"/>`+T(440,100,"Osteoclast",{c:"s"})+INH(348,96,398,96,CV.bad,2.2);
+ b+=T(560,82,"resorption ↓",{c:"bh"})+T(560,100,"Ca²⁺ ↓ ชั่วคราว",{c:"s"})+T(560,118,"ผู้ใหญ่ผลน้อยมาก",{c:"s m"});
+ b+=T(320,148,"ตัดต่อมไทรอยด์ออก (ไม่มี calcitonin) → Ca²⁺ ระยะยาวไม่เปลี่ยน · PTH คุมเหนือกว่า",{c:"s m"});
+ /* comparison grid */
+ const rows=["หลั่งจาก","กระตุ้นโดย","Bone","Kidney · Ca²⁺","Kidney · PO₄³⁻","Gut","Serum Ca²⁺","Serum PO₄³⁻"],x0=118,cw=128,y0=176,rh=34;
+ b+=FRAME(10,y0-6,620,rh*9+12);
+ CXH.forEach(([k,n,src,sti,eff,sc,sp,c],j)=>{const on=k===s,x=x0+j*cw;b+=RB(x+2,y0,cw-4,rh*9-4,c,{p:on?22:6,sw:on?2:1,r:10})+CT(x+cw/2,y0+22,n,c,{s:12.5,wt:800});
+  const vals=[src,sti,...eff,sc,sp];vals.forEach((v,i)=>b+=T(x+cw/2,y0+rh*(i+1)+21,v,{c:i>=6?"bh":"s"+(v==="—"||v==="ผลน้อย"?" m":"")}))});
+ rows.forEach((r,i)=>b+=T(24,y0+rh*(i+1)+21,r,{a:"start",c:i>=6?"bh":"s"})+(i?SP(`M18,${y0+rh*(i+1)} H622`,CV.line,1):""));
+ return svg(b,"0 0 640 494")}
+
+/* ================= sections ================= */
+SEC.push({id:"hp",k:"a",t:"Hypothalamic–pituitary hormones",mm:"Releasing hormones · axes",leg:[],
+tools:[["ax",[["all","ทุกแกน"],["hpa","HPA"],["hpt","HPT"],["hpg","HPG"],["gh","GH"],["prl","Prolactin"],["post","Posterior"]]]],draw:hpD,
+notes:()=>`<h3>สองครึ่งของ pituitary</h3><ul>
+<li><b>Anterior pituitary</b> (adenohypophysis) มาจาก oral ectoderm (Rathke pouch) · หลั่ง FSH, LH, ACTH, TSH, PRL, GH และ β-endorphin — “FLAT PeG” ${S.fa}</li>
+<li>Hypothalamus ส่ง releasing/inhibitory hormones ลง median eminence → <b>hypothalamic–hypophysial portal vessels</b> → sinusoids ของ anterior pituitary โดยตรง (ความเข้มข้นสูงโดยไม่เจือจางในเลือดทั่วร่าง) ${S.g}</li>
+<li><b>Posterior pituitary</b> (neurohypophysis, neuroectoderm) ไม่ได้สร้าง hormone เอง · ADH (ส่วนใหญ่จาก supraoptic) และ oxytocin (ส่วนใหญ่จาก paraventricular) สร้างที่ cell body แล้วส่งลงตาม axon โดยจับ <b>neurophysin</b> ${S.g}</li>
+<li>ตัดก้านเหนือต่อม: ADH/oxytocin ลดชั่วคราวแล้วกลับมาหลั่งจากปลาย axon ที่ถูกตัด ${S.g}</li></ul>
+<h3>เซลล์และสี</h3><ul>
+<li>Somatotroph ~30–40% ของเซลล์ · corticotroph ~20% · ที่เหลือชนิดละ 3–5% ${S.g}</li>
+<li>Basophils: FSH, LH, ACTH, TSH (“B-FLAT”) · Acidophils: GH, PRL (“PiG”) ${S.fa}</li>
+<li>TSH, LH, FSH และ hCG ใช้ <b>α-subunit ร่วมกัน</b> · β-subunit กำหนดความจำเพาะ ${S.fa}</li>
+<li><b>POMC</b> ถูกตัดเป็น ACTH, MSH และ β-endorphin → ACTH สูง (Cushing disease, Addison) มาพร้อม MSH → ผิวคล้ำ ${S.fa} ${S.b}</li></ul>
+<h3>Hypothalamic hormones (FA)</h3><table><tr><th>Hormone</th><th>ผลต่อ pituitary</th><th>จุดคลินิก</th></tr>
+<tr><td>CRH</td><td>↑ ACTH, MSH, β-endorphin</td><td>↓ เมื่อใช้ glucocorticoid เรื้อรัง</td></tr>
+<tr><td>TRH</td><td>↑ TSH, PRL</td><td>hypothyroidism → PRL ↑ ได้</td></tr>
+<tr><td>GnRH</td><td>↑ FSH, LH</td><td>pulsatile = puberty/fertility · ต่อเนื่อง (leuprolide) = กดแกน · PRL สูงกดได้</td></tr>
+<tr><td>GHRH / SST</td><td>↑ GH / ↓ GH, TSH</td><td>tesamorelin = GHRH analog</td></tr>
+<tr><td>Dopamine (PIF)</td><td>↓ PRL, TSH</td><td>antipsychotic → galactorrhea</td></tr></table>
+<div class="pearl">กดแต่ละแกนเพื่อดูวง feedback · prolactin เป็นแกนเดียวที่ hypothalamus <b>ยับยั้ง</b>เป็นหลัก ส่วน oxytocin มี positive feedback ระหว่างคลอด</div>`});
+
+SEC.push({id:"gh",k:"a",t:"Growth hormone & IGF-1",mm:"GH · IGF-1",leg:[],
+tools:[["gm",[["adol","Adolescent"],["adult","Adult"],["old","Elderly"],["fast","Fasting"],["obese","Obesity"]]]],draw:ghD,
+notes:()=>`<h3>หลั่งเป็นจังหวะ</h3><ul>
+<li>GH (somatotropin) หลั่งเป็น pulse · สูงสุดช่วง <b>2 ชั่วโมงแรกของ deep sleep</b> และหลังออกกำลังหนัก ${S.g}</li>
+<li>กระตุ้น: hypoglycemia, fatty acids ต่ำ, amino acids (arginine) สูง, อดอาหาร/ขาดโปรตีน, stress/trauma, ออกกำลัง, ghrelin, sex steroids ${S.g} ${S.fa}</li>
+<li>ยับยั้ง: glucose สูง, fatty acids สูง, อายุมาก, อ้วน, somatostatin, IGF-1 ${S.g}</li>
+<li>หลังวัยรุ่นการหลั่งลดลงเรื่อยๆ จนเหลือ ~25% ของวัยรุ่นในผู้สูงอายุ ${S.g}</li>
+<li>Ghrelin จากกระเพาะจับ GH secretagogue receptor (GHSR1a) → GH ↑ และกระตุ้นความหิว ${S.b}</li></ul>
+<h3>Feedback</h3><ul>
+<li>IGF-1 จากตับ ยับยั้ง GH ตรงที่ somatotroph และทางอ้อม (GHRH ↓, somatostatin ↑) · GH เองก็มี short-loop feedback ${S.b}</li>
+<li>Somatostatin จับ SSTR (Gi) → cAMP ↓ · เมื่อมีทั้ง GHRH และ SST ฤทธิ์ยับยั้งชนะ ${S.b}</li></ul>
+<h3>ฤทธิ์ตรง vs ผ่าน IGF-1</h3><ul>
+<li>GH receptor เป็น cytokine-type receptor ใช้ <b>JAK2</b> · ฤทธิ์ระยะสั้น: lipolysis ↑, glucose uptake ในกล้ามเนื้อ ↓, gluconeogenesis ↑ = <b>diabetogenic</b> ${S.b}</li>
+<li>GH ทำให้ใช้ไขมันเป็นพลังงานแทน protein (protein sparing) · ถ้ามากเกินอาจเกิด ketosis และ fatty liver ${S.g}</li>
+<li>การเจริญเติบโตส่วนใหญ่ผ่าน <b>IGF-1 (somatomedin C)</b> จากตับ · GH t½ < 20 นาที แต่ IGF-1 จับ carrier protein จึงอยู่ได้ ~20 ชั่วโมง ${S.g}</li>
+<li>ยาวขึ้นที่ epiphyseal plate จนกระดูกปิด · หลังจากนั้นกระดูก membranous ยังหนาขึ้นได้ (กราม หน้าผาก ใน acromegaly) ${S.g}</li>
+<li>ช่วงอดอาหาร GH สูงแต่ <b>IGF-1 ลด</b> เพราะ insulin ต่ำ (ต้องมี insulin จึงสร้าง IGF-1 ได้เต็มที่) ${S.b}</li>
+<li>GH เกิน: acromegaly (ผู้ใหญ่) / gigantism (เด็ก) · รักษาด้วย somatostatin analog (octreotide) หรือผ่าตัด ${S.fa}</li></ul>`});
+
+SEC.push({id:"adh",k:"a",t:"Antidiuretic hormone (ADH)",mm:"ADH · V1/V2",leg:[],
+tools:[["adh",[["n","Normal"],["hypo","Hypovolemia"],["cdi","AVP deficiency"],["ndi","AVP resistance"]]]],ctrl:()=>SL("posm","Plasma osm",266,314,1,"mOsm/kg"),wire:()=>WIRE(),draw:adhD,
+notes:()=>`<h3>Osmotic control (หลัก)</h3><ul>
+<li>ADH (vasopressin) สร้างที่ supraoptic/paraventricular nuclei ส่งมาเก็บและหลั่งจาก posterior pituitary · ทั้ง ADH และ oxytocin เป็น peptide 9 amino acids ต่างกันเพียง 2 ตำแหน่ง ${S.g}</li>
+<li>Osmoreceptor หดตัวเมื่อ ECF เข้มข้น → กระตุ้นการหลั่ง · ADH เปลี่ยนจากน้อยเป็นมากได้ในไม่กี่นาที ${S.g}</li>
+<li>Threshold ประมาณ <b>280 mOsm</b> · osmolality สูงขึ้นเพียง ~1% ก็ทำให้ AVP เพิ่มชัดและชันขึ้นเรื่อยๆ ${S.b}</li>
+<li>Osmoreceptor ไวต่อ Na⁺ (และ anion) แต่ไม่ตอบสนองต่อ urea หรือ glucose ซึ่งผ่านเยื่อได้ ${S.h}</li></ul>
+<h3>Volume / pressure</h3><ul>
+<li>Blood volume ลด ≥ 15–25% → ADH เพิ่มได้ถึง ~50 เท่า ผ่าน stretch receptor ที่ atria และ baroreceptor ${S.g}</li>
+<li>Volume contraction <b>เลื่อน threshold ไปซ้ายและชันขึ้น</b> → แม้ osmolality ต่ำก็ยังหลั่ง ADH (ยอม hyponatremia เพื่อรักษา volume) ${S.b}</li>
+<li>ADH ระดับสูงทำ arteriolar vasoconstriction (V1) → ชื่อ vasopressin · ใช้เป็น vasopressor ใน septic shock ${S.g} ${S.fa}</li></ul>
+<h3>Receptors และโรค</h3><ul>
+<li><b>V2</b>: principal cell → Gs → cAMP → แทรก <b>aquaporin-2</b> ที่ apical · <b>V1</b>: Gq → IP₃ ที่ vascular smooth muscle ${S.g} ${S.fa}</li>
+<li>Central DI: ADH ต่ำ · Nephrogenic DI: ADH ปกติหรือสูงแต่ไตไม่ตอบสนอง · desmopressin ใช้ใน central DI และ nocturnal enuresis ${S.fa}</li>
+<li>Harrison 22e เรียกใหม่ว่า <b>AVP deficiency</b> (central DI เดิม) และ <b>AVP resistance</b> (nephrogenic DI เดิม) ${S.h}</li>
+<li>Alcohol กดการหลั่ง ADH → ปัสสาวะมากและขาดน้ำ ${S.fa}</li></ul>
+<div class="pearl">เลื่อน osmolality แล้วสลับ <b>AVP deficiency</b> กับ <b>AVP resistance</b>: แบบแรก AVP ไม่ขึ้น แบบหลัง AVP ขึ้นแต่ปัสสาวะยังเจือจาง</div>`});
+
+SEC.push({id:"prl",k:"a",t:"Prolactin",mm:"Prolactin · dopamine",leg:[],
+tools:[["pr",[["n","Normal"],["suck","Suckling"],["ap","D₂ blocker"],["hypo","Hypothyroid"],["stalk","Stalk compression"],["ren","Renal failure"]]]],draw:prD,
+notes:()=>`<h3>Dopamine คุมหลัก</h3><ul>
+<li>Hypothalamus <b>ยับยั้ง</b> prolactin เป็นหลัก ต่างจาก hormone อื่นของ anterior pituitary · ความเสียหายของ hypothalamus หรือ portal system ทำให้ PRL ↑ ขณะที่ hormone อื่นลดลง ${S.g}</li>
+<li>Prolactin inhibitory hormone คือ <b>dopamine</b> จาก arcuate nucleus (tuberoinfundibular) · ลด PRL ได้ราว 10 เท่า ${S.g}</li>
+<li>Suckling ส่งสัญญาณผ่าน spinal cord ไปกด DA neuron → PRL หลั่งเป็นช่วง · ทุกครั้งที่ให้นม PRL พุ่ง 10–20 เท่า นาน ~1 ชั่วโมง ${S.b} ${S.g}</li>
+<li>TRH กระตุ้น PRL (เห็นใน 1°/2° hypothyroidism) แต่ dopamine มีผลแรงกว่า · PRL กระตุ้นการหลั่ง dopamine เอง (feedback) ${S.fa}</li>
+<li>Estrogen (OCP, pregnancy) กระตุ้น · renal failure ทำให้กำจัดได้น้อยลง ${S.fa}</li></ul>
+<h3>ฤทธิ์</h3><ul>
+<li>PRL โครงสร้างคล้าย GH · receptor เป็นตระกูลเดียวกับ GH receptor ใช้ <b>JAK2</b> tyrosine kinase ${S.b}</li>
+<li>Lactogenic: เริ่มและรักษาการสร้างน้ำนม · การเริ่มต้นต้องมี estrogen/progesterone ลดลงหลังคลอดด้วย ${S.b}</li>
+<li>กด <b>GnRH</b> → LH/FSH ↓ → ไม่ตกไข่ระหว่างให้นม (natural contraception), ในชายลด spermatogenesis ${S.fa} ${S.b}</li></ul>
+<h3>Hyperprolactinemia</h3><ul>
+<li>เป็นภาวะ pituitary hormone เกินที่พบบ่อยที่สุด · สาเหตุ: prolactinoma, ยา (D₂ antagonists), stalk compression, hypothyroidism, CKD, pregnancy/lactation ${S.h}</li>
+<li>หญิง: galactorrhea, amenorrhea, infertility, osteoporosis · ชาย: libido ↓, impotence, gynecomastia · รักษาด้วย dopamine agonist (bromocriptine, cabergoline) ${S.fa}</li>
+<li>ก้อนที่กดก้าน pituitary ทำให้ PRL สูงเล็กน้อย (มักไม่เกิน ~100 μg/L) ต่างจาก prolactinoma ใหญ่ ${S.h}</li></ul>`});
+
+SEC.push({id:"thsyn",k:"b",t:"Thyroid hormone synthesis",mm:"Synthesis: NIS → TPO → coupling",leg:[],
+tools:[["tb",[["none","ปกติ"],["nis","Block NIS"],["tpo","Block TPO"],["wc","Iodide excess"],["tsh","TSH / TSI ↑"]]]],draw:thsD,
+notes:()=>`<h3>ลำดับขั้น</h3><ul>
+<li><b>Iodide trapping</b>: NIS ที่ basolateral นำ 2 Na⁺ + 1 I⁻ เข้าเซลล์ · ปกติเข้มข้น ~30 เท่าของเลือด สูงได้ถึง 250 เท่าเมื่อต่อมทำงานเต็มที่ ${S.b} ${S.g}</li>
+<li>I⁻ ออกสู่ colloid ทาง <b>pendrin</b> (Cl⁻/I⁻ exchanger) ที่ apical ${S.b}</li>
+<li><b>TPO</b> + H₂O₂ (จาก DUOX2) ทำ oxidation → organification ของ tyrosine บน thyroglobulin → MIT, DIT → coupling ${S.b} ${S.fa}</li>
+<li><b>DIT + DIT = T₄</b> · <b>MIT + DIT = T₃</b> ${S.g} ${S.fa}</li>
+<li>Thyroglobulin หนึ่งโมเลกุลมี T₄ ได้ถึง ~30 โมเลกุล · ต่อมเก็บ hormone พอใช้ <b>2–3 เดือน</b> จึงขาดแล้วอาการยังไม่เกิดทันที ${S.g}</li>
+<li>Endocytosis colloid → lysosome ตัด Tg → ปล่อย T₄ ~90% และ T₃ ~10% · MIT/DIT ถูก deiodinate เอา iodine กลับมาใช้ ${S.b} ${S.g}</li></ul>
+<h3>สิ่งที่ขัดขวาง</h3><ul>
+<li>Thiocyanate/perchlorate แย่ง NIS · PTU/methimazole ยับยั้ง TPO (organification และ coupling) — ทั้งสองแบบทำให้ TSH ↑ จนเกิด <b>goiter</b> ${S.g}</li>
+<li>Iodide ความเข้มข้นสูงมาก ลด trapping และหยุด endocytosis ของ colloid → T₄/T₃ หลั่งลดทันที และต่อมเล็กลง เลือดไปเลี้ยงน้อยลง (ใช้ก่อนผ่าตัด) ${S.g}</li>
+<li><b>Wolff–Chaikoff</b>: iodine เกินกะทันหัน → TPO หยุดชั่วคราว = autoregulation ป้องกันตัว ${S.fa}</li>
+<li>ขาด iodine → T₄ ต่ำ → TSH ↑ → ต่อมโต (endemic goiter) · ขาดในวัยทารก → cretinism ${S.b}</li></ul>`});
+
+SEC.push({id:"threg",k:"b",t:"Thyroid axis, binding proteins & deiodinases",mm:"TSH · TBG · deiodinases",leg:[],
+tools:[["tbg",[["n","Normal"],["up","TBG ↑"],["dn","TBG ↓"],["sick","Sick euthyroid"],["pri","1° hypothyroid"],["gr","Graves"]]]],draw:thrD,
+notes:()=>`<h3>Axis</h3><ul>
+<li>TRH → TSH → follicular cell (TSH receptor → Gs → cAMP) · TSI ใน Graves จับ receptor เดียวกัน ${S.fa} ${S.g}</li>
+<li>Feedback ใช้ free T₃/T₄ เป็นหลัก: ลดความไวของ pituitary ต่อ TRH และลดการหลั่ง TRH ${S.fa}</li>
+<li>T₃ ที่กด TSH มาจากการแปลง T₄ → T₃ <b>ใน pituitary เอง</b> ด้วย type 2 deiodinase ${S.b}</li>
+<li>อากาศหนาวกระตุ้น TRH/TSH · อารมณ์และความเครียดมีผลผ่าน hypothalamus ${S.g}</li></ul>
+<h3>การขนส่ง</h3><ul>
+<li>T₄ จับโปรตีน >99.98% (TBG เป็นหลัก รองลงมา transthyretin, albumin) · T₃ ~99.5% · มีเพียงส่วน free ที่ออกฤทธิ์ ${S.b} ${S.fa}</li>
+<li>T₄ ถูกปล่อยสู่เซลล์ครึ่งหนึ่งทุก ~6 วัน · T₃ ภายใน ~1 วัน · ฤทธิ์ T₄ เริ่มหลัง 2–3 วันและสูงสุด 10–12 วัน ${S.g}</li>
+<li><b>TBG ↑</b>: pregnancy, oral estrogen, hepatitis → total T₄ ↑ · <b>TBG ↓</b>: steroids, nephrotic syndrome → total T₄ ↓ · free T₄ ไม่เปลี่ยนทั้งสองแบบ ${S.b}</li>
+<li>T₃/T₄ เป็น lipophilic hormone แต่ต้องใช้ transporter (เช่น MCT8) เข้าเซลล์ ${S.fa} ${S.b}</li></ul>
+<h3>Deiodinases</h3><ul>
+<li><b>D1</b> (ตับ ไต กล้ามเนื้อ): สร้าง T₃ ส่วนใหญ่ในเลือด · <b>D2</b> (pituitary, CNS, placenta): ให้ T₃ ใช้เฉพาะที่ · <b>D3</b>: ตัด inner ring → rT₃ (ไม่ออกฤทธิ์) ${S.b}</li>
+<li>~¾ ของ T₃ ในเลือดมาจากการแปลง T₄ นอกต่อม (ตับ ไต) ${S.b}</li>
+<li>อดอาหาร/stress รุนแรงยับยั้ง D1 → T₃ ↓ rT₃ ↑ แต่ D2 ใน pituitary ไม่ถูกกด → TSH ไม่ขึ้น ${S.b}</li>
+<li>Peripheral conversion ถูกยับยั้งโดย glucocorticoids, β-blockers, PTU ${S.fa}</li>
+<li>Sick euthyroid (nonthyroidal illness): T₃ ต่ำ, T₄/TSH ปกติ, rT₃ สูงเพราะกำจัดได้น้อย · ไม่ควรตรวจ thyroid function ในผู้ป่วยหนักถ้าไม่สงสัยจริง ${S.h}</li></ul>`});
+
+SEC.push({id:"thact",k:"b",t:"Thyroid hormone actions",mm:"Actions: 7 B's",leg:[],
+tools:[["ts",[["eu","Euthyroid"],["hypo","Hypothyroid"],["hyper","Hyperthyroid"]]]],draw:thaD,
+notes:()=>`<h3>กลไก</h3><ul>
+<li>T₃/T₄ เข้าเซลล์ (MCT8) → T₄ ถูกแปลงเป็น T₃ ในเซลล์ · ~90% ของ hormone ที่จับ receptor คือ T₃ ${S.b}</li>
+<li>Thyroid hormone receptor จับ DNA เป็น heterodimer กับ <b>RXR</b> ที่ thyroid response element แม้ไม่มี hormone · T₃ จับแล้วเปลี่ยนการ transcribe ${S.b} ${S.g}</li>
+<li>T₃ จับ receptor แน่นกว่า T₄ · ฤทธิ์ T₃ เร็วกว่า T₄ ราว 4 เท่า ${S.fa} ${S.g}</li></ul>
+<h3>7 B's</h3><ul>
+<li><b>Brain maturation</b>: ขาดในวัยทารก → cretinism ${S.fa} ${S.b}</li>
+<li><b>Bone growth</b>: เสริมกับ GH และ IGF-1 ${S.fa}</li>
+<li><b>β-adrenergic</b>: เพิ่มการแสดงออกของ β receptor ที่หัวใจ กล้ามเนื้อ ไขมัน → HR, contractility ↑ · β-blocker บรรเทาอาการ thyrotoxicosis ${S.b} ${S.fa}</li>
+<li><b>BMR</b>: Na⁺/K⁺-ATPase ↑, จำนวนและกิจกรรม mitochondria ↑ → O₂ ใช้ ↑, ความร้อน ↑ · BMR ลดได้ 40–50% ถ้าขาด และเพิ่ม 60–100% ถ้าเกินมาก ${S.g} ${S.fa}</li>
+<li><b>Blood sugar</b>: glycogenolysis, gluconeogenesis, ดูด glucose จากลำไส้ ↑ ${S.fa} ${S.g}</li>
+<li><b>Break down lipids</b>: lipolysis ↑ · cholesterol ในเลือดลด (ขาด hormone → cholesterol สูง) ${S.g} ${S.fa}</li>
+<li><b>Babies</b>: กระตุ้นการสร้าง surfactant ${S.fa}</li></ul>
+<h3>หัวใจและหลอดเลือด</h3><ul>
+<li>Metabolism ↑ → หลอดเลือดขยาย → blood flow, CO ↑ · HR เพิ่มมากกว่าที่ CO อธิบายได้ (ผลตรงต่อหัวใจ) = สัญญาณที่ไวในการติดตามผู้ป่วย ${S.g}</li></ul>`});
+
+SEC.push({id:"pth",k:"c",t:"Parathyroid hormone (PTH)",mm:"PTH · CaSR",leg:[],
+tools:[["pt",[["n","Normal"],["fhh","FHH"],["mgl","↓ Mg²⁺ (mild)"],["mgs","↓ Mg²⁺ (severe)"]]]],ctrl:()=>SL("ica","Ionized Ca²⁺",.8,1.6,.02,"mM"),wire:()=>WIRE(),draw:pthD,
+notes:()=>`<h3>การหลั่ง</h3><ul>
+<li>Chief cells หลั่ง PTH (84 aa) · t½ ในเลือด ~4 นาที · ต่อมเก็บ PTH ได้พอหลั่งเพียงไม่กี่ชั่วโมง ต้องสร้างใหม่ต่อเนื่อง ${S.b}</li>
+<li><b>Ionized Ca²⁺</b> เป็นตัวคุมหลักผ่าน <b>CaSR</b> (GPCR, Gq → IP₃/DAG) · Ca²⁺ สูงกด PTH · ความสัมพันธ์เป็น sigmoid ชัน ${S.b} ${S.fa}</li>
+<li>Ca²⁺ ต่ำต่อเนื่อง → ต่อมโต (pregnancy, lactation, rickets) · Ca²⁺ สูงจากอาหาร/vitamin D → ต่อมเล็กลง ${S.g}</li>
+<li>PO₄³⁻ สูงกระตุ้น PTH · Mg²⁺ ต่ำเล็กน้อยกระตุ้น แต่ Mg²⁺ ต่ำรุนแรงยับยั้ง ${S.fa}</li>
+<li>Mg²⁺ ต่ำมาก (< ~1 mg/dL) ทำให้หลั่ง PTH บกพร่องและดื้อต่อ PTH · hypocalcemia จึงแก้ไม่ได้จนกว่าจะให้ Mg ${S.h}</li></ul>
+<h3>ฤทธิ์</h3><ul>
+<li><b>Bone</b>: osteoblast/osteocyte หลั่ง <b>RANKL</b> → osteoclast ทำงาน · ระดับสูงต่อเนื่อง = resorption · ให้เป็นช่วง (intermittent) = สร้างกระดูก ${S.b} ${S.fa}</li>
+<li><b>Kidney</b>: Ca²⁺ reabsorption ↑ ที่ distal tubule/collecting tubule · PO₄³⁻ reabsorption ↓ ที่ PCT (NaPi-IIa/IIc ถูกดึงออก) = “Phosphate-Trashing Hormone” ${S.g} ${S.b} ${S.fa}</li>
+<li>กระตุ้น <b>1α-hydroxylase</b> → calcitriol → ดูด Ca²⁺ และ PO₄³⁻ จากลำไส้ (ทางอ้อม) ${S.g}</li>
+<li>ฤทธิ์ส่วนใหญ่ผ่าน <b>cAMP</b> → urine cAMP ↑ ${S.g} ${S.fa}</li>
+<li>Bone มี Ca ~1000 เท่าของ ECF · ผลต่อกระดูกจึงเห็นชัดเมื่อ PTH สูงนานเป็นเดือน–ปี ${S.g}</li>
+<li><b>PTHrP</b> ทำงานเหมือน PTH พบสูงในมะเร็ง (squamous cell lung, RCC) ${S.fa}</li></ul>`});
+
+SEC.push({id:"ca",k:"c",t:"Calcium homeostasis: albumin & pH",mm:"Free vs bound Ca²⁺",leg:[],
+ctrl:()=>SL("ph","pH",7.2,7.6,.01,"")+SL("alb","Albumin",2,5,.1,"g/dL"),wire:()=>WIRE(),draw:caD,
+notes:()=>`<h3>รูปของ Ca ในพลาสมา</h3><ul>
+<li>FA: ionized ~45% · จับ albumin ~40% · จับ anion ~15% ${S.fa}</li>
+<li>Boron: free ~45% · จับโปรตีน ~45% · complex กับ anion ~10% · total 8.8–10.6 mg/dL และคุม ionized ไว้ 1.0–1.3 mM ${S.b}</li>
+<li>Guyton: ~50% ionized, 41% จับโปรตีน (กรองที่ glomerulus ไม่ได้), 9% จับ anion ${S.g}</li>
+<li>Ionized Ca²⁺ เป็นรูปที่ออกฤทธิ์และเป็นตัวคุม PTH ${S.fa} ${S.b}</li></ul>
+<h3>pH vs albumin</h3><ul>
+<li>H⁺ แย่ง Ca²⁺ จับ albumin: <b>alkalemia</b> → albumin จับ Ca²⁺ มากขึ้น → ionized ↓ → ชา เกร็ง carpopedal spasm และ PTH ↑ · acidemia กลับกัน ${S.fa}</li>
+<li>Albumin ต่ำ: total Ca ต่ำแต่ ionized มักปกติ → ไม่มี tetany (พบบ่อยในผู้ป่วยหนัก) ${S.h}</li>
+<li>Corrected Ca ≈ measured Ca + 0.8 × (4 − albumin g/dL) ใช้ประมาณคร่าวๆ · ถ้าสงสัยให้วัด ionized Ca โดยตรง ${S.x}</li></ul>
+<h3>Hypocalcemia กับเส้นประสาท</h3><ul>
+<li>Ca²⁺ ต่ำทำให้เยื่อประสาทไวต่อ Na⁺ → ยิงเอง → tetany · มักเริ่มเมื่อ total Ca ลดจาก ~9.4 เหลือ ~6 mg/dL ${S.g}</li></ul>
+<h3>สมดุลทั้งร่างกาย</h3><ul>
+<li>Ca ส่วนใหญ่อยู่ในกระดูก (~1 kg) · ECF มีเพียง ~1 g · ไตกรองวันละ ~10 g และดูดกลับ ~99% ${S.b}</li>
+<li>ลำไส้ดูด Ca ได้ราวครึ่งหนึ่งของที่กิน แต่ก็ขับออกด้วย → net ~175 mg/วัน = ที่ขับทางปัสสาวะ ${S.b}</li></ul>
+<div class="pearl">ลองลด albumin: แถบ total หดแต่ ionized คงที่ · แล้วลองดัน pH ไป 7.55: ionized ลดลงทั้งที่ total เท่าเดิม</div>`});
+
+SEC.push({id:"vitd",k:"c",t:"Vitamin D & FGF23",mm:"Calcitriol · FGF23",leg:[],
+tools:[["vd",[["n","Normal"],["lowca","Low Ca²⁺"],["hipo","High PO₄³⁻"],["ckd","CKD"]]]],draw:vdD,
+notes:()=>`<h3>การกระตุ้น 2 ขั้น</h3><ul>
+<li>D₃ (cholecalciferol) สร้างที่ผิวหนังจาก 7-dehydrocholesterol เมื่อโดน UV · ได้จากอาหารด้วย (D₂/D₃) ${S.g}</li>
+<li>ตับเปลี่ยนเป็น <b>25(OH)D</b> โดยมี feedback คุม → แม้กิน vitamin D มากขึ้นหลายเท่า 25(OH)D ก็เพิ่มไม่มาก ${S.g}</li>
+<li>25(OH)D เป็นรูปหลักในเลือดและรูปสะสม (จับ vitamin D–binding protein ~88%) t½ ~2–3 สัปดาห์ ${S.h}</li>
+<li>PCT ของไตเปลี่ยนเป็น <b>1,25(OH)₂D (calcitriol)</b> ด้วย 1α-hydroxylase · VDR จับ 1,25(OH)₂D แน่นกว่า 25(OH)D ~1000 เท่า ${S.g}</li>
+<li>เมื่อ Ca²⁺ สูงหรือ PTH ต่ำ จะสร้าง <b>24,25(OH)₂D</b> ที่แทบไม่มีฤทธิ์แทน ${S.g}</li></ul>
+<h3>ตัวคุม 1α-hydroxylase</h3><ul>
+<li>PTH ⊕ · PO₄³⁻ ต่ำ ⊕ · <b>FGF23 ⊖</b> · calcitriol เอง ⊖ ${S.b} ${S.fa}</li></ul>
+<h3>ฤทธิ์</h3><ul>
+<li>ลำไส้ (duodenum): สร้าง calbindin, TRPV6 และ pump → ดูด Ca²⁺ ↑ และดูด PO₄³⁻ ↑ ${S.g} ${S.b}</li>
+<li>ไต: ดูด Ca²⁺ และ PO₄³⁻ กลับเพิ่ม (ผลเล็กกว่า) · กระดูก: ต้องมีเพื่อ mineralization แต่ขนาดสูงมากทำให้ bone resorption ${S.g}</li>
+<li>Calcitriol กด PTH transcription และเหนี่ยวนำ FGF23 จาก osteocyte ${S.h}</li></ul>
+<h3>FGF23</h3><ul>
+<li>สร้างจาก osteocyte/osteoblast เมื่อ PO₄³⁻ สูง · ลด NaPi-IIa/IIc ที่ PCT → phosphaturia · ลดการดูด PO₄³⁻ ทางลำไส้ ${S.b}</li>
+<li>กด 1α-hydroxylase · FGF23 สูงผิดปกติ (XLH, ADHR, tumor-induced osteomalacia) → PO₄³⁻ ต่ำ calcitriol ต่ำ กระดูกไม่แข็ง · burosumab คือ anti-FGF23 ${S.h}</li>
+<li>CKD: PO₄³⁻ คั่ง → FGF23 ↑, calcitriol ↓, Ca²⁺ ↓ → PTH ↑ และต่อมโต (secondary hyperparathyroidism) ${S.h}</li></ul>`});
+
+SEC.push({id:"calcit",k:"c",t:"Calcitonin & Ca²⁺/PO₄³⁻ hormones compared",mm:"Calcitonin · compare",leg:[],
+tools:[["cx",[["pth","PTH"],["vitd","Calcitriol"],["ct","Calcitonin"],["fgf","FGF23"]]]],draw:ctD,
+notes:()=>`<h3>Calcitonin</h3><ul>
+<li>หลั่งจาก <b>parafollicular (C) cells</b> ซึ่งเป็น ~0.1% ของต่อมไทรอยด์ (มาจาก 4th pharyngeal pouch) · peptide 32 aa ${S.g} ${S.fa}</li>
+<li>Ca²⁺ สูงกระตุ้นการหลั่ง (ตรงข้ามกับ PTH) ${S.g}</li>
+<li>ลด Ca²⁺ ด้วยการยับยั้ง osteoclast ทันที และลดการสร้าง osteoclast ใหม่ในระยะยาว ${S.g}</li>
+<li>ในผู้ใหญ่ผลน้อย: Ca²⁺ ที่ลดเล็กน้อยกระตุ้น PTH ซึ่งกลบฤทธิ์ และการแลกเปลี่ยน Ca กับกระดูกต่อวันน้อย · ตัดต่อมไทรอยด์แล้ว Ca²⁺ ระยะยาวไม่เปลี่ยน ${S.g}</li>
+<li>ผลชัดกว่าในเด็ก (bone remodeling เร็ว) และใน Paget disease ${S.g}</li>
+<li>“Calcitonin tones down serum Ca²⁺ and keeps it in bones” ${S.fa}</li></ul>
+<h3>อ่านตาราง</h3><ul>
+<li>PTH ยก Ca²⁺ ลด PO₄³⁻ · calcitriol ยกทั้งสอง · FGF23 ลด PO₄³⁻ · calcitonin ลด Ca²⁺ ชั่วคราว ${S.b} ${S.fa}</li>
+<li>Hormone ที่คุม Ca²⁺ และ PO₄³⁻ มักให้ผลต่อสองไอออนนี้ไปคนละทาง (ป้องกัน Ca × PO₄ product สูงเกิน) ${S.b}</li></ul>`});
