@@ -1,0 +1,34 @@
+{
+ "id": "pharm-repro",
+ "sys": "Reproductive",
+ "title_tag": "Reproductive Pharmacology",
+ "eyebrow": "Reproductive · Pharmacology",
+ "h1": "Reproductive Pharmacology",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 37, 40) และ Pharmacotherapy",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 37, 40"
+  ],
+  [
+   "pt",
+   "PT",
+   "Pharmacotherapy 5e · Ch 47–52"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "repro",
+  "folder": "repro",
+  "title": "Reproductive Pharmacology",
+  "src": "Katzung 16e Ch 37, 40 · Pharmacotherapy 5e Ch 47–52",
+  "desc": "แผนที่กลุ่มยาระบบสืบพันธุ์: GnRH analogs, estrogens, SERMs, aromatase inhibitors, progestins, contraception, testosterone, antiandrogens, oxytocics/tocolytics, BPH และ erectile dysfunction",
+  "ch": "Ch 40",
+  "sort": 40
+ }
+}

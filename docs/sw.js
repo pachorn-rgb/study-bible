@@ -1,7 +1,7 @@
 /* Med Study Bible service worker.
    To publish an update: change VERSION (any new string). Installed apps
    download the new files in the background and show "New version" banner. */
-const VERSION = "6.22";
+const VERSION = "6.23";
 const CACHE = "bible-" + VERSION;
 const FONT_CACHE = "bible-fonts";
 const FILES = [
@@ -15,7 +15,6 @@ const FILES = [
  "index.html",
  "library.json",
  "manifest.json",
- "questions.json",
  "renal/body-fluids.html",
  "renal/harrison-ch319.html",
  "renal/harrison-ch320.html",
@@ -99,7 +98,24 @@ const FILES = [
  "immuno/pharm-immuno.html",
  "thumbs/pharm-immuno.jpg",
  "pharm/pharm-tox.html",
- "thumbs/pharm-tox.jpg"
+ "thumbs/pharm-tox.jpg",
+ "atlas/atlas.css",
+ "atlas/core.js",
+ "atlas/render.js",
+ "q/index.json",
+ "q/cvs.json",
+ "q/endo.json",
+ "q/gi.json",
+ "q/heme.json",
+ "q/immuno.json",
+ "q/micro.json",
+ "q/msk.json",
+ "q/neuro.json",
+ "q/pharm.json",
+ "q/psych.json",
+ "q/renal.json",
+ "q/repro.json",
+ "q/resp.json"
 ];
 /* figure images (renal/img/**) are cached the first time they are viewed, so installing stays light */
 self.addEventListener("install", e => {

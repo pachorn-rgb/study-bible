@@ -1,0 +1,151 @@
+/* ================= MSK, skin & connective tissue pharmacology ================= */
+function mskMap(){let b="";
+ /* A · arachidonic acid */
+ b+=panel(10,10,440,240,"ARACHIDONIC ACID");
+ b+=nb(130,52,190,30,"Membrane phospholipids")+ln(130,68,130,78)+nbh(130,88,52,20,"PLA₂","","pla2","soft")+ln(130,99,130,108)+nb(130,122,150,28,"Arachidonic acid");
+ b+=ln(110,137,84,152)+ln(150,137,200,152)+nbh(80,168,112,30,"COX-1 · COX-2","","cox","cellb")+nb(214,168,70,30,"5-LO","","soft");
+ b+=ln(80,184,80,198)+ln(214,184,214,198)+nb(84,214,150,30,"PGs · TXA₂ · PGI₂")+nb(220,214,104,30,"Leukotrienes");
+ b+=pill(276,88,"Glucocorticoids","st","pla2")+pill(366,140,"Aspirin","inh","aspirin")+pill(366,166,"NSAIDs","inh","nsaid")+pill(366,192,"Celecoxib (COX-2)","inh","coxib")+pill(366,218,"Acetaminophen","mod","apap");
+ if(on("aspirin")||on("nsaid")||on("coxib")||on("apap"))b+=`<rect class="glow" x="18" y="147" width="124" height="42" rx="12"/>`;
+ /* B · gout */
+ b+=panel(460,10,290,240,"URIC ACID");
+ b+=nb(540,52,110,26,"Hypoxanthine")+ln(540,65,540,80)+nbh(540,92,110,26,"Xanthine","","xo","soft")+ln(540,105,540,120)+nb(540,134,110,28,"Uric acid","","cellb")+ln(540,148,540,186)+nbh(540,200,110,28,"Allantoin","","uricase","soft");
+ b+=T(500,74,"XO",{a:"end",c:"s m"})+T(500,116,"XO",{a:"end",c:"s m"})+T(552,172,"uricase (ไม่มีในคน)",{a:"start",c:"s m"});
+ b+=pill(676,74,"Allopurinol","inh","xo")+pill(676,100,"Febuxostat","inh","xo")+pill(676,138,"Probenecid","inh","urat")+pill(676,214,"Pegloticase","mod","uricase")+pill(676,236,"Colchicine","mod","colch");
+ if(on("urat"))b+=`<rect class="glow" x="480" y="114" width="120" height="40" rx="12"/>`;
+ /* C · bone */
+ b+=panel(10,260,360,250,"BONE REMODELING");
+ b+=nbh(90,330,120,40,"Osteoclast","resorption",["bisph","denos"],"cellb")+nbh(90,440,120,40,"Osteoblast","formation",["pth","romo"],"cellb")+arr("M90,420 L90,352")+T(98,392,"RANKL",{a:"start",c:"s m"});
+ b+=pill(250,312,"Bisphosphonates","inh","bisph")+pill(250,338,"Denosumab","mab","denos")+pill(250,422,"Teriparatide","ag","pth")+pill(250,448,"Romosozumab","mab","romo");
+ /* D · immune joint */
+ b+=panel(380,260,370,250,"SYNOVITIS (RA · PsA · psoriasis)");
+ b+=nbh(440,318,96,38,"Macrophage","TNF-α · IL-6",["tnf","il6","jak"],"cellb")+nbh(440,392,96,38,"T cell","Th1 · Th17",["dmard","abat","il17"],"cellb")+nbh(440,464,96,38,"B cell","RF · anti-CCP","ritux","cellb");
+ b+=pill(576,306,"TNF-α inhibitors","mab","tnf")+pill(690,306,"Tocilizumab","mab","il6")+pill(590,332,"JAK inhibitors","inh","jak");
+ b+=pill(604,380,"Methotrexate · Leflunomide","inh","dmard")+pill(560,406,"Abatacept","bl","abat")+pill(674,406,"IL-17 · IL-23 mAb","mab","il17");
+ b+=pill(560,464,"Rituximab","mab","ritux");
+ return psvg(b,"0 0 760 520")}
+function skinMap(){let b="";
+ b+=`<rect class="p-lum" fill="url(#gLum)" x="10" y="10" width="740" height="26" rx="8"/>`+T(24,28,"Stratum corneum",{a:"start",c:"s"});
+ for(let i=0;i<12;i++)b+=`<rect class="p-epi" fill="url(#gEpi)" x="${10+i*61.6}" y="40" width="58" height="34" rx="8"/>`;
+ b+=T(24,62,"Epidermis (keratinocytes)",{a:"start",c:"s"})+`<rect class="p-cellm" fill="url(#gCell)" x="10" y="80" width="740" height="200" rx="14"/>`+T(24,268,"Dermis",{a:"start",c:"s m"});
+ b+=`<path class="p-tube" fill="url(#gTube)" d="M210,40 L210,190 C210,214 250,214 250,190 L250,40 Z"/>`+`<ellipse class="p-imm" cx="286" cy="168" rx="30" ry="22" fill="url(#gGr)"/>`+T(286,172,"sebum",{c:"s"})+T(230,232,"follicle",{c:"s m"})+T(230,120,"C. acnes",{c:"s"});
+ b+=glow(230,120,"cacnes",14)+glow(286,168,"seb",22)+glow(420,58,"kera",18)+glow(470,170,"dc",28)+glow(620,170,"th17",28);
+ b+=cellC(470,170,28,"gTh2","DC","TLR7")+cellC(620,170,28,"gEos","Th17","IL-17 · IL-23")+arr("M498,170 L590,170")+T(544,160,"IL-23",{c:"s"});
+ b+=pill(420,100,"Retinoids · Calcipotriene","ag","kera")+pill(110,128,"BPO · Clindamycin","mod","cacnes")+pill(330,232,"Isotretinoin","ag","seb");
+ b+=pill(480,250,"Topical corticosteroids","st","tcs")+pill(470,122,"Imiquimod","ag","dc")+pill(640,116,"IL-17 · IL-23 · IL-12/23 mAb","mab","th17")+pill(620,232,"Apremilast (PDE4)","inh","th17b");
+ if(on("tcs"))b+=`<rect class="hring" x="14" y="84" width="732" height="192" rx="12"/>`;
+ return psvg(b,"0 0 760 290")}
+const MM=MAPOF(mskMap),SM=MAPOF(skinMap);
+const MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Analgesics & NSAIDs",b:"DMARDs",c:"Bone",d:"Gout",e:"Biologics & targeted therapy",f:"Dermatologic drugs",g:"Treating MSK disease"});
+
+/* ---------- a · analgesics & NSAIDs ---------- */
+SEC.push({id:"aa",k:"a",t:"Arachidonic acid pathway & drug targets",mm:"Drug target map",drugs:"",act:[],tools:MT,leg:["inh","mab","ag","st","bl","mod"],draw:MM(["pla2","aspirin","nsaid","coxib","apap","xo","urat","uricase","colch","bisph","denos","pth","romo","tnf","il6","jak","dmard","abat","il17","ritux"]),
+notes:()=>`<div class="pearl">แผนที่นี้มี 4 ส่วน: arachidonic acid · uric acid · bone · synovitis · ยาของแต่ละหัวข้อจะสว่างบนแผนที่เดียวกันนี้</div>
+ <h3>Arachidonic acid</h3><ul><li>PLA₂ ปล่อย arachidonic acid จาก membrane · <b>glucocorticoid</b> ลดการทำงานของ PLA₂ และการสร้าง COX-2 ${S.k}</li>
+ <li><b>COX-1</b> (constitutive): ปกป้องกระเพาะ, TXA₂ ในเกล็ดเลือด, เลือดไปไต · <b>COX-2</b> (induced): การอักเสบ, ปวด, ไข้ · PGI₂ จาก endothelium ${S.k}</li><li>5-LO → leukotriene (ยาอยู่ใน Respiratory) ${S.k}</li></ul>
+ ${tbl(["Prostanoid","ผล"],[["PGE₂","ปวด, ไข้, ปกป้องกระเพาะ, ขยาย afferent arteriole"],["PGI₂","ขยายหลอดเลือด, ยับยั้งเกล็ดเลือด"],["TXA₂","หดหลอดเลือด, เกล็ดเลือดเกาะ"]])}${S.k}`});
+
+SEC.push({id:"apap",k:"a",t:"Acetaminophen",mm:"Acetaminophen",drugs:"acetaminophen (paracetamol)",act:["mod"],tools:MT,leg:["mod"],draw:MM(["apap"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง COX อ่อนในเนื้อเยื่อส่วนปลาย (ถูก peroxide สูงในที่อักเสบกลบ) · ออกฤทธิ์ใน CNS → <b>ลดปวด ลดไข้ แต่ไม่ต้านการอักเสบ</b> ${S.k}</li><li>ไม่มีผลต่อเกล็ดเลือด ไม่ทำแผลกระเพาะ ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li>ปวด/ไข้ในคนที่ใช้ NSAID ไม่ได้ · เด็กที่มีไข้จาก virus (เลี่ยง aspirin) ${S.k}</li><li>OA ระดับเบา ${S.p}</li></ul>
+ <h3>Toxicity</h3><ul><li>ปกติถูก conjugate (glucuronide, sulfate) · ขนาดเกิน → CYP2E1 สร้าง <b>NAPQI</b> มากจน glutathione หมด → <b>hepatic necrosis</b> ${S.k}</li><li>Antidote = <b>N-acetylcysteine</b> (ให้เร็วที่สุด ภายใน 8–10 ชม. ได้ผลดีที่สุด) ${S.k}</li><li>เสี่ยงมากขึ้นใน alcohol เรื้อรัง, ภาวะทุพโภชนาการ ${S.k}</li></ul>`});
+
+SEC.push({id:"aspirin",k:"a",t:"Aspirin",mm:"Aspirin",drugs:"aspirin",act:["inh"],tools:MT,leg:["inh"],draw:MM(["aspirin"]),
+notes:()=>`<h3>กลไก</h3><ul><li><b>Acetylate COX-1 และ COX-2 แบบ irreversible</b> · เกล็ดเลือดไม่มีนิวเคลียส สร้าง COX ใหม่ไม่ได้ → ฤทธิ์ต้านเกล็ดเลือดอยู่ตลอดอายุเกล็ด (~8–10 วัน) ${S.k}</li></ul>
+ <h3>ขนาดกับผล</h3>${tbl(["ขนาด","ผล"],[["ต่ำ (81 mg/วัน)","antiplatelet (TXA₂ ↓)"],["ปานกลาง","analgesic, antipyretic"],["สูง","anti-inflammatory"]])}${S.k}
+ <h3>PK</h3><ul><li>Hydrolyze เป็น salicylate · ขนาดสูง metabolism อิ่มตัว → <b>zero-order kinetics</b> ระดับยาพุ่งเร็ว ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>Gastric ulcer, เลือดออก · <b>Reye syndrome</b> ในเด็กที่ติด virus (influenza, varicella) ${S.k}</li><li>AERD: asthma + nasal polyp ${S.k}</li>
+ <li><b>Salicylate toxicity</b>: tinnitus, hyperventilation → <b>respiratory alkalosis</b> ตามด้วย <b>anion gap metabolic acidosis</b> · รักษา: NaHCO₃ ทำให้ปัสสาวะด่าง, dialysis ${S.k}</li></ul>`});
+
+SEC.push({id:"coxib",k:"a",t:"Celecoxib (COX-2 selective)",mm:"Celecoxib",drugs:"celecoxib",act:["inh"],tools:MT,leg:["inh"],draw:MM(["coxib"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง <b>COX-2</b> แบบ reversible · ไม่กระทบ COX-1 ในกระเพาะและเกล็ดเลือด ${S.k}</li></ul>
+ <h3>ข้อดีและราคา</h3><ul><li>แผล/เลือดออกในกระเพาะน้อยกว่า NSAID ทั่วไป · ไม่มีฤทธิ์ antiplatelet ${S.k}</li><li><b>เพิ่ม thrombosis</b> (MI, stroke): PGI₂ ลดแต่ TXA₂ ยังอยู่ ${S.k}</li><li>ยังมีผลต่อไตเหมือน NSAID ทั่วไป · เป็น <b>sulfonamide</b> ระวังแพ้ ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li>RA, OA ในคนที่เสี่ยงแผลกระเพาะ ${S.k}</li></ul>`});
+
+SEC.push({id:"nsaids",k:"a",t:"NSAIDs",mm:"NSAIDs",drugs:"ibuprofen · naproxen · indomethacin · ketorolac · diclofenac",act:["inh"],tools:MT,leg:["inh"],draw:MM(["nsaid"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง COX-1 และ COX-2 แบบ <b>reversible</b> → ลด prostaglandin: ลดปวด ลดไข้ ต้านอักเสบ ${S.k}</li></ul>
+ <h3>ยาเด่น</h3>${tbl(["ยา","จุดเด่น"],[["Ibuprofen, naproxen","ใช้บ่อย · naproxen ออกฤทธิ์นาน"],["Indomethacin","แรง · ปิด PDA ในทารก · acute gout"],["Ketorolac","ให้ IV/IM ได้ · ใช้ไม่เกิน 5 วัน"],["Diclofenac","มีแบบ topical (OA เข่า มือ)"]])}${S.k}${S.p}
+ <h3>ADR</h3><ul><li><b>GI</b>: แผล เลือดออก (ป้องกันด้วย PPI หรือ misoprostol) ${S.k}</li><li><b>ไต</b>: afferent หดตัว → AKI โดยเฉพาะ volume ต่ำ, CKD, HF, ใช้ร่วม ACEi/diuretic · interstitial nephritis · Na⁺/K⁺ คั่ง ${S.k}</li>
+ <li>CV thrombosis เพิ่มขึ้น (ยกเว้น aspirin) · ลดฤทธิ์ยาลดความดันและ diuretic ${S.k}</li></ul>
+ <div class="pearl">NSAID ที่ไม่ใช่ aspirin กินก่อน aspirin อาจบัง COX ของเกล็ดเลือด ลดฤทธิ์ cardioprotection ${S.k}</div>`});
+
+/* ---------- b · DMARDs ---------- */
+SEC.push({id:"dmards",k:"b",t:"Conventional DMARDs",mm:"Conventional DMARDs",drugs:"methotrexate · leflunomide · hydroxychloroquine · sulfasalazine",act:["inh"],tools:MT,leg:["inh"],draw:MM(["dmard"]),
+notes:()=>`<h3>ยา · กลไก · พิษเด่น</h3>${tbl(["ยา","กลไก","ADR เด่น"],[["Methotrexate (weekly)","ยับยั้ง DHFR และ AICAR transformylase → adenosine ↑ ต้านอักเสบ","hepatotoxicity, myelosuppression, mucositis, pneumonitis, teratogen → ให้ folic acid"],["Leflunomide","ยับยั้ง <b>dihydroorotate dehydrogenase</b> → pyrimidine ↓ → T cell หยุดแบ่งตัว","hepatotoxic, teratogen · ค้างนาน ล้างด้วย cholestyramine"],["Hydroxychloroquine","ลด antigen presentation (lysosome pH ↑)","<b>retinopathy</b> → ตรวจตา"],["Sulfasalazine","5-ASA + sulfapyridine","GI, oligospermia (กลับคืนได้), sulfa allergy"]])}${S.k}
+ <h3>ใช้เมื่อ</h3><ul><li>RA: <b>methotrexate</b> เป็น nonbiologic DMARD หลัก ใช้ร่วมกับยาอื่นได้ ${S.p}</li><li>DMARD ออกฤทธิ์ช้า (สัปดาห์–เดือน) → ใช้ NSAID/glucocorticoid ช่วงแรก ${S.k}</li></ul>`});
+
+/* ---------- c · bone ---------- */
+SEC.push({id:"bisph",k:"c",t:"Bisphosphonates",mm:"Bisphosphonates",drugs:"alendronate · risedronate · ibandronate · zoledronic acid",act:["inh"],tools:MT,leg:["inh"],draw:MM(["bisph"]),
+notes:()=>`<h3>กลไก</h3><ul><li>Pyrophosphate analog จับ hydroxyapatite → osteoclast กลืนเข้าไป → ยับยั้ง (ตัวที่มี N ยับยั้ง farnesyl pyrophosphate synthase) → osteoclast apoptosis ${S.k}</li><li>ดูดซึมทางปากน้อยมาก (&lt;10%) · ค้างในกระดูกนานหลายปี ${S.k}</li></ul>
+ <h3>ใช้เมื่อ</h3><ul><li><b>Osteoporosis</b> (first-line) ${S.p} · Paget disease · <b>hypercalcemia of malignancy</b> (IV zoledronate) · bone metastasis ${S.k}</li></ul>
+ <h3>วิธีกิน (oral)</h3><ul><li>ตอนท้องว่าง กับน้ำเปล่าเต็มแก้ว นั่ง/ยืนตรงอย่างน้อย 30 นาที ไม่กินอาหาร/ยาอื่นก่อน → กัน <b>esophagitis</b> ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>Esophagitis · <b>osteonecrosis of the jaw</b> · <b>atypical femur fracture</b> · hypocalcemia · IV: acute-phase reaction (ไข้ ปวดเมื่อย) ${S.k}${S.p}</li></ul>
+ <div class="pearl">ใช้นานหลายปีแล้วพิจารณา drug holiday ในคนเสี่ยงต่ำ ${S.x}</div>`});
+
+SEC.push({id:"anabolic",k:"c",t:"Teriparatide, denosumab & romosozumab",mm:"PTH analogs · RANKL · sclerostin",drugs:"teriparatide · abaloparatide · denosumab · romosozumab",act:["ag","mab"],tools:MT,leg:["ag","mab"],draw:MM(["pth","denos","romo"]),
+notes:()=>`<h3>Teriparatide (PTH 1–34), abaloparatide (PTHrP analog)</h3><ul><li>ให้ <b>วันละครั้ง (intermittent)</b> → กระตุ้น osteoblast มากกว่า osteoclast = <b>anabolic</b> · ถ้าให้ต่อเนื่องจะสลายกระดูก ${S.k}</li><li>SC ทุกวัน · ADR: hypercalcemia ชั่วคราว, orthostatic hypotension · osteosarcoma ในหนู ${S.k}</li></ul>
+ <h3>Denosumab</h3><ul><li>mAb ต่อ <b>RANKL</b> → osteoclast ไม่เกิด/ไม่ทำงาน · SC ทุก 6 เดือน ${S.k}</li><li>ADR: hypocalcemia (โดยเฉพาะ CKD), infection · หยุดยาแล้วกระดูกสลายเร็วและกระดูกสันหลังหักซ้อน ${S.k}${S.x}</li></ul>
+ <h3>Romosozumab</h3><ul><li>mAb ต่อ <b>sclerostin</b> → สร้างกระดูกเพิ่มและลดการสลาย · ใช้ 12 เดือน ${S.p}</li><li>Boxed warning: MI, stroke, CV death ${S.x}</li></ul>`});
+
+/* ---------- d · gout ---------- */
+SEC.push({id:"goutchronic",k:"d",t:"Chronic gout: urate-lowering therapy",mm:"Chronic gout drugs",drugs:"allopurinol · febuxostat · probenecid · pegloticase",act:["inh","mod"],tools:MT,leg:["inh","mod"],draw:MM(["xo","urat","uricase"]),
+notes:()=>`<h3>ยา</h3>${tbl(["ยา","กลไก","ระวัง"],[["Allopurinol","purine analog ยับยั้ง xanthine oxidase (active metabolite oxypurinol)","rash → SJS/TEN (<b>HLA-B*5801</b>) · ลดขนาด azathioprine/6-MP"],["Febuxostat","non-purine XO inhibitor","CV death สูงกว่า allopurinol"],["Probenecid","ยับยั้ง URAT1 → ขับ urate ทางไตมากขึ้น","นิ่ว · ใช้ไม่ได้ในไตเสื่อม · ลดการขับ penicillin"],["Pegloticase","recombinant uricase (IV) → allantoin","anaphylaxis · <b>G6PD deficiency</b> ห้าม (hemolysis, methemoglobinemia)"]])}${S.k}
+ <h3>หลักการ (PT)</h3><ul><li>เป้า <b>serum urate &lt;6 mg/dL</b> ${S.p}</li><li>เริ่ม ULT พร้อม <b>prophylaxis</b> colchicine 0.6 mg วันละ 1–2 ครั้ง (หรือ NSAID ขนาดต่ำ) เพราะช่วงแรกกำเริบบ่อย ${S.p}</li><li>Allopurinol เริ่มขนาดตามการทำงานของไต แล้วค่อยเพิ่ม ${S.p}</li></ul>`});
+
+SEC.push({id:"goutacute",k:"d",t:"Acute gout flare",mm:"Acute gout drugs",drugs:"NSAIDs · glucocorticoids · colchicine",act:["inh","st","mod"],tools:MT,leg:["mod","inh","st"],draw:MM(["colch","nsaid","pla2"]),
+notes:()=>`<h3>ตัวเลือก (ใช้ได้เท่า ๆ กัน เลือกตามโรคร่วม)</h3><ul><li><b>NSAID</b> ขนาดเต็ม เช่น indomethacin, naproxen · เลี่ยงใน CKD, แผลกระเพาะ ${S.k}${S.p}</li><li><b>Glucocorticoid</b> oral หรือ intra-articular · ดีในคนที่ไตเสื่อม ${S.k}${S.p}</li>
+ <li><b>Colchicine</b>: ขนาดต่ำ 1.2 mg แล้ว 0.6 mg อีก 1 ชม. · ได้ผลดีถ้าเริ่มเร็ว ${S.p}</li></ul>
+ <h3>Colchicine</h3><ul><li>จับ tubulin → microtubule ไม่ polymerize → neutrophil เคลื่อนที่และ degranulate ไม่ได้ ${S.k}</li><li>ADR: <b>ท้องเสีย</b>, คลื่นไส้ · ขนาดสูง/ไตเสื่อม → myopathy, neuropathy, bone marrow suppression ${S.k}</li><li>DI: CYP3A4/P-gp inhibitor (clarithromycin) เพิ่มพิษ ${S.k}</li></ul>
+ <div class="pearl">ULT (allopurinol, probenecid) ไม่ใช่ยาแก้ flare · ห้ามใช้ aspirin ใน gout (ขนาดต่ำลดการขับ urate) ${S.k}</div>`});
+
+/* ---------- e · biologics ---------- */
+SEC.push({id:"tnf",k:"e",t:"TNF-α inhibitors",mm:"TNF-α inhibitors",drugs:"etanercept · adalimumab · infliximab · certolizumab · golimumab",act:["mab"],tools:MT,leg:["mab"],draw:MM(["tnf"]),
+notes:()=>`<h3>ยา</h3>${tbl(["ยา","ชนิด"],[["Etanercept","TNF receptor (p75)–IgG1 Fc fusion protein · SC"],["Infliximab","chimeric mAb · IV"],["Adalimumab, golimumab","human mAb · SC"],["Certolizumab","PEGylated Fab′"]])}${S.k}
+ <h3>ใช้เมื่อ</h3><ul><li>RA, psoriatic arthritis, ankylosing spondylitis, psoriasis · infliximab/adalimumab ใช้ใน IBD ด้วย ${S.k}</li><li>RA: เพิ่มเมื่อ DMARD (methotrexate) ไม่พอ · ใช้คู่ methotrexate ดีกว่าเดี่ยว ${S.k}${S.p}</li></ul>
+ <h3>ADR · ก่อนเริ่ม</h3><ul><li><b>Infection</b> โดยเฉพาะ <b>reactivation TB</b> → ตรวจ latent TB ก่อน · hepatitis B · fungal ${S.k}</li><li>Lymphoma, demyelination, HF แย่ลง, drug-induced lupus · injection/infusion reaction ${S.k}</li><li>ห้าม live vaccine ระหว่างใช้ ${S.x}</li></ul>`});
+
+SEC.push({id:"ra-bio",k:"e",t:"Other RA biologics & JAK inhibitors",mm:"Other biologics · JAK",drugs:"abatacept · rituximab · tocilizumab · anakinra · tofacitinib",act:["bl","mab","inh"],tools:MT,leg:["bl","mab","inh"],draw:MM(["abat","ritux","il6","jak"]),
+notes:()=>`${tbl(["ยา","เป้าหมาย","ระวัง"],[["Abatacept","CTLA-4–Ig: บล็อก CD80/86–CD28 (costimulation T cell)","infection · COPD แย่ลง"],["Rituximab","anti-CD20 → B cell หมด","infusion reaction · HBV reactivation · PML"],["Tocilizumab, sarilumab","anti-IL-6 receptor","GI perforation, LFT ↑, lipid ↑, neutropenia"],["Anakinra","IL-1 receptor antagonist","injection site, infection"],["Tofacitinib, baricitinib, upadacitinib","ยับยั้ง JAK (oral)","<b>herpes zoster</b>, thrombosis, MACE, malignancy"]])}${S.k}
+ <div class="pearl">ไม่ใช้ biologic 2 ตัวร่วมกัน (infection สูงขึ้นโดยไม่ได้ผลเพิ่ม) ${S.k}</div>`});
+
+SEC.push({id:"psobio",k:"e",t:"Psoriasis biologics",mm:"Psoriasis biologics",drugs:"ustekinumab · secukinumab · ixekizumab · guselkumab · risankizumab",act:["mab"],tools:MT,leg:["mab"],draw:SM(["th17"]),
+notes:()=>`<h3>แกน IL-23 → Th17 → IL-17</h3><ul><li>IL-23 จาก dendritic cell ทำให้ Th17 สร้าง IL-17 → keratinocyte แบ่งตัวมาก ${S.k}</li></ul>
+ ${tbl(["เป้าหมาย","ยา","ระวัง"],[["IL-12/23 (p40)","ustekinumab","infection, TB"],["IL-23 (p19)","guselkumab, tildrakizumab, risankizumab","infection"],["IL-17A","secukinumab, ixekizumab","<b>candidiasis</b>, IBD แย่ลง"],["IL-17 receptor","brodalumab","suicidality"],["TNF-α","etanercept, adalimumab, infliximab","ดูหัวข้อ TNF"]])}${S.k}
+ <ul><li>ตรวจ TB ก่อนเริ่มทุกตัว ${S.k}</li></ul>`});
+
+/* ---------- f · dermatology ---------- */
+SEC.push({id:"skinmap",k:"f",t:"Skin drug target map",mm:"Skin drug map",drugs:"",act:[],tools:MT,leg:["ag","mod","st","mab","inh"],draw:SM(["kera","cacnes","seb","tcs","dc","th17","th17b"]),
+notes:()=>`<h3>ยาผิวหนังทำงานตรงไหน</h3>${tbl(["เป้าหมาย","ยา"],[["Keratinocyte differentiation","retinoids, calcipotriene (vitamin D)"],["Follicle: C. acnes","benzoyl peroxide, clindamycin, erythromycin"],["Sebaceous gland","isotretinoin, (spironolactone, OCP)"],["Inflammation ทั่วไป","topical corticosteroids, calcineurin inhibitors"],["Dendritic cell TLR7","imiquimod"],["Th17 / IL-23","IL-17, IL-23 mAb · apremilast (PDE4)"]])}${S.k}
+ <h3>หลักการให้ยาทางผิวหนัง</h3><ul><li>การดูดซึมขึ้นกับความหนาของ stratum corneum และตำแหน่ง: หน้า, ตา, ขาหนีบ, อวัยวะเพศ ดูดซึมมาก · ฝ่ามือฝ่าเท้าน้อย ${S.k}</li><li>Occlusion และ ointment เพิ่มการดูดซึม · เด็กมี surface area/น้ำหนักสูง → systemic effect ง่าย ${S.k}</li></ul>`});
+
+SEC.push({id:"tcs",k:"f",t:"Topical corticosteroids",mm:"Topical corticosteroids",drugs:"clobetasol · betamethasone · triamcinolone · hydrocortisone",act:["st"],tools:MT,leg:["st"],draw:SM(["tcs"]),
+notes:()=>`<h3>ความแรง</h3>${tbl(["Class","ตัวอย่าง","ใช้ที่"],[["I super-high","clobetasol propionate","plaque หนา ฝ่ามือฝ่าเท้า ระยะสั้น"],["II–III high","betamethasone dipropionate, fluocinonide","ลำตัว แขนขา"],["IV–V medium","triamcinolone acetonide","ลำตัว"],["VI–VII low","hydrocortisone, desonide","หน้า ข้อพับ เด็ก"]])}${S.k}
+ <h3>ADR</h3><ul><li>Local: <b>skin atrophy</b>, striae, telangiectasia, perioral dermatitis, acneiform, hypopigmentation ${S.k}</li><li>Systemic: HPA axis suppression (ใช้มาก, occlusion, เด็ก) · glaucoma/cataract ถ้าใช้รอบตา ${S.k}</li></ul>
+ <div class="pearl">ใช้ตัวอ่อนที่สุดที่ได้ผล · เลี่ยงตัวแรงที่หน้าและข้อพับ ${S.k}</div>`});
+
+SEC.push({id:"acne",k:"f",t:"Acne drugs",mm:"Acne drugs",drugs:"tretinoin · adapalene · benzoyl peroxide · clindamycin · isotretinoin",act:["ag","mod"],tools:MT,leg:["ag","mod"],draw:SM(["kera","cacnes","seb"]),
+notes:()=>`${tbl(["ยา","กลไก","ADR"],[["Tretinoin, adapalene, tazarotene (topical retinoids)","ปรับ differentiation ของ keratinocyte → comedolytic","ระคายเคือง แพ้แดด · tazarotene ห้ามในครรภ์"],["Benzoyl peroxide","ฆ่า C. acnes (oxidizing) · ไม่ดื้อยา","ระคายเคือง ผ้า/ผมซีด"],["Clindamycin, erythromycin (topical)","antibacterial","ดื้อยา → ใช้คู่ BPO"],["Doxycycline, minocycline (oral)","antibacterial + anti-inflammatory","photosensitivity, ฟันเปลี่ยนสี"],["Isotretinoin (oral)","ลดขนาดและการสร้าง sebum มาก","<b>teratogen</b> (iPLEDGE, ต้องคุมกำเนิด 2 วิธี), ผิว/ปากแห้ง, TG และ LFT ↑"]])}${S.k}
+ <ul><li>Isotretinoin สำหรับ acne รุนแรงแบบ nodulocystic ที่ดื้อยาอื่น ${S.k}</li><li>ผู้หญิง: OCP หรือ spironolactone ลด androgen ${S.k}</li></ul>`});
+
+SEC.push({id:"psotop",k:"f",t:"Psoriasis: topical & systemic",mm:"Psoriasis non-biologics",drugs:"calcipotriene · methotrexate · acitretin · cyclosporine · apremilast",act:["ag","inh"],tools:MT,leg:["ag","inh"],draw:SM(["kera","th17b","tcs"]),
+notes:()=>`<h3>Topical</h3><ul><li>Corticosteroid · <b>calcipotriene</b> (vitamin D analog ยับยั้ง keratinocyte proliferation; ระวัง hypercalcemia ถ้าใช้มาก) · tazarotene · coal tar, anthralin ${S.k}</li></ul>
+ <h3>Phototherapy & systemic</h3><ul><li>NB-UVB, PUVA ${S.k}</li><li><b>Methotrexate</b> · <b>cyclosporine</b> (nephrotoxic, HTN) · <b>acitretin</b> (retinoid; teratogen นาน หลังหยุดต้องคุมกำเนิด 3 ปี) ${S.k}</li><li><b>Apremilast</b>: oral PDE4 inhibitor → cAMP ↑ → cytokine ↓ · ท้องเสีย น้ำหนักลด depression ${S.k}</li></ul>
+ <div class="pearl">หลีกเลี่ยง systemic steroid ใน psoriasis: หยุดแล้ว flare รุนแรง (pustular) ${S.x}</div>`});
+
+SEC.push({id:"imiq",k:"f",t:"Imiquimod & actinic keratosis drugs",mm:"Imiquimod · AK",drugs:"imiquimod · 5-fluorouracil · podofilox",act:["ag","inh"],tools:MT,leg:["ag"],draw:SM(["dc"]),
+notes:()=>`<h3>Imiquimod</h3><ul><li><b>TLR7 agonist</b> → IFN-α, TNF, IL-12 → ภูมิคุ้มกันเฉพาะที่ ${S.k}</li><li>ใช้: <b>genital/perianal warts</b>, actinic keratosis, <b>superficial BCC</b> ${S.k}</li><li>ADR: ผิวอักเสบ แดง ลอก ณ ที่ทา ${S.k}</li></ul>
+ <h3>อื่น ๆ</h3><ul><li><b>Topical 5-FU</b>: actinic keratosis, superficial BCC (ยับยั้ง thymidylate synthase) ${S.k}</li><li>Podofilox: warts (antimitotic) · ห้ามในครรภ์ ${S.k}</li></ul>`});
+
+/* ---------- g · treating ---------- */
+SEC.push({id:"ra",k:"g",t:"Rheumatoid arthritis treatment",mm:"RA treatment",drugs:"",act:[],leg:[],
+draw:()=>flowD([["วินิจฉัยแล้วเริ่ม DMARD เร็ว","ลด joint damage ที่เกิดใน 2 ปีแรก","vn"],["Methotrexate","nonbiologic DMARD หลัก · ± leflunomide, SSZ, HCQ","gl"],["Bridge ระหว่างรอ DMARD","glucocorticoid ขนาดต่ำระยะสั้น, NSAID",""],["ยังไม่ถึงเป้า","เพิ่ม biologic (TNF-α inhibitor ฯลฯ) หรือ JAK inhibitor ร่วม MTX","ar"],["ก่อน biologic","ตรวจ TB, HBV · วัคซีนให้ครบ","ar"]]),
+notes:()=>`<ul><li>Methotrexate คือ nonbiologic DMARD ที่เลือกเป็นหลัก · เป็น abortifacient ต้องคุมกำเนิด ${S.p}</li><li>Glucocorticoid ใช้ระยะสั้นระหว่างรอ DMARD ออกฤทธิ์ ${S.p}</li><li>ไม่ใช้ biologic ร่วมกัน 2 ตัว ${S.k}</li></ul>`});
+
+SEC.push({id:"oa-op",k:"g",t:"Osteoarthritis & osteoporosis treatment",mm:"OA · osteoporosis",drugs:"",act:[],leg:[],
+draw:()=>cards([["OA: เริ่ม","ลดน้ำหนัก ออกกำลังกาย · topical NSAID (เข่า มือ) · acetaminophen","vn"],["OA: ต่อไป","oral NSAID (± PPI) · duloxetine · intra-articular corticosteroid","gl"],["Osteoporosis: ทุกคน","calcium + vitamin D ให้พอ · ออกกำลัง · กันล้ม",""],["Osteoporosis: first-line","bisphosphonate","vn"],["เสี่ยงสูงมาก","teriparatide/abaloparatide, romosozumab · denosumab","ar"]]),
+notes:()=>`<h3>OA</h3><ul><li>Topical NSAID (diclofenac) ได้ผลใกล้ oral และ GI ADR น้อยกว่า ${S.p}</li><li>Duloxetine (SNRI) ทางเลือกในปวดเรื้อรัง ${S.p}</li></ul>
+ <h3>Osteoporosis</h3><ul><li>Bisphosphonate เป็น first-line ${S.p}</li><li>ADR สำคัญ: ONJ, atypical femur fracture ${S.p}</li><li>Romosozumab สำหรับคนเสี่ยงหักสูง ${S.p}</li></ul>`});
+
+const EXTRA=["ra-bio", "skinmap", "tcs", "acne", "psotop", "ra", "oa-op"];

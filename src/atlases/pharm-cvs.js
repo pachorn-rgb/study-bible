@@ -1,0 +1,110 @@
+/* ================= Cardiovascular pharmacology ================= */
+function cvMap(){let b="";const row=(x,y,lab,key,v)=>glow(x,y,key)+rec(x,y,"",v)+T(x+16,y+4,lab,{a:"start",c:"s"});
+ b+=panel(10,10,360,214,"VASCULAR SMOOTH MUSCLE");
+ b+=row(36,64,"L-type Ca²⁺",["dhp"])+pill(244,64,"Amlodipine · Nifedipine","bl","dhp");
+ b+=nbh(76,104,96,26,"sGC → cGMP","","nitr","soft")+pill(250,104,"Nitrates · Nitroprusside","ag","nitr");
+ b+=row(36,144,"K-ATP",["hydr"])+pill(244,144,"Minoxidil · Hydralazine","mod","hydr");
+ b+=row(36,184,"α₁ · AT₁",["ras"])+pill(244,184,"Prazosin · ACEi · ARB","bl","ras");
+ b+=panel(380,10,370,214,"CARDIOMYOCYTE & NODES");
+ b+=row(406,64,"Na⁺ (phase 0)","c1")+pill(626,64,"Class I","bl","c1");
+ b+=row(406,104,"β₁","c2")+pill(626,104,"Class II · β-blockers","bl","c2");
+ b+=row(406,144,"K⁺ (I_Kr, phase 3)","c3")+pill(626,144,"Class III · amiodarone","bl","c3");
+ b+=row(406,184,"L-type Ca²⁺ (AV node)","c4")+pill(626,184,"Class IV · verapamil","bl","c4");
+ b+=panel(380,234,370,140,"MORE CARDIAC TARGETS");
+ b+=row(406,280,"Na⁺/K⁺-ATPase","dig")+pill(530,306,"Digoxin","inh","dig");
+ b+=row(406,338,"late Na⁺","rano")+pill(530,362,"Ranolazine","bl","rano");
+ b+=row(600,280,"I_f (SA node)","ivab")+pill(690,306,"Ivabradine","bl","ivab");
+ b+=row(600,338,"A₁ (AV node)","aden")+pill(690,362,"Adenosine","ag","aden");
+ b+=panel(10,234,360,220,"LIPIDS (liver · gut)");
+ b+=nbh(84,276,130,26,"HMG-CoA reductase","","stat","soft")+pill(266,276,"Statins","inh","stat");
+ b+=nbh(84,312,130,26,"NPC1L1 (gut)","","eze","soft")+pill(266,312,"Ezetimibe","inh","eze");
+ b+=nbh(84,348,130,26,"Bile acids (gut)","","resin","soft")+pill(266,348,"Bile acid resins","mod","resin");
+ b+=nbh(84,384,130,26,"PCSK9","","pcsk9","soft")+pill(266,384,"Evolocumab · Alirocumab","mab","pcsk9");
+ b+=nbh(84,420,130,26,"PPARα · lipolysis","","fib","soft")+pill(266,420,"Fibrates · Niacin","ag","fib");
+ b+=panel(380,384,370,70,"NATRIURETIC PEPTIDES")+nbh(450,426,100,26,"Neprilysin","","sac","soft")+pill(626,426,"Sacubitril (+ valsartan)","inh","sac");
+ return psvg(b,"0 0 760 464")}
+const CM=MAPOF(cvMap),MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Hypertension",b:"Angina",c:"Heart failure",d:"Lipid-lowering agents",e:"Antiarrhythmics",f:"Treating CV disease"});
+
+/* ---------- a · hypertension ---------- */
+SEC.push({id:"cvmap",k:"a",t:"Cardiovascular agents & molecular targets",mm:"CV target map",drugs:"",act:[],tools:MT,leg:["bl","ag","inh","mab","mod"],draw:CM(["dhp","nitr","hydr","ras","c1","c2","c3","c4","dig","rano","ivab","aden","stat","eze","resin","pcsk9","fib","sac"]),
+notes:()=>`<div class="pearl">ACEi, ARB, aliskiren และ diuretics อยู่ใน <b>Renal Pharmacology</b> · β-blockers, α-blockers อยู่ใน <b>Autonomic drugs</b> (General Principles) · antiplatelet/anticoagulant อยู่ใน <b>Hematology</b></div>
+ <h3>BP = CO × SVR</h3><ul><li>ลด CO: β-blocker, non-DHP CCB · ลด volume: diuretic · ลด SVR: DHP CCB, ACEi/ARB, α₁ blocker, direct vasodilator ${S.k}</li><li>ยาขยายหลอดเลือดทำให้เกิด <b>compensatory response</b>: reflex tachycardia และ Na⁺/น้ำคั่ง (renin ↑) → ใช้คู่ β-blocker + diuretic ${S.k}</li></ul>`});
+
+SEC.push({id:"htn",k:"a",t:"Hypertension treatment",mm:"HTN treatment by comorbidity",drugs:"",act:[],leg:[],
+draw:()=>cards([["Primary hypertension","thiazide · ACEi/ARB · CCB (ยาตัวแรก)","vn"],["+ Heart failure (HFrEF)","ACEi/ARB/ARNI · β-blocker · MRA · diuretic","gl"],["+ Diabetes / CKD + albuminuria","ACEi หรือ ARB","gl"],["+ Pregnancy","labetalol · nifedipine · methyldopa · hydralazine · ห้าม ACEi/ARB","ar"],["+ Asthma","ARB · CCB · thiazide · cardioselective β-blocker",""],["+ Pheochromocytoma","α-blocker (phenoxybenzamine) ก่อน แล้วจึง β-blocker","ar"]]),
+notes:()=>`<h3>เป้าหมาย (PT)</h3><ul><li>เป้า BP &lt;130/80 mmHg ในผู้ใหญ่ส่วนใหญ่ ${S.p}</li><li>ยาเริ่มต้น: thiazide, ACEi, ARB หรือ CCB · BP สูงมาก (≥20/10 เหนือเป้า) เริ่ม 2 ตัว ${S.p}</li><li>ผู้ป่วยผิวดำ (ไม่มี CKD) ตอบสนอง thiazide หรือ CCB ดีกว่า ${S.p}</li></ul>
+ <h3>เลี่ยง</h3><ul><li>Non-selective β-blocker ใน asthma · ACEi ใน asthma (ไอปนกัน) ${S.k}</li><li>Gout: เลี่ยง thiazide, loop · losartan ลด urate ${S.k}</li><li>Pheo: β-blocker ก่อน α-blocker → unopposed α → hypertensive crisis ${S.k}</li></ul>`});
+
+SEC.push({id:"ccb",k:"a",t:"Calcium channel blockers",mm:"Calcium channel blockers",drugs:"amlodipine · nifedipine · nicardipine · clevidipine · nimodipine · verapamil · diltiazem",act:["bl"],tools:MT,leg:["bl"],draw:CM(["dhp","c4"]),
+notes:()=>`<h3>กลไก</h3><ul><li>บล็อก L-type Ca²⁺ channel · <b>Dihydropyridine</b>: หลอดเลือด &gt;&gt; หัวใจ · <b>Non-DHP</b>: verapamil (หัวใจ &gt;&gt;), diltiazem (กลาง) ${S.k}</li></ul>
+ <h3>ใช้</h3>${tbl(["ยา","ใช้"],[["Amlodipine, nifedipine","HTN, angina, Prinzmetal, Raynaud"],["Nicardipine, clevidipine (IV)","hypertensive emergency"],["Nimodipine","<b>SAH</b>: ลด vasospasm"],["Verapamil, diltiazem","rate control AF/flutter, SVT, angina, HTN"]])}${S.k}
+ <h3>ADR</h3><ul><li>DHP: <b>peripheral edema</b>, flushing, ปวดหัว, reflex tachycardia, gingival hyperplasia ${S.k}</li><li>Non-DHP: <b>ท้องผูก</b> (verapamil), bradycardia, AV block, HF แย่ลง · ระวังคู่ β-blocker · เป็น CYP3A4 inhibitor (เพิ่ม digoxin, statin) ${S.k}</li></ul>`});
+
+SEC.push({id:"vasodil",k:"a",t:"Hydralazine & minoxidil",mm:"Hydralazine · minoxidil",drugs:"hydralazine · minoxidil",act:["mod"],tools:MT,leg:["mod"],draw:CM(["hydr"]),
+notes:()=>`${tbl(["ยา","กลไก","ใช้","ADR"],[["Hydralazine","ขยาย arteriole (ผ่าน NO/cGMP)","HTN ในครรภ์, HFrEF ร่วม isosorbide dinitrate (ผู้ป่วยผิวดำ), hypertensive emergency","reflex tachycardia (ห้ามเดี่ยวใน angina), Na⁺ คั่ง, <b>drug-induced lupus</b> (slow acetylator)"],["Minoxidil","เปิด K-ATP channel → hyperpolarize","HTN ดื้อยารุนแรง · topical: ผมร่วง","hypertrichosis, น้ำคั่ง, <b>pericardial effusion</b>, reflex tachycardia"]])}${S.k}
+ <div class="pearl">ให้ร่วมกับ β-blocker + loop/thiazide เสมอเพื่อตัด compensatory response ${S.k}</div>`});
+
+SEC.push({id:"htnemerg",k:"a",t:"Hypertensive emergency",mm:"Hypertensive emergency",drugs:"nitroprusside · nicardipine · clevidipine · labetalol · esmolol · fenoldopam",act:["ag","bl"],tools:MT,leg:["ag","bl"],draw:CM(["nitr","dhp"]),
+notes:()=>`${tbl(["ยา","กลไก","ระวัง"],[["Nitroprusside","ปล่อย NO → cGMP ↑ · ขยาย artery + vein · ออกฤทธิ์ภายในวินาที","<b>cyanide toxicity</b> (ให้นาน/ไตเสื่อม) → hydroxocobalamin, thiosulfate"],["Nicardipine, clevidipine","DHP CCB IV","reflex tachycardia · clevidipine: lipid emulsion"],["Labetalol","α₁ + β blocker","asthma, HF decompensated"],["Esmolol","β₁ IV ออกฤทธิ์สั้น","bradycardia"],["Fenoldopam","D₁ agonist → ขยายหลอดเลือดไต, natriuresis","hypotension, tachycardia"]])}${S.k}
+ <ul><li>ลด MAP ไม่เกิน ~25% ในชั่วโมงแรก แล้วค่อยลดต่อ (ยกเว้น aortic dissection) ${S.x}</li></ul>`});
+
+/* ---------- b · angina ---------- */
+SEC.push({id:"nitrates",k:"b",t:"Nitrates",mm:"Nitrates",drugs:"nitroglycerin · isosorbide dinitrate · isosorbide mononitrate",act:["ag"],tools:MT,leg:["ag"],draw:CM(["nitr"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ปล่อย NO → sGC → <b>cGMP ↑</b> → myosin light chain dephosphorylation → คลายกล้ามเนื้อเรียบ ${S.k}</li><li><b>Venodilation &gt;&gt; arteriodilation</b> → preload ↓ → wall stress และ MVO₂ ↓ · ขยาย coronary ที่ตีบ ${S.k}</li></ul>
+ <h3>ใช้</h3><ul><li>Angina (SL nitroglycerin ตอนเจ็บ/ก่อนออกแรง), ACS, acute pulmonary edema · ISDN + hydralazine ใน HFrEF ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>ปวดหัว หน้าแดง orthostatic hypotension <b>reflex tachycardia</b> ${S.k}</li><li><b>Tolerance</b> → เว้นช่วงไร้ nitrate 10–12 ชม./วัน ${S.p} · "Monday disease" ในคนงานโรงงาน ${S.k}</li></ul>
+ <div class="pearl">ห้ามใช้ร่วม <b>PDE5 inhibitor</b> (sildenafil) → BP ตกรุนแรง · ระวัง RV infarct (preload-dependent) ${S.k}</div>`});
+
+SEC.push({id:"antianginal",k:"b",t:"Antianginal therapy & ranolazine",mm:"Antianginal therapy",drugs:"β-blockers · nitrates · CCB · ranolazine · ivabradine",act:["bl","ag"],tools:MT,leg:["bl","ag"],draw:CM(["nitr","c2","dhp","c4","rano","ivab"]),
+notes:()=>`<h3>ลด MVO₂</h3>${tbl(["ตัวกำหนด MVO₂","Nitrates","β-blockers","Nitrate + β-blocker"],[["End-diastolic volume","↓","↑ เล็กน้อย","ไม่เปลี่ยน/↓"],["Blood pressure","↓","↓","↓"],["Contractility","↑ (reflex)","↓","↓ เล็กน้อย"],["Heart rate","↑ (reflex)","↓","↓"],["Ejection time","↓","↑","ไม่เปลี่ยน"]])}${S.k}
+ <ul><li>β-blocker + nitrate เสริมกันและหักล้าง compensatory effect · เลี่ยง partial agonist (pindolol) ใน angina ${S.k}</li><li>Verapamil/diltiazem ใช้แทน β-blocker ได้ · ไม่ใช้คู่กันหัวใจเต้นช้า ${S.k}</li></ul>
+ <h3>Ranolazine</h3><ul><li>ยับยั้ง <b>late Na⁺ current</b> → Ca²⁺ overload ลด ไม่เปลี่ยน HR/BP ${S.k}</li><li>ADR: <b>QT ยาว</b>, มึน ท้องผูก · CYP3A4 substrate ${S.k}</li></ul>`});
+
+/* ---------- c · heart failure ---------- */
+SEC.push({id:"hf",k:"c",t:"Heart failure drugs & sacubitril",mm:"HF drugs · ARNI",drugs:"sacubitril/valsartan · carvedilol · metoprolol succinate · spironolactone · dapagliflozin · ivabradine",act:["inh","bl"],tools:MT,leg:["inh","bl"],draw:CM(["sac","c2","ras","ivab"]),
+notes:()=>`<h3>Sacubitril/valsartan (ARNI)</h3><ul><li>Sacubitril (prodrug) ยับยั้ง <b>neprilysin</b> → BNP/ANP ↑ → natriuresis, vasodilation · ต้องใช้คู่ ARB (neprilysin สลาย Ang II ด้วย) ${S.k}</li><li>ADR: hypotension, hyperkalemia, <b>angioedema</b> · หยุด ACEi อย่างน้อย <b>36 ชม.</b> ก่อนเริ่ม ${S.k}${S.p}</li></ul>
+ <h3>ยาที่ลดการตายใน HFrEF</h3><ul><li>ACEi/ARB/ARNI · β-blocker (carvedilol, metoprolol succinate, bisoprolol) · MRA (spironolactone, eplerenone) · SGLT2 inhibitor ${S.k}${S.p}</li><li>Hydralazine + ISDN ในผู้ป่วยผิวดำ ${S.k}</li><li>ลดอาการ: loop diuretic · digoxin (ลดการ admit ไม่ลดตาย) · ivabradine (sinus HR สูงแม้ใช้ β-blocker เต็ม) ${S.k}</li></ul>
+ <div class="pearl">เริ่ม β-blocker ตอนอาการคงที่ ขนาดต่ำแล้วค่อยเพิ่ม · ไม่เริ่มใน decompensated HF/shock ${S.k}</div>`});
+
+SEC.push({id:"digoxin",k:"c",t:"Digoxin",mm:"Digoxin",drugs:"digoxin",act:["inh"],tools:MT,leg:["inh"],draw:CM(["dig"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง <b>Na⁺/K⁺-ATPase</b> → Na⁺ ในเซลล์ ↑ → NCX ขับ Ca²⁺ ได้น้อย → Ca²⁺ ↑ → <b>contractility ↑</b> ${S.k}</li><li>เพิ่ม vagal tone → AV conduction ช้า ${S.k}</li></ul>
+ <h3>ใช้</h3><ul><li>HFrEF ที่ยังมีอาการ (ลด admission) · rate control ใน AF ร่วม HF ${S.k}</li></ul>
+ <h3>PK · toxicity</h3><ul><li>ขับทางไต · <b>narrow therapeutic index</b> · t½ ~36–40 ชม. ${S.k}</li><li>พิษ: คลื่นไส้ อาเจียน ท้องเสีย · <b>มองเห็นสีเหลือง (xanthopsia)</b> · arrhythmia ทุกชนิด (atrial tachycardia + AV block, bidirectional VT) · acute overdose → hyperkalemia ${S.k}</li><li>เสี่ยงขึ้นเมื่อ <b>hypokalemia</b>, hypomagnesemia, hypercalcemia, ไตเสื่อม, ใช้ร่วม amiodarone/verapamil/quinidine ${S.k}</li><li>Antidote: <b>digoxin immune Fab</b> · แก้ K⁺, Mg²⁺ ${S.k}</li></ul>`});
+
+/* ---------- d · lipids ---------- */
+SEC.push({id:"statins",k:"d",t:"Statins",mm:"Statins",drugs:"atorvastatin · rosuvastatin · simvastatin · pravastatin · lovastatin",act:["inh"],tools:MT,leg:["inh"],draw:CM(["stat"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง <b>HMG-CoA reductase</b> (rate-limiting ของ cholesterol synthesis) → hepatocyte เพิ่ม LDL receptor → <b>LDL ↓ มากที่สุด</b> ${S.k}</li><li>ลด MI/stroke/การตาย · pleiotropic: ลดการอักเสบ, stabilize plaque ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li><b>Myopathy/rhabdomyolysis</b> โดยเฉพาะร่วม <b>gemfibrozil</b>, niacin, CYP3A4 inhibitor (simvastatin, lovastatin, atorvastatin) ${S.k}</li><li>Transaminase ↑ · new-onset diabetes เล็กน้อย · <b>ห้ามในครรภ์</b> ${S.k}</li><li>Pravastatin, rosuvastatin ไม่ค่อยผ่าน CYP3A4 ${S.k}</li></ul>
+ <div class="pearl">ใช้ <b>high-intensity statin</b> ใน clinical ASCVD ${S.p}</div>`});
+
+SEC.push({id:"nonstatin",k:"d",t:"Bile acid resins, ezetimibe & PCSK9 inhibitors",mm:"Resins · ezetimibe · PCSK9",drugs:"cholestyramine · colesevelam · ezetimibe · evolocumab · alirocumab · inclisiran",act:["mod","inh","mab"],tools:MT,leg:["mod","inh","mab"],draw:CM(["resin","eze","pcsk9"]),
+notes:()=>`${tbl(["ยา","กลไก","ผลต่อ lipid","ADR"],[["Cholestyramine, colestipol, colesevelam","จับ bile acid ในลำไส้ → ตับใช้ cholesterol สร้างใหม่","LDL ↓ · <b>TG ↑</b>","GI ท้องอืด ท้องผูก · ลดการดูดซึมยาอื่นและ vitamin ADEK · ห้ามใน TG สูง"],["Ezetimibe","ยับยั้ง <b>NPC1L1</b> ที่ brush border → ดูด cholesterol ลด","LDL ↓","ท้องเสียเล็กน้อย, LFT ↑"],["Evolocumab, alirocumab","mAb ต่อ <b>PCSK9</b> → LDL receptor ไม่ถูกทำลาย","LDL ↓↓ (~60%)","injection site, myalgia"],["Inclisiran","siRNA ลดการสร้าง PCSK9 (ฉีดทุก 6 เดือน)","LDL ↓","injection site"]])}${S.k}`});
+
+SEC.push({id:"tg",k:"d",t:"Fibrates, niacin & omega-3",mm:"Fibrates · niacin · fish oil",drugs:"fenofibrate · gemfibrozil · niacin · icosapent ethyl",act:["ag"],tools:MT,leg:["ag"],draw:CM(["fib"]),
+notes:()=>`${tbl(["ยา","กลไก","ผล","ADR"],[["Fenofibrate, gemfibrozil","<b>PPARα agonist</b> → LPL ↑ → สลาย VLDL","<b>TG ↓↓</b>, HDL ↑","<b>myopathy</b> (gemfibrozil + statin มากที่สุด), <b>gallstones</b> (cholesterol), LFT ↑"],["Niacin","ยับยั้ง lipolysis ใน adipose → VLDL ↓","HDL ↑ มากที่สุด, LDL ↓, TG ↓","<b>flushing</b> (PGD₂ → ให้ aspirin ก่อน), hyperglycemia, hyperuricemia/gout, hepatotoxic"],["Omega-3 (icosapent ethyl)","ลดการสร้าง VLDL","TG ↓","AF, เลือดออก"]])}${S.k}
+ <ul><li>TG &gt;~500–1000 mg/dL ใช้ fibrate เพื่อกัน pancreatitis ${S.k}</li><li>Niacin เพิ่มใน statin ไม่ลด CV event เพิ่ม ${S.k}</li></ul>`});
+
+/* ---------- e · antiarrhythmics ---------- */
+SEC.push({id:"class1",k:"e",t:"Class I: Na⁺ channel blockers",mm:"Class I (IA · IB · IC)",drugs:"procainamide · quinidine · lidocaine · mexiletine · flecainide · propafenone",act:["bl"],tools:MT,leg:["bl"],draw:CM(["c1"]),
+notes:()=>`${tbl(["Class","ยา","ผลต่อ AP","ใช้","ADR"],[["IA","quinidine, procainamide, disopyramide","phase 0 ช้า · AP/ERP ยาวขึ้น (บล็อก K⁺ ด้วย) → QT ยาว","atrial + ventricular arrhythmia, WPW","<b>torsades</b> · quinidine: cinchonism, ท้องเสีย · procainamide: <b>drug-induced lupus</b> · disopyramide: HF, anticholinergic"],["IB","lidocaine, mexiletine","AP สั้นลง · ชอบเนื้อเยื่อขาดเลือด/depolarized","<b>ventricular arrhythmia หลัง MI</b>, digoxin-induced","CNS: paresthesia, ชัก, tremor"],["IC","flecainide, propafenone","phase 0 ช้ามาก · AP ไม่เปลี่ยน","SVT, AF ในหัวใจปกติ","<b>proarrhythmic</b> · ห้ามใน structural heart disease/หลัง MI (CAST)"]])}${S.k}
+ <div class="pearl">Use-dependence: บล็อกมากขึ้นเมื่อหัวใจเต้นเร็ว (IC มากที่สุด) ${S.k}</div>`});
+
+SEC.push({id:"class2",k:"e",t:"Class II: β-blockers",mm:"Class II (β-blockers)",drugs:"metoprolol · esmolol · propranolol · atenolol",act:["bl"],tools:MT,leg:["bl"],draw:CM(["c2"]),
+notes:()=>`<ul><li>ลด cAMP → ลด slope ของ phase 4 ใน SA/AV node · <b>PR ยาว</b> ${S.k}</li><li>ใช้: SVT, rate control AF/flutter, ventricular rate หลัง MI (ลดการตายจาก sudden death) ${S.k}</li><li>Esmolol IV ออกฤทธิ์สั้นมาก ${S.k}</li><li>ADR: bradycardia, AV block, HF แย่ลง, bronchospasm, ปิดบังอาการ hypoglycemia ${S.k}</li><li>Overdose: <b>glucagon</b> ${S.k}</li></ul>`});
+
+SEC.push({id:"class3",k:"e",t:"Class III: K⁺ channel blockers",mm:"Class III (K⁺)",drugs:"amiodarone · dronedarone · sotalol · dofetilide · ibutilide",act:["bl"],tools:MT,leg:["bl"],draw:CM(["c3"]),
+notes:()=>`<ul><li>บล็อก I_Kr → AP และ ERP ยาว → <b>QT ยาว</b> ${S.k}</li></ul>
+ <h3>Amiodarone</h3><ul><li>มีฤทธิ์ class I–IV ครบ · torsades น้อยแม้ QT ยาว · t½ หลายสัปดาห์ ${S.k}</li><li>ADR: <b>pulmonary fibrosis</b>, <b>hypo/hyperthyroidism</b> (มี iodine), hepatotoxicity, corneal deposits, optic neuritis, ผิวสีเทาฟ้า, photosensitivity, bradycardia ${S.k}</li><li>ตรวจ PFT, TFT, LFT ก่อนและระหว่างใช้ · CYP inhibitor (warfarin, digoxin ↑) ${S.k}</li></ul>
+ <h3>อื่น ๆ</h3><ul><li><b>Sotalol</b> (+β-block), <b>dofetilide</b>, <b>ibutilide</b> (convert AF/flutter) → torsades ต้อง monitor QT ${S.k}</li><li>Dronedarone: ไม่มี iodine · ห้ามใน HF รุนแรง/AF ถาวร ${S.k}</li></ul>`});
+
+SEC.push({id:"class4",k:"e",t:"Class IV & other antiarrhythmics",mm:"Class IV · adenosine · Mg · ivabradine",drugs:"verapamil · diltiazem · adenosine · magnesium · ivabradine",act:["bl","ag"],tools:MT,leg:["bl","ag"],draw:CM(["c4","aden","ivab"]),
+notes:()=>`${tbl(["ยา","กลไก","ใช้","ADR"],[["Verapamil, diltiazem","บล็อก L-type Ca²⁺ ที่ AV node → PR ยาว","SVT, rate control AF","ท้องผูก, bradycardia, HF · ห้ามใน WPW+AF"],["Adenosine","A₁ → K⁺ out ↑, Ca²⁺ ↓ ที่ AV node · t½ ~10 วินาที","<b>ยาตัวแรกตัด PSVT</b> · ช่วยวินิจฉัย","flushing, เจ็บอก, bronchospasm, ความรู้สึกจะตาย · theophylline/caffeine ต้านฤทธิ์ · dipyridamole เสริม"],["Magnesium sulfate","ไม่ชัด","<b>torsades de pointes</b>, digoxin toxicity",""],["Ivabradine","บล็อก I_f (funny) ที่ SA node","HFrEF HR สูง, stable angina","<b>phosphenes</b>, bradycardia, AF"]])}${S.k}`});
+
+/* ---------- f · treating ---------- */
+SEC.push({id:"hfrx",k:"f",t:"HFrEF: guideline-directed therapy",mm:"HFrEF therapy",drugs:"",act:[],leg:[],
+draw:()=>flowD([["Congestion","loop diuretic ปรับตามอาการ",""],["Pillar 1 · RAAS","ARNI (sacubitril/valsartan) หรือ ACEi/ARB","vn"],["Pillar 2 · β-blocker","carvedilol · metoprolol succinate · bisoprolol","vn"],["Pillar 3 · MRA","spironolactone · eplerenone (K⁺, eGFR)","gl"],["Pillar 4 · SGLT2 inhibitor","dapagliflozin · empagliflozin","gl"],["เลือกเพิ่ม","hydralazine + ISDN · ivabradine · digoxin · ICD/CRT","ar"]]),
+notes:()=>`<ul><li>ARNI เปลี่ยนจาก ACEi ต้องเว้น 36 ชม. ${S.p}</li><li>β-blocker ที่มีหลักฐาน 3 ตัวเท่านั้น ${S.k}</li><li>SGLT2 inhibitor ลด HF hospitalization และการตายทั้งมี/ไม่มีเบาหวาน ${S.k}</li></ul>`});
+
+const EXTRA=["hfrx"];

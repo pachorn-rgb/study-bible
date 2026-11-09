@@ -1,0 +1,34 @@
+{
+ "id": "pharm-neuro",
+ "sys": "Neurology",
+ "title_tag": "Neurology Pharmacology",
+ "eyebrow": "Neurology & Special Senses · Pharmacology",
+ "h1": "Neurology Pharmacology",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 21–28, 31) และ Pharmacotherapy",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 21–28, 31"
+  ],
+  [
+   "pt",
+   "PT",
+   "Pharmacotherapy 5e · Ch 29–35, 61"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "neuro",
+  "folder": "neuro",
+  "title": "Neurology Pharmacology",
+  "src": "Katzung 16e Ch 21–28, 31 · Pharmacotherapy 5e Ch 29–35, 61",
+  "desc": "แผนที่กลุ่มยาระบบประสาท: anticonvulsants, ยานอนหลับ, triptans, Parkinson, Alzheimer/ALS/HD, local & general anesthetics, NM blockers, muscle relaxants, opioids และ glaucoma",
+  "ch": "Ch 24",
+  "sort": 24
+ }
+}

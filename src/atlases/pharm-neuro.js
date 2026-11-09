@@ -1,0 +1,131 @@
+/* ================= Neurology & special senses pharmacology ================= */
+function neuroMap(){let b="";
+ b+=panel(10,10,360,224,"PRESYNAPTIC TERMINAL");
+ b+=glow(60,72,"na")+rec(60,72,"Na⁺ ch")+glow(170,72,"cav")+rec(170,72,"Ca²⁺ (α2δ)")+glow(290,72,"sv2a",17)+`<circle class="p-imm" cx="290" cy="72" r="13" fill="url(#gGr)"/>`+T(290,48,"SV2A",{c:"s"})+glow(330,190,"mu")+rec(330,190,"μ",true);
+ b+=pill(104,120,"Phenytoin · Carbamazepine","inh","na")+pill(104,146,"Lamotrigine · Topiramate","inh","na")+pill(90,172,"Local anesthetics","bl","la")+pill(272,120,"Gabapentinoids","bl","cav")+pill(296,146,"Levetiracetam","mod","sv2a")+pill(230,200,"Opioids","ag","mu");
+ if(on("la"))b+=glow(60,72,"la");
+ b+=panel(10,244,360,66,"THALAMIC NEURON (absence)")+glow(46,286,"ttype")+rec(46,286,"",true)+T(64,290,"T-type Ca²⁺",{a:"start",c:"s"})+pill(250,284,"Ethosuximide · Valproate","inh","ttype");
+ b+=panel(10,320,360,104,"TRIGEMINOVASCULAR (migraine)")+glow(46,364,"ht1")+rec(46,364,"",true)+T(64,368,"5-HT1B/1D",{a:"start",c:"s"})+glow(46,400,"cgrp")+rec(46,400,"",true)+T(64,404,"CGRP",{a:"start",c:"s"})+pill(250,364,"Triptans","ag","ht1")+pill(250,400,"Gepants · CGRP mAb","bl","cgrp");
+ b+=panel(380,10,370,160,"GABA SYNAPSE");
+ b+=nbh(470,72,96,30,"GABA-T","","gabat","soft")+nbh(640,72,96,30,"GAT-1","reuptake","gat","soft")+pill(470,118,"Vigabatrin","inh","gabat")+pill(640,118,"Tiagabine","inh","gat")+T(560,150,"↑ GABA ในช่อง synapse",{c:"s m"});
+ b+=panel(380,180,370,244,"POSTSYNAPTIC NEURON");
+ b+=nbh(450,236,104,32,"GABA-A","Cl⁻ channel",["bz","barb","zdrug"],"cellb")+pill(630,222,"Benzodiazepines (↑ frequency)","ag","bz")+pill(610,248,"Barbiturates (↑ duration)","ag","barb")+pill(626,274,"Z-drugs · Propofol · Etomidate","ag","zdrug");
+ b+=nbh(450,330,104,32,"NMDA","glutamate","nmda","cellb")+pill(620,322,"Ketamine · Memantine","bl","nmda");
+ b+=nbh(450,392,104,32,"AMPA","glutamate","ampa","cellb")+pill(604,392,"Perampanel","bl","ampa");
+ return psvg(b,"0 0 760 434")}
+function daMap(){let b="";
+ b+=panel(10,10,270,250,"PERIPHERY");
+ b+=nb(80,64,100,30,"L-DOPA")+ln(80,80,80,140)+nbh(80,110,60,22,"AADC","",["carbi"],"soft")+nb(80,160,110,30,"Dopamine","→ N/V, ↓BP")+ln(130,64,190,64)+nbh(200,64,60,22,"COMT","","enta","soft")+T(200,94,"→ 3-OMD",{c:"s m"});
+ b+=pill(150,216,"Carbidopa","inh","carbi")+pill(150,242,"Entacapone · Opicapone","inh","enta");
+ b+=`<path class="arw x" d="M290,20 L290,250"/>`+T(296,140,"BBB",{a:"start",c:"s m"});
+ b+=arr("M130,52 C200,30 280,30 340,52");
+ b+=panel(320,10,430,250,"STRIATUM (nigrostriatal terminal)");
+ b+=nb(380,64,100,30,"L-DOPA")+ln(380,80,380,140)+nb(380,160,110,30,"Dopamine")+ln(436,160,560,160)+nbh(600,160,70,30,"D₂ (D₁)","",["dag"],"cellb");
+ b+=nbh(470,226,80,26,"MAO-B","","maob","soft")+ln(400,176,460,214)+nbh(600,226,90,26,"ACh (M)","interneuron","anti","soft");
+ b+=pill(660,104,"Pramipexole · Ropinirole","ag","dag")+pill(470,104,"Amantadine","mod","amant")+pill(470,254,"Selegiline · Rasagiline","inh","maob")+pill(660,254,"Benztropine","bl","anti");
+ if(on("amant"))b+=glow(380,160,"amant",22);
+ return psvg(b,"0 0 760 270")}
+function nmjMap(){let b="";
+ b+=panel(10,10,740,220,"NEUROMUSCULAR JUNCTION & MUSCLE");
+ b+=nb(100,96,130,44,"Motor nerve","ACh release")+arr("M166,96 L236,96")+T(200,86,"ACh",{c:"s"})+nbh(290,96,100,44,"Nicotinic Nₘ","end plate",["sux","ndep"],"cellb")+arr("M342,96 L410,96");
+ b+=nb(470,96,110,44,"T-tubule (DHP)","")+arr("M526,96 L560,96")+nbh(616,96,100,44,"RyR1 · SR","Ca²⁺ release","dant","cellb")+arr("M616,120 L616,146")+T(616,164,"contraction",{c:"s m"});
+ b+=nbh(100,170,130,34,"AChE","in cleft","rev","soft")+nb(100,206,130,24,"Spinal cord","","soft");
+ b+=pill(290,56,"Succinylcholine","ag","sux")+pill(290,150,"Rocuronium · Vecuronium","bl","ndep")+pill(616,56,"Dantrolene","bl","dant")+pill(290,190,"Neostigmine · Sugammadex","mod","rev")+pill(470,206,"Baclofen · Tizanidine · Cyclobenzaprine","mod","spas");
+ if(on("spas"))b+=glow(100,206,"spas",14);
+ return psvg(b,"0 0 760 240")}
+function eyeMap(){let b="";
+ b+=panel(10,10,740,220,"AQUEOUS HUMOR: production → outflow");
+ b+=nbh(120,120,140,44,"Ciliary body","production",["bb","a2","cai"],"cellb")+arr("M192,120 L300,120")+nb(370,120,130,44,"Anterior chamber","IOP")+arr("M436,108 L548,74")+arr("M436,132 L548,166");
+ b+=nbh(610,70,130,38,"Trabecular","→ canal of Schlemm",["pilo"],"soft")+nbh(610,170,130,38,"Uveoscleral","",["pga","a2"],"soft");
+ b+=pill(120,66,"β-blockers (timolol)","bl","bb")+pill(120,178,"α₂ agonists (brimonidine)","ag","a2")+pill(120,206,"CA inhibitors (dorzolamide)","inh","cai");
+ b+=pill(620,30,"Pilocarpine (M₃)","ag","pilo")+pill(612,210,"Prostaglandin analogs (latanoprost)","ag","pga");
+ return psvg(b,"0 0 760 240")}
+const NM=MAPOF(neuroMap),DM=MAPOF(daMap),JM=MAPOF(nmjMap),EM=MAPOF(eyeMap),MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Anticonvulsants",b:"Sleep & headache",c:"Parkinson & neurodegeneration",d:"Anesthetics & NMJ",e:"Muscle relaxants & analgesics",f:"Glaucoma",g:"Treating neurologic disease"});
+
+/* ---------- a · anticonvulsants ---------- */
+SEC.push({id:"neuromap",k:"a",t:"Neuron & synapse drug map",mm:"Synapse drug map",drugs:"",act:[],tools:MT,leg:["inh","bl","ag","mod"],draw:NM(["na","cav","sv2a","mu","la","ttype","ht1","cgrp","gabat","gat","bz","barb","zdrug","nmda","ampa"]),
+notes:()=>`<div class="pearl">หลักใหญ่ของยาระบบประสาท: ลดการกระตุ้น (บล็อก Na⁺, Ca²⁺, glutamate) หรือเพิ่มการยับยั้ง (เสริม GABA) ${S.k}</div>
+ ${tbl(["กลไก","ยา"],[["Na⁺ channel inactivated state ยาวขึ้น","phenytoin, carbamazepine, lamotrigine, (topiramate, valproate) · local anesthetics"],["Ca²⁺ channel α2δ","gabapentin, pregabalin"],["T-type Ca²⁺ (thalamus)","ethosuximide, (valproate)"],["SV2A ใน vesicle","levetiracetam, brivaracetam"],["เสริม GABA-A","benzodiazepines, barbiturates, Z-drugs, propofol, etomidate"],["↑ GABA","vigabatrin (GABA-T), tiagabine (GAT-1)"],["ต้าน glutamate","ketamine, memantine (NMDA) · perampanel (AMPA)"]])}${S.k}`});
+
+SEC.push({id:"aed-focal",k:"a",t:"Narrow-spectrum: phenytoin, carbamazepine, gabapentinoids",mm:"Phenytoin · CBZ · gabapentin",drugs:"phenytoin · fosphenytoin · carbamazepine · oxcarbazepine · gabapentin · pregabalin",act:["inh","bl"],tools:MT,leg:["inh","bl"],draw:NM(["na","cav"]),
+notes:()=>`<h3>Phenytoin / fosphenytoin</h3><ul><li>บล็อก Na⁺ channel (ยืด inactivation) · focal + generalized tonic-clonic, status epilepticus (fosphenytoin IV) ${S.k}</li><li>PK: <b>zero-order</b> ที่ระดับรักษา · จับ albumin สูง · CYP inducer ${S.k}</li>
+ <li>ADR: nystagmus, diplopia, ataxia · <b>gingival hyperplasia</b>, hirsutism, coarse facies · megaloblastic anemia · <b>fetal hydantoin syndrome</b> · SJS · IV: arrhythmia, hypotension, purple glove ${S.k}</li></ul>
+ <h3>Carbamazepine / oxcarbazepine</h3><ul><li>บล็อก Na⁺ channel · focal seizure · <b>trigeminal neuralgia</b> (first-line) · bipolar ${S.k}</li><li>ADR: diplopia, ataxia · <b>agranulocytosis/aplastic anemia</b> · <b>SIADH</b> (oxcarb มากกว่า) · <b>SJS/TEN ใน HLA-B*1502</b> (เชื้อสายเอเชีย) · teratogen (neural tube) · <b>CYP3A4 inducer รวมถึงตัวเอง (autoinduction)</b> ${S.k}</li></ul>
+ <h3>Gabapentin, pregabalin</h3><ul><li>จับ α2δ ของ VGCC → ลดการหลั่ง transmitter · focal seizure, <b>neuropathic pain</b> (postherpetic, diabetic), fibromyalgia ${S.k}</li><li>ขับทางไต ไม่ผ่านตับ DI น้อย · ง่วง เวียน ataxia ${S.k}</li></ul>`});
+
+SEC.push({id:"aed-absence",k:"a",t:"Ethosuximide (absence)",mm:"Ethosuximide",drugs:"ethosuximide",act:["inh"],tools:MT,leg:["inh"],draw:NM(["ttype"]),
+notes:()=>`<ul><li>บล็อก <b>T-type Ca²⁺ channel</b> ใน thalamic neuron → หยุด 3 Hz spike-wave ${S.k}</li><li>ใช้: <b>absence seizure อย่างเดียว</b> (ไม่ป้องกัน tonic-clonic) ${S.k}</li><li>ADR: ปวดท้อง คลื่นไส้, ง่วง, ปวดหัว · SJS (น้อย) ${S.k}</li></ul>
+ <div class="pearl">Absence + มี tonic-clonic ร่วม → valproate (หรือ lamotrigine) ${S.k}</div>`});
+
+SEC.push({id:"aed-broad",k:"a",t:"Broad-spectrum: valproate, lamotrigine, levetiracetam, topiramate",mm:"Broad-spectrum AEDs",drugs:"valproate · lamotrigine · levetiracetam · topiramate",act:["inh","mod"],tools:MT,leg:["inh","mod"],draw:NM(["na","ttype","sv2a","ampa"]),
+notes:()=>`${tbl(["ยา","กลไก","ADR เด่น"],[["Valproate","Na⁺ ↓, GABA ↑, T-type ↓","<b>hepatotoxicity</b> (เด็ก &lt;2 ปี), pancreatitis, <b>neural tube defect</b> (teratogen ที่สุด), tremor, น้ำหนักขึ้น, hyperammonemia · CYP inhibitor"],["Lamotrigine","Na⁺ ↓ → glutamate ↓","<b>SJS/TEN</b> → ต้องเพิ่มขนาดช้า (เร็วขึ้นถ้าใช้ร่วม valproate)"],["Levetiracetam","จับ SV2A","อารมณ์แปรปรวน หงุดหงิด depression · DI น้อย"],["Topiramate","Na⁺ ↓, GABA ↑, AMPA ↓, CA inhibitor","<b>นิ่วไต</b>, น้ำหนักลด, คิดช้า หาคำไม่เจอ, angle-closure glaucoma"]])}${S.k}
+ <ul><li>Valproate ยังใช้ใน bipolar, migraine prophylaxis · topiramate ป้องกัน migraine ${S.k}</li><li>Lamotrigine ใช้ใน bipolar depression ${S.k}</li></ul>`});
+
+SEC.push({id:"barb-bzd",k:"a",t:"Barbiturates & benzodiazepines",mm:"Barbiturates · BZDs",drugs:"phenobarbital · lorazepam · diazepam · midazolam · alprazolam",act:["ag"],tools:MT,leg:["ag"],draw:NM(["bz","barb"]),
+notes:()=>`<h3>กลไก (positive allosteric ที่ GABA-A)</h3>${tbl(["","Benzodiazepines","Barbiturates"],[["ผลต่อ Cl⁻ channel","↑ <b>frequency</b> ของการเปิด","↑ <b>duration</b> · ขนาดสูงเปิดเองได้"],["Ceiling effect","มี (ปลอดภัยกว่า)","ไม่มี → กดหายใจ ตายได้"],["Overdose antidote","<b>flumazenil</b> (ระวังชัก)","ไม่มี · supportive"],["CYP","—","phenobarbital = <b>inducer</b> แรง"]])}${S.k}
+ <h3>ใช้เมื่อ</h3><ul><li>BZD: <b>status epilepticus</b> (lorazepam, diazepam, midazolam), anxiety, alcohol withdrawal, insomnia, sedation ${S.k}</li><li>Phenobarbital: ชักในทารกแรกเกิด · ขาดใช้ในผู้ใหญ่ ${S.k}</li><li>Barbiturates ห้ามใน <b>porphyria</b> ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>ง่วง ataxia · tolerance, dependence, withdrawal (ชัก) · กดหายใจเมื่อรวม alcohol/opioid ${S.k}</li><li>BZD ออกฤทธิ์สั้น (alprazolam, triazolam) ติดง่ายกว่า · ผู้สูงอายุเสี่ยงล้ม (Beers) ${S.k}</li></ul>`});
+
+/* ---------- b · sleep & headache ---------- */
+SEC.push({id:"insomnia",k:"b",t:"Insomnia therapy",mm:"Insomnia drugs",drugs:"zolpidem · eszopiclone · suvorexant · ramelteon",act:["ag","bl"],tools:MT,leg:["ag"],draw:NM(["zdrug"]),
+notes:()=>`${tbl(["ยา","กลไก","จุดเด่น"],[["Zolpidem, zaleplon, eszopiclone (Z-drugs)","จับ BZ1 (α1) subunit ของ GABA-A","ออกฤทธิ์สั้น · ต้านชัก/คลายกล้ามเนื้อน้อย · complex sleep behaviors (sleepwalking, driving) · flumazenil กลับฤทธิ์ได้"],["Suvorexant, lemborexant","orexin (OX1/OX2) receptor antagonist","ห้ามใน narcolepsy · ง่วงตอนเช้า"],["Ramelteon","MT1/MT2 melatonin agonist","ไม่ติด ไม่ควบคุม · sleep onset"],["Low-dose doxepin, trazodone","H1 block / 5-HT2A","sleep maintenance"]])}${S.k}
+ <div class="pearl">แนวทางแรกของ insomnia เรื้อรังคือ CBT-I · ยาใช้ระยะสั้น ${S.x}</div>`});
+
+SEC.push({id:"triptans",k:"b",t:"Triptans & migraine drugs",mm:"Triptans · CGRP",drugs:"sumatriptan · rizatriptan · ubrogepant · erenumab",act:["ag","bl"],tools:MT,leg:["ag","bl"],draw:NM(["ht1","cgrp"]),
+notes:()=>`<h3>Triptans</h3><ul><li>5-HT<sub>1B/1D</sub> agonist → หดหลอดเลือดสมอง, ยับยั้งการหลั่ง CGRP, substance P จาก trigeminal ${S.k}</li><li>ใช้: acute migraine, <b>cluster headache</b> (sumatriptan SC) ${S.k}</li><li>ADR: chest tightness, coronary vasospasm → <b>ห้ามใน CAD, Prinzmetal, stroke, uncontrolled HTN</b> · serotonin syndrome ร่วม SSRI ${S.k}${S.p}</li></ul>
+ <h3>CGRP pathway</h3><ul><li>Gepants (ubrogepant, rimegepant): CGRP receptor antagonist oral (acute ± prevention) · erenumab (receptor), fremanezumab/galcanezumab (ligand) mAb สำหรับป้องกัน ${S.k}</li></ul>
+ <h3>ป้องกัน migraine</h3><ul><li>β-blocker (propranolol), topiramate, valproate, amitriptyline, CGRP mAb ${S.k}</li></ul>`});
+
+/* ---------- c · Parkinson & neurodegeneration ---------- */
+SEC.push({id:"pd",k:"c",t:"Parkinson disease therapy",mm:"Parkinson drugs",drugs:"levodopa/carbidopa · pramipexole · ropinirole · selegiline · entacapone · amantadine · benztropine",act:["ag","inh","bl","mod"],tools:MT,leg:["ag","inh","bl","mod"],draw:DM(["carbi","enta","dag","maob","amant","anti"]),
+notes:()=>`<h3>เป้าหมาย: เติม dopamine / ลด ACh ที่เกิน</h3>${tbl(["กลยุทธ์","ยา"],[["เพิ่ม L-DOPA ในสมอง","levodopa + <b>carbidopa</b> (ยับยั้ง AADC ส่วนปลาย ไม่ผ่าน BBB)"],["กระตุ้น D₂ ตรง","pramipexole, ropinirole, rotigotine (patch), apomorphine (rescue)"],["กันการสลาย","MAO-B: selegiline, rasagiline, safinamide · COMT: entacapone, opicapone (ส่วนปลาย), tolcapone (hepatotoxic)"],["เพิ่มการหลั่ง DA / NMDA ↓","amantadine (ลด dyskinesia)"],["ลด ACh","benztropine, trihexyphenidyl (tremor เด่น, คนอายุน้อย)"]])}${S.k}
+ <h3>Levodopa</h3><ul><li>ยาที่ได้ผลที่สุด ${S.p} · ระยะยาว: <b>wearing-off, on-off, dyskinesia</b> ${S.k}</li><li>ADR: คลื่นไส้ (ลดด้วย carbidopa), orthostatic hypotension, hallucination · ห้ามคู่ nonselective MAOI (hypertensive crisis) ${S.k}</li></ul>
+ <h3>Dopamine agonists</h3><ul><li>ง่วงหลับฉับพลัน, <b>impulse control disorder</b> (พนัน, ซื้อของ), hallucination, edema ${S.k}</li></ul>
+ <div class="pearl">Selegiline + meperidine/SSRI → serotonin syndrome · amantadine: livedo reticularis ${S.k}</div>`});
+
+SEC.push({id:"neurodeg",k:"c",t:"Alzheimer, ALS & Huntington drugs",mm:"Alzheimer · ALS · HD",drugs:"donepezil · rivastigmine · galantamine · memantine · riluzole · tetrabenazine",act:["inh","bl"],tools:MT,leg:["inh","bl"],draw:NM(["nmda"]),
+notes:()=>`${tbl(["โรค","ยา","กลไก · ADR"],[["Alzheimer","donepezil, rivastigmine, galantamine","AChE inhibitor → ACh ↑ · คลื่นไส้ ท้องเสีย bradycardia"],["Alzheimer ปานกลาง–รุนแรง","memantine","NMDA antagonist · มึน สับสน"],["Alzheimer ระยะแรก","lecanemab, donanemab","anti-amyloid mAb · ARIA (สมองบวม/เลือดออก)"],["ALS","riluzole · edaravone","ลด glutamate · antioxidant"],["Huntington chorea","tetrabenazine, deutetrabenazine, valbenazine","VMAT2 inhibitor → DA ↓ · depression, parkinsonism"]])}${S.k}${S.x}`});
+
+/* ---------- d · anesthetics & NMJ ---------- */
+SEC.push({id:"localanes",k:"d",t:"Local anesthetics",mm:"Local anesthetics",drugs:"lidocaine · bupivacaine · ropivacaine · procaine · benzocaine",act:["bl"],tools:MT,leg:["bl"],draw:NM(["la"]),
+notes:()=>`<h3>กลไก</h3><ul><li>Weak base เข้า axon ในรูป uncharged แล้วจับ Na⁺ channel จาก<b>ด้านในในรูป charged</b> · use-dependent ${S.k}</li><li>เนื้อเยื่อติดเชื้อ (pH ต่ำ) → ยาอยู่ในรูป charged ข้ามเยื่อไม่ได้ → ได้ผลน้อย ${S.k}</li><li>เส้นใยเล็ก/มี myelin ถูกบล็อกก่อน: ปวด/อุณหภูมิ ก่อน สัมผัส ก่อน motor ${S.k}</li></ul>
+ <h3>Amides vs esters</h3><ul><li><b>Amide</b> (มี "i" 2 ตัว): lidocaine, bupivacaine, mepivacaine, ropivacaine → ตับ ${S.k}</li><li><b>Ester</b>: procaine, tetracaine, benzocaine, chloroprocaine, cocaine → plasma cholinesterase · แพ้ PABA ได้ ${S.k}</li><li>ใส่ epinephrine → หดหลอดเลือด ยาอยู่นานขึ้น พิษ systemic ลด (เลี่ยงที่ปลายนิ้ว/อวัยวะปลายสุด) ${S.k}</li></ul>
+ <h3>Toxicity</h3><ul><li>CNS: ชาริมฝีปาก, tinnitus, ชัก · CV: <b>bupivacaine cardiotoxic</b> (รักษา lipid emulsion) · benzocaine → <b>methemoglobinemia</b> ${S.k}</li></ul>`});
+
+SEC.push({id:"genanes",k:"d",t:"General anesthetics",mm:"General anesthetics",drugs:"sevoflurane · desflurane · nitrous oxide · propofol · etomidate · ketamine",act:["ag","bl"],tools:MT,leg:["ag","bl"],draw:NM(["zdrug","nmda"]),
+notes:()=>`<h3>Inhaled</h3><ul><li><b>MAC</b> ต่ำ = potency สูง · <b>blood/gas partition coefficient</b> ต่ำ = onset/recovery เร็ว (N₂O, desflurane) ${S.k}</li><li>ผล: CBF ↑, GFR ↓, กดหายใจ, กด myocardium (halothane) ${S.k}</li>
+ <li>ADR: <b>malignant hyperthermia</b> (volatile + succinylcholine, RYR1) · halothane hepatitis · desflurane ระคายทางเดินหายใจ · N₂O ขยายช่องอากาศ, ยับยั้ง B12 ${S.k}</li></ul>
+ <h3>Intravenous</h3>${tbl(["ยา","จุดเด่น"],[["Propofol","GABA-A · เร็ว ตื่นเร็ว antiemetic · BP ตก · propofol infusion syndrome"],["Etomidate","GABA-A · <b>hemodynamic คงที่</b> · กด adrenal (11β-hydroxylase)"],["Ketamine","<b>NMDA antagonist</b> · dissociative · BP/HR ↑, bronchodilate · emergence hallucination"],["Midazolam","BZD · anterograde amnesia"],["Thiopental","barbiturate · redistribution → ออกฤทธิ์สั้น"]])}${S.k}`});
+
+SEC.push({id:"nmb",k:"d",t:"Neuromuscular blocking drugs",mm:"NM blockers",drugs:"succinylcholine · rocuronium · vecuronium · cisatracurium · neostigmine · sugammadex · dantrolene",act:["ag","bl","mod"],tools:MT,leg:["ag","bl","mod"],draw:JM(["sux","ndep","rev","dant"]),
+notes:()=>`<h3>Depolarizing: succinylcholine</h3><ul><li>Nₘ agonist ค้างที่ end plate → depolarize แล้ว <b>phase I</b> (fasciculation → flaccid; AChE inhibitor ทำให้แย่ลง) → phase II (desensitized; reverse ได้) ${S.k}</li><li>ถูกสลายด้วย plasma cholinesterase · deficiency → paralysis นาน ${S.k}</li>
+ <li>ADR: <b>hyperkalemia</b> (burn, crush, denervation, myopathy) → arrest · malignant hyperthermia · bradycardia ${S.k}</li></ul>
+ <h3>Nondepolarizing (-curium, -curonium)</h3><ul><li>Competitive antagonist ที่ Nₘ ${S.k}</li><li>Reversal: <b>neostigmine</b> (+ glycopyrrolate กัน muscarinic) · <b>sugammadex</b> จับ rocuronium/vecuronium โดยตรง ${S.k}</li><li>Cisatracurium: Hofmann elimination (ไม่ขึ้นกับตับไต) ${S.k}</li></ul>
+ <h3>Malignant hyperthermia</h3><ul><li>RYR1 mutation + volatile/succinylcholine → Ca²⁺ ออกจาก SR → ไข้สูง rigidity, hypercarbia, hyperkalemia ${S.k}</li><li>รักษา: หยุดยา + <b>dantrolene</b> (บล็อก RyR1) ${S.k}</li></ul>`});
+
+/* ---------- e · muscle relaxants & analgesics ---------- */
+SEC.push({id:"relax",k:"e",t:"Skeletal muscle relaxants",mm:"Muscle relaxants",drugs:"baclofen · tizanidine · cyclobenzaprine · dantrolene",act:["mod","bl"],tools:MT,leg:["mod","bl"],draw:JM(["spas","dant"]),
+notes:()=>`${tbl(["ยา","กลไก","ใช้ · ADR"],[["Baclofen","GABA-B agonist ใน spinal cord","spasticity (MS, spinal injury) · หยุดเร็ว → ชัก, ไข้"],["Tizanidine","α₂ agonist ส่วนกลาง","spasticity · BP ต่ำ, hepatotoxic · ระวัง CYP1A2 inhibitor (ciprofloxacin)"],["Cyclobenzaprine","โครงสร้างคล้าย TCA","muscle spasm เฉียบพลัน · anticholinergic, ง่วง"],["Dantrolene","บล็อก RyR1 ใน muscle","malignant hyperthermia, NMS · hepatotoxic"],["Benzodiazepines","GABA-A","spasm, spasticity"]])}${S.k}`});
+
+SEC.push({id:"opioids",k:"e",t:"Opioid analgesics",mm:"Opioids",drugs:"morphine · fentanyl · hydromorphone · oxycodone · methadone · naloxone",act:["ag","bl"],tools:MT,leg:["ag"],draw:NM(["mu"]),
+notes:()=>`<h3>กลไก</h3><ul><li>μ, δ, κ agonist (Gi) → presynaptic: Ca²⁺ channel ปิด → ลด transmitter · postsynaptic: K⁺ channel เปิด → hyperpolarize ${S.k}</li></ul>
+ <h3>ผล · ADR</h3><ul><li>Analgesia, sedation, euphoria · <b>กดหายใจ</b> (ตายจาก overdose) · <b>miosis</b> · <b>ท้องผูก</b> (ไม่ดื้อ) · คลื่นไส้, คัน (histamine), urinary retention ${S.k}</li><li>Tolerance (ยกเว้น miosis, ท้องผูก) · dependence · withdrawal: mydriasis, น้ำตาน้ำมูก, ท้องเสีย, piloerection ${S.k}</li></ul>
+ <h3>ยาเด่น</h3>${tbl(["ยา","จุดเด่น"],[["Morphine","active metabolite (M6G) สะสมในไตวาย"],["Fentanyl","แรงมาก lipophilic · patch"],["Methadone","t½ ยาวแปรผัน · QT ยาว · ใช้ OUD"],["Meperidine","normeperidine → ชัก · serotonin syndrome กับ MAOI"],["Codeine, tramadol","prodrug ผ่าน CYP2D6 · ultra-rapid metabolizer อันตราย"]])}${S.k}
+ <h3>Reversal</h3><ul><li><b>Naloxone</b> IV/IM/nasal 0.4–2 mg · ออกฤทธิ์สั้นกว่า opioid หลายตัว → ต้องให้ซ้ำ ${S.k}${S.p}</li></ul>`});
+
+SEC.push({id:"mixed",k:"e",t:"Tramadol, mixed agonists & capsaicin",mm:"Tramadol · mixed · capsaicin",drugs:"tramadol · buprenorphine · butorphanol · nalbuphine · capsaicin",act:["ag","mod"],tools:MT,leg:["ag"],draw:NM(["mu"]),
+notes:()=>`${tbl(["ยา","กลไก","จุดเด่น"],[["Tramadol","μ agonist อ่อน + ยับยั้ง reuptake 5-HT/NE","<b>ชัก</b>, serotonin syndrome · prodrug CYP2D6"],["Buprenorphine","μ partial agonist (affinity สูง)","ceiling effect · อาจ precipitate withdrawal · OUD"],["Butorphanol, nalbuphine","κ agonist + μ partial/antagonist","กดหายใจน้อย · อาจทำให้ withdrawal ในคนติด opioid"],["Capsaicin (topical)","TRPV1 agonist → substance P หมด","neuropathic pain, OA · แสบร้อนช่วงแรก"]])}${S.k}`});
+
+/* ---------- f · glaucoma ---------- */
+SEC.push({id:"glaucoma",k:"f",t:"Glaucoma therapy",mm:"Glaucoma drugs",drugs:"latanoprost · timolol · brimonidine · dorzolamide · acetazolamide · pilocarpine",act:["ag","bl","inh"],tools:MT,leg:["ag","bl","inh"],draw:EM(["bb","a2","cai","pilo","pga"]),
+notes:()=>`${tbl(["กลุ่ม","ยา","กลไก","ADR"],[["Prostaglandin analog","latanoprost, bimatoprost","↑ uveoscleral outflow","<b>ม่านตาสีเข้มขึ้น</b>, ขนตายาว"],["β-blocker","timolol","↓ aqueous production","systemic: bradycardia, bronchospasm"],["α₂ agonist","brimonidine, apraclonidine","↓ production, ↑ outflow","ตาแดง แพ้ · ห้ามในเด็กเล็ก (apnea)"],["CA inhibitor","dorzolamide, brinzolamide (topical) · acetazolamide (oral)","↓ HCO₃⁻ → ↓ production","oral: paresthesia, acidosis, นิ่ว"],["Cholinomimetic","pilocarpine, carbachol","M₃ → ciliary muscle หด → ↑ trabecular outflow","miosis, ปวดคิ้ว · ใช้ใน acute angle-closure"]])}${S.k}
+ <ul><li>β-blocker เป็นยาอันดับรองจาก prostaglandin analog ${S.p}</li><li>Acute angle-closure: เลี่ยง mydriatic (atropine, α₁ agonist) ${S.k}</li></ul>`});
+
+/* ---------- g · treating ---------- */
+SEC.push({id:"status",k:"g",t:"Status epilepticus",mm:"Status epilepticus",drugs:"",act:[],leg:[],
+draw:()=>flowD([["0–5 นาที: ABC, glucose","ให้ thiamine ก่อน glucose ถ้าสงสัย alcohol",""],["Benzodiazepine","lorazepam IV · หรือ midazolam IM · หรือ diazepam","vn"],["ยังชัก: second-line IV","fosphenytoin 15–20 mg PE/kg · หรือ valproate · หรือ levetiracetam","gl"],["Refractory","ICU · intubation · continuous midazolam หรือ propofol","ar"]]),
+notes:()=>`<ul><li>Benzodiazepine เป็นยาตัวแรก ${S.p}${S.k}</li><li>Fosphenytoin 15–20 mg PE/kg IV · ติดตาม BP และ ECG ${S.p}</li><li>Phenytoin IV เร็วเกิน → hypotension, arrhythmia · fosphenytoin ปลอดภัยกว่า ${S.k}</li></ul>`});
+
+const EXTRA=["status"];

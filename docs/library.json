@@ -3200,55 +3200,71 @@
        ],
        "topics": [
         [
-         "Low power",
+         "Kidney at low power",
          "lowpower"
         ],
         [
-         "Blood supply",
-         "vessels"
+         "Uriniferous tubule map",
+         "nephron"
         ],
         [
-         "Renal corpuscle",
+         "Renal corpuscle (LM)",
          "corpuscle"
         ],
         [
-         "Filtration barrier",
+         "Filtration barrier (EM)",
          "barrier"
         ],
         [
-         "PCT vs DCT",
-         "pctdct"
+         "Mesangium",
+         "mesangium"
         ],
         [
-         "Medulla",
-         "medulla"
-        ],
-        [
-         "JGA",
+         "Juxtaglomerular apparatus",
          "jga"
         ],
         [
-         "Collecting duct",
+         "PCT vs DCT (cortex)",
+         "pctdct"
+        ],
+        [
+         "PCT cell ultrastructure",
+         "pctem"
+        ],
+        [
+         "Medulla: loops, vasa recta, CD",
+         "medulla"
+        ],
+        [
+         "Collecting duct & papilla",
          "cd"
         ],
         [
-         "Slide ID",
+         "Slide ID cheat sheet",
          "slideid"
+        ],
+        [
+         "Blood supply & interstitium",
+         "vessels"
         ],
         [
          "Urothelium",
          "urothelium"
         ],
         [
-         "Ureter",
+         "Ureter (transverse)",
          "ureter"
         ],
         [
-         "Bladder",
+         "Bladder wall",
          "bladder"
         ],
         [
-         "Clinical",
+         "Urethra",
+         "urethra"
+        ],
+        [
+         "Histology in disease",
          "clinical"
         ]
        ],

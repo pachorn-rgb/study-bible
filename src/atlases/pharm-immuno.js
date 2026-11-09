@@ -1,0 +1,44 @@
+/* ================= Immunosuppressants & immunotherapy ================= */
+function tcellMap(){let b="";const row=(x,y,lab,key)=>glow(x,y,key)+rec(x,y,"",true)+T(x+16,y+4,lab,{a:"start",c:"s"});
+ b+=panel(10,10,740,330,"T-CELL ACTIVATION: signal 1 → signal 2 → cytokine → proliferation");
+ b+=row(36,58,"Signal 1: MHC–TCR (CD3)","tcr")+pill(300,58,"Muromonab · ATG","mab","tcr");
+ b+=row(36,96,"Signal 2: CD80/86 – CD28","cd28")+pill(300,96,"Belatacept · Abatacept","bl","cd28");
+ b+=row(36,134,"Calcineurin → NFAT","cn")+pill(300,134,"Cyclosporine · Tacrolimus","inh","cn");
+ b+=row(36,172,"NF-κB · cytokine genes","nfkb")+pill(300,172,"Glucocorticoids","st","nfkb");
+ b+=row(36,210,"IL-2 receptor (CD25)","il2r")+pill(300,210,"Basiliximab","mab","il2r");
+ b+=row(36,248,"mTOR (G1 → S)","mtor")+pill(300,248,"Sirolimus · Everolimus","inh","mtor");
+ b+=row(36,286,"Purine synthesis","pur")+pill(300,286,"Azathioprine","inh","pur");
+ b+=row(36,324,"IMP dehydrogenase","impdh")+pill(300,324,"Mycophenolate","inh","impdh");
+ b+=row(470,96,"Complement C5","c5")+pill(640,128,"Eculizumab","mab","c5");
+ b+=row(470,184,"α4-integrin (leukocyte)","a4")+pill(640,216,"Natalizumab","mab","a4");
+ b+=row(470,272,"CD20 (B cell)","cd20")+pill(640,304,"Rituximab","mab","cd20");
+ return psvg(b,"0 0 760 350")}
+const IM=MAPOF(tcellMap),MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Immunosuppressants",b:"Recombinant cytokines",c:"Therapeutic antibodies"});
+
+SEC.push({id:"tcell",k:"a",t:"Immunosuppressant targets",mm:"T-cell drug map",drugs:"",act:[],tools:MT,leg:["inh","bl","mab","st"],draw:IM(["tcr","cd28","cn","nfkb","il2r","mtor","pur","impdh","c5","a4","cd20"]),
+notes:()=>`<ul><li>T cell ต้องได้ <b>signal 1</b> (TCR–MHC) + <b>signal 2</b> (costimulation) → calcineurin → NFAT → <b>IL-2</b> → IL-2R → mTOR → แบ่งตัว ${S.k}</li><li>ยาแต่ละตัวตัดคนละขั้น จึงใช้ร่วมกันเพื่อลดขนาดและพิษ (เช่น tacrolimus + mycophenolate + prednisone) ${S.k}</li><li>ADR ร่วม: <b>infection</b> และ <b>malignancy</b> (lymphoma, skin cancer) ${S.k}</li></ul>`});
+
+SEC.push({id:"cni",k:"a",t:"Cyclosporine & tacrolimus",mm:"Calcineurin inhibitors",drugs:"cyclosporine · tacrolimus",act:["inh"],tools:MT,leg:["inh"],draw:IM(["cn"]),
+notes:()=>`${tbl(["","Cyclosporine","Tacrolimus"],[["จับ","cyclophilin","FKBP12"],["ผล","ยับยั้ง calcineurin → NFAT ไม่เข้า nucleus → IL-2 ↓","เหมือนกัน (แรงกว่า)"],["ใช้","transplant rejection, psoriasis, RA","transplant rejection"],["ADR ร่วม","<b>nephrotoxicity</b>, HTN, hyperkalemia, neurotoxicity (tremor), hyperglycemia","เหมือนกัน · hyperglycemia, neurotoxic มากกว่า"],["ADR เด่น","<b>gingival hyperplasia, hirsutism</b>, hyperlipidemia","—"]])}${S.k}
+ <ul><li>CYP3A4 substrate → ติดตามระดับยา · DI กับ azoles, macrolides, rifampin, grapefruit ${S.k}</li></ul>`});
+
+SEC.push({id:"mtor",k:"a",t:"Sirolimus & basiliximab",mm:"mTOR · IL-2R",drugs:"sirolimus · everolimus · basiliximab",act:["inh","mab"],tools:MT,leg:["inh","mab"],draw:IM(["mtor","il2r"]),
+notes:()=>`<h3>Sirolimus (rapamycin), everolimus</h3><ul><li>จับ FKBP → ยับยั้ง <b>mTOR</b> → T cell ไม่ตอบสนองต่อ IL-2 (หยุดที่ G1) ${S.k}</li><li>ใช้: kidney transplant (ร่วม cyclosporine, steroid), <b>drug-eluting stent</b> · everolimus: RCC, breast cancer ${S.k}</li><li>ADR: <b>ไม่ nephrotoxic</b> · pancytopenia, hyperlipidemia, hyperglycemia, แผลหายช้า, pneumonitis ${S.k}</li></ul>
+ <h3>Basiliximab</h3><ul><li>mAb ต่อ <b>IL-2R (CD25)</b> · induction ใน kidney transplant · edema, HTN, tremor ${S.k}</li></ul>`});
+
+SEC.push({id:"antimetab",k:"a",t:"Azathioprine & mycophenolate",mm:"Azathioprine · mycophenolate",drugs:"azathioprine · mycophenolate mofetil",act:["inh"],tools:MT,leg:["inh"],draw:IM(["pur","impdh"]),
+notes:()=>`<h3>Azathioprine</h3><ul><li>Prodrug → 6-MP → ยับยั้ง purine synthesis → lymphocyte แบ่งตัวไม่ได้ ${S.k}</li><li>ใช้: transplant, RA, IBD, SLE ${S.k}</li><li>ADR: <b>pancytopenia</b> (ตรวจ <b>TPMT</b> ก่อน) · <b>allopurinol/febuxostat</b> ยับยั้ง xanthine oxidase → พิษเพิ่ม ต้องลดขนาด ${S.k}</li></ul>
+ <h3>Mycophenolate</h3><ul><li>ยับยั้ง <b>IMP dehydrogenase</b> แบบ reversible → guanine synthesis ลด · lymphocyte พึ่ง de novo pathway จึงโดนมาก ${S.k}</li><li>ใช้: transplant, lupus nephritis ${S.k}</li><li>ADR: GI, pancytopenia, HTN, <b>CMV infection</b> · teratogen · ไม่ nephrotoxic ${S.k}</li></ul>`});
+
+SEC.push({id:"gc",k:"a",t:"Glucocorticoids as immunosuppressants",mm:"Glucocorticoids",drugs:"prednisone · methylprednisolone · dexamethasone",act:["st"],tools:MT,leg:["st"],draw:IM(["nfkb"]),
+notes:()=>`<ul><li>ยับยั้ง <b>NF-κB</b> → ลดการสร้าง cytokine (IL-1, IL-2, TNF-α) · neutrophil ↑ (demargination), eosinophil/lymphocyte ↓ ${S.k}</li><li>ใช้: transplant rejection, autoimmune, asthma, adrenal insufficiency, บางมะเร็ง (lymphoma, leukemia) ${S.k}</li><li>ADR: Cushing, osteoporosis, hyperglycemia, infection, peptic ulcer, cataract, psychosis, myopathy, adrenal suppression เมื่อหยุดเร็ว ${S.k}</li></ul>`});
+
+SEC.push({id:"cytokine",k:"b",t:"Recombinant cytokines & clinical uses",mm:"Recombinant cytokines",drugs:"aldesleukin · epoetin alfa · filgrastim · sargramostim · interferon-α · interferon-β · interferon-γ · romiplostim · eltrombopag",act:["ag"],leg:[],
+draw:()=>cards([["Aldesleukin (IL-2)","RCC, metastatic melanoma · capillary leak","vn"],["Epoetin alfa (EPO)","anemia ใน CKD, chemotherapy","gl"],["Filgrastim · sargramostim","G-CSF · GM-CSF: neutropenia, stem cell mobilization","gl"],["Interferon-α · β · γ","α: HBV, HCV, melanoma · β: multiple sclerosis · γ: chronic granulomatous disease","ar"],["Romiplostim · eltrombopag","TPO receptor agonist: ITP",""]]),
+notes:()=>`<ul><li>Interferon ADR: flu-like, depression, myelosuppression ${S.k}</li><li>ESA ADR: HTN, thrombosis ${S.k}</li></ul>`});
+
+SEC.push({id:"abs",k:"c",t:"Therapeutic antibodies",mm:"Therapeutic antibodies",drugs:"adalimumab · infliximab · eculizumab · natalizumab · ustekinumab · denosumab · omalizumab · palivizumab · emicizumab",act:["mab"],tools:MT,leg:["mab"],draw:IM(["c5","a4","cd20","il2r"]),
+notes:()=>`<h3>Autoimmune & other uses</h3>${tbl(["ยา","Target","ใช้","ระวัง"],[["Adalimumab, infliximab","TNF-α","IBD, RA, psoriasis, AS","TB reactivation"],["Eculizumab, ravulizumab","complement C5","PNH, aHUS, myasthenia gravis","<b>Neisseria</b> infection → ฉีด meningococcal vaccine"],["Natalizumab","α4-integrin","MS, Crohn","<b>PML</b> (JC virus)"],["Ustekinumab","IL-12/IL-23 (p40)","psoriasis, IBD",""],["Ixekizumab, secukinumab","IL-17A","psoriasis, PsA, AS",""],["Denosumab","RANKL","osteoporosis, bone mets",""],["Omalizumab","IgE","allergic asthma, urticaria",""],["Palivizumab","RSV F protein","RSV prophylaxis ในทารกเสี่ยงสูง",""],["Emicizumab","bridges IXa–X","hemophilia A",""],["Idarucizumab","dabigatran","reversal",""]])}${S.k}
+ <div class="pearl">ชื่อยา: -ximab chimeric · -zumab humanized · -umab human · -cept receptor fusion ${S.x}</div>`});

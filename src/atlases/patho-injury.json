@@ -1,0 +1,41 @@
+{
+ "id": "patho-injury",
+ "sys": "Cellular Injury",
+ "root": "Pathology",
+ "mmh": "map",
+ "noleg": true,
+ "title_tag": "Cellular Injury",
+ "eyebrow": "General Principles · Pathology",
+ "h1": "Cellular Injury",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins & Cotran (บท 2)",
+ "sources": [
+  [
+   "robbins",
+   "R",
+   "Robbins & Cotran 10e · Ch 2"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "patho",
+  "folder": "patho",
+  "subs": [
+   "Cellular Injury"
+  ],
+  "title": "Cellular Injury",
+  "src": "Robbins & Cotran 10e Ch 2",
+  "desc": "การปรับตัวของเซลล์, reversible vs irreversible injury, apoptosis และ necrosis แต่ละแบบ, ischemia และ infarct, free radical, radiation, calcification, amyloidosis และส่วนเสริมกลไก injury, การตายแบบอื่น, aging",
+  "ch": "Ch 2",
+  "sort": 2,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": [
+   "pathology"
+  ]
+ },
+ "draft": true
+}

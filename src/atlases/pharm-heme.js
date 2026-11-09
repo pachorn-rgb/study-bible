@@ -1,0 +1,113 @@
+/* ================= Hematology & oncology pharmacology ================= */
+function coagMap(){let b="";
+ b+=panel(10,10,420,330,"COAGULATION & FIBRINOLYSIS");
+ b+=nbh(78,64,124,28,"VKOR (liver)","","vkor","soft")+T(78,96,"→ II · VII · IX · X · C · S",{c:"s m"})+pill(78,124,"Warfarin","inh","vkor");
+ b+=nb(200,64,120,28,"TF · VIIa")+ln(200,78,200,108)+nbh(200,124,90,30,"Xa","",["atl","xa"],"cellb")+ln(200,139,200,170)+nbh(200,186,110,30,"IIa (thrombin)","",["atl","dti"],"cellb")+ln(200,201,200,232)+nb(200,248,140,30,"Fibrinogen → fibrin");
+ b+=nbh(70,196,112,30,"Antithrombin","","atl","soft")+arr("M126,188 L154,132")+arr("M126,194 L144,190")+pill(78,160,"Heparin · LMWH","ag","atl");
+ b+=nbh(200,306,150,28,"Plasminogen → plasmin","",["tpa","txa"],"soft")+arr("M200,292 L200,264");
+ b+=pill(342,112,"Apixaban · Rivaroxaban","inh","xa")+pill(342,174,"Dabigatran · Argatroban","inh","dti")+pill(342,200,"Bivalirudin","inh","dti")+pill(360,292,"Alteplase (tPA)","ag","tpa")+pill(360,318,"Tranexamic acid","inh","txa");
+ b+=panel(440,10,310,330,"PLATELET");
+ b+=nbh(500,70,100,28,"COX-1 → TXA₂","","asa","soft")+nbh(500,130,100,28,"P2Y₁₂ (ADP)","","p2y","soft")+nbh(500,190,100,30,"GP IIb/IIIa","","gp","cellb")+nbh(500,250,100,28,"PDE3 · adenosine","","pde3","soft")+nbh(500,306,100,28,"PAR-1","","par","soft");
+ b+=pill(652,70,"Aspirin","inh","asa")+pill(652,122,"Clopidogrel","bl","p2y")+pill(652,148,"Prasugrel · Ticagrelor","bl","p2y")+pill(652,190,"Eptifibatide · Tirofiban","bl","gp")+pill(658,250,"Cilostazol · Dipyridamole","inh","pde3")+pill(652,306,"Vorapaxar","bl","par");
+ return psvg(b,"0 0 760 350")}
+function oncMap(){let b="";
+ b+=panel(10,10,740,190,"CELL CYCLE");
+ const ph=[["G₁","",90],["S","DNA synthesis",250],["G₂","",410],["M","mitosis",570]];
+ ph.forEach(([n,s,x],i)=>{b+=nbh(x,70,110,40,n,s,{0:"g1",1:"sph",2:"g2",3:"mph"}[i],"cellb");if(i<3)b+=ln(x+56,70,x+104,70)});
+ b+=arr("M570,92 C560,130 120,130 90,92");
+ b+=pill(250,128,"Antimetabolites","inh","sph")+pill(250,154,"Hydroxyurea · Etoposide (S–G₂)","inh","sph")+pill(410,128,"Bleomycin","mod","g2")+pill(570,128,"Vinca · Taxanes","bl","mph")+pill(90,128,"CDK4/6 inhibitors","inh","g1");
+ b+=nbh(700,70,80,40,"Any phase","CCNS","ccns","soft")+pill(606,170,"Alkylators · Platinum · Anthracyclines","mod","ccns");
+ b+=panel(10,210,740,170,"TARGETED THERAPY");
+ const tg=[["HER2","Trastuzumab","her2",70],["EGFR","Cetuximab · Erlotinib","egfr",200],["VEGF","Bevacizumab","vegf",330],["CD20","Rituximab","cd20",450],["PD-1 · PD-L1 · CTLA-4","Pembrolizumab · Ipilimumab","icp",600]];
+ tg.forEach(([n,d,k,x])=>b+=nbh(x,256,112,30,n,"",k,"cellb")+pill(x,296,d,k==="egfr"?"mab":"mab",k));
+ const ki=[["BCR-ABL","Imatinib",120],["BRAF","Vemurafenib",260],["ALK","Crizotinib",380],["JAK2","Ruxolitinib",490],["Proteasome","Bortezomib",600],["PARP","Olaparib",700]];
+ ki.forEach(([n,d,x])=>b+=T(x,338,n,{c:"s m"})+pill(x,360,d,"inh","ki"));
+ return psvg(b,"0 0 760 390")}
+const CG=MAPOF(coagMap),OM=MAPOF(oncMap),MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Anticoagulants",b:"Antiplatelets & thrombolytics",c:"Cytopenias",d:"Cytotoxic chemotherapy",e:"Targeted & hormonal therapy",f:"Chemotoxicity"});
+
+/* ---------- a · anticoagulants ---------- */
+SEC.push({id:"coagmap",k:"a",t:"Coagulation & platelet drug map",mm:"Coagulation drug map",drugs:"",act:[],tools:MT,leg:["inh","ag","bl"],draw:CG(["vkor","atl","xa","dti","tpa","txa","asa","p2y","gp","pde3","par"]),
+notes:()=>`<h3>เลือกตามเป้าหมาย</h3>${tbl(["เป้าหมาย","ยา"],[["Vitamin K–dependent factors","warfarin"],["Antithrombin (ทางอ้อม)","heparin, LMWH, fondaparinux"],["Xa โดยตรง","apixaban, rivaroxaban, edoxaban"],["Thrombin โดยตรง","dabigatran, argatroban, bivalirudin"],["Fibrinolysis","alteplase (เพิ่ม) · tranexamic acid (ยับยั้ง)"],["Platelet","aspirin, P2Y₁₂, GP IIb/IIIa, cilostazol, dipyridamole, vorapaxar"]])}${S.k}
+ <div class="pearl">หลอดเลือดดำ/ลิ่มเลือดสีแดง (fibrin) → anticoagulant · หลอดเลือดแดง/ลิ่มสีขาว (platelet) → antiplatelet ${S.k}</div>`});
+
+SEC.push({id:"heparin",k:"a",t:"Heparin & HIT",mm:"Heparin · LMWH",drugs:"unfractionated heparin · enoxaparin · fondaparinux",act:["ag"],tools:MT,leg:["ag"],draw:CG(["atl"]),
+notes:()=>`<h3>กลไก</h3><ul><li>เร่ง <b>antithrombin</b> → ยับยั้ง thrombin (IIa) และ Xa · UFH: IIa = Xa · <b>LMWH</b> (enoxaparin): Xa &gt; IIa · fondaparinux: Xa อย่างเดียว ${S.k}</li></ul>
+ <h3>ใช้ · ติดตาม</h3><ul><li>ออกฤทธิ์ทันที (IV/SC) · VTE, ACS, bridge warfarin · <b>ปลอดภัยในครรภ์</b> (ไม่ผ่านรก) ${S.k}</li><li>UFH ติดตาม <b>aPTT</b> · LMWH ติดตาม anti-Xa (ไตเสื่อม, อ้วน, ครรภ์) · LMWH ขับทางไต ${S.k}</li></ul>
+ <h3>ADR · reversal</h3><ul><li>เลือดออก → <b>protamine sulfate</b> (กลับ LMWH ได้บางส่วน) ${S.k}</li><li><b>HIT type 2</b>: IgG ต่อ PF4–heparin → platelet ↓ &gt;50% ใน 5–10 วัน + <b>thrombosis</b> → หยุด heparin ทุกชนิด ใช้ argatroban/bivalirudin/fondaparinux ${S.k}</li><li>HIT type 1: platelet ลดเล็กน้อยใน 1–4 วัน ไม่อันตราย ${S.k}</li><li>ใช้นาน: osteoporosis ${S.k}</li></ul>`});
+
+SEC.push({id:"warfarin",k:"a",t:"Warfarin",mm:"Warfarin",drugs:"warfarin",act:["inh"],tools:MT,leg:["inh"],draw:CG(["vkor"]),
+notes:()=>`<h3>กลไก</h3><ul><li>ยับยั้ง <b>VKORC1</b> → ไม่มี vitamin K รูปทำงาน → γ-carboxylation ของ <b>II, VII, IX, X, protein C, S</b> ลด ${S.k}</li><li>ออกฤทธิ์ช้า 3–5 วัน (factor เก่าต้องหมดก่อน) · VII และ protein C t½ สั้นสุด ${S.k}</li></ul>
+ <h3>ติดตาม</h3><ul><li><b>PT/INR</b> เป้า 2–3 (บางภาวะ 2.5–3.5) ${S.p}</li><li>CYP2C9, VKORC1 polymorphism · <b>DI มาก</b>: CYP inhibitor (amiodarone, fluconazole, metronidazole) INR ↑ · inducer (rifampin) INR ↓ ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>เลือดออก · <b>skin necrosis</b> ช่วงแรก (protein C ↓ ก่อน → hypercoagulable) → ต้อง bridge ด้วย heparin ${S.k}</li><li><b>Teratogen</b> (bone/cartilage, CNS) → ห้ามในครรภ์ ${S.k}</li></ul>
+ <h3>Reversal</h3><ul><li>Vitamin K (ช้า) · <b>4-factor PCC</b> หรือ FFP (เร็ว) เมื่อเลือดออกรุนแรง ${S.k}</li></ul>`});
+
+SEC.push({id:"hepvswar",k:"a",t:"Heparin vs warfarin",mm:"Heparin vs warfarin",drugs:"",act:[],leg:[],tools:MT,draw:CG(["atl","vkor"]),
+notes:()=>`${tbl(["","Heparin","Warfarin"],[["โครงสร้าง","polysaccharide ขนาดใหญ่","small lipid-soluble"],["Route","IV, SC","oral"],["Site","เลือด","ตับ"],["Onset","ทันที","ช้า (วัน)"],["กลไก","antithrombin → ยับยั้ง IIa, Xa","ลดการสร้าง II, VII, IX, X, C, S"],["Duration","ชั่วโมง","วัน"],["ติดตาม","aPTT (intrinsic)","PT/INR (extrinsic)"],["Reversal","protamine","vitamin K, PCC, FFP"],["ครรภ์","ใช้ได้","ห้าม (teratogen)"]])}${S.k}`});
+
+SEC.push({id:"doac",k:"a",t:"Direct coagulation factor inhibitors",mm:"DOACs · DTIs",drugs:"apixaban · rivaroxaban · edoxaban · dabigatran · argatroban · bivalirudin",act:["inh"],tools:MT,leg:["inh"],draw:CG(["xa","dti"]),
+notes:()=>`${tbl(["ยา","target","route","จุดเด่น"],[["Apixaban, rivaroxaban, edoxaban","Xa","oral","VTE, AF (non-valvular) · ไม่ต้องติดตามประจำ"],["Dabigatran","thrombin","oral","ขับทางไตมาก · dyspepsia"],["Argatroban","thrombin","IV","<b>HIT</b> (ขับทางตับ)"],["Bivalirudin","thrombin","IV","PCI, HIT"]])}${S.k}
+ <h3>Reversal (anticoagulation reversal)</h3>${tbl(["ยา","ตัวกลับฤทธิ์"],[["Heparin","protamine sulfate"],["Warfarin","vitamin K + PCC/FFP"],["Dabigatran","<b>idarucizumab</b> (mAb Fab)"],["Xa inhibitors","<b>andexanet alfa</b> (decoy Xa)"]])}${S.k}${S.p}
+ <ul><li>ห้ามใน mechanical heart valve (ใช้ warfarin) · ระวังไตเสื่อม ${S.k}</li><li>VTE: รักษาอย่างน้อย 3 เดือน ${S.p}</li></ul>`});
+
+/* ---------- b · antiplatelets & thrombolytics ---------- */
+SEC.push({id:"antiplt",k:"b",t:"Antiplatelets",mm:"Antiplatelets",drugs:"aspirin · clopidogrel · prasugrel · ticagrelor · eptifibatide · cilostazol · dipyridamole",act:["inh","bl"],tools:MT,leg:["inh","bl"],draw:CG(["asa","p2y","gp","pde3","par"]),
+notes:()=>`${tbl(["กลุ่ม","ยา","ใช้","ระวัง"],[["COX-1 (irreversible)","aspirin","ACS, CAD, stroke prevention","GI bleed"],["P2Y₁₂ (ADP)","clopidogrel (prodrug, CYP2C19), prasugrel, ticagrelor (reversible)","ACS/PCI (DAPT), stroke","clopidogrel: poor metabolizer ได้ผลน้อย · prasugrel: ห้ามใน stroke/TIA เดิม · ticagrelor: dyspnea · TTP (ticlopidine)"],["GP IIb/IIIa","eptifibatide, tirofiban, (abciximab)","PCI high-risk","เลือดออก, thrombocytopenia"],["PDE3 / adenosine","cilostazol · dipyridamole","claudication · stroke (+aspirin)","cilostazol ห้ามใน HF"],["PAR-1","vorapaxar","หลัง MI/PAD","ห้ามถ้าเคย stroke"]])}${S.k}`});
+
+SEC.push({id:"lytic",k:"b",t:"Thrombolytics",mm:"Thrombolytics",drugs:"alteplase · reteplase · tenecteplase · tranexamic acid",act:["ag","inh"],tools:MT,leg:["ag","inh"],draw:CG(["tpa","txa"]),
+notes:()=>`<h3>กลไก</h3><ul><li>เปลี่ยน plasminogen → <b>plasmin</b> → สลาย fibrin · alteplase จำเพาะกับ fibrin-bound plasminogen ${S.k}</li></ul>
+ <h3>ใช้</h3><ul><li>STEMI (ถ้าทำ PCI ไม่ทัน) · <b>acute ischemic stroke</b> ภายใน 3–4.5 ชม. · massive PE ${S.k}</li></ul>
+ <h3>ข้อห้าม</h3><ul><li>เคยเลือดออกในสมอง, stroke ใน 3 เดือน, เลือดออกภายใน, ผ่าตัดใหญ่ใกล้นี้, BP สูงมาก ${S.k}</li></ul>
+ <h3>Reversal</h3><ul><li><b>Aminocaproic acid, tranexamic acid</b> (ยับยั้ง fibrinolysis) · cryoprecipitate ${S.k}</li></ul>`});
+
+/* ---------- c · cytopenias ---------- */
+SEC.push({id:"hematinic",k:"c",t:"Agents for anemias & cytopenias",mm:"Iron · B12 · growth factors",drugs:"ferrous sulfate · cyanocobalamin · folic acid · epoetin alfa · filgrastim · romiplostim",act:["ag","mod"],leg:[],
+draw:()=>cards([["Iron","oral ferrous sulfate · IV iron sucrose, ferric carboxymaltose","vn"],["Vitamin B12","cyanocobalamin, hydroxocobalamin IM (pernicious anemia) · oral ขนาดสูงได้","gl"],["Folic acid","megaloblastic anemia, ครรภ์ (กัน NTD) · ไม่แก้ neuro ของ B12","gl"],["Erythropoietin","epoetin alfa, darbepoetin · CKD, chemo","ar"],["Myeloid growth factors","filgrastim, pegfilgrastim (G-CSF) · sargramostim (GM-CSF)","ar"],["Thrombopoietin agonists","romiplostim, eltrombopag · ITP",""]]),
+notes:()=>`<h3>Iron</h3><ul><li>Oral: GI ท้องผูก อุจจาระดำ · ดูดซึมดีขึ้นกับ vitamin C · IV เมื่อดูดซึมไม่ได้/ไตวาย · <b>iron poisoning</b> ในเด็ก → deferoxamine ${S.k}</li></ul>
+ <h3>B12 · folate</h3><ul><li>ให้ folate อย่างเดียวในคนขาด B12 → เลือดดีขึ้นแต่ <b>neuropathy แย่ลง</b> ${S.k}</li></ul>
+ <h3>Growth factors</h3><ul><li><b>ESA</b>: HTN, thrombosis, เพิ่มการตาย/มะเร็งโตถ้า Hb สูงเกิน ${S.k}</li><li><b>Filgrastim</b>: ลด febrile neutropenia หลัง chemo, mobilize stem cell · <b>ปวดกระดูก</b>, splenic rupture (น้อย) ${S.k}</li><li>Romiplostim (SC), eltrombopag (oral, hepatotoxic): ITP ${S.k}</li></ul>`});
+
+/* ---------- d · cytotoxic chemotherapy ---------- */
+SEC.push({id:"cycle",k:"d",t:"Cancer therapy: cell cycle & targets",mm:"Cell cycle map",drugs:"",act:[],tools:MT,leg:["inh","bl","mab","mod"],draw:OM(["g1","sph","g2","mph","ccns","her2","egfr","vegf","cd20","icp","ki"]),
+notes:()=>`<h3>Cell cycle–specific vs nonspecific</h3><ul><li><b>CCS</b> ได้ผลกับเซลล์ที่แบ่งตัวเร็ว (เนื้องอก growth fraction สูง เช่น leukemia, lymphoma) · ฤทธิ์ขึ้นกับเวลาที่สัมผัส ${S.k}</li><li><b>CCNS</b> (alkylating, platinum, anthracyclines) ฆ่าได้ทุกระยะ รวมถึง G₀ · ฤทธิ์ขึ้นกับขนาด ${S.k}</li></ul>
+ ${tbl(["ระยะ","ยา"],[["S","antimetabolites (MTX, 5-FU, 6-MP, cytarabine), hydroxyurea"],["G₂","bleomycin, etoposide/topotecan"],["M","vincristine, vinblastine, paclitaxel, docetaxel"],["G₁→S","CDK4/6 inhibitor (palbociclib)"],["ทุกระยะ","alkylating agents, platinum, anthracyclines"]])}${S.k}
+ <div class="pearl">Log-kill: แต่ละรอบฆ่าเซลล์เป็นสัดส่วนคงที่ ไม่ใช่จำนวนคงที่ → ต้องให้หลายรอบ ${S.k}</div>`});
+
+SEC.push({id:"antibiotic",k:"d",t:"Antitumor antibiotics",mm:"Antitumor antibiotics",drugs:"bleomycin · dactinomycin · doxorubicin · daunorubicin",act:["mod"],tools:MT,leg:["mod"],draw:OM(["g2","ccns"]),
+notes:()=>`${tbl(["ยา","กลไก","ใช้","ADR เด่น"],[["Bleomycin","free radical → DNA strand break (G₂)","testicular cancer, Hodgkin (ABVD)","<b>pulmonary fibrosis</b>, ผิวคล้ำ · กดไขกระดูกน้อย"],["Dactinomycin","intercalate DNA","Wilms, Ewing, rhabdomyosarcoma (เด็ก)","myelosuppression"],["Doxorubicin, daunorubicin","free radical, intercalate, ยับยั้ง topo II","solid tumors, leukemia, lymphoma","<b>dilated cardiomyopathy</b> (สะสมตามขนาด) → <b>dexrazoxane</b> · ปัสสาวะสีแดง"]])}${S.k}${S.p}`});
+
+SEC.push({id:"antimet",k:"d",t:"Antimetabolites",mm:"Antimetabolites",drugs:"methotrexate · 5-fluorouracil · 6-mercaptopurine · azathioprine · cytarabine · hydroxyurea · cladribine",act:["inh"],tools:MT,leg:["inh"],draw:OM(["sph"]),
+notes:()=>`${tbl(["ยา","กลไก","ใช้","ADR · ข้อควรรู้"],[["Methotrexate","ยับยั้ง <b>DHFR</b> → THF ↓ → dTMP ↓","ALL, lymphoma, choriocarcinoma, RA, psoriasis, ectopic pregnancy","myelosuppression (กลับด้วย <b>leucovorin</b>), mucositis, hepatotoxic, pneumonitis, ไตวาย (ขนาดสูง)"],["5-FU (capecitabine)","FdUMP ยับยั้ง <b>thymidylate synthase</b>","colorectal, pancreatic, basal cell (topical)","myelosuppression, mucositis, hand-foot · leucovorin <b>เสริม</b>ฤทธิ์ · DPD deficiency อันตราย"],["6-MP, azathioprine","purine analog (ต้อง HGPRT) ยับยั้ง purine synthesis","ALL, IBD, transplant","myelosuppression · <b>TPMT</b> ต่ำเสี่ยงพิษ · <b>allopurinol</b> เพิ่มพิษ (XO)"],["Cytarabine","pyrimidine analog ยับยั้ง DNA polymerase","AML","myelosuppression, cerebellar toxicity"],["Hydroxyurea","ยับยั้ง ribonucleotide reductase","CML, PV, <b>sickle cell</b> (↑ HbF)","myelosuppression"],["Cladribine, pentostatin","purine analog · ADA inhibitor","<b>hairy cell leukemia</b>","myelosuppression"]])}${S.k}${S.p}`});
+
+SEC.push({id:"alkyl",k:"d",t:"Alkylating agents & platinum",mm:"Alkylators · platinum",drugs:"cyclophosphamide · ifosfamide · busulfan · carmustine · procarbazine · cisplatin · carboplatin · oxaliplatin",act:["mod"],tools:MT,leg:["mod"],draw:OM(["ccns"]),
+notes:()=>`${tbl(["ยา","จุดเด่น","ADR"],[["Cyclophosphamide, ifosfamide","nitrogen mustard prodrug (ตับ, CYP)","<b>hemorrhagic cystitis</b> (acrolein) → <b>mesna</b> + น้ำมาก · ifosfamide: Fanconi, neurotoxic"],["Busulfan","CML, conditioning ก่อน HSCT","pulmonary fibrosis, ผิวคล้ำ, ชัก"],["Carmustine, lomustine (nitrosoureas)","lipophilic ผ่าน BBB → <b>brain tumors</b>","CNS toxicity, delayed myelosuppression"],["Procarbazine","Hodgkin","disulfiram-like กับ alcohol, MAOI effect"],["Cisplatin, carboplatin, oxaliplatin","cross-link DNA","cisplatin: <b>nephrotoxicity</b> (amifostine, hydration), <b>ototoxicity</b>, คลื่นไส้รุนแรง · oxaliplatin: neuropathy เมื่อเย็น · carboplatin: myelosuppression"]])}${S.k}
+ <div class="pearl">Alkylating agents ทำให้เกิด secondary leukemia ได้ ${S.k}</div>`});
+
+SEC.push({id:"mitosis",k:"d",t:"Microtubule & topoisomerase inhibitors",mm:"Microtubule · topoisomerase",drugs:"vincristine · vinblastine · paclitaxel · docetaxel · irinotecan · topotecan · etoposide",act:["bl","inh"],tools:MT,leg:["bl","inh"],draw:OM(["mph","sph"]),
+notes:()=>`${tbl(["ยา","กลไก","ADR"],[["Vincristine","จับ β-tubulin ยับยั้ง <b>polymerization</b> (M)","<b>peripheral neuropathy</b>, paralytic ileus · ฉีดเข้า intrathecal ถึงตาย"],["Vinblastine","เหมือนกัน","<b>myelosuppression</b>"],["Paclitaxel, docetaxel","<b>stabilize</b> microtubule ไม่ให้ depolymerize","neuropathy, myelosuppression, hypersensitivity (premed steroid + antihistamine)"],["Irinotecan, topotecan","ยับยั้ง <b>topo I</b>","myelosuppression · irinotecan: <b>ท้องเสียรุนแรง</b> (UGT1A1*28)"],["Etoposide, teniposide","ยับยั้ง <b>topo II</b> (S–G₂)","myelosuppression, alopecia, secondary AML"]])}${S.k}`});
+
+/* ---------- e · targeted & hormonal ---------- */
+SEC.push({id:"tamox",k:"e",t:"Hormonal therapy: tamoxifen & others",mm:"Tamoxifen · aromatase inhibitors",drugs:"tamoxifen · raloxifene · anastrozole · letrozole · leuprolide · flutamide",act:["bl","inh"],leg:[],
+draw:()=>cards([["Tamoxifen (SERM)","antagonist ที่เต้านม · agonist ที่มดลูก/กระดูก","vn"],["Aromatase inhibitors","anastrozole, letrozole, exemestane · หญิงหมดประจำเดือน","gl"],["GnRH analog / antagonist","leuprolide, degarelix · prostate, breast","gl"],["Antiandrogen","flutamide, bicalutamide, enzalutamide · abiraterone (CYP17)","ar"]]),
+notes:()=>`<h3>Tamoxifen</h3><ul><li>ใช้: ER⁺ breast cancer (รักษาและป้องกัน) ${S.k}</li><li>ADR: <b>endometrial cancer</b>, <b>VTE</b>, hot flashes · prodrug ผ่าน CYP2D6 ${S.k}</li></ul>
+ <h3>Aromatase inhibitors</h3><ul><li>ลด estrogen จาก peripheral conversion · ADR: <b>osteoporosis</b>, arthralgia ${S.k}</li></ul>
+ <div class="pearl">รายละเอียดยาฮอร์โมนเพศอยู่ใน Reproductive Pharmacology ${S.x}</div>`});
+
+SEC.push({id:"mabs",k:"e",t:"Anticancer monoclonal antibodies",mm:"Anticancer mAbs",drugs:"trastuzumab · bevacizumab · cetuximab · rituximab · pembrolizumab · nivolumab · ipilimumab",act:["mab"],tools:MT,leg:["mab"],draw:OM(["her2","egfr","vegf","cd20","icp"]),
+notes:()=>`${tbl(["ยา","target","ใช้","ADR"],[["Trastuzumab","HER2","HER2⁺ breast, gastric","<b>cardiotoxicity</b> (กลับได้)"],["Bevacizumab","VEGF-A","colorectal, RCC, glioblastoma, AMD","เลือดออก, GI perforation, แผลหายช้า, HTN, proteinuria"],["Cetuximab, panitumumab","EGFR","colorectal (RAS wild-type), head & neck","<b>acneiform rash</b>, hypomagnesemia"],["Rituximab","CD20","B-cell lymphoma, CLL, RA, ITP","infusion reaction, HBV reactivation, PML"],["Alemtuzumab","CD52","CLL, MS","autoimmunity"],["Pembrolizumab, nivolumab, cemiplimab","PD-1","หลายมะเร็ง","<b>immune-related AE</b>: colitis, pneumonitis, hepatitis, thyroiditis, adrenalitis"],["Atezolizumab, durvalumab, avelumab","PD-L1","urothelial, lung",""],["Ipilimumab","CTLA-4","melanoma","irAE รุนแรงกว่า"]])}${S.k}`});
+
+SEC.push({id:"smi",k:"e",t:"Small molecule inhibitors",mm:"Kinase & other inhibitors",drugs:"imatinib · erlotinib · vemurafenib · crizotinib · ruxolitinib · bortezomib · palbociclib · olaparib",act:["inh"],tools:MT,leg:["inh"],draw:OM(["ki","g1","egfr"]),
+notes:()=>`${tbl(["ยา","target","ใช้"],[["Imatinib, dasatinib, nilotinib","BCR-ABL (+ c-KIT)","CML, ALL Ph⁺, GIST"],["Erlotinib, gefitinib, afatinib, osimertinib","EGFR","NSCLC มี EGFR mutation · ADR rash"],["Alectinib, crizotinib","ALK (ROS1)","NSCLC ALK⁺"],["Vemurafenib, dabrafenib, encorafenib","BRAF V600E","melanoma (ใช้คู่ MEK inhibitor)"],["Ruxolitinib","JAK1/2","myelofibrosis, PV"],["Bortezomib, ixazomib, carfilzomib","proteasome → apoptosis","multiple myeloma, mantle cell · neuropathy"],["Palbociclib, ribociclib","CDK4/6","HR⁺ breast"],["Olaparib","PARP","BRCA ovarian, breast, prostate"]])}${S.k}
+ <div class="pearl">ชื่อยา: -tinib = tyrosine kinase · -rafenib = BRAF · -zomib = proteasome · -ciclib = CDK · -parib = PARP ${S.x}</div>`});
+
+/* ---------- f · chemotoxicity ---------- */
+SEC.push({id:"ameliorate",k:"f",t:"Chemotoxicity amelioration",mm:"Protective agents",drugs:"leucovorin · mesna · dexrazoxane · amifostine · rasburicase · ondansetron · filgrastim",act:["mod"],leg:[],
+draw:()=>cards([["Leucovorin (folinic acid)","rescue พิษ methotrexate · เสริม 5-FU","vn"],["Mesna","จับ acrolein → กัน hemorrhagic cystitis (cyclophosphamide, ifosfamide)","gl"],["Dexrazoxane","iron chelator → กัน anthracycline cardiotoxicity","gl"],["Amifostine","free radical scavenger → กัน cisplatin nephrotoxicity","gl"],["Rasburicase","urate oxidase → tumor lysis syndrome · ห้ามใน G6PD","ar"],["Ondansetron · aprepitant","5-HT₃ · NK₁ antagonist กันคลื่นไส้อาเจียน",""],["Filgrastim","G-CSF กัน febrile neutropenia",""]]),
+notes:()=>`<ul><li>Rasburicase ใช้ใน tumor lysis syndrome เสี่ยงสูง ${S.p}${S.k}</li><li>Dexrazoxane ป้องกัน cardiotoxicity ของ anthracycline ${S.p}</li><li>Leucovorin ให้หลัง high-dose methotrexate ตามระดับยา ${S.k}</li></ul>`});
+
+SEC.push({id:"keytox",k:"f",t:"Key chemotoxicities",mm:"Key chemotoxicities",drugs:"",act:[],leg:[],
+draw:()=>cards([["Cardiotoxicity","doxorubicin, daunorubicin · trastuzumab","ar"],["Pulmonary fibrosis","bleomycin · busulfan · (methotrexate)","ar"],["Nephrotoxicity · ototoxicity","cisplatin","gl"],["Hemorrhagic cystitis","cyclophosphamide, ifosfamide","gl"],["Peripheral neuropathy","vincristine · paclitaxel · cisplatin/oxaliplatin · bortezomib","vn"],["Myelosuppression เด่น","most agents · ยกเว้น bleomycin, vincristine (น้อย)",""]]),
+notes:()=>`${tbl(["อวัยวะ","ยา"],[["หัวใจ","anthracyclines (dilated CM), trastuzumab"],["ปอด","bleomycin, busulfan, methotrexate, carmustine"],["ไต","cisplatin, ifosfamide, high-dose MTX"],["กระเพาะปัสสาวะ","cyclophosphamide, ifosfamide"],["เส้นประสาท","vincristine, taxanes, platinum, bortezomib"],["ตับ","methotrexate, 6-MP"],["ผิว","5-FU (hand-foot), EGFR inhibitors (acneiform)"],["ภูมิคุ้มกัน","checkpoint inhibitors (irAE)"]])}${S.k}`});
+
+const EXTRA=["hematinic"];

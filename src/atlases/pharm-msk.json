@@ -1,0 +1,34 @@
+{
+ "id": "pharm-msk",
+ "sys": "MSK & Skin",
+ "title_tag": "MSK & Skin Pharmacology",
+ "eyebrow": "Musculoskeletal, Skin & CT · Pharmacology",
+ "h1": "MSK & Skin Pharmacology",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 36, 42, 61) และ Pharmacotherapy",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 36, 42, 61"
+  ],
+  [
+   "pt",
+   "PT",
+   "Pharmacotherapy 5e · Ch 56–59, 64–65"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "msk",
+  "folder": "msk",
+  "title": "MSK & Skin Pharmacology",
+  "src": "Katzung 16e Ch 36, 42, 61 · Pharmacotherapy 5e Ch 56–59, 64–65",
+  "desc": "แผนที่กลุ่มยา MSK และผิวหนัง: NSAIDs, acetaminophen, DMARDs, bisphosphonate และยาสร้างกระดูก, ยา gout, biologics, ยาผิวหนัง (steroid, acne, psoriasis, imiquimod) และการรักษา RA, OA, osteoporosis",
+  "ch": "Ch 36",
+  "sort": 36
+ }
+}

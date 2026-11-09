@@ -1,0 +1,70 @@
+/* ================= Psychiatry pharmacology ================= */
+function psyMap(){let b="";const row=(x,y,lab,key)=>glow(x,y,key)+rec(x,y,"",true)+T(x+16,y+4,lab,{a:"start",c:"s"});
+ b+=panel(10,10,740,250,"MONOAMINE SYNAPSE: presynaptic → postsynaptic");
+ b+=row(36,62,"SERT (5-HT reuptake)","sert")+pill(262,62,"SSRIs · SNRIs · TCAs","inh","sert");
+ b+=row(36,100,"NET (NE reuptake)","net")+pill(262,100,"SNRIs · TCAs · Bupropion","inh","net");
+ b+=row(36,138,"DAT (DA reuptake)","dat")+pill(282,138,"Methylphenidate · Amphetamine","inh","dat");
+ b+=row(36,176,"MAO-A/B","mao")+pill(262,176,"MAOIs (phenelzine…)","inh","mao");
+ b+=row(36,214,"α₂ autoreceptor","a2")+pill(262,214,"Mirtazapine · Clonidine","mod","a2");
+ b+=row(410,62,"D₂ (mesolimbic)","d2")+pill(640,62,"Antipsychotics","bl","d2");
+ b+=row(410,100,"5-HT₂A","ht2a")+pill(640,100,"Atypicals · Trazodone","bl","ht2a");
+ b+=row(410,138,"5-HT₁A","ht1a")+pill(640,138,"Buspirone · Vilazodone","ag","ht1a");
+ b+=row(410,176,"IP₃ · GSK-3 (inside)","li")+pill(640,176,"Lithium","mod","li");
+ b+=row(410,214,"H₁ · M · α₁ (side effects)","se")+pill(640,214,"TCAs · low-potency FGA","bl","se");
+ b+=panel(10,270,740,170,"SUBSTANCE USE TARGETS");
+ b+=row(36,318,"μ-opioid","mu")+pill(270,306,"Methadone · Buprenorphine","ag","mu")+pill(270,332,"Naloxone · Naltrexone","bl","mub");
+ b+=row(36,380,"α4β2 nicotinic","nic")+pill(262,380,"Varenicline · NRT","ag","nic");
+ b+=row(410,318,"Aldehyde dehydrogenase","aldh")+pill(640,318,"Disulfiram","inh","aldh");
+ b+=row(410,356,"Glutamate (NMDA)","glu")+pill(640,356,"Acamprosate","mod","glu");
+ b+=row(410,394,"GABA-A","gaba")+pill(640,394,"Benzodiazepines (withdrawal)","ag","gaba");
+ if(on("mub"))b+=glow(36,318,"mub");
+ return psvg(b,"0 0 760 450")}
+const PM=MAPOF(psyMap),MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Stimulants & antipsychotics",b:"Mood stabilizers & anxiolytics",c:"Antidepressants",d:"Substance use",e:"Treating psychiatric disease"});
+
+SEC.push({id:"psymap",k:"a",t:"Psychiatric drug target map",mm:"Psych drug map",drugs:"",act:[],tools:MT,leg:["inh","bl","ag","mod"],draw:PM(["sert","net","dat","mao","a2","d2","ht2a","ht1a","li","se","mu","mub","nic","aldh","glu","gaba"]),
+notes:()=>`<h3>Dopamine pathways กับผลของยา</h3>${tbl(["Pathway","บล็อก D₂ แล้ว"],[["Mesolimbic","positive symptoms ลด (ผลรักษา)"],["Mesocortical","negative/cognitive แย่ลง"],["Nigrostriatal","<b>EPS</b>"],["Tuberoinfundibular","<b>prolactin ↑</b> (galactorrhea, amenorrhea, gynecomastia)"]])}${S.k}
+ <div class="pearl">Side effect ของยาจิตเวชส่วนใหญ่อธิบายได้จาก receptor ที่บล็อก: H₁ (ง่วง น้ำหนักขึ้น) · M (anticholinergic) · α₁ (orthostatic) ${S.k}</div>`});
+
+SEC.push({id:"stim",k:"a",t:"CNS stimulants",mm:"CNS stimulants",drugs:"methylphenidate · amphetamine · lisdexamfetamine · atomoxetine · modafinil",act:["inh"],tools:MT,leg:["inh"],draw:PM(["dat","net"]),
+notes:()=>`<ul><li><b>Methylphenidate</b>: บล็อก DAT/NET · <b>amphetamine</b>: ปล่อย DA/NE (กลับทิศ transporter, VMAT) ${S.k}</li><li>ใช้: <b>ADHD</b>, narcolepsy · lisdexamfetamine: binge eating ${S.k}</li><li>ADR: นอนไม่หลับ, เบื่ออาหาร/น้ำหนักลด, tachycardia, HTN, การเจริญเติบโตช้าในเด็ก, tic · abuse ${S.k}</li><li>Non-stimulant: <b>atomoxetine</b> (NET inhibitor; suicidality warning), guanfacine/clonidine (α₂) ${S.k}</li><li>Modafinil: narcolepsy, shift-work ${S.k}</li></ul>`});
+
+SEC.push({id:"antipsych",k:"a",t:"Antipsychotics",mm:"Antipsychotics",drugs:"haloperidol · chlorpromazine · risperidone · olanzapine · quetiapine · aripiprazole · clozapine",act:["bl"],tools:MT,leg:["bl"],draw:PM(["d2","ht2a","se"]),
+notes:()=>`${tbl(["กลุ่ม","ยา","จุดเด่น"],[["1st gen high-potency","haloperidol, fluphenazine","<b>EPS</b> มาก · ง่วง/anticholinergic น้อย"],["1st gen low-potency","chlorpromazine, thioridazine","anticholinergic, H₁, α₁ มาก · thioridazine: retinal deposits · chlorpromazine: corneal deposits"],["2nd gen (atypical)","risperidone, olanzapine, quetiapine, ziprasidone, lurasidone","D₂ + 5-HT₂A · <b>metabolic syndrome</b> (olanzapine, clozapine) · risperidone: prolactin ↑"],["Partial agonist","aripiprazole, brexpiprazole","metabolic น้อย · akathisia"],["Clozapine","treatment-resistant, suicidality","<b>agranulocytosis</b> (ANC), ชัก, myocarditis"]])}${S.k}
+ <h3>EPS (ตามเวลา)</h3><ul><li><b>Acute dystonia</b> (ชั่วโมง–วัน) → benztropine, diphenhydramine · <b>akathisia</b> (วัน–สัปดาห์) → propranolol, BZD · <b>parkinsonism</b> (สัปดาห์) → benztropine · <b>tardive dyskinesia</b> (เดือน–ปี) → VMAT2 inhibitor (valbenazine) ${S.k}</li></ul>
+ <h3>อันตราย</h3><ul><li><b>Neuroleptic malignant syndrome</b>: rigidity, ไข้, autonomic instability, CK ↑ → หยุดยา, dantrolene, bromocriptine ${S.k}</li><li>QT ยาว (ziprasidone, thioridazine, haloperidol IV) · elderly dementia: เพิ่มการตาย ${S.k}</li></ul>`});
+
+SEC.push({id:"lithium",k:"b",t:"Lithium",mm:"Lithium",drugs:"lithium",act:["mod"],tools:MT,leg:["mod"],draw:PM(["li"]),
+notes:()=>`<ul><li>กลไกไม่ชัด: ยับยั้ง inositol recycling (IP₃) และ GSK-3 ${S.k}</li><li>ใช้: <b>bipolar</b> (mania, maintenance), ลด suicide · augmentation ใน depression ${S.k}</li><li><b>Narrow therapeutic index</b> · ขับทางไต ดูดกลับใน PCT คล้าย Na⁺ → ระดับสูงขึ้นเมื่อ <b>ขาดน้ำ, thiazide, ACEi, NSAID</b> ${S.k}</li></ul>
+ <h3>ADR</h3><ul><li>Tremor (ละเอียด), polyuria → <b>nephrogenic DI</b> (amiloride ช่วย), <b>hypothyroidism</b>, hyperparathyroidism, น้ำหนักขึ้น, acne ${S.k}</li><li>Teratogen: <b>Ebstein anomaly</b> ${S.k}</li><li>Toxicity: tremor หยาบ, ataxia, สับสน, ชัก, arrhythmia → hemodialysis ${S.k}</li></ul>`});
+
+SEC.push({id:"buspirone",k:"b",t:"Buspirone & anxiolytics",mm:"Buspirone",drugs:"buspirone · hydroxyzine",act:["ag"],tools:MT,leg:["ag"],draw:PM(["ht1a","gaba"]),
+notes:()=>`<ul><li><b>5-HT₁A partial agonist</b> ${S.k}</li><li>ใช้: <b>GAD</b> · ออกฤทธิ์ช้า 1–2 สัปดาห์ (ไม่ใช้ตอน panic เฉียบพลัน) ${S.k}</li><li>ข้อดี: ไม่ง่วง ไม่ติด ไม่กดหายใจ ไม่เสริม alcohol ${S.k}</li><li>Anxiety ระยะยาว: SSRI/SNRI เป็นหลัก · BZD ระยะสั้น ${S.k}</li></ul>`});
+
+SEC.push({id:"ssri",k:"c",t:"SSRIs & SNRIs",mm:"SSRIs · SNRIs",drugs:"fluoxetine · sertraline · paroxetine · citalopram · escitalopram · venlafaxine · duloxetine",act:["inh"],tools:MT,leg:["inh"],draw:PM(["sert","net"]),
+notes:()=>`<h3>SSRIs</h3><ul><li>ยับยั้ง SERT · ใช้: depression, GAD, panic, OCD, PTSD, bulimia, PMDD, social anxiety ${S.k}</li><li>ออกฤทธิ์เต็มใน 4–8 สัปดาห์ ${S.k}</li><li>ADR: <b>sexual dysfunction</b>, GI, นอนไม่หลับ, SIADH (ผู้สูงอายุ), เลือดออก, <b>QT ยาว (citalopram)</b> · suicidality ในวัยรุ่น (boxed) ${S.k}</li><li>Discontinuation syndrome (paroxetine, venlafaxine t½ สั้น) · fluoxetine t½ ยาว ${S.k}</li></ul>
+ <h3>SNRIs</h3><ul><li>Venlafaxine, desvenlafaxine, duloxetine, levomilnacipran · ใช้ depression, GAD, <b>neuropathic pain, fibromyalgia</b> (duloxetine) ${S.k}</li><li>ADR: <b>HTN</b> (venlafaxine), เหมือน SSRI ${S.k}</li></ul>
+ <div class="pearl"><b>Serotonin syndrome</b>: hyperthermia, clonus/hyperreflexia, ท้องเสีย, กระสับกระส่าย → หยุดยา, BZD, <b>cyproheptadine</b> · เกิดเมื่อรวม MAOI, linezolid, tramadol, triptan, meperidine, St. John's wort ${S.k}</div>`});
+
+SEC.push({id:"tca",k:"c",t:"Tricyclic antidepressants",mm:"TCAs",drugs:"amitriptyline · nortriptyline · imipramine · clomipramine · doxepin",act:["inh","bl"],tools:MT,leg:["inh","bl"],draw:PM(["sert","net","se"]),
+notes:()=>`<ul><li>ยับยั้ง SERT และ NET + บล็อก <b>H₁, M, α₁</b> และ <b>fast Na⁺ channel</b> ในหัวใจ ${S.k}</li><li>ใช้: depression, <b>neuropathic pain</b>, migraine prophylaxis, enuresis (imipramine), <b>OCD (clomipramine)</b> ${S.k}</li><li>ADR: ง่วง, anticholinergic, orthostatic hypotension · สับสนในผู้สูงอายุ (nortriptyline anticholinergic น้อยกว่า) ${S.k}</li></ul>
+ <h3>Overdose: "3 C"</h3><ul><li><b>Convulsions, Coma, Cardiotoxicity</b> (QRS กว้าง, arrhythmia) + anticholinergic · รักษา <b>NaHCO₃</b> ${S.k}</li></ul>`});
+
+SEC.push({id:"maoi",k:"c",t:"MAO inhibitors",mm:"MAOIs",drugs:"phenelzine · tranylcypromine · isocarboxazid · selegiline",act:["inh"],tools:MT,leg:["inh"],draw:PM(["mao"]),
+notes:()=>`<ul><li>ยับยั้ง MAO (irreversible) → NE, 5-HT, DA ↑ ${S.k}</li><li>ใช้: atypical depression (ไวต่อ rejection, กินนอนมาก), depression ดื้อยา · selegiline (MAO-B) ใน Parkinson, transdermal ใน depression ${S.k}</li></ul>
+ <h3>อันตราย</h3><ul><li><b>Hypertensive crisis</b> จาก <b>tyramine</b> (ชีส wine เนื้อหมัก) หรือ sympathomimetic → phentolamine ${S.k}</li><li><b>Serotonin syndrome</b> ร่วม SSRI, meperidine, dextromethorphan, triptans → เว้น 2 สัปดาห์ (fluoxetine 5 สัปดาห์) ${S.k}</li></ul>`});
+
+SEC.push({id:"atypicalad",k:"c",t:"Atypical antidepressants",mm:"Atypical antidepressants",drugs:"bupropion · mirtazapine · trazodone · vilazodone · vortioxetine",act:["inh","bl","mod"],tools:MT,leg:["inh","bl","mod"],draw:PM(["net","dat","a2","ht2a","ht1a"]),
+notes:()=>`${tbl(["ยา","กลไก","จุดเด่น · ADR"],[["Bupropion","ยับยั้ง NE/DA reuptake","ไม่มี sexual ADR, น้ำหนักไม่ขึ้น · <b>เลิกบุหรี่</b> · <b>ชัก</b> (ห้ามใน bulimia/anorexia, ชัก)"],["Mirtazapine","α₂ antagonist (↑ NE, 5-HT) + 5-HT₂/5-HT₃, H₁ block","<b>ง่วง กินเก่ง น้ำหนักขึ้น</b> → ดีในผู้สูงอายุนอนไม่หลับเบื่ออาหาร"],["Trazodone","5-HT₂A, α₁ block, H₁ (SERT อ่อน)","ใช้เป็นยานอน · <b>priapism</b>, orthostatic"],["Vilazodone","SSRI + 5-HT₁A partial","GI"],["Vortioxetine","SERT + หลาย 5-HT receptor","คลื่นไส้"]])}${S.k}`});
+
+SEC.push({id:"sud",k:"d",t:"Smoking, opioid & alcohol use disorder",mm:"Substance use drugs",drugs:"varenicline · nicotine replacement · bupropion · methadone · buprenorphine · naltrexone · naloxone · disulfiram · acamprosate",act:["ag","bl","inh","mod"],tools:MT,leg:["ag","bl","inh","mod"],draw:PM(["mu","mub","nic","aldh","glu","gaba"]),
+notes:()=>`<h3>Smoking cessation</h3><ul><li><b>Varenicline</b>: α4β2 nicotinic partial agonist (ลด craving และรางวัลจากบุหรี่) · ADR: คลื่นไส้ ฝันชัด ${S.k}</li><li>NRT (patch + gum/lozenge), bupropion ${S.k}</li></ul>
+ <h3>Opioid use disorder</h3>${tbl(["ยา","กลไก","จุดเด่น"],[["Methadone","μ full agonist ออกฤทธิ์นาน","คลินิกเฉพาะ · QT ยาว"],["Buprenorphine (± naloxone)","μ partial agonist affinity สูง","ceiling (ปลอดภัยกว่า) · เริ่มตอนมี withdrawal (กัน precipitated withdrawal)"],["Naltrexone","μ antagonist (oral, monthly IM)","ต้อง opioid-free 7–10 วัน · ใช้ใน alcohol ด้วย"],["Naloxone","μ antagonist ออกฤทธิ์เร็ว","overdose reversal"]])}${S.k}${S.p}
+ <h3>Alcohol use disorder</h3><ul><li><b>Naltrexone</b> (ลด craving) · <b>acamprosate</b> (NMDA modulator; ขับทางไต) · <b>disulfiram</b> (ยับยั้ง aldehyde dehydrogenase → acetaldehyde สะสม คลื่นไส้ หน้าแดง) ${S.k}</li><li>Withdrawal: <b>benzodiazepine</b> (chlordiazepoxide, lorazepam ในโรคตับ) · thiamine ก่อน glucose ${S.k}</li></ul>`});
+
+SEC.push({id:"psyrx",k:"e",t:"Choosing psychiatric drugs",mm:"Drug choice by disorder",drugs:"",act:[],leg:[],
+draw:()=>cards([["Major depression","SSRI first-line · SNRI, bupropion, mirtazapine ทางเลือก","vn"],["Bipolar mania","lithium · valproate · atypical antipsychotic","gl"],["Bipolar depression","quetiapine, lurasidone, lamotrigine (ห้าม antidepressant เดี่ยว)","gl"],["GAD / panic","SSRI/SNRI · buspirone (GAD) · BZD ระยะสั้น",""],["Schizophrenia","atypical antipsychotic · ดื้อยา 2 ตัว → clozapine","ar"],["ADHD","stimulant first-line · atomoxetine, α₂ agonist",""]]),
+notes:()=>`<ul><li>ยา antidepressant ใช้เวลา 4–6 สัปดาห์กว่าเห็นผลเต็ม ให้ต่อ 6–12 เดือนหลังหาย ${S.x}</li><li>Antidepressant เดี่ยวใน bipolar อาจกระตุ้น mania ${S.k}</li><li>Clozapine ใช้เมื่อไม่ตอบสนองต่อ antipsychotic อย่างน้อย 2 ตัว ${S.x}</li></ul>`});
+
+const EXTRA=["psyrx"];

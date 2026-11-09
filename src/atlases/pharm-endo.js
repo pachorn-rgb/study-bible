@@ -1,0 +1,77 @@
+/* ================= Endocrine pharmacology ================= */
+function endoMap(){let b="";const row=(x,y,lab,key)=>glow(x,y,key)+rec(x,y,"",true)+T(x+16,y+4,lab,{a:"start",c:"s"});
+ b+=panel(10,10,740,232,"GLUCOSE: β-cell · liver · muscle/fat · gut · kidney");
+ b+=row(36,62,"β-cell K-ATP","katp")+pill(272,62,"Sulfonylureas · Meglitinides","bl","katp");
+ b+=row(36,100,"GLP-1 receptor","glp")+pill(272,100,"GLP-1 agonists (-glutide)","ag","glp");
+ b+=row(36,138,"DPP-4","dpp")+pill(272,138,"DPP-4 inhibitors (-gliptin)","inh","dpp");
+ b+=row(36,176,"Insulin receptor","ins")+pill(272,176,"Insulin","ag","ins");
+ b+=row(36,214,"Amylin receptor","amy")+pill(272,214,"Pramlintide","ag","amy");
+ b+=row(410,62,"Liver gluconeogenesis","met")+pill(650,62,"Metformin","mod","met");
+ b+=row(410,100,"PPARγ (fat, muscle)","tzd")+pill(650,100,"Pioglitazone","ag","tzd");
+ b+=row(410,138,"α-glucosidase (gut)","agi")+pill(650,138,"Acarbose · Miglitol","inh","agi");
+ b+=row(410,176,"SGLT2 (PCT)","sglt")+pill(650,176,"SGLT2 inhibitors (-gliflozin)","inh","sglt");
+ b+=panel(10,252,360,200,"THYROID");
+ b+=row(36,300,"NIS (iodide uptake)","nis")+pill(262,300,"Radioactive iodine","mod","nis");
+ b+=row(36,338,"Thyroid peroxidase","tpo")+pill(262,338,"Methimazole · PTU","inh","tpo");
+ b+=row(36,376,"5′-deiodinase","deio")+pill(262,376,"PTU · β-blocker · steroid","inh","deio");
+ b+=row(36,414,"TR (nucleus)","thr")+pill(262,414,"Levothyroxine · Liothyronine","ag","thr");
+ b+=panel(380,252,370,200,"PITUITARY · ADRENAL · PARATHYROID");
+ b+=row(406,300,"V₂ (collecting duct)","v2")+pill(640,288,"Desmopressin","ag","v2")+pill(640,312,"Tolvaptan · Conivaptan","bl","v2b");
+ b+=row(406,346,"SSTR · GH-R","sst")+pill(640,346,"Octreotide · GH · Pegvisomant","mod","sst");
+ b+=row(406,382,"GR · MR","gr")+pill(640,382,"Steroids · Fludrocortisone","st","gr");
+ b+=row(406,420,"CaSR (parathyroid)","casr")+pill(640,420,"Cinacalcet","ag","casr");
+ if(on("v2b"))b+=glow(406,300,"v2b");
+ return psvg(b,"0 0 760 462")}
+const EM0=0;const EM=MAPOF(endoMap),MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Diabetes mellitus therapy",b:"Thyroid",c:"Pituitary & hypothalamus",d:"Adrenal",e:"Calcium & potassium",f:"Treating endocrine disease"});
+
+SEC.push({id:"endomap",k:"a",t:"Endocrine drug target map",mm:"Endocrine drug map",drugs:"",act:[],tools:MT,leg:["ag","bl","inh","mod","st"],draw:EM(["katp","glp","dpp","ins","amy","met","tzd","agi","sglt","nis","tpo","deio","thr","v2","v2b","sst","gr","casr"]),
+notes:()=>`<h3>ยาเบาหวานตามกลไก</h3>${tbl(["กลไก","ยา"],[["เพิ่ม insulin (ไม่ขึ้นกับ glucose)","sulfonylureas, meglitinides → hypoglycemia"],["เพิ่ม insulin ตาม glucose","GLP-1 agonists, DPP-4 inhibitors"],["เพิ่ม insulin sensitivity","metformin, pioglitazone"],["ลดการดูดซึม/เพิ่มการขับ glucose","α-glucosidase inhibitors, SGLT2 inhibitors"],["แทน hormone","insulin, pramlintide"]])}${S.k}`});
+
+SEC.push({id:"insulin",k:"a",t:"Insulin preparations",mm:"Insulin",drugs:"lispro · aspart · glulisine · regular · NPH · glargine · detemir · degludec",act:["ag"],tools:MT,leg:["ag"],draw:EM(["ins"]),
+notes:()=>`${tbl(["ชนิด","ยา","onset · duration"],[["Rapid-acting","lispro, aspart, glulisine","~15 นาที · 3–5 ชม. (ฉีดก่อนอาหาร)"],["Short-acting","regular","30–60 นาที · 5–8 ชม. · <b>IV ได้</b> (DKA, hyperkalemia)"],["Intermediate","NPH","1–2 ชม. · 10–20 ชม."],["Long-acting","glargine, detemir","ไม่มี peak · ~24 ชม. (basal)"],["Very long","degludec","&gt;40 ชม."]])}${S.k}
+ <h3>กลไก</h3><ul><li>จับ insulin receptor (tyrosine kinase) → GLUT4 ไปผิวเซลล์ (กล้ามเนื้อ ไขมัน) · ↑ glycogen, lipid, protein synthesis · K⁺ เข้าเซลล์ ${S.k}</li></ul>
+ <h3>ใช้ · ADR</h3><ul><li>T1DM, T2DM ที่คุมไม่ได้, DKA/HHS, GDM, <b>hyperkalemia</b> (+ glucose) ${S.k}</li><li><b>Hypoglycemia</b>, hypokalemia, น้ำหนักขึ้น, lipodystrophy ณ ที่ฉีด ${S.k}</li></ul>`});
+
+SEC.push({id:"sensitizer",k:"a",t:"Metformin & pioglitazone",mm:"Metformin · TZD",drugs:"metformin · pioglitazone",act:["mod","ag"],tools:MT,leg:["mod","ag"],draw:EM(["met","tzd"]),
+notes:()=>`<h3>Metformin (biguanide)</h3><ul><li>ลด <b>hepatic gluconeogenesis</b> (กระตุ้น AMPK, ยับยั้ง mitochondrial glycerophosphate dehydrogenase) · เพิ่ม insulin sensitivity ${S.k}</li><li><b>First-line</b> ของ T2DM · ไม่ทำให้ hypoglycemia หรือน้ำหนักขึ้น ${S.k}</li><li>ADR: GI (ท้องเสีย) · <b>B12 deficiency</b> · <b>lactic acidosis</b> (เสี่ยงในไตวาย eGFR &lt;30, hypoxia, sepsis, ก่อนฉีด contrast) ${S.k}</li></ul>
+ <h3>Pioglitazone (TZD)</h3><ul><li><b>PPARγ agonist</b> → เพิ่ม insulin sensitivity ที่ไขมัน กล้ามเนื้อ · adiponectin ↑ ${S.k}</li><li>ADR: <b>น้ำคั่ง/edema → ห้ามใน HF</b>, น้ำหนักขึ้น, <b>fracture</b>, bladder cancer (pioglitazone) · hepatotoxicity (troglitazone ถูกถอน) ${S.k}</li></ul>`});
+
+SEC.push({id:"secretagog",k:"a",t:"Sulfonylureas & meglitinides",mm:"Sulfonylureas · meglitinides",drugs:"glipizide · glyburide · glimepiride · repaglinide · nateglinide",act:["bl"],tools:MT,leg:["bl"],draw:EM(["katp"]),
+notes:()=>`<ul><li>ปิด <b>K-ATP channel</b> ใน β-cell → depolarize → Ca²⁺ เข้า → insulin หลั่ง (ต้องมี β-cell เหลือ ใช้ใน T1DM ไม่ได้) ${S.k}</li><li>1st gen (chlorpropamide, tolbutamide): disulfiram-like, SIADH (chlorpropamide) · 2nd gen: glipizide, glyburide, glimepiride ${S.k}</li><li>ADR: <b>hypoglycemia</b> (glyburide, ไตวาย/ผู้สูงอายุ), น้ำหนักขึ้น · overdose → octreotide ${S.k}</li><li>Meglitinides (repaglinide, nateglinide): กลไกเดียวกัน ออกฤทธิ์สั้น กินก่อนอาหาร · repaglinide ใช้ในไตเสื่อมได้ ${S.k}</li></ul>`});
+
+SEC.push({id:"incretin",k:"a",t:"GLP-1 agonists, DPP-4 inhibitors & pramlintide",mm:"Incretins · amylin",drugs:"semaglutide · liraglutide · exenatide · tirzepatide · sitagliptin · linagliptin · pramlintide",act:["ag","inh"],tools:MT,leg:["ag","inh"],draw:EM(["glp","dpp","amy"]),
+notes:()=>`${tbl(["กลุ่ม","กลไก","จุดเด่น","ADR"],[["GLP-1 agonists (semaglutide, liraglutide, dulaglutide, exenatide) · tirzepatide (GIP+GLP-1)","↑ insulin ตาม glucose, ↓ glucagon, gastric emptying ช้า, อิ่ม","<b>น้ำหนักลด</b>, ลด CV event (liraglutide, semaglutide) · ฉีด (semaglutide มี oral)","คลื่นไส้ อาเจียน, <b>pancreatitis</b>, gallbladder · ห้ามใน MEN2/medullary thyroid CA"],["DPP-4 inhibitors (-gliptin)","ยับยั้งการสลาย GLP-1/GIP","oral, weight-neutral, hypoglycemia น้อย","URI, pancreatitis, arthralgia · saxagliptin: HF"],["Pramlintide","amylin analog: gastric emptying ช้า, ↓ glucagon","T1DM/T2DM ที่ใช้ insulin","hypoglycemia (ลด insulin มื้ออาหาร)"]])}${S.k}`});
+
+SEC.push({id:"glucose-other",k:"a",t:"SGLT2 & α-glucosidase inhibitors",mm:"SGLT2 · α-glucosidase",drugs:"empagliflozin · dapagliflozin · canagliflozin · acarbose · miglitol",act:["inh"],tools:MT,leg:["inh"],draw:EM(["sglt","agi"]),
+notes:()=>`<h3>SGLT2 inhibitors</h3><ul><li>ยับยั้ง SGLT2 ใน PCT → glycosuria · ลด HbA1c 0.5–1% · น้ำหนักลด, BP ลด ${S.k}</li><li>ลด HF hospitalization และชะลอ CKD → เป็นข้อบ่งใช้หลัก ${S.k}</li><li>ADR: genital mycotic infection, UTI · euglycemic DKA · volume depletion ${S.k}${S.x}</li></ul>
+ <h3>α-glucosidase inhibitors</h3><ul><li>Acarbose, miglitol: ยับยั้ง brush-border α-glucosidase → ดูด glucose ช้าลง ลด postprandial glucose ${S.k}</li><li>ADR: ท้องอืด ผายลม ท้องเสีย · ถ้า hypoglycemia (จากยาอื่น) ต้องแก้ด้วย <b>glucose</b> ไม่ใช่ sucrose ${S.k}</li></ul>`});
+
+SEC.push({id:"thionamide",k:"b",t:"Thionamides",mm:"Thionamides",drugs:"methimazole · propylthiouracil",act:["inh"],tools:MT,leg:["inh"],draw:EM(["tpo","deio"]),
+notes:()=>`<ul><li>ยับยั้ง <b>thyroid peroxidase</b> (oxidation, organification, coupling) → สร้าง T4/T3 ลด · PTU ยับยั้ง <b>5′-deiodinase</b> ส่วนปลายด้วย ${S.k}</li><li>ออกฤทธิ์ช้า (hormone ที่เก็บไว้ต้องหมดก่อน) ${S.k}</li></ul>
+ ${tbl(["","Methimazole","PTU"],[["ใช้","ทั่วไป (first-line)","<b>ไตรมาสแรกของครรภ์</b>, thyroid storm"],["ADR เด่น","<b>teratogen</b> (aplasia cutis)","<b>hepatotoxicity</b> รุนแรง"],["ร่วมกัน","<b>agranulocytosis</b> (เจ็บคอ+ไข้ → ตรวจ CBC), rash, ANCA vasculitis","" ]])}${S.k}
+ <h3>ยาอื่นใน hyperthyroidism</h3><ul><li><b>β-blocker</b> (propranolol): คุมอาการ adrenergic, ลด T4→T3 ${S.k}</li><li><b>Iodide</b> (Lugol, SSKI): Wolff-Chaikoff ลดการหลั่ง hormone ทันที · ให้หลัง thionamide ${S.k}</li><li><b>Radioactive iodine</b>: ทำลายต่อม → hypothyroidism · ห้ามในครรภ์ ${S.k}</li></ul>`});
+
+SEC.push({id:"thyroxine",k:"b",t:"Levothyroxine & liothyronine",mm:"Thyroid hormone",drugs:"levothyroxine · liothyronine",act:["ag"],tools:MT,leg:["ag"],draw:EM(["thr"]),
+notes:()=>`<ul><li><b>Levothyroxine (T4)</b>: ยาหลักของ hypothyroidism · t½ ~7 วัน · ปรับตาม TSH ทุก 6–8 สัปดาห์ ${S.k}</li><li>Liothyronine (T3): ออกฤทธิ์เร็ว · myxedema coma (บางครั้ง) ${S.k}</li><li>กินตอนท้องว่าง · ดูดซึมลดเมื่อกินร่วม Ca, Fe, PPI, bile acid resin ${S.k}</li><li>ADR (ขนาดเกิน): tachycardia, AF, heat intolerance, tremor, <b>osteoporosis</b> · ผู้สูงอายุ/CAD เริ่มขนาดต่ำ ${S.k}</li><li>ครรภ์ต้องเพิ่มขนาด ${S.k}</li></ul>`});
+
+SEC.push({id:"pituitary",k:"c",t:"Hypothalamic & pituitary drugs",mm:"Pituitary drugs",drugs:"desmopressin · tolvaptan · conivaptan · demeclocycline · somatropin · octreotide · pegvisomant · oxytocin",act:["ag","bl","mod"],tools:MT,leg:["ag","bl","mod"],draw:EM(["v2","v2b","sst"]),
+notes:()=>`${tbl(["ยา","กลไก","ใช้"],[["Desmopressin","V₂ agonist","<b>central DI</b>, nocturnal enuresis, hemophilia A, von Willebrand"],["Conivaptan (IV), tolvaptan (oral)","ADH receptor antagonist","<b>SIADH</b>, hyponatremia ใน HF/cirrhosis · tolvaptan: ADPKD"],["Demeclocycline","ลด cAMP จาก ADH (tetracycline)","SIADH (photosensitivity, ไตวาย)"],["Somatropin (GH)","GH receptor","GH deficiency, Turner, Prader-Willi"],["Octreotide, lanreotide","somatostatin analog","acromegaly, carcinoid, VIPoma, variceal bleed"],["Pegvisomant","GH receptor antagonist","acromegaly"],["Oxytocin","oxytocin receptor","induce labor, PPH, milk let-down"]])}${S.k}
+ <div class="pearl">แก้ hyponatremia เร็วเกินด้วย vaptan/hypertonic saline → osmotic demyelination ${S.k}</div>`});
+
+SEC.push({id:"adrenal",k:"d",t:"Glucocorticoids, fludrocortisone & adrenal inhibitors",mm:"Corticosteroids",drugs:"prednisone · dexamethasone · hydrocortisone · fludrocortisone · ketoconazole · metyrapone · mifepristone",act:["st","inh"],tools:MT,leg:["st","inh"],draw:EM(["gr"]),
+notes:()=>`<h3>Glucocorticoids</h3><ul><li>จับ GR ใน cytoplasm → nucleus → ยับยั้ง NF-κB, PLA₂ (lipocortin), COX-2, cytokine · eosinophil/lymphocyte ↓, neutrophil ↑ ${S.k}</li><li>ความแรง: hydrocortisone &lt; prednisone &lt; methylprednisolone &lt; dexamethasone (ไม่มีฤทธิ์ mineralocorticoid) ${S.k}</li>
+ <li>ADR: <b>Cushing</b>, hyperglycemia, osteoporosis, myopathy, cataract, glaucoma, peptic ulcer, psychosis, infection, ผิวบาง แผลหายช้า, growth ↓ ในเด็ก ${S.k}</li><li>หยุดเร็วหลังใช้นาน → <b>adrenal insufficiency</b> → taper ${S.k}</li></ul>
+ <h3>Fludrocortisone</h3><ul><li>Mineralocorticoid แรง · ใช้ Addison (ร่วม hydrocortisone), orthostatic hypotension · ADR: edema, HTN, hypokalemia ${S.k}</li></ul>
+ <h3>ยับยั้ง cortisol</h3><ul><li>Ketoconazole, metyrapone (11β-hydroxylase), osilodrostat · mifepristone (GR antagonist) · ใช้ใน Cushing ${S.k}</li></ul>`});
+
+SEC.push({id:"calcium",k:"e",t:"Cinacalcet, sevelamer & cation exchange resins",mm:"Ca²⁺ · PO₄ · K⁺ drugs",drugs:"cinacalcet · sevelamer · sodium polystyrene sulfonate · patiromer",act:["ag","mod"],tools:MT,leg:["ag","mod"],draw:EM(["casr"]),
+notes:()=>`${tbl(["ยา","กลไก","ใช้","ADR"],[["Cinacalcet","↑ ความไวของ CaSR ต่อ Ca²⁺ → PTH ↓","secondary HPT (CKD), parathyroid carcinoma, primary HPT ผ่าตัดไม่ได้","<b>hypocalcemia</b>, คลื่นไส้"],["Sevelamer","polymer จับ phosphate ในลำไส้ (ไม่มี Ca/Al)","hyperphosphatemia ใน CKD","GI, ดูดซึม vitamin ลด · ลด LDL"],["Sodium polystyrene sulfonate, patiromer, sodium zirconium cyclosilicate","แลก K⁺ ในลำไส้","<b>hyperkalemia</b>","hypokalemia, GI (SPS: colonic necrosis)"]])}${S.k}${S.p}
+ <div class="pearl">รายละเอียด CKD-MBD และ hyperkalemia อยู่ใน Renal Pharmacology ${S.x}</div>`});
+
+SEC.push({id:"dmrx",k:"f",t:"Type 2 diabetes treatment",mm:"T2DM treatment",drugs:"",act:[],leg:[],
+draw:()=>flowD([["Lifestyle + metformin","first-line เกือบทุกคน (eGFR ≥30)","vn"],["มี ASCVD","GLP-1 agonist ที่ลด CV event · หรือ SGLT2i","gl"],["มี HF หรือ CKD","SGLT2 inhibitor (± GLP-1 agonist)","gl"],["ต้องลดน้ำหนัก","GLP-1 agonist / tirzepatide",""],["HbA1c ยังสูงมาก","basal insulin (glargine) → เพิ่ม prandial","ar"]]),
+notes:()=>`<ul><li>เป้า HbA1c ส่วนใหญ่ &lt;7% ${S.p}</li><li>ราคาถูก: sulfonylurea, pioglitazone (ระวัง hypoglycemia, HF) ${S.k}</li><li>เลือกยาตัวที่สองตามโรคร่วม (ASCVD, HF, CKD) มากกว่าตาม HbA1c อย่างเดียว ${S.x}</li></ul>`});
+
+const EXTRA=["dmrx"];

@@ -1,0 +1,33 @@
+{
+ "id": "pharm-gp",
+ "sys": "General Principles",
+ "title_tag": "PK/PD & Autonomic Drugs",
+ "eyebrow": "General Principles · Pharmacology",
+ "h1": "PK/PD & Autonomic Drugs",
+ "lede": "เริ่มจากแผนที่กลุ่มหัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 1–10)",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 1–10"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "pharm",
+  "folder": "pharm",
+  "subs": [
+   "Pharmacokinetics & Pharmacodynamics",
+   "Autonomic Drugs"
+  ],
+  "title": "PK/PD & Autonomic Drugs",
+  "src": "Katzung 16e Ch 1–10",
+  "desc": "หลักเภสัชวิทยา: enzyme kinetics, pharmacokinetics (F, Vd, CL, t½, dosing), metabolism, CYP450, dose–response และยา autonomic ทั้ง cholinergic และ adrenergic บนแผนที่ระบบประสาทอัตโนมัติ",
+  "ch": "Ch 3",
+  "sort": 3
+ }
+}

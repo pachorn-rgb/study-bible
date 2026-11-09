@@ -1,0 +1,34 @@
+{
+ "id": "pharm-psych",
+ "sys": "Psychiatry",
+ "title_tag": "Psychiatry Pharmacology",
+ "eyebrow": "Psychiatry · Pharmacology",
+ "h1": "Psychiatry Pharmacology",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 29, 30, 32) และ Pharmacotherapy",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 29, 30, 32"
+  ],
+  [
+   "pt",
+   "PT",
+   "Pharmacotherapy 5e · Ch 36–42"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "psych",
+  "folder": "psych",
+  "title": "Psychiatry Pharmacology",
+  "src": "Katzung 16e Ch 29, 30, 32 · Pharmacotherapy 5e Ch 36–42",
+  "desc": "แผนที่กลุ่มยาจิตเวช: stimulants, antipsychotics, lithium, buspirone, SSRI/SNRI, TCA, MAOI, atypical antidepressants, ยาเลิกบุหรี่/opioid/alcohol และการเลือกยาตามโรค",
+  "ch": "Ch 30",
+  "sort": 30
+ }
+}

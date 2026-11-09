@@ -1209,7 +1209,11 @@ function render(){
 }
 applyPrefs();
 let QB={topics:{},boss:{}};
-Promise.all([fetch("library.json").then(r=>r.json()),fetch("questions.json").then(r=>r.json()).catch(()=>({topics:{},boss:{}}))]).then(([d,q])=>{LIB=d;QB=q;if(d.alias){let ch=0;for(const[o,n]of Object.entries(d.alias)){if(S.T[o]){if(!S.T[n]||(S.T[o].l||0)>(S.T[n].l||0))S.T[n]=S.T[o];delete S.T[o];ch=1}}if(ch)persist()}const fz=applyFreezes();stack.push(location.hash||"#/");render();if(fz)setTimeout(()=>toast(t("freezeUsed",{n:fz})),600)})
+/* question bank is split per chapter: q/index.json lists the parts; merge them into one QB */
+function loadQB(){const E={topics:{},boss:{},cases:[],dx:{},dxl:[]};
+ return fetch("q/index.json").then(r=>r.json()).then(ix=>Promise.all(ix.parts.map(c=>fetch("q/"+c+".json").then(r=>r.json()).then(p=>[c,p]).catch(()=>null))).then(ps=>{
+  E.dxl=ix.dxl||[];ps.forEach(x=>{if(!x)return;const[c,p]=x;Object.assign(E.topics,p.topics||{});if(p.boss)E.boss[c]=p.boss;E.cases.push(...(p.cases||[]));if(p.dx&&p.dx.length)E.dx[c]=p.dx});return E})).catch(()=>E)}
+Promise.all([fetch("library.json").then(r=>r.json()),loadQB()]).then(([d,q])=>{LIB=d;QB=q;if(d.alias){let ch=0;for(const[o,n]of Object.entries(d.alias)){if(S.T[o]){if(!S.T[n]||(S.T[o].l||0)>(S.T[n].l||0))S.T[n]=S.T[o];delete S.T[o];ch=1}}if(ch)persist()}const fz=applyFreezes();stack.push(location.hash||"#/");render();if(fz)setTimeout(()=>toast(t("freezeUsed",{n:fz})),600)})
  .catch(()=>{view.innerHTML='<div class="empty">Could not load the library. Check your connection and reopen.</div>'});
 </script>
 </body>

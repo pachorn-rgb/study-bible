@@ -1,0 +1,37 @@
+{
+ "id": "pharm-micro",
+ "sys": "Antimicrobial",
+ "title_tag": "Antimicrobials",
+ "eyebrow": "Microbiology · Antimicrobials",
+ "h1": "Antimicrobials",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 43–53)",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 43–53"
+  ],
+  [
+   "pt",
+   "PT",
+   "Pharmacotherapy 5e"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": [
+   "Antimicrobials"
+  ],
+  "title": "Antimicrobials",
+  "src": "Katzung 16e Ch 43–53 · Pharmacotherapy 5e",
+  "desc": "แผนที่ยาต้านจุลชีพ: penicillin, cephalosporin, carbapenem, vancomycin, protein synthesis inhibitors, folate antagonists, FQ, metronidazole, ยา TB, prophylaxis, antifungals, antiparasitics, antimalarials, antivirals, HIV, hepatitis B/C",
+  "ch": "Ch 43",
+  "sort": 43
+ }
+}

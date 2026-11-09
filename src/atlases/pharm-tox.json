@@ -1,0 +1,32 @@
+{
+ "id": "pharm-tox",
+ "sys": "Toxicities & Miscellaneous",
+ "title_tag": "Drug Reactions & Miscellaneous",
+ "eyebrow": "General Principles · Pharmacology",
+ "h1": "Drug Reactions & Miscellaneous",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 4, 66) และความรู้ทั่วไป",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 4, 66"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "pharm",
+  "folder": "pharm",
+  "subs": [
+   "Toxicities & Miscellaneous"
+  ],
+  "title": "Drug Reactions & Miscellaneous",
+  "src": "Katzung 16e Ch 4, 66",
+  "desc": "อาการไม่พึงประสงค์ของยาแยกตามระบบ, CYP450 inducers/inhibitors, sulfa drugs, คำลงท้ายชื่อยา และส่วนเสริม teratogens กับ pharmacogenomics (HLA, TPMT, G6PD)",
+  "ch": "Ch 66",
+  "sort": 66
+ }
+}

@@ -1,0 +1,34 @@
+{
+ "id": "pharm-gi",
+ "sys": "Gastrointestinal",
+ "title_tag": "GI Pharmacology",
+ "eyebrow": "Gastrointestinal · Pharmacology",
+ "h1": "Gastrointestinal Pharmacology",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 62) และ Pharmacotherapy",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 62"
+  ],
+  [
+   "pt",
+   "PT",
+   "Pharmacotherapy 5e · Ch 17–22"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "gi",
+  "folder": "gi",
+  "title": "Gastrointestinal Pharmacology",
+  "src": "Katzung 16e Ch 62 · Pharmacotherapy 5e Ch 17–22",
+  "desc": "แผนที่กลุ่มยาทางเดินอาหาร: H₂ blocker, PPI, antacid, mucosal protectant, octreotide, ยา IBD, antidiarrheal, antiemetic, laxative, orlistat และการรักษา GERD/PUD/H. pylori, cirrhosis",
+  "ch": "Ch 62",
+  "sort": 62
+ }
+}

@@ -1,0 +1,78 @@
+/* ================= General principles: PK/PD & autonomic drugs ================= */
+Object.assign(ST,{dr:"comp",ord:"first"});
+function drCurve(){const X=v=>70+v*90,Y=v=>230-v*190;let b=`<rect class="p-panel" x="60" y="34" width="560" height="206" rx="10"/>`;
+ for(let i=0;i<=6;i++)b+=`<line x1="${X(i)}" y1="34" x2="${X(i)}" y2="240" style="stroke:var(--sb-line)"/>`+T(X(i),258,"10^"+(i-3),{c:"s m"});
+ const curve=(ec,em,c)=>{let d="";for(let i=0;i<=60;i++){const lx=i/10,x=Math.pow(10,lx-3),e=em*x/(x+Math.pow(10,ec-3));d+=(i?"L":"M")+X(lx).toFixed(1)+","+Y(e).toFixed(1)}return `<path d="${d}" fill="none" stroke-width="3" style="stroke:var(${c})"/>`};
+ b+=curve(2,1,"--sb-ink");
+ const m={comp:[3.2,1,"--d-bl","+ competitive antagonist: curve เลื่อนขวา · Emax เท่าเดิม"],non:[2,0.55,"--d-bl","+ noncompetitive antagonist: Emax ลดลง"],part:[2,0.5,"--d-ag","partial agonist: Emax ต่ำกว่า full agonist"],pot:[3,1,"--d-mod","ยา B: potency ต่ำกว่า แต่ efficacy เท่ากัน"]}[ST.dr];
+ b+=curve(m[0],m[1],m[2])+T(340,24,m[3],{c:"bh"})+T(340,282,"log [drug]",{c:"s"})+T(X(2)-8,Y(0.62),"full agonist",{a:"end",c:"s"});
+ return psvg(b,"0 0 680 292")}
+function pkCurve(){const X=t=>70+t*45,Y=c=>220-c*1.8;let b=`<rect class="p-panel" x="60" y="34" width="560" height="196" rx="10"/>`,d="";
+ for(let t=0;t<=12;t+=0.2){const c=ST.ord==="first"?100*Math.pow(0.5,t/2):Math.max(0,100-10*t);d+=(t?"L":"M")+X(t).toFixed(1)+","+Y(c).toFixed(1)}
+ b+=`<path d="${d}" fill="none" stroke-width="3" style="stroke:var(--sb-accent)"/>`;for(let t=0;t<=12;t+=2)b+=T(X(t),246,t+" h",{c:"s m"});
+ b+=T(340,24,ST.ord==="first"?"First-order: ลดเป็นสัดส่วนคงที่ (ตัวอย่าง t½ = 2 ชม.)":"Zero-order: ลดปริมาณคงที่ต่อชั่วโมง",{c:"bh"});
+ if(ST.ord==="first")[2,4,6].forEach((t,i)=>b+=`<circle cx="${X(t)}" cy="${Y(100*Math.pow(.5,t/2))}" r="4" style="fill:var(--sb-accent)"/>`+T(X(t)+8,Y(100*Math.pow(.5,t/2))-8,["50%","25%","12.5%"][i],{a:"start",c:"s"}));
+ return psvg(b,"0 0 680 256")}
+function ansMap(){let b="";const row=(x,y,lab,key)=>glow(x,y,key)+rec(x,y,"",true)+T(x+16,y+4,lab,{a:"start",c:"s"});
+ b+=panel(10,10,740,190,"PARASYMPATHETIC (ACh)");
+ b+=nb(80,70,110,30,"Preganglionic")+arr("M136,70 L190,70")+nbh(240,70,90,30,"Nₙ ganglion","","gang","soft")+arr("M286,70 L340,70")+nb(400,70,110,30,"Postganglionic")+arr("M456,70 L520,70")+nbh(600,70,140,30,"M₁ · M₂ · M₃","effector",["mag","mant"],"cellb");
+ b+=nbh(400,128,110,26,"AChE","","ache","soft");
+ b+=pill(600,118,"Bethanechol · Pilocarpine","ag","mag")+pill(600,144,"Atropine · Oxybutynin","bl","mant")+pill(400,166,"Neostigmine · Donepezil","inh","ache");
+ b+=panel(10,210,740,230,"SYMPATHETIC (NE)");
+ b+=nb(80,262,110,30,"Postganglionic")+nbh(300,262,120,30,"NE vesicle","","ind","soft")+nbh(300,310,120,26,"NET reuptake","","net","soft")+nbh(300,354,120,26,"α₂ (presynaptic)","","a2","soft");
+ b+=pill(110,310,"Cocaine · TCAs","inh","net")+pill(110,354,"Clonidine · Methyldopa","ag","a2")+pill(110,400,"Amphetamine · Ephedrine","mod","ind");
+ b+=row(430,256,"α₁ (vessel)","a1")+row(430,294,"β₁ (heart)","b1")+row(430,332,"β₂ (bronchi)","b2")+row(430,370,"β₃ (bladder)","b3")+row(430,408,"D₁ (renal vessel)","d1");
+ b+=pill(650,244,"Phenylephrine","ag","a1ag")+pill(650,268,"Prazosin · Tamsulosin","bl","a1")+pill(650,294,"Dobutamine · Metoprolol","mod","b1")+pill(650,332,"Albuterol","ag","b2")+pill(650,370,"Mirabegron","ag","b3")+pill(650,408,"Fenoldopam","ag","d1");
+ if(on("a1ag"))b+=glow(430,256,"a1ag");
+ return psvg(b,"0 0 760 450")}
+const AM=MAPOF(ansMap),MT=[["all","Show all drugs"]];
+
+Object.assign(GN,{a:"Pharmacokinetics & pharmacodynamics",b:"Autonomic drugs"});
+
+SEC.push({id:"enzyme",k:"a",t:"Enzyme kinetics",mm:"Enzyme kinetics",drugs:"",act:[],leg:[],
+draw:()=>cards([["Michaelis-Menten","Km = [S] ที่ได้ Vmax/2 · Km ต่ำ = affinity สูง",""],["Lineweaver-Burk","x-intercept = −1/Km · y-intercept = 1/Vmax",""],["Competitive (reversible)","Km ↑ · Vmax เท่าเดิม · เอาชนะได้ด้วย [S] สูง","vn"],["Competitive (irreversible)","Vmax ↓ · Km เท่าเดิม","gl"],["Noncompetitive","Vmax ↓ · Km เท่าเดิม · ไม่จับ active site","ar"]]),
+notes:()=>`<ul><li>Competitive inhibitor หน้าตาคล้าย substrate จับที่ active site → ลด potency ${S.k}</li><li>Noncompetitive inhibitor จับที่อื่น → ลด efficacy ${S.k}</li></ul>`});
+
+SEC.push({id:"pk",k:"a",t:"Pharmacokinetics",mm:"PK: F · Vd · CL · t½",drugs:"",act:[],leg:[],tools:[["ord",[["first","First-order"],["zero","Zero-order"]]]],draw:pkCurve,
+notes:()=>`${tbl(["Parameter","สูตร","ความหมาย"],[["Bioavailability (F)","AUC oral ÷ AUC IV","สัดส่วนที่เข้าสู่ systemic circulation · first-pass ทำให้ลด"],["Volume of distribution","Vd = dose ÷ C₀","ต่ำ: อยู่ในเลือด (โมเลกุลใหญ่ จับ protein) · สูง: เข้าเนื้อเยื่อ (lipophilic)"],["Clearance","CL = 0.693 × Vd ÷ t½","ลดเมื่อตับ/ไตเสื่อม"],["Half-life","t½ = 0.693 × Vd ÷ CL","4–5 t½ ถึง steady state"],["Loading dose","Cp × Vd ÷ F","ไม่ต้องลดในไตวาย"],["Maintenance dose","Cp × CL × τ ÷ F","ลดเมื่อ CL ลด"]])}${S.k}
+ <div class="pearl">เวลาถึง steady state ขึ้นกับ t½ อย่างเดียว ไม่ขึ้นกับขนาดยาหรือความถี่ ${S.k}</div>`});
+
+SEC.push({id:"metab",k:"a",t:"Drug metabolism & elimination",mm:"Metabolism · elimination · urine pH",drugs:"",act:[],leg:[],tools:[["ord",[["first","First-order"],["zero","Zero-order"]]]],draw:pkCurve,
+notes:()=>`<h3>Phase I · Phase II</h3><ul><li><b>Phase I</b> (CYP450: oxidation, reduction, hydrolysis) → metabolite อาจยัง active · ลดลงในผู้สูงอายุ ${S.k}</li><li><b>Phase II</b> (glucuronidation, acetylation, sulfation) → polar ขับทางไต · slow acetylator: ADR จาก hydralazine, procainamide, isoniazid มากขึ้น ${S.k}</li></ul>
+ <h3>Elimination</h3><ul><li><b>Zero-order</b>: ขับปริมาณคงที่ t½ ไม่คงที่ · phenytoin, ethanol, aspirin ขนาดสูง ${S.k}</li><li><b>First-order</b>: ขับเป็นสัดส่วนคงที่ t½ คงที่ · ยาส่วนใหญ่ ${S.k}</li></ul>
+ <h3>Urine pH</h3><ul><li>ยาในรูป ionized ถูกขังในปัสสาวะ · weak acid ขับได้มากขึ้นเมื่อปัสสาวะด่าง (NaHCO₃) · weak base ขับมากขึ้นเมื่อปัสสาวะเป็นกรด ${S.k}</li></ul>
+ <h3>CYP450</h3><ul><li><b>Inducers</b> (ลดระดับยาอื่น): rifampin, carbamazepine, phenytoin, phenobarbital, St. John's wort, chronic alcohol ${S.k}</li><li><b>Inhibitors</b> (เพิ่มระดับยาอื่น): azoles, macrolides (ยกเว้น azithromycin), ritonavir, amiodarone, cimetidine, grapefruit juice ${S.k}</li><li>Pharmacogenomics: CYP2D6 (codeine, tamoxifen), CYP2C19 (clopidogrel), CYP2C9/VKORC1 (warfarin), TPMT (6-MP) ${S.k}</li></ul>`});
+
+SEC.push({id:"pd",k:"a",t:"Efficacy, potency & receptor binding",mm:"Dose–response · TI",drugs:"",act:[],leg:[],tools:[["dr",[["comp","Competitive"],["non","Noncompetitive"],["part","Partial agonist"],["pot","Potency"]]]],draw:drCurve,
+notes:()=>`${tbl(["ชนิด","EC₅₀","Emax","ตัวอย่าง"],[["Competitive antagonist","↑ (เลื่อนขวา)","เท่าเดิม","atropine–ACh, naloxone–morphine"],["Noncompetitive antagonist","เท่าเดิม","↓","phenoxybenzamine (irreversible α)"],["Partial agonist","—","&lt; full agonist","buprenorphine, pindolol, aripiprazole"],["Inverse agonist","—","ตรงข้าม agonist","H₁ blockers บางตัว"]])}${S.k}
+ <h3>Efficacy vs potency</h3><ul><li><b>Efficacy</b> = ผลสูงสุด (Emax) · <b>potency</b> = ขนาดที่ให้ผลครึ่งหนึ่ง (EC₅₀ ต่ำ = potency สูง) ${S.k}</li></ul>
+ <h3>Therapeutic index</h3><ul><li>TI = TD₅₀ ÷ ED₅₀ · ยา TI แคบต้องติดตามระดับยา: warfarin, theophylline, digoxin, lithium, phenytoin, aminoglycosides, vancomycin ${S.k}</li></ul>
+ <h3>Drug effect modifications</h3><ul><li>Additive · synergistic · potentiation · permissive (cortisol กับ catecholamine) · tachyphylaxis (nitrates, ephedrine) ${S.k}</li></ul>`});
+
+SEC.push({id:"ansmap",k:"b",t:"Autonomic receptors & drug map",mm:"Autonomic drug map",drugs:"",act:[],tools:MT,leg:["ag","bl","inh","mod"],draw:AM(["mag","mant","ache","gang","net","a2","ind","a1","a1ag","b1","b2","b3","d1"]),
+notes:()=>`<h3>G-protein–linked second messengers</h3>${tbl(["Receptor","G protein","ผลหลัก"],[["α₁","Gq (IP₃, Ca²⁺ ↑)","หลอดเลือดหด, mydriasis, sphincter หด"],["α₂","Gi (cAMP ↓)","NE, insulin ↓ · aqueous humor ↓"],["β₁","Gs (cAMP ↑)","HR, contractility, renin ↑"],["β₂","Gs","bronchodilation, vasodilation, uterus คลาย"],["β₃","Gs","detrusor คลาย, lipolysis"],["M₁ · M₃","Gq","ต่อมหลั่ง, smooth muscle หด, miosis"],["M₂","Gi","HR ↓"],["D₁ · D₂","Gs · Gi","renal vasodilation · CNS"]])}${S.k}
+ <h3>Micturition</h3><ul><li>M₃ → detrusor หด (bethanechol) · β₃ และ antimuscarinic → คลาย (mirabegron, oxybutynin) · α₁ → sphincter หด (tamsulosin บล็อก) ${S.k}</li></ul>`});
+
+SEC.push({id:"cholino",k:"b",t:"Cholinomimetic agents",mm:"Cholinomimetics",drugs:"bethanechol · carbachol · methacholine · pilocarpine · neostigmine · pyridostigmine · donepezil",act:["ag","inh"],tools:MT,leg:["ag","inh"],draw:AM(["mag","ache"]),
+notes:()=>`${tbl(["ยา","ชนิด","ใช้"],[["Bethanechol","direct M agonist","urinary retention หลังผ่าตัด, neurogenic ileus"],["Carbachol, pilocarpine","direct","glaucoma · pilocarpine: ปากแห้งใน Sjögren"],["Methacholine","direct","bronchial challenge test"],["Neostigmine","AChE inhibitor (ไม่เข้า CNS)","reverse NM block, postop ileus, myasthenia"],["Pyridostigmine","AChE inhibitor","myasthenia gravis"],["Physostigmine","AChE inhibitor (เข้า CNS)","anticholinergic toxicity"],["Donepezil, rivastigmine, galantamine","AChE inhibitor ส่วนกลาง","Alzheimer"]])}${S.k}
+ <ul><li>ADR: bradycardia, bronchospasm, ท้องเสีย, เหงื่อ น้ำลายมาก · ระวังใน asthma, COPD, PUD ${S.k}</li></ul>`});
+
+SEC.push({id:"antimusc",k:"b",t:"Muscarinic antagonists",mm:"Muscarinic antagonists",drugs:"atropine · scopolamine · benztropine · glycopyrrolate · oxybutynin · ipratropium · tropicamide",act:["bl"],tools:MT,leg:["bl"],draw:AM(["mant"]),
+notes:()=>`${tbl(["ยา","อวัยวะ","ใช้"],[["Atropine, homatropine, tropicamide","ตา","mydriasis, cycloplegia"],["Atropine","หัวใจ","symptomatic bradycardia"],["Benztropine, trihexyphenidyl","CNS","Parkinson, acute dystonia"],["Glycopyrrolate","ต่อมหลั่ง (ไม่เข้า CNS)","ลด secretion ก่อนผ่าตัด"],["Hyoscyamine, dicyclomine","ลำไส้","IBS spasm"],["Ipratropium, tiotropium","ปอด","COPD, asthma"],["Oxybutynin, solifenacin, tolterodine","กระเพาะปัสสาวะ","overactive bladder"],["Scopolamine","vestibular","motion sickness"]])}${S.k}
+ <ul><li>ADR: ปากแห้ง ผิวแห้ง ไข้ หน้าแดง ตามัว tachycardia ปัสสาวะคั่ง ท้องผูก สับสน ${S.k}</li><li>ระวัง: angle-closure glaucoma, BPH, ผู้สูงอายุ ${S.k}</li></ul>`});
+
+SEC.push({id:"symp",k:"b",t:"Sympathomimetics",mm:"Sympathomimetics",drugs:"epinephrine · norepinephrine · dopamine · dobutamine · isoproterenol · phenylephrine · midodrine · albuterol · amphetamine · ephedrine",act:["ag","mod"],tools:MT,leg:["ag","mod"],draw:AM(["a1ag","b1","b2","b3","d1","ind","net"]),
+notes:()=>`${tbl(["ยา","Receptor","ใช้"],[["Epinephrine","β ขนาดต่ำ · α ขนาดสูง","anaphylaxis, cardiac arrest, ร่วม local anesthetic"],["Norepinephrine","α₁ &gt; α₂ &gt; β₁","septic shock"],["Dopamine","D₁ → β₁ → α₁ ตามขนาด","shock, bradycardia"],["Dobutamine","β₁ &gt; β₂","cardiogenic shock, stress echo"],["Isoproterenol","β₁ = β₂","bradyarrhythmia (ชั่วคราว)"],["Phenylephrine","α₁","hypotension, decongestant, mydriasis"],["Midodrine","α₁","orthostatic hypotension"],["Albuterol, salmeterol, terbutaline","β₂","asthma, COPD"],["Mirabegron","β₃","overactive bladder"],["Fenoldopam","D₁","hypertensive emergency"],["Amphetamine (indirect)","ปล่อย NE/DA","ADHD, narcolepsy"],["Ephedrine","indirect + direct","hypotension ระหว่าง anesthesia"]])}${S.k}`});
+
+SEC.push({id:"sympatholytic",k:"b",t:"Sympatholytics: α₂ agonists & α-blockers",mm:"α₂ agonists · α-blockers",drugs:"clonidine · guanfacine · methyldopa · phenoxybenzamine · phentolamine · prazosin · tamsulosin",act:["ag","bl"],tools:MT,leg:["ag","bl"],draw:AM(["a2","a1"]),
+notes:()=>`<h3>α₂ agonists</h3><ul><li><b>Clonidine, guanfacine</b>: HTN, ADHD, Tourette · ADR: ง่วง ปากแห้ง <b>rebound HTN</b> เมื่อหยุดทันที ${S.k}</li><li><b>Methyldopa</b>: HTN ในครรภ์ · direct Coombs⁺ hemolysis, drug-induced lupus ${S.k}</li></ul>
+ <h3>α-blockers</h3>${tbl(["ยา","ชนิด","ใช้","ADR"],[["Phenoxybenzamine","nonselective irreversible","pheochromocytoma ก่อนผ่าตัด","orthostatic, reflex tachycardia"],["Phentolamine","nonselective reversible","extravasation ของ NE, hypertensive crisis","เหมือนกัน"],["Prazosin, terazosin, doxazosin, tamsulosin","α₁ selective","BPH, HTN · prazosin: PTSD nightmares","first-dose orthostatic hypotension"]])}${S.k}`});
+
+SEC.push({id:"bblock",k:"b",t:"β-blockers",mm:"β-blockers",drugs:"propranolol · metoprolol · atenolol · esmolol · carvedilol · labetalol · nadolol · timolol",act:["bl"],tools:MT,leg:["bl"],draw:AM(["b1","b2"]),
+notes:()=>`<h3>ใช้</h3><ul><li>Angina, MI, HFrEF (carvedilol, metoprolol succinate, bisoprolol), HTN, SVT/AF rate control, HCM, hyperthyroidism, varices (nadolol, propranolol), migraine prophylaxis, essential tremor, glaucoma (timolol) ${S.k}</li></ul>
+ ${tbl(["กลุ่ม","ยา"],[["β₁ selective","acebutolol, atenolol, betaxolol, bisoprolol, esmolol, metoprolol"],["Nonselective","nadolol, pindolol, propranolol, timolol"],["α + β","carvedilol, labetalol"],["Partial agonist","pindolol, acebutolol"],["+ NO","nebivolol"]])}${S.k}
+ <ul><li>ADR: bradycardia, AV block, HF decompensation, bronchospasm (nonselective), ปิดบังอาการ hypoglycemia, fatigue, ED ${S.k}</li></ul>`});
+
+SEC.push({id:"pdei",k:"b",t:"Phosphodiesterase inhibitors",mm:"PDE inhibitors",drugs:"theophylline · sildenafil · tadalafil · roflumilast · milrinone · cilostazol · dipyridamole",act:["inh"],leg:[],
+draw:()=>cards([["Nonspecific: theophylline","bronchodilation · narrow therapeutic index","vn"],["PDE-5: sildenafil, tadalafil","ED, pulmonary HTN, BPH · ห้ามร่วม nitrate","gl"],["PDE-4: roflumilast","ลด COPD exacerbation","gl"],["PDE-3: milrinone","inotrope + vasodilator ใน acute HF","ar"],["Cilostazol · dipyridamole","claudication · stroke prevention ร่วม aspirin",""]]),
+notes:()=>`<ul><li>ยับยั้ง PDE → cAMP/cGMP ↑ → ผลขึ้นกับเนื้อเยื่อ ${S.k}</li><li>Cilostazol ห้ามใน HF ${S.k}</li></ul>`});

@@ -1,0 +1,34 @@
+{
+ "id": "pharm-heme",
+ "sys": "Hematology & Oncology",
+ "title_tag": "Heme & Onc Pharmacology",
+ "eyebrow": "Hematology & Oncology · Pharmacology",
+ "h1": "Hematology & Oncology Pharmacology",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 33, 34, 54) และ Pharmacotherapy",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 33, 34, 54"
+  ],
+  [
+   "pt",
+   "PT",
+   "Pharmacotherapy 5e · Ch 10, 66–68, 88"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "heme",
+  "folder": "heme",
+  "title": "Hematology & Oncology Pharmacology",
+  "src": "Katzung 16e Ch 33, 34, 54 · Pharmacotherapy 5e Ch 10, 66–68, 88",
+  "desc": "แผนที่กลุ่มยาเลือดและมะเร็ง: heparin, warfarin, DOAC, reversal, antiplatelet, thrombolytic, ยาแก้ภาวะซีด/เม็ดเลือดต่ำ, chemotherapy ทุกกลุ่มตาม cell cycle, targeted therapy และพิษของยาเคมีบำบัด",
+  "ch": "Ch 34",
+  "sort": 34
+ }
+}

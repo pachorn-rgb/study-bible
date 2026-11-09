@@ -1,0 +1,32 @@
+{
+ "id": "pharm-immuno",
+ "sys": "Immunology",
+ "title_tag": "Immunosuppressants",
+ "eyebrow": "Immunology · Immunosuppressants",
+ "h1": "Immunosuppressants",
+ "lede": "เริ่มจากแผนที่กลุ่มยาด้านล่าง แล้วแตะเข้าไปในแต่ละกลุ่ม · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Katzung (บท 55)",
+ "sources": [
+  [
+   "katzung",
+   "K",
+   "Katzung 16e · Ch 55"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "immuno",
+  "folder": "immuno",
+  "subs": [
+   "Immunosuppressants"
+  ],
+  "title": "Immunosuppressants",
+  "src": "Katzung 16e Ch 55",
+  "desc": "แผนที่ยากดภูมิคุ้มกันบนขั้นตอน T-cell activation: cyclosporine, tacrolimus, sirolimus, basiliximab, azathioprine, mycophenolate, glucocorticoid, recombinant cytokines และ therapeutic antibodies",
+  "ch": "Ch 55",
+  "sort": 55
+ }
+}
