@@ -63,6 +63,8 @@ def build_page(aid):
     meta = json.loads((SRC / "atlases" / f"{aid}.json").read_text())
     head = re.sub(r"<title>.*?</title>", f"<title>{meta['title_tag']}</title>", (ENG / "head.html").read_text())
     head += '<link rel="stylesheet" href="../atlas/atlas.css">\n'
+    for c in meta.get("css", []):  # extra stylesheet from src/engine, copied to docs/atlas
+        (DOCS / "atlas" / c).write_text((ENG / c).read_text()); head += f'<link rel="stylesheet" href="../atlas/{c}">\n'
     body = (ENG / "body.html").read_text()
     hero_old = body[body.find('<header class="sb-hero">'):body.find("</header>") + 9]
     srcs = "".join(f'<span class="sb-src"><i class="{c}">{l}</i>{t}</span>' for c, l, t in meta["sources"])

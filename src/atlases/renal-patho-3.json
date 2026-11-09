@@ -1,0 +1,47 @@
+{
+ "id": "renal-patho-3",
+ "kind": "patho",
+ "sys": "Renal",
+ "draft": true,
+ "title_tag": "Kidney Injury & Failure",
+ "eyebrow": "Renal · Pathology",
+ "h1": "Kidney Injury & Failure",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins และ Harrison",
+ "sources": [
+  [
+   "robbins",
+   "R",
+   "Robbins & Cotran 10e"
+  ],
+  [
+   "harrison",
+   "H",
+   "Harrison 22e"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "renal",
+  "folder": "renal",
+  "subs": [
+   "Pathology"
+  ],
+  "title": "Kidney Injury & Failure",
+  "src": "Robbins Ch 20 · Harrison Ch 321–325, 328, 329",
+  "desc": "AKI (prerenal, intrinsic, postrenal, FENa), AIN, ATN, papillary necrosis, CKD และผลแทรกซ้อน, renal osteodystrophy, renovascular disease · ส่วนเสริม dialysis และ transplant",
+  "ch": "Robbins Ch 20 · Harrison Ch 321–325, 328, 329",
+  "sort": 22,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": [
+   "pathology"
+  ]
+ },
+ "css": [
+  "renal-legacy.css"
+ ]
+}

@@ -20,6 +20,8 @@ def preview(aid, out_dir):
     s = re.sub(r'<link[^>]*href="\.\./atlas/atlas\.css"[^>]*>', lambda m: css("atlas/atlas.css"), s)
     for f in ("app.js", "atlas/core.js", "atlas/render.js"):
         s = re.sub(r'<script[^>]*src="\.\./' + re.escape(f) + r'"[^>]*></script>', lambda m, f=f: js(f), s)
+    for c in meta.get("css", []):
+        s = re.sub(r'<link[^>]*href="\.\./atlas/' + re.escape(c) + r'"[^>]*>', lambda m, c=c: css("atlas/" + c), s)
     s = re.sub(r'<link[^>]*(manifest|icon-180)[^>]*>', "", s)
     out = pathlib.Path(out_dir) / f"{meta['h1'].replace(' ', '-').replace('&', 'and').replace('–', '-')}.html"
     out.write_text(s)

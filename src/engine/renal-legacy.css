@@ -1,0 +1,85 @@
+/* Styles used by the renal pathology section libraries (_renal-robbins*, _renal-harrison).
+   Loaded only by atlases whose meta lists it in "css". */
+:root{--em-bg:#2b2b2b;--em-lum:#d9d9d4;--em-gbm:#5a5a5a;--em-cell:#8a8a86;--em-dep:#101010;--em-us:#e6e6e1;
+ --if-bg:#040805;--if-tuft:#0c1a0f;--if-g:#4ADE80;
+ --lm-bg:#F7D9E3;--lm-pink:#EBA6BE;--lm-deep:#C9638A;--lm-nu:#4B2A7B;--lm-us:#FBEFF3;--lm-hy:#F2C4D4;
+ --pa-box:color-mix(in srgb,var(--sb-surface2) 80%,transparent);--pa-ar:color-mix(in srgb,#DC2626 14%,var(--sb-surface));--pa-vn:color-mix(in srgb,#2563EB 14%,var(--sb-surface));--pa-gl:color-mix(in srgb,#D97706 16%,var(--sb-surface));
+ --pa-kid:#C98B7E;--pa-kid2:#E9C3B8;--pa-cyst:#FFF4C9;--pa-uro:#F1D3C6}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--pa-kid:#8A5348;--pa-kid2:#5A3830;--pa-cyst:#4A4428;--pa-uro:#4D3730}}
+:root[data-theme="dark"],:root[data-theme="oled"]{--pa-kid:#8A5348;--pa-kid2:#5A3830;--pa-cyst:#4A4428;--pa-uro:#4D3730}
+.box{fill:var(--pa-box);stroke:var(--sb-line);stroke-width:1.2}
+.box.ar{fill:var(--pa-ar)}
+.box.vn{fill:var(--pa-vn)}
+.box.gl{fill:var(--pa-gl)}
+.em-bg{fill:var(--em-cell)}
+.em-lum{fill:var(--em-lum)}
+.em-rbc{fill:#6d6d6a}
+.em-pmn{fill:#9b9b96;stroke:#555}
+.em-n{fill:#3a3a3a}
+.em-mes{fill:#a3a39e}
+.em-mc{fill:#7b7b77}
+.em-nod{fill:#bdbdb6;stroke:#777}
+.em-dep{fill:var(--em-dep)}
+.em-fib{stroke:#222;stroke-width:1.4}
+.em-endo{fill:#8f8f8a}
+.em-mesx{fill:#7b7b77}
+.em-gbm{fill:var(--em-gbm)}
+.em-gbm-l{fill:none;stroke:var(--em-gbm);stroke-width:3}
+.em-dense{fill:#0a0a0a}
+.em-lin{fill:#C2410C;opacity:.9}
+.em-pod{fill:#b1b1ac;stroke:#6b6b67}
+.em-us{fill:var(--em-us)}
+.dia svg .em-bg~.t,.dia svg .if-bg~.t,.dia svg .lm-bg:not(.lm-p)~.t{fill:#111;stroke:rgba(255,255,255,.85)}
+.dia svg .if-bg~.t{fill:#d7ffe0;stroke:rgba(0,0,0,.9)}
+.t.bad{fill:#B91C1C}
+.dia svg .if-bg~.t.bad{fill:#ff9a9a}
+.if-bg{fill:var(--if-bg)}
+.if-tuft{fill:var(--if-tuft);stroke:#183a20;stroke-width:2}
+.if-lin{fill:none;stroke:var(--if-g);stroke-width:4.5;filter:drop-shadow(0 0 1.5px var(--if-g))}
+.if-dot{fill:var(--if-g);filter:drop-shadow(0 0 1px var(--if-g))}
+.if-br{stroke:var(--if-g);stroke-width:7;opacity:.55;stroke-linecap:round}
+.t.if-t{fill:#d7ffe0;stroke:#000;font-weight:750}
+.lm-bg{fill:var(--lm-bg)}
+.lm-us{fill:var(--lm-us)}
+.lm-cap{fill:none;stroke:var(--lm-deep);stroke-width:4}
+.lm-cres{fill:#E7A9C1;stroke:var(--lm-deep);stroke-width:1.5}
+.lm-tuft{fill:var(--lm-pink)}
+.lm-loop{fill:var(--lm-us);stroke:var(--lm-deep);stroke-width:2}
+.lm-loop.thick{stroke-width:5}
+.lm-loop.wire{stroke:#9D174D;stroke-width:7}
+.lm-nu{fill:var(--lm-nu)}
+.lm-pmn{fill:#2E1065;stroke:#fff;stroke-width:1}
+.lm-scl{fill:var(--lm-hy);stroke:var(--lm-deep);stroke-width:1.5;opacity:.95}
+.lm-nod{fill:#F4C6D8;stroke:var(--lm-deep);stroke-width:2}
+.lm-col{fill:#D88AA8;opacity:.75}
+.t.lm-t{fill:#4a1030;stroke:rgba(255,255,255,.9)}
+.gsum{fill:var(--sb-surface2)}
+.kid{fill:var(--pa-kid2);stroke:var(--pa-kid);stroke-width:4}
+.pelvis{fill:var(--pa-cyst);stroke:var(--pa-kid);stroke-width:2}
+.ureter{fill:none;stroke:var(--pa-kid);stroke-width:12;stroke-linecap:round}
+.cyst{fill:var(--pa-cyst);stroke:var(--pa-kid);stroke-width:1.5}
+.abs{fill:#FDE68A;stroke:#B45309;stroke-width:2}
+.scar{fill:var(--pa-kid);opacity:.8}
+.dsite{fill:none;stroke:var(--sb-bad);stroke-width:3;stroke-dasharray:4 3}
+.tube.big{fill:none;stroke:var(--pa-kid);stroke-width:26;stroke-linecap:round;stroke-linejoin:round;opacity:.55}
+.ves-wall{fill:var(--lm-pink);stroke:var(--lm-deep);stroke-width:3}
+.hyal{fill:#F9D5E2;stroke:#E6A0BA}
+.lum{fill:var(--lm-us);stroke:var(--lm-deep)}
+.onion{fill:none;stroke:var(--lm-deep);stroke-width:2.2}
+.fibrin{fill:none;stroke:#BE185D;stroke-width:8;stroke-linecap:round}
+.cc{fill:#FFFDF7;stroke:#D9A7BA}
+.chr{fill:#F6E7EE;stroke:#B0506F;stroke-width:1.8}
+.halo{fill:none;stroke:#fff;stroke-width:3}
+.pap{fill:none;stroke:var(--lm-pink);stroke-width:18;stroke-linecap:round}
+.cdg{fill:var(--lm-us);stroke:var(--lm-deep);stroke-width:5}
+.blast{fill:#3B1C6E}
+.tub{fill:var(--lm-pink);stroke:var(--lm-deep);stroke-width:2}
+.fibr{fill:none;stroke:#D58BA8;stroke-width:2}
+.uro{fill:var(--pa-uro);stroke:var(--pa-kid);stroke-width:1.2}
+.lp{fill:#F3D9E0}
+.mp{fill:#D98C9C}
+.tum{fill:#7C3AED;opacity:.8}
+.notes td,.notes th{border-bottom:1px solid var(--sb-line);padding:.3rem .35rem;text-align:left;vertical-align:top}
+.notes th{color:var(--sb-muted);font-weight:700;font-size:.75rem}
+.dia svg .em-bg~.t,.dia svg .lm-bg:not(.lm-p)~.t,.dia svg .if-bg~.t{font-size:13.5px;font-weight:650;stroke-width:3.6px}
+.dia svg .gsum~.t{font-size:12.5px}

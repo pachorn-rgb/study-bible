@@ -1,0 +1,47 @@
+{
+ "id": "renal-patho-1",
+ "kind": "patho",
+ "sys": "Renal",
+ "draft": true,
+ "title_tag": "Glomerular Disease",
+ "eyebrow": "Renal · Pathology",
+ "h1": "Glomerular Disease",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins และ Harrison",
+ "sources": [
+  [
+   "robbins",
+   "R",
+   "Robbins & Cotran 10e"
+  ],
+  [
+   "harrison",
+   "H",
+   "Harrison 22e"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "renal",
+  "folder": "renal",
+  "subs": [
+   "Pathology"
+  ],
+  "title": "Glomerular Disease",
+  "src": "Robbins Ch 20 · Harrison Ch 319, 326",
+  "desc": "casts และคำเรียกรอยโรค, nephritic (PSGN, RPGN, IgA, Alport, MPGN), nephrotic (MCD, FSGS, membranous, diabetic), lupus และ amyloid · ส่วนเสริม การรักษาและ hematuria",
+  "ch": "Robbins Ch 20 · Harrison Ch 319, 326",
+  "sort": 20,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": [
+   "pathology"
+  ]
+ },
+ "css": [
+  "renal-legacy.css"
+ ]
+}

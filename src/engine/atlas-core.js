@@ -86,3 +86,7 @@ const onA=k=>Array.isArray(k)?k.some(on):on(k);
 const nbh=(x,y,w,h,t,s,key,cls="")=>nb(x,y,w,h,t,s,cls+(onA(key)?" hot":""))+(onA(key)?`<rect class="glow" x="${x-w/2-6}" y="${y-h/2-6}" width="${w+12}" height="${h+12}" rx="13"/>`:"");
 const ln=(x1,y1,x2,y2)=>arr(`M${x1},${y1} L${x2},${y2}`);
 const MAPOF=(fn)=>keys=>()=>{HL=keys;return fn()};
+
+/* Keep only the listed sections, in this order, under new group keys.
+   G = {sectionId: groupKey}, M = optional {sectionId: mind-map label}. Used by atlases assembled from shared section libraries. */
+function regroup(G,M){const m=new Map(SEC.map(s=>[s.id,s]));SEC.length=0;Object.keys(G).forEach(id=>{const s=m.get(id);if(!s)throw Error("regroup: no section "+id);s.k=G[id];if(M&&M[id])s.mm=M[id];SEC.push(s)})}

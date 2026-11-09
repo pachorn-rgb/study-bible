@@ -1,0 +1,47 @@
+{
+ "id": "renal-patho-2",
+ "kind": "patho",
+ "sys": "Renal",
+ "draft": true,
+ "title_tag": "Urinary Tract: Stones, Infection & Tumors",
+ "eyebrow": "Renal · Pathology",
+ "h1": "Urinary Tract: Stones, Infection & Tumors",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins และ Harrison",
+ "sources": [
+  [
+   "robbins",
+   "R",
+   "Robbins & Cotran 10e"
+  ],
+  [
+   "harrison",
+   "H",
+   "Harrison 22e"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "renal",
+  "folder": "renal",
+  "subs": [
+   "Pathology"
+  ],
+  "title": "Urinary Tract: Stones, Infection & Tumors",
+  "src": "Robbins Ch 20–21 · Harrison Ch 327, 330, 331",
+  "desc": "นิ่ว, hydronephrosis, incontinence, cystitis และ pyelonephritis, ADPKD/ARPKD, RCC, oncocytoma, Wilms, urothelial carcinoma · ส่วนเสริม ความผิดปกติแต่กำเนิดและท่อปัสสาวะ",
+  "ch": "Robbins Ch 20–21 · Harrison Ch 327, 330, 331",
+  "sort": 21,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": [
+   "pathology"
+  ]
+ },
+ "css": [
+  "renal-legacy.css"
+ ]
+}
