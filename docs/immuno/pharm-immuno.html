@@ -28,7 +28,7 @@
 </div>
 <div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
-<script>const PHARM={"id": "pharm-immuno", "sys": "Immunology"};</script>
+<script>const ATLAS={"id": "pharm-immuno", "kind": "pharm", "sys": "Immunology", "root": "Pharmacology", "mmh": "drug classes", "mapT": "Drug class map", "leg": true, "drugs": true};</script>
 <script src="../atlas/core.js"></script>
 <script>
 /* ================= Immunosuppressants & immunotherapy ================= */
@@ -76,7 +76,7 @@ SEC.push({id:"abs",k:"c",t:"Therapeutic antibodies",mm:"Therapeutic antibodies",
 notes:()=>`<h3>Autoimmune & other uses</h3>${tbl(["ยา","Target","ใช้","ระวัง"],[["Adalimumab, infliximab","TNF-α","IBD, RA, psoriasis, AS","TB reactivation"],["Eculizumab, ravulizumab","complement C5","PNH, aHUS, myasthenia gravis","<b>Neisseria</b> infection → ฉีด meningococcal vaccine"],["Natalizumab","α4-integrin","MS, Crohn","<b>PML</b> (JC virus)"],["Ustekinumab","IL-12/IL-23 (p40)","psoriasis, IBD",""],["Ixekizumab, secukinumab","IL-17A","psoriasis, PsA, AS",""],["Denosumab","RANKL","osteoporosis, bone mets",""],["Omalizumab","IgE","allergic asthma, urticaria",""],["Palivizumab","RSV F protein","RSV prophylaxis ในทารกเสี่ยงสูง",""],["Emicizumab","bridges IXa–X","hemophilia A",""],["Idarucizumab","dabigatran","reversal",""]])}${S.k}
  <div class="pearl">ชื่อยา: -ximab chimeric · -zumab humanized · -umab human · -cept receptor fusion ${S.x}</div>`});
 
-pharmFinish();
+atlasFinish();
 </script>
 <script src="../atlas/render.js"></script>
 </body>

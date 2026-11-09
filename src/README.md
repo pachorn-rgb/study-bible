@@ -21,6 +21,9 @@ node src/test/check.js                 # data + page smoke test; must print "all
 ```
 `"draft": true` in an atlas json keeps it out of the app: build.py writes it as `<id>.draft.html` (git-ignored) for local preview only.
 
+## Atlas meta (`atlases/<id>.json`)
+`"kind"` is required: `pharm` · `patho` · `physio` · `anat` · `histo` · `embryo`. It sets the overview name, the map title and whether the drug legend and drug count appear (see `KINDS` in `build/build.py`); `"override": {...}` changes any of these for one atlas. `check.js` fails if a non-pharm atlas shows pharmacology wording.
+
 ## Atlas content (`atlases/<id>.js`)
 Push sections with `SEC.push({id, k: groupKey, t: title, mm: mind-map label, drugs, act, leg, draw, notes})`,
 name groups in `GN`, list supplementary sections in `const EXTRA=[...]` (shown as "เสริม").

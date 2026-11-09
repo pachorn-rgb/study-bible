@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาทางเดินอาหาร: H₂ blocker, PPI, antacid, mucosal protectant, octreotide, ยา IBD, antidiarrheal, antiemetic, laxative, orlistat และการรักษา GERD/PUD/H. pylori, cirrhosis",
   "ch": "Ch 62",
   "sort": 62
- }
+ },
+ "kind": "pharm"
 }

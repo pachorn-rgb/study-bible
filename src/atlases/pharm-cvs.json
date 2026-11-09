@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาหัวใจและหลอดเลือด: ความดันสูงตามโรคร่วม, CCB, vasodilator, hypertensive emergency, nitrates, antianginal, heart failure (ARNI, digoxin), ยาลดไขมัน และ antiarrhythmics ครบทุก class",
   "ch": "Ch 11",
   "sort": 11
- }
+ },
+ "kind": "pharm"
 }

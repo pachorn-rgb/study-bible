@@ -44,7 +44,7 @@ fs.writeFileSync('%s/idx.json',JSON.stringify(out));await b.close()})();""" % (D
         old = next((x for x in c["modules"] if x["id"] == i), None)
         entry = {"id": i, "title": r["title"], "subs": r.get("subs", ["Pharmacology"]), "src": r["src"], "href": f'{r["folder"]}/{i}.html',
                  "thumb": f"thumbs/{i}.jpg", "desc": r["desc"], "tags": r.get("tags", ["pharmacology"]),
-                 "topics": [["Drug class map" if "pharmacology" in r.get("tags", ["pharmacology"]) else "Topic map", "map"]] + [[e["t"], e["h"]] for e in idx[i]],
+                 "topics": [["Drug class map" if meta(i)["kind"] == "pharm" else "Topic map", "map"]] + [[e["t"], e["h"]] for e in idx[i]],
                  "ref": {"b": r.get("refb", "katzung"), "l": r.get("refl", "K"), "ch": r["ch"], "sort": r["sort"]}}
         if old: c["modules"][c["modules"].index(old)] = entry
         else: c["modules"].append(entry)

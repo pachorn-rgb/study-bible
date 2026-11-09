@@ -28,5 +28,6 @@
   "desc": "แผนที่ยากดภูมิคุ้มกันบนขั้นตอน T-cell activation: cyclosporine, tacrolimus, sirolimus, basiliximab, azathioprine, mycophenolate, glucocorticoid, recombinant cytokines และ therapeutic antibodies",
   "ch": "Ch 55",
   "sort": 55
- }
+ },
+ "kind": "pharm"
 }

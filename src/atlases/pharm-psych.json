@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาจิตเวช: stimulants, antipsychotics, lithium, buspirone, SSRI/SNRI, TCA, MAOI, atypical antidepressants, ยาเลิกบุหรี่/opioid/alcohol และการเลือกยาตามโรค",
   "ch": "Ch 30",
   "sort": 30
- }
+ },
+ "kind": "pharm"
 }

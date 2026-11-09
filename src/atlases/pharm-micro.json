@@ -33,5 +33,6 @@
   "desc": "แผนที่ยาต้านจุลชีพ: penicillin, cephalosporin, carbapenem, vancomycin, protein synthesis inhibitors, folate antagonists, FQ, metronidazole, ยา TB, prophylaxis, antifungals, antiparasitics, antimalarials, antivirals, HIV, hepatitis B/C",
   "ch": "Ch 43",
   "sort": 43
- }
+ },
+ "kind": "pharm"
 }

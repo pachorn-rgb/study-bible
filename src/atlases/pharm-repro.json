@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาระบบสืบพันธุ์: GnRH analogs, estrogens, SERMs, aromatase inhibitors, progestins, contraception, testosterone, antiandrogens, oxytocics/tocolytics, BPH และ erectile dysfunction",
   "ch": "Ch 40",
   "sort": 40
- }
+ },
+ "kind": "pharm"
 }

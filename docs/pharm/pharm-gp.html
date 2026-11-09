@@ -28,7 +28,7 @@
 </div>
 <div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
-<script>const PHARM={"id": "pharm-gp", "sys": "General Principles"};</script>
+<script>const ATLAS={"id": "pharm-gp", "kind": "pharm", "sys": "General Principles", "root": "Pharmacology", "mmh": "drug classes", "mapT": "Drug class map", "leg": true, "drugs": true};</script>
 <script src="../atlas/core.js"></script>
 <script>
 /* ================= General principles: PK/PD & autonomic drugs ================= */
@@ -110,7 +110,7 @@ SEC.push({id:"pdei",k:"b",t:"Phosphodiesterase inhibitors",mm:"PDE inhibitors",d
 draw:()=>cards([["Nonspecific: theophylline","bronchodilation · narrow therapeutic index","vn"],["PDE-5: sildenafil, tadalafil","ED, pulmonary HTN, BPH · ห้ามร่วม nitrate","gl"],["PDE-4: roflumilast","ลด COPD exacerbation","gl"],["PDE-3: milrinone","inotrope + vasodilator ใน acute HF","ar"],["Cilostazol · dipyridamole","claudication · stroke prevention ร่วม aspirin",""]]),
 notes:()=>`<ul><li>ยับยั้ง PDE → cAMP/cGMP ↑ → ผลขึ้นกับเนื้อเยื่อ ${S.k}</li><li>Cilostazol ห้ามใน HF ${S.k}</li></ul>`});
 
-pharmFinish();
+atlasFinish();
 </script>
 <script src="../atlas/render.js"></script>
 </body>

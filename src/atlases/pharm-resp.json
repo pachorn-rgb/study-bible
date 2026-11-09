@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาระบบหายใจ: bronchodilator, ICS, leukotriene, biologics, antihistamine, ยาแก้ไอ/เสมหะ, CFTR modulator, PAH และการรักษา asthma/COPD · ยาทุกกลุ่มวางบนแผนที่เป้าหมายเดียวกัน",
   "ch": "Ch 20",
   "sort": 20
- }
+ },
+ "kind": "pharm"
 }

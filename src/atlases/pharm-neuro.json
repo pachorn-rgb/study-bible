@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาระบบประสาท: anticonvulsants, ยานอนหลับ, triptans, Parkinson, Alzheimer/ALS/HD, local & general anesthetics, NM blockers, muscle relaxants, opioids และ glaucoma",
   "ch": "Ch 24",
   "sort": 24
- }
+ },
+ "kind": "pharm"
 }

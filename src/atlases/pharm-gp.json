@@ -29,5 +29,6 @@
   "desc": "หลักเภสัชวิทยา: enzyme kinetics, pharmacokinetics (F, Vd, CL, t½, dosing), metabolism, CYP450, dose–response และยา autonomic ทั้ง cholinergic และ adrenergic บนแผนที่ระบบประสาทอัตโนมัติ",
   "ch": "Ch 3",
   "sort": 3
- }
+ },
+ "kind": "pharm"
 }

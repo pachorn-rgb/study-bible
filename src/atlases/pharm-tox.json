@@ -28,5 +28,6 @@
   "desc": "อาการไม่พึงประสงค์ของยาแยกตามระบบ, CYP450 inducers/inhibitors, sulfa drugs, คำลงท้ายชื่อยา และส่วนเสริม teratogens กับ pharmacogenomics (HLA, TPMT, G6PD)",
   "ch": "Ch 66",
   "sort": 66
- }
+ },
+ "kind": "pharm"
 }

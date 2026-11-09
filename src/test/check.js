@@ -62,7 +62,10 @@ srv.listen(0, async () => {
     catch (e) { bad(`${url}: ${e.message.split("\n")[0]}`) }
     pe.forEach(m => bad(`${url}: JS error ${m}`)); await p.close() };
   const hrefs = [...new Set([...mods.values()].map(m => m.href.split("#")[0]))];
-  for (const h of hrefs) await open(h, () => { const t = document.body.innerText.trim().length; return t > 300 || `looks blank (${t} chars)` });
+  for (const h of hrefs) await open(h, () => { const t = document.body.innerText.trim().length; if (t <= 300) return `looks blank (${t} chars)`;
+    /* built atlases declare ATLAS.kind; pharmacology wording must not leak into other kinds */
+    if (typeof ATLAS !== "undefined" && ATLAS.kind !== "pharm") { const m = document.body.innerText.match(/drug class|ยาต้นแบบ|drug map/i); if (m) return `${ATLAS.kind} atlas shows pharmacology wording "${m[0]}"` }
+    return true });
   for (const c of chs) await open(`index.html#/c/${c.id}`, () => !!document.querySelector(".chead") || "chapter header missing");
   for (const r of ["index.html#/", "index.html#/review", "index.html#/library"]) await open(r, () => document.querySelector("#view").innerText.length > 50 || "blank view");
   console.log(`pages: ${hrefs.length} atlases + ${chs.length} chapters opened`);

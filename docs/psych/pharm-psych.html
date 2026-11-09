@@ -28,7 +28,7 @@
 </div>
 <div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
-<script>const PHARM={"id": "pharm-psych", "sys": "Psychiatry"};</script>
+<script>const ATLAS={"id": "pharm-psych", "kind": "pharm", "sys": "Psychiatry", "root": "Pharmacology", "mmh": "drug classes", "mapT": "Drug class map", "leg": true, "drugs": true};</script>
 <script src="../atlas/core.js"></script>
 <script>
 /* ================= Psychiatry pharmacology ================= */
@@ -102,7 +102,7 @@ notes:()=>`<ul><li>ยา antidepressant ใช้เวลา 4–6 สัป�
 
 const EXTRA=["psyrx"];
 
-pharmFinish();
+atlasFinish();
 </script>
 <script src="../atlas/render.js"></script>
 </body>

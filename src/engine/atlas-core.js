@@ -38,7 +38,7 @@ function mindMap(){const gs=GROUPS.filter(g=>g!=="0"),half=Math.ceil(gs.length/2
  setTimeout(mmInit,0);
  return `<div class="mmwrap" id="mmwrap"><svg class="mmlinks" id="mmlinks" aria-hidden="true"></svg>
  <div class="mmside l">${gs.slice(half).map(g=>block(g,"l")).join("")}</div>
- <div class="mmroot"><div class="mmrc"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rtrack" cx="60" cy="60" r="52"/>${n?`<circle class="rbar" cx="60" cy="60" r="52" stroke-dasharray="${C*n/tops.length} ${C}" transform="rotate(-90 60 60)"/>`:""}</svg><div><small>${PHARM.sys}</small><b>${PHARM.root||"Pharmacology"}</b><span>${n}/${tops.length} seen</span></div></div></div>
+ <div class="mmroot"><div class="mmrc"><svg viewBox="0 0 120 120" aria-hidden="true"><circle class="rtrack" cx="60" cy="60" r="52"/>${n?`<circle class="rbar" cx="60" cy="60" r="52" stroke-dasharray="${C*n/tops.length} ${C}" transform="rotate(-90 60 60)"/>`:""}</svg><div><small>${ATLAS.sys}</small><b>${ATLAS.root}</b><span>${n}/${tops.length} seen</span></div></div></div>
  <div class="mmside r">${gs.slice(0,half).map(g=>block(g,"r")).join("")}</div></div>`}
 function mmInit(){const w=document.getElementById("mmwrap");if(!w)return;mmLinks();if(!MMRO&&window.ResizeObserver){MMRO=new ResizeObserver(()=>mmLinks())}if(MMRO){MMRO.disconnect();MMRO.observe(w)}}
 function mmLinks(){const w=document.getElementById("mmwrap"),sv=document.getElementById("mmlinks");if(!w||!sv)return;
@@ -54,13 +54,13 @@ document.addEventListener("click",e=>{const b=e.target.closest("[data-go]");if(!
 document.addEventListener("pointerover",e=>{const b=e.target.closest(".mmb");document.querySelectorAll(".mmb.hot").forEach(x=>x!==b&&x.classList.remove("hot"));if(b)b.classList.add("hot")});
 
 /* called after the atlas content is defined */
-function pharmFinish(){
+function atlasFinish(){
  /* First Aid = core path; anything listed in EXTRA becomes a "เสริม" group after the core */
  if(typeof EXTRA!=="undefined"&&EXTRA.length){const core=[],ext=[];SEC.forEach(s=>{if(EXTRA.includes(s.id)){s.extra=true;const nk="x"+s.k;if(!GN[nk])GN[nk]="เสริม · "+GN[s.k].replace(/^เสริม · /,"");s.k=nk;ext.push(s)}else core.push(s)});
   SEC.length=0;core.forEach(s=>SEC.push(s));const ord=[...new Set(ext.map(s=>s.k))];ord.forEach(k=>ext.filter(s=>s.k===k).forEach(s=>SEC.push(s)))}
- GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:PHARM.root&&PHARM.root!=="Pharmacology"?"Topic map":"Drug class map",mind:true,leg:[],draw:mindMap,notes:()=>""});
+ GN["0"]="Overview";SEC.unshift({id:"map",k:"0",t:ATLAS.mapT,mind:true,leg:[],draw:mindMap,notes:()=>""});
  const el=document.getElementById("pstats");if(el){const tops=SEC.filter(s=>!s.mind),drugs=new Set();tops.forEach(s=>(s.drugs||"").split(" · ").forEach(d=>d&&drugs.add(d)));
-  el.innerHTML=`<span><b>${new Set(tops.map(s=>s.k)).size}</b> กลุ่ม</span><span><b>${tops.length}</b> หัวข้อ</span>${drugs.size?`<span><b>${drugs.size}+</b> ยาต้นแบบ</span>`:""}`}}
+  el.innerHTML=`<span><b>${new Set(tops.map(s=>s.k)).size}</b> กลุ่ม</span><span><b>${tops.length}</b> หัวข้อ</span>${ATLAS.drugs&&drugs.size?`<span><b>${drugs.size}+</b> ยาต้นแบบ</span>`:""}`}}
 
 /* ---------- auto-layout target map: sites (panels) → targets → drugs ----------
    spec: [{n:"Heart",s:"myocyte",tone:"cell",t:[{k:"key",l:"β₁ receptor",d:[["Metoprolol","bl"],...]}]}] */

@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยา MSK และผิวหนัง: NSAIDs, acetaminophen, DMARDs, bisphosphonate และยาสร้างกระดูก, ยา gout, biologics, ยาผิวหนัง (steroid, acne, psoriasis, imiquimod) และการรักษา RA, OA, osteoporosis",
   "ch": "Ch 36",
   "sort": 36
- }
+ },
+ "kind": "pharm"
 }

@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาต่อมไร้ท่อ: insulin, metformin, TZD, sulfonylurea, GLP-1/DPP-4, SGLT2, thionamide, levothyroxine, ยา pituitary (DDAVP, vaptans, GH, octreotide), corticosteroid, cinacalcet และการรักษา T2DM",
   "ch": "Ch 41",
   "sort": 41
- }
+ },
+ "kind": "pharm"
 }

@@ -1,6 +1,6 @@
 /* ================= render: one chapter = one continuous page ================= */
 const $=s=>document.querySelector(s);
-const SEENKEY="sb-"+PHARM.id+"-seen",FIGDIR="img/";
+const SEENKEY="sb-"+ATLAS.id+"-seen",FIGDIR="img/";
 let cur=SEC[0],GRP=null,OBS=null;
 let SEEN={},OPEN={};try{SEEN=JSON.parse(localStorage.getItem(SEENKEY)||"{}")}catch(e){}
 const GROUPS=[...new Set(SEC.map(s=>s.k))];
@@ -32,7 +32,7 @@ function tools(s){const el=document.getElementById("tools-"+s.id);if(!el)return;
  el.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{ST[b.dataset.s]=b.dataset.v;draw(s)})}
 function draw(s){const prev=cur;cur=s;const d=document.getElementById("dia-"+s.id);if(d)d.innerHTML=s.draw();tools(s);
  const lg=document.getElementById("legend-"+s.id);if(lg)lg.innerHTML=(s.leg||[]).map(k=>LEG[k]?`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`:"").join("");cur=prev}
-function topicHTML(s){if(s.mind)return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><section class="sb-card card mmcard"><div class="mmhead"><div><div class="k" style="color:var(--g0);font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase">Overview</div><h2>${PHARM.sys} ${PHARM.mmh||"drug classes"}</h2></div><p>แตะกลุ่มหรือหัวข้อเพื่อไปที่เนื้อหา · ✓ = อ่านแล้ว</p></div><div id="dia-${s.id}"></div>${PHARM.noleg?"":`<div class="mmlegend">${Object.keys(LEG).map(k=>`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`).join("")}</div>`}</section></article>`;const figs=s.figs&&s.figs.length?`<section class="figs sb-card card"><h3>รูปจากเลคเชอร์ <span>${s.figs.length} รูป · แตะเพื่อขยาย</span></h3><div class="strip">${s.figs.map(([f,c])=>`<button class="fig" type="button" data-f="${f}" data-c="${c}"><img src="${FIGDIR}${f}.jpg" alt="${c}" loading="lazy"><span>${c}</span></button>`).join("")}</div></section>`:"";
+function topicHTML(s){if(s.mind)return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><section class="sb-card card mmcard"><div class="mmhead"><div><div class="k" style="color:var(--g0);font:700 .6875rem var(--sb-font);letter-spacing:.06em;text-transform:uppercase">Overview</div><h2>${ATLAS.sys} ${ATLAS.mmh}</h2></div><p>แตะกลุ่มหรือหัวข้อเพื่อไปที่เนื้อหา · ✓ = อ่านแล้ว</p></div><div id="dia-${s.id}"></div>${!ATLAS.leg?"":`<div class="mmlegend">${Object.keys(LEG).map(k=>`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`).join("")}</div>`}</section></article>`;const figs=s.figs&&s.figs.length?`<section class="figs sb-card card"><h3>รูปจากเลคเชอร์ <span>${s.figs.length} รูป · แตะเพื่อขยาย</span></h3><div class="strip">${s.figs.map(([f,c])=>`<button class="fig" type="button" data-f="${f}" data-c="${c}"><img src="${FIGDIR}${f}.jpg" alt="${c}" loading="lazy"><span>${c}</span></button>`).join("")}</div></section>`:"";
  return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><div class="stage">
   <section class="sb-card card"><div class="dh"><div><div class="k" style="color:var(--g${GROUPS.indexOf(s.k)})">${GN[s.k]||s.k}</div><h2>${s.t}</h2>${s.drugs?`<div class="dchips">${s.drugs.split(" · ").map(d=>`<span>${d}</span>`).join("")}</div>`:""}</div><div class="tools" id="tools-${s.id}"></div></div>
    <div class="dia" id="dia-${s.id}" data-id="${s.id}"></div><div class="legend" id="legend-${s.id}"></div></section>

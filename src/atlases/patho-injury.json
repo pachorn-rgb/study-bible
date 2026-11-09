@@ -1,9 +1,6 @@
 {
  "id": "patho-injury",
  "sys": "Cellular Injury",
- "root": "Pathology",
- "mmh": "map",
- "noleg": true,
  "title_tag": "Cellular Injury",
  "eyebrow": "General Principles · Pathology",
  "h1": "Cellular Injury",
@@ -41,5 +38,6 @@
   "tags": [
    "pathology"
   ]
- }
+ },
+ "kind": "patho"
 }

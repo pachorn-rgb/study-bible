@@ -28,7 +28,7 @@
 </div>
 <div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
-<script>const PHARM={"id": "pharm-micro", "sys": "Antimicrobial"};</script>
+<script>const ATLAS={"id": "pharm-micro", "kind": "pharm", "sys": "Antimicrobial", "root": "Pharmacology", "mmh": "drug classes", "mapT": "Drug class map", "leg": true, "drugs": true};</script>
 <script src="../atlas/core.js"></script>
 <script>
 /* ================= Antimicrobials ================= */
@@ -155,7 +155,7 @@ notes:()=>`<h3>Hepatitis C (direct-acting antivirals)</h3>${tbl(["Target","ย�
  <ul><li>ใช้ร่วมกัน 8–12 สัปดาห์ หายขาด (SVR) &gt;95% · ribavirin (teratogen, hemolytic anemia) ใช้น้อยลง ${S.k}</li><li>Sofosbuvir + amiodarone → bradycardia รุนแรง ${S.k}</li></ul>
  <h3>Hepatitis B</h3><ul><li><b>Tenofovir</b>, <b>entecavir</b> (resistance barrier สูง) · lamivudine ดื้อง่าย · interferon-α (ADR มาก) ${S.k}</li><li>หยุดยาแล้ว hepatitis flare ได้ ${S.k}</li></ul>`});
 
-pharmFinish();
+atlasFinish();
 </script>
 <script src="../atlas/render.js"></script>
 </body>

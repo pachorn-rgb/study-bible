@@ -28,7 +28,7 @@
 </div>
 <div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
 <div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
-<script>const PHARM={"id": "pharm-gi", "sys": "Gastrointestinal"};</script>
+<script>const ATLAS={"id": "pharm-gi", "kind": "pharm", "sys": "Gastrointestinal", "root": "Pharmacology", "mmh": "drug classes", "mapT": "Drug class map", "leg": true, "drugs": true};</script>
 <script src="../atlas/core.js"></script>
 <script>
 /* ================= Gastrointestinal pharmacology ================= */
@@ -95,7 +95,7 @@ notes:()=>`<ul><li>Nonselective β-blocker ลด portal pressure (β₁: CO ↓
 
 const EXTRA=["pud", "cirrhosis"];
 
-pharmFinish();
+atlasFinish();
 </script>
 <script src="../atlas/render.js"></script>
 </body>

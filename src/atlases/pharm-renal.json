@@ -30,5 +30,6 @@
   "desc": "แผนที่กลุ่มยาไต: diuretic ทุกกลุ่มบนแผนที่ nephron, ADH drugs, ACEi/ARB, การใช้ diuretic ร่วมกัน และการรักษา AKI, CKD (anemia, MBD), K⁺, Na⁺, กรด–ด่าง",
   "ch": "Ch 15",
   "sort": 15
- }
+ },
+ "kind": "pharm"
 }
