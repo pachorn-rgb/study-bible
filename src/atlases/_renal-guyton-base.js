@@ -1,0 +1,610 @@
+/* Shared Guyton-based renal physiology sections (from the original renal atlases).
+   Each renal-physio-* atlas includes this file, then keeps and regroups only its own sections. */
+/* ================= physiology helpers ================= */
+Object.assign(S,{g:'<b class="sbb guyton">G</b>',b:'<b class="sbb boron">B</b>',x:'<b class="sbb gen">Gen</b>'});
+Object.assign(LEG,{na:["Na⁺","--s-na"],k:["K⁺","--s-k"],cl:["Cl⁻","--s-cl"],h2o:["H₂O","--s-h2o"],glc:["Glucose","--s-glc"],h:["H⁺","--s-h"],hco3:["HCO₃⁻","--s-hco3"],urea:["Urea","--s-urea"],ca:["Ca²⁺","--s-ca"],pi:["Phosphate","--s-pi"],nh4:["NH₄⁺","--s-nh4"],art:["Arteriole","--a-art"]});
+Object.assign(ST,{labels:true,pg:60,pb:18,pic:32,kf:12.5,map:100,glc:100,step:0,pco2:40,hco3:24,ag:12,kfac:"diet",chart:"tfp",mic:"normal",dis:"aki",ra:1,re:1});
+const f0=v=>Math.round(v),f1=v=>(Math.round(v*10)/10).toFixed(1);
+function axes(x0,y0,w,h,xr,yr,xt,yt,xl,yl){const X=v=>x0+(v-xr[0])/(xr[1]-xr[0])*w,Y=v=>y0+h-(v-yr[0])/(yr[1]-yr[0])*h;
+ let g=`<rect class="plot" x="${x0}" y="${y0}" width="${w}" height="${h}"/>`;
+ xt.forEach(v=>g+=`<line class="gl" x1="${X(v)}" y1="${y0}" x2="${X(v)}" y2="${y0+h}"/>`+T(X(v),y0+h+16,v,{c:"s m"}));
+ yt.forEach(v=>g+=`<line class="gl" x1="${x0}" y1="${Y(v)}" x2="${x0+w}" y2="${Y(v)}"/>`+T(x0-6,Y(v)+4,v,{a:"end",c:"s m"}));
+ g+=`<path class="ax" d="M${x0},${y0} V${y0+h} H${x0+w}"/>`+T(x0+w/2,y0+h+36,xl,{c:"s"})+T(x0-42,y0+h/2,yl,{c:"s",r:-90});
+ return {g,X,Y}}
+const line=(pts,c,o={})=>`<path class="ln ${c}" d="M${pts.map(p=>p.map(v=>v.toFixed(1)).join(",")).join(" L")}"${o.dash?' stroke-dasharray="6 4"':""}/>`;
+const pl=(A,f,a,b,c,o)=>line(fpts(f,a,b).map(([x,y])=>[A.X(x),A.Y(y)]),c,o);
+const fpts=(f,a,b,n=60)=>[...Array(n+1)].map((_,i)=>{const x=a+(b-a)*i/n;return [x,f(x)]});
+const B=(x,y,w,h,ttl,lines,c="")=>`<rect class="box ${c}" x="${x}" y="${y}" width="${w}" height="${h}" rx="10"/>`+T(x+w/2,y+20,ttl,{c:"bh"})+lines.map((l,i)=>T(x+w/2,y+38+i*15,l,{c:"s"})).join("");
+const AR=(x1,y1,x2,y2,c="")=>`<path class="arw ${c}" d="M${x1},${y1} L${x2},${y2}"/>`;
+const ion=(x,y,k,txt)=>`<circle class="ion" cx="${x}" cy="${y}" r="11" style="fill:var(--s-${k})"/>`+T(x,y+4,txt||LEG[k][0],{c:"ion"});
+/* epithelial cell: lumen left, blood right */
+function cell(x,y,w,h,lab){return `<rect class="lumen" x="${x-120}" y="${y-10}" width="120" height="${h+20}" rx="10"/><rect class="blood" x="${x+w}" y="${y-10}" width="120" height="${h+20}" rx="10"/><rect class="cell" x="${x}" y="${y}" width="${w}" height="${h}" rx="18"/>`+
+ (ST.labels?T(x-60,y+8,"Lumen",{c:"s m"})+T(x+w+60,y+8,"Blood",{c:"s m"})+(lab?T(x+w/2,y+h+26,lab,{c:"b"}):""):"")}
+/* transporter on membrane: side 'a' apical (x) or 'b' basolateral; kind: pump, co, ex, ch */
+function tr(x,y,kind,lab,ions,dir=1){const k=ions||[];let g=`<g class="tr ${kind}"><circle cx="${x}" cy="${y}" r="15"/>${kind==="pump"?T(x,y+4,"ATP",{c:"atp"}):""}</g>`;
+ k.forEach(([io,dx,dy,ddir],i)=>{g+=`<path class="flux" style="stroke:var(--s-${io})" d="M${x-28*(ddir??dir)},${y+dy} L${x+28*(ddir??dir)},${y+dy}" marker-end="url(#ah2)"/>`+T(x+(ddir??dir)*40,y+dy+4,LEG[io][0],{a:(ddir??dir)>0?"start":"end",c:"s ionl"}).replace('class="t','style="fill:var(--s-'+io+')" class="t')});
+ if(ST.labels&&lab)g+=T(x,y-22,lab,{c:"s"});return g}
+const pctBar=(x,y,w,segs)=>{let g="",cx=x;segs.forEach(([p,c,l])=>{const ww=w*p/100;g+=`<rect x="${cx}" y="${y}" width="${ww}" height="26" style="fill:var(${c})" class="seg"/>`+(ww>34?T(cx+ww/2,y+17,l,{c:"s w"}):"");cx+=ww});return g};
+function sl(id,lab,min,max,step,unit){return `<label class="sl"><span>${lab} <b data-v="${id}">${ST[id]}</b> ${unit}</span><input type="range" min="${min}" max="${max}" step="${step}" value="${ST[id]}" data-k="${id}"></label>`}
+function wireSl(after){const s=cur;document.querySelectorAll('#tools-'+s.id+' input[type=range]').forEach(r=>r.oninput=()=>{ST[r.dataset.k]=+r.value;r.closest(".tools").querySelector('[data-v="'+r.dataset.k+'"]').textContent=r.value;document.getElementById("dia-"+s.id).innerHTML=s.draw();if(after)after()})}
+const live=()=>{const el=document.getElementById("live");if(el&&cur.live)el.innerHTML=cur.live()};
+
+/* ================= sections ================= */
+
+Object.assign(GN,{"26":"Ch 26 · GFR, RBF & micturition","27":"Ch 27 · Tubular reabsorption & secretion","28":"Ch 28 · Concentration, dilution, osmolarity & Na⁺","29":"Ch 29 · K⁺, Ca²⁺, PO₄, Mg²⁺ & volume control","30":"Ch 30 · Acid–base","31":"Ch 31 · Diuretics & kidney disease"});
+
+/* ---------- Ch 26 ---------- */
+
+
+SEC.push({id:"overview",k:"26",t:"Kidney functions & physiologic anatomy",leg:[],
+draw(){let b="";const F=[["ขับของเสีย","urea · creatinine · uric acid","bilirubin · ยา · toxin","ar"],["สมดุลน้ำ & electrolyte","intake = output","Na⁺ K⁺ Ca²⁺ ...","vn"],["Osmolality","ADH · thirst","",""],["ความดันเลือด","Na⁺/น้ำ · renin","",""],["กรด–ด่าง","H⁺ · HCO₃⁻","",""],["ต่อมไร้ท่อ","EPO · renin","1,25-(OH)₂D₃","gl"],["Gluconeogenesis","ตอนอดอาหารนาน","",""]];
+ F.forEach(([t2,a,c,cl],i)=>{const x=20+(i%4)*152,y=30+Math.floor(i/4)*120;b+=B(x,y,140,104,t2,[a,c].filter(Boolean),cl)});
+ b+=T(320,290,"Renal artery → segmental → interlobar → arcuate → interlobular → afferent",{c:"s"})+T(320,312,"→ glomerular capillary (P ~60) → efferent → peritubular capillary (P ~13) / vasa recta",{c:"s"})+T(320,346,"RBF ~1100 mL/min = 22% ของ cardiac output · ไตละ ~800,000–1,000,000 nephron",{c:"h"});
+ return svg(b,"0 0 640 370")},
+notes:()=>`<h3>หน้าที่ของไต</h3><ul>
+ <li>ขับของเสีย (urea, creatinine, uric acid, bilirubin) และยา/สารพิษ/metabolite ของฮอร์โมน ${S.g}</li>
+ <li>ควบคุมน้ำ อิเล็กโทรไลต์ osmolality ความดันเลือด กรด-ด่าง ${S.g}</li>
+ <li>ต่อมไร้ท่อ: <b>erythropoietin, renin, 1,25-(OH)₂D₃</b> · gluconeogenesis ตอนอดอาหารนาน ${S.g}</li></ul>
+ <h3>Physiologic anatomy</h3><ul><li>Nephron ไตละ ~800,000–1,000,000 · สร้างใหม่ไม่ได้ ลดลง ~10% ทุก 10 ปีหลังอายุ 40 ${S.g}</li>
+ <li>Glomerular capillary ความดันสูง (~60 mmHg) → กรองเร็ว · peritubular capillary ความดันต่ำ (~13) → ดูดกลับเร็ว ${S.g}</li>
+ <li>Cortical vs juxtamedullary nephron: juxtamedullary มี loop ยาวและ vasa recta ${S.g}</li></ul>`});
+SEC.push({id:"micturition",k:"26",t:"Micturition",tools:[["mic",[["normal","Normal"],["atonic","Atonic"],["auto","Automatic"],["uninh","Uninhibited"]]]],
+draw(){let b="";const A=axes(80,40,330,260,[0,500],[0,60],[0,100,200,300,400,500],[0,20,40,60],"Volume (mL)","Pressure (cm H₂O)");b+=A.g;
+ const base=v=>v<50?v*.16:v<300?8+(v-50)*.012:11+Math.pow((v-300)/200,3)*45;
+ b+=pl(A,base,0,480,"main");
+ if(ST.mic!=="atonic")[180,260,330,390,440].forEach((v,i)=>b+=`<path class="ln spike" d="M${A.X(v)},${A.Y(base(v))} q6,${-40-i*12} 12,0"/>`);
+ b+=T(A.X(420),A.Y(54),"micturition waves",{c:"s"});
+ // reflex arc
+ const ox=420;b+=B(ox,30,180,62,"Brain (pons, cortex)",["ยับยั้ง/เอื้อ reflex"],"gl")+B(ox,130,180,62,"Sacral cord S2–S4",["micturition center"],"")+B(ox,240,180,72,"Bladder · detrusor",["stretch receptors"],"ar")+B(ox,350,180,62,"External sphincter",["pudendal n. (voluntary)"],"vn");
+ const cut=ST.mic;
+ b+=AR(ox+40,240,ox+40,194,cut==="atonic"?"x":"")+T(ox+34,222,"sensory",{a:"end",c:"s"})+AR(ox+140,194,ox+140,240)+T(ox+148,222,"motor",{a:"start",c:"s"});
+ b+=AR(ox+90,94,ox+90,128,cut!=="normal"?"x":"")+AR(ox+90,194,ox+90,350);
+ if(cut==="atonic")b+=T(ox+40,214,"✕",{c:"bad"});if(cut==="auto")b+=T(ox+90,116,"✕ cord",{c:"bad"});if(cut==="uninh")b+=T(ox+90,116,"↓ inhibition",{c:"bad"});
+ const msg={normal:"ปกติ: ปวดครั้งแรก ~150 mL · ปวดมาก ~400 mL",atonic:"Atonic: ไม่มี sensory → ไม่เกิด reflex → ล้นหยด (overflow)",auto:"Automatic: cord เสียเหนือ sacral → reflex ยังมีแต่สมองคุมไม่ได้",uninh:"Uninhibited: สมองยับยั้งไม่ได้ → ปัสสาวะบ่อย กลั้นไม่อยู่"};
+ b+=T(245,360,msg[cut],{c:"h"});return svg(b,"0 0 640 430")},
+notes:()=>`<h3>Cystometrogram</h3><ul>
+ <li>เติม 30–50 mL แรก ความดันขึ้นเป็น 5–10 cm H₂O แล้ว<b>คงที่</b>ถึง 200–300 mL (bladder ปรับตัว) · เกิน 300–400 mL ความดันพุ่ง ${S.g}</li>
+ <li><b>Micturition waves</b>: คลื่นบีบตัวจาก reflex ซ้อนบนเส้นพื้น ${S.g}</li></ul>
+ <h3>Reflex</h3><ul><li>Stretch → <b>pelvic n.</b> (sensory) → sacral cord → pelvic n. (parasympathetic) → detrusor หด ${S.g}</li>
+ <li>Reflex <b>self-regenerative</b>: หดตัว → ยืดมากขึ้น → หดแรงขึ้น จนหมดแรงแล้วพัก ${S.g}</li>
+ <li>External sphincter = skeletal muscle ผ่าน <b>pudendal n.</b> คุมได้เอง · sympathetic ผ่าน <b>hypogastric n.</b> ${S.g}</li></ul>
+ <h3>ความผิดปกติ</h3><table><tr><td>Atonic</td><td>sensory เสีย (crush sacral, tabes dorsalis) → overflow incontinence</td></tr><tr><td>Automatic</td><td>cord เสียเหนือ sacral → reflex ยังมี สมองคุมไม่ได้</td></tr><tr><td>Uninhibited</td><td>สมองยับยั้งไม่ได้ → บ่อยและควบคุมไม่ได้</td></tr></table>`});
+SEC.push({id:"urineform",k:"26",t:"Urine formation: filtration, reabsorption, secretion",leg:[],
+draw(){let b="";
+ b+=B(20,30,190,120,"Filtration",["glomerulus → Bowman","~180 L/day"],"ar")+B(225,30,190,120,"Reabsorption",["tubule → peritubular","~178.5 L/day"],"gl")+B(430,30,190,120,"Secretion",["capillary → tubule","H⁺ K⁺ drugs"],"vn");
+ b+=T(320,184,"Excretion = Filtration − Reabsorption + Secretion",{c:"h"});
+ const sub=[["A","Creatinine","กรอง ไม่ดูดกลับ",[1,0,0]],["B","Na⁺, Cl⁻","กรอง ดูดกลับบางส่วน",[1,.8,0]],["C","Glucose, AA","กรอง ดูดกลับหมด",[1,1,0]],["D","PAH, organic acid","กรอง + หลั่งเพิ่ม",[1,0,1]]];
+ sub.forEach(([l,n,d,[f,r,s]],i)=>{const x=20+i*155,y=220;b+=`<rect class="box" x="${x}" y="${y}" width="140" height="270" rx="12"/>`+T(x+70,y+22,l+" · "+n,{c:"bh"})+T(x+70,y+40,d,{c:"s"});
+  b+=`<path class="tube" d="M${x+30},${y+70} L${x+30},${y+230}"/>`+`<path class="cap" d="M${x+110},${y+70} L${x+110},${y+230}"/>`;
+  b+=AR(x+105,y+80,x+38,y+80,"art")+T(x+70,y+72,"filter",{c:"s m"});
+  if(r)b+=AR(x+38,y+140,x+102,y+140,"vein")+T(x+70,y+132,r===1?"reabs 100%":"reabs บางส่วน",{c:"s m"});
+  if(s)b+=AR(x+102,y+170,x+38,y+170,"art")+T(x+70,y+162,"secrete",{c:"s m"});
+  const ex=r===1?0:r?.2:s?1.9:1;b+=`<rect class="urine" x="${x+16}" y="${y+238}" width="${28*Math.max(.15,ex)}" height="18" rx="4"/>`+T(x+90,y+252,r===1?"ไม่ออก":r?"ออกน้อย":s?"ออกมากสุด":"ออก = ที่กรอง",{c:"s"})});
+ return svg(b)},
+notes:()=>`<h3>4 กระบวนการ</h3><ul><li>Excretion = filtration − reabsorption + secretion ${S.g}</li>
+ <li>กรอง 180 L/วัน ดูดกลับ 178.5 → ปัสสาวะ ~1.5 L · ถ้าดูดกลับลด 10% ปัสสาวะจะเป็น 19.3 L (เกือบ 13 เท่า) ${S.g}</li></ul>
+ <div class="pearl"><b>ทำไมกรองเยอะแล้วดูดกลับ?</b> ขับของเสียที่ต้องพึ่งการกรองได้เร็ว และ “ล้าง” plasma ทั้งหมดได้ ~60 ครั้ง/วัน ${S.g}</div>`});
+SEC.push({id:"gfr",k:"26",t:"GFR & its determinants",leg:["art"],
+ctrl:()=>sl("pg","P<sub>G</sub>",30,90,1,"mmHg")+sl("pb","P<sub>B</sub>",5,40,1,"mmHg")+sl("pic","π<sub>G</sub>",15,45,1,"mmHg")+sl("kf","K<sub>f</sub>",4,20,.5,"mL/min/mmHg"),
+wire:()=>wireSl(live),
+draw(){let b="";const net=ST.pg-ST.pb-ST.pic,gfr=Math.max(0,net*ST.kf);
+ // capillary vs bowman
+ b+=`<rect class="blood" x="40" y="60" width="560" height="120" rx="20"/><rect class="lumen" x="40" y="250" width="560" height="120" rx="20"/><rect class="memb" x="40" y="186" width="560" height="58"/>`;
+ b+=T(70,90,"Glomerular capillary",{a:"start",c:"b"})+T(590,350,"Bowman's space",{a:"end",c:"b"});
+ const bar=(x,v,up,c,l)=>{const h=v*2.2;return `<rect class="force ${c}" x="${x}" y="${up?215-h:215}" width="54" height="${h}" rx="6"/>`+T(x+27,up?205-h:230+h,`${l} ${v}`,{c:"s"})};
+ b+=bar(120,ST.pg,false,"push","P_G")+bar(260,ST.pb,true,"pull","P_B")+bar(400,ST.pic,true,"pull","π_G");
+ b+=T(500,140,"→ out",{c:"s m"});
+ b+=`<rect class="box" x="40" y="390" width="560" height="100" rx="12"/>`+T(320,418,`Net = ${ST.pg} − ${ST.pb} − ${ST.pic} = ${net} mmHg`,{c:"b"})+T(320,446,`GFR = K_f × net = ${ST.kf} × ${net} = ${f0(gfr)} mL/min`,{c:"h"})+T(320,474,gfr>140?"↑ GFR":gfr<110?"↓ GFR":"ปกติ ~125 mL/min",{c:"s"});
+ return svg(b)},
+live:()=>"",
+notes:()=>`<h3>สมการ</h3><ul><li><b>GFR = K<sub>f</sub> × (P<sub>G</sub> − P<sub>B</sub> − π<sub>G</sub> + π<sub>B</sub>)</b> · π<sub>B</sub> ≈ 0 ${S.g}</li>
+ <li>ค่าปกติ: P<sub>G</sub> 60 · P<sub>B</sub> 18 · π<sub>G</sub> 32 (28 → 36 ตามความยาว capillary) → net 10 mmHg · K<sub>f</sub> ~12.5 → <b>GFR 125 mL/min</b> (180 L/วัน) ${S.g}</li>
+ <li><b>Filtration fraction</b> = GFR/RPF ≈ 0.2 ${S.g}</li></ul>
+ <h3>Glomerular capillary membrane</h3><ul><li>3 ชั้น: endothelium (fenestrae) · basement membrane · podocyte (slit pores) ${S.g}</li>
+ <li>กรองตาม<b>ขนาด</b> (Table 26-1): inulin 5,500 ผ่าน 100% · myoglobin 17,000 ผ่าน 75% · albumin 69,000 ผ่านแค่ 0.5% · และ<b>ประจุ</b>: ประจุลบผ่านยากกว่า (minimal change nephropathy เสียประจุลบ → albuminuria) ${S.g}</li></ul>
+ <h3>อะไรทำให้เปลี่ยน</h3><table>
+ <tr><td>↓ K<sub>f</sub></td><td>เบาหวาน ความดันสูง (GBM หนา, เสีย capillary)</td></tr>
+ <tr><td>↑ P<sub>B</sub></td><td>อุดตันทางเดินปัสสาวะ (นิ่ว)</td></tr>
+ <tr><td>↑ π<sub>G</sub></td><td>↓ RPF หรือ ↑ filtration fraction</td></tr>
+ <tr><td>P<sub>G</sub></td><td>↑ arterial pressure · afferent ขยาย · efferent หด (ปานกลาง)</td></tr></table>
+ <div class="pearl">Efferent หด<b>มาก</b> → GFR กลับลด เพราะ π<sub>G</sub> สูงเร็วกว่า P<sub>G</sub> (biphasic) ${S.g} ลองเลื่อน slider ดู</div>`});
+
+SEC.push({id:"rbf",k:"26",t:"Renal blood flow & physiologic control",tools:[["ra",[["1","Afferent ปกติ"],["0.6","Afferent หด"],["1.4","Afferent ขยาย"]]],["re",[["1","Efferent ปกติ"],["1.6","Efferent หด"],["0.7","Efferent ขยาย"]]]],
+draw(){let b="";const ra=+ST.ra,re=+ST.re;
+ // simple resistances: P_G and RBF
+ const rbf=1/((1/ra)*.5+re*.5),PG=Math.round(60+10*(ra-1)+10*(re-1)),piG=32*(1+(re-1)*.3);
+ b+=`<path class="vess" d="M40,200 L200,200" stroke-width="${26*ra}"/><circle class="glom" cx="260" cy="200" r="52"/><path class="vess" d="M320,200 L480,200" stroke-width="${26/re}"/><path class="vess v" d="M480,200 L600,200" stroke-width="30"/>`;
+ b+=T(120,170,"Afferent",{c:"b"})+T(400,170,"Efferent",{c:"b"})+T(260,204,"P_G",{c:"bh"})+T(560,170,"Peritubular",{c:"s"});
+ const RBF=Math.round(1100*rbf),GF=Math.round(12.5*(PG-18-piG));
+ b+=`<rect class="box" x="40" y="290" width="560" height="96" rx="12"/>`+T(180,322,`RBF ≈ ${RBF} mL/min`,{c:"b"})+T(460,322,`P_G ≈ ${PG} mmHg`,{c:"b"})+T(320,356,`GFR ≈ ${Math.max(0,GF)} mL/min`,{c:"h"});
+ b+=T(320,410,"ค่าประมาณจากแบบจำลองอย่างง่าย ใช้ดูทิศทาง",{c:"s m"});
+ return svg(b,"0 0 640 430")},
+notes:()=>`<h3>ตัวเลข</h3><ul><li>RBF ~<b>1100 mL/min</b> = 22% ของ cardiac output · ไตหนักแค่ 0.4% ของน้ำหนักตัว ${S.g}</li>
+ <li>O₂ consumption สัมพันธ์กับการดูด Na⁺ · cortex ได้เลือดมาก medulla (vasa recta) ได้แค่ 1–2% ${S.g}</li></ul>
+ <h3>ผลต่อ GFR และ RBF</h3><table><tr><th></th><th>GFR</th><th>RBF</th></tr>
+ <tr><td>Afferent หด</td><td>↓</td><td>↓</td></tr><tr><td>Efferent หด</td><td>↑ (ปานกลาง) / ↓ (มาก)</td><td>↓</td></tr><tr><td>Afferent ขยาย</td><td>↑</td><td>↑</td></tr></table>
+ <h3>ตัวควบคุม</h3><table><tr><td>Sympathetic</td><td>หดทั้งคู่ → ↓ GFR (ตอนเลือดออก/เครียดรุนแรง)</td></tr>
+ <tr><td>NE, Epi, Endothelin</td><td>หดหลอดเลือด ↓ GFR</td></tr>
+ <tr><td>Angiotensin II</td><td>หด <b>efferent</b> เด่น → รักษา GFR ตอนความดันต่ำ</td></tr>
+ <tr><td>NO, Prostaglandins, Bradykinin</td><td>ขยาย ↑ GFR · NSAID ตัด PG → ไตวายง่ายในคน volume ต่ำ</td></tr></table>`});
+
+SEC.push({id:"autoreg",k:"26",t:"Autoregulation & TGF",ctrl:()=>sl("map","MAP",40,200,5,"mmHg"),wire:()=>wireSl(),
+draw(){let b="";const A=axes(80,40,500,250,[0,200],[0,2],[0,50,100,150,200],[0,.5,1,1.5,2],"Mean arterial pressure (mmHg)","Relative flow");b+=A.g;
+ const ar=p=>p<75?p/75*.95:p<=160?.95+(p-75)/85*.1:1.05+(p-160)/40*.25;const uf=p=>p<50?0:Math.min(2,Math.pow((p-50)/50,2)*.9);
+ b+=`<rect class="band" x="${A.X(75)}" y="40" width="${A.X(160)-A.X(75)}" height="250"/>`+T(A.X(117),58,"autoregulatory range 75–160",{c:"s"});
+ b+=pl(A,ar,0,200,"gfr")+pl(A,uf,40,200,"uo",{dash:1});
+ b+=`<circle class="pt" cx="${A.X(ST.map)}" cy="${A.Y(ar(ST.map))}" r="6"/><circle class="pt2" cx="${A.X(ST.map)}" cy="${A.Y(Math.min(2,uf(ST.map)))}" r="6"/>`;
+ b+=T(A.X(190),A.Y(1.2),"GFR / RBF",{a:"end",c:"s"})+T(A.X(196),A.Y(1.9),"Urine output",{a:"end",c:"s"});
+ // TGF loop
+ const y=360;b+=B(20,y,140,60,"MAP ↓",["→ P_G ↓ GFR ↓"],"")+B(175,y,140,60,"Macula densa",["NaCl ↓ ที่ TAL"],"gl")+B(330,y,140,60,"Afferent ขยาย",["ต้าน ↓ P_G"],"ar")+B(485,y,140,60,"Renin ↑ → Ang II",["efferent หด"],"vn");
+ b+=AR(160,y+30,173,y+30)+AR(315,y+30,328,y+30)+AR(470,y+30,483,y+30);
+ return svg(b,"0 0 640 440")},
+notes:()=>`<h3>Autoregulation</h3><ul><li>GFR และ RBF คงที่เมื่อ MAP 75–160 mmHg แต่ <b>urine output ไม่ autoregulate</b> → pressure natriuresis ${S.g}</li>
+ <li>ไม่มี autoregulation: ถ้า MAP เพิ่ม 25% GFR เพิ่ม ~25% ปัสสาวะจะเพิ่มมหาศาล ${S.g}</li></ul>
+ <h3>2 กลไก</h3><ul><li><b>Tubuloglomerular feedback</b>: macula densa รับ NaCl → (1) afferent ขยาย/หด (2) JG cell หลั่ง renin → Ang II หด efferent ${S.g}</li>
+ <li><b>Myogenic</b>: afferent ถูกยืด → Ca²⁺ เข้า → หด ป้องกัน glomerulus จากความดันสูง ${S.g}</li></ul>
+ <h3>อื่นๆ</h3><ul><li>โปรตีนสูง → ↑ GFR (ดูด aa+Na ใน PCT → NaCl ถึง macula densa น้อย) ${S.g}</li><li>Hyperglycemia → ↑ GFR (กลไกเดียวกัน) ${S.g}</li><li>Glucocorticoid ↑ GFR ${S.g}</li></ul>`});
+
+/* ---------- Ch 27 ---------- */
+SEC.push({id:"transport",k:"27",t:"Transport mechanisms & Tm",leg:["na","glc","h2o"],ctrl:()=>sl("glc","Plasma glucose",0,800,10,"mg/dL"),wire:()=>wireSl(),
+draw(){let b="";const A=axes(80,30,330,250,[0,800],[0,900],[0,200,400,600,800],[0,300,600,900],"Plasma glucose (mg/dL)","mg/min");b+=A.g;
+ const F=p=>1.25*p,Rb=p=>Math.min(F(p),375-80*Math.exp(-Math.max(0,F(p)-200)/60)*(F(p)>200?1:0)) ,Ex=p=>Math.max(0,F(p)-Rb(p));
+ b+=pl(A,F,0,720,"filt")+pl(A,Rb,0,800,"reab")+pl(A,Ex,0,800,"excr");
+ b+=`<line class="gl th" x1="${A.X(375/1.25)}" y1="30" x2="${A.X(375/1.25)}" y2="280"/>`+T(A.X(300),26,"Tm 375 mg/min",{c:"s"});
+ b+=T(A.X(700),A.Y(870),"Filtered",{a:"end",c:"s"})+T(A.X(790),A.Y(410),"Reabsorbed",{a:"end",c:"s"})+T(A.X(790),A.Y(560),"Excreted",{a:"end",c:"s"});
+ const p=ST.glc;b+=`<line class="gl now" x1="${A.X(p)}" y1="30" x2="${A.X(p)}" y2="280"/>`;
+ b+=`<rect class="box" x="430" y="30" width="200" height="140" rx="12"/>`+T(530,56,`Glucose ${p} mg/dL`,{c:"bh"})+T(530,82,`Filtered ${f0(F(p))} mg/min`,{c:"s"})+T(530,102,`Reabsorbed ${f0(Rb(p))}`,{c:"s"})+T(530,122,`Excreted ${f0(Ex(p))}`,{c:"s"})+T(530,150,Ex(p)>0?"glucosuria":"ไม่มีใน urine",{c:Ex(p)>0?"bad":"s"});
+ // cell with SGLT
+ b+=cell(240,330,150,110,"Secondary active transport");b+=tr(240,365,"co","SGLT2",[["na",0,-6,1],["glc",0,8,1]])+tr(390,365,"pump","Na⁺/K⁺-ATPase",[["na",0,-6,1],["k",0,8,-1]])+tr(390,415,"ch","GLUT2",[["glc",0,0,1]]);
+ return svg(b,"0 0 640 480")},
+notes:()=>`<h3>เส้นทาง</h3><ul><li><b>Transcellular</b> ผ่านเซลล์ · <b>paracellular</b> ผ่าน tight junction (PCT รั่ว) ${S.g}</li>
+ <li><b>Primary active</b>: Na⁺/K⁺-ATPase, H⁺-ATPase, H⁺/K⁺-ATPase, Ca²⁺-ATPase · <b>Secondary active</b>: SGLT, Na⁺/H⁺ exchanger ${S.g}</li>
+ <li>โปรตีน: <b>pinocytosis</b> ใน PCT ${S.g} · น้ำตาม osmosis (solvent drag) ${S.g}</li></ul>
+ <h3>Transport maximum</h3><ul><li>Glucose: Tm ~<b>375 mg/min</b> · filtered load ปกติ 125 mg/min · threshold ~200 mg/min (เริ่มมีในปัสสาวะก่อนถึง Tm เพราะ nephron ไม่เท่ากัน = splay) ${S.g}</li>
+ <li>สารที่มี Tm: glucose, phosphate, sulfate, amino acid, urate, PAH (หลั่ง) ${S.g}</li>
+ <li>สารที่ดูดแบบ passive ไม่มี Tm แต่ขึ้นกับ <b>gradient-time</b> (เช่น Na⁺ ใน PCT) ${S.g}</li></ul>`});
+
+SEC.push({id:"pct",k:"27",t:"Proximal tubule",leg:["na","cl","h2o","glc","h","hco3"],tools:[["chart",[["tfp","TF/P curve"],["cell","Cell"]]]],
+draw(){let b="";if(ST.chart==="cell"){b+=cell(230,60,180,320,"PCT cell");
+  b+=tr(230,110,"co","SGLT",[["na",0,-6],["glc",0,8]])+tr(230,190,"ex","NHE3",[["na",0,-6,1],["h",0,8,-1]])+tr(230,270,"co","Na⁺-AA / Na⁺-Pi",[["na",0,0]])+tr(410,110,"pump","Na⁺/K⁺-ATPase",[["na",0,-6],["k",0,8,-1]])+tr(410,190,"co","NBCe1",[["na",0,-6],["hco3",0,8]])+tr(410,270,"ch","GLUT",[["glc",0,0]])+tr(320,360,"ch","AQP1",[["h2o",0,0]]);
+  b+=T(320,440,"2nd half: Cl⁻ สูงกว่า → ดูด Cl⁻ ทาง paracellular",{c:"s"});return svg(b,"0 0 640 470")}
+ const A=axes(90,30,480,330,[0,100],[0,3],[0,25,50,75,100],[0,.5,1,1.5,2,2.5,3],"% length of proximal tubule","TF/P");b+=A.g;
+ const C=[["Creatinine","--s-org",x=>1+x/100*2],["Inulin (ไม่ดูด)","--s-org",x=>1+x/100*1.85],["Cl⁻","--s-cl",x=>1+x/100*.35],["Na⁺, osm","--s-na",x=>1],["K⁺","--s-k",x=>1-x/100*.1],["HCO₃⁻","--s-hco3",x=>1-x/100*.7],["Glucose, AA","--s-glc",x=>Math.max(0,1-Math.pow(x/40,1.2))]];
+ C.forEach(([n,c,f],i)=>{b+=`<path class="ln" style="stroke:var(${c})" d="M${fpts(f,0,100,40).map(([x,y])=>A.X(x).toFixed(1)+","+A.Y(y).toFixed(1)).join(" L")}"/>`+T(A.X(100)+4,A.Y(f(100))+4+(i===1?10:0),n,{a:"start",c:"s"})});
+ return svg(b,"0 0 640 420")},
+notes:()=>`<h3>ดูดกลับอะไรบ้าง</h3><ul><li>~<b>65%</b> ของ Na⁺, Cl⁻, HCO₃⁻, K⁺ และน้ำ · <b>glucose, amino acid เกือบหมด</b> ${S.g}</li>
+ <li>เซลล์: mitochondria มาก, brush border, basal labyrinth, tight junction รั่ว ${S.g}</li>
+ <li><b>ครึ่งแรก</b>: Na⁺ คู่กับ glucose, AA, HCO₃⁻ (ผ่าน NHE3) · <b>ครึ่งหลัง</b>: Cl⁻ สูงขึ้น → ดูด NaCl ผ่าน paracellular ${S.g}</li>
+ <li>Osmolality ใน PCT <b>คงที่</b> (iso-osmotic reabsorption) เพราะน้ำตาม solute ทัน ${S.g}</li></ul>
+ <h3>หลั่ง</h3><ul><li>Organic acid/base: bile salt, oxalate, urate, catecholamine, ยา เช่น penicillin, salicylate · <b>PAH</b> ถูกหลั่งเกือบหมด (~90% ถูกขจัดใน 1 รอบ) ${S.g}</li></ul>
+ <div class="pearl">กดปุ่ม <b>Cell</b> ดู transporter ของเซลล์ PCT · กราฟ TF/P: &gt;1 แปลว่าดูดน้ำมากกว่าสาร &lt;1 แปลว่าดูดสารมากกว่าน้ำ ${S.g}</div>`});
+
+SEC.push({id:"loop",k:"27",t:"Loop of Henle",leg:["na","k","cl","h2o"],
+draw(){let b="";
+ b+=`<path class="tube big" d="M130,60 L130,380 C130,440 220,440 220,380 L220,220"/><path class="tube big thick" d="M220,220 L220,60"/>`;
+ b+=T(100,240,"Thin descending",{c:"s",r:-90})+T(220,140,"TAL",{c:"b",r:-90})+T(175,460,"Thin ascending",{c:"s"});
+ [110,190,270,350].forEach(y=>b+=AR(114,y,70,y,"h2o"));b+=T(20,90,"H₂O ออก ~20%",{a:"start",c:"s"});
+ b+=AR(240,90,290,90,"na")+T(200,40,"NaCl ออก · น้ำไม่ตาม",{a:"start",c:"s"});
+ b+=cell(420,90,120,230,"TAL cell");b+=tr(420,150,"co","NKCC2",[["na",0,-12],["k",0,0],["cl",0,12]])+tr(420,240,"ch","ROMK",[["k",0,0,-1]])+tr(540,150,"pump","Na⁺/K⁺-ATPase",[["na",0,-6],["k",0,8,-1]])+tr(540,240,"ch","ClC-Kb",[["cl",0,0]]);
+ b+=T(480,370,"lumen +8 mV → Mg²⁺ Ca²⁺ ผ่าน paracellular",{c:"s"});
+ return svg(b,"0 0 680 480")},
+notes:()=>`<h3>3 ส่วน</h3><table><tr><td>Thin descending</td><td>น้ำผ่านได้มาก (AQP1) ดูดน้ำ ~20% · solute ผ่านปานกลาง</td></tr>
+ <tr><td>Thin ascending</td><td>ไม่ให้น้ำผ่าน · ดูด NaCl แบบ passive</td></tr>
+ <tr><td>Thick ascending</td><td>ดูด Na⁺ Cl⁻ K⁺ ~<b>25%</b> · <b>ไม่ให้น้ำผ่าน</b> = diluting segment</td></tr></table>
+ <h3>TAL</h3><ul><li><b>NKCC2</b> (1Na⁺-2Cl⁻-1K⁺) ← ขับเคลื่อนโดย Na⁺/K⁺-ATPase · เป้าของ <b>loop diuretics</b> ${S.g}</li>
+ <li>K⁺ รั่วกลับลุมเม็น (ROMK) → lumen <b>บวก ~8 mV</b> → Mg²⁺, Ca²⁺, Na⁺, K⁺ ดูดผ่าน paracellular ${S.g}</li>
+ <li>Na⁺/H⁺ exchanger ด้วย → ดูด HCO₃⁻ ได้บ้าง ${S.g}</li></ul>`});
+
+SEC.push({id:"distal",k:"27",t:"Distal tubule & collecting duct",leg:["na","k","cl","h","h2o","hco3"],
+draw(){let b="";
+ b+=cell(120,40,120,150,"Early DCT");b+=tr(120,90,"co","NCC (thiazide)",[["na",0,-6],["cl",0,8]])+tr(240,90,"pump","",[["na",0,-6],["k",0,8,-1]])+tr(120,150,"ch","TRPV5",[["ca",0,0]]);
+ b+=cell(470,40,120,150,"Principal cell");b+=tr(470,80,"ch","ENaC",[["na",0,0]])+tr(470,130,"ch","ROMK",[["k",0,0,-1]])+tr(470,175,"ch","AQP2 (ADH)",[["h2o",0,0]])+tr(590,100,"pump","",[["na",0,-6],["k",0,8,-1]]);
+ b+=cell(120,280,120,150,"α-intercalated");b+=tr(120,320,"pump","H⁺-ATPase",[["h",0,0,-1]])+tr(120,385,"pump","H⁺/K⁺-ATPase",[["h",0,-6,-1],["k",0,8,1]])+tr(240,350,"ex","AE1",[["hco3",0,-6,1],["cl",0,8,-1]]);
+ b+=cell(470,280,120,150,"β-intercalated");b+=tr(470,330,"ex","Pendrin",[["hco3",0,-6,-1],["cl",0,8,1]])+tr(590,330,"pump","H⁺-ATPase",[["h",0,0,1]]);
+ return svg(b,"0 0 720 470")},
+notes:()=>`<h3>Early distal tubule</h3><ul><li>ส่วนแรกเป็น <b>macula densa</b> · ดูด Na⁺ Cl⁻ ผ่าน <b>NCC</b> (เป้า thiazide) · ไม่ให้น้ำผ่าน = cortical diluting segment ${S.g}</li></ul>
+ <h3>Late DCT & cortical collecting tubule</h3><ul><li><b>Principal cell</b>: ดูด Na⁺ (ENaC) หลั่ง K⁺ (ROMK) · <b>aldosterone</b> ↑ ทั้งสอง · น้ำผ่านได้เมื่อมี <b>ADH</b> ${S.g}</li>
+ <li><b>Type A intercalated</b>: หลั่ง H⁺ (H⁺-ATPase, H⁺/K⁺-ATPase) สร้าง HCO₃⁻ ใหม่ · ดูด K⁺ ${S.g}</li>
+ <li><b>Type B</b>: หลั่ง HCO₃⁻ ดูด H⁺ (ใช้ตอน alkalosis) ${S.g}</li></ul>
+ <h3>Medullary collecting duct</h3><ul><li>ดูดน้ำและ Na⁺ &lt;10% แต่เป็นตัวตัดสินสุดท้าย · ให้ <b>urea</b> ผ่านได้ (UT-A1/A3 เมื่อมี ADH) · หลั่ง H⁺ ได้ต้าน gradient ${S.g}</li></ul>`});
+
+SEC.push({id:"segments",k:"27",t:"Where things are reabsorbed",leg:[],
+draw(){let b="";const rows=[["Water",[65,"--s-h2o","PCT 65"],[15,"--s-h2o2","desc 15"],[0,"",""],[5,"--s-h2o3","DCT"],[14,"--s-h2o4","CD (ADH)"]],
+ ["Na⁺",[65,"--s-na","PCT 65"],[25,"--s-na2","TAL 25"],[5,"--s-na3","DCT 5"],[4,"--s-na4","CD"]],
+ ["K⁺",[65,"--s-k","PCT 65"],[27,"--s-k2","TAL 25–30"],[0,"",""],[0,"",""]],
+ ["Ca²⁺",[65,"--s-ca","PCT 65"],[27,"--s-ca2","loop 25–30"],[7,"--s-ca3","DCT 4–9"]],
+ ["HCO₃⁻",[80,"--s-hco3","PCT 80"],[10,"--s-hco32","TAL 10"],[10,"--s-hco33","DCT+CD"]],
+ ["Glucose",[100,"--s-glc","PCT ~100"]]];
+ rows.forEach((r,i)=>{const y=40+i*66;b+=T(20,y+18,r[0],{a:"start",c:"b"})+pctBar(110,y,500,r.slice(1).filter(s=>s[0]))});
+ b+=T(360,452,"% ของที่กรองมา (ส่วนที่เหลือ = ขับออก)",{c:"s m"});return svg(b,"0 0 640 470")},
+notes:()=>`<h3>สรุปทั้งหมด</h3><ul><li>PCT คือ “ม้างาน” ดูดเกือบทุกอย่าง 65% และ glucose/AA เกือบหมด ${S.g}</li>
+ <li>TAL ดูด NaCl 25% ไม่มีน้ำ → สร้าง gradient และเจือจางปัสสาวะ ${S.g}</li>
+ <li>DCT/CD ปริมาณน้อยแต่ <b>ปรับได้ด้วยฮอร์โมน</b> (aldosterone, ADH, ANP, PTH) ${S.g}</li>
+ <li>K⁺: ปริมาณที่ขับออกถูกกำหนดที่ principal cell (หลั่ง) ไม่ใช่การดูดกลับ ${S.g}</li></ul>
+ <div class="pearl">ดูการเคลื่อนที่ของสารรายตัวใน <b>Nephron Pathway Atlas</b> ซึ่งเป็นแผนที่ transporter แบบโต้ตอบ</div>`});
+
+SEC.push({id:"regulation",k:"27",t:"Regulation of tubular reabsorption",leg:[],
+draw(){let b="";
+ b+=B(20,30,290,110,"Glomerulotubular balance",["GFR ↑ → ดูดกลับเพิ่มตามสัดส่วน","กันไม่ให้ distal ล้น"],"gl");
+ b+=B(330,30,290,110,"Peritubular capillary forces",["Reabs = Kf × (πc − Pc …)","↑ πc หรือ ↓ Pc → ดูดกลับ ↑"],"vn");
+ b+=B(20,160,290,110,"Pressure natriuresis",["MAP ↑ → Na⁺ & น้ำออก ↑","↓ Ang II, ↑ Pc, ↓ medullary flow"],"ar");
+ b+=B(330,160,290,110,"Sympathetic",["↑ ดูด Na⁺ PCT, TAL","↑ renin"],"");
+ const H=[["Aldosterone","CD","↑ Na⁺ ดูด ↑ K⁺/H⁺ หลั่ง"],["Ang II","PCT TAL DCT CD","↑ Na⁺/H₂O"],["ADH","DCT CD","↑ H₂O (AQP2)"],["ANP","DCT CD","↓ Na⁺ ดูด"],["PTH","PCT TAL DCT","↓ PO₄ ↑ Ca²⁺"]];
+ b+=`<rect class="box" x="20" y="290" width="600" height="${36+H.length*28}" rx="12"/>`+T(110,314,"Hormone",{c:"bh"})+T(280,314,"Site",{c:"bh"})+T(480,314,"Effect",{c:"bh"});
+ H.forEach(([h,s2,e],i)=>b+=T(110,342+i*28,h,{c:"s"})+T(280,342+i*28,s2,{c:"s"})+T(480,342+i*28,e,{c:"s"}));return svg(b,"0 0 640 480")},
+notes:()=>`<h3>กลไกภายใน</h3><ul><li><b>Glomerulotubular balance</b>: ดูดกลับเพิ่มตาม filtered load (PCT, loop) ${S.g}</li>
+ <li><b>Peritubular forces</b>: Pc ~13 mmHg, πc ~32 → net ~10 mmHg ดูดเข้า · efferent หด ↓Pc ↑πc → ดูดมาก ${S.g}</li>
+ <li><b>Pressure natriuresis</b>: MAP 100 → 200 เพิ่ม Na⁺/น้ำออกหลายเท่า แม้ GFR คงที่ ${S.g}</li></ul>
+ <h3>ฮอร์โมน (Table 27-3)</h3><ul><li><b>Aldosterone</b>: ↑ Na⁺/K⁺-ATPase และ ENaC ใน principal cell · ขาด (Addison) → เสีย Na⁺ คั่ง K⁺ · เกิน (Conn) → K⁺ ต่ำ alkalosis ${S.g}</li>
+ <li><b>Ang II</b>: กระตุ้น aldosterone, หด efferent, ดูด Na⁺ ตรงที่ PCT ${S.g}</li>
+ <li><b>ADH</b>: V2 → cAMP → AQP2 แทรกที่ apical ${S.g}</li>
+ <li><b>ANP</b>: ยับยั้งการดูด Na⁺ และ renin ${S.g}</li><li><b>PTH</b>: ↑ Ca²⁺ ↓ PO₄ ดูดกลับ ${S.g}</li></ul>`});
+
+SEC.push({id:"clearance",k:"27",t:"Renal clearance",
+ctrl:()=>`<label class="sl"><span>สาร</span><select id="clsub"><option value="in">Inulin</option><option value="cr">Creatinine</option><option value="pah">PAH</option><option value="glc">Glucose</option><option value="urea">Urea</option><option value="na">Na⁺</option></select></label>`,
+wire:()=>{const s=document.getElementById("clsub");s.value=ST.cl||"in";s.onchange=()=>{ST.cl=s.value;document.getElementById("dia-clearance").innerHTML=SEC.find(x=>x.id==="clearance").draw()}},
+draw(){const D={in:["Inulin",125,"= GFR (กรองอย่างเดียว)"],cr:["Creatinine",140,"≈ GFR (หลั่งเล็กน้อย)"],pah:["PAH",585,"≈ ERPF (กรอง+หลั่ง ~90%)"],glc:["Glucose",0,"ดูดกลับหมด"],urea:["Urea",70,"ดูดกลับ ~50%"],na:["Na⁺",.9,"ดูดกลับ >99%"]};
+ const [n,c,d]=D[ST.cl||"in"];let b="";
+ b+=`<rect class="box" x="30" y="30" width="580" height="100" rx="14"/>`+T(320,64,"C = (U × V) / P",{c:"bb"})+T(320,98,"ปริมาตร plasma ที่ถูก “ล้าง” สารนั้นหมดต่อนาที",{c:"s"});
+ const sc=v=>Math.min(400,Math.max(4,v/650*400));
+ [["Glucose",0],["Na⁺",.9],["Urea",70],["Inulin = GFR",125],["Creatinine",140],["PAH ≈ RPF",585]].forEach(([l,v],i)=>{const y=170+i*44,on=l.startsWith(n);b+=`<rect class="cbar${on?" on":""}" x="40" y="${y}" width="${sc(v)}" height="26" rx="6"/>`+T(50+sc(v),y+18,`${l} · ${v} mL/min`,{a:"start",c:on?"b":"s"})});
+ b+=T(320,450,`${n}: ${c} mL/min · ${d}`,{c:"h"});return svg(b,"0 0 640 470")},
+notes:()=>`<h3>ใช้ทำอะไร</h3><ul><li><b>GFR</b> = clearance ของ inulin (กรองอิสระ ไม่ดูด ไม่หลั่ง) · ทางคลินิกใช้ <b>creatinine</b> (ประเมินสูงเล็กน้อยเพราะถูกหลั่ง) ${S.g}</li>
+ <li><b>ERPF</b> = clearance ของ PAH (~585 mL/min) · RPF จริง = ERPF/0.9 ≈ 650 · RBF = RPF/(1 − Hct) ${S.g}</li>
+ <li><b>Filtration fraction</b> = GFR/RPF ≈ 125/650 ≈ 0.19 ${S.g}</li>
+ <li>C &lt; C<sub>inulin</sub> → มีดูดกลับ · C &gt; C<sub>inulin</sub> → มีหลั่ง ${S.g}</li></ul>
+ <h3>Creatinine กับ GFR</h3><ul><li>Plasma creatinine กลับแปรผันกับ GFR: GFR ลดครึ่ง → creatinine ขึ้น 2 เท่า (หลังเข้าสมดุลใหม่) ${S.g}</li></ul>
+ <h3>Clearance ของน้ำ</h3><ul><li><b>C<sub>osm</sub></b> = U<sub>osm</sub>V/P<sub>osm</sub> · <b>C<sub>H₂O</sub></b> = V − C<sub>osm</sub> (บวก = ขับน้ำอิสระ, ลบ = เก็บน้ำ) ${S.g}</li></ul>`});
+
+/* ---------- Ch 28 ---------- */
+
+
+
+
+SEC.push({id:"dilute",k:"28",t:"Forming dilute urine",leg:[],
+draw(){let b="";const seg=[["Glomerulus",300],["PCT end",300],["Loop tip",1200],["TAL end",100],["Late DCT",100],["CD (no ADH)",50]];
+ const A=axes(90,40,500,300,[0,5],[0,1400],[0,1,2,3,4,5],[0,300,600,900,1200],"Segment","mOsm/L");b+=A.g.replace(/>(\d)<\/text>/g,"></text>");
+ seg.forEach(([n,v],i)=>{b+=`<circle class="pt" cx="${A.X(i)}" cy="${A.Y(v)}" r="6"/>`+T(A.X(i),A.Y(v)-12,v,{c:"s"})+T(A.X(i),364,n,{c:"s"})});
+ b+=line(seg.map(([n,v],i)=>[A.X(i),A.Y(v)]),"main");return svg(b,"0 0 640 400")},
+notes:()=>`<h3>ไม่มี ADH</h3><ul><li>Filtrate iso-osmotic 300 → PCT ยัง 300 → descending ถึง ~1200 ที่ปลาย loop (inner medulla) → ascending/TAL ดูดแต่เกลือ → <b>~100</b> ${S.g}</li>
+ <li>DCT, CD ดูดเกลือต่อแต่ไม่มีน้ำตาม → ปัสสาวะต่ำได้ถึง <b>50 mOsm/L</b> ปริมาณถึง ~20 L/วัน ${S.g}</li></ul>
+ <div class="pearl">ไตขับน้ำเกินได้โดย<b>ไม่ต้องเสีย solute เพิ่ม</b> ${S.g}</div>`});
+SEC.push({id:"concreq",k:"28",t:"Conserving water: concentrated urine",leg:[],
+draw(){let b="";
+ b+=B(20,30,290,120,"ต้องมี 2 อย่าง",["1. ADH สูง → CD ให้น้ำผ่าน","2. medulla hyperosmotic","(countercurrent + urea)"],"gl");
+ b+=B(330,30,290,120,"Obligatory urine volume",["solute ~600 mOsm/วัน","÷ max 1200 mOsm/L","= ~0.5 L/วัน"],"vn");
+ b+=B(20,170,290,120,"Urine specific gravity",["1.002 – 1.028","ขึ้น ~0.001 ต่อ 35–40 mOsm/L","glucose/โปรตีน/contrast ทำให้เพี้ยน"],"");
+ b+=B(330,170,290,120,"ดื่มน้ำทะเลไม่ได้",["NaCl ~1200 mOsm/L","ขับได้สูงสุด 1200","ต้องเสียน้ำเพิ่ม → ขาดน้ำมากขึ้น"],"ar");
+ return svg(b,"0 0 640 310")},
+notes:()=>`<h3>ไตเก็บน้ำได้อย่างไร</h3><ul><li>ปัสสาวะเข้มข้นได้ <b>1200–1400 mOsm/L</b> (4–5 เท่าของ plasma) ${S.g}</li>
+ <li>ต้องมี <b>ADH สูง</b> + <b>medullary interstitium hyperosmotic</b> ${S.g}</li>
+ <li><b>Obligatory urine volume</b>: ~600 mOsm/วัน ÷ 1200 = ~0.5 L/วัน ต้องขับอย่างน้อยเท่านี้ ${S.g}</li>
+ <li><b>Specific gravity</b> 1.002–1.028 · เพิ่ม 0.001 ต่อ osmolarity ~35–40 mOsm/L · โมเลกุลใหญ่ (glucose, contrast, ยาปฏิชีวนะบางตัว) ทำให้ค่าสูงเกินจริง ${S.g}</li></ul>`});
+SEC.push({id:"countercurrent",k:"28",t:"Countercurrent multiplier",leg:["na","h2o"],tools:[["step",[["0","เริ่ม"],["1","1 · TAL ปั๊ม"],["2","2 · น้ำออก"],["3","3 · ไหลต่อ"],["4","ทำซ้ำ"]]]],
+draw(){const st=+ST.step;const D={0:[[300,300,300],[300,300,300]],1:[[300,300,300],[200,200,200]],2:[[400,400,400],[200,200,200]],3:[[350,400,500],[150,300,300]],4:[[600,900,1200],[100,350,700]]}[st]||[[300,300,300],[300,300,300]];
+ const intr=st===0?[300,300,300]:st===1?[400,400,400]:st===2?[400,400,400]:st===3?[350,400,500]:[600,900,1200];let b="";
+ [0,1,2].forEach(i=>{const y=60+i*120;b+=`<rect class="tbox d" x="80" y="${y}" width="140" height="100" rx="8"/>`+T(150,y+56,D[0][i],{c:"bb"});
+  b+=`<rect class="tbox i" x="250" y="${y}" width="140" height="100" rx="8"/>`+T(320,y+56,intr[i],{c:"bb"});
+  b+=`<rect class="tbox a" x="420" y="${y}" width="140" height="100" rx="8"/>`+T(490,y+56,D[1][i],{c:"bb"})});
+ b+=T(150,44,"Descending",{c:"b"})+T(320,44,"Interstitium",{c:"b"})+T(490,44,"Ascending (TAL)",{c:"b"});
+ b+=AR(150,420,150,440)+AR(490,440,490,420);
+ const msg=["Filtrate 300 ทุกช่อง","TAL ปั๊ม NaCl ออก → ต่างกัน 200 mOsm","น้ำออกจาก descending จนเท่ากับ interstitium","ของเหลวไหลต่อ → gradient ถูกเลื่อนลงไป","ทำซ้ำ → gradient ทวีคูณถึง 1200–1400"][st];
+ b+=T(320,470,msg,{c:"h"});return svg(b,"0 0 640 490")},
+notes:()=>`<h3>ขั้นตอน (Figure 28-4)</h3><ul><li>TAL ปั๊ม NaCl ออก สร้างความต่าง <b>200 mOsm/L</b> ระหว่าง lumen กับ interstitium ${S.g}</li>
+ <li>Descending ให้น้ำผ่าน → เข้าสมดุลกับ interstitium ${S.g}</li><li>การไหลและทำซ้ำ “คูณ” gradient จนปลาย papilla ~<b>1200–1400</b> mOsm/L ${S.g}</li></ul>
+ <h3>ปัจจัยที่ทำให้ medulla เข้มข้น</h3><ul><li>Active transport NaCl ที่ TAL · co-transport K⁺ Cl⁻ ${S.g}</li><li>Active transport ใน CD ${S.g}</li>
+ <li><b>Urea</b> ซึมจาก inner medullary CD (ADH) ${S.g}</li><li>น้ำเข้า medulla น้อย · vasa recta ไหลช้า ${S.g}</li></ul>
+ <div class="pearl">กดปุ่ม 0–4 ด้านบนเพื่อเดินทีละขั้น</div>`});
+SEC.push({id:"urea",k:"28",t:"Urea recycling & vasa recta",leg:["urea","h2o"],
+draw(){let b="";
+ b+=`<path class="tube big" d="M120,40 L120,380 C120,440 220,440 220,380 L220,40"/><path class="tube big cd" d="M420,40 L420,440"/>`;
+ b+=T(170,30,"Loop",{c:"b"})+T(420,30,"Collecting duct",{c:"b"});
+ b+=AR(410,360,240,360,"urea")+T(330,350,"UT-A1/A3 (ADH)",{c:"s"})+AR(230,300,128,300,"urea")+T(176,290,"UT-A2",{c:"s"});
+ b+=`<path class="vr" d="M540,40 L540,400 C540,440 600,440 600,400 L600,40"/>`+T(570,30,"Vasa recta",{c:"b"});
+ b+=AR(612,200,640,200,"h2o")+T(570,470,"countercurrent exchanger",{c:"s"});
+ b+=T(300,180,"urea 40–50%",{c:"h"})+T(300,198,"ของ osmolality ใน medulla",{c:"s"});
+ return svg(b,"0 0 640 490")},
+notes:()=>`<h3>Urea</h3><ul><li>ให้ ~40–50% ของ osmolality ใน inner medulla (500–600 mOsm/L) ตอนสร้างปัสสาวะเข้มข้นสูงสุด ${S.g}</li>
+ <li>TAL, DCT, cortical CD ไม่ให้ urea ผ่าน → urea เข้มข้นขึ้นเมื่อน้ำถูกดูด → ที่ <b>inner medullary CD</b> ซึมออกผ่าน UT-A1/A3 (ADH เพิ่ม) ${S.g}</li>
+ <li>Urea บางส่วนกลับเข้า thin limb (UT-A2) → <b>recirculation</b> · โปรตีนต่ำ → urea น้อย → เข้มข้นได้น้อยลง ${S.g}</li></ul>
+ <h3>Vasa recta</h3><ul><li>เป็น <b>countercurrent exchanger</b> ไม่สร้าง gradient แต่ไม่ล้าง gradient ทิ้ง ${S.g}</li>
+ <li>Blood flow ใน medulla ต่ำ (&lt;5% ของ RBF) · ถ้าไหลเพิ่ม (vasodilator) → gradient ถูกล้าง ${S.g}</li></ul>`});
+
+SEC.push({id:"concentrate",k:"28",t:"Free water clearance & concentrating disorders",leg:[],
+draw(){let b="";
+ b+=B(20,30,190,130,"Central DI",["ไม่มี ADH","ตอบ desmopressin"],"ar")+B(225,30,190,130,"Nephrogenic DI",["ไตไม่ตอบ ADH","lithium, V2/AQP2"],"vn")+B(430,30,190,130,"SIADH",["ADH เกิน","เก็บน้ำ → Na⁺ ต่ำ"],"gl");
+ const A=axes(90,210,480,200,[0,1400],[-3,3],[0,300,600,900,1200],[-3,-2,-1,0,1,2,3],"Urine osmolality (mOsm/L)","C_H₂O (mL/min)");b+=A.g;
+ b+=pl(A,u=>Math.max(-3,Math.min(3,2*(1-u/300))),50,1300,"main")+`<line class="gl th" x1="${A.X(300)}" y1="210" x2="${A.X(300)}" y2="410"/>`+T(A.X(300)+6,226,"iso 300",{a:"start",c:"s"});
+ b+=T(A.X(120),A.Y(2.6),"ขับน้ำอิสระ",{a:"start",c:"s"})+T(A.X(1100),A.Y(-2.4),"เก็บน้ำ",{a:"end",c:"s"});return svg(b,"0 0 640 470")},
+notes:()=>`<h3>Free water clearance</h3><ul><li>C<sub>H₂O</sub> = V − (U<sub>osm</sub>V/P<sub>osm</sub>) · บวกเมื่อปัสสาวะเจือจาง ลบเมื่อเข้มข้น ${S.g}</li></ul>
+ <h3>สาเหตุที่เข้มข้นไม่ได้</h3><ul><li>ADH หลั่งผิดปกติ · countercurrent เสีย · distal/CD ไม่ตอบ ADH ${S.g}</li></ul>
+ <h3>ความผิดปกติ</h3><table><tr><td>Central DI</td><td>ไม่มี ADH → ปัสสาวะเจือจางมาก · ตอบ desmopressin</td></tr>
+ <tr><td>Nephrogenic DI</td><td>ไตไม่ตอบ ADH (V2/AQP2, lithium, tetracycline) หรือ medulla gradient เสีย (loop diuretic, ↑ medullary flow)</td></tr>
+ <tr><td>SIADH</td><td>ADH เกิน → เก็บน้ำ hyponatremia</td></tr></table>`});
+SEC.push({id:"adh",k:"28",t:"Osmoreceptor–ADH & thirst",leg:[],
+draw(){let b="";
+ b+=B(20,30,180,70,"Na⁺/osm ↑",["~1% ก็พอ"],"ar")+B(230,30,180,70,"Osmoreceptor",["AV3V (OVLT)"],"")+B(440,30,180,70,"ADH ↑",["supraoptic, PVN"],"gl");
+ b+=AR(200,65,228,65)+AR(410,65,438,65);
+ b+=B(440,140,180,70,"Kidney",["AQP2 → ดูดน้ำ"],"vn")+AR(530,100,530,138)+B(230,140,180,70,"Thirst ↑",["ดื่มน้ำ"],"")+AR(320,100,320,138);
+ b+=B(20,140,180,70,"Na⁺/osm ↓",["กลับปกติ"],"ar")+AR(438,175,202,175);
+ // other stimuli table
+ b+=`<rect class="box" x="20" y="240" width="600" height="220" rx="12"/>`+T(170,264,"กระตุ้น ADH",{c:"bh"})+T(470,264,"ยับยั้ง ADH",{c:"bh"});
+ ["↑ osmolarity","↓ blood volume / BP (>10%)","Nausea","Hypoxia","Morphine, nicotine, cyclophosphamide"].forEach((l,i)=>b+=T(170,292+i*30,l,{c:"s"}));
+ ["↓ osmolarity","↑ blood volume / BP","Alcohol","Clonidine","Haloperidol"].forEach((l,i)=>b+=T(470,292+i*30,l,{c:"s"}));
+ return svg(b,"0 0 640 480")},
+notes:()=>`<h3>Osmoreceptor–ADH feedback</h3><ul><li>ตัวรับในบริเวณ <b>AV3V</b> (OVLT, subfornical organ) ไวต่อ osmolarity เปลี่ยน ~1% ${S.g}</li>
+ <li>ADH สร้างที่ supraoptic (5/6) และ paraventricular nuclei → หลั่งที่ posterior pituitary ${S.g}</li>
+ <li>Baroreceptor/cardiopulmonary reflex: ต้องลดเลือด <b>~10%</b> ขึ้นไปจึงกระตุ้นได้แรง ${S.g}</li></ul>
+ <h3>Thirst</h3><ul><li>ศูนย์อยู่ AV3V และ lateral preoptic · กระตุ้นโดย ↑ osmolarity, ↓ volume/BP, <b>Ang II</b>, ปากแห้ง ${S.g}</li>
+ <li>ดื่มน้ำแล้วหายกระหายทันที (pharynx/GI) ก่อนที่ osmolarity จะลดจริง ${S.g}</li>
+ <li>Threshold: osmolarity เพิ่ม ~2 mOsm/L (Na⁺ ~1 mEq/L) ${S.g}</li></ul>
+ <h3>Ang II, aldosterone & salt appetite</h3><ul><li>Ang II/aldosterone เพิ่ม Na⁺ <b>ปริมาณ</b> แต่ดึงน้ำตามด้วย → ความเข้มข้น Na⁺ แทบไม่เปลี่ยน (ยกเว้นตอนขาดมาก) ${S.g}</li><li><b>Salt appetite</b>: Na⁺ ต่ำหรือ volume/BP ต่ำ กระตุ้นให้อยากกินเค็ม ${S.g}</li></ul>
+ <div class="pearl">ADH–thirst คุม Na⁺ ได้ดีมาก · ระบบ Ang II/aldosterone แม้คุมปริมาณ Na⁺ ได้ แต่แทบไม่เปลี่ยน <b>ความเข้มข้น</b> Na⁺ ${S.g}</div>`});
+/* ---------- Ch 29 ---------- */
+SEC.push({id:"potassium",k:"29",t:"Potassium balance",leg:["k"],tools:[["kfac",[["diet","K⁺ diet ↑"],["aldo","Aldosterone ↑"],["flow","Flow ↑"],["acid","Acidosis (acute)"]]]],
+draw(){let b="";
+ b+=B(20,30,290,150,"Shift เข้าเซลล์",["Insulin · Aldosterone","β₂-agonist (epinephrine)","Alkalosis"],"vn")+B(330,30,290,150,"Shift ออกจากเซลล์",["ขาด insulin/aldo · β-blocker","Acidosis · cell lysis","Exercise · ↑ osmolarity"],"ar");
+ b+=cell(240,240,160,160,"Principal cell");b+=tr(240,290,"ch","ROMK/BK",[["k",0,0,-1]])+tr(240,360,"ch","ENaC",[["na",0,0]])+tr(400,320,"pump","Na⁺/K⁺-ATPase",[["na",0,-6],["k",0,8,-1]]);
+ const msg={diet:"↑ K⁺ ใน ECF → ↑ pump, ↑ gradient, ↑ aldosterone → หลั่งมาก",aldo:"↑ pump + ↑ ENaC/ROMK → หลั่ง K⁺ ↑",flow:"ไหลเร็วชะ K⁺ ในลุมเม็น → gradient คง → หลั่ง ↑",acid:"Acidosis เฉียบพลัน ↓ pump → หลั่ง ↓ (เรื้อรังกลับ ↑)"}[ST.kfac];
+ b+=T(320,450,msg,{c:"h"});return svg(b,"0 0 640 470")},
+notes:()=>`<h3>การกระจาย</h3><ul><li>98% อยู่ในเซลล์ · ECF ~4.2 mEq/L · กิน ~100 mEq/วัน (ถ้าไม่ shift เข้าเซลล์ K⁺ จะขึ้นได้เป็นอันตราย) ${S.g}</li></ul>
+ <h3>การขับที่ไต</h3><ul><li>PCT ดูด 65% · loop 25–30% · ปรับจริงที่ <b>late DCT/cortical CD</b> (principal cell หลั่ง, α-intercalated ดูดตอนขาด) ${S.g}</li>
+ <li>ปัจจัยกระตุ้นการหลั่ง: <b>↑ ECF K⁺, ↑ aldosterone, ↑ tubular flow</b> · ลด: ↑ H⁺ (acute) ${S.g}</li>
+ <li>Na⁺ intake ↑ → flow ↑ (หลั่งมาก) แต่ aldosterone ↓ (หลั่งน้อย) → K⁺ ออกเกือบคงที่ ${S.g}</li></ul>
+ <h3>ความสัมพันธ์</h3><ul><li>K⁺ ↑ กระตุ้น aldosterone โดยตรง → feedback ปิด ${S.g}</li></ul>`});
+
+SEC.push({id:"capimg",k:"29",t:"Calcium, phosphate & magnesium",leg:["ca","pi"],
+draw(){let b="";
+ b+=T(20,40,"Ca²⁺",{a:"start",c:"b"})+pctBar(110,24,500,[[65,"--s-ca","PCT 65"],[27,"--s-ca2","loop 25–30"],[7,"--s-ca3","DCT 4–9"],[1,"--s-org",""]]);
+ b+=T(20,96,"Plasma Ca",{a:"start",c:"b"})+pctBar(110,80,500,[[50,"--s-ca","ionized 50%"],[40,"--s-ca2","protein-bound 40%"],[10,"--s-ca3","complexed 10%"]]);
+ b+=B(20,140,290,150,"↓ Ca²⁺ excretion",["↑ PTH · ↓ ECF volume","↓ BP · ↑ phosphate","metabolic alkalosis"],"vn")+B(330,140,290,150,"↑ Ca²⁺ excretion",["↓ PTH · ↑ ECF volume","↑ BP · ↓ phosphate","metabolic acidosis"],"ar");
+ b+=B(20,310,290,150,"Phosphate",["Tm ~0.1 mmol/min","overflow mechanism","PTH ↓ ดูดกลับ → ขับ ↑"],"gl")+B(330,310,290,150,"Magnesium",["ECF <1% ของร่างกาย","ดูดที่ TAL มากสุด (~65%)","ขับ ~10–15% ของที่กรอง"],"");
+ return svg(b,"0 0 640 480")},
+notes:()=>`<h3>Calcium</h3><ul><li>กรองได้เฉพาะ ~50% (ionized + complexed) · ดูดกลับ 99% ${S.g}</li>
+ <li>PCT ไปตาม Na⁺/น้ำ (paracellular ส่วนใหญ่) · TAL paracellular จาก lumen บวก · DCT transcellular (TRPV5) ที่ <b>PTH</b> และ vit D ควบคุม ${S.g}</li>
+ <li>Loop diuretic ↑ ขับ Ca²⁺ · <b>Thiazide ↓</b> ขับ Ca²⁺ ${S.x}</li></ul>
+ <h3>Phosphate</h3><ul><li>ขับแบบ <b>overflow</b>: เกิน Tm ก็ออก · PTH ลด Na-Pi ใน PCT → phosphaturia ${S.g}</li></ul>
+ <h3>Magnesium</h3><ul><li>ครึ่งหนึ่งอยู่ในกระดูก · plasma ~1.8 mEq/L (ครึ่งหนึ่งจับโปรตีน) · TAL ดูดมากสุด ${S.g}</li>
+ <li>ขับ ↑ เมื่อ ECF ↑, Mg²⁺ ↑ · ขับ ↓ เมื่อ ECF ↓, Mg²⁺ ↓, Ca²⁺ ↓ ${S.g}</li></ul>`});
+
+SEC.push({id:"volume",k:"29",t:"Pressure natriuresis & volume control",leg:[],
+draw(){let b="";const A=axes(90,40,480,300,[0,200],[0,8],[0,50,100,150,200],[0,2,4,6,8],"Arterial pressure (mmHg)","Na/water output (× normal)");b+=A.g;
+ const out=(p,s=0)=>Math.max(0,Math.pow((p-50-s)/50,2.4));b+=pl(A,p=>Math.min(8,out(p)),50,200,"main")+pl(A,p=>Math.min(8,out(p,25)),75,200,"alt",{dash:1});
+ b+=`<line class="gl now" x1="${A.X(0)}" y1="${A.Y(1)}" x2="${A.X(200)}" y2="${A.Y(1)}"/>`+T(A.X(10),A.Y(1)-8,"intake",{a:"start",c:"s"});
+ b+=`<circle class="pt" cx="${A.X(100)}" cy="${A.Y(1)}" r="7"/>`+T(A.X(100),A.Y(1)+24,"equilibrium 100",{c:"s"})+T(A.X(190),A.Y(3.2),"Ang II สูง: เส้นเลื่อนขวา",{a:"end",c:"s"});
+ b+=B(20,390,190,70,"Intake ↑",["volume ↑ → BP ↑"],"")+B(225,390,190,70,"Pressure natriuresis",["ขับ Na⁺/น้ำ ↑"],"gl")+B(430,390,190,70,"กลับสมดุล",["BP เกือบเท่าเดิม"],"vn");
+ b+=AR(210,425,223,425)+AR(415,425,428,425);return svg(b,"0 0 640 480")},
+notes:()=>`<h3>Renal–body fluid feedback</h3><ul><li>ความดันระยะยาวถูกกำหนดที่จุดที่ <b>output = intake</b> บนเส้น renal function ${S.g}</li>
+ <li>เส้นชัน → กิน Na⁺ มากความดันแทบไม่เปลี่ยน · เส้นเลื่อนขวา (Ang II สูง, โรคไต) → ความดันสูงเรื้อรัง ${S.g}</li></ul>
+ <h3>ทำไม volume คงที่</h3><ul><li>Blood volume เปลี่ยนน้อยมากแม้กิน Na⁺/น้ำเปลี่ยนมาก ${S.g}</li>
+ <li>ส่วนที่เกินไปอยู่ใน interstitium (เมื่อ compliance สูง → edema) ${S.g}</li>
+ <li>ตัวช่วย: sympathetic, Ang II, aldosterone, ADH, ANP ล้วน “เพิ่มความไว” ให้ pressure natriuresis ${S.g}</li></ul>`});
+
+SEC.push({id:"raas",k:"29",t:"Ang II, aldosterone & ANP",leg:[],
+draw(){let b="";
+ b+=B(20,30,180,70,"↓ BP / ↓ volume",["↓ NaCl ที่ macula densa"],"ar")+B(230,30,180,70,"Renin (JG cells)",["angiotensinogen → Ang I"],"gl")+B(440,30,180,70,"ACE (ปอด)",["Ang I → Ang II"],"");
+ b+=AR(200,65,228,65)+AR(410,65,438,65);
+ const E=[["Efferent หด","↓ Pc → ดูดกลับ ↑"],["PCT","↑ Na⁺/H⁺ exchange"],["Adrenal","↑ aldosterone"],["Brain","thirst, ADH ↑"],["Arterioles","vasoconstriction"]];
+ E.forEach(([a,c],i)=>{const x=20+i*124;b+=B(x,150,114,80,a,[c],"vn")+AR(530,100,x+57,148)});
+ b+=B(20,280,290,110,"Aldosterone",["principal cell: ENaC, pump","↑ Na⁺ ดูด ↑ K⁺ หลั่ง","escape: pressure natriuresis"],"gl")+B(330,280,290,110,"ANP / BNP",["atria ยืด → หลั่ง","↓ Na⁺ ดูด ↓ renin","↑ GFR เล็กน้อย"],"ar");
+ b+=T(320,430,"Ang II ทำให้คงความดันได้แม้กินเกลือน้อย และเป็นเป้ายา ACEi/ARB",{c:"h"});return svg(b,"0 0 640 450")},
+notes:()=>`<h3>Angiotensin II</h3><ul><li>ตัวควบคุมการขับ Na⁺ ที่ทรงพลังที่สุด · กิน Na⁺ น้อย → Ang II สูง → เก็บ Na⁺ · กินมาก → Ang II ต่ำ ${S.g}</li>
+ <li>ถ้า Ang II ถูก “ล็อก” ไว้สูง ต้องใช้ความดันสูงขึ้นถึงจะขับ Na⁺ ได้ → hypertension ${S.g}</li></ul>
+ <h3>Aldosterone</h3><ul><li>ระยะยาวมีผลต่อ Na⁺ ไม่มาก เพราะ <b>aldosterone escape</b> (pressure natriuresis) · แต่ผลต่อ K⁺ ยังคงอยู่ ${S.g}</li></ul>
+ <h3>ANP</h3><ul><li>Atria ยืด → หลั่ง ANP → ขับ Na⁺ เพิ่มเล็กน้อย · ช่วย “จูน” ไม่ใช่ตัวหลัก ${S.g}</li></ul>
+ <h3>ภาวะที่ ECF/blood volume เพิ่มมาก (ท้ายบท)</h3><ul><li>Heart failure, ปริมาตรหลอดเลือดเพิ่ม (pregnancy, varicose vein) → blood volume ↑ · nephrotic syndrome, liver cirrhosis → ECF ↑ แต่ plasma volume ปกติ/ต่ำ ${S.g}</li></ul>
+ <div class="pearl">Hyperaldosteronism: Na⁺ คั่งน้อยแต่ <b>K⁺ ต่ำ</b> และ metabolic alkalosis ${S.g}</div>`});
+
+/* ---------- Ch 30 ---------- */
+SEC.push({id:"buffers",k:"30",t:"Buffers & Henderson–Hasselbalch",ctrl:()=>sl("hco3","HCO₃⁻",5,45,1,"mEq/L")+sl("pco2","PCO₂",15,90,1,"mmHg"),wire:()=>wireSl(),
+draw(){const pH=6.1+Math.log10(ST.hco3/(.03*ST.pco2)),H=Math.pow(10,9-pH);let b="";
+ b+=`<rect class="box" x="30" y="30" width="580" height="120" rx="14"/>`+T(320,64,"pH = 6.1 + log ( HCO₃⁻ / 0.03 × PCO₂ )",{c:"bb"})+T(320,104,`= 6.1 + log ( ${ST.hco3} / ${f1(.03*ST.pco2)} ) = ${pH.toFixed(2)}`,{c:"h"})+T(320,132,`[H⁺] ≈ ${f0(H)} nEq/L`,{c:"s"});
+ const x=v=>60+(v-6.8)/(8-6.8)*520;b+=`<rect class="phbar" x="60" y="200" width="520" height="30" rx="15"/>`;
+ [[6.8,"6.8"],[7.35,"7.35"],[7.45,"7.45"],[8,"8.0"]].forEach(([v,l])=>b+=`<line class="gl" x1="${x(v)}" y1="194" x2="${x(v)}" y2="236"/>`+T(x(v),252,l,{c:"s m"}));
+ b+=T(x(7.05),186,"acidosis",{c:"s"})+T(x(7.4),186,"normal",{c:"s"})+T(x(7.7),186,"alkalosis",{c:"s"});
+ b+=`<circle class="pt" cx="${x(Math.max(6.8,Math.min(8,pH)))}" cy="215" r="10"/>`;
+ b+=B(30,290,180,120,"Bicarbonate",["pK 6.1","สำคัญสุดใน ECF","ปรับได้ 2 ปลาย"],"gl")+B(230,290,180,120,"Phosphate",["pK 6.8","ใน tubule และในเซลล์"],"")+B(430,290,180,120,"Proteins",["Hb, plasma protein","~60–70% ในเซลล์"],"vn");
+ return svg(b,"0 0 640 440")},
+notes:()=>`<h3>3 แนวป้องกัน</h3><ul><li><b>Buffers</b> (วินาที) → <b>ปอด</b> (นาที) → <b>ไต</b> (ชั่วโมง–วัน แต่แรงสุด) ${S.g}</li>
+ <li>[H⁺] ปกติ ~40 nEq/L · pH 7.4 · ทนได้ราว 6.8–8.0 ${S.g}</li></ul>
+ <h3>Bicarbonate buffer</h3><ul><li>pK 6.1 ห่างจาก 7.4 แต่ยังสำคัญสุดเพราะ HCO₃⁻ (ไต) และ CO₂ (ปอด) <b>ปรับได้อิสระ</b> ${S.g}</li>
+ <li><b>Isohydric principle</b>: buffer ทุกระบบสมดุลกับ [H⁺] เดียวกัน ${S.g}</li></ul>
+ <div class="pearl">เลื่อน slider ดู pH · HCO₃⁻ ปกติ 24 · PCO₂ ปกติ 40</div>`});
+
+SEC.push({id:"resp",k:"30",t:"Respiratory regulation",leg:[],
+draw(){let b="";const A=axes(90,40,480,280,[0,4],[7,7.7],[0,1,2,3,4],[7,7.1,7.2,7.3,7.4,7.5,7.6,7.7],"Alveolar ventilation (× normal)","pH");b+=A.g;
+ b+=pl(A,v=>Math.min(7.7,Math.max(7,7.4+Math.log10(Math.max(.15,v))*.42)),.15,4,"main")+`<circle class="pt" cx="${A.X(1)}" cy="${A.Y(7.4)}" r="6"/>`;
+ b+=B(30,370,280,80,"pH ↓ → ventilation ↑",["CO₂ ออก → pH กลับขึ้น"],"gl")+B(330,370,280,80,"Gain 1–3 ×",["แก้ได้ 50–75% (ไม่หมด)"],"vn");
+ return svg(b,"0 0 640 470")},
+notes:()=>`<h3>ปอดเป็นด่านที่สอง</h3><ul><li>ระบายลม 2 เท่า → pH ขึ้น ~0.23 · ลดเหลือ 1/4 → pH ลง ~0.45 ${S.g}</li>
+ <li>H⁺ ↑ กระตุ้นการหายใจ (feedback) · เป็น buffer ที่มีกำลังมากกว่า chemical buffer 1–2 เท่า ${S.g}</li>
+ <li>แก้ไม่หมดเพราะเมื่อ pH ใกล้ปกติ แรงกระตุ้นก็หายไป ${S.g}</li>
+ <li>ตอบ alkalosis ได้น้อยกว่า เพราะ hypoventilation ทำให้ O₂ ต่ำ ${S.g}</li></ul>`});
+
+SEC.push({id:"renalacid",k:"30",t:"Renal H⁺ secretion & new HCO₃⁻",leg:["h","hco3","nh4","na"],
+draw(){let b="";
+ b+=cell(230,40,180,150,"PCT · TAL · early DCT");b+=tr(230,90,"ex","NHE3",[["na",0,-6,1],["h",0,8,-1]])+tr(410,90,"co","NBC",[["hco3",0,0]]);b+=T(320,140,"CO₂ + H₂O → H⁺ + HCO₃⁻ (CA)",{c:"s"});
+ b+=cell(230,250,180,150,"α-intercalated");b+=tr(230,290,"pump","H⁺-ATPase",[["h",0,0,-1]])+tr(230,350,"pump","H⁺/K⁺",[["h",0,0,-1]])+tr(410,320,"ex","AE1",[["hco3",0,0]]);
+ b+=T(100,450,"PCT 80% · TAL 10% · DCT+CD 10% ของ HCO₃⁻ ที่กรอง",{a:"start",c:"h"});return svg(b,"0 0 640 470")},
+notes:()=>`<h3>ปริมาณ</h3><ul><li>กรอง HCO₃⁻ ~<b>4320 mEq/วัน</b> (180 L × 24) → ต้องหลั่ง H⁺ อย่างน้อยเท่านั้นเพื่อ “ดูด” กลับ ${S.g}</li>
+ <li>ร่างกายสร้างกรด nonvolatile ~<b>80 mEq/วัน</b> (โปรตีน) → ต้องขับ H⁺ เพิ่มอีก 80 และสร้าง HCO₃⁻ ใหม่ ${S.g}</li></ul>
+ <h3>2 แบบ</h3><ul><li><b>Secondary active</b> (NHE3) ใน PCT, TAL, early DCT: หลั่งมากแต่ต้าน gradient ได้น้อย ${S.g}</li>
+ <li><b>Primary active</b> ที่ intercalated cell: น้อยแต่ทำให้ปัสสาวะ pH ต่ำได้ถึง <b>4.5</b> (H⁺ สูงกว่าเลือด ~900 เท่า) ${S.g}</li>
+ <li>HCO₃⁻ ใน lumen ไม่ได้ข้ามโดยตรง: H⁺ + HCO₃⁻ → CO₂ เข้าเซลล์ → HCO₃⁻ ใหม่ออกด้านเลือด ${S.g}</li></ul>
+ <h3>ปัจจัยควบคุม H⁺ secretion (Table 30-2)</h3><table><tr><th>↑ H⁺ หลั่ง / ↑ HCO₃⁻ ดูด</th><th>↓</th></tr><tr><td>↑ PCO₂ · ↑ H⁺ · ↓ HCO₃⁻</td><td>↓ PCO₂ · ↓ H⁺ · ↑ HCO₃⁻</td></tr><tr><td>↓ ECF volume · ↑ Ang II · ↑ aldosterone · hypokalemia</td><td>↑ ECF volume · ↓ Ang II · ↓ aldosterone · hyperkalemia</td></tr></table>`});
+
+SEC.push({id:"ammonia",k:"30",t:"Phosphate & ammonia buffers",leg:["nh4","h"],
+draw(){let b="";
+ b+=cell(230,40,180,170,"PCT · glutamine");b+=T(320,90,"Glutamine → 2 NH₄⁺ + 2 HCO₃⁻",{c:"s"})+tr(230,140,"ex","NH₄⁺ (NHE3)",[["nh4",0,0,-1]])+tr(410,140,"co","→ blood",[["hco3",0,0]]);
+ b+=cell(230,270,180,140,"Collecting duct");b+=T(320,320,"NH₃ แพร่เข้า lumen",{c:"s"})+tr(230,350,"pump","H⁺",[["h",0,0,-1]])+T(100,380,"NH₃ + H⁺ → NH₄⁺ (ติดอยู่)",{a:"start",c:"s"});
+ b+=T(320,450,"ทุก H⁺ ที่ขับไปกับ NH₄⁺ หรือ HPO₄²⁻ = HCO₃⁻ ใหม่ 1 ตัว",{c:"h"});return svg(b,"0 0 640 470")},
+notes:()=>`<h3>Phosphate (titratable acid)</h3><ul><li>HPO₄²⁻ + H⁺ → H₂PO₄⁻ · ได้ ~30–40 mEq/วัน · ถูกจำกัดด้วยปริมาณฟอสเฟต ${S.g}</li></ul>
+ <h3>Ammonia (สำคัญกว่า)</h3><ul><li>PCT: glutamine → <b>2 NH₄⁺ + 2 HCO₃⁻</b> · NH₄⁺ หลั่งเข้า lumen HCO₃⁻ ใหม่เข้าเลือด ${S.g}</li>
+ <li>CD: NH₃ แพร่เข้า lumen จับ H⁺ เป็น NH₄⁺ ซึ่งผ่านเยื่อไม่ได้ จึงถูกขับ ${S.g}</li>
+ <li>ปกติ ~50% ของกรดถูกขับเป็น NH₄⁺ · <b>chronic acidosis</b> เพิ่มการสร้างได้ถึง ~500 mEq/วัน ${S.g}</li></ul>
+ <h3>สรุปการขับกรด</h3><ul><li><b>Net acid excretion</b> = NH₄⁺ + titratable acid − HCO₃⁻ ในปัสสาวะ ${S.g}</li></ul>`});
+
+SEC.push({id:"abd",k:"30",t:"Acid–base disorders",ctrl:()=>sl("pco2","PCO₂",15,90,1,"mmHg")+sl("hco3","HCO₃⁻",5,45,1,"mEq/L")+sl("ag","Anion gap",4,35,1,"mEq/L"),wire:()=>wireSl(),
+draw(){const pH=6.1+Math.log10(ST.hco3/(.03*ST.pco2));let dx="",cmp="";
+ if(pH<7.35){if(ST.hco3<22){dx="Metabolic acidosis";const exp=1.5*ST.hco3+8;cmp=`คาด PCO₂ ${f0(exp-2)}–${f0(exp+2)} (Winter)`;dx+=ST.ag>16?" · high AG":" · normal AG"}else if(ST.pco2>45)dx="Respiratory acidosis"}
+ else if(pH>7.45){if(ST.hco3>26)dx="Metabolic alkalosis";else if(ST.pco2<35)dx="Respiratory alkalosis"}else dx=(ST.hco3<22||ST.hco3>26||ST.pco2<35||ST.pco2>45)?"pH ปกติ แต่มีความผิดปกติผสม/ชดเชย":"ปกติ";
+ const A=axes(90,30,480,300,[10,90],[7,7.8],[10,30,50,70,90],[7,7.2,7.4,7.6,7.8],"PCO₂ (mmHg)","pH");let b=A.g;
+ [12,18,24,30,36].forEach(h=>b+=line(fpts(p=>Math.max(7,Math.min(7.8,6.1+Math.log10(h/(.03*p)))),10,90).map(([x,y])=>[A.X(x),A.Y(y)]),"iso")+T(A.X(84),A.Y(Math.max(7,Math.min(7.8,6.1+Math.log10(h/(.03*84)))))-4,h,{c:"s m"}));
+ b+=`<rect class="band" x="90" y="${A.Y(7.45)}" width="480" height="${A.Y(7.35)-A.Y(7.45)}"/>`;
+ b+=`<circle class="pt" cx="${A.X(Math.max(10,Math.min(90,ST.pco2)))}" cy="${A.Y(Math.max(7,Math.min(7.8,pH)))}" r="8"/>`;
+ b+=`<rect class="box" x="30" y="380" width="580" height="86" rx="12"/>`+T(320,408,`pH ${pH.toFixed(2)} · ${dx}`,{c:"bh"})+T(320,436,cmp||"เส้นจาง = HCO₃⁻ คงที่ (isobar)",{c:"s"});
+ return svg(b,"0 0 640 480")},
+notes:()=>`<h3>4 แบบหลัก</h3><table><tr><th></th><th>ปฐมภูมิ</th><th>ชดเชย</th></tr>
+ <tr><td>Resp. acidosis</td><td>↑ PCO₂</td><td>↑ HCO₃⁻ (ไต)</td></tr><tr><td>Resp. alkalosis</td><td>↓ PCO₂</td><td>↓ HCO₃⁻</td></tr>
+ <tr><td>Met. acidosis</td><td>↓ HCO₃⁻</td><td>↓ PCO₂ (หายใจเร็ว)</td></tr><tr><td>Met. alkalosis</td><td>↑ HCO₃⁻</td><td>↑ PCO₂</td></tr></table>
+ <h3>Anion gap</h3><ul><li>AG = Na⁺ − (Cl⁻ + HCO₃⁻) ปกติ <b>8–16</b> mEq/L ${S.g}</li>
+ <li><b>High AG</b>: diabetic ketoacidosis, lactic acidosis, ไตวายเรื้อรัง, aspirin, methanol, ethylene glycol, starvation ${S.g}</li>
+ <li><b>Normal AG (hyperchloremic)</b>: diarrhea, RTA, Addison, carbonic anhydrase inhibitor ${S.g}</li></ul>
+ <h3>สาเหตุอื่น</h3><ul><li>Met. alkalosis: อาเจียน, diuretics, aldosterone เกิน, กิน alkali ${S.g}</li><li>Resp. acidosis: ศูนย์หายใจถูกกด, ปอดเสีย · Resp. alkalosis: ที่สูง, anxiety ${S.g}</li></ul>`});
+
+/* ---------- Ch 31 ---------- */
+SEC.push({id:"diuretics",k:"31",t:"Diuretics",leg:[],
+draw(){let b="";const seg=[["PCT","65% Na⁺"],["Thin desc.","H₂O"],["TAL","25% Na⁺"],["Early DCT","5% Na⁺"],["CD","~3% Na⁺"]],w=112;
+ seg.forEach(([n,d],i)=>{const x=20+i*(w+10);b+=`<rect class="tbox ${["d","d","a","a","i"][i]}" x="${x}" y="40" width="${w}" height="70" rx="10"/>`+T(x+w/2,68,n,{c:"bh"})+T(x+w/2,90,d,{c:"s"});if(i<4)b+=AR(x+w,75,x+w+10,75)});
+ const D=[[0,"CA inhibitor","acetazolamide","↓ HCO₃⁻ ดูด"],[0.5,"Osmotic","mannitol","PCT + desc. loop"],[2,"Loop","furosemide","ยับยั้ง NKCC2"],[3,"Thiazide","HCTZ","ยับยั้ง NCC"],[4,"K⁺-sparing","spironolactone · amiloride","MR / ENaC"]];
+ D.forEach(([k,n,d,m],i)=>{const cx=20+k*(w+10)+w/2,y=170+(i%2)*120;b+=`<line class="gl th" x1="${cx}" y1="112" x2="${cx}" y2="${y}"/><circle class="dsite" cx="${cx}" cy="112" r="7"/>`+B(cx-66,y,132,84,n,[d,m],"gl")});
+ b+=T(320,450,"ยิ่งออกฤทธิ์ต้นทาง Na⁺ ที่ถึงปลายยิ่งมาก แต่ส่วนปลายดูดชดเชยได้บางส่วน",{c:"s m"});
+ return svg(b,"0 0 640 470")},
+notes:()=>`<h3>Table 31-1</h3><table><tr><th>กลุ่ม</th><th>กลไก</th><th>ที่</th></tr>
+ <tr><td>Osmotic</td><td>↓ ดูดน้ำ/solute ด้วยแรง osmotic</td><td>PCT, loop</td></tr>
+ <tr><td>Loop</td><td>ยับยั้ง Na⁺-2Cl⁻-K⁺ · ↓ medullary gradient → ↓ concentrating</td><td>TAL</td></tr>
+ <tr><td>Thiazide</td><td>ยับยั้ง Na⁺-Cl⁻</td><td>early DCT</td></tr>
+ <tr><td>CA inhibitor</td><td>↓ H⁺ หลั่ง/HCO₃⁻ ดูด</td><td>PCT</td></tr>
+ <tr><td>MR antagonist</td><td>spironolactone, eplerenone</td><td>CD</td></tr>
+ <tr><td>Na⁺ channel blocker</td><td>amiloride, triamterene (ENaC)</td><td>CD</td></tr></table>
+ <ul><li>Loop แรงสุด: ขับ Na⁺ ได้ถึง 20–30% ของที่กรอง ${S.g}</li><li>ผลเริ่มแรงแล้ว “คงที่” ใน 2–3 วันเพราะ volume ลด → RAAS/sympathetic ชดเชย ${S.g}</li>
+ <li>K⁺-sparing → เสี่ยง hyperkalemia · ตัวอื่นที่ทำงานก่อน CD → hypokalemia (flow ↑) ${S.g}</li></ul>`});
+
+SEC.push({id:"aki",k:"31",t:"Acute kidney injury",tools:[["dis",[["aki","Prerenal"],["intra","Intrarenal"],["post","Postrenal"]]]],
+draw(){let b="";const d=ST.dis;
+ b+=B(20,30,190,120,"Prerenal",["↓ เลือดไปไต","heart failure, hemorrhage","shock, ↓ volume"],d==="aki"?"ar":"")+B(225,30,190,120,"Intrarenal",["glomerulus, tubule, interstitium","ATN, GN, AIN"],d==="intra"?"ar":"")+B(430,30,190,120,"Postrenal",["อุดตันท่อ","นิ่ว, BPH, มะเร็ง"],d==="post"?"ar":"");
+ const L={aki:["ไตยังดีอยู่ · ตอบโดยเก็บ Na⁺/น้ำ","RBF ต่ำ <20–25% → เซลล์ตาย","แก้สาเหตุได้ ไตมักกลับปกติ"],intra:["ATN: ischemia (shock) หรือ toxin","(heavy metal, ethylene glycol, aminoglycoside, cisplatin)","Basement membrane อยู่ → เซลล์งอกใหม่ใน 10–20 วัน"],post:["P_B ↑ → GFR ↓","แก้ภายในไม่กี่วันไตฟื้น","อุดนานเป็นสัปดาห์ → เสียถาวร"]}[d];
+ b+=`<rect class="box" x="20" y="180" width="600" height="120" rx="12"/>`+L.map((l,i)=>T(320,212+i*28,l,{c:"s"})).join("");
+ b+=B(20,330,600,120,"ผลของ AKI ทั้งหมด",["คั่งน้ำ เกลือ → edema, hypertension","K⁺ สูง (อันตรายถึงชีวิต) · metabolic acidosis","anuria นาน 8–14 วันก็ถึงตายได้"],"vn");
+ return svg(b,"0 0 640 470")},
+notes:()=>`<h3>สาเหตุ prerenal</h3><ul><li>Hypovolemia (เลือดออก, ขาดน้ำ, ไฟไหม้), heart failure, vasodilation (septic shock, anaphylaxis), renal artery stenosis ${S.g}</li></ul>
+ <h3>Intrarenal</h3><ul><li><b>Glomerulonephritis</b> (เช่น post-streptococcal: immune complex ติดที่ glomerulus 1–3 สัปดาห์หลังติดเชื้อ) ${S.g}</li>
+ <li><b>ATN</b>: ischemia หรือ toxin · tubular cell หลุด อุด lumen ${S.g}</li><li>Interstitial nephritis, pyelonephritis ${S.g}</li></ul>
+ <h3>Postrenal</h3><ul><li>นิ่วทั้งสองข้าง, ต่อมลูกหมากโต, bladder obstruction, มะเร็งกด ${S.g}</li></ul>`});
+
+SEC.push({id:"ckd",k:"31",t:"Chronic kidney disease",leg:[],
+draw(){let b="";
+ b+=B(20,30,190,80,"Nephron เสียบางส่วน",[""],"ar")+B(225,30,190,80,"ที่เหลือ hypertrophy",["↑ RBF, ↑ GFR ต่อ nephron"],"")+B(430,30,190,80,"Glomerular pressure ↑",["→ sclerosis"],"ar");
+ b+=AR(210,70,223,70)+AR(415,70,428,70)+`<path class="arw" d="M525,112 C525,160 115,160 115,112"/>`+T(320,176,"Vicious cycle → ESRD",{c:"h"});
+ const C=[["Diabetes",45],["Hypertension",27],["Glomerulonephritis",8],["Polycystic kidney",2],["Other/unknown",18]];
+ C.forEach(([n,p],i)=>{const y=200+i*40;b+=T(30,y+18,n,{a:"start",c:"s"})+`<rect class="cbar on" x="200" y="${y}" width="${p*8}" height="24" rx="6"/>`+T(206+p*8,y+17,p+"%",{a:"start",c:"s"})});
+ b+=T(320,420,"สัดส่วนสาเหตุ ESRD (ประมาณ) · DM + HTN > 70%",{c:"s m"});return svg(b,"0 0 640 440")},
+notes:()=>`<h3>Vicious cycle</h3><ul><li>Nephron ที่เหลือทำงานหนัก → glomerular hypertension → sclerosis ต่อ · ACEi/ARB ลดวงจรนี้ได้ ${S.g}</li>
+ <li>อาการเริ่มเมื่อเหลือ nephron &lt;20–25% ${S.g}</li></ul>
+ <h3>สาเหตุ</h3><ul><li><b>Diabetes + hypertension &gt; 70%</b> ของ ESRD · obesity เป็นปัจจัยเสี่ยงสำคัญ ${S.g}</li>
+ <li>อายุ: nephron ลด ~10% ทุก 10 ปีหลังอายุ 40 ${S.g}</li></ul>
+ <h3>ผลของไตวาย</h3><ul><li>Edema, acidosis, uremia (urea/creatinine สูง), K⁺ สูง ${S.g}</li>
+ <li><b>Anemia</b> (↓ EPO) · <b>osteomalacia</b> (↓ 1,25-D, PO₄ คั่ง → PTH ↑) ${S.g}</li>
+ <li>Hypertension · isosthenuria (ปัสสาวะ ~300 mOsm ทำให้เข้มข้นหรือเจือจางไม่ได้) ${S.g}</li></ul>
+ <h3>Nephrotic syndrome</h3><ul><li>Glomerulus รั่วโปรตีน → albumin ต่ำ → edema · เช่น minimal change ในเด็ก ${S.g}</li></ul>`});
+
+SEC.push({id:"tubular",k:"31",t:"Specific tubular disorders & dialysis",leg:[],
+draw(){let b="";const R=[["Renal glycosuria","glucose ปกติ แต่ไตดูดไม่ได้"],["Aminoaciduria","cystinuria → นิ่ว · glycinuria"],["Renal hypophosphatemia","ดูด PO₄ ไม่ได้ → rickets ไม่ตอบ vit D"],["Renal tubular acidosis","หลั่ง H⁺ ไม่พอ → HCO₃⁻ เสียในปัสสาวะ"],["Nephrogenic DI","ไม่ตอบ ADH → ปัสสาวะเจือจาง"],["Fanconi syndrome","PCT เสียหลายอย่าง: aa glucose PO₄ HCO₃⁻"],["Bartter","NKCC2 (TAL) เสีย → เหมือนกิน loop diuretic"],["Gitelman","NCC (DCT) เสีย → เหมือน thiazide"],["Liddle","ENaC ทำงานเกิน → HT, K⁺ ต่ำ, renin ต่ำ"]];
+ R.forEach(([n,d],i)=>{const y=24+i*46;b+=`<rect class="box" x="20" y="${y}" width="600" height="38" rx="9"/>`+T(34,y+24,n,{a:"start",c:"bh"})+T(250,y+24,d,{a:"start",c:"s"})});
+ return svg(b,"0 0 640 450")},
+notes:()=>`<h3>Specific tubular disorders</h3><ul><li>มักเกิดจากยีนของ carrier/enzyme ผิดปกติ หรือ tubule ถูกทำลายจาก toxin/ischemia ${S.g}</li>
+ <li><b>Renal glycosuria</b> ต้องแยกจากเบาหวานก่อนวินิจฉัย ${S.g}</li><li><b>Fanconi</b>: ขับ aa, glucose, PO₄, HCO₃⁻ มาก (จากยีน, heavy metal, ยา) ${S.g}</li>
+ <li><b>Bartter / Gitelman</b>: K⁺ ต่ำ alkalosis BP ปกติ/ต่ำ · <b>Liddle</b>: BP สูง K⁺ ต่ำ aldosterone ต่ำ (รักษาด้วย amiloride) ${S.g}</li></ul>
+ <h3>Dialysis & transplant</h3><ul><li>Dialyzing fluid ออกแบบให้ดึง urea, creatinine, K⁺, PO₄ ออก และให้ HCO₃⁻/Ca²⁺ ตามต้องการ ${S.g}</li>
+ <li>Dialysis แทนไตได้ไม่หมด (ฮอร์โมน, ต่อเนื่อง) · transplant อยู่ได้นานกว่า ${S.g}</li></ul>`});
+
+/* ---------- Ch 25 · Body fluid compartments ---------- */
+GN["25"]="Ch 25 · Body fluids";
+Object.assign(ST,{ex:"normal",ind:100,cind:7.1,sol:"hyper",vol:2,sh:"eq"});
+SEC.push({id:"balance",k:"25",t:"Water intake & output",leg:[],tools:[["ex",[["normal","ปกติ"],["exercise","ออกกำลังหนักนาน"]]]],
+draw(){const N=ST.ex==="normal";const I=N?[["ดื่ม/อาหาร",2100],["Metabolism",200]]:[["ดื่ม/อาหาร",3100],["Metabolism",200]];
+ const O=N?[["Insensible skin",350],["Insensible lungs",350],["Sweat",100],["Feces",100],["Urine",1400]]:[["Insensible skin",350],["Insensible lungs",650],["Sweat",5000],["Feces",100],["Urine",500]];
+ const sc=v=>v*(N?.22:.075),C=["--s-h2o","--s-hco3","--s-ca","--s-urea","--s-k","--s-na","--s-org"];let b="",y=40;
+ b+=T(30,30,"Intake",{a:"start",c:"bh"});let x=30;I.forEach(([n,v],i)=>{b+=`<rect class="seg" x="${x}" y="${y}" width="${sc(v)}" height="40" style="fill:var(${C[i]})"/>`+T(x+sc(v)/2,y+58,`${n} ${v}`,{c:"s"});x+=sc(v)});
+ b+=T(30,150,"Output",{a:"start",c:"bh"});x=30;O.forEach(([n,v],i)=>{b+=`<rect class="seg" x="${x}" y="160" width="${sc(v)}" height="40" style="fill:var(${C[i+2]})"/>`+(sc(v)>40?T(x+sc(v)/2,226+(i%2)*16,`${n} ${v}`,{c:"s"}):"");x+=sc(v)});
+ const ti=I.reduce((a,b)=>a+b[1],0),to=O.reduce((a,b)=>a+b[1],0);
+ b+=`<rect class="box" x="30" y="280" width="580" height="80" rx="12"/>`+T(320,312,`Intake ${ti} mL/วัน · Output ${to} mL/วัน`,{c:"bh"})+T(320,340,N?"สมดุล: urine ปรับได้ตามที่ต้องการ":"เหงื่อออกมากจน output > intake ถ้าไม่ดื่มชดเชย",{c:"s"});
+ return svg(b,"0 0 640 380")},
+notes:()=>`<h3>Table 25-1</h3><ul><li>Intake ~2300 mL/วัน: ดื่ม/อาหาร 2100 + จาก oxidation ของคาร์โบไฮเดรต 200 ${S.g}</li>
+ <li><b>Insensible loss</b> ~700 mL/วัน (ผิว 350 + ทางเดินหายใจ 350) ควบคุมไม่ได้ · ผิวมีชั้น cholesterol กันน้ำ ถ้าเสีย (ไฟไหม้) เสียน้ำได้ 3–5 L/วัน ${S.g}</li>
+ <li>เหงื่อ ~100 mL ปกติ แต่ออกกำลังหนัก/อากาศร้อนได้ 1–2 L/ชม. · อุจจาระ ~100 mL (ท้องเสียหนักหลายลิตร) ${S.g}</li>
+ <li>ไตเป็นทางหลักที่ <b>ปรับได้</b>: ปัสสาวะได้ตั้งแต่ ~0.5 ถึง 20 L/วัน ${S.g}</li></ul>`});
+SEC.push({id:"compartments",k:"25",t:"Body fluid compartments",leg:[],
+draw(){let b="";const W=560,sc=W/42;const blk=(x,w,c,l,v)=>`<rect class="seg" x="${x}" y="60" width="${w}" height="120" rx="6" style="fill:var(${c})"/>`+T(x+w/2,112,l,{c:"bh"})+T(x+w/2,132,v,{c:"s"});
+ b+=T(40,40,"Total body water ~42 L (60% ของ 70 kg)",{a:"start",c:"bh"});
+ b+=blk(40,28*sc,"--s-k2","Intracellular (ICF)","28 L · 40%")+blk(40+28*sc,11*sc,"--s-na2","Interstitial","11 L")+blk(40+39*sc,3*sc,"--a-art","Plasma","3 L");
+ b+=`<path class="arw" d="M${40+28*sc},200 L${40+42*sc},200"/>`+T(40+35*sc,222,"ECF 14 L · 20%",{c:"b"});
+ b+=`<rect class="box" x="40" y="250" width="560" height="120" rx="12"/>`+T(320,280,"Blood volume ~5 L (~7% น้ำหนักตัว) · plasma 60% + RBC 40%",{c:"s"})+T(320,306,"Hematocrit ชาย ~0.40 · หญิง ~0.36",{c:"s"})+T(320,332,"Transcellular fluid 1–2 L: synovial, peritoneal, pericardial, CSF, intraocular",{c:"s"})+T(320,356,"TBW ลดในผู้สูงอายุ ผู้หญิง และคนอ้วน (ไขมันมีน้ำน้อย)",{c:"s m"});
+ return svg(b,"0 0 640 390")},
+notes:()=>`<h3>ช่องของน้ำ</h3><ul><li>TBW ~60% ของน้ำหนักผู้ใหญ่ชาย (~42 L) · ICF ~28 L (40%) · ECF ~14 L (20%) ${S.g}</li>
+ <li>ECF = interstitial (>3/4, ~11 L) + plasma (~3 L) · แยกกันด้วย capillary membrane ที่ให้ทุกอย่างผ่านยกเว้นโปรตีน ${S.g}</li>
+ <li>Blood ~5 L · hematocrit ชาย 0.40 หญิง 0.36 · anemia ต่ำได้ถึง 0.10 · polycythemia สูงถึง 0.65 ${S.g}</li>
+ <li>TBW เปลี่ยนตามอายุ เพศ ไขมัน · ทารกแรกเกิด 70–75% ${S.g}</li></ul>`});
+SEC.push({id:"composition",k:"25",t:"Composition of ECF & ICF",leg:["na","k","cl","hco3","pi"],
+draw(){let b="";const D=[["Na⁺",142,10,"--s-na"],["K⁺",4,140,"--s-k"],["Ca²⁺",2.4,.0001,"--s-ca"],["Mg²⁺",1.2,58,"--s-org"],["Cl⁻",108,4,"--s-cl"],["HCO₃⁻",24,10,"--s-hco3"],["Phosphates",4,75,"--s-pi"],["Protein",5,40,"--s-urea"]];
+ const A=axes(110,30,480,330,[0,150],[0,8],[0,50,100,150],[],"mEq/L","");b+=A.g;
+ D.forEach(([n,e,i,c],k)=>{const y=40+k*40;b+=T(100,y+20,n,{a:"end",c:"b"})+`<rect class="seg" x="110" y="${y+2}" width="${e/150*480}" height="14" style="fill:var(${c})"/><rect class="seg" x="110" y="${y+18}" width="${i/150*480}" height="14" style="fill:var(${c});opacity:.45"/>`+T(116+Math.max(e,i)/150*480,y+22,`${e} / ${i}`,{a:"start",c:"s m"})});
+ b+=T(350,404,"แถบเข้ม = ECF · แถบจาง = ICF (ค่าประมาณ)",{c:"s m"});return svg(b,"0 0 640 420")},
+notes:()=>`<h3>ความต่างหลัก</h3><ul><li><b>ECF</b>: Na⁺ Cl⁻ HCO₃⁻ สูง · <b>ICF</b>: K⁺ phosphate โปรตีน สูง · Ca²⁺ ในเซลล์ต่ำมาก ${S.g}</li>
+ <li>Plasma กับ interstitial คล้ายกัน ต่างที่<b>โปรตีน</b> ซึ่งพลาสมามีมากกว่า → cation ในพลาสมาสูงกว่าเล็กน้อย (~2%) = <b>Gibbs–Donnan effect</b> ${S.g}</li>
+ <li>ECF ยังมีสารอาหาร (O₂, glucose, fatty acid, amino acid) และของเสีย (CO₂, urea, creatinine) ${S.g}</li></ul>`});
+SEC.push({id:"measure",k:"25",t:"Measuring compartment volumes",ctrl:()=>sl("ind","Indicator injected",10,500,10,"mg")+sl("cind","Measured conc.",1,50,.1,"mg/L"),wire:()=>wireSl(),
+draw(){let b="";const v=ST.ind/ST.cind;
+ b+=`<rect class="box" x="30" y="30" width="580" height="110" rx="14"/>`+T(320,66,"Volume B = Quantity of indicator / Concentration",{c:"bb"})+T(320,104,`= ${ST.ind} mg / ${ST.cind} mg/L = ${f1(v)} L`,{c:"h"})+T(320,128,v>30?"≈ total body water":v>10?"≈ ECF":v>2.4?"≈ plasma":"",{c:"s"});
+ const R=[["Total body water","³H₂O, ²H₂O (D₂O), antipyrine"],["ECF","²²Na, ¹²⁵I-iothalamate, thiosulfate, inulin"],["Plasma","¹²⁵I-albumin, Evans blue (T-1824)"],["Blood","⁵¹Cr-labeled RBC (หรือ plasma/(1 − Hct))"],["ICF","คำนวณ = TBW − ECF"],["Interstitial","คำนวณ = ECF − plasma"]];
+ R.forEach(([n,d],i)=>{const y=160+i*44;b+=`<rect class="box" x="30" y="${y}" width="580" height="36" rx="9"/>`+T(44,y+23,n,{a:"start",c:"bh"})+T(200,y+23,d,{a:"start",c:"s"})});
+ return svg(b,"0 0 640 440")},
+notes:()=>`<h3>Indicator-dilution principle</h3><ul><li>ฉีดสารที่กระจายทั่วช่องนั้นแล้ววัดความเข้มข้น · Volume = ปริมาณที่ฉีด (หักที่ถูกขับ/เผาผลาญ) ÷ ความเข้มข้น ${S.g}</li>
+ <li>สารต้องกระจายเฉพาะในช่องนั้นและกระจายเท่ากัน ${S.g}</li><li>ICF และ interstitial วัดตรงไม่ได้ ต้องคำนวณ (Table 25-3) ${S.g}</li></ul>
+ <div class="pearl">เลื่อนค่าลองคำนวณ: เช่นฉีด 100 mg วัดได้ 7.1 mg/L → ~14 L ≈ ECF</div>`});
+SEC.push({id:"osmosis",k:"25",t:"Osmosis, osmolarity & tonicity",leg:["h2o"],
+draw(){let b="";const cellD=(x,r,l,arr,txt)=>`<rect class="lumen" x="${x-85}" y="60" width="170" height="170" rx="16"/><circle class="cell" cx="${x}" cy="145" r="${r}"/>`+T(x,40,l,{c:"bh"})+T(x,260,txt,{c:"s"})+arr;
+ b+=cellD(110,52,"Isotonic 282",""," ปริมาตรคงที่")+cellD(320,70,"Hypotonic <282",AR(320+92,145,320+74,145,"h2o")+AR(320-92,145,320-74,145,"h2o"),"น้ำเข้า → บวม")+cellD(530,36,"Hypertonic >282",AR(530+40,145,530+84,145,"h2o")+AR(530-40,145,530-84,145,"h2o"),"น้ำออก → เหี่ยว");
+ b+=`<rect class="box" x="30" y="290" width="580" height="110" rx="12"/>`+T(320,318,"Plasma osmolarity ≈ 2 × [Na⁺] (~282–300 mOsm/L)",{c:"bh"})+T(320,344,"1 mOsm/L ≈ 19.3 mmHg · ต่างกัน 1 mOsm ข้าม membrane สร้างแรงได้มาก",{c:"s"})+T(320,370,"Osmolarity = ต่อลิตรสารละลาย · Osmolality = ต่อ kg น้ำ (ในร่างกายใช้แทนกันได้)",{c:"s"});
+ return svg(b,"0 0 640 420")},
+notes:()=>`<h3>นิยาม</h3><ul><li><b>Osmole</b> = จำนวนอนุภาคที่ละลาย · NaCl 1 mol ≈ 2 osmol ${S.g}</li>
+ <li>Osmolarity ทั้ง 3 ช่อง ~<b>300 mOsm/L</b> (corrected ~282 เพราะแรงดึงดูดระหว่างไอออน) ${S.g}</li>
+ <li>Osmotic pressure = 19.3 mmHg ต่อ mOsm/L → ที่ 282 mOsm/L แรงที่อาจเกิดข้าม cell membrane >5400 mmHg ${S.g}</li></ul>
+ <h3>Tonicity</h3><ul><li><b>Isotonic</b>: 0.9% NaCl, 5% glucose · <b>Hypotonic</b>: &lt;282 → เซลล์บวม · <b>Hypertonic</b>: &gt;282 → เซลล์เหี่ยว ${S.g}</li>
+ <li>Tonicity ขึ้นกับ<b>สารที่ผ่าน membrane ไม่ได้</b> · urea ผ่านได้ จึงสร้าง osmolarity แต่ไม่สร้าง tonicity ถาวร ${S.g}</li>
+ <li>น้ำเคลื่อนข้ามเซลล์เข้าสมดุลภายในไม่กี่วินาทีถึงนาที ${S.g}</li></ul>`});
+SEC.push({id:"shifts",k:"25",t:"Fluid shifts after adding saline",tools:[["sol",[["iso","Isotonic 0.9%"],["hyper","Hypertonic 3%"],["hypo","Hypotonic 0.45%"],["water","Pure water"]]],["sh",[["inst","ทันที"],["eq","หลังสมดุล"]]]],ctrl:()=>sl("vol","Volume added",0,5,.5,"L"),wire:()=>wireSl(),
+draw(){const O0=280,E0=14,I0=28,osmL={iso:280,hyper:1026,hypo:140,water:0}[ST.sol],V=ST.vol,add=osmL*V;
+ let E,I,oE,oI;if(ST.sh==="inst"){E=E0+V;I=I0;oE=(E0*O0+add)/E;oI=O0}else{const tot=E0*O0+I0*O0+add,vt=E0+I0+V,o=tot/vt;I=I0*O0/o;E=vt-I;oE=oI=o}
+ let b="";const sx=10,sy=.9,base=380;const box=(x,v,o,c,l)=>`<rect class="seg" x="${x}" y="${base-o*sy}" width="${v*sx}" height="${o*sy}" style="fill:var(${c});opacity:.85"/>`+T(x+v*sx/2,base+20,`${l} ${f1(v)} L`,{c:"s"})+T(x+v*sx/2,base-o*sy-8,`${f1(o)}`,{c:"s m"});
+ b+=`<rect x="40" y="${base-O0*sy}" width="${(I0+E0)*sx}" height="${O0*sy}" fill="none" stroke="var(--sb-muted)" stroke-dasharray="5 4"/>`;
+ b+=box(40,I,oI,"--s-k2","ICF")+box(40+I*sx,E,oE,"--s-na2","ECF");
+ b+=T(40,24,"ความกว้าง = ปริมาตร · ความสูง = osmolarity · เส้นประ = ก่อนให้",{a:"start",c:"s m"});
+ b+=T(560,60,ST.sol==="iso"?"ECF ↑ อย่างเดียว":ST.sol==="hyper"?"น้ำออกจากเซลล์ → ECF ↑ ICF ↓":"น้ำเข้าเซลล์ → ทั้งสองช่องบวม",{a:"end",c:"h"});
+ return svg(b,"0 0 640 410")},
+notes:()=>`<h3>หลักคิด (ตัวอย่างใน Guyton)</h3><ul><li>1) ใส่ solute เข้า ECF ก่อน 2) น้ำเคลื่อนจนทุกช่อง osmolarity เท่ากัน 3) ICF เก็บ solute เท่าเดิม ${S.g}</li>
+ <li>ตัวอย่าง: ให้ 3% NaCl 2 L ในคน 70 kg → ทันที ECF 16 L osmolarity ~373 · หลังสมดุลทุกช่อง <b>313.9 mOsm/L</b> · ECF 19.02 L · ICF 24.98 L ${S.g}</li></ul>
+ <table><tr><td>Isotonic</td><td>ECF ↑ · ICF เท่าเดิม · osm เท่าเดิม</td></tr><tr><td>Hypertonic</td><td>ECF ↑↑ · ICF ↓ · osm ↑</td></tr><tr><td>Hypotonic / น้ำ</td><td>ECF ↑ · ICF ↑ · osm ↓</td></tr></table>
+ <div class="pearl">5% glucose ให้แล้ว glucose ถูกเผาผลาญ เหลือเท่ากับให้น้ำเปล่า ${S.g}</div>`});
+SEC.push({id:"natremia",k:"25",t:"Hyponatremia & hypernatremia",leg:[],
+draw(){let b="";
+ b+=B(20,30,290,160,"Hyponatremia",["Na⁺ เสีย: ท้องเสีย อาเจียน","diuretic, Addison","น้ำเกิน: SIADH, ดื่มมาก"],"vn")+B(330,30,290,160,"Hypernatremia",["น้ำเสีย: DI, เหงื่อ, ไม่ได้ดื่ม","Na⁺ เกิน: aldosterone เกิน","ให้ NaCl มาก"],"ar");
+ b+=B(20,210,290,150,"ผล: เซลล์บวม",["สมองบวม → ปวดหัว ชัก โคม่า","เรื้อรัง: สมองปรับลด osmole","แก้เร็วเกิน → demyelination"],"vn")+B(330,210,290,150,"ผล: เซลล์เหี่ยว",["ซึม สับสน ชัก","เลือดออกในสมองได้","ส่วนใหญ่จากขาดน้ำ"],"ar");
+ b+=T(320,392,"แก้ hyponatremia เรื้อรัง < 10–12 mmol/L ใน 24 ชม. และ < 18 ใน 48 ชม.",{c:"h"});return svg(b,"0 0 640 410")},
+notes:()=>`<h3>Table 25-4</h3><table><tr><th></th><th>Na⁺</th><th>ECF</th><th>ICF</th></tr>
+ <tr><td>Hypo-osmotic dehydration (Addison, diuretic)</td><td>↓</td><td>↓</td><td>↑</td></tr><tr><td>Hypo-osmotic overhydration (SIADH)</td><td>↓</td><td>↑</td><td>↑</td></tr>
+ <tr><td>Hyperosmotic dehydration (DI, เหงื่อ)</td><td>↑</td><td>↓</td><td>↓</td></tr><tr><td>Hyperosmotic overhydration (Cushing, aldosteronism)</td><td>↑</td><td>↑</td><td>↓</td></tr></table>
+ <ul><li><b>Hyponatremia</b> พบบ่อยที่สุดในคลินิก · Na⁺ &lt;115–120 สมองบวมรุนแรง ${S.g}</li>
+ <li>แก้ chronic hyponatremia ช้าๆ (&lt;10–12 mmol/L ใน 24 ชม., &lt;18 ใน 48 ชม.) ป้องกัน <b>osmotic demyelination</b> ${S.g}</li></ul>`});
+SEC.push({id:"edema",k:"25",t:"Edema & safety factors",leg:[],
+draw(){let b="";
+ b+=B(20,30,290,170,"↑ capillary filtration",["↑ Kf (allergy, burn, toxin)","↑ capillary pressure","(ไตเก็บเกลือ, HF, venous obstruction)","↓ plasma protein (nephrotic, cirrhosis)"],"ar")+B(330,30,290,170,"Lymph blocked",["มะเร็ง ผ่าตัด","filariasis (Wuchereria)","โปรตีนค้างใน interstitium"],"vn");
+ const A=axes(80,240,500,140,[0,20],[0,1],[0,3,10,17,20],[],"Safety factor สะสม (mmHg)","");b+=A.g;
+ b+=pctBar(80,290,500,[[15,"--s-hco3","compliance 3"],[35,"--s-h2o","lymph 7"],[35,"--s-na","washdown 7"]]);
+ b+=T(330,420,"รวม ~17 mmHg: capillary pressure ต้องสูงขึ้นเกิน ~17 mmHg ถึงจะเกิด edema",{c:"h"});return svg(b,"0 0 640 440")},
+notes:()=>`<h3>Intracellular edema</h3><ul><li>Ion pump เสีย (ขาดเลือด/O₂) หรือการอักเสบทำให้ membrane รั่ว ${S.g}</li></ul>
+ <h3>Extracellular edema</h3><ul><li>รั่วออกจาก capillary มากผิดปกติ หรือ lymph ระบายไม่ได้ ${S.g}</li><li>สาเหตุ: ไตเก็บเกลือน้ำ, heart failure, venous obstruction, nephrotic syndrome, liver disease, burn, filariasis ${S.g}</li></ul>
+ <h3>Safety factors (รวม ~17 mmHg)</h3><ul><li>Interstitial compliance ต่ำช่วงความดันลบ (~−3 mmHg) = 3 · lymph flow ↑ 10–50 เท่า = 7 · washdown ของโปรตีน = 7 ${S.g}</li></ul>
+ <div class="pearl">น้ำในช่อง potential space (pleura, pericardium, peritoneum = ascites) เรียกว่า <b>effusion</b> ${S.g}</div>`});
+
+

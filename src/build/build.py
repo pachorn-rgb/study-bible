@@ -72,6 +72,8 @@ def build_page(aid):
     k = kind_of(meta)
     cfg = {"id": aid, "kind": k, "sys": meta["sys"], **KINDS[k], **meta.get("override", {})}
     content = (SRC / "atlases" / f"{aid}.js").read_text()
+    # "//@include file.js" pulls in shared section libraries (e.g. _renal-guyton-base.js)
+    content = re.sub(r"^//@include (\S+)$", lambda m: (SRC / "atlases" / m.group(1)).read_text(), content, flags=re.M)
     page = (head + body +
             f'<script>const ATLAS={json.dumps(cfg, ensure_ascii=False)};</script>\n'
             '<script src="../atlas/core.js"></script>\n'
