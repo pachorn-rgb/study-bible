@@ -89,6 +89,15 @@ def apply():
     mods = {m["id"]: c for c in chs.values() for m in c["modules"]}
     idx, parts = read_bank(); skip = drafts()
     P = lambda c: parts.setdefault(c, {"topics": {}, "boss": None, "cases": [], "dx": []})
+    # hand-written questions without a generator live in questions/legacy.json (source of truth)
+    leg = json.loads((SRC / "questions" / "legacy.json").read_text())
+    owner = {x["id"]: c for c in chs for x in chs[c]["checklist"]}
+    for tid, qs in leg["topics"].items():
+        assert tid in owner, "legacy topic without checklist item: " + tid
+        P(owner[tid])["topics"][tid] = qs
+    for k in leg["cases"]:
+        b = P(k["ch"]); b["cases"] = [x for x in b["cases"] if x["id"] != k["id"]] + [k]
+    for c, bo in leg["boss"].items(): P(c)["boss"] = bo
     n = 0
     for f in sorted((SRC / "questions").glob("*.py")):
         if f.name == "cases.py": continue

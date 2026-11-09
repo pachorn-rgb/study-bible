@@ -7,7 +7,7 @@ Edit here, rebuild, check, then commit both `src/` and `docs/`.
 src/
   engine/       shared atlas engine pieces (layout, drawing helpers, mind map, renderer)
   atlases/      one atlas = <id>.js (content) + <id>.json (hero text, sources, library entry, "draft")
-  questions/    question generators: <name>.py per atlas + cases.py (Case Ladder)
+  questions/    question generators: <name>.py per atlas + cases.py (Case Ladder) + legacy.json (hand-written renal items)
   build/        build.py · integrate.py · questions.py
   test/         check.js (run before every push)
 ```
@@ -39,5 +39,6 @@ are standalone files in `docs/renal/` and are not generated from here.
 
 ## Question bank
 `docs/q/index.json` lists the chapter parts; each `docs/q/<chapter>.json` holds `{topics, boss, cases, dx}`.
-Renal's hand-written questions live directly in `docs/q/renal.json`; generators only replace their own ids.
+Hand-written questions without a generator (old renal items, renal cases and boss) live in `src/questions/legacy.json`;
+edit them there. `python3 src/test/tells.py` lists MCQs whose correct option is conspicuously the longest — keep it near 0.
 See the docstring of `build/questions.py` for the generator format.
