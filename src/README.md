@@ -29,12 +29,12 @@ node src/test/check.js                 # data + page smoke test; must print "all
 Push sections with `SEC.push({id, k: groupKey, t: title, mm: mind-map label, drugs, act, leg, draw, notes})`,
 name groups in `GN`, list supplementary sections in `const EXTRA=[...]` (shown as "เสริม").
 Drawing helpers come from `engine/atlas-core.js` + `engine/helpers.js` (`T`, `psvg`, `cards`, `flowD`, `panel`, `pill`, `tbl`, …).
-Source badges in notes: `S.k` Katzung · `S.p` Pharmacotherapy · `S.r` Robbins · `S.h` Harrison · `S.x` general knowledge.
+Source badges in notes: `S.k` Katzung · `S.p` Pharmacotherapy · `S.r` Robbins · `S.g` Guyton · `S.b` Boron · `S.h` Harrison · `S.fa` First Aid · `S.x` general knowledge.
 
 ## Shared engine
 Built atlases load `docs/atlas/atlas.css`, `core.js` (before content) and `render.js` (after content),
 so a fix in `src/engine/` reaches every built atlas after `build.py`.
-The older hand-made renal atlases (Guyton, Harrison, Robbins Ch 20–21, KUB anatomy/histology/embryology, nephron pathway)
+The hand-made renal atlases (KUB anatomy/histology/embryology, nephron pathway)
 are standalone files in `docs/renal/` and are not generated from here.
 
 ## Question bank
