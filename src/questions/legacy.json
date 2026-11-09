@@ -209,15 +209,15 @@
     "e": "Metabolic acidosis stimulates ventilation; also glaucoma."
    },
    {
-    "q": "A 32-year-old woman takes a drug before trekking to 5000 m to prevent altitude sickness. After 3 days she notes tingling in her fingers. Her urine pH is 7.5 and her serum HCO₃⁻ is 18 mEq/L with a normal anion gap. The drug's main effect results from inhibition of which process?",
+    "q": "A 32-year-old woman starts a drug the day before trekking to 5000 m to prevent altitude sickness. On day 1 her urine pH is 7.5. By day 3 she notes tingling in her fingers, and her serum HCO₃⁻ is 18 mEq/L with a normal anion gap. The drug's main effect results from inhibition of which process?",
     "o": [
-     "Proximal tubular HCO₃⁻ reabsorption",
      "Distal tubular Na⁺–Cl⁻ cotransport",
+     "Collecting duct aldosterone signalling",
      "Thick ascending limb Na⁺–K⁺–2Cl⁻ entry",
-     "Collecting duct aldosterone signalling"
+     "Proximal tubular HCO₃⁻ reabsorption"
     ],
-    "a": 0,
-    "e": "Acetazolamide inhibits carbonic anhydrase in the PCT, causing bicarbonaturia (alkaline urine) and a hyperchloremic metabolic acidosis that stimulates ventilation at altitude. Thiazides act on the distal Na⁺–Cl⁻ cotransporter and cause alkalosis.",
+    "a": 3,
+    "e": "Acetazolamide inhibits carbonic anhydrase in the PCT, causing early bicarbonaturia (alkaline urine) and then a hyperchloremic metabolic acidosis that stimulates ventilation at altitude; the bicarbonaturia is self-limited as serum HCO₃⁻ falls. Thiazides act on the distal Na⁺–Cl⁻ cotransporter and cause alkalosis.",
     "d": 3
    }
   ],
@@ -1452,15 +1452,15 @@
     "e": "Sympathetic afferents with the renal plexus enter T10–L1."
    },
    {
-    "q": "A 63-year-old man has a 7-cm renal cell carcinoma of the right kidney. During staging, which lymph nodes are expected to be involved first?",
+    "q": "A 63-year-old man has a 7-cm renal cell carcinoma of the left kidney. During staging, which lymph nodes are expected to be involved first?",
     "o": [
-     "Lateral aortic (para-aortic) nodes",
      "Internal iliac (pelvic) nodes",
-     "Superficial inguinal nodes",
-     "Celiac (preaortic) nodes"
+     "Lateral aortic (para-aortic) nodes",
+     "Celiac (preaortic) nodes",
+     "Superficial inguinal nodes"
     ],
-    "a": 0,
-    "e": "Renal lymphatics follow the renal vessels to the lateral aortic (lumbar) nodes. Internal iliac nodes drain pelvic organs such as the bladder base.",
+    "a": 1,
+    "e": "Renal lymphatics follow the renal vessels to the lateral aortic (lumbar) nodes; the left kidney drains to left para-aortic nodes (the right kidney to paracaval/interaortocaval nodes). Internal iliac nodes drain pelvic organs such as the bladder base.",
     "d": 2
    }
   ],
@@ -2646,14 +2646,14 @@
     "e": "Ascending infection reaches the papilla first."
    },
    {
-    "q": "A 4-year-old boy has periorbital and leg edema, with proteinuria of 4 g/day and a normal creatinine. Light microscopy of a renal biopsy is unremarkable. Which electron microscopy finding is expected?",
+    "q": "A 4-year-old boy has periorbital and leg edema, with a urine protein:creatinine ratio of 6 mg/mg and a normal creatinine. Light microscopy of a renal biopsy is unremarkable. Which electron microscopy finding is expected?",
     "o": [
-     "Subepithelial electron-dense humps",
-     "Diffuse podocyte foot process effacement",
+     "Mesangial electron-dense deposits",
      "Split, basket-weave basement membrane",
-     "Mesangial electron-dense deposits"
+     "Diffuse podocyte foot process effacement",
+     "Subepithelial electron-dense humps"
     ],
-    "a": 1,
+    "a": 2,
     "e": "Minimal change disease shows normal light microscopy with diffuse effacement of podocyte foot processes on EM. Subepithelial humps are seen in post-streptococcal GN.",
     "d": 3
    }
@@ -3008,15 +3008,15 @@
     "e": "Loss of albumin lowers plasma oncotic pressure, increasing net filtration into tissues."
    },
    {
-    "q": "A 64-year-old smoker with small cell lung cancer is confused. He appears euvolemic. Na⁺ is 121 mEq/L, plasma osmolality 252 mOsm/kg, and urine osmolality 480 mOsm/kg. His confusion is best explained by:",
+    "q": "A 32-year-old woman collapses after a marathon during which she drank water at every station. She is confused. Na⁺ is 121 mEq/L and plasma osmolality 252 mOsm/kg. Her confusion is best explained by:",
     "o": [
      "Water moving out of brain cells",
      "Demyelination of pontine neurons",
      "Water moving into brain cells",
-     "Hypercalcemia from PTHrP release"
+     "Hypoglycemia from glycogen depletion"
     ],
     "a": 2,
-    "e": "SIADH causes hypo-osmotic overhydration, so water moves into brain cells and causes cerebral edema. Pontine demyelination results from overly rapid correction, not from the hyponatremia itself.",
+    "e": "Excess water intake lowers plasma osmolality, so water moves into brain cells and causes cerebral edema. Pontine demyelination results from overly rapid correction, not from the hyponatremia itself.",
     "d": 3
    }
   ],
@@ -3196,15 +3196,15 @@
     "e": "180 − 160.5 ≈ 19.5 L/day."
    },
    {
-    "q": "A patient with neurosyphilis receives high-dose IV penicillin together with probenecid so that serum penicillin levels stay higher for longer. Probenecid achieves this by inhibiting which renal process?",
+    "q": "A 40-year-old man with neurosyphilis is treated with daily IM procaine penicillin G plus oral probenecid, which keeps serum penicillin levels higher for longer. Probenecid achieves this by inhibiting which renal process?",
     "o": [
      "Glomerular filtration of the drug",
-     "Tubular reabsorption of the drug",
      "Proximal tubular secretion",
-     "Distal tubular reabsorption"
+     "Distal tubular reabsorption",
+     "Collecting duct reabsorption"
     ],
-    "a": 2,
-    "e": "Penicillin is excreted largely by organic anion secretion in the PCT, and probenecid competes for this transporter, reducing excretion. Glomerular filtration is unaffected.",
+    "a": 1,
+    "e": "Penicillin is excreted largely by organic anion transporter (OAT) secretion in the PCT; probenecid competes for this transporter, reducing excretion. Glomerular filtration is unaffected, and reabsorption would raise, not lower, penicillin levels.",
     "d": 2
    }
   ],
@@ -4228,13 +4228,13 @@
    {
     "q": "A 19-year-old with type 1 diabetes has DKA, with glucose 520 mg/dL and K⁺ 5.9 mEq/L. After IV insulin, his K⁺ falls to 3.1 mEq/L. Before treatment, his elevated K⁺ reflected:",
     "o": [
-     "Increased total body potassium stores",
-     "Reduced distal secretion from low aldosterone",
-     "Shift out of cells from insulin lack and hyperosmolarity",
-     "Excess dietary potassium intake"
+     "Increased total body K⁺ stores",
+     "Excess dietary K⁺ intake",
+     "Shift of K⁺ out of cells",
+     "Low aldosterone ↓ distal K⁺ secretion"
     ],
     "a": 2,
-    "e": "Insulin deficiency and hyperosmolarity shift K⁺ out of cells, so serum K⁺ is high even though total body K⁺ is depleted by osmotic diuresis. Insulin then drives K⁺ back into cells and unmasks the deficit.",
+    "e": "Insulin deficiency and hyperosmolarity (solvent drag) shift K⁺ out of cells, so serum K⁺ is high even though total body K⁺ is depleted by osmotic diuresis. Insulin then drives K⁺ back into cells and unmasks the deficit.",
     "d": 3
    }
   ],
@@ -7700,7 +7700,7 @@
     "e": "Banding creates a controlled inflow stenosis."
    },
    {
-    "q": "A 60-year-old man on hemodialysis via a left arm AV fistula has progressive swelling of the entire left arm and face, with dilated veins over the chest wall. Fistula pressures are high during dialysis. The most likely cause is:",
+    "q": "A 60-year-old man on hemodialysis via a left arm AV fistula has progressive swelling of the entire left arm, with dilated veins over the chest wall. Fistula pressures are high during dialysis. The most likely cause is:",
     "o": [
      "Central venous stenosis",
      "Arterial inflow stenosis",
