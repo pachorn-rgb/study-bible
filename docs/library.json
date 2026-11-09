@@ -238,7 +238,9 @@
      "subs": [
       "Pharmacokinetics & Pharmacodynamics",
       "Autonomic Drugs",
-      "Toxicities & Miscellaneous"
+      "Toxicities & Miscellaneous",
+      "Antimicrobials",
+      "Immunosuppressants"
      ],
      "modules": [
       {
@@ -310,6 +312,160 @@
         "l": "K",
         "ch": "Ch 3",
         "sort": 3
+       }
+      },
+      {
+       "id": "pharm-micro-link",
+       "title": "Antimicrobials",
+       "subs": [
+        "Antimicrobials"
+       ],
+       "src": "Katzung 16e Ch 43–53 · Pharmacotherapy 5e",
+       "href": "micro/pharm-micro.html",
+       "thumb": "thumbs/pharm-micro.jpg",
+       "desc": "ทางลัด · atlas นี้อยู่ใน Microbiology ตามโครง First Aid · แผนที่ยาต้านจุลชีพ: penicillin, cephalosporin, carbapenem, vancomycin, protein synthesis inhibitors, folate antagonists, FQ, metronidazole, ยา TB, prophylaxis, antifungals, antiparasitics, antimalarials, antivirals, HIV, hepatitis B/C",
+       "tags": [
+        "pharmacology",
+        "shortcut"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Antibacterial therapy: drug targets",
+         "bactmap"
+        ],
+        [
+         "Penicillins & β-lactamase inhibitors",
+         "penicillin"
+        ],
+        [
+         "Cephalosporins, carbapenems & aztreonam",
+         "ceph"
+        ],
+        [
+         "Vancomycin, daptomycin & polymyxins",
+         "vanco"
+        ],
+        [
+         "Aminoglycosides",
+         "aminogly"
+        ],
+        [
+         "Tetracyclines & tigecycline",
+         "tetra"
+        ],
+        [
+         "Macrolides & clindamycin",
+         "macro"
+        ],
+        [
+         "Linezolid & chloramphenicol",
+         "linezolid"
+        ],
+        [
+         "Sulfonamides, dapsone & trimethoprim",
+         "folate"
+        ],
+        [
+         "Fluoroquinolones & metronidazole",
+         "fq"
+        ],
+        [
+         "Antimycobacterial therapy",
+         "tb"
+        ],
+        [
+         "Antimicrobial prophylaxis",
+         "prophylaxis"
+        ],
+        [
+         "Antifungal therapy",
+         "fungmap"
+        ],
+        [
+         "Antiprotozoal & antihelminthic drugs",
+         "antiparasite"
+        ],
+        [
+         "Antimalarials",
+         "malaria"
+        ],
+        [
+         "Antiviral therapy",
+         "virmap"
+        ],
+        [
+         "HIV therapy",
+         "hiv"
+        ],
+        [
+         "Hepatitis B & C therapy",
+         "hep"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 43",
+        "sort": 43
+       }
+      },
+      {
+       "id": "pharm-immuno-link",
+       "title": "Immunosuppressants",
+       "subs": [
+        "Immunosuppressants"
+       ],
+       "src": "Katzung 16e Ch 55",
+       "href": "immuno/pharm-immuno.html",
+       "thumb": "thumbs/pharm-immuno.jpg",
+       "desc": "ทางลัด · atlas นี้อยู่ใน Immunology ตามโครง First Aid · แผนที่ยากดภูมิคุ้มกันบนขั้นตอน T-cell activation: cyclosporine, tacrolimus, sirolimus, basiliximab, azathioprine, mycophenolate, glucocorticoid, recombinant cytokines และ therapeutic antibodies",
+       "tags": [
+        "pharmacology",
+        "shortcut"
+       ],
+       "topics": [
+        [
+         "Drug class map",
+         "map"
+        ],
+        [
+         "Immunosuppressant targets",
+         "tcell"
+        ],
+        [
+         "Cyclosporine & tacrolimus",
+         "cni"
+        ],
+        [
+         "Sirolimus & basiliximab",
+         "mtor"
+        ],
+        [
+         "Azathioprine & mycophenolate",
+         "antimetab"
+        ],
+        [
+         "Glucocorticoids as immunosuppressants",
+         "gc"
+        ],
+        [
+         "Recombinant cytokines & clinical uses",
+         "cytokine"
+        ],
+        [
+         "Therapeutic antibodies",
+         "abs"
+        ]
+       ],
+       "ref": {
+        "b": "katzung",
+        "l": "K",
+        "ch": "Ch 55",
+        "sort": 55
        }
       }
      ],
