@@ -14,25 +14,25 @@ function portalD(){const hv=+ST.hv,P=ST.tips?Math.min(hv,9):hv,k=Math.max(0,Math
  const tube=(d,c,w)=>`<path d="${d}" style="fill:none;stroke:${c};stroke-width:${w};stroke-linecap:round;stroke-linejoin:round"/>`;
  const pc=`color-mix(in srgb,#7A5BC7 ${40+k*60}%,#9DB8DE)`,sy="#3E6FB0";
  /* systemic: IVC + azygos/SVC */
- b+=tube("M36,392 L36,60",sy,12)+T(36,48,"IVC",{c:"s m"})+tube("M300,14 L300,60",sy,8)+tube("M300,56 C292,62 284,62 278,58",sy,4)+T(312,30,"azygos → SVC",{a:"start",c:"s m"});
+ b+=tube("M36,392 L36,60",sy,12)+LB(T(36,48,"IVC",{c:"s m"}))+tube("M300,14 L300,60",sy,8)+tube("M300,56 C292,62 284,62 278,58",sy,4)+T(312,30,"azygos → SVC",{a:"start",c:"s m"});
  /* liver */
  const cir=hv>=8;b+=`<path d="${sm([[70,96],[120,70],[190,76],[214,102],[196,140],[140,156],[84,148]])}" style="fill:${cir?"#8E5A44":GI.liv};stroke:${GI.livD};stroke-width:1.6"/>`;
  if(cir){const r=rng(9);for(let i=0;i<26;i++)b+=`<circle cx="${84+r()*112}" cy="${82+r()*60}" r="${4+r()*3}" style="fill:${GI.livL};stroke:#E8D6A8;stroke-width:1.2;opacity:.9"/>`}
- b+=TW(140,118,cir?"cirrhosis":"liver",{s:11})+tube("M96,90 C70,80 50,78 38,76",sy,7)+T(74,66,"hepatic v.",{c:"s m"});
+ b+=TW(140,118,cir?"cirrhosis":"liver",{s:11})+tube("M96,90 C70,80 50,78 38,76",sy,7)+LB(T(74,66,"hepatic v.",{c:"s m"}));
  /* esophagus + stomach, spleen, rectum, umbilicus */
  b+=tube("M270,14 L270,104",GI.sqD,20)+tube("M270,14 L270,104",GI.sq,16)+`<path d="${sm([[262,100],[300,96],[330,120],[322,160],[286,170],[262,150]])}" style="fill:${GI.muc};stroke:${GI.mucD};stroke-width:1.4"/>`;
- const sp=1+k*.5;b+=`<ellipse cx="386" cy="150" rx="${26*sp}" ry="${18*sp}" style="fill:#8E3B5A;stroke:#5E2238;stroke-width:1.4"/>`+TW(386,154,"spleen",{s:10});
- b+=tube("M250,330 L250,392",GI.mucD,22)+tube("M250,330 L250,392",GI.duo,18)+T(284,372,"rectum",{a:"start",c:"s m"});
- b+=`<circle cx="130" cy="262" r="6" style="fill:${EN.skinD}"/>`+T(130,284,"umbilicus",{c:"s m"});
+ const sp=1+k*.5;b+=`<ellipse cx="386" cy="150" rx="${26*sp}" ry="${18*sp}" style="fill:#8E3B5A;stroke:#5E2238;stroke-width:1.4"/>`+LB(TW(386,154,"spleen",{s:10}));
+ b+=tube("M250,330 L250,392",GI.mucD,22)+tube("M250,330 L250,392",GI.duo,18)+LB(T(284,372,"rectum",{a:"start",c:"s m"}));
+ b+=`<circle cx="130" cy="262" r="6" style="fill:${EN.skinD}"/>`+LB(T(130,284,"umbilicus",{c:"s m"}));
  /* portal system */
  b+=tube("M170,138 C190,160 210,176 232,184",pc,12)+tube("M232,184 C290,180 330,168 366,156",pc,9)+tube("M232,184 C236,220 236,250 232,290",pc,9)+tube("M300,176 C296,240 280,290 256,330",pc,7);
- b+=T(204,204,"portal v.",{a:"end",c:"s"})+T(330,196,"splenic v.",{a:"start",c:"s m"})+T(222,262,"SMV",{a:"end",c:"s m"})+T(300,270,"IMV",{a:"start",c:"s m"});
+ b+=LB(T(204,204,"portal v.",{a:"end",c:"s"}))+LB(T(330,196,"splenic v.",{a:"start",c:"s m"}))+LB(T(222,262,"SMV",{a:"end",c:"s m"}))+LB(T(300,270,"IMV",{a:"start",c:"s m"}));
  /* shunts */
  const sw=1.5+k*7,sc=on?CV.bad:"var(--sb-muted)";
  b+=tube("M236,178 C250,150 262,130 268,106",pc,4+k*3);for(let i=0;i<3;i++)b+=`<path d="M${263+i*7},98 q-5,-10 0,-20 q5,-10 0,-22" style="fill:none;stroke:${sc};stroke-width:${sw*.6};stroke-linecap:round;opacity:${on?1:.4}"/>`;
  b+=tube("M150,150 C140,190 134,230 130,256",pc,2+k*4);for(let i=0;i<6;i++){const a=i/6*6.28;b+=`<path d="M130,262 q${Math.cos(a)*14},${Math.sin(a)*8} ${Math.cos(a)*30},${Math.sin(a)*26}" style="fill:none;stroke:${sc};stroke-width:${sw*.45};stroke-linecap:round;opacity:${on?1:.3}"/>`}
  b+=`<path d="M240,350 q-14,6 0,14 q14,6 0,14 M262,350 q14,6 0,14 q-14,6 0,14" style="fill:none;stroke:${sc};stroke-width:${sw*.6};stroke-linecap:round;opacity:${on?1:.4}"/>`+tube("M236,388 C150,396 80,394 42,380",sy,4);
- b+=`<path d="M338,214 q16,6 30,0 q14,-6 28,2" style="fill:none;stroke:${sc};stroke-width:${sw*.5};stroke-linecap:round;opacity:${on?1:.4}"/>`+T(400,236,"retroperitoneal",{c:"s m"});
+ b+=`<path d="M338,214 q16,6 30,0 q14,-6 28,2" style="fill:none;stroke:${sc};stroke-width:${sw*.5};stroke-linecap:round;opacity:${on?1:.4}"/>`+LB(T(400,236,"retroperitoneal",{c:"s m"}));
  if(ST.tips)b+=tube("M176,140 C150,120 120,100 98,92","#2F8A78",8)+`<path d="M176,140 C150,120 120,100 98,92" style="fill:none;stroke:#fff;stroke-width:1.4;stroke-dasharray:3 4"/>`+tag(150,58,"TIPS",CV.teal);
  if(on&&P>=12)b+=`<circle cx="270" cy="70" r="24" style="fill:none;stroke:${CV.bad};stroke-width:2;stroke-dasharray:4 3"/>`;
  /* legend/right panel */
@@ -121,7 +121,7 @@ function naD(){const d=NA[ST.na];let b=lobule(150,150,116,Object.assign({seed:37
 
 /* ---------- 9. autoimmune hepatitis ---------- */
 function aiD(){const t1=ST.ai==="t1";let b=slide(8,8,300,220);const r=rng(7);
- b+=`<circle cx="70" cy="70" r="46" style="fill:#F5E6D8;stroke:#C98B78"/>`+dot(58,62,10,GI.vein)+dot(84,58,5,GI.art)+`<circle cx="74" cy="86" r="6" style="fill:${GI.bile};stroke:${GI.bileD}"/>`+TD(70,26,"portal tract",{s:10});
+ b+=`<circle cx="70" cy="70" r="46" style="fill:#F5E6D8;stroke:#C98B78"/>`+dot(58,62,10,GI.vein)+dot(84,58,5,GI.art)+`<circle cx="74" cy="86" r="6" style="fill:${GI.bile};stroke:${GI.bileD}"/>`+LB(TD(70,26,"portal tract",{s:10}));
  for(let i=0;i<120;i++){const px=20+r()*276,py=20+r()*196;if(Math.hypot(px-70,py-70)>50)b+=`<rect x="${px-7}" y="${py-6}" width="14" height="12" rx="3" style="fill:#F2B9CB;stroke:${HE.mem};stroke-width:.5"/>`+dot(px,py,2,HE.nu)}
  for(let i=0;i<90;i++){const a=r()*6.28,d2=40+r()*46;const px=70+Math.cos(a)*d2,py=70+Math.sin(a)*d2;if(px>10&&py>10)b+=`<ellipse cx="${px}" cy="${py}" rx="3.6" ry="2.8" style="fill:#C9A6E0"/>`+dot(px+1.2,py,1.5,HE.nuD)}
  b+=TD(200,214,"plasma cells ล้ำเข้าเนื้อตับ (interface hepatitis)",{s:10});

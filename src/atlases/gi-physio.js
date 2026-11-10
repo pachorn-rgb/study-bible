@@ -3,6 +3,8 @@
    Guyton & Hall 12e Ch 62–66 (+ Ch 70 bilirubin) · Boron & Boulpaep 3e Ch 41–46 ·
    Harrison 22e Ch 335–336, 347, 349. All drawings are original schematics. */
 //@include _cvs-physio-kit.js
+/* Labels toggle: anatomical name labels are hidden when ST.labels is off */
+const LB=s=>ST.labels?s:"";
 Object.assign(GN,{a:"GI regulatory substances",b:"Gastric secretion",c:"Pancreas & digestion",d:"Absorption & mucosal immunity",e:"Bile & bilirubin",f:"Motility & enteric nervous system"});
 Object.assign(ST,{ph:"ceph",sp:"acid",pc:"meal",pf:.6,pd:"sec",cb:"n",pr:"n",ft:"n",vm:"n",fe:"n",bt:"n",pp:"all",bl:"n",jt:"n",mo:"sw",en:"n"});
 const EXTRA=["motil","ens"];
@@ -52,13 +54,13 @@ const PHC={ceph:"Cephalic: เห็น ได้กลิ่น คิดถึ
  int:"Intestinal: กรด → secretin · ไขมัน/กรดอะมิโน → CCK, GIP → HCO₃⁻ + เอนไซม์ + น้ำดี และชะลอ gastric emptying",
  fast:"Fasting: motilin หลั่งเป็นรอบ ~90 นาที → MMC phase III กวาดลำไส้ · ghrelin สูงกระตุ้นความหิว"};
 function giSil(o={}){let b="";const f=(c,p)=>`fill:${tint(c,p)};stroke:color-mix(in srgb,${c} 55%,transparent);stroke-width:1.5`;
- b+=SP("M74,22 C76,40 82,56 86,74",GC.st,9,{op:.35})+T(90,30,"esophagus",{a:"start",c:"s m"});
+ b+=SP("M74,22 C76,40 82,56 86,74",GC.st,9,{op:.35})+LB(T(90,30,"esophagus",{a:"start",c:"s m"}));
  b+=`<path d="${sm([[86,72],[70,62],[50,74],[40,104],[44,148],[62,192],[96,224],[140,240],[180,232],[208,214],[214,196],[196,196],[170,206],[140,206],[116,190],[104,160],[104,120],[102,90]])}" style="${f(GC.st,o.st??14)}"/>`;
  b+=`<path d="M214,200 C238,200 252,214 256,236 C262,270 258,300 238,318 C214,338 180,336 160,326" style="fill:none;stroke:${GC.du};stroke-width:20;stroke-linecap:round;opacity:.32"/>`;
  b+=`<path d="M160,326 C130,330 118,356 132,378 C146,400 120,420 92,410 C64,400 60,430 80,452" style="fill:none;stroke:${GC.du};stroke-width:18;stroke-linecap:round;opacity:.2"/>`;
  b+=`<path d="${sm([[234,246],[238,280],[224,296],[180,292],[130,288],[96,280],[94,268],[130,262],[180,262],[214,256]])}" style="${f(GC.pa,12)}"/>`;
  b+=`<path d="${sm([[250,150],[262,160],[262,184],[252,196],[242,186],[242,160]])}" style="${f(GC.gb,18)}"/>`+SP("M252,196 C254,212 252,222 248,232",GC.gb,2.4,{op:.7});
- b+=T(60,160,"body",{c:"s m"})+T(178,226,"antrum",{c:"s m"})+T(66,120,"fundus",{c:"s m"})+T(272,272,"duodenum",{c:"s m",r:90})+T(150,280,"pancreas",{c:"s m"})+T(276,172,"GB",{c:"s m"})+T(100,436,"jejunum",{c:"s m"});
+ b+=LB(T(60,160,"body",{c:"s m"}))+LB(T(178,226,"antrum",{c:"s m"}))+LB(T(66,120,"fundus",{c:"s m"}))+LB(T(272,272,"duodenum",{c:"s m",r:90}))+LB(T(150,280,"pancreas",{c:"s m"}))+LB(T(276,172,"GB",{c:"s m"}))+LB(T(100,436,"jejunum",{c:"s m"}));
  return b}
 function regD(){const ph=ST.ph;let b=FRAME(10,10,290,512)+giSil();
  HM.forEach(h=>{const v=h.L[ph],on=v>.45;b+=DIM(v>.3,`<circle cx="${h.x}" cy="${h.y}" r="${7+v*9}" style="fill:${tint(h.c,on?35:18)};stroke:${h.c};stroke-width:${on?2:1}"/>`+DOT(h.x,h.y,4,h.c,{sw:1}),.35)});
@@ -87,16 +89,16 @@ const SPM={acid:{n:"Gastric acid (HCl)",c:GC.h,cells:["par"],map:["body"],src:"P
 function glandD(sel){/* oxyntic gland inset, x 14..236 */let b=FRAME(10,10,230,410)+T(24,32,"Oxyntic gland",{a:"start",c:"bh"});
  const hi=k=>SPM[sel].cells.includes(k);
  b+=`<path d="M70,56 C70,120 74,250 84,392 L166,392 C176,250 180,120 180,56" style="fill:${tint(GC.st,8)};stroke:color-mix(in srgb,${GC.st} 40%,transparent);stroke-width:1.2"/>`;
- b+=`<path d="M104,56 C104,140 112,260 116,392 M146,56 C146,140 138,260 134,392" style="fill:none;stroke:var(--sb-line);stroke-width:1.2"/>`+T(125,74,"lumen",{c:"s m",r:-90});
- b+=T(36,60,"pit",{a:"start",c:"s m"})+T(30,130,"neck",{a:"start",c:"s m"})+T(30,250,"body",{a:"start",c:"s m"})+T(30,370,"base",{a:"start",c:"s m"});
+ b+=`<path d="M104,56 C104,140 112,260 116,392 M146,56 C146,140 138,260 134,392" style="fill:none;stroke:var(--sb-line);stroke-width:1.2"/>`+LB(T(125,74,"lumen",{c:"s m",r:-90}));
+ b+=LB(T(36,60,"pit",{a:"start",c:"s m"}))+LB(T(30,130,"neck",{a:"start",c:"s m"}))+LB(T(30,250,"body",{a:"start",c:"s m"}))+LB(T(30,370,"base",{a:"start",c:"s m"}));
  const cell=(x,y,w,h,c,k,lab)=>{const on=hi(k);return `<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="7" style="fill:${tint(c,on?55:24)};stroke:${c};stroke-width:${on?2.2:1}"/>`+(lab?T(x+w/2,y+h/2+3.5,lab,{c:"s"}):"")};
  for(let i=0;i<3;i++){b+=cell(74,58+i*22,28,20,GC.hco3,"surf",i?"":"SM")+cell(148,58+i*22,28,20,GC.hco3,"surf",i?"":"SM")}
  for(let i=0;i<2;i++){b+=cell(76,126+i*24,28,22,CV.ol,"neck",i?"":"MN")+cell(146,126+i*24,28,22,CV.ol,"neck",i?"":"MN")}
  [[74,184],[150,206],[78,236],[146,262],[82,292]].forEach(([x,y],i)=>b+=`<path d="M${x},${y} L${x+26},${y+14} L${x},${y+28} Z" transform="translate(${x>110?0:0},0)" style="fill:${tint(GC.h,hi("par")?55:26)};stroke:${GC.h};stroke-width:${hi("par")?2.2:1}"/>`);
- b+=T(56,214,"parietal",{a:"end",c:"s"})+AW(58,210,74,202,GC.h,1.2,{h:5});
+ b+=LB(T(56,214,"parietal",{a:"end",c:"s"}))+AW(58,210,74,202,GC.h,1.2,{h:5});
  [[86,326],[140,316],[92,352],[136,346]].forEach(([x,y])=>b+=cell(x,y,26,24,CV.vi,"chief","")+DOT(x+8,y+8,2.2,CV.vi,{sw:0})+DOT(x+17,y+14,2.2,CV.vi,{sw:0}));
- b+=T(58,342,"chief",{a:"end",c:"s"});
- b+=cell(160,370,24,18,CV.cy,"ecl","")+T(194,384,"ECL",{a:"start",c:"s"})+cell(70,372,22,16,CV.bl,"d","")+T(56,384,"D",{a:"end",c:"s"});
+ b+=LB(T(58,342,"chief",{a:"end",c:"s"}));
+ b+=cell(160,370,24,18,CV.cy,"ecl","")+LB(T(194,384,"ECL",{a:"start",c:"s"}))+cell(70,372,22,16,CV.bl,"d","")+LB(T(56,384,"D",{a:"end",c:"s"}));
  return b}
 function spD(){const s=ST.sp,m=SPM[s];let b=glandD(s);
  /* stomach map */
@@ -106,10 +108,10 @@ function spD(){const s=ST.sp,m=SPM[s];let b=glandD(s);
  b+=`<path d="M140,240 C170,236 200,222 214,196 L196,196 C176,206 156,208 136,204 Z" style="fill:${tint(CV.pk,on("antrum")?55:16)};stroke:none"/>`;
  b+=`<path d="M214,200 C236,200 250,212 254,238" style="fill:none;stroke:${GC.du};stroke-width:20;stroke-linecap:round;opacity:${on("brun")||on("gduo")?.6:.28}"/>`;
  b+=`</g>`;
- b+=T(326,148,"body + fundus",{c:"s"})+T(326,162,"oxyntic glands",{c:"s m"})+T(420,250,"antrum: pyloric glands",{c:"s m"})+T(556,250,"duodenum",{c:"s m"});
+ b+=T(326,148,"body + fundus",{c:"s"})+LB(T(326,162,"oxyntic glands",{c:"s m"}))+T(420,250,"antrum: pyloric glands",{c:"s m"})+LB(T(556,250,"duodenum",{c:"s m"}));
  b+=T(556,236,on("brun")?"Brunner glands":on("gduo")?"G cells (บางส่วน)":"S · I · K cells",{c:on("brun")||on("gduo")?"bh":"s m"});
  /* pancreas mini */
- b+=`<ellipse cx="570" cy="120" rx="44" ry="26" style="fill:${tint(GC.pa,on("pduct")?30:12)};stroke:${GC.pa}"/>`+T(570,116,"pancreas",{c:"s"})+T(570,130,on("pduct")?"duct cell → HCO₃⁻":"acinus · duct",{c:on("pduct")?"bh":"s m"});
+ b+=`<ellipse cx="570" cy="120" rx="44" ry="26" style="fill:${tint(GC.pa,on("pduct")?30:12)};stroke:${GC.pa}"/>`+LB(T(570,116,"pancreas",{c:"s"}))+T(570,130,on("pduct")?"duct cell → HCO₃⁻":"acinus · duct",{c:on("pduct")?"bh":"s m"});
  if(on("surf"))b+=RING(326,140,40,m.c);if(on("body"))b+=RING(326,150,50,m.c);if(on("antrum"))b+=RING(418,222,24,m.c);
  /* card */
  b+=RB(250,270,380,162,m.c,{p:12,sw:1.6})+DOT(268,292,7,m.c,{sw:1.2})+T(282,297,m.n,{a:"start",c:"b"});
@@ -420,14 +422,14 @@ function ppD(){const s=ST.pp,on=k=>s==="all"||s===k;let b="";
  const vil=x=>`<path d="M${x},400 L${x},120 C${x},90 ${x+60},90 ${x+60},120 L${x+60},400" style="fill:${tint(GC.du,14)};stroke:color-mix(in srgb,${GC.du} 50%,transparent);stroke-width:1.4"/>`+[...Array(9)].map((_,i)=>DOT(x+7,128+i*30,2.6,GC.du,{sw:0})+DOT(x+53,128+i*30,2.6,GC.du,{sw:0})).join("")+SP(`M${x+30},130 V396`,GC.bl,1.6,{op:.35})+SP(`M${x+22},140 V396 M${x+38},140 V396`,GC.ly,1,{op:.3,dash:"3 3"});
  b+=vil(30)+vil(500);
  /* dome + follicle */
- b+=`<path d="M120,400 L120,170 C160,90 320,90 360,170 L360,400 Z" style="fill:${tint(GC.du,10)};stroke:color-mix(in srgb,${GC.du} 50%,transparent);stroke-width:1.4"/>`+T(240,118,"follicle-associated epithelium (dome)",{c:"s m"});
- b+=`<ellipse cx="240" cy="300" rx="90" ry="64" style="fill:${tint(GC.im,14)};stroke:${GC.im};stroke-width:1.3"/>`+`<ellipse cx="240" cy="300" rx="44" ry="30" style="fill:${tint(GC.im,30)};stroke:${GC.im};stroke-dasharray:3 2"/>`+T(240,296,"germinal",{c:"s"})+T(240,310,"center",{c:"s"});
+ b+=`<path d="M120,400 L120,170 C160,90 320,90 360,170 L360,400 Z" style="fill:${tint(GC.du,10)};stroke:color-mix(in srgb,${GC.du} 50%,transparent);stroke-width:1.4"/>`+LB(T(240,118,"follicle-associated epithelium (dome)",{c:"s m"}));
+ b+=`<ellipse cx="240" cy="300" rx="90" ry="64" style="fill:${tint(GC.im,14)};stroke:${GC.im};stroke-width:1.3"/>`+`<ellipse cx="240" cy="300" rx="44" ry="30" style="fill:${tint(GC.im,30)};stroke:${GC.im};stroke-dasharray:3 2"/>`+LB(T(240,303,"germinal",{c:"s"}))+LB(T(240,317,"center",{c:"s"}));
  /* step 1: M cell */
  const g1=`<path d="M220,140 L260,140 L256,178 C246,170 234,170 224,178 Z" style="fill:${tint(CV.cy,40)};stroke:${CV.cy};stroke-width:1.6"/>`+T(240,160,"M",{c:"bh"})+AW(240,64,240,136,CV.rd,1.8)+DOT(240,190,4,CV.rd,{sw:1})+
   `<path d="M200,206 l16,-8 l8,12 l-10,10 z" style="fill:${tint(CV.or,50)};stroke:${CV.or}"/>`+T(186,222,"DC",{c:"s"})+AW(236,194,214,206,CV.rd,1.2,{h:5})+T(300,170,"① M cell ส่ง antigen",{a:"start",c:on("s1")?"bh":"s m"});
  b+=DIM(on("s1"),g1);
  /* step 2: class switch + homing */
- const g2=DOT(214,286,8,CV.bl,{sw:1})+T(214,289,"T",{c:"ion"})+DOT(262,288,9,GC.im,{sw:1})+T(262,291,"B",{c:"ion"})+AW(222,286,252,288,CV.bl,1.2,{h:5})+T(240,262,"TGF-β",{c:"s m"})+
+ const g2=DOT(214,281,8,CV.bl,{sw:1})+T(214,284,"T",{c:"ion"})+DOT(262,283,9,GC.im,{sw:1})+T(262,286,"B",{c:"ion"})+AW(222,281,252,283,CV.bl,1.2,{h:5})+T(240,262,"TGF-β",{c:"s m"})+
   T(240,346,"② class switch → IgA⁺ B",{c:on("s2")?"bh":"s m"})+CAW(300,330,420,440,520,380,GC.im,1.6,{dash:"5 4"})+T(420,452,"mesenteric node → thoracic duct → blood → home กลับ lamina propria",{c:"s m"});
  b+=DIM(on("s2"),g2);
  /* step 3: plasma cell + pIgR transcytosis in right villus */
@@ -438,7 +440,7 @@ function ppD(){const s=ST.pp,on=k=>s==="all"||s===k;let b="";
   T(470,196,"③ transcytosis",{a:"end",c:on("s3")?"bh":"s m"})+T(470,212,"(vesicle)",{a:"end",c:"s m"})+
   YG(546,62,GC.im,1.1)+YG(574,70,GC.im,1.1,20)+DOT(546,48,4,CV.rd,{sw:1})+DOT(580,56,4,CV.rd,{sw:1})+T(560,30,"sIgA + secretory component",{c:"s"})+T(560,94,"จับจุลชีพใน mucus",{c:"s m"});
  b+=DIM(on("s3"),g3);
- b+=T(60,420,"villus",{c:"s m"})+T(530,420,"villus",{c:"s m"})+T(240,384,"lamina propria + submucosa",{c:"s m"});
+ b+=LB(T(60,420,"villus",{c:"s m"}))+LB(T(530,420,"villus",{c:"s m"}))+LB(T(240,384,"lamina propria + submucosa",{c:"s m"}));
  b+=CAP(462,{all:"Peyer patch = lymphoid follicle ไม่มีแคปซูลใน ileum · M cell เก็บตัวอย่าง → B cell → IgA plasma cell → sIgA ออกสู่ lumen",
   s1:"① M cell มี microvilli น้อย ส่ง antigen ทั้งโมเลกุลผ่าน epithelium ให้ DC/lymphocyte ใต้ dome",
   s2:"② B cell ใน germinal center เปลี่ยน class เป็น IgA แล้ว home กลับไปอยู่ lamina propria ทั่วลำไส้",
@@ -601,7 +603,7 @@ function enD(){const m=ENM[ST.en];let b="";
  b+=`<ellipse cx="310" cy="350" rx="40" ry="26" style="fill:${tint(CV.or,50)};stroke:${CV.or}"/>`+T(310,354,"bolus",{c:"s"});
  b+=T(200,300,"orad: contract",{c:"bh"})+T(200,316,"ACh · substance P",{c:"s m"})+AW(150,402,250,402,GC.st,1.8)+T(200,418,"→ propel",{c:"s m"});
  b+=T(450,300,ag?"no relaxation ✕":"aboral: relax",{c:ag?"bad":"bh"})+T(450,316,ag?"tonic contraction":"VIP · NO",{c:"s m"});
- b+=T(80,330,"mouth",{c:"s m"})+T(590,330,"anus",{c:"s m"});
+ b+=LB(T(80,330,"mouth",{c:"s m"}))+LB(T(590,330,"anus",{c:"s m"}));
  b+=CAP(436,m.t);
  return svg(b,"0 0 640 492")}
 

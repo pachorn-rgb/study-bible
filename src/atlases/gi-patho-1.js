@@ -40,10 +40,10 @@ const SG={pleo:{n:"Pleomorphic adenoma",c:"#3C8DBC",at:"par",p:"benign · ~60% �
  stone:{n:"Sialolithiasis + sialadenitis",c:"#C7892B",at:"stone",p:"ไม่ใช่เนื้องอก",R:["นิ่วอุดท่อ มักเป็นท่อ submandibular → ต่อมบวมเจ็บตอนกิน","ท่ออุด + น้ำลายน้อย (ขาดน้ำ หลังผ่าตัด ยา) → S. aureus, viridans streptococci","sialadenitis จากแบคทีเรียมักข้างเดียว · mumps เป็นสองข้าง","Sjögren: autoimmune sialadenitis → ปากแห้ง ตาแห้ง"]}};
 function headG(x,y,o){let b=`<g transform="translate(${x},${y})">`;
  b+=`<path d="M70,20 C150,-6 236,20 250,96 C256,130 246,150 252,170 C258,190 244,196 240,210 C236,232 222,262 190,272 C160,282 130,276 116,300 L60,300 C64,260 40,230 30,190 C20,150 20,60 70,20Z" style="fill:${EN.skin};stroke:${EN.skinD};stroke-width:1.6"/>`;
- b+=`<ellipse cx="96" cy="128" rx="14" ry="22" style="fill:#EAB496;stroke:${EN.skinD}"/>`+TD(96,168,"ear",{s:9.5});
- b+=`<path d="${sm([[110,104],[140,102],[150,132],[140,176],[118,194],[100,170],[104,140]])}" style="fill:#F4D06F;stroke:#B48A2A;stroke-width:1.4"/>`+TD(128,214,"parotid",{s:10});
- b+=`<path d="M146,138 C180,140 200,146 218,150" style="fill:none;stroke:#C29A3A;stroke-width:2.6"/>`+TD(198,140,"Stensen duct",{s:9});
- b+=`<path d="${sm([[150,214],[180,206],[200,222],[190,244],[160,248],[146,232]])}" style="fill:#F4D06F;stroke:#B48A2A;stroke-width:1.4"/>`+TD(170,262,"submandibular",{s:10});
+ b+=`<ellipse cx="96" cy="128" rx="14" ry="22" style="fill:#EAB496;stroke:${EN.skinD}"/>`+LB(TD(96,168,"ear",{s:9.5}));
+ b+=`<path d="${sm([[110,104],[140,102],[150,132],[140,176],[118,194],[100,170],[104,140]])}" style="fill:#F4D06F;stroke:#B48A2A;stroke-width:1.4"/>`+LB(TD(128,214,"parotid",{s:10}));
+ b+=`<path d="M146,138 C180,140 200,146 218,150" style="fill:none;stroke:#C29A3A;stroke-width:2.6"/>`+LB(TD(198,140,"Stensen duct",{s:9}));
+ b+=`<path d="${sm([[150,214],[180,206],[200,222],[190,244],[160,248],[146,232]])}" style="fill:#F4D06F;stroke:#B48A2A;stroke-width:1.4"/>`+LB(TD(170,262,"submandibular",{s:10}));
  b+=`<path d="M190,222 C206,214 220,206 234,200" style="fill:none;stroke:#C29A3A;stroke-width:2.4"/>`;
  if(o.fn)["M116,150 L150,96","M118,156 L176,130","M120,162 L186,170","M118,168 L176,206","M116,172 L150,226"].forEach(d=>b+=`<path d="${d}" style="fill:none;stroke:#E8E2F5;stroke-width:3.2;stroke-linecap:round"/><path d="${d}" style="fill:none;stroke:#7A5BC7;stroke-width:1.6;stroke-linecap:round"/>`);
  if(o.at==="par")b+=`<circle cx="124" cy="150" r="20" style="fill:${o.c};stroke:#fff;stroke-width:2;opacity:.9"/>`+ring(124,150,30);
@@ -83,20 +83,23 @@ const EZ={reflux:{n:"Reflux esophagitis",c:"#C2493A",R:["eosinophil ใน epith
  cand:{n:"Candida",c:"#7A8C9C",R:["ปื้นขาวเทาเกาะแน่น (pseudomembrane) · hyphae","ภูมิคุ้มกันบกพร่อง (HIV, steroid สูดพ่น)"]},hsv:{n:"HSV",c:"#7A5BC7",R:["แผลเล็กเหมือนเจาะ (punched-out) · multinucleate cells ขอบแผล","inclusion ในนิวเคลียส"]},
  cmv:{n:"CMV",c:"#2F8A78",R:["แผลตื้นยาวตามแนว (linear) · inclusion ใน endothelium/stroma ที่ฐานแผล","ผู้รับอวัยวะ, HIV"]},pill:{n:"Pill / chemical",c:"#8C6D46",R:["ยาค้างที่ช่วงแคบ: doxycycline, NSAID, bisphosphonate, KCl, iron","กินสารกัดกร่อน (เด็กกินโดยบังเอิญ) → stricture"]}};
 function gerdD(){const h=HH[ST.hh],e=EZ[ST.ez];let b="";const gx=150,dy=150,g=h.gej;
- b+=`<rect x="8" y="8" width="296" height="300" rx="14" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(22,30,h.n,{a:"start",c:"bh"});
+ b+=`<rect x="8" y="8" width="296" height="340" rx="14" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(22,30,h.n,{a:"start",c:"bh"});
  const ey=dy+g;b+=`<path d="M${gx-12},44 L${gx-12},${ey} M${gx+12},44 L${gx+12},${ey}" style="stroke:${GI.sqD};stroke-width:2"/><rect x="${gx-11}" y="44" width="22" height="${ey-44}" style="fill:${GI.sq}"/>`;
+ /* paraesophageal: GE junction stays put; the fundus rises through the hiatus beside the esophagus (hiatus widened to the right) */
+ if(h.para)b+=`<path d="${sm([[gx+20,dy+12],[gx+20,dy-24],[gx+30,dy-64],[gx+70,dy-82],[gx+104,dy-58],[gx+100,dy-22],[gx+82,dy-4],[gx+80,dy+12]])}" style="fill:${GI.muc};stroke:${GI.mucD};stroke-width:1.6"/>`;
  b+=`<path d="${sm([[gx-12,ey],[gx+14,ey-6],[gx+70,ey+6],[gx+100,ey+60],[gx+80,ey+130],[gx+10,ey+142],[gx-30,ey+104],[gx-22,ey+30]])}" style="fill:${GI.muc};stroke:${GI.mucD};stroke-width:1.6"/>`;
- if(h.para)b+=`<path d="${sm([[gx+20,dy-4],[gx+30,dy-60],[gx+76,dy-74],[gx+100,dy-40],[gx+70,dy-6]])}" style="fill:${GI.muc};stroke:${GI.mucD};stroke-width:1.6"/>`+TD(gx+66,dy-38,"fundus",{s:10,c:"#fff",w:800});
- b+=`<path d="M8,${dy} H${gx-26} M${gx+26},${dy} H304" style="stroke:#9A4E46;stroke-width:13;stroke-linecap:round"/><path d="M8,${dy} H${gx-26} M${gx+26},${dy} H304" style="stroke:#C7746A;stroke-width:10;stroke-linecap:round"/>`+T(22,dy-14,"diaphragm",{a:"start",c:"s m"});
- b+=`<rect x="${gx-15}" y="${ey-12}" width="30" height="10" rx="5" style="fill:${CV.violet}"/>`+T(gx-22,ey-4,"LES",{a:"end",c:"s"});
+ if(h.para)b+=`<path d="M${gx+24},${dy-6} H${gx+76} V${dy+16} H${gx+24}Z" style="fill:${GI.muc}"/>`+LB(TD(gx+66,dy-38,"fundus",{s:10,c:"#fff",w:800}));
+ const rc=h.para?gx+98:gx+26;
+ b+=`<path d="M8,${dy} H${gx-26} M${rc},${dy} H304" style="stroke:#9A4E46;stroke-width:13;stroke-linecap:round"/><path d="M8,${dy} H${gx-26} M${rc},${dy} H304" style="stroke:#C7746A;stroke-width:10;stroke-linecap:round"/>`+LB(T(22,dy-14,"diaphragm",{a:"start",c:"s m"}));
+ b+=`<rect x="${gx-15}" y="${ey-12}" width="30" height="10" rx="5" style="fill:${CV.violet}"/>`+LB(T(gx-22,ey-4,"LES",{a:"end",c:"s"}));
  if(ST.hh==="slide")b+=Ar(gx+2,ey+40,gx+2,ey-70,"#E0A43A",3,{hs:9})+T(gx+10,ey-60,"กรดไหลย้อน",{a:"start",c:"s"});
- b+=wrapT(22,272,h.t,46,"s",15);
- b+=`<rect x="320" y="8" width="314" height="300" rx="14" style="fill:color-mix(in srgb,${e.c} 8%,var(--sb-surface));stroke:color-mix(in srgb,${e.c} 45%,transparent)"/>`+T(336,32,"Esophagitis: "+e.n,{a:"start",c:"bh"});
+ b+=wrapT(22,312,h.t,46,"s",15);
+ b+=`<rect x="320" y="8" width="314" height="340" rx="14" style="fill:color-mix(in srgb,${e.c} 8%,var(--sb-surface));stroke:color-mix(in srgb,${e.c} 45%,transparent)"/>`+T(336,32,"Esophagitis: "+e.n,{a:"start",c:"bh"});
  const W=wallX(336,48,220,130,{sq:true,id:4,lesion:ST.ez==="hsv"||ST.ez==="cmv"||ST.ez==="pill"?{x0:400,x1:ST.ez==="hsv"?426:470,depth:ST.ez==="cmv"?"sub":"mucosa",kind:"ulcer"}:{x0:350,x1:540,depth:"mucosa",kind:"inflam"},lab:true});b+=W;
  if(ST.ez==="eoe")for(let i=0;i<34;i++){const r=rng(40+i);b+=`<circle cx="${350+r()*190}" cy="${62+r()*22}" r="2.6" style="fill:#F07A2C"/>`}
  if(ST.ez==="cand")b+=`<path d="M352,58 q30,-12 60,0 q30,-10 60,0 q30,-12 70,0 v8 h-190Z" style="fill:#F4F1EA;stroke:#BDB6A6"/>`;
  b+=wrapT(336,206,e.R[0],48,"s",15)+wrapT(336,246,e.R[1],48,"s m",15);
- return ESVG(b,"0 0 640 316")}
+ return ESVG(b,"0 0 640 356")}
 
 /* ---------- 5. Barrett esophagus ---------- */
 const BS=[["Squamous ปกติ","stratified squamous ไม่มี keratin","#E7B3A6"],["Intestinal metaplasia","columnar + goblet cells (วินิจฉัย Barrett)","#D2566F"],["Low-grade dysplasia","นิวเคลียสยาว เบียด hyperchromatic ถึงผิว","#C7892B"],["High-grade dysplasia","โครงสร้างผิด gland-in-gland (cribriform)","#C2493A"],["Adenocarcinoma","บุกทะลุ lamina propria → ลึกลงไป","#5B3E8C"]];
@@ -209,8 +212,8 @@ function ucD(){const d=UC[ST.uc];let b=esoStom(0,4,.9,{ulcers:[[...d.u,7]],hl:[[
  const s=.9,P=(x,y)=>`${x*s},${4+y*s}`;
  const art=(dd,on)=>`<path d="${dd}" style="fill:none;stroke:${on?CV.bad:"#E39A93"};stroke-width:${on?4.6:2.6};stroke-linecap:round"/>`;
  b+=art(`M${P(186,330)} L${P(186,300)}`,false);
- b+=art(`M${P(186,312)} C${P(170,300)} ${P(160,276)} ${P(150,252)} C${P(140,220)} ${P(150,186)} ${P(140,156)}`,d.a==="lga")+TD(196*s,250*s,"left gastric a.",{s:9,a:"start"});
- b+=art(`M${P(186,312)} C${P(140,320)} ${P(96,318)} ${P(78,312)} L${P(64,328)}`,d.a==="gda")+TD(44*s,336*s,"GDA",{s:9.5,w:800});
+ b+=art(`M${P(186,312)} C${P(170,300)} ${P(160,276)} ${P(150,252)} C${P(140,220)} ${P(150,186)} ${P(140,156)}`,d.a==="lga")+LB(TD(196*s,250*s,"left gastric a.",{s:9,a:"start"}));
+ b+=art(`M${P(186,312)} C${P(140,320)} ${P(96,318)} ${P(78,312)} L${P(64,328)}`,d.a==="gda")+LB(TD(115*s,4+330*s,"GDA",{s:9.5,w:800}));
  if(ST.uc==="ant")b+=`<path d="M${40*s},${4+260*s} q-10,-24 4,-46" style="fill:none;stroke:#7FB2D9;stroke-width:3;stroke-dasharray:4 3"/>`+TD(30*s,4+204*s,"free air",{s:10,c:"#235A7A"});
  b+=iPanel(300,8,334,d.n,"",d.R,d.c||CV.bad);
  const y0=IPH+24;b+=T(300,y0,"ความลึกของแผล",{a:"start",c:"bh"});

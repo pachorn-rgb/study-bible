@@ -67,10 +67,10 @@ function mcD(){const d=MC[ST.mc];let b=colTile(8,8,300,220,ST.mc)+T(158,248,ST.m
 function apD(){const h=+ST.ap,st=h<8?0:h<20?1:h<36?2:3;let b="";
  /* abdomen */
  b+=`<path d="M52,14 C40,90 30,170 46,240 C54,280 60,310 70,334 L250,334 C260,310 266,280 274,240 C290,170 280,90 268,14Z" style="fill:${EN.skin};stroke:${EN.skinD};stroke-width:1.6"/>`;
- b+=`<path d="M160,40 C130,70 90,96 58,104 M160,40 C190,70 230,96 262,104" style="fill:none;stroke:${EN.skinD};stroke-width:1.4;opacity:.7"/>`+T(160,32,"xiphoid",{c:"s m"});
+ b+=`<path d="M160,40 C130,70 90,96 58,104 M160,40 C190,70 230,96 262,104" style="fill:none;stroke:${EN.skinD};stroke-width:1.4;opacity:.7"/>`+LB(T(160,32,"xiphoid",{c:"s m"}));
  b+=`<path d="M58,252 C90,286 120,306 150,318 M262,252 C230,286 200,306 170,318" style="fill:none;stroke:${EN.skinD};stroke-width:1.2;opacity:.6;stroke-dasharray:4 3"/>`;
  b+=`<g style="opacity:.42">${colonMap(40,64,.75,{lab:false,seg:{app:st>=1?CV.bad:"#E0B48A"}})}</g>`;
- b+=`<circle cx="160" cy="170" r="5" style="fill:${EN.skinD}"/>`+TD(172,166,"umbilicus",{s:9.5,a:"start"});
+ b+=`<circle cx="160" cy="170" r="5" style="fill:${EN.skinD}"/>`+LB(TD(172,166,"umbilicus",{s:9.5,a:"start"}));
  b+=`<circle cx="66" cy="262" r="5" style="fill:${EN.skinD}"/>`+TD(74,280,"ASIS ขวา",{s:9.5,a:"start"});
  b+=`<path d="M160,170 L66,262" style="stroke:${EN.skinD};stroke-width:1.2;stroke-dasharray:4 3"/>`;
  const mx=66+(160-66)/3,my=262-(262-170)/3;b+=`<circle cx="${mx}" cy="${my}" r="4" style="fill:${CV.violet}"/>`+TD(mx-8,my-8,"McBurney",{s:9.5,a:"end",c:"#4E3570"});
@@ -102,7 +102,7 @@ function divD(){const d=DV[ST.dv];let b=T(8,22,d.k==="true"?"True diverticulum: 
  if(ST.dv==="zenker"){b+=`<g transform="translate(330,6)"><path d="M70,0 C66,80 66,160 74,290" style="fill:none;stroke:${GI.mucD};stroke-width:46;stroke-linecap:round"/><path d="M70,0 C66,80 66,160 74,290" style="fill:none;stroke:${GI.sq};stroke-width:42;stroke-linecap:round"/>`+
   `<path d="M40,104 L100,96" style="stroke:${GI.mus};stroke-width:12;stroke-linecap:round"/>`+`<path d="M44,150 L102,150" style="stroke:${GI.musD};stroke-width:12;stroke-linecap:round"/>`+
   `<path d="${sm([[100,112],[132,118],[150,150],[136,186],[108,180],[98,146]])}" style="fill:${GI.sq};stroke:${GI.mucD};stroke-width:2"/>`+`<ellipse cx="124" cy="160" rx="12" ry="8" style="fill:#D9C59A"/>`+
-  T(-8,100,"thyropharyngeus",{a:"end",c:"s m"})+T(-8,154,"cricopharyngeus",{a:"end",c:"s m"})+T(160,130,"Killian triangle",{a:"start",c:"s"})+TD(70,24,"pharynx",{s:10})+TD(74,270,"esophagus",{s:10})+`</g>`}
+  LB(T(-8,100,"thyropharyngeus",{a:"end",c:"s m"}))+LB(T(-8,154,"cricopharyngeus",{a:"end",c:"s m"}))+LB(T(160,130,"Killian triangle",{a:"start",c:"s"}))+LB(TD(70,24,"pharynx",{s:10}))+LB(TD(74,270,"esophagus",{s:10}))+`</g>`}
  else if(ST.dv==="meckel")b+=colonMap(300,8,1,{ring:[[124,214,22,"#2F8A78"]],seg:{ti:"#9CC9BE"},lab:true})+`<path d="M124,214 q4,-30 22,-36" transform="translate(300,8)" style="fill:none;stroke:#2F8A78;stroke-width:10;stroke-linecap:round"/>`+T(470,330,"~2 ฟุตจาก ileocecal valve · ด้าน antimesenteric",{c:"s m"});
  else b+=colonMap(300,8,1,{dots:polypDots(["sig","desc"],18,ST.dv==="itis"?"#C2334A":"#8C6D46",4,3),ring:ST.dv==="itis"?[[236,236,30,CV.bad]]:[]});
  if(ST.dv==="meckel"){b+=T(8,186,"Rule of 2's",{a:"start",c:"bh"});[["2%","ของประชากร"],["2 ฟุต","จาก ileocecal valve"],["2 นิ้ว","ยาว"],["2 เท่า","ในชาย"],["2 ปี","มีอาการก่อนอายุ"],["2 ชนิด","gastric / pancreatic"]].forEach(([a,s],i)=>{const x=8+(i%3)*96,y=196+Math.floor(i/3)*52;b+=`<rect x="${x}" y="${y}" width="90" height="46" rx="10" style="fill:color-mix(in srgb,#2F8A78 12%,var(--sb-surface));stroke:color-mix(in srgb,#2F8A78 45%,transparent)"/>`+T(x+45,y+20,a,{c:"bh"})+T(x+45,y+37,s,{c:"s m"})})}
@@ -115,7 +115,7 @@ const HS={norm:{seg:{},narrow:[],wide:[],t:"ganglion cells ครบทั้ง
 function plex(x,y,w,h,gang){let b=slide(x,y,w,h);const bands=[[.04,.24,GI.muc],[.24,.5,GI.sub],[.5,.66,GI.mus],[.7,.96,GI.mus]];bands.forEach(([a,c,col])=>b+=`<rect x="${x}" y="${y+a*h}" width="${w}" height="${(c-a)*h}" style="fill:${col}"/>`);
  const g=(gx,gy)=>gang?`<ellipse cx="${gx}" cy="${gy}" rx="12" ry="8" style="fill:#F4E3B6;stroke:#9A7420"/>`+`<circle cx="${gx-4}" cy="${gy}" r="3.4" style="fill:#B998D8;stroke:#4E3570;stroke-width:.6"/>`+`<circle cx="${gx+5}" cy="${gy+1}" r="3" style="fill:#B998D8;stroke:#4E3570;stroke-width:.6"/>`:`<path d="M${gx-10},${gy} q10,-6 20,0" style="fill:none;stroke:#C7A86A;stroke-width:3"/>`;
  for(let i=0;i<3;i++)b+=g(x+40+i*(w-60)/2,y+.36*h)+g(x+30+i*(w-60)/2,y+.68*h);
- return b+TD(x+6,y+.38*h-12,"Meissner",{s:9.5,a:"start"})+TD(x+6,y+.68*h-12,"Auerbach",{s:9.5,a:"start"})+`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" style="fill:none;stroke:var(--sb-line)"/>`}
+ return b+LB(TD(x+6,y+.38*h-12,"Meissner",{s:9.5,a:"start"}))+LB(TD(x+6,y+.68*h-12,"Auerbach",{s:9.5,a:"start"}))+`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" style="fill:none;stroke:var(--sb-line)"/>`}
 function hsD(){const d=HS[ST.hs];let b=colonMap(0,6,1,{seg:d.seg,narrow:d.narrow,wide:d.wide});
  b+=plex(340,8,294,150,ST.hs==="norm")+T(487,176,ST.hs==="norm"?"rectal biopsy: มี ganglion cell":"rectal suction biopsy: ไม่มี ganglion cell",{c:"bh"});
  b+=`<rect x="340" y="190" width="294" height="140" rx="14" style="fill:color-mix(in srgb,#7A5BC7 8%,var(--sb-surface));stroke:color-mix(in srgb,#7A5BC7 40%,transparent)"/>`+wrapT(354,212,d.t,46,"s",15);
@@ -147,7 +147,7 @@ const IS={ami:{n:"Acute mesenteric ischemia",c:"#C2334A",ring:[],sb:"#D98A8A",R:
  nec:{n:"Necrotizing enterocolitis",c:"#3E6FB0",ring:[[76,222,28]],sb:"#BFD0EA",R:["ทารกคลอดก่อนกำหนด กินนมผง · เริ่มเมื่อเริ่มให้นม","necrosis ที่ terminal ileum และ colon ส่วนต้น","pneumatosis intestinalis, portal venous gas, free air","ภาวะฉุกเฉินทางเดินอาหารที่พบบ่อยที่สุดในทารกแรกเกิด"]}};
 function isD(){const d=IS[ST.is];const sma="#9DB8DE",ima="#E8B98C";
  let b=colonMap(0,6,1,{seg:{ti:sma,cecum:sma,asc:sma,hep:sma,trans:sma,spl:ima,desc:ima,sig:ima,rect:"#E8D6A8"},sb:d.sb||"#C5D6EE",ring:d.ring});
- b+=`<rect x="8" y="324" width="12" height="12" rx="3" style="fill:${sma}"/>`+T(24,334,"SMA",{a:"start",c:"s"})+`<rect x="70" y="324" width="12" height="12" rx="3" style="fill:${ima}"/>`+T(86,334,"IMA",{a:"start",c:"s"})+`<rect x="130" y="324" width="12" height="12" rx="3" style="fill:#E8D6A8"/>`+T(146,334,"iliac/pudendal",{a:"start",c:"s"});
+ b+=`<rect x="8" y="324" width="12" height="12" rx="3" style="fill:${sma}"/>`+LB(T(24,334,"SMA",{a:"start",c:"s"}))+`<rect x="70" y="324" width="12" height="12" rx="3" style="fill:${ima}"/>`+LB(T(86,334,"IMA",{a:"start",c:"s"}))+`<rect x="130" y="324" width="12" height="12" rx="3" style="fill:#E8D6A8"/>`+LB(T(146,334,"iliac/pudendal",{a:"start",c:"s"}));
  b+=iPanel(340,8,294,d.n,"",d.R,d.c);
  const y0=IPH+22;b+=T(340,y0,"ความลึกของการตาย",{a:"start",c:"bh"});[["Mucosal","ไม่ลึกกว่า muscularis mucosae"],["Mural","mucosa + submucosa"],["Transmural","ทุกชั้น · มักจากอุดหลอดเลือดเฉียบพลัน"]].forEach(([n,s],i)=>b+=T(340,y0+22+i*20,n,{a:"start",c:"bh"})+T(430,y0+22+i*20,s,{a:"start",c:"s m"}));
  return ESVG(b,`0 0 640 ${Math.max(344,y0+76)}`)}
@@ -223,8 +223,8 @@ function polypStage(x,y,w,k,c){const H=170,r=rng(41+k);let b=`<clipPath id="psc"
  if(k>=3){const deep=k===3?mp-8:mp+10;for(let i=0;i<(k===3?12:18);i++){const gx=cx-40+r()*80,gy=mm+6+r()*(deep-mm-6);b+=`<path d="${sm([[gx-7,gy],[gx-3,gy-5],[gx+6,gy-4],[gx+8,gy+2],[gx+1,gy+6],[gx-6,gy+4]])}" style="fill:#FBEFF3;stroke:${c};stroke-width:1.8"/>`}
   b+=`<path d="M${cx-46},${mm+2} C${cx-50},${deep} ${cx+50},${deep} ${cx+46},${mm+2}" style="fill:none;stroke:${c};stroke-width:1.4;stroke-dasharray:4 3"/>`}
  b+=`</g><rect x="${x}" y="${y}" width="${w}" height="${H}" rx="12" style="fill:none;stroke:var(--sb-line)"/>`;
- b+=T(x+w+6,m0+16,"mucosa",{a:"start",c:"s m"})+T(x+w+6,sb-4,"submucosa",{a:"start",c:"s m"})+T(x+w+6,mp-10,"muscularis",{a:"start",c:"s m"});
- if(k===4){b+=`<circle cx="${x+w-40}" cy="${y+40}" r="16" style="fill:#C9D6EA;stroke:#3E6FB0;stroke-width:1.6"/>`+dot(x+w-44,y+38,4,c)+dot(x+w-34,y+44,3,c)+TD(x+w-40,y+18,"lymph node",{s:9.5})+Ar(cx+30,mm+20,x+w-58,y+48,c,2,{hs:6});
+ b+=LB(T(x+w+6,m0+16,"mucosa",{a:"start",c:"s m"}))+LB(T(x+w+6,sb-4,"submucosa",{a:"start",c:"s m"}))+LB(T(x+w+6,mp-10,"muscularis",{a:"start",c:"s m"}));
+ if(k===4){b+=`<circle cx="${x+w-40}" cy="${y+40}" r="16" style="fill:#C9D6EA;stroke:#3E6FB0;stroke-width:1.6"/>`+dot(x+w-44,y+38,4,c)+dot(x+w-34,y+44,3,c)+LB(TD(x+w-40,y+18,"lymph node",{s:9.5}))+Ar(cx+30,mm+20,x+w-58,y+48,c,2,{hs:6});
   b+=`<path d="${sm([[x+20,y+22],[x+70,y+12],[x+96,y+24],[x+80,y+48],[x+30,y+50]])}" style="fill:${GI.liv};stroke:${GI.livD}"/>`+dot(x+56,y+30,5,c)+dot(x+74,y+36,4,c)+TW(x+56,y+64,"ตับ",{s:10})+Ar(cx-30,mm+20,x+84,y+44,c,2,{hs:6})}
  return b}
 function asD(){const p=AS[ST.ap2],k=+ST.as;let b="";

@@ -384,6 +384,8 @@ const GI={muc:"#E7A1B2",mucD:"#B85C78",sq:"#F3D3CC",sqD:"#C99A92",col:"#D2566F",
  bile:"#86A83A",bileD:"#5A7A1E",liv:"#A8503F",livL:"#C9735C",livD:"#7A3528",gb:"#9CC25A",panc:"#EDCB9E",pancD:"#B98F5C",duo:"#E9B8A6",
  blood:"#B3263B",vein:"#3E6FB0",art:"#C8423A",stone:"#D7BE7A",stoneD:"#8C7432",tumor:"#7D5BA6",tumD:"#4E3570",fat:"#F7E7A6",gran:"#E9B949",ink:"#3B2D4A"};
 /* white label with soft outline, for text drawn on organs */
+/* Labels toggle: anatomical name labels are hidden when ST.labels is off */
+const LB=s=>ST.labels?s:"";
 const TW=(x,y,s,o={})=>`<text x="${x}" y="${y}" text-anchor="${o.a||"middle"}" style="font:${o.w||800} ${o.s||11}px var(--sb-font);fill:#fff;paint-order:stroke;stroke:rgba(40,20,30,.45);stroke-width:2.6px">${s}</text>`;
 const ring=(x,y,r,c=CV.acc)=>`<circle cx="${x}" cy="${y}" r="${r}" style="fill:none;stroke:${c};stroke-width:2.4;stroke-dasharray:5 4"/>`;
 /* pill row that wraps inside width w; items [[text,colour]] */
@@ -415,7 +417,7 @@ function wallX(x,y,w,h,o={}){const Y=f=>y+f*h,r=rng(o.seed||5);let b=`<clipPath 
    if(L.blood){const D=Y(dep)-y;b+=`<path d="M${mx-4},${Y(dep)} q-6,${-D*.35} 2,${-D*.6} q8,${-D*.2} 0,${-D*.38}" style="fill:none;stroke:${GI.blood};stroke-width:3.4;stroke-linecap:round"/>`}}}
  (o.gran||[]).forEach(([gx,gy])=>{b+=`<circle cx="${gx}" cy="${gy}" r="8" style="fill:#F2D6E2;stroke:${HE.mem};stroke-width:1.2"/>`;for(let i=0;i<6;i++){const a=i/6*6.28;b+=dot(gx+Math.cos(a)*5,gy+Math.sin(a)*5,1.4,HE.nu)}});
  b+=`</g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="10" style="fill:none;stroke:var(--sb-line);stroke-width:1.2"/>`;
- if(o.lab!==false){const lx=x+w+6,ls=[["mucosa",.2],["submucosa",.4],["muscularis",.74],["serosa",.93]];ls.forEach(([t,f])=>b+=T(lx,Y(f)+4,t,{a:"start",c:"s m"}))}
+ if(o.lab!==false&&ST.labels){const lx=x+w+6,ls=[["mucosa",.2],["submucosa",.4],["muscularis",.74],["serosa",.93]];ls.forEach(([t,f])=>b+=T(lx,Y(f)+4,t,{a:"start",c:"s m"}))}
  return b}
 
 /* ================= esophagus + stomach + duodenal bulb =================
@@ -453,7 +455,7 @@ function esoStom(x,y,s,o={}){let b=`<g transform="translate(${x},${y}) scale(${s
  b+=`<path d="M68,268 L68,296" style="stroke:${GI.musD};stroke-width:4;stroke-linecap:round"/>`;
  (o.ulcers||[]).forEach(([ux,uy,ur,c])=>b+=`<circle cx="${ux}" cy="${uy}" r="${ur}" style="fill:${c||"#F7EFE6"};stroke:#8E3B4C;stroke-width:1.8"/>`+`<circle cx="${ux}" cy="${uy}" r="${ur*.45}" style="fill:${c?"#fff":"#E5C9A8"};opacity:.6"/>`);
  (o.hl||[]).forEach(([hx,hy,hr])=>b+=ring(hx,hy,hr));
- if(o.lab!==false)b+=TD(o.dil==="achalasia"?160:142,40,"esophagus",{s:10.5,a:"start"})+TD(214,180,"stomach",{s:11,c:"#fff",w:800})+TD(10,330,"duodenum",{s:10,a:"start"});
+ if(o.lab!==false&&ST.labels)b+=TD(o.dil==="achalasia"?160:142,40,"esophagus",{s:10.5,a:"start"})+TD(214,180,"stomach",{s:11,c:"#fff",w:800})+TD(10,330,"duodenum",{s:10,a:"start"});
  return b+`</g>`}
 
 /* ================= colon frame + small bowel =================
@@ -482,7 +484,7 @@ function colonMap(x,y,s,o={}){let b=`<g transform="translate(${x},${y}) scale(${
  if(o.twist){const [tx,ty]=o.twist==="sig"?[236,238]:[64,236];b+=`<path d="M${tx-14},${ty-10} q14,-10 28,0 M${tx-14},${ty+2} q14,10 28,0" style="fill:none;stroke:${CV.bad};stroke-width:3.4;stroke-linecap:round"/>`+`<circle cx="${tx}" cy="${ty-4}" r="22" style="fill:none;stroke:${CV.bad};stroke-width:1.6;stroke-dasharray:4 3"/>`}
  (o.dots||[]).forEach(([dx,dy,c,rr])=>b+=`<circle cx="${dx}" cy="${dy}" r="${rr||4.2}" style="fill:${c||GI.tumor};stroke:#fff;stroke-width:1"/>`);
  (o.ring||[]).forEach(([rx,ry,rr,c])=>b+=ring(rx,ry,rr,c));
- if(o.lab!==false){const L=(x,y,t,a)=>TD(x,y,t,{s:9.5,a:a||"middle",c:"#6B4A3A"});b+=L(36,150,"ascending","middle").replace("<text",`<text transform="rotate(-90 36 150)"`)+L(160,44,"transverse")+L(298,140,"descending").replace("<text",`<text transform="rotate(90 298 140)"`)+L(244,280,"sigmoid")+L(190,302,"rectum","start")+L(30,268,"cecum")+L(92,302,"appendix")+L(112,246,"terminal ileum")}
+ if(o.lab!==false&&ST.labels){const L=(x,y,t,a)=>TD(x,y,t,{s:9.5,a:a||"middle",c:"#6B4A3A"});b+=L(36,150,"ascending","middle").replace("<text",`<text transform="rotate(-90 36 150)"`)+L(160,44,"transverse")+L(298,140,"descending").replace("<text",`<text transform="rotate(90 298 140)"`)+L(244,280,"sigmoid")+L(190,302,"rectum","start")+L(30,268,"cecum")+L(92,302,"appendix")+L(112,246,"terminal ileum")}
  return b+`</g>`}
 
 /* ================= small-bowel mucosa tile (H&E-like) =================
@@ -525,7 +527,7 @@ function lobule(cx,cy,R,o={}){const r=rng(o.seed||13);let b="";const P=[...Array
  /* central vein + portal triads */
  b+=`<circle cx="${cx}" cy="${cy}" r="${R*.11}" style="fill:${o.cong?"#7A1020":"#F7E8E2"};stroke:${GI.vein};stroke-width:2"/>`;
  P.forEach(([px,py])=>{b+=`<circle cx="${px}" cy="${py}" r="${R*.17}" style="fill:#F5E6D8;stroke:#C98B78;stroke-width:1"/>`+dot(px-R*.06,py-R*.02,R*.065,GI.vein)+dot(px+R*.07,py-R*.03,R*.038,GI.art)+`<circle cx="${px}" cy="${py+R*.075}" r="${R*.04}" style="fill:${GI.bile};stroke:${GI.bileD};stroke-width:.8"/>`});
- if(o.lab!==false)b+=TD(cx,cy+R*.11+12,"central v.",{s:9.5})+TD(P[0][0],P[0][1]-R*.2,"portal triad",{s:9.5,a:"end"});
+ if(o.lab!==false&&ST.labels)b+=TD(cx,cy+R*.11+12,"central v.",{s:9.5})+TD(P[0][0],P[0][1]-R*.2,"portal triad",{s:9.5,a:"end"});
  return b}
 /* zone legend under a lobule */
 const zoneKey=(x,y)=>["Zone 1 periportal","Zone 2","Zone 3 centrilobular"].map((t,i)=>`<rect x="${x+i*120}" y="${y-9}" width="12" height="12" rx="3" style="fill:${["#E9A893","#F2C2B2","#F7D9CF"][i]}"/>`+T(x+16+i*120,y+1,t,{a:"start",c:"s m"})).join("");
@@ -565,7 +567,7 @@ function hepatoB(x,y,s,o={}){let b=`<g transform="translate(${x},${y}) scale(${s
  const st=(k,n)=>{const [sx,sy]=HPOS[k];for(let i=0;i<n;i++){const px=sx+(i%3-1)*7,py=sy+Math.floor(i/3)*6-3;b+=`<path d="M${px-4},${py} L${px},${py-4} L${px+4},${py} L${px},${py+4}Z" style="fill:${GI.stone};stroke:${GI.stoneD};stroke-width:1"/>`}};
  (o.stones||[]).forEach(k=>st(k,k==="gb"?6:1));
  if(o.mass){const [mx,my,mr]=Array.isArray(o.mass)?o.mass:[...HPOS[o.mass],16];b+=`<path d="${sm([[mx-mr,my],[mx-mr*.5,my-mr*.9],[mx+mr*.6,my-mr*.8],[mx+mr,my+mr*.1],[mx+mr*.3,my+mr*.9],[mx-mr*.7,my+mr*.7]])}" style="fill:${o.massC||GI.tumor};stroke:${GI.tumD};stroke-width:1.4;opacity:.93"/>`}
- if(o.lab!==false)b+=TW(240,60,"liver",{s:12})+TD(88,214,"gallbladder",{s:10})+TD(196,170,"CBD",{s:10,a:"start"})+TD(300,234,"pancreas",{s:10})+TD(150,300,"duodenum",{s:10});
+ if(o.lab!==false&&ST.labels)b+=TW(240,60,"liver",{s:12})+TD(88,214,"gallbladder",{s:10})+TD(196,170,"CBD",{s:10,a:"start"})+TD(300,234,"pancreas",{s:10})+TD(150,300,"duodenum",{s:10});
  return b+`</g>`}
 
 Object.assign(GN,{a:"Cirrhosis & liver tests",b:"Liver diseases",c:"Bilirubin & biliary tract",d:"Pancreas"});
@@ -576,25 +578,25 @@ function portalD(){const hv=+ST.hv,P=ST.tips?Math.min(hv,9):hv,k=Math.max(0,Math
  const tube=(d,c,w)=>`<path d="${d}" style="fill:none;stroke:${c};stroke-width:${w};stroke-linecap:round;stroke-linejoin:round"/>`;
  const pc=`color-mix(in srgb,#7A5BC7 ${40+k*60}%,#9DB8DE)`,sy="#3E6FB0";
  /* systemic: IVC + azygos/SVC */
- b+=tube("M36,392 L36,60",sy,12)+T(36,48,"IVC",{c:"s m"})+tube("M300,14 L300,60",sy,8)+tube("M300,56 C292,62 284,62 278,58",sy,4)+T(312,30,"azygos → SVC",{a:"start",c:"s m"});
+ b+=tube("M36,392 L36,60",sy,12)+LB(T(36,48,"IVC",{c:"s m"}))+tube("M300,14 L300,60",sy,8)+tube("M300,56 C292,62 284,62 278,58",sy,4)+T(312,30,"azygos → SVC",{a:"start",c:"s m"});
  /* liver */
  const cir=hv>=8;b+=`<path d="${sm([[70,96],[120,70],[190,76],[214,102],[196,140],[140,156],[84,148]])}" style="fill:${cir?"#8E5A44":GI.liv};stroke:${GI.livD};stroke-width:1.6"/>`;
  if(cir){const r=rng(9);for(let i=0;i<26;i++)b+=`<circle cx="${84+r()*112}" cy="${82+r()*60}" r="${4+r()*3}" style="fill:${GI.livL};stroke:#E8D6A8;stroke-width:1.2;opacity:.9"/>`}
- b+=TW(140,118,cir?"cirrhosis":"liver",{s:11})+tube("M96,90 C70,80 50,78 38,76",sy,7)+T(74,66,"hepatic v.",{c:"s m"});
+ b+=TW(140,118,cir?"cirrhosis":"liver",{s:11})+tube("M96,90 C70,80 50,78 38,76",sy,7)+LB(T(74,66,"hepatic v.",{c:"s m"}));
  /* esophagus + stomach, spleen, rectum, umbilicus */
  b+=tube("M270,14 L270,104",GI.sqD,20)+tube("M270,14 L270,104",GI.sq,16)+`<path d="${sm([[262,100],[300,96],[330,120],[322,160],[286,170],[262,150]])}" style="fill:${GI.muc};stroke:${GI.mucD};stroke-width:1.4"/>`;
- const sp=1+k*.5;b+=`<ellipse cx="386" cy="150" rx="${26*sp}" ry="${18*sp}" style="fill:#8E3B5A;stroke:#5E2238;stroke-width:1.4"/>`+TW(386,154,"spleen",{s:10});
- b+=tube("M250,330 L250,392",GI.mucD,22)+tube("M250,330 L250,392",GI.duo,18)+T(284,372,"rectum",{a:"start",c:"s m"});
- b+=`<circle cx="130" cy="262" r="6" style="fill:${EN.skinD}"/>`+T(130,284,"umbilicus",{c:"s m"});
+ const sp=1+k*.5;b+=`<ellipse cx="386" cy="150" rx="${26*sp}" ry="${18*sp}" style="fill:#8E3B5A;stroke:#5E2238;stroke-width:1.4"/>`+LB(TW(386,154,"spleen",{s:10}));
+ b+=tube("M250,330 L250,392",GI.mucD,22)+tube("M250,330 L250,392",GI.duo,18)+LB(T(284,372,"rectum",{a:"start",c:"s m"}));
+ b+=`<circle cx="130" cy="262" r="6" style="fill:${EN.skinD}"/>`+LB(T(130,284,"umbilicus",{c:"s m"}));
  /* portal system */
  b+=tube("M170,138 C190,160 210,176 232,184",pc,12)+tube("M232,184 C290,180 330,168 366,156",pc,9)+tube("M232,184 C236,220 236,250 232,290",pc,9)+tube("M300,176 C296,240 280,290 256,330",pc,7);
- b+=T(204,204,"portal v.",{a:"end",c:"s"})+T(330,196,"splenic v.",{a:"start",c:"s m"})+T(222,262,"SMV",{a:"end",c:"s m"})+T(300,270,"IMV",{a:"start",c:"s m"});
+ b+=LB(T(204,204,"portal v.",{a:"end",c:"s"}))+LB(T(330,196,"splenic v.",{a:"start",c:"s m"}))+LB(T(222,262,"SMV",{a:"end",c:"s m"}))+LB(T(300,270,"IMV",{a:"start",c:"s m"}));
  /* shunts */
  const sw=1.5+k*7,sc=on?CV.bad:"var(--sb-muted)";
  b+=tube("M236,178 C250,150 262,130 268,106",pc,4+k*3);for(let i=0;i<3;i++)b+=`<path d="M${263+i*7},98 q-5,-10 0,-20 q5,-10 0,-22" style="fill:none;stroke:${sc};stroke-width:${sw*.6};stroke-linecap:round;opacity:${on?1:.4}"/>`;
  b+=tube("M150,150 C140,190 134,230 130,256",pc,2+k*4);for(let i=0;i<6;i++){const a=i/6*6.28;b+=`<path d="M130,262 q${Math.cos(a)*14},${Math.sin(a)*8} ${Math.cos(a)*30},${Math.sin(a)*26}" style="fill:none;stroke:${sc};stroke-width:${sw*.45};stroke-linecap:round;opacity:${on?1:.3}"/>`}
  b+=`<path d="M240,350 q-14,6 0,14 q14,6 0,14 M262,350 q14,6 0,14 q-14,6 0,14" style="fill:none;stroke:${sc};stroke-width:${sw*.6};stroke-linecap:round;opacity:${on?1:.4}"/>`+tube("M236,388 C150,396 80,394 42,380",sy,4);
- b+=`<path d="M338,214 q16,6 30,0 q14,-6 28,2" style="fill:none;stroke:${sc};stroke-width:${sw*.5};stroke-linecap:round;opacity:${on?1:.4}"/>`+T(400,236,"retroperitoneal",{c:"s m"});
+ b+=`<path d="M338,214 q16,6 30,0 q14,-6 28,2" style="fill:none;stroke:${sc};stroke-width:${sw*.5};stroke-linecap:round;opacity:${on?1:.4}"/>`+LB(T(400,236,"retroperitoneal",{c:"s m"}));
  if(ST.tips)b+=tube("M176,140 C150,120 120,100 98,92","#2F8A78",8)+`<path d="M176,140 C150,120 120,100 98,92" style="fill:none;stroke:#fff;stroke-width:1.4;stroke-dasharray:3 4"/>`+tag(150,58,"TIPS",CV.teal);
  if(on&&P>=12)b+=`<circle cx="270" cy="70" r="24" style="fill:none;stroke:${CV.bad};stroke-width:2;stroke-dasharray:4 3"/>`;
  /* legend/right panel */
@@ -683,7 +685,7 @@ function naD(){const d=NA[ST.na];let b=lobule(150,150,116,Object.assign({seed:37
 
 /* ---------- 9. autoimmune hepatitis ---------- */
 function aiD(){const t1=ST.ai==="t1";let b=slide(8,8,300,220);const r=rng(7);
- b+=`<circle cx="70" cy="70" r="46" style="fill:#F5E6D8;stroke:#C98B78"/>`+dot(58,62,10,GI.vein)+dot(84,58,5,GI.art)+`<circle cx="74" cy="86" r="6" style="fill:${GI.bile};stroke:${GI.bileD}"/>`+TD(70,26,"portal tract",{s:10});
+ b+=`<circle cx="70" cy="70" r="46" style="fill:#F5E6D8;stroke:#C98B78"/>`+dot(58,62,10,GI.vein)+dot(84,58,5,GI.art)+`<circle cx="74" cy="86" r="6" style="fill:${GI.bile};stroke:${GI.bileD}"/>`+LB(TD(70,26,"portal tract",{s:10}));
  for(let i=0;i<120;i++){const px=20+r()*276,py=20+r()*196;if(Math.hypot(px-70,py-70)>50)b+=`<rect x="${px-7}" y="${py-6}" width="14" height="12" rx="3" style="fill:#F2B9CB;stroke:${HE.mem};stroke-width:.5"/>`+dot(px,py,2,HE.nu)}
  for(let i=0;i<90;i++){const a=r()*6.28,d2=40+r()*46;const px=70+Math.cos(a)*d2,py=70+Math.sin(a)*d2;if(px>10&&py>10)b+=`<ellipse cx="${px}" cy="${py}" rx="3.6" ry="2.8" style="fill:#C9A6E0"/>`+dot(px+1.2,py,1.5,HE.nuD)}
  b+=TD(200,214,"plasma cells ล้ำเข้าเนื้อตับ (interface hepatitis)",{s:10});
