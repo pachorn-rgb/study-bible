@@ -60,7 +60,7 @@ function hypoparaD(){const k=ST.hpp,d=HPP[k];let b="";
 const HC={vitd:{n:"Vitamin D deficiency",bad:"gut",L:["N/↓","N/↓","↑","↑","↓","N/↑"],t:"ดูด Ca/PO₄ จากลำไส้ไม่พอ → PTH ↑ ชดเชย (Ca เกือบปกติ แต่ PO₄ ต่ำ เพราะ PTH ขับทิ้ง)"},
  ckd:{n:"2° hyperparathyroidism (CKD)",bad:"kid",L:["↓","↑","↑","↑","N","↓"],t:"ไตขับ PO₄ ไม่ได้ + 1α-hydroxylase ↓ → Ca ต่ำ → PTH ↑ · renal osteodystrophy"},
  hypo:{n:"Hypoparathyroidism",bad:"pth",L:["↓","↑","↓","N","N","N/↓"],t:"ไม่มี PTH → ไตเก็บ PO₄ และสร้าง 1,25-D ไม่ได้"},
- php:{n:"Pseudohypoparathyroidism",bad:"rec",L:["↓","↑","↑","↑","N","N/↓"],t:"PTH สูงแต่อวัยวะเป้าหมายดื้อ (Gsα) → lab เหมือน hypopara แต่ PTH สูง"}};
+ php:{n:"Pseudohypoparathyroidism",bad:"rec",L:["↓","↑","↑","N","N","N/↓"],t:"PTH สูงแต่อวัยวะเป้าหมายดื้อ (Gsα) → lab เหมือน hypopara แต่ PTH สูง"}};
 function hypocaD(){const k=ST.hc,d=HC[k];let b="";
  const org=(x,y,w,t,s,key,draw)=>{const bad=d.bad===key||(key==="kid"&&d.bad==="rec");return `<rect x="${x}" y="${y}" width="${w}" height="122" rx="14" style="fill:color-mix(in srgb,${bad?EN.up:CV.teal} ${bad?13:6}%,var(--sb-surface));stroke:${bad?EN.up:"var(--sb-line)"};stroke-width:${bad?2:1}"/>`+draw+T(x+w/2,y+100,t,{c:"bh"})+T(x+w/2,y+115,s,{c:"s m"})+(bad?tag(x+w-22,y+16,"!",EN.up,{w:22}):"")};
  b+=org(8,8,148,"Parathyroid","สร้าง PTH","pth",[[52,40],[110,40],[52,72],[110,72]].map(([px,py])=>`<ellipse cx="${px}" cy="${py}" rx="${d.bad==="pth"?7:12}" ry="${d.bad==="pth"?5:9}" style="fill:${EN.para};stroke:#7A4E1C"/>`).join(""));

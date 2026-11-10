@@ -83,7 +83,7 @@ function thyFuncD(){const h=ST.tf==="hyper",c=h?EN.up:EN.dn;let b=bodyFig(14,8,.
 /* ---------- 7. thyroid function tests ---------- */
 const TLB={phypo:{n:"Primary hypothyroidism",v:["↑","↑","↓"],les:2,raiu:"—",t:"TSH ↑ + free T4 ↓ · สาเหตุหลัก Hashimoto"},
  sub:{n:"Subclinical hypothyroidism",v:["N","↑","N"],les:2,raiu:"—",t:"TSH ↑ แต่ free T4 ยังปกติ"},
- central:{n:"Central (2°) hypothyroidism",v:["N","↓","↓"],les:1,raiu:"—",t:"T4 ต่ำ แต่ TSH ไม่ขึ้น (ต่ำหรือปกติอย่างไม่เหมาะสม)"},
+ central:{n:"Central (2°) hypothyroidism",v:["↑","↓","↓"],les:1,raiu:"—",t:"T4 ต่ำ แต่ TSH ไม่ขึ้น (ต่ำหรือปกติอย่างไม่เหมาะสม)"},
  graves:{n:"Graves disease",v:["↓","↓","↑"],les:null,ext:"TSI",raiu:"↑ ทั่วต่อม",t:"TSH ต่ำมาก + free T4/T3 ↑"},
  tsha:{n:"TSH-secreting adenoma",v:["↓","↑","↑"],les:1,raiu:"↑",t:"T4 สูงแต่ TSH ไม่ถูกกด = 2° hyperthyroidism (พบน้อย)"},
  exo:{n:"Exogenous thyroid hormone",v:["↓","↓","↑"],les:null,ext:"ยา T4",raiu:"↓",t:"T4 สูง TSH ต่ำ แต่ต่อมไม่จับ iodine"},

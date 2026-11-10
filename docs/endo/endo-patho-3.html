@@ -434,7 +434,7 @@ function aldoD(){const k=ST.al,d=AL[k];const x0=60,y0=16,W=280,H=250,X=v=>x0+v/1
 
 /* ---------- 5. CAH ---------- */
 const CAH={"21":{n:"21-hydroxylase deficiency",blk:"B",up:["Progesterone","17-OH pregnenolone","17-OH progesterone","DHEA","Androstenedione","Testosterone"],dn:["11-deoxycorticosterone","Corticosterone","Aldosterone","11-deoxycortisol","Cortisol"],R:[["Mineralocorticoid","↓"],["K⁺","↑"],["BP","↓"],["Cortisol","↓"],["Sex hormones","↑"],["Renin","↑"]],p:"บ่อยสุด (> 90%) · 17-OH progesterone ↑ · ทารก salt-wasting หรือเด็ก precocious puberty · XX: virilization"},
- "11":{n:"11β-hydroxylase deficiency",blk:"C",up:["11-deoxycorticosterone","11-deoxycortisol","DHEA","Androstenedione","Testosterone"],dn:["Corticosterone","Aldosterone","Cortisol"],R:[["Mineralocorticoid","↑"],["K⁺","↓"],["BP","↑"],["Cortisol","↓"],["Sex hormones","↑"],["Renin","↓"]],p:"aldosterone ↓ แต่ 11-deoxycorticosterone (DOC) ↑ → HTN รุนแรงในทารก · XX: virilization"},
+ "11":{n:"11β-hydroxylase deficiency",blk:"C",up:["11-deoxycorticosterone","11-deoxycortisol","DHEA","Androstenedione","Testosterone"],dn:["Corticosterone","Aldosterone","Cortisol"],R:[["Mineralocorticoid","↑"],["K⁺","↓"],["BP","↑"],["Cortisol","↓"],["Sex hormones","↑"],["Renin","↓"]],p:"aldosterone ↓ แต่ 11-deoxycorticosterone (DOC) ↑ → HTN, K ↓ · XX: virilization"},
  "17":{n:"17α-hydroxylase deficiency",blk:"A",up:["Progesterone","11-deoxycorticosterone","Corticosterone"],dn:["17-OH pregnenolone","17-OH progesterone","11-deoxycortisol","Cortisol","DHEA","Androstenedione","Testosterone","Aldosterone"],R:[["Mineralocorticoid","↑"],["K⁺","↓"],["BP","↑"],["Cortisol","↓"],["Sex hormones","↓"],["Androstenedione","↓"]],p:"DOC ↑ → HTN, K ↓ · XY: อวัยวะเพศกำกวม อัณฑะไม่ลง · XX: ไม่มีลักษณะเพศทุติยภูมิ"}};
 function cahD(){const d=CAH[ST.ch];let b="";
  const col=[120,316,512],row=[44,104,164,224,284];
@@ -566,7 +566,7 @@ function zesD(){const z=ST.zz==="zes";let b="";
  return ESVG(b,"0 0 640 380")}
 
 /* ---------- extra: autoimmune polyendocrine syndromes ---------- */
-const AP={aps1:{n:"APS-1 (APECED)",g:"AIRE mutation (chr 21) · thymus เลือก T cell ผิด",t:["chronic mucocutaneous candidiasis (autoantibody ต่อ IL-17, IL-22)","hypoparathyroidism","Addison","ectodermal dystrophy (ฟัน เล็บ ผิว)"],ord:"เด็ก: candidiasis → hypopara → Addison (วัยรุ่น)"},aps2:{n:"APS-2",g:"polygenic · พบมากกว่า APS-1",t:["Addison","autoimmune thyroiditis","± type 1 diabetes","ไม่มี candidiasis หรือ hypopara"],ord:"มักเริ่มอายุ ~40 ปี"}};
+const AP={aps1:{n:"APS-1 (APECED)",g:"AIRE mutation (chr 21) · thymus เลือก T cell ผิด",t:["chronic mucocutaneous candidiasis (autoantibody ต่อ IL-17, IL-22)","hypoparathyroidism","Addison","ectodermal dystrophy (ฟัน เล็บ ผิว)"],ord:"เด็ก: candidiasis → hypopara → Addison (วัยรุ่น)"},aps2:{n:"APS-2",g:"polygenic · พบมากกว่า APS-1",t:["Addison","autoimmune thyroiditis","± type 1 diabetes","ไม่มี candidiasis หรือ hypopara"],ord:"มักเริ่มในทศวรรษที่ 4 (อายุ 30 ปีเศษ)"}};
 function apsD(){const d=AP[ST.ap];let b=bodyFig(24,6,.84,{pig:ST.ap==="aps1"});
  b+=iPanel(220,8,414,d.n,d.g,d.t,ST.ap==="aps1"?CV.violet:CV.gold);
  b+=`<rect x="220" y="${IPH+20}" width="414" height="44" rx="12" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(236,IPH+47,d.ord,{a:"start",c:"s"});
@@ -697,7 +697,7 @@ notes:()=>`<ul><li>Autoimmune adrenalitis เป็นสาเหตุ Addison
 <li><b>APS-1</b>: AIRE mutation → thymus ไม่แสดง self-antigen ของอวัยวะส่วนปลาย → T cell autoreactive ไม่ถูกกำจัด ${S.r}</li>
 <li>APS-1 มี autoantibody ต่อ IL-17 และ IL-22 (cytokine ของ Th17) → <b>chronic mucocutaneous candidiasis</b> ${S.r}</li>
 <li>APS-1 ลำดับคลาสสิก: candidiasis วัยเด็ก → hypoparathyroidism → Addison วัยรุ่น · ร่วมกับ ectodermal dystrophy ${S.r}</li>
-<li><b>APS-2</b>: Addison + autoimmune thyroiditis ± T1DM · เริ่มวัยผู้ใหญ่ · ไม่มี candidiasis หรือ hypoparathyroidism · พบบ่อยกว่า APS-1 ${S.r}</li></ul>`});
+<li><b>APS-2</b>: Addison + autoimmune thyroiditis ± T1DM · เริ่มทศวรรษที่ 4 · ไม่มี candidiasis หรือ hypoparathyroidism · พบบ่อยกว่า APS-1 ${S.r}</li></ul>`});
 
 const EXTRA=["aps"];
 
