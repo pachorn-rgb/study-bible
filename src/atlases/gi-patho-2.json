@@ -1,0 +1,29 @@
+{
+ "id": "gi-patho-2",
+ "kind": "patho",
+ "sys": "Gastrointestinal",
+ "eyebrow": "Gastrointestinal · Pathology",
+ "draft": false,
+ "title_tag": "Small Bowel & Colorectal Pathology",
+ "h1": "Small Bowel, Colon & Colorectal Cancer",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins (บท 17) เสริมด้วย Harrison และ First Aid Step 2 CK · ลองเลื่อนเวลาให้ปวดย้ายจากสะดือไป McBurney เลือกขอบเขตของ UC และไล่ APC → KRAS → TP53 ทีละขั้น",
+ "sources": [
+  ["robbins", "R", "Robbins & Cotran 10e · Ch 17"],
+  ["fa", "FA", "First Aid Step 1 2025 · Step 2 CK"],
+  ["harrison", "H", "Harrison 22e · GI bleeding"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "gi",
+  "folder": "gi",
+  "subs": ["Pathology"],
+  "title": "Small Bowel & Colorectal Pathology",
+  "src": "Robbins Ch 17 · First Aid GI Pathology · Step 2 CK",
+  "desc": "celiac และ malabsorption (lactose, pancreatic, tropical sprue, Whipple), Crohn vs UC, microscopic colitis, IBS, appendicitis, diverticula และ Meckel, Hirschsprung, intussusception/volvulus/ileus, mesenteric ischemia, angiodysplasia, polyps, polyposis syndromes, Lynch vs FAP, adenoma–carcinoma sequence, colorectal cancer และ screening",
+  "ch": "Robbins Ch 17",
+  "sort": 18,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": ["pathology"]
+ }
+}

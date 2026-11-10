@@ -3825,6 +3825,370 @@
         "ch": "Ch 62",
         "sort": 62
        }
+      },
+      {
+       "id": "gi-physio",
+       "title": "Gastrointestinal Physiology",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 62–66, 70 · Boron Ch 41–46",
+       "href": "gi/gi-physio.html",
+       "thumb": "thumbs/gi-physio.jpg",
+       "desc": "GI hormones ตามช่วงมื้ออาหาร, parietal cell กับการบล็อก H2/PPI/M3, secretory products, ตับอ่อน HCO₃⁻ vs Cl⁻ ตาม flow rate, การย่อย–ดูดซึม carbohydrate/protein/fat, จุดดูดซึม iron–folate–B12 และ intrinsic factor, Peyer patches/IgA, น้ำดีกับ enterohepatic circulation, bilirubin และชนิดของ jaundice, motility (MMC, swallowing, gastric emptying) และ enteric nervous system",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "GI regulatory substances",
+         "regs"
+        ],
+        [
+         "GI secretory products & cell locations",
+         "secprod"
+        ],
+        [
+         "Gastric parietal cell & acid regulation",
+         "parietal"
+        ],
+        [
+         "Pancreatic secretions",
+         "panc"
+        ],
+        [
+         "Carbohydrate digestion & absorption",
+         "carb"
+        ],
+        [
+         "Protein digestion & absorption",
+         "prot"
+        ],
+        [
+         "Fat digestion & absorption",
+         "fat"
+        ],
+        [
+         "Vitamin & mineral absorption sites",
+         "absorb"
+        ],
+        [
+         "Vitamin B12 & intrinsic factor pathway",
+         "b12"
+        ],
+        [
+         "Peyer patches & secretory IgA",
+         "peyer"
+        ],
+        [
+         "Bile & enterohepatic circulation",
+         "bile"
+        ],
+        [
+         "Bilirubin metabolism & jaundice",
+         "bili"
+        ],
+        [
+         "GI motility: swallowing, gastric emptying & MMC",
+         "motil"
+        ],
+        [
+         "Enteric nervous system",
+         "ens"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 62–66",
+        "sort": 10
+       }
+      },
+      {
+       "id": "gi-patho-1",
+       "title": "Oral, Esophageal & Gastric Pathology",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 16–17 · First Aid GI Pathology · Step 2 CK",
+       "href": "gi/gi-patho-1.html",
+       "thumb": "thumbs/gi-patho-1.jpg",
+       "desc": "aphthous ulcer, leukoplakia, oral SCC, เนื้องอกต่อมน้ำลาย, achalasia, GERD และ esophagitis, Barrett, varices/Mallory-Weiss/Boerhaave, dysphagia และ Plummer-Vinson, มะเร็งหลอดอาหาร, gastritis A/B, Ménétrier, มะเร็งกระเพาะ (Virchow, Krukenberg), PUD และภาวะแทรกซ้อน, work-up GI bleeding · ส่วนเสริม gastric polyps",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Oral lesions: aphthous ulcer, leukoplakia & squamous cell carcinoma",
+         "oral"
+        ],
+        [
+         "Salivary gland disease & tumors",
+         "salivary"
+        ],
+        [
+         "Achalasia & esophageal dysmotility",
+         "achalasia"
+        ],
+        [
+         "GERD, hiatal hernia & esophagitis",
+         "gerd"
+        ],
+        [
+         "Barrett esophagus: metaplasia → dysplasia → adenocarcinoma",
+         "barrett"
+        ],
+        [
+         "Esophageal varices, Mallory-Weiss & Boerhaave",
+         "esoph-tears"
+        ],
+        [
+         "Dysphagia: webs, rings, Plummer-Vinson & strictures",
+         "dysphagia"
+        ],
+        [
+         "Esophageal cancer: squamous cell vs adenocarcinoma",
+         "esoph-ca"
+        ],
+        [
+         "Gastritis: acute, stress ulcers & chronic (type A vs B)",
+         "gastritis"
+        ],
+        [
+         "Ménétrier disease & hypertrophic gastropathy",
+         "menetrier"
+        ],
+        [
+         "Gastric cancer: intestinal vs diffuse, metastatic signs, MALT & GIST",
+         "gastric-ca"
+        ],
+        [
+         "Peptic ulcer disease: gastric vs duodenal",
+         "pud"
+        ],
+        [
+         "Ulcer complications: hemorrhage, perforation & obstruction",
+         "ulcer-cx"
+        ],
+        [
+         "Acute GI bleeding: upper vs lower work-up",
+         "gi-bleed"
+        ],
+        [
+         "Gastric polyps",
+         "gastric-polyps"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 17",
+        "sort": 17
+       }
+      },
+      {
+       "id": "gi-patho-2",
+       "title": "Small Bowel & Colorectal Pathology",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 17 · First Aid GI Pathology · Step 2 CK",
+       "href": "gi/gi-patho-2.html",
+       "thumb": "thumbs/gi-patho-2.jpg",
+       "desc": "celiac และ malabsorption (lactose, pancreatic, tropical sprue, Whipple), Crohn vs UC, microscopic colitis, IBS, appendicitis, diverticula และ Meckel, Hirschsprung, intussusception/volvulus/ileus, mesenteric ischemia, angiodysplasia, polyps, polyposis syndromes, Lynch vs FAP, adenoma–carcinoma sequence, colorectal cancer และ screening",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Malabsorption & celiac disease",
+         "celiac"
+        ],
+        [
+         "Lactose intolerance, pancreatic insufficiency, tropical sprue & Whipple disease",
+         "malabs"
+        ],
+        [
+         "Inflammatory bowel disease: Crohn disease vs ulcerative colitis",
+         "ibd"
+        ],
+        [
+         "Microscopic colitis & irritable bowel syndrome",
+         "ibs-mc"
+        ],
+        [
+         "Acute appendicitis",
+         "appendicitis"
+        ],
+        [
+         "Diverticula: diverticulosis, diverticulitis, Zenker & Meckel",
+         "diverticula"
+        ],
+        [
+         "Hirschsprung disease",
+         "hirschsprung"
+        ],
+        [
+         "Intestinal obstruction: intussusception, volvulus, malrotation & ileus",
+         "obstruction"
+        ],
+        [
+         "Ischemic bowel disease",
+         "ischemia"
+        ],
+        [
+         "Angiodysplasia, bacterial overgrowth, short bowel & proctitis",
+         "angio-other"
+        ],
+        [
+         "Colonic polyps: hyperplastic, adenomatous, serrated & hamartomatous",
+         "polyps"
+        ],
+        [
+         "Polyposis syndromes: FAP, Gardner, Turcot, Peutz-Jeghers, juvenile & MUTYH",
+         "polyposis"
+        ],
+        [
+         "Lynch syndrome (HNPCC) vs FAP",
+         "lynch"
+        ],
+        [
+         "Adenoma–carcinoma sequence & molecular pathways",
+         "adeno-ca"
+        ],
+        [
+         "Colorectal cancer: presentation, spread & screening",
+         "crc"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 17",
+        "sort": 18
+       }
+      },
+      {
+       "id": "gi-patho-3",
+       "title": "Liver, Biliary & Pancreatic Pathology",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 18–19 · First Aid GI Pathology · Harrison",
+       "href": "gi/gi-patho-3.html",
+       "thumb": "thumbs/gi-patho-3.jpg",
+       "desc": "cirrhosis และ portal hypertension (แผนที่ portosystemic shunt), Budd-Chiari, ascites/SAAG/SBP, การอ่าน LFT, hepatitis B serology, Reye, alcoholic liver disease, MASLD, autoimmune hepatitis, hepatic encephalopathy, เนื้องอกตับและ HCC, α1-antitrypsin, Wilson, hemochromatosis, jaundice และ hereditary hyperbilirubinemia, PBC vs PSC, นิ่วถุงน้ำดีและภาวะแทรกซ้อน, cholangiocarcinoma, acute/chronic pancreatitis, มะเร็งตับอ่อน",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Cirrhosis & portal hypertension: portosystemic shunts",
+         "cirrhosis"
+        ],
+        [
+         "Budd-Chiari syndrome & portal vein thrombosis",
+         "budd-chiari"
+        ],
+        [
+         "Ascites, SAAG & spontaneous bacterial peritonitis",
+         "ascites-sbp"
+        ],
+        [
+         "Serum markers of liver pathology: reading the LFT pattern",
+         "lft"
+        ],
+        [
+         "Viral hepatitis serology: reading the hepatitis B panel",
+         "hep-sero"
+        ],
+        [
+         "Reye syndrome",
+         "reye"
+        ],
+        [
+         "Alcoholic liver disease",
+         "ald"
+        ],
+        [
+         "Steatotic liver disease: MASLD / NAFLD",
+         "nafld"
+        ],
+        [
+         "Autoimmune hepatitis",
+         "aih"
+        ],
+        [
+         "Hepatic encephalopathy",
+         "hep-enceph"
+        ],
+        [
+         "Liver tumors: hemangioma, FNH, adenoma, HCC & metastases",
+         "liver-tumors"
+        ],
+        [
+         "α1-Antitrypsin deficiency",
+         "a1at"
+        ],
+        [
+         "Wilson disease (hepatolenticular degeneration)",
+         "wilson"
+        ],
+        [
+         "Hemochromatosis",
+         "hemochrom"
+        ],
+        [
+         "Jaundice & hereditary hyperbilirubinemias",
+         "jaundice"
+        ],
+        [
+         "Biliary tract disease: PBC vs PSC",
+         "psc-pbc"
+        ],
+        [
+         "Cholelithiasis & its complications",
+         "gallstones"
+        ],
+        [
+         "Cholangiocarcinoma, gallbladder cancer & porcelain gallbladder",
+         "biliary-ca"
+        ],
+        [
+         "Acute pancreatitis",
+         "acute-panc"
+        ],
+        [
+         "Chronic pancreatitis",
+         "chronic-panc"
+        ],
+        [
+         "Pancreatic adenocarcinoma",
+         "panc-ca"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 18–19",
+        "sort": 19
+       }
       }
      ],
      "checklist": [
@@ -3925,6 +4289,591 @@
        "link": {
         "m": "pharm-gi",
         "h": "cirrhosis"
+       }
+      },
+      {
+       "id": "gi-patho-1:oral",
+       "sub": "Pathology",
+       "t": "Oral lesions: aphthous ulcer, leukoplakia & squamous cell carcinoma",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "oral"
+       }
+      },
+      {
+       "id": "gi-patho-1:salivary",
+       "sub": "Pathology",
+       "t": "Salivary gland disease & tumors",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "salivary"
+       }
+      },
+      {
+       "id": "gi-patho-1:achalasia",
+       "sub": "Pathology",
+       "t": "Achalasia & esophageal dysmotility",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "achalasia"
+       }
+      },
+      {
+       "id": "gi-patho-1:gerd",
+       "sub": "Pathology",
+       "t": "GERD, hiatal hernia & esophagitis",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "gerd"
+       }
+      },
+      {
+       "id": "gi-patho-1:barrett",
+       "sub": "Pathology",
+       "t": "Barrett esophagus: metaplasia → dysplasia → adenocarcinoma",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "barrett"
+       }
+      },
+      {
+       "id": "gi-patho-1:esoph-tears",
+       "sub": "Pathology",
+       "t": "Esophageal varices, Mallory-Weiss & Boerhaave",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "esoph-tears"
+       }
+      },
+      {
+       "id": "gi-patho-1:dysphagia",
+       "sub": "Pathology",
+       "t": "Dysphagia: webs, rings, Plummer-Vinson & strictures",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "dysphagia"
+       }
+      },
+      {
+       "id": "gi-patho-1:esoph-ca",
+       "sub": "Pathology",
+       "t": "Esophageal cancer: squamous cell vs adenocarcinoma",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "esoph-ca"
+       }
+      },
+      {
+       "id": "gi-patho-1:gastritis",
+       "sub": "Pathology",
+       "t": "Gastritis: acute, stress ulcers & chronic (type A vs B)",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "gastritis"
+       }
+      },
+      {
+       "id": "gi-patho-1:menetrier",
+       "sub": "Pathology",
+       "t": "Ménétrier disease & hypertrophic gastropathy",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "menetrier"
+       }
+      },
+      {
+       "id": "gi-patho-1:gastric-ca",
+       "sub": "Pathology",
+       "t": "Gastric cancer: intestinal vs diffuse, metastatic signs, MALT & GIST",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "gastric-ca"
+       }
+      },
+      {
+       "id": "gi-patho-1:pud",
+       "sub": "Pathology",
+       "t": "Peptic ulcer disease: gastric vs duodenal",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "pud"
+       }
+      },
+      {
+       "id": "gi-patho-1:ulcer-cx",
+       "sub": "Pathology",
+       "t": "Ulcer complications: hemorrhage, perforation & obstruction",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "ulcer-cx"
+       }
+      },
+      {
+       "id": "gi-patho-1:gi-bleed",
+       "sub": "Pathology",
+       "t": "Acute GI bleeding: upper vs lower work-up",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "gi-bleed"
+       }
+      },
+      {
+       "id": "gi-patho-1:gastric-polyps",
+       "sub": "Pathology",
+       "t": "Gastric polyps",
+       "link": {
+        "m": "gi-patho-1",
+        "h": "gastric-polyps"
+       }
+      },
+      {
+       "id": "gi-patho-2:celiac",
+       "sub": "Pathology",
+       "t": "Malabsorption & celiac disease",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "celiac"
+       }
+      },
+      {
+       "id": "gi-patho-2:malabs",
+       "sub": "Pathology",
+       "t": "Lactose intolerance, pancreatic insufficiency, tropical sprue & Whipple disease",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "malabs"
+       }
+      },
+      {
+       "id": "gi-patho-2:ibd",
+       "sub": "Pathology",
+       "t": "Inflammatory bowel disease: Crohn disease vs ulcerative colitis",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "ibd"
+       }
+      },
+      {
+       "id": "gi-patho-2:ibs-mc",
+       "sub": "Pathology",
+       "t": "Microscopic colitis & irritable bowel syndrome",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "ibs-mc"
+       }
+      },
+      {
+       "id": "gi-patho-2:appendicitis",
+       "sub": "Pathology",
+       "t": "Acute appendicitis",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "appendicitis"
+       }
+      },
+      {
+       "id": "gi-patho-2:diverticula",
+       "sub": "Pathology",
+       "t": "Diverticula: diverticulosis, diverticulitis, Zenker & Meckel",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "diverticula"
+       }
+      },
+      {
+       "id": "gi-patho-2:hirschsprung",
+       "sub": "Pathology",
+       "t": "Hirschsprung disease",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "hirschsprung"
+       }
+      },
+      {
+       "id": "gi-patho-2:obstruction",
+       "sub": "Pathology",
+       "t": "Intestinal obstruction: intussusception, volvulus, malrotation & ileus",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "obstruction"
+       }
+      },
+      {
+       "id": "gi-patho-2:ischemia",
+       "sub": "Pathology",
+       "t": "Ischemic bowel disease",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "ischemia"
+       }
+      },
+      {
+       "id": "gi-patho-2:angio-other",
+       "sub": "Pathology",
+       "t": "Angiodysplasia, bacterial overgrowth, short bowel & proctitis",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "angio-other"
+       }
+      },
+      {
+       "id": "gi-patho-2:polyps",
+       "sub": "Pathology",
+       "t": "Colonic polyps: hyperplastic, adenomatous, serrated & hamartomatous",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "polyps"
+       }
+      },
+      {
+       "id": "gi-patho-2:polyposis",
+       "sub": "Pathology",
+       "t": "Polyposis syndromes: FAP, Gardner, Turcot, Peutz-Jeghers, juvenile & MUTYH",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "polyposis"
+       }
+      },
+      {
+       "id": "gi-patho-2:lynch",
+       "sub": "Pathology",
+       "t": "Lynch syndrome (HNPCC) vs FAP",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "lynch"
+       }
+      },
+      {
+       "id": "gi-patho-2:adeno-ca",
+       "sub": "Pathology",
+       "t": "Adenoma–carcinoma sequence & molecular pathways",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "adeno-ca"
+       }
+      },
+      {
+       "id": "gi-patho-2:crc",
+       "sub": "Pathology",
+       "t": "Colorectal cancer: presentation, spread & screening",
+       "link": {
+        "m": "gi-patho-2",
+        "h": "crc"
+       }
+      },
+      {
+       "id": "gi-patho-3:cirrhosis",
+       "sub": "Pathology",
+       "t": "Cirrhosis & portal hypertension: portosystemic shunts",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "cirrhosis"
+       }
+      },
+      {
+       "id": "gi-patho-3:budd-chiari",
+       "sub": "Pathology",
+       "t": "Budd-Chiari syndrome & portal vein thrombosis",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "budd-chiari"
+       }
+      },
+      {
+       "id": "gi-patho-3:ascites-sbp",
+       "sub": "Pathology",
+       "t": "Ascites, SAAG & spontaneous bacterial peritonitis",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "ascites-sbp"
+       }
+      },
+      {
+       "id": "gi-patho-3:lft",
+       "sub": "Pathology",
+       "t": "Serum markers of liver pathology: reading the LFT pattern",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "lft"
+       }
+      },
+      {
+       "id": "gi-patho-3:hep-sero",
+       "sub": "Pathology",
+       "t": "Viral hepatitis serology: reading the hepatitis B panel",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "hep-sero"
+       }
+      },
+      {
+       "id": "gi-patho-3:reye",
+       "sub": "Pathology",
+       "t": "Reye syndrome",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "reye"
+       }
+      },
+      {
+       "id": "gi-patho-3:ald",
+       "sub": "Pathology",
+       "t": "Alcoholic liver disease",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "ald"
+       }
+      },
+      {
+       "id": "gi-patho-3:nafld",
+       "sub": "Pathology",
+       "t": "Steatotic liver disease: MASLD / NAFLD",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "nafld"
+       }
+      },
+      {
+       "id": "gi-patho-3:aih",
+       "sub": "Pathology",
+       "t": "Autoimmune hepatitis",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "aih"
+       }
+      },
+      {
+       "id": "gi-patho-3:hep-enceph",
+       "sub": "Pathology",
+       "t": "Hepatic encephalopathy",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "hep-enceph"
+       }
+      },
+      {
+       "id": "gi-patho-3:liver-tumors",
+       "sub": "Pathology",
+       "t": "Liver tumors: hemangioma, FNH, adenoma, HCC & metastases",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "liver-tumors"
+       }
+      },
+      {
+       "id": "gi-patho-3:a1at",
+       "sub": "Pathology",
+       "t": "α1-Antitrypsin deficiency",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "a1at"
+       }
+      },
+      {
+       "id": "gi-patho-3:wilson",
+       "sub": "Pathology",
+       "t": "Wilson disease (hepatolenticular degeneration)",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "wilson"
+       }
+      },
+      {
+       "id": "gi-patho-3:hemochrom",
+       "sub": "Pathology",
+       "t": "Hemochromatosis",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "hemochrom"
+       }
+      },
+      {
+       "id": "gi-patho-3:jaundice",
+       "sub": "Pathology",
+       "t": "Jaundice & hereditary hyperbilirubinemias",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "jaundice"
+       }
+      },
+      {
+       "id": "gi-patho-3:psc-pbc",
+       "sub": "Pathology",
+       "t": "Biliary tract disease: PBC vs PSC",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "psc-pbc"
+       }
+      },
+      {
+       "id": "gi-patho-3:gallstones",
+       "sub": "Pathology",
+       "t": "Cholelithiasis & its complications",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "gallstones"
+       }
+      },
+      {
+       "id": "gi-patho-3:biliary-ca",
+       "sub": "Pathology",
+       "t": "Cholangiocarcinoma, gallbladder cancer & porcelain gallbladder",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "biliary-ca"
+       }
+      },
+      {
+       "id": "gi-patho-3:acute-panc",
+       "sub": "Pathology",
+       "t": "Acute pancreatitis",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "acute-panc"
+       }
+      },
+      {
+       "id": "gi-patho-3:chronic-panc",
+       "sub": "Pathology",
+       "t": "Chronic pancreatitis",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "chronic-panc"
+       }
+      },
+      {
+       "id": "gi-patho-3:panc-ca",
+       "sub": "Pathology",
+       "t": "Pancreatic adenocarcinoma",
+       "link": {
+        "m": "gi-patho-3",
+        "h": "panc-ca"
+       }
+      },
+      {
+       "id": "gi-physio:regs",
+       "sub": "Physiology",
+       "t": "GI regulatory substances",
+       "link": {
+        "m": "gi-physio",
+        "h": "regs"
+       }
+      },
+      {
+       "id": "gi-physio:secprod",
+       "sub": "Physiology",
+       "t": "GI secretory products & cell locations",
+       "link": {
+        "m": "gi-physio",
+        "h": "secprod"
+       }
+      },
+      {
+       "id": "gi-physio:parietal",
+       "sub": "Physiology",
+       "t": "Gastric parietal cell & acid regulation",
+       "link": {
+        "m": "gi-physio",
+        "h": "parietal"
+       }
+      },
+      {
+       "id": "gi-physio:panc",
+       "sub": "Physiology",
+       "t": "Pancreatic secretions",
+       "link": {
+        "m": "gi-physio",
+        "h": "panc"
+       }
+      },
+      {
+       "id": "gi-physio:carb",
+       "sub": "Physiology",
+       "t": "Carbohydrate digestion & absorption",
+       "link": {
+        "m": "gi-physio",
+        "h": "carb"
+       }
+      },
+      {
+       "id": "gi-physio:prot",
+       "sub": "Physiology",
+       "t": "Protein digestion & absorption",
+       "link": {
+        "m": "gi-physio",
+        "h": "prot"
+       }
+      },
+      {
+       "id": "gi-physio:fat",
+       "sub": "Physiology",
+       "t": "Fat digestion & absorption",
+       "link": {
+        "m": "gi-physio",
+        "h": "fat"
+       }
+      },
+      {
+       "id": "gi-physio:absorb",
+       "sub": "Physiology",
+       "t": "Vitamin & mineral absorption sites",
+       "link": {
+        "m": "gi-physio",
+        "h": "absorb"
+       }
+      },
+      {
+       "id": "gi-physio:b12",
+       "sub": "Physiology",
+       "t": "Vitamin B12 & intrinsic factor pathway",
+       "link": {
+        "m": "gi-physio",
+        "h": "b12"
+       }
+      },
+      {
+       "id": "gi-physio:peyer",
+       "sub": "Physiology",
+       "t": "Peyer patches & secretory IgA",
+       "link": {
+        "m": "gi-physio",
+        "h": "peyer"
+       }
+      },
+      {
+       "id": "gi-physio:bile",
+       "sub": "Physiology",
+       "t": "Bile & enterohepatic circulation",
+       "link": {
+        "m": "gi-physio",
+        "h": "bile"
+       }
+      },
+      {
+       "id": "gi-physio:bili",
+       "sub": "Physiology",
+       "t": "Bilirubin metabolism & jaundice",
+       "link": {
+        "m": "gi-physio",
+        "h": "bili"
+       }
+      },
+      {
+       "id": "gi-physio:motil",
+       "sub": "Physiology",
+       "t": "GI motility: swallowing, gastric emptying & MMC",
+       "link": {
+        "m": "gi-physio",
+        "h": "motil"
+       }
+      },
+      {
+       "id": "gi-physio:ens",
+       "sub": "Physiology",
+       "t": "Enteric nervous system",
+       "link": {
+        "m": "gi-physio",
+        "h": "ens"
        }
       }
      ],

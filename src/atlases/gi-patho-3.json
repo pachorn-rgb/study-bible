@@ -1,0 +1,29 @@
+{
+ "id": "gi-patho-3",
+ "kind": "patho",
+ "sys": "Gastrointestinal",
+ "eyebrow": "Gastrointestinal · Pathology",
+ "draft": false,
+ "title_tag": "Liver, Biliary & Pancreatic Pathology",
+ "h1": "Liver, Biliary Tract & Pancreas",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins (บท 18–19) เสริมด้วย Harrison · ลองเลื่อน HVPG ให้ portosystemic shunt เปิด เลื่อนเส้นเวลา hepatitis B เพื่ออ่าน serology คำนวณ SAAG และย้ายตำแหน่งนิ่วในทางเดินน้ำดี",
+ "sources": [
+  ["robbins", "R", "Robbins & Cotran 10e · Ch 18–19"],
+  ["fa", "FA", "First Aid Step 1 2025 · Step 2 CK"],
+  ["harrison", "H", "Harrison 22e · Cirrhosis, jaundice"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "gi",
+  "folder": "gi",
+  "subs": ["Pathology"],
+  "title": "Liver, Biliary & Pancreatic Pathology",
+  "src": "Robbins Ch 18–19 · First Aid GI Pathology · Harrison",
+  "desc": "cirrhosis และ portal hypertension (แผนที่ portosystemic shunt), Budd-Chiari, ascites/SAAG/SBP, การอ่าน LFT, hepatitis B serology, Reye, alcoholic liver disease, MASLD, autoimmune hepatitis, hepatic encephalopathy, เนื้องอกตับและ HCC, α1-antitrypsin, Wilson, hemochromatosis, jaundice และ hereditary hyperbilirubinemia, PBC vs PSC, นิ่วถุงน้ำดีและภาวะแทรกซ้อน, cholangiocarcinoma, acute/chronic pancreatitis, มะเร็งตับอ่อน",
+  "ch": "Robbins Ch 18–19",
+  "sort": 19,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": ["pathology"]
+ }
+}

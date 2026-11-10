@@ -1,7 +1,7 @@
 /* Med Study Bible service worker.
    To publish an update: change VERSION (any new string). Installed apps
    download the new files in the background and show "New version" banner. */
-const VERSION = "6.40";
+const VERSION = "6.41";
 const CACHE = "bible-" + VERSION;
 const FONT_CACHE = "bible-fonts";
 const FILES = [
@@ -105,7 +105,15 @@ const FILES = [
  "endo/endo-patho-2.html",
  "thumbs/endo-patho-2.jpg",
  "endo/endo-patho-3.html",
- "thumbs/endo-patho-3.jpg"
+ "thumbs/endo-patho-3.jpg",
+ "gi/gi-physio.html",
+ "thumbs/gi-physio.jpg",
+ "gi/gi-patho-1.html",
+ "thumbs/gi-patho-1.jpg",
+ "gi/gi-patho-2.html",
+ "thumbs/gi-patho-2.jpg",
+ "gi/gi-patho-3.html",
+ "thumbs/gi-patho-3.jpg"
 ];
 /* figure images (renal/img/**) are cached the first time they are viewed, so installing stays light */
 self.addEventListener("install", e => {

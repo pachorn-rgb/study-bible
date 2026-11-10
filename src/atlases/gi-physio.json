@@ -1,0 +1,30 @@
+{
+ "id": "gi-physio",
+ "kind": "physio",
+ "sys": "Gastrointestinal",
+ "title_tag": "Gastrointestinal Physiology",
+ "eyebrow": "Gastrointestinal · Physiology",
+ "h1": "Gastrointestinal Physiology",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Guyton & Hall และ Boron เสริมคลินิกจาก Harrison · สลับช่วงมื้ออาหารดู GI hormones, บล็อก receptor ของ parietal cell, เลื่อน flow rate ของตับอ่อน, ตัดลำไส้ดูว่าขาดอะไร และเลือกชนิด jaundice ดูว่าวิถี bilirubin ขาดตรงไหน",
+ "sources": [
+  ["guyton", "G", "Guyton & Hall 12e · Ch 62–66, 70"],
+  ["boron", "B", "Boron & Boulpaep 3e · Ch 41–46"],
+  ["fa", "FA", "First Aid Step 1 · GI Physiology"],
+  ["harrison", "H", "Harrison 22e · Ch 335–336, 347, 349"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "gi",
+  "folder": "gi",
+  "subs": ["Physiology"],
+  "title": "Gastrointestinal Physiology",
+  "src": "Guyton & Hall Ch 62–66, 70 · Boron Ch 41–46",
+  "desc": "GI hormones ตามช่วงมื้ออาหาร, parietal cell กับการบล็อก H2/PPI/M3, secretory products, ตับอ่อน HCO₃⁻ vs Cl⁻ ตาม flow rate, การย่อย–ดูดซึม carbohydrate/protein/fat, จุดดูดซึม iron–folate–B12 และ intrinsic factor, Peyer patches/IgA, น้ำดีกับ enterohepatic circulation, bilirubin และชนิดของ jaundice, motility (MMC, swallowing, gastric emptying) และ enteric nervous system",
+  "ch": "Ch 62–66",
+  "sort": 10,
+  "refb": "guyton",
+  "refl": "G",
+  "tags": ["physiology"]
+ },
+ "draft": false
+}

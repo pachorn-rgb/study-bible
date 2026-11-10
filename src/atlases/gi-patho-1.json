@@ -1,0 +1,29 @@
+{
+ "id": "gi-patho-1",
+ "kind": "patho",
+ "sys": "Gastrointestinal",
+ "eyebrow": "Gastrointestinal · Pathology",
+ "draft": false,
+ "title_tag": "Oral, Esophageal & Gastric Pathology",
+ "h1": "Oral Cavity, Esophagus & Stomach",
+ "lede": "เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins (บท 16–17) เสริมด้วย Harrison และ First Aid Step 2 CK · ลองสลับ manometry ของ achalasia ไล่ขั้น Barrett ไปจนเป็นมะเร็ง และเลือกตำแหน่งแผลเพื่อดูว่าหลอดเลือดเส้นไหนแตก",
+ "sources": [
+  ["robbins", "R", "Robbins & Cotran 10e · Ch 16–17"],
+  ["fa", "FA", "First Aid Step 1 2025 · Step 2 CK"],
+  ["harrison", "H", "Harrison 22e · GI bleeding"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "gi",
+  "folder": "gi",
+  "subs": ["Pathology"],
+  "title": "Oral, Esophageal & Gastric Pathology",
+  "src": "Robbins Ch 16–17 · First Aid GI Pathology · Step 2 CK",
+  "desc": "aphthous ulcer, leukoplakia, oral SCC, เนื้องอกต่อมน้ำลาย, achalasia, GERD และ esophagitis, Barrett, varices/Mallory-Weiss/Boerhaave, dysphagia และ Plummer-Vinson, มะเร็งหลอดอาหาร, gastritis A/B, Ménétrier, มะเร็งกระเพาะ (Virchow, Krukenberg), PUD และภาวะแทรกซ้อน, work-up GI bleeding · ส่วนเสริม gastric polyps",
+  "ch": "Robbins Ch 17",
+  "sort": 17,
+  "refb": "robbins",
+  "refl": "R",
+  "tags": ["pathology"]
+ }
+}
