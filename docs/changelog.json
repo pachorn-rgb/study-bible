@@ -1,5 +1,16 @@
 [
  {
+  "v": "6.40",
+  "date": "2026-11-10",
+  "th": [
+   "ระบบต่อมไร้ท่อมีแถบ Physiology และ Pathology แล้ว: atlas ใหม่ 5 เล่ม เรียงตาม First Aid",
+   "Physiology (Guyton + Boron): แกน hypothalamus–pituitary, GH, ADH, prolactin, การสร้างและคุมไทรอยด์ฮอร์โมน, PTH–vitamin D–calcitonin, insulin/glucagon (เลื่อนระดับน้ำตาลดู β-cell ทำงานได้), CAH (กดเลือก enzyme ที่ขาดได้), cortisol, ความหิว, signaling ของฮอร์โมน",
+   "Pathology (Robbins, Harrison เสริม): pituitary adenoma, DI/SIADH, ไทรอยด์ทุกแบบ + แผนภาพ work-up ก้อนไทรอยด์, parathyroid, FHH, เบาหวาน (เกณฑ์วินิจฉัยแบบเลื่อนค่าได้), DKA vs HHS, Cushing work-up, adrenal insufficiency, adrenal incidentaloma, pheochromocytoma, MEN, carcinoid, ZES",
+   "ข้อสอบใหม่ 192 ข้อ (โจทย์ผู้ป่วย 66 ข้อ), Dx Daily โรคต่อมไร้ท่อ 30 โรค, Case Ladder เพิ่ม 2 เคส (CAH ในทารก, ชาหลังผ่าตัดไทรอยด์)",
+   "ตรวจข้อเท็จจริงแยกแล้ว แก้ 9 จุด เช่น TRH ใน central hypothyroidism, ALP ใน pseudohypoparathyroidism, ความดันใน 11β-hydroxylase deficiency"
+  ]
+ },
+ {
   "v": "6.39",
   "date": "2026-11-10",
   "th": [

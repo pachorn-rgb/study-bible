@@ -2678,6 +2678,388 @@
         "ch": "Ch 41",
         "sort": 41
        }
+      },
+      {
+       "id": "endo-physio-1",
+       "title": "Pituitary, Thyroid & Calcium Hormones",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 74–76, 79 · Boron Ch 47–49, 52",
+       "href": "endo/endo-physio-1.html",
+       "thumb": "thumbs/endo-physio-1.jpg",
+       "desc": "Hypothalamic–pituitary axes, GH/IGF-1, ADH (V1/V2, osmolality curve), prolactin, การสังเคราะห์ thyroid hormone, TBG และ deiodinases, ฤทธิ์ 7 B's, PTH กับ CaSR, Ca²⁺ อิสระกับ pH/albumin, vitamin D, FGF23 และ calcitonin",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Hypothalamic–pituitary hormones",
+         "hp"
+        ],
+        [
+         "Growth hormone & IGF-1",
+         "gh"
+        ],
+        [
+         "Antidiuretic hormone (ADH)",
+         "adh"
+        ],
+        [
+         "Prolactin",
+         "prl"
+        ],
+        [
+         "Thyroid hormone synthesis",
+         "thsyn"
+        ],
+        [
+         "Thyroid axis, binding proteins & deiodinases",
+         "threg"
+        ],
+        [
+         "Thyroid hormone actions",
+         "thact"
+        ],
+        [
+         "Parathyroid hormone (PTH)",
+         "pth"
+        ],
+        [
+         "Calcium homeostasis: albumin & pH",
+         "ca"
+        ],
+        [
+         "Vitamin D & FGF23",
+         "vitd"
+        ],
+        [
+         "Calcitonin & Ca²⁺/PO₄³⁻ hormones compared",
+         "calcit"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 74–79",
+        "sort": 10
+       }
+      },
+      {
+       "id": "endo-physio-2",
+       "title": "Pancreas, Adrenal & Hormone Signaling",
+       "subs": [
+        "Physiology"
+       ],
+       "src": "Guyton & Hall Ch 71, 74, 77, 78 · Boron Ch 50, 51",
+       "href": "endo/endo-physio-2.html",
+       "thumb": "thumbs/endo-physio-2.jpg",
+       "desc": "Glucagon และการสลับ fed–fast, β cell หลั่ง insulin แบบปรับ glucose ได้, insulin receptor และ GLUTs, OGTT กับ incretin, steroidogenesis และ CAH แบบกดบล็อก enzyme, cortisol (A BIG FIB), ghrelin/leptin, signaling pathways, SHBG และ counter-regulatory hormones",
+       "tags": [
+        "physiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Glucagon & the fed–fasting switch",
+         "glucagon"
+        ],
+        [
+         "Insulin: synthesis & secretion",
+         "insulin"
+        ],
+        [
+         "Insulin actions & glucose transporters",
+         "insact"
+        ],
+        [
+         "Glucose–insulin dynamics: OGTT & incretins",
+         "ogtt"
+        ],
+        [
+         "Adrenal steroids & congenital adrenal hyperplasia",
+         "cah"
+        ],
+        [
+         "Cortisol",
+         "cortisol"
+        ],
+        [
+         "Appetite regulation",
+         "appetite"
+        ],
+        [
+         "Signaling pathways of endocrine hormones",
+         "signal"
+        ],
+        [
+         "Steroid hormone signaling & binding globulins",
+         "steroid"
+        ],
+        [
+         "Cortisol vs other stress & counter-regulatory hormones",
+         "stress"
+        ]
+       ],
+       "ref": {
+        "b": "guyton",
+        "l": "G",
+        "ch": "Ch 71–78",
+        "sort": 11
+       }
+      },
+      {
+       "id": "endo-patho-1",
+       "title": "Pituitary & Thyroid Pathology",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 24 · First Aid Endocrine Pathology · Step 2 CK",
+       "href": "endo/endo-patho-1.html",
+       "thumb": "thumbs/endo-patho-1.jpg",
+       "desc": "pituitary adenoma และ hyperprolactinemia, SIADH, DI กับ water deprivation test, hypopituitarism (Sheehan, empty sella, apoplexy), acromegaly, hypo/hyperthyroid, การอ่าน TSH/T4, thyroiditis, Graves, thyrotoxicosis และ thyroid storm, goiter, มะเร็งไทรอยด์, work-up ก้อนไทรอยด์ · ส่วนเสริม craniopharyngioma",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Pituitary adenomas & hyperprolactinemia",
+         "pit-adenoma"
+        ],
+        [
+         "Syndrome of inappropriate ADH secretion",
+         "siadh"
+        ],
+        [
+         "Diabetes insipidus vs primary polydipsia",
+         "di"
+        ],
+        [
+         "Hypopituitarism, Sheehan syndrome & empty sella",
+         "hypopit"
+        ],
+        [
+         "Acromegaly & gigantism",
+         "acro"
+        ],
+        [
+         "Hypothyroidism vs hyperthyroidism",
+         "thy-func"
+        ],
+        [
+         "Thyroid function tests: reading the axis",
+         "thy-labs"
+        ],
+        [
+         "Thyroiditis: Hashimoto, painless, de Quervain & Riedel",
+         "thyroiditis"
+        ],
+        [
+         "Congenital hypothyroidism & other causes",
+         "cong-hypo"
+        ],
+        [
+         "Graves disease",
+         "graves"
+        ],
+        [
+         "Thyrotoxicosis: RAIU patterns, toxic nodules & thyroid storm",
+         "thyrotox"
+        ],
+        [
+         "Goiter & thyroid adenoma",
+         "goiter"
+        ],
+        [
+         "Thyroid cancers",
+         "thy-ca"
+        ],
+        [
+         "Thyroid nodule work-up",
+         "nodule-wu"
+        ],
+        [
+         "Craniopharyngioma & other sellar masses",
+         "sellar"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 24",
+        "sort": 12
+       }
+      },
+      {
+       "id": "endo-patho-2",
+       "title": "Parathyroid & Diabetes Pathology",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 24 · First Aid Endocrine Pathology · Step 2 CK",
+       "href": "endo/endo-patho-2.html",
+       "thumb": "thumbs/endo-patho-2.jpg",
+       "desc": "แผนที่ PTH–Ca, hypoparathyroidism, PHP/PPHP, lab ของ hypocalcemia, 1°/2°/3° hyperparathyroidism, FHH, work-up hypercalcemia, เกณฑ์วินิจฉัย DM, กลไกขาด insulin, T1 vs T2, DKA vs HHS, ภาวะแทรกซ้อนเรื้อรัง, hypoglycemia · ส่วนเสริม diabetic nephropathy",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Diagnosing parathyroid disease",
+         "pth-map"
+        ],
+        [
+         "Hypoparathyroidism, PHP & PPHP",
+         "hypopara"
+        ],
+        [
+         "Lab values in hypocalcemic disorders",
+         "hypoca-labs"
+        ],
+        [
+         "Primary, secondary & tertiary hyperparathyroidism",
+         "hyperpara"
+        ],
+        [
+         "Familial hypocalciuric hypercalcemia",
+         "fhh"
+        ],
+        [
+         "Hypercalcemia work-up & acute care",
+         "hyperca-wu"
+        ],
+        [
+         "Diabetes mellitus: manifestations & diagnosis",
+         "dm-dx"
+        ],
+        [
+         "Insulin deficiency: the metabolic cascade",
+         "dm-meta"
+        ],
+        [
+         "Type 1 vs type 2 diabetes mellitus",
+         "t1-t2"
+        ],
+        [
+         "Hyperglycemic emergencies: DKA vs HHS",
+         "dka-hhs"
+        ],
+        [
+         "Chronic complications of diabetes",
+         "dm-comp"
+        ],
+        [
+         "Hypoglycemia in diabetes mellitus",
+         "hypogly"
+        ],
+        [
+         "Diabetic nephropathy & microangiopathy",
+         "dm-kidney"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 24",
+        "sort": 13
+       }
+      },
+      {
+       "id": "endo-patho-3",
+       "title": "Adrenal & Neuroendocrine Tumors",
+       "subs": [
+        "Pathology"
+       ],
+       "src": "Robbins Ch 24 · First Aid Endocrine Pathology · Harrison",
+       "href": "endo/endo-patho-3.html",
+       "thumb": "thumbs/endo-patho-3.jpg",
+       "desc": "Cushing syndrome และ work-up, adrenal insufficiency (Addison, 2°/3°, Waterhouse-Friderichsen), hyperaldosteronism, CAH, adrenal incidentaloma, neuroendocrine tumors, neuroblastoma, pheochromocytoma, MEN1/2A/2B, islet cell tumors, carcinoid, Zollinger-Ellison · ส่วนเสริม APS-1/APS-2",
+       "tags": [
+        "pathology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Cushing syndrome: causes & findings",
+         "cushing"
+        ],
+        [
+         "Cushing syndrome work-up",
+         "cush-wu"
+        ],
+        [
+         "Adrenal insufficiency: primary, secondary & crisis",
+         "adrenal-insuf"
+        ],
+        [
+         "Hyperaldosteronism",
+         "aldo"
+        ],
+        [
+         "Congenital adrenal hyperplasias",
+         "cah"
+        ],
+        [
+         "Adrenal incidentaloma work-up",
+         "incidentaloma"
+        ],
+        [
+         "Neuroendocrine tumors: overview",
+         "net"
+        ],
+        [
+         "Neuroblastoma",
+         "neuroblastoma"
+        ],
+        [
+         "Pheochromocytoma",
+         "pheo"
+        ],
+        [
+         "Multiple endocrine neoplasias",
+         "men"
+        ],
+        [
+         "Pancreatic islet cell tumors",
+         "islet"
+        ],
+        [
+         "Carcinoid tumors & carcinoid syndrome",
+         "carcinoid"
+        ],
+        [
+         "Zollinger-Ellison syndrome",
+         "zes"
+        ],
+        [
+         "Autoimmune polyendocrine syndromes",
+         "aps"
+        ]
+       ],
+       "ref": {
+        "b": "robbins",
+        "l": "R",
+        "ch": "Robbins Ch 24",
+        "sort": 14
+       }
       }
      ],
      "checklist": [
@@ -2787,6 +3169,573 @@
        "link": {
         "m": "pharm-endo",
         "h": "dmrx"
+       }
+      },
+      {
+       "id": "endo-patho-1:pit-adenoma",
+       "sub": "Pathology",
+       "t": "Pituitary adenomas & hyperprolactinemia",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "pit-adenoma"
+       }
+      },
+      {
+       "id": "endo-patho-1:siadh",
+       "sub": "Pathology",
+       "t": "Syndrome of inappropriate ADH secretion",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "siadh"
+       }
+      },
+      {
+       "id": "endo-patho-1:di",
+       "sub": "Pathology",
+       "t": "Diabetes insipidus vs primary polydipsia",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "di"
+       }
+      },
+      {
+       "id": "endo-patho-1:hypopit",
+       "sub": "Pathology",
+       "t": "Hypopituitarism, Sheehan syndrome & empty sella",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "hypopit"
+       }
+      },
+      {
+       "id": "endo-patho-1:acro",
+       "sub": "Pathology",
+       "t": "Acromegaly & gigantism",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "acro"
+       }
+      },
+      {
+       "id": "endo-patho-1:thy-func",
+       "sub": "Pathology",
+       "t": "Hypothyroidism vs hyperthyroidism",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "thy-func"
+       }
+      },
+      {
+       "id": "endo-patho-1:thy-labs",
+       "sub": "Pathology",
+       "t": "Thyroid function tests: reading the axis",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "thy-labs"
+       }
+      },
+      {
+       "id": "endo-patho-1:thyroiditis",
+       "sub": "Pathology",
+       "t": "Thyroiditis: Hashimoto, painless, de Quervain & Riedel",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "thyroiditis"
+       }
+      },
+      {
+       "id": "endo-patho-1:cong-hypo",
+       "sub": "Pathology",
+       "t": "Congenital hypothyroidism & other causes",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "cong-hypo"
+       }
+      },
+      {
+       "id": "endo-patho-1:graves",
+       "sub": "Pathology",
+       "t": "Graves disease",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "graves"
+       }
+      },
+      {
+       "id": "endo-patho-1:thyrotox",
+       "sub": "Pathology",
+       "t": "Thyrotoxicosis: RAIU patterns, toxic nodules & thyroid storm",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "thyrotox"
+       }
+      },
+      {
+       "id": "endo-patho-1:goiter",
+       "sub": "Pathology",
+       "t": "Goiter & thyroid adenoma",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "goiter"
+       }
+      },
+      {
+       "id": "endo-patho-1:thy-ca",
+       "sub": "Pathology",
+       "t": "Thyroid cancers",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "thy-ca"
+       }
+      },
+      {
+       "id": "endo-patho-1:nodule-wu",
+       "sub": "Pathology",
+       "t": "Thyroid nodule work-up",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "nodule-wu"
+       }
+      },
+      {
+       "id": "endo-patho-1:sellar",
+       "sub": "Pathology",
+       "t": "Craniopharyngioma & other sellar masses",
+       "link": {
+        "m": "endo-patho-1",
+        "h": "sellar"
+       }
+      },
+      {
+       "id": "endo-patho-2:pth-map",
+       "sub": "Pathology",
+       "t": "Diagnosing parathyroid disease",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "pth-map"
+       }
+      },
+      {
+       "id": "endo-patho-2:hypopara",
+       "sub": "Pathology",
+       "t": "Hypoparathyroidism, PHP & PPHP",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "hypopara"
+       }
+      },
+      {
+       "id": "endo-patho-2:hypoca-labs",
+       "sub": "Pathology",
+       "t": "Lab values in hypocalcemic disorders",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "hypoca-labs"
+       }
+      },
+      {
+       "id": "endo-patho-2:hyperpara",
+       "sub": "Pathology",
+       "t": "Primary, secondary & tertiary hyperparathyroidism",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "hyperpara"
+       }
+      },
+      {
+       "id": "endo-patho-2:fhh",
+       "sub": "Pathology",
+       "t": "Familial hypocalciuric hypercalcemia",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "fhh"
+       }
+      },
+      {
+       "id": "endo-patho-2:hyperca-wu",
+       "sub": "Pathology",
+       "t": "Hypercalcemia work-up & acute care",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "hyperca-wu"
+       }
+      },
+      {
+       "id": "endo-patho-2:dm-dx",
+       "sub": "Pathology",
+       "t": "Diabetes mellitus: manifestations & diagnosis",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "dm-dx"
+       }
+      },
+      {
+       "id": "endo-patho-2:dm-meta",
+       "sub": "Pathology",
+       "t": "Insulin deficiency: the metabolic cascade",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "dm-meta"
+       }
+      },
+      {
+       "id": "endo-patho-2:t1-t2",
+       "sub": "Pathology",
+       "t": "Type 1 vs type 2 diabetes mellitus",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "t1-t2"
+       }
+      },
+      {
+       "id": "endo-patho-2:dka-hhs",
+       "sub": "Pathology",
+       "t": "Hyperglycemic emergencies: DKA vs HHS",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "dka-hhs"
+       }
+      },
+      {
+       "id": "endo-patho-2:dm-comp",
+       "sub": "Pathology",
+       "t": "Chronic complications of diabetes",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "dm-comp"
+       }
+      },
+      {
+       "id": "endo-patho-2:hypogly",
+       "sub": "Pathology",
+       "t": "Hypoglycemia in diabetes mellitus",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "hypogly"
+       }
+      },
+      {
+       "id": "endo-patho-2:dm-kidney",
+       "sub": "Pathology",
+       "t": "Diabetic nephropathy & microangiopathy",
+       "link": {
+        "m": "endo-patho-2",
+        "h": "dm-kidney"
+       }
+      },
+      {
+       "id": "endo-patho-3:cushing",
+       "sub": "Pathology",
+       "t": "Cushing syndrome: causes & findings",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "cushing"
+       }
+      },
+      {
+       "id": "endo-patho-3:cush-wu",
+       "sub": "Pathology",
+       "t": "Cushing syndrome work-up",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "cush-wu"
+       }
+      },
+      {
+       "id": "endo-patho-3:adrenal-insuf",
+       "sub": "Pathology",
+       "t": "Adrenal insufficiency: primary, secondary & crisis",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "adrenal-insuf"
+       }
+      },
+      {
+       "id": "endo-patho-3:aldo",
+       "sub": "Pathology",
+       "t": "Hyperaldosteronism",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "aldo"
+       }
+      },
+      {
+       "id": "endo-patho-3:cah",
+       "sub": "Pathology",
+       "t": "Congenital adrenal hyperplasias",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "cah"
+       }
+      },
+      {
+       "id": "endo-patho-3:incidentaloma",
+       "sub": "Pathology",
+       "t": "Adrenal incidentaloma work-up",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "incidentaloma"
+       }
+      },
+      {
+       "id": "endo-patho-3:net",
+       "sub": "Pathology",
+       "t": "Neuroendocrine tumors: overview",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "net"
+       }
+      },
+      {
+       "id": "endo-patho-3:neuroblastoma",
+       "sub": "Pathology",
+       "t": "Neuroblastoma",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "neuroblastoma"
+       }
+      },
+      {
+       "id": "endo-patho-3:pheo",
+       "sub": "Pathology",
+       "t": "Pheochromocytoma",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "pheo"
+       }
+      },
+      {
+       "id": "endo-patho-3:men",
+       "sub": "Pathology",
+       "t": "Multiple endocrine neoplasias",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "men"
+       }
+      },
+      {
+       "id": "endo-patho-3:islet",
+       "sub": "Pathology",
+       "t": "Pancreatic islet cell tumors",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "islet"
+       }
+      },
+      {
+       "id": "endo-patho-3:carcinoid",
+       "sub": "Pathology",
+       "t": "Carcinoid tumors & carcinoid syndrome",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "carcinoid"
+       }
+      },
+      {
+       "id": "endo-patho-3:zes",
+       "sub": "Pathology",
+       "t": "Zollinger-Ellison syndrome",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "zes"
+       }
+      },
+      {
+       "id": "endo-patho-3:aps",
+       "sub": "Pathology",
+       "t": "Autoimmune polyendocrine syndromes",
+       "link": {
+        "m": "endo-patho-3",
+        "h": "aps"
+       }
+      },
+      {
+       "id": "endo-physio-1:hp",
+       "sub": "Physiology",
+       "t": "Hypothalamic–pituitary hormones",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "hp"
+       }
+      },
+      {
+       "id": "endo-physio-1:gh",
+       "sub": "Physiology",
+       "t": "Growth hormone & IGF-1",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "gh"
+       }
+      },
+      {
+       "id": "endo-physio-1:adh",
+       "sub": "Physiology",
+       "t": "Antidiuretic hormone (ADH)",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "adh"
+       }
+      },
+      {
+       "id": "endo-physio-1:prl",
+       "sub": "Physiology",
+       "t": "Prolactin",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "prl"
+       }
+      },
+      {
+       "id": "endo-physio-1:thsyn",
+       "sub": "Physiology",
+       "t": "Thyroid hormone synthesis",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "thsyn"
+       }
+      },
+      {
+       "id": "endo-physio-1:threg",
+       "sub": "Physiology",
+       "t": "Thyroid axis, binding proteins & deiodinases",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "threg"
+       }
+      },
+      {
+       "id": "endo-physio-1:thact",
+       "sub": "Physiology",
+       "t": "Thyroid hormone actions",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "thact"
+       }
+      },
+      {
+       "id": "endo-physio-1:pth",
+       "sub": "Physiology",
+       "t": "Parathyroid hormone (PTH)",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "pth"
+       }
+      },
+      {
+       "id": "endo-physio-1:ca",
+       "sub": "Physiology",
+       "t": "Calcium homeostasis: albumin & pH",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "ca"
+       }
+      },
+      {
+       "id": "endo-physio-1:vitd",
+       "sub": "Physiology",
+       "t": "Vitamin D & FGF23",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "vitd"
+       }
+      },
+      {
+       "id": "endo-physio-1:calcit",
+       "sub": "Physiology",
+       "t": "Calcitonin & Ca²⁺/PO₄³⁻ hormones compared",
+       "link": {
+        "m": "endo-physio-1",
+        "h": "calcit"
+       }
+      },
+      {
+       "id": "endo-physio-2:glucagon",
+       "sub": "Physiology",
+       "t": "Glucagon & the fed–fasting switch",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "glucagon"
+       }
+      },
+      {
+       "id": "endo-physio-2:insulin",
+       "sub": "Physiology",
+       "t": "Insulin: synthesis & secretion",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "insulin"
+       }
+      },
+      {
+       "id": "endo-physio-2:insact",
+       "sub": "Physiology",
+       "t": "Insulin actions & glucose transporters",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "insact"
+       }
+      },
+      {
+       "id": "endo-physio-2:ogtt",
+       "sub": "Physiology",
+       "t": "Glucose–insulin dynamics: OGTT & incretins",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "ogtt"
+       }
+      },
+      {
+       "id": "endo-physio-2:cah",
+       "sub": "Physiology",
+       "t": "Adrenal steroids & congenital adrenal hyperplasia",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "cah"
+       }
+      },
+      {
+       "id": "endo-physio-2:cortisol",
+       "sub": "Physiology",
+       "t": "Cortisol",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "cortisol"
+       }
+      },
+      {
+       "id": "endo-physio-2:appetite",
+       "sub": "Physiology",
+       "t": "Appetite regulation",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "appetite"
+       }
+      },
+      {
+       "id": "endo-physio-2:signal",
+       "sub": "Physiology",
+       "t": "Signaling pathways of endocrine hormones",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "signal"
+       }
+      },
+      {
+       "id": "endo-physio-2:steroid",
+       "sub": "Physiology",
+       "t": "Steroid hormone signaling & binding globulins",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "steroid"
+       }
+      },
+      {
+       "id": "endo-physio-2:stress",
+       "sub": "Physiology",
+       "t": "Cortisol vs other stress & counter-regulatory hormones",
+       "link": {
+        "m": "endo-physio-2",
+        "h": "stress"
        }
       }
      ],
