@@ -140,7 +140,7 @@ const TT={graves:{n:"Graves disease",scan:"diffuse",t:"จับทั่วต�
  tmng:{n:"Toxic multinodular goiter",scan:"patchy",t:"หลายก้อนทำงานเองโดยไม่ขึ้นกับ TSH (TSH-R mutation) · ส่วนที่เหลือถูกกด",r:"↑ เป็นหย่อม"},
  toxad:{n:"Toxic adenoma",scan:"hot",t:"ก้อนเดียวจับแน่น (hot) · ต่อมที่เหลือถูกกด · hot nodule แทบไม่เป็นมะเร็ง",r:"hot nodule"},
  thyr:{n:"Thyroiditis (painful / painless)",scan:"low",t:"ฮอร์โมนรั่วจาก follicle ที่แตก · ไม่ได้สร้างใหม่",r:"↓"},
- exo:{n:"Exogenous / struma ovarii",scan:"low",t:"ฮอร์โมนมาจากนอกต่อม → ต่อมถูกกดและไม่จับ iodine",r:"↓"}};
+ exo:{n:"Exogenous / struma ovarii",scan:"low",t:"ฮอร์โมนมาจากนอกต่อม → ต่อมถูกกดและไม่จับ iodine · thyroglobulin ต่ำ (กินฮอร์โมนเอง)",r:"↓"}};
 function thyrotoxD(){const d=TT[ST.tt];let b=thyroidG(0,0,1.2,{scan:d.scan,seed:ST.tt.length*7+3})+T(156,272,"RAIU scan: "+d.r,{c:"bh"});
  b+=`<rect x="330" y="10" width="304" height="132" rx="14" style="fill:color-mix(in srgb,${CV.acc} 9%,var(--sb-surface));stroke:color-mix(in srgb,${CV.acc} 40%,transparent)"/>`+T(346,36,d.n,{a:"start",c:"bh"})+wrapT(346,60,d.t,46,"s",15);
  b+=`<rect x="330" y="154" width="304" height="186" rx="14" style="fill:color-mix(in srgb,${EN.up} 9%,var(--sb-surface));stroke:color-mix(in srgb,${EN.up} 45%,transparent)"/>`+T(346,180,"Thyroid storm",{a:"start",c:"bh"})+wrapT(346,200,"hyperthyroid ที่คุมไม่ดี + stress (ติดเชื้อ ผ่าตัด) → ไข้ สับสน ท้องเสีย tachyarrhythmia (สาเหตุตาย)",46,"s",14);
@@ -277,7 +277,7 @@ notes:()=>`<ul><li><b>Hashimoto</b>: สาเหตุ hypothyroidism อัน
 <li><b>Postpartum/painless (subacute lymphocytic)</b>: autoimmune, มักมี anti-TPO · hyper → hypo → ปกติ ภายในปีแรกหลังคลอด · 1/3 กลายเป็น hypothyroid ถาวรใน 10 ปี ${S.fa} ${S.r}</li>
 <li><b>de Quervain (granulomatous)</b>: ตามหลังติดเชื้อไวรัส · ต่อม<b>เจ็บมาก</b> ปวดร้าวกราม · ESR ↑ · granuloma + giant cell · hyper → ปกติ → hypo → ปกติ หายเอง ${S.fa} ${S.r}</li>
 <li><b>Riedel</b>: fibrosis ลามออกนอกต่อมไปหลอดลม หลอดอาหาร → ก้อนแข็งเหมือนหินติดแน่น คล้ายมะเร็ง anaplastic · เป็นส่วนหนึ่งของ <b>IgG4-related disease</b> · hypothyroid 1/3 ${S.fa} ${S.r}</li>
-<li>ระยะ hyperthyroid ของ thyroiditis ทุกแบบ RAIU <b>ต่ำ</b> · รักษาด้วย β-blocker ไม่ใช่ antithyroid drug ${S.r} ${S.fa}</li></ul>`});
+<li>ระยะ hyperthyroid ของ thyroiditis ทุกแบบ RAIU <b>ต่ำ</b> ${S.r} · รักษาอาการด้วย β-blocker (ไม่ใช่ antithyroid drug) · de Quervain รุนแรงให้ NSAID/steroid ${S.fa}</li></ul>`});
 
 SEC.push({id:"cong-hypo",k:"b",t:"Congenital hypothyroidism & other causes",mm:"Congenital & other causes",leg:[],draw:congD,
 notes:()=>`<ul><li>Congenital hypothyroidism (เดิมเรียก cretinism) ในพื้นที่ที่ iodine พอ ส่วนใหญ่มาจาก <b>thyroid dysgenesis</b> (agenesis, hypoplasia, ectopy) หรือ <b>dyshormonogenesis</b> เช่น TPO mutation ${S.fa}</li>
@@ -302,6 +302,7 @@ notes:()=>`<ul><li>Thyrotoxicosis = ฮอร์โมนสูงในเล�
 <li><b>Toxic multinodular goiter</b>: follicle บางกลุ่มทำงานเองโดยไม่ขึ้นกับ TSH (TSH receptor mutation ~60%) · hot nodule แทบไม่เป็นมะเร็ง ${S.fa} ${S.r}</li>
 <li>Toxic adenoma และ toxic MNG มี gain-of-function ของ TSHR หรือ GNAS · ไม่ใช่รอยโรคก่อนมะเร็ง ${S.r}</li>
 <li>สาเหตุอื่น: กินฮอร์โมนเอง (ลดน้ำหนัก), struma ovarii, <b>Jod-Basedow</b> (iodine/contrast), amiodarone, lithium ${S.fa}</li>
+<li>Thyroglobulin สูงในแทบทุกสาเหตุของ thyrotoxicosis (สูงมากใน thyroiditis) ยกเว้น<b>กินฮอร์โมนเอง</b>ที่ thyroglobulin ต่ำ ${S.h}</li>
 <li><b>Thyroid storm</b>: hyperthyroid ที่ไม่ได้รักษา/คุมไม่ดี + stress (ติดเชื้อ ผ่าตัด) → ไข้ สับสน ท้องเสีย tachyarrhythmia · ตายจาก arrhythmia ${S.fa} ${S.r}</li>
 <li>รักษา storm (4 P's): <b>P</b>ropranolol, <b>P</b>TU, <b>P</b>rednisolone, <b>P</b>otassium iodide ${S.fa}</li>
 <li>PTU เป็นยาที่เลือกใน storm เพราะกด T4 → T3 ด้วย · ให้ iodide <b>หลัง</b> PTU ~1 ชม. เพื่อไม่ให้ iodine ไปสร้างฮอร์โมนใหม่ · อัตราตายยังสูง ${S.h}</li></ul>`});

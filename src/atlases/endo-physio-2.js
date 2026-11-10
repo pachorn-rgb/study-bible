@@ -155,7 +155,7 @@ const EDG=[["chol","preg","scc"],["preg","p17","17"],["p17","dhea","17"],["prog"
  ["prog","doc","21"],["ohp","dc","21"],["andro","testo","17b"],["doc","cort","11"],["dc","cortisol","11"],["cort","aldo","as"],["cortisol","cortisone","hsd"],["andro","estrone","aro"],["testo","estradiol","aro"],["testo","dht","5a"]];
 const CAHM={none:{up:[],dn:[],x:[],lab:null},
  "21":{x:["21"],up:["prog","ohp","andro","dhea","testo","p17"],dn:["doc","cort","aldo","dc","cortisol","cortisone"],lab:[["Mineralocorticoid","↓"],["BP","↓"],["K⁺","↑"],["Cortisol","↓"],["Sex hormones","↑"],["Renin","↑"]],key:"17-OH-progesterone ↑ (พบบ่อยที่สุด ~90–95%)",pre:"ทารก: salt wasting · เด็ก: precocious puberty · XX: virilization"},
- "11":{x:["11"],up:["doc","dc","andro","dhea","testo"],dn:["cort","aldo","cortisol","cortisone"],lab:[["Aldosterone","↓"],["11-DOC","↑"],["BP","↑"],["K⁺","↓"],["Cortisol","↓"],["Sex hormones","↑"],["Renin","↓"]],key:"11-deoxycorticosterone สะสม → ฤทธิ์ mineralocorticoid",pre:"ทารก: hypertension รุนแรง · XX: virilization"},
+ "11":{x:["11"],up:["doc","dc","andro","dhea","testo"],dn:["cort","aldo","cortisol","cortisone"],lab:[["Aldosterone","↓"],["11-DOC","↑"],["BP","↑"],["K⁺","↓"],["Cortisol","↓"],["Sex hormones","↑"],["Renin","↓"]],key:"11-deoxycorticosterone สะสม → ฤทธิ์ mineralocorticoid",pre:"Hypertension + hypokalemia (มักเห็นในวัยเด็ก) · XX: virilization"},
  "17":{x:["17"],up:["preg","prog","doc","cort"],dn:["p17","ohp","dc","cortisol","cortisone","dhea","andro","testo","estrone","estradiol","dht","aldo"],lab:[["Aldosterone","↓"],["11-DOC","↑"],["BP","↑"],["K⁺","↓"],["Cortisol","↓"],["Sex hormones","↓"],["Renin","↓"]],key:"androstenedione ↓ · 11-DOC ↑",pre:"XY: atypical genitalia, undescended testes · XX: ไม่มี 2° sexual development"}};
 const ENZN={scc:"SCC · StAR",3:"",["3b"]:"3β-HSD",21:"21-hydroxylase",11:"11β-hydroxylase",as:"aldo synthase",17:"17α",["17b"]:"17β-HSD",aro:"aromatase",["5a"]:"5α-red.",hsd:"11β-HSD2"};
 function cahD(){const m=CAHM[ST.cah];let b="";const P=k=>[SX[CMP[k][0]],SY[CMP[k][1]]],W=k=>CMP[k][0]==="c4"?80:CMP[k][0]==="c3"?112:124;
@@ -456,7 +456,7 @@ notes:()=>`<h3>กลไก</h3><ul>
 <li>Cortisol ยังมีฤทธิ์ nongenomic ที่เร็ว (เช่น feedback กดการปล่อย ACTH ภายในไม่กี่นาที) ${S.b}</li></ul>
 <h3>Binding globulins</h3><ul>
 <li>Steroid ต้องเดินทางกับ binding globulin เพราะละลายน้ำไม่ดี ${S.fa}</li>
-<li>Testosterone ~45% จับ SHBG, ~55% จับ albumin/CBG และ free เพียง ~2% ${S.b}</li>
+<li>Testosterone ~45% จับ SHBG, ~53% จับ albumin (ส่วนน้อยจับ CBG) และ free เพียง ~2% ${S.b}</li>
 <li>Estrogen กระตุ้นการสร้าง SHBG → ผู้หญิงมี SHBG สูงกว่าชาย ~2 เท่า ${S.b}</li>
 <li>SHBG ↓: androgens, อ้วน, เบาหวาน, hypothyroidism, nephrotic syndrome · SHBG ↑: estrogen, hyperthyroidism, โรคอักเสบเรื้อรัง ${S.h}</li>
 <li>ชาย: SHBG ↑ → free testosterone ↓ → gynecomastia · หญิง: SHBG ↓ → free testosterone ↑ → hirsutism ${S.fa}</li>

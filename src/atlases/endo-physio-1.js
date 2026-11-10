@@ -455,7 +455,7 @@ tools:[["ts",[["eu","Euthyroid"],["hypo","Hypothyroid"],["hyper","Hyperthyroid"]
 notes:()=>`<h3>กลไก</h3><ul>
 <li>T₃/T₄ เข้าเซลล์ (MCT8) → T₄ ถูกแปลงเป็น T₃ ในเซลล์ · ~90% ของ hormone ที่จับ receptor คือ T₃ ${S.b}</li>
 <li>Thyroid hormone receptor จับ DNA เป็น heterodimer กับ <b>RXR</b> ที่ thyroid response element แม้ไม่มี hormone · T₃ จับแล้วเปลี่ยนการ transcribe ${S.b} ${S.g}</li>
-<li>T₃ จับ receptor แน่นกว่า T₄ · ฤทธิ์ T₃ เร็วกว่า T₄ ราว 4 เท่า ${S.fa} ${S.g}</li></ul>
+<li>T₃ จับ receptor แน่นกว่า T₄ · T₃ แรงกว่า T₄ ราว 4 เท่าและออกฤทธิ์เร็วกว่า ${S.fa} ${S.g}</li></ul>
 <h3>7 B's</h3><ul>
 <li><b>Brain maturation</b>: ขาดในวัยทารก → cretinism ${S.fa} ${S.b}</li>
 <li><b>Bone growth</b>: เสริมกับ GH และ IGF-1 ${S.fa}</li>
