@@ -113,10 +113,10 @@ function abdomen(x,y,mode){let b=`<rect x="${x}" y="${y}" width="290" height="23
  else b+=`<ellipse cx="${x+78}" cy="${y+140}" rx="44" ry="52" style="fill:#C9A8B8;stroke:#7A4E64;stroke-width:1.6;opacity:.95"/>`;
  return b}
 function nblD(){const n=ST.nb==="nbl";let b=abdomen(8,8,n?"nbl":"wilms")+T(153,258,n?"ก้อนขรุขระ ข้าม midline ล้อมหลอดเลือด":"ก้อนเรียบ ข้างเดียว จากไต",{c:"s m"});
- if(n){b+=slide(318,8,316,112);const r=rng(5);for(let i=0;i<150;i++){const px=326+r()*300,py=16+r()*96;b+=dot(px,py,3,HE.nuD)}
+ if(n){b+=slide(318,8,316,100);const r=rng(5);for(let i=0;i<140;i++){const px=326+r()*300,py=16+r()*84;b+=dot(px,py,3,HE.nuD)}
   [[380,58],[470,70],[566,54]].forEach(([cx,cy])=>{b+=`<circle cx="${cx}" cy="${cy}" r="13" style="fill:#F2C2D3"/>`;for(let i=0;i<11;i++){const a=i/11*6.28;b+=dot(cx+Math.cos(a)*17,cy+Math.sin(a)*17,3.4,HE.nuD)}});
-  b+=TD(476,108,"Homer-Wright rosette: เซลล์ล้อม neuropil",{s:10});
-  b+=cardA(318,130,316,"Neuroblastoma",["เนื้องอกแข็งนอกกะโหลก ที่พบบ่อยสุด ในเด็ก (มัก < 4 ปี)","จาก neural crest: adrenal medulla หรือ sympathetic chain","HVA/VMA ในปัสสาวะ ↑ แต่ความดัน มักปกติ","opsoclonus-myoclonus (dancing eyes-feet)","N-myc (MYCN) amplification = พยากรณ์แย่"],CV.violet)}
+  b+=T(476,124,"Homer-Wright rosette: เซลล์ล้อม neuropil",{c:"s m"});
+  b+=cardA(318,134,316,"Neuroblastoma",["เนื้องอกแข็งนอกกะโหลก ที่พบบ่อยสุด ในเด็ก (มัก < 4 ปี)","จาก neural crest: adrenal medulla หรือ sympathetic chain","HVA/VMA ในปัสสาวะ ↑ แต่ความดัน มักปกติ","opsoclonus-myoclonus (dancing eyes-feet)","N-myc (MYCN) amplification = พยากรณ์แย่"],CV.violet)}
  else b+=cardA(318,8,316,"Wilms tumor (เปรียบเทียบ)",["ก้อนเรียบ ข้างเดียว เกิดจากไต","ไม่ข้าม midline"],"#7A4E64");
  return ESVG(b,"0 0 640 300")}
 

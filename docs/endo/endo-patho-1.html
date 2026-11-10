@@ -1,0 +1,725 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Pituitary & Thyroid Pathology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Endocrine · Pathology</div>
+    <h1>Pituitary & Thyroid Pathology</h1>
+    <p class="sb-lede">เริ่มจากแผนที่หัวข้อด้านล่าง แล้วแตะเข้าไปในแต่ละเรื่อง · หัวข้อเรียงตามโครง First Aid เนื้อหาจาก Robbins (บท 24) เสริมด้วย Harrison และ First Aid Step 2 CK · ลองเลือกโรคเพื่อดูแกนฮอร์โมน กราฟ water deprivation test และ RAIU scan เปลี่ยนไป</p>
+    <div class="sb-sources"><span class="sb-src"><i class="robbins">R</i>Robbins & Cotran 10e · Ch 24</span><span class="sb-src"><i class="fa">FA</i>First Aid Step 1 2025 · Step 2 CK</span><span class="sb-src"><i class="harrison">H</i>Harrison 22e · Endocrinology</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "endo-patho-1", "kind": "patho", "sys": "Endocrine", "root": "Pathology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ================= Endocrine Pathology I · Pituitary & Thyroid =================
+   First Aid Step 1 2025 (Endocrine pathology, pp. 342–347 + prolactin/pituitary physiology) order
+   Robbins & Cotran 10e Ch 24 (pituitary, thyroid) · Harrison 22e (hyponatremia, DI, acromegaly, thyroid nodule)
+   FA Step 2 CK (thyroid nodule work-up) · drawings are original schematics. */
+/* Helpers shared by the cardiovascular pathology atlases (cvs-patho-1/2/3).
+   Original schematic drawings: 4-chamber heart, ECG strips, curves, H&E-style slides. */
+const CV={ox:"var(--a-art)",dx:"var(--a-vein)",mx:"color-mix(in srgb,var(--a-art) 52%,var(--a-vein))",mus:"var(--a-musc)",mus2:"var(--a-musc2)",edge:"var(--a-edge)",
+ ink:"var(--sb-ink)",ink2:"var(--sb-ink2)",mut:"var(--sb-muted)",line:"var(--sb-line)",sf:"var(--sb-surface)",sf2:"var(--sb-surface2)",acc:"var(--sb-accent)",bad:"var(--sb-bad)",good:"var(--sb-good)",
+ fl:"#E9C46A",gold:"#D99A2B",teal:"#0E8A7E",violet:"#7A5BC7"};
+const HE={bg:"#FBEFF3",cy:"#F2B9CB",cyX:"#E47FA3",mem:"#C45C82",nu:"#5E4FA3",nuL:"#8C7FC4",nuD:"#36296E",col:"#F7DCE6",colB:"#9FA6D8",rbc:"#D9455F",ink:"#3B2D4A"};
+const nLines=(s,n)=>{let L=1,cur="";String(s).split(" ").forEach(t=>{if((cur+" "+t).trim().length>n&&cur){L++;cur=t}else cur=(cur+" "+t).trim()});return L};
+const sty=(f,s="none",w=1.2,x="")=>`style="fill:${f};stroke:${s};stroke-width:${w}${x?";"+x:""}"`;
+const P=(d,f,s=CV.edge,w=1.2,x="")=>`<path d="${d}" ${sty(f,s,w,x)}/>`;
+const R=(x,y,w,h,f,s=CV.line,rx=10,sw=1.2)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="${rx}" ${sty(f,s,sw)}/>`;
+const Ln=(x1,y1,x2,y2,c=CV.ink2,w=1.6,dash)=>`<path d="M${x1},${y1} L${x2},${y2}" style="fill:none;stroke:${c};stroke-width:${w};stroke-linecap:round${dash?";stroke-dasharray:"+dash:""}"/>`;
+/* fixed dark text for light "slides" (H&E, ECG paper) so it reads in every theme */
+const TD=(x,y,s,o={})=>`<text x="${x}" y="${y}" text-anchor="${o.a||"middle"}" style="font:${o.w||600} ${o.s||11}px var(--sb-font);fill:${o.c||HE.ink}">${s}</text>`;
+/* coloured arrow: straight or quadratic (cx,cy) */
+function arrowHead(x,y,ang,c,sz=8){return `<path d="M0,0 L${-sz},${-sz*.55} L${-sz},${sz*.55} Z" style="fill:${c}" transform="translate(${x},${y}) rotate(${ang*180/Math.PI})"/>`}
+function Ar(x1,y1,x2,y2,c=CV.ink2,w=2,o={}){const cx=o.cx??null,cy=o.cy??null;const d=cx===null?`M${x1},${y1} L${x2},${y2}`:`M${x1},${y1} Q${cx},${cy} ${x2},${y2}`;
+ const a=cx===null?Math.atan2(y2-y1,x2-x1):Math.atan2(y2-cy,x2-cx);
+ return `<path d="${d}" style="fill:none;stroke:${c};stroke-width:${w};stroke-linecap:round${o.dash?";stroke-dasharray:"+o.dash:""}"/>`+arrowHead(x2,y2,a,c,o.hs||7+w)}
+/* coloured pill with white text */
+const tag=(x,y,s,c,o={})=>{const w=o.w||s.replace(/<[^>]+>/g,"").length*6.3+20;return `<rect x="${x-w/2}" y="${y-11}" width="${w}" height="22" rx="11" style="fill:${c}"/><text x="${x}" y="${y+4}" text-anchor="middle" style="font:700 10.5px var(--sb-font);fill:#fff">${s}</text>`};
+/* soft card with title + wrapped lines */
+function cardBox(x,y,w,h,title,lines=[],c=CV.acc,o={}){let b=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" style="fill:color-mix(in srgb,${c} ${o.tint||10}%,var(--sb-surface));stroke:color-mix(in srgb,${c} 55%,transparent);stroke-width:1.2"/>`;
+ if(o.bar!==false)b+=`<rect x="${x}" y="${y+10}" width="4" height="${h-20}" rx="2" style="fill:${c}"/>`;
+ b+=T(x+14,y+21,title,{a:"start",c:"bh"});let yy=y+39;const n=o.n||Math.floor((w-24)/5.9);lines.forEach(l=>{b+=wrapT(x+14,yy,l,n,"s",14);yy+=14*nLines(l,n)+3});return b}
+/* section frame (theme surface) */
+const frm=(x,y,w,h,t,s)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="14" style="fill:var(--sb-surface2);stroke:var(--sb-line);stroke-width:1"/>`+(t?T(x+14,y+22,t,{a:"start",c:"bh"}):"")+(s?T(x+14,y+38,s,{a:"start",c:"s m"}):"");
+/* H&E slide frame */
+const slide=(x,y,w,h)=>`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" style="fill:${HE.bg};stroke:var(--sb-line);stroke-width:1.2"/>`;
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+const dot=(x,y,r,c)=>`<circle cx="${x}" cy="${y}" r="${r}" style="fill:${c}"/>`;
+
+/* ================= 4-chamber heart =================
+   local box 0..360 × 0..350, wrap with heartAt(x,y,scale,o).
+   o: {c:{ra,rv,la,lv,ao,pa}, lvk (LV cavity scale: <1 concentric, >1 dilated), rvk, lvw (wall shade), sept (septal bulge), asd, vsd, pda, override,
+       eff (effusion), constr, lab, flows:[[x1,y1,x2,y2,colour,cx,cy]], hot:[chambers to ring], myx, veg (vegetation), thr (mural thrombus), noPA, noAo, tga, truncus, tvatresia} */
+function heart(o={}){const c=Object.assign({ra:CV.dx,rv:CV.dx,pa:CV.dx,la:CV.ox,lv:CV.ox,ao:CV.ox,svc:CV.dx},o.c||{});const k=o.lvk||1,kr=o.rvk||1;let b="";
+ const sc=(pts,cx,cy,f)=>pts.map(([x,y])=>[cx+(x-cx)*f,cy+(y-cy)*f]);
+ const hk=k>1?1+(k-1)*.45:1;
+ let outline=[[70,150],[86,108],[136,96],[196,106],[244,96],[302,96],[334,130],[344,190],[334,252],[304,302],[262,338],[232,342],[198,318],[146,300],[94,268],[70,214]];
+ outline=sc(outline,190,215,hk);
+ if(o.tako)outline=outline.map(([x,y])=>y>250&&x>180?[x+(y-250)*.18,y+(y-250)*.25]:[x,y]);
+ if(o.dil==="rv")outline=outline.map(([x,y])=>x<200?[x-(200-x)*.12,y+(y>200?(y-200)*.06:0)]:[x,y]);
+ /* behind: descending aorta + IVC */
+ if(!o.noAo&&!o.truncus)b+=P("M318,96 L318,232",c.ao,CV.edge,1,"stroke-width:0")+`<path d="M318,90 L318,236" style="stroke:var(--a-edge);stroke-width:26;stroke-linecap:round;fill:none"/><path d="M318,90 L318,236" style="stroke:${c.ao};stroke-width:23.5;stroke-linecap:round;fill:none;opacity:.55"/>`;
+ b+=`<path d="M112,330 L112,250" style="stroke:var(--a-edge);stroke-width:28;fill:none"/><path d="M112,332 L112,250" style="stroke:${c.svc};stroke-width:25.5;fill:none"/>`;
+ /* pericardial effusion / constriction */
+ if(o.eff)b+=`<path d="${sm(sc(outline,190,215,1.12))}" style="fill:color-mix(in srgb,${CV.fl} 55%,var(--sb-surface));stroke:color-mix(in srgb,${CV.gold} 70%,transparent);stroke-width:1.6"/>`;
+ /* myocardium */
+ b+=`<path d="${sm(outline)}" style="fill:url(#gMyo);stroke:var(--a-edge);stroke-width:1.6"/>`;
+ if(o.constr)b+=`<path d="${sm(sc(outline,190,215,1.035))}" style="fill:none;stroke:#9A8F7A;stroke-width:9;stroke-linejoin:round;opacity:.95"/>`+`<path d="${sm(sc(outline,190,215,1.035))}" style="fill:none;stroke:#E8E2D2;stroke-width:3;stroke-dasharray:9 7;opacity:.9"/>`;
+ /* SVC */
+ b+=`<path d="M112,8 L112,118" style="stroke:var(--a-edge);stroke-width:28;fill:none"/><path d="M112,6 L112,120" style="stroke:${c.svc};stroke-width:25.5;fill:none"/>`;
+ /* chambers */
+ const rk=o.rak||kr,lk=o.lak||1,RA=[124,152,44*rk,42*rk],LA=[286,140-(lk-1)*20,40*lk,32*lk];
+ b+=`<ellipse cx="${RA[0]}" cy="${RA[1]}" rx="${RA[2]}" ry="${RA[3]}" ${sty(c.ra,CV.edge,1.2)}/>`;
+ b+=`<ellipse cx="${LA[0]}" cy="${LA[1]}" rx="${LA[2]}" ry="${LA[3]}" ${sty(c.la,CV.edge,1.2)}/>`;
+ let RV=[[94,206],[176,200],[190,216],[186,262],[164,294],[120,266],[98,236]];RV=sc(RV,142,240,kr);
+ let LV=[[214,212],[290,198],[312,232],[296,276],[252,318],[222,300],[210,262]];LV=sc(LV,258,250,k);
+ if(o.tako)LV=[[218,212],[272,204],[290,228],[316,282],[290,330],[236,332],[208,286],[214,240]];
+ if(o.tvatresia)RV=sc(RV,150,250,.55);
+ if(o.rvh)b+=`<path d="${sm(sc(RV,142,244,1.2))}" style="fill:var(--a-musc);stroke:none;opacity:.9"/>`;
+ if(o.lvh)b+=`<path d="${sm(sc(LV,258,252,1.16))}" style="fill:var(--a-musc);stroke:none;opacity:.9"/>`;
+ b+=`<path d="${sm(RV)}" ${sty(c.rv,CV.edge,1.2)}/>`;
+ b+=`<path d="${sm(LV)}" ${sty(c.lv,CV.edge,1.2)}/>`;
+ /* asymmetric septal bulge (HCM) */
+ if(o.sept)b+=`<path d="M206,214 C238,224 246,250 228,282 C218,272 210,250 206,214Z" style="fill:url(#gMyo);stroke:var(--a-edge);stroke-width:1"/>`;
+ /* valves */
+ const leaf=(x1,y1,x2,y2)=>`<path d="M${x1},${y1} L${x2},${y2}" style="stroke:#FFF7EE;stroke-width:3.2;stroke-linecap:round"/>`;
+ if(o.tvatresia)b+=`<path d="M100,196 L170,196" style="stroke:var(--a-musc);stroke-width:9"/>`+`<path d="M100,196 L170,196" style="stroke:var(--a-edge);stroke-width:1;stroke-dasharray:3 3"/>`;
+ else if(o.ebstein)b+=leaf(108,232,130,252)+leaf(170,214,150,250);
+ else b+=leaf(108,194,128,212)+leaf(172,194,152,212);
+ b+=leaf(226,182,244,202)+leaf(298,180,282,200);
+ /* septal defects */
+ if(o.asd)b+=`<ellipse cx="197" cy="146" rx="10" ry="15" ${sty(o.asdc||CV.mx,CV.edge,1.2)}/>`;
+ if(o.vsd)b+=`<ellipse cx="199" cy="${o.vsdy||226}" rx="12" ry="10" ${sty(o.vsdc||CV.mx,CV.edge,1.2)}/>`;
+ /* great arteries */
+ const tube=(d,col,w=24)=>`<path d="${d}" style="stroke:var(--a-edge);stroke-width:${w+3};fill:none;stroke-linecap:round"/><path d="${d}" style="stroke:${col};stroke-width:${w};fill:none;stroke-linecap:round"/>`;
+ if(o.truncus){b+=tube("M200,206 C200,140 202,92 214,70 C236,34 290,30 318,90",c.ao,30)+tube("M212,92 C190,84 170,86 156,94",c.pa,15)+tube("M222,84 C240,92 256,98 270,104",c.pa,15);}
+ else if(o.tga){b+=tube("M176,206 C170,150 182,100 204,72 C234,32 300,32 318,90",c.ao,24)+tube("M236,206 C236,160 232,124 228,110 C214,100 190,100 156,104",c.pa,18)+tube("M228,110 C246,106 262,110 276,116",c.pa,14);}
+ else{ if(!o.noAo)b+=tube("M236,206 C234,150 222,104 230,76 C244,34 302,32 318,90",c.ao,24);
+  if(!o.noPA)b+=tube("M176,206 C170,152 180,120 198,102",c.pa,22)+tube("M198,102 C184,94 162,94 146,100",c.pa,15)+tube("M198,102 C222,96 248,104 270,112",c.pa,15);}
+ if(o.ps)b+=`<path d="M160,178 C168,184 168,192 160,198 Z M192,176 C182,184 182,192 192,198 Z" style="fill:var(--a-musc);stroke:var(--a-edge);stroke-width:1"/>`;
+ if(o.coarc)b+=`<path d="M300,58 L320,72" style="stroke:var(--a-musc);stroke-width:8"/>`;
+ if(o.pda)b+=tube("M262,108 C268,92 278,76 290,60",o.pdac||CV.mx,9);
+ if(o.override)b+=`<ellipse cx="206" cy="210" rx="16" ry="9" ${sty(CV.mx,CV.edge,1)}/>`;
+ if(o.tapvr)b+=tube("M312,150 C346,120 330,22 220,18 C160,16 130,30 118,52",CV.ox,11);
+ /* myxoma */
+ if(o.myx)b+=`<path d="${sm([[268,128],[292,120],[306,140],[300,176],[288,198],[272,186],[264,156]])}" style="fill:#E9DFAE;stroke:#A08C3C;stroke-width:1.4"/>`+`<path d="M276,126 C262,128 254,134 250,140" style="stroke:#A08C3C;stroke-width:3"/>`;
+ if(o.thr)o.thr.forEach(([x,y,r])=>b+=`<path d="${sm([[x-r,y],[x-r*.4,y-r*.9],[x+r*.5,y-r*.7],[x+r,y+r*.1],[x+r*.3,y+r*.9],[x-r*.6,y+r*.7]])}" style="fill:#8E2A35;stroke:#5E1A22;stroke-width:1.2"/>`);
+ if(o.veg)o.veg.forEach(([x,y,r])=>b+=`<path d="${sm([[x-r,y],[x-r*.4,y-r*.9],[x+r*.5,y-r*.7],[x+r,y+r*.1],[x+r*.3,y+r*.9],[x-r*.6,y+r*.7]])}" style="fill:#F1E3B8;stroke:#A6853A;stroke-width:1.2"/>`+dot(x-r*.2,y,1.6,"#7A5BC7")+dot(x+r*.3,y-r*.3,1.4,"#7A5BC7"));
+ /* hot rings */
+ const ctr={ra:[124,152],la:[286,140],rv:[142,248],lv:[260,256],ao:[232,84],pa:[180,140]};
+ (o.hot||[]).forEach(h=>{const p=ctr[h];if(p)b+=`<circle cx="${p[0]}" cy="${p[1]}" r="30" style="fill:none;stroke:var(--sb-accent);stroke-width:2.4;stroke-dasharray:5 4"/>`});
+ (o.flows||[]).forEach(([x1,y1,x2,y2,col,cx,cy])=>b+=Ar(x1,y1,x2,y2,col||"#fff",3.2,cx!=null?{cx,cy,hs:9}:{hs:9}));
+ if(o.lab!==false){const L=(x,y,s)=>`<text x="${x}" y="${y}" text-anchor="middle" style="font:800 12px var(--sb-font);fill:#fff;paint-order:stroke;stroke:rgba(0,0,0,.35);stroke-width:2.4px">${s}</text>`;
+  b+=L(124,157,"RA")+L(o.tvatresia?150:142,o.tvatresia?258:252,"RV")+L(292,145,"LA")+L(258,262,"LV");
+  if(!o.noAo&&!o.truncus)b+=L(o.tga?178:236,150,"Ao");if(!o.noPA&&!o.truncus)b+=L(o.tga?236:176,o.tga?160:160,"PA");if(o.truncus)b+=L(201,150,"Tr");
+  b+=L(112,40,"SVC")+L(112,322,"IVC")}
+ return b}
+const HDEFS=`<defs><linearGradient id="gMyo" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:var(--a-musc2)"/><stop offset="1" style="stop-color:var(--a-musc)"/></linearGradient></defs>`;
+const heartAt=(x,y,s,o)=>`<g transform="translate(${x},${y}) scale(${s})">${heart(o)}</g>`;
+const hsvg=(b,vb)=>psvg(HDEFS+b,vb);
+
+/* ================= ECG strips =================
+   waves: [t(s), amplitude(mV), width(s)] summed as gaussians; draw on pink paper. */
+function ecgPath(waves,x0,y0,w,h,dur,o={}){const n=o.n||700,mv=o.mv||h*.36;let d="";const r=o.noise?rng(o.noise):null;
+ for(let i=0;i<=n;i++){const t=i/n*dur;let v=0;for(const [c,a,s] of waves){const z=(t-c)/s;if(z>-5&&z<5)v+=a*Math.exp(-.5*z*z)}
+  if(o.fib)v+=o.fib(t);if(r)v+=(r()-.5)*.02;d+=(i?"L":"M")+(x0+i/n*w).toFixed(1)+","+(y0-v*mv).toFixed(1)}return d}
+/* beat builders */
+const Pw=(t,a=.14)=>[[t,a,.035]];
+const QRS=(t,o={})=>{const a=o.a||1,wd=o.wide?2.6:1;let q=[[t-.022*wd,-.1*a,.008*wd],[t,a*(o.wide?.85:1),.011*wd],[t+.026*wd,-.28*a*(o.wide?.4:1),.01*wd]];
+ if(o.delta)q.unshift([t-.035,.28,.022]);if(o.rsr)q=[[t-.02,.35,.009],[t,-.5,.01],[t+.035,.75,.013]];return q};
+const Tw=(t,a=.3,w=.06)=>[[t,a,w]];
+const STe=(t,a=.3)=>[[t+.1,a,.06],[t+.16,a*.9,.06]];
+function beat(t,o={}){let w=[];if(o.p!==false)w=w.concat(Pw(t-(o.pr||.16),o.pa||.14));w=w.concat(QRS(t,o));
+ const tt=t+(o.qt||.3);if(o.st)w=w.concat(STe(t,o.st));if(!o.noT)w=w.concat(Tw(tt,o.inv?-.3:(o.ta||.3)*(o.wide?-1:1),o.tw||.06));return w}
+function paper(x,y,w,h){let b=`<rect x="${x}" y="${y}" width="${w}" height="${h}" rx="8" style="fill:#FFF3F3;stroke:#F2C9C9;stroke-width:1"/>`;
+ for(let gx=x+10;gx<x+w;gx+=10)b+=`<path d="M${gx},${y+1} L${gx},${y+h-1}" style="stroke:${(gx-x)%50===0?"#F0B4B4":"#FADADA"};stroke-width:${(gx-x)%50===0?1:.6}"/>`;
+ for(let gy=y+10;gy<y+h;gy+=10)b+=`<path d="M${x+1},${gy} L${x+w-1},${gy}" style="stroke:${(gy-y)%50===0?"#F0B4B4":"#FADADA"};stroke-width:${(gy-y)%50===0?1:.6}"/>`;return b}
+const trace=d=>`<path d="${d}" style="fill:none;stroke:#1F2937;stroke-width:1.7;stroke-linejoin:round"/>`;
+function strip(x,y,w,h,waves,dur,o={}){return paper(x,y,w,h)+trace(ecgPath(waves,x+4,y+h*(o.base||.62),w-8,h,dur,o))+(o.lab?TD(x+10,y+16,o.lab,{a:"start",w:700}):"")}
+
+/* ================= plot axes ================= */
+function axes(x0,y0,w,h,xr,yr,xt,yt,xl,yl,o={}){const X=v=>x0+(v-xr[0])/(xr[1]-xr[0])*w,Y=o.log?v=>y0+h-(Math.log10(v)-Math.log10(yr[0]))/(Math.log10(yr[1])-Math.log10(yr[0]))*h:v=>y0+h-(v-yr[0])/(yr[1]-yr[0])*h;
+ let g=`<rect class="plot" x="${x0}" y="${y0}" width="${w}" height="${h}"/>`;
+ xt.forEach(v=>g+=`<line class="gl" x1="${X(v)}" y1="${y0}" x2="${X(v)}" y2="${y0+h}"/>`+T(X(v),y0+h+16,v,{c:"s m"}));
+ yt.forEach(v=>g+=`<line class="gl" x1="${x0}" y1="${Y(v)}" x2="${x0+w}" y2="${Y(v)}"/>`+T(x0-6,Y(v)+4,v,{a:"end",c:"s m"}));
+ g+=`<path class="ax" d="M${x0},${y0} V${y0+h} H${x0+w}"/>`+T(x0+w/2,y0+h+34,xl,{c:"s"})+T(x0-40,y0+h/2,yl,{c:"s",r:-90});return {g,X,Y}}
+const curve=(pts,col,wd=3,dash)=>`<path d="M${pts.map(p=>p.map(v=>v.toFixed(1)).join(",")).join(" L")}" style="fill:none;stroke:${col};stroke-width:${wd};stroke-linecap:round;stroke-linejoin:round${dash?";stroke-dasharray:"+dash:""}"/>`;
+/* range slider (same look as the renal atlases) */
+function sl(id,lab,min,max,step,unit){return `<label class="sl"><span>${lab} <b data-v="${id}">${ST[id]}</b> ${unit}</span><input type="range" min="${min}" max="${max}" step="${step}" value="${ST[id]}" data-k="${id}"></label>`}
+function wireSl(){const s=cur;document.querySelectorAll('#tools-'+s.id+' input[type=range]').forEach(r=>r.oninput=()=>{ST[r.dataset.k]=+r.value;r.closest(".tools").querySelector('[data-v="'+r.dataset.k+'"]').textContent=r.value;document.getElementById("dia-"+s.id).innerHTML=s.draw()})}
+/* section-size grid of option cards (used by caption panels) */
+let IPH=0;
+function infoPanel(x,y,w,title,sub,rows,c=CV.acc){const n=Math.floor((w-40)/5.7);let yy=y+(sub?62:46),body="";
+ rows.forEach(r=>{const L=nLines(r,n);body+=`<circle cx="${x+17}" cy="${yy-3.5}" r="3" style="fill:${c}"/>`+wrapT(x+27,yy,r,n,"s",14);yy+=(L-1)*14+20});
+ IPH=yy-y-6;return `<rect x="${x}" y="${y}" width="${w}" height="${IPH}" rx="14" style="fill:color-mix(in srgb,${c} 9%,var(--sb-surface));stroke:color-mix(in srgb,${c} 45%,transparent)"/>`+T(x+14,y+24,title,{a:"start",c:"bb"})+(sub?T(x+14,y+41,sub,{a:"start",c:"s m"}):"")+body}
+
+/* Helpers shared by the endocrine pathology atlases (endo-patho-1/2/3).
+   Needs _cvs-patho-helpers.js first (CV, HE, TD, Ar, tag, cardBox, slide, rng, dot, axes, curve, sl, wireSl …).
+   Original schematic drawings: sella, thyroid, parathyroids, adrenal, islets, body figure, hormone axes, algorithms. */
+const EN={pit:"#D07A93",pitD:"#A9536D",post:"#9D89D1",chi:"#E7B84A",bone:"#E9DEC8",boneD:"#B9A88A",brain:"#F1D5DC",csf:"#A9D3EA",
+ thy:"#C4505F",thyL:"#E28A92",col:"#F2C766",para:"#C98A3E",ctx:"#E9B949",ctxF:"#F2CF6E",ctxR:"#C9873A",med:"#8C4A66",
+ panc:"#EDCFA6",kid:"#A8574F",skin:"#F2C8A8",skinD:"#C98F6A",up:"#D9483B",dn:"#2F7FD8",nl:"#7C8798",tumor:"#7D5BA6",fat:"#F6E3A1"};
+const ESVG=(b,vb)=>psvg(b,vb);
+/* level pill: "↑↑","↑","N","↓","↓↓","—" */
+function lv(x,y,v,o={}){const up=/↑/.test(v),dn=/↓/.test(v),c=up?EN.up:dn?EN.dn:EN.nl,w=o.w||(v.length>2?46:34);
+ return `<rect x="${x-w/2}" y="${y-11}" width="${w}" height="22" rx="11" style="fill:${c}"/><text x="${x}" y="${y+5}" text-anchor="middle" style="font:800 12.5px var(--sb-font);fill:#fff">${v}</text>`}
+/* labelled lab row: name + pill */
+const labRow=(x,y,w,name,v)=>T(x,y+4,name,{a:"start",c:"s"})+lv(x+w-20,y,v);
+/* algorithm node (dims when off) */
+function nodeB(x,y,w,h,title,sub,c=CV.acc,on=true,o={}){const op=on?1:.38;
+ let b=`<g style="opacity:${op}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" style="fill:color-mix(in srgb,${c} ${on?(o.tint||16):5}%,var(--sb-surface));stroke:${on?c:"var(--sb-line)"};stroke-width:${on?1.8:1}"/>`;
+ const n=Math.floor(w/6.1);b+=T(x+w/2,y+(sub?19:h/2+4.5),title,{c:"bh"});if(sub)b+=wrapT(x+w/2,y+35,sub,n,"s",13.5,"middle");return b+`</g>`}
+/* orthogonal connector with arrow head; pts = [[x,y],...] */
+function conn(pts,on=true,c=CV.ink2,lab){const d="M"+pts.map(p=>p.join(",")).join(" L"),n=pts.length,[x1,y1]=pts[n-2],[x2,y2]=pts[n-1],col=on?c:"var(--sb-line)";
+ let b=`<path d="${d}" style="fill:none;stroke:${col};stroke-width:${on?2.2:1.4};stroke-linejoin:round"/>`+arrowHead(x2,y2,Math.atan2(y2-y1,x2-x1),col,on?8:6);
+ if(lab){const [mx,my]=pts.length>2?pts[1]:[(x1+x2)/2,(y1+y2)/2];const w=lab.length*6.2+16;b+=`<rect x="${mx-w/2}" y="${my-10}" width="${w}" height="20" rx="10" style="fill:var(--sb-surface);stroke:${col};stroke-width:1"/>`+`<text x="${mx}" y="${my+4}" text-anchor="middle" style="font:700 10px var(--sb-font);fill:${on?"var(--sb-ink)":"var(--sb-muted)"}">${lab}</text>`}
+ return b}
+/* algorithm tree: spec={nodes:{k:[x,y,w,h,title,sub,color]},edges:[[from,to,label,via]]}, path = keys that are lit */
+function tree(spec,path){const on=k=>path.includes(k);let b="";
+ spec.edges.forEach(([a,c,lab,via])=>{const A=spec.nodes[a],B=spec.nodes[c];const ax=A[0]+A[2]/2,ay=A[1]+A[3],bx=B[0]+B[2]/2,by=B[1];
+  const pts=Array.isArray(via)?via:via==="h"?[[A[0]+(bx>ax?A[2]:0),A[1]+A[3]/2],[bx,A[1]+A[3]/2],[bx,by]]:Math.abs(ax-bx)<2?[[ax,ay],[bx,by]]:[[ax,ay],[ax,(ay+by)/2],[bx,(ay+by)/2],[bx,by]];
+  b+=conn(pts,on(a)&&on(c),CV.acc,lab)});
+ Object.entries(spec.nodes).forEach(([k,[x,y,w,h,t,s,c]])=>b+=nodeB(x,y,w,h,t,s,c||CV.acc,on(k)));return b}
+
+/* ================= hormone axis (hypothalamus → pituitary → gland) =================
+   o={n:[["Hypothalamus","CRH"],["Pituitary","ACTH"],["Adrenal","cortisol"]], v:["↑","↓","↑"], lesion:0|1|2|null, ext:"label of external source", w:width} */
+function axisD(x,y,o){const W=o.w||250,H=74,gap=34;let b="";const cx=x+W/2-20;
+ const glyph=(i,yy)=>{const c=[EN.brain,EN.pit,o.gc||EN.ctx][i];return `<rect x="${cx-62}" y="${yy}" width="124" height="${H-18}" rx="16" style="fill:color-mix(in srgb,${c} 55%,var(--sb-surface));stroke:color-mix(in srgb,${c} 80%,#000 10%);stroke-width:1.4"/>`};
+ o.n.forEach(([n,h],i)=>{const yy=y+i*(H+gap);b+=glyph(i,yy)+T(cx,yy+22,n,{c:"bh"})+T(cx,yy+40,h,{c:"s"});
+  if(o.v&&o.v[i])b+=lv(cx+92,yy+28,o.v[i]);
+  if(o.lesion===i)b+=`<path d="M${cx-74},${yy-6} l10,10 M${cx-64},${yy-6} l-10,10" style="stroke:${EN.up};stroke-width:3.2;stroke-linecap:round"/>`+`<circle cx="${cx-69}" cy="${yy-1}" r="11" style="fill:none;stroke:${EN.up};stroke-width:1.6"/>`;
+  if(i<o.n.length-1)b+=Ar(cx,yy+H-16,cx,yy+H+gap-4,o.dim&&o.dim[i]?"var(--sb-line)":CV.good,o.dim&&o.dim[i]?1.4:2.6,{hs:8})});
+ /* negative feedback */
+ const yb=y+2*(H+gap)+28,yt=y+28;b+=`<path d="M${cx-62},${yb} C${cx-120},${yb-40} ${cx-120},${yt+40} ${cx-64},${yt+6}" style="fill:none;stroke:${EN.up};stroke-width:1.8;stroke-dasharray:5 4"/>`+arrowHead(cx-64,yt+6,-.6,EN.up,7)+
+  `<path d="M${cx-62},${yb} C${cx-96},${yb-26} ${cx-96},${yt+H+gap+30} ${cx-64},${yt+H+gap+8}" style="fill:none;stroke:${EN.up};stroke-width:1.8;stroke-dasharray:5 4"/>`+arrowHead(cx-64,yt+H+gap+8,-.7,EN.up,7)+
+  T(cx-112,yt+H+gap/2+20,"−",{c:"bb"});
+ if(o.ext)b+=`<rect x="${cx+60}" y="${y+2*(H+gap)+H-8}" width="${o.ext.length*6.6+20}" height="24" rx="12" style="fill:${CV.violet}"/>`+`<text x="${cx+70}" y="${y+2*(H+gap)+H+8}" style="font:700 11px var(--sb-font);fill:#fff">${o.ext}</text>`;
+ return b}
+
+/* ================= sagittal sella / pituitary =================
+   local box 0..300 × 0..250 ; o={tumor:r, tc, tl, hem, empty, infarct, supra, lab} */
+function sella(x,y,s,o={}){let b=`<g transform="translate(${x},${y}) scale(${s})">`;const r=rng(17);
+ /* CSF cistern + brain with infundibular recess */
+ b+=`<rect x="0" y="60" width="300" height="100" style="fill:color-mix(in srgb,${EN.csf} 45%,var(--sb-surface))"/>`;
+ b+=`<path d="M0,0 H300 V88 C250,94 196,90 170,92 C160,93 156,98 152,106 C148,98 142,93 130,92 C100,90 46,96 0,90Z" style="fill:${EN.brain};stroke:#C99AA8;stroke-width:1.2"/>`;
+ for(let i=0;i<5;i++)b+=`<path d="M${20+i*58},${14+r()*10} q16,${18+r()*10} 30,0" style="fill:none;stroke:#DDB3C0;stroke-width:1.4"/>`;
+ b+=`<path d="M128,62 C134,48 166,48 172,62" style="fill:none;stroke:#C99AA8;stroke-width:1.2;stroke-dasharray:3 3"/>`+TD(150,44,"Hypothalamus",{s:10.5});
+ /* sphenoid bone, sella turcica, sinus */
+ b+=`<path d="M0,152 H80 C80,196 108,222 150,222 C192,222 220,196 220,152 H300 V250 H0Z" style="fill:${EN.bone};stroke:${EN.boneD};stroke-width:1.4"/>`;
+ for(let i=0;i<26;i++){const px=8+r()*284,py=160+r()*84;if(Math.hypot(px-150,py-170)>78)b+=`<ellipse cx="${px}" cy="${py}" rx="${2+r()*3}" ry="${1.4+r()*2}" style="fill:${EN.boneD};opacity:.35"/>`}
+ b+=`<path d="M92,236 C110,226 190,226 208,236 L208,250 H92Z" style="fill:#D6DEE3;stroke:${EN.boneD}"/>`+TD(150,246,"sphenoid sinus",{s:9,c:"#5B6B78"});
+ b+=`<path d="M64,152 C70,140 84,138 96,146 L94,152Z M204,152 C212,132 226,130 232,140 L236,152Z" style="fill:${EN.bone};stroke:${EN.boneD};stroke-width:1.2"/>`;
+ /* diaphragma sellae */
+ b+=`<path d="M92,148 H140 M162,148 H210" style="stroke:#8D7B9C;stroke-width:2.2;stroke-linecap:round"/>`;
+ const big=o.tumor&&o.tumor>30,tumCy=big?152:178,top=o.tumor?tumCy-o.tumor*.92:999;
+ if(o.empty){b+=`<path d="M86,152 C88,194 112,216 150,216 C188,216 212,194 214,152Z" style="fill:${EN.csf};opacity:.95"/>`+`<path d="M98,200 C122,214 178,214 202,200 L202,207 C178,220 122,220 98,207Z" style="fill:${EN.pit};stroke:${EN.pitD}"/>`+TD(150,186,"CSF",{s:11,c:"#235A7A"})+`<path d="M152,106 V198" style="stroke:${EN.pitD};stroke-width:4"/>`}
+ else{b+=`<path d="M152,106 C154,124 154,138 158,156" style="fill:none;stroke:${EN.pitD};stroke-width:7;stroke-linecap:round"/>`;
+  b+=`<path d="M94,160 C94,196 116,214 150,214 L152,158 Z" style="fill:${o.infarct?"#EADCCB":EN.pit};stroke:${EN.pitD};stroke-width:1.2"/>`;
+  b+=`<path d="M154,158 L152,214 C182,214 204,200 206,170 C206,160 196,154 178,154 Z" style="fill:${EN.post};stroke:#6E5BA8;stroke-width:1.2"/>`;
+  if(o.infarct){b+=`<path d="M104,176 l12,8 l-6,10 l14,6 M112,198 l14,-4" style="fill:none;stroke:#B3936F;stroke-width:1.6"/>`;for(let i=0;i<10;i++)b+=dot(104+r()*40,170+r()*36,1.4,"#B3936F")}
+  if(o.lab!==false&&!big)b+=TD(124,196,o.infarct?"infarct":"anterior",{s:9.5,c:o.infarct?"#7A5B3A":"#fff"})+TD(180,188,"posterior",{s:9.5,c:"#fff"})}
+ /* optic chiasm: rests above diaphragma, pushed up by a macroadenoma or suprasellar mass */
+ if(o.supra){b+=`<ellipse cx="150" cy="122" rx="40" ry="28" style="fill:#EADFA8;stroke:#9C8A3A;stroke-width:1.4"/>`+dot(138,114,3,"#B9A65A")+dot(162,128,2.6,"#B9A65A")+dot(150,108,2.2,"#B9A65A")+TD(150,126,"cyst",{s:10,c:"#6F6020"})}
+ if(o.tumor){const R=o.tumor;b+=`<ellipse cx="130" cy="${tumCy}" rx="${R}" ry="${R*.92}" style="fill:${o.tc||EN.tumor};stroke:#3E2D5C;stroke-width:1.4;opacity:.94"/>`;
+  b+=`<ellipse cx="${130-R*.3}" cy="${tumCy-R*.35}" rx="${R*.3}" ry="${R*.18}" style="fill:#fff;opacity:.18"/>`;
+  if(o.hem)b+=`<path d="${sm([[114,tumCy-6],[128,tumCy-14],[144,tumCy-4],[138,tumCy+12],[120,tumCy+10]])}" style="fill:#9E1F2E;opacity:.92"/>`;
+  if(o.tl)b+=`<text x="130" y="${tumCy+5}" text-anchor="middle" style="font:800 12px var(--sb-font);fill:#fff">${o.tl}</text>`}
+ const chY=o.supra?88:big?top-7:122;
+ if(big)b+=`<path d="M86,${chY+8} Q130,${chY-12} 174,${chY+8}" style="fill:none;stroke:#A67C1B;stroke-width:13;stroke-linecap:round"/><path d="M86,${chY+8} Q130,${chY-12} 174,${chY+8}" style="fill:none;stroke:${EN.chi};stroke-width:10.5;stroke-linecap:round"/>`;
+ else b+=`<ellipse cx="112" cy="${chY}" rx="30" ry="7.5" style="fill:${EN.chi};stroke:#A67C1B;stroke-width:1.2"/>`;
+ b+=`<path d="M60,${chY-22} L${big?96:94},${chY-(big?2:4)}" style="stroke:#A67C1B;stroke-width:1"/>`+TD(56,chY-26,"optic chiasm",{s:9.5,a:"end"});
+ return b+`</g>`}
+/* auto-height card (cardBox from the cvs helpers) */
+const cardH=(w,lines,o={})=>{const n=o.n||Math.floor((w-24)/5.9);return 39+lines.reduce((a,l)=>a+14*nLines(l,n)+3,0)+6};
+const cardA=(x,y,w,title,lines,c,o)=>cardBox(x,y,w,cardH(w,lines,o),title,lines,c,o);
+/* info panel with wrapped title */
+function iPanel(x,y,w,title,sub,rows,c=CV.acc){const n=Math.floor((w-40)/5.7),tn=Math.floor((w-28)/7.4);const tl=nLines(title,tn);let yy=y+26+(tl-1)*17+(sub?20:4)+22,body="";
+ rows.forEach(r=>{const L=nLines(r,n);body+=`<circle cx="${x+17}" cy="${yy-3.5}" r="3" style="fill:${c}"/>`+wrapT(x+27,yy,r,n,"s",14);yy+=(L-1)*14+20});
+ IPH=yy-y-6;return `<rect x="${x}" y="${y}" width="${w}" height="${IPH}" rx="14" style="fill:color-mix(in srgb,${c} 9%,var(--sb-surface));stroke:color-mix(in srgb,${c} 45%,transparent)"/>`+`<rect x="${x}" y="${y+12}" width="4" height="${20+(tl-1)*17}" rx="2" style="fill:${c}"/>`+wrapT(x+14,y+28,title,tn,"b",17)+(sub?T(x+14,y+28+(tl-1)*17+20,sub,{a:"start",c:"s m"}):"")+body}
+
+/* ================= thyroid (front view) =================
+   local box 0..260 × 0..220 ; o={k:size factor, fill, nod:[[x,y,r,"hot"|"cold"|"dom"]], scan:"diffuse"|"patchy"|"hot"|"low"|"normal", isth, para:[s1..s4] (posterior view)} */
+function thyroidG(x,y,s,o={}){let b=`<g transform="translate(${x},${y}) scale(${s})">`;const k=o.k||1,f=o.fill||EN.thy;
+ /* larynx + trachea */
+ b+=`<path d="M106,8 h48 l6,46 h-60Z" style="fill:#E7DDD0;stroke:#B8A994"/>`;for(let i=0;i<8;i++)b+=`<rect x="110" y="${60+i*18}" width="40" height="11" rx="5" style="fill:#EDE4D8;stroke:#C7B9A6"/>`;
+ const lobe=(sx)=>{const cx=130+sx*52*k,pts=[[cx-sx*0,40-8*(k-1)],[cx+sx*28*k,64],[cx+sx*32*k,128],[cx+sx*18*k,178+10*(k-1)],[cx-sx*6,184+10*(k-1)],[cx-sx*24*k,150],[cx-sx*26*k,96]];return sm(pts)};
+ if(o.scan){const bg="#1E2230";b+=`<rect x="10" y="20" width="240" height="190" rx="14" style="fill:${bg}"/>`;const r=rng(o.seed||7);
+  const dens=(px,py)=>{if(o.scan==="low")return .05;if(o.scan==="diffuse")return .85;if(o.scan==="normal")return .45;
+   if(o.scan==="hot")return Math.hypot(px-(130+52*k),py-118)<26?.95:.04;if(o.scan==="patchy"){let d=.12;[[78,92],[186,140],[96,150],[170,80]].forEach(([qx,qy],i)=>{if(Math.hypot(px-qx,py-qy)<(i<2?20:14))d=i<2?.9:.55});return d}
+   if(o.scan==="cold")return Math.hypot(px-(130-50*k),py-120)<24?.03:.5;return .4};
+  b+=`<clipPath id="tc${o.seed||7}"><path d="${lobe(1)} ${lobe(-1)}"/><rect x="108" y="96" width="44" height="26"/></clipPath><g clip-path="url(#tc${o.seed||7})">`;
+  for(let i=0;i<1300;i++){const px=40+r()*180,py=30+r()*176;if(r()<dens(px,py))b+=dot(px,py,1.5,"#F2E6A0")}
+  b+=`</g><path d="${lobe(1)}" style="fill:none;stroke:#5B6178;stroke-width:1;stroke-dasharray:3 3"/><path d="${lobe(-1)}" style="fill:none;stroke:#5B6178;stroke-width:1;stroke-dasharray:3 3"/>`;
+  return b+`</g>`}
+ const g=`<linearGradient id="gThy${o.id||0}" x1="0" y1="0" x2="1" y2="1"><stop offset="0" style="stop-color:${EN.thyL}"/><stop offset="1" style="stop-color:${f}"/></linearGradient>`;
+ b+=`<defs>${g}</defs><path d="${lobe(1)}" style="fill:url(#gThy${o.id||0});stroke:#8E2E3B;stroke-width:1.4"/><path d="${lobe(-1)}" style="fill:url(#gThy${o.id||0});stroke:#8E2E3B;stroke-width:1.4"/>`;
+ b+=`<path d="M104,102 C118,96 142,96 156,102 L156,124 C142,130 118,130 104,124Z" style="fill:url(#gThy${o.id||0});stroke:#8E2E3B;stroke-width:1.2"/>`;
+ if(o.lumpy)for(const [qx,qy,qr] of o.lumpy)b+=`<circle cx="${qx}" cy="${qy}" r="${qr}" style="fill:${EN.thyL};stroke:#8E2E3B;stroke-width:1;opacity:.9"/>`;
+ (o.nod||[]).forEach(([qx,qy,qr,t])=>{const c=t==="hot"?"#F08A3C":t==="dom"?"#E7C87A":t==="ca"?"#E9E2D6":"#D9D4E6";b+=`<circle cx="${qx}" cy="${qy}" r="${qr}" style="fill:${c};stroke:${t==="ca"?"#7A6A58":"#6E5A7E"};stroke-width:1.4${t==="ca"?";stroke-dasharray:3 2":""}"/>`});
+ if(o.fib)b+=`<path d="M60,70 C90,90 70,130 100,150 M200,70 C170,100 192,130 160,160 M80,160 C120,170 150,150 190,170" style="fill:none;stroke:#F3EFE8;stroke-width:4;opacity:.85"/>`;
+ if(o.para)o.para.forEach((ps,i)=>{const px=i%2?178:82,py=i<2?78:156;b+=`<ellipse cx="${px}" cy="${py}" rx="${9*ps}" ry="${7*ps}" style="fill:${EN.para};stroke:#7A4E1C;stroke-width:1.2"/>`});
+ return b+`</g>`}
+
+/* ================= adrenal cut section =================
+   o={zg,zf,zr: thickness multipliers, med, nod:[[x,y,r,c]], hem, atrophy} local 0..240 × 0..160 */
+function adrenalG(x,y,s,o={}){let b=`<g transform="translate(${x},${y}) scale(${s})">`;
+ const zg=o.zg??1,zf=o.zf??1,zr=o.zr??1,k=o.atrophy?.7:1;
+ const shape=(sc)=>sm([[120-100*sc,130],[120-60*sc,60-10*sc],[120,10+40*(1-sc)],[120+60*sc,60-10*sc],[120+100*sc,130],[120,140-6*(1-sc)]]);
+ const t=[.1*zg,.3*zf,.1*zr];let sc=1*k;
+ b+=`<path d="${shape(sc)}" style="fill:${EN.ctx};stroke:#9A7420;stroke-width:1.6"/>`;
+ sc-=t[0]*k;b+=`<path d="${shape(sc)}" style="fill:${EN.ctxF}"/>`;sc-=t[1]*k;b+=`<path d="${shape(sc)}" style="fill:${EN.ctxR}"/>`;sc-=t[2]*k;
+ b+=`<path d="${shape(Math.max(.18,sc))}" style="fill:${o.medc||EN.med}"/>`;
+ (o.nod||[]).forEach(([qx,qy,qr,c])=>b+=`<circle cx="${qx}" cy="${qy}" r="${qr}" style="fill:${c||"#F4D35E"};stroke:#9A7420;stroke-width:1.4"/>`);
+ if(o.hem)b+=`<path d="${shape(.95)}" style="fill:#9E1F2E;opacity:.82"/>`;
+ return b+`</g>`}
+
+/* ================= islet tile (H&E-like) ================= mode: "normal"|"t1"|"t2" */
+function islet(x,y,w,h,mode="normal"){let b=slide(x,y,w,h);const r=rng(mode.length*31+5),cx=x+w/2,cy=y+h/2,R=Math.min(w,h)*.34;
+ for(let i=0;i<70;i++){const a=r()*6.28,d=R+10+r()*(Math.min(w,h)/2-R-10);const px=cx+Math.cos(a)*d,py=cy+Math.sin(a)*d*.9;
+  b+=`<circle cx="${px}" cy="${py}" r="7" style="fill:#E7A6BD;stroke:${HE.mem};stroke-width:.5"/>`+dot(px+1.5,py+1,2.2,HE.nu)}
+ b+=`<ellipse cx="${cx}" cy="${cy}" rx="${R}" ry="${R*.9}" style="fill:#F6DCE5;stroke:${HE.mem};stroke-width:.8"/>`;
+ const nB=mode==="t1"?6:mode==="t2"?20:34;
+ for(let i=0;i<nB+14;i++){const a=r()*6.28,d=Math.sqrt(r())*R*.85;const px=cx+Math.cos(a)*d,py=cy+Math.sin(a)*d*.9;const beta=i<nB;
+  b+=`<circle cx="${px}" cy="${py}" r="4.6" style="fill:${beta?"#F3C0D0":"#E9A0B8"}"/>`+dot(px,py,1.9,beta?HE.nuL:HE.nu)}
+ if(mode==="t1")for(let i=0;i<46;i++){const a=r()*6.28,d=Math.sqrt(r())*R;b+=dot(cx+Math.cos(a)*d,cy+Math.sin(a)*d*.9,2.8,HE.nuD)}
+ if(mode==="t2")for(let i=0;i<7;i++){const a=r()*6.28,d=Math.sqrt(r())*R*.7;const px=cx+Math.cos(a)*d,py=cy+Math.sin(a)*d*.9;b+=`<path d="${sm([[px-14,py],[px-6,py-10],[px+10,py-8],[px+14,py+4],[px+2,py+10],[px-10,py+8]])}" style="fill:#F9D9E4;stroke:#E5A9BF;stroke-width:.8;opacity:.95"/>`}
+ return b}
+
+/* ================= thyroid H&E tiles ================= */
+function follicle(px,py,rx,ry,o={}){const n=Math.max(10,Math.round((rx+ry)*.55)),cells=[];let b="";
+ const cell=o.tall?6.2:o.flat?2.4:4;b+=`<ellipse cx="${px}" cy="${py}" rx="${rx}" ry="${ry}" style="fill:${HE.cy};stroke:${HE.mem};stroke-width:.6"/>`;
+ b+=`<ellipse cx="${px}" cy="${py}" rx="${Math.max(2,rx-cell)}" ry="${Math.max(2,ry-cell)}" style="fill:${o.pale?"#F8E8C8":"#F2B6C6"};stroke:${o.scallop?"#fff":"none"};stroke-width:${o.scallop?2.2:0};${o.scallop?"stroke-dasharray:3 4":""}"/>`;
+ if(o.colloid!==false)b+=`<ellipse cx="${px}" cy="${py}" rx="${Math.max(1,rx-cell-1)}" ry="${Math.max(1,ry-cell-1)}" style="fill:${o.pale?"#FBEFD9":"#EE9FB7"};opacity:.75"/>`;
+ for(let i=0;i<n;i++){const a=i/n*6.283;const nx=px+Math.cos(a)*(rx-cell/2),ny=py+Math.sin(a)*(ry-cell/2);b+=`<ellipse cx="${nx}" cy="${ny}" rx="${o.tall?1.6:1.8}" ry="${o.tall?2.6:1.6}" transform="rotate(${a*57.3} ${nx} ${ny})" style="fill:${o.hurthle?"#B2386A":HE.nu}"/>`}
+ if(o.hurthle)b=b.replace(`fill:${HE.cy}`,"fill:#E3608F");return b}
+function thyHE(x,y,w,h,mode){const r=rng({normal:3,graves:5,hashi:7,lymph:9,dq:11,riedel:13,pap:17,fol:19,med:23,ana:29,aden:31}[mode]||3);
+ let b=`<clipPath id="ct${mode}"><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12"/></clipPath>`+slide(x,y,w,h)+`<g clip-path="url(#ct${mode})">`;
+ const grid=(fn,step=34)=>{for(let yy=y+14;yy<y+h;yy+=step)for(let xx=x+14+(((yy-y)/step)%2?step/2:0);xx<x+w;xx+=step)fn(xx+(r()-.5)*8,yy+(r()-.5)*8)};
+ if(mode==="normal")grid((px,py)=>b+=follicle(px,py,13+r()*4,11+r()*4));
+ if(mode==="graves")grid((px,py)=>b+=follicle(px,py,13+r()*4,11+r()*4,{tall:true,scallop:true,pale:true}));
+ if(mode==="hashi"||mode==="lymph"){grid((px,py)=>{if(Math.hypot(px-x-w*.38,py-y-h*.5)>h*.36)b+=follicle(px,py,mode==="hashi"?9+r()*3:12+r()*3,mode==="hashi"?8+r()*3:10+r()*3,{hurthle:mode==="hashi"})});
+  for(let i=0;i<380;i++){const a=r()*6.28,d=Math.sqrt(r())*h*.38;b+=dot(x+w*.38+Math.cos(a)*d*1.2,y+h*.5+Math.sin(a)*d,1.8,HE.nuD)}
+  b+=`<ellipse cx="${x+w*.38}" cy="${y+h*.5}" rx="${h*.2}" ry="${h*.17}" style="fill:#D9CCE9;opacity:.75"/>`;for(let i=0;i<30;i++){const a=r()*6.28,d=Math.sqrt(r())*h*.16;b+=dot(x+w*.38+Math.cos(a)*d*1.2,y+h*.5+Math.sin(a)*d,2.4,HE.nuL)}}
+ if(mode==="dq"){grid((px,py)=>b+=follicle(px,py,10+r()*4,9+r()*3),40);
+  const gc=(px,py)=>{b+=`<ellipse cx="${px}" cy="${py}" rx="30" ry="22" style="fill:#EBAFC6;stroke:${HE.mem}"/>`+`<ellipse cx="${px+4}" cy="${py+2}" rx="12" ry="9" style="fill:#EE9FB7"/>`;for(let i=0;i<14;i++){const a=i/14*6.28;b+=`<ellipse cx="${px+Math.cos(a)*24}" cy="${py+Math.sin(a)*16}" rx="2.4" ry="1.8" style="fill:${HE.nu}"/>`}};
+  gc(x+w*.32,y+h*.42);gc(x+w*.7,y+h*.64);for(let i=0;i<140;i++)b+=dot(x+r()*w,y+r()*h,1.6,HE.nuD)}
+ if(mode==="riedel"){for(let i=0;i<26;i++){const yy=y+6+i*h/26;let d=`M${x},${yy}`;for(let xx=x;xx<=x+w;xx+=18)d+=` Q${xx+5},${yy-4} ${xx+9},${yy} T${xx+18},${yy}`;b+=`<path d="${d}" style="fill:none;stroke:#E5A3BF;stroke-width:3"/>`}
+  for(let i=0;i<70;i++)b+=dot(x+r()*w,y+r()*h,1.9,HE.nuD);b+=follicle(x+w*.75,y+h*.3,9,8,{})}
+ if(mode==="aden"||mode==="fol"){const cx=x+w*.5,cy=y+h*.52,R=h*.36;
+  grid((px,py)=>{if(Math.hypot(px-cx,(py-cy)*1.15)>R+16)b+=follicle(px,py,12,10,{flat:true})});
+  b+=`<ellipse cx="${cx}" cy="${cy}" rx="${R*1.25}" ry="${R}" style="fill:#F6D3DF;stroke:#C9839E;stroke-width:7"/>`;
+  for(let i=0;i<60;i++){const a=r()*6.28,d=Math.sqrt(r())*.86;const px=cx+Math.cos(a)*d*R*1.18,py=cy+Math.sin(a)*d*R*.94;b+=follicle(px,py,6.5,6,{})}
+  if(mode==="fol"){b+=`<path d="${sm([[cx+R*1.18,cy-18],[cx+R*1.5,cy-8],[cx+R*1.58,cy+10],[cx+R*1.36,cy+22],[cx+R*1.2,cy+16]])}" style="fill:#F6D3DF;stroke:none"/>`;for(let i=0;i<8;i++)b+=follicle(cx+R*1.3+r()*24,cy-6+r()*20,5,4.5,{});
+   b+=`<circle cx="${cx-R*.7}" cy="${cy-R*1.02}" r="12" style="fill:#F7E9EE;stroke:${HE.mem};stroke-width:2"/>`+follicle(cx-R*.7,cy-R*1.02,5,5,{})+TD(cx-R*.7,cy-R*1.02-18,"vascular invasion",{s:9.5})+TD(cx+R*1.4,cy+40,"capsular invasion",{s:9.5})}}
+ if(mode==="pap"){for(let k=0;k<4;k++){const bx=x+30+k*(w-40)/4,by=y+h-10;let d=`M${bx},${by}`;const pts=[[bx,by],[bx+8,by-70],[bx-14,by-110],[bx+16,by-140]];
+   b+=`<path d="M${pts.map(p=>p.join(",")).join(" L")}" style="fill:none;stroke:#E8A9C1;stroke-width:16;stroke-linecap:round;stroke-linejoin:round"/>`+`<path d="M${pts.map(p=>p.join(",")).join(" L")}" style="fill:none;stroke:#C55F86;stroke-width:3.2;stroke-linecap:round"/>`;
+   for(let t=0;t<14;t++){const i=Math.min(2,Math.floor(t/5)),u=(t%5)/5,ax=pts[i][0]+(pts[i+1][0]-pts[i][0])*u,ay=pts[i][1]+(pts[i+1][1]-pts[i][1])*u;[-9,9].forEach(o=>b+=`<ellipse cx="${ax+o}" cy="${ay}" rx="3.6" ry="3" style="fill:#F4F0FA;stroke:${HE.nu};stroke-width:1.3"/>`)}}
+  [[x+w*.2,y+h*.3],[x+w*.62,y+h*.22]].forEach(([px,py])=>{for(let k=4;k>0;k--)b+=`<circle cx="${px}" cy="${py}" r="${k*3}" style="fill:${k%2?"#6D5BA8":"#B9A9E0"}"/>`});
+  b+=TD(x+w*.2,y+h*.3-18,"psammoma",{s:9.5})}
+ if(mode==="med"){b+=`<rect x="${x}" y="${y}" width="${w}" height="${h}" style="fill:#F3D6E0"/>`;
+  for(let i=0;i<6;i++){const px=x+30+r()*(w-60),py=y+24+r()*(h-48);b+=`<path d="${sm([[px-26,py],[px-12,py-18],[px+16,py-16],[px+28,py+2],[px+12,py+18],[px-14,py+16]])}" style="fill:#F6E6EE;stroke:#E5B9CC;stroke-width:1"/>`}
+  grid((px,py)=>{b+=`<path d="M${px-7},${py-5} l12,-2 l4,8 l-8,7 l-9,-4Z" style="fill:#E9A5C0;stroke:${HE.mem};stroke-width:.5"/>`+dot(px,py,2.3,HE.nu)},14)}
+ if(mode==="ana")for(let i=0;i<46;i++){const px=x+r()*w,py=y+r()*h,s=6+r()*12;b+=`<path d="${sm([[px-s,py],[px-s*.3,py-s*.8],[px+s*.6,py-s*.5],[px+s,py+s*.3],[px,py+s*.8]])}" style="fill:#E6A0BB;stroke:${HE.mem};stroke-width:.6"/>`+dot(px,py,s*.32,i%5?HE.nu:HE.nuD)}
+ return b+`</g><rect x="${x}" y="${y}" width="${w}" height="${h}" rx="12" style="fill:none;stroke:var(--sb-line);stroke-width:1.2"/>`}
+
+/* ================= body figure (front) =================
+   local 0..200 × 0..400 ; o={cush, acro, myx, graves, pig (hyperpigmentation), hl:[[x,y,label,side]]} callouts drawn by caller */
+function bodyFig(x,y,s,o={}){let b=`<g transform="translate(${x},${y}) scale(${s})">`;const sk=o.pig?"#C99572":EN.skin,ed=o.pig?"#8E6243":EN.skinD;
+ const st=`style="fill:${sk};stroke:${ed};stroke-width:1.4"`;
+ const trunkW=o.cush?1.3:1,limb=o.cush?.72:1;
+ /* legs */
+ b+=`<path d="M${80-6*limb},236 C${76-8*limb},300 ${74-6*limb},350 ${72},392 L${92},392 C${96},340 ${98},290 ${100},250Z" ${st}/>`+`<path d="M${120+6*limb},236 C${124+8*limb},300 ${126+6*limb},350 ${128},392 L${108},392 C${104},340 ${102},290 ${100},250Z" ${st}/>`;
+ if(o.acro)b+=`<ellipse cx="80" cy="394" rx="18" ry="7" ${st}/><ellipse cx="120" cy="394" rx="18" ry="7" ${st}/>`;
+ /* arms */
+ const aw=limb*11;b+=`<path d="M${62-14*(trunkW-1)*4},110 C${44},150 ${38},200 ${36},236 L${36+aw},238 C${48},200 ${56},160 ${70},128Z" ${st}/>`+`<path d="M${138+14*(trunkW-1)*4},110 C${156},150 ${162},200 ${164},236 L${164-aw},238 C${152},200 ${144},160 ${130},128Z" ${st}/>`;
+ const hr=o.acro?13:8;b+=`<circle cx="${40}" cy="${244}" r="${hr}" ${st}/><circle cx="${160}" cy="${244}" r="${hr}" ${st}/>`;
+ /* trunk */
+ const tw=34*trunkW;b+=`<path d="M${100-tw},104 C${100-tw-6},150 ${100-tw-(o.cush?14:0)},200 ${100-tw+4},244 L${100+tw-4},244 C${100+tw+(o.cush?14:0)},200 ${100+tw+6},150 ${100+tw},104 C${120},96 ${80},96 ${100-tw},104Z" ${st}/>`;
+ if(o.cush){b+=`<ellipse cx="100" cy="98" rx="30" ry="12" style="fill:${sk};stroke:${ed};stroke-width:1.2"/>`;[[86,190],[112,196],[80,214],[118,216]].forEach(([sx,sy])=>b+=`<path d="M${sx},${sy} q6,-10 12,-2" style="fill:none;stroke:#8E3C64;stroke-width:3;stroke-linecap:round"/>`)}
+ /* neck + head */
+ b+=`<rect x="90" y="${o.acro?72:76}" width="20" height="28" ${st}/>`;
+ if(o.graves||o.goiter)b+=`<path d="M84,88 C88,100 112,100 116,88 C112,96 88,96 84,88Z" style="fill:${EN.thy};stroke:#8E2E3B;stroke-width:1.2"/>`+`<ellipse cx="100" cy="92" rx="16" ry="8" style="fill:${EN.thyL};stroke:#8E2E3B;stroke-width:1.2"/>`;
+ const hw=o.cush?32:o.myx?28:24,hh=o.cush?30:30;b+=`<ellipse cx="100" cy="${50}" rx="${hw}" ry="${hh}" ${st}/>`;
+ if(o.cush)b+=`<ellipse cx="84" cy="58" rx="8" ry="5" style="fill:#E2797E;opacity:.55"/><ellipse cx="116" cy="58" rx="8" ry="5" style="fill:#E2797E;opacity:.55"/>`;
+ if(o.acro)b+=`<path d="M76,58 C76,86 124,86 124,58 C120,74 80,74 76,58Z" ${st}/>`+`<path d="M78,32 C88,22 112,22 122,32" style="fill:none;stroke:${ed};stroke-width:3"/>`;
+ /* eyes */
+ const er=o.graves?4.6:3;b+=`<circle cx="91" cy="48" r="${er}" style="fill:#fff;stroke:${ed}"/><circle cx="109" cy="48" r="${er}" style="fill:#fff;stroke:${ed}"/>`+dot(91,48,1.7,"#3B2D4A")+dot(109,48,1.7,"#3B2D4A");
+ if(o.myx)b+=`<path d="M84,54 q7,5 14,0 M102,54 q7,5 14,0" style="fill:none;stroke:${ed};stroke-width:1.6"/>`;
+ b+=`<path d="M93,66 q7,${o.myx?2:4} 14,0" style="fill:none;stroke:${ed};stroke-width:1.6"/>`;
+ if(o.cush)b+=`<path d="M${100-tw+4},96 C${100-tw},82 ${100-tw+16},76 ${100-tw+24},86" style="fill:${sk};stroke:${ed};stroke-width:1.2"/>`;
+ return b+`</g>`}
+/* callout line + label (x1,y1 on body → label at x2,y2) */
+const callout=(x1,y1,x2,y2,t,c=CV.acc,a)=>`<path d="M${x1},${y1} L${x2},${y2}" style="stroke:${c};stroke-width:1.3"/>`+dot(x1,y1,3,c)+T(x2+(a==="end"?-4:4),y2+4,t,{a:a||"start",c:"s"});
+
+/* gauge bar for a lab value: range [lo,hi], normal band [nlo,nhi], value v */
+function gauge(x,y,w,name,v,lo,hi,nlo,nhi,unit,c){const X=t=>x+(Math.min(hi,Math.max(lo,t))-lo)/(hi-lo)*w;let b=T(x,y-8,name,{a:"start",c:"s"})+T(x+w,y-8,`${v} ${unit}`,{a:"end",c:"bh"});
+ b+=`<rect x="${x}" y="${y}" width="${w}" height="10" rx="5" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+`<rect x="${X(nlo)}" y="${y}" width="${X(nhi)-X(nlo)}" height="10" style="fill:color-mix(in srgb,${CV.good} 35%,transparent)"/>`;
+ const out=v<nlo||v>nhi;b+=`<circle cx="${X(v)}" cy="${y+5}" r="7.5" style="fill:${c||(out?EN.up:CV.good)};stroke:var(--sb-surface);stroke-width:2"/>`;return b}
+
+Object.assign(GN,{a:"Pituitary & posterior pituitary",b:"Thyroid dysfunction",c:"Thyroid nodules & neoplasms"});
+Object.assign(ST,{pa:"prl",ps:"mac",hy:"siadh",di:"cdi",hp:"sheehan",og:"a",tf:"hypo",tl:"graves",td:"dq",gv:"g",tt:"graves",gt:"mng",tc:"pap",nw:"benign"});
+
+/* ---------- 1. pituitary adenoma & hyperprolactinemia ---------- */
+const PA={prl:{n:"Lactotroph adenoma (prolactinoma)",c:"#C2577A",tl:"PRL",fx:["หญิง: amenorrhea · galactorrhea · มีบุตรยาก","ชายและหญิงสูงวัย: libido ↓ อาการน้อย จึงมักพบตอนก้อนใหญ่แล้ว","ระดับ prolactin สัมพันธ์กับขนาดก้อน"],dx:"serum prolactin + MRI",rx:"dopamine agonist (cabergoline, bromocriptine) ทำให้ก้อนยุบ"},
+ gh:{n:"Somatotroph adenoma",c:"#2F8A78",tl:"GH",fx:["เด็กที่ epiphysis ยังไม่ปิด: gigantism","ผู้ใหญ่: acromegaly","glucose intolerance / DM · HTN · หัวใจโต"],dx:"IGF-1 ↑ · GH ไม่ถูกกดหลังกินกลูโคส",rx:"ผ่าตัด · ไม่หาย → somatostatin analog / pegvisomant"},
+ acth:{n:"Corticotroph adenoma = Cushing disease",c:"#C7892B",tl:"ACTH",fx:["Cushing syndrome + ผิวคล้ำ (POMC → MSH)","ส่วนใหญ่เป็น microadenoma","ตัด adrenal ทั้งสองข้าง → Nelson syndrome (ก้อนโต ผิวคล้ำ)"],dx:"ACTH ↑ · high-dose dexamethasone กดได้",rx:"ผ่าตัดผ่าน sphenoid"},
+ nf:{n:"Nonfunctioning (gonadotroph, null cell)",c:"#7D5BA6",tl:"NF",fx:["ไม่มีอาการฮอร์โมนเกิน → มาด้วย mass effect","ก้อนใหญ่ทำลายต่อมรอบ ๆ → hypopituitarism (LH ขาดบ่อย)","กด stalk → prolactin สูงเล็กน้อย (stalk effect)"],dx:"MRI + ตรวจ pituitary function ทุกแกน",rx:"ผ่าตัด"}};
+function vf(x,y,lab,cut){const eye=(cx,side)=>`<circle cx="${cx}" cy="${y}" r="26" style="fill:#FFFDF6;stroke:var(--sb-line);stroke-width:1.4"/>`+(cut?`<path d="M${cx},${y-26} A26,26 0 0 ${side>0?1:0} ${cx},${y+26} Z" style="fill:#2B2F3A"/>`:"")+dot(cx,y,2,"#2B2F3A");
+ return eye(x,-1)+eye(x+66,1)+T(x+33,y+42,lab,{c:"s m"})+T(x,y-32,"L",{c:"s m"})+T(x+66,y-32,"R",{c:"s m"})}
+function pitD(){const d=PA[ST.pa],mac=ST.ps==="mac";let b="";
+ b+=T(10,22,mac?"Macroadenoma (> 1 cm)":"Microadenoma (< 1 cm)",{a:"start",c:"bh"});
+ b+=sella(6,30,1.1,{tumor:mac?40:13,tc:d.c,tl:mac?d.tl:""});
+ b+=T(10,354,"ลานสายตา",{a:"start",c:"bh"})+vf(118,348,mac?"bitemporal hemianopia":"ปกติ",mac);
+ b+=iPanel(352,10,282,d.n,mac?"ก้อนใหญ่: กด optic chiasm · ปวดหัว":"ก้อนเล็ก: อยู่ในแอ่ง sella",[...d.fx,"ตรวจ: "+d.dx,"รักษา: "+d.rx],d.c);
+ return ESVG(b,"0 0 640 404")}
+
+/* ---------- 2. SIADH ---------- */
+const HY={siadh:{n:"SIADH",v:"ปกติ (euvolemic)",L:[["Serum osm","↓"],["Urine osm","↑"],["Urine Na⁺","↑"]],s:"urine osm > serum osm · urine Na⁺ > 30 mmol/L",c:CV.violet},
+ hypo:{n:"Hypovolemic (เสียจาก GI)",v:"↓ (ขาดน้ำ)",L:[["Serum osm","↓"],["Urine osm","↑↑"],["Urine Na⁺","↓"]],s:"urine Na⁺ < 20 mmol/L · ADH หลั่งเพราะ volume ต่ำ (เหมาะสม)",c:CV.gold},
+ poly:{n:"Primary polydipsia",v:"ปกติ",L:[["Serum osm","↓"],["Urine osm","↓↓"],["Urine Na⁺","—"]],s:"urine osm < 100 → ADH ถูกกดเต็มที่ ปัสสาวะเจือจางสุด",c:CV.teal}};
+function siadhD(){const h=HY[ST.hy];let b="";
+ const st=[["ADH หลั่งเกิน","ไม่ตอบสนองต่อ osmolality ที่ต่ำ",CV.violet],["Collecting duct ดูดน้ำกลับ","aquaporin-2 ↑ → free water คั่ง",CV.dx],["Na⁺ เจือจาง","serum Na⁺ ↓ · serum osm ↓",EN.dn],["ร่างกายชดเชย volume","ANP/BNP ↑ · aldosterone ↓",CV.teal],["Na⁺ ออกทางปัสสาวะต่อเนื่อง","ECF กลับปกติ = euvolemic hyponatremia",CV.good]];
+ st.forEach(([t,s,c],i)=>{const y=8+i*68;b+=cardBox(8,y,300,56,t,[s],c);if(i<4)b+=Ar(158,y+57,158,y+67,CV.mut,1.6,{hs:6})});
+ b+=`<rect x="330" y="8" width="304" height="232" rx="14" style="fill:color-mix(in srgb,${h.c} 9%,var(--sb-surface));stroke:color-mix(in srgb,${h.c} 45%,transparent)"/>`+T(346,32,"เทียบ hyponatremia: "+h.n,{a:"start",c:"bh"});
+ h.L.forEach(([n,v],i)=>b+=labRow(346,64+i*34,272,n,v));b+=T(346,170,"ECF volume",{a:"start",c:"s"})+T(618,170,h.v,{a:"end",c:"bh"});
+ b+=wrapT(346,198,h.s,46,"s m",15);
+ b+=cardA(330,252,304,"สาเหตุ SIADH (HEELD)",["Head trauma / CNS · Ectopic ADH (small cell lung ca)","Exogenous: desmopressin, oxytocin · Lung disease","Drugs: SSRI, carbamazepine, cyclophosphamide"],CV.violet);
+ return ESVG(b,"0 0 640 364")}
+
+/* ---------- 3. DI vs primary polydipsia: water deprivation test ---------- */
+const DI={pp:{n:"Primary polydipsia",f:t=>t<=6?150+650*(1-Math.exp(-t/1.5)):803+(t-6)*8,c:CV.teal,R:["ดื่มน้ำมากเกิน (จิตเวช / thirst center)","↓","↓ หรือปกติ","urine osm ขึ้นมาก (> 700)","—","จำกัดน้ำ"]},
+ cdi:{n:"Central DI",f:t=>t<=6?110+70*(1-Math.exp(-t/2)):175+170*(1-Math.exp(-(t-6)/.6)),c:CV.violet,R:["ADH หลั่งน้อย (บาดเจ็บ เนื้องอก ผ่าตัด)","↑","↓","แทบไม่เปลี่ยน","ขึ้น > 50%","desmopressin"]},
+ ndi:{n:"Nephrogenic DI",f:t=>t<=6?100+50*(1-Math.exp(-t/2)):146+12*(1-Math.exp(-(t-6)/.6)),c:CV.gold,R:["ไตดื้อ ADH (V2 mutation, lithium, Ca²⁺ ↑, K⁺ ↓)","↑","ปกติ / ↑","แทบไม่เปลี่ยน","แทบไม่เปลี่ยน","รักษาต้นเหตุ · thiazide, amiloride, indomethacin"]}};
+function diD(){const k=ST.di,d=DI[k];const A=axes(56,16,300,240,[0,8],[0,1000],[0,2,4,6,8],[0,200,400,600,800,1000],"ชั่วโมงที่งดน้ำ","Urine osm (mOsm/kg)");let b=A.g;
+ b+=`<rect x="${A.X(6)}" y="16" width="${A.X(8)-A.X(6)}" height="240" style="fill:color-mix(in srgb,${CV.violet} 9%,transparent)"/>`+T(A.X(7),34,"desmopressin",{c:"s"});
+ b+=`<path d="M${A.X(0)},${A.Y(700)} H${A.X(8)}" style="stroke:var(--sb-muted);stroke-width:1;stroke-dasharray:4 4"/>`+T(A.X(.1),A.Y(700)-6,"700",{a:"start",c:"s m"});
+ Object.entries(DI).forEach(([kk,v])=>{const pts=[];for(let t=0;t<=8.001;t+=.1)pts.push([A.X(t),A.Y(v.f(t))]);b+=curve(pts,v.c,kk===k?3.6:1.6,kk===k?null:"4 4");b+=T(A.X(8)-4,A.Y(v.f(8))-10,v.n,{a:"end",c:kk===k?"bh":"s m"})});
+ const rows=["สาเหตุ","Serum osm","ADH","งดน้ำ","Desmopressin","รักษา"];
+ b+=`<rect x="384" y="8" width="250" height="300" rx="14" style="fill:color-mix(in srgb,${d.c} 10%,var(--sb-surface));stroke:color-mix(in srgb,${d.c} 45%,transparent)"/>`+T(398,32,d.n,{a:"start",c:"bh"});
+ let y=56;rows.forEach((r,i)=>{b+=T(398,y,r,{a:"start",c:"s m"});const v=d.R[i];if(v==="↑"||v==="↓")b+=lv(600,y-4,v);else{b+=wrapT(398,y+16,v,38,"s",14);y+=14*nLines(v,38)}y+=i===0?24:30});
+ return ESVG(b,"0 0 640 314")}
+
+/* ---------- 4. hypopituitarism ---------- */
+const HP={sheehan:{n:"Sheehan syndrome",o:{infarct:true},m:"ตั้งครรภ์ต่อม anterior โตเกือบ 2 เท่าแต่เลือดมาเท่าเดิม → ตกเลือดหลังคลอด/shock → infarct",H:[["GH","↓"],["LH / FSH","↓"],["TSH","↓"],["ACTH","↓"],["Prolactin","↓"],["ADH","N"]],c:"#B98A5A",k:"ไม่มีน้ำนม · ประจำเดือนไม่มา · ขี้หนาว"},
+ empty:{n:"Empty sella syndrome",o:{empty:true},m:"diaphragma sellae บกพร่อง → arachnoid + CSF ดันลงมา แอ่งกว้าง ต่อมแบนติดพื้น",H:[["GH","N"],["LH / FSH","N"],["TSH","N"],["ACTH","N"],["Prolactin","↑"],["ADH","N"]],c:"#3C8DBC",k:"มักพบโดยบังเอิญ (หญิงอ้วน ตั้งครรภ์หลายครั้ง) · บางรายลานสายตาผิด"},
+ apop:{n:"Pituitary apoplexy",o:{tumor:30,hem:true,tc:"#7D5BA6"},m:"เลือดออกเฉียบพลันในก้อน adenoma → ก้อนขยายเร็ว กดโครงสร้างรอบ ๆ",H:[["GH","↓"],["LH / FSH","↓"],["TSH","↓"],["ACTH","↓↓"],["Prolactin","↓"],["ADH","N"]],c:"#B3263B",k:"ปวดหัวรุนแรงทันที · เห็นภาพซ้อน · ความดันตก = เร่งด่วน"},
+ mass:{n:"Suprasellar / hypothalamic mass",o:{supra:true},m:"เช่น craniopharyngioma · ขาด releasing hormone และ ADH · ตัดการกด prolactin ด้วย dopamine",H:[["GH","↓"],["LH / FSH","↓"],["TSH","↓"],["ACTH","↓"],["Prolactin","↑"],["ADH","↓"]],c:"#9C8A3A",k:"มี DI ร่วม = มักมาจาก hypothalamus"}};
+function hypopitD(){const d=HP[ST.hp];let b=sella(14,4,1.06,d.o);
+ b+=cardA(8,276,330,d.n,[d.m],d.c);
+ b+=`<rect x="354" y="6" width="280" height="354" rx="14" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(370,30,"ฮอร์โมน",{a:"start",c:"bh"});
+ d.H.forEach(([n,v],i)=>{const y=58+i*36;b+=`<rect x="366" y="${y-14}" width="256" height="28" rx="9" style="fill:var(--sb-surface)"/>`+T(378,y+4,n,{a:"start",c:"s"})+T(470,y+4,i===5?"posterior":"anterior",{a:"start",c:"s m"})+lv(596,y,v)});
+ b+=wrapT(370,286,d.k,42,"s",15);
+ return ESVG(b,"0 0 640 372")}
+
+/* ---------- 5. acromegaly ---------- */
+function acroD(){const a=ST.og==="a",bp=(x,y)=>[112+.8*x,10+.8*y];let b=bodyFig(112,10,.8,{acro:true});
+ const co=(px,py,lx,ly,t,c,an)=>{const [x1,y1]=bp(px,py);return callout(x1,y1,lx,ly,t,c,an)};
+ b+=co(100,26,104,20,"frontal bossing",CV.acc,"end")+co(96,78,104,76,"ขากรรไกรยื่น · ลิ้นโต",CV.acc,"end")+co(100,150,104,140,"หัวใจโต (LVH, HFpEF)",CV.bad,"end")+co(64,190,104,200,"เหงื่อมาก · ข้อเสื่อม",CV.acc,"end")+co(40,250,104,262,"มือโต นิ้วหนา",CV.acc,"end")+co(80,396,104,326,"เท้าโต",CV.acc,"end");
+ const A=axes(342,16,282,190,[0,120],[0,12],[0,30,60,90,120],[0,3,6,9,12],"นาทีหลังกลูโคส 75 g","GH (µg/L)");b+=A.g;
+ const fn=t=>3*Math.exp(-t/22)+.15,fa=t=>10+.6*Math.sin(t/20);
+ const P=f=>{const p=[];for(let t=0;t<=120;t+=2)p.push([A.X(t),A.Y(f(t))]);return p};
+ b+=curve(P(fn),CV.good,a?1.6:3.6,a?"4 4":null)+curve(P(fa),CV.bad,a?3.6:1.6,a?null:"4 4");
+ b+=`<path d="M${A.X(0)},${A.Y(.4)} H${A.X(120)}" style="stroke:${CV.good};stroke-width:1;stroke-dasharray:3 3"/>`+T(A.X(120)-2,A.Y(.4)-6,"< 0.4",{a:"end",c:"s m"});
+ b+=T(A.X(60),A.Y(a?10.6:1.6)-10,a?"Acromegaly: GH ไม่ถูกกด":"ปกติ: GH ถูกกด",{c:"bh"});
+ b+=cardBox(300,250,334,108,"วินิจฉัย → รักษา",["IGF-1 ↑ (GH เดี่ยว ๆ แกว่งตลอดวัน ใช้ไม่ได้) · MRI","ตัด adenoma → octreotide / pegvisomant / cabergoline"],CV.teal);
+ return ESVG(b,"0 0 640 366")}
+
+/* ---------- 6. hypo vs hyperthyroidism ---------- */
+const TF={hypo:[["Metabolic","ขี้หนาว · น้ำหนักขึ้น · เหงื่อน้อย · Na⁺ ↓"],["Skin","แห้ง เย็น · myxedema (GAG สะสม กดไม่บุ๋ม)"],["Eye","หนังตาบวม"],["GI","ท้องผูก · เบื่ออาหาร"],["Muscle","proximal weakness · CK ↑ · carpal tunnel"],["Neuro","เฉื่อย ซึมเศร้า · reflex คลายช้า"],["CV","หัวใจเต้นช้า · CO ↓"],["Lab","LDL ↑ (LDL receptor ↓)"]],
+ hyper:[["Metabolic","ขี้ร้อน · น้ำหนักลดแม้กินมาก · เหงื่อมาก"],["Skin","อุ่น ชื้น · ผมบาง · onycholysis"],["Eye","lid lag / retraction · Graves: exophthalmos"],["GI","ถ่ายบ่อย (hyperdefecation)"],["Muscle","proximal weakness (CK ปกติ) · กระดูกพรุน"],["Neuro","กระสับกระส่าย นอนไม่หลับ · fine tremor"],["CV","ใจสั่น · AF · systolic HTN"],["Lab","cholesterol ↓"]]};
+function thyFuncD(){const h=ST.tf==="hyper",c=h?EN.up:EN.dn;let b=bodyFig(14,8,.84,h?{graves:true}:{myx:true,goiter:true});
+ b+=T(98,356,h?"Hyperthyroidism":"Hypothyroidism",{c:"bh"});
+ TF[ST.tf].forEach(([s,t],i)=>{const y=8+i*44;b+=`<rect x="200" y="${y}" width="434" height="38" rx="10" style="fill:color-mix(in srgb,${c} ${i%2?6:10}%,var(--sb-surface));stroke:color-mix(in srgb,${c} 30%,transparent)"/>`+`<rect x="200" y="${y}" width="86" height="38" rx="10" style="fill:${c}"/>`+`<text x="243" y="${y+23}" text-anchor="middle" style="font:750 11px var(--sb-font);fill:#fff">${s}</text>`+T(298,y+23,t,{a:"start",c:"s"})});
+ return ESVG(b,"0 0 640 364")}
+
+/* ---------- 7. thyroid function tests ---------- */
+const TLB={phypo:{n:"Primary hypothyroidism",v:["↑","↑","↓"],les:2,raiu:"—",t:"TSH ↑ + free T4 ↓ · สาเหตุหลัก Hashimoto"},
+ sub:{n:"Subclinical hypothyroidism",v:["N","↑","N"],les:2,raiu:"—",t:"TSH ↑ แต่ free T4 ยังปกติ"},
+ central:{n:"Central (2°) hypothyroidism",v:["N","↓","↓"],les:1,raiu:"—",t:"T4 ต่ำ แต่ TSH ไม่ขึ้น (ต่ำหรือปกติอย่างไม่เหมาะสม)"},
+ graves:{n:"Graves disease",v:["↓","↓","↑"],les:null,ext:"TSI",raiu:"↑ ทั่วต่อม",t:"TSH ต่ำมาก + free T4/T3 ↑"},
+ tsha:{n:"TSH-secreting adenoma",v:["↓","↑","↑"],les:1,raiu:"↑",t:"T4 สูงแต่ TSH ไม่ถูกกด = 2° hyperthyroidism (พบน้อย)"},
+ exo:{n:"Exogenous thyroid hormone",v:["↓","↓","↑"],les:null,ext:"ยา T4",raiu:"↓",t:"T4 สูง TSH ต่ำ แต่ต่อมไม่จับ iodine"},
+ sick:{n:"Euthyroid sick syndrome",v:["N","N","↓"],les:null,raiu:"—",t:"ป่วยหนัก: T3 ↓ · T4 ปกติหรือ ↓ · TSH ปกติ"}};
+function thyLabD(){const d=TLB[ST.tl];let b=axisD(20,8,{n:[["Hypothalamus","TRH"],["Pituitary","TSH"],["Thyroid",ST.tl==="sick"?"T3 (T4 N)":"free T4 / T3"]],v:d.v,lesion:d.les,ext:d.ext,gc:EN.thy});
+ b+=`<rect x="330" y="8" width="304" height="200" rx="14" style="fill:color-mix(in srgb,${CV.acc} 8%,var(--sb-surface));stroke:color-mix(in srgb,${CV.acc} 40%,transparent)"/>`+T(346,34,d.n,{a:"start",c:"bh"})+wrapT(346,58,d.t,46,"s",15);
+ b+=T(346,120,"Radioactive iodine uptake",{a:"start",c:"s m"})+T(618,120,d.raiu,{a:"end",c:"bh"});
+ b+=wrapT(346,150,"TSH คือการตรวจคัดกรองที่ไวที่สุด แต่แปลผลไม่ได้ถ้าโรคอยู่ที่ pituitary",46,"s m",15);
+ b+=cardBox(330,220,304,110,"ลำดับตรวจ",["1. TSH → 2. free T4 (± T3)","3. ถ้า thyrotoxic: RAIU / scan บอกสาเหตุ","4. antibody: TPO, Tg (Hashimoto) · TSI (Graves)"],CV.teal);
+ return ESVG(b,"0 0 640 338")}
+
+/* ---------- 8. thyroiditis ---------- */
+const TD8={hashi:{n:"Hashimoto thyroiditis",he:"hashi",cap:"lymphoid follicle + germinal center · Hürthle cells",c:"#7A5BC7",
+  f:t=>t<1?.35*t:.35-Math.min(1.25,(t-1)*.11),tags:[["ไม่เจ็บ","#7C8798"],["anti-TPO / anti-Tg ⊕","#7A5BC7"],["ต่อมโตแข็ง ไม่กดเจ็บ","#7C8798"]]},
+ pp:{n:"Postpartum / painless thyroiditis",he:"lymph",cap:"lymphocytic infiltrate · ไม่มี Hürthle หรือ fibrosis เด่น",c:"#2F8A78",
+  f:t=>t<2?.75*Math.sin(t/2*Math.PI):t<5?-.7*Math.sin((t-2)/3*Math.PI):0,tags:[["ไม่เจ็บ","#7C8798"],["anti-TPO ⊕ บ่อย","#2F8A78"],["< 1 ปีหลังคลอด","#7C8798"]]},
+ dq:{n:"Subacute granulomatous (de Quervain)",he:"dq",cap:"multinucleate giant cell ล้อม colloid",c:"#C2493A",
+  f:t=>t<2?.85*Math.sin(t/2*Math.PI):t<3?0:t<5.5?-.6*Math.sin((t-3)/2.5*Math.PI):0,tags:[["เจ็บมาก · ปวดกราม","#C2493A"],["ESR ↑","#C2493A"],["หลังติดเชื้อไวรัส","#7C8798"]]},
+ riedel:{n:"Riedel thyroiditis",he:"riedel",cap:"fibrosis แทนที่ต่อมและลามออกนอก capsule",c:"#8C6D46",
+  f:t=>-Math.min(.45,t*.07),tags:[["แข็งเหมือนหิน ติดแน่น","#8C6D46"],["IgG4-related","#8C6D46"],["คล้าย anaplastic ca","#7C8798"]]}};
+function thyroiditisD(){const d=TD8[ST.td];let b=thyHE(8,8,300,232,d.he)+T(158,262,d.cap,{c:"s m"});
+ const x0=340,y0=28,W=290,H=200,Y=v=>y0+H/2-v*H/2*.9,X=t=>x0+t/8*W;
+ b+=`<rect x="${x0}" y="${y0}" width="${W}" height="${H/2-30}" rx="6" style="fill:color-mix(in srgb,${EN.up} 9%,transparent)"/><rect x="${x0}" y="${y0+H/2+30}" width="${W}" height="${H/2-30}" rx="6" style="fill:color-mix(in srgb,${EN.dn} 9%,transparent)"/>`;
+ b+=T(x0+6,y0+16,"hyperthyroid",{a:"start",c:"s m"})+T(x0+6,y0+H/2+4,"euthyroid",{a:"start",c:"s m"})+T(x0+6,y0+H-8,"hypothyroid",{a:"start",c:"s m"})+T(x0+W/2,y0+H+20,"เวลา (เดือน) →",{c:"s m"});
+ const pts=[];for(let t=0;t<=8;t+=.05)pts.push([X(t),Y(d.f(t))]);b+=curve(pts,d.c,3.4);
+ b+=T(x0,18,"การดำเนินโรค (thyroid function)",{a:"start",c:"bh"});
+ let tx=344,ty=272;d.tags.forEach(([t,c])=>{const w=t.length*6.1+22;if(tx+w>634){tx=344;ty+=26}b+=tag(tx+w/2,ty,t,c,{w});tx+=w+6});
+ b+=`<rect x="8" y="318" width="626" height="42" rx="12" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(22,344,"ช่วง hyperthyroid จาก thyroiditis = ฮอร์โมนรั่วจาก follicle ที่แตก → RAIU ต่ำ (ต่างจาก Graves ที่ RAIU สูง)",{a:"start",c:"s"});
+ return ESVG(b,"0 0 640 366")}
+
+/* ---------- 9. congenital hypothyroidism & other causes ---------- */
+function congD(){let b="";
+ b+=`<rect x="8" y="8" width="300" height="168" rx="14" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(22,32,"T4 ของแม่กับสมองทารก",{a:"start",c:"bh"});
+ b+=`<rect x="22" y="54" width="272" height="16" rx="8" style="fill:color-mix(in srgb,${CV.violet} 30%,var(--sb-surface))"/>`+`<rect x="22" y="54" width="120" height="16" rx="8" style="fill:${CV.violet}"/>`+T(82,66,"แม่ส่ง T4 ผ่านรก",{c:"s w"})+T(220,66,"ต่อมทารกทำงานเอง",{c:"s"});
+ b+=cardBox(22,82,132,84,"แม่ขาดช่วงแรก",["ก่อนต่อมทารกทำงาน → สมองเสียมาก"],EN.up,{tint:12})+cardBox(162,82,132,84,"แม่ขาดช่วงหลัง",["ต่อมทารกทำงานแล้ว → สมองไม่กระทบ"],CV.good,{tint:12});
+ b+=cardBox(8,186,300,150,"Congenital hypothyroidism (6 P's)",["Pot-bellied · Pale · Puffy face","Protruding umbilicus (hernia) · Protuberant tongue","Poor brain development (IQ ↓)","สาเหตุ: dysgenesis (agenesis, ectopy) · dyshormonogenesis (TPO)"],CV.violet);
+ const C=[["Iodine deficiency","สาเหตุอันดับ 1 ทั่วโลก · มาด้วย goiter",EN.col],["Iodine excess","Wolff-Chaikoff: iodide มาก กด organification",CV.gold],["ยา","amiodarone · lithium",CV.teal],["Euthyroid sick","ป่วยหนัก: T3 ↓ · T4/TSH ปกติหรือ ↓",EN.nl],["Iatrogenic","ผ่าตัด / radioiodine ทำลายต่อม",CV.dx],["Central","pituitary / hypothalamus (พบน้อย)",CV.violet]];
+ C.forEach(([t,s,c],i)=>b+=cardBox(324,8+i*55,310,48,t,[s],c));
+ return ESVG(b,"0 0 640 342")}
+
+/* ---------- 10. Graves disease ---------- */
+function gravesD(){const g=ST.gv==="g";let b="";
+ const ab=(x,y)=>`<path d="M${x},${y+14} V${y+4} L${x-7},${y-6} M${x},${y+4} L${x+7},${y-6}" style="fill:none;stroke:${CV.violet};stroke-width:3;stroke-linecap:round"/>`;
+ b+=`<rect x="8" y="8" width="300" height="56" rx="14" style="fill:color-mix(in srgb,${CV.violet} 12%,var(--sb-surface));stroke:color-mix(in srgb,${CV.violet} 50%,transparent)"/>`+ab(32,26)+T(52,30,"TSI (IgG) กระตุ้น TSH receptor",{a:"start",c:"bh"})+T(52,48,"type II hypersensitivity · ผ่านรกได้ (neonatal)",{a:"start",c:"s m"});
+ const T3=[["Thyrocyte","hyperthyroidism + diffuse goiter",EN.thy],["Orbital fibroblast","GAG ↑ · กล้ามเนื้อบวม · ไขมัน ↑ → exophthalmos",CV.gold],["Dermal fibroblast","pretibial myxedema (บางราย)",CV.teal]];
+ T3.forEach(([t,s,c],i)=>{const y=80+i*86;b+=Ar(40,y-14,40,y+6,CV.violet,2,{hs:7})+`<rect x="8" y="${y+6}" width="300" height="70" rx="12" style="fill:color-mix(in srgb,${c} 12%,var(--sb-surface));stroke:color-mix(in srgb,${c} 50%,transparent)"/>`+
+  `<circle cx="38" cy="${y+41}" r="18" style="fill:${c};opacity:.85"/>`+ab(38,y+30)+T(66,y+34,t,{a:"start",c:"bh"})+wrapT(66,y+52,s,38,"s",14)});
+ b+=thyHE(330,8,304,250,g?"graves":"normal")+T(482,280,g?"Graves: เซลล์สูง แน่น · colloid ซีด ขอบหยัก (scalloped)":"ปกติ: เซลล์ cuboidal · colloid เต็ม",{c:"s m"});
+ b+=`<rect x="330" y="296" width="304" height="44" rx="12" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(344,322,"Lab: TSH ↓ · free T4/T3 ↑ · RAIU ↑ ทั่วต่อม",{a:"start",c:"s"});
+ return ESVG(b,"0 0 640 346")}
+
+/* ---------- 11. thyrotoxicosis: RAIU patterns, toxic nodules, storm ---------- */
+const TT={graves:{n:"Graves disease",scan:"diffuse",t:"จับทั่วต่อมสม่ำเสมอ · TSI กระตุ้นทุกเซลล์",r:"↑ diffuse"},
+ tmng:{n:"Toxic multinodular goiter",scan:"patchy",t:"หลายก้อนทำงานเองโดยไม่ขึ้นกับ TSH (TSH-R mutation) · ส่วนที่เหลือถูกกด",r:"↑ เป็นหย่อม"},
+ toxad:{n:"Toxic adenoma",scan:"hot",t:"ก้อนเดียวจับแน่น (hot) · ต่อมที่เหลือถูกกด · hot nodule แทบไม่เป็นมะเร็ง",r:"hot nodule"},
+ thyr:{n:"Thyroiditis (painful / painless)",scan:"low",t:"ฮอร์โมนรั่วจาก follicle ที่แตก · ไม่ได้สร้างใหม่",r:"↓"},
+ exo:{n:"Exogenous / struma ovarii",scan:"low",t:"ฮอร์โมนมาจากนอกต่อม → ต่อมถูกกดและไม่จับ iodine · thyroglobulin ต่ำ (กินฮอร์โมนเอง)",r:"↓"}};
+function thyrotoxD(){const d=TT[ST.tt];let b=thyroidG(0,0,1.2,{scan:d.scan,seed:ST.tt.length*7+3})+T(156,272,"RAIU scan: "+d.r,{c:"bh"});
+ b+=`<rect x="330" y="10" width="304" height="132" rx="14" style="fill:color-mix(in srgb,${CV.acc} 9%,var(--sb-surface));stroke:color-mix(in srgb,${CV.acc} 40%,transparent)"/>`+T(346,36,d.n,{a:"start",c:"bh"})+wrapT(346,60,d.t,46,"s",15);
+ b+=`<rect x="330" y="154" width="304" height="186" rx="14" style="fill:color-mix(in srgb,${EN.up} 9%,var(--sb-surface));stroke:color-mix(in srgb,${EN.up} 45%,transparent)"/>`+T(346,180,"Thyroid storm",{a:"start",c:"bh"})+wrapT(346,200,"hyperthyroid ที่คุมไม่ดี + stress (ติดเชื้อ ผ่าตัด) → ไข้ สับสน ท้องเสีย tachyarrhythmia (สาเหตุตาย)",46,"s",14);
+ [["β-blocker","propranolol"],["PTU","กดการสร้าง + T4→T3"],["glucocorticoid","กด T4→T3"],["potassium iodide","ให้หลัง PTU 1 ชม."]].forEach(([n,s],i)=>{const x=346+(i%2)*144,y=262+Math.floor(i/2)*38;b+=`<rect x="${x}" y="${y-14}" width="136" height="32" rx="9" style="fill:var(--sb-surface)"/>`+T(x+8,y,n,{a:"start",c:"bh"})+T(x+8,y+13,s,{a:"start",c:"s m"})});
+ return ESVG(b,"0 0 640 346")}
+
+/* ---------- 12. goiter & adenoma ---------- */
+const GT={diffuse:{n:"Diffuse (simple) goiter",o:{k:1.18},t:"ขาด iodine / goitrogen → TSH ↑ → follicle hyperplasia ทั่วต่อม · ส่วนใหญ่ euthyroid",c:EN.col},
+ mng:{n:"Multinodular goiter",o:{k:1.25,lumpy:[[70,90,16],[192,104,20],[86,156,18],[178,160,14],[66,124,10]]},t:"hyperplasia สลับ involution ซ้ำ ๆ → ก้อนหลายก้อน ใหญ่ได้มาก ลงหลังกระดูกอก · ~10% เกิดก้อน autonomous (toxic MNG)",c:CV.gold},
+ aden:{n:"Follicular adenoma",o:{nod:[[184,118,26,"cold"]]},t:"ก้อนเดียว มี capsule สมบูรณ์ · ส่วนมาก cold · ส่วนน้อยเป็น toxic (hot)",c:CV.violet}};
+function goiterD(){const d=GT[ST.gt];let b=thyroidG(10,4,1.2,Object.assign({id:1},d.o));
+ b+=cardBox(330,8,304,120,d.n,[d.t],d.c);
+ if(ST.gt==="aden")b+=thyHE(330,140,304,150,"aden")+T(482,308,"capsule ล้อมรอบ ไม่มีการลุกลาม",{c:"s m"});
+ else b+=cardBox(330,140,304,72,"ต่อมโตเรียบ (smooth)",["Graves · Hashimoto · ขาด iodine · TSH adenoma"],CV.teal)+cardBox(330,220,304,72,"ต่อมโตเป็นก้อน (nodular)",["toxic MNG · adenoma · มะเร็ง · cyst"],CV.gold);
+ b+=T(166,282,"อาการจากก้อน: กลืนลำบาก · หายใจลำบาก · SVC ถูกกด",{c:"s m"});
+ return ESVG(b,"0 0 640 316")}
+
+/* ---------- 13. thyroid cancers ---------- */
+const TC={pap:{n:"Papillary carcinoma",p:"~85% · พบบ่อยสุด",c:"#C2577A",R:["nuclei ใส (Orphan Annie) · nuclear groove · psammoma","ลาม lymphatic → ต่อมน้ำเหลืองที่คอ","RET/PTC · BRAF V600E · รังสีวัยเด็ก","พยากรณ์ดีมาก"]},
+ fol:{n:"Follicular carcinoma",p:"10–15%",c:"#2F8A78",R:["follicle สม่ำเสมอ · ต้องเห็น capsular / vascular invasion","ลาม hematogenous (กระดูก ปอด)","RAS · PAX8-PPARγ","FNA แยก adenoma กับ carcinoma ไม่ได้"]},
+ med:{n:"Medullary carcinoma",p:"~5% · จาก C cell",c:"#C7892B",R:["sheets ของเซลล์ใน amyloid stroma (Congo red ⊕)","calcitonin ↑ (และ CEA)","RET · MEN 2A/2B","carrier ของ RET → ตัดต่อมป้องกัน"]},
+ ana:{n:"Anaplastic carcinoma",p:"< 5% · ผู้สูงอายุ",c:"#5B5F6E",R:["เซลล์ pleomorphic / spindle / giant cell","ก้อนโตเร็ว กดหลอดลม หลอดอาหาร เสียงแหบ","มักเกิดจาก dedifferentiation ของ papillary/follicular · TP53","พยากรณ์แย่มาก (ตายใน < 1 ปี)"]}};
+function thyCaD(){const d=TC[ST.tc];let b=thyHE(8,8,300,250,{pap:"pap",fol:"fol",med:"med",ana:"ana"}[ST.tc]);
+ b+=iPanel(326,8,308,d.n,d.p,d.R,d.c);
+ b+=`<rect x="8" y="272" width="626" height="70" rx="12" style="fill:var(--sb-surface2);stroke:var(--sb-line)"/>`+T(22,294,"ภาวะแทรกซ้อนจากผ่าตัดต่อมไทรอยด์",{a:"start",c:"bh"});
+ [["parathyroid ถูกตัด","hypocalcemia"],["recurrent laryngeal n.","เสียงแหบ (ผูก inferior thyroid a.)"],["ext. branch superior laryngeal n.","เสียงสูงหาย"]].forEach(([n,s],i)=>{const x=22+i*206;b+=T(x,316,n,{a:"start",c:"s"})+T(x,332,s,{a:"start",c:"s m"})});
+ return ESVG(b,"0 0 640 348")}
+
+/* ---------- 14. thyroid nodule work-up ---------- */
+const NW={nodes:{start:[170,6,300,44,"Thyroid nodule","คลำได้ หรือเจอจาก imaging",CV.acc],tsh:[220,70,200,38,"ตรวจ TSH","",CV.acc],
+ low:[10,132,200,50,"TSH ต่ำ","→ radionuclide scan",EN.up],norm:[430,132,200,50,"TSH ปกติ / สูง","→ ultrasound + ต่อมน้ำเหลือง",CV.teal],
+ hot:[10,212,200,62,"Hot nodule","แทบไม่เป็นมะเร็ง · ไม่ต้อง FNA · รักษา hyperthyroid","#E07B2E"],us:[430,212,200,62,"FNA ตามขนาด + ลักษณะ US","ก้อน < 1 cm มักไม่ต้อง FNA",CV.teal],
+ ben:[250,306,120,62,"Benign","ติดตามด้วย US",CV.good],ind:[380,306,120,62,"AUS / FN","FNA ซ้ำ หรือ molecular",CV.gold],mal:[510,306,120,62,"Malignant","หรือ suspicious → ผ่าตัด",EN.up]},
+ edges:[["start","tsh"],["tsh","low"],["tsh","norm"],["low","hot","hot"],["low","us","cold",[[210,157],[320,157],[320,243],[430,243]]],["norm","us"],["us","ben"],["us","ind"],["us","mal"]]};
+const NWP={hot:["start","tsh","low","hot"],benign:["start","tsh","norm","us","ben"],indet:["start","tsh","norm","us","ind"],malig:["start","tsh","norm","us","mal"]};
+function noduleD(){let b=tree(NW,NWP[ST.nw]);
+ const B=[["I","nondiag",13],["II","benign",4],["III","AUS",22],["IV","FN",30],["V","suspicious",74],["VI","malignant",97]];
+ b+=T(10,398,"Bethesda (FNA cytology) · ความเสี่ยงมะเร็งเฉลี่ย",{a:"start",c:"bh"});
+ B.forEach(([r,n,p],i)=>{const x=10+i*104,c=`color-mix(in srgb,${EN.up} ${10+p*.8}%,var(--sb-surface))`;b+=`<rect x="${x}" y="408" width="98" height="46" rx="10" style="fill:${c};stroke:var(--sb-line)"/>`+T(x+49,426,r+" · "+n,{c:"s"})+T(x+49,446,p+"%",{c:"bh"})});
+ return ESVG(b,"0 0 640 462")}
+
+/* ---------- extra: craniopharyngioma & other sellar masses ---------- */
+function sellarD(){let b=sella(10,4,1.06,{supra:true});
+ b+=cardBox(330,8,304,118,"Adamantinomatous (เด็ก)",["มี calcification · cyst น้ำเหมือน machine oil","wet keratin · palisading · β-catenin (CTNNB1)"],CV.gold);
+ b+=cardBox(330,134,304,86,"Papillary (ผู้ใหญ่)",["ไม่มี calcification · BRAF V600E"],CV.teal);
+ b+=cardBox(330,228,304,86,"Rathke cleft cyst",["ciliated cuboidal epithelium · ขยายกดต่อม"],CV.violet);
+ b+=cardBox(8,282,310,92,"อาการ",["ปวดหัว · ลานสายตาผิด (กด chiasm)","เด็กโตช้า (GH ↓) · อาจมี DI"],EN.up);
+ return ESVG(b,"0 0 640 382")}
+
+/* ================= sections ================= */
+SEC.push({id:"pit-adenoma",k:"a",t:"Pituitary adenomas & hyperprolactinemia",mm:"Pituitary adenoma · prolactinoma",leg:[],tools:[["pa",[["prl","Prolactin"],["gh","GH"],["acth","ACTH"],["nf","Nonfunctioning"]]],["ps",[["mic","Micro"],["mac","Macro"]]]],draw:pitD,
+notes:()=>`<div class="pearl">เลือกชนิดและขนาดก้อน: ก้อน &gt; 1 cm กด optic chiasm จากด้านล่าง → เสียลานสายตาด้านนอกทั้งสองข้าง ${S.r}</div>
+<ul><li>สาเหตุที่พบบ่อยที่สุดของ hyperpituitarism คือ <b>adenoma ของ anterior lobe</b> · microadenoma &lt; 1 cm, macroadenoma &gt; 1 cm ${S.r}</li>
+<li>Histology: เซลล์<b>หน้าตาเดียวกันหมด (monomorphic)</b> และ<b>ไม่มี reticulin network</b> ต่างจากต่อมปกติที่มีเซลล์หลายชนิดปนกัน ${S.r}</li>
+<li><b>Lactotroph adenoma</b> พบบ่อยที่สุดในกลุ่มที่สร้างฮอร์โมน (~30%) · prolactin ทำให้ amenorrhea, galactorrhea, libido ↓, มีบุตรยาก ${S.r}</li>
+<li>Prolactin ถูก<b>กดตลอดเวลาด้วย dopamine</b> จาก hypothalamus · prolactin เองกด GnRH → ประจำเดือนไม่มา ${S.fa}</li>
+<li>Hyperprolactinemia ที่<b>ไม่ใช่ prolactinoma</b>: ตั้งครรภ์ ให้นม ความเครียด, ยาต้าน dopamine (antipsychotic), ก้อนกด stalk, hypothyroidism (TRH ↑), ไตวาย ${S.r} ${S.h}</li>
+<li>ก้อนที่ไม่สร้างฮอร์โมนแต่กด stalk ทำให้ prolactin สูงได้เล็กน้อย จึง<b>ไม่ได้แปลว่าเป็น prolactinoma เสมอ</b> ${S.r}</li>
+<li>รักษา prolactinoma ด้วย <b>dopamine agonist</b> (bromocriptine, cabergoline) ซึ่งทำให้ก้อนยุบ ${S.r} ${S.fa}</li>
+<li>Corticotroph adenoma = <b>Cushing disease</b> (มักเป็น microadenoma) · ผู้ที่ตัด adrenal ทั้งสองข้างอาจเกิด <b>Nelson syndrome</b>: ก้อนโต + ผิวคล้ำ แต่ไม่มี hypercortisolism ${S.r}</li>
+<li>Gonadotroph และ null cell adenoma มักไม่มีอาการฮอร์โมนเกิน → มาด้วยตามัว ปวดหัว และ hypopituitarism · ก้อนตกเลือดเฉียบพลัน = <b>pituitary apoplexy</b> ${S.r}</li>
+<li>Somatic <b>GNAS</b> mutation (Gsα ทำงานตลอด → cAMP ↑) พบใน ~40% ของ somatotroph adenoma · germline MEN1 ทำให้เกิด adenoma ได้หลายชนิด ${S.r}</li></ul>`});
+
+SEC.push({id:"siadh",k:"a",t:"Syndrome of inappropriate ADH secretion",mm:"SIADH",leg:[],tools:[["hy",[["siadh","SIADH"],["hypo","Hypovolemic"],["poly","Polydipsia"]]]],draw:siadhD,
+notes:()=>`<div class="pearl">แตะเทียบ: hyponatremia ทั้งสามแบบ serum osm ต่ำเหมือนกัน · แยกด้วย <b>urine osm, urine Na⁺ และ volume</b> ${S.h}</div>
+<ul><li>SIADH: free water คั่ง → <b>euvolemic hyponatremia</b> โดยไตยังขับ Na⁺ ต่อเนื่อง · <b>urine osm &gt; serum osm</b> ${S.fa}</li>
+<li>ร่างกายตอบสนองต่อน้ำที่คั่งด้วย aldosterone ↓ และ ANP/BNP ↑ → ขับ Na⁺ ทางปัสสาวะ → ECF กลับมาปกติ จึง<b>ไม่บวม</b> ${S.fa} ${S.r}</li>
+<li>Urine Na⁺ &gt; 30 mmol/L เข้ากับ SIAD · &lt; 20 เข้ากับ hypovolemia จากนอกไต · urine osm &lt; 100 บ่งชี้ polydipsia ${S.h}</li>
+<li>สาเหตุ (HEELD-up water): Head trauma/CNS, <b>Ectopic ADH</b> (small cell lung cancer), Exogenous hormone (desmopressin, oxytocin), Lung disease, Drugs (SSRI, carbamazepine, cyclophosphamide) ${S.fa}</li>
+<li>อาการหลักมาจาก hyponatremia → สมองบวม · ซึม สับสน ชัก ${S.r}</li>
+<li>ต้อง<b>ตัด adrenal insufficiency ออกก่อน</b>วินิจฉัย SIAD ${S.h}</li>
+<li>รักษา: <b>จำกัดน้ำ</b>เป็นอันดับแรก → urea หรือ tolvaptan · อาการทางสมองรุนแรง → hypertonic (3%) saline ทีละน้อย ${S.h}</li>
+<li>ยาต้าน ADH: conivaptan, tolvaptan, demeclocycline ${S.fa}</li></ul>`});
+
+SEC.push({id:"di",k:"a",t:"Diabetes insipidus vs primary polydipsia",mm:"DI · water deprivation test",leg:[],tools:[["di",[["pp","Primary polydipsia"],["cdi","Central DI"],["ndi","Nephrogenic DI"]]]],draw:diD,
+notes:()=>`<div class="pearl">กราฟคือ water deprivation test: งดน้ำแล้ววัด urine osm ทุกชั่วโมง → ให้ desmopressin ช่วงท้าย ${S.fa}</div>
+<ul><li>ทั้งสามโรคปัสสาวะมากและเจือจาง: urine specific gravity &lt; 1.006, urine osm มักต่ำกว่า 300 ${S.fa}</li>
+<li><b>Central DI</b> (AVP deficiency): ADH หลั่งไม่พอ จากบาดเจ็บศีรษะ เนื้องอก ผ่าตัด หรือ idiopathic ${S.fa} ${S.r}</li>
+<li><b>Nephrogenic DI</b> (AVP resistance): ไตไม่ตอบสนอง · V2-receptor mutation (X-linked), lithium, demeclocycline, hypercalcemia, hypokalemia ${S.fa} ${S.r}</li>
+<li>งดน้ำ: primary polydipsia เข้มข้นขึ้นมาก (&gt; 700 mOsm/kg) · DI ทั้งสองแบบเปลี่ยนน้อย ${S.fa}</li>
+<li>Desmopressin: central DI urine osm ขึ้น &gt; 50% · nephrogenic DI แทบไม่เปลี่ยน ${S.fa}</li>
+<li>Serum Na⁺/osm ใน DI สูง (เสียน้ำ) แต่ใน primary polydipsia ต่ำ · ผู้ป่วยที่หาน้ำดื่มเองไม่ได้เสี่ยงขาดน้ำรุนแรง ${S.r} ${S.fa}</li>
+<li>Central DI อาจหายเองถ้ารอยโรคอยู่ต่ำกว่า median eminence เพราะ ADH ยังหลั่งเข้าเลือดได้ที่ median eminence ${S.fa}</li>
+<li>ปัจจุบันใช้ copeptin (หลั่งคู่กับ AVP) ช่วยแยกโรคได้แม่นกว่า water deprivation test แบบเดิม ${S.h}</li>
+<li>รักษา: central → desmopressin · nephrogenic → แก้สาเหตุ, อาหาร solute ต่ำ, HCTZ, amiloride, indomethacin · polydipsia → จำกัดน้ำ ${S.fa}</li></ul>`});
+
+SEC.push({id:"hypopit",k:"a",t:"Hypopituitarism, Sheehan syndrome & empty sella",mm:"Hypopituitarism · Sheehan",leg:[],tools:[["hp",[["sheehan","Sheehan"],["empty","Empty sella"],["apop","Apoplexy"],["mass","Suprasellar mass"]]]],draw:hypopitD,
+notes:()=>`<ul><li>Anterior pituitary จะทำงานไม่พอเมื่อเนื้อต่อมเสียไปประมาณ <b>75%</b> ${S.r}</li>
+<li>สาเหตุ: ก้อนกด (nonfunctioning adenoma, craniopharyngioma), ผ่าตัด/ฉายแสง, บาดเจ็บศีรษะ, apoplexy, Sheehan, empty sella, โรคของ hypothalamus (sarcoidosis, TB) ${S.fa} ${S.r}</li>
+<li><b>Sheehan syndrome</b>: ระหว่างตั้งครรภ์ต่อม anterior โตเกือบ 2 เท่าแต่เลือดจาก portal system ความดันต่ำไม่เพิ่มตาม → ตกเลือดหลังคลอดหรือ shock ทำให้ infarct · posterior lobe ได้เลือดแดงโดยตรงจึงรอด ${S.r}</li>
+<li>Sheehan มาด้วย<b>ไม่มีน้ำนม</b> ประจำเดือนไม่มา ขี้หนาว ${S.fa}</li>
+<li><b>Primary empty sella</b>: diaphragma sellae บกพร่อง ให้ arachnoid และ CSF ดันลงมา · มักเป็นหญิงอ้วนที่ตั้งครรภ์หลายครั้ง · อาจมีลานสายตาผิดหรือ prolactin สูง ${S.r}</li>
+<li><b>Pituitary apoplexy</b>: เลือดออกเฉียบพลันในก้อน → ปวดหัวรุนแรงทันที เห็นภาพซ้อน (กดเส้นประสาทกลอกตา) และ hypopituitarism เฉียบพลัน = ภาวะฉุกเฉินทางประสาทศัลยกรรม ${S.r}</li>
+<li>Apoplexy อาจทำให้ hypoglycemia และความดันตกจาก ACTH ขาดเฉียบพลัน ${S.h}</li>
+<li>Hypopituitarism ที่มี <b>DI ร่วม</b> มักมาจาก hypothalamus ไม่ใช่ตัวต่อม ${S.r}</li>
+<li>อาการตามฮอร์โมนที่ขาด: GH → เด็กเตี้ย · LH/FSH → amenorrhea, libido ↓ · TSH → hypothyroid · ACTH → hypoadrenal · prolactin → ไม่มีน้ำนม · MSH ↓ → ผิวซีด ${S.r}</li>
+<li>รักษา: ให้ฮอร์โมนทดแทน (glucocorticoid, thyroxine, sex steroid, GH) ${S.fa}</li></ul>`});
+
+SEC.push({id:"acro",k:"a",t:"Acromegaly & gigantism",mm:"Acromegaly",leg:[],tools:[["og",[["n","Normal OGTT"],["a","Acromegaly OGTT"]]]],draw:acroD,
+notes:()=>`<div class="pearl">GH ต้องถูก<b>กดลง</b>หลังกินกลูโคส 75 g · acromegaly กดไม่ลง (บางรายกลับสูงขึ้น) ${S.h}</div>
+<ul><li>GH เกินในผู้ใหญ่ ส่วนใหญ่จาก somatotroph adenoma · GH กระตุ้นตับสร้าง <b>IGF-1</b> ซึ่งทำให้เกิดอาการส่วนใหญ่ ${S.fa} ${S.r}</li>
+<li>เด็กที่ epiphysis ยังไม่ปิด → <b>gigantism</b> (ตัวสูง แขนขายาว) · ผู้ใหญ่ → acromegaly ${S.r}</li>
+<li>อาการ: frontal bossing, ขากรรไกรยื่น (prognathism), ลิ้นโต, มือเท้าโต, เสียงทุ้ม, เหงื่อออกมาก, ข้อเสื่อม ${S.fa} ${S.r}</li>
+<li>Glucose intolerance (GH ต้าน insulin) · DM ~25% · HTN, LVH · <b>HFpEF/cardiomyopathy เป็นสาเหตุตายหลัก</b> ${S.fa} ${S.h}</li>
+<li>เสี่ยง colon polyp และมะเร็งลำไส้ใหญ่ · sleep apnea พบบ่อย ${S.h}</li>
+<li>วินิจฉัย: <b>IGF-1 สูง</b> (GH เดี่ยว ๆ แกว่งทั้งวันจึงใช้ไม่ได้) + GH ไม่ลดต่ำกว่า 0.4 µg/L หลัง OGTT + MRI เห็นก้อน ${S.fa} ${S.h}</li>
+<li>รักษา: ผ่าตัด adenoma · ไม่หาย → octreotide (somatostatin analog), pegvisomant (GH receptor antagonist), dopamine agonist ${S.fa}</li></ul>`});
+
+SEC.push({id:"thy-func",k:"b",t:"Hypothyroidism vs hyperthyroidism",mm:"Hypo vs hyperthyroid",leg:[],tools:[["tf",[["hypo","Hypothyroid"],["hyper","Hyperthyroid"]]]],draw:thyFuncD,
+notes:()=>`<ul><li>Thyroid hormone เพิ่ม basal metabolic rate · hyperthyroid ส่วนหนึ่งมาจาก<b>β-adrenergic tone ↑</b> (tremor, ใจสั่น, lid lag) ${S.r}</li>
+<li>Hypothyroid: ขี้หนาว เหงื่อน้อย น้ำหนักขึ้น · Na⁺ ↓ (ขับ free water ลดลง) ${S.fa}</li>
+<li><b>Myxedema</b>: glycosaminoglycan และ hyaluronic acid สะสมในผิวหนังและอวัยวะ → บวมกดไม่บุ๋ม หน้าหยาบ ลิ้นโต เสียงทุ้ม ${S.r} ${S.fa}</li>
+<li>Hypothyroid myopathy: CK ↑ · carpal tunnel · reflex คลายตัวช้า · LDL ↑ เพราะ LDL receptor ลด ${S.fa}</li>
+<li>Hyperthyroid: หัวใจเต้นเร็ว ใจสั่น · <b>AF</b> พบบ่อยในผู้สูงอายุ · หัวใจล้มเหลวได้ ${S.r}</li>
+<li>Hyperthyroid ทำให้<b>กระดูกพรุน</b> (T3 กระตุ้น osteoclast) · thyrotoxic myopathy มี CK ปกติ ${S.fa} ${S.r}</li>
+<li>Lid lag / stare จาก sympathetic กระตุ้นกล้ามเนื้อ superior tarsal (Müller) · <b>exophthalmos แท้มีเฉพาะ Graves</b> ${S.r}</li>
+<li>Hyperdefecation (ไม่ใช่ท้องเสียแท้) ตอบสนองต่อ β-blocker ${S.r}</li>
+<li><b>Apathetic hyperthyroidism</b>: ผู้สูงอายุอาการไม่ชัด มาด้วยน้ำหนักลดหรือหัวใจแย่ลง ${S.r}</li></ul>`});
+
+SEC.push({id:"thy-labs",k:"b",t:"Thyroid function tests: reading the axis",mm:"TSH · T4 patterns",leg:[],tools:[["tl",[["phypo","1° hypo"],["sub","Subclinical"],["central","Central hypo"],["graves","Graves"],["tsha","TSH adenoma"],["exo","Exogenous"],["sick","Euthyroid sick"]]]],draw:thyLabD,
+notes:()=>`<ul><li><b>TSH</b> คือการตรวจคัดกรองที่ไวที่สุด ทั้ง hypo และ hyperthyroidism เพราะเปลี่ยนตั้งแต่ระยะ subclinical ${S.r}</li>
+<li>Primary hypothyroidism: TSH ↑ จากการเสีย negative feedback · central hypothyroidism TSH ไม่ขึ้น ส่วน T4 ต่ำทุกสาเหตุ ${S.r}</li>
+<li>Hyperthyroid: TSH ↓ + free T4 ↑ · บางรายสูงแต่ T3 (T3 toxicosis) ต้องวัด T3 โดยตรง ${S.r}</li>
+<li>TSH-secreting adenoma (2° hyperthyroidism) พบน้อย: TSH ปกติหรือสูงทั้งที่ T4 สูง ${S.r}</li>
+<li>เมื่อยืนยัน thyrotoxicosis แล้ว <b>RAIU</b> บอกสาเหตุ: ↑ ทั่วต่อม (Graves), ก้อนเดียว (toxic adenoma), ↓ (thyroiditis) ${S.r}</li>
+<li>Euthyroid sick (nonthyroidal illness): ผู้ป่วยหนัก T3 ↓ โดย T4 และ TSH ปกติหรือต่ำ ${S.fa}</li>
+<li>Subclinical hypothyroid: TSH ↑ แต่ T4 ปกติ · ให้ levothyroxine เมื่อ TSH &gt; 10 mU/L ${S.fa}</li></ul>`});
+
+SEC.push({id:"thyroiditis",k:"b",t:"Thyroiditis: Hashimoto, painless, de Quervain & Riedel",mm:"Thyroiditis types",leg:[],tools:[["td",[["hashi","Hashimoto"],["pp","Postpartum / painless"],["dq","de Quervain"],["riedel","Riedel"]]]],draw:thyroiditisD,
+notes:()=>`<ul><li><b>Hashimoto</b>: สาเหตุ hypothyroidism อันดับ 1 ในพื้นที่ที่ iodine พอ · autoimmune ทำลายต่อมช้า ๆ (CD8 T cell, cytokine) · anti-TPO และ anti-thyroglobulin ⊕ ${S.r} ${S.fa}</li>
+<li>Hashimoto histology: lymphoid follicle มี germinal center + <b>Hürthle cell</b> (eosinophilic metaplasia) · fibrosis อยู่ใน capsule ${S.r}</li>
+<li>Hashimoto อาจเริ่มด้วย <b>hashitoxicosis</b> ชั่วคราว (follicle แตก ฮอร์โมนรั่ว RAIU ต่ำ) · เสี่ยง B-cell lymphoma ของต่อม ${S.r} ${S.fa}</li>
+<li>Hashimoto สัมพันธ์ HLA-DR3 และโรค autoimmune อื่น (T1DM, adrenalitis, SLE) ${S.fa} ${S.r}</li>
+<li><b>Postpartum/painless (subacute lymphocytic)</b>: autoimmune, มักมี anti-TPO · hyper → hypo → ปกติ ภายในปีแรกหลังคลอด · 1/3 กลายเป็น hypothyroid ถาวรใน 10 ปี ${S.fa} ${S.r}</li>
+<li><b>de Quervain (granulomatous)</b>: ตามหลังติดเชื้อไวรัส · ต่อม<b>เจ็บมาก</b> ปวดร้าวกราม · ESR ↑ · granuloma + giant cell · hyper → ปกติ → hypo → ปกติ หายเอง ${S.fa} ${S.r}</li>
+<li><b>Riedel</b>: fibrosis ลามออกนอกต่อมไปหลอดลม หลอดอาหาร → ก้อนแข็งเหมือนหินติดแน่น คล้ายมะเร็ง anaplastic · เป็นส่วนหนึ่งของ <b>IgG4-related disease</b> · hypothyroid 1/3 ${S.fa} ${S.r}</li>
+<li>ระยะ hyperthyroid ของ thyroiditis ทุกแบบ RAIU <b>ต่ำ</b> ${S.r} · รักษาอาการด้วย β-blocker (ไม่ใช่ antithyroid drug) · de Quervain รุนแรงให้ NSAID/steroid ${S.fa}</li></ul>`});
+
+SEC.push({id:"cong-hypo",k:"b",t:"Congenital hypothyroidism & other causes",mm:"Congenital & other causes",leg:[],draw:congD,
+notes:()=>`<ul><li>Congenital hypothyroidism (เดิมเรียก cretinism) ในพื้นที่ที่ iodine พอ ส่วนใหญ่มาจาก <b>thyroid dysgenesis</b> (agenesis, hypoplasia, ectopy) หรือ <b>dyshormonogenesis</b> เช่น TPO mutation ${S.fa}</li>
+<li>6 P's: Pot-bellied, Pale, Puffy face, Protruding umbilicus, Protuberant tongue, Poor brain development ${S.fa}</li>
+<li>ความรุนแรงของสมองขึ้นกับ<b>ช่วงเวลา</b>: T4 ของแม่ผ่านรกและจำเป็นต่อสมองก่อนต่อมทารกทำงาน · ขาดช่วงหลังไม่กระทบสมอง ${S.r}</li>
+<li><b>ขาด iodine</b> เป็นสาเหตุ hypothyroidism อันดับ 1 ทั่วโลก มักมี goiter ${S.fa}</li>
+<li>Iodine เกิน (<b>Wolff-Chaikoff</b>) กดการสร้างฮอร์โมน · ยา amiodarone, lithium ${S.fa}</li>
+<li>Hypothyroid จากการรักษา: ผ่าตัด, radioiodine, ฉายแสงที่คอ, thionamide · central hypothyroid จาก pituitary/hypothalamus พบน้อย ${S.r}</li></ul>`});
+
+SEC.push({id:"graves",k:"b",t:"Graves disease",mm:"Graves",leg:[],tools:[["gv",[["n","Normal thyroid"],["g","Graves thyroid"]]]],draw:gravesD,
+notes:()=>`<ul><li>สาเหตุ hyperthyroidism ที่พบบ่อยที่สุด (~85%) · หญิงมากกว่าชายถึง ~10 เท่า อายุ 20–40 ปี ${S.r}</li>
+<li>Triad: <b>thyrotoxicosis + diffuse goiter</b>, ophthalmopathy (exophthalmos), dermopathy (pretibial myxedema บางราย) ${S.r}</li>
+<li><b>TSI</b> (IgG) จับ TSH receptor แล้วกระตุ้นเหมือน TSH → type II hypersensitivity · ผ่านรกได้ ทำให้ทารกแรกเกิด hyperthyroid ชั่วคราว ${S.fa} ${S.r}</li>
+<li>Exophthalmos: T cell ใน retro-orbit หลั่ง cytokine → fibroblast สร้าง GAG ดูดน้ำ + กล้ามเนื้อตาบวมอักเสบ + ไขมันเพิ่ม · อาจแย่ต่อแม้คุม thyrotoxicosis ได้ ${S.fa} ${S.r}</li>
+<li>Histology: follicular cell <b>สูงและแน่น</b> ยื่นเป็น papilla ที่ไม่มี fibrovascular core · colloid ซีด <b>ขอบหยัก (scalloped)</b> · lymphoid infiltrate ${S.r} ${S.fa}</li>
+<li>มักเริ่มช่วง stress เช่น ตั้งครรภ์ · สัมพันธ์ HLA-DR3, HLA-B8 ${S.fa}</li>
+<li>Lab: free T4/T3 ↑, TSH ↓, <b>RAIU ↑ ทั่วต่อม</b> · อาจได้ยิน bruit ที่ต่อม ${S.r}</li>
+<li>รักษา: β-blocker คุมอาการ + thionamide, radioiodine หรือผ่าตัด · orbitopathy ใช้ glucocorticoid ${S.r} ${S.fa}</li></ul>`});
+
+SEC.push({id:"thyrotox",k:"b",t:"Thyrotoxicosis: RAIU patterns, toxic nodules & thyroid storm",mm:"Toxic nodules · storm",leg:[],tools:[["tt",[["graves","Graves"],["tmng","Toxic MNG"],["toxad","Toxic adenoma"],["thyr","Thyroiditis"],["exo","Exogenous"]]]],draw:thyrotoxD,
+notes:()=>`<ul><li>Thyrotoxicosis = ฮอร์โมนสูงในเลือด · hyperthyroidism (ต่อมสร้างเพิ่ม) เป็นแค่สาเหตุหนึ่ง · thyroiditis และฮอร์โมนจากนอกต่อมทำให้ thyrotoxic โดยต่อมไม่ได้สร้างเพิ่ม ${S.r}</li>
+<li><b>Toxic multinodular goiter</b>: follicle บางกลุ่มทำงานเองโดยไม่ขึ้นกับ TSH (TSH receptor mutation ~60%) · hot nodule แทบไม่เป็นมะเร็ง ${S.fa} ${S.r}</li>
+<li>Toxic adenoma และ toxic MNG มี gain-of-function ของ TSHR หรือ GNAS · ไม่ใช่รอยโรคก่อนมะเร็ง ${S.r}</li>
+<li>สาเหตุอื่น: กินฮอร์โมนเอง (ลดน้ำหนัก), struma ovarii, <b>Jod-Basedow</b> (iodine/contrast), amiodarone, lithium ${S.fa}</li>
+<li>Thyroglobulin สูงในแทบทุกสาเหตุของ thyrotoxicosis (สูงมากใน thyroiditis) ยกเว้น<b>กินฮอร์โมนเอง</b>ที่ thyroglobulin ต่ำ ${S.h}</li>
+<li><b>Thyroid storm</b>: hyperthyroid ที่ไม่ได้รักษา/คุมไม่ดี + stress (ติดเชื้อ ผ่าตัด) → ไข้ สับสน ท้องเสีย tachyarrhythmia · ตายจาก arrhythmia ${S.fa} ${S.r}</li>
+<li>รักษา storm (4 P's): <b>P</b>ropranolol, <b>P</b>TU, <b>P</b>rednisolone, <b>P</b>otassium iodide ${S.fa}</li>
+<li>PTU เป็นยาที่เลือกใน storm เพราะกด T4 → T3 ด้วย · ให้ iodide <b>หลัง</b> PTU ~1 ชม. เพื่อไม่ให้ iodine ไปสร้างฮอร์โมนใหม่ · อัตราตายยังสูง ${S.h}</li></ul>`});
+
+SEC.push({id:"goiter",k:"c",t:"Goiter & thyroid adenoma",mm:"Goiter · adenoma",leg:[],tools:[["gt",[["diffuse","Diffuse"],["mng","Multinodular"],["aden","Adenoma"]]]],draw:goiterD,
+notes:()=>`<ul><li>Goiter ส่วนใหญ่มาจากการสร้างฮอร์โมนไม่พอ (ขาด iodine) → TSH ↑ → follicle hypertrophy/hyperplasia ${S.r}</li>
+<li>Goitrogen: ผักตระกูลกะหล่ำ, มันสำปะหลัง (thiocyanate กดการขนส่ง iodide) ${S.r}</li>
+<li>Simple goiter ส่วนใหญ่ <b>euthyroid</b> · อาการมาจากก้อน: กลืน หายใจลำบาก, SVC ถูกกด · plunging goiter ลงหลังกระดูกอก ${S.r}</li>
+<li>Goiter นาน ๆ แทบทั้งหมดกลายเป็น multinodular · ~10% ใน 10 ปีเกิดก้อน autonomous = toxic MNG (Plummer) · มะเร็ง &lt; 5% ${S.r}</li>
+<li>สาเหตุ goiter เรียบ: Graves, Hashimoto, ขาด iodine, TSH adenoma · เป็นก้อน: toxic MNG, adenoma, มะเร็ง, cyst ${S.fa}</li>
+<li><b>Follicular adenoma</b>: ก้อนเดียว มี capsule สมบูรณ์ · ส่วนมากไม่ทำงาน (cold) · ไม่มี capsular/vascular invasion ซึ่งต่างจาก follicular carcinoma ${S.fa} ${S.r}</li>
+<li>FNA แยก adenoma กับ follicular carcinoma ไม่ได้ ต้องดู capsule ทั้งก้อนหลังผ่าตัด ${S.r}</li></ul>`});
+
+SEC.push({id:"thy-ca",k:"c",t:"Thyroid cancers",mm:"Thyroid cancer",leg:[],tools:[["tc",[["pap","Papillary"],["fol","Follicular"],["med","Medullary"],["ana","Anaplastic"]]]],draw:thyCaD,
+notes:()=>`<ul><li>มะเร็งไทรอยด์วินิจฉัยด้วย <b>FNA</b> และรักษาด้วย thyroidectomy ${S.fa}</li>
+<li><b>Papillary</b> (~85%): papilla มี fibrovascular core, nuclei ใสเหมือนกระจกฝ้า (<b>Orphan Annie</b>), nuclear groove/pseudo-inclusion, <b>psammoma body</b> · ลาม lymphatic ไปต่อมน้ำเหลืองที่คอ แต่พยากรณ์ยังดี ${S.r} ${S.fa}</li>
+<li>Papillary สัมพันธ์ <b>RET/PTC</b>, NTRK1 fusion, <b>BRAF V600E</b> และรังสีในวัยเด็ก (เช่น หลัง Chernobyl) ${S.r}</li>
+<li><b>Follicular</b>: follicle สม่ำเสมอ ต้องมี <b>capsular หรือ vascular invasion</b> · ลาม<b>ทางเลือด</b> (กระดูก ปอด) · RAS, PAX8-PPARγ · พบมากในพื้นที่ขาด iodine ${S.r} ${S.fa}</li>
+<li><b>Medullary</b>: จาก parafollicular C cell · หลั่ง <b>calcitonin</b> · amyloid stroma (Congo red ⊕) · ~70% sporadic ที่เหลือใน MEN 2A/2B (RET) · hypocalcemia ไม่เด่น ${S.r} ${S.fa}</li>
+<li>Familial medullary มี C-cell hyperplasia รอบก้อนและหลายจุด · RET carrier ควร<b>ตัดต่อมป้องกัน</b> ${S.r}</li>
+<li><b>Anaplastic</b>: ผู้สูงอายุ ก้อนโตเร็ว กดทางเดินหายใจ · ส่วนใหญ่ dedifferentiate จาก papillary/follicular (TP53) · ตายใน &lt; 1 ปี ${S.r} ${S.fa}</li>
+<li>ติดตามหลังผ่าตัด follicular/papillary ด้วย serum thyroglobulin และให้ thyroid hormone กด TSH ${S.r}</li>
+<li>ผ่าตัด: hypocalcemia (ตัด parathyroid), recurrent laryngeal n. (ผูก inferior thyroid a.) → เสียงแหบ, external branch superior laryngeal n. → เสียงสูงหาย ${S.fa}</li></ul>`});
+
+SEC.push({id:"nodule-wu",k:"c",t:"Thyroid nodule work-up",mm:"Nodule work-up",leg:[],tools:[["nw",[["hot","Low TSH · hot"],["benign","FNA benign"],["indet","FNA indeterminate"],["malig","FNA malignant"]]]],draw:noduleD,
+notes:()=>`<div class="pearl">ขั้นแรกเสมอคือ <b>TSH</b>: ต่ำ → scan หา hot nodule · ปกติ/สูง → ultrasound แล้ว FNA ตามขนาดและลักษณะ ${S.h} ${S.fa}</div>
+<ul><li>ก้อนไทรอยด์พบบ่อยมาก ส่วนใหญ่ (~95%) ไม่ใช่มะเร็ง · adenoma มากกว่ามะเร็ง ~10:1 ${S.fa} ${S.r}</li>
+<li>สงสัยมะเร็งมากขึ้น: ก้อนเดี่ยว, อายุน้อยหรือชาย, ฉายรังสีที่คอตอนเด็ก, cold nodule, ก้อนแข็งติดแน่น โตเร็ว เสียงแหบ ${S.r} ${S.fa}</li>
+<li><b>Hot nodule</b> แทบไม่เป็นมะเร็ง จึงไม่ต้อง FNA ${S.h}</li>
+<li>Ultrasound ใช้ระบบ risk stratification (เช่น TI-RADS) · ก้อน &lt; 1 cm ไม่ทำ FNA เป็นประจำ เว้นมีต่อมน้ำเหลืองผิดปกติ ${S.h}</li>
+<li>ผล FNA รายงานแบบ <b>Bethesda</b> 6 ระดับ · AUS/FN → FNA ซ้ำหรือ molecular test · malignant → ผ่าตัด ${S.h}</li>
+<li>Benign → ติดตามด้วยการตรวจและ ultrasound ${S.fa}</li>
+<li>สงสัย medullary → ตรวจ calcitonin ${S.fa}</li></ul>`});
+
+SEC.push({id:"sellar",k:"a",t:"Craniopharyngioma & other sellar masses",mm:"Craniopharyngioma",leg:[],draw:sellarD,
+notes:()=>`<ul><li>Craniopharyngioma เกิดจากเศษของ <b>Rathke pouch</b> · ส่วนใหญ่อยู่เหนือ sella · อายุสองช่วง: เด็ก 5–15 ปี และผู้ใหญ่ ≥ 65 ปี ${S.r}</li>
+<li>Adamantinomatous (เด็ก): มี <b>calcification</b>, cyst ที่มีน้ำข้นสีน้ำตาลเหมือน “machine oil”, wet keratin, peripheral palisading · CTNNB1 (β-catenin) ${S.r}</li>
+<li>Papillary (ผู้ใหญ่): ไม่ค่อยมี calcification · BRAF V600E (มียามุ่งเป้า) ${S.r}</li>
+<li>อาการ: ปวดหัว ตามัว (กด chiasm) · เด็กโตช้าจาก GH ขาด · ก้อนบริเวณนี้ทำให้ hypo/hyperfunction ของ pituitary และ DI ได้ ${S.r}</li>
+<li>Rathke cleft cyst: บุด้วย ciliated cuboidal epithelium · สะสมสารโปรตีนจนกดต่อม ${S.r}</li></ul>`});
+
+const EXTRA=["sellar"];
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

@@ -163,7 +163,7 @@ function dkaD(){const d=DK[ST.dk];let b="";
 /* ---------- 11. chronic complications ---------- */
 const CMP={micro:{n:"Microvascular",k:["eye","kid","nerve"],t:"basement membrane หนา · hyaline arteriolosclerosis"},macro:{n:"Macrovascular",k:["heart","brain","leg"],t:"atherosclerosis เร็วและรุนแรง · MI = สาเหตุตายอันดับ 1"},polyol:{n:"Osmotic (polyol)",k:["lens","nerve"],t:"sorbitol คั่งในเซลล์ที่ไม่ต้องใช้ insulin นำกลูโคสเข้า"}};
 function dmCompD(){const d=CMP[ST.cm],on=x=>d.k.includes(x);let b=bodyFig(168,8,.8,{});const bp=(x,y)=>[168+.8*x,8+.8*y];
- const C=[["eye",[91,48],[10,40],"Retinopathy · cataract"],["brain",[100,24],[10,16],"Stroke"],["heart",[110,140],[10,120],"CAD / MI"],["kid",[86,200],[10,200],"Nephropathy (KW nodule)"],["nerve",[150,240],[10,262],"Neuropathy · gastroparesis"],["leg",[84,360],[10,330],"PAD · gangrene · แผลเท้า"],["lens",[109,48],[10,72],"Cataract (sorbitol)"]];
+ const C=[["eye",[91,48],[10,40],"Retinopathy"],["brain",[100,24],[10,16],"Stroke"],["heart",[110,140],[10,120],"CAD / MI"],["kid",[86,200],[10,200],"Nephropathy"],["nerve",[150,240],[10,262],"Neuropathy"],["leg",[84,360],[10,330],"PAD · gangrene"],["lens",[109,48],[10,72],"Cataract"]];
  C.forEach(([k,p,l,t])=>{const [x1,y1]=bp(...p),c=on(k)?EN.up:"var(--sb-line)";b+=`<path d="M${x1},${y1} L${l[0]+156},${l[1]}" style="stroke:${c};stroke-width:${on(k)?1.6:1}"/>`+dot(x1,y1,on(k)?4:2.4,on(k)?EN.up:EN.nl)+`<g style="opacity:${on(k)?1:.35}">`+T(l[0]+152,l[1]+4,t,{a:"end",c:on(k)?"bh":"s"})+`</g>`});
  b+=`<rect x="344" y="8" width="290" height="70" rx="14" style="fill:color-mix(in srgb,${EN.up} 9%,var(--sb-surface));stroke:var(--sb-line)"/>`+T(358,32,d.n,{a:"start",c:"bh"})+wrapT(358,52,d.t,44,"s",14);
  /* polyol pathway */
