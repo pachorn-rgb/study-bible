@@ -1,5 +1,17 @@
 [
  {
+  "v": "6.43",
+  "date": "2026-11-12",
+  "th": [
+   "บทไตมีแท็บใหม่ Microbiology · atlas “Urinary Tract Microbiology” 13 หัวข้อ: เชื้อก่อโรคตามสถานการณ์ผู้ป่วย, Enterobacterales (E. coli/UPEC, Klebsiella, Proteus), S. saprophyticus และ Enterococcus, Pseudomonas, Candida และ TB ในปัสสาวะ",
+   "กลไกก่อโรค: การยึดเกาะด้วย P fimbriae ทางขึ้นของเชื้อ ด่านป้องกันของร่างกาย และ biofilm บนสายสวน",
+   "งานห้องปฏิบัติการ: การเก็บปัสสาวะเพาะเชื้อ (midstream · catheter · suprapubic), quantitative culture และเกณฑ์ asymptomatic bacteriuria ตาม IDSA 2019, ทางแยกการแยกชนิดเชื้อ, การทดสอบความไวต่อยา (MIC · disk · breakpoint ตาม CLSI M100-Ed36 และ EUCAST v16.1) และกลไกดื้อยา ESBL · carbapenemase · VRE",
+   "ส่วนเสริม: BK virus, adenovirus hemorrhagic cystitis และ Schistosoma haematobium",
+   "เพิ่มคำถาม 46 ข้อ, Case Ladder 2 เคส (เพาะเชื้อปัสสาวะในหญิงสาว · คาสายสวนจนเกิดนิ่ว) และ Dx Daily 6 โรคใหม่",
+   "เพิ่มทางลัดใน Microbiology › Systems และ badge แหล่งอ้างอิงใหม่: Murray (Mu), Harr (Hr), Ridley (Rd)"
+  ]
+ },
+ {
   "v": "6.42",
   "date": "2026-11-10",
   "th": [

@@ -1,0 +1,577 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Renal Microbiology</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Microbiology</div>
+    <h1>Urinary Tract Microbiology</h1>
+    <p class="sb-lede">เชื้อก่อโรคทางเดินปัสสาวะในมุมจุลชีววิทยา · ตัวเชื้อ กลไกก่อโรค และงานห้องปฏิบัติการตั้งแต่เก็บสิ่งส่งตรวจ เพาะเชื้อ แยกชนิด จนถึงทดสอบความไวต่อยา · กลุ่มอาการทางคลินิกและการรักษาอยู่ในหมวด Infectious Disease (ภายหลัง) · ลองสลับสถานการณ์ผู้ป่วยเพื่อดูว่าเชื้อตัวไหนเด่น และไล่ทางแยกชนิด gram-positive cocci ทีละขั้น</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 14–19, 22, 25, 27, 41–42, 65, 75</span><span class="sb-src"><i class="harr">Hr</i>Harr Clinical Laboratory Science Review 5e (2019) · §7.1, 8.2–8.5, 8.12</span><span class="sb-src"><i class="ridley">Rd</i>Ridley, Fundamentals of the Study of Urine and Body Fluids (Springer 2018)</span><span class="sb-src"><i class="gen">GL</i>Guidelines: IDSA ASB 2019 · CLSI M100-Ed36 (2026) · EUCAST v16.1 (2026)</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "renal-micro", "kind": "patho", "sys": "Renal", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ================= Renal Microbiology · Urinary tract pathogens & diagnostic microbiology =================
+   Organisms → pathogenesis → diagnostic microbiology (the Microbiology "Systems" view of the urinary tract).
+   Murray Medical Microbiology 9e (printed page numbers) · Harr Clinical Laboratory Science Review 5e (section + question)
+   Guideline-dependent statements are flagged and cite IDSA ASB 2019, CLSI M100-Ed36 (2026), EUCAST v16.1 (2026).
+   Clinical UTI syndromes and treatment belong to the future Infectious Disease discipline, not here.
+   All drawings are original schematics. */
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>',hr:'<b class="sbb harr">Hr</b>',rd:'<b class="sbb ridley">Rd</b>',gl:'<b class="sbb gen">GL</b>'});
+Object.assign(GN,{a:"Organisms",b:"Pathogenesis",c:"Diagnostic microbiology"});
+Object.assign(ST,{up:"comm",eb:"ecoli",gc:"sapro",ps:"gen",fm:"candida",vr:"adh",bf:"1",sp:"mid",cu:"plate",idt:"gn",as:"mic",rs:"esbl",ot:"bk"});
+
+/* ---------- shared bits ---------- */
+const RMC={gn:"#C2185B",gp:"#6B4FC8",fu:"#B7791F",af:"#C2410C",vi:"#0E8A7E"};
+const rmF=(c,p=20)=>`fill:color-mix(in srgb,${c} ${p}%,var(--sb-surface));stroke:${c}`;
+const rmL=(x,y,s,o)=>ST.labels?T(x,y,s,o):"";
+const LO=a=>`<div class="pearl"><b>เป้าหมายของหัวข้อนี้</b><ul style="margin:.35rem 0 0;padding-left:1.05rem">${a.map(x=>`<li>${x}</li>`).join("")}</ul></div>`;
+const XL=(m,h,t)=>`<a href="../#/v/${m}/${h}" target="_top">${t} ↗</a>`;
+const FLAG='<b style="color:var(--sb-warn)" title="ขึ้นกับ guideline ฉบับปัจจุบัน">⚑</b>';
+/* bug glyphs */
+function rmBug(x,y,t,c,k=1){const st=rmF(c,55)+";stroke-width:1.2";
+ if(t==="rod")return `<rect x="${x-11*k}" y="${y-5*k}" width="${22*k}" height="${10*k}" rx="${5*k}" style="${st}"/>`;
+ if(t==="cl")return [[-4,-3],[4,-3],[0,3],[-7.5,3.5],[7.5,3.5]].map(([a,b])=>`<circle cx="${x+a*k}" cy="${y+b*k}" r="${3.6*k}" style="${st}"/>`).join("");
+ if(t==="ch")return [-10.5,-3.5,3.5,10.5].map(a=>`<circle cx="${x+a*k}" cy="${y}" r="${3.4*k}" style="${st}"/>`).join("");
+ if(t==="yeast")return `<ellipse cx="${x-2*k}" cy="${y+1*k}" rx="${7*k}" ry="${5.5*k}" style="${st}"/><ellipse cx="${x+7*k}" cy="${y-4*k}" rx="${3.6*k}" ry="${3*k}" style="${st}"/>`;
+ return `<path d="M${x-11*k},${y+2*k} Q${x},${y-5*k} ${x+11*k},${y+1*k}" style="fill:none;stroke:${c};stroke-width:${3.4*k};stroke-linecap:round"/>`}
+/* kidney → ureter → bladder outline, used by the ascending-route view */
+function rmKUB(x,y,sc=1){const k=v=>v*sc;
+ return `<path d="${bean(x,y+k(54),k(80),k(112),-1,.12)}" style="fill:color-mix(in srgb,#B4533C 18%,var(--sb-surface));stroke:#B4533C;stroke-width:1.8"/>`
+ +`<path d="M${x-k(24)},${y+k(104)} C${x-k(8)},${y+k(158)} ${x-k(2)},${y+k(196)} ${x+k(2)},${y+k(226)}" style="fill:none;stroke:#B4533C;stroke-width:${k(5)};stroke-linecap:round;opacity:.8"/>`
+ +`<ellipse cx="${x+k(6)}" cy="${y+k(258)}" rx="${k(52)}" ry="${k(34)}" style="fill:color-mix(in srgb,#D9A21B 16%,var(--sb-surface));stroke:#B07D12;stroke-width:1.8"/>`
+ +`<path d="M${x+k(6)},${y+k(292)} L${x+k(6)},${y+k(322)}" style="fill:none;stroke:#B07D12;stroke-width:${k(5)};stroke-linecap:round"/>`}
+const rmLeg=y=>[["gn","rod","Gram −"],["gp","cl","Gram +"],["fu","yeast","Yeast"],["af","afb","Acid-fast"]].map(([g,t,l],i)=>rmBug(58+i*152,y,t,RMC[g])+T(78+i*152,y+4,l,{a:"start",c:"s"})).join("");
+
+/* ---------- 1. uropathogen line-up ---------- */
+const UPS={comm:["ชุมชน · หญิงวัยเจริญพันธุ์","UPEC เด่นที่สุด · S. saprophyticus"],
+ hosp:["นอนโรงพยาบาลนาน · ได้ยาปฏิชีวนะกว้าง · คาสายสวน","Enterococcus · CoNS · P. aeruginosa · K. pneumoniae · Candida"],
+ stone:["นิ่วจากเชื้อที่สร้าง urease","P. mirabilis · Morganella · K. pneumoniae · C. urealyticum · S. saprophyticus"],
+ hem:["มาทางกระแสเลือด → renal abscess","S. aureus · M. tuberculosis"]};
+const UP=[["E. coli (UPEC)","gn","rod","cystitis + pyelonephritis",["comm"]],
+ ["P. mirabilis","gn","rod","urease ⊕ · swarm",["comm","stone"]],
+ ["S. saprophyticus","gp","cl","CoNS · novobiocin-resistant",["comm","stone"]],
+ ["Group B Streptococcus","gp","ch","หญิงตั้งครรภ์",["comm"]],
+ ["Enterococcus spp.","gp","ch","นอน รพ. นาน + ยากว้าง",["hosp"]],
+ ["CoNS (S. epidermidis)","gp","cl","slime บนสายสวน/shunt",["hosp"]],
+ ["P. aeruginosa","gn","rod","nonfermenter · oxidase ⊕",["hosp"]],
+ ["K. pneumoniae","gn","rod","capsule · nosocomial",["hosp","stone"]],
+ ["Candida spp.","fu","yeast","สายสวน · เบาหวาน · อุดกั้น",["hosp"]],
+ ["Morganella morganii","gn","rod","urease ⊕",["stone"]],
+ ["C. urealyticum","gp","rod","Gram + rod · urease ⊕",["stone"]],
+ ["S. aureus","gp","cl","coagulase ⊕ · seeding ทางเลือด",["hem"]],
+ ["M. tuberculosis","af","afb","แยกจาก GU tract ได้ยาก",["hem"]]];
+function upathD(){const s=ST.up,[h,d]=UPS[s];
+ let b=`<rect class="box" x="16" y="12" width="608" height="56" rx="12" style="fill:var(--sb-accent-soft);stroke:var(--sb-accent);stroke-width:1.6"/>`+T(320,38,h,{c:"bh"})+T(320,58,d,{c:"s"});
+ UP.forEach(([n,g,t,sub,set],i)=>{const x=18+(i%2)*304,y=82+Math.floor(i/2)*50,on=set.includes(s);
+  b+=`<g style="opacity:${on?1:.28}"><rect x="${x}" y="${y}" width="296" height="42" rx="10" style="${rmF(RMC[g],on?16:5)};stroke-width:${on?1.8:1}"/>`
+   +rmBug(x+26,y+21,t,RMC[g])+T(x+46,y+18,n,{a:"start",c:"bh"})+rmL(x+46,y+34,sub,{a:"start",c:"s m"})+`</g>`});
+ return svg(b,"0 0 640 440")}
+SEC.push({id:"upath",k:"a",t:"Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",mm:"Uropathogen line-up",leg:[],
+ tools:[["up",[["comm","ชุมชน"],["hosp","โรงพยาบาล"],["stone","นิ่ว"],["hem","ทางเลือด"]]]],draw:upathD,
+notes:()=>`${LO(["บอกเชื้อก่อโรคทางเดินปัสสาวะที่พบบ่อยตามบริบทผู้ป่วย (ชุมชน · โรงพยาบาล · นิ่ว · มาทางเลือด)","จับคู่เชื้อกับลักษณะพื้นฐานทาง Gram stain และข้อมูลระบาดวิทยา"])}
+<ul><li>Enterobacterales (วงศ์ Enterobacteriaceae) เป็นสาเหตุของการติดเชื้อทางเดินปัสสาวะ <b>มากกว่า 70%</b> ${S.mu}</li>
+<li>รายชื่อเชื้อที่ก่อ <b>cystitis และ pyelonephritis</b> ตามตารางสรุปของ Murray: E. coli, P. mirabilis และ Enterobacterales อื่น, P. aeruginosa, S. saprophyticus, S. aureus, S. epidermidis, group B Streptococcus, Enterococcus spp., Aerococcus urinae, M. tuberculosis ${S.mu}</li>
+<li><b>นิ่วจากการติดเชื้อ (renal calculi)</b>: P. mirabilis, Morganella morganii, K. pneumoniae, C. urealyticum, S. saprophyticus, Ureaplasma urealyticum — ทั้งกลุ่มนี้สร้าง urease ${S.mu}</li>
+<li><b>Renal abscess</b>: S. aureus, เชื้อ anaerobe/aerobe ผสม, M. tuberculosis ${S.mu}</li>
+<li><b>E. coli ชนิด uropathogenic (UPEC)</b> ถูกจัดเป็น pathotype ที่ก่อ cystitis และ pyelonephritis โดยเฉพาะ · ระบาดวิทยาเด่นในหญิงที่มีเพศสัมพันธ์ ${S.mu}</li>
+<li><b>Enterococcus faecalis / faecium</b>: UTI ในผู้สูงอายุและผู้ที่นอนโรงพยาบาลนานโดยได้ยาปฏิชีวนะกว้าง ${S.mu}</li>
+<li><b>CoNS</b>: wound infection, UTI, การติดเชื้อที่สายสวนและ shunt และอุปกรณ์เทียม ${S.mu}</li>
+<li><b>K. pneumoniae</b>: ปอดอักเสบและ UTI · มักเป็นการติดเชื้อในโรงพยาบาล ${S.mu} · <b>P. aeruginosa</b>: UTI เป็นหนึ่งในกลุ่มโรคที่ก่อ ${S.mu}</li>
+<li><b>Group B Streptococcus</b> (S. agalactiae) ก่อ UTI ในหญิงตั้งครรภ์ (ร่วมกับ endometritis และ wound infection) ${S.mu}</li>
+<li>พยาธิสภาพของ pyelonephritis และ cystitis ดูที่ ${XL("renal-patho-2","pyelo","Pyelonephritis & UTI")} และ ${XL("renal-patho-2","cystitis","Cystitis")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Table 15.1 p152–154, Table 15.2 p157, Ch 25 p258</p>`});
+
+/* ---------- 2. Enterobacterales ---------- */
+const EB={ecoli:{n:"E. coli (UPEC)",mu:0,sw:0,t:["Lactose ⊕ → colony แบนสีชมพูบน MacConkey มีวง bile precipitate","Indole ⊕ · ส่วนใหญ่เคลื่อนที่ได้","Adhesin เด่น: P pili, Dr fimbriae, AAF","Hemolysin HlyA → cytokine + การอักเสบ"]},
+ kleb:{n:"K. pneumoniae",mu:1,sw:0,t:["Lactose ⊕ · colony mucoid (เปียก นูน หนืด)","Capsule หนา → virulence สูงขึ้น","ไม่เคลื่อนที่","สายพันธุ์ดื้อ β-lactam รวมถึง carbapenem เพิ่มขึ้น"]},
+ prot:{n:"P. mirabilis",mu:0,sw:1,t:["Lactose ⊖ → colony ไม่มีสีบน MacConkey","Swarming บน blood agar","Urease ⊕ · motility ⊕ · indole ⊖","Urease → นิ่ว struvite/apatite"]}};
+function ebD(){const s=ST.eb,d=EB[s];
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,d.n,{c:"bb"});
+ /* left: colony on plate */
+ b+=`<circle cx="166" cy="198" r="104" style="fill:color-mix(in srgb,#C9B79C 22%,var(--sb-surface));stroke:#8C7F6B;stroke-width:2"/>`;
+ const cc=s==="prot"?"#D8CDB8":"#D9568C";
+ if(d.sw){for(let i=1;i<=4;i++)b+=`<circle cx="166" cy="198" r="${20*i}" style="fill:none;stroke:${cc};stroke-width:7;opacity:${.75-i*.1}"/>`;b+=rmL(166,328,"swarming เป็นวงซ้อน",{c:"s"})}
+ else{[[132,172],[196,164],[152,228],[204,216],[124,206]].forEach(([x,y])=>{b+=`<circle cx="${x}" cy="${y}" r="${d.mu?17:12}" style="fill:${cc};opacity:${d.mu?.85:.95}"/>`;if(d.mu)b+=`<circle cx="${x}" cy="${y}" r="22" style="fill:none;stroke:${cc};stroke-width:1.4;stroke-dasharray:4 3"/>`});
+  b+=rmL(166,330,d.mu?"colony mucoid":"colony แบน",{c:"s"})}
+ b+=rmL(166,80,s==="prot"?"Blood agar":"MacConkey agar",{c:"h"});
+ /* right: cell schematic + traits */
+ b+=`<rect x="352" y="104" width="252" height="62" rx="31" style="${rmF(RMC.gn,26)};stroke-width:2"/>`;
+ if(s==="ecoli")[-80,-40,0,40,80].forEach(dx=>{b+=`<path d="M${478+dx},${104} L${478+dx*1.2},${72}" style="stroke:${RMC.gn};stroke-width:1.6"/><circle cx="${478+dx*1.2}" cy="72" r="4.5" style="fill:var(--sb-accent)"/>`});
+ if(s==="kleb")b+=`<ellipse cx="478" cy="135" rx="142" ry="54" style="fill:none;stroke:${RMC.gn};stroke-width:1.6;stroke-dasharray:6 4"/>`;
+ if(s==="prot"){[-96,-48,0,48,96].forEach(dx=>{b+=`<path d="M${478+dx},${166} q6,22 -4,38" style="fill:none;stroke:${RMC.gn};stroke-width:1.4"/>`});
+  b+=`<circle cx="568" cy="76" r="20" style="${rmF("#2E9E6B",22)};stroke-width:1.6"/>`+T(568,81,"urease",{c:"s"})}
+ if(s==="ecoli")b+=rmL(478,196,"P fimbriae: ปลายเป็น adhesin",{c:"s"});
+ if(s==="kleb")b+=rmL(478,196,"capsule",{c:"s"});
+ if(s==="prot")b+=rmL(478,220,"flagella → swarm",{c:"s"});
+ d.t.forEach((x,i)=>{const y=242+i*46;b+=`<rect x="330" y="${y}" width="294" height="40" rx="9" class="box"/>`+wrapT(344,y+17,x,42,"s",13,"start")});
+ return svg(b,"0 0 640 440")}
+SEC.push({id:"entero-b",k:"a",t:"Enterobacterales: E. coli (UPEC), Klebsiella & Proteus",mm:"Enterobacterales",leg:[],
+ tools:[["eb",[["ecoli","E. coli"],["kleb","Klebsiella"],["prot","Proteus"]]]],draw:ebD,
+notes:()=>`${LO(["อธิบายลักษณะร่วมของ Enterobacterales ที่ใช้ในห้องปฏิบัติการ (fermenter, oxidase ⊖, catalase ⊕, nitrate reduction)","แยก E. coli, Klebsiella และ Proteus ด้วย lactose, motility, indole และ urease","เชื่อม urease ของ Proteus กับการเกิดนิ่วและ pH ปัสสาวะที่เป็นเบส"])}
+<h3>ลักษณะร่วมของวงศ์</h3>
+<ul><li>Facultative anaerobe · เติบโตบน blood agar และ <b>MacConkey agar</b> · <b>ferment glucose</b> · <b>reduce nitrate</b> · <b>catalase ⊕ · oxidase ⊖</b> ${S.mu}</li>
+<li>กลุ่มที่ ferment lactose: E. coli, Klebsiella, Enterobacter, Citrobacter, Serratia ${S.mu}</li>
+<li>LPS เป็น antigen ผนังเซลล์หลัก (O polysaccharide ชั้นนอก + core + lipid A) ${S.mu}</li></ul>
+<h3>E. coli ชนิด uropathogenic</h3>
+<ul><li>เชื้อตั้งต้นอยู่ใน<b>ลำไส้ใหญ่</b> → ปนเปื้อนท่อปัสสาวะ → ขึ้นสู่กระเพาะปัสสาวะ และอาจไปถึง<b>ไตหรือต่อมลูกหมาก</b> ${S.mu}</li>
+<li>Adhesin หลักคือ <b>P pili</b> · นอกจากนี้ยังมี AAF/I, AAF/III และ <b>Dr</b> ที่จับเซลล์ของกระเพาะปัสสาวะและทางเดินปัสสาวะส่วนบน ทำให้ไม่ถูกขับออกไปกับปัสสาวะ ${S.mu}</li>
+<li><b>Hemolysin HlyA</b> กระตุ้นการหลั่ง cytokine และการอักเสบ ${S.mu}</li>
+<li>ห้องปฏิบัติการ: indole ⊕ · lactose ⊕ · colony แบนสีชมพูบน MacConkey พร้อมวง bile precipitate · ส่วนใหญ่ motile ${S.hr}</li></ul>
+<h3>Klebsiella pneumoniae</h3>
+<ul><li>มี <b>capsule เด่น</b> ทำให้ colony mucoid และ virulence ในร่างกายสูงขึ้น ${S.mu}</li>
+<li>ไม่เคลื่อนที่ ${S.hr} · สายพันธุ์ที่ดื้อ β-lactam ทุกตัวรวมถึง carbapenem (และยากลุ่มอื่นเกือบทั้งหมด) พบมากขึ้นเรื่อย ๆ ${S.mu}</li></ul>
+<h3>Proteus mirabilis</h3>
+<ul><li>ก่อ UTI ทั้ง cystitis และ pyelonephritis · ปัจจัยเสี่ยงคือความผิดปกติเชิงโครงสร้างของทางเดินปัสสาวะ ${S.mu}</li>
+<li><b>Urease</b> สลาย urea เป็น CO₂ + NH₃ → ปัสสาวะเป็นเบส → ตกตะกอนเป็นผลึก <b>struvite</b> (magnesium ammonium phosphate) และ <b>apatite</b> (calcium) → <b>นิ่ว</b> ${S.mu}</li>
+<li>ความเป็นเบสยังเป็นพิษต่อ uroepithelium เองด้วย ${S.mu}</li>
+<li>ห้องปฏิบัติการ: <b>swarm</b> บน blood agar · lactose ⊖ (colony ไม่มีสีบน MacConkey) · urease ⊕ · motility ⊕ · indole ⊖ ${S.hr}</li>
+<li>ชนิดของนิ่วและ pH ปัสสาวะ ดูที่ ${XL("renal-patho-2","st-type","Stone types & urine pH")} · ภาพรวมนิ่ว ${XL("renal-patho-2","stones","Urolithiasis")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 25 p257–269 (p259 ลักษณะวงศ์, p260 capsule/LPS, p261 Table 25.2, p264 UPEC, p268 Klebsiella, p269 Proteus) · Harr 5e §8.2 pdf 567–568, 572 · §8.12 pdf 711–712</p>`});
+
+/* ---------- 3. gram-positive cocci in urine ---------- */
+const GPC={sapro:{n:"S. saprophyticus",path:[["Catalase","⊕"],["Coagulase","⊖ (CoNS)"],["Novobiocin 5 µg","ดื้อ ✔"],["Urease","⊕"]],
+  t:["CoNS ที่มีความชอบเฉพาะในหญิงวัยเจริญพันธุ์ที่มีเพศสัมพันธ์","พบเป็นเชื้อประจำถิ่นที่ไม่มีอาการได้น้อยมาก","ปัสสาวะมักพบเชื้อจำนวนมาก"]},
+ entero:{n:"Enterococcus spp.",path:[["Catalase","⊖"],["PYR","⊕"],["Bile esculin","⊕"],["6.5% NaCl","โต ✔"]],
+  t:["อยู่ในลำไส้ → แพร่ไปเยื่อบุอื่นเมื่อได้ยาปฏิชีวนะกว้าง","เกาะผิวและสร้าง biofilm ได้","ดื้อ cephalosporin โดยธรรมชาติ"]},
+ epi:{n:"S. epidermidis",path:[["Catalase","⊕"],["Coagulase","⊖ (CoNS)"],["Novobiocin 5 µg","ไว ✖"],["Slime layer","⊕"]],
+  t:["เชื้อประจำถิ่นของผิวหนังและเยื่อบุ","slime เกาะสายสวน shunt และอุปกรณ์เทียม","ก่อโรคต่ำ แต่ป้องกันตัวเองจาก phagocyte และยา"]}};
+function gpcD(){const s=ST.gc,d=GPC[s];
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,d.n,{c:"bb"});
+ b+=rmBug(110,116,s==="entero"?"ch":"cl",RMC.gp,2.6)+rmL(110,176,s==="entero"?"คู่ / สายสั้น":"กลุ่มคล้ายพวงองุ่น",{c:"s"});
+ d.path.forEach(([k,v],i)=>{const y=84+i*52;b+=`<rect x="236" y="${y}" width="388" height="42" rx="10" class="box"/>`
+  +T(252,y+26,k,{a:"start",c:"bh"})+T(608,y+26,v,{a:"end",c:"h"})});
+ d.t.forEach((x,i)=>{const y=308+i*44;b+=`<rect x="16" y="${y}" width="608" height="38" rx="9" style="${rmF(RMC.gp,8)};stroke-width:1"/>`+wrapT(32,y+16,x,86,"s",13,"start")});
+ return svg(b,"0 0 640 452")}
+SEC.push({id:"gp-cocci",k:"a",t:"S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",mm:"Gram-positive cocci",leg:[],
+ tools:[["gc",[["sapro","S. saprophyticus"],["entero","Enterococcus"],["epi","S. epidermidis"]]]],draw:gpcD,
+notes:()=>`${LO(["แยก S. saprophyticus จาก S. epidermidis ด้วย novobiocin","ใช้ catalase, PYR, bile esculin และ 6.5% NaCl แยก Enterococcus จาก streptococci และ staphylococci","เชื่อมบริบทผู้ป่วยของแต่ละเชื้อกับผลห้องปฏิบัติการ"])}
+<h3>S. saprophyticus</h3>
+<ul><li>CoNS ที่มี<b>ความชอบเฉพาะ (predilection) ในหญิงวัยเจริญพันธุ์ที่มีเพศสัมพันธ์</b> · พบเป็นเชื้อประจำถิ่นที่ไม่มีอาการได้น้อยมาก และปัสสาวะมักพบเชื้อจำนวนมาก ${S.mu}</li>
+<li>อาการที่รายงานในตำรา: <b>dysuria และ pyuria</b> ในหญิงวัยเจริญพันธุ์ ${S.mu}</li>
+<li>ห้องปฏิบัติการ: coagulase ⊖ และ<b>ดื้อ novobiocin 5 µg</b> ซึ่งเป็นการทดสอบที่ใช้แยกจาก S. epidermidis (ที่ไวต่อ novobiocin) · ทั้งสองตัว catalase ⊕, urease ⊕ และ ferment lactose ${S.hr}</li></ul>
+<h3>Enterococcus</h3>
+<ul><li>ก่อ UTI โดยเฉพาะในผู้ที่<b>นอนโรงพยาบาลเป็นเวลานานและได้ยาปฏิชีวนะกว้าง</b> (โดยเฉพาะ cephalosporin ซึ่ง enterococci <b>ดื้อโดยธรรมชาติ</b>) ${S.mu}</li>
+<li>Virulence มาจากความสามารถ<b>เกาะผิวร่างกายและสร้าง biofilm</b> ร่วมกับการดื้อยา ${S.mu}</li>
+<li>การติดเชื้อส่วนใหญ่เป็น endogenous จากเชื้อประจำถิ่นของผู้ป่วยเอง ${S.mu}</li>
+<li>ห้องปฏิบัติการ: <b>catalase ⊖ · PYR ⊕ · bile esculin ⊕ · โตใน 6.5% NaCl broth</b> — 6.5% NaCl เป็นตัวแยก enterococci ออกจาก non-enterococcal group D (S. bovis, S. equinus) ที่ขึ้น bile esculin ได้เหมือนกัน ${S.hr}</li></ul>
+<h3>CoNS อื่น (S. epidermidis)</h3>
+<ul><li>ก่อโรคต่ำ แต่สร้าง <b>slime layer</b> ที่ทำให้เกาะวัตถุแปลกปลอม (สายสวน, graft, ลิ้นหัวใจเทียม, shunt) และป้องกันตัวเองจาก phagocytosis และยาปฏิชีวนะ ${S.mu} ${S.hr}</li>
+<li>พบเป็น UTI จากสายสวนได้ ${S.mu}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 18 p178–188 (p178 slime, p183 dysuria/pyuria, p188 predilection), Ch 19 p191–192 · Harr 5e §8.5 pdf 609–617</p>`});
+
+/* ---------- 4. nonfermenter: Pseudomonas ---------- */
+const PSR=[["Intrinsic","ยาเข้าผ่าน outer membrane porin ได้ช้า + efflux pump ขับออกเร็ว"],
+ ["Acquired","รับยีนดื้อผ่าน plasmid/genetic element หรือเกิด mutation ที่เพิ่มการแสดงออก"],
+ ["Adaptive","ถูกเหนี่ยวนำเมื่อเจอสิ่งกระตุ้น เช่น biofilm บนสายสวน หรือ ceftazidime กระตุ้นยีน ampC"]];
+function psD(){const s=ST.ps;
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,"Pseudomonas aeruginosa",{c:"bb"});
+ if(s==="gen"){b+=`<rect x="206" y="92" width="228" height="64" rx="32" style="${rmF(RMC.gn,26)};stroke-width:2"/>`
+  +`<ellipse cx="320" cy="124" rx="138" ry="52" style="fill:none;stroke:${RMC.gn};stroke-width:1.6;stroke-dasharray:6 4"/>`
+  +`<path d="M434,124 q26,-6 42,-20" style="fill:none;stroke:${RMC.gn};stroke-width:2"/>`
+  +rmL(320,196,"mucoid polysaccharide capsule (alginate) + flagellum/pili",{c:"s"});
+  [["Obligate aerobe","ต้องใช้ออกซิเจน (ไม่ ferment)"],["Glucose oxidizer","oxidase ⊕"],["สารสี","pyocyanin + pyoverdin → เรืองแสงเขียว"],["กลิ่น","คล้ายองุ่น"],["Hemolysis","β-hemolytic บน blood agar"],["Virulence","exotoxin A, exoenzyme S/T, elastase, protease"]].forEach(([k,v],i)=>{const y=226+i*40;
+   b+=`<rect x="16" y="${y}" width="608" height="34" rx="9" class="box"/>`+T(32,y+22,k,{a:"start",c:"bh"})+T(608,y+22,v,{a:"end",c:"s"})})}
+ else{PSR.forEach(([k,v],i)=>{const y=86+i*106;b+=`<rect x="16" y="${y}" width="608" height="94" rx="12" style="${rmF(RMC.gn,10)};stroke-width:1.6"/>`
+   +T(32,y+28,k+" resistance",{a:"start",c:"bh"})+wrapT(32,y+54,v,74,"s",15,"start")});
+  b+=`<rect class="box" x="16" y="410" width="608" height="44" rx="10"/>`+wrapT(32,434,"ผลทดสอบ in vitro เป็นเพียงปัจจัยหนึ่ง: ยาบางตัวมีความเข้มข้นในปัสสาวะสูงมาก จึงกำจัดเชื้อที่รายงานว่า “resistant” ได้",76,"s",14,"start")}
+ return svg(b,s==="gen"?"0 0 640 476":"0 0 640 466")}
+SEC.push({id:"nonferm",k:"a",t:"Nonfermenter: Pseudomonas aeruginosa",mm:"Pseudomonas",leg:[],
+ tools:[["ps",[["gen","ลักษณะเชื้อ"],["res","การดื้อยา 3 แบบ"]]]],draw:psD,
+notes:()=>`${LO(["ระบุลักษณะที่ใช้แยก P. aeruginosa ในห้องปฏิบัติการ (oxidase ⊕, nonfermenter, สารสี, กลิ่น, โตที่ 42 °C)","อธิบายการดื้อยาสามแบบของ Pseudomonas และตัวอย่างของแต่ละแบบ"])}
+<ul><li><b>Obligate aerobe</b> ที่ oxidize glucose (ไม่ ferment) · ความต้องการสารอาหารต่ำ · มี <b>mucoid polysaccharide capsule</b> ${S.mu}</li>
+<li>Virulence factor: adhesin (flagella, pili, LPS, alginate capsule), exotoxin A, pyocyanin, pyoverdin, elastase, protease, phospholipase C, exoenzyme S และ T ${S.mu}</li>
+<li>Exoenzyme S และ T ถูกส่งเข้าเซลล์เป้าหมายผ่าน <b>type III secretion system</b> → ทำลาย epithelium ช่วยให้เชื้อแพร่และเกิด necrosis ${S.mu}</li>
+<li>กลุ่มโรคที่ก่อ: ทางเดินหายใจ <b>ทางเดินปัสสาวะ</b> ผิวหนังและเนื้อเยื่ออ่อน หู ตา รวมถึง bacteremia และ endocarditis ${S.mu}</li>
+<li>ห้องปฏิบัติการ: <b>oxidase ⊕</b> · nonfermenter · colony เรืองแสงเขียว · กลิ่นคล้ายองุ่น · β-hemolytic ${S.mu} · <b>โตที่ 42 °C</b> และ motile ⊕ ใช้แยกจาก Acinetobacter (oxidase ⊖, nonmotile) ${S.hr}</li></ul>
+<h3>การดื้อยาสามแบบ</h3>
+<ul><li><b>Intrinsic</b>: ยาเคลื่อนผ่าน porin ของ outer membrane ได้ช้า ร่วมกับ efflux pump ที่ขับยาออกเร็ว ${S.mu}</li>
+<li><b>Acquired</b>: รับยีนดื้อ (plasmid, genetic element อื่น) หรือ mutation ที่เพิ่มการแสดงออกของยีนดื้อ — เช่นดื้อ aminoglycoside และ β-lactam ${S.mu}</li>
+<li><b>Adaptive</b>: ถูกเหนี่ยวนำจากสิ่งแวดล้อมหรือยา — <b>biofilm</b> บนผิวสายสวนกระตุ้นยีนควบคุมให้แสดงการดื้อ และ <b>ceftazidime</b> กระตุ้นยีน <b>ampC</b> ทำให้ยาในกลุ่ม β-lactam หลายตัวถูกทำลาย ${S.mu}</li>
+<li>ยาที่ออกฤทธิ์ต่อ P. aeruginosa ดูที่ ${XL("pharm-micro","ceph","Cephalosporins, carbapenems & aztreonam")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 27 p278–280, Table 16.3 p168, Ch 16 p167 · Harr 5e §8.3 pdf 581–590, §8.12 pdf 712</p>`});
+
+/* ---------- 5. Candida & mycobacteria in urine ---------- */
+function fmD(){const s=ST.fm;
+ let b="";
+ if(s==="candida"){const R=[["Asymptomatic bladder colonization","พบบ่อยที่สุดในกลุ่มที่มีปัจจัยเสี่ยง"],["Urethritis / cystitis","เกิดขึ้นได้"],["Renal abscess","จาก hematogenous seeding ของไต"]];
+  b+=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,"Candida ในทางเดินปัสสาวะ: ช่วงความรุนแรง",{c:"bb"});
+  R.forEach(([n,d],i)=>{const y=74+i*86;b+=`<rect x="56" y="${y}" width="528" height="66" rx="12" style="${rmF(RMC.fu,8+i*7)};stroke-width:1.6"/>`
+   +`<circle cx="98" cy="${y+33}" r="18" style="${rmF(RMC.fu,30)};stroke-width:1.4"/>`+rmBug(98,y+33,"yeast",RMC.fu,1.2)
+   +T(130,y+28,n,{a:"start",c:"bh"})+T(130,y+48,d,{a:"start",c:"s"});
+   if(i<2)b+=arr(`M320,${y+68} L320,${y+84}`)});
+  b+=`<rect class="box" x="16" y="340" width="608" height="48" rx="10"/>`
+   +wrapT(32,364,"ปัจจัยเสี่ยง: คาสายสวนปัสสาวะ · เบาหวาน · ทางเดินปัสสาวะอุดกั้น · เคยทำหัตถการทางเดินปัสสาวะ",76,"s",15,"start");
+  return svg(b,"0 0 640 400")}
+ b+=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,"M. tuberculosis ในปัสสาวะ: ทำไมแยกเชื้อยาก",{c:"bb"});
+ b+=`<rect x="36" y="78" width="268" height="150" rx="12" style="${rmF("#2E9E6B",10)};stroke-width:1.6"/>`+T(170,106,"เสมหะ (ตอนเช้า 3 วัน)",{c:"bh"});
+ for(let i=0;i<9;i++)b+=rmBug(78+(i%3)*58,146+Math.floor(i/3)*32,"afb",RMC.af,.9);
+ b+=T(170,216,"เชื้อหนาแน่น → ตรวจพบเกือบแน่นอน",{c:"s"});
+ b+=`<rect x="336" y="78" width="268" height="150" rx="12" style="${rmF(RMC.af,10)};stroke-width:1.6"/>`+T(470,106,"ปัสสาวะ / GU tract",{c:"bh"});
+ [[400,150],[520,178],[456,200]].forEach(([x,y])=>{b+=rmBug(x,y,"afb",RMC.af,.9)});
+ b+=T(470,216,"เชื้อน้อยและกระจาย → แยกเชื้อยากกว่า",{c:"s"});
+ b+=`<rect class="box" x="16" y="250" width="608" height="44" rx="10"/>`+wrapT(32,274,"ทางแก้: เก็บสิ่งส่งตรวจเพิ่มหลายครั้ง และใช้ปริมาตร/เนื้อเยื่อจำนวนมากในการตรวจ",76,"s",15,"start");
+ b+=`<rect class="box" x="16" y="306" width="608" height="44" rx="10"/>`+wrapT(32,330,"ปริมาตรปัสสาวะตามตาราง specimen: แบคทีเรีย 1 mL · mycobacteria ตั้งแต่ 10 mL ขึ้นไป",76,"s",15,"start");
+ return svg(b,"0 0 640 362")}
+SEC.push({id:"fungi-myco",k:"a",t:"Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",mm:"Candida & TB",leg:[],
+ tools:[["fm",[["candida","Candida"],["tb","M. tuberculosis"]]]],draw:fmD,
+notes:()=>`${LO(["อธิบายช่วงความรุนแรงของ Candida ในทางเดินปัสสาวะ และบริบทที่ทำให้พบ colonization","บอกเหตุผลที่การแยก M. tuberculosis จากทางเดินปัสสาวะยากกว่าเสมหะ และผลต่อการเก็บสิ่งส่งตรวจ"])}
+<p class="pearl">ทำไมสองเชื้อนี้อยู่ด้วยกัน: ทั้งคู่เป็นกรณีที่ <b>urine culture ตามปกติตอบคำถามไม่ได้ตรง ๆ</b> · Candida มักขึ้นแต่<b>ตีความยาก</b> (colonization หรือติดเชื้อ) ส่วน M. tuberculosis <b>มักไม่ขึ้น</b>ถ้าไม่ได้ร้องขอวิธีและปริมาตรที่ถูกต้อง ${S.x}</p>
+<h3>Candida</h3>
+<ul><li>การพบ Candida ในทางเดินปัสสาวะมีช่วงตั้งแต่ <b>asymptomatic bladder colonization</b> ไปจนถึง <b>renal abscess</b> จาก hematogenous seeding ${S.mu}</li>
+<li>Colonization ของกระเพาะปัสสาวะ<b>แทบไม่พบเลย</b> ถ้าไม่มีปัจจัยเหล่านี้: คาสายสวนปัสสาวะ · เบาหวาน · ทางเดินปัสสาวะอุดกั้น · เคยทำหัตถการทางเดินปัสสาวะ ${S.mu}</li>
+<li>ในกลุ่มที่มีปัจจัยเสี่ยง <b>benign colonization พบบ่อยที่สุด</b> แต่ก็เกิด urethritis หรือ cystitis ได้ ${S.mu}</li>
+<li>Hematogenous seeding ของไตทำให้เกิด renal abscess, papillary necrosis และ fungus ball ได้ ${S.mu}</li>
+<li>การตีความ "พบ yeast ในปัสสาวะ" จึงต้องดูบริบทและวิธีเก็บสิ่งส่งตรวจ ไม่ใช่แปลว่าติดเชื้อทุกครั้ง ${S.x}</li></ul>
+<h3>M. tuberculosis</h3>
+<ul><li>ถ้าเก็บเสมหะตอนเช้า 3 วันติด การแยกเชื้อ "แทบรับประกันได้" แต่<b>ยากกว่ามาก</b>เมื่อเก็บจากตำแหน่งอื่นในโรคที่กระจาย เช่น <b>genitourinary tract</b>, เนื้อเยื่อ และน้ำไขสันหลัง ${S.mu}</li>
+<li>กรณีเช่นนี้ต้อง<b>เก็บสิ่งส่งตรวจเพิ่มหลายครั้ง</b> และต้องใช้ของเหลวหรือเนื้อเยื่อ<b>ปริมาณมาก</b>ในการตรวจ ${S.mu}</li>
+<li>ปริมาตรปัสสาวะที่ตารางสิ่งส่งตรวจกำหนด: แบคทีเรีย <b>1 mL</b> · mycobacteria <b>≥ 10 mL</b> (ทั้ง midstream, catheterized และ suprapubic) ${S.mu}</li>
+<li>เชื้อ mycobacteria โตช้า จึงถูกกลบด้วยเชื้อที่โตเร็วได้ ${S.mu}</li>
+<li>ยาต้าน mycobacteria ดูที่ ${XL("pharm-micro","tb","Antimycobacterial therapy")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 65 p656–657, Ch 22 p231, Table 16.1 p163</p>`});
+
+/* ---------- 6. adhesion, ascending route & host defenses ---------- */
+function vrD(){const s=ST.vr;
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,s==="adh"?"การยึดเกาะ: fimbrial adhesin เป็น lectin":"ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",{c:"bb"});
+ if(s==="adh"){
+  b+=`<rect x="56" y="300" width="528" height="78" rx="10" style="${rmF("#B4533C",16)};stroke-width:1.6"/>`;
+  for(let i=0;i<6;i++){const x=104+i*76;b+=`<path d="M${x-26},300 L${x+26},300" style="stroke:#B4533C;stroke-width:1.2"/>`
+   +`<circle cx="${x}" cy="292" r="7" style="${rmF("#2E9E6B",45)};stroke-width:1.2"/>`}
+  b+=rmL(320,348,"เซลล์ uroepithelium · ตัวรับบนผิวเป็น Gal-Gal (P blood group antigen)",{c:"s"});
+  b+=`<rect x="236" y="104" width="168" height="58" rx="29" style="${rmF(RMC.gn,26)};stroke-width:2"/>`+T(320,138,"E. coli",{c:"bh"});
+  [0,1,2,3].forEach(i=>{const x=266+i*36;b+=`<path d="M${x},162 L${x-4+i*4},276" style="fill:none;stroke:${RMC.gn};stroke-width:1.8"/>`
+   +`<circle cx="${x-4+i*4}" cy="286" r="6.5" style="fill:var(--sb-accent)"/>`});
+  b+=rmL(320,206,"P fimbriae: adhesin อยู่ที่ปลาย (ทำหน้าที่เป็น lectin)",{c:"s"})
+   +T(500,246,"จับแน่น → ไม่ถูกปัสสาวะชะออก",{c:"h"});
+  return svg(b,"0 0 640 396")}
+ b+=rmKUB(148,62,.62);
+ [["1","ลำไส้ใหญ่ → ปนเปื้อนท่อปัสสาวะ",352,96],["2","ขึ้นสู่กระเพาะปัสสาวะ (cystitis)",352,164],["3","ขึ้นต่อถึงไต (pyelonephritis) หรือต่อมลูกหมาก",352,232]].forEach(([n,t,x,y])=>{
+  b+=`<rect x="${x-24}" y="${y-26}" width="288" height="54" rx="12" class="box"/>`+`<circle cx="${x+4}" cy="${y}" r="14" style="${rmF(RMC.gn,30)};stroke-width:1.4"/>`+T(x+4,y+5,n,{c:"bh"})+wrapT(x+26,y-4,t,34,"s",13,"start")});
+ b+=arr("M356,124 L356,138")+arr("M356,192 L356,206");
+ [["การไหลของปัสสาวะ ชะเชื้อที่เกาะไม่แน่นออก",300],["ชั้นเมือก (mucus)",336],["secretory IgA",372]].forEach(([t,y])=>{
+  b+=`<rect x="16" y="${y-22}" width="608" height="32" rx="9" style="${rmF("#2E9E6B",10)};stroke-width:1.2"/>`+T(32,y,t,{a:"start",c:"s"})});
+ b+=T(320,410,"ด่านป้องกันของร่างกาย",{c:"h"});
+ return svg(b,"0 0 640 424")}
+SEC.push({id:"virulence",k:"b",t:"การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",mm:"Adhesion & ascending route",leg:[],
+ tools:[["vr",[["adh","Adhesin"],["asc","Ascending route & defenses"]]]],draw:vrD,
+notes:()=>`${LO(["อธิบายว่าทำไมการยึดเกาะเป็นเงื่อนไขจำเป็นของการติดเชื้อทางเดินปัสสาวะ","ระบุคู่ adhesin–receptor ของ P fimbriae และความเชื่อมโยงกับ pyelonephritis","ไล่ลำดับทางขึ้นของเชื้อ และบอกด่านป้องกันตามธรรมชาติที่เชื้อต้องผ่าน"])}
+<ul><li>การทำงานตามปกติของกระเพาะปัสสาวะ<b>ขับเชื้อที่ยึดเกาะไม่ได้ออกไป</b> ดังนั้นการยึดเกาะจึงเป็นขั้นที่ขาดไม่ได้ ${S.mu}</li>
+<li><b>Adhesin ที่ปลาย fimbriae ทำหน้าที่เป็น lectin</b> (จับน้ำตาลจำเพาะบนผิวเซลล์เจ้าบ้าน) ${S.mu}</li>
+<li><b>P fimbriae</b> จับ <b>Gal-Gal</b> ซึ่งเป็น <b>P blood group antigen</b> บนเม็ดเลือดแดงและ uroepithelium · <b>E. coli ที่ก่อ pyelonephritis ส่วนใหญ่มี P fimbriae</b> ${S.mu}</li>
+<li>UPEC: ต้นทางอยู่ในลำไส้ใหญ่ → ปนเปื้อนท่อปัสสาวะ → ขึ้นสู่กระเพาะปัสสาวะ → อาจไปถึงไตหรือต่อมลูกหมาก ${S.mu}</li>
+<li>Adhesin กลุ่ม AAF/I, AAF/III และ <b>Dr</b> จับเซลล์ของกระเพาะปัสสาวะและทางเดินปัสสาวะส่วนบน <b>ทำให้ไม่ถูกขับออกไปกับปัสสาวะที่ถ่ายออก</b> ${S.mu}</li>
+<li>ด่านป้องกันของร่างกายรวมถึง<b>ชั้นเมือกและ secretory IgA</b> ${S.mu}</li>
+<li>พยาธิสภาพของ ascending infection และปัจจัยเสี่ยง (obstruction, reflux, instrumentation, ตั้งครรภ์, เบาหวาน) ดูที่ ${XL("renal-patho-2","pyelo","Pyelonephritis & UTI")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 14 p144, Ch 25 p264, Table 25.2 p261</p>`});
+
+/* ---------- 7. biofilm on catheters ---------- */
+const BFS=[["เชื้อเกาะผิวสายสวน","เชื้อจำนวนน้อยยังไม่สร้าง biofilm"],
+ ["เชื้อเพิ่มจำนวนถึง quorum","สัญญาณถึงระดับที่กระตุ้นยีน (Pseudomonas ใช้ AHL)"],
+ ["สร้างใยพอลิแซ็กคาไรด์","หุ้มกลุ่มเชื้อไว้เป็นชั้น"],
+ ["ป้องกันตัวจากภูมิคุ้มกันและยา","และเหนี่ยวนำ adaptive resistance"]];
+function bfD(){const n=+ST.bf;
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,"Biofilm บนสายสวนปัสสาวะ",{c:"bb"});
+ b+=`<rect x="56" y="100" width="528" height="52" rx="10" style="fill:color-mix(in srgb,#8C8C9C 26%,var(--sb-surface));stroke:#6B6B78;stroke-width:1.8"/>`
+  +`<rect x="56" y="118" width="528" height="16" style="fill:color-mix(in srgb,#D9A21B 16%,var(--sb-surface))"/>`
+  +rmL(320,88,"ผิวด้านในของสายสวน (วัตถุแปลกปลอม)",{c:"s"});
+ const NB=n>=2?12:5;
+ if(n>=3)b+=`<path d="M86,154 q46,-20 96,-4 q48,-22 96,-4 q48,-20 96,-4 q46,-18 96,-4 q46,-18 96,-6 L566,212 L86,212Z" style="fill:color-mix(in srgb,${RMC.vi} 20%,var(--sb-surface));stroke:${RMC.vi};stroke-width:1.6"/>`+rmL(320,232,"ใยพอลิแซ็กคาไรด์หุ้มกลุ่มเชื้อ",{c:"s"});
+ for(let i=0;i<NB;i++){const x=92+(i%6)*82,y=176+Math.floor(i/6)*22;b+=rmBug(x,y,i%2?"rod":"cl",i%2?RMC.gn:RMC.gp,.85)}
+ if(n>=2)[[470,250],[512,244],[492,266]].forEach(([x,y])=>{b+=`<circle cx="${x}" cy="${y}" r="3.4" style="fill:var(--sb-accent)"/>`}),b+=rmL(492,290,"โมเลกุลสัญญาณ (quorum)",{c:"s"});
+ if(n>=4)b+=`<path d="M96,258 L160,258" style="stroke:var(--sb-bad);stroke-width:2.4"/><path d="M118,246 L138,270 M138,246 L118,270" style="stroke:var(--sb-bad);stroke-width:2.4"/>`
+  +T(176,264,"ยาปฏิชีวนะและ phagocyte เข้าไม่ถึง",{a:"start",c:"s"});
+ BFS.forEach(([t,d],i)=>{const y=296+i*46,on=i<n;
+  b+=`<g style="opacity:${on?1:.3}"><rect x="16" y="${y}" width="608" height="40" rx="9" style="${on?rmF(RMC.vi,12)+";stroke-width:1.6":"fill:var(--sb-surface);stroke:var(--sb-line);stroke-width:1"}"/>`
+   +`<circle cx="44" cy="${y+20}" r="12" style="${rmF(RMC.vi,on?34:8)};stroke-width:1.2"/>`+T(44,y+24,i+1,{c:"s"})
+   +T(68,y+17,t,{a:"start",c:"bh"})+T(68,y+33,d,{a:"start",c:"s m"})+`</g>`});
+ return svg(b,"0 0 640 496")}
+SEC.push({id:"biofilm",k:"b",t:"Biofilm และการติดเชื้อที่สายสวน",mm:"Biofilm & catheters",leg:[],
+ tools:[["bf",[["1","1 เกาะผิว"],["2","2 quorum"],["3","3 ใยพอลิแซ็กคาไรด์"],["4","4 ป้องกันตัว"]]]],draw:bfD,
+notes:()=>`${LO(["อธิบายขั้นตอนการเกิด biofilm และบทบาทของ quorum","บอกว่าทำไม biofilm ทำให้การรักษาการติดเชื้อที่สายสวนยาก","ยกตัวอย่างเชื้อที่เกาะอุปกรณ์ด้วย slime หรือ biofilm"])}
+<ul><li>เมื่อเชื้อมีจำนวนมากพอ (<b>quorum</b>) จะเปิดการทำงานที่ช่วยกลุ่มของตัวเอง รวมถึง<b>การสร้าง biofilm</b> ${S.mu}</li>
+<li>Biofilm ของ Pseudomonas ถูกกระตุ้นเมื่อมีเชื้อมากพอที่สร้าง <b>N-acyl homoserine lactone (AHL)</b> ในปริมาณที่พอจะเปิดยีนสร้างพอลิแซ็กคาไรด์ ${S.mu}</li>
+<li>Biofilm เป็น<b>ใยพอลิแซ็กคาไรด์</b>ที่หุ้มกลุ่มเชื้อไว้ ปกป้องจากกลไกภูมิคุ้มกันของเจ้าบ้านและจากยาปฏิชีวนะ · เป็นกลไกการเกาะ<b>สายสวนและลิ้นหัวใจเทียม</b> ${S.mu}</li>
+<li><b>CoNS</b> สร้าง <b>slime layer</b> เกาะวัตถุแปลกปลอม (สายสวน, graft, ลิ้นหัวใจเทียมและข้อเทียม, shunt) และกันทั้ง phagocytosis และยาปฏิชีวนะ ${S.mu} ${S.hr}</li>
+<li><b>Enterococcus</b> ก็อาศัยการเกาะผิวและการสร้าง biofilm เป็นกลไกก่อโรค ${S.mu}</li>
+<li>Biofilm บนผิวสายสวนกระตุ้นยีนควบคุมของ Pseudomonas ให้แสดง <b>adaptive resistance</b> ${S.mu}</li>
+<li>ปัจจัยเสี่ยงของการติดเชื้อ CoNS คือการมีวัตถุแปลกปลอม (เสี้ยน, ไหมเย็บ, อุปกรณ์เทียม, สายสวน), การผ่าตัดก่อนหน้า และการใช้ยาปฏิชีวนะที่กดเชื้อประจำถิ่น ${S.mu}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 14 p142, p144–145, Ch 18 p178, Ch 19 p192, Ch 27 p280 · Harr 5e §8.5 pdf 609</p>`});
+
+/* ---------- 8. specimen collection for culture ---------- */
+const SPM={mid:{n:"Midstream (voided)",cn:"Sterile urine container",v:"แบคทีเรีย 1 mL · mycobacteria ≥ 10 mL",
+  k:["หลีกเลี่ยงการปนเปื้อนเชื้อจากท่อปัสสาวะหรือช่องคลอด","ทิ้งปัสสาวะส่วนแรก","เชื้อโตในปัสสาวะได้เร็ว จึงต้องส่งทันที เก็บใน bacteriostatic preservative หรือแช่เย็น"]},
+ cath:{n:"Catheterized",cn:"Sterile urine container",v:"แบคทีเรีย 1 mL · mycobacteria ≥ 10 mL",
+  k:["ไม่แนะนำให้สวนปัสสาวะเพื่อเพาะเชื้อตามปกติ เพราะมีความเสี่ยงชักนำให้เกิดการติดเชื้อ","ส่วนแรกที่เก็บได้ปนเชื้อจากท่อปัสสาวะ จึงต้องทิ้งเช่นเดียวกับ midstream","ต้องส่งห้องปฏิบัติการอย่างรวดเร็ว"]},
+ sp:{n:"Suprapubic aspirate",cn:"Sterile anaerobic tube หรือ vial",v:"แบคทีเรีย 1 mL · mycobacteria ≥ 10 mL",
+  k:["เป็นหัตถการรุกล้ำ จึงเลี่ยงเชื้อจากท่อปัสสาวะได้","เป็นวิธีเดียวที่ใช้ได้สำหรับ anaerobic culture","มีประโยชน์ในเด็กหรือผู้ใหญ่ที่ถ่ายปัสสาวะให้สะอาดเองไม่ได้"]}};
+function spD(){const s=ST.sp,d=SPM[s];
+ let b=`<rect class="box" x="16" y="12" width="608" height="44" rx="10" style="fill:var(--sb-accent-soft);stroke:var(--sb-accent);stroke-width:1.6"/>`+T(320,41,d.n,{c:"bb"});
+ /* stream diagram: first portion discarded */
+ if(s!=="sp"){b+=`<rect x="56" y="86" width="168" height="120" rx="12" style="${rmF("#8C8C9C",12)};stroke-width:1.4"/>`+T(140,112,"ส่วนแรก",{c:"bh"})+T(140,134,"ทิ้ง",{c:"bad"})
+  +`<path d="M140,150 l0,34 m-9,-9 l9,9 l9,-9" style="fill:none;stroke:var(--sb-bad);stroke-width:2"/>`;
+  b+=arr("M232,146 L268,146");
+  b+=`<rect x="276" y="86" width="168" height="120" rx="12" style="${rmF("#2E9E6B",14)};stroke-width:1.8"/>`+T(360,112,"ส่วนกลาง",{c:"bh"})+T(360,134,"เก็บส่งเพาะเชื้อ",{c:"h"})
+   +rmBug(360,172,"rod",RMC.gn,1.1);
+  b+=arr("M452,146 L488,146");
+  b+=`<rect x="496" y="86" width="112" height="120" rx="12" style="${rmF("#8C8C9C",8)};stroke-width:1.2"/>`+T(552,112,"ส่วนท้าย",{c:"bh"})+T(552,134,"ทิ้ง",{c:"s"})}
+ else{b+=`<ellipse cx="170" cy="152" rx="74" ry="44" style="fill:color-mix(in srgb,#D9A21B 16%,var(--sb-surface));stroke:#B07D12;stroke-width:1.8"/>`
+  +`<path d="M122,92 L306,92" style="stroke:color-mix(in srgb,#B4533C 50%,var(--sb-surface));stroke-width:5;stroke-linecap:round"/>`
+  +`<path d="M170,74 L170,124" style="stroke:var(--sb-ink2);stroke-width:2.6"/><path d="M163,74 L177,74" style="stroke:var(--sb-ink2);stroke-width:4.4"/>`
+  +rmL(170,214,"เจาะผ่านผนังหน้าท้องเข้ากระเพาะปัสสาวะ",{c:"s"})
+  +`<rect x="300" y="100" width="308" height="100" rx="12" style="${rmF("#2E9E6B",12)};stroke-width:1.6"/>`
+  +wrapT(318,126,"เลี่ยงเชื้อจากท่อปัสสาวะได้ทั้งหมด จึงเป็นวิธีเดียวที่ใช้กับ anaerobic culture",40,"s",15,"start")}
+ b+=`<rect class="box" x="16" y="224" width="296" height="52" rx="10"/>`+T(32,246,"ภาชนะ",{a:"start",c:"bh"})+wrapT(32,264,d.cn,36,"s",12,"start");
+ b+=`<rect class="box" x="328" y="224" width="296" height="52" rx="10"/>`+T(344,246,"ปริมาตร",{a:"start",c:"bh"})+wrapT(344,264,d.v,44,"s",12,"start");
+ d.k.forEach((x,i)=>{const y=290+i*54;b+=`<rect x="16" y="${y}" width="608" height="48" rx="10" style="${rmF(RMC.vi,8)};stroke-width:1.2"/>`+wrapT(32,y+20,x,74,"s",15,"start")});
+ return svg(b,"0 0 640 462")}
+SEC.push({id:"specimen",k:"c",t:"การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",mm:"Specimen for culture",leg:[],
+ tools:[["sp",[["mid","Midstream"],["cath","Catheter"],["sp","Suprapubic"]]]],draw:spD,
+notes:()=>`${LO(["เลือกวิธีเก็บปัสสาวะให้เหมาะกับคำถามทางจุลชีววิทยา","บอกเหตุผลที่ต้องทิ้งปัสสาวะส่วนแรกและต้องส่งตรวจเร็วหรือแช่เย็น","ระบุปริมาตรที่ต้องการสำหรับแบคทีเรียและ mycobacteria"])}
+<ul><li>ปัสสาวะเป็นสิ่งส่งตรวจที่ถูกส่งเพาะเชื้อ<b>บ่อยที่สุดอย่างหนึ่ง</b> ${S.mu}</li>
+<li>เนื่องจากมีแบคทีเรียหลายชนิดอยู่ที่ท่อปัสสาวะ จึงต้อง<b>ทิ้งปัสสาวะส่วนแรก</b> ทั้งกรณีถ่ายเองและกรณีสวนปัสสาวะ ${S.mu}</li>
+<li>เชื้อก่อโรคทางเดินปัสสาวะ<b>เติบโตในปัสสาวะได้</b> จึงต้องไม่ทิ้งระยะเวลาขนส่ง · ถ้าเพาะไม่ได้ทันทีให้<b>แช่เย็น</b> หรือใส่ <b>bacteriostatic urine preservative</b> ${S.mu}</li>
+<li>Midstream: ภาชนะปัสสาวะปลอดเชื้อ · แบคทีเรีย <b>1 mL</b> · mycobacteria <b>≥ 10 mL</b> ${S.mu}</li>
+<li>Catheterized: <b>ไม่แนะนำให้สวนปัสสาวะเพื่อเพาะเชื้อตามปกติ</b> เพราะเสี่ยงชักนำให้เกิดการติดเชื้อ ${S.mu}</li>
+<li>Suprapubic aspirate: เก็บใน<b>หลอดหรือ vial สำหรับ anaerobe</b> · เป็นหัตถการรุกล้ำที่เลี่ยงเชื้อจากท่อปัสสาวะได้ · เป็น<b>วิธีเดียว</b>ที่ใช้ได้กับ anaerobic culture · มีประโยชน์ในเด็กหรือผู้ใหญ่ที่เก็บปัสสาวะสะอาดเองไม่ได้ ${S.mu}</li>
+<li>แนวปฏิบัติด้านเวลา: ควรเพาะและ incubate ภายใน <b>2 ชั่วโมง</b> หลังเก็บ (บางห้องปฏิบัติการใช้ 1 ชั่วโมง) และภายใน <b>24 ชั่วโมง</b> ถ้าแช่เย็นที่ 2–8 °C ทันทีหลังเก็บ · <b>ห้ามใส่สารเติมแต่งใด ๆ</b> เมื่อเก็บปัสสาวะเพื่อเพาะเชื้อ ${S.hr}</li>
+<li><b>ข้อควรรู้ — แหล่งอ้างอิงไม่ตรงกัน</b>: Harr ระบุว่า "ห้ามใส่สารเติมแต่ง" เมื่อเก็บปัสสาวะเพาะเชื้อ ขณะที่ Murray และ Ridley ระบุให้ใช้ <b>bacteriostatic preservative</b> ได้เมื่อส่งตรวจไม่ทัน · ความต่างอยู่ที่ "สารเติมแต่งทางเคมี" กับ "สารกันเสียสำหรับขนส่งที่ออกแบบมาเพื่อการเพาะเชื้อ" โดยเฉพาะ · ในทางปฏิบัติให้ยึด<b>ระเบียบของห้องปฏิบัติการที่ใช้งานจริง</b> ${S.x}</li>
+<li><b>Midstream clean catch</b> เป็นสิ่งส่งตรวจที่<b>เหมาะที่สุดสำหรับ culture and sensitivity</b> โดยทำความสะอาดบริเวณท่อปัสสาวะด้วยน้ำยาฆ่าเชื้อก่อน แล้วทิ้งปัสสาวะส่วนแรก ${S.rd}</li>
+<li>สารกันเสียที่ใช้บ่อยและสะดวกที่สุดสำหรับ culture and sensitivity คือ <b>boric acid</b> · ชนิดที่ไม่ buffer อาจเป็นอันตรายต่อแบคทีเรียบางชนิด จึงควรใช้ <b>buffered boric acid</b> ${S.rd}</li>
+<li>หมายเหตุ: ประเด็นการเก็บปัสสาวะสำหรับ<b>การตรวจปัสสาวะทั่วไป (urinalysis)</b> เช่นตัวอย่างแรกของเช้าและ timed collection จะอยู่ในหัวข้อของหมวด Laboratory ${S.x}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Table 16.1 p163, Ch 16 p164 · Harr 5e §7.1 pdf 481 (ข้อ 4) · Ridley, Fundamentals of the Study of Urine and Body Fluids (Springer 2018) §6.2.7–6.2.9, §6.4.4</p>`});
+
+/* ---------- 9. quantitative culture & colony counts ---------- */
+function cuD(){const s=ST.cu;
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,s==="plate"?"Quantitative culture: ทำไมต้องวัดปริมาณ":"เกณฑ์ตัวเลขตาม IDSA 2019 (asymptomatic bacteriuria)",{c:"bb"});
+ if(s==="plate"){
+  b+=`<circle cx="160" cy="176" r="98" style="fill:color-mix(in srgb,#C9B79C 22%,var(--sb-surface));stroke:#8C7F6B;stroke-width:2"/>`+T(160,66,"Nonselective agar",{c:"h"});
+  for(let i=0;i<22;i++){const a=i*2.4,r=18+(i%5)*16;b+=`<circle cx="${160+Math.cos(a)*r}" cy="${176+Math.sin(a)*r}" r="5" style="fill:#D9568C"/>`}
+  b+=`<circle cx="400" cy="176" r="98" style="fill:color-mix(in srgb,#8E3B5E 24%,var(--sb-surface));stroke:#6B2846;stroke-width:2"/>`+T(400,66,"Selective agar",{c:"h"});
+  for(let i=0;i<9;i++){const a=i*2.6,r=22+(i%3)*20;b+=`<circle cx="${400+Math.cos(a)*r}" cy="${176+Math.sin(a)*r}" r="5" style="fill:#E0A2BE"/>`}
+  b+=`<rect class="box" x="510" y="130" width="114" height="92" rx="12"/>`+wrapT(526,154,"หยอดปัสสาวะปริมาตรที่กำหนด 1–10 µL ลงจานละชนิด",16,"s",13,"start");
+  [["นับ colony แล้วคำนวณกลับเป็นจำนวนเชื้อต่อปริมาตรปัสสาวะ"],["ใช้ประเมินว่าเชื้อที่แยกได้มีความสำคัญหรือไม่"],["เชื้อจำนวนน้อยในผู้ที่มี pyuria ก็อาจมีความสำคัญทางคลินิกได้"]].forEach(([t],i)=>{const y=296+i*48;
+   b+=`<rect x="16" y="${y}" width="608" height="42" rx="10" style="${rmF(RMC.vi,9)};stroke-width:1.2"/>`+wrapT(32,y+18,t,74,"s",15,"start")});
+  return svg(b,"0 0 640 452")}
+ const R=[["ผู้หญิง (ถ่ายปัสสาวะเอง ไม่มีอาการ)","เชื้อตั้งแต่ 1 ชนิดขึ้นไป ≥ 10⁵ CFU/mL · ต้องได้ผลเช่นนี้จาก 2 ตัวอย่างติดกัน (ควรห่างกันไม่เกิน 2 สัปดาห์)"],
+  ["ผู้ชาย (ถ่ายปัสสาวะเอง ไม่มีอาการ)","≥ 10⁵ CFU/mL จากตัวอย่างเดียว"],
+  ["ปัสสาวะจากสายสวน","≥ 10⁵ CFU/mL เหมาะที่สุดในการบอก bacteriuria ของกระเพาะปัสสาวะ"],
+  ["สายสวนครั้งเดียว (in-and-out) หรือสายสวนใหม่","10² ถึง < 10⁵ CFU/mL บ่งชี้ bacteriuria จริง แต่ยังไม่ทราบความสำคัญทางคลินิกในผู้ไม่มีอาการ"]];
+ R.forEach(([k,v],i)=>{const y=74+i*96;b+=`<rect x="16" y="${y}" width="608" height="84" rx="12" style="${rmF(RMC.vi,10)};stroke-width:1.6"/>`
+  +T(32,y+28,k,{a:"start",c:"bh"})+wrapT(32,y+52,v,72,"s",15,"start")});
+ b+=`<rect class="box" x="16" y="462" width="608" height="42" rx="10"/>`+wrapT(32,482,"นิยาม ASB ตาม IDSA 2019 ใช้ไม่ว่าจะมี pyuria หรือไม่ · เป็นนิยามของ bacteriuria ที่ไม่มีอาการ ไม่ใช่เกณฑ์วินิจฉัย UTI ที่มีอาการ",74,"s",15,"start");
+ return svg(b,"0 0 640 516")}
+SEC.push({id:"culture",k:"c",t:"Quantitative culture & colony count",mm:"Quantitative culture",leg:[],
+ tools:[["cu",[["plate","วิธีทำและเหตุผล"],["idsa","เกณฑ์ IDSA 2019"]]]],draw:cuD,
+notes:()=>`${LO(["อธิบายหลักการของ quantitative urine culture และเหตุผลที่ต้องหยอดปริมาตรที่กำหนด","ระบุเกณฑ์จำนวนเชื้อตามนิยาม asymptomatic bacteriuria ของ IDSA 2019 และข้อจำกัดของการนำไปใช้","บอกข้อจำกัดของการตรวจคัดกรองปัสสาวะด้วยวิธีทางเคมีหรือ microscopy"])}
+<h3>วิธีทำ</h3>
+<ul><li>เมื่อสิ่งส่งตรวจถึงห้องปฏิบัติการ จะหยอด <b>1–10 µL</b> ลงบนอาหารเลี้ยงเชื้อแต่ละชนิด (โดยทั่วไปคือ nonselective agar หนึ่งจาน และ selective medium หนึ่งจาน) ${S.mu}</li>
+<li>ทำเช่นนี้เพื่อให้<b>วัดปริมาณเชื้อในปัสสาวะได้</b> ซึ่งช่วยประเมินว่าเชื้อที่แยกได้มีความสำคัญหรือไม่ · แต่<b>เชื้อจำนวนน้อยในผู้ที่มี pyuria ก็อาจมีความสำคัญทางคลินิกได้</b> ${S.mu}</li>
+<li>วิธีคัดกรองปัสสาวะหลายวิธี (การทดสอบทางชีวเคมี, การย้อมดูด้วยกล้อง) ใช้กันแพร่หลาย แต่ตำรา<b>ไม่แนะนำ</b>วิธีที่มีอยู่ เพราะ<b>ไม่ไวพอ</b>ที่จะตรวจจับ low-grade bacteriuria ที่มีความสำคัญทางคลินิก ${S.mu}</li></ul>
+<h3>เกณฑ์ตัวเลข ${FLAG}</h3>
+<ul><li><b>Murray และ Harr ไม่ได้ให้เกณฑ์ตัวเลข colony count</b> สำหรับวินิจฉัย ตัวเลขด้านล่างจึงมาจาก guideline ${S.gl}</li>
+<li>นิยาม <b>asymptomatic bacteriuria (ASB)</b>: พบเชื้อ <b>ตั้งแต่ 1 ชนิดขึ้นไป</b> ที่ <b>≥ 10⁵ CFU/mL</b> จากปัสสาวะที่ถ่ายเอง ใน<b>ผู้ที่ไม่มีอาการหรืออาการแสดงของ UTI</b> ${S.gl}</li>
+<li>นิยามนี้ใช้ <b>ไม่ว่าจะมี pyuria หรือไม่</b> — pyuria เพียงอย่างเดียวไม่เปลี่ยน ASB ให้กลายเป็น UTI ${S.gl}</li>
+<li><b>ผู้หญิง</b>ต้องได้ผลเช่นนี้จาก <b>2 ตัวอย่างติดกัน</b> (ควรห่างกันไม่เกิน 2 สัปดาห์) เพื่อยืนยันว่า bacteriuria คงอยู่จริง · <b>ผู้ชาย</b>ใช้ตัวอย่างเดียวก็เพียงพอ ${S.gl}</li>
+<li>ผู้ที่คาสายสวน: <b>≥ 10⁵ CFU/mL</b> ยังเป็นเกณฑ์วินิจฉัย bacteriuria ของกระเพาะปัสสาวะ · จากการสวนครั้งเดียว (in-and-out) หรือสายสวนที่เพิ่งใส่ <b>10² ถึง &lt; 10⁵ CFU/mL</b> บ่งชี้ว่ามี bacteriuria จริง แต่<b>ยังไม่มีการประเมินว่ามีความสำคัญทางคลินิกเพียงใดในผู้ที่ไม่มีอาการ</b> ${S.gl}</li></ul>
+<h3>ASB ไม่ใช่เกณฑ์วินิจฉัย UTI</h3>
+<ul><li>ASB นิยามจาก<b>การไม่มีอาการ</b>เป็นเงื่อนไขตั้งต้น · ตัวเลข ≥ 10⁵ CFU/mL จึง<b>บอกว่ามีเชื้ออยู่</b> ไม่ได้บอกว่าผู้ป่วย<b>เป็น UTI</b> ${S.gl}</li>
+<li>ในทางกลับกัน ผู้ที่มีอาการอาจมีจำนวนเชื้อต่ำกว่าเกณฑ์นี้ได้ — ตำราจุลชีววิทยาเองก็ระบุว่า<b>เชื้อจำนวนน้อยในผู้ที่มี pyuria อาจมีความสำคัญทางคลินิก</b> ${S.mu}</li>
+<li>เกณฑ์วินิจฉัยและการตัดสินใจรักษา UTI ที่มีอาการ อยู่ในหมวด Infectious Disease (ยังไม่ได้ทำ) ${S.x}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 16 p164 · IDSA Clinical Practice Guideline for the Management of Asymptomatic Bacteriuria 2019 (Nicolle LE และคณะ, Clin Infect Dis 2019;68(10):e83–e110)</p>`});
+
+/* ---------- 10. identification schemes ---------- */
+const IDGN=[["Gram − rod จากปัสสาวะ","oxidase"],
+ ["Oxidase ⊖ + ferment glucose → Enterobacterales","lactose (MacConkey)"],
+ ["Lactose ⊕: colony ชมพู","indole / motility / mucoid"],
+ ["Lactose ⊖: colony ไม่มีสี","swarm? urease? PAD?"]];
+const IDGP=[["Gram + cocci จากปัสสาวะ","catalase"],
+ ["Catalase ⊕ → Staphylococcus","coagulase"],
+ ["Coagulase ⊖ (CoNS)","novobiocin 5 µg"],
+ ["Catalase ⊖ → Streptococcus / Enterococcus","PYR · bile esculin · 6.5% NaCl"]];
+function idD(){const gn=ST.idt==="gn",R=gn?IDGN:IDGP,PAR=gn?[null,0,1,1]:[null,0,1,0];
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,gn?"ทางแยก Gram-negative rod":"ทางแยก Gram-positive cocci",{c:"bb"});
+ const Y=i=>70+i*78,D=i=>PAR[i]==null?0:D(PAR[i])+1,X=i=>16+D(i)*52;
+ /* each row hangs off the test applied to its parent row */
+ R.forEach((_,i)=>{const pa=PAR[i];if(pa==null)return;const sx=X(pa)+30;
+  b+=`<path class="arw" style="marker-end:none" d="M${sx},${Y(pa)+58} L${sx},${Y(i)+29}"/>`+arr(`M${sx},${Y(i)+29} L${X(i)-2},${Y(i)+29}`)});
+ R.forEach(([t,test],i)=>{const y=Y(i),x=X(i),w=430-x;
+  b+=`<rect x="${x}" y="${y}" width="${w}" height="58" rx="12" style="${rmF(gn?RMC.gn:RMC.gp,10)};stroke-width:1.6"/>`+wrapT(x+18,y+26,t,Math.round(w/9),"bh",15,"start")
+   +`<rect x="442" y="${y+8}" width="182" height="42" rx="21" style="${rmF("#2E9E6B",16)};stroke-width:1.4"/>`+wrapT(533,y+24,test,17,"s",13)});
+ const EX=gn?[["E. coli","lactose ⊕ · indole ⊕ · motile"],["Klebsiella","lactose ⊕ · mucoid · nonmotile"],["P. mirabilis","lactose ⊖ · swarm · urease ⊕ · indole ⊖"],["P. aeruginosa","oxidase ⊕ · nonfermenter · 42 °C"]]
+  :[["S. aureus","coagulase ⊕"],["S. epidermidis","CoNS · novobiocin ไว"],["S. saprophyticus","CoNS · novobiocin ดื้อ"],["Enterococcus","catalase ⊖ · PYR ⊕ · bile esculin ⊕ · 6.5% NaCl ⊕"]];
+ EX.forEach(([n,d],i)=>{const y=392+i*44;b+=`<rect x="16" y="${y}" width="608" height="38" rx="9" class="box"/>`+T(32,y+24,n,{a:"start",c:"bh"})+T(608,y+24,d,{a:"end",c:"s"})});
+ return svg(b,"0 0 640 576")}
+SEC.push({id:"id",k:"c",t:"การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",mm:"Identification",leg:[],
+ tools:[["idt",[["gn","Gram − rod"],["gp","Gram + cocci"]]]],draw:idD,
+notes:()=>`${LO(["ไล่ทางแยกการแยกชนิดเชื้อจากปัสสาวะด้วยการทดสอบพื้นฐานทีละขั้น","จับคู่ผลการทดสอบกับเชื้อก่อโรคทางเดินปัสสาวะที่พบบ่อย"])}
+<h3>Gram-negative rod</h3>
+<ul><li>Enterobacterales: เติบโตบน blood agar และ <b>MacConkey</b> · ferment glucose · reduce nitrate · <b>catalase ⊕ · oxidase ⊖</b> ${S.mu}</li>
+<li>P. aeruginosa: <b>oxidase ⊕</b> · nonfermenter · colony เรืองแสงเขียว · กลิ่นคล้ายองุ่น · β-hemolytic ${S.mu} · โตที่ <b>42 °C</b> และ motile ⊕ ต่างจาก Acinetobacter ${S.hr}</li>
+<li>Lactose ⊕: E. coli (colony แบนสีชมพูมีวง bile precipitate, indole ⊕, ส่วนใหญ่ motile), Klebsiella (mucoid, nonmotile), Enterobacter, Citrobacter, Serratia ${S.mu} ${S.hr}</li>
+<li>Lactose ⊖ ที่ <b>swarm</b> บน blood agar จากปัสสาวะ → นึกถึง <b>Proteus</b> · P. mirabilis เป็นตัวที่พบบ่อยใน UTI · การทดสอบที่ใช้ยืนยันคือ <b>indole, phenylalanine deaminase และ urease</b> ${S.hr}</li>
+<li>Proteus: urease ⊕ และ motility ⊕ · ต่างจาก Shigella (indole/motility ⊖) และ Salmonella (ส่วนใหญ่ H₂S ⊕) ${S.hr}</li></ul>
+<h3>Gram-positive cocci</h3>
+<ul><li><b>Catalase</b> แยก Staphylococcus (⊕) จาก Streptococcus/Enterococcus (⊖) ${S.mu}</li>
+<li><b>Coagulase</b> แยก S. aureus (⊕) จาก CoNS (⊖) ${S.hr}</li>
+<li><b>Novobiocin 5 µg</b> แยก CoNS: S. epidermidis ไว · <b>S. saprophyticus ดื้อ</b> ${S.hr}</li>
+<li>Enterococcus: catalase ⊖ · <b>PYR ⊕</b> · bile esculin ⊕ · โตใน <b>6.5% NaCl</b> (ตัวแยกจาก non-enterococcal group D) ${S.hr}</li>
+<li>ข้อควรระวัง: PYR ⊕ พบทั้ง group A streptococci และ Enterococcus จึงต้องใช้ร่วมกับการทดสอบอื่น ${S.hr}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 25 p259, Table 16.3 p168 · Harr 5e §8.2 pdf 567–572, §8.5 pdf 609–617, §8.12 pdf 711–712, 716–717</p>`});
+
+/* ---------- 11. antimicrobial susceptibility testing ---------- */
+function astD(){const s=ST.as;
+ let b=`<rect class="box" x="16" y="12" width="608" height="40" rx="10"/>`+T(320,38,s==="mic"?"วิธีทดสอบความไวต่อยา":"การตีความผล: หมวดหมู่และข้อจำกัด",{c:"bb"});
+ if(s==="mic"){
+  /* broth dilution row */
+  b+=T(60,84,"Broth dilution",{a:"start",c:"h"});
+  const CC=["0.5","1","2","4","8","16"];
+  CC.forEach((c,i)=>{const x=72+i*94,grow=i<3;
+   b+=`<rect x="${x-34}" y="98" width="68" height="76" rx="8" style="${grow?rmF("#8C8C9C",26):rmF("#2E9E6B",10)};stroke-width:1.4"/>`
+    +T(x,192,c,{c:"s"})+T(x,140,grow?"โต":"ไม่โต",{c:"s"});
+   if(i===3)b+=`<path d="M${x},208 L${x},226" style="stroke:var(--sb-accent);stroke-width:2"/>`+T(x,246,"MIC",{c:"h"})});
+  b+=T(320,268,"ความเข้มข้นต่ำสุดที่ยับยั้งการเจริญของเชื้อ (µg/mL)",{c:"s"});
+  /* agar diffusion */
+  b+=T(60,306,"Agar diffusion",{a:"start",c:"h"});
+  [[150,"ไว",62],[330,"ปานกลาง",40],[500,"ดื้อ",20]].forEach(([x,l,r])=>{
+   b+=`<circle cx="${x}" cy="384" r="70" style="fill:color-mix(in srgb,#C9B79C 22%,var(--sb-surface));stroke:#8C7F6B;stroke-width:1.6"/>`
+    +`<circle cx="${x}" cy="384" r="${r}" style="fill:color-mix(in srgb,var(--sb-surface) 92%,transparent);stroke:var(--sb-line);stroke-dasharray:4 3"/>`
+    +`<circle cx="${x}" cy="384" r="10" style="fill:var(--sb-surface2);stroke:var(--sb-ink2);stroke-width:1.2"/>`+T(x,470,l,{c:"s"})});
+  b+=`<rect class="box" x="572" y="330" width="52" height="108" rx="8"/>`+T(598,388,"strip",{c:"s",r:-90});
+  b+=`<rect class="box" x="16" y="490" width="608" height="44" rx="10"/>`+wrapT(32,510,"ยิ่งเชื้อไวต่อยา วงยับยั้งยิ่งใหญ่ · เมื่อคุมสภาวะการทดสอบให้เป็นมาตรฐาน ขนาดวงจะสอดคล้องกับค่า MIC",74,"s",15,"start");
+  return svg(b,"0 0 640 546")}
+ const CAT=[["CLSI M100-Ed36 (2026)","S · SDD · I · R — SDD = susceptible dose-dependent ต้องใช้ขนาดยา/วิธีให้ยาตามที่ระบุ"],
+  ["EUCAST v16.1 (2026)","S = ขนาดยามาตรฐาน · I = susceptible, increased exposure · R"],
+  ["ข้อควรระวัง","EUCAST I ไม่เท่ากับ CLSI I หรือ SDD — ต้องดูว่าห้องปฏิบัติการใช้เกณฑ์ของใคร"]];
+ CAT.forEach(([k,v],i)=>{const y=74+i*104;b+=`<rect x="16" y="${y}" width="608" height="92" rx="12" style="${rmF(i===2?"#B7791F":RMC.vi,10)};stroke-width:1.6"/>`
+  +T(32,y+30,k,{a:"start",c:"bh"})+wrapT(32,y+56,v,72,"s",15,"start")});
+ b+=`<rect class="box" x="16" y="392" width="608" height="110" rx="12"/>`+T(32,418,"ผล in vitro เป็นเพียงปัจจัยหนึ่ง",{a:"start",c:"bh"})
+  +wrapT(32,444,"ต้องพิจารณาเภสัชจลนศาสตร์ ความเป็นพิษ และตำแหน่งการติดเชื้อร่วมด้วย · ยาบางตัวมีความเข้มข้นในปัสสาวะสูงมาก จึงกำจัดเชื้อก่อ UTI ที่รายงานว่า resistant ได้",72,"s",15,"start");
+ return svg(b,"0 0 640 514")}
+SEC.push({id:"ast",k:"c",t:"Antimicrobial susceptibility testing (MIC · disk · breakpoint)",mm:"Susceptibility testing",leg:[],
+ tools:[["as",[["mic","วิธีทดสอบ"],["cat","การตีความผล"]]]],draw:astD,
+notes:()=>`${LO(["อธิบายหลักการของ broth dilution และ agar diffusion และนิยามของ MIC","บอกความสัมพันธ์ระหว่างขนาดวงยับยั้งกับ MIC และเงื่อนไขที่ทำให้ความสัมพันธ์นี้ใช้ได้","ตีความหมวดหมู่ความไวต่อยา และระบุว่าเกณฑ์ของ CLSI กับ EUCAST ไม่ใช่สิ่งเดียวกัน","อธิบายว่าทำไมผล in vitro ไม่ใช่คำตอบสุดท้าย โดยเฉพาะในทางเดินปัสสาวะ"])}
+<h3>วิธีทดสอบ</h3>
+<ul><li>การทดสอบความไวต่อยาต้องทำภายใต้<b>สภาวะที่เป็นมาตรฐาน</b> ${S.mu}</li>
+<li><b>Broth dilution</b>: เจือจางยาเป็นลำดับในอาหารเลี้ยงเชื้อ แล้วใส่เชื้อที่ความเข้มข้นมาตรฐาน · หลังเพาะข้ามคืน ความเข้มข้นต่ำสุดที่ยับยั้งการเจริญเรียกว่า <b>MIC (minimum inhibitory concentration)</b> ${S.mu}</li>
+<li><b>Agar diffusion</b>: เกลี่ยเชื้อที่ความเข้มข้นมาตรฐานบนผิวอาหาร แล้ววาง<b>แผ่นกระดาษหรือแถบ</b>ที่ชุบยา · หลังเพาะข้ามคืนจะเห็นบริเวณที่เชื้อไม่เจริญรอบแผ่น · <b>เชื้อยิ่งไวต่อยา วงยับยั้งยิ่งใหญ่</b> ${S.mu}</li>
+<li>เมื่อคุมสภาวะการทดสอบให้เป็นมาตรฐาน <b>ขนาดวงยับยั้งจะสอดคล้องกับค่า MIC</b> ${S.mu}</li></ul>
+<h3>การตีความ ${FLAG}</h3>
+<ul><li>หมวดหมู่และค่า breakpoint มาจาก guideline ที่ปรับทุกปี ไม่ใช่จากตำรา จึงต้องตรวจสอบฉบับที่ห้องปฏิบัติการใช้ ${S.gl}</li>
+<li><b>CLSI M100 ฉบับที่ 36 (2026)</b> ใช้หมวดหมู่ <b>S · SDD · I · R</b> ${S.gl}</li>
+<li><b>S</b> = ถูกยับยั้งด้วยความเข้มข้นที่ทำได้ตามปกติเมื่อใช้ขนาดยาที่แนะนำ · <b>SDD</b> (susceptible dose-dependent) = ผลขึ้นกับ<b>ขนาดและวิธีให้ยา</b> ต้องใช้ขนาดสูงขึ้น ถี่ขึ้น หรือ extended infusion · <b>R</b> = ขนาดยาปกติไม่สามารถยับยั้งเชื้อได้ ${S.gl}</li>
+<li><b>I</b> = ความเข้มข้นของยาที่เชื้อถูกยับยั้ง<b>ใกล้เคียงระดับที่ทำได้ในเลือดและเนื้อเยื่อ</b> · ตอบสนองได้ดีที่สุดเมื่อยา<b>ไปสะสมเข้มข้นตามสรีรวิทยา (เช่นในปัสสาวะ)</b> หรือเมื่อใช้ขนาดยาสูงกว่าปกติ — จุดนี้สำคัญมากในทางเดินปัสสาวะ ${S.gl}</li>
+<li><b>EUCAST Clinical Breakpoint Tables v16.1</b> (ใช้ 24 มิ.ย.–31 ธ.ค. 2026) ใช้ <b>S</b> = susceptible ที่ขนาดยามาตรฐาน, <b>I</b> = <b>susceptible, increased exposure</b>, <b>R</b> = resistant ${S.gl}</li>
+<li><b>I ของ EUCAST ไม่ใช่ความหมายเดียวกับ I หรือ SDD ของ CLSI</b> — ต้องรู้ว่าห้องปฏิบัติการใช้เกณฑ์ของสำนักไหน ${S.gl}</li>
+<li>ผล in vitro เป็น<b>เพียงปัจจัยหนึ่ง</b> ในการเลือกยา ต้องพิจารณาเภสัชจลนศาสตร์ ความเป็นพิษ และตำแหน่งการติดเชื้อ · <b>ยาบางตัวมีความเข้มข้นในปัสสาวะสูงมาก จึงกำจัดเชื้อก่อ UTI ที่รายงานว่า resistant ได้</b> ${S.mu}</li>
+<li>กลไกการออกฤทธิ์ของยาแต่ละกลุ่ม ดูที่ ${XL("pharm-micro","bactmap","Antibacterial therapy: drug targets")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 16 p165–167 · CLSI M100-Ed36 (2026) · EUCAST Clinical Breakpoint Tables v16.1 (2026) · Harr 5e §8.1 pdf 558–559</p>`});
+
+/* ---------- 12. resistance phenotypes ---------- */
+const RSP={esbl:{n:"ESBL",d:["TEM-1 และ SHV-1 เป็น penicillinase ของ Gram-negative rod ทั่วไป ออกฤทธิ์ต่อ cephalosporin ได้น้อย","point mutation ของยีนเหล่านี้สร้างเอนไซม์ที่ออกฤทธิ์ต่อ penicillin และ cephalosporin ได้ทุกตัว → ESBL","ส่วนใหญ่อยู่บน plasmid จึงถ่ายทอดระหว่างเชื้อได้","พบมากที่สุดใน E. coli และ K. pneumoniae"]},
+ carba:{n:"Carbapenemase",d:["ESBL แพร่หลายใน E. coli, Klebsiella และ Proteus","carbapenem เคยเป็นทางเลือกสำหรับเชื้อที่สร้าง ESBL","การเกิด carbapenemase ทำให้ทางเลือกนี้ลดลง","Klebsiella ที่ดื้อ β-lactam ทุกตัวรวมถึง carbapenem พบมากขึ้น"]},
+ vre:{n:"VRE",d:["Enterococcus ดื้อ cephalosporin โดยธรรมชาติ","ปกติ vancomycin จับปลายสาย D-Ala-D-Ala ของ pentapeptide","ยีน vanA / vanB ทำให้ปลายสายเปลี่ยนไป · ปลายสายแบบ D-Ala-D-Lac ไม่จับ vancomycin","ยีนอยู่บน plasmid ได้ จึงถ่ายทอดระหว่างเชื้อ"]},
+ mech:{n:"กลไกดื้อ β-lactam",d:["การเปลี่ยนแปลงของ porin ทำให้ยาเข้าเซลล์ได้น้อยลง","การเปลี่ยนแปลงของ PBP ทำให้ยาจับเป้าหมายได้น้อยลง","การสร้าง β-lactamase ทำลายยา (แบ่งเป็น class A–D)","efflux pump ขับยาออกจากเซลล์"]}};
+function rsD(){const d=RSP[ST.rs];
+ let b=`<rect class="box" x="16" y="12" width="608" height="44" rx="10" style="fill:var(--sb-accent-soft);stroke:var(--sb-accent);stroke-width:1.6"/>`+T(320,41,d.n,{c:"bb"});
+ if(ST.rs==="mech"){const G=[["porin","ยาเข้าได้น้อย"],["PBP","เป้าหมายเปลี่ยน"],["β-lactamase","ยาถูกทำลาย"],["efflux","ยาถูกขับออก"]];
+  b+=`<rect x="96" y="90" width="448" height="96" rx="20" style="${rmF(RMC.gn,14)};stroke-width:2"/>`;
+  G.forEach(([k,v],i)=>{const x=152+i*96;b+=`<circle cx="${x}" cy="138" r="24" style="${rmF("#2E9E6B",18)};stroke-width:1.4"/>`+T(x,143,k,{c:"s"})+rmL(x,200,v,{c:"s m"})})}
+ else if(ST.rs==="vre"){
+  /* VRE is target modification, not drug destruction: the pentapeptide terminus changes */
+  const term=(x,lab,ok)=>{let g=`<path d="M${x-96},150 L${x},150" style="stroke:${RMC.gp};stroke-width:4;stroke-linecap:round"/>`;
+   g+=`<circle cx="${x-28}" cy="150" r="15" style="${rmF(RMC.gp,18)};stroke-width:1.4"/>`+T(x-28,154,"Ala",{c:"s"})
+    +`<circle cx="${x}" cy="150" r="15" style="${rmF(ok?RMC.gp:"#B7791F",ok?18:30)};stroke-width:1.4"/>`+T(x,154,lab,{c:"s"});
+   g+=`<path d="M${x-26},${ok?108:92} h52 a10,10 0 0 1 10,10 v18 a10,10 0 0 1 -10,10 h-52Z" style="${rmF(ok?"#2E9E6B":"#8C8C9C",ok?22:8)};stroke-width:1.6"/>`
+    +T(x,(ok?128:112),"vanco",{c:"s"});
+   g+=ok?`<path d="M${x},${135} L${x},${118}" style="stroke:#2E9E6B;stroke-width:2"/>`+T(x,212,"จับได้ → ยับยั้งการสร้างผนังเซลล์",{c:"s"})
+        :`<path d="M${x-12},${126} L${x+12},${102} M${x+12},${126} L${x-12},${102}" style="stroke:var(--sb-bad);stroke-width:2.6"/>`+T(x,212,"จับไม่ได้ → ดื้อ vancomycin",{c:"bad"});
+   return g};
+  b+=term(196,"D-Ala",true)+term(492,"D-Lac",false)
+   +rmL(196,240,"ปลายสายปกติ: D-Ala-D-Ala",{c:"s m"})+rmL(492,240,"หลัง vanA / vanB: ปลายสายเปลี่ยนไป",{c:"s m"})}
+ else{b+=`<rect x="196" y="90" width="248" height="78" rx="39" style="${rmF(RMC.gn,18)};stroke-width:2"/>`
+  +`<circle cx="320" cy="129" r="26" style="${rmF("#B7791F",24)};stroke-width:1.6"/>`+T(320,134,"enzyme",{c:"s"})
+  +`<path d="M470,129 l-36,0" style="stroke:var(--sb-bad);stroke-width:2.4"/><path d="M482,117 L506,141 M506,117 L482,141" style="stroke:var(--sb-bad);stroke-width:2.6"/>`
+  +rmL(540,134,"ยาไม่ออกฤทธิ์",{a:"start",c:"s"})}
+ d.d.forEach((x,i)=>{const y=(ST.rs==="vre"?262:214)+i*58;b+=`<rect x="16" y="${y}" width="608" height="50" rx="10" style="${rmF(RMC.vi,9)};stroke-width:1.2"/>`
+  +`<circle cx="44" cy="${y+25}" r="12" style="${rmF(RMC.vi,28)};stroke-width:1.2"/>`+T(44,y+29,i+1,{c:"s"})+wrapT(68,y+22,x,70,"s",15,"start")});
+ return svg(b,`0 0 640 ${ST.rs==="vre"?510:462}`)}
+SEC.push({id:"resist",k:"c",t:"กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",mm:"Resistance phenotypes",leg:[],
+ tools:[["rs",[["mech","กลไก β-lactam"],["esbl","ESBL"],["carba","Carbapenemase"],["vre","VRE"]]]],draw:rsD,
+notes:()=>`${LO(["ระบุกลไกหลักสี่แบบของการดื้อ β-lactam","อธิบายที่มาของ ESBL จาก TEM-1/SHV-1 และผลของการอยู่บน plasmid","บอกเชื้อที่พบ ESBL บ่อยที่สุด และผลของ carbapenemase","อธิบายกลไกของ VRE ในระดับโมเลกุล"])}
+<h3>กลไกการดื้อ β-lactam</h3>
+<ul><li>การดื้อ β-lactam เกิดจาก: การเปลี่ยนแปลงของ <b>porin</b> (ยาเข้าเซลล์ได้น้อยลง), <b>active efflux</b> ที่ขับยาออกจนความเข้มข้นในเซลล์ลดลง, การเปลี่ยนแปลงการจับ <b>PBP</b> และ<b>การสร้าง β-lactamase</b> ${S.mu}</li>
+<li>การเปลี่ยนแปลงที่ PBP เกิดได้จากการสร้าง PBP มากเกิน (พบน้อย) หรือ<b>ได้ PBP ตัวใหม่</b> (เช่นการดื้อ methicillin) ${S.mu}</li>
+<li>β-lactamase แบ่งเป็น <b>class A–D</b> ${S.mu}</li></ul>
+<h3>ESBL</h3>
+<ul><li><b>TEM-1</b> และ <b>SHV-1</b> เป็น penicillinase ที่พบใน Gram-negative rod ทั่วไป (Escherichia, Klebsiella) และออกฤทธิ์ต่อ cephalosporin ได้น้อย ${S.mu}</li>
+<li><b>Point mutation</b> ในยีนที่สร้างเอนไซม์เหล่านี้ทำให้เกิด β-lactamase ที่ออกฤทธิ์ต่อ <b>penicillin และ cephalosporin ได้ทุกตัว</b> → เรียกว่า <b>ESBL</b> ${S.mu}</li>
+<li>ปัญหาสำคัญคือ ESBL ส่วนใหญ่ถูกเข้ารหัสบน <b>plasmid</b> จึงถ่ายทอดจากเชื้อหนึ่งไปอีกเชื้อหนึ่งได้ ${S.mu}</li>
+<li>ESBL <b>แพร่หลายใน E. coli, Klebsiella และ Proteus</b> ${S.mu} · และพบบ่อยที่สุดใน <b>E. coli และ K. pneumoniae</b> ${S.hr}</li>
+<li>การเกิด <b>carbapenemase</b> ทำให้ทางเลือกยากลุ่ม carbapenem ลดลง ${S.mu} · Klebsiella ที่ดื้อ β-lactam ทุกตัวรวมถึง carbapenem พบมากขึ้น ${S.mu}</li></ul>
+<h3>VRE</h3>
+<ul><li>Enterococci <b>ดื้อ cephalosporin โดยธรรมชาติ</b> ${S.mu}</li>
+<li>Vancomycin ออกฤทธิ์โดยจับปลายสาย <b>D-Ala-D-Ala</b> ของ pentapeptide side chain ขัดขวางการสร้างสะพานเชื่อม peptidoglycan ${S.mu}</li>
+<li>เชื้อที่ปลายสายเป็น <b>D-Ala-D-Lac</b> จะ<b>ไม่จับ vancomycin</b> (ตำรายกตัวอย่างในเชื้อที่ดื้อโดยธรรมชาติ เช่น Leuconostoc, Lactobacillus) · ส่วน E. gallinarum และ E. casseliflavus ดื้อโดยธรรมชาติจากปลายสาย <b>D-Ala-D-Ser</b> ${S.mu}</li>
+<li><b>E. faecium และ E. faecalis</b> มีการดื้อ vancomycin แบบ acquired · ยีน <b>vanA / vanB</b> ทำให้<b>ปลายสาย pentapeptide เปลี่ยนไป</b> และอยู่บน <b>plasmid</b> ได้ จึงถ่ายทอดได้ · เคยมีรายงานการถ่ายทอดยีนนี้จาก E. faecalis ไปยัง S. aureus ${S.mu}</li>
+<li>Pseudomonas ดื้อยาได้สามแบบ (intrinsic, acquired, adaptive) ดูหัวข้อ Pseudomonas ${S.mu}</li>
+<li>ยาที่เกี่ยวข้อง: ${XL("pharm-micro","penicillin","Penicillins & β-lactamase inhibitors")} · ${XL("pharm-micro","ceph","Cephalosporins, carbapenems & aztreonam")} · ${XL("pharm-micro","vanco","Vancomycin, daptomycin & polymyxins")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 17 p169–172, Ch 19 p192, Ch 25 p268–269, Ch 27 p280 · Harr 5e §8.2 pdf 578</p>`});
+
+/* ---------- 13. เสริม: viruses & parasite ---------- */
+const OTH={bk:{n:"BK virus (polyomavirus)",c:RMC.vi,d:["naked capsid · DNA genome","ติดเชื้อที่ทอนซิลและเม็ดเลือดขาว แล้วแพร่ทางกระแสเลือดไปที่ไตตั้งแต่วัยเด็ก","ติดเชื้อแบบ persistent/latent ในอวัยวะเช่นไตและปอด","พบทั่วโลก ส่วนใหญ่ไม่มีอาการ · เป็น benign แต่ก่อโรคไตในผู้ภูมิคุ้มกันบกพร่อง"]},
+ adeno:{n:"Adenovirus",c:"#7A5BC7",d:["naked capsid · DNA genome · แบ่งเป็น subgroup A–G","hemorrhagic cystitis เป็นหนึ่งในโรคที่พบบ่อยของ adenovirus","Acute hemorrhagic cystitis/nephritis: type 11, 21","Hemorrhagic cystitis: type 11, 21, 34, 35 ในเด็กเล็กและผู้ภูมิคุ้มกันบกพร่อง"]},
+ sh:{n:"Schistosoma haematobium",c:"#B45309",d:["blood fluke · มีเพศผู้และเพศเมียแยกกัน","พบมากในลุ่มแม่น้ำไนล์และหลายส่วนของแอฟริกา","โรคเกิดจากการตอบสนองภูมิคุ้มกันต่อไข่","วินิจฉัยโดยพบไข่ในปัสสาวะ · ไข่ของ S. haematobium มี terminal spine"]}};
+function otD(){const d=OTH[ST.ot];
+ let b=`<rect class="box" x="16" y="12" width="608" height="44" rx="10" style="fill:var(--sb-accent-soft);stroke:var(--sb-accent);stroke-width:1.6"/>`+T(320,41,d.n,{c:"bb"});
+ if(ST.ot==="sh"){b+=`<ellipse cx="320" cy="148" rx="84" ry="46" style="${rmF(d.c,22)};stroke-width:2"/>`
+  +`<path d="M404,148 L448,148" style="stroke:${d.c};stroke-width:5;stroke-linecap:round"/>`
+  +`<circle cx="292" cy="148" r="16" style="fill:none;stroke:${d.c};stroke-width:1.6"/>`
+  +rmL(320,214,"ไข่รูปไข่ มีหนามที่ปลาย (terminal spine)",{c:"s"})+rmL(466,142,"terminal spine",{a:"start",c:"s"})}
+ else{const pts=[];for(let i=0;i<20;i++){const a=i/20*Math.PI*2;pts.push([320+Math.cos(a)*56,148+Math.sin(a)*56])}
+  b+=`<path d="${sm(pts)}" style="${rmF(d.c,20)};stroke-width:2"/>`;
+  for(let i=0;i<20;i++){const a=i/20*Math.PI*2;b+=`<circle cx="${320+Math.cos(a)*56}" cy="${148+Math.sin(a)*56}" r="7" style="${rmF(d.c,36)};stroke-width:1.2"/>`}
+  b+=`<circle cx="320" cy="148" r="26" style="fill:none;stroke:${d.c};stroke-width:1.6;stroke-dasharray:5 4"/>`+T(320,153,"DNA",{c:"s"})
+   +rmL(320,228,"naked capsid (ไม่มีเปลือกไขมัน)",{c:"s"})}
+ d.d.forEach((x,i)=>{const y=252+i*56;b+=`<rect x="16" y="${y}" width="608" height="48" rx="10" style="${rmF(d.c,9)};stroke-width:1.2"/>`+wrapT(32,y+20,x,74,"s",15,"start")});
+ return svg(b,"0 0 640 490")}
+SEC.push({id:"other",k:"c",t:"ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",mm:"BK · adenovirus · S. haematobium",leg:[],
+ tools:[["ot",[["bk","BK virus"],["adeno","Adenovirus"],["sh","S. haematobium"]]]],draw:otD,
+notes:()=>`${LO(["ระบุไวรัสที่ก่อโรคทางเดินปัสสาวะในผู้ภูมิคุ้มกันบกพร่อง และ serotype ของ adenovirus ที่เกี่ยวข้อง","อธิบายวิธีวินิจฉัย S. haematobium จากปัสสาวะ และลักษณะไข่ที่ใช้แยกชนิด"])}
+<ul><li><b>BK virus</b> เป็น polyomavirus ที่ติดเชื้อทอนซิลและเม็ดเลือดขาว แล้วแพร่ทางกระแสเลือดไปที่<b>ไต</b>ตั้งแต่วัยเด็ก · ตั้ง<b>การติดเชื้อแบบ persistent และ latent</b> ในอวัยวะเช่นไตและปอด · พบทั่วโลก การติดเชื้อส่วนใหญ่ไม่มีอาการ ${S.mu}</li>
+<li>BK virus เป็น <b>benign</b> แต่<b>ก่อโรคไตในผู้ภูมิคุ้มกันบกพร่อง</b> ${S.mu} · บริบทหลังปลูกถ่ายไตดูที่ ${XL("renal-patho-3","tx-inf","Infections & malignancy after transplant")}</li>
+<li><b>Adenovirus</b>: <b>hemorrhagic cystitis</b> เป็นหนึ่งในกลุ่มโรคที่พบบ่อยของ adenovirus ${S.mu} · acute hemorrhagic cystitis/nephritis สัมพันธ์กับ <b>type 11, 21</b> ในเด็กและผู้ภูมิคุ้มกันบกพร่อง · hemorrhagic cystitis สัมพันธ์กับ <b>type 11, 21, 34, 35</b> ในเด็กเล็ก ${S.mu}</li>
+<li>พยาธิสภาพของ hemorrhagic cystitis ดูที่ ${XL("renal-patho-2","cystitis","Cystitis")}</li>
+<li><b>S. haematobium</b> เป็นหนึ่งในสาม schistosome ที่ก่อโรคในคนเป็นส่วนใหญ่ · พบมาก<b>ตลอดลุ่มแม่น้ำไนล์และหลายส่วนของแอฟริกา</b> ${S.mu}</li>
+<li>โรคเกิดจาก<b>การตอบสนองภูมิคุ้มกันต่อไข่</b> เป็นหลัก · วินิจฉัยด้วยการ<b>พบไข่ในอุจจาระหรือปัสสาวะ</b>ด้วยกล้องจุลทรรศน์ · ไข่ของ <b>S. haematobium มี terminal spine</b> (ต่างจาก S. mansoni ที่มี lateral spine เด่น) ${S.mu}</li>
+<li>ความเชื่อมโยงกับ squamous cell carcinoma ของกระเพาะปัสสาวะ ดูที่ ${XL("renal-patho-2","othertum","Other bladder tumors")}</li>
+<li>ยาต้านพยาธิ ดูที่ ${XL("pharm-micro","antiparasite","Antiprotozoal & antihelminthic drugs")}</li></ul>
+<p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 41 p411, Ch 42 p421–422 (Table 42.1), Ch 75 p768</p>`});
+
+const EXTRA=["other"];
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

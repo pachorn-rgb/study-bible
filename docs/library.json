@@ -272,6 +272,85 @@
         "ch": "Ch 43",
         "sort": 43
        }
+      },
+      {
+       "id": "renal-micro-link",
+       "title": "Urinary tract",
+       "subs": [
+        "Systems"
+       ],
+       "src": "Murray 9e · Harr 5e · Ridley 2018 · IDSA 2019 · CLSI M100 2026 · EUCAST 2026",
+       "href": "renal/renal-micro.html",
+       "thumb": "thumbs/renal-micro.jpg",
+       "desc": "ทางลัด · atlas นี้อยู่ในบท Renal · uropathogen ตามสถานการณ์ผู้ป่วย, E. coli (UPEC) / Klebsiella / Proteus, S. saprophyticus และ Enterococcus, Pseudomonas, Candida และ TB ในปัสสาวะ, การยึดเกาะและ ascending route, biofilm บนสายสวน, การเก็บปัสสาวะเพาะเชื้อ, quantitative culture, การแยกชนิดเชื้อ, AST (MIC, disk, breakpoint) และกลไกดื้อยา (ESBL, carbapenemase, VRE) · ส่วนเสริม BK virus, adenovirus, S. haematobium",
+       "tags": [
+        "microbiology",
+        "shortcut"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",
+         "upath"
+        ],
+        [
+         "Enterobacterales: E. coli (UPEC), Klebsiella & Proteus",
+         "entero-b"
+        ],
+        [
+         "S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",
+         "gp-cocci"
+        ],
+        [
+         "Nonfermenter: Pseudomonas aeruginosa",
+         "nonferm"
+        ],
+        [
+         "Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",
+         "fungi-myco"
+        ],
+        [
+         "การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",
+         "virulence"
+        ],
+        [
+         "Biofilm และการติดเชื้อที่สายสวน",
+         "biofilm"
+        ],
+        [
+         "การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",
+         "specimen"
+        ],
+        [
+         "Quantitative culture & colony count",
+         "culture"
+        ],
+        [
+         "การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",
+         "id"
+        ],
+        [
+         "Antimicrobial susceptibility testing (MIC · disk · breakpoint)",
+         "ast"
+        ],
+        [
+         "กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",
+         "resist"
+        ],
+        [
+         "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
+         "other"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 14–27",
+        "sort": 30
+       }
       }
      ],
      "checklist": [
@@ -5928,6 +6007,7 @@
       "Histology",
       "Physiology",
       "Pathology",
+      "Microbiology",
       "Pharmacology"
      ],
      "modules": [
@@ -7043,6 +7123,84 @@
         "l": "R",
         "ch": "Robbins Ch 20 · Harrison Ch 321–325, 328, 329",
         "sort": 22
+       }
+      },
+      {
+       "id": "renal-micro",
+       "title": "Renal Microbiology",
+       "subs": [
+        "Microbiology"
+       ],
+       "src": "Murray 9e · Harr 5e · Ridley 2018 · IDSA 2019 · CLSI M100 2026 · EUCAST 2026",
+       "href": "renal/renal-micro.html",
+       "thumb": "thumbs/renal-micro.jpg",
+       "desc": "uropathogen ตามสถานการณ์ผู้ป่วย, E. coli (UPEC) / Klebsiella / Proteus, S. saprophyticus และ Enterococcus, Pseudomonas, Candida และ TB ในปัสสาวะ, การยึดเกาะและ ascending route, biofilm บนสายสวน, การเก็บปัสสาวะเพาะเชื้อ, quantitative culture, การแยกชนิดเชื้อ, AST (MIC, disk, breakpoint) และกลไกดื้อยา (ESBL, carbapenemase, VRE) · ส่วนเสริม BK virus, adenovirus, S. haematobium",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",
+         "upath"
+        ],
+        [
+         "Enterobacterales: E. coli (UPEC), Klebsiella & Proteus",
+         "entero-b"
+        ],
+        [
+         "S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",
+         "gp-cocci"
+        ],
+        [
+         "Nonfermenter: Pseudomonas aeruginosa",
+         "nonferm"
+        ],
+        [
+         "Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",
+         "fungi-myco"
+        ],
+        [
+         "การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",
+         "virulence"
+        ],
+        [
+         "Biofilm และการติดเชื้อที่สายสวน",
+         "biofilm"
+        ],
+        [
+         "การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",
+         "specimen"
+        ],
+        [
+         "Quantitative culture & colony count",
+         "culture"
+        ],
+        [
+         "การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",
+         "id"
+        ],
+        [
+         "Antimicrobial susceptibility testing (MIC · disk · breakpoint)",
+         "ast"
+        ],
+        [
+         "กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",
+         "resist"
+        ],
+        [
+         "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
+         "other"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 14–27",
+        "sort": 30
        }
       }
      ],
@@ -8638,6 +8796,123 @@
        "link": {
         "m": "pharm-renal",
         "h": "acidbase"
+       }
+      },
+      {
+       "id": "renal-micro:upath",
+       "sub": "Microbiology",
+       "t": "Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",
+       "link": {
+        "m": "renal-micro",
+        "h": "upath"
+       }
+      },
+      {
+       "id": "renal-micro:entero-b",
+       "sub": "Microbiology",
+       "t": "Enterobacterales: E. coli (UPEC), Klebsiella & Proteus",
+       "link": {
+        "m": "renal-micro",
+        "h": "entero-b"
+       }
+      },
+      {
+       "id": "renal-micro:gp-cocci",
+       "sub": "Microbiology",
+       "t": "S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",
+       "link": {
+        "m": "renal-micro",
+        "h": "gp-cocci"
+       }
+      },
+      {
+       "id": "renal-micro:nonferm",
+       "sub": "Microbiology",
+       "t": "Nonfermenter: Pseudomonas aeruginosa",
+       "link": {
+        "m": "renal-micro",
+        "h": "nonferm"
+       }
+      },
+      {
+       "id": "renal-micro:fungi-myco",
+       "sub": "Microbiology",
+       "t": "Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",
+       "link": {
+        "m": "renal-micro",
+        "h": "fungi-myco"
+       }
+      },
+      {
+       "id": "renal-micro:virulence",
+       "sub": "Microbiology",
+       "t": "การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",
+       "link": {
+        "m": "renal-micro",
+        "h": "virulence"
+       }
+      },
+      {
+       "id": "renal-micro:biofilm",
+       "sub": "Microbiology",
+       "t": "Biofilm และการติดเชื้อที่สายสวน",
+       "link": {
+        "m": "renal-micro",
+        "h": "biofilm"
+       }
+      },
+      {
+       "id": "renal-micro:specimen",
+       "sub": "Microbiology",
+       "t": "การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",
+       "link": {
+        "m": "renal-micro",
+        "h": "specimen"
+       }
+      },
+      {
+       "id": "renal-micro:culture",
+       "sub": "Microbiology",
+       "t": "Quantitative culture & colony count",
+       "link": {
+        "m": "renal-micro",
+        "h": "culture"
+       }
+      },
+      {
+       "id": "renal-micro:id",
+       "sub": "Microbiology",
+       "t": "การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",
+       "link": {
+        "m": "renal-micro",
+        "h": "id"
+       }
+      },
+      {
+       "id": "renal-micro:ast",
+       "sub": "Microbiology",
+       "t": "Antimicrobial susceptibility testing (MIC · disk · breakpoint)",
+       "link": {
+        "m": "renal-micro",
+        "h": "ast"
+       }
+      },
+      {
+       "id": "renal-micro:resist",
+       "sub": "Microbiology",
+       "t": "กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",
+       "link": {
+        "m": "renal-micro",
+        "h": "resist"
+       }
+      },
+      {
+       "id": "renal-micro:other",
+       "sub": "Microbiology",
+       "t": "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
+       "link": {
+        "m": "renal-micro",
+        "h": "other"
        }
       },
       {

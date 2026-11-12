@@ -1,0 +1,31 @@
+{
+ "id": "renal-micro",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Renal",
+ "eyebrow": "Renal · Microbiology",
+ "draft": false,
+ "title_tag": "Renal Microbiology",
+ "h1": "Urinary Tract Microbiology",
+ "lede": "เชื้อก่อโรคทางเดินปัสสาวะในมุมจุลชีววิทยา · ตัวเชื้อ กลไกก่อโรค และงานห้องปฏิบัติการตั้งแต่เก็บสิ่งส่งตรวจ เพาะเชื้อ แยกชนิด จนถึงทดสอบความไวต่อยา · กลุ่มอาการทางคลินิกและการรักษาอยู่ในหมวด Infectious Disease (ภายหลัง) · ลองสลับสถานการณ์ผู้ป่วยเพื่อดูว่าเชื้อตัวไหนเด่น และไล่ทางแยกชนิด gram-positive cocci ทีละขั้น",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 14–19, 22, 25, 27, 41–42, 65, 75"],
+  ["harr", "Hr", "Harr Clinical Laboratory Science Review 5e (2019) · §7.1, 8.2–8.5, 8.12"],
+  ["ridley", "Rd", "Ridley, Fundamentals of the Study of Urine and Body Fluids (Springer 2018)"],
+  ["gen", "GL", "Guidelines: IDSA ASB 2019 · CLSI M100-Ed36 (2026) · EUCAST v16.1 (2026)"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "renal",
+  "folder": "renal",
+  "subs": ["Microbiology"],
+  "title": "Renal Microbiology",
+  "src": "Murray 9e · Harr 5e · Ridley 2018 · IDSA 2019 · CLSI M100 2026 · EUCAST 2026",
+  "desc": "uropathogen ตามสถานการณ์ผู้ป่วย, E. coli (UPEC) / Klebsiella / Proteus, S. saprophyticus และ Enterococcus, Pseudomonas, Candida และ TB ในปัสสาวะ, การยึดเกาะและ ascending route, biofilm บนสายสวน, การเก็บปัสสาวะเพาะเชื้อ, quantitative culture, การแยกชนิดเชื้อ, AST (MIC, disk, breakpoint) และกลไกดื้อยา (ESBL, carbapenemase, VRE) · ส่วนเสริม BK virus, adenovirus, S. haematobium",
+  "ch": "Murray Ch 14–27",
+  "sort": 30,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}
