@@ -188,7 +188,9 @@ const mir=(p,X=640)=>p.map(([x,y])=>[X-x,y]);
 const DEFS=`<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="transparent"/><line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,.75)" stroke-width="2"/></pattern>
  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" style="fill:var(--sb-ink2)"/></marker></defs>`;
 const svg=(body,vb="0 0 640 520")=>`<svg viewBox="${vb}" role="img" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}</svg>`;
-const S={g:'<b class="sbb grays">Gray</b>',x:'<b class="sbb gen">Gen</b>'};
+/* gr = Gray's Anatomy for Students. NOT g: in src/atlases/*.js the shared
+   engine uses g for Guyton & Hall, so this page must not reuse that token. */
+const S={gr:'<b class="sbb grays">Gray</b>',x:'<b class="sbb gen">Gen</b>'};
 const LEG={art:["Artery","--a-art"],vein:["Vein","--a-vein"],lymph:["Lymph","--a-lymph"],nerve:["Nerve","--a-nerve"],cortex:["Cortex","--a-cortex"],medulla:["Medulla","--a-medulla"],uro:["Collecting system / ureter","--a-uro"],blad:["Bladder","--a-blad"],fat:["Fat","--a-fat"],musc:["Muscle","--a-musc"],bone:["Bone","--a-bone"],gland:["Suprarenal","--a-gland"]};
 let ST={labels:true,sex:"m",view:"ant",lymph:true,nerve:true};
 
@@ -231,15 +233,15 @@ draw(){
   TL(26,312,["Quadratus","lumborum"],{a:"start",c:"s"})+LD(196,270,92,308)}
  return svg(b)},
 notes:()=>`<h3>ตำแหน่ง</h3><ul>
- <li><b>Retroperitoneal</b> อยู่หลัง parietal peritoneum ใน extraperitoneal tissue ข้างกระดูกสันหลัง ${S.g}</li>
- <li>อยู่ระหว่าง <b>T12–L3</b> · <b>ไตขวาต่ำกว่าซ้าย</b> เพราะมีตับอยู่ด้านบน ${S.g}</li>
- <li>ไตซ้าย <b>ยาวและเพรียวกว่า</b> และอยู่ใกล้ midline มากกว่า ${S.g}</li>
- <li>ขั้วบนไตขวาอยู่หน้า <b>rib XII</b> · ขั้วบนไตซ้ายอยู่หน้า <b>rib XI และ XII</b> → costodiaphragmatic recess ของ pleura ยื่นลงมาหลังไต ${S.g}</li>
- <li>ขนาด ~ <b>10 × 5 × 2.5 cm</b> · Hilum อยู่ระดับ ~L1 ${S.g}${S.x}</li></ul>
+ <li><b>Retroperitoneal</b> อยู่หลัง parietal peritoneum ใน extraperitoneal tissue ข้างกระดูกสันหลัง ${S.gr}</li>
+ <li>อยู่ระหว่าง <b>T12–L3</b> · <b>ไตขวาต่ำกว่าซ้าย</b> เพราะมีตับอยู่ด้านบน ${S.gr}</li>
+ <li>ไตซ้าย <b>ยาวและเพรียวกว่า</b> และอยู่ใกล้ midline มากกว่า ${S.gr}</li>
+ <li>ขั้วบนไตขวาอยู่หน้า <b>rib XII</b> · ขั้วบนไตซ้ายอยู่หน้า <b>rib XI และ XII</b> → costodiaphragmatic recess ของ pleura ยื่นลงมาหลังไต ${S.gr}</li>
+ <li>ขนาด ~ <b>10 × 5 × 2.5 cm</b> · Hilum อยู่ระดับ ~L1 ${S.gr}${S.x}</li></ul>
  <div class="pearl"><b>Surface marking:</b> ด้านหลัง ไตอยู่ข้าง spinous process T12–L3 · ขั้วบนไต 2 ข้างอยู่ใต้ rib XII/XI · ไตขยับลงได้ ~2–3 cm ตอนหายใจเข้า ${S.x}</div>
  <h3>หลอดเลือดใหญ่</h3><ul>
- <li><b>Right renal a.</b> ยาวกว่า และผ่าน <b>หลัง IVC</b> ${S.g}</li>
- <li><b>Left renal v.</b> ยาวกว่า ผ่าน <b>หน้า aorta ใต้ SMA</b> → ถูกบีบได้ (nutcracker) ${S.g}</li></ul>`});
+ <li><b>Right renal a.</b> ยาวกว่า และผ่าน <b>หลัง IVC</b> ${S.gr}</li>
+ <li><b>Left renal v.</b> ยาวกว่า ผ่าน <b>หน้า aorta ใต้ SMA</b> → ถูกบีบได้ (nutcracker) ${S.gr}</li></ul>`});
 
 /* 2 · relations */
 SEC.push({id:"rel",k:"Kidney",t:"Relations",tools:[["view",[["ant","Anterior"],["post","Posterior"]]]],figs:[["rel-1","Anterior & posterior relations (Gray Fig 4.150–4.151)"]],
@@ -283,11 +285,11 @@ notes:()=>`<h3>Anterior relations</h3><table><tr><th></th><th>ไตขวา</t
  <tr><td>ขั้วบน</td><td>Right suprarenal</td><td>Left suprarenal (medial) · stomach, spleen</td></tr>
  <tr><td>กลาง</td><td>Liver (มี peritoneum คั่น) · 2nd part duodenum (ติดตรง)</td><td>Pancreas (ติดตรง)</td></tr>
  <tr><td>ขั้วล่าง</td><td>Right colic flexure (lateral) · small intestine (medial)</td><td>Left colic flexure, desc. colon (lateral) · jejunum (medial)</td></tr></table>
- <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">ตาม Gray Fig 4.150 ${S.g}</p>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">ตาม Gray Fig 4.150 ${S.gr}</p>
  <h3>Posterior relations</h3><ul>
- <li>บน: <b>diaphragm</b> · ล่าง เรียงจาก medial → lateral: <b>psoas major → quadratus lumborum → transversus abdominis</b> ${S.g}</li>
- <li>ไตขวาอยู่หน้า <b>rib XII</b> · ไตซ้ายอยู่หน้า <b>rib XI–XII</b> ${S.g}</li>
- <li>เส้นประสาทและหลอดเลือดที่ผ่านหลังไต: <b>subcostal vessels &amp; n., iliohypogastric n., ilio-inguinal n.</b> ${S.g}</li></ul>
+ <li>บน: <b>diaphragm</b> · ล่าง เรียงจาก medial → lateral: <b>psoas major → quadratus lumborum → transversus abdominis</b> ${S.gr}</li>
+ <li>ไตขวาอยู่หน้า <b>rib XII</b> · ไตซ้ายอยู่หน้า <b>rib XI–XII</b> ${S.gr}</li>
+ <li>เส้นประสาทและหลอดเลือดที่ผ่านหลังไต: <b>subcostal vessels &amp; n., iliohypogastric n., ilio-inguinal n.</b> ${S.gr}</li></ul>
  <div class="pearl"><b>Clinical:</b> ฝีรอบไต (perinephric abscess) ระคายเคือง psoas → ปวดเวลายืดสะโพก (psoas sign) · ผ่าตัดไตจากด้านหลังต้องระวัง pleura ที่ลงมาถึง rib XII ${S.x}</div>`});
 
 /* 3 · fascia */
@@ -315,14 +317,14 @@ draw(){
   `<g transform="translate(26,24)"><rect width="134" height="70" rx="8" class="box"/>`+T(10,18,"จากในออกนอก",{a:"start",c:"h"})+T(10,34,"1 capsule  2 perirenal fat",{a:"start",c:"s"})+T(10,48,"3 renal fascia",{a:"start",c:"s"})+T(10,62,"4 pararenal fat",{a:"start",c:"s"})+`</g>`;
  return svg(b,"0 0 640 524")},
 notes:()=>`<h3>4 ชั้น (ในออกนอก)</h3><ul>
- <li><b>1 · Renal (fibrous) capsule</b> แกะออกง่าย ยกเว้นเวลามีโรค ${S.g}</li>
- <li><b>2 · Perirenal (perinephric) fat</b> ล้อมไตทั้งลูก ต่อเข้าไปใน hilum และ renal sinus ${S.g}</li>
- <li><b>3 · Renal fascia (Gerota)</b> หุ้ม fat + ไต + <b>suprarenal</b> (แยกจากไตด้วย septum บางๆ) ${S.g}
+ <li><b>1 · Renal (fibrous) capsule</b> แกะออกง่าย ยกเว้นเวลามีโรค ${S.gr}</li>
+ <li><b>2 · Perirenal (perinephric) fat</b> ล้อมไตทั้งลูก ต่อเข้าไปใน hilum และ renal sinus ${S.gr}</li>
+ <li><b>3 · Renal fascia (Gerota)</b> หุ้ม fat + ไต + <b>suprarenal</b> (แยกจากไตด้วย septum บางๆ) ${S.gr}
   <ul><li>ด้านข้าง: anterior + posterior layer เชื่อมกัน ต่อกับ transversalis fascia</li>
   <li>Medial: anterior layer คลุมหลอดเลือดที่ hilum ไปเชื่อมกับ connective tissue รอบ aorta/IVC · posterior layer ไปเชื่อม fascia ของ psoas</li>
   <li>ด้านบน: เชื่อมกันเหนือ suprarenal → ต่อ fascia ของ diaphragm · ด้านล่าง: หุ้ม ureter ลงไป (เปิด)</li></ul></li>
- <li><b>4 · Pararenal (paranephric) fat</b> อยู่ <b>หลังและหลังข้าง</b> ไต ${S.g}</li></ul>
- <div class="pearl"><b>Clinical:</b> ต้องกรีด renal fascia ในการผ่าตัดไตทุกแบบ ${S.g} · เพราะ fascia ด้านล่างเปิด ไตที่ไขมันน้อย (ผอมมาก) ลงต่ำได้ (nephroptosis) และหนอง/เลือดรอบไตไหลลงไปตามแนว ureter ได้ ${S.x}</div>`});
+ <li><b>4 · Pararenal (paranephric) fat</b> อยู่ <b>หลังและหลังข้าง</b> ไต ${S.gr}</li></ul>
+ <div class="pearl"><b>Clinical:</b> ต้องกรีด renal fascia ในการผ่าตัดไตทุกแบบ ${S.gr} · เพราะ fascia ด้านล่างเปิด ไตที่ไขมันน้อย (ผอมมาก) ลงต่ำได้ (nephroptosis) และหนอง/เลือดรอบไตไหลลงไปตามแนว ureter ได้ ${S.x}</div>`});
 
 /* 4 · structure */
 SEC.push({id:"struct",k:"Kidney",t:"Internal structure",leg:["cortex","medulla","uro","fat","art","vein"],figs:[["struct-1","External features, anterior & posterior"],["struct-2","Internal structure, coronal section (Gray Fig 4.153)"]],
@@ -352,14 +354,14 @@ draw(){
   T(566,226,"Renal a.",{a:"end",c:"s"})+T(566,302,"Renal v.",{a:"end",c:"s"})+T(536,370,"Hilum",{c:"h"})+LD(432,300,520,362);
  return svg(b)},
 notes:()=>`<h3>ภายนอก</h3><ul>
- <li>รูปถั่ว มีผิว anterior/posterior, ขั้วบน/ล่าง, ขอบ lateral/medial ${S.g}</li>
- <li><b>Hilum</b>: ร่องแนวตั้งที่ขอบ medial · มี renal v., renal a., renal pelvis, lymphatics, nerves ผ่าน ${S.g}</li>
+ <li>รูปถั่ว มีผิว anterior/posterior, ขั้วบน/ล่าง, ขอบ lateral/medial ${S.gr}</li>
+ <li><b>Hilum</b>: ร่องแนวตั้งที่ขอบ medial · มี renal v., renal a., renal pelvis, lymphatics, nerves ผ่าน ${S.gr}</li>
  <li>ลำดับที่ hilum จากหน้าไปหลัง: <b>Vein → Artery → Pelvis (VAP)</b> ${S.x}</li>
- <li><b>Renal sinus</b> คือช่องด้านในที่ต่อจาก hilum มี perinephric fat ต่อเข้าไป ${S.g}</li></ul>
+ <li><b>Renal sinus</b> คือช่องด้านในที่ต่อจาก hilum มี perinephric fat ต่อเข้าไป ${S.gr}</li></ul>
  <h3>ภายใน</h3><ul>
- <li><b>Cortex</b>: แถบสีอ่อนที่ล้อม medulla ทั้งหมด · ส่วนที่ยื่นลงไประหว่าง pyramid = <b>renal column</b> ${S.g}</li>
- <li><b>Medulla</b> = <b>renal pyramids</b> · ฐานหันออกหา cortex ยอด (<b>papilla</b>) หันเข้า sinus ${S.g}</li>
- <li>Papilla มีรูของ <b>papillary ducts</b> → <b>minor calyx</b> (ครอบ papilla) → หลาย minor รวมเป็น <b>major calyx</b> → 2–3 major รวมเป็น <b>renal pelvis</b> → ureter ${S.g}</li></ul>
+ <li><b>Cortex</b>: แถบสีอ่อนที่ล้อม medulla ทั้งหมด · ส่วนที่ยื่นลงไประหว่าง pyramid = <b>renal column</b> ${S.gr}</li>
+ <li><b>Medulla</b> = <b>renal pyramids</b> · ฐานหันออกหา cortex ยอด (<b>papilla</b>) หันเข้า sinus ${S.gr}</li>
+ <li>Papilla มีรูของ <b>papillary ducts</b> → <b>minor calyx</b> (ครอบ papilla) → หลาย minor รวมเป็น <b>major calyx</b> → 2–3 major รวมเป็น <b>renal pelvis</b> → ureter ${S.gr}</li></ul>
  <div class="pearl"><b>Renal lobe</b> = 1 pyramid + cortex ที่ครอบ · ในทารกไตเป็นพู (fetal lobulation) และหายไปหลังคลอด ${S.x}</div>`});
 
 /* 5 · blood supply */
@@ -384,16 +386,16 @@ draw(){
  const gy=y0+7*dy+6;b+=`<rect class="box gl" x="${(x1+x2)/2-70}" y="${gy}" width="140" height="30" rx="15"/>`+T((x1+x2)/2,gy+19,"Glomerulus",{c:"s"})+`<path class="arw" d="M${x1},${y0+6*dy+31} L${x1+20},${gy-2}"/><path class="arw" d="M${x2-20},${gy-1} L${x2},${y0+6*dy+33}"/>`;
  return svg(b)},
 notes:()=>`<h3>Arteries</h3><ul>
- <li><b>Renal a.</b> แยกจากข้าง aorta ใต้ SMA ระดับ <b>L1–L2</b> · ซ้ายสูงกว่าเล็กน้อย · <b>ขวายาวกว่า ผ่านหลัง IVC</b> ${S.g}</li>
- <li>ใกล้ hilum แยกเป็น <b>anterior division</b> (เลี้ยง apical, anterior superior, anterior inferior, inferior segment) และ <b>posterior division</b> (เลี้ยง posterior segment) ${S.g}</li>
+ <li><b>Renal a.</b> แยกจากข้าง aorta ใต้ SMA ระดับ <b>L1–L2</b> · ซ้ายสูงกว่าเล็กน้อย · <b>ขวายาวกว่า ผ่านหลัง IVC</b> ${S.gr}</li>
+ <li>ใกล้ hilum แยกเป็น <b>anterior division</b> (เลี้ยง apical, anterior superior, anterior inferior, inferior segment) และ <b>posterior division</b> (เลี้ยง posterior segment) ${S.gr}</li>
  <li>5 segments: <b>apical, anterior superior, anterior inferior, inferior, posterior</b> · segmental a. เป็น <b>end artery</b> อุดตัน → segment นั้นตาย ${S.x}</li>
- <li>สาย: segmental → interlobar → arcuate → <b>cortical radiate (interlobular)</b> → afferent → glomerulus → efferent → peritubular cap. / vasa recta ${S.g}</li>
- <li><b>Accessory (extrahilar) renal a.</b> พบบ่อย มาจาก aorta เหนือหรือใต้เส้นหลัก ${S.g}</li>
- <li>Renal a. ยังให้ <b>inferior suprarenal a.</b> และ <b>ureteric branch</b> ${S.g}</li></ul>
+ <li>สาย: segmental → interlobar → arcuate → <b>cortical radiate (interlobular)</b> → afferent → glomerulus → efferent → peritubular cap. / vasa recta ${S.gr}</li>
+ <li><b>Accessory (extrahilar) renal a.</b> พบบ่อย มาจาก aorta เหนือหรือใต้เส้นหลัก ${S.gr}</li>
+ <li>Renal a. ยังให้ <b>inferior suprarenal a.</b> และ <b>ureteric branch</b> ${S.gr}</li></ul>
  <h3>Veins</h3><ul>
- <li>Renal v. อยู่ <b>หน้า</b> renal a. ทั้ง 2 ข้าง ${S.g}</li>
- <li><b>Left renal v.</b> ยาวกว่า ผ่านหน้า aorta หลัง SMA · รับ <b>left gonadal v.</b> และ <b>left suprarenal v.</b> ${S.g}</li></ul>
- <div class="pearl"><b>Clinical:</b> left renal v. ถูกบีบระหว่าง SMA กับ aorta ได้ (nutcracker) → เลือดคั่งใน left gonadal v. → <b>left varicocele</b> · ระหว่าง anterior และ posterior segment มีแนวที่หลอดเลือดน้อย (Brödel line) ใช้เป็นแนวผ่าตัด ${S.g}${S.x}</div>`});
+ <li>Renal v. อยู่ <b>หน้า</b> renal a. ทั้ง 2 ข้าง ${S.gr}</li>
+ <li><b>Left renal v.</b> ยาวกว่า ผ่านหน้า aorta หลัง SMA · รับ <b>left gonadal v.</b> และ <b>left suprarenal v.</b> ${S.gr}</li></ul>
+ <div class="pearl"><b>Clinical:</b> left renal v. ถูกบีบระหว่าง SMA กับ aorta ได้ (nutcracker) → เลือดคั่งใน left gonadal v. → <b>left varicocele</b> · ระหว่าง anterior และ posterior segment มีแนวที่หลอดเลือดน้อย (Brödel line) ใช้เป็นแนวผ่าตัด ${S.gr}${S.x}</div>`});
 
 /* 6 · lymph & nerves */
 SEC.push({id:"lnn",k:"Kidney",t:"Lymph & nerve supply",tools:[["lymph","Lymph"],["nerve","Nerves"]],leg:["lymph","nerve","art","cortex"],figs:[["lnn-1","Lymphatics of posterior abdominal wall (Gray Fig 4.168)"],["lnn-2","Autonomic nerves of kidneys"]],
@@ -418,12 +420,12 @@ draw(){
   if(ST.nerve)b+=TL(614,86,["Celiac","ganglion"],{a:"end",c:"s"})+LD(352,108,560,96)+TL(614,180,["Aorticorenal","ganglion"],{a:"end",c:"s"})+LD(348,218,560,186)+TL(614,320,["Renal plexus","(ตามแนว renal a.)"],{a:"end",c:"s"})+LD(430,242,560,316)+
    TL(614,420,["Sympathetic trunk","+ lesser/least","splanchnic n."],{a:"end",c:"s"})+LD(402,400,520,418)}
  return svg(b)},
-notes:()=>`<h3>Lymph</h3><ul><li>ไต → <b>lateral aortic (para-aortic / lumbar) nodes</b> รอบจุดแยกของ renal a. ${S.g}</li>
- <li>Lateral aortic nodes รับจากผนังลำตัว ไต suprarenal gonads → รวมเป็น <b>lumbar trunk</b> ซ้าย/ขวา ${S.g}</li>
- <li>Pre-aortic nodes รับจากอวัยวะที่ celiac, SMA, IMA เลี้ยง → <b>intestinal trunk</b> ${S.g}</li>
- <li><b>Cisterna chyli</b> = intestinal + lumbar trunks · อยู่หลังด้านขวาของ aorta หน้า L1–L2 · เป็นจุดเริ่ม thoracic duct ${S.g}</li></ul>
- <h3>Nerves</h3><ul><li><b>Renal plexus</b> รับใยจาก <b>celiac plexus</b> (และ aorticorenal ganglion) วิ่งตาม renal a. ${S.g}</li>
- <li>ใย visceral afferent จากไตและ ureter ส่วนบน กลับไประดับ <b>T12 (least splanchnic n.)</b> → ปวดร้าวที่ <b>flank</b> ${S.g}</li>
+notes:()=>`<h3>Lymph</h3><ul><li>ไต → <b>lateral aortic (para-aortic / lumbar) nodes</b> รอบจุดแยกของ renal a. ${S.gr}</li>
+ <li>Lateral aortic nodes รับจากผนังลำตัว ไต suprarenal gonads → รวมเป็น <b>lumbar trunk</b> ซ้าย/ขวา ${S.gr}</li>
+ <li>Pre-aortic nodes รับจากอวัยวะที่ celiac, SMA, IMA เลี้ยง → <b>intestinal trunk</b> ${S.gr}</li>
+ <li><b>Cisterna chyli</b> = intestinal + lumbar trunks · อยู่หลังด้านขวาของ aorta หน้า L1–L2 · เป็นจุดเริ่ม thoracic duct ${S.gr}</li></ul>
+ <h3>Nerves</h3><ul><li><b>Renal plexus</b> รับใยจาก <b>celiac plexus</b> (และ aorticorenal ganglion) วิ่งตาม renal a. ${S.gr}</li>
+ <li>ใย visceral afferent จากไตและ ureter ส่วนบน กลับไประดับ <b>T12 (least splanchnic n.)</b> → ปวดร้าวที่ <b>flank</b> ${S.gr}</li>
  <li>Sympathetic ทำให้ afferent/efferent arteriole หดตัวและหลั่ง renin (β₁) — เชื่อมไป Nephron atlas ${S.x}</li></ul>`});
 
 /* 7 · suprarenal */
@@ -446,14 +448,14 @@ draw(){
   TL(26,470,["สีเข้มตรงกลาง = medulla","สีอ่อนรอบนอก = cortex"],{a:"start",c:"s m"});
  return svg(b)},
 notes:()=>`<h3>รูปร่างและตำแหน่ง</h3><ul>
- <li>อยู่ที่ขั้วบนไต ล้อมด้วย perinephric fat และอยู่ใน <b>renal fascia</b> แต่แยกจากไตด้วย septum บางๆ (ไตหย่อน ต่อมไม่ตาม) ${S.g}</li>
- <li><b>ขวา: pyramid</b> · หน้าคือ right lobe ของตับและ IVC · หลังคือ diaphragm ${S.g}</li>
- <li><b>ซ้าย: semilunar</b> ใหญ่กว่า · สัมพันธ์กับ stomach, pancreas, spleen, diaphragm ${S.g}</li>
+ <li>อยู่ที่ขั้วบนไต ล้อมด้วย perinephric fat และอยู่ใน <b>renal fascia</b> แต่แยกจากไตด้วย septum บางๆ (ไตหย่อน ต่อมไม่ตาม) ${S.gr}</li>
+ <li><b>ขวา: pyramid</b> · หน้าคือ right lobe ของตับและ IVC · หลังคือ diaphragm ${S.gr}</li>
+ <li><b>ซ้าย: semilunar</b> ใหญ่กว่า · สัมพันธ์กับ stomach, pancreas, spleen, diaphragm ${S.gr}</li>
  <li><b>Cortex</b> สร้าง steroid · <b>medulla</b> สร้าง epinephrine/norepinephrine ${S.x}</li></ul>
  <h3>เลือด 3 แหล่ง เข้า · ออก 1 เส้น</h3><table><tr><th>Artery</th><th>มาจาก</th></tr>
  <tr><td>Superior suprarenal</td><td>Inferior phrenic a. (หลายแขนง)</td></tr><tr><td>Middle suprarenal</td><td>Abdominal aorta (เหนือ renal a.)</td></tr><tr><td>Inferior suprarenal</td><td>Renal a.</td></tr></table>
- <ul><li>Vein: <b>ขวา → IVC</b> (สั้นมาก) · <b>ซ้าย → left renal v.</b> ${S.g}</li><li>Lymph → lateral aortic nodes ${S.g}</li>
- <li>Nerve: <b>preganglionic sympathetic (T8–L1)</b> ผ่าน trunk และ celiac plexus <b>โดยไม่ synapse</b> ไปถึงเซลล์ medulla โดยตรง (medulla ทำหน้าที่เป็น postganglionic) ${S.g}</li></ul>
+ <ul><li>Vein: <b>ขวา → IVC</b> (สั้นมาก) · <b>ซ้าย → left renal v.</b> ${S.gr}</li><li>Lymph → lateral aortic nodes ${S.gr}</li>
+ <li>Nerve: <b>preganglionic sympathetic (T8–L1)</b> ผ่าน trunk และ celiac plexus <b>โดยไม่ synapse</b> ไปถึงเซลล์ medulla โดยตรง (medulla ทำหน้าที่เป็น postganglionic) ${S.gr}</li></ul>
  <div class="pearl"><b>Clinical:</b> ตอนผ่าตัดเอาต่อมขวาออก right suprarenal v. สั้นและเข้า IVC ตรงๆ จึงฉีกขาดได้ง่าย ${S.x}</div>`});
 
 /* 8 · ureter */
@@ -481,18 +483,18 @@ draw(){
   T(318,16,"IVC · Aorta",{c:"s m"});
  return svg(b)},
 notes:()=>`<h3>ภาพรวม</h3><ul>
- <li>ท่อกล้ามเนื้อ <b>retroperitoneal</b> ยาว <b>25–30 cm</b> นำปัสสาวะจาก renal pelvis ไป bladder ${S.g}${S.x}</li>
- <li>Surface marking (ด้านหลัง): เริ่มที่ระดับ <b>L1</b> (hilum) แล้วลงตรงๆ หน้าปลาย transverse process ของ lumbar ส่วนล่าง เข้าสู่ pelvis ${S.g}</li>
- <li><b>Abdominal part</b>: UPJ → ข้าม bifurcation ของ common iliac a. วิ่งบนด้าน medial ของ <b>psoas major</b> ${S.g}</li>
- <li><b>Pelvic part</b>: pelvic brim → ureteric orifice · ถูกข้ามด้านบนโดย <b>ductus deferens (ชาย)</b> หรือ <b>uterine a. (หญิง)</b> ${S.g}</li>
- <li>3 จุดแคบ: <b>UPJ · pelvic brim · ทางเข้า bladder</b> = จุดที่นิ่วติดบ่อย ${S.g}</li></ul>
+ <li>ท่อกล้ามเนื้อ <b>retroperitoneal</b> ยาว <b>25–30 cm</b> นำปัสสาวะจาก renal pelvis ไป bladder ${S.gr}${S.x}</li>
+ <li>Surface marking (ด้านหลัง): เริ่มที่ระดับ <b>L1</b> (hilum) แล้วลงตรงๆ หน้าปลาย transverse process ของ lumbar ส่วนล่าง เข้าสู่ pelvis ${S.gr}</li>
+ <li><b>Abdominal part</b>: UPJ → ข้าม bifurcation ของ common iliac a. วิ่งบนด้าน medial ของ <b>psoas major</b> ${S.gr}</li>
+ <li><b>Pelvic part</b>: pelvic brim → ureteric orifice · ถูกข้ามด้านบนโดย <b>ductus deferens (ชาย)</b> หรือ <b>uterine a. (หญิง)</b> ${S.gr}</li>
+ <li>3 จุดแคบ: <b>UPJ · pelvic brim · ทางเข้า bladder</b> = จุดที่นิ่วติดบ่อย ${S.gr}</li></ul>
  <h3>เลือด · lymph · nerve</h3><table><tr><th></th><th>Abdominal</th><th>Pelvic</th></tr>
  <tr><td>Artery</td><td>Renal (ureteric br.), gonadal, aorta, common iliac — เข้าจาก <b>medial</b></td><td>แขนงของ internal iliac — เข้าจาก <b>lateral</b></td></tr>
  <tr><td>Vein</td><td>Renal v., gonadal v.</td><td>Internal iliac v.</td></tr>
  <tr><td>Lymph</td><td>Lateral aortic, common iliac</td><td>External &amp; internal iliac</td></tr></table>
- <ul><li>แขนงแดงทุกเส้นแยกขึ้น-ลงต่อกันเป็นสายยาวบนผนัง ureter ${S.g}</li>
- <li>Nerve: renal, aortic, superior &amp; inferior hypogastric plexus · afferent กลับไป <b>T11–L2</b> ${S.g}</li></ul>
- <div class="pearl"><b>Loin to groin:</b> ปวดจาก ureter บวม ร้าวไปผิวที่ T11–L2: หลังและข้างลำตัวใต้ซี่โครง, หัวหน่าว, scrotum/labia majora, ต้นขาด้านหน้า ${S.g} · ผ่าตัด hysterectomy เสี่ยงผูก ureter ไปพร้อม uterine a. ${S.g}</div>`});
+ <ul><li>แขนงแดงทุกเส้นแยกขึ้น-ลงต่อกันเป็นสายยาวบนผนัง ureter ${S.gr}</li>
+ <li>Nerve: renal, aortic, superior &amp; inferior hypogastric plexus · afferent กลับไป <b>T11–L2</b> ${S.gr}</li></ul>
+ <div class="pearl"><b>Loin to groin:</b> ปวดจาก ureter บวม ร้าวไปผิวที่ T11–L2: หลังและข้างลำตัวใต้ซี่โครง, หัวหน่าว, scrotum/labia majora, ต้นขาด้านหน้า ${S.gr} · ผ่าตัด hysterectomy เสี่ยงผูก ureter ไปพร้อม uterine a. ${S.gr}</div>`});
 
 /* 9 · bladder */
 SEC.push({id:"bladder",k:"Bladder",t:"Urinary bladder",tools:[["sex",[["m","Male"],["f","Female"]]]],leg:["blad","uro","bone","musc"],figs:[["bladder-1","Bladder position, male & female (Gray Fig 5.59)"],["bladder-2","Bladder surfaces (Gray Fig 5.41A)"],["bladder-3","Trigone (Gray Fig 5.41B)"],["bladder-4","Pubovesical & puboprostatic ligaments (Gray Fig 5.42)"],["bladder-5","Arteries of bladder (Gray Fig 5.65)"],["bladder-6","Lymphatics (Gray Fig 5.68)"],["bladder-7","Nerves: vesical plexus (Gray Fig 5.63)"]],
@@ -521,21 +523,21 @@ draw(){
   T(sx+24,sy+190,"Pubis",{c:"s"})+T(sx+110,sy+112,"Bladder",{c:"s"})+T(sx+250,sy+226,"Rectum",{c:"s"})+(f?T(sx+186,sy+72,"Uterus",{c:"s"})+TL(sx+130,sy+30,["Vesicouterine","pouch"],{c:"s"})+TL(sx+210,sy+176,["Recto-uterine","pouch"],{c:"s",a:"middle"}):
    T(sx+126,sy+206,"Prostate",{a:"start",c:"s"})+TL(sx+196,sy+186,["Rectovesical","pouch"],{c:"s"})+T(sx+170,sy+144,"SV",{c:"s"}))+TL(sx+6,sy+236,[f?"Pubovesical lig.":"Puboprostatic lig."],{a:"start",c:"s"})+T(sx+150,sy+30,"Peritoneum",{c:"s m"}).replace(`y="${sy+30}"`,`y="${sy+14}"`);
  return svg(b)},
-notes:()=>`<h3>ตำแหน่ง</h3><ul><li>ที่พักปัสสาวะชั่วคราว อยู่ใน pelvic cavity · เป็นอวัยวะ<b>หน้าสุด</b>ของ pelvic viscera อยู่<b>หลัง pubic symphysis</b> (ชาย: หน้า rectum · หญิง: หน้า uterus/vagina) · อยู่ใต้ parietal peritoneum (extraperitoneal) ${S.g}</li>
- <li>หญิง: <b>vesicouterine pouch</b> · ชาย: <b>rectovesical pouch</b> ${S.g}</li>
- <li>ตอนว่างอยู่ในเชิงกราน ตอนเต็มขยายขึ้นไปใน abdomen · เด็กแรกเกิด bladder เกือบอยู่ใน abdomen ทั้งหมด ลงเชิงกรานหลัง puberty ${S.g}</li></ul>
+notes:()=>`<h3>ตำแหน่ง</h3><ul><li>ที่พักปัสสาวะชั่วคราว อยู่ใน pelvic cavity · เป็นอวัยวะ<b>หน้าสุด</b>ของ pelvic viscera อยู่<b>หลัง pubic symphysis</b> (ชาย: หน้า rectum · หญิง: หน้า uterus/vagina) · อยู่ใต้ parietal peritoneum (extraperitoneal) ${S.gr}</li>
+ <li>หญิง: <b>vesicouterine pouch</b> · ชาย: <b>rectovesical pouch</b> ${S.gr}</li>
+ <li>ตอนว่างอยู่ในเชิงกราน ตอนเต็มขยายขึ้นไปใน abdomen · เด็กแรกเกิด bladder เกือบอยู่ใน abdomen ทั้งหมด ลงเชิงกรานหลัง puberty ${S.gr}</li></ul>
  <h3>รูปร่าง (pyramid 3 ด้านที่ล้มลง)</h3><ul>
- <li><b>Apex</b> ชี้ไปบน pubic symphysis → <b>median umbilical ligament</b> (เศษของ urachus) ขึ้นไปถึงสะดือ ${S.g}</li>
- <li><b>Base</b> สามเหลี่ยมคว่ำ หันไปหลังล่าง: ureter เข้า 2 มุมบน · urethra ออกมุมล่าง ${S.g}</li>
- <li><b>Superior surface</b> โค้งเล็กน้อย พองขึ้นเมื่อเต็ม · <b>2 inferolateral surfaces</b> วางบน levator ani และ obturator internus ${S.g}</li>
- <li><b>Trigone</b>: mucosa <b>เรียบและยึดแน่น</b> · ที่อื่น mucosa พับและหลวม (rugae) ${S.g}</li>
- <li><b>Neck</b> = ส่วนที่ยึดแน่นที่สุด · fibromuscular bands: <b>pubovesical lig. (หญิง)</b> / <b>puboprostatic lig. (ชาย)</b> ${S.g}</li></ul>
+ <li><b>Apex</b> ชี้ไปบน pubic symphysis → <b>median umbilical ligament</b> (เศษของ urachus) ขึ้นไปถึงสะดือ ${S.gr}</li>
+ <li><b>Base</b> สามเหลี่ยมคว่ำ หันไปหลังล่าง: ureter เข้า 2 มุมบน · urethra ออกมุมล่าง ${S.gr}</li>
+ <li><b>Superior surface</b> โค้งเล็กน้อย พองขึ้นเมื่อเต็ม · <b>2 inferolateral surfaces</b> วางบน levator ani และ obturator internus ${S.gr}</li>
+ <li><b>Trigone</b>: mucosa <b>เรียบและยึดแน่น</b> · ที่อื่น mucosa พับและหลวม (rugae) ${S.gr}</li>
+ <li><b>Neck</b> = ส่วนที่ยึดแน่นที่สุด · fibromuscular bands: <b>pubovesical lig. (หญิง)</b> / <b>puboprostatic lig. (ชาย)</b> ${S.gr}</li></ul>
  <h3>เลือด · lymph · nerve</h3><table>
- <tr><td>Artery</td><td>จาก internal iliac: <b>superior vesical a.</b> · <b>inferior vesical a. (ชาย) / vaginal a. (หญิง)</b> ${S.g}</td></tr>
- <tr><td>Vein</td><td>Vesical venous plexus → internal iliac v. ${S.g}</td></tr>
- <tr><td>Lymph</td><td>Superior &amp; inferolateral → <b>external iliac</b> · base → <b>internal iliac</b> ${S.g} · neck → <b>sacral</b> ${S.x}</td></tr>
- <tr><td>Nerve</td><td><b>Vesical plexus</b> (จาก inferior hypogastric plexus) · parasympathetic <b>S2–S4</b> (pelvic splanchnic) → detrusor หดตัว · sympathetic <b>T10–L2</b> → ผ่อน detrusor, หด internal sphincter ${S.g}${S.x}</td></tr></table>
- <div class="pearl"><b>Clinical:</b> suprapubic catheter แทงกลางลำตัวเหนือ pubic symphysis ~2 cm เข้า bladder ที่เต็ม <b>โดยไม่ผ่าน peritoneum</b> · มะเร็ง bladder ลามไป internal iliac nodes · นิ่วเล็กลงมาจาก ureter โตต่อใน bladder ได้ ${S.g}</div>`});
+ <tr><td>Artery</td><td>จาก internal iliac: <b>superior vesical a.</b> · <b>inferior vesical a. (ชาย) / vaginal a. (หญิง)</b> ${S.gr}</td></tr>
+ <tr><td>Vein</td><td>Vesical venous plexus → internal iliac v. ${S.gr}</td></tr>
+ <tr><td>Lymph</td><td>Superior &amp; inferolateral → <b>external iliac</b> · base → <b>internal iliac</b> ${S.gr} · neck → <b>sacral</b> ${S.x}</td></tr>
+ <tr><td>Nerve</td><td><b>Vesical plexus</b> (จาก inferior hypogastric plexus) · parasympathetic <b>S2–S4</b> (pelvic splanchnic) → detrusor หดตัว · sympathetic <b>T10–L2</b> → ผ่อน detrusor, หด internal sphincter ${S.gr}${S.x}</td></tr></table>
+ <div class="pearl"><b>Clinical:</b> suprapubic catheter แทงกลางลำตัวเหนือ pubic symphysis ~2 cm เข้า bladder ที่เต็ม <b>โดยไม่ผ่าน peritoneum</b> · มะเร็ง bladder ลามไป internal iliac nodes · นิ่วเล็กลงมาจาก ureter โตต่อใน bladder ได้ ${S.gr}</div>`});
 
 /* 10 · urethra */
 SEC.push({id:"urethra",k:"Urethra",t:"Urethra",tools:[["sex",[["m","Male"],["f","Female"]]]],leg:["blad","uro","prost","musc"],figs:[["urethra-1","Urethra, female & male (Gray Fig 5.18)"],["urethra-2","Female urethra (Gray Fig 5.45A)"],["urethra-3","Male urethra & prostatic part (Gray Fig 5.45B–C)"],["bladder-6","Blood & lymph of urethra (Gray Fig 5.68)"],["bladder-7","Nerves: vesical plexus (Gray Fig 5.63)"]],
@@ -570,19 +572,19 @@ draw(){
    TL(80,360,["Perineal","membrane"],{a:"end",c:"s"})+TL(150,430,["External urethral orifice","(ใน vestibule หน้า vagina)"],{a:"start",c:"s"})+LD(250,400,232,422)+TL(140,384,["Skene's","glands"],{a:"end",c:"s"})+LD(222,384,144,384)+T(360,236,"Vagina",{c:"s"})+TL(440,396,["Greater vestibular","gland"],{a:"start",c:"s"});
  }
  return svg(b)},
-notes:()=>`<h3>ทั่วไป</h3><ul><li>ท่อผนังบาง นำปัสสาวะจาก base ของ bladder ไปเปิดที่ perineum ${S.g}</li></ul>
- <h3>หญิง</h3><ul><li>สั้น <b>~4 cm</b> โค้งเล็กน้อย ผ่าน <b>deep perineal pouch และ perineal membrane</b> ${S.g}</li>
- <li>เปิดใน <b>vestibule หน้า vagina</b> · มี <b>Skene's (para-urethral) glands</b> 2 ต่อมที่ปลาย · มี external urethral sphincter ${S.g}</li></ul>
+notes:()=>`<h3>ทั่วไป</h3><ul><li>ท่อผนังบาง นำปัสสาวะจาก base ของ bladder ไปเปิดที่ perineum ${S.gr}</li></ul>
+ <h3>หญิง</h3><ul><li>สั้น <b>~4 cm</b> โค้งเล็กน้อย ผ่าน <b>deep perineal pouch และ perineal membrane</b> ${S.gr}</li>
+ <li>เปิดใน <b>vestibule หน้า vagina</b> · มี <b>Skene's (para-urethral) glands</b> 2 ต่อมที่ปลาย · มี external urethral sphincter ${S.gr}</li></ul>
  <h3>ชาย (~20 cm โค้ง 2 ที่)</h3><table><tr><th>ส่วน</th><th>ยาว</th><th>จุดสำคัญ</th></tr>
  <tr><td>Preprostatic</td><td>1 cm</td><td>Internal urethral sphincter (smooth m.) กัน semen ไหลย้อนเข้า bladder</td></tr>
  <tr><td>Prostatic</td><td>3–4 cm</td><td>Urethral crest, prostatic sinus (รูของ prostate ducts), <b>seminal colliculus</b>: prostatic utricle (homolog ของ uterus) + รูของ ejaculatory ducts</td></tr>
  <tr><td>Membranous</td><td>0.5 cm</td><td>ผ่าน deep perineal pouch · <b>external urethral sphincter</b> (skeletal m.) · แคบที่สุด</td></tr>
  <tr><td>Spongy</td><td>15 cm</td><td>ใน corpus spongiosum · bulb (รับ bulbo-urethral glands) · navicular fossa</td></tr></table>
- <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.g}</p>
- <h3>เลือด · lymph · nerve</h3><ul><li>ชาย: inferior vesical, middle rectal a. · prostatic venous plexus · หญิง: internal pudendal &amp; vaginal vessels ${S.g}</li>
- <li>Lymph ชาย: prostatic + membranous → <b>internal iliac</b> · spongy → <b>external iliac</b> และส่วนปลาย/glans → <b>deep inguinal</b> ${S.g} · หญิง → internal iliac ${S.x}</li>
- <li>Nerve: ชาย prostatic plexus · หญิง vesical plexus (ทั้งคู่จาก inferior hypogastric plexus) ${S.g}</li></ul>
- <div class="pearl"><b>Clinical:</b> urethra หญิงสั้น → bladder infection บ่อยกว่าชาย · ใส่สายสวนในชายต้องคำนึงถึงโค้ง 2 จุดและส่วน prostatic ที่โค้งไปหน้า ${S.g}</div>`});
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.gr}</p>
+ <h3>เลือด · lymph · nerve</h3><ul><li>ชาย: inferior vesical, middle rectal a. · prostatic venous plexus · หญิง: internal pudendal &amp; vaginal vessels ${S.gr}</li>
+ <li>Lymph ชาย: prostatic + membranous → <b>internal iliac</b> · spongy → <b>external iliac</b> และส่วนปลาย/glans → <b>deep inguinal</b> ${S.gr} · หญิง → internal iliac ${S.x}</li>
+ <li>Nerve: ชาย prostatic plexus · หญิง vesical plexus (ทั้งคู่จาก inferior hypogastric plexus) ${S.gr}</li></ul>
+ <div class="pearl"><b>Clinical:</b> urethra หญิงสั้น → bladder infection บ่อยกว่าชาย · ใส่สายสวนในชายต้องคำนึงถึงโค้ง 2 จุดและส่วน prostatic ที่โค้งไปหน้า ${S.gr}</div>`});
 
 /* 11 · posterior wall muscles */
 SEC.push({id:"wall",k:"Posterior abdominal wall",t:"Muscles",leg:["musc","bone"],figs:[["wall-1","Posterior abdominal wall"],["wall-3","Psoas, iliacus, quadratus lumborum (Gray Fig 4.142)"]],
@@ -607,8 +609,8 @@ notes:()=>`<h3>4 มัด</h3><table><tr><th>Muscle</th><th>Origin → Insertio
  <tr><td>Psoas minor</td><td>Bodies T12–L1 → pectineal line, iliopubic eminence</td><td>Anterior ramus L1 · weak lumbar flexion · <b>บางคนไม่มี</b></td></tr>
  <tr><td>Iliacus</td><td>Upper 2/3 iliac fossa, ant. sacro-iliac &amp; iliolumbar lig., iliac crest → lesser trochanter</td><td><b>Femoral n. (L2–L4)</b> · flex hip</td></tr>
  <tr><td>Quadratus lumborum</td><td>Transverse process L5, iliolumbar lig., iliac crest → TP L1–L4, inferior border rib 12</td><td>Anterior rami T12, L1–L4 · ดึงและยึด rib 12, เอียงลำตัว</td></tr></table>
- <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.g}</p>
- <ul><li>Psoas major + iliacus = <b>iliopsoas</b> ใช้ tendon ร่วมไปที่ lesser trochanter ${S.g}</li>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.gr}</p>
+ <ul><li>Psoas major + iliacus = <b>iliopsoas</b> ใช้ tendon ร่วมไปที่ lesser trochanter ${S.gr}</li>
  <li>Diaphragm crura: right crus ลงถึง L3 · left crus ถึง L2 ${S.x}</li></ul>
  <div class="pearl"><b>Clinical:</b> psoas อยู่ใน fascia ของตัวเอง ฝีจากกระดูกสันหลัง (เช่น TB) ไหลตาม psoas ลงไปโผล่ที่ต้นขาใต้ inguinal ligament ได้ (psoas abscess) ${S.x}</div>`});
 
@@ -636,7 +638,7 @@ draw(){
   T(304,150,"Psoas major",{c:"s"})+TL(350,214,["Quadratus","lumborum"],{c:"s m"})+T(470,320,"Iliacus / iliac fossa",{c:"s m"})+T(470,470,"Inguinal lig.",{c:"s m"})+
   `<g transform="translate(400,24)"><rect width="220" height="96" rx="10" class="box"/>`+T(12,20,"สัมพันธ์กับ psoas major",{a:"start",c:"h"})+T(12,40,"Anterior: genitofemoral",{a:"start",c:"s"})+T(12,58,"Medial: obturator, lumbosacral trunk",{a:"start",c:"s"})+TL(12,76,["Lateral: iliohypogastric, ilio-inguinal,","LFCN, femoral"],{a:"start",c:"s"})+`</g>`}
  return svg(b)},
-notes:()=>`<h3>Lumbar plexus</h3><ul><li>เกิดจาก <b>anterior rami L1–L3 และส่วนใหญ่ของ L4</b> (+ แขนงจาก T12) · ก่อตัวในเนื้อ psoas major หน้าจุดเกาะที่ transverse process ของ lumbar vertebrae ${S.g}</li></ul>
+notes:()=>`<h3>Lumbar plexus</h3><ul><li>เกิดจาก <b>anterior rami L1–L3 และส่วนใหญ่ของ L4</b> (+ แขนงจาก T12) · ก่อตัวในเนื้อ psoas major หน้าจุดเกาะที่ transverse process ของ lumbar vertebrae ${S.gr}</li></ul>
  <table><tr><th>Nerve</th><th>Root</th><th>วิ่ง / เลี้ยง</th></tr>
  <tr><td>Iliohypogastric</td><td>L1</td><td>ขอบข้าง psoas → skin posterolateral gluteal &amp; pubic region · int. oblique, transversus</td></tr>
  <tr><td>Ilio-inguinal</td><td>L1</td><td>ขอบข้าง psoas → skin upper medial thigh, root of penis/mons, ant. scrotum/labia majora</td></tr>
@@ -644,7 +646,7 @@ notes:()=>`<h3>Lumbar plexus</h3><ul><li>เกิดจาก <b>anterior rami 
  <tr><td>Lateral femoral cutaneous</td><td>L2, L3</td><td>ขอบข้าง psoas หน้า iliacus → ใต้ inguinal lig. → skin anterior/lateral thigh ถึงเข่า</td></tr>
  <tr><td>Femoral</td><td>L2–L4</td><td>ร่องระหว่าง psoas กับ iliacus → iliacus, pectineus, anterior thigh · skin anterior/medial thigh</td></tr>
  <tr><td>Obturator</td><td>L2–L4</td><td><b>ขอบ medial</b> ของ psoas → lateral pelvic wall → ทะลุ obturator membrane → medial thigh</td></tr></table>
- <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.g}</p>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.gr}</p>
  <div class="pearl"><b>จำ:</b> “I twice get laid on Fridays” → Iliohypogastric, Ilio-inguinal, Genitofemoral, LFCN, Obturator, Femoral · <b>Meralgia paresthetica</b> = LFCN ถูกกดใต้ inguinal lig. (ชาด้านข้างต้นขา) ${S.x}</div>`});
 
 /* 13 · aorta, IVC, lymph */
@@ -677,14 +679,14 @@ notes:()=>`<h3>Abdominal aorta (T12–L4)</h3><table><tr><th>กลุ่ม</th
  <tr><td>Visceral (paired)</td><td>Middle suprarenal, <b>renal (L1–L2)</b>, gonadal (testicular/ovarian)</td></tr>
  <tr><td>Posterior</td><td>Inferior phrenic, lumbar ×4, median sacral</td></tr>
  <tr><td>Terminal</td><td>Common iliac (แยกที่ L4)</td></tr></table>
- <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.g}</p>
- <ul><li>Bifurcation ที่ L4 ตรงกับจุดใต้สะดือ ~2.5 cm หรือแนวเส้นต่อยอด iliac crest 2 ข้าง ${S.g}</li>
- <li>หน้า aorta: pancreas + splenic v., <b>left renal v.</b>, 3rd part duodenum ${S.g}</li></ul>
- <h3>IVC</h3><ul><li>รับ: common iliac v., lumbar v., <b>right</b> gonadal v., renal v., <b>right</b> suprarenal v., inferior phrenic v., hepatic v. ${S.g}</li>
- <li><b>ยกเว้น</b> left gonadal v. และ left suprarenal v. → เข้า <b>left renal v.</b> ${S.g}</li></ul>
- <h3>Lymph</h3><ul><li><b>Pre-aortic</b>: จากอวัยวะที่ celiac/SMA/IMA เลี้ยง → intestinal trunk ${S.g}</li>
- <li><b>Lateral aortic (para-aortic/lumbar)</b>: จากผนังลำตัว ไต suprarenal testes/ovaries → lumbar trunk ซ้าย/ขวา ${S.g}</li>
- <li><b>Cisterna chyli</b> = intestinal + lumbar trunks · หลังด้านขวาของ aorta หน้า L1–L2 · เริ่ม thoracic duct ${S.g}</li></ul>
+ <p style="font-size:.8125rem;color:var(--sb-muted);margin:-.4rem 0 .9rem">${S.gr}</p>
+ <ul><li>Bifurcation ที่ L4 ตรงกับจุดใต้สะดือ ~2.5 cm หรือแนวเส้นต่อยอด iliac crest 2 ข้าง ${S.gr}</li>
+ <li>หน้า aorta: pancreas + splenic v., <b>left renal v.</b>, 3rd part duodenum ${S.gr}</li></ul>
+ <h3>IVC</h3><ul><li>รับ: common iliac v., lumbar v., <b>right</b> gonadal v., renal v., <b>right</b> suprarenal v., inferior phrenic v., hepatic v. ${S.gr}</li>
+ <li><b>ยกเว้น</b> left gonadal v. และ left suprarenal v. → เข้า <b>left renal v.</b> ${S.gr}</li></ul>
+ <h3>Lymph</h3><ul><li><b>Pre-aortic</b>: จากอวัยวะที่ celiac/SMA/IMA เลี้ยง → intestinal trunk ${S.gr}</li>
+ <li><b>Lateral aortic (para-aortic/lumbar)</b>: จากผนังลำตัว ไต suprarenal testes/ovaries → lumbar trunk ซ้าย/ขวา ${S.gr}</li>
+ <li><b>Cisterna chyli</b> = intestinal + lumbar trunks · หลังด้านขวาของ aorta หน้า L1–L2 · เริ่ม thoracic duct ${S.gr}</li></ul>
  <div class="pearl"><b>Clinical:</b> มะเร็งอัณฑะลามไป <b>para-aortic nodes</b> (ไม่ใช่ inguinal) เพราะ testis มาจากระดับไตตอนเป็นตัวอ่อน ${S.x}</div>`});
 
 /* 14 · clinical */
@@ -706,13 +708,13 @@ draw(){
  if(ST.labels)b+=T(110,490,"Back · loin",{c:"s"})+T(250,490,"Front · groin, pubis, thigh",{c:"s"})+T(180,16,"Referred pain from ureter: T11–L2",{c:"h"}).replace('y="16"','y="20"');
  return svg(b,"0 0 640 524")},
 notes:()=>`<h3>ที่มา</h3><ul>
- <li><b>นิ่ว</b>: ชายมากกว่าหญิง อายุ 20–60 ปี · ปวดจาก loin ร้าวลง groin ถึง scrotum/labia + hematuria · ตรวจ CT KUB (ขนาด ตำแหน่ง ระดับการอุดตัน) · US ใช้ในคนท้อง ${S.g}</li>
- <li><b>RCC</b>: มาจาก proximal tubular epithelium · ลามเข้า renal v. และ IVC ได้ ซึ่งมะเร็งอื่นไม่ค่อยทำ · ~5% ของเนื้องอกในไตเป็น transitional cell จาก urothelium ของ pelvis ${S.g}</li>
- <li><b>Urothelium</b> ตั้งแต่ calyx ถึง urethra ทำตัวเป็น “หน่วยเดียว” → เป็น TCC ที่ bladder ต้องตรวจทั้งทางเดินปัสสาวะ ${S.g}</li>
- <li><b>Nephrostomy</b>: ระบายปัสสาวะเมื่อ ureter ส่วนปลายอุด (กันไตวายและติดเชื้อ) ${S.g}</li>
- <li><b>Transplant</b>: iliac fossa อยู่ใกล้ผิวหน้าท้อง → ทำ US/Doppler และ biopsy ง่าย ฟื้นตัวเร็ว ${S.g}</li>
- <li><b>Ureteric injury</b> ระหว่างผ่าตัดในอุ้งเชิงกราน (hysterectomy, colectomy) → ปัสสาวะรั่ว sepsis หรือ fistula ${S.g}</li>
- <li><b>Bladder cancer</b>: มักเป็นหลายจุด ลามไป rectum/uterus/prostate และ internal iliac nodes ${S.g}</li></ul>
+ <li><b>นิ่ว</b>: ชายมากกว่าหญิง อายุ 20–60 ปี · ปวดจาก loin ร้าวลง groin ถึง scrotum/labia + hematuria · ตรวจ CT KUB (ขนาด ตำแหน่ง ระดับการอุดตัน) · US ใช้ในคนท้อง ${S.gr}</li>
+ <li><b>RCC</b>: มาจาก proximal tubular epithelium · ลามเข้า renal v. และ IVC ได้ ซึ่งมะเร็งอื่นไม่ค่อยทำ · ~5% ของเนื้องอกในไตเป็น transitional cell จาก urothelium ของ pelvis ${S.gr}</li>
+ <li><b>Urothelium</b> ตั้งแต่ calyx ถึง urethra ทำตัวเป็น “หน่วยเดียว” → เป็น TCC ที่ bladder ต้องตรวจทั้งทางเดินปัสสาวะ ${S.gr}</li>
+ <li><b>Nephrostomy</b>: ระบายปัสสาวะเมื่อ ureter ส่วนปลายอุด (กันไตวายและติดเชื้อ) ${S.gr}</li>
+ <li><b>Transplant</b>: iliac fossa อยู่ใกล้ผิวหน้าท้อง → ทำ US/Doppler และ biopsy ง่าย ฟื้นตัวเร็ว ${S.gr}</li>
+ <li><b>Ureteric injury</b> ระหว่างผ่าตัดในอุ้งเชิงกราน (hysterectomy, colectomy) → ปัสสาวะรั่ว sepsis หรือ fistula ${S.gr}</li>
+ <li><b>Bladder cancer</b>: มักเป็นหลายจุด ลามไป rectum/uterus/prostate และ internal iliac nodes ${S.gr}</li></ul>
  <div class="pearl">ดูกลไกการเกิดนิ่วและ AKI ต่อได้ใน <b>Nephron Pathway Atlas</b> ส่วน Kidney diseases</div>`});
 
 /* order follows Gray's Anatomy for Students: posterior abdominal wall → kidneys → ureters → suprarenal glands → vessels, lymphatics, nerves (Ch 4) → bladder, urethra (Ch 5) */

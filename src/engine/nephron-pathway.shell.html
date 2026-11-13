@@ -1,0 +1,251 @@
+<!doctype html><html lang="th"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png"><script src="../app.js" defer></script><title>Nephron Pathway Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="../design/sb.css"><style>
+/* Layout: nephron map (click a segment) → detailed cell close-up with colour-coded substances + optional concentration band → table → clinical cards */
+:root{
+  --bg:var(--sb-bg); --paper:var(--sb-surface); --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --halo:var(--sb-halo);
+  --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft);
+  --lumen:#fff6d6; --cell:#ffe4d6; --cell-edge:#cf7f62; --nuc:#e6dcfb; --nuc-edge:#9277d4; --mito:#ffd0c0; --mito-edge:#c0583c;
+  --isf:#e6f4f0; --blood:#e5484d; --blood-soft:#fbd7d8; --vein:#3f6fd8; --tube:#ffd98a; --tube-edge:#b8862b;
+  --cortex:#fbf0e7; --om:#f6ddcc; --im:#efc6ae;
+  /* substances */
+  --s-na:#1d4ed8; --s-k:#9333ea; --s-cl:#15803d; --s-hco3:#0d9488; --s-h:#dc2626; --s-ca:#ea580c; --s-mg:#65a30d;
+  --s-pi:#a16207; --s-glc:#db2777; --s-aa:#a21caf; --s-h2o:#0ea5e9; --s-urea:#ca8a04; --s-nh4:#4338ca; --s-org:#78716c; --s-co2:#94a3b8;
+  /* proteins */
+  --p-sym:#475569; --p-sym-f:#e2e8f0; --p-anti:#0f172a; --p-anti-f:#ffffff; --p-uni:#64748b; --p-uni-f:#f8fafc;
+  --p-pump:#a16207; --p-pump-f:#fde68a; --p-atp:#facc15; --p-ch:#6b7280; --p-rec:#be185d; --p-enz:#854d0e; --p-enz-f:#fef9c3; --p-jx:#57534e;
+  --f-display:var(--sb-font);
+  --f-body:var(--sb-font);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:var(--sb-bg); --paper:var(--sb-surface); --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --halo:var(--sb-halo);
+  --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft);
+  --lumen:#3a3420; --cell:#46302a; --cell-edge:#cf8f77; --nuc:#352d4d; --nuc-edge:#a690e6; --mito:#5a3328; --mito-edge:#e08a6c;
+  --isf:#1c3430; --blood:#ff6b6f; --blood-soft:#4a2224; --vein:#7aa2ff; --tube:#6b5627; --tube-edge:#e0b45c;
+  --cortex:#29231f; --om:#33281f; --im:#3f2c20;
+  --s-na:#7aa5ff; --s-k:#c79bff; --s-cl:#5fd68a; --s-hco3:#3fd6c4; --s-h:#ff6b6b; --s-ca:#ff9a52; --s-mg:#a8dc4a;
+  --s-pi:#e0b452; --s-glc:#ff7ab8; --s-aa:#e57ff0; --s-h2o:#5cc8ff; --s-urea:#f2c94c; --s-nh4:#9a95ff; --s-org:#c2b8b0; --s-co2:#b7c3d1;
+  --p-sym:#b7c4d4; --p-sym-f:#2c3846; --p-anti:#eef2f6; --p-anti-f:#1a2228; --p-uni:#9fb0c2; --p-uni-f:#222c35;
+  --p-pump:#f2c94c; --p-pump-f:#5a4614; --p-atp:#facc15; --p-ch:#a3adb6; --p-rec:#ff73ad; --p-enz:#f0c63c; --p-enz-f:#3d3416; --p-jx:#d6cfc8;
+  color-scheme:dark}}
+:root[data-theme="dark"],:root[data-theme="oled"]{
+  --bg:var(--sb-bg); --paper:var(--sb-surface); --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --halo:var(--sb-halo);
+  --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft);
+  --lumen:#3a3420; --cell:#46302a; --cell-edge:#cf8f77; --nuc:#352d4d; --nuc-edge:#a690e6; --mito:#5a3328; --mito-edge:#e08a6c;
+  --isf:#1c3430; --blood:#ff6b6f; --blood-soft:#4a2224; --vein:#7aa2ff; --tube:#6b5627; --tube-edge:#e0b45c;
+  --cortex:#29231f; --om:#33281f; --im:#3f2c20;
+  --s-na:#7aa5ff; --s-k:#c79bff; --s-cl:#5fd68a; --s-hco3:#3fd6c4; --s-h:#ff6b6b; --s-ca:#ff9a52; --s-mg:#a8dc4a;
+  --s-pi:#e0b452; --s-glc:#ff7ab8; --s-aa:#e57ff0; --s-h2o:#5cc8ff; --s-urea:#f2c94c; --s-nh4:#9a95ff; --s-org:#c2b8b0; --s-co2:#b7c3d1;
+  --p-sym:#b7c4d4; --p-sym-f:#2c3846; --p-anti:#eef2f6; --p-anti-f:#1a2228; --p-uni:#9fb0c2; --p-uni-f:#222c35;
+  --p-pump:#f2c94c; --p-pump-f:#5a4614; --p-atp:#facc15; --p-ch:#a3adb6; --p-rec:#ff73ad; --p-enz:#f0c63c; --p-enz-f:#3d3416; --p-jx:#d6cfc8;
+  color-scheme:dark}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:0.9375rem;line-height:1.55}
+.wrap{max-width:1180px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:28px 56px;display:flex;flex-direction:column;gap:22px}
+h1,h2,h3{font-family:var(--f-display);font-weight:600;text-wrap:balance;margin:0;line-height:1.2}
+h1{font-size:clamp(1.75rem,4.4vw,40px)} h2{font-size:1.438rem} h3{font-size:1.062rem}
+.lede{color:var(--muted);max-width:72ch;margin:6px 0 0}
+.src{font-size:0.7812rem;color:var(--muted);letter-spacing:.02em}
+.panel{background:var(--paper);border:1px solid var(--line);border-radius:18px;padding:18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.scroll{overflow-x:auto;-webkit-overflow-scrolling:touch}
+.scroll svg{display:block;width:100%;min-width:820px;height:auto}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chip{font:600 0.8125rem/1 var(--f-display);border:1.5px solid var(--line);background:var(--paper);color:var(--ink);border-radius:999px;padding:7px 12px 7px 7px;cursor:pointer;display:inline-flex;align-items:center;gap:7px}
+.tz-l{font:600 0.75rem/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);align-self:center;margin-right:4px}
+.chip.tp b{background:var(--isf)}
+a.chip{text-decoration:none}
+.golinks{display:flex;flex-wrap:wrap;gap:6px;align-items:center;font-size:0.8125rem}
+.golinks button{font:600 0.7812rem/1 var(--f-display);border:1.5px solid var(--line);background:var(--bg);color:var(--ink);border-radius:999px;padding:6px 10px;cursor:pointer}
+.chip b{display:inline-grid;place-items:center;min-width:22px;height:22px;border-radius:50%;background:var(--tube);color:var(--ink);font-size:0.75rem}
+.chip[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.chip[aria-pressed="true"] b{background:var(--accent);color:#fff}
+.chip:focus-visible,.seg:focus-visible,.mk:focus-visible,.tog input:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.head{display:flex;flex-wrap:wrap;align-items:baseline;gap:10px 16px}
+.tag{font:600 0.75rem/1 var(--f-display);letter-spacing:.06em;text-transform:uppercase;padding:6px 9px;border-radius:7px;background:var(--isf);color:var(--ink)}
+.pct{font-size:0.875rem;color:var(--muted);max-width:110ch}
+.bar{display:flex;flex-wrap:wrap;gap:10px 18px;align-items:center}
+.tog{display:inline-flex;align-items:center;gap:8px;font:600 0.875rem/1 var(--f-display);cursor:pointer;user-select:none}
+.tog input{appearance:none;width:42px;height:24px;border-radius:999px;background:var(--line);position:relative;cursor:pointer;transition:background .2s;margin:0}
+.tog input::after{content:"";position:absolute;top:3px;left:3px;width:18px;height:18px;border-radius:50%;background:var(--paper);transition:left .2s}
+.tog input:checked{background:var(--accent)}
+.tog input:checked::after{left:21px}
+.legend{display:grid;grid-template-columns:repeat(auto-fill,minmax(210px,1fr));gap:12px 20px}
+.legend h4{font:600 0.75rem/1 var(--f-display);letter-spacing:.08em;text-transform:uppercase;color:var(--muted);margin:0 0 6px}
+.legend .row{display:flex;flex-wrap:wrap;gap:6px 12px;font-size:0.8125rem}
+.legend span{display:inline-flex;align-items:center;gap:6px;font-weight:600}
+.legend i{width:14px;height:14px;border-radius:4px;display:inline-block}
+.legend svg{width:22px;height:22px;min-width:0;flex:none}
+table{border-collapse:collapse;width:100%;font-size:0.8438rem;min-width:820px}
+th{font:600 0.75rem/1.2 var(--f-display);letter-spacing:.05em;text-transform:uppercase;text-align:left;color:var(--muted);padding:8px;border-bottom:2px solid var(--line)}
+td{padding:8px;border-bottom:1px solid var(--line);vertical-align:top}
+tr.row{cursor:pointer}
+tr.row.on td{background:var(--accent-soft)}
+td.nm{font-weight:700}
+td .sb{font-weight:700}
+.srcb{font:600 0.6875rem/1 var(--f-display);padding:4px 6px;border-radius:6px;background:var(--isf);white-space:nowrap}
+.dot{display:inline-block;width:10px;height:10px;border-radius:3px;margin-right:6px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(250px,1fr));gap:12px}
+.card{border:1px solid var(--line);border-radius:14px;padding:12px 14px;background:var(--bg);min-width:0}
+.card h3{font-size:0.9688rem;margin-bottom:4px}
+.card p{margin:0;font-size:0.8438rem;color:var(--muted)}
+.note{font-size:0.7812rem;color:var(--muted);margin:0}
+/* SVG text */
+.h{paint-order:stroke;stroke:var(--halo);stroke-width:3.5px;stroke-linejoin:round}
+.t{font-family:var(--f-body);fill:var(--ink);font-size:12px;font-weight:700}
+.ts{font-family:var(--f-body);fill:var(--muted);font-size:10.5px;font-weight:600}
+.tb{font-family:var(--f-display);fill:var(--ink);font-size:14px;font-weight:600}
+.tz{font-family:var(--f-display);fill:var(--muted);font-size:12px;font-weight:600;letter-spacing:.12em}
+.ion{font-family:var(--f-body);font-size:12.5px;font-weight:700}
+.it{cursor:pointer}
+.it.faded{opacity:.28}
+.regcard{border:1.5px solid var(--p-rec);border-radius:14px;padding:12px 16px;background:var(--bg);margin-block:10px}
+.regcard h3{margin-bottom:6px}
+.regcard dl{display:grid;grid-template-columns:max-content 1fr;gap:4px 14px;margin:0;font-size:0.875rem}
+.regcard dt{font:600 0.75rem/1.6 var(--f-display);letter-spacing:.05em;text-transform:uppercase;color:var(--muted)}
+.regcard dd{margin:0}
+table.mx td.hit{cursor:pointer;color:var(--p-rec);font-weight:600}
+table.mx td.hit:hover{background:var(--accent-soft)}
+button.rgo{font:700 0.8125rem var(--f-body);background:none;border:0;color:var(--ink);cursor:pointer;padding:0;text-align:left}
+button.rgo:hover{color:var(--p-rec)}
+.regs .reg{opacity:.22;transition:opacity .2s}
+svg.regfocus .reg{opacity:.05}
+svg.regfocus .reg.on{opacity:1}
+.pool .ln{fill:none;stroke-width:3;stroke-linecap:round;stroke-linejoin:round}
+.pool.sel .ln{stroke-width:4.2}
+.pool .run{fill:none;stroke:var(--halo);stroke-width:1.8;stroke-linecap:round;stroke-dasharray:2 10;animation:flow 1.1s linear infinite}
+@media (prefers-reduced-motion:reduce){.pool .run{animation:none}}
+.trace{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.trace .lbl{font:600 13px/1 var(--f-display);color:var(--muted);margin-right:4px}
+.trace button{font:700 0.8125rem/1 var(--f-body);border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:6px 11px;cursor:pointer}
+.trace button[aria-pressed="true"]{border-color:currentColor;background:var(--accent-soft)}
+.mech{display:flex;flex-direction:column;gap:10px}
+.mrow{border:1px solid var(--line);border-left:5px solid var(--line);border-radius:12px;padding:10px 12px;background:var(--bg);cursor:pointer}
+.mrow.on{border-color:var(--accent);background:var(--accent-soft)}
+.mrow h4{margin:0 0 6px;font:600 0.9375rem/1.2 var(--f-display)}
+.steps{display:flex;flex-wrap:wrap;align-items:center;gap:4px 6px;font-size:0.8125rem}
+.steps span.st{background:var(--paper);border:1px solid var(--line);border-radius:8px;padding:4px 8px;font-weight:600}
+.steps span.ar{color:var(--muted);font-weight:700}
+.routes ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:6px}
+.routes li{border:1px solid var(--line);border-radius:12px;padding:8px 12px;font-size:0.8438rem;cursor:pointer;background:var(--bg)}
+.routes li.on{border-color:var(--accent);background:var(--accent-soft)}
+.routes li b{font-weight:700}
+.routes .cellw{font:600 0.6875rem/1 var(--f-display);padding:3px 7px;border-radius:999px;background:var(--cell);border:1px solid var(--cell-edge);margin:0 4px}
+.legend .sbtn{cursor:pointer;border-radius:6px;padding:2px 4px}
+.legend .sbtn.on{outline:2px solid currentColor}
+.it.hl .shape{stroke:var(--accent)!important;stroke-width:3.5}
+.it.hl .nmt{fill:var(--accent)}
+.seg{cursor:pointer}
+.seg.on .fill,.seg:hover .fill{stroke:var(--accent)}
+.flow{stroke-dasharray:3 14;animation:flow 1.4s linear infinite}
+@keyframes flow{to{stroke-dashoffset:-34}}
+@media (prefers-reduced-motion:reduce){.flow{animation:none}}
+.mk{cursor:pointer}
+.mk circle{fill:var(--paper);stroke:var(--ink);stroke-width:2}
+.mk text{font-family:var(--f-display);font-weight:700;font-size:12.5px;fill:var(--ink)}
+.mk.on circle{fill:var(--accent);stroke:var(--accent)}
+.mk.on text{fill:#fff}
+</style><style>/* Study Bible standard layer */
+
+html body{font-size:1rem}
+html body h1,html body h2,html body h3,html body h4{font-family:var(--sb-font);letter-spacing:-.015em;color:var(--sb-ink)}
+html body .sb-hero h1{font-size:clamp(1.75rem,4.2vw,2.5rem);font-weight:800;margin:0}
+html body .note{color:var(--sb-muted)}
+html body th{font:700 .6875rem/1.2 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted);border-bottom:1px solid var(--sb-line)}
+html body td{border-bottom:1px solid var(--sb-line)}
+html body select{font:500 .9375rem var(--sb-font);padding:.55rem .7rem;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface2);color:var(--sb-ink)}
+html body ::selection{background:var(--sb-accent-soft)}
+
+html body .wrap{padding-block:1rem 4.5rem;gap:1rem}
+html body .panel{background:var(--sb-surface);border:1px solid var(--sb-line);border-radius:var(--sb-r-lg);box-shadow:var(--sb-shadow);padding:1.15rem;gap:.9rem}
+html body .panel h2,html body .head h2{font-size:1.25rem;font-weight:700;margin:0}
+html body h3{font-size:1.0625rem;font-weight:650}
+html body .chip,html body .trace button,html body a.go,html body button.go,html body .golinks button,html body button.rgo{font:500 .8125rem/1.1 var(--sb-font);border:1px solid var(--sb-line);background:var(--sb-surface);color:var(--sb-ink2);border-radius:999px}
+html body .chip[aria-pressed="true"]{background:var(--sb-ink);color:var(--sb-bg);border-color:var(--sb-ink)}
+html body .chip[aria-pressed="true"] b{background:var(--sb-accent);color:var(--sb-on-accent)}
+html body .chip b{background:var(--sb-surface2);color:var(--sb-ink)}
+html body .trace button[aria-pressed="true"]{border-color:currentColor;background:color-mix(in srgb,currentColor 12%,var(--sb-surface))}
+html body .trace .lbl,html body .tz-l,html body .legend h4{font:700 .6875rem/1.2 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted)}
+html body .tog{font:500 .875rem/1.2 var(--sb-font);color:var(--sb-ink2)}
+html body .tog input{background:var(--sb-surface2);border:1px solid var(--sb-line)}
+html body .tog input:checked{background:var(--sb-accent);border-color:var(--sb-accent)}
+html body .tag{font:700 .6875rem/1 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-accent);background:var(--sb-accent-soft);border:0;border-radius:6px;padding:.3rem .5rem}
+html body .kpi{background:var(--sb-surface2);border:0;border-radius:12px}
+html body .card{border-radius:var(--sb-r);border-color:var(--sb-line);background:var(--sb-surface)}
+html body .mrow,html body .routes li{border-radius:12px}
+html body .scroll{border-radius:12px}
+
+.tchips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:10px}
+.tchip{font:600 .8125rem/1 var(--f-display);border:1.5px solid var(--line);background:var(--paper);border-radius:999px;padding:7px 11px;cursor:pointer;display:inline-flex;align-items:center;gap:6px}
+.tchip i{width:10px;height:10px;border-radius:50%}
+.tchip[aria-pressed="true"]{border-color:currentColor;box-shadow:inset 0 0 0 1px currentColor;background:color-mix(in srgb,currentColor 10%,var(--paper))}
+#tmap .tbadge{cursor:pointer}#tmap .tbadge rect{stroke-width:1.5}
+#tmap .tbadge.r rect{fill:color-mix(in srgb,var(--sb-accent) 16%,var(--paper));stroke:var(--sb-accent)}
+#tmap .tbadge.s rect{fill:color-mix(in srgb,#C2410C 14%,var(--paper));stroke:#C2410C}
+#tmap .tbadge.rs rect{fill:color-mix(in srgb,#7C3AED 12%,var(--paper));stroke:#7C3AED}
+#tmap .tbadge.z rect{fill:var(--paper);stroke:var(--line);stroke-dasharray:4 3}
+#tmap .tbl{font:700 12px var(--f-display);fill:var(--ink)}
+#tmap .tbadge:hover rect,#tmap .tbadge:focus rect{stroke-width:3}
+.tgrid{display:grid;grid-template-columns:minmax(0,1.6fr) minmax(0,1fr);gap:14px;margin-top:12px}
+@media (max-width:760px){.tgrid{grid-template-columns:1fr}}
+.tsum{margin:0 0 8px;font-size:.9rem}
+.trow{all:unset;box-sizing:border-box;cursor:pointer;display:grid;grid-template-columns:auto 1fr auto;gap:2px 10px;width:100%;padding:9px 12px;margin-bottom:6px;border-radius:12px;border:1px solid var(--line);border-left:4px solid var(--line);background:var(--paper)}
+.trow.r{border-left-color:var(--sb-accent)}.trow.s{border-left-color:#C2410C}.trow.rs{border-left-color:#7C3AED}.trow.z{opacity:.7}
+.trow:hover,.trow.hl,.trow:focus-visible{background:var(--sb-surface2,var(--isf))}
+.tdir{font:700 .6875rem/1.6 var(--f-display);text-transform:uppercase;letter-spacing:.05em;color:var(--muted)}
+.trow.r .tdir{color:var(--sb-accent)}.trow.s .tdir{color:#C2410C}.trow.rs .tdir{color:#7C3AED}
+.tseg{font-weight:700;font-size:.9rem}.tpct{font-size:.95rem;text-align:right}
+.thow{grid-column:1/-1;font-size:.84rem;color:var(--ink)}.thow small{display:block;color:var(--muted);font-size:.76rem;margin-top:2px}
+.tgo{color:var(--muted);font-weight:400}#tracker .scroll svg{min-width:0;width:100%;height:auto}
+.trem h3{font-size:.9rem;margin:0 0 8px}
+.rrow{display:grid;grid-template-columns:5.5rem 1fr 3.6rem;align-items:center;gap:8px;font-size:.82rem;margin-bottom:6px}
+.rrow i{height:12px;border-radius:6px;background:var(--line);overflow:hidden;display:block}.rrow b{display:block;height:100%;border-radius:6px}
+.rrow em{font-style:normal;font-weight:700;text-align:right}
+</style>
+
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Physiology</div>
+    <h1>Nephron Pathway Atlas</h1>
+    <p class="sb-lede">กดเลขหรือท่อบนแผนที่เพื่อซูมดูเซลล์ของ segment นั้น สารแต่ละตัวมีสีประจำทั้งหน้า ส่วน carrier, pump, receptor แยกด้วยสีและรูปทรงตามชนิด ตัวที่ใช้ ATP มีป้าย ATP เปิดสวิตช์ Concentrations เพื่อดูความเข้มข้นใน lumen ในเซลล์ และใน interstitium</p>
+    <div class="sb-sources"><span class="sb-src"><i class="guyton">G</i>Guyton &amp; Hall 13e · Unit V (Ch 25–31)</span><span class="sb-src"><i class="boron">B</i>Boron &amp; Boulpaep 3e · Ch 33–40</span></div>
+  </header>
+
+  <section class="panel" aria-label="Nephron overview">
+    <div class="head"><h2>Pathway: renal artery → urine &amp; renal vein</h2></div>
+    <div class="scroll"><svg id="map" viewBox="0 0 1000 590" role="img" aria-label="Cartoon nephron with numbered segments"></svg></div>
+    <div class="chips" id="chips" role="toolbar" aria-label="Choose a segment"></div>
+    <div class="chips" id="topics" role="toolbar" aria-label="Whole-kidney topics"><span class="lbl tz-l">Whole-kidney topics</span></div>
+  </section>
+
+  <section class="panel" id="tracker" aria-label="Substance tracker"><a id="t-tracker"></a>
+<div class="head"><span class="tag">ติดตามสาร</span><h2>สารแต่ละตัวเคลื่อนที่ที่ไหนบ้าง</h2></div>
+<p class="note" style="margin:.2rem 0 .7rem">เลือกสาร แล้วดูทุกตำแหน่งตลอด nephron ที่สารนั้นถูกดูดกลับหรือหลั่ง พร้อมสัดส่วนของที่กรอง กดป้ายบนแผนที่หรือแถวในรายการเพื่อซูมเข้าเซลล์ของตำแหน่งนั้น โดยไฮไลต์เส้นทางของสารนั้นไว้ให้</p>
+<div class="tchips" id="t-chips" role="toolbar" aria-label="Choose a substance"></div>
+<div class="scroll"><svg id="tmap" viewBox="0 0 1000 590" role="img" aria-label="Where the selected substance moves"></svg></div>
+<div class="tgrid"><div id="t-list"></div><div id="t-rem" class="trem"></div></div>
+</section>
+<section class="panel" aria-live="polite" data-sb-focus>
+    <div class="head"><span class="tag" id="d-region"></span><h2 id="d-title"></h2></div>
+    <div class="pct" id="d-pct"></div>
+    <div class="bar">
+      <label class="tog"><input type="checkbox" id="t-conc"> Concentrations &amp; voltages</label>
+      <label class="tog"><input type="checkbox" id="t-flow" checked> Intracellular pathways</label>
+      <label class="tog"><input type="checkbox" id="t-reg" checked> Hormone &amp; nerve effects</label>
+      <label class="tog"><input type="checkbox" id="t-para" checked> Paracellular path</label>
+      <span class="note">ค่าความเข้มข้นเป็นค่าโดยประมาณจากตำรา หน่วย mM ถ้าไม่ได้ระบุอย่างอื่น</span>
+    </div>
+    <div class="trace" id="trace"></div>
+    <div class="scroll" id="d-draw"></div>
+    <div class="mech" id="d-mech" hidden></div>
+    <div class="routes"><h3>Transcellular routes</h3><p class="note">เส้นทางของสารแต่ละตัว: เข้าทางไหน → ผ่านเซลล์ / ปฏิกิริยา → ออกทางไหน กดแถวไหน, ปุ่ม Trace ด้านบนภาพ, ชื่อสารใน legend หรือ transporter ในรูป เพื่อดูเส้นทางของสารนั้นทีละตัว · ปุ่ม Regulators (สีชมพู) แสดงว่าฮอร์โมน/เส้นประสาทตัวนั้นไปกระตุ้น (+) หรือยับยั้ง (−) transporter ตัวไหน</p><ul id="d-routes"></ul></div>
+    <div class="legend" id="legend"></div>
+    <div class="scroll" id="d-table"><table><thead><tr><th>Location</th><th>Protein type</th><th>Name</th><th>What moves</th><th>Function / note</th><th>Text</th></tr></thead><tbody id="d-rows"></tbody></table></div>
+    <h3>Situations &amp; organs involved</h3>
+    <div class="cards" id="d-sit"></div>
+    <p class="note">Text column: G = Guyton &amp; Hall, B = Boron &amp; Boulpaep, G+B = both. Where the two books give different numbers, both are shown. Arrows: → toward interstitium/blood, ← toward lumen (or into the cell for uptake from blood).</p>
+  </section>
+</div>
+
+@@SCRIPT@@

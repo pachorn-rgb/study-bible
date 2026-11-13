@@ -132,7 +132,7 @@ notes:()=>`<h3>3 ชั้น + 1</h3><ul>
  <li><b>Fenestrated endothelium</b> รู 60–100 nm กันเซลล์เม็ดเลือด/เกล็ดเลือด · มี <b>glycocalyx</b> ประจุลบคลุม ${S.w}${S.j}</li>
  <li><b>GBM</b> หนา ~300–360 nm (หนาสุดในร่างกาย) เกิดจากการเชื่อม basal lamina ของ endothelium + podocyte · type IV collagen, laminin, fibronectin, <b>heparan sulfate</b> ${S.j}${S.w}</li>
  <li>EM เห็น GBM 3 ชั้น: <b>lamina rara interna – densa – externa</b> · rara ทั้งสองประจุลบ → กันโมเลกุลประจุลบ · densa กันตาม <b>ขนาด/รูปร่าง</b> ${S.w}</li>
- <li><b>Filtration slits</b> 25–40 nm ระหว่าง pedicels มี <b>slit diaphragm</b> (nephrin, P-cadherin, podocalyxin) = modified tight junction ${S.j}${S.w}</li>
+ <li><b>Filtration slits</b> ระหว่าง pedicels — <b>25–30 nm</b> ${S.j} · <b>~40 nm</b> ${S.w} (สองตำราให้ตัวเลขต่างกัน) · มี <b>slit diaphragm</b> (nephrin, P-cadherin, podocalyxin) = modified tight junction ${S.j}${S.w}</li>
  <li><b>Subpodocyte space</b> คลุม ~60% ของผิว capillary เป็นชั้นที่ 4 ที่ควบคุมการกรองได้ ${S.w}</li></ul>
  <h3>ตัวเลขที่ออกสอบ</h3><ul><li>Hb (65 kDa) ผ่านได้ · albumin (68–70 kDa) ไม่ผ่าน ${S.w}${S.j}</li><li>กรอง ~20% ของ plasma ที่เข้า glomerulus · GFR ~125 mL/min (180 L/วัน) ${S.j}</li></ul>
  <div class="pearl"><b>Clinical:</b> COL4A5 → <b>Alport</b> (GBM แตกเป็นชั้น) · nephrin mutation → congenital nephrotic · foot process effacement → proteinuria ${S.j}${S.x}</div>`});

@@ -35,7 +35,7 @@
 /* Shared Guyton-based renal physiology sections (from the original renal atlases).
    Each renal-physio-* atlas includes this file, then keeps and regroups only its own sections. */
 /* ================= physiology helpers ================= */
-Object.assign(S,{g:'<b class="sbb guyton">G</b>',b:'<b class="sbb boron">B</b>',x:'<b class="sbb gen">Gen</b>'});
+Object.assign(S,{g:'<b class="sbb guyton">G</b>',b:'<b class="sbb boron">B</b>',x:'<b class="sbb gen">Gen</b>',gl:'<b class="sbb gen">GL</b>'});
 Object.assign(LEG,{na:["Na⁺","--s-na"],k:["K⁺","--s-k"],cl:["Cl⁻","--s-cl"],h2o:["H₂O","--s-h2o"],glc:["Glucose","--s-glc"],h:["H⁺","--s-h"],hco3:["HCO₃⁻","--s-hco3"],urea:["Urea","--s-urea"],ca:["Ca²⁺","--s-ca"],pi:["Phosphate","--s-pi"],nh4:["NH₄⁺","--s-nh4"],art:["Arteriole","--a-art"]});
 Object.assign(ST,{labels:true,pg:60,pb:18,pic:32,kf:12.5,map:100,glc:100,step:0,pco2:40,hco3:24,ag:12,kfac:"diet",chart:"tfp",mic:"normal",dis:"aki",ra:1,re:1});
 const f0=v=>Math.round(v),f1=v=>(Math.round(v*10)/10).toFixed(1);
@@ -491,7 +491,9 @@ draw(){const pH=6.1+Math.log10(ST.hco3/(.03*ST.pco2));let dx="",cmp="";
 notes:()=>`<h3>4 แบบหลัก</h3><table><tr><th></th><th>ปฐมภูมิ</th><th>ชดเชย</th></tr>
  <tr><td>Resp. acidosis</td><td>↑ PCO₂</td><td>↑ HCO₃⁻ (ไต)</td></tr><tr><td>Resp. alkalosis</td><td>↓ PCO₂</td><td>↓ HCO₃⁻</td></tr>
  <tr><td>Met. acidosis</td><td>↓ HCO₃⁻</td><td>↓ PCO₂ (หายใจเร็ว)</td></tr><tr><td>Met. alkalosis</td><td>↑ HCO₃⁻</td><td>↑ PCO₂</td></tr></table>
- <h3>Anion gap</h3><ul><li>AG = Na⁺ − (Cl⁻ + HCO₃⁻) ปกติ <b>8–16</b> mEq/L ${S.g}</li>
+ <ul><li><b>Winter's formula</b> — คาด PCO₂ ที่ควรชดเชยใน simple metabolic acidosis: <b>PCO₂ = 1.5 × [HCO₃⁻] + 8 ± 2</b> ${S.fa1}</li>
+ <li>วัดได้ <b>สูงกว่า</b> ที่คาด → มี respiratory acidosis ร่วม · วัดได้ <b>ต่ำกว่า</b> ที่คาด → มี respiratory alkalosis ร่วม ${S.fa1}</li></ul>
+ <h3>Anion gap</h3><ul><li>AG = Na⁺ − (Cl⁻ + HCO₃⁻) ${S.fa1} · ค่าปกติ <b>8–16</b> mEq/L ${S.gl}</li>
  <li><b>High AG</b>: diabetic ketoacidosis, lactic acidosis, ไตวายเรื้อรัง, aspirin, methanol, ethylene glycol, starvation ${S.g}</li>
  <li><b>Normal AG (hyperchloremic)</b>: diarrhea, RTA, Addison, carbonic anhydrase inhibitor ${S.g}</li></ul>
  <h3>สาเหตุอื่น</h3><ul><li>Met. alkalosis: อาเจียน, diuretics, aldosterone เกิน, กิน alkali ${S.g}</li><li>Resp. acidosis: ศูนย์หายใจถูกกด, ปอดเสีย · Resp. alkalosis: ที่สูง, anxiety ${S.g}</li></ul>`});
@@ -692,12 +694,16 @@ SEC.splice(SEC.findIndex(s=>s.id==="lytes")+1,0,{id:"nawork",k:"a",t:"Sodium dis
   b+=box(450,200,130,"Hypovolemic","")+box(600,200,130,"Euvolemic","")+box(750,200,130,"Hypervolemic","");b+=ln(600,136,450,180)+ln(600,136,600,180)+ln(600,136,750,180);
   b+=wrapT(388,238,"FENa < 1%: GI loss, burns, third space",22,"s")+wrapT(388,290,"> 2%: diuretics, 1° adrenal insufficiency",22,"s")+wrapT(538,238,"urine osm > 100: SIADH, hypothyroid, 2° adrenal insuff.",20,"s")+wrapT(538,290,"< 100: polydipsia, beer potomania",20,"s")+wrapT(688,238,"FENa < 1%: HF, cirrhosis, nephrotic",20,"s")+wrapT(688,290,"> 2%: AKI / CKD",20,"s");
   return svg(b,"0 0 830 340")},
- notes:()=>`<h3>Hyponatremia</h3><ul><li>เริ่มที่ <b>serum osmolality</b>: สูงแปลว่ามีสารอื่นดึงน้ำ (เช่น น้ำตาลสูง: Na⁺ ลดราว 1.6 mEq/L ต่อ glucose ที่เพิ่ม 100 mg/dL) · ปกติ = pseudohyponatremia ${S.fa}</li>
-<li>Hypotonic แยกตาม volume แล้วใช้ FENa หรือ urine osmolality ตามแผนภาพ ${S.fa}</li>
-<li>รักษา: hypovolemic ให้ NS · euvolemic/hypervolemic จำกัดน้ำ ± diuretic · ชักหรือ Na⁺ ต่ำมากให้ 3% saline · เรื้อรังแก้ไม่เกิน 10–12 mEq/L ต่อ 24 ชม. (ผู้เสี่ยงสูง เช่น ติดสุรา ขาดอาหาร K⁺ ต่ำ ไม่เกิน 8) เพื่อกัน osmotic demyelination ${S.fa}</li></ul>
-<h3>Hypernatremia</h3><ul><li>ส่วนใหญ่เกิดจาก<b>เสียน้ำ</b> มากกว่าได้ Na⁺ เกิน · คนที่ดื่มน้ำเองไม่ได้ (ทารก ผู้ป่วยใส่ท่อ ผู้สูงอายุติดเตียง) เสี่ยงสูง ${S.fa}</li>
-<li>Urine osm ต่ำ < 300 → DI (แยก central/nephrogenic ด้วย water deprivation + desmopressin) · สูง > 600 → เสียน้ำนอกไต หรือได้ Na⁺ เกิน ${S.fa}</li>
-<li>Free water deficit = TBW × (Na⁺/140 − 1) · แก้ภาวะเรื้อรังช้าๆ ไม่เกิน 0.5 mEq/L/ชม. (กัน cerebral edema) · ถ้า volume ต่ำและสัญญาณชีพไม่คงที่ ให้ NS ก่อน ${S.fa}</li></ul>`});
+ notes:()=>`<h3>Hyponatremia</h3><ul><li>เริ่มที่ <b>serum osmolality</b>: สูงแปลว่ามีสารอื่นดึงน้ำ (เช่น น้ำตาลสูง: Na⁺ ลดราว 1.6 mEq/L ต่อ glucose ที่เพิ่ม 100 mg/dL) · ปกติ = pseudohyponatremia ${S.fa2}</li>
+<li>Hypotonic แยกตาม volume แล้วใช้ FENa หรือ urine osmolality ตามแผนภาพ ${S.fa2}</li>
+<li>รักษา: hypovolemic ให้ NS · euvolemic/hypervolemic จำกัดน้ำ ± diuretic · ชักหรือ Na⁺ ต่ำมากให้ 3% saline ${S.fa2}</li>
+<li><b>เรื้อรัง = เป็นมา ≥ 48 ชม. หรือไม่ทราบระยะเวลา</b> (ไม่ทราบ → ถือว่าเรื้อรังไว้ก่อน) ${S.gl}</li>
+<li>อัตราแก้ในผู้ที่ความเสี่ยงทั่วไป: ไม่เกิน <b>10–12 mEq/L ต่อ 24 ชม.</b> และไม่เกิน <b>18 ต่อ 48 ชม.</b> ${S.gl}${S.g}</li>
+<li>ผู้เสี่ยงสูงต่อ ODS (ติดสุรา ขาดอาหาร K⁺ ต่ำ ตับแข็ง): ไม่เกิน <b>8 mEq/L ต่อ 24 ชม.</b> ${S.gl}</li>
+<li>First Aid Step 2 CK ระบุ <b>&lt; 8–10 mEq/L/วัน</b> สำหรับ chronic ที่นิยามว่า &gt; 72 ชม. — ตัวเลขและนิยามต่างจากแนวทาง อย่าสลับกัน ${S.fa2}</li></ul>
+<h3>Hypernatremia</h3><ul><li>ส่วนใหญ่เกิดจาก<b>เสียน้ำ</b> มากกว่าได้ Na⁺ เกิน · คนที่ดื่มน้ำเองไม่ได้ (ทารก ผู้ป่วยใส่ท่อ ผู้สูงอายุติดเตียง) เสี่ยงสูง ${S.fa2}</li>
+<li>Urine osm ต่ำ < 300 → DI (แยก central/nephrogenic ด้วย water deprivation + desmopressin) · สูง > 600 → เสียน้ำนอกไต หรือได้ Na⁺ เกิน ${S.fa2}</li>
+<li>Free water deficit = TBW × (Na⁺/140 − 1) · แก้ภาวะเรื้อรังช้าๆ ไม่เกิน 0.5 mEq/L/ชม. (กัน cerebral edema) · ถ้า volume ต่ำและสัญญาณชีพไม่คงที่ ให้ NS ก่อน ${S.fa2}</li></ul>`});
 SEC.splice(SEC.findIndex(s=>s.id==="abd")+1,0,{id:"rta",k:"b",t:"Renal tubular acidosis",mm:"RTA types 1 · 2 · 4",leg:[],
  draw:()=>cards([["Type 1 · distal","α-intercalated cell หลั่ง H⁺ ไม่ได้ · urine pH > 5.5 · K⁺ ต่ำ · นิ่ว calcium phosphate","vn"],["สาเหตุ type 1","amphotericin B, autoimmune (Sjögren, SLE, RA), analgesic nephropathy, congenital",""],["Type 2 · proximal","PCT ดูด HCO₃⁻ กลับน้อย · urine pH < 5.5 เมื่อ HCO₃⁻ ในเลือดต่ำลงแล้ว · K⁺ ต่ำ · rickets/osteomalacia","ar"],["สาเหตุ type 2","Fanconi syndrome, multiple myeloma, carbonic anhydrase inhibitors",""],["Type 4 · hyperkalemic","aldosterone ต่ำหรือดื้อ · K⁺ สูง → สร้าง NH₃ น้อย · urine pH < 5.5","gl"],["สาเหตุ type 4","diabetic hyporeninism, ACEi/ARB, NSAIDs, heparin, K⁺-sparing diuretics, trimethoprim",""]]),
  notes:()=>`<ul><li>ทุกชนิดเป็น <b>normal anion gap (hyperchloremic) metabolic acidosis</b> ${S.x}</li>

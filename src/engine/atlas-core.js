@@ -1,5 +1,8 @@
 /* ================= pharmacology core (shared by every pharmacology atlas) ================= */
-const S={k:'<b class="sbb katzung">K</b>',p:'<b class="sbb pt">PT</b>',r:'<b class="sbb robbins">R</b>',fa:'<b class="sbb fa">FA</b>',g:'<b class="sbb guyton">G</b>',b:'<b class="sbb boron">B</b>',h:'<b class="sbb harrison">H</b>',x:'<b class="sbb gen">Gen</b>'};
+/* fa1 = First Aid Step 1, fa2 = First Aid Step 2 CK. CLAUDE.md names both books;
+   they differ where they overlap, so a claim must say which one it came from.
+   fa remains for pages not yet checked against a specific edition. */
+const S={k:'<b class="sbb katzung">K</b>',p:'<b class="sbb pt">PT</b>',r:'<b class="sbb robbins">R</b>',fa:'<b class="sbb fa">FA</b>',fa1:'<b class="sbb fa">FA1</b>',fa2:'<b class="sbb fa">FA2</b>',g:'<b class="sbb guyton">G</b>',b:'<b class="sbb boron">B</b>',h:'<b class="sbb harrison">H</b>',x:'<b class="sbb gen">Gen</b>'};
 const LEG={ag:["Agonist / activator","--d-ag"],bl:["Antagonist / blocker","--d-bl"],inh:["Enzyme / transporter inhibitor","--d-inh"],mab:["Monoclonal antibody","--d-mab"],st:["Steroid / hormone","--d-st"],mod:["Other / modulator","--d-mod"]};
 let ST={labels:true,all:false};
 let HL=[];

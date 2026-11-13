@@ -20,7 +20,9 @@ const mir=(p,X=640)=>p.map(([x,y])=>[X-x,y]);
 const DEFS=`<defs><pattern id="hatch" width="6" height="6" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><rect width="6" height="6" fill="transparent"/><line x1="0" y1="0" x2="0" y2="6" stroke="rgba(255,255,255,.75)" stroke-width="2"/></pattern>
  <marker id="ah" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="currentColor" style="fill:var(--sb-ink2)"/></marker></defs>`;
 const svg=(body,vb="0 0 640 520")=>`<svg viewBox="${vb}" role="img" xmlns="http://www.w3.org/2000/svg">${DEFS}${body}</svg>`;
-const S={g:'<b class="sbb grays">Gray</b>',x:'<b class="sbb gen">Gen</b>'};
+/* gr = Gray's Anatomy for Students. NOT g: in src/atlases/*.js the shared
+   engine uses g for Guyton & Hall, so this page must not reuse that token. */
+const S={gr:'<b class="sbb grays">Gray</b>',x:'<b class="sbb gen">Gen</b>'};
 const LEG={art:["Artery","--a-art"],vein:["Vein","--a-vein"],lymph:["Lymph","--a-lymph"],nerve:["Nerve","--a-nerve"],cortex:["Cortex","--a-cortex"],medulla:["Medulla","--a-medulla"],uro:["Collecting system / ureter","--a-uro"],blad:["Bladder","--a-blad"],fat:["Fat","--a-fat"],musc:["Muscle","--a-musc"],bone:["Bone","--a-bone"],gland:["Suprarenal","--a-gland"]};
 let ST={labels:true,sex:"m",view:"ant",lymph:true,nerve:true};
 

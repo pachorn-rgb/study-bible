@@ -18,17 +18,23 @@ import sys, pathlib
 
 ROOT = pathlib.Path(__file__).resolve().parents[2]
 SRC, DOCS = ROOT / "src", ROOT / "docs"
-IDS = ["kub-anatomy", "kub-histology"]
+IDS = ["kub-anatomy", "kub-histology", "kub-embryology", "nephron-pathway"]
 OPEN_TAG, CLOSE_TAG = "<script>", "</script>"
 
 
 def build_page(aid):
+    """Assemble one page. kub-anatomy and kub-histology are split four ways
+    (shell / helpers / content / renderer); kub-embryology and nephron-pathway
+    are bespoke apps whose code and data interleave, so they keep one script
+    file and are split shell / script only."""
     shell = (SRC / "engine" / f"{aid}.shell.html").read_text()
     assert "@@SCRIPT@@" in shell, f"{aid}: shell is missing the @@SCRIPT@@ marker"
+    helpers = SRC / "atlases" / f"{aid}.helpers.js"
+    render = SRC / "engine" / f"{aid}.render.js"
     script = (OPEN_TAG
-              + (SRC / "atlases" / f"{aid}.helpers.js").read_text()
+              + (helpers.read_text() if helpers.exists() else "")
               + (SRC / "atlases" / f"{aid}.js").read_text()
-              + (SRC / "engine" / f"{aid}.render.js").read_text()
+              + (render.read_text() if render.exists() else "")
               + CLOSE_TAG)
     out = DOCS / "renal" / f"{aid}.html"
     out.write_text(shell.replace("@@SCRIPT@@", script))

@@ -60,6 +60,21 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
   let n = 0, t = 0; for (const c of ix.parts) for (const qs of Object.values(J(`q/${c}.json`).topics || {})) qs.forEach(q => {
     const L = q.o.map(x => x.length), s = [...L].sort((a, b) => b - a); t++; if (L[q.a] === s[0] && s[0] > 1.25 * s[1]) n++ });
   if (n / t > 0.03) bad(`${n}/${t} MCQs have the answer as the clearly longest option (> 3%) — run python3 src/test/tells.py`) }
+{ /* badge census: one badge token must mean ONE book across the whole repo.
+     Two collisions have already been found and fixed this way —
+       g  meant Gray's in kub-anatomy and Guyton in src/atlases/*  -> Gray's is now gr
+       fa meant First Aid Step 1 AND Step 2 CK                     -> fa1 / fa2
+     A page that defines a token locally must not give it a different book
+     from the shared map in src/engine/atlas-core.js. */
+  const SRC = path.join(__dirname, "..");
+  const label = s => { const m = {}; for (const [, k, v] of s.matchAll(/(\w+):'<b class="sbb \w+">([^<]+)<\/b>'/g)) m[k] = v; return m };
+  const shared = label(fs.readFileSync(path.join(SRC, "engine/atlas-core.js"), "utf8"));
+  for (const f of fs.readdirSync(path.join(SRC, "atlases")).filter(x => x.endsWith(".js"))) {
+    const local = label(fs.readFileSync(path.join(SRC, "atlases", f), "utf8"));
+    for (const [k, v] of Object.entries(local))
+      if (shared[k] && shared[k] !== v)
+        bad(`badge collision: "${k}" is ${shared[k]} in the shared map but ${v} in ${f} — give it its own token`);
+  } }
 console.log(`data: ${chs.length} chapters · ${mods.size} atlases · ${items.size} topics · ${nq} MCQs`);
 
 /* ---------- 2. pages ---------- */

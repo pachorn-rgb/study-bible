@@ -1,0 +1,329 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'"><link rel="stylesheet" href="../design/sb.css"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:0.875rem -apple-system,BlinkMacSystemFont,sans-serif;background:#fff;color:#000}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png"><script src="../app.js" defer></script><title>KUB Embryology Atlas</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+
+
+<style>
+/* Layout: anatomical plate on the left (diagram + CRL ruler + legend), stage notes on the right; sticky week timeline on top; reference table and anomaly cards below. */
+:root{
+  --bg:var(--sb-bg); --panel:var(--sb-surface); --plate:var(--sb-plate); --grid:var(--sb-grid);
+  --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --edge:#3B4652;
+  --halo:var(--sb-halo); --arrow:#1A2330; --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft); --adult:#0C5C8C;
+  --f-display:var(--sb-font);
+  --f-body:var(--sb-font);
+  --f-mono:var(--sb-mono);
+  /* germ layers (page-wide) */
+  --g-ec:#3E74D6; --g-me:#D9534F; --g-en:#E8C230; --g-nc:#3FA45B;
+  --g-mx:#F0CFCB;
+  /* lineage: same organ = same color in every stage */
+  --c-nep:#EE8A3C; --c-ub:#D9488B; --c-mes:#8C62D0; --c-pro:#8C97A8; --c-ugs:#1AA3AE;
+  --c-all:#B5946A; --c-gut:#A3A345; --c-ves:#B8323F; --c-adr:#D4B030; --c-gon:#B7A7C9;
+  --c-som:#D7B4A4; --c-lpm:#E4CDC4; --c-tis:#E7E2DD; --c-ecto:#9DB4D6; --c-ncm:#3FA45B;
+  /* signaling molecules */
+  --s-gdnf:#E6A700; --s-hgf:#9C6B2F; --s-wnt:#5B3FD9; --s-fgf:#E0502A; --s-bmp:#138A72; --s-ra:#7CB518; --s-shh:#0B7FC4;
+  --src-l:var(--sb-src-langman); --src-m:var(--sb-src-moore); --src-g:var(--sb-src-gen);
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:var(--sb-bg); --panel:var(--sb-surface); --plate:var(--sb-plate); --grid:var(--sb-grid);
+  --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --edge:#0B0F13;
+  --halo:var(--sb-halo); --arrow:#F3F6F9; --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft); --adult:#7CC8F5;
+  --g-mx:#4A2D2C; --c-tis:#39424D; --c-lpm:#5B4440; --c-som:#7A5B50; --c-ecto:#4E6A92;
+  --src-l:var(--sb-src-langman); --src-m:var(--sb-src-moore); --src-g:var(--sb-src-gen);
+  color-scheme:dark}}
+:root[data-theme="dark"],:root[data-theme="oled"]{
+  --bg:var(--sb-bg); --panel:var(--sb-surface); --plate:var(--sb-plate); --grid:var(--sb-grid);
+  --ink:var(--sb-ink); --muted:var(--sb-muted); --line:var(--sb-line); --edge:#0B0F13;
+  --halo:var(--sb-halo); --arrow:#F3F6F9; --accent:var(--sb-accent); --accent-soft:var(--sb-accent-soft); --adult:#7CC8F5;
+  --g-mx:#4A2D2C; --c-tis:#39424D; --c-lpm:#5B4440; --c-som:#7A5B50; --c-ecto:#4E6A92;
+  --src-l:var(--sb-src-langman); --src-m:var(--sb-src-moore); --src-g:var(--sb-src-gen);
+  color-scheme:dark}
+
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--f-body);font-size:0.9375rem;line-height:1.6;
+  padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px));padding-block:0 48px}
+body::before{content:"";position:fixed;inset:0 0 auto;height:env(safe-area-inset-top,0px);z-index:10;background:var(--bg)}
+.wrap{max-width:1280px;margin:0 auto}
+h1,h2,h3{font-family:var(--f-display);text-wrap:balance;margin:0;line-height:1.2}
+header.top{padding-block:28px 16px;display:grid;gap:8px}
+.eyebrow{font-family:var(--f-mono);font-size:0.75rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted)}
+h1{font-size:clamp(1.625rem,4vw,40px);font-weight:700}
+.lede{max-width:72ch;color:var(--muted);margin:0}
+.srcrow{display:flex;flex-wrap:wrap;gap:8px 14px;font-size:0.8125rem;color:var(--muted)}
+.src{display:inline-flex;align-items:center;justify-content:center;min-width:22px;height:18px;padding:0 5px;border-radius:4px;font-family:var(--f-mono);font-size:0.6875rem;font-weight:600;color:#fff;vertical-align:1px}
+.src.L{background:var(--src-l)} .src.M{background:var(--src-m)} .src.G{background:var(--src-g)}
+:root[data-theme="dark"] .src, .dk .src{color:#0E1318}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]) .src{color:#0E1318}}
+
+/* timeline */
+nav.tl{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px;border-bottom:1px solid var(--line);margin-bottom:16px}
+.tl-scroll{overflow-x:auto;scrollbar-width:thin}
+.tl-track{display:grid;grid-template-columns:repeat(8,minmax(128px,1fr));gap:6px;min-width:1040px;position:relative}
+.tl-btn{appearance:none;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:8px;padding:8px 10px 9px;text-align:left;cursor:pointer;display:grid;gap:2px;font:inherit;position:relative}
+.tl-btn:hover{border-color:var(--accent)}
+.tl-btn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.tl-btn[aria-current="true"]{background:var(--accent);border-color:var(--accent);color:var(--panel)}
+.tl-wk{font-family:var(--f-mono);font-weight:600;font-size:0.8125rem}
+.tl-cs{font-family:var(--f-mono);font-size:0.6875rem;opacity:.8}
+.tl-t{font-weight:600;font-size:0.8125rem;line-height:1.25}
+.tl-dots{display:flex;gap:3px;margin-top:3px}
+.tl-dots i{width:9px;height:9px;border-radius:50%;border:1px solid var(--edge)}
+.tl-axis{display:flex;justify-content:space-between;font-family:var(--f-mono);font-size:0.6875rem;color:var(--muted);min-width:1040px;padding:4px 2px 0}
+
+/* stage */
+.stage{display:grid;grid-template-columns:minmax(0,1fr) 380px;gap:16px;align-items:start}
+@media (max-width:1060px){.stage{grid-template-columns:minmax(0,1fr)}}
+.plate{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:12px;min-width:0}
+.toolbar{display:flex;flex-wrap:wrap;gap:6px 8px;align-items:center;margin-bottom:10px}
+.tg{appearance:none;font:inherit;font-size:0.8125rem;font-weight:600;border:1px solid var(--line);background:var(--plate);color:var(--ink);border-radius:999px;padding:4px 12px 4px 8px;cursor:pointer;display:inline-flex;gap:6px;align-items:center}
+.tg::before{content:"";width:14px;height:14px;border-radius:50%;border:2px solid var(--muted);box-sizing:border-box}
+.tg[aria-pressed="true"]{border-color:var(--accent);background:var(--accent-soft)}
+.tg[aria-pressed="true"]::before{background:var(--accent);border-color:var(--accent)}
+.tg:focus-visible,.seg button:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.seg{display:inline-flex;border:1px solid var(--line);border-radius:999px;overflow:hidden;margin-left:auto}
+.seg button{appearance:none;font:inherit;font-size:0.8125rem;font-weight:600;border:0;background:var(--plate);color:var(--muted);padding:4px 12px;cursor:pointer}
+.seg button[aria-pressed="true"]{background:var(--accent);color:var(--panel)}
+.seg-l{font-size:0.75rem;color:var(--muted);font-family:var(--f-mono)}
+.dia-box{overflow-x:auto;border-radius:8px;background:var(--plate);
+  background-image:linear-gradient(var(--grid) 1px,transparent 1px),linear-gradient(90deg,var(--grid) 1px,transparent 1px);background-size:40px 40px}
+#dia{display:block;width:100%;min-width:640px;height:auto}
+.viewtag{font-family:var(--f-mono);font-size:0.75rem;color:var(--muted);margin:8px 2px 0}
+
+/* SVG styling */
+.f{stroke:var(--edge);stroke-width:2}
+.k{fill:none;stroke-linecap:round;stroke-linejoin:round}
+.kedge{fill:none;stroke:var(--edge);stroke-linecap:round;stroke-linejoin:round}
+.pale{fill-opacity:.5}
+.cav{fill:var(--plate);stroke:var(--edge);stroke-width:1.1}
+.lum{fill:none;stroke:var(--plate);stroke-linecap:round;stroke-linejoin:round}
+.cellf{fill-opacity:.55;stroke-width:.7}
+.thin{fill:none;stroke:var(--muted);stroke-width:1.4;stroke-dasharray:5 4}
+.ghost{opacity:.42}
+.ghost .f,.ghost.f{stroke-dasharray:4 3}
+.lbl{font-family:var(--f-body);font-weight:700;fill:var(--ink);stroke:var(--halo);stroke-width:4px;paint-order:stroke;stroke-linejoin:round}
+.lbl.ptitle{font-family:var(--f-display);font-weight:700;fill:var(--muted)}
+.lbl.sm{font-weight:600}
+.lbl.adt{fill:var(--adult);font-style:italic}
+.lbl.sigt{font-family:var(--f-mono);font-weight:600}
+.lbl.note{fill:var(--muted);font-weight:600}
+.lead{stroke:var(--muted);stroke-width:1.2;fill:none}
+.arw .halo{fill:none;stroke:var(--halo);stroke-width:7.5;stroke-linecap:round}
+.arw .ink{fill:none;stroke:var(--arrow);stroke-width:3;stroke-linecap:round}
+.arw.sm .halo{stroke-width:5.5}.arw.sm .ink{stroke-width:2}
+#ah path{fill:var(--arrow)}
+.sg{stroke:var(--halo);stroke-width:1.5}
+.sigl{fill:none;stroke-width:2.2;stroke-dasharray:5 3;stroke-linecap:round}
+.tfp rect{fill:var(--panel);stroke:var(--ink);stroke-width:1.3;stroke-dasharray:3 2}
+.tfp text{font-family:var(--f-body);font-weight:700;font-style:italic;fill:var(--ink)}
+.rec{font-family:var(--f-mono);font-weight:600;fill:var(--ink);stroke:var(--halo);stroke-width:3.5px;paint-order:stroke}
+.inset{fill:var(--panel);fill-opacity:.65;stroke:var(--line);stroke-width:1.2}
+.axis{stroke:var(--muted);stroke-width:1.2}
+.axt{font-family:var(--f-mono);font-size:11px;fill:var(--muted)}
+.ori-l{stroke:var(--accent);stroke-width:2.4;fill:none;stroke-linecap:round}
+#ah2 path{fill:var(--accent)}
+.ori-t{font-family:var(--f-body);font-weight:700;fill:var(--accent);stroke:var(--halo);stroke-width:3.5px;paint-order:stroke}
+.ori-c{fill:var(--panel);stroke:var(--accent);stroke-width:1.5}
+.loc-b{fill:var(--c-tis);stroke:var(--edge);stroke-width:1.4}
+.loc-m{fill:none;stroke:var(--accent);stroke-width:2.2;stroke-dasharray:3 2}
+.loc-p{stroke:var(--accent);stroke-width:2.6}
+.band{fill:var(--panel);fill-opacity:.7;stroke:var(--line)}
+.hide-ori .L-ori,.hide-sig .L-sig,.hide-tf .L-tf,.hide-adult .L-adult,.hide-arw .L-arw{display:none}
+
+/* CRL + legend */
+.crl{display:flex;gap:12px;align-items:center;flex-wrap:wrap;margin-top:10px;padding:8px 10px;border:1px dashed var(--line);border-radius:8px}
+.crl b{font-family:var(--f-mono);font-size:0.9375rem}
+.crl small{color:var(--muted)}
+#crlsvg{flex:1 1 320px;min-width:0;height:42px}
+.legend{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:10px 18px;margin-top:12px;font-size:0.8125rem}
+.legend h4{margin:0 0 4px;font-family:var(--f-mono);font-size:0.6875rem;letter-spacing:.08em;text-transform:uppercase;color:var(--muted);font-weight:600}
+.lg{display:flex;flex-wrap:wrap;gap:4px 10px}
+.lg span{display:inline-flex;align-items:center;gap:5px;white-space:nowrap}
+.sw{width:13px;height:13px;border-radius:3px;border:1px solid var(--edge);flex:none}
+.lg svg{flex:none}
+
+/* aside */
+aside.notes{display:grid;gap:12px;min-width:0}
+.card{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;min-width:0}
+.meta{display:flex;flex-wrap:wrap;gap:6px}
+.pill{font-family:var(--f-mono);font-size:0.75rem;font-weight:600;padding:2px 8px;border-radius:5px;background:var(--plate);border:1px solid var(--line)}
+.stitle{font-size:1.375rem;margin:8px 0 2px}
+.ssub{color:var(--muted);font-size:0.875rem;margin:0 0 8px}
+.proc{display:flex;flex-wrap:wrap;gap:6px;margin:6px 0 10px}
+.proc span{font-size:0.75rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;padding:2px 8px;border-radius:4px;border:1.5px solid var(--arrow)}
+.notes ul{margin:0;padding-left:18px;display:grid;gap:6px}
+.notes li{max-width:65ch}
+.cmp{width:100%;border-collapse:collapse;font-size:0.8125rem}
+.cmp th,.cmp td{text-align:left;vertical-align:top;padding:6px 6px;border-top:1px solid var(--line)}
+.cmp th{font-weight:700;width:30%}
+.cmp td{font-variant-numeric:tabular-nums}
+.h3s{font-size:0.9375rem;margin-bottom:6px;font-family:var(--f-display)}
+#adultCard[hidden]{display:none}
+#adult{width:100%;max-width:300px;display:block;margin:0 auto}
+.adim{opacity:.16}
+.gchip{display:inline-flex;align-items:center;gap:4px;font-size:0.75rem;font-weight:700;white-space:nowrap}
+.gchip i{width:10px;height:10px;border-radius:50%;border:1px solid var(--edge)}
+
+/* sections */
+section.sec{margin-top:36px}
+.sec-h{display:flex;flex-wrap:wrap;gap:10px 16px;align-items:end;justify-content:space-between;margin-bottom:12px}
+h2{font-size:clamp(1.25rem,2.6vw,26px)}
+.sec-h p{margin:4px 0 0;color:var(--muted);max-width:70ch;font-size:0.875rem}
+.filters{display:flex;flex-wrap:wrap;gap:6px;align-items:center}
+.fbtn{appearance:none;font:inherit;font-size:0.8125rem;font-weight:600;border:1px solid var(--line);background:var(--panel);color:var(--ink);border-radius:6px;padding:3px 10px;cursor:pointer}
+.fbtn[aria-pressed="true"]{background:var(--accent);color:var(--panel);border-color:var(--accent)}
+.fbtn:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+input#q{font:inherit;font-size:0.875rem;padding:5px 10px;border:1px solid var(--line);border-radius:6px;background:var(--panel);color:var(--ink);min-width:0;width:220px}
+.tablebox{overflow-x:auto;border:1px solid var(--line);border-radius:12px;background:var(--panel)}
+table.der{border-collapse:collapse;width:100%;min-width:1100px;font-size:0.8438rem}
+.der th{position:sticky;top:0;background:var(--plate);text-align:left;font-family:var(--f-mono);font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);padding:10px;border-bottom:1px solid var(--line)}
+.der td{padding:10px;border-bottom:1px solid var(--line);vertical-align:top;font-variant-numeric:tabular-nums}
+.der td:first-child{font-weight:700}
+.der tr.hl td{background:var(--accent-soft)}
+.lin{display:inline-block;width:10px;height:10px;border-radius:2px;border:1px solid var(--edge);margin-right:6px;vertical-align:0}
+.dual{display:grid;gap:3px}
+.cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:12px}
+.ac{background:var(--panel);border:1px solid var(--line);border-radius:12px;padding:14px 16px;display:grid;gap:8px;align-content:start;border-top:5px solid var(--line)}
+.ac h3{font-size:1.062rem}
+.ac .th{color:var(--muted);font-size:0.8125rem;margin-top:-6px}
+.ac dl{margin:0;display:grid;gap:6px}
+.ac dt{font-family:var(--f-mono);font-size:0.6875rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted)}
+.ac dd{margin:0;font-size:0.875rem}
+.go{appearance:none;font:inherit;font-size:0.75rem;font-weight:700;border:1px solid var(--accent);color:var(--accent);background:transparent;border-radius:5px;padding:2px 8px;cursor:pointer;justify-self:start}
+.go:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+footer{margin-top:40px;color:var(--muted);font-size:0.8125rem;display:grid;gap:6px;max-width:90ch}
+@media (prefers-reduced-motion:no-preference){#dia g.stagewrap{animation:fade .35s ease}@keyframes fade{from{opacity:.25}to{opacity:1}}}
+</style><style>/* Study Bible standard layer */
+
+html body{font-size:1rem}
+html body h1,html body h2,html body h3,html body h4{font-family:var(--sb-font);letter-spacing:-.015em;color:var(--sb-ink)}
+html body .sb-hero h1{font-size:clamp(1.75rem,4.2vw,2.5rem);font-weight:800;margin:0}
+html body .note{color:var(--sb-muted)}
+html body th{font:700 .6875rem/1.2 var(--sb-font);letter-spacing:.06em;text-transform:uppercase;color:var(--sb-muted);border-bottom:1px solid var(--sb-line)}
+html body td{border-bottom:1px solid var(--sb-line)}
+html body select{font:500 .9375rem var(--sb-font);padding:.55rem .7rem;border-radius:10px;border:1px solid var(--sb-line);background:var(--sb-surface2);color:var(--sb-ink)}
+html body ::selection{background:var(--sb-accent-soft)}
+
+html body .wrap{padding:1rem max(16px,env(safe-area-inset-right,0px)) 4.5rem max(16px,env(safe-area-inset-left,0px))}
+html body .plate,html body .card,html body .ac{border-radius:var(--sb-r-lg);border-color:var(--sb-line);background:var(--sb-surface);box-shadow:var(--sb-shadow)}
+html body .ac{border-top-width:4px}
+html body .plate{padding:.9rem}
+html body .dia-box{border-radius:12px}
+html body .tg{font:500 .8125rem/1.1 var(--sb-font);background:var(--sb-surface);color:var(--sb-ink2);border:1px solid var(--sb-line);padding:.4rem .8rem .4rem .55rem}
+html body .tg[aria-pressed="true"]{background:var(--sb-ink);color:var(--sb-bg);border-color:var(--sb-ink)}
+html body .tg[aria-pressed="true"]::before{background:var(--sb-accent);border-color:var(--sb-accent)}
+html body .seg{border:0;background:var(--sb-surface2);border-radius:10px;padding:2px;gap:2px}
+html body .seg button{background:transparent;border-radius:8px;font:500 .8125rem/1.1 var(--sb-font);color:var(--sb-ink2)}
+html body .seg button[aria-pressed="true"]{background:var(--sb-surface);color:var(--sb-ink);box-shadow:0 1px 3px rgba(0,0,0,.12)}
+html body .tl-btn{border-radius:12px;background:var(--sb-surface);border-color:var(--sb-line)}
+html body .tl-btn[aria-current="true"]{background:var(--sb-ink);border-color:var(--sb-ink);color:var(--sb-bg)}
+html body .fbtn{border-radius:999px;font:500 .8125rem/1.1 var(--sb-font);padding:.35rem .75rem;background:var(--sb-surface);color:var(--sb-ink2)}
+html body .fbtn[aria-pressed="true"]{background:var(--sb-ink);color:var(--sb-bg);border-color:var(--sb-ink)}
+html body .pill{border-radius:6px;background:var(--sb-surface2);border-color:var(--sb-line)}
+html body input#q{border:1px solid var(--sb-line);background:var(--sb-surface2);color:var(--sb-ink);border-radius:10px;padding:.55rem .75rem}
+html body h2{font-size:clamp(1.25rem,2.6vw,1.5rem);font-weight:750}
+
+/* figure polish: soft depth on tissue shapes, thinner hairlines on dark */
+#dia .f:not(.cellf){filter:drop-shadow(0 .6px .5px rgba(14,17,22,.22))}
+#dia .cav{filter:none}
+#dia .cellf{filter:none}
+:root[data-theme="dark"] #dia .f:not(.cellf),:root[data-theme="oled"] #dia .f:not(.cellf){filter:drop-shadow(0 .6px .6px rgba(0,0,0,.55))}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]) #dia .f:not(.cellf){filter:drop-shadow(0 .6px .6px rgba(0,0,0,.55))}}
+html body .viewtag,html body .crl small{font-family:var(--sb-font)}
+
+/* perf: keep re-renders local */
+#diabox,.plate{contain:layout paint}
+aside.notes .card,.ac{contain:content}
+#dia{content-visibility:visible}
+</style>
+
+<div class="wrap">
+<header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Embryology</div>
+    <h1>Development of the KUB System</h1>
+    <p class="sb-lede">Kidney, ureter, bladder และ urethra ตั้งแต่ intermediate mesoderm จนถึงแรกเกิด กดช่วงเวลาบน timeline เพื่อดูภาพในระยะนั้น และเปิด/ปิด signaling, transcription factor, CRL และ adult overlay ได้</p>
+    <div class="sb-sources"><span class="sb-src"><i class="langman">L</i>Langman's Medical Embryology 14e · Ch 16</span><span class="sb-src"><i class="moore">M</i>Moore &amp; Persaud, The Developing Human · Ch 12</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติมช่องว่าง เช่น teratogen, CRL</span></div>
+  </header>
+
+<nav class="tl" aria-label="Developmental timeline">
+  <div class="tl-scroll">
+    <div class="tl-track" id="tl" role="tablist"></div>
+    <div class="tl-axis"><span>wk 3</span><span>wk 4</span><span>wk 5</span><span>wk 6</span><span>wk 7</span><span>wk 8–9</span><span>wk 12</span><span>birth</span></div>
+  </div>
+</nav>
+
+<div class="stage" data-sb-focus>
+  <div class="plate">
+    <div class="toolbar" role="group" aria-label="Diagram layers">
+      <button class="tg" id="t-ori" aria-pressed="true">Orientation</button>
+      <button class="tg" id="t-arw" aria-pressed="true">Motion arrows</button>
+      <button class="tg" id="t-sig" aria-pressed="true">Signaling</button>
+      <button class="tg" id="t-tf" aria-pressed="false">Transcription factors</button>
+      <button class="tg" id="t-crl" aria-pressed="true">CRL</button>
+      <button class="tg" id="t-adult" aria-pressed="true">Adult overlay</button>
+      <span class="seg" role="group" aria-label="Color by">
+        <button id="m-lin" aria-pressed="true">Lineage</button>
+        <button id="m-germ" aria-pressed="false">Germ layer</button>
+      </span>
+    </div>
+    <div class="dia-box" id="diabox">
+      <svg id="dia" viewBox="0 0 800 616" role="img" aria-label="Stage diagram"></svg>
+    </div>
+    <div class="viewtag" id="viewtag"></div>
+    <div class="crl" id="crlbox">
+      <div><small>Crown–rump length</small><br><b id="crlv"></b> <span class="src G">Gen</span></div>
+      <svg id="crlsvg" viewBox="0 0 520 42" preserveAspectRatio="none" aria-label="CRL on log scale"></svg>
+    </div>
+    <div class="legend" id="legend"></div>
+  </div>
+
+  <aside class="notes">
+    <div class="card">
+      <div class="meta" id="smeta"></div>
+      <h2 class="stitle" id="stitle"></h2>
+      <p class="ssub" id="ssub"></p>
+      <div class="proc" id="sproc"></div>
+      <ul id="snotes"></ul>
+    </div>
+    <div class="card" id="adultCard">
+      <div class="h3s">Adult overlay · กลายเป็นอะไร</div>
+      <svg id="adult" viewBox="0 0 300 430" aria-label="Adult urinary system with derivatives highlighted"></svg>
+      <p class="ssub" id="adultNote" style="margin:6px 0 0"></p>
+    </div>
+    <div class="card">
+      <div class="h3s">ตัวเลขจากสองตำรา</div>
+      <table class="cmp" id="scmp"></table>
+    </div>
+  </aside>
+</div>
+
+<section class="sec" id="table">
+  <div class="sec-h">
+    <div><h2>Embryonic structure → adult derivative</h2>
+    <p>ตารางรวม germ layer, timing และ molecular regulation พร้อมบอกว่ามาจากตำราเล่มไหน ถ้าตัวเลขสองเล่มไม่ตรงกันจะแสดงทั้งคู่</p></div>
+    <div class="filters">
+      <button class="fbtn" id="f-all" aria-pressed="true">All</button>
+      <button class="fbtn" id="f-stage" aria-pressed="false">This stage</button>
+      <label for="q" class="seg-l">Search</label><input id="q" type="search" placeholder="เช่น trigone, WT1">
+    </div>
+  </div>
+  <div class="tablebox"><table class="der"><thead><tr><th>Embryonic structure</th><th>Adult derivative</th><th>Germ layer</th><th>Timing</th><th>Molecular regulation</th><th>Source</th></tr></thead><tbody id="tbody"></tbody></table></div>
+</section>
+
+<section class="sec" id="anom">
+  <div class="sec-h">
+    <div><h2>Congenital anomalies</h2>
+    <p>แต่ละการ์ดบอกว่าผิดพลาดที่ขั้นตอนไหน (กดเพื่อไปดู stage นั้น), teratogen หรือปัจจัยเสี่ยง และภาพทางคลินิก ข้อมูล teratogen ส่วนใหญ่ไม่มีในบทที่แนบ จึงติดป้าย Gen</p></div>
+    <div class="filters" id="afil"></div>
+  </div>
+  <div class="cards" id="cards"></div>
+</section>
+
+<footer>
+  <div><b>อายุครรภ์:</b> สัปดาห์ในหน้านี้เป็น post-fertilization age ตามทั้งสองตำรา ถ้าเทียบกับ gestational age จาก LMP ให้บวกประมาณ 2 สัปดาห์</div>
+  <div><b>CRL:</b> ช่วงค่าตาม Carnegie stage (O'Rahilly &amp; Müller) และตาราง fetal CRL ของ Moore บทที่ 5–6 ซึ่งไม่อยู่ในบทที่แนบ จึงติดป้าย Gen</div>
+  <div><b>ภาพ:</b> เป็น schematic cartoon วาดใหม่จากคำบรรยายและรูปในตำรา ไม่ใช่สเกลจริง</div>
+</footer>
+</div>
+
+@@SCRIPT@@
+
+</body></html>

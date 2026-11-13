@@ -27,12 +27,16 @@ SEC.splice(SEC.findIndex(s=>s.id==="lytes")+1,0,{id:"nawork",k:"a",t:"Sodium dis
   b+=box(450,200,130,"Hypovolemic","")+box(600,200,130,"Euvolemic","")+box(750,200,130,"Hypervolemic","");b+=ln(600,136,450,180)+ln(600,136,600,180)+ln(600,136,750,180);
   b+=wrapT(388,238,"FENa < 1%: GI loss, burns, third space",22,"s")+wrapT(388,290,"> 2%: diuretics, 1° adrenal insufficiency",22,"s")+wrapT(538,238,"urine osm > 100: SIADH, hypothyroid, 2° adrenal insuff.",20,"s")+wrapT(538,290,"< 100: polydipsia, beer potomania",20,"s")+wrapT(688,238,"FENa < 1%: HF, cirrhosis, nephrotic",20,"s")+wrapT(688,290,"> 2%: AKI / CKD",20,"s");
   return svg(b,"0 0 830 340")},
- notes:()=>`<h3>Hyponatremia</h3><ul><li>เริ่มที่ <b>serum osmolality</b>: สูงแปลว่ามีสารอื่นดึงน้ำ (เช่น น้ำตาลสูง: Na⁺ ลดราว 1.6 mEq/L ต่อ glucose ที่เพิ่ม 100 mg/dL) · ปกติ = pseudohyponatremia ${S.fa}</li>
-<li>Hypotonic แยกตาม volume แล้วใช้ FENa หรือ urine osmolality ตามแผนภาพ ${S.fa}</li>
-<li>รักษา: hypovolemic ให้ NS · euvolemic/hypervolemic จำกัดน้ำ ± diuretic · ชักหรือ Na⁺ ต่ำมากให้ 3% saline · เรื้อรังแก้ไม่เกิน 10–12 mEq/L ต่อ 24 ชม. (ผู้เสี่ยงสูง เช่น ติดสุรา ขาดอาหาร K⁺ ต่ำ ไม่เกิน 8) เพื่อกัน osmotic demyelination ${S.fa}</li></ul>
-<h3>Hypernatremia</h3><ul><li>ส่วนใหญ่เกิดจาก<b>เสียน้ำ</b> มากกว่าได้ Na⁺ เกิน · คนที่ดื่มน้ำเองไม่ได้ (ทารก ผู้ป่วยใส่ท่อ ผู้สูงอายุติดเตียง) เสี่ยงสูง ${S.fa}</li>
-<li>Urine osm ต่ำ < 300 → DI (แยก central/nephrogenic ด้วย water deprivation + desmopressin) · สูง > 600 → เสียน้ำนอกไต หรือได้ Na⁺ เกิน ${S.fa}</li>
-<li>Free water deficit = TBW × (Na⁺/140 − 1) · แก้ภาวะเรื้อรังช้าๆ ไม่เกิน 0.5 mEq/L/ชม. (กัน cerebral edema) · ถ้า volume ต่ำและสัญญาณชีพไม่คงที่ ให้ NS ก่อน ${S.fa}</li></ul>`});
+ notes:()=>`<h3>Hyponatremia</h3><ul><li>เริ่มที่ <b>serum osmolality</b>: สูงแปลว่ามีสารอื่นดึงน้ำ (เช่น น้ำตาลสูง: Na⁺ ลดราว 1.6 mEq/L ต่อ glucose ที่เพิ่ม 100 mg/dL) · ปกติ = pseudohyponatremia ${S.fa2}</li>
+<li>Hypotonic แยกตาม volume แล้วใช้ FENa หรือ urine osmolality ตามแผนภาพ ${S.fa2}</li>
+<li>รักษา: hypovolemic ให้ NS · euvolemic/hypervolemic จำกัดน้ำ ± diuretic · ชักหรือ Na⁺ ต่ำมากให้ 3% saline ${S.fa2}</li>
+<li><b>เรื้อรัง = เป็นมา ≥ 48 ชม. หรือไม่ทราบระยะเวลา</b> (ไม่ทราบ → ถือว่าเรื้อรังไว้ก่อน) ${S.gl}</li>
+<li>อัตราแก้ในผู้ที่ความเสี่ยงทั่วไป: ไม่เกิน <b>10–12 mEq/L ต่อ 24 ชม.</b> และไม่เกิน <b>18 ต่อ 48 ชม.</b> ${S.gl}${S.g}</li>
+<li>ผู้เสี่ยงสูงต่อ ODS (ติดสุรา ขาดอาหาร K⁺ ต่ำ ตับแข็ง): ไม่เกิน <b>8 mEq/L ต่อ 24 ชม.</b> ${S.gl}</li>
+<li>First Aid Step 2 CK ระบุ <b>&lt; 8–10 mEq/L/วัน</b> สำหรับ chronic ที่นิยามว่า &gt; 72 ชม. — ตัวเลขและนิยามต่างจากแนวทาง อย่าสลับกัน ${S.fa2}</li></ul>
+<h3>Hypernatremia</h3><ul><li>ส่วนใหญ่เกิดจาก<b>เสียน้ำ</b> มากกว่าได้ Na⁺ เกิน · คนที่ดื่มน้ำเองไม่ได้ (ทารก ผู้ป่วยใส่ท่อ ผู้สูงอายุติดเตียง) เสี่ยงสูง ${S.fa2}</li>
+<li>Urine osm ต่ำ < 300 → DI (แยก central/nephrogenic ด้วย water deprivation + desmopressin) · สูง > 600 → เสียน้ำนอกไต หรือได้ Na⁺ เกิน ${S.fa2}</li>
+<li>Free water deficit = TBW × (Na⁺/140 − 1) · แก้ภาวะเรื้อรังช้าๆ ไม่เกิน 0.5 mEq/L/ชม. (กัน cerebral edema) · ถ้า volume ต่ำและสัญญาณชีพไม่คงที่ ให้ NS ก่อน ${S.fa2}</li></ul>`});
 SEC.splice(SEC.findIndex(s=>s.id==="abd")+1,0,{id:"rta",k:"b",t:"Renal tubular acidosis",mm:"RTA types 1 · 2 · 4",leg:[],
  draw:()=>cards([["Type 1 · distal","α-intercalated cell หลั่ง H⁺ ไม่ได้ · urine pH > 5.5 · K⁺ ต่ำ · นิ่ว calcium phosphate","vn"],["สาเหตุ type 1","amphotericin B, autoimmune (Sjögren, SLE, RA), analgesic nephropathy, congenital",""],["Type 2 · proximal","PCT ดูด HCO₃⁻ กลับน้อย · urine pH < 5.5 เมื่อ HCO₃⁻ ในเลือดต่ำลงแล้ว · K⁺ ต่ำ · rickets/osteomalacia","ar"],["สาเหตุ type 2","Fanconi syndrome, multiple myeloma, carbonic anhydrase inhibitors",""],["Type 4 · hyperkalemic","aldosterone ต่ำหรือดื้อ · K⁺ สูง → สร้าง NH₃ น้อย · urine pH < 5.5","gl"],["สาเหตุ type 4","diabetic hyporeninism, ACEi/ARB, NSAIDs, heparin, K⁺-sparing diuretics, trimethoprim",""]]),
  notes:()=>`<ul><li>ทุกชนิดเป็น <b>normal anion gap (hyperchloremic) metabolic acidosis</b> ${S.x}</li>
