@@ -1,0 +1,163 @@
+/* ================= Biochemistry — Metabolism 2: amino acids & the urea cycle ================= */
+Object.assign(S,{lir:'<b class="sbb lir">LIR</b>',tbbio:'<b class="sbb tbbio">TB</b>',fa1:'<b class="sbb fa">FA1</b>',x:'<b class="sbb gen">Gen</b>'});
+Object.assign(GN,{a:"กรดอะมิโนและไนโตรเจน",b:"Urea cycle",c:"ความผิดปกติของกรดอะมิโน",d:"Organic acidemia"});
+
+SEC.push({id:"aa",k:"a",t:"กรดอะมิโน: การแบ่งกลุ่ม",mm:"แบ่งกลุ่มกรดอะมิโน",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["จำเป็น (essential)","Phe · Val · Thr · Trp · Ile · Met · His · Arg · Leu · Lys","ar"],
+ ["Ketogenic ล้วน","Leucine และ Lysine เท่านั้น","vn"],
+ ["ทั้ง keto และ gluco","Isoleucine · Phenylalanine · Threonine · Tryptophan","mod"],
+ ["เป็นกรด (acidic)","Aspartate · Glutamate — มีประจุลบที่ pH ร่างกาย","bl"],
+ ["เป็นด่าง (basic)","Arginine · Lysine · Histidine","gl"]]),
+notes:()=>`<ul>
+<li>Lippincott ระบุกรดอะมิโนจำเป็นไว้ว่า <b>phenylalanine, threonine, valine, isoleucine, methionine, tryptophan, leucine, lysine</b> โดย histidine และ arginine จำเป็นในเด็กที่กำลังโต ${S.lir}${S.x}</li>
+<li><b>Leucine กับ Lysine เป็น ketogenic ล้วน</b> — เปลี่ยนกลับเป็นกลูโคสไม่ได้เลย จำง่าย ๆ ว่าขึ้นต้นด้วย L ทั้งคู่ ${S.fa1}${S.x}</li>
+<li><b>Arginine และ histidine</b> เป็นด่าง · ส่วน arginine ยังเป็นสารตัวกลางใน urea cycle ด้วย ${S.lir}</li>
+<li>ในภาวะขาดอาหาร กรดอะมิโนกลุ่ม glucogenic คือแหล่งคาร์บอนหลักของ gluconeogenesis ${S.x}</li></ul>`});
+
+SEC.push({id:"nh3",k:"a",t:"การขนไนโตรเจนและแอมโมเนีย",mm:"ขนไนโตรเจน",drugs:"",act:[],leg:[],
+draw:()=>flowD([
+ ["Transamination","ALT และ AST ย้ายหมู่อะมิโนไปให้ α-ketoglutarate → glutamate","bl"],
+ ["Oxidative deamination","glutamate dehydrogenase ปล่อย NH₃ ออกมาใน mitochondria ของตับ","ar"],
+ ["Glutamine — รถขนจากเนื้อเยื่อทั่วไป","glutamine synthetase จับ NH₃ ไว้ แล้วส่งทางเลือดอย่างปลอดภัย","gl"],
+ ["Alanine — รถขนจากกล้ามเนื้อ","วง Cahill ส่งทั้งไนโตรเจนและโครงคาร์บอนไปตับ","mod"],
+ ["ตับเปลี่ยนเป็นยูเรีย","ขับออกทางไต","vn"]]),
+notes:()=>`<ul>
+<li><b>Transamination ไม่ได้กำจัดไนโตรเจน</b> — แค่รวบรวมมาไว้ที่ glutamate · ขั้นที่ปล่อยไนโตรเจนออกจริงคือ oxidative deamination ด้วย glutamate dehydrogenase ${S.lir}</li>
+<li>Lippincott ระบุว่าไนโตรเจนจากแอมโมเนียนี้เองที่กลายเป็น <b>ไนโตรเจนตัวหนึ่งของยูเรีย</b> ${S.lir}</li>
+<li><b>Glutamine เป็นรูปขนส่งแอมโมเนียที่ไม่เป็นพิษ</b> ในเลือด และเป็นกรดอะมิโนอิสระที่มีมากที่สุดในร่างกาย ${S.lir}${S.x}</li>
+<li>สมองไม่มี urea cycle จึงอาศัย glutamine synthetase ดักแอมโมเนีย — จึงอธิบายว่าทำไมแอมโมเนียสูงถึงทำให้สมองบวมและซึม ${S.x}</li></ul>`});
+
+SEC.push({id:"urea",k:"b",t:"Urea cycle",drugs:"",act:[],leg:[],
+draw:()=>flowD([
+ ["NH₃ + CO₂ → carbamoyl phosphate","CPS I · ใน mitochondria · ขั้นกำหนดอัตรา · ต้องมี N-acetylglutamate","ar"],
+ ["+ Ornithine → citrulline","ornithine transcarbamylase (OTC) · ยังอยู่ใน mitochondria","ar"],
+ ["Citrulline ออกสู่ cytosol + aspartate","argininosuccinate synthetase","bl"],
+ ["Argininosuccinate → arginine + fumarate","argininosuccinate lyase","bl"],
+ ["Arginine → urea + ornithine","arginase · ornithine วนกลับเข้า mitochondria","gl"]]),
+notes:()=>`<ul>
+<li><b>ไนโตรเจนสองตัวของยูเรียมาคนละทาง</b> — ตัวแรกจากแอมโมเนียอิสระผ่าน CPS I ตัวที่สองจาก aspartate ${S.lir}</li>
+<li>Lippincott: <b>CPS I ต้องมี N-acetylglutamate เป็นตัวกระตุ้นแบบ allosteric</b> ${S.lir}</li>
+<li>N-acetylglutamate สร้างจาก glutamate กับ acetyl-CoA เมื่อกินโปรตีนมาก — เป็นสัญญาณให้ urea cycle เร่งตามปริมาณโปรตีนที่เข้ามา ${S.x}</li>
+<li><b>แยก CPS I กับ CPS II ให้ได้</b> — CPS I อยู่ใน mitochondria ใช้แอมโมเนีย ทำงานใน urea cycle ส่วน CPS II อยู่ใน cytosol ใช้ glutamine ทำงานในการสร้าง pyrimidine ${S.lir}</li>
+<li><b>Fumarate</b> ที่ได้จากขั้น lyase เชื่อม urea cycle เข้ากับ TCA โดยตรง ${S.lir}</li></ul>`});
+
+SEC.push({id:"hyperam",k:"b",t:"ภาวะแอมโมเนียสูง",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["อาการ","ซึม สับสน อาเจียน สมองบวม asterixis · ทารกจะไม่ยอมดูดนมและหายใจเร็ว","vn"],
+ ["กลไกที่ทำร้ายสมอง","NH₃ ดึง α-ketoglutarate ออกจาก TCA ไปสร้าง glutamate และ glutamine","ar"],
+ ["จำกัดโปรตีนในอาหาร","ลดต้นทางของไนโตรเจน","bl"],
+ ["Lactulose","ทำให้ลำไส้เป็นกรด NH₃ กลายเป็น NH₄⁺ ที่ดูดกลับไม่ได้","gl"],
+ ["Rifaximin","ลดแบคทีเรียในลำไส้ที่ผลิตแอมโมเนีย","gl"],
+ ["Benzoate หรือ phenylbutyrate","จับกรดอะมิโนแล้วขับไนโตรเจนออกทางอื่น","mod"]]),
+notes:()=>`<ul>
+<li>กลไกสำคัญคือ <b>การดึง α-ketoglutarate ออกจาก TCA</b> ทำให้วงจรพลังงานของสมองหยุดชะงัก ไม่ใช่พิษของแอมโมเนียโดยตรงอย่างเดียว ${S.x}</li>
+<li><b>ภาวะที่ได้มาภายหลัง</b> พบบ่อยกว่าแบบพันธุกรรมมาก — ตับแข็ง ตับวาย หรือ portosystemic shunt ${S.x}</li>
+<li><b>Benzoate จับ glycine ส่วน phenylbutyrate จับ glutamine</b> แล้วขับออกทางปัสสาวะ จึงเปิดทางระบายไนโตรเจนที่ไม่ต้องผ่าน urea cycle ${S.x}</li>
+<li>ในทารกที่มีแอมโมเนียสูงโดยไม่มีภาวะเลือดเป็นกรด ให้นึกถึงโรคของ urea cycle ก่อน ${S.x}</li></ul>`});
+
+SEC.push({id:"otc",k:"b",t:"ภาวะพร่อง OTC",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["พบบ่อยที่สุดในกลุ่ม urea cycle","และเป็นตัวเดียวที่ถ่ายทอดแบบ X-linked","ar"],
+ ["Carbamoyl phosphate คั่งใน mitochondria","ล้นออกสู่ cytosol","vn"],
+ ["เข้าสู่เส้นทางสร้าง pyrimidine แทน","จึงเกิด orotic acid ในปัสสาวะ","bl"],
+ ["แอมโมเนียในเลือดสูง","คือจุดที่แยกจาก orotic aciduria แท้","gl"]]),
+notes:()=>`<ul>
+<li>เมื่อ OTC เสีย carbamoyl phosphate ที่คั่งจะถูกเบนไปเข้าเส้นทาง pyrimidine ทำให้ <b>orotic acid ออกมาในปัสสาวะ</b> ${S.lir}${S.x}</li>
+<li><b>แยกจาก hereditary orotic aciduria</b> — ทั้งสองโรคมี orotic acid ในปัสสาวะเหมือนกัน แต่ Lippincott ชี้ว่าใช้ <b>ระดับแอมโมเนียในเลือด</b> เป็นตัวแยก: สูงใน OTC ปกติใน orotic aciduria ${S.lir}</li>
+<li>อีกจุดแยกคือ orotic aciduria แท้จะมี <b>megaloblastic anemia ที่ไม่ตอบสนองต่อ B12 หรือโฟเลต</b> ซึ่ง OTC ไม่มี ${S.x}</li>
+<li>เป็น X-linked จึงแสดงอาการรุนแรงในทารกชาย ส่วนหญิงพาหะอาจมีอาการเมื่อกินโปรตีนมากหรือมีความเครียดทางเมแทบอลิก ${S.x}</li></ul>`});
+
+SEC.push({id:"aader",k:"c",t:"อนุพันธ์ของกรดอะมิโน",drugs:"",act:[],leg:[],
+draw:()=>tbl(["กรดอะมิโน","กลายเป็น"],[
+ ["Phenylalanine → tyrosine","โดปามีน · นอร์เอพิเนฟริน · เอพิเนฟริน · เมลานิน · ไทรอกซิน"],
+ ["Tryptophan","เซโรโทนิน → เมลาโทนิน · ไนอะซิน (B3) → NAD⁺"],
+ ["Histidine","ฮิสตามีน"],
+ ["Glycine","พอร์ไฟริน → ฮีม"],
+ ["Glutamate","GABA · กลูตาไทโอน"],
+ ["Arginine","ไนตริกออกไซด์ · ยูเรีย · ครีเอทีน"]]),
+notes:()=>`<ul>
+<li>เส้นทาง <b>phenylalanine → tyrosine</b> เป็นต้นทางของทั้งแคทีโคลามีน เมลานิน และฮอร์โมนไทรอยด์ จึงอธิบายว่าทำไมโรคในเส้นทางนี้ถึงมีอาการได้หลายระบบ ${S.lir}</li>
+<li><b>Tryptophan แตกได้สองทาง</b> — ไปเซโรโทนิน หรือไปไนอะซิน · ถ้าดึงไปทางหนึ่งมากก็เหลือไปอีกทางน้อยลง จึงเกิดอาการแบบ pellagra ได้ใน carcinoid syndrome และ Hartnup disease ${S.x}</li>
+<li>การสังเคราะห์แคทีโคลามีนต้องใช้ <b>tetrahydrobiopterin (BH4)</b> ตัวเดียวกับที่ phenylalanine hydroxylase ใช้ ${S.lir}</li></ul>`});
+
+SEC.push({id:"pku",k:"c",t:"Phenylketonuria",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["เอนไซม์ที่เสีย","Phenylalanine hydroxylase — เปลี่ยน phenylalanine เป็น tyrosine ไม่ได้","ar"],
+ ["แบบที่สอง","พร่องเอนไซม์ที่สร้างหรือรีไซเคิล BH4 — malignant PKU","vn"],
+ ["อาการ","ปัญญาอ่อนถ้าไม่รักษา · ชัก · ผิวและผมสีจาง · กลิ่นตัวและปัสสาวะคล้ายหนู","bl"],
+ ["รักษา","จำกัด phenylalanine และ <b>เติม tyrosine</b> ซึ่งกลายเป็นกรดอะมิโนจำเป็น","gl"],
+ ["ระวัง aspartame","เพราะมี phenylalanine อยู่","mod"]]),
+notes:()=>`<ul>
+<li>Lippincott: PKU เกิดจาก <b>พร่อง phenylalanine hydroxylase</b> และภาวะ phenylalanine สูงยังเกิดได้จากการพร่องเอนไซม์ที่สร้างหรือรีดิวซ์โคแฟกเตอร์ของมัน ${S.lir}</li>
+<li>ข้อแตกต่างสำคัญ: <b>แบบที่ขาด BH4 จะไม่ดีขึ้นแม้จำกัดอาหาร</b> เพราะ BH4 ยังจำเป็นต่อการสร้างโดปามีนและเซโรโทนินด้วย ต้องให้ BH4 กับสารตั้งต้นของสารสื่อประสาททดแทน ${S.lir}${S.x}</li>
+<li><b>ไทโรซีนกลายเป็นกรดอะมิโนจำเป็น</b> ในผู้ป่วย PKU เพราะสร้างเองไม่ได้ ${S.x}</li>
+<li><b>Maternal PKU</b> — หญิงตั้งครรภ์ที่ไม่คุมอาหารทำให้ทารกมีศีรษะเล็ก หัวใจพิการ และปัญญาอ่อน แม้ทารกจะไม่ได้เป็นโรค ${S.x}</li></ul>`});
+
+SEC.push({id:"tyr",k:"c",t:"Alkaptonuria & albinism",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["Alkaptonuria","พร่อง homogentisate oxidase ในเส้นทางสลาย tyrosine","ar"],
+ ["ปัสสาวะดำเมื่อตั้งทิ้งไว้","homogentisic acid ถูกออกซิไดซ์กลายเป็นสีเข้ม","vn"],
+ ["Ochronosis","เม็ดสีสะสมในกระดูกอ่อน หูและตาคล้ำ ข้อเสื่อมก่อนวัย","bl"],
+ ["ไม่ร้ายแรงถึงชีวิต","ต่างจากโรคอื่นในกลุ่มนี้","gl"],
+ ["Albinism","พร่อง tyrosinase หรือความบกพร่องของการขนส่ง tyrosine","mod"]]),
+notes:()=>`<ul>
+<li>Lippincott จัด alkaptonuria ไว้คู่กับ PKU และ albinism ในฐานะ <b>ความผิดปกติของเส้นทาง phenylalanine และ tyrosine</b> ${S.lir}</li>
+<li>Alkaptonuria ถ่ายทอดแบบ autosomal recessive · อาการที่พ่อแม่สังเกตเห็นก่อนคือผ้าอ้อมเปื้อนสีเข้ม ${S.x}</li>
+<li><b>Albinism เพิ่มความเสี่ยงมะเร็งผิวหนัง</b> เพราะขาดเมลานินที่ป้องกันรังสียูวี ${S.x}</li>
+<li>เส้นทางเดียวกันแต่คนละขั้น: PKU อยู่ต้นทาง · albinism อยู่ที่แยกไปสร้างเมลานิน · alkaptonuria อยู่ปลายทางของการสลาย ${S.x}</li></ul>`});
+
+SEC.push({id:"msud",k:"c",t:"Maple syrup urine disease",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["เอนไซม์ที่เสีย","Branched-chain α-ketoacid dehydrogenase","ar"],
+ ["กรดอะมิโนที่คั่ง","Isoleucine · Leucine · Valine และกรดคีโตของทั้งสาม","vn"],
+ ["โคแฟกเตอร์","ใช้ thiamine pyrophosphate เหมือน PDH","mod"],
+ ["อาการ","ทารกดูดนมไม่ดี อาเจียน ตัวอ่อนสลับเกร็ง ชัก สมองเสื่อม","bl"],
+ ["ปัสสาวะกลิ่นหวานคล้ายน้ำเชื่อม","เป็นที่มาของชื่อโรค","gl"]]),
+notes:()=>`<ul>
+<li>Lippincott ระบุว่าคอมเพล็กซ์นี้ <b>ใช้ thiamine pyrophosphate</b> และการพร่องทำให้กรดคีโตของกรดอะมิโนสายกิ่งคั่งออกมาในปัสสาวะ ซึ่ง "กลิ่นหวานของมันเป็นที่มาของชื่อโรค" ${S.lir}</li>
+<li>คอมเพล็กซ์นี้ใช้โคแฟกเตอร์ชุดเดียวกับ PDH และ α-ketoglutarate dehydrogenase — <b>ทั้งสามตัวเป็นญาติกัน</b> ${S.lir}</li>
+<li><b>Leucine เป็นตัวที่อันตรายที่สุด</b> ต่อระบบประสาท การรักษาจึงเน้นจำกัด leucine เป็นพิเศษ ${S.x}</li>
+<li>ผู้ป่วยบางรายตอบสนองต่อ <b>ไทอามีนขนาดสูง</b> ${S.x}</li></ul>`});
+
+SEC.push({id:"hcy",k:"c",t:"Homocystinuria",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["สาเหตุที่พบบ่อยที่สุด","พร่อง cystathionine β-synthase","ar"],
+ ["แบบที่สอง","เอนไซม์จับ B6 ได้ไม่ดี — ตอบสนองต่อ pyridoxine ขนาดสูง","vn"],
+ ["แบบที่สาม","พร่อง methionine synthase ซึ่งต้องใช้ B12","bl"],
+ ["ผลตรวจ","homocysteine และ methionine สูง · cysteine ต่ำ","gl"],
+ ["อาการ","เลนส์ตาเคลื่อนลงล่าง · ตัวสูงผอมแบบ Marfan · ลิ่มเลือดอุดตัน · ปัญญาอ่อน","mod"]]),
+notes:()=>`<ul>
+<li>Lippincott: <b>สาเหตุที่พบบ่อยที่สุดคือความบกพร่องของ cystathionine β-synthase</b> ซึ่งเปลี่ยน homocysteine เป็น cystathionine · ผลคือ homocysteine และ methionine ในเลือดและปัสสาวะสูง ส่วน cysteine ต่ำ ${S.lir}</li>
+<li><b>Cysteine กลายเป็นกรดอะมิโนจำเป็น</b> ในผู้ป่วยกลุ่มนี้ ${S.lir}${S.x}</li>
+<li><b>แยกจาก Marfan ด้วยทิศทางของเลนส์</b> — homocystinuria เลนส์เคลื่อนลงล่างและเข้าใน ส่วน Marfan เคลื่อนขึ้นบนและออกนอก ${S.x}</li>
+<li>ภาวะลิ่มเลือดอุดตันตั้งแต่อายุน้อยเป็นสาเหตุการตายที่สำคัญที่สุดของโรคนี้ ${S.x}</li></ul>`});
+
+SEC.push({id:"cystin",k:"c",t:"Cystinuria",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["ปัญหาอยู่ที่ตัวขนส่ง ไม่ใช่เอนไซม์","ที่ท่อไตส่วนต้นและลำไส้เล็ก","ar"],
+ ["COAL","Cystine · Ornithine · Arginine · Lysine — ใช้ตัวขนส่งร่วมกัน","vn"],
+ ["ผลคือ","cystine ในปัสสาวะสูงและละลายน้ำได้ไม่ดี → นิ่ว","bl"],
+ ["ผลึกหกเหลี่ยม","ลักษณะเฉพาะในตะกอนปัสสาวะ","gl"],
+ ["รักษา","ดื่มน้ำมาก · ทำให้ปัสสาวะเป็นด่าง · ยาจับ cystine เช่น penicillamine","mod"]]),
+notes:()=>`<ul>
+<li>Lippincott อธิบายว่าตัวขนส่งนี้รับผิดชอบการดูดกลับ <b>cystine และกรดอะมิโนกลุ่มเบส คือ ornithine, arginine และ lysine</b> โดยย่อว่า "COAL" ${S.lir}</li>
+<li>แม้จะเสียการดูดกลับกรดอะมิโนสี่ตัว แต่<b>มีอาการจากนิ่วเท่านั้น</b> เพราะร่างกายยังได้กรดอะมิโนพอจากการย่อยเปปไทด์ ${S.x}</li>
+<li><b>ผลึกหกเหลี่ยม</b> ในปัสสาวะแทบจะยืนยันโรคได้ทันที ${S.x}</li>
+<li>เป็นสาเหตุของนิ่วในเด็กที่ต้องนึกถึง เพราะนิ่วส่วนใหญ่ในวัยนี้ไม่ใช่แคลเซียม ${S.x}</li></ul>`});
+
+SEC.push({id:"organic",k:"d",t:"Organic acidemia: propionic & methylmalonic",drugs:"",act:[],leg:[],
+draw:()=>flowD([
+ ["สารตั้งต้น","กรดอะมิโน VOMIT · กรดไขมันสายคี่ · คอเลสเตอรอล","bl"],
+ ["→ Propionyl-CoA","ถ้าตันตรงนี้ = propionic acidemia","ar"],
+ ["Propionyl-CoA carboxylase (ใช้ biotin)","→ methylmalonyl-CoA","mod"],
+ ["Methylmalonyl-CoA mutase (ใช้ B12)","ถ้าตันตรงนี้ = methylmalonic acidemia","ar"],
+ ["→ Succinyl-CoA","เข้าสู่ TCA และใช้สร้างกลูโคสได้","gl"]]),
+notes:()=>`<ul>
+<li>Lippincott: กรดไขมันสายคี่สลายไปจนเหลือสามคาร์บอนเป็น propionyl-CoA ซึ่ง <b>เปลี่ยนเป็น methylmalonyl-CoA โดยปฏิกิริยาที่ต้องใช้ biotin</b> แล้วจึงเป็น succinyl-CoA ซึ่งเป็นสารตั้งต้นของ gluconeogenesis โดย methylmalonyl-CoA mutase ${S.lir}</li>
+<li><b>VOMIT</b> = Valine, Odd-chain fatty acids, Methionine, Isoleucine, Threonine — ทุกตัวมาบรรจบที่ propionyl-CoA ${S.fa1}${S.x}</li>
+<li>ทั้งสองโรคมาด้วย <b>ภาวะเลือดเป็นกรดจากช่องว่างประจุลบกว้าง ตับโต อาเจียน และซึม</b> ในช่วงแรกเกิด และแอมโมเนียอาจสูงร่วมด้วย ${S.x}</li>
+<li><b>จุดแยกจากโรค urea cycle</b> — organic acidemia มีเลือดเป็นกรด ส่วนโรค urea cycle แอมโมเนียสูงโดยที่ pH ยังปกติ ${S.x}</li>
+<li>Methylmalonic acidemia บางรายตอบสนองต่อ <b>B12 ขนาดสูง</b> เพราะเป็นความบกพร่องของการสร้างโคแฟกเตอร์ ไม่ใช่ตัวเอนไซม์ ${S.x}</li></ul>`});
+
+const EXTRA=[];

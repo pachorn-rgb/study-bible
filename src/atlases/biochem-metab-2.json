@@ -1,0 +1,30 @@
+{
+ "id": "biochem-metab-2",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Metabolism",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Metabolism 2: Amino Acids & the Urea Cycle",
+ "h1": "Metabolism: amino acids & the urea cycle",
+ "lede": "ไนโตรเจนจากกรดอะมิโนเดินทางอย่างไร กำจัดทิ้งที่ไหน และเกิดอะไรขึ้นเมื่อเอนไซม์ขั้นใดขั้นหนึ่งเสีย · ครอบคลุม urea cycle, ภาวะแอมโมเนียสูง, PKU, maple syrup urine disease, homocystinuria, cystinuria และ organic acidemia · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott และ Textbook of Biochemistry",
+ "sources": [
+  ["lir", "LIR", "Lippincott's Illustrated Reviews: Biochemistry 5e"],
+  ["tbbio", "TB", "Textbook of Biochemistry 5e (NMC/CBME)"],
+  ["fa", "FA1", "First Aid for the USMLE Step 1 2025 · Biochemistry—Metabolism"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Metabolism"],
+  "title": "Metabolism 2: Amino Acids & the Urea Cycle",
+  "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+  "desc": "กรดอะมิโนจำเป็นและการแบ่งกลุ่ม, การขนไนโตรเจนด้วย glutamine และ alanine, urea cycle และเอนไซม์ทั้งห้า, ภาวะแอมโมเนียสูงและการรักษา, ภาวะพร่อง OTC, อนุพันธ์ของกรดอะมิโน, phenylketonuria, alkaptonuria และ albinism, maple syrup urine disease, homocystinuria สามรูปแบบ, cystinuria และ organic acidemia จาก propionyl-CoA",
+  "ch": "FA Ch Biochemistry",
+  "sort": 11,
+  "refb": "lir",
+  "refl": "LIR",
+  "tags": ["biochemistry"]
+ }
+}

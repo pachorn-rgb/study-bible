@@ -90,6 +90,80 @@
         "ch": "FA Ch Biochemistry",
         "sort": 10
        }
+      },
+      {
+       "id": "biochem-metab-2",
+       "title": "Metabolism 2: Amino Acids & the Urea Cycle",
+       "subs": [
+        "Metabolism"
+       ],
+       "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+       "href": "biochem/biochem-metab-2.html",
+       "thumb": "thumbs/biochem-metab-2.jpg",
+       "desc": "กรดอะมิโนจำเป็นและการแบ่งกลุ่ม, การขนไนโตรเจนด้วย glutamine และ alanine, urea cycle และเอนไซม์ทั้งห้า, ภาวะแอมโมเนียสูงและการรักษา, ภาวะพร่อง OTC, อนุพันธ์ของกรดอะมิโน, phenylketonuria, alkaptonuria และ albinism, maple syrup urine disease, homocystinuria สามรูปแบบ, cystinuria และ organic acidemia จาก propionyl-CoA",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "กรดอะมิโน: การแบ่งกลุ่ม",
+         "aa"
+        ],
+        [
+         "การขนไนโตรเจนและแอมโมเนีย",
+         "nh3"
+        ],
+        [
+         "Urea cycle",
+         "urea"
+        ],
+        [
+         "ภาวะแอมโมเนียสูง",
+         "hyperam"
+        ],
+        [
+         "ภาวะพร่อง OTC",
+         "otc"
+        ],
+        [
+         "อนุพันธ์ของกรดอะมิโน",
+         "aader"
+        ],
+        [
+         "Phenylketonuria",
+         "pku"
+        ],
+        [
+         "Alkaptonuria & albinism",
+         "tyr"
+        ],
+        [
+         "Maple syrup urine disease",
+         "msud"
+        ],
+        [
+         "Homocystinuria",
+         "hcy"
+        ],
+        [
+         "Cystinuria",
+         "cystin"
+        ],
+        [
+         "Organic acidemia: propionic & methylmalonic",
+         "organic"
+        ]
+       ],
+       "ref": {
+        "b": "lir",
+        "l": "LIR",
+        "ch": "FA Ch Biochemistry",
+        "sort": 11
+       }
       }
      ],
      "checklist": [
@@ -190,6 +264,114 @@
        "link": {
         "m": "biochem-metab-1",
         "h": "etcpois"
+       }
+      },
+      {
+       "id": "biochem-metab-2:aa",
+       "sub": "Metabolism",
+       "t": "กรดอะมิโน: การแบ่งกลุ่ม",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "aa"
+       }
+      },
+      {
+       "id": "biochem-metab-2:nh3",
+       "sub": "Metabolism",
+       "t": "การขนไนโตรเจนและแอมโมเนีย",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "nh3"
+       }
+      },
+      {
+       "id": "biochem-metab-2:urea",
+       "sub": "Metabolism",
+       "t": "Urea cycle",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "urea"
+       }
+      },
+      {
+       "id": "biochem-metab-2:hyperam",
+       "sub": "Metabolism",
+       "t": "ภาวะแอมโมเนียสูง",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "hyperam"
+       }
+      },
+      {
+       "id": "biochem-metab-2:otc",
+       "sub": "Metabolism",
+       "t": "ภาวะพร่อง OTC",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "otc"
+       }
+      },
+      {
+       "id": "biochem-metab-2:aader",
+       "sub": "Metabolism",
+       "t": "อนุพันธ์ของกรดอะมิโน",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "aader"
+       }
+      },
+      {
+       "id": "biochem-metab-2:pku",
+       "sub": "Metabolism",
+       "t": "Phenylketonuria",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "pku"
+       }
+      },
+      {
+       "id": "biochem-metab-2:tyr",
+       "sub": "Metabolism",
+       "t": "Alkaptonuria & albinism",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "tyr"
+       }
+      },
+      {
+       "id": "biochem-metab-2:msud",
+       "sub": "Metabolism",
+       "t": "Maple syrup urine disease",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "msud"
+       }
+      },
+      {
+       "id": "biochem-metab-2:hcy",
+       "sub": "Metabolism",
+       "t": "Homocystinuria",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "hcy"
+       }
+      },
+      {
+       "id": "biochem-metab-2:cystin",
+       "sub": "Metabolism",
+       "t": "Cystinuria",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "cystin"
+       }
+      },
+      {
+       "id": "biochem-metab-2:organic",
+       "sub": "Metabolism",
+       "t": "Organic acidemia: propionic & methylmalonic",
+       "link": {
+        "m": "biochem-metab-2",
+        "h": "organic"
        }
       }
      ],
