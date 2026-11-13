@@ -42,3 +42,22 @@ are standalone files in `docs/renal/` and are not generated from here.
 Hand-written questions without a generator (old renal items, renal cases and boss) live in `src/questions/legacy.json`;
 edit them there. `python3 src/test/tells.py` lists MCQs whose correct option is conspicuously the longest — keep it near 0.
 See the docstring of `build/questions.py` for the generator format.
+
+## Standalone KUB pages (kub-anatomy, kub-histology)
+
+These two pages do not use the shared atlas engine (`core.js` / `render.js`).
+They are self-contained applications with their own CSS and renderer, so they
+are built by `src/build/build_kub.py`, not `build.py`:
+
+    python3 src/build/build_kub.py             # both
+    python3 src/build/build_kub.py kub-anatomy # one
+
+Files per page:
+
+    src/engine/<id>.shell.html   page shell + <style>; @@SCRIPT@@ marks the inline script
+    src/atlases/<id>.helpers.js  page-specific drawing helpers
+    src/atlases/<id>.js          SEC.push content  <- EDIT THIS
+    src/engine/<id>.render.js    page renderer
+
+`kub-embryology` and `nephron-pathway` have not been migrated yet and are still
+edited only as generated HTML in `docs/`.

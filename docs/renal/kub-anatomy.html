@@ -538,7 +538,7 @@ notes:()=>`<h3>ตำแหน่ง</h3><ul><li>ที่พักปัสส�
  <div class="pearl"><b>Clinical:</b> suprapubic catheter แทงกลางลำตัวเหนือ pubic symphysis ~2 cm เข้า bladder ที่เต็ม <b>โดยไม่ผ่าน peritoneum</b> · มะเร็ง bladder ลามไป internal iliac nodes · นิ่วเล็กลงมาจาก ureter โตต่อใน bladder ได้ ${S.g}</div>`});
 
 /* 10 · urethra */
-SEC.push({id:"urethra",k:"Urethra",t:"Urethra",tools:[["sex",[["m","Male"],["f","Female"]]]],leg:["blad","uro","prost","musc"],figs:[["urethra-1","Urethra, female & male (Gray Fig 5.18)"],["urethra-2","Female urethra (Gray Fig 5.45A)"],["urethra-3","Male urethra & prostatic part (Gray Fig 5.45B–C)"],["urethra-4","Blood & lymph of urethra"],["urethra-5","Nerves"]],
+SEC.push({id:"urethra",k:"Urethra",t:"Urethra",tools:[["sex",[["m","Male"],["f","Female"]]]],leg:["blad","uro","prost","musc"],figs:[["urethra-1","Urethra, female & male (Gray Fig 5.18)"],["urethra-2","Female urethra (Gray Fig 5.45A)"],["urethra-3","Male urethra & prostatic part (Gray Fig 5.45B–C)"],["bladder-6","Blood & lymph of urethra (Gray Fig 5.68)"],["bladder-7","Nerves: vesical plexus (Gray Fig 5.63)"]],
 draw(){
  let b="";
  if(ST.sex==="m"){
@@ -585,7 +585,7 @@ notes:()=>`<h3>ทั่วไป</h3><ul><li>ท่อผนังบาง น
  <div class="pearl"><b>Clinical:</b> urethra หญิงสั้น → bladder infection บ่อยกว่าชาย · ใส่สายสวนในชายต้องคำนึงถึงโค้ง 2 จุดและส่วน prostatic ที่โค้งไปหน้า ${S.g}</div>`});
 
 /* 11 · posterior wall muscles */
-SEC.push({id:"wall",k:"Posterior abdominal wall",t:"Muscles",leg:["musc","bone"],figs:[["wall-1","Posterior abdominal wall"],["wall-2","Muscles (Netter)"],["wall-3","Psoas, iliacus, quadratus lumborum (Gray Fig 4.142)"]],
+SEC.push({id:"wall",k:"Posterior abdominal wall",t:"Muscles",leg:["musc","bone"],figs:[["wall-1","Posterior abdominal wall"],["wall-3","Psoas, iliacus, quadratus lumborum (Gray Fig 4.142)"]],
 draw(){
  let b="";const LV=[["T12",70],["L1",112],["L2",154],["L3",196],["L4",238],["L5",280]];
  b+=F("musc2","M70,90 C120,20 270,20 304,52 L336,52 C370,20 520,20 570,90 L560,98 C520,50 380,46 336,66 L304,66 C262,46 120,50 80,98 Z");
