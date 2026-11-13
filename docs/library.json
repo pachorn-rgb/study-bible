@@ -230,6 +230,72 @@
         "ch": "FA Ch Biochemistry",
         "sort": 12
        }
+      },
+      {
+       "id": "biochem-metab-4",
+       "title": "Metabolism 4: Lipids, Ketones & Lipoproteins",
+       "subs": [
+        "Metabolism"
+       ],
+       "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+       "href": "biochem/biochem-metab-4.html",
+       "thumb": "thumbs/biochem-metab-4.jpg",
+       "desc": "กระสวย carnitine และ β-oxidation, ภาวะพร่อง MCAD และ carnitine, การสร้างกรดไขมันกับ malonyl-CoA, คีโตนและเหตุผลที่ตับใช้เองไม่ได้, สภาวะอิ่มเทียบสภาวะอด, การสร้างคอเลสเตอรอลและ HMG-CoA reductase, เอนไซม์ไขมัน LPL HSL LCAT CETP, lipoprotein ทั้งห้าชนิดและ apolipoprotein, familial dyslipidemia ทั้งสี่ชนิดและ abetalipoproteinemia",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "β-oxidation และกระสวย carnitine",
+         "faox"
+        ],
+        [
+         "ภาวะพร่องการเผากรดไขมัน",
+         "mcad"
+        ],
+        [
+         "การสร้างกรดไขมัน",
+         "fasyn"
+        ],
+        [
+         "คีโตน",
+         "ketone"
+        ],
+        [
+         "สภาวะอิ่มเทียบสภาวะอด",
+         "fedfast"
+        ],
+        [
+         "การสร้างคอเลสเตอรอล",
+         "chol"
+        ],
+        [
+         "เอนไซม์ของไขมัน",
+         "lipenz"
+        ],
+        [
+         "Lipoprotein ทั้งห้าชนิด",
+         "lipoprot"
+        ],
+        [
+         "Apolipoprotein",
+         "apo"
+        ],
+        [
+         "Familial dyslipidemia",
+         "dyslip"
+        ]
+       ],
+       "ref": {
+        "b": "lir",
+        "l": "LIR",
+        "ch": "FA Ch Biochemistry",
+        "sort": 13
+       }
       }
      ],
      "checklist": [
@@ -528,6 +594,96 @@
        "link": {
         "m": "biochem-metab-3",
         "h": "muco"
+       }
+      },
+      {
+       "id": "biochem-metab-4:faox",
+       "sub": "Metabolism",
+       "t": "β-oxidation และกระสวย carnitine",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "faox"
+       }
+      },
+      {
+       "id": "biochem-metab-4:mcad",
+       "sub": "Metabolism",
+       "t": "ภาวะพร่องการเผากรดไขมัน",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "mcad"
+       }
+      },
+      {
+       "id": "biochem-metab-4:fasyn",
+       "sub": "Metabolism",
+       "t": "การสร้างกรดไขมัน",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "fasyn"
+       }
+      },
+      {
+       "id": "biochem-metab-4:ketone",
+       "sub": "Metabolism",
+       "t": "คีโตน",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "ketone"
+       }
+      },
+      {
+       "id": "biochem-metab-4:fedfast",
+       "sub": "Metabolism",
+       "t": "สภาวะอิ่มเทียบสภาวะอด",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "fedfast"
+       }
+      },
+      {
+       "id": "biochem-metab-4:chol",
+       "sub": "Metabolism",
+       "t": "การสร้างคอเลสเตอรอล",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "chol"
+       }
+      },
+      {
+       "id": "biochem-metab-4:lipenz",
+       "sub": "Metabolism",
+       "t": "เอนไซม์ของไขมัน",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "lipenz"
+       }
+      },
+      {
+       "id": "biochem-metab-4:lipoprot",
+       "sub": "Metabolism",
+       "t": "Lipoprotein ทั้งห้าชนิด",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "lipoprot"
+       }
+      },
+      {
+       "id": "biochem-metab-4:apo",
+       "sub": "Metabolism",
+       "t": "Apolipoprotein",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "apo"
+       }
+      },
+      {
+       "id": "biochem-metab-4:dyslip",
+       "sub": "Metabolism",
+       "t": "Familial dyslipidemia",
+       "link": {
+        "m": "biochem-metab-4",
+        "h": "dyslip"
        }
       }
      ],

@@ -1,0 +1,30 @@
+{
+ "id": "biochem-metab-4",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Metabolism",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Metabolism 4: Lipids, Ketones & Lipoproteins",
+ "h1": "Metabolism: lipids, ketones & lipoproteins",
+ "lede": "ร่างกายเผาไขมันอย่างไร สร้างคีโตนเมื่อไร และขนไขมันไปมาด้วยอนุภาคอะไร · ไล่ตั้งแต่กระสวย carnitine, β-oxidation, คีโตน, สภาวะอิ่มเทียบอด, การสร้างคอเลสเตอรอล ไปจนถึง lipoprotein ทั้งห้าชนิดและโรคไขมันในเลือดผิดปกติทางพันธุกรรม · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott และ Textbook of Biochemistry",
+ "sources": [
+  ["lir", "LIR", "Lippincott's Illustrated Reviews: Biochemistry 5e"],
+  ["tbbio", "TB", "Textbook of Biochemistry 5e (NMC/CBME)"],
+  ["fa", "FA1", "First Aid for the USMLE Step 1 2025 · Biochemistry—Metabolism"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Metabolism"],
+  "title": "Metabolism 4: Lipids, Ketones & Lipoproteins",
+  "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+  "desc": "กระสวย carnitine และ β-oxidation, ภาวะพร่อง MCAD และ carnitine, การสร้างกรดไขมันกับ malonyl-CoA, คีโตนและเหตุผลที่ตับใช้เองไม่ได้, สภาวะอิ่มเทียบสภาวะอด, การสร้างคอเลสเตอรอลและ HMG-CoA reductase, เอนไซม์ไขมัน LPL HSL LCAT CETP, lipoprotein ทั้งห้าชนิดและ apolipoprotein, familial dyslipidemia ทั้งสี่ชนิดและ abetalipoproteinemia",
+  "ch": "FA Ch Biochemistry",
+  "sort": 13,
+  "refb": "lir",
+  "refl": "LIR",
+  "tags": ["biochemistry"]
+ }
+}
