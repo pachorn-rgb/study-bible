@@ -41,3 +41,25 @@ T={
  ("Prolonged apnea after succinylcholine suggests:",["Pseudocholinesterase deficiency","Slow N-acetyltransferase 2 phenotype","CYP2D6 ultrarapid metabolizer","Ryanodine receptor (RYR1) mutation"],0,"Inherited butyrylcholinesterase variant."),
  ('A 40-year-old Thai man with recurrent gout starts a urate-lowering drug. Four weeks later he has fever, a widespread rash, eosinophilia and elevated transaminases. Which genetic test could have identified his risk before treatment?', ['HLA-B*58:01', 'HLA-B*15:02', 'HLA-B*57:01', 'HLA-DRB1*04'], 0, 'HLA-B*58:01 predicts severe cutaneous reactions (SJS/TEN, DRESS) to allopurinol, common in Thai and Han Chinese; B*15:02 is for carbamazepine.', 3)],
 }
+
+T["antidote"]=[
+ ("A patient with acetaminophen overdose is given N-acetylcysteine. Its mechanism is:",
+  ["Replenishing hepatic glutathione","Binding acetaminophen in the gut","Inhibiting CYP2E1 directly","Alkalinizing the urine"],0,
+  "Glutathione conjugates the toxic metabolite NAPQI; NAC restores the depleted store. Decide treatment from the level on the nomogram, not from symptoms — early poisoning is silent."),
+ ("Which antidote carries a risk of precipitating seizures?",
+  ["Flumazenil","Naloxone","Protamine sulfate","Leucovorin"],0,
+  "In chronic benzodiazepine users or TCA co-ingestion, abrupt GABA-A reversal can unmask seizures."),
+ ("A 23-year-old man is brought in drowsy 3 hours after taking a large dose of amitriptyline. BP 88/54, HR 124, and the ECG shows a QRS of 140 ms with a tall terminal R wave in aVR. Which treatment addresses the finding that most threatens his life?",
+  ["Sodium bicarbonate","Activated charcoal","Physostigmine","Intravenous lipid emulsion"],0,
+  "TCAs block fast cardiac Na+ channels, widening the QRS and causing arrhythmia. Hypertonic NaHCO3 provides a sodium load and alkalemia that stabilize the membrane. Physostigmine is for pure antimuscarinic poisoning and is dangerous here.",3)]
+
+T["antidote2"]=[
+ ("In organophosphate poisoning, atropine is given before pralidoxime because atropine:",
+  ["Reverses the muscarinic effects","Regenerates acetylcholinesterase at the synapse","Prevents aging of the bound enzyme","Blocks nicotinic receptors at the junction"],0,
+  "Atropine treats bronchorrhea, bronchospasm and bradycardia. Pralidoxime reactivates the enzyme and must be given before aging."),
+ ("Which poisoning is treated with fomepizole?",
+  ["Methanol or ethylene glycol","Carbon monoxide from a fire","Iron tablets in a child","Organophosphate insecticide"],0,
+  "Fomepizole inhibits alcohol dehydrogenase, preventing formation of the toxic metabolites. It is preferred to ethanol; dialysis is added in severe cases."),
+ ("A 4-year-old Thai boy is treated for methemoglobinemia with methylene blue, but his cyanosis worsens and his hemoglobin falls from 11 to 7 g/dL with bite cells on the smear. Which underlying condition best explains this?",
+  ["G6PD deficiency","Hereditary spherocytosis","Beta-thalassemia trait","Pyruvate kinase deficiency"],0,
+  "Methylene blue needs NADPH from the HMP shunt to work, so in G6PD deficiency it is both ineffective and an oxidant stress that causes hemolysis. G6PD deficiency is common in Thailand, so it must be considered before giving it.",3)]

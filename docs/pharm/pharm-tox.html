@@ -88,11 +88,54 @@ SEC.push({id:"pgx",k:"d",t:"Pharmacogenomics: HLA & enzyme variants",mm:"Pharmac
 draw:()=>cards([["HLA-B*57:01","abacavir → hypersensitivity (ตรวจก่อนให้ยา)","vn"],["HLA-B*15:02","carbamazepine, phenytoin → SJS/TEN (ประชากรเอเชีย)","vn"],["HLA-B*58:01","allopurinol → SJS/TEN, DRESS","vn"],["TPMT / NUDT15 deficiency","azathioprine, 6-MP → myelosuppression",""],["G6PD deficiency","oxidant drugs → hemolysis","ar"],["Slow acetylators (NAT2)","isoniazid, hydralazine, procainamide → toxicity, drug-induced lupus",""],["CYP2C19 poor metabolizer","clopidogrel ไม่ได้ผล","gl"]]),
 notes:()=>`<ul><li>ประเทศไทยแนะนำตรวจ <b>HLA-B*15:02</b> ก่อน carbamazepine และ <b>HLA-B*58:01</b> ก่อน allopurinol ${S.x}</li><li>Pseudocholinesterase deficiency → succinylcholine ออกฤทธิ์นาน (apnea หลังผ่าตัด) ${S.k}</li></ul>`});
 
-SEC.push({id:"toxpending",k:"d",t:"Toxicology & specific antidotes (เติมเอง)",mm:"เติมเอง",drugs:"",act:[],leg:[],
-draw:()=>cards([["ส่วนนี้เว้นไว้ให้เติมจากสรุปของตัวเอง","ยังไม่มีเนื้อหา",""]]),
-notes:()=>`<p>หัวข้อนี้ยังว่าง — เติมเนื้อหาจากสรุปของตัวเองได้ที่นี่</p>`});
+SEC.push({id:"antidote",k:"d",t:"Specific antidotes: drugs",mm:"Antidotes — drugs",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["Acetaminophen","N-acetylcysteine — เติม glutathione ที่พร่อง","ar"],
+ ["Opioids","Naloxone","ar"],
+ ["Benzodiazepines","Flumazenil","ar"],
+ ["TCAs","NaHCO₃ — ทำให้เยื่อหุ้มเซลล์หัวใจเสถียร","vn"],
+ ["Salicylates","NaHCO₃ ทำให้ปัสสาวะเป็นด่าง · ฟอกเลือด","vn"],
+ ["Digoxin","Digoxin-specific antibody fragments (Fab)","vn"],
+ ["β-blockers","Atropine · glucagon · น้ำเกลือ","vn"],
+ ["Heparin","Protamine sulfate","bl"],
+ ["Warfarin","Vitamin K (ออกฤทธิ์ช้า) · PCC หรือ FFP (ทันที)","bl"],
+ ["Dabigatran","Idarucizumab","bl"],
+ ["Factor Xa inhibitors (เช่น apixaban)","Andexanet alfa","bl"],
+ ["Methotrexate","Leucovorin","gl"]],{foot:"First Aid Step 1 · Specific toxicity treatments"}),
+notes:()=>`<ul>
+<li><b>Acetaminophen</b> → <b>N-acetylcysteine</b> เติม glutathione ที่ถูกใช้หมดไปกับ NAPQI ${S.fa1} · ยิ่งให้เร็วยิ่งดี และตัดสินใจจากระดับยาเทียบ nomogram ไม่ใช่จากอาการ เพราะช่วงแรกมักไม่มีอาการ ${S.x}</li>
+<li><b>Opioids</b> → <b>naloxone</b> ${S.fa1} · ครึ่งชีวิตสั้นกว่า opioid หลายตัว จึงอาจกดการหายใจซ้ำหลังยาหมดฤทธิ์ ต้องเฝ้าดูต่อหรือให้แบบหยดต่อเนื่อง ${S.x}</li>
+<li><b>Benzodiazepines</b> → <b>flumazenil</b> ${S.fa1} · ใช้อย่างระวัง อาจกระตุ้นให้ชักในผู้ที่ใช้ benzo เรื้อรังหรือกินร่วมกับ TCA ${S.x}</li>
+<li><b>TCAs</b> → <b>NaHCO₃</b> ทำให้เยื่อหุ้มเซลล์หัวใจเสถียร ${S.fa1} · ข้อบ่งชี้คือ <b>QRS กว้าง</b> จากการปิดกั้น Na⁺ channel ${S.x}</li>
+<li><b>Salicylates</b> → <b>NaHCO₃</b> ทำให้ปัสสาวะเป็นด่างเพื่อดักจับไอออน · ถ้าหนักให้ฟอกเลือด ${S.fa1}</li>
+<li><b>Digoxin</b> → <b>Fab fragments</b> ${S.fa1} · หลังให้ยา ระดับ digoxin รวมในเลือดจะสูงขึ้นแต่ไม่มีความหมาย เพราะวัดส่วนที่จับกับ Fab ไปด้วย ${S.x}</li>
+<li><b>β-blockers</b> → atropine, <b>glucagon</b>, น้ำเกลือ ${S.fa1} · glucagon กระตุ้น cAMP โดยไม่ผ่าน β-receptor จึงข้ามการถูกปิดกั้นไปได้ ${S.x}</li>
+<li><b>สารกันเลือดแข็ง</b> — heparin → protamine · warfarin → vitamin K (ช้า) + PCC/FFP (เร็ว) · dabigatran → idarucizumab · factor Xa inhibitor → andexanet alfa ${S.fa1}</li>
+<li><b>Methotrexate</b> → <b>leucovorin</b> (folinic acid) ข้ามขั้นที่ถูก dihydrofolate reductase ปิดกั้น ${S.fa1}${S.x}</li></ul>`});
 
-const EXTRA=["terato","pgx","toxpending"];
+SEC.push({id:"antidote2",k:"d",t:"Specific antidotes: metals, gases & alcohols",mm:"Antidotes — metals & gases",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["AChE inhibitors · organophosphates","Atropine ก่อน แล้วจึง pralidoxime","ag"],
+ ["Antimuscarinic · anticholinergic","Physostigmine (ผ่าน BBB) · คุมไข้สูง","inh"],
+ ["Carbon monoxide","O₂ 100% · hyperbaric O₂","vn"],
+ ["Cyanide","Hydroxocobalamin · nitrites + sodium thiosulfate","vn"],
+ ["Methemoglobin","Methylene blue · vitamin C","vn"],
+ ["Methanol · ethylene glycol","Fomepizole (ดีกว่า ethanol) · ฟอกเลือด","mod"],
+ ["Iron","Deferoxamine · deferasirox · deferiprone","ar"],
+ ["Lead","EDTA · dimercaprol · succimer (ในเด็ก) · penicillamine","ar"],
+ ["Copper","Penicillamine · trientine","ar"],
+ ["Arsenic · mercury","Dimercaprol · succimer","ar"]],{foot:"First Aid Step 1 · Specific toxicity treatments"}),
+notes:()=>`<ul>
+<li><b>Organophosphates / AChE inhibitors</b> → <b>atropine ก่อน</b> แล้วจึง pralidoxime ${S.fa1} · atropine แก้อาการ muscarinic ที่ฆ่าผู้ป่วย (เสมหะท่วม หลอดลมเกร็ง หัวใจช้า) ส่วน pralidoxime ไปกู้เอนไซม์คืน ต้องให้ก่อนเกิด aging ${S.x}</li>
+<li><b>Antimuscarinic</b> → <b>physostigmine</b> ซึ่งผ่าน blood–brain barrier ได้ และต้องคุมไข้สูง ${S.fa1}</li>
+<li><b>Carbon monoxide</b> → <b>O₂ 100%</b> หรือ hyperbaric ${S.fa1} · pulse oximeter อ่านค่าปกติหลอก ๆ เพราะแยก carboxyhemoglobin ไม่ออก ต้องวัด co-oximetry ${S.x}</li>
+<li><b>Cyanide</b> → <b>hydroxocobalamin</b> จับ cyanide กลายเป็น cyanocobalamin · หรือ nitrites + sodium thiosulfate ${S.fa1}</li>
+<li><b>Methemoglobinemia</b> → <b>methylene blue</b> + vitamin C ซึ่งเป็นตัวรีดิวซ์ ${S.fa1} · <b>ห้ามใช้ methylene blue ในผู้ที่พร่อง G6PD</b> เพราะไม่ได้ผลและทำให้เม็ดเลือดแดงแตก — สำคัญมากในไทยที่ G6PD deficiency พบบ่อย ${S.x}</li>
+<li><b>Methanol / ethylene glycol</b> → <b>fomepizole</b> ยับยั้ง alcohol dehydrogenase จึงกันไม่ให้เกิดสารพิษปลายทาง · ดีกว่า ethanol · ถ้าหนักให้ฟอกเลือด ${S.fa1}</li>
+<li><b>โลหะหนัก</b> — iron → deferoxamine · lead → EDTA, dimercaprol, <b>succimer</b> (ตัวเลือกในเด็ก), penicillamine · copper → penicillamine, trientine · arsenic และ mercury → dimercaprol, succimer ${S.fa1}</li>
+<li>จำกลุ่ม chelator: <b>dimercaprol กับ succimer</b> ใช้ได้ทั้ง arsenic, mercury และ lead ส่วน <b>penicillamine</b> เด่นที่ copper (Wilson disease) ${S.x}</li></ul>`});
+
+const EXTRA=["terato","pgx"];
 
 atlasFinish();
 </script>

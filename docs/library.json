@@ -1060,16 +1060,20 @@
          "names"
         ],
         [
+         "Specific antidotes: drugs",
+         "antidote"
+        ],
+        [
+         "Specific antidotes: metals, gases & alcohols",
+         "antidote2"
+        ],
+        [
          "Teratogenic drugs",
          "terato"
         ],
         [
          "Pharmacogenomics: HLA & enzyme variants",
          "pgx"
-        ],
-        [
-         "Toxicology & specific antidotes (เติมเอง)",
-         "toxpending"
         ]
        ],
        "ref": {
@@ -1295,6 +1299,24 @@
        "link": {
         "m": "pharm-tox",
         "h": "pgx"
+       }
+      },
+      {
+       "id": "pharm-tox:antidote",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Specific antidotes: drugs",
+       "link": {
+        "m": "pharm-tox",
+        "h": "antidote"
+       }
+      },
+      {
+       "id": "pharm-tox:antidote2",
+       "sub": "Toxicities & Miscellaneous",
+       "t": "Specific antidotes: metals, gases & alcohols",
+       "link": {
+        "m": "pharm-tox",
+        "h": "antidote2"
        }
       }
      ],
