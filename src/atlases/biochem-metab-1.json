@@ -1,0 +1,30 @@
+{
+ "id": "biochem-metab-1",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Metabolism",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Metabolism 1: Regulation, Glycolysis & TCA",
+ "h1": "Metabolism: regulation, glycolysis & the TCA cycle",
+ "lede": "เริ่มที่แผนที่หัวข้อด้านล่าง · ส่วนแรกของเมแทบอลิซึม — เส้นทางอยู่ตรงไหนในเซลล์ เอนไซม์ตัวไหนคุมอัตรา แล้วไล่ตั้งแต่กลูโคสเข้าสู่ glycolysis ผ่าน pyruvate เข้า TCA จนถึงห่วงโซ่หายใจและพิษที่ตัดวงจรนี้ · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott และ Textbook of Biochemistry",
+ "sources": [
+  ["lir", "LIR", "Lippincott's Illustrated Reviews: Biochemistry 5e"],
+  ["tbbio", "TB", "Textbook of Biochemistry 5e (NMC/CBME)"],
+  ["fa", "FA1", "First Aid for the USMLE Step 1 2025 · Biochemistry—Metabolism"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Metabolism"],
+  "title": "Metabolism 1: Regulation, Glycolysis & TCA",
+  "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+  "desc": "เส้นทางเมแทบอลิซึมอยู่ส่วนไหนของเซลล์, เอนไซม์กำหนดอัตราของแต่ละเส้นทาง, activated carriers, glycolysis และการควบคุมด้วย PFK-1 กับ fructose-2,6-bisphosphate, hexokinase เทียบ glucokinase, เม็ดเลือดแดงกับ glycolysis แบบไม่ใช้ออกซิเจน, pyruvate dehydrogenase complex และภาวะพร่อง, ปลายทางทั้งสี่ของ pyruvate กับวง Cori และ Cahill, TCA cycle, ห่วงโซ่ขนส่งอิเล็กตรอน และสารพิษกับ uncoupler",
+  "ch": "FA Ch Biochemistry",
+  "sort": 10,
+  "refb": "lir",
+  "refl": "LIR",
+  "tags": ["biochemistry"]
+ }
+}

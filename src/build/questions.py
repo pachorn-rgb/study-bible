@@ -140,6 +140,12 @@ def apply():
             if k["id"] not in {c[1] for c in cs}: k["steps"] = [balance(st, k["id"]) for st in k["steps"]]
     (DOCS / "library.json").write_text(json.dumps(lib, ensure_ascii=False, indent=1))
     write_bank(idx, parts)
+    # A brand-new chapter's q/<id>.json does not exist yet when integrate.py runs,
+    # so the service worker never learns about it. Register any missing part here.
+    sw = (DOCS / "sw.js").read_text(); miss = [f"q/{c}.json" for c in idx["parts"] if f'"q/{c}.json"' not in sw]
+    if miss:
+        for f in miss: sw = sw.replace("\n];", f',\n "{f}"\n];', 1)
+        (DOCS / "sw.js").write_text(sw); print("precached", *miss)
     print("generated MCQs", n, "· parts", idx["parts"])
 
 

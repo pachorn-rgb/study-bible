@@ -20,8 +20,179 @@
       "Nutrition",
       "Metabolism"
      ],
-     "modules": [],
-     "checklist": [],
+     "modules": [
+      {
+       "id": "biochem-metab-1",
+       "title": "Metabolism 1: Regulation, Glycolysis & TCA",
+       "subs": [
+        "Metabolism"
+       ],
+       "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+       "href": "biochem/biochem-metab-1.html",
+       "thumb": "thumbs/biochem-metab-1.jpg",
+       "desc": "เส้นทางเมแทบอลิซึมอยู่ส่วนไหนของเซลล์, เอนไซม์กำหนดอัตราของแต่ละเส้นทาง, activated carriers, glycolysis และการควบคุมด้วย PFK-1 กับ fructose-2,6-bisphosphate, hexokinase เทียบ glucokinase, เม็ดเลือดแดงกับ glycolysis แบบไม่ใช้ออกซิเจน, pyruvate dehydrogenase complex และภาวะพร่อง, ปลายทางทั้งสี่ของ pyruvate กับวง Cori และ Cahill, TCA cycle, ห่วงโซ่ขนส่งอิเล็กตรอน และสารพิษกับ uncoupler",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Metabolic compartmentation",
+         "sites"
+        ],
+        [
+         "Rate-determining enzymes",
+         "ratelim"
+        ],
+        [
+         "Activated carriers & cofactors",
+         "carriers"
+        ],
+        [
+         "Glycolysis",
+         "glyco"
+        ],
+        [
+         "Hexokinase vs glucokinase",
+         "hkgk"
+        ],
+        [
+         "Glycolysis regulation & fructose-2,6-BP",
+         "glycoreg"
+        ],
+        [
+         "Pyruvate dehydrogenase complex",
+         "pdh"
+        ],
+        [
+         "ปลายทางของ pyruvate · Cori & Cahill",
+         "pyrfate"
+        ],
+        [
+         "TCA cycle",
+         "tca"
+        ],
+        [
+         "Electron transport & oxidative phosphorylation",
+         "etc"
+        ],
+        [
+         "สารพิษต่อห่วงโซ่หายใจ & uncouplers",
+         "etcpois"
+        ]
+       ],
+       "ref": {
+        "b": "lir",
+        "l": "LIR",
+        "ch": "FA Ch Biochemistry",
+        "sort": 10
+       }
+      }
+     ],
+     "checklist": [
+      {
+       "id": "biochem-metab-1:sites",
+       "sub": "Metabolism",
+       "t": "Metabolic compartmentation",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "sites"
+       }
+      },
+      {
+       "id": "biochem-metab-1:ratelim",
+       "sub": "Metabolism",
+       "t": "Rate-determining enzymes",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "ratelim"
+       }
+      },
+      {
+       "id": "biochem-metab-1:carriers",
+       "sub": "Metabolism",
+       "t": "Activated carriers & cofactors",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "carriers"
+       }
+      },
+      {
+       "id": "biochem-metab-1:glyco",
+       "sub": "Metabolism",
+       "t": "Glycolysis",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "glyco"
+       }
+      },
+      {
+       "id": "biochem-metab-1:hkgk",
+       "sub": "Metabolism",
+       "t": "Hexokinase vs glucokinase",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "hkgk"
+       }
+      },
+      {
+       "id": "biochem-metab-1:glycoreg",
+       "sub": "Metabolism",
+       "t": "Glycolysis regulation & fructose-2,6-BP",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "glycoreg"
+       }
+      },
+      {
+       "id": "biochem-metab-1:pdh",
+       "sub": "Metabolism",
+       "t": "Pyruvate dehydrogenase complex",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "pdh"
+       }
+      },
+      {
+       "id": "biochem-metab-1:pyrfate",
+       "sub": "Metabolism",
+       "t": "ปลายทางของ pyruvate · Cori & Cahill",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "pyrfate"
+       }
+      },
+      {
+       "id": "biochem-metab-1:tca",
+       "sub": "Metabolism",
+       "t": "TCA cycle",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "tca"
+       }
+      },
+      {
+       "id": "biochem-metab-1:etc",
+       "sub": "Metabolism",
+       "t": "Electron transport & oxidative phosphorylation",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "etc"
+       }
+      },
+      {
+       "id": "biochem-metab-1:etcpois",
+       "sub": "Metabolism",
+       "t": "สารพิษต่อห่วงโซ่หายใจ & uncouplers",
+       "link": {
+        "m": "biochem-metab-1",
+        "h": "etcpois"
+       }
+      }
+     ],
      "resources": []
     },
     {
