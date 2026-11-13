@@ -164,6 +164,72 @@
         "ch": "FA Ch Biochemistry",
         "sort": 11
        }
+      },
+      {
+       "id": "biochem-metab-3",
+       "title": "Metabolism 3: Glycogen, Sugars & Storage Diseases",
+       "subs": [
+        "Metabolism"
+       ],
+       "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+       "href": "biochem/biochem-metab-3.html",
+       "thumb": "thumbs/biochem-metab-3.jpg",
+       "desc": "gluconeogenesis และสี่เอนไซม์ที่ใช้อ้อมขั้นที่ย้อนไม่ได้, HMP shunt กับ NADPH, ภาวะพร่อง G6PD ที่พบบ่อยในไทย, โครงสร้างและการสลายไกลโคเจน, glycogen storage disease ทั้งห้าชนิด, essential fructosuria เทียบ hereditary fructose intolerance, galactokinase deficiency เทียบ classic galactosemia, เส้นทาง polyol กับต้อกระจกในเบาหวาน, sphingolipidoses และ mucopolysaccharidoses",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Gluconeogenesis",
+         "gluconeo"
+        ],
+        [
+         "HMP shunt (pentose phosphate pathway)",
+         "hmp"
+        ],
+        [
+         "ภาวะพร่อง G6PD",
+         "g6pd"
+        ],
+        [
+         "ไกลโคเจน: โครงสร้างและการสลาย",
+         "glycogen"
+        ],
+        [
+         "Glycogen storage diseases",
+         "gsd"
+        ],
+        [
+         "ความผิดปกติของฟรุกโตส",
+         "fructose"
+        ],
+        [
+         "ความผิดปกติของกาแลกโตส",
+         "galactose"
+        ],
+        [
+         "เส้นทาง polyol และภาวะแทรกซ้อนของเบาหวาน",
+         "sorbitol"
+        ],
+        [
+         "Sphingolipidoses",
+         "sphingo"
+        ],
+        [
+         "Mucopolysaccharidoses",
+         "muco"
+        ]
+       ],
+       "ref": {
+        "b": "lir",
+        "l": "LIR",
+        "ch": "FA Ch Biochemistry",
+        "sort": 12
+       }
       }
      ],
      "checklist": [
@@ -372,6 +438,96 @@
        "link": {
         "m": "biochem-metab-2",
         "h": "organic"
+       }
+      },
+      {
+       "id": "biochem-metab-3:gluconeo",
+       "sub": "Metabolism",
+       "t": "Gluconeogenesis",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "gluconeo"
+       }
+      },
+      {
+       "id": "biochem-metab-3:hmp",
+       "sub": "Metabolism",
+       "t": "HMP shunt (pentose phosphate pathway)",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "hmp"
+       }
+      },
+      {
+       "id": "biochem-metab-3:g6pd",
+       "sub": "Metabolism",
+       "t": "ภาวะพร่อง G6PD",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "g6pd"
+       }
+      },
+      {
+       "id": "biochem-metab-3:glycogen",
+       "sub": "Metabolism",
+       "t": "ไกลโคเจน: โครงสร้างและการสลาย",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "glycogen"
+       }
+      },
+      {
+       "id": "biochem-metab-3:gsd",
+       "sub": "Metabolism",
+       "t": "Glycogen storage diseases",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "gsd"
+       }
+      },
+      {
+       "id": "biochem-metab-3:fructose",
+       "sub": "Metabolism",
+       "t": "ความผิดปกติของฟรุกโตส",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "fructose"
+       }
+      },
+      {
+       "id": "biochem-metab-3:galactose",
+       "sub": "Metabolism",
+       "t": "ความผิดปกติของกาแลกโตส",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "galactose"
+       }
+      },
+      {
+       "id": "biochem-metab-3:sorbitol",
+       "sub": "Metabolism",
+       "t": "เส้นทาง polyol และภาวะแทรกซ้อนของเบาหวาน",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "sorbitol"
+       }
+      },
+      {
+       "id": "biochem-metab-3:sphingo",
+       "sub": "Metabolism",
+       "t": "Sphingolipidoses",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "sphingo"
+       }
+      },
+      {
+       "id": "biochem-metab-3:muco",
+       "sub": "Metabolism",
+       "t": "Mucopolysaccharidoses",
+       "link": {
+        "m": "biochem-metab-3",
+        "h": "muco"
        }
       }
      ],

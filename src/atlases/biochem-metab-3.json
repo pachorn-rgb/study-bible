@@ -1,0 +1,30 @@
+{
+ "id": "biochem-metab-3",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Metabolism",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Metabolism 3: Glycogen, Sugars & Storage Diseases",
+ "h1": "Metabolism: glycogen, sugars & storage diseases",
+ "lede": "ร่างกายสร้างกลูโคสขึ้นใหม่อย่างไร เก็บเป็นไกลโคเจนอย่างไร และจัดการน้ำตาลตัวอื่นอย่างไร · แล้วไล่โรคที่เกิดเมื่อขั้นใดขั้นหนึ่งเสีย ตั้งแต่ G6PD, glycogen storage disease, ความผิดปกติของฟรุกโตสและกาแลกโตส ไปจนถึงโรคสะสมในไลโซโซม · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott และ Textbook of Biochemistry",
+ "sources": [
+  ["lir", "LIR", "Lippincott's Illustrated Reviews: Biochemistry 5e"],
+  ["tbbio", "TB", "Textbook of Biochemistry 5e (NMC/CBME)"],
+  ["fa", "FA1", "First Aid for the USMLE Step 1 2025 · Biochemistry—Metabolism"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Metabolism"],
+  "title": "Metabolism 3: Glycogen, Sugars & Storage Diseases",
+  "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · First Aid Step 1",
+  "desc": "gluconeogenesis และสี่เอนไซม์ที่ใช้อ้อมขั้นที่ย้อนไม่ได้, HMP shunt กับ NADPH, ภาวะพร่อง G6PD ที่พบบ่อยในไทย, โครงสร้างและการสลายไกลโคเจน, glycogen storage disease ทั้งห้าชนิด, essential fructosuria เทียบ hereditary fructose intolerance, galactokinase deficiency เทียบ classic galactosemia, เส้นทาง polyol กับต้อกระจกในเบาหวาน, sphingolipidoses และ mucopolysaccharidoses",
+  "ch": "FA Ch Biochemistry",
+  "sort": 12,
+  "refb": "lir",
+  "refl": "LIR",
+  "tags": ["biochemistry"]
+ }
+}
