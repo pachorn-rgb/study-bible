@@ -1,0 +1,28 @@
+{
+ "id": "biochem-genetics-1",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Genetics",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Genetics 1: Principles & Inheritance Patterns",
+ "h1": "Genetics: principles & inheritance patterns",
+ "lede": "ศัพท์และหลักการที่ต้องแม่นก่อนอ่านโรคพันธุกรรม · ไล่ตั้งแต่ penetrance กับ expressivity, allele ที่ทำงานต่างแบบ, mosaicism และ uniparental disomy, genomic imprinting, heteroplasmy, กฎ Hardy-Weinberg ไปจนถึงรูปแบบการถ่ายทอดทั้งห้าและวิธีอ่านพงศาวลี · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Thompson & Thompson",
+ "sources": [
+  ["tt", "TT", "Thompson & Thompson Genetics in Medicine 7e"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Genetics"],
+  "title": "Genetics 1: Principles & Inheritance Patterns",
+  "src": "Thompson & Thompson Genetics in Medicine 7e · โครงหัวข้อตาม First Aid Step 1",
+  "desc": "penetrance เทียบ expressivity, codominance และ incomplete dominance, pleiotropy และ dominant negative, loss of heterozygosity, locus เทียบ allelic heterogeneity, anticipation, mosaicism ทั้งแบบ somatic และ germline, uniparental disomy กับ Prader-Willi และ Angelman, genomic imprinting, heteroplasmy และการถ่ายทอดทางมารดา, กฎ Hardy-Weinberg และสมมติฐานทั้งห้า, รูปแบบการถ่ายทอดทั้งห้าแบบและวิธีอ่านพงศาวลี",
+  "ch": "FA Ch Biochemistry",
+  "sort": 16,
+  "refb": "tt",
+  "refl": "TT",
+  "tags": ["biochemistry"]
+ }
+}

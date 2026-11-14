@@ -1,12 +1,14 @@
 [
  {
-  "v": "6.53",
+  "v": "6.55",
   "date": "2026-11-14",
   "th": [
-   "Biochemistry — Molecular 2: การถอดรหัส RNA และการแปลรหัส จำนวน 8 หัวข้อ · ครบเส้นทาง DNA → RNA → โปรตีน แล้ว",
-   "ครอบคลุมคุณสมบัติสี่อย่างของรหัสพันธุกรรม, promoter enhancer และ silencer, lac operon ครบทั้งสี่สภาวะพร้อม catabolite repression, RNA polymerase ทั้งสามชนิดกับพิษเห็ด α-amanitin และ rifampin, การแต่ง mRNA และ spliceosome กับโครงสร้าง lariat, tRNA และ aminoacyl-tRNA synthetase, สามขั้นของการแปลรหัสกับยาปฏิชีวนะที่ไรโบโซม, และการปรับแต่งโปรตีนหลังแปลรหัส",
-   "จุดที่เน้นเป็นพิเศษ: ตรรกะสองชั้นของ lac operon (repressor ตอบว่ามีแลคโตสไหม · CAP ตอบว่าขาดกลูโคสไหม), เหตุผลที่ aminoacyl-tRNA synthetase เป็นด่านตรวจความถูกต้องด่านสุดท้าย เพราะไรโบโซมตรวจแค่ anticodon ไม่ตรวจกรดอะมิโน",
-   "enhancer อยู่หลังยีนก็ได้ ซึ่งเป็นจุดที่มักเข้าใจผิด — ระบุไว้ชัดในหัวข้อการควบคุมยีน"
+   "Biochemistry หมวด Genetics — สอง atlas ใหม่ 16 หัวข้อ พร้อมบอสเคสเรื่องการให้คำปรึกษาทางพันธุกรรม",
+   "Genetics 1 หลักการและรูปแบบถ่ายทอด: penetrance เทียบ expressivity, codominance และ dominant negative, loss of heterozygosity, locus เทียบ allelic heterogeneity, mosaicism ทั้งแบบร่างกายและเซลล์สืบพันธุ์, imprinting กับ uniparental disomy ใน Prader-Willi และ Angelman, heteroplasmy, กฎ Hardy-Weinberg และรูปแบบการถ่ายทอดทั้งห้า",
+   "Genetics 2 โรคพันธุกรรม: กลุ่มโรคลำดับซ้ำสามเบสและ anticipation, Fragile X กับ FMR1, Duchenne เทียบ Becker, Rett syndrome, trisomy ทั้งสามชนิดที่รอดถึงคลอด, Robertsonian translocation และกลุ่มอาการจากการขาดหายของโครโมโซม",
+   "บอสเคส: แม่อายุ 32 ปี ลูกคนแรกเป็น Down syndrome แต่นับโครโมโซมได้ 46 แท่ง — ไล่จากการตีความผลไปถึงความเสี่ยงเกิดซ้ำและเหตุผลที่ต้องตรวจโครโมโซมพ่อแม่",
+   "เพิ่มสี badge ใหม่สำหรับ Thompson & Thompson (TT) ในชุดสีของแอป ทั้งโหมดสว่างและมืด",
+   "แก้บั๊กการแสดงผล: การ์ดบางใบในอะตลาส Biochemistry ที่เพิ่มมาตั้งแต่เวอร์ชัน 6.48 แสดงรายละเอียดหลุดออกนอกกล่องหรือหายไป เพราะใส่ตัวหนาในส่วนที่วาดเป็นภาพ แก้ครบทั้ง 22 จุดใน 7 ไฟล์ และเพิ่มการตรวจอัตโนมัติไม่ให้เกิดซ้ำ"
   ]
  },
  {

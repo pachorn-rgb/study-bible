@@ -1,0 +1,28 @@
+{
+ "id": "biochem-genetics-2",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Genetics",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Genetics 2: Trinucleotide Repeats & Chromosomal Disorders",
+ "h1": "Genetics: trinucleotide repeats & chromosomal disorders",
+ "lede": "โรคพันธุกรรมที่ต้องจำได้ · ไล่ตั้งแต่กลุ่มโรคจากการขยายของลำดับซ้ำสามเบสและปรากฏการณ์ anticipation, กล้ามเนื้อเสื่อม Duchenne กับ Becker, Fragile X และ Rett, trisomy ทั้งสามชนิดที่รอดถึงคลอด, Robertsonian translocation ไปจนถึงกลุ่มอาการจากการขาดหายของโครโมโซม · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Thompson & Thompson",
+ "sources": [
+  ["tt", "TT", "Thompson & Thompson Genetics in Medicine 7e"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Genetics"],
+  "title": "Genetics 2: Trinucleotide Repeats & Chromosomal Disorders",
+  "src": "Thompson & Thompson Genetics in Medicine 7e · โครงหัวข้อตาม First Aid Step 1",
+  "desc": "กลุ่มโรค unstable repeat expansion และ anticipation, โรค polyglutamine จาก CAG และ Huntington disease, Fragile X กับ FMR1, myotonic dystrophy, Duchenne เทียบ Becker muscular dystrophy และการตรวจพาหะ, Rett syndrome กับ MECP2, trisomy 21 18 และ 13 พร้อมเหตุผลที่มีเพียงสามชนิดนี้ที่รอด, nondisjunction เทียบ Robertsonian translocation และความเสี่ยงเกิดซ้ำ, cri du chat และกลุ่มอาการจากการขาดหายอื่น",
+  "ch": "FA Ch Biochemistry",
+  "sort": 17,
+  "refb": "tt",
+  "refl": "TT",
+  "tags": ["biochemistry"]
+ }
+}

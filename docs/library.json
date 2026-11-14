@@ -424,9 +424,269 @@
         "ch": "FA Ch Biochemistry",
         "sort": 15
        }
+      },
+      {
+       "id": "biochem-genetics-1",
+       "title": "Genetics 1: Principles & Inheritance Patterns",
+       "subs": [
+        "Genetics"
+       ],
+       "src": "Thompson & Thompson Genetics in Medicine 7e · โครงหัวข้อตาม First Aid Step 1",
+       "href": "biochem/biochem-genetics-1.html",
+       "thumb": "thumbs/biochem-genetics-1.jpg",
+       "desc": "penetrance เทียบ expressivity, codominance และ incomplete dominance, pleiotropy และ dominant negative, loss of heterozygosity, locus เทียบ allelic heterogeneity, anticipation, mosaicism ทั้งแบบ somatic และ germline, uniparental disomy กับ Prader-Willi และ Angelman, genomic imprinting, heteroplasmy และการถ่ายทอดทางมารดา, กฎ Hardy-Weinberg และสมมติฐานทั้งห้า, รูปแบบการถ่ายทอดทั้งห้าแบบและวิธีอ่านพงศาวลี",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Penetrance และ expressivity",
+         "penexp"
+        ],
+        [
+         "Allele ทำงานต่างแบบ",
+         "allele"
+        ],
+        [
+         "ความหลากหลายของสาเหตุและ LOH",
+         "hetero"
+        ],
+        [
+         "Mosaicism",
+         "mosaic"
+        ],
+        [
+         "Imprinting และ uniparental disomy",
+         "imprint"
+        ],
+        [
+         "Heteroplasmy และการถ่ายทอดทางมารดา",
+         "mito"
+        ],
+        [
+         "กฎ Hardy-Weinberg",
+         "hw"
+        ],
+        [
+         "Autosomal dominant และ recessive",
+         "ad"
+        ],
+        [
+         "X-linked และ mitochondrial",
+         "xlink"
+        ]
+       ],
+       "ref": {
+        "b": "tt",
+        "l": "TT",
+        "ch": "FA Ch Biochemistry",
+        "sort": 16
+       }
+      },
+      {
+       "id": "biochem-genetics-2",
+       "title": "Genetics 2: Trinucleotide Repeats & Chromosomal Disorders",
+       "subs": [
+        "Genetics"
+       ],
+       "src": "Thompson & Thompson Genetics in Medicine 7e · โครงหัวข้อตาม First Aid Step 1",
+       "href": "biochem/biochem-genetics-2.html",
+       "thumb": "thumbs/biochem-genetics-2.jpg",
+       "desc": "กลุ่มโรค unstable repeat expansion และ anticipation, โรค polyglutamine จาก CAG และ Huntington disease, Fragile X กับ FMR1, myotonic dystrophy, Duchenne เทียบ Becker muscular dystrophy และการตรวจพาหะ, Rett syndrome กับ MECP2, trisomy 21 18 และ 13 พร้อมเหตุผลที่มีเพียงสามชนิดนี้ที่รอด, nondisjunction เทียบ Robertsonian translocation และความเสี่ยงเกิดซ้ำ, cri du chat และกลุ่มอาการจากการขาดหายอื่น",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "การขยายของลำดับซ้ำและ anticipation",
+         "repeat"
+        ],
+        [
+         "Fragile X syndrome",
+         "fragx"
+        ],
+        [
+         "Duchenne เทียบ Becker",
+         "dmd"
+        ],
+        [
+         "Rett syndrome",
+         "rett"
+        ],
+        [
+         "Trisomy ทั้งสามชนิดที่รอดถึงคลอด",
+         "trisomy"
+        ],
+        [
+         "Nondisjunction และ Robertsonian translocation",
+         "robert"
+        ],
+        [
+         "กลุ่มอาการจากการขาดหายของโครโมโซม",
+         "del"
+        ]
+       ],
+       "ref": {
+        "b": "tt",
+        "l": "TT",
+        "ch": "FA Ch Biochemistry",
+        "sort": 17
+       }
       }
      ],
      "checklist": [
+      {
+       "id": "biochem-genetics-1:penexp",
+       "sub": "Genetics",
+       "t": "Penetrance และ expressivity",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "penexp"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:allele",
+       "sub": "Genetics",
+       "t": "Allele ทำงานต่างแบบ",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "allele"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:hetero",
+       "sub": "Genetics",
+       "t": "ความหลากหลายของสาเหตุและ LOH",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "hetero"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:mosaic",
+       "sub": "Genetics",
+       "t": "Mosaicism",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "mosaic"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:imprint",
+       "sub": "Genetics",
+       "t": "Imprinting และ uniparental disomy",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "imprint"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:mito",
+       "sub": "Genetics",
+       "t": "Heteroplasmy และการถ่ายทอดทางมารดา",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "mito"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:hw",
+       "sub": "Genetics",
+       "t": "กฎ Hardy-Weinberg",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "hw"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:ad",
+       "sub": "Genetics",
+       "t": "Autosomal dominant และ recessive",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "ad"
+       }
+      },
+      {
+       "id": "biochem-genetics-1:xlink",
+       "sub": "Genetics",
+       "t": "X-linked และ mitochondrial",
+       "link": {
+        "m": "biochem-genetics-1",
+        "h": "xlink"
+       }
+      },
+      {
+       "id": "biochem-genetics-2:repeat",
+       "sub": "Genetics",
+       "t": "การขยายของลำดับซ้ำและ anticipation",
+       "link": {
+        "m": "biochem-genetics-2",
+        "h": "repeat"
+       }
+      },
+      {
+       "id": "biochem-genetics-2:fragx",
+       "sub": "Genetics",
+       "t": "Fragile X syndrome",
+       "link": {
+        "m": "biochem-genetics-2",
+        "h": "fragx"
+       }
+      },
+      {
+       "id": "biochem-genetics-2:dmd",
+       "sub": "Genetics",
+       "t": "Duchenne เทียบ Becker",
+       "link": {
+        "m": "biochem-genetics-2",
+        "h": "dmd"
+       }
+      },
+      {
+       "id": "biochem-genetics-2:rett",
+       "sub": "Genetics",
+       "t": "Rett syndrome",
+       "link": {
+        "m": "biochem-genetics-2",
+        "h": "rett"
+       }
+      },
+      {
+       "id": "biochem-genetics-2:trisomy",
+       "sub": "Genetics",
+       "t": "Trisomy ทั้งสามชนิดที่รอดถึงคลอด",
+       "link": {
+        "m": "biochem-genetics-2",
+        "h": "trisomy"
+       }
+      },
+      {
+       "id": "biochem-genetics-2:robert",
+       "sub": "Genetics",
+       "t": "Nondisjunction และ Robertsonian translocation",
+       "link": {
+        "m": "biochem-genetics-2",
+        "h": "robert"
+       }
+      },
+      {
+       "id": "biochem-genetics-2:del",
+       "sub": "Genetics",
+       "t": "กลุ่มอาการจากการขาดหายของโครโมโซม",
+       "link": {
+        "m": "biochem-genetics-2",
+        "h": "del"
+       }
+      },
       {
        "id": "biochem-metab-1:sites",
        "sub": "Metabolism",

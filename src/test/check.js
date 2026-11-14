@@ -75,6 +75,27 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
       if (shared[k] && shared[k] !== v)
         bad(`badge collision: "${k}" is ${shared[k]} in the shared map but ${v} in ${f} — give it its own token`);
   } }
+
+{ /* cards() and flowD() draw SVG: HTML tags inside an SVG <text> do not render and
+     push the string outside its box. Only tbl() is real HTML, so only it may carry markup. */
+  const SRC = path.join(__dirname, "..");
+  for (const f of fs.readdirSync(path.join(SRC, "atlases")).filter(x => x.endsWith(".js"))) {
+    const src = fs.readFileSync(path.join(SRC, "atlases", f), "utf8");
+    for (const fn of ["cards", "flowD"]) {
+      const re = new RegExp(fn + "\\(\\[", "g");
+      let m;
+      while ((m = re.exec(src))) {
+        let i = m.index + m[0].length - 1, d = 0, j = i;
+        for (; j < src.length; j++) {
+          if (src[j] === "[") d++;
+          else if (src[j] === "]" && --d === 0) break;
+        }
+        const blk = src.slice(i, j + 1);
+        const tag = blk.match(/<\/?(b|i|br|span|em)\b[^>]*>/);
+        if (tag) bad(`${f}: ${tag[0]} inside ${fn}() — that block is SVG, so the markup will not render; drop the tag or use tbl()`);
+      }
+    }
+  } }
 console.log(`data: ${chs.length} chapters · ${mods.size} atlases · ${items.size} topics · ${nq} MCQs`);
 
 /* ---------- 2. pages ---------- */
