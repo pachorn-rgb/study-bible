@@ -1,6 +1,9 @@
 
 /* ================= helpers ================= */
 const T=(x,y,s,o={})=>`<text class="t${o.c?" "+o.c:""}" x="${x}" y="${y}" text-anchor="${o.a||"middle"}"${o.s?` font-size="${o.s}"`:""}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:""}>${s}</text>`;
+/* a blocked step in a pathway — the red cross, with the missing enzyme named above it.
+   Every metabolic-disease picture marks its lesion this way so the lesson is the same shape. */
+const blk=(x,y,lab,dy=-16)=>`<path d="M${x-9},${y-9} L${x+9},${y+9} M${x+9},${y-9} L${x-9},${y+9}" style="fill:none;stroke:var(--sb-bad);stroke-width:3.4;stroke-linecap:round"/>`+(lab?T(x,y+dy,lab,{c:"bad"}):"");
 const TL=(x,y,ls,o={})=>ls.map((l,i)=>T(x,y+i*(o.lh||14),l,o)).join("");
 const LD=(x1,y1,x2,y2)=>`<path class="ld" d="M${x1},${y1} L${x2},${y2}"/><circle class="ldd" cx="${x1}" cy="${y1}" r="1.8"/>`;
 const F=(c,d,x="")=>`<path class="f ${c}" d="${d}" ${x}/>`;

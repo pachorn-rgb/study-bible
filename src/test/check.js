@@ -109,12 +109,7 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
     /* THAI_DEBT: atlases written before this rule existed. A listed file may not get
        more Thai than it already has; every rewrite lowers its number until it is at 55
        and the entry goes. Anything not listed must be at or under 55 from the start. */
-    const THAI_DEBT = {
-    "biochem-cellular.js": 60,
-    "biochem-genetics-1.js": 61,
-    "biochem-genetics-2.js": 64,
-    "biochem-lab.js": 67
-    };
+    const THAI_DEBT = {};
     const ceiling = THAI_DEBT[f] || 55;
     if (pct > ceiling) bad(`${f}: ${pct}% Thai characters, ceiling ${ceiling} — keep disease, drug, enzyme and structure names in English`);
     if (THAI_DEBT[f] && pct < ceiling) bad(`${f}: now ${pct}% Thai — lower THAI_DEBT to ${pct}${pct <= 55 ? " or remove the entry" : ""}`);
@@ -127,16 +122,6 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
   const CARD_DEBT = {
   "_renal-harrison.js": 18,
   "_renal-robbins21.js": 5,
-  "biochem-cellular.js": 4,
-  "biochem-genetics-1.js": 5,
-  "biochem-genetics-2.js": 2,
-  "biochem-lab.js": 2,
-  "biochem-metab-1.js": 4,
-  "biochem-metab-2.js": 8,
-  "biochem-metab-3.js": 6,
-  "biochem-metab-4.js": 3,
-  "biochem-molecular-1.js": 3,
-  "biochem-molecular-2.js": 2,
   "patho-injury.js": 3,
   "pharm-cvs.js": 1,
   "pharm-gi.js": 2,

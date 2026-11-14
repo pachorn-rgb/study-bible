@@ -37,11 +37,11 @@ Object.assign(GN,{a:"Cell cycle & organelles",b:"Cytoskeleton",c:"Membrane trans
 
 SEC.push({id:"cellcyc",k:"a",t:"cell cycle",mm:"เซลล์แบ่งตัว",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["G₁ — เตรียมตัว","สร้าง protein และออร์แกเนลล์ · มีจุดตรวจก่อนเข้า S","bl"],
- ["S — จำลอง DNA","ได้ chromosome สองโครมาทิด · ribonucleotide reductase ทำงานช่วงนี้","ar"],
- ["G₂ — ตรวจทาน","ตรวจว่าจำลองครบและไม่เสียหายก่อนแบ่ง","mod"],
- ["M — แบ่งเซลล์","ระยะสั้นที่สุด · แบ่งทั้งนิวเคลียสและไซโทพลาซึม","vn"],
- ["G₀ — ออกจากวงจร","เซลล์ที่ไม่แบ่งตัวแล้ว เช่น neuron cardiac muscle","gl"]]),
+ ["G₁ — growth and preparation","สร้าง protein และออร์แกเนลล์ · มีจุดตรวจก่อนเข้า S","bl"],
+ ["S — DNA replication","ได้ chromosome สองโครมาทิด · ribonucleotide reductase ทำงานช่วงนี้","ar"],
+ ["G₂ — checking the copy","ตรวจว่าจำลองครบและไม่เสียหายก่อนแบ่ง","mod"],
+ ["M — mitosis","ระยะสั้นที่สุด · แบ่งทั้งนิวเคลียสและไซโทพลาซึม","vn"],
+ ["G₀ — out of the cycle","เซลล์ที่ไม่แบ่งตัวแล้ว เช่น neuron cardiac muscle","gl"]]),
 notes:()=>`<ul>
 <li>แบ่งเซลล์ตามความสามารถในการแบ่งตัวได้สามกลุ่ม: <b>labile แบ่งตลอดเวลา</b> เช่นเยื่อบุลำไส้ bone marrow ผิวหนัง · <b>stable อยู่ใน G₀ แต่กลับมาแบ่งได้เมื่อถูกกระตุ้น</b> เช่นตับและไต · <b>permanent ออกจากวงจรถาวร</b> เช่น neuron cardiac muscle และ skeletal muscle ${S.x}</li>
 <li>การแบ่งสามกลุ่มนี้อธิบายคลินิกได้ตรง ๆ — <b>ตับงอกใหม่ได้หลังผ่าตัด แต่ cardiac muscle ที่ตายจาก cardiac muscle ขาดเลือดกลายเป็นพังผืดถาวร</b> ${S.x}</li>
@@ -61,12 +61,10 @@ notes:()=>`<ul>
 <li>ยาที่กระตุ้น enzyme ตับหลายตัวทำให้ SER ของเซลล์ตับเพิ่มจำนวนขึ้นอย่างเห็นได้ชัด ${S.x}</li></ul>`});
 
 SEC.push({id:"perox",k:"a",t:"Peroxisome & proteasome",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["peroxisome ทำอะไร","สลาย very-long-chain fatty acid · สลายไฮโดรเจนเพอรอกไซด์ · สร้าง bile acid","ar"],
- ["enzyme ประจำตัว","catalase และ uric acid oxidase","bl"],
- ["โรคของ peroxisome","Zellweger syndrome · adrenoleukodystrophy · Refsum disease","vn"],
- ["proteasome ทำอะไร","ย่อย protein ที่ถูกติดป้าย ubiquitin","mod"],
- ["ความสำคัญ","กำจัด protein ที่พับผิดหรือหมดอายุ · เป้าของยา bortezomib","gl"]]),
+draw:()=>tbl(["","Peroxisome","Proteasome"],[
+ ["Job","β-oxidation of very-long-chain fatty acids · disposes of H₂O₂ · makes bile acids","Digests proteins tagged with ubiquitin"],
+ ["Marker","Catalase · uric acid oxidase","A barrel of proteases"],
+ ["Why it matters","Zellweger syndrome · adrenoleukodystrophy · Refsum disease","Clears misfolded and worn-out protein · target of bortezomib"]]),
 notes:()=>`<ul>
 <li>Textbook of Biochemistry ระบุหน้าที่ของ peroxisome ไว้ว่า <b>ออกซิไดซ์ fatty acid และสลายพิษของไฮโดรเจนเพอรอกไซด์ โดยมี enzyme ประจำคือ catalase และ uric acid oxidase</b> ${S.tbbio}</li>
 <li>Textbook of Biochemistry เรียก peroxisome อีกชื่อว่า <b>microbodies</b> ${S.tbbio}</li>
@@ -85,12 +83,19 @@ notes:()=>`<ul>
 <li>Phalloidin และ cytochalasin เป็นสารพิษที่ออกฤทธิ์ที่ actin จึงใช้เป็นเครื่องมือในห้องปฏิบัติการ ${S.x}</li></ul>`});
 
 SEC.push({id:"mt",k:"b",t:"Microtubules & the drugs that act on them",drugs:"Vincristine · Paclitaxel · Colchicine · Griseofulvin · Mebendazole",act:[],leg:[],
-draw:()=>cards([
- ["สร้างจากอะไร","ไดเมอร์ของ α- และ β-tubulin ต่อกันเป็น protofilament 13 สาย","ar"],
- ["มีขั้ว","ปลายลบติดกับ centrosome · ปลายบวกยืดและหดเร็ว","bl"],
- ["มอเตอร์สองตัว","kinesin วิ่งออกไปปลายบวก · dynein วิ่งกลับเข้าปลายลบ","vn"],
- ["ยาที่กันการประกอบ","vincristine · colchicine · griseofulvin · mebendazole","mod"],
- ["ยาที่กันการสลาย","paclitaxel — ตรึงไว้จนแบ่งเซลล์ต่อไม่ได้","gl"]]),
+draw:()=>psvg(
+ /* A microtubule is a polar tube, and both the drugs and the motors only make sense once the
+    two ends are drawn as different places. */
+ `${T(320,42,"13 protofilaments of α/β-tubulin dimers — α blue, β red",{c:"s"})}
+  <circle class="box gl" cx="74" cy="112" r="26"/>${T(74,158,"centrosome",{c:"s"})}
+  ${[0,1,2].map(r=>[...Array(16)].map((_,i)=>`<circle class="box ${i%2?"ar":"vn"}" cx="${128+i*24}" cy="${90+r*22}" r="11"/>`).join("")).join("")}
+  ${T(110,70,"− end",{a:"end",c:"s"})}${T(524,70,"+ end",{a:"start",c:"s"})}
+  ${T(524,158,"grows and shrinks",{a:"start",c:"s"})}
+  ${arr("M180,196 L420,196")}${T(300,216,"kinesin walks towards the + end",{c:"s"})}
+  ${arr("M420,238 L180,238")}${T(300,258,"dynein walks back towards the − end",{c:"s"})}
+  ${T(320,292,"stop it assembling: vincristine · colchicine · griseofulvin · mebendazole",{c:"s"})}
+  ${T(320,312,"stop it coming apart: paclitaxel",{c:"s"})}`,
+ "0 0 640 328"),
 notes:()=>`<ul>
 <li>หลักเดียวที่ครอบคลุมยาทั้งกลุ่ม: <b>แกนแบ่งเซลล์สร้างจาก microtubule ยาที่รบกวน microtubule จึงหยุดเซลล์ไว้ที่ระยะ M</b> ไม่ว่าจะรบกวนด้วยการกันไม่ให้ประกอบหรือกันไม่ให้สลาย ${S.x}</li>
 <li>วิธีจำทิศทางของมอเตอร์: <b>kinesin ออกนอก ส่วน dynein เข้าใน</b> ซึ่งเป็นเหตุที่ไวรัสหลายชนิดอาศัย dynein เดินทางเข้าสู่นิวเคลียส ${S.x}</li>
@@ -98,25 +103,33 @@ notes:()=>`<ul>
 <li>ผลข้างเคียงที่คาดเดาได้ของ vincristine คือปลายประสาทอักเสบ เพราะแอกซอนยาว ๆ พึ่งการขนส่งตาม microtubule มากที่สุด ${S.x}</li></ul>`});
 
 SEC.push({id:"cilia",k:"b",t:"Cilia & primary ciliary dyskinesia",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["โครงสร้าง axoneme","microtubule คู่ 9 คู่ล้อมคู่กลาง 1 คู่ — สูตร 9+2","ar"],
- ["อะไรทำให้ขยับ","แขน dynein ดันให้คู่ข้างเคียงเลื่อนผ่านกัน","bl"],
- ["เมื่อ dynein เสีย","cilia ทุกที่ในร่างกายไม่ขยับ","vn"],
- ["สามอาการร่วม","ไซนัสอักเสบเรื้อรัง · หลอดลมโป่งพอง · situs inversus","mod"],
- ["ผลต่อการมีบุตร","ชายมีบุตรยากเพราะอสุจิไม่เคลื่อนที่ · หญิงเสี่ยงท้องนอกมดลูก","gl"]]),
+draw:()=>psvg(
+ /* A cross-section is the only honest way to say "9 + 2": the count and the arrangement are
+    the same fact, and the dynein arms are what turn that arrangement into movement. */
+ `<circle class="box bl" cx="320" cy="162" r="132"/>
+  ${[...Array(9)].map((_,i)=>{const a=(i*40-90)*Math.PI/180,x=320+96*Math.cos(a),y=162+96*Math.sin(a),tx=-Math.sin(a)*13,ty=Math.cos(a)*13;
+    return `<circle class="box ar" cx="${(x-tx).toFixed(1)}" cy="${(y-ty).toFixed(1)}" r="12"/><circle class="box ar" cx="${(x+tx).toFixed(1)}" cy="${(y+ty).toFixed(1)}" r="12"/>`
+    +`<path class="ld" style="stroke-width:3" d="M${(x+tx*1.9).toFixed(1)},${(y+ty*1.9).toFixed(1)} L${(x+tx*2.1+Math.cos(a)*14).toFixed(1)},${(y+ty*2.1+Math.sin(a)*14).toFixed(1)}"/>`}).join("")}
+  <circle class="box gl" cx="306" cy="162" r="12"/><circle class="box gl" cx="334" cy="162" r="12"/>
+  <path class="ld" d="M408,104 L470,88"/>${T(476,92,"dynein arms",{a:"start",c:"s"})}
+  <path class="ld" d="M320,186 L256,246"/>${T(250,254,"central pair",{a:"end",c:"s"})}
+  ${T(320,318,"nine outer doublets around one central pair — the 9 + 2 axoneme",{c:"s"})}`,
+ "0 0 640 336"),
 notes:()=>`<ul>
 <li>เหตุผลที่อวัยวะกลับข้างได้ครึ่งหนึ่งของผู้ป่วย: <b>cilia ในตัวอ่อนเป็นตัวกำหนดว่าอวัยวะจะไปอยู่ซ้ายหรือขวา เมื่อ cilia ไม่ทำงาน การจัดวางจึงเป็นแบบสุ่ม</b> จึงกลับข้างราวครึ่งหนึ่ง ${S.x}</li>
 <li>ชื่อ Kartagener syndrome หมายถึงกลุ่มที่มีครบสามอย่างพร้อม situs inversus ซึ่งเป็นส่วนย่อยของ primary ciliary dyskinesia ${S.x}</li>
 <li>inheritance แบบ autosomal recessive จึงมักพบในครอบครัวที่พ่อแม่เป็นญาติกัน ${S.x}</li>
-<li>สูตร 9+2 ใช้กับ cilia ที่ขยับได้และหางอสุจิ ส่วน cilia ชนิดรับความรู้สึกเป็นแบบ 9+0 ซึ่งเกี่ยวข้องกับโรคไตถุงน้ำ ${S.x}</li></ul>`});
+<li>สูตร 9+2 ใช้กับ cilia ที่ขยับได้และหางอสุจิ ส่วน cilia ชนิดรับความรู้สึกเป็นแบบ 9+0 ซึ่งเกี่ยวข้องกับโรคไตถุงน้ำ ${S.x}</li>
+<li>เมื่อ dynein เสีย cilia ทุกที่ในร่างกายไม่ขยับ จึงเกิดสามอาการร่วม — <b>ไซนัสอักเสบเรื้อรัง หลอดลมโป่งพอง และ situs inversus</b> ${S.x}</li>
+<li>ชายมีบุตรยากเพราะอสุจิไม่เคลื่อนที่ ส่วนหญิงเสี่ยงต่อการตั้งครรภ์นอกมดลูก ${S.x}</li></ul>`});
 
 SEC.push({id:"napump",k:"c",t:"The sodium-potassium pump & digoxin",drugs:"Digoxin · Digitoxin",act:[],leg:[],
 draw:()=>flowD([
- ["ปั๊มทำงานปกติ","ส่ง Na⁺ ออก 3 ตัว แลก K⁺ เข้า 2 ตัว ใช้ ATP หนึ่งโมเลกุล","bl"],
- ["ได้ความต่างของโซเดียม","Na⁺ ในเซลล์ต่ำ ซึ่งเป็นแหล่งพลังงานของตัวแลกเปลี่ยนอื่น","ar"],
- ["ตัวแลกเปลี่ยน Na⁺/Ca²⁺","อาศัยความต่างนี้ดัน Ca²⁺ ออกนอกเซลล์","mod"],
- ["Digoxin ยับยั้งปั๊ม","Na⁺ ในเซลล์สูงขึ้น ตัวแลกเปลี่ยนทำงานได้น้อยลง","inh"],
- ["Ca²⁺ ในเซลล์สูงขึ้น","หัวใจบีบตัวแรงขึ้น ใช้รักษาภาวะหัวใจล้มเหลว","gl"]]),
+ ["Na⁺/K⁺ ATPase working","ส่ง Na⁺ ออก 3 ตัว แลก K⁺ เข้า 2 ตัว ใช้ ATP หนึ่งโมเลกุล","bl"],
+ ["A sodium gradient is set up","Na⁺ ในเซลล์ต่ำ ซึ่งเป็นแหล่งพลังงานของตัวแลกเปลี่ยนอื่น","ar"],
+ ["Na⁺/Ca²⁺ exchanger","อาศัยความต่างนี้ดัน Ca²⁺ ออกนอกเซลล์","mod"],
+ ["Digoxin blocks the pump","Na⁺ ในเซลล์สูงขึ้น ตัวแลกเปลี่ยนทำงานได้น้อยลง","inh"],
+ ["Intracellular Ca²⁺ rises","หัวใจบีบตัวแรงขึ้น ใช้รักษาภาวะหัวใจล้มเหลว","gl"]]),
 notes:()=>`<ul>
 <li>Textbook of Biochemistry: <b>Na⁺/K⁺-ATPase ทำหน้าที่ตามปกติคือรักษาระดับ Na⁺ ในเซลล์ให้ต่ำ ส่วนตัวแลกเปลี่ยน Na⁺/Ca²⁺ อาศัยความต่างของ Na⁺ นี้ในการดัน Ca²⁺ ออกนอกเซลล์</b> ${S.tbbio}</li>
 <li>Textbook of Biochemistry: <b>Ca²⁺ ที่มีมากขึ้นทำให้แรงบีบตัวเพิ่มขึ้น ซึ่งเป็นประโยชน์ทางคลินิกในการรักษาภาวะหัวใจล้มเหลว</b> และระบุว่ากลุ่มยานี้คือ <b>cardiac glycosides (digitalis) เช่น digoxin</b> ${S.tbbio}</li>
@@ -126,12 +139,12 @@ notes:()=>`<ul>
 
 SEC.push({id:"collagen",k:"d",t:"Collagen synthesis",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["แปลรหัสเข้าสู่ RER","ได้ prepro-α chain แล้วตัดลำดับสัญญาณออกเป็น pro-α chain","bl"],
- ["เติมหมู่ไฮดรอกซิล","ที่ proline และ lysine บางตัว · ต้องใช้ vitamin C","ar"],
- ["เติมน้ำตาล","ที่ hydroxylysine บางตัว","mod"],
- ["พันเป็นเกลียวสามสาย","ได้ procollagen แล้วหลั่งออกนอกเซลล์","vn"],
- ["ตัดปลายทั้งสองข้าง","procollagen peptidase ทำให้เป็น tropocollagen","gl"],
- ["เชื่อมขวางด้วย lysyl oxidase","ต้องใช้ copper · ได้เส้นใย collagen ที่แข็งแรง","inh"]]),
+ ["Translation into the RER","ได้ prepro-α chain แล้วตัดลำดับสัญญาณออกเป็น pro-α chain","bl"],
+ ["Hydroxylation","ที่ proline และ lysine บางตัว · ต้องใช้ vitamin C","ar"],
+ ["Glycosylation","ที่ hydroxylysine บางตัว","mod"],
+ ["A triple helix forms","ได้ procollagen แล้วหลั่งออกนอกเซลล์","vn"],
+ ["Both ends are cleaved","procollagen peptidase ทำให้เป็น tropocollagen","gl"],
+ ["Cross-linked by lysyl oxidase","ต้องใช้ copper · ได้เส้นใย collagen ที่แข็งแรง","inh"]]),
 notes:()=>`<ul>
 <li>Lippincott: การเติมหมู่ไฮดรอกซิลต้องใช้ <b>Fe²⁺ และตัวรีดิวซ์คือ vitamin C (ascorbic acid)</b> ${S.lir}</li>
 <li>Lippincott: การขาด vitamin C ทำให้ <b>ขาดการเติมหมู่ไฮดรอกซิลที่ prolyl และ lysyl</b> ซึ่งนำไปสู่โรค scurvy ${S.lir}</li>
@@ -155,19 +168,20 @@ notes:()=>`<ul>
 <li>Lippincott: <b>ผู้ป่วย OI, EDS หรือ Marfan อาจมีตาขาวสีฟ้าได้ เพราะเนื้อเยื่อบางลงจนเห็นเม็ดสีข้างใต้</b> จึงเป็นอาการที่ใช้แยกโรคสามกลุ่มนี้ไม่ได้ ${S.lir}</li></ul>`});
 
 SEC.push({id:"elastin",k:"d",t:"Elastin, Marfan & α1-antitrypsin",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["elastin ต่างจาก collagen","ยืดและคืนตัวได้ทุกทิศทาง · มี hydroxyproline น้อยมาก","ar"],
- ["เชื่อมขวางด้วยอะไร","desmosine จาก allysine สามตัวบวก lysine หนึ่งตัว · ใช้ lysyl oxidase","bl"],
- ["Fibrillin ทำอะไร","เป็นโครงให้ tropoelastin มาเกาะ","vn"],
- ["Marfan syndrome","กลายพันธุ์ของ fibrillin-1 · กระทบโครงกระดูก ตา และหลอดเลือด","mod"],
- ["α1-antitrypsin","ยับยั้ง elastase ที่นิวโทรฟิลปล่อยออกมาในถุงลม","gl"]]),
+draw:()=>tbl(["","Elastin","Collagen"],[
+ ["Behaviour","Stretches and recoils in every direction","Resists tension along one axis"],
+ ["Hydroxyproline","Very little","Rich"],
+ ["Cross-link","Desmosine — three allysines plus one lysine, made by lysyl oxidase","Lysine–hydroxylysine, also by lysyl oxidase"],
+ ["Scaffold","Laid down on fibrillin microfibrils","Self-assembles into fibrils"]]),
 notes:()=>`<ul>
 <li>Lippincott: tropoelastin ประกอบด้วย amino acid ราว 700 ตัวที่ส่วนใหญ่เล็กและไม่มีขั้ว และ <b>elastin มี proline กับ lysine มาก แต่มี hydroxyproline และ hydroxylysine น้อยมาก</b> ${S.lir}</li>
 <li>Lippincott: <b>allysine สามตัวบวก lysine ที่ยังไม่เปลี่ยนแปลงอีกหนึ่งตัวรวมกันเป็นสะพานเชื่อม desmosine</b> ได้เป็นโครงข่ายคล้ายยางที่ยืดและโค้งงอได้ทุกทิศทาง ${S.lir}</li>
 <li>Lippincott: <b>mutation ของ protein fibrillin-1 เป็นสาเหตุของ Marfan syndrome</b> ซึ่งมีความบกพร่องของความแข็งแรงเชิงโครงสร้างในโครงกระดูก ตา และระบบหัวใจและหลอดเลือด ${S.lir}</li>
 <li>Lippincott อธิบายกลไกของ Marfan ว่า <b>fibrillin ที่ผิดปกติถูกประกอบเข้าไปในไมโครไฟบริลร่วมกับ fibrillin ปกติ จึงไปยับยั้งการสร้างไมโครไฟบริลที่ใช้งานได้</b> ${S.lir}</li>
 <li>Lippincott: <b>α1-antitrypsin ยับยั้ง enzyme ย่อย protein หลายชนิด</b> และปกติจะยับยั้ง elastase ที่นิวโทรฟิลปล่อยออกมาขณะกลืนกินเชื้อในถุงลมปอด ${S.lir}</li>
-<li>เมื่อขาด α1-antitrypsin จึงเกิดถุงลมโป่งพองที่ฐานปอดในคนอายุน้อยที่ไม่สูบบุหรี่ ร่วมกับโรคตับจาก protein ที่พับผิดสะสมในเซลล์ตับ ${S.x}</li></ul>`});
+<li>เมื่อขาด α1-antitrypsin จึงเกิดถุงลมโป่งพองที่ฐานปอดในคนอายุน้อยที่ไม่สูบบุหรี่ ร่วมกับโรคตับจาก protein ที่พับผิดสะสมในเซลล์ตับ ${S.x}</li>
+<li><b>Marfan syndrome</b> เกิดจากการกลายพันธุ์ของ <b>fibrillin-1</b> จึงกระทบโครงกระดูก ตา และหลอดเลือดพร้อมกัน ${S.x}</li>
+<li><b>α1-antitrypsin</b> ยับยั้ง elastase ที่นิวโทรฟิลปล่อยออกมาในถุงลม — เมื่อพร่องลง elastin ในปอดจึงถูกย่อย ${S.x}</li></ul>`});
 
 atlasFinish();
 </script>

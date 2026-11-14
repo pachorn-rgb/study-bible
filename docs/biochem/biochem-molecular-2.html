@@ -36,12 +36,6 @@ Object.assign(S,{lir:'<b class="sbb lir">LIR</b>',x:'<b class="sbb gen">Gen</b>'
 Object.assign(GN,{a:"Genetic code & gene control",b:"Transcription & RNA processing",c:"Translation",d:"Post-translational"});
 
 SEC.push({id:"code",k:"a",t:"Properties of the genetic code",mm:"อ่านรหัส",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["จำเพาะ (unambiguous)","โคดอนหนึ่งให้ amino acid ตัวเดิมเสมอ","ar"],
- ["ซ้ำซ้อน (degenerate)","amino acid ตัวหนึ่งมีได้หลายโคดอน เช่น arginine มีหกแบบ","vn"],
- ["ข้อยกเว้นของความซ้ำซ้อน","Met และ Trp มีโคดอนละหนึ่งเดียว","bl"],
- ["ไม่ซ้อนทับและไม่มีเครื่องหมายวรรค","อ่านต่อเนื่องทีละสามเบสจากจุดเริ่มคงที่","mod"],
- ["เกือบสากล (universal)","เหมือนกันแทบทุกสิ่งมีชีวิต · mitochondria เป็นข้อยกเว้น","gl"]]),
 notes:()=>`<ul>
 <li>Lippincott: genetic code <b>จำเพาะ (unambiguous) — โคดอนหนึ่งจะให้ amino acid ตัวเดิมเสมอ</b> ${S.lir}</li>
 <li>Lippincott: <b>arginine ถูกระบุด้วยโคดอนถึงหกแบบ</b> ส่วน <b>Met และ Trp มีเพียงโคดอนเดียว</b> ${S.lir}</li>
@@ -90,10 +84,10 @@ notes:()=>`<ul>
 
 SEC.push({id:"rnaproc",k:"b",t:"mRNA processing & splicing",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["เติมหมวกที่ปลาย 5′","7-methylguanosine ต่อแบบ 5′→5′ · ช่วยให้ ribosome จับและกันการย่อย","bl"],
- ["เติมหางที่ปลาย 3′","poly-A ยาวหลายร้อยเบส · ไม่มีในแม่แบบ DNA","mod"],
- ["ตัดต่อ (splicing)","เอา intron ออก ต่อ exon เข้าด้วยกัน","ar"],
- ["mRNA ที่สุกแล้วออกจากนิวเคลียส","ผ่านรูของเยื่อหุ้มนิวเคลียส","gl"]]),
+ ["A 5′ cap is added","7-methylguanosine ต่อแบบ 5′→5′ · ช่วยให้ ribosome จับและกันการย่อย","bl"],
+ ["A 3′ poly-A tail is added","poly-A ยาวหลายร้อยเบส · ไม่มีในแม่แบบ DNA","mod"],
+ ["Splicing","เอา intron ออก ต่อ exon เข้าด้วยกัน","ar"],
+ ["Mature mRNA leaves the nucleus","ผ่านรูของเยื่อหุ้มนิวเคลียส","gl"]]),
 notes:()=>`<ul>
 <li>Lippincott: <b>snRNP (เรียกกันว่า snurps คือ U1, U2 และอื่น ๆ)</b> รวมกับ primary transcript เป็นกลุ่ม protein ที่เรียกว่า <b>spliceosome</b> ${S.lir}</li>
 <li>Lippincott อธิบายกลไกว่า <b>หมู่ 2′-OH ของอะดีโนซีนที่ branch site ในอินทรอนเข้าโจมตี phosphate ที่ปลาย 5′ ของอินทรอน เกิดพันธะ 2′→5′ ที่ผิดปกติและได้โครงสร้าง lariat</b> ${S.lir}</li>
@@ -104,12 +98,22 @@ notes:()=>`<ul>
 <li>แอนติบอดีต่อ snRNP (anti-Smith) จำเพาะกับ SLE และ anti-U1 RNP พบใน mixed connective tissue disease ${S.x}</li></ul>`});
 
 SEC.push({id:"trna",k:"c",t:"tRNA & amino acid charging",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["รูปร่าง","คล้ายใบโคลเวอร์สองมิติ พับเป็นรูปตัว L สามมิติ","bl"],
- ["ปลาย 3′","ลงท้ายด้วย CCA เสมอ — ที่ติด amino acid","ar"],
- ["Anticodon","สามเบสที่จับคู่กับโคดอนบน mRNA แบบขนานกลับทิศ","vn"],
- ["Aminoacyl-tRNA synthetase","ติด amino acid ให้ถูกตัว · หนึ่ง enzyme ต่อหนึ่ง amino acid","mod"],
- ["ใช้พลังงาน","ATP หนึ่งโมเลกุล แต่เสียพันธะพลังงานสูงไปสองพันธะ","gl"]]),
+draw:()=>psvg(
+ /* The cloverleaf earns its space: where the amino acid sits and where the anticodon sits are
+    at opposite ends of the molecule, which is the whole reason the adaptor works. */
+ `<circle cx="300" cy="44" r="11" style="fill:color-mix(in srgb,var(--a-art) 45%,var(--sb-surface));stroke:var(--a-art);stroke-width:1.6"/>
+  ${T(282,48,"amino acid",{a:"end",c:"s"})}
+  <path d="M300,56 L300,114" style="fill:none;stroke:var(--s-na);stroke-width:9"/>
+  ${T(348,56,"acceptor stem",{a:"start",c:"s"})}${T(348,76,"ends in 3′ CCA",{a:"start",c:"s"})}
+  <path d="M292,122 L218,122 M308,122 L382,122 M300,130 L300,202" style="fill:none;stroke:var(--s-na);stroke-width:9"/>
+  <circle cx="190" cy="122" r="28" style="fill:none;stroke:var(--s-na);stroke-width:9"/>${T(190,126,"D",{c:"bh"})}
+  <circle cx="410" cy="122" r="28" style="fill:none;stroke:var(--s-na);stroke-width:9"/>${T(410,126,"TψC",{c:"s"})}
+  <circle cx="300" cy="230" r="30" style="fill:none;stroke:var(--s-na);stroke-width:9"/>
+  ${T(300,222,"anticodon",{c:"s"})}
+  <circle class="stone" cx="284" cy="252" r="5"/><circle class="stone" cx="300" cy="257" r="5"/><circle class="stone" cx="316" cy="252" r="5"/>
+  ${T(300,292,"three bases, read antiparallel to the codon",{c:"s"})}
+  ${T(320,318,"a cloverleaf in two dimensions, an L in three — one synthetase per amino acid",{c:"s"})}`,
+ "0 0 640 334"),
 notes:()=>`<ul>
 <li>Lippincott: tRNA ที่รับ amino acid ตัวเดียวกันได้หลายตัวเรียก <b>isoaccepting tRNA</b> ${S.lir}</li>
 <li>Lippincott: ปฏิกิริยาของ aminoacyl-tRNA synthetase <b>ใช้พันธะพลังงานสูงสองพันธะ — หนึ่งในการกำจัด PPi</b> ${S.lir}</li>
@@ -118,9 +122,9 @@ notes:()=>`<ul>
 
 SEC.push({id:"transl",k:"c",t:"The three stages of translation",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["เริ่มต้น (initiation)","หน่วยเล็กหา AUG แรก · นำโดย Met (fMet ในแบคทีเรีย) · ใช้ GTP","bl"],
- ["ต่อสาย (elongation)","tRNA เข้าที่ A · สร้างพันธะเพปไทด์ · เลื่อนไป P และ E","ar"],
- ["สิ้นสุด (termination)","เจอ UAA, UAG หรือ UGA · release factor ปล่อยสายออก","gl"]]),
+ ["Initiation","หน่วยเล็กหา AUG แรก · นำโดย Met (fMet ในแบคทีเรีย) · ใช้ GTP","bl"],
+ ["Elongation","tRNA เข้าที่ A · สร้างพันธะเพปไทด์ · เลื่อนไป P และ E","ar"],
+ ["Termination","เจอ UAA, UAG หรือ UGA · release factor ปล่อยสายออก","gl"]]),
 notes:()=>`<ul>
 <li>สามตำแหน่งบน ribosome จำง่ายตามลำดับ <b>A → P → E</b> คือเข้า (Aminoacyl), ต่อ (Peptidyl), ออก (Exit) ${S.x}</li>
 <li>พันธะเพปไทด์สร้างโดย <b>peptidyl transferase ซึ่งเป็น ribozyme</b> คือ RNA ที่ทำหน้าที่เป็น enzyme ไม่ใช่ protein ${S.x}</li>

@@ -37,24 +37,31 @@ Object.assign(GN,{a:"Amplifying & editing genes",b:"Detecting a target",c:"Genom
 
 SEC.push({id:"pcr",k:"a",t:"Polymerase chain reaction",mm:"เพิ่มจำนวน DNA",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["แยกสาย (denature) ที่ราว 95°C","ความร้อนทำให้เกลียวคู่แยกออกจากกัน","ar"],
- ["จับคู่ไพรเมอร์ (anneal) ที่ราว 55°C","ไพรเมอร์สองตัวขนาบช่วงที่ต้องการ","bl"],
- ["ต่อสาย (extend) ที่ราว 72°C","Taq polymerase สร้างสายใหม่","mod"],
- ["ทำซ้ำราว 30 รอบ","จำนวนสำเนาเพิ่มเป็นทวีคูณทุกรอบ","gl"]]),
+ ["Denature at about 95°C","ความร้อนทำให้ double helix แยกออกจากกัน","ar"],
+ ["Anneal the primers at about 55°C","primer สองตัวขนาบช่วงที่ต้องการ","bl"],
+ ["Extend at about 72°C","Taq polymerase สร้างสายใหม่","mod"],
+ ["Repeat for about 30 cycles","จำนวนสำเนาเพิ่มเป็นทวีคูณทุกรอบ","gl"]]),
 notes:()=>`<ul>
 <li>Textbook of Biochemistry: enzyme ที่ใช้คือ <b>DNA polymerase ที่ทนความร้อน เช่น Taq DNA polymerase ซึ่งแยกได้จาก Thermus aquaticus</b> และเพราะทนความร้อนจึงไม่ต้องเติม enzyme ใหม่ทุกรอบ ${S.tbbio}</li>
-<li>Textbook of Biochemistry: <b>ผลผลิตของ PCR เป็น DNA สายคู่ และปฏิกิริยาในแต่ละรอบถือว่าสมบูรณ์เมื่อแม่แบบทุกโมเลกุลถูกคัดลอกครบ</b> ${S.tbbio}</li>
+<li>Textbook of Biochemistry: <b>ผลผลิตของ PCR เป็น DNA สายคู่ และปฏิกิริยาในแต่ละรอบถือว่าสมบูรณ์เมื่อ template ทุกโมเลกุลถูกคัดลอกครบ</b> ${S.tbbio}</li>
 <li>Textbook of Biochemistry ยกการใช้งานทางคลินิกไว้ เช่น <b>เพิ่มจำนวนลำดับ DNA ของเชื้อเอชไอวีและไวรัสตับอักเสบบี ซึ่งช่วยระบุเชื้อก่อโรคได้</b> และ <b>ตรวจหาความผิดปกติที่พบได้ยาก เช่น mutation</b> ${S.tbbio}</li>
-<li>Textbook of Biochemistry ระบุด้วยว่าใช้ได้กับตัวอย่างปริมาณน้อยมาก เช่นเส้นผมเพียงเส้นเดียว ซึ่งเป็นพื้นฐานของนิติเวชศาสตร์ ${S.tbbio}</li>
+<li>Textbook of Biochemistry ระบุด้วยว่าใช้ได้กับตัวอย่างปริมาณน้อยมาก เช่น hair เพียงเส้นเดียว ซึ่งเป็นพื้นฐานของ forensic science ${S.tbbio}</li>
 <li>ถ้าต้องการวัด RNA ต้องเปลี่ยนเป็น cDNA ก่อนด้วย reverse transcriptase ซึ่งคือ RT-PCR ที่ใช้ตรวจไวรัสที่มีสารพันธุกรรมเป็น RNA ${S.x}</li></ul>`});
 
 SEC.push({id:"crispr",k:"a",t:"CRISPR/Cas9",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["มาจากไหน","ระบบภูมิคุ้มกันของแบคทีเรียที่ใช้จดจำไวรัสที่เคยรุกราน","ar"],
- ["Guide RNA","ลำดับสั้นที่ออกแบบให้จับคู่กับตำแหน่งที่ต้องการในจีโนม","bl"],
- ["Cas9","enzyme ตัด DNA ทั้งสองสายที่ตำแหน่งนั้น","vn"],
- ["ซ่อมแบบต่อปลาย (NHEJ)","มักเสียเบสที่รอยต่อ จึงใช้ปิด gene ทิ้ง","mod"],
- ["ซ่อมแบบใช้แม่แบบ (HDR)","ใส่แม่แบบเข้าไปด้วย จึงแก้ลำดับให้เป็นแบบที่ต้องการได้","gl"]]),
+draw:()=>psvg(
+ /* Three parts and two outcomes: the guide RNA says where, Cas9 does the cutting, and which
+ repair route the cell takes decides whether a gene is silenced or rewritten. */
+ `<path d="M60,70 L580,70 M60,92 L580,92" style="fill:none;stroke:var(--s-na);stroke-width:5;opacity:.55"/>
+ <rect class="box ar" x="240" y="60" width="120" height="22" rx="7"/>${T(300,52,"guide RNA",{c:"s"})}
+ <path d="M300,54 L300,108" style="fill:none;stroke:var(--sb-bad);stroke-width:3;stroke-dasharray:4 3"/>
+ ${T(372,112,"double-strand cut",{a:"start",c:"bad"})}
+ <circle class="box gl" cx="300" cy="142" r="32"/>${T(300,146,"Cas9",{c:"bh"})}
+ ${arr("M284,168 L200,206")}${arr("M316,168 L400,206")}
+ ${T(150,228,"NHEJ",{c:"bh"})}${T(150,248,"the ends are rejoined and bases are lost",{c:"s"})}${T(150,268,"used to knock a gene out",{c:"s"})}
+ ${T(470,228,"HDR",{c:"bh"})}${T(470,248,"a repair template is supplied",{c:"s"})}${T(470,268,"used to rewrite the sequence",{c:"s"})}
+ ${T(320,300,"borrowed from the way bacteria remember the viruses that attacked them",{c:"s"})}`,
+ "0 0 640 316"),
 notes:()=>`<ul>
 <li>หลักการที่ทำให้เทคนิคนี้เปลี่ยนวงการ: <b>ความจำเพาะมาจาก RNA ไม่ใช่ protein</b> การเล็งตำแหน่งใหม่จึงแค่สังเคราะห์ guide RNA เส้นใหม่ ไม่ต้องออกแบบ protein ใหม่ทั้งตัว ${S.x}</li>
 <li>ผลลัพธ์ขึ้นกับว่าเซลล์เลือกซ่อมแบบไหน ซึ่งเชื่อมโดยตรงกับกลไกซ่อมสายคู่ขาดสองแบบในหัวข้อ Molecular ${S.x}</li>
@@ -63,8 +70,8 @@ notes:()=>`<ul>
 
 SEC.push({id:"blot",k:"b",t:"The three blots",drugs:"",act:[],leg:[],
 draw:()=>tbl(["Blot","Detects","Probe","Typical use"],[
- ["Southern","DNA","โพรบที่เป็น nucleic acid","ตรวจ mutation และจำนวนลำดับซ้ำ"],
- ["Northern","RNA","โพรบที่เป็น nucleic acid","ดูว่า gene ถูกแสดงออกมากน้อยแค่ไหน"],
+ ["Southern","DNA","probe ที่เป็น nucleic acid","ตรวจ mutation และจำนวนลำดับซ้ำ"],
+ ["Northern","RNA","probe ที่เป็น nucleic acid","ดูว่า gene ถูกแสดงออกมากน้อยแค่ไหน"],
  ["Western","protein","แอนติบอดี","ยืนยัน infection เอชไอวี (ในอดีต)"],
  ["Southwestern","protein ที่จับ DNA","DNA ที่ติดฉลาก","ศึกษา transcription factor"]]),
 notes:()=>`<ul>
@@ -87,12 +94,11 @@ notes:()=>`<ul>
 <li>การตรวจคัดกรองมักออกแบบให้ไวสูงไว้ก่อน แล้วจึงยืนยันด้วยวิธีที่จำเพาะกว่า ซึ่งเป็นเหตุผลที่การตรวจเอชไอวีมีสองขั้นตอน ${S.x}</li></ul>`});
 
 SEC.push({id:"karyo",k:"c",t:"Karyotyping & FISH",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Karyotype ทำอย่างไร","กระตุ้นให้เซลล์แบ่งตัว หยุดไว้ที่ metaphase แล้วย้อมดูแถบ","ar"],
- ["เห็นอะไรได้","จำนวน chromosome ผิดปกติ · การขาดหายหรือเพิ่มขนาดใหญ่ · translocation","bl"],
- ["ข้อจำกัด","มองไม่เห็นความผิดปกติที่เล็กกว่าราว 5 ล้านคู่เบส","vn"],
- ["FISH ทำอะไร","ใช้โพรบเรืองแสงจับตำแหน่งจำเพาะ จึงเห็นการขาดหายขนาดเล็ก","mod"],
- ["ใช้ตรวจอะไร","22q11 deletion · Prader-Willi · ยืนยัน translocation ที่สงสัย","gl"]]),
+draw:()=>tbl(["","Karyotype","FISH"],[
+ ["How","Cells are pushed into division, arrested at metaphase, banded and counted","A fluorescent probe binds one named sequence"],
+ ["Shows","Chromosome number · large deletions and duplications · translocations","Small deletions a karyotype would miss"],
+ ["Limit","Blind below about 5 million base pairs","Finds only what the probe was aimed at"],
+ ["Used for","Trisomies · confirming a suspected translocation","22q11 deletion · Prader-Willi"]]),
 notes:()=>`<ul>
 <li>การเลือกวิธีขึ้นกับขนาดของสิ่งที่ตามหา — <b>karyotype เห็นภาพรวมทั้งจีโนมแต่หยาบ ส่วน FISH เห็นละเอียดแต่เห็นเฉพาะตำแหน่งที่เราเล็งไว้แล้วเท่านั้น</b> ${S.x}</li>
 <li>FISH ใช้กับเซลล์ที่ไม่ได้แบ่งตัวได้ด้วย จึงให้ผลเร็วกว่า karyotype ที่ต้องรอเพาะเลี้ยงเซลล์หลายวัน ${S.x}</li>
@@ -101,10 +107,10 @@ notes:()=>`<ul>
 
 SEC.push({id:"array",k:"c",t:"Microarray & gene expression",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["เตรียมแผ่น","ตรึงลำดับ DNA สายเดี่ยวนับหมื่นจุดลงบนแผ่น","bl"],
- ["เตรียมตัวอย่าง","สกัด RNA แล้วเปลี่ยนเป็น cDNA ติดสารเรืองแสง","ar"],
- ["ปล่อยให้จับคู่กัน","cDNA เข้าจับจุดที่มีลำดับเข้ากันได้","mod"],
- ["อ่านความสว่างแต่ละจุด","สว่างมากคือ gene นั้นถูกแสดงออกมาก","gl"]]),
+ ["Spot the array","ตรึงลำดับ DNA สายเดี่ยวนับหมื่นจุดลงบนแผ่น","bl"],
+ ["Label the sample","สกัด RNA แล้วเปลี่ยนเป็น cDNA ติดสารเรืองแสง","ar"],
+ ["Let them hybridise","cDNA เข้าจับจุดที่มีลำดับเข้ากันได้","mod"],
+ ["Read the brightness of every spot","สว่างมากคือ gene นั้นถูกแสดงออกมาก","gl"]]),
 notes:()=>`<ul>
 <li>ความแตกต่างจาก Northern blot คือมาตราส่วน — <b>Northern ดู gene ทีละตัว ส่วน microarray ดู gene ทั้งจีโนมพร้อมกันในการทดลองเดียว</b> ${S.x}</li>
 <li>การใช้งานที่เห็นผลชัดคือการเทียบเนื้อเยื่อ cancer กับเนื้อเยื่อปกติ เพื่อหาว่า gene กลุ่มใดเปลี่ยนไป ซึ่งนำไปสู่การแบ่งชนิดย่อยของ cancer เต้านมที่ใช้เลือกการรักษาในปัจจุบัน ${S.x}</li>
@@ -113,11 +119,11 @@ notes:()=>`<ul>
 
 SEC.push({id:"clone",k:"d",t:"Gene cloning & RNA interference",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["ตัด gene ที่ต้องการ","ใช้ enzyme ตัดจำเพาะตัดทั้ง gene และพลาสมิดให้ปลายเข้ากันได้","ar"],
- ["เชื่อมเข้าพลาสมิด","DNA ligase ปิดรอยต่อ ได้ DNA ลูกผสม","bl"],
- ["ใส่เข้าแบคทีเรีย","แบคทีเรียเพิ่มจำนวนพร้อมกับพลาสมิด","mod"],
- ["คัดเลือกโคลนที่ต้องการ","ใช้ gene ต้าน antibiotic บนพลาสมิดเป็นตัวคัด","vn"],
- ["เก็บเกี่ยวผลผลิต","เช่น insulin ของมนุษย์และฮอร์โมนการเจริญเติบโต","gl"]]),
+ ["Cut out the gene","ใช้ enzyme ตัดจำเพาะตัดทั้ง gene และพลาสมิดให้ปลายเข้ากันได้","ar"],
+ ["Ligate it into a plasmid","DNA ligase ปิดรอยต่อ ได้ DNA ลูกผสม","bl"],
+ ["Transform into bacteria","แบคทีเรียเพิ่มจำนวนพร้อมกับพลาสมิด","mod"],
+ ["Select the right clone","ใช้ gene ต้าน antibiotic บนพลาสมิดเป็นตัวคัด","vn"],
+ ["Harvest the product","เช่น insulin ของมนุษย์และฮอร์โมนการเจริญเติบโต","gl"]]),
 notes:()=>`<ul>
 <li>Textbook of Biochemistry อธิบายสัตว์ดัดแปรพันธุกรรมว่าเป็น <b>สัตว์ที่เจริญมาจากไข่ที่ได้รับการปฏิสนธิแล้ว</b> ซึ่งถูกใส่สารพันธุกรรมจากภายนอกเข้าไป ${S.tbbio}</li>
 <li>Textbook of Biochemistry ตั้งประเด็นไว้ด้วยว่าการแก้ไข gene เพื่อการรักษา <b>ต้องพิจารณาว่าจะใช้ germ cell หรือไม่ และควรเลือกโรคที่เกิดจาก gene เดียว</b> ${S.tbbio}</li>

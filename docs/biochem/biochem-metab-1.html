@@ -82,15 +82,15 @@ notes:()=>`<ul>
 <li><b>Malonyl-CoA</b> เป็นสารตัวกลางของการสร้าง fatty acid และยับยั้ง carnitine acyltransferase I จึงกันไม่ให้สร้างและสลาย fatty acid พร้อมกัน ${S.lir}</li></ul>`});
 
 SEC.push({id:"carriers",k:"a",t:"Activated carriers & cofactors",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["ATP","หมู่ phosphate","vn"],
- ["NADH, FADH₂","อิเล็กตรอนสำหรับ ATP (catabolism)","ar"],
- ["NADPH","อิเล็กตรอนสำหรับการสังเคราะห์และต้านอนุมูลอิสระ (anabolism)","bl"],
- ["CoA, lipoamide","หมู่ acyl","gl"],
- ["Biotin","CO₂ (คาร์บอกซิเลชัน)","mod"],
- ["TPP (วิตามิน B1)","aldehyde สำหรับ decarboxylation","mod"],
- ["SAM","หมู่เมทิล","inh"],
- ["Tetrahydrofolate","หมู่คาร์บอนหนึ่งตัว","inh"]]),
+draw:()=>tbl(["Carrier","Group carried","Vitamin"],[
+ ["ATP","Phosphate","—"],
+ ["NADH · FADH₂","Electrons for ATP (catabolism)","B3 · B2"],
+ ["NADPH","Electrons for synthesis and antioxidant defence","B3"],
+ ["CoA · lipoamide","Acyl","B5 · lipoic acid"],
+ ["Biotin","CO₂ (carboxylation)","B7"],
+ ["TPP","Aldehyde (decarboxylation)","B1"],
+ ["SAM","Methyl","—"],
+ ["Tetrahydrofolate","One-carbon units","B9"]]),
 notes:()=>`<ul>
 <li><b>NADPH กับ NADH ต่างหน้าที่กัน</b> — NADH ส่งอิเล็กตรอนเข้าห่วงโซ่หายใจเพื่อสร้าง ATP ส่วน NADPH ใช้ในการสังเคราะห์ (fatty acid cholesterol) และกำจัดอนุมูลอิสระ ${S.lir}</li>
 <li>NADPH มาจาก <b>HMP shunt</b> เป็นหลัก จึงอธิบายว่าทำไมผู้ที่พร่อง G6PD ถึงทนความเครียดจากออกซิเดชันไม่ได้ ${S.lir}</li>
@@ -101,7 +101,7 @@ SEC.push({id:"glyco",k:"b",t:"Glycolysis",drugs:"",act:[],leg:[],
 draw:()=>flowD([
  ["Glucose → glucose-6-P","hexokinase / glucokinase · ใช้ ATP · ไม่ย้อนกลับ","ar"],
  ["Fructose-6-P → fructose-1,6-BP","PFK-1 · ใช้ ATP · ไม่ย้อนกลับ · ขั้นกำหนดอัตรา","vn"],
- ["แตกเป็นสองโมเลกุล 3 คาร์บอน","aldolase A → G3P และ DHAP",""],
+ ["Split into two 3-carbon molecules","aldolase A → G3P และ DHAP",""],
  ["G3P → 1,3-BPG","glyceraldehyde-3-P dehydrogenase · ได้ NADH","bl"],
  ["1,3-BPG → 3-PG","phosphoglycerate kinase · ได้ ATP","gl"],
  ["PEP → pyruvate","pyruvate kinase · ได้ ATP · ไม่ย้อนกลับ","vn"]]),
@@ -124,11 +124,23 @@ notes:()=>`<ul>
 <li>ในเบตาเซลล์ glucokinase ทำหน้าที่เป็น <b>ตัวรับรู้ระดับ glucose</b> ที่กำหนดว่าจะหลั่ง insulin เมื่อใด · mutation ที่ลดการทำงานทำให้เกิดเบาหวานชนิด MODY ${S.lir}${S.x}</li></ul>`});
 
 SEC.push({id:"glycoreg",k:"b",t:"Glycolysis regulation & fructose-2,6-BP",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["หลังกินอาหาร — insulin สูง","PFK-2 ทำงาน → fructose-2,6-BP สูง → PFK-1 เร่ง → glycolysis เดิน","bl"],
- ["อดอาหาร — กลูคากอนสูง","PKA เติม phosphate → FBPase-2 ทำงาน → fructose-2,6-BP ต่ำ → gluconeogenesis เดิน","ar"],
- ["PFK-1 ⊕","AMP · fructose-2,6-bisphosphate","gl"],
- ["PFK-1 ⊝","ATP · citrate (สัญญาณว่าพลังงานพอแล้ว)","vn"]]),
+draw:()=>psvg(
+ /* One bifunctional enzyme, two states. Putting the fed and the fasting cell side by side is
+    the point: the same molecule reads the hormone and sets the direction. */
+ `<rect class="box bl" x="20" y="24" width="288" height="268" rx="14"/>
+  ${T(164,52,"Fed — insulin",{c:"h"})}
+  ${T(164,88,"PFK-2 active",{c:"bh"})}${arr("M164,98 L164,126")}
+  ${T(164,146,"fructose-2,6-BP high",{c:"bh"})}${arr("M164,156 L164,184")}
+  ${T(164,204,"PFK-1 accelerates",{c:"bh"})}${arr("M164,214 L164,242")}
+  ${T(164,264,"glycolysis runs",{c:"h"})}
+  <rect class="box ar" x="332" y="24" width="288" height="268" rx="14"/>
+  ${T(476,52,"Fasting — glucagon",{c:"h"})}
+  ${T(476,88,"PKA adds phosphate",{c:"bh"})}${arr("M476,98 L476,126")}
+  ${T(476,146,"FBPase-2 active",{c:"bh"})}${arr("M476,156 L476,184")}
+  ${T(476,204,"fructose-2,6-BP low",{c:"bh"})}${arr("M476,214 L476,242")}
+  ${T(476,264,"gluconeogenesis runs",{c:"h"})}
+  ${T(320,318,"PFK-1: ⊕ AMP and fructose-2,6-BP · ⊝ ATP and citrate",{c:"s"})}`,
+ "0 0 640 332"),
 notes:()=>`<ul>
 <li><b>PFK-2 และ FBPase-2 เป็น protein ตัวเดียวกัน</b> ที่มีสองหน้าที่ · กลูคากอนกระตุ้น PKA ให้เติม phosphate ซึ่งปิดด้าน PFK-2 และเปิดด้าน FBPase-2 พร้อมกัน ${S.lir}</li>
 <li>ผลคือ fructose-2,6-BP ลดลง จึงหยุดเร่ง PFK-1 และหยุดยับยั้ง fructose-1,6-bisphosphatase ไปพร้อมกัน — <b>สวิตช์ตัวเดียวสลับทิศทางทั้งสองเส้นทาง</b> ${S.lir}</li>
@@ -136,13 +148,24 @@ notes:()=>`<ul>
 <li>ใน erythrocyte การเร่ง glycolysis จะเพิ่ม <b>2,3-BPG</b> ซึ่งลดความชอบออกซิเจนของฮีโมโกลบิน ${S.x}</li></ul>`});
 
 SEC.push({id:"pdh",k:"c",t:"Pyruvate dehydrogenase complex",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["ทำอะไร","Pyruvate + CoA + NAD⁺ → acetyl-CoA + CO₂ + NADH · ย้อนกลับไม่ได้","vn"],
- ["E1 — TPP (B1)","decarboxylation","mod"],
- ["E2 — lipoic acid + CoA","ส่งหมู่ acyl","mod"],
- ["E3 — FAD (B2) + NAD⁺ (B3)","รีออกซิไดซ์ lipoamide","mod"],
- ["ต้องการ pantothenate (B5) ด้วย","เป็นส่วนประกอบของ CoA","gl"],
- ["ควบคุมโดย","⊕ ADP, NAD⁺ · ⊝ ATP, NADH, acetyl-CoA","bl"]],{foot:"The five cofactors: B1, B2, B3, B5 & lipoic acid"}),
+draw:()=>psvg(
+ /* Three enzymes in one complex, each holding its own vitamin. Drawn in a row because the
+    acyl group is physically handed along from E1 to E2 to E3. */
+ `${T(140,36,"Pyruvate + CoA + NAD⁺",{c:"bh"})}${arr("M140,44 L140,54")}
+  <rect class="box ar" x="24" y="56" width="592" height="150" rx="22"/>
+  ${T(50,82,"Pyruvate dehydrogenase complex",{a:"start",c:"h"})}
+  <rect class="box vn" x="60" y="108" width="160" height="76" rx="14"/>
+  ${T(140,134,"E1",{c:"bh"})}${T(140,154,"TPP (B1)",{c:"s"})}${T(140,172,"decarboxylation",{c:"s"})}
+  ${arr("M224,146 L236,146")}
+  <rect class="box bl" x="240" y="108" width="160" height="76" rx="14"/>
+  ${T(320,134,"E2",{c:"bh"})}${T(320,154,"lipoic acid · CoA (B5)",{c:"s"})}${T(320,172,"hands on the acyl group",{c:"s"})}
+  ${arr("M404,146 L416,146")}
+  <rect class="box gl" x="420" y="108" width="160" height="76" rx="14"/>
+  ${T(500,134,"E3",{c:"bh"})}${T(500,154,"FAD (B2) · NAD⁺ (B3)",{c:"s"})}${T(500,172,"re-oxidises lipoamide",{c:"s"})}
+  ${arr("M500,210 L500,228")}
+  ${T(500,248,"Acetyl-CoA + CO₂ + NADH",{c:"bh"})}${T(500,268,"irreversible",{c:"s"})}
+  ${T(150,248,"⊕ ADP, NAD⁺",{c:"s"})}${T(150,268,"⊝ ATP, NADH, acetyl-CoA",{c:"s"})}`,
+ "0 0 640 288"),
 notes:()=>`<ul>
 <li>ขั้นนี้เป็น <b>สะพานที่ย้อนกลับไม่ได้</b> ระหว่าง glycolysis กับ TCA — จึงเป็นเหตุผลว่าทำไมมนุษย์เปลี่ยน fatty acid กลับเป็น glucose ไม่ได้ ${S.lir}${S.x}</li>
 <li>Lippincott ระบุว่าคอมเพล็กซ์นี้มี <b>โค enzyme 5 ตัว</b> — E1 ใช้ TPP, E2 ใช้ lipoic acid กับ CoA, E3 ใช้ FAD กับ NAD⁺ ${S.lir}</li>
@@ -152,11 +175,19 @@ notes:()=>`<ul>
 <li><b>สารหนูยับยั้ง lipoic acid</b> จึงกระทบทั้ง PDH และ α-ketoglutarate dehydrogenase ${S.lir}</li></ul>`});
 
 SEC.push({id:"pyrfate",k:"c",t:"Fates of pyruvate · Cori & Cahill",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["→ Acetyl-CoA","pyruvate dehydrogenase · เข้าสู่ TCA เพื่อสร้างพลังงาน","vn"],
- ["→ Oxaloacetate","pyruvate carboxylase (ใช้ biotin) · เติมสารให้ TCA และเริ่ม gluconeogenesis","ar"],
- ["→ Lactate","lactate dehydrogenase · เมื่อขาดออกซิเจน เพื่อรีไซเคิล NAD⁺","bl"],
- ["→ Alanine","ALT · ขนไนโตรเจนจากกล้ามเนื้อไปตับ","gl"]]),
+draw:()=>psvg(
+ /* Pyruvate is a junction, so it is drawn as one: four roads out of the same place, and the
+    one the cell takes depends on oxygen, on energy and on where the nitrogen has to go. */
+ `<rect class="box ar" x="252" y="146" width="136" height="40" rx="12"/>${T(320,172,"Pyruvate",{c:"bh"})}
+  <rect class="box vn" x="40" y="36" width="170" height="40" rx="12"/>${T(125,62,"Acetyl-CoA",{c:"bh"})}
+  ${arr("M276,150 L212,76")}${T(222,110,"PDH",{a:"end",c:"s m"})}
+  <rect class="box bl" x="430" y="36" width="180" height="40" rx="12"/>${T(520,62,"Oxaloacetate",{c:"bh"})}
+  ${arr("M364,150 L428,76")}${T(406,110,"pyruvate carboxylase (biotin)",{a:"start",c:"s m"})}
+  <rect class="box gl" x="40" y="250" width="170" height="40" rx="12"/>${T(125,276,"Lactate",{c:"bh"})}
+  ${arr("M276,184 L212,250")}${T(200,224,"LDH · regenerates NAD⁺",{a:"end",c:"s m"})}
+  <rect class="box bl" x="430" y="250" width="180" height="40" rx="12"/>${T(520,276,"Alanine",{c:"bh"})}
+  ${arr("M364,184 L428,250")}${T(440,224,"ALT · carries nitrogen",{a:"start",c:"s m"})}`,
+ "0 0 640 310"),
 notes:()=>`<ul>
 <li><b>วง Cori</b> — กล้ามเนื้อที่ขาดออกซิเจนสร้างแลกเตต ส่งไปตับเปลี่ยนกลับเป็น glucose · ย้ายภาระการใช้พลังงานไปไว้ที่ตับ โดยสุทธิแล้วตับเสีย ATP ${S.lir}</li>
 <li><b>วง Cahill (glucose–alanine)</b> — กล้ามเนื้อเติมหมู่อะมิโนให้ pyruvate กลายเป็นอะลานีน ส่งไปตับ ซึ่งได้ทั้งโครงคาร์บอนไว้สร้าง glucose และไนโตรเจนเข้า urea cycle ${S.lir}</li>

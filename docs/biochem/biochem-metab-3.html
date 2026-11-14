@@ -49,12 +49,25 @@ notes:()=>`<ul>
 <li>Acetyl-CoA ที่สูงขึ้นจากการสลายไขมันตอนอดอาหารเป็นตัวกระตุ้น pyruvate carboxylase พอดี — ร่างกายจึงเบนไปสร้าง glucose เองโดยอัตโนมัติ ${S.lir}</li></ul>`});
 
 SEC.push({id:"hmp",k:"a",t:"HMP shunt (pentose phosphate pathway)",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["ส่วน oxidative — ย้อนไม่ได้","G6PD → ได้ NADPH 2 ตัว และ ribulose-5-P","ar"],
- ["ส่วน non-oxidative — ย้อนได้","transketolase (ใช้ TPP) สร้าง ribose-5-P และน้ำตาลอื่น","bl"],
- ["NADPH ใช้ทำอะไร","สร้าง fatty acid และ cholesterol · รีไซเคิลกลูตาไธโอน · respiratory burst","gl"],
- ["Ribose-5-P ใช้ทำอะไร","สร้าง nucleotide","mod"],
- ["อยู่ที่ไหน","cytoplasm ของตับ adrenal gland erythrocyte และต่อมน้ำนม","vn"]]),
+draw:()=>psvg(
+ /* The shunt is two halves with two different products, and the picture keeps them apart:
+    one irreversible arm that makes NADPH, one reversible arm that makes sugars. */
+ `<rect class="box vn" x="24" y="60" width="96" height="36" rx="10"/>${T(72,83,"G6P",{c:"bh"})}
+  ${arr("M124,78 L212,78")}${T(168,62,"G6PD",{c:"h"})}${T(168,98,"irreversible",{c:"s m"})}
+  <rect class="box ar" x="216" y="60" width="132" height="36" rx="10"/>${T(282,83,"Ribulose-5-P",{c:"bh"})}
+  ${arr("M352,78 L440,78")}${T(396,62,"transketolase",{c:"h"})}${T(396,98,"TPP · reversible",{c:"s m"})}
+  <rect class="box bl" x="444" y="60" width="124" height="36" rx="10"/>${T(506,83,"Ribose-5-P",{c:"bh"})}
+  ${arr("M168,116 L168,150")}
+  <rect class="box gl" x="112" y="154" width="112" height="34" rx="10"/>${T(168,176,"2 NADPH",{c:"bh"})}
+  ${arr("M168,192 L168,218")}
+  ${T(168,238,"fatty acid and cholesterol synthesis",{c:"s"})}
+  ${T(168,258,"glutathione reduction",{c:"s"})}
+  ${T(168,278,"respiratory burst",{c:"s"})}
+  ${arr("M506,100 L506,146")}
+  ${T(506,168,"nucleotide synthesis",{c:"bh"})}
+  ${T(506,194,"the reversible arm also returns F6P / G3P",{c:"s"})}
+  ${T(320,314,"cytoplasm of liver, adrenal cortex, erythrocyte and lactating breast",{c:"s"})}`,
+ "0 0 640 330"),
 notes:()=>`<ul>
 <li>เส้นทางนี้ <b>ไม่สร้างและไม่ใช้ ATP เลย</b> — หน้าที่คือผลิต NADPH กับ ribose-5-phosphate ${S.x}</li>
 <li><b>G6PD เป็นขั้นกำหนดอัตรา</b> และถูกยับยั้งด้วย NADPH ที่สะสม ${S.fa1}</li>
@@ -63,27 +76,49 @@ notes:()=>`<ul>
 <li><b>Transketolase ใช้ TPP</b> จึงใช้วัดการทำงานของไทอามีนทางห้องปฏิบัติการได้ ${S.lir}</li></ul>`});
 
 SEC.push({id:"g6pd",k:"a",t:"G6PD deficiency",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["inheritance แบบ X-linked recessive","พบบ่อยมากในไทยและในเขตที่เคยมีมาลาเรีย","ar"],
- ["กลไก","NADPH ไม่พอ → กลูตาไธโอนรีดิวซ์ไม่กลับ → ฮีโมโกลบินถูกออกซิไดซ์","vn"],
- ["Heinz bodies","ฮีโมโกลบินที่ตกตะกอนภายใน erythrocyte","bl"],
- ["Bite cells","ม้ามแทะส่วนที่ตกตะกอนออกไป","bl"],
- ["ตัวกระตุ้น","ยาออกซิไดซ์ (primaquine, dapsone, ซัลฟา, nitrofurantoin) · ถั่วปากอ้า · infection","mod"]]),
+draw:()=>psvg(
+ /* Left: the one loop the erythrocyte has for oxidative stress, and the step that feeds it.
+    Right: what the cell looks like once the loop fails. */
+ `${blk(100,42,"G6PD")}
+  <rect class="box gl" x="48" y="60" width="104" height="34" rx="10"/>${T(100,83,"NADPH",{c:"bh"})}
+  ${arr("M100,98 L100,132")}${T(112,118,"glutathione reductase",{a:"start",c:"s m"})}
+  <rect class="box bl" x="48" y="136" width="104" height="34" rx="10"/>${T(100,159,"GSH",{c:"bh"})}
+  ${arr("M100,174 L100,208")}${T(112,194,"glutathione peroxidase",{a:"start",c:"s m"})}
+  <rect class="box vn" x="48" y="212" width="104" height="34" rx="10"/>${T(100,235,"GSSG",{c:"bh"})}
+  ${arr("M44,229 L22,229 L22,77 L44,77")}
+  ${T(100,268,"H₂O₂ not cleared",{c:"bad"})}
+  <circle class="box ar" cx="430" cy="118" r="58"/>
+  <circle class="stone" cx="412" cy="102" r="7"/><circle class="stone" cx="446" cy="110" r="6"/><circle class="stone" cx="424" cy="136" r="6"/>
+  ${T(412,196,"Heinz bodies",{c:"bh"})}${T(412,214,"precipitated haemoglobin",{c:"s"})}
+  <circle class="box ar" cx="558" cy="118" r="48"/>
+  <circle cx="598" cy="96" r="20" style="fill:var(--sb-plate);stroke:none"/>
+  ${T(566,196,"Bite cell",{c:"bh"})}${T(566,214,"pitted by the spleen",{c:"s"})}
+  ${T(320,306,"triggers: oxidant drugs · fava beans · infection",{c:"s"})}`,
+ "0 0 640 326"),
 notes:()=>`<ul>
 <li>Lippincott ระบุว่าการพร่อง G6PD <b>ทำให้ความสามารถในการสร้าง NADPH เสียไป</b> จึงป้องกัน erythrocyte จากความเครียดออกซิเดชันไม่ได้ ${S.lir}</li>
 <li>erythrocyte เปราะเป็นพิเศษเพราะ <b>ไม่มีนิวเคลียสและสร้าง enzyme ใหม่ไม่ได้</b> enzyme ที่เสื่อมแล้วจึงไม่มีการทดแทน ${S.x}</li>
 <li>erythrocyte แก่มี G6PD เหลือน้อยที่สุด จึงแตกก่อน · <b>ระหว่างที่เม็ดเลือดกำลังแตก ค่า G6PD อาจดูปกติหลอก</b> ควรตรวจซ้ำหลังพ้นระยะเฉียบพลัน ${S.x}</li>
 <li>เป็นเหตุผลที่ <b>ห้ามใช้ methylene blue</b> รักษา methemoglobinemia ในผู้ป่วยกลุ่มนี้ ${S.x}</li>
-<li>การพร่องบางส่วนให้ผลป้องกันมาลาเรีย จึงถูกคัดเลือกไว้ในประชากรเขตร้อน ${S.x}</li></ul>`});
+<li>การพร่องบางส่วนให้ผลป้องกันมาลาเรีย จึงถูกคัดเลือกไว้ในประชากรเขตร้อน ${S.x}</li>
+<li>ถ่ายทอดแบบ <b>X-linked recessive</b> จึงพบในเพศชายเป็นหลัก และพบบ่อยมากในไทยและในเขตที่เคยมีมาลาเรีย ${S.x}</li></ul>`});
 
 SEC.push({id:"glycogen",k:"b",t:"Glycogen structure & breakdown",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["พันธะหลัก α(1→4)","สายตรง","bl"],
- ["จุดแตกกิ่ง α(1→6)","ทุก ๆ 8–12 น้ำตาล ทำให้สลายได้หลายปลายพร้อมกัน","gl"],
- ["Glycogen phosphorylase","ตัดทีละหน่วยจากปลาย จนเหลือ 4 หน่วยก่อนจุดกิ่ง","ar"],
- ["Debranching enzyme","มีสองหน้าที่ — ย้ายสายสามหน่วย แล้วตัดพันธะ α(1→6)","vn"],
- ["glycogen ในตับ","รักษาระดับน้ำตาลในเลือด","mod"],
- ["glycogen ในกล้ามเนื้อ","ใช้เองเท่านั้น เพราะไม่มี glucose-6-phosphatase","mod"]]),
+draw:()=>psvg(
+ /* The branching is the whole point: it is a shape, so it is drawn. Every branch is one more
+    free end for phosphorylase to work on, which is why glycogen can be spent fast. */
+ `<path class="ld" d="M60,200 L390,200" style="stroke-width:2.4"/>
+  ${[...Array(12)].map((_,i)=>`<circle class="box bl" cx="${60+i*30}" cy="200" r="11"/>`).join("")}
+  <rect class="box gl" x="48" y="188" width="24" height="24" rx="6"/>${T(60,172,"glycogenin core",{c:"s m"})}
+  <path class="ld" d="M240,190 L270,170" style="stroke-width:2"/>
+  <path class="ld" d="M270,170 L300,142" style="stroke-width:2"/>
+  <path class="ld" d="M300,142 L330,114" style="stroke-width:2"/>
+  <circle class="box bl" cx="270" cy="170" r="11"/><circle class="box bl" cx="300" cy="142" r="11"/><circle class="box bl" cx="330" cy="114" r="11"/>
+  ${T(150,236,"α(1→4) chain",{c:"bh"})}
+  <path class="ld" d="M240,212 L252,232"/>${T(258,240,"α(1→6) branch every 8–12 residues",{a:"start",c:"s"})}
+  <path class="ld" d="M402,200 L464,200"/>${T(470,196,"glycogen phosphorylase",{a:"start",c:"h"})}${T(470,216,"trims each end to 4 residues",{a:"start",c:"s"})}
+  <path class="ld" d="M342,108 L374,104"/>${T(380,100,"debranching enzyme",{a:"start",c:"h"})}${T(380,120,"moves 3 residues, then cuts α(1→6)",{a:"start",c:"s"})}`,
+ "0 0 640 262"),
 notes:()=>`<ul>
 <li><b>glycogen ในกล้ามเนื้อช่วยน้ำตาลในเลือดไม่ได้</b> — ไม่มี glucose-6-phosphatase glucose จึงออกจากเซลล์ไม่ได้ ${S.x}</li>
 <li>การแตกกิ่งทำให้มีปลายให้ตัดพร้อมกันหลายจุด <b>จึงระดม glucose ได้เร็ว</b> ซึ่งสำคัญตอนออกแรงหรือน้ำตาลตก ${S.x}</li>
@@ -105,36 +140,56 @@ notes:()=>`<ul>
 <li>Pompe เป็น <b>ทั้ง glycogen storage disease และโรคสะสมใน lysosome</b> พร้อมกัน ${S.x}</li></ul>`});
 
 SEC.push({id:"fructose",k:"c",t:"Disorders of fructose",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Essential fructosuria — ไม่รุนแรง","พร่อง fructokinase · ฟรุกโตสออกมาในปัสสาวะ ไม่มีอาการ","gl"],
- ["Hereditary fructose intolerance — รุนแรง","พร่อง aldolase B","ar"],
- ["กลไกที่ทำให้ป่วย","fructose-1-phosphate คั่ง ดึง phosphate ไปหมด ตับสร้าง glucose ไม่ได้","vn"],
- ["อาการ","อาเจียน น้ำตาลตก ตัวเหลือง ตับวาย หลังเริ่มกินผลไม้หรือนมผสมซูโครส","bl"],
- ["รักษา","งดฟรุกโตส ซูโครส และซอร์บิทอล","mod"]]),
+draw:()=>psvg(
+ /* Both lesions sit on one short pathway, and their position explains the whole difference:
+    a block before the phosphate is added is harmless, a block after it traps the cell's phosphate. */
+ `<rect class="box vn" x="40" y="50" width="120" height="36" rx="10"/>${T(100,73,"Fructose",{c:"bh"})}
+  ${arr("M164,68 L252,68")}${blk(208,68,"fructokinase",-18)}${T(208,96,"Essential fructosuria",{c:"s"})}
+  <rect class="box ar" x="256" y="50" width="152" height="36" rx="10"/>${T(332,73,"Fructose-1-P",{c:"bh"})}
+  ${arr("M412,68 L500,68")}${blk(456,68,"aldolase B",-18)}${T(456,96,"Hereditary fructose intolerance",{c:"s"})}
+  <rect class="box bl" x="504" y="50" width="120" height="36" rx="10"/>${T(564,73,"DHAP + GA",{c:"bh"})}
+  ${arr("M332,112 L332,152")}
+  ${T(332,172,"F1P traps inorganic phosphate",{c:"bh"})}
+  ${arr("M332,184 L332,218")}
+  ${T(332,238,"no ATP — gluconeogenesis and glycogenolysis stop",{c:"s"})}
+  ${T(332,262,"hypoglycaemia · vomiting · jaundice · liver failure",{c:"bad"})}`,
+ "0 0 640 288"),
 notes:()=>`<ul>
 <li>Lippincott: การพร่อง fructokinase ทำให้เกิด <b>ภาวะไม่รุนแรงคือ essential fructosuria</b> ส่วนการพร่อง aldolase B เป็นตัวที่ร้ายแรง ${S.lir}</li>
 <li>enzyme เหล่านี้อยู่ใน <b>ตับ ไต และเยื่อบุลำไส้เล็ก</b> ${S.lir}</li>
 <li><b>หลักจำ</b> — ตันที่ <u>คีเนส</u> (ขั้นแรก) ไม่เป็นไร เพราะน้ำตาลยังไม่ถูกดักไว้ · ตันที่ <u>ขั้นถัดไป</u> อันตราย เพราะสารที่ติด phosphate คั่งและดึง phosphate ของเซลล์ไปหมด ${S.x}</li>
-<li>หลักเดียวกันนี้ใช้กับกาแลกโตสได้ตรง ๆ ${S.x}</li></ul>`});
+<li>หลักเดียวกันนี้ใช้กับกาแลกโตสได้ตรง ๆ ${S.x}</li>
+<li>รักษา HFI โดย<b>งดฟรุกโตส ซูโครส และซอร์บิทอล</b> ทั้งหมด · essential fructosuria ไม่ต้องรักษา ${S.x}</li></ul>`});
 
 SEC.push({id:"galactose",k:"c",t:"Disorders of galactose",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Galactokinase deficiency — ไม่รุนแรง","กาแลกโตสคั่ง → ต้อกระจกในทารก","gl"],
- ["Classic galactosemia — รุนแรง","พร่อง galactose-1-phosphate uridyltransferase (GALT)","ar"],
- ["อาการ","อาเจียน ตัวเหลือง ตับโต ต้อกระจก intellectual disability · เสี่ยงติดเชื้อ E. coli ในกระแสเลือด","vn"],
- ["เริ่มเมื่อเริ่มกินนม","เพราะแล็กโทสคือแหล่งกาแลกโตสหลัก","bl"],
- ["รักษา","งดแล็กโทสและกาแลกโตสทั้งหมด","mod"]]),
+draw:()=>psvg(
+ /* Same two-block shape as fructose, plus the side road that explains the cataract:
+    galactose that cannot go forward is reduced to galactitol inside the lens. */
+ `<rect class="box vn" x="40" y="50" width="130" height="36" rx="10"/>${T(105,73,"Galactose",{c:"bh"})}
+  ${arr("M174,68 L262,68")}${blk(218,68,"galactokinase",-18)}${T(218,96,"Galactokinase deficiency",{c:"s"})}
+  <rect class="box ar" x="266" y="50" width="150" height="36" rx="10"/>${T(341,73,"Galactose-1-P",{c:"bh"})}
+  ${arr("M420,68 L508,68")}${blk(464,68,"GALT",-18)}${T(464,96,"Classic galactosemia",{c:"s"})}
+  <rect class="box bl" x="512" y="50" width="116" height="36" rx="10"/>${T(570,73,"UDP-Glc",{c:"bh"})}
+  ${arr("M105,112 L105,150")}${T(105,170,"aldose reductase",{c:"h"})}
+  ${arr("M105,182 L105,214")}${T(105,234,"Galactitol in the lens",{c:"bh"})}${T(105,254,"cataract",{c:"bad"})}
+  ${arr("M341,112 L341,150")}
+  ${T(341,170,"Gal-1-P accumulates in the liver",{c:"bh"})}
+  ${T(341,194,"jaundice · hepatomegaly · E. coli sepsis",{c:"s"})}
+  ${T(341,214,"intellectual disability if untreated",{c:"s"})}
+  ${T(380,250,"lactose is the source — it comes with the first milk feed",{c:"s"})}`,
+ "0 0 640 280"),
 notes:()=>`<ul>
 <li>Lippincott: <b>แหล่งกาแลกโตสหลักในอาหารคือแล็กโทส</b> และการเข้าเซลล์ไม่ต้องอาศัย insulin · กาแลกโตสถูกเติม phosphate โดย galactokinase ซึ่ง <b>การพร่องทำให้เกิดต้อกระจก</b> ${S.lir}</li>
 <li>ต้อกระจกเกิดเพราะกาแลกโตสส่วนเกินถูกเปลี่ยนเป็น <b>galactitol</b> ที่คั่งในเลนส์แล้วดึงน้ำเข้า ${S.x}</li>
-<li>ถ้าเห็นแค่ <b>ต้อกระจกอย่างเดียว</b> ให้นึกถึง galactokinase · ถ้ามี <b>ตับวายและ intellectual disability ร่วมด้วย</b> ให้นึกถึง classic galactosemia ${S.x}</li></ul>`});
+<li>ถ้าเห็นแค่ <b>ต้อกระจกอย่างเดียว</b> ให้นึกถึง galactokinase · ถ้ามี <b>ตับวายและ intellectual disability ร่วมด้วย</b> ให้นึกถึง classic galactosemia ${S.x}</li>
+<li>รักษาโดย<b>งดแล็กโทสและกาแลกโตส</b> ทั้งหมด ${S.x}</li></ul>`});
 
 SEC.push({id:"sorbitol",k:"c",t:"The polyol pathway & diabetic complications",drugs:"",act:[],leg:[],
 draw:()=>flowD([
  ["Glucose → sorbitol","aldose reductase · ใช้ NADPH","ar"],
  ["Sorbitol → fructose","sorbitol dehydrogenase · ใช้ NAD⁺","bl"],
- ["เนื้อเยื่อที่ไม่มี enzyme ตัวที่สอง","เลนส์ จอตา ไต เส้นประสาทส่วนปลาย","vn"],
- ["ซอร์บิทอลคั่งและดึงน้ำเข้า","เซลล์บวม เสียหาย","gl"]]),
+ ["Tissues without the second enzyme","เลนส์ จอตา ไต เส้นประสาทส่วนปลาย","vn"],
+ ["Sorbitol accumulates and draws water in","เซลล์บวม เสียหาย","gl"]]),
 notes:()=>`<ul>
 <li>Lippincott เชื่อมเส้นทางนี้กับ <b>ภาวะแทรกซ้อนทางตา ไต และเส้นประสาทในเบาหวาน</b> โดยตรง ${S.lir}</li>
 <li>เนื้อเยื่อที่ <b>มี aldose reductase แต่ไม่มี sorbitol dehydrogenase</b> จะดักซอร์บิทอลไว้ ออกไม่ได้ จึงเสียหายก่อนที่อื่น ${S.x}</li>
@@ -157,17 +212,19 @@ notes:()=>`<ul>
 <li>Gaucher เป็นชนิดที่พบบ่อยที่สุดในกลุ่มนี้ และรักษาด้วยการให้ enzyme ทดแทนได้ ${S.x}</li></ul>`});
 
 SEC.push({id:"muco",k:"d",t:"Mucopolysaccharidoses",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Hurler — autosomal recessive","พร่อง α-L-iduronidase","ar"],
- ["Hurler: อาการ","ใบหน้าหยาบ กระจกตาขุ่น ข้อติด intellectual disability ตับม้ามโต","vn"],
- ["Hunter — X-linked recessive","พร่อง iduronate-2-sulfatase","bl"],
- ["Hunter: ต่างกันตรงไหน","เบากว่า · กระจกตาใส · มีพฤติกรรมก้าวร้าว","gl"],
- ["ทั้งสองโรคสะสม","heparan sulfate และ dermatan sulfate","mod"]]),
+draw:()=>tbl(["","Hurler","Hunter"],[
+ ["Enzyme","α-L-iduronidase","Iduronate-2-sulfatase"],
+ ["Inheritance","Autosomal recessive","X-linked recessive"],
+ ["Cornea","Clouded","Clear"],
+ ["Behaviour","—","Aggressive"],
+ ["Severity","More severe","Milder"],
+ ["Accumulates","Heparan + dermatan sulfate","Same"]]),
 notes:()=>`<ul>
 <li><b>จุดแยกที่ใช้ได้ทันที</b> — Hurler กระจกตาขุ่น ส่วน Hunter กระจกตาใส ${S.x}</li>
 <li>ช่วยจำ: <b>Hunter มองเห็นชัดเพื่อออกล่า</b> (กระจกตาใส) และก้าวร้าวกว่า ${S.x}</li>
 <li>Hunter เป็น <b>X-linked</b> จึงพบในเด็กชาย ส่วน Hurler เป็น autosomal recessive ${S.x}</li>
-<li>ต่างจาก sphingolipidoses ตรงที่สารที่สะสมคือ <b>ไกลโคสะมิโนไกลแคน</b> ไม่ใช่สฟิงโกลิพิด จึงกระทบกระดูกและเนื้อเยื่อเกี่ยวพันเป็นหลัก ${S.x}</li></ul>`});
+<li>ต่างจาก sphingolipidoses ตรงที่สารที่สะสมคือ <b>ไกลโคสะมิโนไกลแคน</b> ไม่ใช่สฟิงโกลิพิด จึงกระทบกระดูกและเนื้อเยื่อเกี่ยวพันเป็นหลัก ${S.x}</li>
+<li>ลักษณะที่<b>มีร่วมกันทั้งสองโรค</b> — ใบหน้าหยาบ ข้อติด ตับและม้ามโต และ intellectual disability ${S.x}</li></ul>`});
 
 const EXTRA=[];
 

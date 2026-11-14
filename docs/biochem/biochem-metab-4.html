@@ -38,10 +38,10 @@ Object.assign(GN,{a:"Burning & building fat",b:"Ketones & fasting",c:"Cholestero
 SEC.push({id:"faox",k:"a",t:"β-oxidation & the carnitine shuttle",mm:"เผาไขมัน",drugs:"",act:[],leg:[],
 draw:()=>flowD([
  ["fatty acid + CoA → acyl-CoA","ใน cytosol","bl"],
- ["CPT I ที่เยื่อหุ้มชั้นนอก","ย้ายหมู่ acyl ไปให้ carnitine · ขั้นกำหนดอัตรา · ถูก malonyl-CoA ยับยั้ง","ar"],
- ["Acylcarnitine ข้ามเยื่อหุ้มชั้นใน","โดย translocase","mod"],
- ["CPT II ด้านใน","คืนหมู่ acyl ให้ CoA","mod"],
- ["β-oxidation รอบละ 2 คาร์บอน","ได้ acetyl-CoA 1 · NADH 1 · FADH₂ 1 ต่อรอบ","gl"]]),
+ ["CPT I on the outer membrane","ย้ายหมู่ acyl ไปให้ carnitine · ขั้นกำหนดอัตรา · ถูก malonyl-CoA ยับยั้ง","ar"],
+ ["Acylcarnitine crosses the inner membrane","โดย translocase","mod"],
+ ["CPT II on the inside","คืนหมู่ acyl ให้ CoA","mod"],
+ ["β-oxidation, two carbons a turn","ได้ acetyl-CoA 1 · NADH 1 · FADH₂ 1 ต่อรอบ","gl"]]),
 notes:()=>`<ul>
 <li>Lippincott: เยื่อหุ้ม mitochondria ชั้นในไม่ยอมให้ CoA ผ่าน จึงต้องมีตัวพาเฉพาะ ซึ่งคือ <b>carnitine</b> และ <b>การขนส่งขั้นนี้เป็นขั้นกำหนดอัตรา</b> ${S.lir}</li>
 <li><b>Malonyl-CoA ยับยั้ง CPT I</b> จึงกันไม่ให้ fatty acid ที่เพิ่งสร้างถูกเผาทิ้งทันที ${S.lir}</li>
@@ -50,24 +50,38 @@ notes:()=>`<ul>
 <li>fatty acid สายคี่จะเหลือ <b>propionyl-CoA</b> สามคาร์บอนในรอบสุดท้าย ซึ่งเข้าสู่เส้นทางเดียวกับ organic acidemia ${S.lir}</li></ul>`});
 
 SEC.push({id:"mcad",k:"a",t:"Fatty acid oxidation disorders",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["MCAD deficiency","พร่อง medium-chain acyl-CoA dehydrogenase · พบบ่อยที่สุดในกลุ่มนี้","ar"],
- ["ลักษณะเด่น","น้ำตาลตกโดยที่คีโตนไม่ขึ้น (hypoketotic hypoglycemia)","vn"],
- ["เกิดเมื่อไร","หลังอดอาหารนานหรือเจ็บป่วยจนกินไม่ได้","bl"],
- ["พร่อง carnitine ปฐมภูมิ","fatty acid สายยาวเข้า mitochondria ไม่ได้ · กล้ามเนื้ออ่อนแรง หัวใจโต","mod"],
- ["การรักษาหลัก","ห้ามอดอาหาร · ให้ glucose เมื่อเจ็บป่วย","gl"]]),
+draw:()=>psvg(
+ /* Two lesions on one road into the mitochondrion: one at the door (carnitine) and one inside
+    (MCAD). Either way the fatty acid never burns, so no ketones appear when they are needed. */
+ `<rect class="box bl" x="20" y="24" width="600" height="104" rx="14"/>
+  ${T(46,50,"Cytosol",{a:"start",c:"h"})}
+  ${T(170,94,"Long-chain fatty acyl-CoA",{c:"bh"})}${arr("M170,102 L170,116")}
+  <g class="tr"><circle cx="170" cy="138" r="19"/></g>${blk(170,138,"")}
+  ${T(200,132,"carnitine shuttle (CPT-I)",{a:"start",c:"bh"})}
+  ${T(200,152,"primary carnitine deficiency — weakness, cardiomegaly",{a:"start",c:"s"})}
+  <rect class="box ar" x="20" y="172" width="600" height="130" rx="40"/>
+  ${T(50,200,"Mitochondrial matrix",{a:"start",c:"h"})}
+  ${T(120,246,"β-oxidation",{c:"bh"})}
+  ${arr("M184,242 L268,242")}${blk(226,242,"MCAD",-18)}
+  ${T(330,246,"Acetyl-CoA",{c:"bh"})}
+  ${arr("M396,242 L452,242")}
+  ${T(520,246,"ketone bodies",{c:"bh"})}
+  ${T(320,290,"no ketones although glucose is low — hypoketotic hypoglycaemia",{c:"bad"})}`,
+ "0 0 640 318"),
 notes:()=>`<ul>
 <li><b>น้ำตาลตกโดยคีโตนไม่ขึ้น</b> คือจุดชี้ขาด — ปกติเมื่อน้ำตาลตกร่างกายต้องสร้างคีโตนทดแทน ถ้าเผา fatty acid ไม่ได้ก็สร้างคีโตนไม่ได้ ${S.x}</li>
 <li>ตรงข้ามกับภาวะอดอาหารปกติหรือเบาหวานที่ขาด insulin ซึ่ง <b>คีโตนจะสูง</b> ${S.x}</li>
 <li>การตายฉับพลันในวัยทารกบางรายเคยถูกเข้าใจผิดว่าเป็น SIDS ก่อนที่จะมีการตรวจคัดกรองแรกเกิด ${S.x}</li>
-<li>พร่อง carnitine กระทบ <b>fatty acid สายยาวเท่านั้น</b> เพราะสายสั้นและสายกลางไม่ต้องใช้กระสวยนี้ ${S.x}</li></ul>`});
+<li>พร่อง carnitine กระทบ <b>fatty acid สายยาวเท่านั้น</b> เพราะสายสั้นและสายกลางไม่ต้องใช้กระสวยนี้ ${S.x}</li>
+<li><b>MCAD พบบ่อยที่สุด</b>ในกลุ่มนี้ · อาการมักปรากฏหลัง<b>อดอาหารนานหรือเจ็บป่วยจนกินไม่ได้</b> ${S.x}</li>
+<li>การรักษาหลักคือ <b>ห้ามอดอาหาร</b> และให้ glucose ทันทีเมื่อเจ็บป่วย ${S.x}</li></ul>`});
 
 SEC.push({id:"fasyn",k:"a",t:"Fatty acid synthesis",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["Citrate ออกจาก mitochondria","พาคาร์บอนจาก acetyl-CoA ออกมาสู่ cytosol","bl"],
+ ["Citrate leaves the mitochondrion","พาคาร์บอนจาก acetyl-CoA ออกมาสู่ cytosol","bl"],
  ["Acetyl-CoA → malonyl-CoA","acetyl-CoA carboxylase · ใช้ biotin · ขั้นกำหนดอัตรา","ar"],
- ["Fatty acid synthase ต่อสายทีละ 2 คาร์บอน","ใช้ NADPH จาก HMP shunt","gl"],
- ["ได้ palmitate 16 คาร์บอน","แล้วค่อยต่อสายหรือเติมพันธะคู่ต่อที่ ER","mod"]]),
+ ["Fatty acid synthase adds two carbons a turn","ใช้ NADPH จาก HMP shunt","gl"],
+ ["Palmitate, 16 carbons","แล้วค่อยต่อสายหรือเติมพันธะคู่ต่อที่ ER","mod"]]),
 notes:()=>`<ul>
 <li><b>Citrate เป็นทั้งตัวขนคาร์บอนและตัวส่งสัญญาณ</b> — กระตุ้น acetyl-CoA carboxylase และยับยั้ง PFK-1 พร้อมกัน จึงบอกเซลล์ว่าพลังงานล้นแล้ว ให้เก็บเป็นไขมัน ${S.lir}</li>
 <li><b>insulin กระตุ้น</b> acetyl-CoA carboxylase ส่วนกลูคากอนยับยั้ง ${S.fa1}</li>
@@ -75,12 +89,22 @@ notes:()=>`<ul>
 <li>สังเกตความสมมาตร: การสร้างอยู่ใน cytosol ใช้ NADPH ส่วนการสลายอยู่ใน mitochondria ให้ NADH และ FADH₂ ${S.x}</li></ul>`});
 
 SEC.push({id:"ketone",k:"b",t:"Ketone bodies",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["สร้างที่ไหน","ตับเท่านั้น ใน mitochondria","ar"],
- ["สร้างเมื่อไร","acetyl-CoA จากการสลายไขมันล้นเกินกำลังของ TCA","vn"],
- ["คีโตนหลักสองตัว","Acetoacetate และ β-hydroxybutyrate","bl"],
- ["Acetone","ระเหยออกทางลมหายใจ ให้กลิ่นผลไม้ ใช้เป็นพลังงานไม่ได้","mod"],
- ["ใครใช้ได้","สมอง หัวใจ กล้ามเนื้อ ไต — แต่ ตับใช้เองไม่ได้","gl"]]),
+draw:()=>psvg(
+ /* Made in one organ, spent in the others — and the picture has to show the asymmetry, because
+    the liver that makes them is the one tissue that cannot burn them. */
+ `<rect class="box ar" x="24" y="40" width="228" height="186" rx="16"/>
+  ${T(138,68,"Liver mitochondrion",{c:"h"})}
+  ${T(138,104,"fatty acid → acetyl-CoA",{c:"s"})}${arr("M138,114 L138,140")}
+  ${T(138,160,"Acetoacetate",{c:"bh"})}${T(138,182,"β-hydroxybutyrate",{c:"bh"})}
+  ${T(138,206,"acetone — exhaled, no energy",{c:"s"})}
+  ${arr("M258,130 L330,130")}${T(294,112,"blood",{c:"s m"})}
+  <rect class="box gl" x="336" y="40" width="280" height="186" rx="16"/>
+  ${T(476,68,"Brain · heart · muscle · kidney",{c:"h"})}
+  ${T(476,108,"burn ketones for ATP",{c:"s"})}
+  ${T(476,150,"in prolonged fasting the brain",{c:"s"})}
+  ${T(476,170,"takes most of its fuel this way",{c:"s"})}
+  ${T(320,262,"the liver cannot use them itself — it has no thiophorase (SCOT)",{c:"bad"})}`,
+ "0 0 640 288"),
 notes:()=>`<ul>
 <li>Lippincott: คีโตนถูกใช้โดยเนื้อเยื่อส่วนปลาย <b>แต่ไม่ใช่โดยตับเอง</b> และ <b>ketogenesis ยังปล่อย CoA ออกมา</b> ทำให้การเผา fatty acid ดำเนินต่อไปได้ ${S.lir}</li>
 <li>ตับใช้คีโตนเองไม่ได้เพราะ <b>ขาด enzyme thiophorase (SCOT)</b> — ตับจึงเป็นโรงงานที่ไม่กินสินค้าของตัวเอง ${S.x}</li>
@@ -105,7 +129,7 @@ draw:()=>flowD([
  ["Acetyl-CoA → HMG-CoA","ใน cytosol","bl"],
  ["HMG-CoA → mevalonate","HMG-CoA reductase · ขั้นกำหนดอัตรา · เป้าหมายของยาสแตติน","ar"],
  ["→ cholesterol","ใช้ NADPH","gl"],
- ["ปลายทาง","plasma membrane · bile acid · ฮอร์โมนสเตียรอยด์ · วิตามินดี","mod"]]),
+ ["Destination","plasma membrane · bile acid · ฮอร์โมนสเตียรอยด์ · วิตามินดี","mod"]]),
 notes:()=>`<ul>
 <li>Lippincott: <b>HMG-CoA reductase เป็นขั้นกำหนดอัตราและเป็นเป้าหมายของยา</b> โดยตอบสนองต่อระดับ cholesterol ภายในเซลล์ ${S.lir}</li>
 <li>แยกให้ออก: <b>HMG-CoA reductase</b> อยู่ใน cytosol สร้าง cholesterol ส่วน <b>HMG-CoA synthase และ lyase</b> อยู่ใน mitochondria ทำเรื่องคีโตน ${S.x}</li>
@@ -142,12 +166,12 @@ notes:()=>`<ul>
 <li>HDL ทำ <b>reverse cholesterol transport</b> คือเก็บ cholesterol ส่วนเกินจากเนื้อเยื่อกลับไปตับ จึงเป็นเหตุผลที่ HDL สูงสัมพันธ์กับความเสี่ยงที่ต่ำลง ${S.x}</li></ul>`});
 
 SEC.push({id:"apo",k:"d",t:"Apolipoprotein",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Apo A-I","กระตุ้น LCAT · เป็นโครงหลักของ HDL","gl"],
- ["Apo B-48","ใช้หลั่ง chylomicron จากลำไส้","bl"],
- ["Apo B-100","ใช้หลั่ง VLDL จากตับ และจับกับตัวรับ LDL","ar"],
- ["Apo C-II","กระตุ้น lipoprotein lipase","vn"],
- ["Apo E","ใช้เก็บ remnant กลับเข้าตับ","mod"]]),
+draw:()=>tbl(["Apolipoprotein","Rides on","What it does"],[
+ ["A-I","HDL","Activates LCAT"],
+ ["B-48","Chylomicron","Secretion from the intestine"],
+ ["B-100","VLDL · IDL · LDL","Secretion from the liver · binds the LDL receptor"],
+ ["C-II","Chylomicron · VLDL · HDL","Activates lipoprotein lipase"],
+ ["E","Chylomicron · VLDL · HDL","Remnant uptake by the liver"]]),
 notes:()=>`<ul>
 <li>จำแยกเป็นหน้าที่: <b>B = หลั่งออกและจับตัวรับ · C-II = จุดชนวนให้ LPL ทำงาน · E = ตั๋วกลับบ้านเข้าตับ · A-I = จุดชนวนให้ LCAT ทำงาน</b> ${S.x}</li>
 <li><b>B-48 กับ B-100 มาจาก gene เดียวกัน</b> แต่ลำไส้ตัดต่อ RNA ให้สั้นลงเหลือ 48% ${S.x}</li>

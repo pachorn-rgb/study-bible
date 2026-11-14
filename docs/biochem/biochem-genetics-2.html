@@ -50,18 +50,30 @@ notes:()=>`<ul>
 <li>Thompson & Thompson ระบุว่าโรคกลุ่มนี้ต่างกันหลายมิติ ทั้ง <b>ความยาวและลำดับเบสของหน่วยซ้ำ จำนวนซ้ำในคนปกติ คนที่ยังไม่แสดงอาการและคนที่เป็นโรค ตำแหน่งของหน่วยซ้ำใน gene และความไม่เสถียรระหว่าง meiosis</b> ${S.tt}</li></ul>`});
 
 SEC.push({id:"fragx",k:"b",t:"Fragile X syndrome",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["gene และลำดับซ้ำ","CGG ในส่วนที่ไม่แปลรหัสปลาย 5′ ของเอกซอนแรกของ gene FMR1","ar"],
- ["กลไก","ซ้ำมากจน gene ถูกเติมหมู่เมทิลและถูกปิด ไม่สร้าง protein FMRP","bl"],
- ["ลักษณะทางกาย","ใบหน้ายาว คางยื่น หูกาง · อัณฑะโตหลังเข้าวัยรุ่น","vn"],
- ["ลักษณะทางพฤติกรรม","บกพร่องทางสติปัญญา · พฤติกรรมแบบออทิสติก","mod"],
- ["ความสำคัญ","สาเหตุทางพันธุกรรมของ intellectual disability ที่พบบ่อยที่สุดรองจาก Down syndrome","gl"]]),
+draw:()=>psvg(
+ /* The mutation is not in the protein-coding part at all — it is a repeat in front of the gene
+    that grows until the cell methylates the whole promoter shut. Position is the lesson. */
+ `<rect class="box bl" x="60" y="70" width="520" height="26" rx="8"/>
+  <rect class="box ar" x="120" y="70" width="50" height="26" rx="8"/>
+  ${T(145,56,"CGG repeats",{c:"s"})}${T(572,88,"FMR1",{a:"end",c:"s m"})}
+  ${T(60,118,"5′ untranslated region of exon 1 — normal length",{a:"start",c:"s"})}
+  ${arr("M320,128 L320,154")}
+  <rect class="box bl" x="60" y="166" width="520" height="26" rx="8"/>
+  <rect class="box ar" x="120" y="166" width="190" height="26" rx="8"/>
+  ${T(215,154,"more than 200 CGG repeats",{c:"s"})}
+  ${[140,180,220,260,300].map(x=>`<circle class="stone" cx="${x}" cy="179" r="6"/>`).join("")}
+  ${T(185,214,"methylated — the gene is switched off",{c:"bad"})}
+  ${T(474,214,"no FMRP protein",{c:"bh"})}
+  ${T(320,252,"long face · large jaw and ears · macro-orchidism after puberty",{c:"s"})}
+  ${T(320,272,"intellectual disability and autistic behaviour",{c:"s"})}`,
+ "0 0 640 290"),
 notes:()=>`<ul>
 <li>Thompson & Thompson: โรคนี้เกิดจาก <b>การขยายอย่างมหาศาลของ trinucleotide repeat CGG ซึ่งอยู่ในส่วนที่ไม่แปลรหัสปลาย 5′ ของเอกซอนแรกของ gene ที่ชื่อ FMR1</b> ${S.tt}</li>
 <li>Thompson & Thompson: การตรวจหา fragile X <b>เป็นหนึ่งในข้อบ่งชี้ที่พบบ่อยที่สุดสำหรับการวิเคราะห์ DNA การให้คำปรึกษาทางพันธุกรรม และการวินิจฉัยก่อนคลอด</b> ${S.tt}</li>
 <li>Thompson & Thompson: ต้องนึกถึงโรคนี้ <b>ในการวินิจฉัยแยกโรคของ intellectual disability ทั้งในผู้ชายและผู้หญิง</b> ไม่ใช่เฉพาะผู้ชาย ${S.tt}</li>
 <li>การขยายเกิดตอนส่งผ่าน <b>ฝ่ายแม่</b> เป็นหลัก ผู้ชายที่มี premutation จึงส่งต่อให้ลูกสาวโดยที่ยังไม่ขยายเป็น full mutation ${S.x}</li>
-<li>ผู้ที่มี premutation มีความเสี่ยงของภาวะอื่นด้วย คือ <b>fragile X-associated tremor/ataxia syndrome</b> ในผู้ชายสูงอายุ และ <b>รังไข่หยุดทำงานก่อนวัย</b> ในผู้หญิง ${S.x}</li></ul>`});
+<li>ผู้ที่มี premutation มีความเสี่ยงของภาวะอื่นด้วย คือ <b>fragile X-associated tremor/ataxia syndrome</b> ในผู้ชายสูงอายุ และ <b>รังไข่หยุดทำงานก่อนวัย</b> ในผู้หญิง ${S.x}</li>
+<li>เป็น<b>สาเหตุทางพันธุกรรมของ intellectual disability ที่พบบ่อยที่สุดรองจาก Down syndrome</b> ${S.x}</li></ul>`});
 
 SEC.push({id:"dmd",k:"b",t:"Duchenne vs Becker",drugs:"",act:[],leg:[],
 draw:()=>tbl(["","Duchenne","Becker"],[
@@ -80,10 +92,10 @@ notes:()=>`<ul>
 
 SEC.push({id:"rett",k:"b",t:"Rett syndrome",drugs:"",act:[],leg:[],
 draw:()=>flowD([
- ["ตั้งครรภ์และแรกเกิดปกติ","การเจริญเติบโตและพัฒนาการช่วงแรกปกติ","bl"],
- ["ถดถอยอย่างรวดเร็ว","สูญเสียทักษะที่เคยทำได้ โดยเฉพาะการใช้มือและการพูด","ar"],
- ["มือบิดซ้ำ ๆ","ท่าบิดมือคล้ายล้างมือเป็นลักษณะเฉพาะ","vn"],
- ["คงที่แล้วอยู่ได้นาน","ความพิการทางระบบประสาทรุนแรงแต่คงที่ อยู่ได้อีกหลายสิบปี","gl"]]),
+ ["Normal pregnancy and early infancy","การเจริญเติบโตและพัฒนาการช่วงแรกปกติ","bl"],
+ ["Rapid regression","สูญเสียทักษะที่เคยทำได้ โดยเฉพาะการใช้มือและการพูด","ar"],
+ ["Stereotyped hand-wringing","ท่าบิดมือคล้ายล้างมือเป็นลักษณะเฉพาะ","vn"],
+ ["A plateau, then long survival","ความพิการทางระบบประสาทรุนแรงแต่คงที่ อยู่ได้อีกหลายสิบปี","gl"]]),
 notes:()=>`<ul>
 <li>Thompson & Thompson: Rett syndrome <b>เกิดแทบเฉพาะในผู้หญิง และเข้าเกณฑ์ทุกข้อของ mutation เกิดใหม่ใน gene บน chromosome X ที่ชื่อ MECP2 โดยเป็นโรค X-linked dominant ที่มักเป็นอันตรายถึงชีวิตในผู้ชายที่มี X เดียว</b> ${S.tt}</li>
 <li>Thompson & Thompson: กลุ่มอาการนี้มีลักษณะเป็น <b>การเจริญเติบโตและพัฒนาการก่อนคลอดและช่วงแรกเกิดที่ปกติ ตามด้วยการเกิดอาการทางระบบประสาทอย่างรวดเร็ว</b> ${S.tt}</li>
@@ -107,19 +119,34 @@ notes:()=>`<ul>
 <li>วิธีจำที่ใช้ได้จริงคือเรียงตามตัวเลข — <b>13 Patau, 18 Edwards, 21 Down</b> ซึ่งเรียงจากรุนแรงที่สุดไปเบาที่สุดพอดี และเรียงจากพบน้อยที่สุดไปพบบ่อยที่สุดพอดีเช่นกัน ${S.x}</li></ul>`});
 
 SEC.push({id:"robert",k:"d",t:"Nondisjunction & Robertsonian translocation",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Nondisjunction","chromosome คู่หนึ่งไม่แยกจากกันขณะแบ่งเซลล์ · เป็นสาเหตุของ trisomy ส่วนใหญ่","ar"],
- ["ความสัมพันธ์กับอายุแม่","เพิ่มขึ้นชัดเจนตามอายุของมารดา","bl"],
- ["Robertsonian translocation","แขนยาวของ chromosome แบบ acrocentric สองแท่งเชื่อมกัน","vn"],
- ["พาหะ","ลักษณะภายนอกปกติ แต่สร้าง germ cell ที่ไม่สมดุลได้","mod"],
- ["ความสำคัญ","เป็นแบบที่ inheritance ในครอบครัวได้ ต่างจาก nondisjunction ที่เกิดขึ้นเอง","gl"]]),
+draw:()=>psvg(
+ /* Why a carrier is healthy and still has affected children: the two long arms end up on one
+    centromere and nothing of consequence is lost — but the gametes come out unbalanced. */
+ `${T(140,40,"two acrocentric chromosomes",{c:"s"})}
+  <rect class="box vn" x="96" y="60" width="16" height="18" rx="4"/>
+  <circle class="box" cx="104" cy="86" r="8"/>
+  <rect class="box ar" x="96" y="94" width="16" height="92" rx="5"/>
+  <rect class="box vn" x="176" y="60" width="16" height="18" rx="4"/>
+  <circle class="box" cx="184" cy="86" r="8"/>
+  <rect class="box ar" x="176" y="94" width="16" height="92" rx="5"/>
+  ${T(144,208,"short arms carry only rRNA genes",{c:"s"})}
+  ${arr("M250,122 L320,122")}${T(285,104,"fusion",{c:"s m"})}
+  <rect class="box ar" x="412" y="50" width="17" height="160" rx="6"/>
+  <rect class="box ar" x="433" y="50" width="17" height="160" rx="6"/>
+  <circle class="box" cx="431" cy="130" r="11"/>
+  ${T(431,236,"one chromosome carrying both long arms",{c:"s"})}
+  ${T(431,256,"the short arms are lost, with no consequence",{c:"s"})}
+  ${T(320,290,"the carrier looks normal but makes unbalanced gametes",{c:"bad"})}`,
+ "0 0 640 306"),
 notes:()=>`<ul>
 <li>Thompson & Thompson: <b>Robertsonian translocation คือการเชื่อมกันระหว่าง chromosome แบบ acrocentric สองแท่ง</b> ${S.tt}</li>
 <li>Thompson & Thompson: <b>แม้พาหะของ Robertsonian translocation จะมีลักษณะภายนอกปกติ แต่มีความเสี่ยงที่จะสร้าง germ cell ที่ไม่สมดุล และจึงมีลูกที่ไม่สมดุลได้</b> ${S.tt}</li>
 <li>Thompson & Thompson: <b>ความเสี่ยงของการมีลูกที่ไม่สมดุลต่างกันไปตามชนิดของ translocation และตามเพศของพ่อแม่ที่เป็นพาหะ โดยทั่วไปพาหะเพศหญิงมีความเสี่ยงสูงกว่า</b> ${S.tt}</li>
 <li>Thompson & Thompson: ความสำคัญทางคลินิกหลักของ translocation ชนิดนี้อยู่ตรงความเสี่ยงต่อรุ่นลูก และพบ <b>การจัดเรียงแบบสมดุลชนิด Robertsonian ราว 1 ใน 1,100 ของทารกแรกเกิด</b> ${S.tt}</li>
 <li>ประเด็นที่ใช้ในคลินิกจริง: ถ้าแม่อายุน้อยมีลูกเป็น Down syndrome <b>ต้องตรวจ chromosome ของพ่อแม่</b> เพราะถ้าเป็นแบบ translocation ความเสี่ยงเกิดซ้ำจะสูงกว่าแบบ nondisjunction มาก ${S.x}</li>
-<li>chromosome แบบ acrocentric คือ 13, 14, 15, 21 และ 22 ซึ่งอธิบายว่าทำไม Robertsonian จึงเกี่ยวข้องกับ Down และ Patau syndrome ${S.x}</li></ul>`});
+<li>chromosome แบบ acrocentric คือ 13, 14, 15, 21 และ 22 ซึ่งอธิบายว่าทำไม Robertsonian จึงเกี่ยวข้องกับ Down และ Patau syndrome ${S.x}</li>
+<li><b>Nondisjunction</b> — chromosome คู่หนึ่งไม่แยกจากกันขณะแบ่งเซลล์ เป็นสาเหตุของ trisomy ส่วนใหญ่ และเพิ่มขึ้นชัดเจนตามอายุของมารดา ${S.x}</li>
+<li>ต่างกันตรงที่ <b>Robertsonian translocation ถ่ายทอดในครอบครัวได้</b> ส่วน nondisjunction เกิดขึ้นเองเป็นราย ๆ ${S.x}</li></ul>`});
 
 SEC.push({id:"del",k:"d",t:"Chromosomal deletion syndromes",drugs:"",act:[],leg:[],
 draw:()=>tbl(["Syndrome","Deletion","Key features"],[
