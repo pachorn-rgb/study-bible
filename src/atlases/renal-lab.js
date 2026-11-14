@@ -1,135 +1,133 @@
 /* ================= Renal — laboratory: renal function tests & urinalysis ================= */
 Object.assign(S,{rv:'<b class="sbb rv">Rv</b>',brz:'<b class="sbb brz">Brz</b>',harr:'<b class="sbb harr">Harr</b>',x:'<b class="sbb gen">Gen</b>'});
-Object.assign(GN,{a:"สิ่งส่งตรวจและการตรวจเบื้องต้น",b:"แถบจุ่มปัสสาวะ",c:"ตะกอนปัสสาวะ",d:"การทำงานของไตและโปรตีน"});
+Object.assign(GN,{a:"Specimen & physical exam",b:"Dipstick",c:"Urine sediment",d:"Renal function & protein"});
 
-SEC.push({id:"spec",k:"a",t:"การเก็บและรักษาสิ่งส่งตรวจ",mm:"เริ่มที่สิ่งส่งตรวจ",drugs:"",act:[],leg:[],
-draw:()=>tbl(["ชนิดตัวอย่าง","เหมาะกับอะไร","ข้อควรระวัง"],[
- ["ปัสสาวะตอนเช้าแรก","เข้มข้นที่สุด · ดูโปรตีน ตะกอน และ nitrite","ค้างในกระเพาะปัสสาวะนาน เซลล์อาจสลาย"],
- ["ปัสสาวะสุ่มเวลา","ตรวจคัดกรองทั่วไป","เจือจางได้มาก แปลผลเชิงปริมาณยาก"],
- ["เก็บ 24 ชั่วโมง","โปรตีนรวม · creatinine clearance","เก็บไม่ครบคือสาเหตุความคลาดเคลื่อนที่พบบ่อยที่สุด"],
- ["Midstream clean catch","เพาะเชื้อ","ปนเปื้อนจากช่องคลอดทำให้แปลผลผิด"],
- ["เลือดส่วนปลาย","BUN · creatinine · cystatin C","—"]]),
+SEC.push({id:"spec",k:"a",t:"Specimen collection & handling",mm:"เริ่มที่สิ่งส่งตรวจ",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Specimen","Best for","Pitfall"],[
+ ["First morning void","เข้มข้นที่สุด · protein, sediment, nitrite","ค้างนาน เซลล์อาจสลาย"],
+ ["Random void","คัดกรองทั่วไป","เจือจางได้มาก แปลผลเชิงปริมาณยาก"],
+ ["24-hour collection","Total protein · creatinine clearance","เก็บไม่ครบ คือสาเหตุคลาดเคลื่อนที่พบบ่อยที่สุด"],
+ ["Midstream clean catch","Culture","Vaginal contamination ทำให้แปลผลผิด"],
+ ["Peripheral blood","BUN · creatinine · cystatin C","—"]]),
 notes:()=>`<ul>
-<li>ปัสสาวะต้องตรวจภายใน 2 ชั่วโมง หรือแช่เย็นไว้ มิฉะนั้นแบคทีเรียจะเจริญ pH สูงขึ้น และ cast กับเซลล์จะสลาย ทำให้ผลตะกอนต่ำกว่าจริง ${S.x}</li>
+<li>ปัสสาวะต้องตรวจภายใน 2 ชั่วโมง หรือแช่เย็นไว้ มิฉะนั้น bacteria จะเจริญ pH สูงขึ้น และ cast กับเซลล์จะสลาย ทำให้ผล sediment ต่ำกว่าจริง ${S.x}</li>
 <li>การเก็บ 24 ชั่วโมงให้ทิ้งปัสสาวะครั้งแรกแล้วเริ่มจับเวลา และเก็บครั้งสุดท้ายเมื่อครบ 24 ชั่วโมงพอดี ${S.x}</li>
 <li>วิธีตรวจว่าเก็บครบหรือไม่คือดูปริมาณ creatinine รวมต่อวัน ซึ่งค่อนข้างคงที่ในคนคนเดียวกัน ${S.x}</li>
 <li>ถ้าเก็บไม่ครบ ค่า creatinine clearance จะต่ำกว่าความจริง และอาจทำให้วินิจฉัยว่าไตเสื่อมทั้งที่ไตปกติ ${S.x}</li></ul>`});
 
-SEC.push({id:"phys",k:"a",t:"การตรวจทางกายภาพและความถ่วงจำเพาะ",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["สี","ใสถึงเหลืองเข้ม · แดงจากเลือดหรือ myoglobin · น้ำตาลเข้มจาก bilirubin","ar"],
- ["ความขุ่น","จากเซลล์ แบคทีเรีย ผลึก หรือไขมัน","bl"],
- ["ความถ่วงจำเพาะด้วยแถบจุ่ม","วัดเฉพาะไอออนที่ละลายอยู่เท่านั้น","vn"],
- ["ข้อดีของแถบจุ่ม","ไม่ถูกรบกวนโดยสารทึบรังสี ต่างจาก refractometer","mod"],
- ["ข้อจำกัด","ไม่ควรใช้แทน osmometry หรือ refractometry เมื่อต้องติดตามสารน้ำอย่างใกล้ชิด","gl"]]),
+SEC.push({id:"phys",k:"a",t:"Physical examination & specific gravity",drugs:"",act:[],leg:[],
+draw:()=>tbl(["What you look at","Normal","What a change means"],[
+ ["Colour","ใสถึงเหลืองเข้ม","แดง = blood หรือ myoglobin · น้ำตาลเข้ม = bilirubin"],
+ ["Turbidity","ใส","ขุ่นจาก cells, bacteria, crystals หรือ lipid"],
+ ["Specific gravity","1.003–1.030","คงที่ราว 1.010 ทุกครั้ง = isosthenuria"],
+ ["Dipstick SG method","วัดเฉพาะ ions ที่ละลายอยู่","ไม่ถูกรบกวนโดย radiocontrast ต่างจาก refractometer"]]),
 notes:()=>`<ul>
-<li>Brunzel: แถบจุ่มสำหรับความถ่วงจำเพาะ <b>วัดเฉพาะไอออนที่ละลายอยู่ จึงอาจไม่สัมพันธ์กับค่าที่ได้จาก refractometer หรือ urinometer</b> ${S.brz}</li>
-<li>Brunzel: <b>ไม่แนะนำให้ใช้แทน osmometry หรือ refractometry ในการติดตามสารน้ำที่สำคัญ</b> แต่ใช้คัดกรองภาวะขาดน้ำได้ ${S.brz}</li>
-<li>Brunzel ระบุข้อได้เปรียบไว้ว่า <b>ค่าที่ได้จากวิธีนี้ไม่ถูกกระทบโดยสารทึบรังสี ซึ่งทำให้ refractometer และ urinometer อ่านค่าผิด</b> ${S.brz}</li>
-<li>ความถ่วงจำเพาะคงที่ราว 1.010 ทุกครั้ง (isosthenuria) บ่งชี้ว่าไตเสียความสามารถในการเจือจางและทำให้เข้มข้น ${S.x}</li>
-<li>Brunzel: การมีโปรตีนหรือกลูโคสในปัสสาวะทำให้ความถ่วงจำเพาะสูงขึ้น ${S.brz}</li></ul>`});
+<li>Brunzel: dipstick สำหรับ specific gravity <b>วัดเฉพาะไอออนที่ละลายอยู่ จึงอาจไม่สัมพันธ์กับค่าที่ได้จาก refractometer หรือ urinometer</b> ${S.brz}</li>
+<li>Brunzel: <b>ไม่แนะนำให้ใช้แทน osmometry หรือ refractometry ในการติดตามสารน้ำที่สำคัญ</b> แต่ใช้คัดกรอง dehydration ได้ ${S.brz}</li>
+<li>Brunzel ระบุข้อได้เปรียบไว้ว่า <b>ค่าที่ได้จากวิธีนี้ไม่ถูกกระทบโดย radiocontrast ซึ่งทำให้ refractometer และ urinometer อ่านค่าผิด</b> ${S.brz}</li>
+<li>specific gravity คงที่ราว 1.010 ทุกครั้ง (isosthenuria) บ่งชี้ว่าไตเสียความสามารถในการเจือจางและทำให้เข้มข้น ${S.x}</li>
+<li>Brunzel: การมี protein หรือกลูโคสในปัสสาวะทำให้ specific gravity สูงขึ้น ${S.brz}</li></ul>`});
 
-SEC.push({id:"dip1",k:"b",t:"แถบจุ่ม: เลือด โปรตีน กลูโคส คีโตน",drugs:"",act:[],leg:[],
-draw:()=>tbl(["ช่อง","บวกเมื่อ","ผลบวกลวง / ลบลวงที่ต้องรู้"],[
- ["Blood","เม็ดเลือดแดง · ฮีโมโกลบิน · ไมโอโกลบิน","บวกแต่ไม่เห็นเม็ดเลือดแดง = hemolysis หรือ rhabdomyolysis"],
- ["Protein","อัลบูมินเป็นหลัก","<b>ไม่จับ light chain</b> จึงพลาด Bence Jones · ปัสสาวะด่างให้ผลบวกลวง"],
- ["Glucose","กลูโคสเกิน threshold ของท่อไต","ไม่จำเพาะต่อเบาหวาน เช่นพบใน Fanconi"],
+SEC.push({id:"dip1",k:"b",t:"Dipstick: blood, protein, glucose, ketones",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Pad","Positive when","False positive / negative"],[
+ ["Blood","erythrocyte · ฮีโมโกลบิน · ไมโอโกลบิน","บวกแต่ไม่เห็น erythrocyte = hemolysis หรือ rhabdomyolysis"],
+ ["Protein","อัลบูมินเป็นหลัก","<b>ไม่จับ light chain</b> จึงพลาด Bence Jones · alkaline urine ให้ผลบวกลวง"],
+ ["Glucose","กลูโคสเกิน threshold ของ tubule","ไม่จำเพาะต่อเบาหวาน เช่นพบใน Fanconi"],
  ["Ketone","<b>acetoacetate เท่านั้น</b>","ไม่จับ β-hydroxybutyrate จึงอ่านต่ำกว่าจริงใน DKA รุนแรง"]]),
 notes:()=>`<ul>
 <li>Brunzel: ช่องคีโตน <b>ให้ผลบวกเฉพาะเมื่อมี acetoacetic acid เท่านั้น ไม่ทำปฏิกิริยากับ acetone หรือ beta-hydroxybutyric acid</b> ${S.brz}</li>
 <li>Brunzel: ในภาวะ ketonuria องค์ประกอบส่วนใหญ่คือ <b>beta-hydroxybutyric acid มากกว่าสามในสี่ ส่วน acetoacetic acid มีราว 10% และ acetone เพียงเล็กน้อย</b> ${S.brz}</li>
-<li>ผลสองข้อข้างต้นรวมกันคือเหตุผลที่ <b>แถบจุ่มอ่านคีโตนต่ำกว่าความจริงใน DKA รุนแรง</b> และอาจดูเหมือนแย่ลงระหว่างรักษาเมื่อ β-hydroxybutyrate ถูกเปลี่ยนกลับเป็น acetoacetate ${S.x}</li>
+<li>ผลสองข้อข้างต้นรวมกันคือเหตุผลที่ <b>dipstick อ่านคีโตนต่ำกว่าความจริงใน DKA รุนแรง</b> และอาจดูเหมือนแย่ลงระหว่างรักษาเมื่อ β-hydroxybutyrate ถูกเปลี่ยนกลับเป็น acetoacetate ${S.x}</li>
 <li>Brunzel: ช่องคีโตนให้ผลบวกเมื่อระดับในปัสสาวะเกิน 10 mg/dL และ <b>อาจพบระดับเล็กน้อยได้ในภาวะเครียดทางกาย การออกกำลังกายหนัก และบางครั้งในผู้ตั้งครรภ์</b> ${S.brz}</li>
-<li>ช่องโปรตีนไวต่ออัลบูมินเป็นหลัก จึงต้องสั่งตรวจเฉพาะเมื่อสงสัย <b>light chain</b> ไม่ใช่พึ่งแถบจุ่ม ${S.x}</li></ul>`});
+<li>ช่อง protein ไวต่ออัลบูมินเป็นหลัก จึงต้องสั่งตรวจเฉพาะเมื่อสงสัย <b>light chain</b> ไม่ใช่พึ่ง dipstick ${S.x}</li></ul>`});
 
-SEC.push({id:"dip2",k:"b",t:"แถบจุ่ม: ไนไตรท์ เม็ดเลือดขาว และช่องอื่น",drugs:"",act:[],leg:[],
-draw:()=>tbl(["ช่อง","หลักการ","จุดที่ทำให้แปลผลพลาด"],[
- ["Nitrite","แบคทีเรียเปลี่ยนไนเตรตเป็นไนไตรท์","<b>ลบลวง</b>เมื่อเชื้อไม่มีเอนไซม์ หรือปัสสาวะค้างไม่นานพอ"],
- ["Leukocyte esterase","เอนไซม์จากนิวโทรฟิล","บวกได้แม้เม็ดเลือดขาวสลายจนมองไม่เห็นด้วยกล้อง"],
- ["pH","4.5–8","ค้างนานแบคทีเรียทำให้ด่างขึ้น"],
+SEC.push({id:"dip2",k:"b",t:"Dipstick: nitrite, leukocyte esterase & the rest",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Pad","Principle","Where it misleads"],[
+ ["Nitrite","bacteria เปลี่ยนไนเตรตเป็น nitrite","<b>ลบลวง</b>เมื่อเชื้อไม่มีเอนไซม์ หรือปัสสาวะค้างไม่นานพอ"],
+ ["Leukocyte esterase","เอนไซม์จากนิวโทรฟิล","บวกได้แม้ leukocyte สลายจนมองไม่เห็นด้วย microscopy"],
+ ["pH","4.5–8","ค้างนาน bacteria ทำให้ด่างขึ้น"],
  ["Bilirubin · Urobilinogen","แยกดีซ่านจากท่อน้ำดีกับจากเม็ดเลือดแตก","bilirubin สลายเมื่อถูกแสง"]]),
 notes:()=>`<ul>
-<li>Brunzel ตอบคำถามที่พบบ่อยที่สุดไว้ตรง ๆ ว่า เหตุที่ <b>ไนไตรท์ให้ผลลบทั้งที่เห็นแบคทีเรียด้วยกล้อง คือเชื้อนั้นอาจไม่ใช่ชนิดที่เปลี่ยนไนเตรตเป็นไนไตรท์ได้</b> ${S.brz}</li>
-<li>Brunzel: <b>ผลบวกของ leukocyte esterase ไม่ได้บ่งชี้การติดเชื้อทางเดินปัสสาวะอย่างจำเพาะ</b> เม็ดเลือดขาวที่ไม่สมบูรณ์ก็ให้ผลบวกได้ทั้งที่มองไม่เห็นด้วยกล้อง ${S.brz}</li>
-<li>Brunzel: <b>ลิมโฟไซต์ เม็ดเลือดแดง แบคทีเรีย และเซลล์เนื้อไตไม่มีเอนไซม์ esterase จึงให้ผลลบ</b> ซึ่งเป็นข้อจำกัดด้านความจำเพาะที่ต้องรู้ ${S.brz}</li>
+<li>Brunzel ตอบคำถามที่พบบ่อยที่สุดไว้ตรง ๆ ว่า เหตุที่ <b>nitrite ให้ผลลบทั้งที่เห็น bacteria ด้วย microscopy คือเชื้อนั้นอาจไม่ใช่ชนิดที่เปลี่ยนไนเตรตเป็น nitrite ได้</b> ${S.brz}</li>
+<li>Brunzel: <b>ผลบวกของ leukocyte esterase ไม่ได้บ่งชี้ urinary tract infection อย่างจำเพาะ</b> leukocyte ที่ไม่สมบูรณ์ก็ให้ผลบวกได้ทั้งที่มองไม่เห็นด้วย microscopy ${S.brz}</li>
+<li>Brunzel: <b>ลิมโฟไซต์ erythrocyte bacteria และเซลล์เนื้อไตไม่มีเอนไซม์ esterase จึงให้ผลลบ</b> ซึ่งเป็นข้อจำกัดด้านความจำเพาะที่ต้องรู้ ${S.brz}</li>
 <li>Brunzel: <b>ยาปฏิชีวนะบางชนิดรวมถึง tetracycline ที่ความเข้มข้นสูงให้ผลลบลวง</b> ส่วน <b>การปนเปื้อนจากสารคัดหลั่งในช่องคลอดให้ผลบวกลวง</b> ${S.brz}</li>
-<li>เชื้อกลุ่ม Enterobacterales เช่น E. coli เปลี่ยนไนเตรตได้ดี ส่วน Enterococcus, S. saprophyticus และ Pseudomonas มักให้ไนไตรท์ลบ ${S.x}</li>
-<li>นี่คือเหตุผลที่ <b>ไนไตรท์ลบไม่ตัดการติดเชื้อออก แต่ไนไตรท์บวกค่อนข้างยืนยันได้</b> — จำเพาะสูงแต่ไวต่ำ ${S.x}</li></ul>`});
+<li>เชื้อกลุ่ม Enterobacterales เช่น E. coli เปลี่ยนไนเตรตได้ดี ส่วน Enterococcus, S. saprophyticus และ Pseudomonas มักให้ nitrite ลบ ${S.x}</li>
+<li>นี่คือเหตุผลที่ <b>nitrite ลบไม่ตัด infection ออก แต่ nitrite บวกค่อนข้างยืนยันได้</b> — จำเพาะสูงแต่ไวต่ำ ${S.x}</li></ul>`});
 
-SEC.push({id:"sed",k:"c",t:"ตะกอนปัสสาวะ: เซลล์และ cast",drugs:"",act:[],leg:[],
-draw:()=>tbl(["สิ่งที่พบ","บ่งชี้อะไร"],[
- ["เม็ดเลือดแดงรูปผิดปกติ · RBC cast","เลือดออกจาก<b>โกลเมอรูลัส</b>"],
- ["เม็ดเลือดแดงรูปปกติ","เลือดออกจากทางเดินปัสสาวะส่วนล่าง เช่นนิ่วหรือเนื้องอก"],
+SEC.push({id:"sed",k:"c",t:"Urine sediment: cells & casts",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Finding","Indicates"],[
+ ["Dysmorphic RBC · RBC cast","เลือดออกจาก<b>glomerulus</b>"],
+ ["Isomorphic RBC","เลือดออกจากทางเดินปัสสาวะส่วนล่าง เช่น stone หรือเนื้องอก"],
  ["WBC cast","การอักเสบในเนื้อไต เช่น pyelonephritis หรือ interstitial nephritis"],
- ["Muddy brown granular cast","การบาดเจ็บของท่อไตเฉียบพลัน (ATN)"],
+ ["Muddy brown granular cast","acute tubular injury (ATN)"],
  ["Waxy · broad cast","ไตเสื่อมเรื้อรังระยะท้าย"],
- ["Hyaline cast","ไม่จำเพาะ · พบได้ในภาวะขาดน้ำและหลังออกกำลังกาย"],
- ["<b>Oval fat body</b>","ไขมันในเซลล์ท่อไตที่หลุดออกมา · บ่งชี้<b>กลุ่มอาการเนโฟรติก</b>"]]),
+ ["Hyaline cast","ไม่จำเพาะ · พบได้ใน dehydration และหลังออกกำลังกาย"],
+ ["<b>Oval fat body</b>","lipid ในเซลล์ tubule ที่หลุดออกมา · บ่งชี้<b>nephrotic syndrome</b>"]]),
 notes:()=>`<ul>
-<li>หลักที่ใช้อ่านตะกอนได้ทั้งแผ่น: <b>cast เกิดขึ้นในท่อไตเท่านั้น การพบ cast จึงยืนยันว่าสิ่งที่อยู่ในนั้นมาจากไต ไม่ใช่จากทางเดินปัสสาวะส่วนล่าง</b> ${S.x}</li>
-<li>Oval fat body เมื่อดูด้วยกล้อง polarized จะเห็นเป็น <b>ลักษณะกากบาทแบบมอลทีส</b> ซึ่งเป็นเอกลักษณ์ของกลุ่มอาการเนโฟรติก ${S.x}</li>
-<li>Brunzel อธิบายกรณีที่พบบ่อยในการฝึกอ่าน ว่าเมื่อพบ <b>leukocyte esterase บวก โปรตีนบวก พร้อมเม็ดเลือดขาวและเม็ดเลือดแดง</b> ให้นึกถึงภาวะโกลเมอรูลัสอักเสบเฉียบพลัน ไม่ใช่การติดเชื้อเสมอไป ${S.brz}</li>
-<li>Brunzel: ถ้าเห็นแบคทีเรียในตะกอน การย้อมแกรมจะช่วยยืนยันร่วมกับเซลล์เม็ดเลือดและเซลล์เยื่อบุที่พบ ${S.brz}</li>
-<li>เซลล์เยื่อบุชนิด squamous จำนวนมากบ่งชี้ว่าตัวอย่างปนเปื้อน ควรเก็บใหม่ก่อนแปลผล ${S.x}</li></ul>`});
+<li>หลักที่ใช้อ่าน sediment ได้ทั้งแผ่น คือ: <b>cast เกิดขึ้นใน tubule เท่านั้น การพบ cast จึงยืนยันว่าสิ่งที่อยู่ในนั้นมาจากไต ไม่ใช่จากทางเดินปัสสาวะส่วนล่าง</b> ${S.x}</li>
+<li>Oval fat body เมื่อดูภายใต้แสง polarized จะเห็นเป็น <b>Maltese cross</b> ซึ่งเป็นเอกลักษณ์ของ nephrotic syndrome ${S.x}</li>
+<li>Brunzel อธิบายกรณีที่พบบ่อยในการฝึกอ่าน ว่าเมื่อพบ <b>leukocyte esterase บวก protein บวก พร้อม leukocyte และ erythrocyte</b> ให้นึกถึงacute glomerulonephritis ไม่ใช่ infection เสมอไป ${S.brz}</li>
+<li>Brunzel: ถ้าเห็น bacteria ใน sediment การทำ Gram stain จะช่วยยืนยันร่วมกับblood cells และ epithelial cells ที่พบ ${S.brz}</li>
+<li>Squamous epithelial cells จำนวนมากบ่งชี้ว่าตัวอย่างปนเปื้อน ควรเก็บใหม่ก่อนแปลผล ${S.x}</li></ul>`});
 
-SEC.push({id:"cryst",k:"c",t:"ผลึกในปัสสาวะ",drugs:"",act:[],leg:[],
-draw:()=>tbl(["ผลึก","รูปร่าง","พบเมื่อ"],[
- ["Calcium oxalate","ซองจดหมาย หรือดัมเบล","พบบ่อยที่สุด · พิษ ethylene glycol"],
- ["Uric acid","สี่เหลี่ยมขนมเปียกปูนสีน้ำตาล","ปัสสาวะเป็นกรด · tumor lysis · เกาต์"],
- ["Triple phosphate (struvite)","ฝาโลงศพ","ปัสสาวะด่างจากเชื้อที่สร้าง urease เช่น Proteus"],
- ["Cystine","หกเหลี่ยม","<b>ผิดปกติเสมอ</b> — บ่งชี้ cystinuria"],
- ["Bilirubin","เข็มสีเหลืองน้ำตาล","โรคตับ"]]),
+SEC.push({id:"cryst",k:"c",t:"Urinary crystals",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Crystal","Shape","Seen in"],[
+ ["Calcium oxalate","envelope หรือ dumbbell","พบบ่อยที่สุด · พิษ ethylene glycol"],
+ ["Uric acid","brown rhomboid","acidic urine · tumor lysis · เกาต์"],
+ ["Triple phosphate (struvite)","coffin lid","alkaline urine จากเชื้อที่สร้าง urease เช่น Proteus"],
+ ["Cystine","hexagonal","<b>ผิดปกติเสมอ</b> — บ่งชี้ cystinuria"],
+ ["Bilirubin","yellow-brown needles","liver disease"]]),
 notes:()=>`<ul>
 <li>ผลึกส่วนใหญ่ตีความร่วมกับ pH เสมอ — <b>กรดชอบ uric acid และ cystine ส่วนด่างชอบ struvite และ calcium phosphate</b> ${S.x}</li>
-<li>ผลึกหกเหลี่ยมของ cystine เป็นข้อเดียวในตารางที่ <b>พบเมื่อไรก็ผิดปกติเมื่อนั้น</b> ต้องตามหา cystinuria เสมอ ${S.x}</li>
-<li>ผลึก calcium oxalate แบบ monohydrate รูปเข็มหรือดัมเบลจำนวนมากในผู้ป่วยซึมและมี anion gap สูง ให้นึกถึงพิษ ethylene glycol ${S.x}</li>
-<li>Struvite เชื่อมโยงกับนิ่ว staghorn โดยตรง เพราะเชื้อที่สร้าง urease ทำให้ปัสสาวะด่างจนผลึกตกตะกอน ${S.x}</li></ul>`});
+<li>ผลึก hexagonal ของ cystine เป็นข้อเดียวในตารางที่ <b>พบเมื่อไรก็ผิดปกติเมื่อนั้น</b> ต้องตามหา cystinuria เสมอ ${S.x}</li>
+<li>ผลึก calcium oxalate แบบ monohydrate รูปเข็มหรือ dumbbell จำนวนมากในผู้ป่วยซึมและมี anion gap สูง ให้นึกถึงพิษ ethylene glycol ${S.x}</li>
+<li>Struvite เชื่อมโยงกับ stone staghorn โดยตรง เพราะเชื้อที่สร้าง urease ทำให้ alkaline urine จนผลึกตก sediment ${S.x}</li></ul>`});
 
-SEC.push({id:"prot",k:"d",t:"การวัดโปรตีน: UACR และ Bence Jones",drugs:"",act:[],leg:[],
-draw:()=>tbl(["การตรวจ","วัดอะไร","ใช้เมื่อไร"],[
- ["แถบจุ่ม","อัลบูมินปริมาณมาก","คัดกรองหยาบ ๆ"],
- ["Microalbumin","อัลบูมินปริมาณน้อยที่แถบจุ่มจับไม่ได้","คัดกรองไตจากเบาหวานตั้งแต่ระยะแรก"],
- ["<b>UACR</b>","อัตราส่วนอัลบูมินต่อครีแอตินีนในปัสสาวะสุ่ม","แทนการเก็บ 24 ชั่วโมงได้ · ใช้แบ่งระยะ CKD"],
- ["โปรตีนรวม 24 ชั่วโมง","โปรตีนทุกชนิด","ยืนยันปริมาณที่แท้จริง"],
+SEC.push({id:"prot",k:"d",t:"Measuring protein: UACR & Bence Jones",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Test","Measures","Use when"],[
+ ["dipstick","albumin ปริมาณมาก","คัดกรองหยาบ ๆ"],
+ ["Microalbumin","albumin ปริมาณน้อยที่ dipstick จับไม่ได้","คัดกรองไตจากเบาหวานตั้งแต่ระยะแรก"],
+ ["<b>UACR</b>","albumin-to-creatinine ratio จากปัสสาวะสุ่ม","แทนการเก็บ 24 ชั่วโมงได้ · ใช้แบ่งระยะ CKD"],
+ ["24-hour total protein","protein ทุกชนิด","ยืนยันปริมาณที่แท้จริง"],
  ["<b>Bence Jones</b>","immunoglobulin light chain","สงสัย multiple myeloma"]]),
 notes:()=>`<ul>
-<li>เหตุผลที่ UACR ใช้แทนการเก็บ 24 ชั่วโมงได้: <b>การหารด้วยครีแอตินีนช่วยชดเชยความเข้มข้นของปัสสาวะ</b> ตัวอย่างที่เจือจางหรือเข้มข้นจึงให้ค่าใกล้เคียงกัน ${S.x}</li>
-<li>จุดที่พลาดกันบ่อยที่สุดคือ <b>แถบจุ่มไวต่ออัลบูมินแต่ไม่จับ light chain</b> ผู้ป่วย multiple myeloma จึงอาจมีแถบจุ่มโปรตีนลบทั้งที่ขับโปรตีนออกมามาก ${S.x}</li>
-<li>ถ้าสงสัย Bence Jones ต้องสั่ง <b>urine protein electrophoresis พร้อม immunofixation</b> ไม่ใช่พึ่งแถบจุ่ม ${S.x}</li>
+<li>เหตุผลที่ UACR ใช้แทนการเก็บ 24 ชั่วโมงได้: <b>การหารด้วย creatinine ช่วยชดเชยความเข้มข้นของปัสสาวะ</b> ตัวอย่างที่เจือจางหรือเข้มข้นจึงให้ค่าใกล้เคียงกัน ${S.x}</li>
+<li>จุดที่พลาดกันบ่อยที่สุดคือ <b>dipstick ไวต่ออัลบูมินแต่ไม่จับ light chain</b> ผู้ป่วย multiple myeloma จึงอาจมี dipstickprotein ลบทั้งที่ขับ protein ออกมามาก ${S.x}</li>
+<li>ถ้าสงสัย Bence Jones ต้องสั่ง <b>urine protein electrophoresis พร้อม immunofixation</b> ไม่ใช่พึ่ง dipstick ${S.x}</li>
 <li>UACR เป็นหนึ่งในสองแกนของการแบ่งระยะ CKD ตาม KDIGO คู่กับ GFR ซึ่งเชื่อมกับหัวข้อ CKD ในส่วนพยาธิวิทยา ${S.x}</li>
-<li>โปรตีนในปัสสาวะที่พบชั่วคราวได้โดยไม่ใช่โรค ได้แก่หลังออกกำลังกายหนัก ไข้ และ orthostatic proteinuria ในวัยรุ่น ${S.x}</li></ul>`});
+<li>protein ในปัสสาวะที่พบชั่วคราวได้โดยไม่ใช่โรค ได้แก่หลังออกกำลังกายหนัก ไข้ และ orthostatic proteinuria ในวัยรุ่น ${S.x}</li></ul>`});
 
-SEC.push({id:"gfr",k:"d",t:"ครีแอตินีน BUN และการประเมิน GFR",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Creatinine clearance","เก็บปัสสาวะ 24 ชม. · ประเมิน GFR สูงกว่าจริงเล็กน้อยเพราะท่อไตหลั่งครีแอตินีนออกมาด้วย","ar"],
- ["eGFR จากสมการ","ใช้ creatinine ร่วมกับอายุและเพศ · ไม่ต้องเก็บปัสสาวะ","bl"],
- ["ข้อจำกัดของครีแอตินีน","ขึ้นกับมวลกล้ามเนื้อ อาหาร และยาบางชนิด","vn"],
- ["BUN","ขึ้นกับโปรตีนในอาหารและสภาวะสารน้ำ · ไม่ใช่ตัววัด GFR ที่ดี","mod"],
- ["BUN/Cr สูงกว่า 20","ชี้ไปทางสาเหตุก่อนถึงไต (prerenal)","gl"]]),
+SEC.push({id:"gfr",k:"d",t:"Creatinine, BUN & estimating GFR",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Test","What it reflects","Limitation"],[
+ ["Creatinine clearance","GFR จากการเก็บปัสสาวะ 24 ชม.","<b>สูงกว่าจริง</b> เพราะ tubular secretion · เก็บไม่ครบทำให้ต่ำลวง"],
+ ["eGFR จากสมการ","GFR ประเมินจาก creatinine, อายุ, เพศ","ใช้ไม่ได้เมื่อ creatinine ยังไม่คงที่ เช่นใน AKI"],
+ ["Serum creatinine","Muscle mass และ GFR","ปกติได้ทั้งที่ GFR ต่ำแล้ว ถ้ากล้ามเนื้อน้อย"],
+ ["BUN","Protein load และสภาวะสารน้ำ","ไม่ใช่ตัววัด GFR ที่ดี · <b>BUN/Cr &gt; 20 = prerenal</b>"]]),
 notes:()=>`<ul>
-<li>Harr: <b>ครีแอตินีนในพลาสมาและ cystatin C เป็นสองตัวที่ใช้ประเมินการกรองของโกลเมอรูลัส</b> ${S.harr}</li>
-<li>ครีแอตินีนถูกกรองและ<b>ถูกหลั่งเพิ่มเล็กน้อยที่ท่อไต</b> ดังนั้น creatinine clearance จึงสูงกว่า GFR จริงเสมอ ซึ่งเป็นข้อจำกัดที่ต้องรู้ ${S.x}</li>
-<li>ครีแอตินีนมาจากกล้ามเนื้อ ผู้สูงอายุหรือผู้ที่กล้ามเนื้อน้อยจึงอาจมีครีแอตินีนปกติทั้งที่ GFR ต่ำแล้ว ${S.x}</li>
-<li>ความสัมพันธ์ระหว่างครีแอตินีนกับ GFR ไม่เป็นเส้นตรง — <b>GFR ลดครึ่งหนึ่งแรกแทบไม่ทำให้ครีแอตินีนขยับ</b> จึงตรวจไม่พบไตเสื่อมระยะแรกด้วยค่านี้ ${S.x}</li>
-<li>ค่า eGFR ที่รายงานอัตโนมัติใช้ไม่ได้ในภาวะที่ครีแอตินีนยังไม่คงที่ เช่น AKI ที่กำลังดำเนินอยู่ ${S.x}</li></ul>`});
+<li>Harr: <b>creatinine ในพลาสมาและ cystatin C เป็นสองตัวที่ใช้ประเมินการกรองของ glomerulus</b> ${S.harr}</li>
+<li>creatinine ถูกกรองและ<b>ถูกหลั่งเพิ่มเล็กน้อยที่ tubule</b> ดังนั้น creatinine clearance จึงสูงกว่า GFR จริงเสมอ ซึ่งเป็นข้อจำกัดที่ต้องรู้ ${S.x}</li>
+<li>creatinine มาจากกล้ามเนื้อ ผู้สูงอายุหรือผู้ที่กล้ามเนื้อน้อยจึงอาจมี creatinine ปกติทั้งที่ GFR ต่ำแล้ว ${S.x}</li>
+<li>ความสัมพันธ์ระหว่าง creatinine กับ GFR ไม่เป็นเส้นตรง — <b>GFR ลดครึ่งหนึ่งแรกแทบไม่ทำให้ creatinine ขยับ</b> จึงตรวจไม่พบไตเสื่อมระยะแรกด้วยค่านี้ ${S.x}</li>
+<li>ค่า eGFR ที่รายงานอัตโนมัติใช้ไม่ได้ในภาวะที่ creatinine ยังไม่คงที่ เช่น AKI ที่กำลังดำเนินอยู่ ${S.x}</li></ul>`});
 
-SEC.push({id:"biomark",k:"d",t:"Biomarker รุ่นใหม่",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Cystatin C","โปรตีน 13 kDa · ถูกกรองหมดแล้วดูดกลับที่ท่อไต · ไม่ขึ้นกับมวลกล้ามเนื้อ","ar"],
- ["ข้อดีของ cystatin C","ไวกว่าครีแอตินีน ผิดปกติตั้งแต่ clearance ต่ำกว่า 90 mL/min","bl"],
- ["NGAL","neutrophil gelatinase-associated lipocalin · ขึ้นเร็วหลังไตบาดเจ็บ","vn"],
- ["KIM-1","โปรตีนทรานส์เมมเบรนชนิดที่ 1 · แสดงออกมากในท่อไตส่วนต้นที่บาดเจ็บ","mod"],
- ["ทำไมต้องมี","ครีแอตินีนขึ้นช้าหลายชั่วโมงถึงวัน · ตัวเหล่านี้บอกได้เร็วกว่า","gl"]]),
+SEC.push({id:"biomark",k:"d",t:"Newer biomarkers",drugs:"",act:[],leg:[],
+draw:()=>tbl(["Marker","Size & origin","What a rise tells you"],[
+ ["Cystatin C","13 kDa · ทุกเซลล์ที่มีนิวเคลียส","GFR · ไม่ขึ้นกับ muscle mass, อาหาร, อายุ, เพศ"],
+ ["NGAL","25 kDa · neutrophils และ tubular cells","Tubular injury ภายในไม่กี่ชั่วโมง"],
+ ["KIM-1","Transmembrane · proximal tubule ที่บาดเจ็บ","Proximal tubular injury โดยเฉพาะ · ไม่พบเมื่อไม่มีการบาดเจ็บ"],
+ ["L-FABP","14 kDa · proximal tubule","Renal hypoxia · สัมพันธ์กับ tubulointerstitial damage"],
+ ["Beta-trace protein","26–29 kDa · ทั่วร่างกาย","GFR ร่วมกับ tissue injury · พบในปัสสาวะคนปกติด้วย"]]),
 notes:()=>`<ul>
-<li>Harr: <b>cystatin C เป็นตัวยับยั้ง cysteine protease ขนาดเพียง 13 กิโลดาลตัน จึงถูกกรองผ่านโกลเมอรูลัสทั้งหมดแล้วถูกดูดกลับที่ท่อไต</b> ${S.harr}</li>
+<li>Harr: <b>cystatin C เป็นตัวยับยั้ง cysteine protease ขนาดเพียง 13 กิโลดาลตัน จึงถูกกรองผ่าน glomerulus ทั้งหมดแล้วถูกดูดกลับที่ tubule</b> ${S.harr}</li>
 <li>Harr: <b>ระดับในพลาสมาสัมพันธ์กับ GFR อย่างมาก เพราะถูกกำจัดทางอื่นนอกไตน้อยมาก และไม่ถูกกระทบจากอาหาร อายุ เพศ หรือภาวะโภชนาการ</b> ${S.harr}</li>
-<li>Harr: ระดับ <b>ผิดปกติเมื่ออัตราการกำจัดต่ำกว่า 90 mL/min ทำให้การตรวจนี้ไวกว่าครีแอตินีน</b> ${S.harr}</li>
-<li>Harrison: <b>KIM-1 เป็นโปรตีนทรานส์เมมเบรนชนิดที่ 1 ที่แสดงออกอย่างมากในเซลล์ท่อไตส่วนต้นที่บาดเจ็บจากการขาดเลือดหรือจากสารพิษต่อไตหลายชนิด เช่น cisplatin</b> ${S.h}</li>
-<li>Harrison: <b>KIM-1 ไม่ถูกแสดงออกในปริมาณที่มีนัยสำคัญเมื่อไม่มีการบาดเจ็บของท่อไต หรือในเนื้อเยื่อนอกไต</b> จึงตรวจพบได้ทั้งในปัสสาวะและพลาสมาหลังการบาดเจ็บ ${S.h}</li>
-<li>คุณค่าที่แท้จริงของกลุ่มนี้คือเรื่องเวลา — ครีแอตินีนเป็นตัวบอกการทำงานที่ลดลงแล้ว ส่วน NGAL และ KIM-1 บอกว่าเซลล์กำลังบาดเจ็บอยู่ ${S.x}</li>
-<li><b>L-FABP</b> (liver-type fatty acid binding protein): โปรตีนขนาด <b>14 kDa ที่แสดงออกในท่อไตส่วนต้นของมนุษย์</b> · กลไกที่เสนอคือ <b>ภาวะขาดออกซิเจนของไตเพิ่มการสร้างและเร่งการขับออกทางปัสสาวะ</b> ${S.rv}</li>
+<li>Harr: ระดับ <b>ผิดปกติเมื่ออัตราการกำจัดต่ำกว่า 90 mL/min ทำให้การตรวจนี้ไวกว่า creatinine</b> ${S.harr}</li>
+<li>Harrison: <b>KIM-1 เป็น protein ทรานส์เมมเบรนชนิดที่ 1 ที่แสดงออกอย่างมากในเซลล์ proximal tubule ที่บาดเจ็บจากการขาดเลือดหรือจากสารพิษต่อไตหลายชนิด เช่น cisplatin</b> ${S.h}</li>
+<li>Harrison: <b>KIM-1 ไม่ถูกแสดงออกในปริมาณที่มีนัยสำคัญเมื่อไม่มีการบาดเจ็บของ tubule หรือในเนื้อเยื่อนอกไต</b> จึงตรวจพบได้ทั้งในปัสสาวะและพลาสมาหลังการบาดเจ็บ ${S.h}</li>
+<li>คุณค่าที่แท้จริงของกลุ่มนี้คือเรื่องเวลา — creatinine เป็นตัวบอกการทำงานที่ลดลงแล้ว ส่วน NGAL และ KIM-1 บอกว่าเซลล์กำลังบาดเจ็บอยู่ ${S.x}</li>
+<li><b>L-FABP</b> (liver-type fatty acid binding protein): protein ขนาด <b>14 kDa ที่แสดงออกใน proximal tubule ของมนุษย์</b> · กลไกที่เสนอคือ <b>ภาวะขาดออกซิเจนของไตเพิ่มการสร้างและเร่งการขับออกทางปัสสาวะ</b> ${S.rv}</li>
 <li>งานทบทวนระบุว่าระดับ L-FABP ในปัสสาวะ <b>สัมพันธ์กับความเสียหายของ tubulointerstitium จากชิ้นเนื้อ</b> และการวิเคราะห์อภิมานสรุปว่าเป็น <b>ตัวทำนาย AKI ที่เชื่อถือได้ในระดับปานกลาง</b> · ใช้ทำนายการดำเนินโรคของ CKD ได้ด้วย และ<b>ได้รับการรับรองในญี่ปุ่นตั้งแต่ปี 2011</b> ${S.rv}</li>
-<li><b>Beta-trace protein</b> (prostaglandin D synthase): ขนาด <b>26–29 kDa ซึ่งใหญ่กว่าครีแอตินีน (113 Da) และ cystatin C (13.4 kDa) มาก</b> ${S.rv}</li>
-<li>ข้อจำกัดที่ต้องรู้: <b>การจัดการของไตต่อโปรตีนนี้ยังไม่แน่ชัด</b> · ต่างจาก cystatin C ตรงที่ <b>ไม่ถูกดูดกลับจนหมดที่ท่อไต จึงตรวจพบในปัสสาวะของคนปกติได้เสมอ</b> ซึ่งลดประโยชน์ของมันลง ${S.rv}</li>
-<li>งานทบทวนสรุปว่า <b>ยังไม่มีข้อได้เปรียบที่ชัดเจนของสมการ BTP เหนือสมการที่ใช้ครีแอตินีนแบบเดิม</b> และควรมองว่าเป็น <b>ตัวบ่งชี้รวมของทั้ง GFR และการบาดเจ็บของเนื้อ</b> มากกว่าเป็นตัววัด GFR อย่างเดียว ${S.rv}</li>
+<li><b>Beta-trace protein</b> (prostaglandin D synthase): ขนาด <b>26–29 kDa ซึ่งใหญ่กว่า creatinine (113 Da) และ cystatin C (13.4 kDa) มาก</b> ${S.rv}</li>
+<li>ข้อจำกัดที่ต้องรู้: <b>การจัดการของไตต่อ protein นี้ยังไม่แน่ชัด</b> · ต่างจาก cystatin C ตรงที่ <b>ไม่ถูกดูดกลับจนหมดที่ tubule จึงตรวจพบในปัสสาวะของคนปกติได้เสมอ</b> ซึ่งลดประโยชน์ของมันลง ${S.rv}</li>
+<li>งานทบทวนสรุปว่า <b>ยังไม่มีข้อได้เปรียบที่ชัดเจนของสมการ BTP เหนือสมการที่ใช้ creatinine แบบเดิม</b> และควรมองว่าเป็น <b>ตัวบ่งชี้รวมของทั้ง GFR และการบาดเจ็บของเนื้อ</b> มากกว่าเป็นตัววัด GFR อย่างเดียว ${S.rv}</li>
 <li>สองตัวนี้มาจากงานวิจัยทบทวน ไม่ใช่ตำราทั้งสามเล่มที่ใช้อ้างอิงอะตลาสนี้ จึงติด badge <b>Rv</b> แยกไว้ · ทั้งคู่ยังไม่ใช้ในเวชปฏิบัติทั่วไป ${S.x}</li></ul>`});

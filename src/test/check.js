@@ -118,9 +118,7 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
     "biochem-metab-3.js": 60,
     "biochem-metab-4.js": 63,
     "biochem-molecular-1.js": 60,
-    "biochem-molecular-2.js": 62,
-    "renal-clinical.js": 76,
-    "renal-lab.js": 73
+    "biochem-molecular-2.js": 62
     };
     const ceiling = THAI_DEBT[f] || 55;
     if (pct > ceiling) bad(`${f}: ${pct}% Thai characters, ceiling ${ceiling} — keep disease, drug, enzyme and structure names in English`);
@@ -156,8 +154,6 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
   "pharm-renal.js": 4,
   "pharm-repro.js": 1,
   "pharm-tox.js": 15,
-  "renal-clinical.js": 2,
-  "renal-lab.js": 3,
   "renal-patho-1.js": 1,
   "renal-patho-2.js": 2,
   "renal-patho-3.js": 1,
