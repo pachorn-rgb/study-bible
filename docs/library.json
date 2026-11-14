@@ -296,6 +296,76 @@
         "ch": "FA Ch Biochemistry",
         "sort": 13
        }
+      },
+      {
+       "id": "biochem-molecular-1",
+       "title": "Molecular 1: DNA, Replication & Repair",
+       "subs": [
+        "Molecular"
+       ],
+       "src": "Lippincott Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+       "href": "biochem/biochem-molecular-1.html",
+       "thumb": "thumbs/biochem-molecular-1.jpg",
+       "desc": "นิวคลีโอโซมและฮิสโตนทั้งห้าชนิด, euchromatin เทียบ heterochromatin, การเติมหมู่เมทิลที่ DNA และการปรับแต่งฮิสโตน, การสร้างพิวรีนและไพริมิดีนแบบ de novo, ribonucleotide reductase และยาที่ออกฤทธิ์ที่เส้นทางนี้, เส้นทางกู้คืนและกลุ่มอาการ Lesch-Nyhan, ภาวะพร่อง ADA, ขั้นตอนการจำลอง DNA และเอนไซม์แต่ละตัว, topoisomerase, telomerase และ Hayflick limit, กลไกซ่อม DNA ทั้งห้าแบบกับโรคที่เกิดเมื่อเสีย, ชนิดของการกลายพันธุ์",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "นิวคลีโอโซมและฮิสโตน",
+         "chrom"
+        ],
+        [
+         "Epigenetics: เมทิลและอะซิติล",
+         "epig"
+        ],
+        [
+         "การสร้างพิวรีน",
+         "purine"
+        ],
+        [
+         "การสร้างไพริมิดีนและ ribonucleotide reductase",
+         "pyrim"
+        ],
+        [
+         "ยาที่ออกฤทธิ์ที่เส้นทางนิวคลีโอไทด์",
+         "nucdrug"
+        ],
+        [
+         "เส้นทางกู้คืน: Lesch-Nyhan และ ADA",
+         "salvage"
+        ],
+        [
+         "ขั้นตอนการจำลอง DNA",
+         "repl"
+        ],
+        [
+         "เอนไซม์จำลองและกิจกรรม exonuclease",
+         "replenz"
+        ],
+        [
+         "Telomere และ telomerase",
+         "telo"
+        ],
+        [
+         "กลไกซ่อม DNA ทั้งห้าแบบ",
+         "repair"
+        ],
+        [
+         "ชนิดของการกลายพันธุ์",
+         "mut"
+        ]
+       ],
+       "ref": {
+        "b": "lir",
+        "l": "LIR",
+        "ch": "FA Ch Biochemistry",
+        "sort": 14
+       }
       }
      ],
      "checklist": [
@@ -684,6 +754,105 @@
        "link": {
         "m": "biochem-metab-4",
         "h": "dyslip"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:chrom",
+       "sub": "Molecular",
+       "t": "นิวคลีโอโซมและฮิสโตน",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "chrom"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:epig",
+       "sub": "Molecular",
+       "t": "Epigenetics: เมทิลและอะซิติล",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "epig"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:purine",
+       "sub": "Molecular",
+       "t": "การสร้างพิวรีน",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "purine"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:pyrim",
+       "sub": "Molecular",
+       "t": "การสร้างไพริมิดีนและ ribonucleotide reductase",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "pyrim"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:nucdrug",
+       "sub": "Molecular",
+       "t": "ยาที่ออกฤทธิ์ที่เส้นทางนิวคลีโอไทด์",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "nucdrug"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:salvage",
+       "sub": "Molecular",
+       "t": "เส้นทางกู้คืน: Lesch-Nyhan และ ADA",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "salvage"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:repl",
+       "sub": "Molecular",
+       "t": "ขั้นตอนการจำลอง DNA",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "repl"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:replenz",
+       "sub": "Molecular",
+       "t": "เอนไซม์จำลองและกิจกรรม exonuclease",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "replenz"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:telo",
+       "sub": "Molecular",
+       "t": "Telomere และ telomerase",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "telo"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:repair",
+       "sub": "Molecular",
+       "t": "กลไกซ่อม DNA ทั้งห้าแบบ",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "repair"
+       }
+      },
+      {
+       "id": "biochem-molecular-1:mut",
+       "sub": "Molecular",
+       "t": "ชนิดของการกลายพันธุ์",
+       "link": {
+        "m": "biochem-molecular-1",
+        "h": "mut"
        }
       }
      ],

@@ -1,0 +1,42 @@
+{
+ "id": "biochem-molecular-1",
+ "kind": "physio",
+ "override": {
+  "root": "Biochemistry"
+ },
+ "sys": "Molecular",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Molecular 1: DNA, Replication & Repair",
+ "h1": "Molecular: DNA, replication & repair",
+ "lede": "DNA ถูกเก็บอย่างไร คัดลอกอย่างไร และซ่อมอย่างไรเมื่อเสียหาย · ไล่ตั้งแต่โครงสร้าง chromatin กับ epigenetics, การสร้างนิวคลีโอไทด์และโรคที่เกี่ยวข้อง, ขั้นตอนการจำลอง DNA, telomerase ไปจนถึงกลไกซ่อม DNA ทั้งห้าแบบและชนิดของการกลายพันธุ์ · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott และ Textbook of Biochemistry",
+ "sources": [
+  [
+   "lir",
+   "LIR",
+   "Lippincott's Illustrated Reviews: Biochemistry 5e"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": [
+   "Molecular"
+  ],
+  "title": "Molecular 1: DNA, Replication & Repair",
+  "src": "Lippincott Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+  "desc": "นิวคลีโอโซมและฮิสโตนทั้งห้าชนิด, euchromatin เทียบ heterochromatin, การเติมหมู่เมทิลที่ DNA และการปรับแต่งฮิสโตน, การสร้างพิวรีนและไพริมิดีนแบบ de novo, ribonucleotide reductase และยาที่ออกฤทธิ์ที่เส้นทางนี้, เส้นทางกู้คืนและกลุ่มอาการ Lesch-Nyhan, ภาวะพร่อง ADA, ขั้นตอนการจำลอง DNA และเอนไซม์แต่ละตัว, topoisomerase, telomerase และ Hayflick limit, กลไกซ่อม DNA ทั้งห้าแบบกับโรคที่เกิดเมื่อเสีย, ชนิดของการกลายพันธุ์",
+  "ch": "FA Ch Biochemistry",
+  "sort": 14,
+  "refb": "lir",
+  "refl": "LIR",
+  "tags": [
+   "biochemistry"
+  ]
+ }
+}
