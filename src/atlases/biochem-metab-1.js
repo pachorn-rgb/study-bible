@@ -3,11 +3,24 @@ Object.assign(S,{lir:'<b class="sbb lir">LIR</b>',tbbio:'<b class="sbb tbbio">TB
 Object.assign(GN,{a:"ภาพรวมและการควบคุม",b:"Glycolysis",c:"Pyruvate และ TCA",d:"Oxidative phosphorylation"});
 
 SEC.push({id:"sites",k:"a",t:"Metabolic compartmentation",mm:"เส้นทางอยู่ที่ไหน",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Mitochondria","β-oxidation · สร้าง acetyl-CoA · TCA cycle · oxidative phosphorylation · ketogenesis","ar"],
- ["Cytoplasm","Glycolysis · HMP shunt · สร้างคอเลสเตอรอล กรดไขมัน โปรตีน และนิวคลีโอไทด์","bl"],
- ["ทั้งสองที่","Heme synthesis · urea cycle · gluconeogenesis","gl"]],
- {foot:"First Aid Step 1 · Metabolic compartmentation"}),
+draw:()=>psvg(
+ /* The cell carries the lesson: each pathway sits in the compartment it runs in, and the three
+    that span both are drawn crossing the mitochondrial membrane instead of listed in a box. */
+ `<rect class="box bl" x="24" y="30" width="592" height="312" rx="18"/>
+  <text class="t h" x="44" y="56">Cytosol</text>
+  <text class="s" x="44" y="78">Glycolysis · HMP shunt · fatty acid synthesis</text>
+  <text class="s" x="44" y="96">cholesterol · protein · nucleotide synthesis</text>
+  <text class="s" x="160" y="128" text-anchor="middle">Heme synthesis</text>
+  <text class="s" x="320" y="128" text-anchor="middle">Urea cycle</text>
+  <text class="s" x="470" y="128" text-anchor="middle">Gluconeogenesis</text>
+  <path class="ld" d="M160,136 L160,172"/><path class="ld" d="M320,136 L320,172"/><path class="ld" d="M470,136 L470,172"/>
+  <rect class="box ar" x="60" y="156" width="520" height="150" rx="46"/>
+  <text class="t h" x="88" y="196">Mitochondrion</text>
+  <text class="s" x="88" y="226">β-oxidation · TCA cycle · oxidative phosphorylation</text>
+  <text class="s" x="88" y="250">pyruvate dehydrogenase · acetyl-CoA · ketogenesis</text>
+  <text class="s" x="88" y="286" style="opacity:.78">ทั้งสามเส้นทางด้านบนเริ่มที่หนึ่งแล้วไปจบอีกที่หนึ่ง</text>
+  <text class="s" x="320" y="372" text-anchor="middle" style="font-weight:600">No mitochondrion, no choice — the red cell runs on glycolysis alone</text>`,
+ "0 0 640 400"),
 notes:()=>`<ul>
 <li>เส้นทางที่ <b>ใช้ออกซิเจนและสร้าง ATP</b> อยู่ใน mitochondria ส่วนเส้นทาง <b>สังเคราะห์</b> ส่วนใหญ่อยู่ใน cytoplasm ${S.fa1}</li>
 <li>สามเส้นทางที่ข้ามไปมาระหว่างสองที่คือ <b>heme synthesis, urea cycle, gluconeogenesis</b> ${S.fa1}</li>
