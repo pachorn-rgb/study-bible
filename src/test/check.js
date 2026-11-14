@@ -96,6 +96,89 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
       }
     }
   } }
+
+{ /* Language mix: Thai explains, English names. An atlas that drifts past 55% Thai has
+     started translating terms that belong in English (CLAUDE.md > Style > Language). */
+  const SRC = path.join(__dirname, "..");
+  for (const f of fs.readdirSync(path.join(SRC, "atlases")).filter(x => x.endsWith(".js"))) {
+    const src = fs.readFileSync(path.join(SRC, "atlases", f), "utf8");
+    const th = (src.match(/[\u0E00-\u0E7F]/g) || []).length;
+    const en = (src.match(/[A-Za-z]/g) || []).length;
+    if (th + en < 500) continue;
+    const pct = Math.round(100 * th / (th + en));
+    /* THAI_DEBT: atlases written before this rule existed. A listed file may not get
+       more Thai than it already has; every rewrite lowers its number until it is at 55
+       and the entry goes. Anything not listed must be at or under 55 from the start. */
+    const THAI_DEBT = {
+    "biochem-cellular.js": 71,
+    "biochem-genetics-1.js": 68,
+    "biochem-genetics-2.js": 70,
+    "biochem-lab.js": 74,
+    "biochem-metab-2.js": 56,
+    "biochem-metab-3.js": 60,
+    "biochem-metab-4.js": 63,
+    "biochem-molecular-1.js": 60,
+    "biochem-molecular-2.js": 62,
+    "renal-clinical.js": 76,
+    "renal-lab.js": 73
+    };
+    const ceiling = THAI_DEBT[f] || 55;
+    if (pct > ceiling) bad(`${f}: ${pct}% Thai characters, ceiling ${ceiling} — keep disease, drug, enzyme and structure names in English`);
+    if (THAI_DEBT[f] && pct < ceiling) bad(`${f}: now ${pct}% Thai — lower THAI_DEBT to ${pct}${pct <= 55 ? " or remove the entry" : ""}`);
+  } }
+
+{ /* cards() must not be a stack of captioned text boxes: that costs more room than a
+     list and says nothing the notes do not. Draw the real thing, use tbl(), or omit draw().
+     CARD_DEBT is the backlog as it stood when this rule was written; a file may never
+     exceed its budget, and every conversion lowers its number until the entry goes. */
+  const CARD_DEBT = {
+  "_renal-harrison.js": 18,
+  "_renal-robbins21.js": 5,
+  "biochem-cellular.js": 4,
+  "biochem-genetics-1.js": 5,
+  "biochem-genetics-2.js": 2,
+  "biochem-lab.js": 2,
+  "biochem-metab-1.js": 4,
+  "biochem-metab-2.js": 8,
+  "biochem-metab-3.js": 6,
+  "biochem-metab-4.js": 3,
+  "biochem-molecular-1.js": 3,
+  "biochem-molecular-2.js": 2,
+  "patho-injury.js": 3,
+  "pharm-cvs.js": 1,
+  "pharm-gi.js": 2,
+  "pharm-gp.js": 2,
+  "pharm-heme.js": 4,
+  "pharm-immuno.js": 1,
+  "pharm-micro.js": 3,
+  "pharm-msk.js": 1,
+  "pharm-psych.js": 1,
+  "pharm-renal.js": 4,
+  "pharm-repro.js": 1,
+  "pharm-tox.js": 15,
+  "renal-clinical.js": 2,
+  "renal-lab.js": 3,
+  "renal-patho-1.js": 1,
+  "renal-patho-2.js": 2,
+  "renal-patho-3.js": 1,
+  "renal-physio-2.js": 1,
+  "renal-physio-3.js": 1
+  };
+  const SRC = path.join(__dirname, "..");
+  for (const f of fs.readdirSync(path.join(SRC, "atlases")).filter(x => x.endsWith(".js"))) {
+    const src = fs.readFileSync(path.join(SRC, "atlases", f), "utf8");
+    const re = /cards\(\[/g;
+    let m, n = 0;
+    while ((m = re.exec(src))) {
+      let i = m.index + m[0].length - 1, d = 0, j = i;
+      for (; j < src.length; j++) { if (src[j] === "[") d++; else if (src[j] === "]" && --d === 0) break }
+      const blk = src.slice(i, j + 1);
+      if ((blk.match(/\["[^"]{1,80}","[^"]{0,200}"/g) || []).length >= 3) n++;
+    }
+    const budget = CARD_DEBT[f] || 0;
+    if (n > budget) bad(`${f}: ${n} cards() block(s) of captioned text boxes, budget ${budget} — draw the real thing, use tbl(), or drop draw() so the notes run full width`);
+    if (n < budget) bad(`${f}: ${n} cards() block(s) left but CARD_DEBT still says ${budget} — lower it to ${n}${n ? "" : " and remove the entry"}`);
+  } }
 console.log(`data: ${chs.length} chapters · ${mods.size} atlases · ${items.size} topics · ${nq} MCQs`);
 
 /* ---------- 2. pages ---------- */

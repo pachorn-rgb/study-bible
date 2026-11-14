@@ -30,16 +30,16 @@ function tools(s){const el=document.getElementById("tools-"+s.id);if(!el)return;
  el.innerHTML=h;const prev=cur;cur=s;if(s.ctrl){el.insertAdjacentHTML("beforeend",s.ctrl());if(s.wire)s.wire()}cur=prev;
  el.querySelectorAll("[data-t]").forEach(b=>b.onclick=()=>{ST[b.dataset.t]=!ST[b.dataset.t];SEC.filter(x=>x.k===s.k).forEach(draw)});
  el.querySelectorAll("[data-s]").forEach(b=>b.onclick=()=>{ST[b.dataset.s]=b.dataset.v;draw(s)})}
-function draw(s){const prev=cur;cur=s;const d=document.getElementById("dia-"+s.id);if(d)d.innerHTML=s.draw();tools(s);
+function draw(s){if(!s.draw)return;const prev=cur;cur=s;const d=document.getElementById("dia-"+s.id);if(d)d.innerHTML=s.draw();tools(s);
  const lg=document.getElementById("legend-"+s.id);if(lg)lg.innerHTML=(s.leg||[]).map(k=>LEG[k]?`<span><i style="background:var(${LEG[k][1]})"></i>${LEG[k][0]}</span>`:"").join("");cur=prev}
 function topicHTML(s){const figs=s.figs&&s.figs.length?`<section class="figs sb-card card"><h3>รูปจากเลคเชอร์ <span>${s.figs.length} รูป · แตะเพื่อขยาย</span></h3><div class="strip">${s.figs.map(([f,c])=>`<button class="fig" type="button" data-f="${f}" data-c="${c}"><img src="${FIGDIR}${f}.jpg" alt="${c}" loading="lazy"><span>${c}</span></button>`).join("")}</div></section>`:"";
- return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><div class="stage">
-  <section class="sb-card card"><div class="dh"><div><div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2></div><div class="tools" id="tools-${s.id}"></div></div>
-   <div class="dia" id="dia-${s.id}" data-id="${s.id}"></div><div class="legend" id="legend-${s.id}"></div></section>
+ return `<article class="topic" id="t-${s.id}" data-id="${s.id}"><div class="stage${s.draw?"":" solo"}">
+  ${s.draw?`<section class="sb-card card"><div class="dh"><div><div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2></div><div class="tools" id="tools-${s.id}"></div></div>
+   <div class="dia" id="dia-${s.id}" data-id="${s.id}"></div><div class="legend" id="legend-${s.id}"></div></section>`:""}
   <aside class="sb-card card notes" id="notes-${s.id}"></aside></div>${figs}</article>`}
 function renderGroup(gk){GRP=gk;const list=SEC.filter(s=>s.k===gk),gi=GROUPS.indexOf(gk);
  $("#flow").innerHTML=`<header class="ghead"><small>${GROUPS.length>1?`ส่วนที่ ${gi+1}/${GROUPS.length} · `:""}${list.length} หัวข้อ</small><h2>${GN[gk]||gk}</h2><div class="gchips">${list.map(s=>`<a href="#${s.id}" data-jump="${s.id}">${s.t}</a>`).join("")}</div></header>`+list.map(topicHTML).join("");
- list.forEach(s=>{fixTools(s);const prev=cur;cur=s;const n=document.getElementById("notes-"+s.id);n.innerHTML=s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);cur=prev;draw(s)});
+ list.forEach(s=>{fixTools(s);const prev=cur;cur=s;const n=document.getElementById("notes-"+s.id);n.innerHTML=(s.draw?"":`<div class="dh"><div><div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2></div></div>`)+s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);cur=prev;draw(s)});
  $("#flow").querySelectorAll("[data-jump]").forEach(a=>a.onclick=e=>{e.preventDefault();go(a.dataset.jump,true,true)});
  $("#flow").querySelectorAll(".dia").forEach(d=>d.onclick=()=>openDia(SEC.find(s=>s.id===d.dataset.id)));
  $("#flow").querySelectorAll(".fig").forEach(b=>b.onclick=()=>openLB(b.dataset.f,b.dataset.c));

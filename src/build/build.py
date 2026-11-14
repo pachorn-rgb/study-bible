@@ -44,8 +44,8 @@ def build_engine():
     r = (ENG / "render-template.js").read_text()
     r = must('const SEENKEY="sb-phys-seen"', 'const SEENKEY="sb-"+ATLAS.id+"-seen"', r)
     r = re.sub(r'go\(location\.hash\.slice\(1\)\|\|"[^"]*"', 'go(location.hash.slice(1)||"map"', r)
-    r = must('n.innerHTML=s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);',
-             'if(n){n.innerHTML=s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);}', r)
+    r = must('n.innerHTML=(s.draw?"":`<div class="dh"><div><div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2></div></div>`)+s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);',
+             'if(n){n.innerHTML=(s.draw?"":`<div class="dh"><div><div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2></div></div>`)+s.notes();n.querySelectorAll("h3").forEach((h,i)=>h.id="n-"+s.id+"-"+i);}', r)
     r = must('<div class="k">${GN[s.k]||s.k}</div><h2>${s.t}</h2>',
              '<div class="k" style="color:var(--g${GROUPS.indexOf(s.k)})">${GN[s.k]||s.k}</div><h2>${s.t}</h2>${s.drugs?`<div class="dchips">${s.drugs.split(" · ").map(d=>`<span>${d}</span>`).join("")}</div>`:""}', r)
     r = must('function renderGroup(gk){GRP=gk;', 'function renderGroup(gk){GRP=gk;document.querySelector(".shell").classList.toggle("ov",gk==="0");', r)

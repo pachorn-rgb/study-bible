@@ -36,3 +36,29 @@ The app shows unseen entries on open and the full history in Settings › มี
 - Chapters and headings follow First Aid (USMLE) order; extra content goes in a "เสริม" group.
 - Same theme and standard across all atlases; no lecturer names anywhere.
 - Polished, bug-free and fast beats more features.
+
+### Language
+Thai explains, English names. Aim for **≈45% Thai characters** per atlas file;
+`check.js` fails any atlas over 55%.
+- **Always English**: disease names, drug names, enzymes, anatomical structures,
+  cells, transporters, lab tests, signs and syndromes — anything a textbook or an
+  exam question would print in English. Write `myocardial infarction`, not
+  `กล้ามเนื้อหัวใจขาดเลือด`; `myelosuppression`, not `ไขกระดูกกด`.
+- **Always English**: every topic title (`t:`), card label, table header, group
+  name (`GN`) and figure caption.
+- **Thai**: the connective prose that explains mechanism, reason and consequence —
+  the part that makes the English terms make sense.
+
+### Pictures
+A `draw()` must earn its space. Decide per topic:
+- **Draw the real thing** when the content has shape, position or containment —
+  organelles, tissue layers, a route a substance takes. The picture then says
+  something the notes cannot.
+- **A table** (`tbl`) when the content is items × attributes. A table needs at
+  least two genuinely comparable columns; one content column is a list, not a table.
+- **No picture at all** when the content is a list of facts. Omit `draw`
+  entirely — the engine then renders the notes full width with their own heading.
+  This is the right answer more often than it looks.
+
+Never use `cards()` for a set of captioned text boxes: it costs more room than a
+list, shrinks the text and tells the reader nothing new.

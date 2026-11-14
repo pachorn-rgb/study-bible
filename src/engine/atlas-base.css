@@ -55,6 +55,7 @@ body{margin:0;line-height:1.55}
 .notes h3{scroll-margin-top:4.5rem}
 .stage{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(0,1fr);gap:1rem;margin-top:1rem;align-items:start}
 @media (max-width:1180px){.stage{grid-template-columns:minmax(0,1fr)}}
+.stage.solo{grid-template-columns:minmax(0,1fr)}
 .card{padding:1rem}
 .dh{display:flex;flex-wrap:wrap;gap:.5rem;align-items:center;justify-content:space-between;margin-bottom:.6rem}
 .dh h2{margin:0;font:750 1.25rem/1.25 var(--sb-font);letter-spacing:-.015em}
