@@ -38,7 +38,13 @@ SEC.splice(SEC.findIndex(s=>s.id==="lytes")+1,0,{id:"nawork",k:"a",t:"Sodium dis
 <li>Urine osm ต่ำ < 300 → DI (แยก central/nephrogenic ด้วย water deprivation + desmopressin) · สูง > 600 → เสียน้ำนอกไต หรือได้ Na⁺ เกิน ${S.fa2}</li>
 <li>Free water deficit = TBW × (Na⁺/140 − 1) · แก้ภาวะเรื้อรังช้าๆ ไม่เกิน 0.5 mEq/L/ชม. (กัน cerebral edema) · ถ้า volume ต่ำและสัญญาณชีพไม่คงที่ ให้ NS ก่อน ${S.fa2}</li></ul>`});
 SEC.splice(SEC.findIndex(s=>s.id==="abd")+1,0,{id:"rta",k:"b",t:"Renal tubular acidosis",mm:"RTA types 1 · 2 · 4",leg:[],
- draw:()=>cards([["Type 1 · distal","α-intercalated cell หลั่ง H⁺ ไม่ได้ · urine pH > 5.5 · K⁺ ต่ำ · นิ่ว calcium phosphate","vn"],["สาเหตุ type 1","amphotericin B, autoimmune (Sjögren, SLE, RA), analgesic nephropathy, congenital",""],["Type 2 · proximal","PCT ดูด HCO₃⁻ กลับน้อย · urine pH < 5.5 เมื่อ HCO₃⁻ ในเลือดต่ำลงแล้ว · K⁺ ต่ำ · rickets/osteomalacia","ar"],["สาเหตุ type 2","Fanconi syndrome, multiple myeloma, carbonic anhydrase inhibitors",""],["Type 4 · hyperkalemic","aldosterone ต่ำหรือดื้อ · K⁺ สูง → สร้าง NH₃ น้อย · urine pH < 5.5","gl"],["สาเหตุ type 4","diabetic hyporeninism, ACEi/ARB, NSAIDs, heparin, K⁺-sparing diuretics, trimethoprim",""]]),
+ draw:()=>tbl(["Type","Features"],[
+ ["Type 1 · distal","α-intercalated cell หลั่ง H⁺ ไม่ได้ · urine pH > 5.5 · K⁺ ต่ำ · นิ่ว calcium phosphate"],
+ ["Causes of type 1","amphotericin B, autoimmune (Sjögren, SLE, RA), analgesic nephropathy, congenital"],
+ ["Type 2 · proximal","PCT ดูด HCO₃⁻ กลับน้อย · urine pH < 5.5 เมื่อ HCO₃⁻ ในเลือดต่ำลงแล้ว · K⁺ ต่ำ · rickets/osteomalacia"],
+ ["Causes of type 2","Fanconi syndrome, multiple myeloma, carbonic anhydrase inhibitors"],
+ ["Type 4 · hyperkalemic","aldosterone ต่ำหรือดื้อ · K⁺ สูง → สร้าง NH₃ น้อย · urine pH < 5.5"],
+ ["Causes of type 4","diabetic hyporeninism, ACEi/ARB, NSAIDs, heparin, K⁺-sparing diuretics, trimethoprim"]]),
  notes:()=>`<ul><li>ทุกชนิดเป็น <b>normal anion gap (hyperchloremic) metabolic acidosis</b> ${S.x}</li>
 <li>จำ K⁺: type 1 และ 2 ต่ำ · type 4 สูง · แยก 1 กับ 2 ด้วย urine pH (type 1 ทำปัสสาวะเป็นกรดไม่ได้เลย) ${S.x}</li>
 <li>Type 4 พบบ่อยที่สุดในผู้ใหญ่ โดยเฉพาะเบาหวานที่มีไตเสื่อม ${S.x}</li></ul>`});

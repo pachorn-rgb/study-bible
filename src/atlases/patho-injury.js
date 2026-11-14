@@ -232,15 +232,28 @@ notes:()=>`<ul><li>สะสมได้จาก: สร้างมากห�
 <li>Lipofuscin มาจาก lipid peroxidation · พบในหัวใจ ตับ สมองผู้สูงอายุ ไม่ทำร้ายเซลล์เอง ${S.r}</li><li>Hemosiderin: เลือดออกเฉพาะที่ หรือ iron overload ทั่วร่าง ${S.r}</li></ul>`});
 
 SEC.push({id:"mech",k:"e",t:"Mechanisms of cell injury",mm:"Mechanisms",drugs:"",act:[],leg:[],
-draw:()=>cards([["ATP depletion","Na⁺ pump ล้ม → บวม · glycolysis → lactate","ar"],["Mitochondrial damage","ATP ↓ · ROS · permeability transition pore · cytochrome c → apoptosis","vn"],["Ca²⁺ influx","กระตุ้น phospholipase, protease, endonuclease, ATPase","vn"],["Membrane damage","plasma, lysosome, mitochondria → necrosis",""],["DNA damage · misfolded proteins","p53 · unfolded protein response → apoptosis","gl"]]),
+draw:()=>tbl(["Mechanism","What happens"],[
+ ["ATP depletion","Na⁺ pump ล้ม → บวม · glycolysis → lactate"],
+ ["Mitochondrial damage","ATP ↓ · ROS · permeability transition pore · cytochrome c → apoptosis"],
+ ["Ca²⁺ influx","กระตุ้น phospholipase, protease, endonuclease, ATPase"],
+ ["Membrane damage","plasma, lysosome, mitochondria → necrosis"],
+ ["DNA damage · misfolded proteins","p53 · unfolded protein response → apoptosis"]]),
 notes:()=>`<ul><li>ผลขึ้นกับชนิด ระยะเวลา ความรุนแรงของ injury และสภาพเซลล์ ${S.r}</li><li><b>Unfolded protein response</b>: เพิ่ม chaperone ลดการแปลรหัส · รับไม่ไหว → apoptosis · เกี่ยวกับ CF, α1-antitrypsin deficiency, โรคเสื่อมของสมอง ${S.r}</li><li>Chemical injury: ออกฤทธิ์ตรง หรือผ่าน metabolite ที่ CYP450 สร้างในตับ ${S.r}</li></ul>`});
 
 SEC.push({id:"otherdeath",k:"e",t:"Necroptosis, pyroptosis, ferroptosis & autophagy",mm:"Other death pathways",drugs:"",act:[],leg:[],
-draw:()=>cards([["Necroptosis","TNFR1 หรือ sensor ของไวรัส → RIPK1–RIPK3 → MLKL เจาะ membrane · ไม่ใช้ caspase","vn"],["Pyroptosis","เชื้อโรค → inflammasome → caspase-1 → IL-1β + เซลล์ตาย","ar"],["Ferroptosis","lipid peroxidation ที่อาศัยเหล็ก",""],["Autophagy","autophagosome + lysosome ย่อยส่วนของเซลล์ตัวเอง · ช่วยรอดตอนอดอาหาร","gl"]]),
+draw:()=>tbl(["Form of cell death","Mechanism"],[
+ ["Necroptosis","TNFR1 หรือ sensor ของไวรัส → RIPK1–RIPK3 → MLKL เจาะ membrane · ไม่ใช้ caspase"],
+ ["Pyroptosis","เชื้อโรค → inflammasome → caspase-1 → IL-1β + เซลล์ตาย"],
+ ["Ferroptosis","lipid peroxidation ที่อาศัยเหล็ก"],
+ ["Autophagy","autophagosome + lysosome ย่อยส่วนของเซลล์ตัวเอง · ช่วยรอดตอนอดอาหาร"]]),
 notes:()=>`<ul><li>Necroptosis มีโปรแกรมเหมือน apoptosis แต่หน้าตาและการอักเสบเหมือน necrosis ${S.r}</li><li>Autophagy ผิดปกติเกี่ยวกับมะเร็ง, IBD, โรคเสื่อมของสมอง และการป้องกันเชื้อบางชนิด ${S.r}</li></ul>`});
 
 SEC.push({id:"aging",k:"e",t:"Cellular aging",mm:"Aging",drugs:"",act:[],leg:[],
-draw:()=>cards([["DNA damage สะสม","ซ่อม DNA ได้น้อยลง · Werner syndrome (helicase ผิดปกติ) แก่ก่อนวัย","ar"],["Replicative senescence","telomere สั้นลงทุกการแบ่งตัว · stem cell และมะเร็งใช้ telomerase",""],["Protein homeostasis เสีย","chaperone และ proteasome ทำงานลดลง",""],["Nutrient sensing","IGF-1 signaling ↓ และ sirtuins ↑ จาก caloric restriction สัมพันธ์กับอายุยืนในสัตว์ทดลอง","gl"]]),
+draw:()=>tbl(["Mechanism of ageing","Evidence"],[
+ ["DNA damage accumulates","ซ่อม DNA ได้น้อยลง · Werner syndrome (helicase ผิดปกติ) แก่ก่อนวัย"],
+ ["Replicative senescence","telomere สั้นลงทุกการแบ่งตัว · stem cell และมะเร็งใช้ telomerase"],
+ ["Protein homeostasis fails","chaperone และ proteasome ทำงานลดลง"],
+ ["Nutrient sensing","IGF-1 signaling ↓ และ sirtuins ↑ จาก caloric restriction สัมพันธ์กับอายุยืนในสัตว์ทดลอง"]]),
 notes:()=>`<ul><li>ความแก่ของเซลล์เกิดจากหลายกลไกร่วมกัน: ความเสียหายสะสม แบ่งตัวได้น้อยลง ซ่อมแซมได้ช้าลง ${S.r}</li><li>หัวข้อนี้จะย้ายไปอยู่ในหมวด Aging เมื่อทำ atlas Aging ${S.x}</li></ul>`});
 
 const EXTRA=["accum","mech","otherdeath","aging"];

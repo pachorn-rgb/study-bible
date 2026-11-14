@@ -30,7 +30,12 @@ const AM=MAPOF(ansMap),MT=[["all","Show all drugs"]];
 Object.assign(GN,{a:"Pharmacokinetics & pharmacodynamics",b:"Autonomic drugs"});
 
 SEC.push({id:"enzyme",k:"a",t:"Enzyme kinetics",mm:"Enzyme kinetics",drugs:"",act:[],leg:[],
-draw:()=>cards([["Michaelis-Menten","Km = [S] ที่ได้ Vmax/2 · Km ต่ำ = affinity สูง",""],["Lineweaver-Burk","x-intercept = −1/Km · y-intercept = 1/Vmax",""],["Competitive (reversible)","Km ↑ · Vmax เท่าเดิม · เอาชนะได้ด้วย [S] สูง","vn"],["Competitive (irreversible)","Vmax ↓ · Km เท่าเดิม","gl"],["Noncompetitive","Vmax ↓ · Km เท่าเดิม · ไม่จับ active site","ar"]]),
+draw:()=>tbl(["Concept","What it says"],[
+ ["Michaelis-Menten","Km = [S] ที่ได้ Vmax/2 · Km ต่ำ = affinity สูง"],
+ ["Lineweaver-Burk","x-intercept = −1/Km · y-intercept = 1/Vmax"],
+ ["Competitive (reversible)","Km ↑ · Vmax เท่าเดิม · เอาชนะได้ด้วย [S] สูง"],
+ ["Competitive (irreversible)","Vmax ↓ · Km เท่าเดิม"],
+ ["Noncompetitive","Vmax ↓ · Km เท่าเดิม · ไม่จับ active site"]]),
 notes:()=>`<ul><li>Competitive inhibitor หน้าตาคล้าย substrate จับที่ active site → ลด potency ${S.k}</li><li>Noncompetitive inhibitor จับที่อื่น → ลด efficacy ${S.k}</li></ul>`});
 
 SEC.push({id:"pk",k:"a",t:"Pharmacokinetics",mm:"PK: F · Vd · CL · t½",drugs:"",act:[],leg:[],tools:[["ord",[["first","First-order"],["zero","Zero-order"]]]],draw:pkCurve,
@@ -74,5 +79,10 @@ notes:()=>`<h3>ใช้</h3><ul><li>Angina, MI, HFrEF (carvedilol, metoprolol s
  <ul><li>ADR: bradycardia, AV block, HF decompensation, bronchospasm (nonselective), ปิดบังอาการ hypoglycemia, fatigue, ED ${S.k}</li></ul>`});
 
 SEC.push({id:"pdei",k:"b",t:"Phosphodiesterase inhibitors",mm:"PDE inhibitors",drugs:"theophylline · sildenafil · tadalafil · roflumilast · milrinone · cilostazol · dipyridamole",act:["inh"],leg:[],
-draw:()=>cards([["Nonspecific: theophylline","bronchodilation · narrow therapeutic index","vn"],["PDE-5: sildenafil, tadalafil","ED, pulmonary HTN, BPH · ห้ามร่วม nitrate","gl"],["PDE-4: roflumilast","ลด COPD exacerbation","gl"],["PDE-3: milrinone","inotrope + vasodilator ใน acute HF","ar"],["Cilostazol · dipyridamole","claudication · stroke prevention ร่วม aspirin",""]]),
+draw:()=>tbl(["PDE inhibitor","Use and caution"],[
+ ["Nonspecific: theophylline","bronchodilation · narrow therapeutic index"],
+ ["PDE-5: sildenafil, tadalafil","ED, pulmonary HTN, BPH · ห้ามร่วม nitrate"],
+ ["PDE-4: roflumilast","ลด COPD exacerbation"],
+ ["PDE-3: milrinone","inotrope + vasodilator ใน acute HF"],
+ ["Cilostazol · dipyridamole","claudication · stroke prevention ร่วม aspirin"]]),
 notes:()=>`<ul><li>ยับยั้ง PDE → cAMP/cGMP ↑ → ผลขึ้นกับเนื้อเยื่อ ${S.k}</li><li>Cilostazol ห้ามใน HF ${S.k}</li></ul>`});

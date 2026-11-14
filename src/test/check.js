@@ -117,29 +117,8 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
 
 { /* cards() must not be a stack of captioned text boxes: that costs more room than a
      list and says nothing the notes do not. Draw the real thing, use tbl(), or omit draw().
-     CARD_DEBT is the backlog as it stood when this rule was written; a file may never
-     exceed its budget, and every conversion lowers its number until the entry goes. */
-  const CARD_DEBT = {
-  "_renal-harrison.js": 18,
-  "_renal-robbins21.js": 5,
-  "patho-injury.js": 3,
-  "pharm-cvs.js": 1,
-  "pharm-gi.js": 2,
-  "pharm-gp.js": 2,
-  "pharm-heme.js": 4,
-  "pharm-immuno.js": 1,
-  "pharm-micro.js": 3,
-  "pharm-msk.js": 1,
-  "pharm-psych.js": 1,
-  "pharm-renal.js": 4,
-  "pharm-repro.js": 1,
-  "pharm-tox.js": 15,
-  "renal-patho-1.js": 1,
-  "renal-patho-2.js": 2,
-  "renal-patho-3.js": 1,
-  "renal-physio-2.js": 1,
-  "renal-physio-3.js": 1
-  };
+     The backlog is cleared: CARD_DEBT is empty, so any new block of text boxes fails. */
+  const CARD_DEBT = {};
   const SRC = path.join(__dirname, "..");
   for (const f of fs.readdirSync(path.join(SRC, "atlases")).filter(x => x.endsWith(".js"))) {
     const src = fs.readFileSync(path.join(SRC, "atlases", f), "utf8");

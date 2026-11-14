@@ -1,7 +1,7 @@
 /* Med Study Bible service worker.
    To publish an update: change VERSION (any new string). Installed apps
    download the new files in the background and show "New version" banner. */
-const VERSION = "6.67";
+const VERSION = "6.68";
 const CACHE = "bible-" + VERSION;
 const FONT_CACHE = "bible-fonts";
 const FILES = [

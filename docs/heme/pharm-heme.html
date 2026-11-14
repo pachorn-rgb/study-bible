@@ -96,7 +96,13 @@ notes:()=>`<h3>กลไก</h3><ul><li>เปลี่ยน plasminogen → <b
 
 /* ---------- c · cytopenias ---------- */
 SEC.push({id:"hematinic",k:"c",t:"Agents for anemias & cytopenias",mm:"Iron · B12 · growth factors",drugs:"ferrous sulfate · cyanocobalamin · folic acid · epoetin alfa · filgrastim · romiplostim",act:["ag","mod"],leg:[],
-draw:()=>cards([["Iron","oral ferrous sulfate · IV iron sucrose, ferric carboxymaltose","vn"],["Vitamin B12","cyanocobalamin, hydroxocobalamin IM (pernicious anemia) · oral ขนาดสูงได้","gl"],["Folic acid","megaloblastic anemia, ครรภ์ (กัน NTD) · ไม่แก้ neuro ของ B12","gl"],["Erythropoietin","epoetin alfa, darbepoetin · CKD, chemo","ar"],["Myeloid growth factors","filgrastim, pegfilgrastim (G-CSF) · sargramostim (GM-CSF)","ar"],["Thrombopoietin agonists","romiplostim, eltrombopag · ITP",""]]),
+draw:()=>tbl(["Deficiency","Replacement"],[
+ ["Iron","oral ferrous sulfate · IV iron sucrose, ferric carboxymaltose"],
+ ["Vitamin B12","cyanocobalamin, hydroxocobalamin IM (pernicious anemia) · oral ขนาดสูงได้"],
+ ["Folic acid","megaloblastic anemia, ครรภ์ (กัน NTD) · ไม่แก้ neuro ของ B12"],
+ ["Erythropoietin","epoetin alfa, darbepoetin · CKD, chemo"],
+ ["Myeloid growth factors","filgrastim, pegfilgrastim (G-CSF) · sargramostim (GM-CSF)"],
+ ["Thrombopoietin agonists","romiplostim, eltrombopag · ITP"]]),
 notes:()=>`<h3>Iron</h3><ul><li>Oral: GI ท้องผูก อุจจาระดำ · ดูดซึมดีขึ้นกับ vitamin C · IV เมื่อดูดซึมไม่ได้/ไตวาย · <b>iron poisoning</b> ในเด็ก → deferoxamine ${S.k}</li></ul>
  <h3>B12 · folate</h3><ul><li>ให้ folate อย่างเดียวในคนขาด B12 → เลือดดีขึ้นแต่ <b>neuropathy แย่ลง</b> ${S.k}</li></ul>
  <h3>Growth factors</h3><ul><li><b>ESA</b>: HTN, thrombosis, เพิ่มการตาย/มะเร็งโตถ้า Hb สูงเกิน ${S.k}</li><li><b>Filgrastim</b>: ลด febrile neutropenia หลัง chemo, mobilize stem cell · <b>ปวดกระดูก</b>, splenic rupture (น้อย) ${S.k}</li><li>Romiplostim (SC), eltrombopag (oral, hepatotoxic): ITP ${S.k}</li></ul>`});
@@ -122,7 +128,11 @@ notes:()=>`${tbl(["ยา","กลไก","ADR"],[["Vincristine","จับ β-t
 
 /* ---------- e · targeted & hormonal ---------- */
 SEC.push({id:"tamox",k:"e",t:"Hormonal therapy: tamoxifen & others",mm:"Tamoxifen · aromatase inhibitors",drugs:"tamoxifen · raloxifene · anastrozole · letrozole · leuprolide · flutamide",act:["bl","inh"],leg:[],
-draw:()=>cards([["Tamoxifen (SERM)","antagonist ที่เต้านม · agonist ที่มดลูก/กระดูก","vn"],["Aromatase inhibitors","anastrozole, letrozole, exemestane · หญิงหมดประจำเดือน","gl"],["GnRH analog / antagonist","leuprolide, degarelix · prostate, breast","gl"],["Antiandrogen","flutamide, bicalutamide, enzalutamide · abiraterone (CYP17)","ar"]]),
+draw:()=>tbl(["Drug","Action"],[
+ ["Tamoxifen (SERM)","antagonist ที่เต้านม · agonist ที่มดลูก/กระดูก"],
+ ["Aromatase inhibitors","anastrozole, letrozole, exemestane · หญิงหมดประจำเดือน"],
+ ["GnRH analog / antagonist","leuprolide, degarelix · prostate, breast"],
+ ["Antiandrogen","flutamide, bicalutamide, enzalutamide · abiraterone (CYP17)"]]),
 notes:()=>`<h3>Tamoxifen</h3><ul><li>ใช้: ER⁺ breast cancer (รักษาและป้องกัน) ${S.k}</li><li>ADR: <b>endometrial cancer</b>, <b>VTE</b>, hot flashes · prodrug ผ่าน CYP2D6 ${S.k}</li></ul>
  <h3>Aromatase inhibitors</h3><ul><li>ลด estrogen จาก peripheral conversion · ADR: <b>osteoporosis</b>, arthralgia ${S.k}</li></ul>
  <div class="pearl">รายละเอียดยาฮอร์โมนเพศอยู่ใน Reproductive Pharmacology ${S.x}</div>`});
@@ -136,11 +146,24 @@ notes:()=>`${tbl(["ยา","target","ใช้"],[["Imatinib, dasatinib, nilotin
 
 /* ---------- f · chemotoxicity ---------- */
 SEC.push({id:"ameliorate",k:"f",t:"Chemotoxicity amelioration",mm:"Protective agents",drugs:"leucovorin · mesna · dexrazoxane · amifostine · rasburicase · ondansetron · filgrastim",act:["mod"],leg:[],
-draw:()=>cards([["Leucovorin (folinic acid)","rescue พิษ methotrexate · เสริม 5-FU","vn"],["Mesna","จับ acrolein → กัน hemorrhagic cystitis (cyclophosphamide, ifosfamide)","gl"],["Dexrazoxane","iron chelator → กัน anthracycline cardiotoxicity","gl"],["Amifostine","free radical scavenger → กัน cisplatin nephrotoxicity","gl"],["Rasburicase","urate oxidase → tumor lysis syndrome · ห้ามใน G6PD","ar"],["Ondansetron · aprepitant","5-HT₃ · NK₁ antagonist กันคลื่นไส้อาเจียน",""],["Filgrastim","G-CSF กัน febrile neutropenia",""]]),
+draw:()=>tbl(["Rescue agent","What it protects against"],[
+ ["Leucovorin (folinic acid)","rescue พิษ methotrexate · เสริม 5-FU"],
+ ["Mesna","จับ acrolein → กัน hemorrhagic cystitis (cyclophosphamide, ifosfamide)"],
+ ["Dexrazoxane","iron chelator → กัน anthracycline cardiotoxicity"],
+ ["Amifostine","free radical scavenger → กัน cisplatin nephrotoxicity"],
+ ["Rasburicase","urate oxidase → tumor lysis syndrome · ห้ามใน G6PD"],
+ ["Ondansetron · aprepitant","5-HT₃ · NK₁ antagonist กันคลื่นไส้อาเจียน"],
+ ["Filgrastim","G-CSF กัน febrile neutropenia"]]),
 notes:()=>`<ul><li>Rasburicase ใช้ใน tumor lysis syndrome เสี่ยงสูง ${S.p}${S.k}</li><li>Dexrazoxane ป้องกัน cardiotoxicity ของ anthracycline ${S.p}</li><li>Leucovorin ให้หลัง high-dose methotrexate ตามระดับยา ${S.k}</li></ul>`});
 
 SEC.push({id:"keytox",k:"f",t:"Key chemotoxicities",mm:"Key chemotoxicities",drugs:"",act:[],leg:[],
-draw:()=>cards([["Cardiotoxicity","doxorubicin, daunorubicin · trastuzumab","ar"],["Pulmonary fibrosis","bleomycin · busulfan · (methotrexate)","ar"],["Nephrotoxicity · ototoxicity","cisplatin","gl"],["Hemorrhagic cystitis","cyclophosphamide, ifosfamide","gl"],["Peripheral neuropathy","vincristine · paclitaxel · cisplatin/oxaliplatin · bortezomib","vn"],["Myelosuppression เด่น","most agents · ยกเว้น bleomycin, vincristine (น้อย)",""]]),
+draw:()=>tbl(["Toxicity","Drugs"],[
+ ["Cardiotoxicity","doxorubicin, daunorubicin · trastuzumab"],
+ ["Pulmonary fibrosis","bleomycin · busulfan · (methotrexate)"],
+ ["Nephrotoxicity · ototoxicity","cisplatin"],
+ ["Hemorrhagic cystitis","cyclophosphamide, ifosfamide"],
+ ["Peripheral neuropathy","vincristine · paclitaxel · cisplatin/oxaliplatin · bortezomib"],
+ ["Myelosuppression prominent","most agents · ยกเว้น bleomycin, vincristine (น้อย)"]]),
 notes:()=>`${tbl(["อวัยวะ","ยา"],[["หัวใจ","anthracyclines (dilated CM), trastuzumab"],["ปอด","bleomycin, busulfan, methotrexate, carmustine"],["ไต","cisplatin, ifosfamide, high-dose MTX"],["กระเพาะปัสสาวะ","cyclophosphamide, ifosfamide"],["เส้นประสาท","vincristine, taxanes, platinum, bortezomib"],["ตับ","methotrexate, 6-MP"],["ผิว","5-FU (hand-foot), EGFR inhibitors (acneiform)"],["ภูมิคุ้มกัน","checkpoint inhibitors (irAE)"]])}${S.k}`});
 
 const EXTRA=["hematinic"];

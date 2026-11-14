@@ -69,7 +69,12 @@ SEC.push({id:"gc",k:"a",t:"Glucocorticoids as immunosuppressants",mm:"Glucocorti
 notes:()=>`<ul><li>ยับยั้ง <b>NF-κB</b> → ลดการสร้าง cytokine (IL-1, IL-2, TNF-α) · neutrophil ↑ (demargination), eosinophil/lymphocyte ↓ ${S.k}</li><li>ใช้: transplant rejection, autoimmune, asthma, adrenal insufficiency, บางมะเร็ง (lymphoma, leukemia) ${S.k}</li><li>ADR: Cushing, osteoporosis, hyperglycemia, infection, peptic ulcer, cataract, psychosis, myopathy, adrenal suppression เมื่อหยุดเร็ว ${S.k}</li></ul>`});
 
 SEC.push({id:"cytokine",k:"b",t:"Recombinant cytokines & clinical uses",mm:"Recombinant cytokines",drugs:"aldesleukin · epoetin alfa · filgrastim · sargramostim · interferon-α · interferon-β · interferon-γ · romiplostim · eltrombopag",act:["ag"],leg:[],
-draw:()=>cards([["Aldesleukin (IL-2)","RCC, metastatic melanoma · capillary leak","vn"],["Epoetin alfa (EPO)","anemia ใน CKD, chemotherapy","gl"],["Filgrastim · sargramostim","G-CSF · GM-CSF: neutropenia, stem cell mobilization","gl"],["Interferon-α · β · γ","α: HBV, HCV, melanoma · β: multiple sclerosis · γ: chronic granulomatous disease","ar"],["Romiplostim · eltrombopag","TPO receptor agonist: ITP",""]]),
+draw:()=>tbl(["Agent","Use"],[
+ ["Aldesleukin (IL-2)","RCC, metastatic melanoma · capillary leak"],
+ ["Epoetin alfa (EPO)","anemia ใน CKD, chemotherapy"],
+ ["Filgrastim · sargramostim","G-CSF · GM-CSF: neutropenia, stem cell mobilization"],
+ ["Interferon-α · β · γ","α: HBV, HCV, melanoma · β: multiple sclerosis · γ: chronic granulomatous disease"],
+ ["Romiplostim · eltrombopag","TPO receptor agonist: ITP"]]),
 notes:()=>`<ul><li>Interferon ADR: flu-like, depression, myelosuppression ${S.k}</li><li>ESA ADR: HTN, thrombosis ${S.k}</li></ul>`});
 
 SEC.push({id:"abs",k:"c",t:"Therapeutic antibodies",mm:"Therapeutic antibodies",drugs:"adalimumab · infliximab · eculizumab · natalizumab · ustekinumab · denosumab · omalizumab · palivizumab · emicizumab",act:["mab"],tools:MT,leg:["mab"],draw:IM(["c5","a4","cd20","il2r"]),

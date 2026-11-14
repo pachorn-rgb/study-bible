@@ -64,7 +64,13 @@ notes:()=>`<h3>Smoking cessation</h3><ul><li><b>Varenicline</b>: α4β2 nicotini
  <h3>Alcohol use disorder</h3><ul><li><b>Naltrexone</b> (ลด craving) · <b>acamprosate</b> (NMDA modulator; ขับทางไต) · <b>disulfiram</b> (ยับยั้ง aldehyde dehydrogenase → acetaldehyde สะสม คลื่นไส้ หน้าแดง) ${S.k}</li><li>Withdrawal: <b>benzodiazepine</b> (chlordiazepoxide, lorazepam ในโรคตับ) · thiamine ก่อน glucose ${S.k}</li></ul>`});
 
 SEC.push({id:"psyrx",k:"e",t:"Choosing psychiatric drugs",mm:"Drug choice by disorder",drugs:"",act:[],leg:[],
-draw:()=>cards([["Major depression","SSRI first-line · SNRI, bupropion, mirtazapine ทางเลือก","vn"],["Bipolar mania","lithium · valproate · atypical antipsychotic","gl"],["Bipolar depression","quetiapine, lurasidone, lamotrigine (ห้าม antidepressant เดี่ยว)","gl"],["GAD / panic","SSRI/SNRI · buspirone (GAD) · BZD ระยะสั้น",""],["Schizophrenia","atypical antipsychotic · ดื้อยา 2 ตัว → clozapine","ar"],["ADHD","stimulant first-line · atomoxetine, α₂ agonist",""]]),
+draw:()=>tbl(["Disorder","Drugs"],[
+ ["Major depression","SSRI first-line · SNRI, bupropion, mirtazapine ทางเลือก"],
+ ["Bipolar mania","lithium · valproate · atypical antipsychotic"],
+ ["Bipolar depression","quetiapine, lurasidone, lamotrigine (ห้าม antidepressant เดี่ยว)"],
+ ["GAD / panic","SSRI/SNRI · buspirone (GAD) · BZD ระยะสั้น"],
+ ["Schizophrenia","atypical antipsychotic · ดื้อยา 2 ตัว → clozapine"],
+ ["ADHD","stimulant first-line · atomoxetine, α₂ agonist"]]),
 notes:()=>`<ul><li>ยา antidepressant ใช้เวลา 4–6 สัปดาห์กว่าเห็นผลเต็ม ให้ต่อ 6–12 เดือนหลังหาย ${S.x}</li><li>Antidepressant เดี่ยวใน bipolar อาจกระตุ้น mania ${S.k}</li><li>Clozapine ใช้เมื่อไม่ตอบสนองต่อ antipsychotic อย่างน้อย 2 ตัว ${S.x}</li></ul>`});
 
 const EXTRA=["psyrx"];

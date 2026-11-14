@@ -144,7 +144,12 @@ draw:()=>flowD([["วินิจฉัยแล้วเริ่ม DMARD เ�
 notes:()=>`<ul><li>Methotrexate คือ nonbiologic DMARD ที่เลือกเป็นหลัก · เป็น abortifacient ต้องคุมกำเนิด ${S.p}</li><li>Glucocorticoid ใช้ระยะสั้นระหว่างรอ DMARD ออกฤทธิ์ ${S.p}</li><li>ไม่ใช้ biologic ร่วมกัน 2 ตัว ${S.k}</li></ul>`});
 
 SEC.push({id:"oa-op",k:"g",t:"Osteoarthritis & osteoporosis treatment",mm:"OA · osteoporosis",drugs:"",act:[],leg:[],
-draw:()=>cards([["OA: เริ่ม","ลดน้ำหนัก ออกกำลังกาย · topical NSAID (เข่า มือ) · acetaminophen","vn"],["OA: ต่อไป","oral NSAID (± PPI) · duloxetine · intra-articular corticosteroid","gl"],["Osteoporosis: ทุกคน","calcium + vitamin D ให้พอ · ออกกำลัง · กันล้ม",""],["Osteoporosis: first-line","bisphosphonate","vn"],["เสี่ยงสูงมาก","teriparatide/abaloparatide, romosozumab · denosumab","ar"]]),
+draw:()=>tbl(["Step","What to do"],[
+ ["OA — first step","ลดน้ำหนัก ออกกำลังกาย · topical NSAID (เข่า มือ) · acetaminophen"],
+ ["OA — next step","oral NSAID (± PPI) · duloxetine · intra-articular corticosteroid"],
+ ["Osteoporosis — everyone","calcium + vitamin D ให้พอ · ออกกำลัง · กันล้ม"],
+ ["Osteoporosis: first-line","bisphosphonate"],
+ ["Very high risk","teriparatide/abaloparatide, romosozumab · denosumab"]]),
 notes:()=>`<h3>OA</h3><ul><li>Topical NSAID (diclofenac) ได้ผลใกล้ oral และ GI ADR น้อยกว่า ${S.p}</li><li>Duloxetine (SNRI) ทางเลือกในปวดเรื้อรัง ${S.p}</li></ul>
  <h3>Osteoporosis</h3><ul><li>Bisphosphonate เป็น first-line ${S.p}</li><li>ADR สำคัญ: ONJ, atypical femur fracture ${S.p}</li><li>Romosozumab สำหรับคนเสี่ยงหักสูง ${S.p}</li></ul>`});
 

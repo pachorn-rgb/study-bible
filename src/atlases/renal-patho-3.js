@@ -10,7 +10,11 @@
 })();
 
 SEC.push({id:"papnec",k:"b",t:"Renal papillary & diffuse cortical necrosis",leg:[],
- draw:()=>cards([["Papillary necrosis","papilla ขาดเลือดแล้วหลุด → ปัสสาวะเป็นเลือด, ปวดสีข้าง, อาจอุดท่อไต","ar"],["สาเหตุ papillary necrosis","sickle cell disease/trait, pyelonephritis เฉียบพลัน, analgesics (NSAIDs), เบาหวาน",""],["Diffuse cortical necrosis","cortex ทั้งสองข้างขาดเลือดทั่ว · หลอดเลือดหดเกร็ง + DIC","vn"],["สาเหตุ cortical necrosis","ภาวะแทรกซ้อนทางสูติกรรม (รกลอกตัวก่อนกำหนด), septic shock",""]]),
+ draw:()=>tbl(["Lesion or cause","Detail"],[
+ ["Papillary necrosis","papilla ขาดเลือดแล้วหลุด → ปัสสาวะเป็นเลือด, ปวดสีข้าง, อาจอุดท่อไต"],
+ ["Causes of papillary necrosis","sickle cell disease/trait, pyelonephritis เฉียบพลัน, analgesics (NSAIDs), เบาหวาน"],
+ ["Diffuse cortical necrosis","cortex ทั้งสองข้างขาดเลือดทั่ว · หลอดเลือดหดเกร็ง + DIC"],
+ ["Causes of cortical necrosis","ภาวะแทรกซ้อนทางสูติกรรม (รกลอกตัวก่อนกำหนด), septic shock"]]),
  notes:()=>`<ul><li>Medulla ส่วน papilla ได้เลือดน้อยอยู่แล้ว จึงขาดเลือดง่ายเมื่อมีปัจจัยร่วม ${S.x}</li><li>Papilla ที่หลุดอาจเห็นเป็นชิ้นเนื้อในปัสสาวะ หรือ "ring sign" ในภาพถ่ายรังสี ${S.x}</li><li>Diffuse cortical necrosis ทำให้ไตวายเฉียบพลันที่มักไม่ฟื้น ${S.x}</li></ul>`});
 
 Object.assign(GN,{a:"Acute kidney injury",b:"Interstitial & tubular injury",c:"Chronic kidney disease",d:"Renovascular disease",e:"Dialysis",f:"Kidney transplant"});

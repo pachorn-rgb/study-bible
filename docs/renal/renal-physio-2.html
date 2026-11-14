@@ -695,7 +695,13 @@ SEC.splice(SEC.findIndex(s=>s.id==="tubular")+1,0,{id:"features",k:"b",t:"Featur
 <li>Primary hyperaldosteronism: aldosterone สูง renin ต่ำ · renin-secreting tumor: ทั้งคู่สูง ${S.x}</li></ul>`});
 
 SEC.push({id:"endofx",k:"c",t:"Kidney endocrine functions & JGA",mm:"Endocrine functions · JGA",leg:[],
- draw:()=>cards([["Renin · JG cells","modified smooth muscle ของ afferent arteriole · หลั่งเมื่อความดันไตต่ำ, NaCl ที่ macula densa ต่ำ, β₁","vn"],["Macula densa","เซลล์ที่ปลาย thick ascending limb ต่อกับ DCT ตอนต้น · วัด NaCl ที่ไหลผ่าน → TGF และ renin",""],["Erythropoietin","interstitial cells รอบ peritubular capillary · หลั่งเมื่อขาด O₂","ar"],["Calcitriol (1,25-(OH)₂D₃)","1α-hydroxylase ใน PCT · กระตุ้นด้วย PTH · ↑ Ca²⁺ และ PO₄ absorption","gl"],["Prostaglandins","ขยาย afferent arteriole รักษา RBF · NSAIDs ยับยั้ง → AKI เมื่อเลือดไปไตน้อย",""],["Dopamine","PCT สร้าง · ขนาดต่ำขยายหลอดเลือดไต และเพิ่ม natriuresis",""]]),
+ draw:()=>tbl(["Hormone","What it does"],[
+ ["Renin · JG cells","modified smooth muscle ของ afferent arteriole · หลั่งเมื่อความดันไตต่ำ, NaCl ที่ macula densa ต่ำ, β₁"],
+ ["Macula densa","เซลล์ที่ปลาย thick ascending limb ต่อกับ DCT ตอนต้น · วัด NaCl ที่ไหลผ่าน → TGF และ renin"],
+ ["Erythropoietin","interstitial cells รอบ peritubular capillary · หลั่งเมื่อขาด O₂"],
+ ["Calcitriol (1,25-(OH)₂D₃)","1α-hydroxylase ใน PCT · กระตุ้นด้วย PTH · ↑ Ca²⁺ และ PO₄ absorption"],
+ ["Prostaglandins","ขยาย afferent arteriole รักษา RBF · NSAIDs ยับยั้ง → AKI เมื่อเลือดไปไตน้อย"],
+ ["Dopamine","PCT สร้าง · ขนาดต่ำขยายหลอดเลือดไต และเพิ่ม natriuresis"]]),
  notes:()=>`<ul><li><b>JGA</b> = JG cells + macula densa + extraglomerular mesangial cells · คุม GFR ผ่าน tubuloglomerular feedback และหลั่ง renin ${S.g}</li>
 <li>CKD → EPO ต่ำ (ซีด) และ calcitriol ต่ำ (Ca²⁺ ต่ำ → secondary hyperparathyroidism) ${S.x}</li>
 <li>NSAIDs + ACE inhibitor ในคนที่เลือดไปไตน้อย: afferent หดเพราะขาด PG และ efferent ขยายเพราะขาด Ang II → GFR ตก ${S.x}</li></ul>`});

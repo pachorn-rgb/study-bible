@@ -2,73 +2,124 @@
 Object.assign(GN,{a:"Drug reactions by system",b:"Drug interactions & classes",c:"Drug names",d:"Safety"});
 
 SEC.push({id:"cardio",k:"a",t:"Cardiovascular drug reactions",mm:"Cardiovascular",drugs:"",act:[],leg:[],
-draw:()=>cards([["Coronary vasospasm","cocaine · amphetamines · sumatriptan · ergot alkaloids","vn"],["Cutaneous flushing","vancomycin · adenosine · niacin · CCBs · echinocandins · nitrates",""],["Dilated cardiomyopathy","anthracyclines (doxorubicin, daunorubicin) · trastuzumab","ar"],["Torsades (↑ QT): antiarrhythmics & anti-infectives","class IA & III antiarrhythmics · macrolides · fluoroquinolones · azoles","vn"],["Torsades (↑ QT): CNS & GI drugs","antipsychotics (haloperidol) · TCAs · methadone · ondansetron","vn"]]),
-notes:()=>`<ul><li><b>Vancomycin infusion reaction</b> (เดิมเรียก red man) = histamine release ไม่ใช่ IgE → ลดได้ด้วยให้ช้าลงและ antihistamine ${S.x}</li><li>Anthracycline cardiotoxicity สะสมตามขนาดยา · dexrazoxane ช่วยป้องกัน · trastuzumab cardiotoxicity มักกลับคืนได้ ${S.k}</li>
+notes:()=>`<ul>
+<li><b>Coronary vasospasm</b> — cocaine · amphetamines · sumatriptan · ergot alkaloids ${S.x}</li>
+<li><b>Cutaneous flushing</b> — vancomycin · adenosine · niacin · Ca²⁺ channel blockers · echinocandins · nitrates ${S.x}</li>
+<li><b>Dilated cardiomyopathy</b> — anthracyclines (doxorubicin, daunorubicin) · trastuzumab ${S.x}</li>
+<li><b>Torsades de pointes — antiarrhythmics and anti-infectives</b> — class IA and III antiarrhythmics · macrolides · fluoroquinolones · azoles ${S.x}</li>
+<li><b>Torsades de pointes — CNS and GI drugs</b> — antipsychotics (haloperidol) · TCAs · methadone · ondansetron ${S.x}</li><li><b>Vancomycin infusion reaction</b> (เดิมเรียก red man) = histamine release ไม่ใช่ IgE → ลดได้ด้วยให้ช้าลงและ antihistamine ${S.x}</li><li>Anthracycline cardiotoxicity สะสมตามขนาดยา · dexrazoxane ช่วยป้องกัน · trastuzumab cardiotoxicity มักกลับคืนได้ ${S.k}</li>
 <li>ยาที่ยืด QT เสี่ยงมากขึ้นเมื่อมี <b>hypokalemia, hypomagnesemia</b> หรือใช้ยายืด QT หลายตัวร่วมกัน ${S.x}</li></ul>`});
 
 SEC.push({id:"endorx",k:"a",t:"Endocrine & reproductive drug reactions",mm:"Endocrine & reproductive",drugs:"",act:[],leg:[],
-draw:()=>cards([["Adrenal insufficiency","หยุด glucocorticoid ระยะยาวทันที (HPA suppression)",""],["Diabetes insipidus (nephrogenic)","lithium · demeclocycline","ar"],["SIADH","carbamazepine · cyclophosphamide · SSRIs",""],["Gynecomastia","spironolactone · ketoconazole · cimetidine · GnRH analogs · estrogens","gl"],["Hyperglycemia","tacrolimus · protease inhibitors · niacin · thiazides · glucocorticoids",""],["Hyperprolactinemia","typical antipsychotics · risperidone · metoclopramide · methyldopa","vn"],["Hypothyroidism","lithium · amiodarone · sulfonamides",""]]),
-notes:()=>`<ul><li>Hot flashes: <b>tamoxifen</b>, clomiphene, aromatase inhibitors, GnRH analogs ${S.x}</li><li>Amiodarone มี iodine สูง → ทำให้ได้ทั้ง hypo- และ hyperthyroidism ${S.k}</li><li>ยา D₂ antagonist ตัด tonic inhibition ของ dopamine ต่อ prolactin ${S.x}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Adrenal insufficiency</b> — หยุด glucocorticoid ที่ใช้มานานทันที — HPA axis ยังถูกกดอยู่ ${S.x}</li>
+<li><b>Nephrogenic diabetes insipidus</b> — lithium · demeclocycline ${S.x}</li>
+<li><b>SIADH</b> — carbamazepine · cyclophosphamide · SSRIs ${S.x}</li>
+<li><b>Gynaecomastia</b> — spironolactone · ketoconazole · cimetidine · GnRH analogues · estrogens ${S.x}</li>
+<li><b>Hyperglycaemia</b> — tacrolimus · protease inhibitors · niacin · thiazides · glucocorticoids ${S.x}</li>
+<li><b>Hyperprolactinaemia</b> — typical antipsychotics · risperidone · metoclopramide · methyldopa ${S.x}</li>
+<li><b>Hypothyroidism</b> — lithium · amiodarone · sulfonamides ${S.x}</li><li>Hot flashes: <b>tamoxifen</b>, clomiphene, aromatase inhibitors, GnRH analogs ${S.x}</li><li>Amiodarone มี iodine สูง → ทำให้ได้ทั้ง hypo- และ hyperthyroidism ${S.k}</li><li>ยา D₂ antagonist ตัด tonic inhibition ของ dopamine ต่อ prolactin ${S.x}</li></ul>`});
 
 SEC.push({id:"girx",k:"a",t:"GI & hepatic drug reactions",mm:"GI & hepatic",drugs:"",act:[],leg:[],
-draw:()=>cards([["Acute cholestatic hepatitis, jaundice","macrolides (erythromycin) · amoxicillin–clavulanate",""],["Focal to massive hepatic necrosis","halothane · amanita · valproate · acetaminophen (high dose)","vn"],["Drug-induced hepatitis","isoniazid · rifampin · pyrazinamide · statins · fibrates",""],["Pancreatitis","didanosine · glucocorticoids · alcohol · valproate · azathioprine · diuretics","ar"],["Pill-induced esophagitis","bisphosphonates · NSAIDs · K⁺ chloride · tetracyclines",""],["Pseudomembranous colitis","clindamycin · ampicillin · cephalosporins · fluoroquinolones · PPIs","gl"]]),
-notes:()=>`<ul><li>ป้องกัน pill esophagitis: ดื่มน้ำเต็มแก้วและนั่ง/ยืนตรงหลังกินยา ${S.x}</li><li>C. difficile เกิดจากยาที่ทำลาย normal flora · PPIs เพิ่มความเสี่ยงด้วย ${S.x}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Acute cholestatic hepatitis and jaundice</b> — macrolides (erythromycin) · amoxicillin–clavulanate ${S.x}</li>
+<li><b>Focal to massive hepatic necrosis</b> — halothane · amanita · valproate · acetaminophen in high dose ${S.x}</li>
+<li><b>Drug-induced hepatitis</b> — isoniazid · rifampin · pyrazinamide · statins · fibrates ${S.x}</li>
+<li><b>Pancreatitis</b> — didanosine · glucocorticoids · alcohol · valproate · azathioprine · diuretics ${S.x}</li>
+<li><b>Pill-induced oesophagitis</b> — bisphosphonates · NSAIDs · potassium chloride · tetracyclines ${S.x}</li>
+<li><b>Pseudomembranous colitis</b> — clindamycin · ampicillin · cephalosporins · fluoroquinolones · PPIs ${S.x}</li><li>ป้องกัน pill esophagitis: ดื่มน้ำเต็มแก้วและนั่ง/ยืนตรงหลังกินยา ${S.x}</li><li>C. difficile เกิดจากยาที่ทำลาย normal flora · PPIs เพิ่มความเสี่ยงด้วย ${S.x}</li></ul>`});
 
 SEC.push({id:"hemerx",k:"a",t:"Hematologic drug reactions",mm:"Hematologic",drugs:"",act:[],leg:[],
-draw:()=>cards([["Agranulocytosis","clozapine · carbamazepine · PTU · methimazole · dapsone · colchicine","vn"],["Aplastic anemia","carbamazepine · methimazole · NSAIDs · chloramphenicol · felbamate","vn"],["Direct Coombs+ hemolytic anemia","penicillins · cephalosporins · methyldopa",""],["Hemolysis in G6PD deficiency","sulfonamides · dapsone · primaquine · nitrofurantoin · rasburicase · quinine","ar"],["Megaloblastic anemia","methotrexate · phenytoin · trimethoprim · hydroxyurea · 5-FU",""],["Thrombocytopenia","heparin (HIT) · quinine · linezolid · indinavir",""]]),
-notes:()=>`<ul><li>Agranulocytosis ต้องสงสัยเมื่อมี <b>ไข้ เจ็บคอ</b> ระหว่างใช้ยา → หยุดยาและตรวจ CBC ${S.x}</li><li>Megaloblastic จากยาส่วนใหญ่เกิดจากรบกวน <b>folate</b> หรือ DNA synthesis ${S.k}</li><li>G6PD deficiency → NADPH ↓ → glutathione ต่ำ → RBC ทนต่อ oxidant stress ไม่ได้ (Heinz bodies, bite cells) ${S.x}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Agranulocytosis</b> — clozapine · carbamazepine · propylthiouracil · methimazole · dapsone · colchicine ${S.x}</li>
+<li><b>Aplastic anaemia</b> — carbamazepine · methimazole · NSAIDs · chloramphenicol · felbamate ${S.x}</li>
+<li><b>Direct Coombs-positive haemolytic anaemia</b> — penicillins · cephalosporins · methyldopa ${S.x}</li>
+<li><b>Haemolysis in G6PD deficiency</b> — sulfonamides · dapsone · primaquine · nitrofurantoin · rasburicase · quinine ${S.x}</li>
+<li><b>Megaloblastic anaemia</b> — methotrexate · phenytoin · trimethoprim · hydroxyurea · 5-fluorouracil ${S.x}</li>
+<li><b>Thrombocytopenia</b> — heparin (HIT) · quinine · linezolid · indinavir ${S.x}</li><li>Agranulocytosis ต้องสงสัยเมื่อมี <b>ไข้ เจ็บคอ</b> ระหว่างใช้ยา → หยุดยาและตรวจ CBC ${S.x}</li><li>Megaloblastic จากยาส่วนใหญ่เกิดจากรบกวน <b>folate</b> หรือ DNA synthesis ${S.k}</li><li>G6PD deficiency → NADPH ↓ → glutathione ต่ำ → RBC ทนต่อ oxidant stress ไม่ได้ (Heinz bodies, bite cells) ${S.x}</li></ul>`});
 
 SEC.push({id:"mskrx",k:"a",t:"Musculoskeletal & skin drug reactions",mm:"MSK & skin",drugs:"",act:[],leg:[],
-draw:()=>cards([["Gingival hyperplasia","phenytoin · Ca²⁺ channel blockers · cyclosporine",""],["Myopathy","statins · fibrates · niacin · colchicine · glucocorticoids · daptomycin","ar"],["Osteoporosis","glucocorticoids · heparin (long-term) · PPIs · anticonvulsants",""],["Photosensitivity","sulfonamides · amiodarone · tetracyclines · fluoroquinolones · thiazides","gl"],["Stevens–Johnson syndrome","lamotrigine · carbamazepine · phenytoin · allopurinol · sulfonamides","vn"],["Tendon rupture · teeth discoloration","fluoroquinolones · tetracyclines",""]]),
-notes:()=>`<ul><li>Fat redistribution: protease inhibitors, glucocorticoids ${S.x}</li><li>Hyperuricemia/gout: thiazides, loop diuretics, pyrazinamide, niacin, cyclosporine ${S.x}</li><li>SJS มักเกิดภายใน 1–3 สัปดาห์แรก · บางยาสัมพันธ์กับ HLA (ดูหัวข้อ Pharmacogenomics) ${S.x}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Gingival hyperplasia</b> — phenytoin · Ca²⁺ channel blockers · cyclosporine ${S.x}</li>
+<li><b>Myopathy</b> — statins · fibrates · niacin · colchicine · glucocorticoids · daptomycin ${S.x}</li>
+<li><b>Osteoporosis</b> — glucocorticoids · long-term heparin · PPIs · anticonvulsants ${S.x}</li>
+<li><b>Photosensitivity</b> — sulfonamides · amiodarone · tetracyclines · fluoroquinolones · thiazides ${S.x}</li>
+<li><b>Stevens–Johnson syndrome</b> — lamotrigine · carbamazepine · phenytoin · allopurinol · sulfonamides ${S.x}</li>
+<li><b>Tendon rupture and discoloured teeth</b> — fluoroquinolones · tetracyclines ${S.x}</li><li>Fat redistribution: protease inhibitors, glucocorticoids ${S.x}</li><li>Hyperuricemia/gout: thiazides, loop diuretics, pyrazinamide, niacin, cyclosporine ${S.x}</li><li>SJS มักเกิดภายใน 1–3 สัปดาห์แรก · บางยาสัมพันธ์กับ HLA (ดูหัวข้อ Pharmacogenomics) ${S.x}</li></ul>`});
 
 SEC.push({id:"neurorx",k:"a",t:"Neurologic drug reactions",mm:"Neurologic",drugs:"",act:[],leg:[],
-draw:()=>cards([["Cinchonism (tinnitus, headache, vertigo)","quinine · quinidine",""],["Parkinsonism","antipsychotics · metoclopramide · reserpine","ar"],["Peripheral neuropathy","isoniazid · vincristine · platinum · phenytoin · stavudine","gl"],["Idiopathic intracranial hypertension","vitamin A · tetracyclines · growth hormone · isotretinoin",""],["Seizures (↓ threshold)","bupropion · imipenem · isoniazid · tramadol · enflurane","vn"],["Tardive dyskinesia","antipsychotics · metoclopramide",""]]),
-notes:()=>`<ul><li>Visual disturbances: ethambutol (optic neuritis, red–green), digoxin (yellow vision), hydroxychloroquine (retinopathy), PDE5 inhibitors (blue tint), vigabatrin (visual field loss) ${S.x}</li><li>Isoniazid neuropathy ป้องกันด้วย <b>pyridoxine (B6)</b> ${S.k}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Cinchonism — tinnitus, headache, vertigo</b> — quinine · quinidine ${S.x}</li>
+<li><b>Parkinsonism</b> — antipsychotics · metoclopramide · reserpine ${S.x}</li>
+<li><b>Peripheral neuropathy</b> — isoniazid · vincristine · platinum agents · phenytoin · stavudine ${S.x}</li>
+<li><b>Idiopathic intracranial hypertension</b> — vitamin A · tetracyclines · growth hormone · isotretinoin ${S.x}</li>
+<li><b>A lower seizure threshold</b> — bupropion · imipenem · isoniazid · tramadol · enflurane ${S.x}</li>
+<li><b>Tardive dyskinesia</b> — antipsychotics · metoclopramide ${S.x}</li><li>Visual disturbances: ethambutol (optic neuritis, red–green), digoxin (yellow vision), hydroxychloroquine (retinopathy), PDE5 inhibitors (blue tint), vigabatrin (visual field loss) ${S.x}</li><li>Isoniazid neuropathy ป้องกันด้วย <b>pyridoxine (B6)</b> ${S.k}</li></ul>`});
 
 SEC.push({id:"renalrx",k:"a",t:"Renal, GU & respiratory drug reactions",mm:"Renal, GU & respiratory",drugs:"",act:[],leg:[],
-draw:()=>cards([["Fanconi syndrome","cisplatin · ifosfamide · expired tetracyclines · tenofovir",""],["Hemorrhagic cystitis","cyclophosphamide · ifosfamide (acrolein)","vn"],["Interstitial nephritis","penicillins (methicillin) · NSAIDs · PPIs · diuretics · rifampin · sulfonamides","ar"],["Drug-induced lupus","hydralazine · procainamide · isoniazid · minocycline · TNF-α inhibitors",""],["Dry cough","ACE inhibitors (bradykinin ↑)","gl"],["Pulmonary fibrosis","bleomycin · busulfan · amiodarone · methotrexate · nitrofurantoin",""]]),
-notes:()=>`<ul><li>Hemorrhagic cystitis ป้องกันด้วย <b>mesna</b> + hydration ${S.k}</li><li>Drug-induced lupus มักมี <b>anti-histone</b> antibody และไม่ค่อยมีไตอักเสบ ${S.x}</li><li>ACEi cough → เปลี่ยนเป็น ARB ${S.x}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Fanconi syndrome</b> — cisplatin · ifosfamide · expired tetracyclines · tenofovir ${S.x}</li>
+<li><b>Haemorrhagic cystitis</b> — cyclophosphamide · ifosfamide — through acrolein ${S.x}</li>
+<li><b>Interstitial nephritis</b> — penicillins (methicillin) · NSAIDs · PPIs · diuretics · rifampin · sulfonamides ${S.x}</li>
+<li><b>Drug-induced lupus</b> — hydralazine · procainamide · isoniazid · minocycline · TNF-α inhibitors ${S.x}</li>
+<li><b>Dry cough</b> — ACE inhibitors — bradykinin accumulates ${S.x}</li>
+<li><b>Pulmonary fibrosis</b> — bleomycin · busulfan · amiodarone · methotrexate · nitrofurantoin ${S.x}</li><li>Hemorrhagic cystitis ป้องกันด้วย <b>mesna</b> + hydration ${S.k}</li><li>Drug-induced lupus มักมี <b>anti-histone</b> antibody และไม่ค่อยมีไตอักเสบ ${S.x}</li><li>ACEi cough → เปลี่ยนเป็น ARB ${S.x}</li></ul>`});
 
 SEC.push({id:"multirx",k:"a",t:"Multiorgan drug reactions",mm:"Multiorgan",drugs:"",act:[],leg:[],
-draw:()=>cards([["Antimuscarinic effects","atropine · TCAs · first-gen H₁ blockers · antipsychotics · benztropine","ar"],["Disulfiram-like reaction (with alcohol)","metronidazole · some cephalosporins · procarbazine · 1st-gen sulfonylureas",""],["Nephrotoxicity & ototoxicity","aminoglycosides · vancomycin · loop diuretics · cisplatin","vn"]]),
-notes:()=>`<ul><li>Antimuscarinic: ปากแห้ง ผิวแห้งร้อน ม่านตาขยาย ปัสสาวะคั่ง สับสน — ระวังในผู้สูงอายุ ${S.x}</li><li>Disulfiram-like = ยับยั้ง aldehyde dehydrogenase → acetaldehyde คั่ง → หน้าแดง คลื่นไส้ ใจสั่น ${S.x}</li><li>Cisplatin ป้องกัน nephrotoxicity ด้วย hydration (chloride diuresis) และ amifostine ${S.k}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Antimuscarinic effects</b> — atropine · TCAs · first-generation H₁ blockers · antipsychotics · benztropine ${S.x}</li>
+<li><b>Disulfiram-like reaction with alcohol</b> — metronidazole · some cephalosporins · procarbazine · first-generation sulfonylureas ${S.x}</li>
+<li><b>Nephrotoxicity and ototoxicity</b> — aminoglycosides · vancomycin · loop diuretics · cisplatin ${S.x}</li><li>Antimuscarinic: ปากแห้ง ผิวแห้งร้อน ม่านตาขยาย ปัสสาวะคั่ง สับสน — ระวังในผู้สูงอายุ ${S.x}</li><li>Disulfiram-like = ยับยั้ง aldehyde dehydrogenase → acetaldehyde คั่ง → หน้าแดง คลื่นไส้ ใจสั่น ${S.x}</li><li>Cisplatin ป้องกัน nephrotoxicity ด้วย hydration (chloride diuresis) และ amifostine ${S.k}</li></ul>`});
 
 SEC.push({id:"cyp",k:"b",t:"Cytochrome P-450 interactions",mm:"CYP450",drugs:"",act:[],leg:[],
-draw:()=>cards([["Inducers (↓ ระดับยาอื่น)","rifampin · carbamazepine · phenytoin · phenobarbital · St John’s wort","gl"],["Inducers (อื่นๆ)","griseofulvin · chronic alcohol use · nevirapine","gl"],["Inhibitors: anti-infectives","ritonavir · ketoconazole · fluconazole · clarithromycin · erythromycin · isoniazid","vn"],["Inhibitors: others","amiodarone · cimetidine · grapefruit juice · valproate · omeprazole","vn"],["Substrates (narrow index)","warfarin · theophylline · cyclosporine · tacrolimus · statins · OCPs","ar"]]),
-notes:()=>`<ul><li><b>CYP3A4</b> metabolize ยามากที่สุด · CYP2D6, 2C9, 2C19 มี polymorphism สำคัญ ${S.k}</li><li>Inducer ต้องใช้เวลาเป็นวัน–สัปดาห์ (สร้างเอนไซม์ใหม่) · inhibitor มีผลเร็ว ${S.k}</li><li>ตัวอย่างสำคัญ: rifampin + OCP → ยาคุมล้มเหลว · macrolide/azole + statin → myopathy · amiodarone + warfarin → INR ↑ ${S.k}</li><li>Prodrug ที่ต้องอาศัย CYP: clopidogrel (2C19), codeine (2D6), tamoxifen (2D6) ${S.k}</li></ul>`});
+notes:()=>`<ul>
+<li><b>Inducers — they lower the level of other drugs</b> — rifampin · carbamazepine · phenytoin · phenobarbital · St John’s wort · griseofulvin · chronic alcohol use · nevirapine ${S.x}</li>
+<li><b>Inhibitors among the anti-infectives</b> — ritonavir · ketoconazole · fluconazole · clarithromycin · erythromycin · isoniazid ${S.x}</li>
+<li><b>Other inhibitors</b> — amiodarone · cimetidine · grapefruit juice · valproate · omeprazole ${S.x}</li>
+<li><b>Substrates with a narrow therapeutic index</b> — warfarin · theophylline · cyclosporine · tacrolimus · statins · oral contraceptives ${S.x}</li><li><b>CYP3A4</b> metabolize ยามากที่สุด · CYP2D6, 2C9, 2C19 มี polymorphism สำคัญ ${S.k}</li><li>Inducer ต้องใช้เวลาเป็นวัน–สัปดาห์ (สร้างเอนไซม์ใหม่) · inhibitor มีผลเร็ว ${S.k}</li><li>ตัวอย่างสำคัญ: rifampin + OCP → ยาคุมล้มเหลว · macrolide/azole + statin → myopathy · amiodarone + warfarin → INR ↑ ${S.k}</li><li>Prodrug ที่ต้องอาศัย CYP: clopidogrel (2C19), codeine (2D6), tamoxifen (2D6) ${S.k}</li></ul>`});
 
 SEC.push({id:"sulfa",k:"b",t:"Sulfa drugs",mm:"Sulfa drugs",drugs:"",act:[],leg:[],
-draw:()=>cards([["Antibiotics","sulfonamides (TMP-SMX) · sulfadiazine · dapsone (sulfone, cross-reacts)",""],["Diuretics","furosemide · bumetanide · thiazides · acetazolamide","gl"],["Others","sulfasalazine · sulfonylureas · celecoxib · probenecid",""]],{foot:"Ethacrynic acid = loop diuretic ที่ไม่มี sulfa"}),
-notes:()=>`<ul><li>แพ้ sulfa: ไข้, UTI-like interstitial nephritis, SJS, hemolysis ใน G6PD, thrombocytopenia, urticaria ${S.x}</li><li>Cross-reactivity ระหว่าง sulfonamide antibiotics กับ non-antibiotic sulfa ต่ำในทางคลินิก แต่ข้อสอบมักถามรายชื่อกลุ่มนี้ ${S.x}</li></ul>`});
+draw:()=>tbl(["Group","Drugs"],[
+ ["Antibiotics","Sulfonamides (TMP-SMX) · sulfadiazine · dapsone (a sulfone, cross-reacts)"],
+ ["Diuretics","Furosemide · bumetanide · thiazides · acetazolamide"],
+ ["Others","Sulfasalazine · sulfonylureas · celecoxib · probenecid"]]),
+notes:()=>`<ul>
+<li><b>Ethacrynic acid</b> เป็น loop diuretic ตัวเดียวที่ไม่มีโครงสร้าง sulfa จึงใช้แทนได้เมื่อแพ้ ${S.x}</li><li>แพ้ sulfa: ไข้, UTI-like interstitial nephritis, SJS, hemolysis ใน G6PD, thrombocytopenia, urticaria ${S.x}</li><li>Cross-reactivity ระหว่าง sulfonamide antibiotics กับ non-antibiotic sulfa ต่ำในทางคลินิก แต่ข้อสอบมักถามรายชื่อกลุ่มนี้ ${S.x}</li></ul>`});
 
 SEC.push({id:"names",k:"c",t:"Drug name suffixes",mm:"Name suffixes",drugs:"",act:[],leg:[],
-draw:()=>cards([["-azole · -afungin · -vir · -cycline","antifungal (ergosterol) · echinocandin · antiviral · tetracycline",""],["-olol · -pril · -sartan · -dipine","β-blocker · ACE inhibitor · ARB · DHP Ca²⁺ blocker","gl"],["-statin · -gliflozin · -gliptin · -glutide","HMG-CoA reductase inh. · SGLT2 inh. · DPP-4 inh. · GLP-1 agonist",""],["-tinib · -mab · -cept","tyrosine kinase inhibitor · monoclonal antibody · receptor fusion protein","ar"],["-prazole · -tidine · -setron","PPI · H₂ blocker · 5-HT₃ antagonist",""],["-triptan · -curium/-curonium · -caine","5-HT₁B/1D agonist · nondepolarizing NM blocker · local anesthetic","vn"]]),
+draw:()=>tbl(["Suffix","Class"],[
+ ["-azole · -afungin · -vir · -cycline","Antifungal (ergosterol) · echinocandin · antiviral · tetracycline"],
+ ["-olol · -pril · -sartan · -dipine","β-blocker · ACE inhibitor · ARB · dihydropyridine Ca²⁺ blocker"],
+ ["-statin · -gliflozin · -gliptin · -glutide","HMG-CoA reductase inhibitor · SGLT2 inhibitor · DPP-4 inhibitor · GLP-1 agonist"],
+ ["-tinib · -mab · -cept","Tyrosine kinase inhibitor · monoclonal antibody · receptor fusion protein"],
+ ["-prazole · -tidine · -setron","PPI · H₂ blocker · 5-HT₃ antagonist"],
+ ["-triptan · -curium / -curonium · -caine","5-HT₁B/1D agonist · nondepolarising neuromuscular blocker · local anaesthetic"]]),
 notes:()=>`${tbl(["Monoclonal antibody","ความหมาย"],[["-ximab","chimeric (mouse + human)"],["-zumab","humanized"],["-umab","fully human"]])}${S.x}
  <ul><li>-terol = β₂ agonist · -osin = α₁ blocker · -dronate = bisphosphonate · -parin = heparin · -xaban = Xa inhibitor · -plase = thrombolytic ${S.x}</li></ul>`});
 
 SEC.push({id:"terato",k:"d",t:"Teratogenic drugs",mm:"Teratogens",drugs:"",act:[],leg:[],
-draw:()=>cards([["ACE inhibitors · ARBs","renal damage, oligohydramnios (2nd–3rd trimester)","vn"],["Valproate · carbamazepine","neural tube defects","vn"],["Isotretinoin · vitamin A excess","craniofacial, CNS, cardiac defects",""],["Warfarin","bone & cartilage defects, CNS hemorrhage — ใช้ heparin แทน","ar"],["Lithium","Ebstein anomaly",""],["Methotrexate · mycophenolate","abortion, multiple anomalies",""],["Tetracyclines · aminoglycosides","teeth discoloration · CN VIII toxicity","gl"]]),
+draw:()=>tbl(["Drug","Effect on the fetus"],[
+ ["ACE inhibitors · ARBs","Renal damage and oligohydramnios in the second and third trimester"],
+ ["Valproate · carbamazepine","Neural tube defects"],
+ ["Isotretinoin · vitamin A excess","Craniofacial, CNS and cardiac defects"],
+ ["Warfarin","Bone and cartilage defects · CNS haemorrhage — heparin instead"],
+ ["Lithium","Ebstein anomaly"],
+ ["Methotrexate · mycophenolate","Abortion and multiple anomalies"],
+ ["Tetracyclines · aminoglycosides","Discoloured teeth · cranial nerve VIII toxicity"]]),
 notes:()=>`<ul><li>ช่วงเสี่ยงที่สุดคือ <b>สัปดาห์ที่ 3–8</b> (organogenesis) ${S.x}</li><li>Phenytoin → fetal hydantoin syndrome · DES → clear cell adenocarcinoma ช่องคลอด · thalidomide → limb defects ${S.x}</li><li>ทางเลือกที่ปลอดภัยกว่าในครรภ์: labetalol/nifedipine/methyldopa สำหรับ HTN, heparin/LMWH สำหรับ anticoagulation ${S.x}</li></ul>`});
 
 SEC.push({id:"pgx",k:"d",t:"Pharmacogenomics: HLA & enzyme variants",mm:"Pharmacogenomics",drugs:"",act:[],leg:[],
-draw:()=>cards([["HLA-B*57:01","abacavir → hypersensitivity (ตรวจก่อนให้ยา)","vn"],["HLA-B*15:02","carbamazepine, phenytoin → SJS/TEN (ประชากรเอเชีย)","vn"],["HLA-B*58:01","allopurinol → SJS/TEN, DRESS","vn"],["TPMT / NUDT15 deficiency","azathioprine, 6-MP → myelosuppression",""],["G6PD deficiency","oxidant drugs → hemolysis","ar"],["Slow acetylators (NAT2)","isoniazid, hydralazine, procainamide → toxicity, drug-induced lupus",""],["CYP2C19 poor metabolizer","clopidogrel ไม่ได้ผล","gl"]]),
+draw:()=>tbl(["Variant","What it does to the drug"],[
+ ["HLA-B*57:01","Abacavir hypersensitivity — test before prescribing"],
+ ["HLA-B*15:02","Carbamazepine and phenytoin → SJS/TEN, in Asian populations"],
+ ["HLA-B*58:01","Allopurinol → SJS/TEN and DRESS"],
+ ["TPMT / NUDT15 deficiency","Azathioprine and 6-MP → myelosuppression"],
+ ["G6PD deficiency","Oxidant drugs → haemolysis"],
+ ["Slow acetylators (NAT2)","Isoniazid, hydralazine, procainamide → toxicity and drug-induced lupus"],
+ ["CYP2C19 poor metaboliser","Clopidogrel does not work"]]),
 notes:()=>`<ul><li>ประเทศไทยแนะนำตรวจ <b>HLA-B*15:02</b> ก่อน carbamazepine และ <b>HLA-B*58:01</b> ก่อน allopurinol ${S.x}</li><li>Pseudocholinesterase deficiency → succinylcholine ออกฤทธิ์นาน (apnea หลังผ่าตัด) ${S.k}</li></ul>`});
 
 SEC.push({id:"antidote",k:"d",t:"Specific antidotes: drugs",mm:"Antidotes — drugs",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["Acetaminophen","N-acetylcysteine — เติม glutathione ที่พร่อง","ar"],
- ["Opioids","Naloxone","ar"],
- ["Benzodiazepines","Flumazenil","ar"],
- ["TCAs","NaHCO₃ — ทำให้เยื่อหุ้มเซลล์หัวใจเสถียร","vn"],
- ["Salicylates","NaHCO₃ ทำให้ปัสสาวะเป็นด่าง · ฟอกเลือด","vn"],
- ["Digoxin","Digoxin-specific antibody fragments (Fab)","vn"],
- ["β-blockers","Atropine · glucagon · น้ำเกลือ","vn"],
- ["Heparin","Protamine sulfate","bl"],
- ["Warfarin","Vitamin K (ออกฤทธิ์ช้า) · PCC หรือ FFP (ทันที)","bl"],
- ["Dabigatran","Idarucizumab","bl"],
- ["Factor Xa inhibitors (เช่น apixaban)","Andexanet alfa","bl"],
- ["Methotrexate","Leucovorin","gl"]],{foot:"First Aid Step 1 · Specific toxicity treatments"}),
 notes:()=>`<ul>
 <li><b>Acetaminophen</b> → <b>N-acetylcysteine</b> เติม glutathione ที่ถูกใช้หมดไปกับ NAPQI ${S.fa1} · ยิ่งให้เร็วยิ่งดี และตัดสินใจจากระดับยาเทียบ nomogram ไม่ใช่จากอาการ เพราะช่วงแรกมักไม่มีอาการ ${S.x}</li>
 <li><b>Opioids</b> → <b>naloxone</b> ${S.fa1} · ครึ่งชีวิตสั้นกว่า opioid หลายตัว จึงอาจกดการหายใจซ้ำหลังยาหมดฤทธิ์ ต้องเฝ้าดูต่อหรือให้แบบหยดต่อเนื่อง ${S.x}</li>
@@ -81,17 +132,6 @@ notes:()=>`<ul>
 <li><b>Methotrexate</b> → <b>leucovorin</b> (folinic acid) ข้ามขั้นที่ถูก dihydrofolate reductase ปิดกั้น ${S.fa1}${S.x}</li></ul>`});
 
 SEC.push({id:"antidote2",k:"d",t:"Specific antidotes: metals, gases & alcohols",mm:"Antidotes — metals & gases",drugs:"",act:[],leg:[],
-draw:()=>cards([
- ["AChE inhibitors · organophosphates","Atropine ก่อน แล้วจึง pralidoxime","ag"],
- ["Antimuscarinic · anticholinergic","Physostigmine (ผ่าน BBB) · คุมไข้สูง","inh"],
- ["Carbon monoxide","O₂ 100% · hyperbaric O₂","vn"],
- ["Cyanide","Hydroxocobalamin · nitrites + sodium thiosulfate","vn"],
- ["Methemoglobin","Methylene blue · vitamin C","vn"],
- ["Methanol · ethylene glycol","Fomepizole (ดีกว่า ethanol) · ฟอกเลือด","mod"],
- ["Iron","Deferoxamine · deferasirox · deferiprone","ar"],
- ["Lead","EDTA · dimercaprol · succimer (ในเด็ก) · penicillamine","ar"],
- ["Copper","Penicillamine · trientine","ar"],
- ["Arsenic · mercury","Dimercaprol · succimer","ar"]],{foot:"First Aid Step 1 · Specific toxicity treatments"}),
 notes:()=>`<ul>
 <li><b>Organophosphates / AChE inhibitors</b> → <b>atropine ก่อน</b> แล้วจึง pralidoxime ${S.fa1} · atropine แก้อาการ muscarinic ที่ฆ่าผู้ป่วย (เสมหะท่วม หลอดลมเกร็ง หัวใจช้า) ส่วน pralidoxime ไปกู้เอนไซม์คืน ต้องให้ก่อนเกิด aging ${S.x}</li>
 <li><b>Antimuscarinic</b> → <b>physostigmine</b> ซึ่งผ่าน blood–brain barrier ได้ และต้องคุมไข้สูง ${S.fa1}</li>

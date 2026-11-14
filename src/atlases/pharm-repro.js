@@ -41,7 +41,12 @@ notes:()=>`<h3>Progestins</h3><ul><li>จับ PR → endometrium เป็น 
  <h3>Antiprogestins</h3><ul><li><b>Mifepristone</b>: PR (และ GR) antagonist → ยุติการตั้งครรภ์ (+ misoprostol) · Cushing ${S.k}</li><li><b>Ulipristal</b>: SPRM → emergency contraception ภายใน 120 ชม. ${S.k}</li></ul>`});
 
 SEC.push({id:"contra",k:"c",t:"Contraception",mm:"Contraception",drugs:"combined OCP · progestin-only pill · DMPA · implant · copper IUD · LNG-IUD",act:[],leg:[],
-draw:()=>cards([["Combined hormonal (pill, patch, ring)","estrogen + progestin → ยับยั้ง ovulation","vn"],["Progestin-only","pill, DMPA injection, etonogestrel implant, LNG-IUD","gl"],["Copper IUD","ไม่ใช่ฮอร์โมน · spermicidal อักเสบ · emergency contraception ดีที่สุด","gl"],["Emergency","copper IUD · ulipristal · levonorgestrel",""],["Surgical","tubal ligation · vasectomy",""]]),
+draw:()=>tbl(["Method","How it works"],[
+ ["Combined hormonal (pill, patch, ring)","estrogen + progestin → ยับยั้ง ovulation"],
+ ["Progestin-only","pill, DMPA injection, etonogestrel implant, LNG-IUD"],
+ ["Copper IUD","ไม่ใช่ฮอร์โมน · spermicidal อักเสบ · emergency contraception ดีที่สุด"],
+ ["Emergency","copper IUD · ulipristal · levonorgestrel"],
+ ["Surgical","tubal ligation · vasectomy"]]),
 notes:()=>`<h3>Combined OCP</h3><ul><li>ข้อดี: ลด ovarian/endometrial cancer, ลด dysmenorrhea, acne ${S.k}</li><li>ข้อห้าม: <b>สูบบุหรี่อายุ &gt;35 ปี</b>, VTE/stroke/CAD history, migraine with aura, ER⁺ breast cancer, liver disease, หลังคลอด &lt;21 วัน ${S.k}${S.p}</li><li>DI: <b>rifampin</b>, anticonvulsants (CYP3A4 inducer) ลดประสิทธิภาพ ${S.k}</li></ul>`});
 
 SEC.push({id:"androgen",k:"d",t:"Testosterone & danazol",mm:"Androgens",drugs:"testosterone · methyltestosterone · danazol · oxandrolone",act:["ag"],tools:MT,leg:["ag"],draw:RM(["ara"]),

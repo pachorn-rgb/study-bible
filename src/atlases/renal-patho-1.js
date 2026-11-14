@@ -9,7 +9,13 @@
 })();
 
 SEC.push({id:"casts",k:"a",t:"Urinary casts & glomerular nomenclature",leg:[],
- draw:()=>cards([["RBC casts","glomerulonephritis (nephritic) · ภาวะ hypertensive emergency","ar"],["WBC casts","pyelonephritis, acute interstitial nephritis, transplant rejection","vn"],["Granular (muddy brown)","acute tubular necrosis",""],["Fatty casts · oval fat bodies","nephrotic syndrome (Maltese cross ใต้ polarized light)","gl"],["Waxy casts","CKD ระยะท้าย (tubule ฝ่อ ปัสสาวะไหลช้า)",""],["Hyaline casts","ไม่จำเพาะ · ปัสสาวะเข้มข้น, หลังออกกำลัง, ใช้ยาขับปัสสาวะ",""]]),
+ draw:()=>tbl(["Cast","What it means"],[
+ ["RBC casts","glomerulonephritis (nephritic) · ภาวะ hypertensive emergency"],
+ ["WBC casts","pyelonephritis, acute interstitial nephritis, transplant rejection"],
+ ["Granular (muddy brown)","acute tubular necrosis"],
+ ["Fatty casts · oval fat bodies","nephrotic syndrome (Maltese cross ใต้ polarized light)"],
+ ["Waxy casts","CKD ระยะท้าย (tubule ฝ่อ ปัสสาวะไหลช้า)"],
+ ["Hyaline casts","ไม่จำเพาะ · ปัสสาวะเข้มข้น, หลังออกกำลัง, ใช้ยาขับปัสสาวะ"]]),
  notes:()=>`<ul><li>Cast = โปรตีน (Tamm–Horsfall/uromodulin) จับตัวใน tubule · มี cast แปลว่าปัญหามาจาก<b>ไต</b> ไม่ใช่กระเพาะปัสสาวะ ${S.x}</li>
 <li>WBC ในปัสสาวะโดยไม่มี cast → cystitis (ทางเดินปัสสาวะส่วนล่าง) ${S.x}</li></ul>
 <h3>คำเรียกรอยโรคของ glomerulus</h3><ul><li><b>Focal</b> = ไม่ถึงครึ่งของ glomeruli · <b>diffuse</b> = เกินครึ่ง ${S.r}</li><li><b>Segmental</b> = บางส่วนของ glomerulus หนึ่ง · <b>global</b> = ทั้ง glomerulus ${S.r}</li>

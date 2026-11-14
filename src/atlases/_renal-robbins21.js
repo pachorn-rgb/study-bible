@@ -18,9 +18,16 @@ function cardsInline(y,R){return R.map(([a,b2],i)=>{const yy=y+i*34;return `<rec
 /* ================= Robbins Ch 21 · Lower urinary tract ================= */
 Object.assign(GN,{a:"Ureters",b:"Bladder: non-neoplastic",c:"Bladder neoplasms",d:"Urethra"});
 SEC.push({id:"ureter",k:"a",t:"Ureter: congenital anomalies & tumors",leg:[],
-draw:()=>cards([["Double / bifid ureter","มักร่วมกับ duplex kidney · ส่วนใหญ่ไม่มีอาการ","" ],["Ureteropelvic junction (UPJ) obstruction","สาเหตุ hydronephrosis ที่พบบ่อยที่สุดในทารกและเด็ก · เด็กชาย > หญิง (bilateral 20%) · ผู้ใหญ่: หญิง ข้างเดียว","ar"],["Diverticula","ถุงยื่นของผนัง ureter → stasis, infection","" ],["Hydroureter / megaloureter","ureter ยาวคดและขยาย · neurogenic หรือ obstruction","vn"],["Tumors","ส่วนใหญ่ urothelial carcinoma อายุ 60–70 · มักพบร่วมกับใน bladder/pelvis","gl"],["Fibroepithelial polyp","tumor-like lesion ในเด็ก · loose vascular CT คลุมด้วย urothelium","" ]],{foot:"Table 21.1 · พบได้ 2–3% ของการชันสูตร"}),
+draw:()=>tbl(["Ureteric lesion","Features"],[
+ ["Double / bifid ureter","มักร่วมกับ duplex kidney · ส่วนใหญ่ไม่มีอาการ"],
+ ["Ureteropelvic junction (UPJ) obstruction","สาเหตุ hydronephrosis ที่พบบ่อยที่สุดในทารกและเด็ก · เด็กชาย > หญิง (bilateral 20%) · ผู้ใหญ่: หญิง ข้างเดียว"],
+ ["Diverticula","ถุงยื่นของผนัง ureter → stasis, infection"],
+ ["Hydroureter / megaloureter","ureter ยาวคดและขยาย · neurogenic หรือ obstruction"],
+ ["Tumors","ส่วนใหญ่ urothelial carcinoma อายุ 60–70 · มักพบร่วมกับใน bladder/pelvis"],
+ ["Fibroepithelial polyp","tumor-like lesion ในเด็ก · loose vascular CT คลุมด้วย urothelium"]]),
 notes:()=>`<h3>Congenital (Table 21.1)</h3><ul><li><b>Vesicoureteral reflux</b> เป็นความผิดปกติที่สำคัญที่สุด → infection, reflux nephropathy ${S.r}</li>
- <li><b>UPJ obstruction</b>: smooth muscle bundle เรียงผิดปกติหรือ collagen เกินที่ UPJ · ไม่ค่อยบ่อยจาก renal vessel กดทับ · ส่วนน้อยมี agenesis ของไตอีกข้าง ${S.r}</li></ul>
+ <li><b>UPJ obstruction</b>: smooth muscle bundle เรียงผิดปกติหรือ collagen เกินที่ UPJ · ไม่ค่อยบ่อยจาก renal vessel กดทับ · ส่วนน้อยมี agenesis ของไตอีกข้าง ${S.r}</li>
+<li>ความผิดปกติของ ureter แบบ congenital พบได้ราว <b>2–3% ของการชันสูตร</b> ${S.r}</li></ul>
  <h3>Tumors</h3><ul><li>เนื้องอกปฐมภูมิของ ureter พบน้อย · ส่วนใหญ่เป็น urothelial carcinoma · มักมี multifocal ร่วมกับ bladder หรือ renal pelvis ${S.r}</li></ul>`});
 SEC.push({id:"ureterobs",k:"a",t:"Obstructive lesions & retroperitoneal fibrosis",leg:[],
 draw(){let b="";const col=(x,ttl,R,c)=>{b+=`<rect class="box ${c}" x="${x}" y="14" width="300" height="34" rx="10"/>`+T(x+150,36,ttl,{c:"bh"});R.forEach(([n,dd],i)=>{const y=60+i*58;b+=`<rect class="box" x="${x}" y="${y}" width="300" height="50" rx="10"/>`+T(x+12,y+21,n,{a:"start",c:"b"})+T(x+12,y+40,dd,{a:"start",c:"s"})})};
@@ -32,7 +39,11 @@ notes:()=>`<h3>Table 21.2 · สาเหตุ ureteral obstruction</h3><ul><li
  <li>เริ่มด้วย corticosteroids · หลายรายดื้อในภายหลัง ต้อง stent หรือ ureterolysis ${S.r}</li></ul>`});
 
 SEC.push({id:"bladdercong",k:"b",t:"Bladder: congenital anomalies",leg:[],
-draw:()=>cards([["Diverticula","congenital หรือ acquired (BPH) · stasis, infection, stones · มะเร็งในถุง stage สูงกว่า","ar"],["Exstrophy","ผนังหน้าท้อง + bladder ปิดไม่สมบูรณ์ · colonic metaplasia → adenocarcinoma","vn"],["Urachal anomalies","patent urachus (fistula สะดือ–bladder) · urachal cyst · urachal carcinoma (adenocarcinoma)","gl"],["Congenital fistulas","bladder ↔ vagina, rectum, uterus","" ]]),
+draw:()=>tbl(["Bladder anomaly","Features"],[
+ ["Diverticula","congenital หรือ acquired (BPH) · stasis, infection, stones · มะเร็งในถุง stage สูงกว่า"],
+ ["Exstrophy","ผนังหน้าท้อง + bladder ปิดไม่สมบูรณ์ · colonic metaplasia → adenocarcinoma"],
+ ["Urachal anomalies","patent urachus (fistula สะดือ–bladder) · urachal cyst · urachal carcinoma (adenocarcinoma)"],
+ ["Congenital fistulas","bladder ↔ vagina, rectum, uterus"]]),
 notes:()=>`<ul><li><b>Diverticula</b>: ส่วนใหญ่เป็น acquired ในชายสูงอายุจาก <b>prostatic hyperplasia</b> · มักเล็กไม่มีอาการ ${S.r}</li>
  <li>มะเร็งที่เกิดในถุง diverticulum มัก <b>stage สูงกว่า</b> เพราะ muscularis propria บางหรือไม่มี ${S.r}</li>
  <li><b>Exstrophy</b>: ติดเชื้อเรื้อรังลามขึ้นไต · เสี่ยง <b>adenocarcinoma</b> ${S.r}</li>
@@ -56,7 +67,11 @@ notes:()=>`<h3>Acute & chronic cystitis</h3><ul><li>ปัจจัยเสี�
  <h3>Special forms</h3><ul><li><b>Interstitial cystitis</b> (chronic pelvic pain syndrome): glomerulations, Hunner ulcers (late) → fibrosis, contracted bladder ${S.r}</li>
  <li><b>Malakoplakia</b>: soft yellow plaques 3–4 cm · พบมากใน immunosuppression (renal transplant) · เกิดที่อวัยวะอื่นได้ ${S.r}</li><li><b>Polypoid cystitis</b>: จาก indwelling catheter ${S.r}</li></ul>`});
 SEC.push({id:"metaplasia",k:"b",t:"Metaplastic lesions",leg:[],
-draw:()=>cards([["Cystitis cystica et glandularis","von Brunn nests ลงไปใน lamina propria → กลายเป็น cuboidal/columnar (glandularis) หรือเป็นโพรง (cystica)","" ],["Intestinal metaplasia","มี goblet cells · extensive/multifocal → precursor ของ adenocarcinoma","gl"],["Squamous metaplasia","ตอบสนองต่อ chronic injury · keratinizing multifocal → precursor ของ SCC (schistosomiasis)","ar"],["Nephrogenic adenoma","renal tubular cells หลุดมาฝังที่ urothelium ที่บาดเจ็บ · benign","vn"]]),
+draw:()=>tbl(["Change","What it is"],[
+ ["Cystitis cystica et glandularis","von Brunn nests ลงไปใน lamina propria → กลายเป็น cuboidal/columnar (glandularis) หรือเป็นโพรง (cystica)"],
+ ["Intestinal metaplasia","มี goblet cells · extensive/multifocal → precursor ของ adenocarcinoma"],
+ ["Squamous metaplasia","ตอบสนองต่อ chronic injury · keratinizing multifocal → precursor ของ SCC (schistosomiasis)"],
+ ["Nephrogenic adenoma","renal tubular cells หลุดมาฝังที่ urothelium ที่บาดเจ็บ · benign"]]),
 notes:()=>`<ul><li>Cystitis cystica และ glandularis มักเกิดร่วมกัน · พบบ่อย ไม่มีความสำคัญมากเว้นแต่ intestinal metaplasia กว้างขวาง ${S.r}</li>
  <li>แยก <b>squamous metaplasia</b> จาก glycogenated squamous epithelium ปกติที่ trigone ของหญิง ${S.r}</li>
  <li><b>Nephrogenic adenoma</b>: เดิมคิดว่าเป็น metaplasia แต่จริงๆ คือ tubular cells ที่หลุดมาฝัง (พบหลัง renal transplant ตรงกับ donor) ${S.r}</li></ul>`});
@@ -108,13 +123,24 @@ notes:()=>`<h3>Table 21.5</h3>${tbl(["Stage","นิยาม"],[["Ta","Noninvas
  <li>Non-muscle-invasive: TURBT + intravesical <b>BCG</b> (กระตุ้น immune response) ${S.r}</li><li>Metastatic: บางรายตอบสนองต่อ <b>immune checkpoint inhibitors</b> ${S.r}</li></ul>
  <div class="pearl">เลือก stage ด้านบนเพื่อดูความลึกที่ก้อนลงไป</div>`});
 SEC.push({id:"othertum",k:"c",t:"Other bladder tumors",leg:[],
-draw:()=>cards([["Squamous cell carcinoma","3–7% ในสหรัฐ · พบมากในถิ่น schistosomiasis · chronic irritation · มักลุกล้ำ","ar"],["Adenocarcinoma","พบน้อย · จาก urachal remnant หรือ intestinal metaplasia","gl"],["Small-cell carcinoma","เหมือนของปอด · TP53 + RB loss · aggressive","ar"],["Leiomyoma","benign mesenchymal ที่พบบ่อยที่สุด","" ],["Embryonal rhabdomyosarcoma","sarcoma ในเด็ก · sarcoma botryoides (พวงองุ่น)","vn"],["Leiomyosarcoma","sarcoma ที่พบบ่อยที่สุดในผู้ใหญ่","vn"],["Secondary","ลามตรงจาก cervix, uterus, prostate, rectum · lymphoma","" ]]),
+draw:()=>tbl(["Tumour","Features"],[
+ ["Squamous cell carcinoma","3–7% ในสหรัฐ · พบมากในถิ่น schistosomiasis · chronic irritation · มักลุกล้ำ"],
+ ["Adenocarcinoma","พบน้อย · จาก urachal remnant หรือ intestinal metaplasia"],
+ ["Small-cell carcinoma","เหมือนของปอด · TP53 + RB loss · aggressive"],
+ ["Leiomyoma","benign mesenchymal ที่พบบ่อยที่สุด"],
+ ["Embryonal rhabdomyosarcoma","sarcoma ในเด็ก · sarcoma botryoides (พวงองุ่น)"],
+ ["Leiomyosarcoma","sarcoma ที่พบบ่อยที่สุดในผู้ใหญ่"],
+ ["Secondary","ลามตรงจาก cervix, uterus, prostate, rectum · lymphoma"]]),
 notes:()=>`<ul><li>SCC แท้เกิดจาก keratinizing dysplasia/CIS · mixed urothelial + squamous พบบ่อยกว่า SCC แท้ ${S.r}</li>
  <li>Inflammatory myofibroblastic tumor และ sarcomatoid carcinoma พบบ่อยกว่า sarcoma แท้ ${S.r}</li>
  <li>Urothelial variants: nested, micropapillary, plasmacytoid, sarcomatoid, lymphoepithelioma-like (Table 21.3) ${S.r}</li></ul>`});
 
 SEC.push({id:"urethra",k:"d",t:"Urethra: inflammation & tumors",leg:[],
-draw:()=>cards([["Urethritis","gonococcal vs nongonococcal (Chlamydia, Mycoplasma) · reactive arthritis (+conjunctivitis)","vn"],["Urethral caruncle","หญิงสูงอายุ · ติ่งแดงเจ็บที่ meatus · granulation tissue · ผ่าตัดหาย","" ],["Benign tumors","squamous papilloma, urothelial papilloma, inverted papilloma, condyloma","" ],["Urethral carcinoma","พบน้อย · proximal: urothelial · distal: squamous (HPV) · adenocarcinoma พบในหญิง","ar"]]),
+draw:()=>tbl(["Urethral lesion","Features"],[
+ ["Urethritis","gonococcal vs nongonococcal (Chlamydia, Mycoplasma) · reactive arthritis (+conjunctivitis)"],
+ ["Urethral caruncle","หญิงสูงอายุ · ติ่งแดงเจ็บที่ meatus · granulation tissue · ผ่าตัดหาย"],
+ ["Benign tumors","squamous papilloma, urothelial papilloma, inverted papilloma, condyloma"],
+ ["Urethral carcinoma","พบน้อย · proximal: urothelial · distal: squamous (HPV) · adenocarcinoma พบในหญิง"]]),
 notes:()=>`<ul><li>Nongonococcal: <b>Chlamydia trachomatis</b> 25–60% ในชาย ~20% ในหญิง · Ureaplasma · มักมาพร้อม cystitis (หญิง) หรือ prostatitis (ชาย) ${S.r}</li>
  <li>Urethritis เป็นส่วนหนึ่งของ <b>reactive arthritis</b> (arthritis, conjunctivitis, urethritis) ${S.r}</li>
  <li><b>Urethral caruncle</b>: inflammatory lesion ที่ meatus · ผิวขรุขระมีเลือดออกง่าย ${S.r}</li>

@@ -60,5 +60,6 @@ A `draw()` must earn its space. Decide per topic:
   entirely — the engine then renders the notes full width with their own heading.
   This is the right answer more often than it looks.
 
-Never use `cards()` for a set of captioned text boxes: it costs more room than a
-list, shrinks the text and tells the reader nothing new.
+A stack of captioned text boxes is never the answer: it costs more room than a list,
+shrinks the text and tells the reader nothing new. The `cards()` helper that used to
+draw them has been removed, and `check.js` fails any new block of them.

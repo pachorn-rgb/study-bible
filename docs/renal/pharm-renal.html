@@ -164,14 +164,24 @@ notes:()=>`<h3>ทำไม loop + thiazide เสริมกัน</h3><ul><li
 
 /* ---------- e · treating kidney disease ---------- */
 SEC.push({id:"aki",k:"e",t:"AKI: drugs that help and drugs that harm",mm:"AKI",drugs:"",act:[],leg:[],
-draw:()=>cards([["Prerenal: isotonic crystalloid","0.9% NaCl เติม intravascular volume · D5W กระจายไปทุก compartment","vn"],["Loop diuretics","ใช้แก้ volume overload เท่านั้น · ไม่ป้องกัน AKI อาจทำให้แย่ลง","gl"],["ไม่แนะนำ","low-dose dopamine (0.5–3 mcg/kg/min) · fenoldopam · ANP","ar"],["หยุด/เลี่ยงยาเป็นพิษต่อไต","aminoglycoside · amphotericin B · NSAID · ACEi/ARB · calcineurin inhibitor · contrast","ar"],["ลดความเสี่ยง","aminoglycoside วันละครั้ง · lipid amphotericin · IV fluid ก่อน contrast",""]]),
+draw:()=>tbl(["Measure","Detail"],[
+ ["Prerenal: isotonic crystalloid","0.9% NaCl เติม intravascular volume · D5W กระจายไปทุก compartment"],
+ ["Loop diuretics","ใช้แก้ volume overload เท่านั้น · ไม่ป้องกัน AKI อาจทำให้แย่ลง"],
+ ["Not recommended","low-dose dopamine (0.5–3 mcg/kg/min) · fenoldopam · ANP"],
+ ["Stop or avoid nephrotoxic drugs","aminoglycoside · amphotericin B · NSAID · ACEi/ARB · calcineurin inhibitor · contrast"],
+ ["Lowering the risk","aminoglycoside วันละครั้ง · lipid amphotericin · IV fluid ก่อน contrast"]]),
 notes:()=>`<h3>ยาที่ทำให้ไตวาย</h3><ul><li>Prerenal ผ่าน hemodynamics: <b>NSAID</b> (ตัด prostaglandin ที่ขยาย afferent) · <b>ACEi/ARB</b> (efferent ขยาย) ${S.p}</li><li>ATN: aminoglycoside, contrast, amphotericin B · calcineurin inhibitor (cyclosporine, tacrolimus) ${S.p}</li></ul>
  <h3>ป้องกัน</h3><ul><li>Aminoglycoside: <b>extended-interval (once-daily)</b> ลด AKI · vancomycin + aminoglycoside เสี่ยงมากขึ้น ${S.p}</li><li>Amphotericin: lipid formulations ในคนเสี่ยง + NS ${S.p}</li>
  <li><b>Contrast-induced AKI</b>: IV isotonic NaCl หรือ NaHCO₃ เริ่ม 3–12 ชม. ก่อน · nonionic contrast ในคนเสี่ยง · N-acetylcysteine ผลไม่แน่นอน ${S.p}</li></ul>
  <h3>รักษา</h3><ul><li>Diuretic resistance: เพิ่มขนาด, ให้ continuous infusion หรือเพิ่ม metolazone/HCTZ ${S.p}</li><li>ปรับขนาดยาทุกตัวตามการทำงานของไตที่เปลี่ยนเร็ว ${S.p}</li></ul>`});
 
 SEC.push({id:"ckd",k:"e",t:"CKD: slowing progression",mm:"CKD progression",drugs:"ACEi · ARB · SGLT2 inhibitors · finerenone",act:["bl","inh"],leg:[],
-draw:()=>cards([["ACEi หรือ ARB","ลด proteinuria · ใช้ถึงขนาดสูงสุดที่ทนได้ · ไม่ใช้คู่กัน","vn"],["SGLT2 inhibitor","GFR ลดช่วงแรกแล้วชะลอ CKD · ใช้ได้ถึง GFR ~30 ในการศึกษา","gl"],["MR antagonist","eplerenone/finerenone ลด albuminuria ใน DM (ระวัง K⁺)","gl"],["ควบคุมเบาหวาน","HbA1c เป้า <7% ลด albuminuria",""],["ส่งต่อ nephrologist","CKD G4 → เตรียม renal replacement therapy","ar"]]),
+draw:()=>tbl(["Measure","Detail"],[
+ ["ACE inhibitor or ARB","ลด proteinuria · ใช้ถึงขนาดสูงสุดที่ทนได้ · ไม่ใช้คู่กัน"],
+ ["SGLT2 inhibitor","GFR ลดช่วงแรกแล้วชะลอ CKD · ใช้ได้ถึง GFR ~30 ในการศึกษา"],
+ ["MR antagonist","eplerenone/finerenone ลด albuminuria ใน DM (ระวัง K⁺)"],
+ ["Diabetes control","HbA1c เป้า <7% ลด albuminuria"],
+ ["Referral to a nephrologist","CKD G4 → เตรียม renal replacement therapy"]]),
 notes:()=>`<h3>ACEi/ARB</h3><ul><li>ยาความดันที่เลือกเป็นอันดับแรกใน CKD + albuminuria · ใช้ร่วมกันเต็มขนาดไม่แนะนำ ${S.p}</li><li>ติดตาม SCr, K⁺, BP ใน 1 สัปดาห์ · SCr ↑ &gt;30% ให้หยุด ${S.p}</li></ul>
  <h3>Renal & cardiac protection</h3><ul><li>SGLT2 inhibitor: ผล renoprotection เป็น class effect · CREDENCE, EMPA-REG รวมคน GFR ≥30 ${S.k}</li><li>MR antagonist ลด albuminuria ใน DM · finerenone hyperkalemia น้อยกว่า spironolactone ${S.k}</li></ul>
  <h3>ติดตาม</h3><ul><li>G3a ตรวจทุก 12 เดือนจนพบ albuminuria แล้วถี่ขึ้น 4–6 เดือน · ระยะหลัง ทุก 3–6 เดือน ${S.p}</li></ul>`});
@@ -202,14 +212,24 @@ notes:()=>`<h3>Hyperkalemia 3 ขั้น</h3><ul><li><b>Calcium</b> (เช่
  <h3>Hypokalemia</h3><ul><li>สาเหตุยา: loop, thiazide, CA inhibitor, β₂ agonist ${S.k}</li><li>KCl IV: เกิน 10 mEq/hr ต้อง cardiac monitor · ความเข้มข้นสูงสุด 80 mEq/L ทาง central line ${S.p}</li></ul>`});
 
 SEC.push({id:"sodium",k:"f",t:"Hyponatremia & hypernatremia",mm:"Na⁺ disorders",drugs:"3% NaCl · tolvaptan · conivaptan · 0.9% NaCl",act:["mod","bl"],leg:[],
-draw:()=>cards([["Hypovolemic hyponatremia","ให้ Na⁺ + น้ำ (0.9% NaCl) · คำนวณ Na⁺ deficit","vn"],["Euvolemic (SIADH) / hypervolemic","จำกัดน้ำ → vaptan (tolvaptan เริ่มใน รพ.) · demeclocycline","gl"],["Severe: Na⁺ <110 หรือชัก/โคม่า","3% NaCl · คำนวณ Na⁺ ที่จะเปลี่ยนต่อ 1 L","ar"],["Hypernatremia","คำนวณ TBW deficit · ให้ hypotonic fluid ใน 48–72 ชม.",""],["ห้ามแก้เร็ว","hyper: ≤0.5 mEq/L/hr (≤6–8/24 ชม.) → cerebral edema","ar"]]),
+draw:()=>tbl(["Disorder","Management"],[
+ ["Hypovolemic hyponatremia","ให้ Na⁺ + น้ำ (0.9% NaCl) · คำนวณ Na⁺ deficit"],
+ ["Euvolemic (SIADH) / hypervolemic","จำกัดน้ำ → vaptan (tolvaptan เริ่มใน รพ.) · demeclocycline"],
+ ["Severe — Na⁺ below 110, or seizures or coma","3% NaCl · คำนวณ Na⁺ ที่จะเปลี่ยนต่อ 1 L"],
+ ["Hypernatremia","คำนวณ TBW deficit · ให้ hypotonic fluid ใน 48–72 ชม."],
+ ["Never correct too fast","hyper: ≤0.5 mEq/L/hr (≤6–8/24 ชม.) → cerebral edema"]]),
 notes:()=>`<h3>Hyponatremia</h3><ul><li>Hypertonic saline ใช้เมื่อ Na⁺ &lt;110 และ/หรือมีอาการรุนแรง ${S.p}</li><li><b>Tolvaptan</b>: Na⁺ &lt;125 หรือมีอาการและจำกัดน้ำไม่ได้ผล · เริ่ม 15 mg ปรับถึง 60 mg · boxed warning เริ่มใน รพ. ${S.p}</li>
  <li>Conivaptan IV · ห้ามใช้ vaptan ใน hypovolemic ${S.p}</li><li>Thiazide เป็นสาเหตุที่พบบ่อยของ hyponatremia ใน รพ. ${S.k}</li></ul>
  <h3>Hypernatremia</h3><ul><li>สาเหตุ: เสียน้ำ, mannitol, DI (lithium, phenytoin), hypertonic saline เกิน ${S.p}</li><li>แก้เร็วเกิน → <b>cerebral edema</b>, ตาย ${S.p}</li></ul>
  <div class="pearl">แก้ hyponatremia เรื้อรังเร็วเกิน → osmotic demyelination ${S.x}</div>`});
 
 SEC.push({id:"acidbase",k:"f",t:"Acid–base: drug therapy",mm:"Acid–base drugs",drugs:"sodium bicarbonate · citrate · acetazolamide",act:["mod","inh"],leg:[],
-draw:()=>cards([["Metabolic acidosis: แก้ต้นเหตุก่อน","lactic, ketoacidosis มักไม่ต้องให้ NaHCO₃","vn"],["NaHCO₃ เมื่อ","pH <7.15 หรือไตสร้าง HCO₃⁻ ไม่ได้ · ไตวาย, RTA, ethylene glycol, methanol, salicylate","gl"],["ให้แค่ครึ่ง deficit","เป้า HCO₃⁻ >10 · ระวัง volume overload, Na⁺↑, K⁺↓, Ca²⁺↓","ar"],["Chronic acidosis","K citrate/citric acid หรือ Na citrate/citric acid",""],["Metabolic alkalosis","saline-responsive → NaCl + K⁺ · ต้องขับต่อ → acetazolamide 250 mg q6–12h","vn"]]),
+draw:()=>tbl(["Disorder","Management"],[
+ ["Metabolic acidosis — treat the cause first","lactic, ketoacidosis มักไม่ต้องให้ NaHCO₃"],
+ ["When to give NaHCO₃","pH <7.15 หรือไตสร้าง HCO₃⁻ ไม่ได้ · ไตวาย, RTA, ethylene glycol, methanol, salicylate"],
+ ["Give only half the deficit","เป้า HCO₃⁻ >10 · ระวัง volume overload, Na⁺↑, K⁺↓, Ca²⁺↓"],
+ ["Chronic acidosis","K citrate/citric acid หรือ Na citrate/citric acid"],
+ ["Metabolic alkalosis","saline-responsive → NaCl + K⁺ · ต้องขับต่อ → acetazolamide 250 mg q6–12h"]]),
 notes:()=>`<h3>Metabolic acidosis</h3><ul><li>บทบาทของ NaHCO₃ ยังถกเถียง · ใช้เมื่อ pH &lt;7.15 หรือไตสร้าง HCO₃⁻ ไม่ได้ ${S.p}</li><li>HCO₃⁻ deficit = [(2.4/HCO₃⁻) + 0.4] × น้ำหนัก × ΔHCO₃⁻ · ให้ไม่เกินครึ่งก่อน ติดตาม blood gas ${S.p}</li><li>THAM เลิกผลิตในสหรัฐ (2016) ${S.p}</li></ul>
  <h3>Metabolic alkalosis</h3><ul><li>Saline-responsive (diuretic, อาเจียน): NaCl + K⁺ · saline-resistant: แก้ mineralocorticoid excess ${S.p}</li><li><b>Acetazolamide</b> สำหรับคนที่ยังต้องขับน้ำแต่ HCO₃⁻ สูงขึ้น · ค่อย ๆ ได้ผล ไม่ใช่แก้เฉียบพลัน ${S.p}${S.k}</li></ul>
  <h3>ยาที่ทำให้เกิด</h3><ul><li>Acidosis: CA inhibitor, K⁺-sparing · alkalosis: loop, thiazide, corticosteroid ${S.k}${S.p}</li></ul>`});
@@ -235,7 +255,7 @@ draw:()=>tbl(["ยา","จุดเด่น","ข้อจำกัดที�
  ["Fosfomycin","กินครั้งเดียวจบ","ฤทธิ์อ่อนกว่าเมื่อเชื้อมาก"],
  ["TMP-SMX","ราคาถูก เข้าเนื้อไตได้ดี","ดื้อยาสูงขึ้นมากในหลายพื้นที่"],
  ["Fluoroquinolone","เข้าเนื้อไตดี ใช้ในกรวยไตอักเสบ","ผลข้างเคียงเอ็นและประสาท จึงไม่ใช้กับเคสไม่ซับซ้อน"],
- ["Ceftriaxone ฉีด","กรวยไตอักเสบที่ต้องนอนโรงพยาบาล","ต้องปรับตามผลเพาะเชื้อ"]]),
+ ["Ceftriaxone by injection","กรวยไตอักเสบที่ต้องนอนโรงพยาบาล","ต้องปรับตามผลเพาะเชื้อ"]]),
 notes:()=>`<ul>
 <li>Katzung: <b>ในขนาดรักษา nitrofurantoin ฆ่าเชื้อได้ทั้งแกรมบวกและแกรมลบหลายชนิด แต่ P. aeruginosa และ Proteus หลายสายพันธุ์ดื้อโดยธรรมชาติ</b> ${S.k}</li>
 <li>Katzung: ฤทธิ์ของยาสัมพันธ์กับ <b>การเปลี่ยนยาเป็นสารตัวกลางที่ว่องไวสูงภายในเซลล์แบคทีเรียโดยเอนไซม์ reductase ของเชื้อเอง</b> ซึ่งไปทำปฏิกิริยากับโปรตีนไรโบโซมหลายชนิดและรบกวนการสร้างโปรตีน RNA และ DNA ${S.k}</li>

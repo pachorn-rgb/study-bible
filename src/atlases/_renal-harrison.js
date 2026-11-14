@@ -2,10 +2,6 @@
 
 const tbl=(h,rows)=>`<table>${h?`<tr>${h.map(x=>`<th>${x}</th>`).join("")}</tr>`:""}${rows.map(r=>`<tr>${r.map(x=>`<td>${x}</td>`).join("")}</tr>`).join("")}</table>`;
 /* stacked cards diagram: rows [[title, desc, tone]] */
-function cards(R,o={}){const W=640,hh=o.h||(R.length>6?50:R.length>4?58:72),gap=o.gap||8;let b="",y=14;
- R.forEach(([n,dd,c])=>{b+=`<rect class="box ${c||""}" x="16" y="${y}" width="${W-32}" height="${hh}" rx="12"/>`+T(32,y+hh/2-3,n,{a:"start",c:"bh"})+T(32,y+hh/2+15,dd,{a:"start",c:"s"});y+=hh+gap});
- if(o.foot){b+=T(W/2,y+16,o.foot,{c:"h"});y+=26}return svg(b,`0 0 ${W} ${y+6}`)}
-/* flow: steps left→right wrapping as boxes with arrows (vertical) */
 function flow(R){let b="",y=14;R.forEach(([n,dd,c],i)=>{b+=`<rect class="box ${c||""}" x="80" y="${y}" width="480" height="56" rx="12"/>`+T(320,y+24,n,{c:"bh"})+T(320,y+43,dd,{c:"s"});
  if(i<R.length-1)b+=`<path class="arw" d="M320,${y+58} L320,${y+76}" marker-end="url(#ah)"/>`;y+=80});return svg(b,`0 0 640 ${y}`)}
 /* horizontal bars [[label,value,display]] max */
@@ -30,7 +26,12 @@ notes:()=>`<h3>Table 319-1</h3><ul><li>เริ่มจากประวั�
  <li>BUN/Cr ratio สูงใน prerenal เพราะ urea ถูกดูดกลับพร้อมน้ำ ${S.h}</li></ul>
  <h3>ผู้ป่วยโรค systemic</h3><ul><li>คัดกรอง microalbuminuria + eGFR ใน DM · คิดถึงไตเมื่อใช้ lithium, lead, aniline dyes (bladder cancer) ${S.h}</li></ul>`});
 HS("319","a","ap-syn","Nephritic vs nephrotic: clinical clues",{
-draw:()=>cards([["Nephritic","hematuria, RBC casts, HT, edema, azotemia · ดู C3/C4, ANCA, anti-GBM, ASO","ar"],["Nephrotic","proteinuria >3.5 g/วัน, albumin ต่ำ, edema, lipid สูง · thrombosis (RVT ใน membranous)","vn"],["Nephrotic crisis (เด็ก)","albumin <2 g/dL → ischemia ลำไส้ ปวดท้องเหมือน surgical abdomen","gl"],["ไตใหญ่ + proteinuria ใน CKD ระยะท้าย","diabetic nephropathy · amyloid · HIVAN · MN ที่มี RVT",""],["Secondary MN","NSAIDs, penicillamine, gold, mercury · solid tumor (lung, GI, breast, prostate) · syphilis, malaria, HBV",""]]),
+draw:()=>tbl(["Pattern","What points to it"],[
+ ["Nephritic","hematuria, RBC casts, HT, edema, azotemia · ดู C3/C4, ANCA, anti-GBM, ASO"],
+ ["Nephrotic","proteinuria >3.5 g/วัน, albumin ต่ำ, edema, lipid สูง · thrombosis (RVT ใน membranous)"],
+ ["Nephrotic crisis in children","albumin <2 g/dL → ischemia ลำไส้ ปวดท้องเหมือน surgical abdomen"],
+ ["Large kidneys with proteinuria in late CKD","diabetic nephropathy · amyloid · HIVAN · MN ที่มี RVT"],
+ ["Secondary MN","NSAIDs, penicillamine, gold, mercury · solid tumor (lung, GI, breast, prostate) · syphilis, malaria, HBV"]]),
 notes:()=>`<ul><li>อายุ 20 ปีกับ nephrotic: MCD, FSGS หรือ MN ${S.h}</li>
  <li>Nephrotic เป็น hypercoagulable โดยเฉพาะ albumin &lt;2 g/dL · MN สัมพันธ์กับ <b>renal vein thrombosis</b> (เสีย antithrombin III, plasminogen, fibrinogen สูง) ${S.h}</li>
  <li>RVT: ปวดหลัง, ไตวาย, hematuria, ขาบวมมากขึ้น, pulmonary embolism ${S.h}</li>
@@ -44,7 +45,12 @@ notes:()=>`<ul><li>Flank pain + colic → นิ่วหรือการอ�
 
 /* ---------- 320 · Cell biology ---------- */
 HS("320","a","cb-seg","Segmental transport",{
-draw:()=>cards([["Proximal tubule","~60% ของ Na⁺ และน้ำ · glucose (SGLT2), amino acids, HCO₃⁻, PO₄ · iso-osmotic","vn"],["Thin descending limb","ดูดน้ำ (AQP1) · สร้าง medullary gradient",""],["Thick ascending limb","NKCC2 ~25% ของ Na⁺ · กันน้ำ · Ca²⁺ Mg²⁺ paracellular · target ของ loop diuretics","ar"],["Distal convoluted tubule","NCC (thiazide) · Ca²⁺ ผ่าน TRPV5","gl"],["Collecting duct","principal: ENaC + ROMK (aldosterone) · AQP2 (vasopressin) · intercalated: H⁺/HCO₃⁻","vn"]]),
+draw:()=>tbl(["Segment","What it moves"],[
+ ["Proximal tubule","~60% ของ Na⁺ และน้ำ · glucose (SGLT2), amino acids, HCO₃⁻, PO₄ · iso-osmotic"],
+ ["Thin descending limb","ดูดน้ำ (AQP1) · สร้าง medullary gradient"],
+ ["Thick ascending limb","NKCC2 ~25% ของ Na⁺ · กันน้ำ · Ca²⁺ Mg²⁺ paracellular · target ของ loop diuretics"],
+ ["Distal convoluted tubule","NCC (thiazide) · Ca²⁺ ผ่าน TRPV5"],
+ ["Collecting duct","principal: ENaC + ROMK (aldosterone) · AQP2 (vasopressin) · intercalated: H⁺/HCO₃⁻"]]),
 notes:()=>`<ul><li>GFR ถูกกำหนดโดย Starling forces, afferent/efferent tone, tubuloglomerular feedback และ RAS ${S.h}</li>
  <li>แต่ละ segment มี transporter เฉพาะ ซึ่งเป็นทั้งเป้าหมายยาและตำแหน่งของโรคกรรมพันธุ์ ${S.h}</li></ul>
  <div class="pearl">รายละเอียดกลไกดูใน Guyton Ch 27–28</div>`});
@@ -54,7 +60,11 @@ draw:()=>{const R=[["PT","Fanconi (Dent, cystinosis) · proximal RTA · cystinur
 notes:()=>`${tbl(["Disease","Gene","ลักษณะ"],[["Bartter","NKCC2, ROMK, ClC-Kb, BSND, CaSR","เหมือนกิน loop diuretic · hypercalciuria"],["Gitelman","SLC12A3 (NCC)","เหมือนกิน thiazide · hypomagnesemia, hypocalciuria"],["Liddle","SCNN1B/G (ENaC ↑)","HT, hypokalemia, renin/aldo ต่ำ · amiloride ได้ผล"],["Gordon (PHA-2)","WNK1/4, KLHL3, CUL3","HT, hyperkalemia, acidosis · thiazide ได้ผล"],["Nephrogenic DI","AVPR2 (X), AQP2","polyuria ไม่ตอบสนองต่อ vasopressin"]])}
  <p class="sb-note">ชื่อยีนตาม Table 320-1 ${S.h}</p>`});
 HS("320","b","cb-na","Sodium & water balance",{
-draw:()=>cards([["Plasma Na⁺ = tonicity","สะท้อนสมดุลน้ำ ไม่ใช่ปริมาณ Na⁺ ในร่างกาย","vn"],["ECF volume = total body Na⁺","คุมด้วย RAAS, sympathetic, ANP, pressure natriuresis","ar"],["Vasopressin","osmoreceptor (ไวต่อ ~1–2%) และ baroreceptor → AQP2 ใน CD","gl"],["Thirst","กลไกป้องกัน hypernatremia",""]]),
+draw:()=>tbl(["Quantity","What it reflects"],[
+ ["Plasma Na⁺ = tonicity","สะท้อนสมดุลน้ำ ไม่ใช่ปริมาณ Na⁺ ในร่างกาย"],
+ ["ECF volume = total body Na⁺","คุมด้วย RAAS, sympathetic, ANP, pressure natriuresis"],
+ ["Vasopressin","osmoreceptor (ไวต่อ ~1–2%) และ baroreceptor → AQP2 ใน CD"],
+ ["Thirst","กลไกป้องกัน hypernatremia"]]),
 notes:()=>`<ul><li>Fig 320-4: plasma Na⁺ เป็นตัวแทนของ tonicity · ความผิดปกติของ Na⁺ คือความผิดปกติของน้ำ ${S.h}</li><li>ปริมาตร ECF ขึ้นกับปริมาณ Na⁺ ทั้งหมด ${S.h}</li></ul>`});
 
 /* ---------- 321 · AKI ---------- */
@@ -95,7 +105,12 @@ notes:()=>`<h3>Urine sediment (Fig 321-6)</h3><ul><li>ATN: pigmented <b>muddy br
  <h3>อื่นๆ</h3><ul><li>Prerenal: BUN/Cr &gt;20, SG &gt;1.018, UOsm &gt;500 · ATN: UOsm &lt;500 (Table 321-2) ${S.h}</li>
  <li>BUN สูงเกินสัดส่วน: upper GI bleed, catabolism สูง ${S.h}</li><li>Rhabdomyolysis: urine heme + แต่ RBC น้อย, CK สูง · Myeloma: M spike, free light chain, anion gap ต่ำ ${S.h}</li></ul>`});
 HS("321","c","aki-mx","Complications & management",{
-draw:()=>cards([["Volume overload","oliguria → pulmonary edema · ระยะฟื้นมี polyuria","vn"],["Hyperkalemia","รุนแรงใน rhabdo, hemolysis, TLS · arrhythmia","ar"],["Metabolic acidosis","มัก anion gap สูง",""],["Uremia","BUN >100 + mental change, bleeding, pericarditis","gl"],["Dialysis indications","volume, K⁺, acidosis ที่รักษาไม่ได้ · toxin บางชนิด · uremic complications","ar"]]),
+draw:()=>tbl(["Complication","What to watch for"],[
+ ["Volume overload","oliguria → pulmonary edema · ระยะฟื้นมี polyuria"],
+ ["Hyperkalemia","รุนแรงใน rhabdo, hemolysis, TLS · arrhythmia"],
+ ["Metabolic acidosis","มัก anion gap สูง"],
+ ["Uremia","BUN >100 + mental change, bleeding, pericarditis"],
+ ["Dialysis indications","volume, K⁺, acidosis ที่รักษาไม่ได้ · toxin บางชนิด · uremic complications"]]),
 notes:()=>`<h3>Management by cause</h3><ul><li>Prerenal: แก้ hemodynamics · การตอบสนองต่อการแก้ไขคือการวินิจฉัยที่ดีที่สุด ${S.h}</li>
  <li>GN/vasculitis: immunosuppression ± plasmapheresis · AIN: หยุดยา · <b>scleroderma renal crisis: ACE inhibitor</b> · TTP: plasma exchange · aHUS: complement blockade ${S.h}</li>
  <li><b>Rhabdomyolysis</b>: ให้สารน้ำเร็วและมาก (อาจถึง 10 L/วัน) · alkaline fluid อาจช่วยแต่เสี่ยง hypocalcemia ${S.h}</li>
@@ -118,7 +133,11 @@ notes:()=>`<h3>นิยาม</h3><ul><li>CKD = ความผิดปกต�
  <li>Risk factors (Table 322-1) และ monogenic loci เช่น APOL1 (Table 322-2) ${S.h}</li></ul>
  <div class="pearl">เลือก G และ A ด้านบนเพื่อดูความเสี่ยง (สีอ้างอิงแบบ KDIGO)</div>`});
 HS("322","b","ckd-lyte","Fluid, electrolyte & acid–base",{
-draw:()=>cards([["Na⁺ & water","Na⁺ คั่ง → ECF ขยาย, HT · hyponatremia ไม่บ่อย · loop diuretic ต้องใช้ dose สูง","vn"],["Potassium","ขับทาง distal (aldosterone) + GI ชดเชย · K สูงเมื่อ RAS inhibitor, MRA, acidosis, hemolysis","ar"],["Type 4 pattern","hyporeninemic hypoaldosteronism (DM), obstruction, sickle cell → K สูงก่อน GFR ลดมาก","gl"],["Metabolic acidosis","ammonia ลด → non-AG ระยะแรก · GFR ต่ำมาก → AG acidosis",""]]),
+draw:()=>tbl(["Problem","How it behaves in CKD"],[
+ ["Na⁺ & water","Na⁺ คั่ง → ECF ขยาย, HT · hyponatremia ไม่บ่อย · loop diuretic ต้องใช้ dose สูง"],
+ ["Potassium","ขับทาง distal (aldosterone) + GI ชดเชย · K สูงเมื่อ RAS inhibitor, MRA, acidosis, hemolysis"],
+ ["Type 4 pattern","hyporeninemic hypoaldosteronism (DM), obstruction, sickle cell → K สูงก่อน GFR ลดมาก"],
+ ["Metabolic acidosis","ammonia ลด → non-AG ระยะแรก · GFR ต่ำมาก → AG acidosis"]]),
 notes:()=>`<ul><li>ECF ขยายแบบ isonatric ถ้าดื่มน้ำไม่เกินความสามารถขับ · จำกัดเกลือ · chlorthalidone ใช้ได้แม้ stage 4 ${S.h}</li>
  <li>ยาที่ทำให้ K สูง: RAS inhibitors, spironolactone, amiloride, eplerenone, triamterene, nonsteroidal MRA · <b>gliflozins</b> ช่วยถ่วงสมดุล K ${S.h}</li>
  <li>Acidosis: ยังทำให้ปัสสาวะเป็นกรดได้ แต่สร้าง ammonia น้อย · net acid excretion อาจ &lt;30–40 mmol/วัน ${S.h}</li></ul>`});
@@ -127,7 +146,12 @@ draw:()=>flow([["GFR ↓ → phosphate คั่ง","FGF-23 ขึ้นเร�
 notes:()=>`<ul><li>PTH สูง → bone turnover สูง → <b>osteitis fibrosa cystica</b> ${S.h}</li><li><b>Adynamic bone disease</b> (PTH ต่ำ/ปกติ) พบมากขึ้น โดยเฉพาะ DM, ผู้สูงอายุ · เสี่ยงกระดูกหักและ vascular calcification ${S.h}</li>
  <li><b>Calciphylaxis</b>: ภาวะร้ายแรงเกือบเฉพาะในผู้ป่วยไตวายระยะท้าย · หลอดเลือดเล็กมี calcification → ผิวหนังตาย ${S.h}</li><li>FGF-23 สูงเป็นปัจจัยเสี่ยงอิสระของ LVH ${S.h}</li></ul>`});
 HS("322","c","ckd-sys","CV, hematologic & other manifestations",{
-draw:()=>cards([["Cardiovascular","สาเหตุตายอันดับ 1 · HT, LVH, accelerated atherosclerosis, pericarditis","ar"],["Anemia","normocytic normochromic เริ่ม stage 3 · เกือบทุกคนใน stage 4 · EPO ไม่พอ","vn"],["Bleeding","platelet dysfunction (uremia)",""],["Neuro","asterixis, restless legs, neuropathy, encephalopathy","gl"],["GI / skin / endocrine","anorexia, nausea, pruritus · insulin resistance, dyslipidemia",""]]),
+draw:()=>tbl(["System","Effect of uraemia"],[
+ ["Cardiovascular","สาเหตุตายอันดับ 1 · HT, LVH, accelerated atherosclerosis, pericarditis"],
+ ["Anemia","normocytic normochromic เริ่ม stage 3 · เกือบทุกคนใน stage 4 · EPO ไม่พอ"],
+ ["Bleeding","platelet dysfunction (uremia)"],
+ ["Neuro","asterixis, restless legs, neuropathy, encephalopathy"],
+ ["GI / skin / endocrine","anorexia, nausea, pruritus · insulin resistance, dyslipidemia"]]),
 notes:()=>`<h3>Anemia (Table 322-5)</h3><ul><li>สาเหตุ: EPO ไม่พอ, RBC อายุสั้น, bleeding, iron deficiency, hyperparathyroidism/marrow fibrosis, inflammation, folate/B12 ${S.h}</li>
  <li>ESA ลดการให้เลือด (ลดการติดเชื้อ, iron overload, alloantibodies ที่ขัดการปลูกถ่าย) · ต้องมี iron พอ (TSAT, ferritin) · CKD ไม่ฟอก/PD ลองให้กินก่อน ${S.h}</li>
  <li>ESA ไม่ตอบสนอง: inflammation, ฟอกไม่พอ, hyperparathyroidism รุนแรง, เสียเลือด, infection, malignancy ${S.h}</li>
@@ -156,22 +180,41 @@ notes:()=>`<ul><li>DM เป็นสาเหตุ ESKD อันดับ 1 �
  <h3>Vascular access</h3><ul><li><b>AV fistula</b> (Brescia–Cimino: radial artery–cephalic vein) · patency ยาวที่สุด ติดเชื้อน้อยที่สุด · ใช้เวลา mature ${S.h}</li>
  <li>AV graft → เมื่อ fistula ไม่ได้ · tunneled catheter ติดเชื้อมากที่สุด ${S.h}</li></ul>`});
 HS("323","a","hdcx","Complications of hemodialysis",{
-draw:()=>cards([["Hypotension","acute complication ที่พบบ่อยที่สุด (โดยเฉพาะ DM) · UF มาก, autonomic เสีย, ยาลดความดัน","ar"],["รักษา hypotension","หยุด UF · NSS 100–250 mL · ป้องกัน: ประเมิน dry weight, UF profiling, dialysate เย็น","vn"],["UF เร็วเกิน","&gt;13 mL/kg/h สัมพันธ์กับ CV death",""],["High-output HF","shunt ผ่าน access ใหญ่",""],["Muscle cramps · dialysis reactions","membrane / ethylene oxide",""]]),
+draw:()=>tbl(["Problem","Detail"],[
+ ["Hypotension","acute complication ที่พบบ่อยที่สุด (โดยเฉพาะ DM) · UF มาก, autonomic เสีย, ยาลดความดัน"],
+ ["Treating hypotension","หยุด UF · NSS 100–250 mL · ป้องกัน: ประเมิน dry weight, UF profiling, dialysate เย็น"],
+ ["Ultrafiltration that is too fast","&gt;13 mL/kg/h สัมพันธ์กับ CV death"],
+ ["High-output HF","shunt ผ่าน access ใหญ่"],
+ ["Muscle cramps · dialysis reactions","membrane / ethylene oxide"]]),
 notes:()=>`<ul><li>Hypotension เป็น acute complication ที่พบบ่อยที่สุด ${S.h}</li><li>หลีกเลี่ยงการดึงน้ำเร็ว &gt;13 mL/kg/h ${S.h}</li><li>ป้องกัน: sequential UF แล้วค่อย dialysis, ลดอุณหภูมิ dialysate, ไม่กินมื้อหนักระหว่างฟอก ${S.h}</li></ul>`});
 HS("323","b","pd","Peritoneal dialysis",{
-draw:()=>cards([["หลักการ","ใส่น้ำยา dextrose 1.5–3 L เข้าช่องท้อง · dwell 2–4 ชม. · peritoneum เป็น membrane","vn"],["CAPD","เปลี่ยนเองด้วยมือวันละหลายรอบ + night dwell",""],["CCPD / APD","เครื่อง cycler เปลี่ยนตอนกลางคืน","" ],["Icodextrin","ใช้กับ dwell ที่นานที่สุด (last fill)","gl"],["Peritonitis","WBC ≥100/mm³ และ neutrophil ≥50% · มักจาก sterile technique พลาด","ar"]]),
+draw:()=>tbl(["Aspect of peritoneal dialysis","Detail"],[
+ ["The principle","ใส่น้ำยา dextrose 1.5–3 L เข้าช่องท้อง · dwell 2–4 ชม. · peritoneum เป็น membrane"],
+ ["CAPD","เปลี่ยนเองด้วยมือวันละหลายรอบ + night dwell"],
+ ["CCPD / APD","เครื่อง cycler เปลี่ยนตอนกลางคืน"],
+ ["Icodextrin","ใช้กับ dwell ที่นานที่สุด (last fill)"],
+ ["Peritonitis","WBC ≥100/mm³ และ neutrophil ≥50% · มักจาก sterile technique พลาด"]]),
 notes:()=>`<ul><li>ภาวะแทรกซ้อนหลัก: peritonitis, catheter infection (ไม่ใช่ peritonitis), น้ำหนักเพิ่ม/metabolic (glucose), residual uremia ${S.h}</li>
  <li>เกณฑ์ peritonitis ต่ำกว่า SBP เพราะ dextrose ในน้ำยา ${S.h}</li><li>สารที่เติมในน้ำยา: heparin (กัน fibrin อุดสาย), antibiotics ระหว่าง peritonitis ${S.h}</li></ul>`});
 
 /* ---------- 324 · Interventional ---------- */
 HS("324","a","ivn","Dialysis access: assessment & intervention",{
-draw:()=>cards([["AVF","ราว 65% ของ access · ‘Fistula First, Catheter Last’ · mature 6–12 เดือนใน HT/DM","vn"],["AVG","&lt;20% · stenosis และ thrombosis บ่อยกว่า",""],["Outflow stenosis","pulsatility เพิ่ม ไม่นุ่มช่วง diastole · เสียงสูงที่จุดตีบ","ar"],["Inflow stenosis","systolic อ่อน · access ‘ว่าง’ ช่วง diastole","gl"],["Intervention","angioplasty ที่ stenosis · high flow → banding",""]]),
+draw:()=>tbl(["Access or problem","Detail"],[
+ ["AVF","ราว 65% ของ access · ‘Fistula First, Catheter Last’ · mature 6–12 เดือนใน HT/DM"],
+ ["AVG","&lt;20% · stenosis และ thrombosis บ่อยกว่า"],
+ ["Outflow stenosis","pulsatility เพิ่ม ไม่นุ่มช่วง diastole · เสียงสูงที่จุดตีบ"],
+ ["Inflow stenosis","systolic อ่อน · access ‘ว่าง’ ช่วง diastole"],
+ ["Intervention","angioplasty ที่ stenosis · high flow → banding"]]),
 notes:()=>`<ul><li>ตรวจร่างกาย access: pulse, thrill, bruit ช่วยแยก inflow/outflow stenosis ${S.h}</li><li>Catheter thrombus เล็กน้อยไม่ต้องรักษา · intra-atrial thrombus &gt;2 cm อาจต้อง intervention ${S.h}</li>
  <li>Access flow สูงเกิน → <b>banding</b> สร้างการตีบที่ inflow ${S.h}</li></ul>`});
 
 /* ---------- 325 · Transplant ---------- */
 HS("325","a","tx-imm","Immunology of rejection",{
-draw:()=>cards([["Hyperacute","preformed Ab (ABO, anti-HLA) · ป้องกันด้วย ABO matching + crossmatch","ar"],["T cell–mediated","CD4 ตอบสนอง class II (DR) · CD8 ทำลายผ่าน class I (A, B) · ต้องมี costimulation (CD28–CD80/86)","vn"],["Antibody-mediated","donor-specific Ab ต่อ HLA/non-HLA · C4d ใน peritubular capillaries","gl"],["HLA matching","จำนวน mismatch ที่ A, B, DR ยิ่งมากยิ่ง rejection มาก · HLA อยู่บน chromosome 6",""]]),
+draw:()=>tbl(["Type of rejection","Mechanism"],[
+ ["Hyperacute","preformed Ab (ABO, anti-HLA) · ป้องกันด้วย ABO matching + crossmatch"],
+ ["T cell–mediated","CD4 ตอบสนอง class II (DR) · CD8 ทำลายผ่าน class I (A, B) · ต้องมี costimulation (CD28–CD80/86)"],
+ ["Antibody-mediated","donor-specific Ab ต่อ HLA/non-HLA · C4d ใน peritubular capillaries"],
+ ["HLA matching","จำนวน mismatch ที่ A, B, DR ยิ่งมากยิ่ง rejection มาก · HLA อยู่บน chromosome 6"]]),
 notes:()=>`<ul><li>ข้อห้ามทาง immunology ที่สำคัญ: preformed antibodies → <b>hyperacute rejection</b> · คัดด้วย ABO และ cytotoxic crossmatch ${S.h}</li>
  <li>Crossmatch ใช้ donor T cells (มี class I) · ไม่เกี่ยวกับความเสี่ยงของ T cell–mediated rejection ${S.h}</li>
  <li>HLA-identical ก็ rejection ได้จาก non-HLA antigens (เช่น LIMS-1) ${S.h}</li><li>Graft survival 1 ปี: deceased 94%, living 98% · 5 ปี: 76% และ 87% (Table 325-2) ${S.h}</li></ul>`});
@@ -196,7 +239,13 @@ draw:()=>{const R=[["Normal","8–10","<30","<150","–"],["Microalbuminuria","3
  b+=T(320,248,"Albumin = 20–60% ของโปรตีนทั้งหมดในปัสสาวะ · dipstick ไม่เห็น microalbuminuria",{c:"s m"});return svg(b,"0 0 640 260")},
 notes:()=>`<ul><li>Table 326-1 · microalbuminuria 30–300 mg/วัน เป็นเครื่องหมายแรกของ diabetic nephropathy ${S.h}</li><li>Nephrotic-range &gt;3 g/วัน ${S.h}</li></ul>`});
 HS("326","a","gd-pat","Clinical patterns of glomerular disease",{
-draw:()=>cards([["Acute nephritic","PSGN, endocarditis, lupus, anti-GBM, IgAN, ANCA vasculitis, HSP, cryoglobulinemia, MPGN, C3G","ar"],["Pulmonary–renal","Goodpasture, GPA, MPA, HSP, cryoglobulinemia","ar"],["Nephrotic","MCD, FSGS, MN, MPGN, diabetic, amyloid, LCDD, fibrillary, Fabry","vn"],["Basement membrane","anti-GBM, Alport, thin BM, nail-patella",""],["Glomerular–vascular","atherosclerotic, hypertensive, cholesterol emboli, sickle cell, TMA, APS","gl"],["Infection-associated","streptococcus, endocarditis, HIV, HBV/HCV, syphilis, malaria, schistosomiasis",""]]),
+draw:()=>tbl(["Syndrome","Causes"],[
+ ["Acute nephritic","PSGN, endocarditis, lupus, anti-GBM, IgAN, ANCA vasculitis, HSP, cryoglobulinemia, MPGN, C3G"],
+ ["Pulmonary–renal","Goodpasture, GPA, MPA, HSP, cryoglobulinemia"],
+ ["Nephrotic","MCD, FSGS, MN, MPGN, diabetic, amyloid, LCDD, fibrillary, Fabry"],
+ ["Basement membrane","anti-GBM, Alport, thin BM, nail-patella"],
+ ["Glomerular–vascular","atherosclerotic, hypertensive, cholesterol emboli, sickle cell, TMA, APS"],
+ ["Infection-associated","streptococcus, endocarditis, HIV, HBV/HCV, syphilis, malaria, schistosomiasis"]]),
 notes:()=>`<ul><li>Harrison จัดโรค glomerulus เป็น 6 กลุ่มตาม syndrome (Table 326-2) ช่วยในการวินิจฉัยแยก ${S.h}</li><li>Kidney biopsy ยืนยันการวินิจฉัยในโรคส่วนใหญ่ ${S.h}</li></ul>
  <div class="pearl">พยาธิสภาพ EM / IF / LM ของแต่ละโรคดูใน Robbins Ch 20</div>`});
 HS("326","b","gd-tx","Treatment by disease",{
@@ -219,10 +268,21 @@ notes:()=>`<ul><li>Prevalence 1:400–1:1000 ทุกเชื้อชาต�
  <li>Cyst infection และ acute pyelonephritis มักเป็น gram-negative ${S.h}</li><li>อายุ 30–59 ที่ไม่มี ≥2 cysts ในแต่ละข้าง → ตัดโรคออกได้ ${S.h}</li>
  <li><b>Tolvaptan</b> ยับยั้ง vasopressin V2 receptor → cAMP ลด → cyst โตช้าลง ${S.h}</li></ul>`});
 HS("327","a","pkd-ar","ARPKD",{
-draw:()=>cards([["Gene","PKHD1 (fibrocystin/polyductin) · ทุกรูปแบบทางคลินิก","vn"],["Prevalence","1 ใน 20,000 live births",""],["Classic","ไตโตตั้งแต่เกิด · renal insufficiency/ESRD ตั้งแต่แรกเกิด","ar"],["Liver","congenital hepatic fibrosis · portal hypertension","gl"],["HT","พบบ่อยแม้ไตทำงานปกติ",""]]),
+draw:()=>tbl(["Feature","Detail"],[
+ ["Gene","PKHD1 (fibrocystin/polyductin) · ทุกรูปแบบทางคลินิก"],
+ ["Prevalence","1 ใน 20,000 live births"],
+ ["Classic","ไตโตตั้งแต่เกิด · renal insufficiency/ESRD ตั้งแต่แรกเกิด"],
+ ["Liver","congenital hepatic fibrosis · portal hypertension"],
+ ["HT","พบบ่อยแม้ไตทำงานปกติ"]]),
 notes:()=>`<ul><li>FPC ทำงานร่วมกับ PC2 ที่ cilia → กลไกการเกิดซีสต์คล้าย ADPKD ${S.h}</li><li>บางรายวินิจฉัยตอน 1 ปีและไตเสื่อมช้าเป็น 20 ปี ${S.h}</li></ul>`});
 HS("327","b","pkd-oth","Other inherited cystic & tubular diseases",{
-draw:()=>cards([["Tuberous sclerosis","TSC1/TSC2 · angiomyolipoma, cysts · RCC","gl"],["Von Hippel–Lindau","VHL · cysts + clear cell RCC (multifocal) · hemangioblastoma, pheo","ar"],["ADTKD","UMOD, MUC1, REN, HNF1B · CKD + gout · cysts น้อย","vn"],["Nephronophthisis","ciliopathy · ไตเล็ก fibrosis · cysts ที่ corticomedullary · ESRD ในเด็ก",""],["Medullary sponge kidney","collecting duct ขยาย · stones, hematuria",""],["CAKUT","congenital anomalies ของไตและทางเดินปัสสาวะ · สาเหตุหลักของ ESRD ในเด็ก",""]]),
+draw:()=>tbl(["Disease","Gene and features"],[
+ ["Tuberous sclerosis","TSC1/TSC2 · angiomyolipoma, cysts · RCC"],
+ ["Von Hippel–Lindau","VHL · cysts + clear cell RCC (multifocal) · hemangioblastoma, pheo"],
+ ["ADTKD","UMOD, MUC1, REN, HNF1B · CKD + gout · cysts น้อย"],
+ ["Nephronophthisis","ciliopathy · ไตเล็ก fibrosis · cysts ที่ corticomedullary · ESRD ในเด็ก"],
+ ["Medullary sponge kidney","collecting duct ขยาย · stones, hematuria"],
+ ["CAKUT","congenital anomalies ของไตและทางเดินปัสสาวะ · สาเหตุหลักของ ESRD ในเด็ก"]]),
 notes:()=>`<ul><li>Table 327-1 รวมโรคที่มีซีสต์ ${S.h}</li><li>HNF1B: cysts + diabetes (MODY5) ${S.h}</li><li>Nephronophthisis: growth retardation, anemia · syndromic: ตาบอด, liver fibrosis, cerebellar ataxia ${S.h}</li></ul>`});
 
 /* ---------- 328 · TIN ---------- */
@@ -233,11 +293,24 @@ notes:()=>`<h3>Clinical</h3><ul><li>Classic triad <b>fever, rash, eosinophilia</
  <li>PPIs อาจทำให้ TIN แบบค่อยเป็นค่อยไป → CKD ${S.h}</li></ul>
  <h3>Treatment (Fig 328-1)</h3><ul><li>หยุดยามักทำให้ดีขึ้น · steroid สำหรับกรณีรุนแรงใกล้ต้อง dialysis หรือแย่ลงแม้หยุดยา ${S.h}</li></ul>`});
 HS("328","a","tin-imm","Systemic & immune-mediated TIN",{
-draw:()=>cards([["Sjögren","lymphocytic TIN · distal RTA · nephrogenic DI · hypergammaglobulinemia","vn"],["TINU","TIN + uveitis · ตอบสนองต่อ steroid · พบเพิ่มในเด็กหลัง SARS-CoV-2",""],["Sarcoidosis","granulomatous IN · hypercalcemia","gl"],["IgG4-related","pancreatitis, cholangitis, retroperitoneal fibrosis · pseudotumor",""],["Immune checkpoint inhibitors","ไตได้รับผล 2% (เดี่ยว) – 5% (คู่) · มักใช้ PPI/NSAID ร่วม","ar"],["SLE","TIN ร่วมกับ GN",""]]),
+draw:()=>tbl(["Cause","Features"],[
+ ["Sjögren","lymphocytic TIN · distal RTA · nephrogenic DI · hypergammaglobulinemia"],
+ ["TINU","TIN + uveitis · ตอบสนองต่อ steroid · พบเพิ่มในเด็กหลัง SARS-CoV-2"],
+ ["Sarcoidosis","granulomatous IN · hypercalcemia"],
+ ["IgG4-related","pancreatitis, cholangitis, retroperitoneal fibrosis · pseudotumor"],
+ ["Immune checkpoint inhibitors","ไตได้รับผล 2% (เดี่ยว) – 5% (คู่) · มักใช้ PPI/NSAID ร่วม"],
+ ["SLE","TIN ร่วมกับ GN"]]),
 notes:()=>`<h3>Absolute indications for steroids (Table 328-2)</h3><ul><li>Sjögren · sarcoidosis · SLE IN · TINU ในผู้ใหญ่ · IgG4-related · idiopathic/granulomatous IN ${S.h}</li></ul>
  <ul><li>ICI-associated AIN: steroid, หยุดยาที่เป็นตัวกระตุ้น, เว้น ICI จนไตฟื้น · กลับมาใช้ได้ในบางราย ${S.h}</li></ul>`});
 HS("328","b","tin-chronic","Chronic tubulointerstitial nephropathies",{
-draw:()=>cards([["Analgesic nephropathy","papillary necrosis · ไตเล็ก ขรุขระ · เสี่ยง urothelial ca","" ],["Aristolochic acid","Chinese herbal / Balkan · fibrosis + urothelial carcinoma","ar"],["Lithium","nephrogenic DI · chronic TIN + microcysts","vn"],["Lead","CKD + gout + HT (saturnine gout)",""],["Uric acid · hypercalcemia · hypoK","crystal / metabolic nephropathy","gl"],["Myeloma cast nephropathy","light chain + Tamm–Horsfall casts","ar"],["Calcineurin inhibitor","striped fibrosis, arteriolar hyalinosis",""]]),
+draw:()=>tbl(["Exposure","Kidney injury"],[
+ ["Analgesic nephropathy","papillary necrosis · ไตเล็ก ขรุขระ · เสี่ยง urothelial ca"],
+ ["Aristolochic acid","Chinese herbal / Balkan · fibrosis + urothelial carcinoma"],
+ ["Lithium","nephrogenic DI · chronic TIN + microcysts"],
+ ["Lead","CKD + gout + HT (saturnine gout)"],
+ ["Uric acid · hypercalcemia · hypoK","crystal / metabolic nephropathy"],
+ ["Myeloma cast nephropathy","light chain + Tamm–Horsfall casts"],
+ ["Calcineurin inhibitor","striped fibrosis, arteriolar hyalinosis"]]),
 notes:()=>`<h3>Papillary necrosis (Table 328-3)</h3><ul><li>Analgesic nephropathy · sickle cell · DM + UTI · NSAID นาน (พบน้อย) ${S.h}</li></ul>
  <ul><li><b>Aristolochic acid nephropathy</b>: เดิมพบในหญิงสาวกินสมุนไพรลดน้ำหนัก · Aristolochia เป็น carcinogen ${S.h}</li>
  <li><b>Light chain cast nephropathy</b>: tubule ฝ่อเต็มไปด้วย casts (Fig 328-3) ${S.h}</li><li><b>Reflux nephropathy</b>: VUR ในเด็ก → scarring (Fig 328-4) ${S.h}</li></ul>`});
@@ -252,7 +325,12 @@ notes:()=>`<h3>TTP</h3><ul><li>นิยาม: MAHA + ADAMTS13 activity &lt;5�
  <h3>HUS</h3><ul><li>STEC-HUS: supportive · plasma exchange ไม่ได้ผล ${S.h}</li><li>aHUS: <b>eculizumab/ravulizumab</b> หยุด MAHA ฟื้นไตได้ ${S.h}</li></ul>
  <h3>Secondary</h3><ul><li>Drug-induced: หยุดยา (ไม่ตอบสนองต่อ PLEX) · Cancer-associated: รักษามะเร็ง · Catastrophic APS: anticoagulation + steroid + PLEX/IVIG ${S.h}</li><li>HSCT-associated TMA: เกณฑ์ใน Table 329-1 ${S.h}</li></ul>`});
 HS("329","b","tma-ssc","Scleroderma renal crisis & renal vein thrombosis",{
-draw:()=>cards([["Scleroderma renal crisis","diffuse SSc 12% · limited 2% · AKI + HT ฉับพลัน + sediment ปกติ","ar"],["Pathology","arcuate artery intimal/medial proliferation · เหมือน malignant HT",""],["Treatment","ACE inhibitor · ก่อนมียานี้ตาย >90% ใน 1 เดือน","vn"],["Outcome","~2/3 ต้อง dialysis · ฟื้น 50% (median 1 ปี)",""],["Renal vein thrombosis","nephrotic (โดยเฉพาะ MN), hypercoagulable, tumor · ปวดหลัง hematuria PE","gl"]]),
+draw:()=>tbl(["Topic","Detail"],[
+ ["Scleroderma renal crisis","diffuse SSc 12% · limited 2% · AKI + HT ฉับพลัน + sediment ปกติ"],
+ ["Pathology","arcuate artery intimal/medial proliferation · เหมือน malignant HT"],
+ ["Treatment","ACE inhibitor · ก่อนมียานี้ตาย >90% ใน 1 เดือน"],
+ ["Outcome","~2/3 ต้อง dialysis · ฟื้น 50% (median 1 ปี)"],
+ ["Renal vein thrombosis","nephrotic (โดยเฉพาะ MN), hypercoagulable, tumor · ปวดหลัง hematuria PE"]]),
 notes:()=>`<ul><li>MAHA พบได้ใน scleroderma renal crisis แต่ไม่จำเป็นต้องมีครบทุกข้อ ${S.h}</li><li>Sickle cell nephropathy และ HELLP ก็เป็น vascular injury ในบทนี้ ${S.h}</li></ul>`});
 
 /* ---------- 330 · Nephrolithiasis ---------- */
@@ -273,7 +351,13 @@ draw:()=>{let b="";b+=`<rect class="box ar" x="14" y="14" width="300" height="20
 notes:()=>`<ul><li>ไม่ควรจำกัด calcium ในอาหาร · RCT และ cohort แสดงว่า calcium ในอาหารสูงลดความเสี่ยง ${S.h}</li><li>อาหาร oxalate สูง: spinach, rhubarb, potatoes ${S.h}</li>
  <li>24-h urine: volume, Ca, oxalate, citrate, uric acid, Na, K, PO₄, Mg, pH, creatinine ${S.h}</li></ul>`});
 HS("330","b","st-mx","Acute colic & prevention",{
-draw:()=>cards([["Imaging","noncontrast CT (low-dose) เป็นมาตรฐาน","vn"],["Acute","analgesia · alpha blocker เพิ่มการหลุดเอง","" ],["Urology ด่วน","obstruction + infection · ไตข้างเดียว · ปวดดื้อยา","ar"],["Prevention ทุกชนิด","urine ≥2 L/วัน","gl"],["Ca oxalate · uric acid","thiazide, citrate · alkalinize ± allopurinol",""],["Cystine · struvite","K citrate (ไม่ใช้ Na), tiopronin · ผ่าตัดเอาออก + acetohydroxamic acid",""]]),
+draw:()=>tbl(["Step","What to do"],[
+ ["Imaging","noncontrast CT (low-dose) เป็นมาตรฐาน"],
+ ["Acute","analgesia · alpha blocker เพิ่มการหลุดเอง"],
+ ["Urgent urology referral","obstruction + infection · ไตข้างเดียว · ปวดดื้อยา"],
+ ["Prevention, whatever the stone","urine ≥2 L/วัน"],
+ ["Ca oxalate · uric acid","thiazide, citrate · alkalinize ± allopurinol"],
+ ["Cystine · struvite","K citrate (ไม่ใช้ Na), tiopronin · ผ่าตัดเอาออก + acetohydroxamic acid"]]),
 notes:()=>`<ul><li>Low-dose renal-limited noncontrast CT ใช้กำหนด stone burden ${S.h}</li><li>Cystine: alkalinize ด้วย K citrate เพราะ Na เพิ่มการขับ cystine · น้ำมากเป็นหัวใจ ${S.h}</li>
  <li>Urease inhibitor (acetohydroxamic acid) ใช้ในบางรายที่ผ่าตัดไม่ได้ ${S.h}</li><li>Thiazide ลด urinary calcium, citrate เพิ่ม inhibitor · allopurinol ใน hyperuricosuria ${S.x}</li></ul>`});
 
@@ -285,7 +369,12 @@ notes:()=>`<ul><li>อุดเหนือ bladder → hydroureter/hydronephros
  <li>เด็ก: UPJ narrowing, ureter เข้า bladder ผิดที่ · <b>posterior urethral valves</b> สาเหตุ bilateral hydronephrosis ที่พบบ่อยที่สุดในเด็กชาย ${S.h}</li>
  <li>Flank pain เป็นอาการที่ทำให้มาพบแพทย์บ่อยที่สุด ${S.h}</li></ul>`});
 HS("331","a","uo-phys","Pathophysiology",{
-draw:()=>cards([["Hemodynamic","RBF ↑ ระยะแรก (PG, NO) → GFR ↓, medullary flow ↓","vn"],["Concentrating defect","acquired nephrogenic DI (ไม่ตอบสนอง vasopressin)",""],["Partial bilateral","distal RTA · hyperkalemia · salt wasting","ar"],["Acute partial bilateral","เลียนแบบ prerenal (BUN/Cr สูง, ปัสสาวะเข้มข้น, Na คั่ง)","gl"],["Chronic","CKD + ECF ขยาย → HT",""]]),
+draw:()=>tbl(["Pattern","Effect on the kidney"],[
+ ["Hemodynamic","RBF ↑ ระยะแรก (PG, NO) → GFR ↓, medullary flow ↓"],
+ ["Concentrating defect","acquired nephrogenic DI (ไม่ตอบสนอง vasopressin)"],
+ ["Partial bilateral","distal RTA · hyperkalemia · salt wasting"],
+ ["Acute partial bilateral","เลียนแบบ prerenal (BUN/Cr สูง, ปัสสาวะเข้มข้น, Na คั่ง)"],
+ ["Chronic","CKD + ECF ขยาย → HT"]]),
 notes:()=>`<ul><li>Table 331-2 · complete bilateral obstruction → anuria ${S.h}</li><li>Azotemia เกิดเมื่อ bladder outlet obstruction, bilateral obstruction หรือข้างเดียวในคนมีไตข้างเดียว ${S.h}</li></ul>`});
 HS("331","b","uo-dx","Diagnosis, relief & recovery",{
 draw:()=>flow([["Unexplained renal failure","ใส่สายสวนปัสสาวะ",""],["มี diuresis","obstruction ใต้ bladder neck","gl"],["ไม่มี diuresis → ultrasound","hydronephrosis?","vn"],["มี hydronephrosis","CT หาตำแหน่งและสาเหตุ → urology","ar"],["Relief","GFR ฟื้นบางส่วนถ้าอุด 1–2 สัปดาห์ · >8 สัปดาห์ฟื้นยาก",""]]),

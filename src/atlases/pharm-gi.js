@@ -53,11 +53,21 @@ SEC.push({id:"orlistat",k:"e",t:"Orlistat & anti-obesity drugs",mm:"Orlistat · 
 notes:()=>`<ul><li><b>Orlistat</b>: ยับยั้ง gastric และ pancreatic <b>lipase</b> → ไขมันดูดซึมลด ~30% ${S.k}</li><li>ADR: steatorrhea, oily spotting, flatulence · ขาด <b>vitamin A, D, E, K</b> → ให้ multivitamin ${S.k}</li><li>ยาอื่น: GLP-1 agonist (semaglutide, liraglutide), tirzepatide, phentermine (± topiramate), naltrexone/bupropion ${S.k}</li></ul>`});
 
 SEC.push({id:"pud",k:"f",t:"GERD, PUD & H. pylori",mm:"GERD · PUD · H. pylori",drugs:"",act:[],leg:[],
-draw:()=>cards([["GERD","lifestyle → H₂RA/PPI on demand → PPI วันละครั้ง 8 สัปดาห์","vn"],["NSAID ulcer","หยุด NSAID ถ้าทำได้ · PPI รักษา · ป้องกันด้วย PPI หรือ misoprostol","gl"],["H. pylori: bismuth quadruple","PPI + bismuth + metronidazole + tetracycline · 10–14 วัน","ar"],["H. pylori: clarithromycin triple","PPI + clarithromycin + amoxicillin (หรือ metronidazole) · เมื่อ resistance ต่ำ","ar"],["Confirm eradication","urea breath test หรือ stool antigen (หยุด PPI ก่อน)",""]]),
+draw:()=>tbl(["Condition","Treatment"],[
+ ["GERD","lifestyle → H₂RA/PPI on demand → PPI วันละครั้ง 8 สัปดาห์"],
+ ["NSAID ulcer","หยุด NSAID ถ้าทำได้ · PPI รักษา · ป้องกันด้วย PPI หรือ misoprostol"],
+ ["H. pylori: bismuth quadruple","PPI + bismuth + metronidazole + tetracycline · 10–14 วัน"],
+ ["H. pylori: clarithromycin triple","PPI + clarithromycin + amoxicillin (หรือ metronidazole) · เมื่อ resistance ต่ำ"],
+ ["Confirm eradication","urea breath test หรือ stool antigen (หยุด PPI ก่อน)"]]),
 notes:()=>`<ul><li>Bismuth quadruple เป็นตัวเลือกที่แนะนำชัด โดยเฉพาะแพ้ penicillin หรือเคยใช้ macrolide ${S.p}</li><li>PPI ให้ก่อนอาหาร 30–60 นาที ${S.p}</li></ul>`});
 
 SEC.push({id:"cirrhosis",k:"f",t:"Portal hypertension & cirrhosis",mm:"Cirrhosis drugs",drugs:"propranolol · nadolol · octreotide · lactulose · rifaximin · spironolactone",act:[],leg:[],
-draw:()=>cards([["Varices: primary prophylaxis","nonselective β-blocker (propranolol, nadolol, carvedilol) หรือ banding","vn"],["Acute variceal bleed","octreotide + endoscopic band ligation + antibiotic prophylaxis (ceftriaxone)","ar"],["Ascites","จำกัดเกลือ · spironolactone ± furosemide","gl"],["Hepatic encephalopathy","lactulose ± rifaximin","gl"],["SBP","cefotaxime/ceftriaxone · albumin",""]]),
+draw:()=>tbl(["Problem","Treatment"],[
+ ["Varices: primary prophylaxis","nonselective β-blocker (propranolol, nadolol, carvedilol) หรือ banding"],
+ ["Acute variceal bleed","octreotide + endoscopic band ligation + antibiotic prophylaxis (ceftriaxone)"],
+ ["Ascites","จำกัดเกลือ · spironolactone ± furosemide"],
+ ["Hepatic encephalopathy","lactulose ± rifaximin"],
+ ["SBP","cefotaxime/ceftriaxone · albumin"]]),
 notes:()=>`<ul><li>Nonselective β-blocker ลด portal pressure (β₁: CO ↓, β₂ block: splanchnic vasoconstriction) ${S.k}</li><li>Lactulose → NH₃ เป็น NH₄⁺ ในลำไส้ใหญ่ · rifaximin ลดแบคทีเรียสร้าง NH₃ ${S.k}${S.p}</li><li>Spironolactone เป็น diuretic หลักใน ascites (secondary hyperaldosteronism) ${S.k}</li></ul>`});
 
 const EXTRA=["pud", "cirrhosis"];

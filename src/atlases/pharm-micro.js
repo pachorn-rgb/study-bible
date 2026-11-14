@@ -94,18 +94,35 @@ notes:()=>`${tbl(["ยา","กลไก","ADR เด่น"],[["Rifampin (rifam
  <h3>Regimen</h3><ul><li>Active TB: <b>RIPE</b> 2 เดือน → isoniazid + rifampin อีก 4 เดือน ${S.k}${S.p}</li><li>Latent TB: isoniazid 6–9 เดือน, rifampin 4 เดือน หรือ isoniazid + rifapentine ${S.k}</li><li>MAC: azithromycin หรือ clarithromycin + ethambutol (+ rifabutin) · leprosy: dapsone + rifampin (± clofazimine) ${S.k}</li></ul>`});
 
 SEC.push({id:"prophylaxis",k:"d",t:"Antimicrobial prophylaxis",mm:"Prophylaxis",drugs:"",act:[],leg:[],
-draw:()=>cards([["Surgical (ส่วนใหญ่)","cefazolin ก่อนลงมีด","vn"],["Meningococcal contact","ceftriaxone, ciprofloxacin หรือ rifampin","gl"],["Endocarditis (dental, high-risk)","amoxicillin","gl"],["Rheumatic fever ซ้ำ","benzathine penicillin G",""],["Gonococcal ophthalmia (ทารก)","erythromycin ointment",""],["HIV: CD4 <200 / <100 / <50","TMP-SMX (PCP) · TMP-SMX (Toxo) · azithromycin (MAC)","ar"]]),
+draw:()=>tbl(["Situation","Prophylaxis"],[
+ ["Most surgery","cefazolin ก่อนลงมีด"],
+ ["Meningococcal contact","ceftriaxone, ciprofloxacin หรือ rifampin"],
+ ["Endocarditis (dental, high-risk)","amoxicillin"],
+ ["Recurrent rheumatic fever","benzathine penicillin G"],
+ ["Gonococcal ophthalmia in the newborn","erythromycin ointment"],
+ ["HIV: CD4 <200 / <100 / <50","TMP-SMX (PCP) · TMP-SMX (Toxo) · azithromycin (MAC)"]]),
 notes:()=>`<ul><li>Surgical prophylaxis ให้ภายใน 60 นาทีก่อนลงมีด ${S.k}</li><li>HIV: CD4 &lt;200 → PCP · &lt;100 + Toxo IgG⁺ → TMP-SMX · MAC prophylaxis ไม่จำเป็นถ้าเริ่ม ART ทันที ${S.k}</li><li>Recurrent UTI: TMP-SMX หรือ nitrofurantoin ${S.k}</li></ul>`});
 
 SEC.push({id:"fungmap",k:"e",t:"Antifungal therapy",mm:"Antifungal drugs",drugs:"amphotericin B · nystatin · fluconazole · voriconazole · itraconazole · terbinafine · caspofungin · flucytosine · griseofulvin",act:["bl","inh"],tools:MT,leg:["bl","inh"],draw:FM(["erg","azole","sq","glu","fc","mt"]),
 notes:()=>`${tbl(["ยา","กลไก","ใช้","ADR"],[["Amphotericin B","จับ <b>ergosterol</b> → pore","systemic mycoses รุนแรง, Cryptococcus (+flucytosine), mucormycosis","<b>nephrotoxicity</b> (ให้ NS, lipid form), hypo-K/Mg, ไข้หนาวสั่น, arrhythmia"],["Nystatin","เหมือนกัน (topical)","oral thrush, cutaneous candida",""],["Azoles","ยับยั้ง 14α-demethylase → ergosterol ↓","fluconazole: Cryptococcal meningitis maintenance, Candida · voriconazole: <b>Aspergillus</b> · itraconazole: dimorphic","<b>CYP3A4 inhibitor</b>, hepatotoxic, QT · ketoconazole: gynecomastia · voriconazole: visual"],["Echinocandins","ยับยั้ง β-glucan synthesis","invasive Candida, Aspergillus","histamine flushing, GI"],["Terbinafine","ยับยั้ง squalene epoxidase","<b>onychomycosis</b>, dermatophytes","hepatotoxic, taste disturbance"],["Flucytosine","→ 5-FU ในเชื้อ","Cryptococcal meningitis (+ amphotericin)","myelosuppression"],["Griseofulvin","จับ microtubule · สะสมใน keratin","tinea capitis","teratogen, CYP inducer, disulfiram-like"]])}${S.k}`});
 
 SEC.push({id:"antiparasite",k:"f",t:"Antiprotozoal & antihelminthic drugs",mm:"Antiparasitics",drugs:"pyrimethamine · nifurtimox · benznidazole · sodium stibogluconate · permethrin · ivermectin · albendazole · praziquantel",act:["inh","mod"],leg:[],
-draw:()=>cards([["Toxoplasma","pyrimethamine + sulfadiazine + leucovorin","vn"],["Chagas · African trypanosomiasis","benznidazole, nifurtimox · suramin, melarsoprol","gl"],["Leishmaniasis","sodium stibogluconate, amphotericin B, miltefosine","gl"],["Scabies · lice","permethrin, malathion, ivermectin (oral)",""],["Nematodes","albendazole, mebendazole (microtubule) · ivermectin (Strongyloides, Onchocerca) · pyrantel","ar"],["Cestodes · trematodes","praziquantel (Ca²⁺ ↑ → paralysis) · albendazole (neurocysticercosis)","ar"]]),
+draw:()=>tbl(["Parasite","Drugs"],[
+ ["Toxoplasma","pyrimethamine + sulfadiazine + leucovorin"],
+ ["Chagas · African trypanosomiasis","benznidazole, nifurtimox · suramin, melarsoprol"],
+ ["Leishmaniasis","sodium stibogluconate, amphotericin B, miltefosine"],
+ ["Scabies · lice","permethrin, malathion, ivermectin (oral)"],
+ ["Nematodes","albendazole, mebendazole (microtubule) · ivermectin (Strongyloides, Onchocerca) · pyrantel"],
+ ["Cestodes · trematodes","praziquantel (Ca²⁺ ↑ → paralysis) · albendazole (neurocysticercosis)"]]),
 notes:()=>`<ul><li>Albendazole/mebendazole: ยับยั้ง microtubule polymerization · teratogen ${S.k}</li><li>Ivermectin: เปิด glutamate-gated Cl⁻ channel ของพยาธิ ${S.k}</li><li>Pyrantel: depolarizing NM blocker ของพยาธิ ${S.k}</li><li>Praziquantel: schistosomiasis, tapeworm, flukes ${S.k}</li></ul>`});
 
 SEC.push({id:"malaria",k:"f",t:"Antimalarials",mm:"Antimalarials",drugs:"chloroquine · mefloquine · atovaquone-proguanil · primaquine · artemether-lumefantrine · quinidine",act:["inh"],leg:[],
-draw:()=>cards([["Chloroquine · hydroxychloroquine","ยับยั้ง heme polymerase · P. falciparum ส่วนใหญ่ดื้อแล้ว","vn"],["Artemisinins (artemether, artesunate)","free radical · ใช้ใน P. falciparum (severe: IV artesunate)","gl"],["Atovaquone-proguanil · mefloquine","prophylaxis และรักษา · mefloquine: neuropsychiatric","gl"],["Primaquine · tafenoquine","กำจัด hypnozoite ของ P. vivax/ovale · ตรวจ G6PD ก่อน","ar"],["Quinine/quinidine","severe malaria (เดิม) · cinchonism, QT",""]]),
+draw:()=>tbl(["Drug","Mechanism and place in therapy"],[
+ ["Chloroquine · hydroxychloroquine","ยับยั้ง heme polymerase · P. falciparum ส่วนใหญ่ดื้อแล้ว"],
+ ["Artemisinins (artemether, artesunate)","free radical · ใช้ใน P. falciparum (severe: IV artesunate)"],
+ ["Atovaquone-proguanil · mefloquine","prophylaxis และรักษา · mefloquine: neuropsychiatric"],
+ ["Primaquine · tafenoquine","กำจัด hypnozoite ของ P. vivax/ovale · ตรวจ G6PD ก่อน"],
+ ["Quinine/quinidine","severe malaria (เดิม) · cinchonism, QT"]]),
 notes:()=>`<ul><li>Chloroquine ADR: retinopathy, pruritus ${S.k}</li><li>Primaquine: <b>hemolysis ใน G6PD deficiency</b> ${S.k}</li><li>Severe P. falciparum: IV artesunate ${S.k}</li></ul>`});
 
 SEC.push({id:"virmap",k:"g",t:"Antiviral therapy",mm:"Antiviral drug map",drugs:"",act:[],tools:MT,leg:["inh","bl"],draw:VM(["ccr5","gp41","rt","rtn","int","pro","cap","na","cap2","pol","cmv","hcv","hbv"]),

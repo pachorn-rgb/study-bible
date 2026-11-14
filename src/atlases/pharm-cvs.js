@@ -33,7 +33,13 @@ notes:()=>`<div class="pearl">ACEi, ARB, aliskiren และ diuretics อยู
  <h3>BP = CO × SVR</h3><ul><li>ลด CO: β-blocker, non-DHP CCB · ลด volume: diuretic · ลด SVR: DHP CCB, ACEi/ARB, α₁ blocker, direct vasodilator ${S.k}</li><li>ยาขยายหลอดเลือดทำให้เกิด <b>compensatory response</b>: reflex tachycardia และ Na⁺/น้ำคั่ง (renin ↑) → ใช้คู่ β-blocker + diuretic ${S.k}</li></ul>`});
 
 SEC.push({id:"htn",k:"a",t:"Hypertension treatment",mm:"HTN treatment by comorbidity",drugs:"",act:[],leg:[],
-draw:()=>cards([["Primary hypertension","thiazide · ACEi/ARB · CCB (ยาตัวแรก)","vn"],["+ Heart failure (HFrEF)","ACEi/ARB/ARNI · β-blocker · MRA · diuretic","gl"],["+ Diabetes / CKD + albuminuria","ACEi หรือ ARB","gl"],["+ Pregnancy","labetalol · nifedipine · methyldopa · hydralazine · ห้าม ACEi/ARB","ar"],["+ Asthma","ARB · CCB · thiazide · cardioselective β-blocker",""],["+ Pheochromocytoma","α-blocker (phenoxybenzamine) ก่อน แล้วจึง β-blocker","ar"]]),
+draw:()=>tbl(["Setting","Preferred drugs"],[
+ ["Primary hypertension","thiazide · ACEi/ARB · CCB (ยาตัวแรก)"],
+ ["+ Heart failure (HFrEF)","ACEi/ARB/ARNI · β-blocker · MRA · diuretic"],
+ ["+ Diabetes / CKD + albuminuria","ACEi หรือ ARB"],
+ ["+ Pregnancy","labetalol · nifedipine · methyldopa · hydralazine · ห้าม ACEi/ARB"],
+ ["+ Asthma","ARB · CCB · thiazide · cardioselective β-blocker"],
+ ["+ Pheochromocytoma","α-blocker (phenoxybenzamine) ก่อน แล้วจึง β-blocker"]]),
 notes:()=>`<h3>เป้าหมาย (PT)</h3><ul><li>เป้า BP &lt;130/80 mmHg ในผู้ใหญ่ส่วนใหญ่ ${S.p}</li><li>ยาเริ่มต้น: thiazide, ACEi, ARB หรือ CCB · BP สูงมาก (≥20/10 เหนือเป้า) เริ่ม 2 ตัว ${S.p}</li><li>ผู้ป่วยผิวดำ (ไม่มี CKD) ตอบสนอง thiazide หรือ CCB ดีกว่า ${S.p}</li></ul>
  <h3>เลี่ยง</h3><ul><li>Non-selective β-blocker ใน asthma · ACEi ใน asthma (ไอปนกัน) ${S.k}</li><li>Gout: เลี่ยง thiazide, loop · losartan ลด urate ${S.k}</li><li>Pheo: β-blocker ก่อน α-blocker → unopposed α → hypertensive crisis ${S.k}</li></ul>`});
 

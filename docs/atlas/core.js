@@ -54,9 +54,6 @@ const glow=(x,y,key,r=15)=>onA(key)?`<circle class="glow" cx="${x}" cy="${y}" r=
 const rec=(x,y,lab,vert)=>`<rect class="p-rec" x="${x-(vert?9:7)}" y="${y-(vert?7:9)}" width="${vert?18:14}" height="${vert?14:18}" rx="5"/>`+(ST.labels&&lab?T(x,y-(vert?12:14),lab,{c:"s"}):"");
 const arr=(d,c="")=>`<path class="arw ${c}" d="${d}"/>`;
 const cellC=(x,y,r,g,lab,sub)=>`<circle class="p-imm" cx="${x}" cy="${y}" r="${r}" fill="url(#${g})"/>`+T(x,y+(sub?-1:4),lab,{c:"bh"})+(sub?T(x,y+13,sub,{c:"s m"}):"");
-function cards(R,o={}){const W=o.w||640,hh=o.h||(R.length>6?50:R.length>4?58:66),gap=8;let b="",y=14;
- R.forEach(([n,dd,c])=>{b+=`<rect class="box ${c||""}" x="16" y="${y}" width="${W-32}" height="${hh}" rx="12"/>`+T(32,y+hh/2-4,n,{a:"start",c:"bh"})+T(32,y+hh/2+14,dd,{a:"start",c:"s"});y+=hh+gap});
- if(o.foot){b+=T(W/2,y+14,o.foot,{c:"h"});y+=24}return psvg(b,`0 0 ${W} ${y+6}`)}
 function flowD(R,W=640){let b="",y=14;R.forEach(([n,dd,c],i)=>{b+=`<rect class="box ${c||""}" x="40" y="${y}" width="${W-80}" height="58" rx="14"/>`+`<circle class="stepn ${c||""}" cx="64" cy="${y+29}" r="12"/>`+T(64,y+33,i+1,{c:"sn"})+T(W/2+12,y+25,n,{c:"bh"})+T(W/2+12,y+44,dd,{c:"s"});
  if(i<R.length-1)b+=arr(`M${W/2},${y+60} L${W/2},${y+76}`);y+=80});return psvg(b,`0 0 ${W} ${y}`)}
 const MAPTOOLS=[["all","Show all drugs"]];
