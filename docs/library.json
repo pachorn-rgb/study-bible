@@ -366,6 +366,64 @@
         "ch": "FA Ch Biochemistry",
         "sort": 14
        }
+      },
+      {
+       "id": "biochem-molecular-2",
+       "title": "Molecular 2: Transcription, RNA & Translation",
+       "subs": [
+        "Molecular"
+       ],
+       "src": "Lippincott Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+       "href": "biochem/biochem-molecular-2.html",
+       "thumb": "thumbs/biochem-molecular-2.jpg",
+       "desc": "คุณสมบัติสี่อย่างของรหัสพันธุกรรม, promoter enhancer และ silencer, lac operon กับ catabolite repression, RNA polymerase ทั้งสามชนิดและพิษเห็ด α-amanitin, RNA สามชนิดหลัก, การแต่ง mRNA ด้วย cap หางและการตัดต่อ, spliceosome และ lariat, การกลายพันธุ์ที่ตำแหน่งตัดต่อ, โครงสร้าง tRNA และ aminoacyl-tRNA synthetase, สามขั้นของการแปลรหัสและยาปฏิชีวนะที่ออกฤทธิ์ที่ไรโบโซม, การปรับแต่งหลังแปลรหัสและ chaperone",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "คุณสมบัติของรหัสพันธุกรรม",
+         "code"
+        ],
+        [
+         "Promoter, enhancer และ silencer",
+         "genereg"
+        ],
+        [
+         "Lac operon",
+         "operon"
+        ],
+        [
+         "RNA polymerase และชนิดของ RNA",
+         "rnapol"
+        ],
+        [
+         "การแต่ง mRNA และการตัดต่อ",
+         "rnaproc"
+        ],
+        [
+         "tRNA และการชาร์จกรดอะมิโน",
+         "trna"
+        ],
+        [
+         "สามขั้นของการแปลรหัส",
+         "transl"
+        ],
+        [
+         "การปรับแต่งหลังแปลรหัส",
+         "posttr"
+        ]
+       ],
+       "ref": {
+        "b": "lir",
+        "l": "LIR",
+        "ch": "FA Ch Biochemistry",
+        "sort": 15
+       }
       }
      ],
      "checklist": [
@@ -853,6 +911,78 @@
        "link": {
         "m": "biochem-molecular-1",
         "h": "mut"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:code",
+       "sub": "Molecular",
+       "t": "คุณสมบัติของรหัสพันธุกรรม",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "code"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:genereg",
+       "sub": "Molecular",
+       "t": "Promoter, enhancer และ silencer",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "genereg"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:operon",
+       "sub": "Molecular",
+       "t": "Lac operon",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "operon"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:rnapol",
+       "sub": "Molecular",
+       "t": "RNA polymerase และชนิดของ RNA",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "rnapol"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:rnaproc",
+       "sub": "Molecular",
+       "t": "การแต่ง mRNA และการตัดต่อ",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "rnaproc"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:trna",
+       "sub": "Molecular",
+       "t": "tRNA และการชาร์จกรดอะมิโน",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "trna"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:transl",
+       "sub": "Molecular",
+       "t": "สามขั้นของการแปลรหัส",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "transl"
+       }
+      },
+      {
+       "id": "biochem-molecular-2:posttr",
+       "sub": "Molecular",
+       "t": "การปรับแต่งหลังแปลรหัส",
+       "link": {
+        "m": "biochem-molecular-2",
+        "h": "posttr"
        }
       }
      ],

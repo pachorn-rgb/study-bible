@@ -1,0 +1,28 @@
+{
+ "id": "biochem-molecular-2",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Molecular",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Molecular 2: Transcription, RNA & Translation",
+ "h1": "Molecular: transcription, RNA & translation",
+ "lede": "ข้อมูลเดินทางจาก DNA ไปเป็นโปรตีนอย่างไร · ไล่ตั้งแต่คุณสมบัติของรหัสพันธุกรรม, การควบคุมยีนและ lac operon, RNA polymerase ทั้งสามชนิด, การตัดต่อ RNA และ spliceosome, tRNA กับการชาร์จกรดอะมิโน, สามขั้นของการแปลรหัส ไปจนถึงการปรับแต่งโปรตีนหลังแปลรหัสและ chaperone · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott",
+ "sources": [
+  ["lir", "LIR", "Lippincott's Illustrated Reviews: Biochemistry 5e"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Molecular"],
+  "title": "Molecular 2: Transcription, RNA & Translation",
+  "src": "Lippincott Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+  "desc": "คุณสมบัติสี่อย่างของรหัสพันธุกรรม, promoter enhancer และ silencer, lac operon กับ catabolite repression, RNA polymerase ทั้งสามชนิดและพิษเห็ด α-amanitin, RNA สามชนิดหลัก, การแต่ง mRNA ด้วย cap หางและการตัดต่อ, spliceosome และ lariat, การกลายพันธุ์ที่ตำแหน่งตัดต่อ, โครงสร้าง tRNA และ aminoacyl-tRNA synthetase, สามขั้นของการแปลรหัสและยาปฏิชีวนะที่ออกฤทธิ์ที่ไรโบโซม, การปรับแต่งหลังแปลรหัสและ chaperone",
+  "ch": "FA Ch Biochemistry",
+  "sort": 15,
+  "refb": "lir",
+  "refl": "LIR",
+  "tags": ["biochemistry"]
+ }
+}
