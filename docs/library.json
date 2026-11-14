@@ -540,9 +540,219 @@
         "ch": "FA Ch Biochemistry",
         "sort": 17
        }
+      },
+      {
+       "id": "biochem-cellular",
+       "title": "Cellular: Organelles, Cytoskeleton & Connective Tissue",
+       "subs": [
+        "Cellular"
+       ],
+       "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+       "href": "biochem/biochem-cellular.html",
+       "thumb": "thumbs/biochem-cellular.jpg",
+       "desc": "ระยะของวัฏจักรเซลล์และเซลล์ที่แบ่งตัวต่างกัน, เอนโดพลาสมิกเรติคูลัมแบบขรุขระและแบบเรียบ, เพอรอกซิโซมและโปรตีเอโซม, เส้นใยโครงร่างเซลล์ทั้งสามแบบและการใช้ intermediate filament ทางพยาธิวิทยา, ไมโครทูบูลกับยาที่ออกฤทธิ์, โครงสร้างซิเลียและ primary ciliary dyskinesia, ปั๊มโซเดียมโพแทสเซียมกับกลไกของ digoxin, ขั้นตอนการสร้างคอลลาเจนทั้งในและนอกเซลล์, osteogenesis imperfecta และ Ehlers-Danlos, อีลาสตินกับ Marfan และภาวะพร่อง α1-antitrypsin",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "วัฏจักรเซลล์",
+         "cellcyc"
+        ],
+        [
+         "เอนโดพลาสมิกเรติคูลัมสองชนิด",
+         "er"
+        ],
+        [
+         "เพอรอกซิโซมและโปรตีเอโซม",
+         "perox"
+        ],
+        [
+         "เส้นใยโครงร่างเซลล์ทั้งสามแบบ",
+         "cytosk"
+        ],
+        [
+         "ไมโครทูบูลและยาที่ออกฤทธิ์",
+         "mt"
+        ],
+        [
+         "ซิเลียและ primary ciliary dyskinesia",
+         "cilia"
+        ],
+        [
+         "ปั๊มโซเดียมโพแทสเซียมและ digoxin",
+         "napump"
+        ],
+        [
+         "การสร้างคอลลาเจน",
+         "collagen"
+        ],
+        [
+         "Osteogenesis imperfecta และ Ehlers-Danlos",
+         "coldis"
+        ],
+        [
+         "อีลาสติน Marfan และ α1-antitrypsin",
+         "elastin"
+        ]
+       ],
+       "ref": {
+        "b": "lir",
+        "l": "LIR",
+        "ch": "FA Ch Biochemistry",
+        "sort": 18
+       }
+      },
+      {
+       "id": "biochem-lab",
+       "title": "Laboratory Techniques",
+       "subs": [
+        "Laboratory Techniques"
+       ],
+       "src": "Textbook of Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+       "href": "biochem/biochem-lab.html",
+       "thumb": "thumbs/biochem-lab.jpg",
+       "desc": "ปฏิกิริยาลูกโซ่พอลิเมอเรสและ Taq polymerase, การประยุกต์ใช้ PCR ทางคลินิก, CRISPR/Cas9, Southern Northern และ Western blot พร้อมวิธีจำ, ELISA และ flow cytometry, microarray และการวัดการแสดงออกของยีน, การตรวจโครโมโซมและ FISH, การโคลนยีนด้วยพลาสมิดและสัตว์ดัดแปรพันธุกรรม, RNA interference",
+       "tags": [
+        "biochemistry"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "ปฏิกิริยาลูกโซ่พอลิเมอเรส",
+         "pcr"
+        ],
+        [
+         "CRISPR/Cas9",
+         "crispr"
+        ],
+        [
+         "Blot ทั้งสามชนิด",
+         "blot"
+        ],
+        [
+         "ELISA และ flow cytometry",
+         "elisa"
+        ],
+        [
+         "การตรวจโครโมโซมและ FISH",
+         "karyo"
+        ],
+        [
+         "Microarray และการวัดการแสดงออกของยีน",
+         "array"
+        ],
+        [
+         "การโคลนยีนและ RNA interference",
+         "clone"
+        ]
+       ],
+       "ref": {
+        "b": "tbbio",
+        "l": "TB",
+        "ch": "FA Ch Biochemistry",
+        "sort": 19
+       }
       }
      ],
      "checklist": [
+      {
+       "id": "biochem-cellular:cellcyc",
+       "sub": "Cellular",
+       "t": "วัฏจักรเซลล์",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "cellcyc"
+       }
+      },
+      {
+       "id": "biochem-cellular:er",
+       "sub": "Cellular",
+       "t": "เอนโดพลาสมิกเรติคูลัมสองชนิด",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "er"
+       }
+      },
+      {
+       "id": "biochem-cellular:perox",
+       "sub": "Cellular",
+       "t": "เพอรอกซิโซมและโปรตีเอโซม",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "perox"
+       }
+      },
+      {
+       "id": "biochem-cellular:cytosk",
+       "sub": "Cellular",
+       "t": "เส้นใยโครงร่างเซลล์ทั้งสามแบบ",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "cytosk"
+       }
+      },
+      {
+       "id": "biochem-cellular:mt",
+       "sub": "Cellular",
+       "t": "ไมโครทูบูลและยาที่ออกฤทธิ์",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "mt"
+       }
+      },
+      {
+       "id": "biochem-cellular:cilia",
+       "sub": "Cellular",
+       "t": "ซิเลียและ primary ciliary dyskinesia",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "cilia"
+       }
+      },
+      {
+       "id": "biochem-cellular:napump",
+       "sub": "Cellular",
+       "t": "ปั๊มโซเดียมโพแทสเซียมและ digoxin",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "napump"
+       }
+      },
+      {
+       "id": "biochem-cellular:collagen",
+       "sub": "Cellular",
+       "t": "การสร้างคอลลาเจน",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "collagen"
+       }
+      },
+      {
+       "id": "biochem-cellular:coldis",
+       "sub": "Cellular",
+       "t": "Osteogenesis imperfecta และ Ehlers-Danlos",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "coldis"
+       }
+      },
+      {
+       "id": "biochem-cellular:elastin",
+       "sub": "Cellular",
+       "t": "อีลาสติน Marfan และ α1-antitrypsin",
+       "link": {
+        "m": "biochem-cellular",
+        "h": "elastin"
+       }
+      },
       {
        "id": "biochem-genetics-1:penexp",
        "sub": "Genetics",
@@ -685,6 +895,69 @@
        "link": {
         "m": "biochem-genetics-2",
         "h": "del"
+       }
+      },
+      {
+       "id": "biochem-lab:pcr",
+       "sub": "Laboratory Techniques",
+       "t": "ปฏิกิริยาลูกโซ่พอลิเมอเรส",
+       "link": {
+        "m": "biochem-lab",
+        "h": "pcr"
+       }
+      },
+      {
+       "id": "biochem-lab:crispr",
+       "sub": "Laboratory Techniques",
+       "t": "CRISPR/Cas9",
+       "link": {
+        "m": "biochem-lab",
+        "h": "crispr"
+       }
+      },
+      {
+       "id": "biochem-lab:blot",
+       "sub": "Laboratory Techniques",
+       "t": "Blot ทั้งสามชนิด",
+       "link": {
+        "m": "biochem-lab",
+        "h": "blot"
+       }
+      },
+      {
+       "id": "biochem-lab:elisa",
+       "sub": "Laboratory Techniques",
+       "t": "ELISA และ flow cytometry",
+       "link": {
+        "m": "biochem-lab",
+        "h": "elisa"
+       }
+      },
+      {
+       "id": "biochem-lab:karyo",
+       "sub": "Laboratory Techniques",
+       "t": "การตรวจโครโมโซมและ FISH",
+       "link": {
+        "m": "biochem-lab",
+        "h": "karyo"
+       }
+      },
+      {
+       "id": "biochem-lab:array",
+       "sub": "Laboratory Techniques",
+       "t": "Microarray และการวัดการแสดงออกของยีน",
+       "link": {
+        "m": "biochem-lab",
+        "h": "array"
+       }
+      },
+      {
+       "id": "biochem-lab:clone",
+       "sub": "Laboratory Techniques",
+       "t": "การโคลนยีนและ RNA interference",
+       "link": {
+        "m": "biochem-lab",
+        "h": "clone"
        }
       },
       {

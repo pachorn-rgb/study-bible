@@ -1,0 +1,176 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Cellular: Organelles, Cytoskeleton & Connective Tissue</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">General Principles · Biochemistry</div>
+    <h1>Cellular: organelles, cytoskeleton & connective tissue</h1>
+    <p class="sb-lede">เซลล์ประกอบขึ้นจากอะไรและพังตรงไหนได้บ้าง · ไล่ตั้งแต่วัฏจักรเซลล์, เอนโดพลาสมิกเรติคูลัมสองชนิด, เพอรอกซิโซมและโปรตีเอโซม, เส้นใยโครงร่างเซลล์ทั้งสามแบบ, ไมโครทูบูลกับยาที่ออกฤทธิ์, ซิเลียและ Kartagener, ปั๊มโซเดียมโพแทสเซียมกับ digoxin ไปจนถึงการสร้างคอลลาเจนและโรคของเนื้อเยื่อเกี่ยวพัน · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott และ Textbook of Biochemistry</p>
+    <div class="sb-sources"><span class="sb-src"><i class="lir">LIR</i>Lippincott's Illustrated Reviews: Biochemistry 5e</span><span class="sb-src"><i class="tbbio">TB</i>Textbook of Biochemistry 5e (NMC/CBME)</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "biochem-cellular", "kind": "physio", "sys": "Cellular", "root": "Biochemistry", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ================= Biochemistry — Cellular: organelles, cytoskeleton & connective tissue ================= */
+Object.assign(S,{lir:'<b class="sbb lir">LIR</b>',tbbio:'<b class="sbb tbbio">TB</b>',x:'<b class="sbb gen">Gen</b>'});
+Object.assign(GN,{a:"วัฏจักรเซลล์และออร์แกเนลล์",b:"โครงร่างเซลล์",c:"การขนส่งผ่านเยื่อหุ้ม",d:"เนื้อเยื่อเกี่ยวพัน"});
+
+SEC.push({id:"cellcyc",k:"a",t:"วัฏจักรเซลล์",mm:"เซลล์แบ่งตัว",drugs:"",act:[],leg:[],
+draw:()=>flowD([
+ ["G₁ — เตรียมตัว","สร้างโปรตีนและออร์แกเนลล์ · มีจุดตรวจก่อนเข้า S","bl"],
+ ["S — จำลอง DNA","ได้โครโมโซมสองโครมาทิด · ribonucleotide reductase ทำงานช่วงนี้","ar"],
+ ["G₂ — ตรวจทาน","ตรวจว่าจำลองครบและไม่เสียหายก่อนแบ่ง","mod"],
+ ["M — แบ่งเซลล์","ระยะสั้นที่สุด · แบ่งทั้งนิวเคลียสและไซโทพลาซึม","vn"],
+ ["G₀ — ออกจากวงจร","เซลล์ที่ไม่แบ่งตัวแล้ว เช่น เซลล์ประสาท กล้ามเนื้อหัวใจ","gl"]]),
+notes:()=>`<ul>
+<li>แบ่งเซลล์ตามความสามารถในการแบ่งตัวได้สามกลุ่ม: <b>labile แบ่งตลอดเวลา</b> เช่นเยื่อบุลำไส้ ไขกระดูก ผิวหนัง · <b>stable อยู่ใน G₀ แต่กลับมาแบ่งได้เมื่อถูกกระตุ้น</b> เช่นตับและไต · <b>permanent ออกจากวงจรถาวร</b> เช่นเซลล์ประสาท กล้ามเนื้อหัวใจและกล้ามเนื้อลาย ${S.x}</li>
+<li>การแบ่งสามกลุ่มนี้อธิบายคลินิกได้ตรง ๆ — <b>ตับงอกใหม่ได้หลังผ่าตัด แต่กล้ามเนื้อหัวใจที่ตายจากกล้ามเนื้อหัวใจขาดเลือดกลายเป็นพังผืดถาวร</b> ${S.x}</li>
+<li>เซลล์กลุ่ม labile คือกลุ่มที่โดนผลข้างเคียงของยาเคมีบำบัดก่อน จึงเกิดไขกระดูกกด เยื่อบุปากอักเสบและผมร่วง ${S.x}</li>
+<li>จุดตรวจที่สำคัญที่สุดคือรอยต่อ G₁/S ซึ่งเป็นจุดที่ p53 ทำงาน — ถ้า DNA เสียหายก็หยุดวงจรไว้ซ่อมหรือสั่งให้เซลล์ตาย ${S.x}</li></ul>`});
+
+SEC.push({id:"er",k:"a",t:"เอนโดพลาสมิกเรติคูลัมสองชนิด",drugs:"",act:[],leg:[],
+draw:()=>tbl(["","แบบขรุขระ (RER)","แบบเรียบ (SER)"],[
+ ["มีไรโบโซมไหม","มี","ไม่มี"],
+ ["หน้าที่หลัก","สร้างโปรตีนที่จะหลั่งออกและโปรตีนของเยื่อหุ้ม","สร้างสเตียรอยด์ · สลายสารพิษ · เก็บแคลเซียม"],
+ ["เซลล์ที่มีมาก","พลาสมาเซลล์ · ตับอ่อนส่วนสร้างเอนไซม์","ตับ · ต่อมหมวกไตชั้นนอก · อัณฑะและรังไข่"],
+ ["ข้อสังเกตทางคลินิก","Nissl body ในเซลล์ประสาทคือ RER","เพิ่มจำนวนเมื่อได้รับยาที่ต้องสลายที่ตับ"]]),
+notes:()=>`<ul>
+<li>Lippincott อธิบายเส้นทางของโปรตีนที่จะหลั่งออกไว้ชัดในกรณีคอลลาเจน: <b>ลำดับสัญญาณช่วยให้ไรโบโซมจับกับ RER และนำสายโปรตีนเข้าสู่ช่องว่างภายใน RER จากนั้นลำดับสัญญาณถูกตัดออกอย่างรวดเร็ว</b> ${S.lir}</li>
+<li>Textbook of Biochemistry ระบุว่า <b>Na⁺,K⁺-ATPase เป็นตัวบ่งชี้ของเยื่อหุ้มเซลล์</b> ซึ่งเป็นหลักการเดียวกับการใช้เอนไซม์เฉพาะระบุออร์แกเนลล์แต่ละชนิด ${S.tbbio}</li>
+<li>หลักที่ใช้เดาได้เสมอ: เซลล์ที่หลั่งโปรตีนมากจะมี RER มาก ส่วนเซลล์ที่สร้างฮอร์โมนสเตียรอยด์หรือสลายยาจะมี SER มาก ${S.x}</li>
+<li>ยาที่กระตุ้นเอนไซม์ตับหลายตัวทำให้ SER ของเซลล์ตับเพิ่มจำนวนขึ้นอย่างเห็นได้ชัด ${S.x}</li></ul>`});
+
+SEC.push({id:"perox",k:"a",t:"เพอรอกซิโซมและโปรตีเอโซม",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["เพอรอกซิโซมทำอะไร","สลายกรดไขมันสายยาวมาก · สลายไฮโดรเจนเพอรอกไซด์ · สร้างกรดน้ำดี","ar"],
+ ["เอนไซม์ประจำตัว","catalase และ uric acid oxidase","bl"],
+ ["โรคของเพอรอกซิโซม","Zellweger syndrome · adrenoleukodystrophy · Refsum disease","vn"],
+ ["โปรตีเอโซมทำอะไร","ย่อยโปรตีนที่ถูกติดป้าย ubiquitin","mod"],
+ ["ความสำคัญ","กำจัดโปรตีนที่พับผิดหรือหมดอายุ · เป้าของยา bortezomib","gl"]]),
+notes:()=>`<ul>
+<li>Textbook of Biochemistry ระบุหน้าที่ของเพอรอกซิโซมไว้ว่า <b>ออกซิไดซ์กรดไขมันและสลายพิษของไฮโดรเจนเพอรอกไซด์ โดยมีเอนไซม์ประจำคือ catalase และ uric acid oxidase</b> ${S.tbbio}</li>
+<li>Textbook of Biochemistry เรียกเพอรอกซิโซมอีกชื่อว่า <b>microbodies</b> ${S.tbbio}</li>
+<li>แบ่งงานกันให้ชัด: <b>ไลโซโซมย่อยด้วยกรดและเอนไซม์ hydrolase · โปรตีเอโซมย่อยโปรตีนที่ติดป้าย ubiquitin ในไซโทซอล</b> ${S.x}</li>
+<li>Bortezomib ซึ่งยับยั้งโปรตีเอโซมใช้ได้ผลใน multiple myeloma เพราะเซลล์มะเร็งชนิดนี้สร้างแอนติบอดีปริมาณมหาศาล จึงพึ่งระบบกำจัดโปรตีนมากเป็นพิเศษ ${S.x}</li></ul>`});
+
+SEC.push({id:"cytosk",k:"b",t:"เส้นใยโครงร่างเซลล์ทั้งสามแบบ",drugs:"",act:[],leg:[],
+draw:()=>tbl(["ชนิด","ขนาด","ตัวอย่างหน้าที่"],[
+ ["Microfilament (actin)","7 นาโนเมตร — เล็กสุด","หดตัวของกล้ามเนื้อ · แบ่งไซโทพลาซึม · microvilli"],
+ ["Intermediate filament","10 นาโนเมตร","ให้ความแข็งแรงเชิงกล · ใช้ระบุชนิดเนื้อเยื่อ"],
+ ["Microtubule","25 นาโนเมตร — ใหญ่สุด","ขนส่งในเซลล์ · แกนแบ่งเซลล์ · ซิเลียและแฟลเจลลา"]]),
+notes:()=>`<ul>
+<li>Intermediate filament มีประโยชน์ทางพยาธิวิทยามากที่สุด เพราะ <b>แต่ละชนิดของเนื้อเยื่อมีชนิดของมันเอง จึงใช้ระบุต้นกำเนิดของเนื้องอกที่แยกยากได้</b> ${S.x}</li>
+<li>ชนิดที่ต้องจำ: <b>keratin ในเซลล์เยื่อบุ · vimentin ในเนื้อเยื่อเกี่ยวพัน · desmin ในกล้ามเนื้อ · GFAP ในเซลล์เกลีย · neurofilament ในเซลล์ประสาท</b> ${S.x}</li>
+<li>เรียงขนาดจำง่าย ๆ ว่า <b>actin เล็กสุด ไมโครทูบูลใหญ่สุด และ intermediate อยู่ตรงกลางตามชื่อ</b> ${S.x}</li>
+<li>Phalloidin และ cytochalasin เป็นสารพิษที่ออกฤทธิ์ที่ actin จึงใช้เป็นเครื่องมือในห้องปฏิบัติการ ${S.x}</li></ul>`});
+
+SEC.push({id:"mt",k:"b",t:"ไมโครทูบูลและยาที่ออกฤทธิ์",drugs:"Vincristine · Paclitaxel · Colchicine · Griseofulvin · Mebendazole",act:[],leg:[],
+draw:()=>cards([
+ ["สร้างจากอะไร","ไดเมอร์ของ α- และ β-tubulin ต่อกันเป็น protofilament 13 สาย","ar"],
+ ["มีขั้ว","ปลายลบติดกับ centrosome · ปลายบวกยืดและหดเร็ว","bl"],
+ ["มอเตอร์สองตัว","kinesin วิ่งออกไปปลายบวก · dynein วิ่งกลับเข้าปลายลบ","vn"],
+ ["ยาที่กันการประกอบ","vincristine · colchicine · griseofulvin · mebendazole","mod"],
+ ["ยาที่กันการสลาย","paclitaxel — ตรึงไว้จนแบ่งเซลล์ต่อไม่ได้","gl"]]),
+notes:()=>`<ul>
+<li>หลักเดียวที่ครอบคลุมยาทั้งกลุ่ม: <b>แกนแบ่งเซลล์สร้างจากไมโครทูบูล ยาที่รบกวนไมโครทูบูลจึงหยุดเซลล์ไว้ที่ระยะ M</b> ไม่ว่าจะรบกวนด้วยการกันไม่ให้ประกอบหรือกันไม่ให้สลาย ${S.x}</li>
+<li>วิธีจำทิศทางของมอเตอร์: <b>kinesin ออกนอก ส่วน dynein เข้าใน</b> ซึ่งเป็นเหตุที่ไวรัสหลายชนิดอาศัย dynein เดินทางเข้าสู่นิวเคลียส ${S.x}</li>
+<li>Colchicine ใช้ในเกาต์เฉียบพลันเพราะกันไม่ให้นิวโทรฟิลเคลื่อนที่เข้าสู่ข้อ ซึ่งต้องอาศัยไมโครทูบูล ${S.x}</li>
+<li>ผลข้างเคียงที่คาดเดาได้ของ vincristine คือปลายประสาทอักเสบ เพราะแอกซอนยาว ๆ พึ่งการขนส่งตามไมโครทูบูลมากที่สุด ${S.x}</li></ul>`});
+
+SEC.push({id:"cilia",k:"b",t:"ซิเลียและ primary ciliary dyskinesia",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["โครงสร้าง axoneme","ไมโครทูบูลคู่ 9 คู่ล้อมคู่กลาง 1 คู่ — สูตร 9+2","ar"],
+ ["อะไรทำให้ขยับ","แขน dynein ดันให้คู่ข้างเคียงเลื่อนผ่านกัน","bl"],
+ ["เมื่อ dynein เสีย","ซิเลียทุกที่ในร่างกายไม่ขยับ","vn"],
+ ["สามอาการร่วม","ไซนัสอักเสบเรื้อรัง · หลอดลมโป่งพอง · situs inversus","mod"],
+ ["ผลต่อการมีบุตร","ชายมีบุตรยากเพราะอสุจิไม่เคลื่อนที่ · หญิงเสี่ยงท้องนอกมดลูก","gl"]]),
+notes:()=>`<ul>
+<li>เหตุผลที่อวัยวะกลับข้างได้ครึ่งหนึ่งของผู้ป่วย: <b>ซิเลียในตัวอ่อนเป็นตัวกำหนดว่าอวัยวะจะไปอยู่ซ้ายหรือขวา เมื่อซิเลียไม่ทำงาน การจัดวางจึงเป็นแบบสุ่ม</b> จึงกลับข้างราวครึ่งหนึ่ง ${S.x}</li>
+<li>ชื่อ Kartagener syndrome หมายถึงกลุ่มที่มีครบสามอย่างพร้อม situs inversus ซึ่งเป็นส่วนย่อยของ primary ciliary dyskinesia ${S.x}</li>
+<li>ถ่ายทอดแบบ autosomal recessive จึงมักพบในครอบครัวที่พ่อแม่เป็นญาติกัน ${S.x}</li>
+<li>สูตร 9+2 ใช้กับซิเลียที่ขยับได้และหางอสุจิ ส่วนซิเลียชนิดรับความรู้สึกเป็นแบบ 9+0 ซึ่งเกี่ยวข้องกับโรคไตถุงน้ำ ${S.x}</li></ul>`});
+
+SEC.push({id:"napump",k:"c",t:"ปั๊มโซเดียมโพแทสเซียมและ digoxin",drugs:"Digoxin · Digitoxin",act:[],leg:[],
+draw:()=>flowD([
+ ["ปั๊มทำงานปกติ","ส่ง Na⁺ ออก 3 ตัว แลก K⁺ เข้า 2 ตัว ใช้ ATP หนึ่งโมเลกุล","bl"],
+ ["ได้ความต่างของโซเดียม","Na⁺ ในเซลล์ต่ำ ซึ่งเป็นแหล่งพลังงานของตัวแลกเปลี่ยนอื่น","ar"],
+ ["ตัวแลกเปลี่ยน Na⁺/Ca²⁺","อาศัยความต่างนี้ดัน Ca²⁺ ออกนอกเซลล์","mod"],
+ ["Digoxin ยับยั้งปั๊ม","Na⁺ ในเซลล์สูงขึ้น ตัวแลกเปลี่ยนทำงานได้น้อยลง","inh"],
+ ["Ca²⁺ ในเซลล์สูงขึ้น","หัวใจบีบตัวแรงขึ้น ใช้รักษาภาวะหัวใจล้มเหลว","gl"]]),
+notes:()=>`<ul>
+<li>Textbook of Biochemistry: <b>Na⁺/K⁺-ATPase ทำหน้าที่ตามปกติคือรักษาระดับ Na⁺ ในเซลล์ให้ต่ำ ส่วนตัวแลกเปลี่ยน Na⁺/Ca²⁺ อาศัยความต่างของ Na⁺ นี้ในการดัน Ca²⁺ ออกนอกเซลล์</b> ${S.tbbio}</li>
+<li>Textbook of Biochemistry: <b>Ca²⁺ ที่มีมากขึ้นทำให้แรงบีบตัวเพิ่มขึ้น ซึ่งเป็นประโยชน์ทางคลินิกในการรักษาภาวะหัวใจล้มเหลว</b> และระบุว่ากลุ่มยานี้คือ <b>cardiac glycosides (digitalis) เช่น digoxin</b> ${S.tbbio}</li>
+<li>Textbook of Biochemistry: <b>ในหัวใจที่ทำงานล้มเหลว เป้าหมายของการรักษาคือทำให้กล้ามเนื้อหัวใจบีบตัวด้วยแรงที่มากขึ้น</b> ${S.tbbio}</li>
+<li>ปั๊มนี้ทำงานเป็นสัดส่วน 3 ต่อ 2 จึงย้ายประจุบวกสุทธิออกนอกเซลล์ และมีส่วนทำให้ศักย์ไฟฟ้าขณะพักเป็นลบ ${S.x}</li>
+<li>เหตุผลที่ภาวะโพแทสเซียมต่ำเพิ่มพิษของ digoxin: <b>K⁺ กับ digoxin แย่งจับที่เดียวกันบนปั๊ม เมื่อ K⁺ ต่ำ digoxin จึงจับได้มากขึ้น</b> ${S.x}</li></ul>`});
+
+SEC.push({id:"collagen",k:"d",t:"การสร้างคอลลาเจน",drugs:"",act:[],leg:[],
+draw:()=>flowD([
+ ["แปลรหัสเข้าสู่ RER","ได้ prepro-α chain แล้วตัดลำดับสัญญาณออกเป็น pro-α chain","bl"],
+ ["เติมหมู่ไฮดรอกซิล","ที่ proline และ lysine บางตัว · ต้องใช้วิตามินซี","ar"],
+ ["เติมน้ำตาล","ที่ hydroxylysine บางตัว","mod"],
+ ["พันเป็นเกลียวสามสาย","ได้ procollagen แล้วหลั่งออกนอกเซลล์","vn"],
+ ["ตัดปลายทั้งสองข้าง","procollagen peptidase ทำให้เป็น tropocollagen","gl"],
+ ["เชื่อมขวางด้วย lysyl oxidase","ต้องใช้ทองแดง · ได้เส้นใยคอลลาเจนที่แข็งแรง","inh"]]),
+notes:()=>`<ul>
+<li>Lippincott: การเติมหมู่ไฮดรอกซิลต้องใช้ <b>Fe²⁺ และตัวรีดิวซ์คือวิตามินซี (ascorbic acid)</b> ${S.lir}</li>
+<li>Lippincott: การขาดวิตามินซีทำให้ <b>ขาดการเติมหมู่ไฮดรอกซิลที่ prolyl และ lysyl</b> ซึ่งนำไปสู่โรคลักปิดลักเปิด ${S.lir}</li>
+<li>Lippincott: <b>lysyl oxidase เป็นเอนไซม์ที่มีทองแดงเป็นองค์ประกอบ</b> ${S.lir}</li>
+<li>ลำดับกรดอะมิโนของคอลลาเจนคือ <b>Gly–X–Y ซ้ำไปเรื่อย ๆ โดย glycine อยู่ทุกตำแหน่งที่สาม</b> เพราะเป็นกรดอะมิโนตัวเดียวที่เล็กพอจะอยู่กลางเกลียวได้ ${S.lir}</li>
+<li>Lippincott ระบุว่ามีการค้นพบ <b>การกลายพันธุ์มากกว่า 1,000 แบบ ใน 22 ยีนที่เข้ารหัสคอลลาเจน 12 ชนิด</b> ซึ่งอธิบายว่าทำไมกลุ่มโรคนี้จึงหลากหลายมาก ${S.lir}</li>
+<li>วิธีแบ่งจำ: <b>ขั้นในเซลล์จบที่การหลั่ง procollagen ออกไป ส่วนการตัดปลายและการเชื่อมขวางเกิดนอกเซลล์ทั้งคู่</b> ${S.x}</li></ul>`});
+
+SEC.push({id:"coldis",k:"d",t:"Osteogenesis imperfecta และ Ehlers-Danlos",drugs:"",act:[],leg:[],
+draw:()=>tbl(["","Osteogenesis imperfecta","Ehlers-Danlos"],[
+ ["คอลลาเจนที่เสีย","ชนิดที่ 1","ชนิดที่ 3 สำคัญที่สุดทางคลินิก"],
+ ["กลไกที่พบบ่อย","glycine ใน Gly-X-Y ถูกแทนด้วยกรดอะมิโนที่ใหญ่กว่า","พร่องเอนไซม์แต่งคอลลาเจน หรือกลายพันธุ์ของสายเอง"],
+ ["อาการเด่น","กระดูกหักง่าย · ตาขาวสีฟ้า · ฟันผิดปกติ · หูหนวก","ผิวยืดและเปราะ · ข้อหลวม"],
+ ["ภาวะแทรกซ้อนร้ายแรง","หักซ้ำตั้งแต่ในครรภ์ในชนิดที่ 2","หลอดเลือดแตกและลำไส้ทะลุ"]]),
+notes:()=>`<ul>
+<li>Lippincott: Ehlers-Danlos เกิดได้จาก <b>การพร่องเอนไซม์ที่แต่งคอลลาเจน เช่น lysyl hydroxylase หรือ procollagen peptidase หรือจากการกลายพันธุ์ของลำดับกรดอะมิโนในคอลลาเจนชนิดที่ 1, 3 หรือ 5</b> ${S.lir}</li>
+<li>Lippincott: <b>การกลายพันธุ์ที่สำคัญที่สุดทางคลินิกอยู่ที่ยีนของคอลลาเจนชนิดที่ 3</b> และเนื่องจากคอลลาเจนชนิดนี้เป็นองค์ประกอบสำคัญของหลอดเลือดแดง จึงเกิดปัญหาทางหลอดเลือดที่อาจถึงแก่ชีวิตได้ ${S.lir}</li>
+<li>Lippincott: ใน OI <b>การกลายพันธุ์ที่พบบ่อยที่สุดทำให้ glycine ถูกแทนที่ด้วยกรดอะมิโนที่มีหมู่ข้างเคียงขนาดใหญ่ ส่งผลให้สาย pro-α ที่ผิดปกติไปขัดขวางการพันเป็นเกลียวสามสาย</b> ${S.lir}</li>
+<li>นี่คือตัวอย่าง <b>dominant negative</b> ที่ชัดที่สุด — สายที่ผิดเพียงสายเดียวทำให้เกลียวทั้งสามสายใช้ไม่ได้ จึงถ่ายทอดแบบลักษณะเด่น ${S.x}</li>
+<li>Lippincott: <b>ชนิดที่ 1 เรียก osteogenesis imperfecta tarda เกิดจากการสร้างสาย α1 และ α2 ลดลง ส่วนชนิดที่ 2 เรียก osteogenesis imperfecta congenita และรุนแรงที่สุด</b> โดยผู้ป่วยเสียชีวิตจากปอดไม่เจริญตั้งแต่ในครรภ์หรือช่วงแรกเกิด ${S.lir}</li>
+<li>Lippincott: <b>ผู้ป่วย OI, EDS หรือ Marfan อาจมีตาขาวสีฟ้าได้ เพราะเนื้อเยื่อบางลงจนเห็นเม็ดสีข้างใต้</b> จึงเป็นอาการที่ใช้แยกโรคสามกลุ่มนี้ไม่ได้ ${S.lir}</li></ul>`});
+
+SEC.push({id:"elastin",k:"d",t:"อีลาสติน Marfan และ α1-antitrypsin",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["อีลาสตินต่างจากคอลลาเจน","ยืดและคืนตัวได้ทุกทิศทาง · มี hydroxyproline น้อยมาก","ar"],
+ ["เชื่อมขวางด้วยอะไร","desmosine จาก allysine สามตัวบวก lysine หนึ่งตัว · ใช้ lysyl oxidase","bl"],
+ ["Fibrillin ทำอะไร","เป็นโครงให้ tropoelastin มาเกาะ","vn"],
+ ["Marfan syndrome","กลายพันธุ์ของ fibrillin-1 · กระทบโครงกระดูก ตา และหลอดเลือด","mod"],
+ ["α1-antitrypsin","ยับยั้ง elastase ที่นิวโทรฟิลปล่อยออกมาในถุงลม","gl"]]),
+notes:()=>`<ul>
+<li>Lippincott: tropoelastin ประกอบด้วยกรดอะมิโนราว 700 ตัวที่ส่วนใหญ่เล็กและไม่มีขั้ว และ <b>อีลาสตินมี proline กับ lysine มาก แต่มี hydroxyproline และ hydroxylysine น้อยมาก</b> ${S.lir}</li>
+<li>Lippincott: <b>allysine สามตัวบวก lysine ที่ยังไม่เปลี่ยนแปลงอีกหนึ่งตัวรวมกันเป็นสะพานเชื่อม desmosine</b> ได้เป็นโครงข่ายคล้ายยางที่ยืดและโค้งงอได้ทุกทิศทาง ${S.lir}</li>
+<li>Lippincott: <b>การกลายพันธุ์ของโปรตีน fibrillin-1 เป็นสาเหตุของ Marfan syndrome</b> ซึ่งมีความบกพร่องของความแข็งแรงเชิงโครงสร้างในโครงกระดูก ตา และระบบหัวใจและหลอดเลือด ${S.lir}</li>
+<li>Lippincott อธิบายกลไกของ Marfan ว่า <b>fibrillin ที่ผิดปกติถูกประกอบเข้าไปในไมโครไฟบริลร่วมกับ fibrillin ปกติ จึงไปยับยั้งการสร้างไมโครไฟบริลที่ใช้งานได้</b> ${S.lir}</li>
+<li>Lippincott: <b>α1-antitrypsin ยับยั้งเอนไซม์ย่อยโปรตีนหลายชนิด</b> และปกติจะยับยั้ง elastase ที่นิวโทรฟิลปล่อยออกมาขณะกลืนกินเชื้อในถุงลมปอด ${S.lir}</li>
+<li>เมื่อขาด α1-antitrypsin จึงเกิดถุงลมโป่งพองที่ฐานปอดในคนอายุน้อยที่ไม่สูบบุหรี่ ร่วมกับโรคตับจากโปรตีนที่พับผิดสะสมในเซลล์ตับ ${S.x}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

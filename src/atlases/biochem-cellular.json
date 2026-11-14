@@ -1,0 +1,29 @@
+{
+ "id": "biochem-cellular",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Cellular",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Cellular: Organelles, Cytoskeleton & Connective Tissue",
+ "h1": "Cellular: organelles, cytoskeleton & connective tissue",
+ "lede": "เซลล์ประกอบขึ้นจากอะไรและพังตรงไหนได้บ้าง · ไล่ตั้งแต่วัฏจักรเซลล์, เอนโดพลาสมิกเรติคูลัมสองชนิด, เพอรอกซิโซมและโปรตีเอโซม, เส้นใยโครงร่างเซลล์ทั้งสามแบบ, ไมโครทูบูลกับยาที่ออกฤทธิ์, ซิเลียและ Kartagener, ปั๊มโซเดียมโพแทสเซียมกับ digoxin ไปจนถึงการสร้างคอลลาเจนและโรคของเนื้อเยื่อเกี่ยวพัน · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Lippincott และ Textbook of Biochemistry",
+ "sources": [
+  ["lir", "LIR", "Lippincott's Illustrated Reviews: Biochemistry 5e"],
+  ["tbbio", "TB", "Textbook of Biochemistry 5e (NMC/CBME)"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Cellular"],
+  "title": "Cellular: Organelles, Cytoskeleton & Connective Tissue",
+  "src": "Lippincott Biochemistry 5e · Textbook of Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+  "desc": "ระยะของวัฏจักรเซลล์และเซลล์ที่แบ่งตัวต่างกัน, เอนโดพลาสมิกเรติคูลัมแบบขรุขระและแบบเรียบ, เพอรอกซิโซมและโปรตีเอโซม, เส้นใยโครงร่างเซลล์ทั้งสามแบบและการใช้ intermediate filament ทางพยาธิวิทยา, ไมโครทูบูลกับยาที่ออกฤทธิ์, โครงสร้างซิเลียและ primary ciliary dyskinesia, ปั๊มโซเดียมโพแทสเซียมกับกลไกของ digoxin, ขั้นตอนการสร้างคอลลาเจนทั้งในและนอกเซลล์, osteogenesis imperfecta และ Ehlers-Danlos, อีลาสตินกับ Marfan และภาวะพร่อง α1-antitrypsin",
+  "ch": "FA Ch Biochemistry",
+  "sort": 18,
+  "refb": "lir",
+  "refl": "LIR",
+  "tags": ["biochemistry"]
+ }
+}

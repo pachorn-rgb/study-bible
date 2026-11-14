@@ -1,0 +1,28 @@
+{
+ "id": "biochem-lab",
+ "kind": "physio",
+ "override": {"root": "Biochemistry"},
+ "sys": "Laboratory Techniques",
+ "eyebrow": "General Principles · Biochemistry",
+ "draft": false,
+ "title_tag": "Laboratory Techniques",
+ "h1": "Laboratory techniques",
+ "lede": "เทคนิคที่ใช้ตรวจและตัดต่อสารพันธุกรรม · ไล่ตั้งแต่ PCR และ CRISPR/Cas9, blot ทั้งสามชนิดและวิธีจำว่าอันไหนตรวจอะไร, ELISA และ flow cytometry, microarray และการวัดการแสดงออกของยีน, การตรวจโครโมโซม ไปจนถึงการโคลนยีนและ RNA interference · หัวข้อเรียงตามโครง First Aid Step 1 เนื้อหาจาก Textbook of Biochemistry",
+ "sources": [
+  ["tbbio", "TB", "Textbook of Biochemistry 5e (NMC/CBME)"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "biochem",
+  "folder": "biochem",
+  "subs": ["Laboratory Techniques"],
+  "title": "Laboratory Techniques",
+  "src": "Textbook of Biochemistry 5e · โครงหัวข้อตาม First Aid Step 1",
+  "desc": "ปฏิกิริยาลูกโซ่พอลิเมอเรสและ Taq polymerase, การประยุกต์ใช้ PCR ทางคลินิก, CRISPR/Cas9, Southern Northern และ Western blot พร้อมวิธีจำ, ELISA และ flow cytometry, microarray และการวัดการแสดงออกของยีน, การตรวจโครโมโซมและ FISH, การโคลนยีนด้วยพลาสมิดและสัตว์ดัดแปรพันธุกรรม, RNA interference",
+  "ch": "FA Ch Biochemistry",
+  "sort": 19,
+  "refb": "tbbio",
+  "refl": "TB",
+  "tags": ["biochemistry"]
+ }
+}
