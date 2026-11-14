@@ -110,15 +110,10 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
        more Thai than it already has; every rewrite lowers its number until it is at 55
        and the entry goes. Anything not listed must be at or under 55 from the start. */
     const THAI_DEBT = {
-    "biochem-cellular.js": 71,
-    "biochem-genetics-1.js": 68,
-    "biochem-genetics-2.js": 70,
-    "biochem-lab.js": 74,
-    "biochem-metab-2.js": 56,
-    "biochem-metab-3.js": 60,
-    "biochem-metab-4.js": 63,
-    "biochem-molecular-1.js": 60,
-    "biochem-molecular-2.js": 62
+    "biochem-cellular.js": 60,
+    "biochem-genetics-1.js": 61,
+    "biochem-genetics-2.js": 64,
+    "biochem-lab.js": 67
     };
     const ceiling = THAI_DEBT[f] || 55;
     if (pct > ceiling) bad(`${f}: ${pct}% Thai characters, ceiling ${ceiling} — keep disease, drug, enzyme and structure names in English`);
