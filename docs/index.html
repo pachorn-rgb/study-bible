@@ -1191,7 +1191,11 @@ function openViewer(id,h){
   $("#vtitle").textContent=m.title;$("#vsub").textContent=chName(m.ch)+" · "+m.subs.join(" · ");
   $("#vstar").setAttribute("aria-pressed",isSaved("m:"+m.id));$("#vtopics").hidden=!m.topics.length;
   const src=m.href+(h?"#"+h:""),cur=frame.getAttribute("src")||"";
-  const same=cur.split("#")[0]===m.href;FOC=!!h;if(!same)frame.setAttribute("src",src);else{if(h){try{frame.contentWindow.location.hash=h}catch(e){frame.setAttribute("src",src)}}sendFocus();sendFind()}
+  /* Reopening the same atlas must not trust the src attribute alone: a hidden iframe can have its
+     document discarded by the browser (common on mobile under memory pressure) while src stays put.
+     Reload unless the previous document is still there AND rendered. */
+  let alive=false;try{const d=frame.contentDocument;alive=!!(d&&d.getElementById("flow")&&d.getElementById("flow").children.length)}catch(e){alive=false}
+  const same=cur.split("#")[0]===m.href&&alive;FOC=!!h;if(!same)frame.setAttribute("src",src);else{if(h){try{const w=frame.contentWindow;if(w.location.hash.slice(1)===h){w.postMessage({sb:"goto",h:h},"*")}else w.location.hash=h}catch(e){frame.setAttribute("src",src)}}sendFocus();sendFind()}
   S.recent=[{m:m.id,h:h||"",t:Date.now()},...S.recent.filter(r=>r.m!==m.id)].slice(0,8);
   const dk=today();if(S.opened[m.id]!==dk){S.opened[m.id]=dk;addXP(2)}touchDay();persist();checkAch().forEach(a=>toast(t("newAch",{a:achName(a)})));
 }

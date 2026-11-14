@@ -118,7 +118,23 @@ srv.listen(0, async () => {
     return true });
   for (const c of chs) await open(`index.html#/c/${c.id}`, () => !!document.querySelector(".chead") || "chapter header missing");
   for (const r of ["index.html#/", "index.html#/review", "index.html#/library"]) await open(r, () => document.querySelector("#view").innerText.length > 50 || "blank view");
-  console.log(`pages: ${hrefs.length} atlases + ${chs.length} chapters opened`);
+  { /* Regression for the blank-atlas bug: open an atlas, go back, then reopen it after the
+       browser has discarded the hidden iframe's document. The viewer must reload it, not
+       sit on a blank frame. */
+    const p = await ctx.newPage(); const first = [...mods.values()][0];
+    try {
+      await p.goto(`${base}index.html#/v/${first.id}`, { waitUntil: "load", timeout: 20000 });
+      await p.waitForTimeout(2500);
+      await p.evaluate(() => document.getElementById("vback").click()); await p.waitForTimeout(600);
+      await p.evaluate(() => document.getElementById("frame").contentWindow.location.replace("about:blank"));
+      await p.waitForTimeout(500);
+      await p.evaluate(id => { location.hash = "#/v/" + id }, first.id); await p.waitForTimeout(2500);
+      const url = await p.evaluate(() => { try { return document.getElementById("frame").contentWindow.location.href } catch (e) { return "(blocked)" } });
+      if (url.includes("about:blank")) bad(`viewer: reopening ${first.id} after its iframe document was discarded left a blank frame — openViewer must reload when the document is gone`);
+    } catch (e) { bad(`viewer reopen check: ${e.message.split("\n")[0]}`) }
+    await p.close();
+  }
+  console.log(`pages: ${hrefs.length} atlases + ${chs.length} chapters opened + viewer reopen`);
   await b.close(); srv.close();
   if (errs.length) { console.log(`\n✗ ${errs.length} problem(s):`); errs.slice(0, 80).forEach(e => console.log(" - " + e)); process.exit(1) }
   console.log("✓ all checks passed");

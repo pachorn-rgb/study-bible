@@ -1,0 +1,114 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>History & Physical Examination</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Renal · Clinical skills</div>
+    <h1>History & physical examination</h1>
+    <p class="sb-lede">ทักษะข้างเตียงของระบบไตและทางเดินปัสสาวะ · ไล่ตั้งแต่อาการสำคัญที่ต้องถาม, การแยกตำแหน่งของอาการปวด, การแยกชนิดของภาวะกลั้นปัสสาวะไม่อยู่, การตรวจช่องท้องและคลำไต ไปจนถึงการเคาะที่มุมกระดูกซี่โครงกับกระดูกสันหลัง และการบันทึกผลตรวจ · เนื้อหาจาก Bates</p>
+    <div class="sb-sources"><span class="sb-src"><i class="bat">Bates</i>Bates' Guide to Physical Examination and History Taking 14e</span><span class="sb-src"><i class="gen">Gen</i>ความรู้ทั่วไปที่ใช้เติม</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "renal-clinical", "kind": "physio", "sys": "Renal", "root": "Physiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ================= Renal — clinical skills: history & physical examination ================= */
+Object.assign(S,{bat:'<b class="sbb bat">Bates</b>',x:'<b class="sbb gen">Gen</b>'});
+Object.assign(GN,{a:"ซักประวัติ",b:"อาการปวดและการกลั้นไม่อยู่",c:"ตรวจร่างกาย",d:"บันทึกผล"});
+
+SEC.push({id:"hx",k:"a",t:"อาการสำคัญที่ต้องถาม",mm:"เริ่มที่การซักประวัติ",drugs:"",act:[],leg:[],
+draw:()=>tbl(["อาการ","หมายถึงอะไร","ชี้ไปทางไหน"],[
+ ["Dysuria","แสบขัดขณะถ่ายปัสสาวะ","กระเพาะปัสสาวะหรือท่อปัสสาวะอักเสบ"],
+ ["Frequency","ถ่ายบ่อยแต่ปริมาณแต่ละครั้งน้อย","ความจุลดลง หรือมีการระคายเคือง"],
+ ["Urgency","ปวดจนกลั้นแทบไม่อยู่","กระเพาะปัสสาวะไวเกิน หรือติดเชื้อ"],
+ ["Hesitancy และสายอ่อน","เริ่มถ่ายยาก ลำปัสสาวะไม่แรง","อุดกั้นทางออก เช่นต่อมลูกหมากโต"],
+ ["Nocturia","ตื่นมาถ่ายกลางดึก","ปัสสาวะมากตอนกลางคืน หรือความจุลดลง"],
+ ["Polyuria","ปริมาณรวมต่อวันมากจริง","เบาหวาน เบาจืด หรือดื่มน้ำมาก"]]),
+notes:()=>`<ul>
+<li>Bates แยกสามคำนี้ไว้เป็นตารางของตัวเองคือ <b>urinary frequency, nocturia และ polyuria</b> เพราะคนไข้มักใช้ปนกัน แต่สาเหตุต่างกันสิ้นเชิง ${S.bat}</li>
+<li>คำถามเดียวที่แยก frequency ออกจาก polyuria ได้ทันทีคือ <b>"ปริมาณแต่ละครั้งมากหรือน้อย"</b> — บ่อยแต่ครั้งละนิดคือ frequency ส่วนบ่อยและครั้งละมากคือ polyuria ${S.x}</li>
+<li>Bates: เมื่อถามถึง dysuria <b>ผู้หญิงอาจบอกว่ารู้สึกไม่สบายในท่อปัสสาวะด้านใน บางทีอธิบายว่าเป็นแรงกด หรือเป็นความแสบจากภายนอกขณะปัสสาวะไหลผ่าน</b> ซึ่งสองแบบนี้ชี้ตำแหน่งต่างกัน ${S.bat}</li>
+<li>Bates รวบอาการของระบบนี้ไว้เป็นชุดว่า <b>ปวดเหนือหัวหน่าว ปัสสาวะบ่อย ตื่นถ่ายกลางดึก ปัสสาวะมาก และกลั้นไม่อยู่</b> ${S.bat}</li>
+<li>อย่าลืมถามปัสสาวะเป็นเลือดเสมอ เพราะเลือดที่มองเห็นได้แม้ครั้งเดียวในผู้ใหญ่ต้องสืบค้นหาเนื้องอกทุกราย ${S.x}</li></ul>`});
+
+SEC.push({id:"pain",k:"b",t:"แยกตำแหน่งของอาการปวด",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["ปวดจากไต","ที่สีข้างหรือมุมซี่โครงกับสันหลัง · ตื้อ ๆ ต่อเนื่อง","ar"],
+ ["ปวดจากท่อไต (colic)","บิดเป็นพัก ๆ รุนแรง · ร้าวลงขาหนีบ","vn"],
+ ["ปวดจากกระเพาะปัสสาวะ","เหนือหัวหน่าว","bl"],
+ ["ปวดจากการโป่งตึงเฉียบพลัน","ปัสสาวะไม่ออกเฉียบพลัน ปวดมาก","mod"],
+ ["โป่งตึงเรื้อรัง","มักไม่ปวด แม้กระเพาะปัสสาวะจะโตมาก","gl"]]),
+notes:()=>`<ul>
+<li>Bates ชี้จุดที่คนมักพลาดไว้ชัด ว่า <b>อาการปวดเกิดจากการโป่งตึงเฉียบพลันของกระเพาะปัสสาวะ ส่วนการโป่งตึงเรื้อรังมักไม่ปวด</b> ${S.bat}</li>
+<li>ผลในทางปฏิบัติคือ ผู้ป่วยที่ปัสสาวะล้นเรื้อรังอาจมีปัสสาวะค้างเป็นลิตรโดยไม่บ่นเจ็บเลย จึงต้องคลำและเคาะหาเสมอ ไม่ใช่รอให้บอก ${S.x}</li>
+<li>Bates ระบุว่าการตรวจที่ใช้เมื่อสงสัยการอักเสบของไตจากการติดเชื้อคือ <b>การเคาะทางด้านหลังที่มุม costovertebral</b> ${S.bat}</li>
+<li>ลักษณะที่แยก colic จากปวดไตธรรมดาคือรูปแบบของเวลา — <b>colic มาเป็นระลอกจนผู้ป่วยอยู่ไม่สุข ส่วนการอักเสบปวดตื้อต่อเนื่องและมักนอนนิ่ง</b> ${S.x}</li></ul>`});
+
+SEC.push({id:"incont",k:"b",t:"ภาวะกลั้นปัสสาวะไม่อยู่ห้าชนิด",drugs:"",act:[],leg:[],
+draw:()=>tbl(["ชนิด","เกิดเมื่อ","กลไก"],[
+ ["Stress","ไอ จาม ยกของ","แรงดันในช่องท้องชนะแรงต้านของท่อปัสสาวะ"],
+ ["Urge","ปวดแล้วไปไม่ทัน","กระเพาะปัสสาวะบีบตัวเอง"],
+ ["Overflow","ซึมตลอดเวลาทีละน้อย","ถ่ายไม่ออกจนล้น"],
+ ["Functional","ไปห้องน้ำไม่ทันด้วยเหตุอื่น","เคลื่อนไหวหรือการรู้คิดบกพร่อง"],
+ ["Mixed","มีมากกว่าหนึ่งแบบร่วมกัน","พบบ่อยในผู้สูงอายุ"]]),
+notes:()=>`<ul>
+<li>Bates แบ่งไว้ว่า <b>ภาวะกลั้นปัสสาวะไม่อยู่มีห้ากลุ่มใหญ่</b> ${S.bat}</li>
+<li>Bates: ใน <b>stress incontinence แรงดันที่เพิ่มขึ้นชนะแรงต้านของท่อปัสสาวะเพราะแรงต้านนั้นไม่ดีพอ</b> ส่วนใน <b>overflow incontinence ความผิดปกติทางระบบประสาททำให้กระเพาะปัสสาวะไม่ถูกระบายจนโป่งตึงเกิน</b> ${S.bat}</li>
+<li>Bates: <b>functional incontinence เกิดจากข้อจำกัดอื่นที่ไม่ใช่ตัวทางเดินปัสสาวะเอง</b> ${S.bat}</li>
+<li>Bates ย้ำว่าการควบคุมการถ่ายปัสสาวะอาศัยกลไกทางประสาทและการเคลื่อนไหวที่ซับซ้อน และ <b>รอยโรคของเส้นประสาทระดับ S2 ถึง S4 กระทบการถ่ายปัสสาวะปกติได้</b> ${S.bat}</li>
+<li>คำถามคัดกรองสองข้อที่แยกได้เร็วที่สุด: <b>"เล็ดตอนไอหรือจามไหม"</b> ชี้ไปทาง stress และ <b>"ปวดแล้วไปไม่ทันไหม"</b> ชี้ไปทาง urge ${S.x}</li>
+<li>Bates ยังระบุคำถามสำคัญไว้ว่า ผู้ป่วยรู้สึกไหมว่ากระเพาะปัสสาวะเต็ม และรู้ตัวไหมว่ากำลังถ่าย ซึ่งช่วยแยกสาเหตุทางประสาทออกมา ${S.bat}</li></ul>`});
+
+SEC.push({id:"exam",k:"c",t:"ตรวจช่องท้องและคลำไต",drugs:"",act:[],leg:[],
+draw:()=>flowD([
+ ["ดู","รูปร่างหน้าท้อง รอยแผลเป็น หลอดเลือดโป่ง","bl"],
+ ["ฟังก่อนคลำ","เสียงการเคลื่อนไหวลำไส้ และ bruit ที่หลอดเลือดแดงไต","ar"],
+ ["เคาะ","หาของเหลว และหาขอบกระเพาะปัสสาวะที่โป่ง","mod"],
+ ["คลำตื้นแล้วคลำลึก","เริ่มห่างจากจุดที่ปวดเสมอ","vn"],
+ ["คลำไต","ใช้สองมือประกบ ให้ผู้ป่วยหายใจเข้าลึก","gl"],
+ ["เคาะมุม costovertebral","ทำท้ายสุด เพราะเจ็บ","inh"]]),
+notes:()=>`<ul>
+<li>Bates ให้นิยามตำแหน่งไว้ว่า <b>มุม costovertebral เกิดจากขอบล่างของซี่โครงที่สิบสองกับกระดูกสันหลัง และเป็นจุดที่ใช้ตรวจหาการกดเจ็บของไต</b> ${S.bat}</li>
+<li>Bates: ไตวางอยู่ <b>ด้านหลังเยื่อบุช่องท้อง จึงเรียกว่าอยู่ retroperitoneal</b> ซึ่งอธิบายว่าทำไมจึงต้องตรวจทางด้านหลัง ${S.bat}</li>
+<li>Bates: <b>เมื่อสงสัยการอักเสบของไตจากการติดเชื้อ ให้เคาะทางด้านหลังที่มุม costovertebral</b> ${S.bat}</li>
+<li>ลำดับการตรวจช่องท้องต่างจากระบบอื่น — <b>ต้องฟังก่อนคลำ</b> เพราะการคลำไปรบกวนเสียงการเคลื่อนไหวของลำไส้ ${S.x}</li>
+<li>Bates อธิบายหลักการ <b>ballottement</b> ว่าเป็นการสะกิดให้อวัยวะลอยขึ้นมาให้คลำได้ เมื่อมีของเหลวคั่นอยู่ ซึ่งใช้คลำไตและตับในผู้ป่วยที่มีน้ำในช่องท้อง ${S.bat}</li>
+<li>ไตข้างขวาอยู่ต่ำกว่าข้างซ้ายเพราะมีตับกดอยู่ จึงคลำได้ง่ายกว่าโดยเฉพาะในคนผอม ${S.x}</li></ul>`});
+
+SEC.push({id:"record",k:"d",t:"การบันทึกผลตรวจ",drugs:"",act:[],leg:[],
+draw:()=>cards([
+ ["เขียนสิ่งที่ตรวจไม่พบด้วย","การระบุว่าไม่มีอาการสำคัญ มีค่าเท่ากับการระบุว่ามี","ar"],
+ ["ใช้คำมาตรฐาน","\"No costovertebral angle tenderness (CVAT)\"","bl"],
+ ["ระบุว่าคลำไตได้หรือไม่","\"Spleen and kidneys not felt\"","vn"],
+ ["แยกข้อมูลจากการตีความ","บันทึกสิ่งที่เห็น ไม่ใช่ชื่อโรคที่คิด","mod"]]),
+notes:()=>`<ul>
+<li>Bates ให้ตัวอย่างการบันทึกไว้ตรง ๆ ว่า <b>"Spleen not felt. No costovertebral angle tenderness (CVAT)"</b> ${S.bat}</li>
+<li>อีกตัวอย่างหนึ่งของ Bates สำหรับช่องท้องที่ผิดปกติ ระบุไว้ว่า <b>"Spleen and kidneys not felt. No palpable masses. No CVA tenderness."</b> ${S.bat}</li>
+<li>ตัวอย่างการบันทึกการซักประวัติของ Bates ในส่วนระบบปัสสาวะเขียนว่า <b>"No frequency, dysuria, hematuria, or recent flank pain"</b> ซึ่งแสดงว่าอาการที่ไม่มีก็ต้องบันทึก ${S.bat}</li>
+<li>Bates ยังแสดงให้เห็นว่าประวัติเก่ามีค่า โดยบันทึกตัวอย่างไว้ว่า <b>เคยเป็นกรวยไตอักเสบพร้อมไข้และปวดสีข้างขวา รักษาด้วย ampicillin</b> ${S.bat}</li>
+<li>เหตุผลที่ต้องเขียนผลลบด้วย: ผู้อ่านคนถัดไปจะไม่รู้เลยว่าคุณตรวจแล้วไม่พบ หรือไม่ได้ตรวจ ${S.x}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

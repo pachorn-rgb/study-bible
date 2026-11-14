@@ -1,0 +1,27 @@
+{
+ "id": "renal-clinical",
+ "kind": "physio",
+ "sys": "Renal",
+ "eyebrow": "Renal · Clinical skills",
+ "draft": false,
+ "title_tag": "History & Physical Examination",
+ "h1": "History & physical examination",
+ "lede": "ทักษะข้างเตียงของระบบไตและทางเดินปัสสาวะ · ไล่ตั้งแต่อาการสำคัญที่ต้องถาม, การแยกตำแหน่งของอาการปวด, การแยกชนิดของภาวะกลั้นปัสสาวะไม่อยู่, การตรวจช่องท้องและคลำไต ไปจนถึงการเคาะที่มุมกระดูกซี่โครงกับกระดูกสันหลัง และการบันทึกผลตรวจ · เนื้อหาจาก Bates",
+ "sources": [
+  ["bat", "Bates", "Bates' Guide to Physical Examination and History Taking 14e"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "renal",
+  "folder": "renal",
+  "subs": ["Clinical skills"],
+  "title": "History & Physical Examination",
+  "src": "Bates' Guide to Physical Examination 14e",
+  "desc": "อาการสำคัญของระบบทางเดินปัสสาวะและคำถามที่ต้องถาม, การแยก dysuria frequency urgency hesitancy nocturia และ polyuria, การแยกตำแหน่งปวดจากไตกับจากกระเพาะปัสสาวะ, ภาวะกลั้นปัสสาวะไม่อยู่ทั้งห้าชนิด, การตรวจช่องท้องและการคลำไตด้วย ballottement, การเคาะที่มุม costovertebral, การบันทึกผลตรวจแบบมาตรฐาน",
+  "ch": "Clinical",
+  "sort": 41,
+  "refb": "bat",
+  "refl": "Bates",
+  "tags": ["clinical"]
+ }
+}

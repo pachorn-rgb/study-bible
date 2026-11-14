@@ -11,7 +11,7 @@
 })();
 (function(){
   if(window.self!==window.top){ /* inside the app viewer: label quiz only */
-    window.addEventListener("message",e=>{const d=e.data;if(d&&d.sb==="lq")labelQuiz(d);if(d&&d.sb==="find")findStart(d);if(d&&d.sb==="hunt")huntStart(d);if(d&&d.sb==="focus")focusTarget()});
+    window.addEventListener("message",e=>{const d=e.data;if(d&&d.sb==="lq")labelQuiz(d);if(d&&d.sb==="find")findStart(d);if(d&&d.sb==="hunt")huntStart(d);if(d&&d.sb==="focus")focusTarget();if(d&&d.sb==="goto"&&d.h){/* host reopened this atlas on the topic it is already on: the hash would not change, so no hashchange fires. Re-run the router by hand. */try{if(typeof go==="function")go(d.h,false,true)}catch(e){}}});
     return;
   }
 

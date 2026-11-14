@@ -1840,6 +1840,10 @@
         [
          "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
          "other"
+        ],
+        [
+         "Prostatitis และ UTI ที่ซับซ้อน",
+         "prostatitis"
         ]
        ],
        "ref": {
@@ -7527,7 +7531,9 @@
       "Physiology",
       "Pathology",
       "Microbiology",
-      "Pharmacology"
+      "Pharmacology",
+      "Laboratory",
+      "Clinical skills"
      ],
      "modules": [
       {
@@ -7995,6 +8001,14 @@
         [
          "Acid–base: drug therapy",
          "acidbase"
+        ],
+        [
+         "ยารักษาปัสสาวะเล็ดและกระเพาะปัสสาวะไวเกิน",
+         "oab"
+        ],
+        [
+         "ยาปฏิชีวนะสำหรับการติดเชื้อทางเดินปัสสาวะ",
+         "utiabx"
         ]
        ],
        "ref": {
@@ -8713,6 +8727,10 @@
         [
          "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
          "other"
+        ],
+        [
+         "Prostatitis และ UTI ที่ซับซ้อน",
+         "prostatitis"
         ]
        ],
        "ref": {
@@ -8720,6 +8738,114 @@
         "l": "Mu",
         "ch": "Murray Ch 14–27",
         "sort": 30
+       }
+      },
+      {
+       "id": "renal-lab",
+       "title": "Renal Function Tests & Urinalysis",
+       "subs": [
+        "Laboratory"
+       ],
+       "src": "Brunzel 3e · Harr 5e · Harrison 22e",
+       "href": "renal/renal-lab.html",
+       "thumb": "thumbs/renal-lab.jpg",
+       "desc": "การเก็บและรักษาสิ่งส่งตรวจ, การตรวจทางกายภาพและความถ่วงจำเพาะ, แถบจุ่มปัสสาวะทีละช่องพร้อมผลบวกลวงผลลบลวง, ตะกอนปัสสาวะ เซลล์ cast ผลึกและ oval fat body, การวัดโปรตีนและ UACR กับ Bence Jones, ครีแอตินีน BUN และ eGFR, creatinine clearance, biomarker รุ่นใหม่ cystatin C NGAL KIM-1, การแปลผลร่วมกับภาวะทางคลินิก",
+       "tags": [
+        "laboratory"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "การเก็บและรักษาสิ่งส่งตรวจ",
+         "spec"
+        ],
+        [
+         "การตรวจทางกายภาพและความถ่วงจำเพาะ",
+         "phys"
+        ],
+        [
+         "แถบจุ่ม: เลือด โปรตีน กลูโคส คีโตน",
+         "dip1"
+        ],
+        [
+         "แถบจุ่ม: ไนไตรท์ เม็ดเลือดขาว และช่องอื่น",
+         "dip2"
+        ],
+        [
+         "ตะกอนปัสสาวะ: เซลล์และ cast",
+         "sed"
+        ],
+        [
+         "ผลึกในปัสสาวะ",
+         "cryst"
+        ],
+        [
+         "การวัดโปรตีน: UACR และ Bence Jones",
+         "prot"
+        ],
+        [
+         "ครีแอตินีน BUN และการประเมิน GFR",
+         "gfr"
+        ],
+        [
+         "Biomarker รุ่นใหม่",
+         "biomark"
+        ]
+       ],
+       "ref": {
+        "b": "brz",
+        "l": "Brz",
+        "ch": "Lab",
+        "sort": 40
+       }
+      },
+      {
+       "id": "renal-clinical",
+       "title": "History & Physical Examination",
+       "subs": [
+        "Clinical skills"
+       ],
+       "src": "Bates' Guide to Physical Examination 14e",
+       "href": "renal/renal-clinical.html",
+       "thumb": "thumbs/renal-clinical.jpg",
+       "desc": "อาการสำคัญของระบบทางเดินปัสสาวะและคำถามที่ต้องถาม, การแยก dysuria frequency urgency hesitancy nocturia และ polyuria, การแยกตำแหน่งปวดจากไตกับจากกระเพาะปัสสาวะ, ภาวะกลั้นปัสสาวะไม่อยู่ทั้งห้าชนิด, การตรวจช่องท้องและการคลำไตด้วย ballottement, การเคาะที่มุม costovertebral, การบันทึกผลตรวจแบบมาตรฐาน",
+       "tags": [
+        "clinical"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "อาการสำคัญที่ต้องถาม",
+         "hx"
+        ],
+        [
+         "แยกตำแหน่งของอาการปวด",
+         "pain"
+        ],
+        [
+         "ภาวะกลั้นปัสสาวะไม่อยู่ห้าชนิด",
+         "incont"
+        ],
+        [
+         "ตรวจช่องท้องและคลำไต",
+         "exam"
+        ],
+        [
+         "การบันทึกผลตรวจ",
+         "record"
+        ]
+       ],
+       "ref": {
+        "b": "bat",
+        "l": "Bates",
+        "ch": "Clinical",
+        "sort": 41
        }
       }
      ],
@@ -10315,6 +10441,150 @@
        "link": {
         "m": "pharm-renal",
         "h": "acidbase"
+       }
+      },
+      {
+       "id": "pharm-renal:oab",
+       "sub": "Pharmacology",
+       "t": "ยารักษาปัสสาวะเล็ดและกระเพาะปัสสาวะไวเกิน",
+       "link": {
+        "m": "pharm-renal",
+        "h": "oab"
+       }
+      },
+      {
+       "id": "pharm-renal:utiabx",
+       "sub": "Pharmacology",
+       "t": "ยาปฏิชีวนะสำหรับการติดเชื้อทางเดินปัสสาวะ",
+       "link": {
+        "m": "pharm-renal",
+        "h": "utiabx"
+       }
+      },
+      {
+       "id": "renal-clinical:hx",
+       "sub": "Clinical skills",
+       "t": "อาการสำคัญที่ต้องถาม",
+       "link": {
+        "m": "renal-clinical",
+        "h": "hx"
+       }
+      },
+      {
+       "id": "renal-clinical:pain",
+       "sub": "Clinical skills",
+       "t": "แยกตำแหน่งของอาการปวด",
+       "link": {
+        "m": "renal-clinical",
+        "h": "pain"
+       }
+      },
+      {
+       "id": "renal-clinical:incont",
+       "sub": "Clinical skills",
+       "t": "ภาวะกลั้นปัสสาวะไม่อยู่ห้าชนิด",
+       "link": {
+        "m": "renal-clinical",
+        "h": "incont"
+       }
+      },
+      {
+       "id": "renal-clinical:exam",
+       "sub": "Clinical skills",
+       "t": "ตรวจช่องท้องและคลำไต",
+       "link": {
+        "m": "renal-clinical",
+        "h": "exam"
+       }
+      },
+      {
+       "id": "renal-clinical:record",
+       "sub": "Clinical skills",
+       "t": "การบันทึกผลตรวจ",
+       "link": {
+        "m": "renal-clinical",
+        "h": "record"
+       }
+      },
+      {
+       "id": "renal-lab:spec",
+       "sub": "Laboratory",
+       "t": "การเก็บและรักษาสิ่งส่งตรวจ",
+       "link": {
+        "m": "renal-lab",
+        "h": "spec"
+       }
+      },
+      {
+       "id": "renal-lab:phys",
+       "sub": "Laboratory",
+       "t": "การตรวจทางกายภาพและความถ่วงจำเพาะ",
+       "link": {
+        "m": "renal-lab",
+        "h": "phys"
+       }
+      },
+      {
+       "id": "renal-lab:dip1",
+       "sub": "Laboratory",
+       "t": "แถบจุ่ม: เลือด โปรตีน กลูโคส คีโตน",
+       "link": {
+        "m": "renal-lab",
+        "h": "dip1"
+       }
+      },
+      {
+       "id": "renal-lab:dip2",
+       "sub": "Laboratory",
+       "t": "แถบจุ่ม: ไนไตรท์ เม็ดเลือดขาว และช่องอื่น",
+       "link": {
+        "m": "renal-lab",
+        "h": "dip2"
+       }
+      },
+      {
+       "id": "renal-lab:sed",
+       "sub": "Laboratory",
+       "t": "ตะกอนปัสสาวะ: เซลล์และ cast",
+       "link": {
+        "m": "renal-lab",
+        "h": "sed"
+       }
+      },
+      {
+       "id": "renal-lab:cryst",
+       "sub": "Laboratory",
+       "t": "ผลึกในปัสสาวะ",
+       "link": {
+        "m": "renal-lab",
+        "h": "cryst"
+       }
+      },
+      {
+       "id": "renal-lab:prot",
+       "sub": "Laboratory",
+       "t": "การวัดโปรตีน: UACR และ Bence Jones",
+       "link": {
+        "m": "renal-lab",
+        "h": "prot"
+       }
+      },
+      {
+       "id": "renal-lab:gfr",
+       "sub": "Laboratory",
+       "t": "ครีแอตินีน BUN และการประเมิน GFR",
+       "link": {
+        "m": "renal-lab",
+        "h": "gfr"
+       }
+      },
+      {
+       "id": "renal-lab:biomark",
+       "sub": "Laboratory",
+       "t": "Biomarker รุ่นใหม่",
+       "link": {
+        "m": "renal-lab",
+        "h": "biomark"
        }
       },
       {

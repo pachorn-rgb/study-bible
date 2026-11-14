@@ -1,0 +1,29 @@
+{
+ "id": "renal-lab",
+ "kind": "physio",
+ "sys": "Renal",
+ "eyebrow": "Renal · Laboratory",
+ "draft": false,
+ "title_tag": "Renal Function Tests & Urinalysis",
+ "h1": "Renal function tests & urinalysis",
+ "lede": "การตรวจทางห้องปฏิบัติการของระบบไต · ไล่ตั้งแต่การเก็บสิ่งส่งตรวจ, การตรวจด้วยตาและแถบจุ่ม, ตะกอนปัสสาวะ, การวัดโปรตีนทั้ง macroalbumin microalbumin UACR และ Bence Jones ไปจนถึง biomarker รุ่นใหม่อย่าง cystatin C, NGAL และ KIM-1 · เนื้อหาจาก Brunzel, Harr และ Harrison",
+ "sources": [
+  ["brz", "Brz", "Brunzel · Fundamentals of Urine and Body Fluid Analysis 3e"],
+  ["harr", "Harr", "Harr · Medical Laboratory Science Review 5e"],
+  ["h", "H", "Harrison's Principles of Internal Medicine 22e"],
+  ["gen", "Gen", "ความรู้ทั่วไปที่ใช้เติม"]
+ ],
+ "lib": {
+  "cid": "renal",
+  "folder": "renal",
+  "subs": ["Laboratory"],
+  "title": "Renal Function Tests & Urinalysis",
+  "src": "Brunzel 3e · Harr 5e · Harrison 22e",
+  "desc": "การเก็บและรักษาสิ่งส่งตรวจ, การตรวจทางกายภาพและความถ่วงจำเพาะ, แถบจุ่มปัสสาวะทีละช่องพร้อมผลบวกลวงผลลบลวง, ตะกอนปัสสาวะ เซลล์ cast ผลึกและ oval fat body, การวัดโปรตีนและ UACR กับ Bence Jones, ครีแอตินีน BUN และ eGFR, creatinine clearance, biomarker รุ่นใหม่ cystatin C NGAL KIM-1, การแปลผลร่วมกับภาวะทางคลินิก",
+  "ch": "Lab",
+  "sort": 40,
+  "refb": "brz",
+  "refl": "Brz",
+  "tags": ["laboratory"]
+ }
+}
