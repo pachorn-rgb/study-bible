@@ -1,5 +1,16 @@
 [
  {
+  "v": "6.86",
+  "date": "2026-11-16",
+  "th": [
+   "เพิ่มโมดูล Gram-positive bacilli ในบท Microbiology — 10 หัวข้อ อ่านจาก Murray บท 20, 21 และ 30",
+   "Bacillus: B. anthracis กับสามเส้นทางเข้าสู่ร่างกาย, การประกอบตัวของ anthrax toxin ทีละขั้นจนทะลุเข้าไซโทซอล, B. cereus สองรูปแบบที่แยกกันด้วยสารพิษคนละตัว",
+   "Listeria: การเคลื่อนที่ด้วย actin tail จากเซลล์หนึ่งไปอีกเซลล์หนึ่งโดยไม่โผล่ออกนอกเซลล์, กลุ่มเสี่ยง และกับดักที่ cephalosporin ไม่มีฤทธิ์เลย",
+   "Corynebacterium: diphtheria toxin ที่หยุดการสร้างโปรตีนด้วยการทำให้ EF-2 หมดฤทธิ์, pseudomembrane, Elek test และ diphtheroid ตัวอื่น",
+   "Clostridium: tetanus กับ botulism วาดอยู่ในวงจรประสาทเดียวกันเพื่อให้เห็นว่ามันหยุดคนละจุด จึงได้อัมพาตคนละแบบ · C. difficile · gas gangrene กับวงแตกเม็ดเลือดสองชั้น"
+  ]
+ },
+ {
   "v": "6.85",
   "date": "2026-11-16",
   "th": [

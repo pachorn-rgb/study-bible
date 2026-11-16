@@ -1,0 +1,28 @@
+{
+ "id": "micro-bact-2",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Clinical Bacteriology",
+ "draft": false,
+ "title_tag": "Gram-positive bacilli",
+ "h1": "Gram-positive bacilli",
+ "lede": "Bacillus, Listeria, Corynebacterium และ Clostridium — กลุ่มที่โรคเกือบทั้งหมดมาจากสารพิษ ไม่ใช่จากตัวเชื้อ · เนื้อหาตามคาบ Gram-positive bacilli ของวิชา 204-221 อ่านจาก Murray บท 20, 21 และ 30 · ภาพเน้นกลไกของสารพิษแต่ละตัว ตั้งแต่การประกอบ anthrax toxin ไปจนถึงจุดที่ tetanus กับ botulinum หยุดคนละตำแหน่งในวงจรประสาทเดียวกัน",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 20 Bacillus, Ch 21 Listeria and Related Gram-Positive Bacteria, Ch 30 Clostridium"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Clinical Bacteriology"],
+  "title": "Gram-positive bacilli",
+  "src": "Murray 9e Ch 20, 21, 30",
+  "desc": "B. anthracis และสามเส้นทางเข้าสู่ร่างกาย, การประกอบตัวของ anthrax toxin, B. cereus สองรูปแบบ, Listeria กับการเคลื่อนที่ด้วย actin tail, diphtheria toxin, Clostridium: tetanus botulism C. difficile และ gas gangrene",
+  "ch": "Murray Ch 20, 21, 30",
+  "sort": 7,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

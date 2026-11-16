@@ -2020,6 +2020,76 @@
         "ch": "Murray Ch 18–19",
         "sort": 6
        }
+      },
+      {
+       "id": "micro-bact-2",
+       "title": "Gram-positive bacilli",
+       "subs": [
+        "Clinical Bacteriology"
+       ],
+       "src": "Murray 9e Ch 20, 21, 30",
+       "href": "micro/micro-bact-2.html",
+       "thumb": "thumbs/micro-bact-2.jpg",
+       "desc": "B. anthracis และสามเส้นทางเข้าสู่ร่างกาย, การประกอบตัวของ anthrax toxin, B. cereus สองรูปแบบ, Listeria กับการเคลื่อนที่ด้วย actin tail, diphtheria toxin, Clostridium: tetanus botulism C. difficile และ gas gangrene",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Bacillus anthracis and the three routes in",
+         "anthracis"
+        ],
+        [
+         "How anthrax toxin gets inside",
+         "anthrax-tox"
+        ],
+        [
+         "Bacillus cereus: two enterotoxins, two illnesses",
+         "cereus"
+        ],
+        [
+         "Listeria monocytogenes: moving without leaving the cell",
+         "listeria"
+        ],
+        [
+         "Listeria: who gets it, and how the lab finds it",
+         "listeria-dis"
+        ],
+        [
+         "Diphtheria toxin stops protein synthesis",
+         "diphtheria"
+        ],
+        [
+         "Diphtheria at the bedside and the bench",
+         "diphtheria-dis"
+        ],
+        [
+         "Tetanus and botulism: one circuit, two block points",
+         "neurotoxins"
+        ],
+        [
+         "Four ways botulism happens",
+         "botulism"
+        ],
+        [
+         "Clostridioides difficile",
+         "cdiff"
+        ],
+        [
+         "Clostridium perfringens and gas gangrene",
+         "perfringens"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 20, 21, 30",
+        "sort": 7
+       }
       }
      ],
      "checklist": [
