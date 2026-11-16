@@ -1,5 +1,15 @@
 [
  {
+  "v": "6.82",
+  "date": "2026-11-16",
+  "th": [
+   "เติมสี่หัวข้อที่บางที่สุดของแอป — PDE inhibitors (ทำไม isoform ถึงเป็นตัวกำหนดทุกอย่าง · ทำไม PDE-5 inhibitor ต้องมีสิ่งกระตุ้นก่อนจึงได้ผล และทำไมห้ามร่วม nitrate)",
+   "Enzyme kinetics: คำถามเดียวที่แยก competitive กับ noncompetitive ได้ คือเพิ่ม substrate แล้วเอาชนะได้ไหม · และทำไมระดับยาในเลือดของผู้ป่วยแต่ละคนถึงทำให้ฤทธิ์ของ competitive antagonist ต่างกัน (ตัวอย่าง propranolol)",
+   "Chemotoxicity amelioration: ทำไม rasburicase ห้ามใช้ในผู้พร่อง G6PD — ปฏิกิริยาเปลี่ยน uric acid เป็น allantoin สร้าง hydrogen peroxide ออกมาด้วย ซึ่งต้องใช้ glutathione กำจัด · พร้อมเพดานขนาดสะสมของ anthracycline",
+   "GERD/PUD/H. pylori: ทำไม PPI ต้องให้ก่อนอาหาร (เป็น prodrug ที่ต้องไปติดกับดักในช่องกรดของ parietal cell และต้องมีปั๊มที่กำลังทำงานจึงจับได้) และทำไม quadruple therapy มาแทน triple"
+  ]
+ },
+ {
   "v": "6.81",
   "date": "2026-11-16",
   "th": [

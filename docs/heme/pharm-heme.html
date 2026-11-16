@@ -154,7 +154,20 @@ draw:()=>tbl(["Rescue agent","What it protects against"],[
  ["Rasburicase","urate oxidase → tumor lysis syndrome · ห้ามใน G6PD"],
  ["Ondansetron · aprepitant","5-HT₃ · NK₁ antagonist กันคลื่นไส้อาเจียน"],
  ["Filgrastim","G-CSF กัน febrile neutropenia"]]),
-notes:()=>`<ul><li>Rasburicase ใช้ใน tumor lysis syndrome เสี่ยงสูง ${S.p}${S.k}</li><li>Dexrazoxane ป้องกัน cardiotoxicity ของ anthracycline ${S.p}</li><li>Leucovorin ให้หลัง high-dose methotrexate ตามระดับยา ${S.k}</li></ul>`});
+notes:()=>`<h3>Rescue works by exploiting a difference</h3><ul>
+ <li>ยากลุ่มนี้ไม่ได้ลดฤทธิ์ของยาเคมีบำบัดโดยรวม แต่อาศัยจุดที่<b>เซลล์ปกติกับเซลล์มะเร็งต่างกัน</b> หรือจุดที่พิษเกิดนอกเนื้องอก จึงกันพิษได้โดยไม่ทิ้งผลการรักษา ${S.x}</li></ul>
+ <h3>Leucovorin · mesna</h3><ul>
+ <li><b>Leucovorin rescue</b> ใช้คู่กับ methotrexate ขนาดสูงเพื่อ<b>กู้เซลล์ปกติ</b>จากพิษที่มากเกินไป และใช้ในกรณีได้รับยาเกินขนาดโดยอุบัติเหตุด้วย ${S.k}</li>
+ <li>Leucovorin ให้หลัง high-dose methotrexate โดยดูจากระดับยาในเลือด ${S.k}</li>
+ <li><b>Mesna</b> ใช้ได้ทั้ง<b>ป้องกันและรักษา</b> hemorrhagic cystitis ของ cyclophosphamide — มันจับ acrolein ซึ่งเป็นสารที่ระคายกระเพาะปัสสาวะไว้ในปัสสาวะ ${S.k}</li></ul>
+ <h3>Dexrazoxane and the anthracycline dose ceiling</h3><ul>
+ <li>พิษหัวใจเรื้อรังของ anthracycline คือ <b>dilated cardiomyopathy ที่ขึ้นกับขนาดยาสะสม</b> และนำไปสู่ heart failure · พบได้น้อยมากเมื่อ doxorubicin สะสมต่ำกว่า <b>400–450 mg/m²</b> ${S.k}</li>
+ <li>การให้ขนาดต่ำบ่อยครั้งรายสัปดาห์ หรือให้แบบ continuous infusion ช่วยลดอุบัติการณ์ลงได้ ${S.k}</li>
+ <li><b>Dexrazoxane</b> เป็น iron chelator ที่ได้รับอนุมัติให้ใช้ป้องกันหรือลดพิษหัวใจ โดยเริ่มเมื่อขนาดสะสมของ doxorubicin ถึง <b>300 mg/m²</b> ${S.k}</li></ul>
+ <h3>Why rasburicase is forbidden in G6PD deficiency</h3><ul>
+ <li>Rasburicase เปลี่ยน uric acid เป็น allantoin และปฏิกิริยานั้น<b>สร้าง hydrogen peroxide</b> ซึ่งเป็นออกซิแดนต์ที่แรงมากออกมาด้วย ${S.k}</li>
+ <li>H₂O₂ ต้องถูกกำจัดด้วย <b>glutathione</b> ซึ่งต้องใช้ NADPH จาก HMP shunt — ผู้ป่วย G6PD deficiency จึงกำจัดไม่ทัน และเสี่ยงต่อ<b>hemolytic anemia รุนแรงและ methemoglobinemia</b> อย่างมาก ${S.k}</li>
+ <li>คำแนะนำคือ<b>คัดกรองก่อนเริ่มยา</b>ในผู้ที่มีเชื้อสายแอฟริกันหรือเมดิเตอร์เรเนียน และ<b>ห้ามใช้</b>ในผู้ที่พร่อง G6PD ${S.k}</li></ul>`});
 
 SEC.push({id:"keytox",k:"f",t:"Key chemotoxicities",mm:"Key chemotoxicities",drugs:"",act:[],leg:[],
 draw:()=>tbl(["Toxicity","Drugs"],[

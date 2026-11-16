@@ -69,7 +69,16 @@ draw:()=>tbl(["Concept","What it says"],[
  ["Competitive (reversible)","Km ↑ · Vmax เท่าเดิม · เอาชนะได้ด้วย [S] สูง"],
  ["Competitive (irreversible)","Vmax ↓ · Km เท่าเดิม"],
  ["Noncompetitive","Vmax ↓ · Km เท่าเดิม · ไม่จับ active site"]]),
-notes:()=>`<ul><li>Competitive inhibitor หน้าตาคล้าย substrate จับที่ active site → ลด potency ${S.k}</li><li>Noncompetitive inhibitor จับที่อื่น → ลด efficacy ${S.k}</li></ul>`});
+notes:()=>`<h3>One question tells the two apart</h3><ul>
+ <li>ถามว่า <b>เพิ่ม substrate หรือ agonist แล้วเอาชนะได้ไหม</b> · ถ้าได้ แปลว่าแย่งที่กันอยู่จริง คือ competitive · ถ้าไม่ได้ แปลว่าตัวยับยั้งไปทำให้ตัวรับหรือเอนไซม์ใช้ไม่ได้ถาวรในรอบนั้น ${S.k}</li>
+ <li><b>Competitive</b> หน้าตาคล้าย substrate จึงจับที่ active site · กราฟเลื่อน<b>ไปทางขวา</b> ต้องใช้ความเข้มข้นสูงขึ้นเพื่อให้ได้ผลเท่าเดิม แต่<b>ยอดสูงสุดยังเท่าเดิม</b> — คือเสีย potency ไม่เสีย efficacy ${S.k}</li>
+ <li><b>Irreversible หรือ noncompetitive</b> ลด<b>ผลสูงสุด</b>ที่ทำได้ โดยอาจไม่ขยับ EC₅₀ เลย — คือเสีย efficacy ไม่ใช่ potency ${S.k}</li></ul>
+ <h3>Why the amount of competitive inhibitor matters so much</h3><ul>
+ <li>ระดับการยับยั้งของ competitive antagonist <b>ขึ้นกับความเข้มข้นของตัวมันเอง</b> · Katzung ยกตัวอย่าง propranolol: ผู้ป่วยที่ได้ขนาดยาเท่ากันกลับมีระดับยาในเลือดต่างกันมาก เพราะ clearance ไม่เท่ากัน ผลการยับยั้งจึงต่างกันไปด้วย ${S.k}</li>
+ <li>อัตราส่วนความเข้มข้นที่ต้องใช้เพิ่ม เรียก <b>dose ratio</b> ผูกกับ Ki ของตัวยับยั้งตาม Schild equation · ถ้า C′ เป็นสองเท่าของ C พอดี แปลว่า [I] = Ki ${S.k}</li></ul>
+ <h3>Reading the plots</h3><ul>
+ <li>บน Lineweaver-Burk: competitive ทำให้ x-intercept ขยับเข้าหาศูนย์ (Km สูงขึ้น) โดย y-intercept คงที่ ส่วน noncompetitive ทำให้ y-intercept สูงขึ้น (Vmax ลด) โดย x-intercept คงที่ ${S.x}</li>
+ <li>Km ที่ต่ำแปลว่า affinity สูง — เอนไซม์ทำงานเต็มที่ได้ตั้งแต่ความเข้มข้นต่ำ ${S.k}</li></ul>`});
 
 SEC.push({id:"pk",k:"a",t:"Pharmacokinetics",mm:"PK: F · Vd · CL · t½",drugs:"",act:[],leg:[],tools:[["ord",[["first","First-order"],["zero","Zero-order"]]]],draw:pkCurve,
 notes:()=>`${tbl(["Parameter","สูตร","ความหมาย"],[["Bioavailability (F)","AUC oral ÷ AUC IV","สัดส่วนที่เข้าสู่ systemic circulation · first-pass ทำให้ลด"],["Volume of distribution","Vd = dose ÷ C₀","ต่ำ: อยู่ในเลือด (โมเลกุลใหญ่ จับ protein) · สูง: เข้าเนื้อเยื่อ (lipophilic)"],["Clearance","CL = 0.693 × Vd ÷ t½","ลดเมื่อตับ/ไตเสื่อม"],["Half-life","t½ = 0.693 × Vd ÷ CL","4–5 t½ ถึง steady state"],["Loading dose","Cp × Vd ÷ F","ไม่ต้องลดในไตวาย"],["Maintenance dose","Cp × CL × τ ÷ F","ลดเมื่อ CL ลด"]])}${S.k}
@@ -118,7 +127,23 @@ draw:()=>tbl(["PDE inhibitor","Use and caution"],[
  ["PDE-4: roflumilast","ลด COPD exacerbation"],
  ["PDE-3: milrinone","inotrope + vasodilator ใน acute HF"],
  ["Cilostazol · dipyridamole","claudication · stroke prevention ร่วม aspirin"]]),
-notes:()=>`<ul><li>ยับยั้ง PDE → cAMP/cGMP ↑ → ผลขึ้นกับเนื้อเยื่อ ${S.k}</li><li>Cilostazol ห้ามใน HF ${S.k}</li></ul>`});
+notes:()=>`<h3>Why the isoform decides everything</h3><ul>
+ <li>PDE เป็นเอนไซม์ที่<b>สลาย</b> cAMP และ cGMP · ยับยั้งมันคือปล่อยให้สัญญาณที่มีอยู่แล้วอยู่ต่อ — ฤทธิ์จึงเกิดเฉพาะที่ที่มีสัญญาณนั้นทำงานอยู่ และขึ้นกับว่า<b>เนื้อเยื่อนั้นใช้ PDE isoform ไหน</b> ${S.k}</li>
+ <li>การแยกตามเนื้อเยื่อนี้เองคือเหตุผลที่ยากลุ่มเดียวกันใช้รักษาโรคคนละระบบได้ทั้งหมด ${S.k}</li></ul>
+ <h3>PDE-5 · corpus cavernosum and pulmonary vessels</h3><ul>
+ <li>การแข็งตัวขององคชาตเกิดจาก <b>NO ที่หลั่งจาก NANC neuron</b> ไปคลายกล้ามเนื้อเรียบใน corpora cavernosa · PDE-5 ที่อยู่ในกล้ามเนื้อเรียบตรงนั้นคอยสลาย cGMP ทิ้ง ${S.k}</li>
+ <li>Sildenafil, tadalafil และ vardenafil จึงเพิ่มฤทธิ์ของ NO ด้วยการ<b>กันไม่ให้ cGMP ถูกสลาย</b> ไม่ใช่การสร้าง cGMP เพิ่ม — ซึ่งอธิบายว่าทำไมยาต้องมีสิ่งกระตุ้นทางเพศก่อนจึงจะได้ผล ${S.k}</li>
+ <li>กล้ามเนื้อเรียบของหลอดเลือดปอดก็ใช้ PDE-5 เหมือนกัน ยากลุ่มนี้จึงทำให้หลอดเลือดปอดขยายและ<b>ลด pulmonary hypertension ได้ชัดเจน</b> ${S.k}</li>
+ <li>ร่วมกับ nitrate ไม่ได้ เพราะ nitrate ป้อน NO เข้าไปเพิ่ม ส่วน PDE-5 inhibitor กันทางออก — cGMP จึงพุ่งจนความดันตก ${S.x}</li></ul>
+ <h3>PDE-3 and PDE-4 · why one dilates and the other calms inflammation</h3><ul>
+ <li><b>PDE-3</b> เป็นตัวหลักในการคลายกล้ามเนื้อเรียบของทางเดินหายใจและหลอดเลือด · <b>cilostazol</b> ซึ่งเป็น PDE-3 inhibitor จึงมีทั้งฤทธิ์ต้านเกล็ดเลือดและขยายหลอดเลือด และเพิ่มระยะทางที่เดินได้ในผู้ป่วย claudication รุนแรง จนได้รับอนุมัติให้ใช้ใน PAD ${S.k}</li>
+ <li><b>PDE-4</b> เป็นตัวหลักในการ<b>ยับยั้งการหลั่ง cytokine และ chemokine</b> จึงลดการเคลื่อนที่และการกระตุ้นของเซลล์ภูมิคุ้มกัน · ฤทธิ์ต้านการอักเสบนี้เกิดที่ขนาดยา<b>ต่ำกว่า</b>ขนาดที่ต้องใช้ขยายหลอดลม ${S.k}</li>
+ <li>PDE-4 inhibitor รุ่นก่อนถูกเลิกพัฒนาเพราะคลื่นไส้ ปวดหัว และท้องเสียบ่อยจนรับไม่ได้ · <b>roflumilast</b> รอดมาได้และลดความถี่ของ COPD exacerbation — Katzung สรุปว่ามันคล้าย theophylline แต่<b>อัตราส่วนความปลอดภัยดีกว่า</b> ${S.k}</li>
+ <li><b>Pentoxifylline</b> ถูกโฆษณาใช้ใน claudication มาก แต่<b>ไม่ได้ถูกแนะนำ</b> ${S.k}</li></ul>
+ <h3>Theophylline</h3><ul>
+ <li>กลไกยังไม่ชัด — เชื่อว่ามีทั้งการยับยั้ง PDE และการเป็น <b>adenosine receptor antagonist</b> ${S.k}</li>
+ <li>นอกจากขยายหลอดลมแล้วยัง<b>เพิ่มแรงของกล้ามเนื้อกะบังลม</b> ซึ่งเป็นผลที่แยกจากการออกฤทธิ์ที่ศูนย์หายใจ ${S.k}</li>
+ <li>Cilostazol ห้ามใช้ในผู้ป่วย heart failure ${S.k}</li></ul>`});
 
 atlasFinish();
 </script>

@@ -59,7 +59,17 @@ draw:()=>tbl(["Condition","Treatment"],[
  ["H. pylori: bismuth quadruple","PPI + bismuth + metronidazole + tetracycline · 10–14 วัน"],
  ["H. pylori: clarithromycin triple","PPI + clarithromycin + amoxicillin (หรือ metronidazole) · เมื่อ resistance ต่ำ"],
  ["Confirm eradication","urea breath test หรือ stool antigen (หยุด PPI ก่อน)"]]),
-notes:()=>`<ul><li>Bismuth quadruple เป็นตัวเลือกที่แนะนำชัด โดยเฉพาะแพ้ penicillin หรือเคยใช้ macrolide ${S.p}</li><li>PPI ให้ก่อนอาหาร 30–60 นาที ${S.p}</li></ul>`});
+notes:()=>`<h3>Why a proton pump inhibitor is given before a meal</h3><ul>
+ <li>PPI เป็น <b>prodrug</b> ที่เป็นเบสอ่อนไขมันละลายได้ (pKa 4–5) · หลังดูดซึมมันแพร่เข้าไปสะสมใน<b>ช่องที่เป็นกรดจัด</b> คือ canaliculus ของ parietal cell แล้วถูกโปรตอนจับจนติดอยู่ที่นั่น เข้มข้นกว่าภายนอกเกินพันเท่า ${S.k}</li>
+ <li>ที่นั่นมันเปลี่ยนเป็น sulfenamide cation ที่ว่องไว แล้ว<b>สร้างพันธะ disulfide กับ H⁺/K⁺-ATPase อย่างถาวร</b> ${S.k}</li>
+ <li>กลไกนี้บังคับเงื่อนไขสองอย่าง: ต้องมีปั๊มที่<b>กำลังทำงาน</b>อยู่จึงจะจับได้ ยาจึงต้องให้<b>ก่อนอาหาร 30–60 นาที</b> ${S.p} · และเพราะการยับยั้งเป็นแบบถาวร ฤทธิ์จึงขึ้นกับการทำลายปั๊มมากกว่าเภสัชจลนศาสตร์ของยาแต่ละตัว ซึ่งเป็นเหตุผลที่ PPI ทุกตัวกดกรดได้ใกล้เคียงกันเมื่อใช้ขนาดเทียบเท่า ${S.k}</li></ul>
+ <h3>Why quadruple therapy replaced triple</h3><ul>
+ <li>สูตรที่เคยแนะนำคือ triple therapy 14 วัน — PPI วันละสองครั้ง + clarithromycin + amoxicillin หรือ metronidazole ${S.k}</li>
+ <li>แต่การรักษาล้มเหลวมากขึ้นจาก <b>clarithromycin resistance ที่สูงขึ้น</b> · quadruple therapy จึงกลายเป็นสูตรแรกสำหรับผู้ที่น่าจะมีเชื้อดื้อ clarithromycin คือเคยได้ยานี้มาก่อน หรืออยู่ในพื้นที่ที่อัตราการดื้อสูง ${S.k}</li>
+ <li>สูตร 14 วันที่แนะนำมีสองแบบ ทั้งคู่ให้ PPI วันละสองครั้งร่วมกับ (ก) bismuth subsalicylate + metronidazole + tetracycline วันละสี่ครั้ง หรือ (ข) amoxicillin + clarithromycin + metronidazole วันละสองครั้ง ${S.k}</li>
+ <li>Bismuth quadruple เป็นตัวเลือกที่ชัดเจนเป็นพิเศษในผู้ที่<b>แพ้ penicillin</b> หรือ<b>เคยได้ macrolide</b> มาก่อน ${S.p}</li></ul>
+ <h3>Confirming eradication</h3><ul>
+ <li>ต้องหยุด PPI ก่อนตรวจ urea breath test หรือ stool antigen เพราะยาที่กดกรดทำให้เชื้อลดจำนวนลงชั่วคราวจน<b>ได้ผลลบลวง</b> ${S.x}</li></ul>`});
 
 SEC.push({id:"cirrhosis",k:"f",t:"Portal hypertension & cirrhosis",mm:"Cirrhosis drugs",drugs:"propranolol · nadolol · octreotide · lactulose · rifaximin · spironolactone",act:[],leg:[],
 draw:()=>tbl(["Problem","Treatment"],[
