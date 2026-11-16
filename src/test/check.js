@@ -170,6 +170,50 @@ srv.listen(0, async () => {
     /* built atlases declare ATLAS.kind; pharmacology wording must not leak into other kinds */
     if (typeof ATLAS !== "undefined" && ATLAS.kind !== "pharm") { const m = document.body.innerText.match(/drug class|ยาต้นแบบ|drug map/i); if (m) return `${ATLAS.kind} atlas shows pharmacology wording "${m[0]}"` }
     return true });
+  { /* ---------- abbreviations ----------
+       Every abbreviation a reader meets must be either spelled out (ABBR, which the
+       renderer expands once per topic) or on the never-expand list (ABBR_OK: ion and
+       formula fragments, gene and protein symbols, names read as words). Source badges,
+       figure text and the generated abbreviation footer are not prose and are skipped.
+       Scoped to the chapters that have been through the abbreviation pass; add a chapter
+       here once its content has been reviewed. */
+    const DONE = /^(renal-|kub-|nephron-|pharm-renal)/;
+    for (const h of hrefs.filter(h => DONE.test(path.basename(h, ".html")))) {
+      const pg = await ctx.newPage();
+      try {
+        await pg.goto(base + h, { waitUntil: "load", timeout: 20000 }); await pg.waitForTimeout(500);
+        /* a page renders one group at a time, so walk every topic before reading */
+        const ids = await pg.evaluate(() => [...document.querySelectorAll("a[href^='#'],[data-id]")].map(a => a.dataset.id || a.getAttribute("href").slice(1)).filter(Boolean));
+        for (const id of [...new Set(ids)]) { await pg.evaluate(i => { location.hash = i }, id); await pg.waitForTimeout(70) }
+        await pg.waitForTimeout(250);
+        const miss = await pg.evaluate(() => {
+          if (typeof ABBR === "undefined") return [];
+          const out = new Map();
+          const ROMAN = /^(I{1,3}V?|IV|VI{0,3}|IX|XI{0,3}|XII)$/;
+          document.querySelectorAll('[id^="notes-"],[id^="dia-"]').forEach(n => {
+            const c = n.cloneNode(true);
+            c.querySelectorAll("svg,.sbb,.abbrl,.mcbar,nav,.drawer").forEach(e => e.remove());
+            c.querySelectorAll("*").forEach(e => e.appendChild(document.createTextNode(" ")));
+            const t = c.textContent || "";
+            let m; const re = /\b([A-Za-z][A-Za-z0-9]{1,7})\b/g;
+            while ((m = re.exec(t))) {
+              const a = m[1];
+              if (!/[A-Z]{2}/.test(a) || ROMAN.test(a)) continue;
+              const sg = a.endsWith("s") ? a.slice(0, -1) : a;
+              if (a in ABBR || ABBR_OK.has(a) || sg in ABBR || ABBR_OK.has(sg)) continue;
+              /* an author may also spell it out in place: "... (VAP)" or "VAP (...)" */
+              const e = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+              if (new RegExp("\\S[^()\\n]{3,70}\\(\\s*" + e + "[ ,)]|\\b" + e + "\\s*\\([^()\\n]{3,70}\\)").test(t)) continue;
+              out.set(a, (out.get(a) || 0) + 1);
+            }
+          });
+          return [...out].sort((x, y) => y[1] - x[1]);
+        });
+        if (miss.length) bad(`${h}: abbreviation(s) in neither ABBR nor ABBR_OK — ${miss.slice(0, 12).map(([a, n]) => a + "\u00d7" + n).join(", ")}`);
+      } catch (e) { bad(`${h}: abbreviation check ${e.message.split("\n")[0]}`) }
+      await pg.close();
+    }
+  }
   for (const c of chs) await open(`index.html#/c/${c.id}`, () => !!document.querySelector(".chead") || "chapter header missing");
   for (const r of ["index.html#/", "index.html#/review", "index.html#/library"]) await open(r, () => document.querySelector("#view").innerText.length > 50 || "blank view");
   { /* Regression for the blank-atlas bug: open an atlas, go back, then reopen it after the

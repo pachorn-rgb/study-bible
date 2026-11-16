@@ -49,6 +49,20 @@ Thai explains, English names. Aim for **≈45% Thai characters** per atlas file;
 - **Thai**: the connective prose that explains mechanism, reason and consequence —
   the part that makes the English terms make sense.
 
+### Abbreviations
+`src/engine/abbr.js` holds every abbreviation the reader may meet:
+- **`ABBR`** maps it to its expansion. The renderer spells it out **once per topic**,
+  at its first appearance in the notes, as `expansion (ABBR)`. Anything that appears
+  only in a table, a heading or the figure is listed in a small key under the notes.
+  So write the abbreviation plainly in the source — do not expand it by hand.
+- **`ABBR_OK`** is the never-expand list: ion and formula fragments, gene and protein
+  symbols, trial names, and abbreviations read as words.
+`check.js` fails on any abbreviation in a built page that is in neither list, so a new
+abbreviation means one line in `abbr.js`. An author may also define one in place —
+`Vein → Artery → Pelvis (VAP)` — and the check accepts that.
+The rule currently covers the Renal chapter; widen `DONE` in `check.js` as each further
+chapter is reviewed.
+
 ### Pictures
 A `draw()` must earn its space. Decide per topic:
 - **Draw the real thing** when the content has shape, position or containment —

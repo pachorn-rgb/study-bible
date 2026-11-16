@@ -40,7 +40,7 @@ def must(old, new, txt):
 def build_engine():
     out = DOCS / "atlas"; out.mkdir(exist_ok=True)
     (out / "atlas.css").write_text((ENG / "atlas-base.css").read_text() + "\n" + (ENG / "atlas-extra.css").read_text())
-    (out / "core.js").write_text((ENG / "helpers.js").read_text() + "\n" + (ENG / "atlas-core.js").read_text())
+    (out / "core.js").write_text((ENG / "helpers.js").read_text() + "\n" + (ENG / "abbr.js").read_text() + "\n" + (ENG / "atlas-core.js").read_text())
     r = (ENG / "render-template.js").read_text()
     r = must('const SEENKEY="sb-phys-seen"', 'const SEENKEY="sb-"+ATLAS.id+"-seen"', r)
     r = re.sub(r'go\(location\.hash\.slice\(1\)\|\|"[^"]*"', 'go(location.hash.slice(1)||"map"', r)

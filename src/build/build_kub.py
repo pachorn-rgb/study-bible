@@ -31,7 +31,9 @@ def build_page(aid):
     assert "@@SCRIPT@@" in shell, f"{aid}: shell is missing the @@SCRIPT@@ marker"
     helpers = SRC / "atlases" / f"{aid}.helpers.js"
     render = SRC / "engine" / f"{aid}.render.js"
+    abbr = SRC / "engine" / "abbr.js"
     script = (OPEN_TAG
+              + (abbr.read_text() if render.exists() else "")
               + (helpers.read_text() if helpers.exists() else "")
               + (SRC / "atlases" / f"{aid}.js").read_text()
               + (render.read_text() if render.exists() else "")
