@@ -74,7 +74,7 @@ draw(){const r=ST.scr1/ST.scr0,d=ST.scr1-ST.scr0;let sc=0;if(r>=1.5||d>=0.3)sc=1
  let su=0;if(ST.uo<0.5&&ST.uoh>=6)su=1;if(ST.uo<0.5&&ST.uoh>=12)su=2;if((ST.uo<0.3&&ST.uoh>=24)||(ST.uo===0&&ST.uoh>=12))su=3;const st=Math.max(sc,su);
  let b="";["Stage 1","Stage 2","Stage 3"].forEach((n,i)=>{const on=st===i+1,x=14+i*208;b+=`<rect class="box ${on?"ar":""}" x="${x}" y="14" width="196" height="190" rx="14"${on?' style="stroke:var(--sb-bad);stroke-width:3"':""}/>`+T(x+98,42,n,{c:"bb"})+wrapT(x+12,70,["Cr ×1.5–1.9 หรือ ↑ ≥0.3","Cr ×2.0–2.9","Cr ×3 หรือ ≥4.0 หรือเริ่ม RRT"][i],26,"s")+`<line x1="${x+12}" x2="${x+184}" y1="128" y2="128" style="stroke:var(--sb-line)"/>`+wrapT(x+12,150,["UO <0.5 นาน 6–12 ชม.","UO <0.5 ≥12 ชม.","UO <0.3 ≥24 ชม. หรือ anuria ≥12 ชม."][i],26,"s")});
  b+=`<rect class="gsum" x="0" y="218" width="640" height="66" rx="12"/>`+T(16,244,`Cr ×${f1(r)} (↑${f1(d)}) → stage ${sc||"–"} · UO → stage ${su||"–"}`,{a:"start",c:"b"})+T(16,268,st?`ผล: AKI stage ${st} (เลือกค่าที่สูงกว่า)`:"ยังไม่เข้าเกณฑ์ AKI",{a:"start",c:st?"bad":"h"});return svg(b,"0 0 640 290")},
-notes:()=>`<h3>KDIGO definition</h3><ul><li>Cr เพิ่ม ≥0.3 mg/dL ใน 48 ชม. · หรือ ≥1.5 เท่าของ baseline ใน 7 วัน · หรือ UO &lt;0.5 mL/kg/h นาน &gt;6 ชม. ${S.h}</li>
+notes:()=>mc("B9.2.7",1)+`<h3>KDIGO definition</h3><ul><li>Cr เพิ่ม ≥0.3 mg/dL ใน 48 ชม. · หรือ ≥1.5 เท่าของ baseline ใน 7 วัน · หรือ UO &lt;0.5 mL/kg/h นาน &gt;6 ชม. ${S.h}</li>
  <li>AKI เป็น clinical diagnosis ไม่ใช่ structural · ไม่จำเป็นต้องมีเนื้อไตเสียหาย ${S.h}</li></ul>
  <h3>Epidemiology</h3><ul><li>5–7% ของผู้ป่วยใน · สูงถึง 30% ใน ICU · เพิ่ม &gt;4 เท่าตั้งแต่ 1988 ${S.h}</li><li>เพิ่มความเสี่ยง CKD และโรคหัวใจหลอดเลือดในอนาคต ${S.h}</li>
  <li>Community: volume depletion, HF, ยา, obstruction, malignancy · Hospital: <b>sepsis</b>, ผ่าตัดใหญ่, critical illness, nephrotoxins ${S.h}</li></ul>
@@ -127,7 +127,7 @@ draw(){const G=["G1","G2","G3a","G3b","G4","G5"],GL=["≥90","60–89","45–59"
  G.forEach((g,i)=>{const y=60+i*50;b+=T(70,y+30,g,{c:"bh"})+T(140,y+30,GL[i],{c:"s m"});A.forEach((a,j)=>{const r=Math.min(4,risk(i,j)),on=ST.gG===g&&ST.gA===a;b+=`<rect x="${190+j*130}" y="${y}" width="122" height="44" rx="8" style="fill:${col[r]};opacity:${on?1:.45};stroke:${on?"var(--sb-ink)":"none"};stroke-width:3"/>`})});
  const gi=G.indexOf(ST.gG),aj=A.indexOf(ST.gA),r=Math.min(4,risk(gi,aj));
  b+=`<rect class="gsum" x="0" y="370" width="640" height="56" rx="12"/>`+T(16,394,`${ST.gG}${ST.gA}: GFR ${GL[gi]} · ACR ${AL[aj]} → risk ${lab[r]}`,{a:"start",c:"b"})+T(16,414,"ความเสี่ยงตาย, CV death และ progression สูงขึ้นทั้งเมื่อ GFR ลดและ albuminuria เพิ่ม",{a:"start",c:"s"});return svg(b,"0 0 640 430")},
-notes:()=>`<h3>นิยาม</h3><ul><li>CKD = ความผิดปกติของโครงสร้างหรือการทำงานของไตนาน &gt;3 เดือน · จัดตาม <b>GFR (G1–G5)</b> และ <b>albuminuria (A1–A3)</b> (Fig 322-1) ${S.h}</li>
+notes:()=>mc("B9.2.7",1)+`<h3>นิยาม</h3><ul><li>CKD = ความผิดปกติของโครงสร้างหรือการทำงานของไตนาน &gt;3 เดือน · จัดตาม <b>GFR (G1–G5)</b> และ <b>albuminuria (A1–A3)</b> (Fig 322-1) ${S.h}</li>
  <li>eGFR คำนวณจาก creatinine ± cystatin C (Table 322-3) ${S.h}</li></ul>
  <h3>Progression</h3><ul><li>Nephron ลด → nephron ที่เหลือ hyperfiltration + intraglomerular hypertension → sclerosis (Fig 322-2) ${S.h}</li>
  <li>Risk factors (Table 322-1) และ monogenic loci เช่น APOL1 (Table 322-2) ${S.h}</li></ul>
@@ -138,7 +138,7 @@ draw:()=>tbl(["Problem","How it behaves in CKD"],[
  ["Potassium","ขับทาง distal (aldosterone) + GI ชดเชย · K สูงเมื่อ RAS inhibitor, MRA, acidosis, hemolysis"],
  ["Type 4 pattern","hyporeninemic hypoaldosteronism (DM), obstruction, sickle cell → K สูงก่อน GFR ลดมาก"],
  ["Metabolic acidosis","ammonia ลด → non-AG ระยะแรก · GFR ต่ำมาก → AG acidosis"]]),
-notes:()=>`<ul><li>ECF ขยายแบบ isonatric ถ้าดื่มน้ำไม่เกินความสามารถขับ · จำกัดเกลือ · chlorthalidone ใช้ได้แม้ stage 4 ${S.h}</li>
+notes:()=>mc("B9.2.5",1)+`<ul><li>ECF ขยายแบบ isonatric ถ้าดื่มน้ำไม่เกินความสามารถขับ · จำกัดเกลือ · chlorthalidone ใช้ได้แม้ stage 4 ${S.h}</li>
  <li>ยาที่ทำให้ K สูง: RAS inhibitors, spironolactone, amiloride, eplerenone, triamterene, nonsteroidal MRA · <b>gliflozins</b> ช่วยถ่วงสมดุล K ${S.h}</li>
  <li>Acidosis: ยังทำให้ปัสสาวะเป็นกรดได้ แต่สร้าง ammonia น้อย · net acid excretion อาจ &lt;30–40 mmol/วัน ${S.h}</li></ul>`});
 HS("322","b","ckd-mbd","CKD–mineral bone disorder",{
@@ -263,7 +263,7 @@ draw:()=>{let b="";b+=`<rect class="box vn" x="14" y="14" width="300" height="15
  b+=`<rect class="box ar" x="326" y="14" width="300" height="150" rx="14"/>`+T(476,42,"Renal",{c:"bb"})+wrapT(342,70,"ปวดหลัง/สีข้าง ~60% · hematuria · cyst infection · stones · HT ก่อน GFR ลด · ESRD วัยกลางคนตอนปลาย",38,"s");
  b+=`<rect class="box gl" x="14" y="176" width="300" height="130" rx="14"/>`+T(164,204,"Extrarenal",{c:"bb"})+wrapT(30,232,"liver cysts (พบบ่อยสุด) · intracranial aneurysm 4–5 เท่า · diverticula · hernia",38,"s");
  b+=`<rect class="box" x="326" y="176" width="300" height="130" rx="14"/>`+T(476,204,"Diagnosis & Rx",{c:"bb"})+wrapT(342,232,"US: อายุ 30–59 ≥2 cysts แต่ละข้าง · ≥60 ≥4 cysts แต่ละข้าง · tolvaptan (V2 antagonist)",38,"s");return svg(b,"0 0 640 320")},
-notes:()=>`<ul><li>Prevalence 1:400–1:1000 ทุกเชื้อชาติ ${S.h}</li><li>PKD2 อาการอ่อนกว่า เริ่มช้ากว่า จึงถูกวินิจฉัยน้อยกว่าความจริง ${S.h}</li>
+notes:()=>mc("B9.2.1",3)+`<ul><li>Prevalence 1:400–1:1000 ทุกเชื้อชาติ ${S.h}</li><li>PKD2 อาการอ่อนกว่า เริ่มช้ากว่า จึงถูกวินิจฉัยน้อยกว่าความจริง ${S.h}</li>
  <li>Polycystins อยู่บน <b>primary cilium</b> ควบคุม Ca²⁺ signaling (Fig 327-1) ${S.h}</li>
  <li>Cyst infection และ acute pyelonephritis มักเป็น gram-negative ${S.h}</li><li>อายุ 30–59 ที่ไม่มี ≥2 cysts ในแต่ละข้าง → ตัดโรคออกได้ ${S.h}</li>
  <li><b>Tolvaptan</b> ยับยั้ง vasopressin V2 receptor → cAMP ลด → cyst โตช้าลง ${S.h}</li></ul>`});

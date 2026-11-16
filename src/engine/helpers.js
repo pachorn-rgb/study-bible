@@ -3,6 +3,11 @@
 const T=(x,y,s,o={})=>`<text class="t${o.c?" "+o.c:""}" x="${x}" y="${y}" text-anchor="${o.a||"middle"}"${o.s?` font-size="${o.s}"`:""}${o.r?` transform="rotate(${o.r} ${x} ${y})"`:""}>${s}</text>`;
 /* a blocked step in a pathway — the red cross, with the missing enzyme named above it.
    Every metabolic-disease picture marks its lesion this way so the lesson is the same shape. */
+/* Where a topic sits in the Medical Council's competency criteria (เกณฑ์ความรู้ความสามารถฯ 2567).
+   `code` is the criteria code; `g` is 1 for กลุ่มที่ 1 และ 2 — the ones a new doctor must diagnose
+   and treat — and 3 for กลุ่มที่ 3, which only has to be recognised and referred. The two columns
+   are the whole point of the criteria's tables, so a topic that is in them says which column. */
+const mc=(code,g)=>`<div class="mcbar"><span class="mcc">${code}</span>${g?`<span class="mcg g${g}">${g===1?"กลุ่ม 1–2 · วินิจฉัยและรักษาเองได้":"กลุ่ม 3 · รู้จักและส่งต่อได้"}</span>`:""}</div>`;
 const blk=(x,y,lab,dy=-16)=>`<path d="M${x-9},${y-9} L${x+9},${y+9} M${x+9},${y-9} L${x-9},${y+9}" style="fill:none;stroke:var(--sb-bad);stroke-width:3.4;stroke-linecap:round"/>`+(lab?T(x,y+dy,lab,{c:"bad"}):"");
 const TL=(x,y,ls,o={})=>ls.map((l,i)=>T(x,y+i*(o.lh||14),l,o)).join("");
 const LD=(x1,y1,x2,y2)=>`<path class="ld" d="M${x1},${y1} L${x2},${y2}"/><circle class="ldd" cx="${x1}" cy="${y1}" r="1.8"/>`;

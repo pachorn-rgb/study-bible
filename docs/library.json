@@ -666,7 +666,7 @@
       {
        "id": "biochem-cellular:cellcyc",
        "sub": "Cellular",
-       "t": "วัฏจักรเซลล์",
+       "t": "cell cycle",
        "link": {
         "m": "biochem-cellular",
         "h": "cellcyc"
@@ -675,7 +675,7 @@
       {
        "id": "biochem-cellular:er",
        "sub": "Cellular",
-       "t": "เอนโดพลาสมิกเรติคูลัมสองชนิด",
+       "t": "Rough vs smooth endoplasmic reticulum",
        "link": {
         "m": "biochem-cellular",
         "h": "er"
@@ -684,7 +684,7 @@
       {
        "id": "biochem-cellular:perox",
        "sub": "Cellular",
-       "t": "เพอรอกซิโซมและโปรตีเอโซม",
+       "t": "Peroxisome & proteasome",
        "link": {
         "m": "biochem-cellular",
         "h": "perox"
@@ -693,7 +693,7 @@
       {
        "id": "biochem-cellular:cytosk",
        "sub": "Cellular",
-       "t": "เส้นใยโครงร่างเซลล์ทั้งสามแบบ",
+       "t": "The three cytoskeletal filaments",
        "link": {
         "m": "biochem-cellular",
         "h": "cytosk"
@@ -702,7 +702,7 @@
       {
        "id": "biochem-cellular:mt",
        "sub": "Cellular",
-       "t": "ไมโครทูบูลและยาที่ออกฤทธิ์",
+       "t": "Microtubules & the drugs that act on them",
        "link": {
         "m": "biochem-cellular",
         "h": "mt"
@@ -711,7 +711,7 @@
       {
        "id": "biochem-cellular:cilia",
        "sub": "Cellular",
-       "t": "ซิเลียและ primary ciliary dyskinesia",
+       "t": "Cilia & primary ciliary dyskinesia",
        "link": {
         "m": "biochem-cellular",
         "h": "cilia"
@@ -720,7 +720,7 @@
       {
        "id": "biochem-cellular:napump",
        "sub": "Cellular",
-       "t": "ปั๊มโซเดียมโพแทสเซียมและ digoxin",
+       "t": "The sodium-potassium pump & digoxin",
        "link": {
         "m": "biochem-cellular",
         "h": "napump"
@@ -729,7 +729,7 @@
       {
        "id": "biochem-cellular:collagen",
        "sub": "Cellular",
-       "t": "การสร้างคอลลาเจน",
+       "t": "Collagen synthesis",
        "link": {
         "m": "biochem-cellular",
         "h": "collagen"
@@ -738,7 +738,7 @@
       {
        "id": "biochem-cellular:coldis",
        "sub": "Cellular",
-       "t": "Osteogenesis imperfecta และ Ehlers-Danlos",
+       "t": "Osteogenesis imperfecta & Ehlers-Danlos",
        "link": {
         "m": "biochem-cellular",
         "h": "coldis"
@@ -747,7 +747,7 @@
       {
        "id": "biochem-cellular:elastin",
        "sub": "Cellular",
-       "t": "อีลาสติน Marfan และ α1-antitrypsin",
+       "t": "Elastin, Marfan & α1-antitrypsin",
        "link": {
         "m": "biochem-cellular",
         "h": "elastin"
@@ -1026,7 +1026,7 @@
       {
        "id": "biochem-metab-1:pyrfate",
        "sub": "Metabolism",
-       "t": "ปลายทางของ pyruvate · Cori & Cahill",
+       "t": "Fates of pyruvate · Cori & Cahill",
        "link": {
         "m": "biochem-metab-1",
         "h": "pyrfate"
@@ -1053,7 +1053,7 @@
       {
        "id": "biochem-metab-1:etcpois",
        "sub": "Metabolism",
-       "t": "สารพิษต่อห่วงโซ่หายใจ & uncouplers",
+       "t": "Electron transport poisons & uncouplers",
        "link": {
         "m": "biochem-metab-1",
         "h": "etcpois"
@@ -1449,7 +1449,7 @@
       {
        "id": "biochem-molecular-2:code",
        "sub": "Molecular",
-       "t": "คุณสมบัติของรหัสพันธุกรรม",
+       "t": "Properties of the genetic code",
        "link": {
         "m": "biochem-molecular-2",
         "h": "code"
@@ -1458,7 +1458,7 @@
       {
        "id": "biochem-molecular-2:genereg",
        "sub": "Molecular",
-       "t": "Promoter, enhancer และ silencer",
+       "t": "Promoter, enhancer & silencer",
        "link": {
         "m": "biochem-molecular-2",
         "h": "genereg"
@@ -1476,7 +1476,7 @@
       {
        "id": "biochem-molecular-2:rnapol",
        "sub": "Molecular",
-       "t": "RNA polymerase และชนิดของ RNA",
+       "t": "RNA polymerases & RNA types",
        "link": {
         "m": "biochem-molecular-2",
         "h": "rnapol"
@@ -1485,7 +1485,7 @@
       {
        "id": "biochem-molecular-2:rnaproc",
        "sub": "Molecular",
-       "t": "การแต่ง mRNA และการตัดต่อ",
+       "t": "mRNA processing & splicing",
        "link": {
         "m": "biochem-molecular-2",
         "h": "rnaproc"
@@ -1494,7 +1494,7 @@
       {
        "id": "biochem-molecular-2:trna",
        "sub": "Molecular",
-       "t": "tRNA และการชาร์จกรดอะมิโน",
+       "t": "tRNA & amino acid charging",
        "link": {
         "m": "biochem-molecular-2",
         "h": "trna"
@@ -1503,7 +1503,7 @@
       {
        "id": "biochem-molecular-2:transl",
        "sub": "Molecular",
-       "t": "สามขั้นของการแปลรหัส",
+       "t": "The three stages of translation",
        "link": {
         "m": "biochem-molecular-2",
         "h": "transl"
@@ -1512,7 +1512,7 @@
       {
        "id": "biochem-molecular-2:posttr",
        "sub": "Molecular",
-       "t": "การปรับแต่งหลังแปลรหัส",
+       "t": "Post-translational modification",
        "link": {
         "m": "biochem-molecular-2",
         "h": "posttr"
@@ -8081,6 +8081,10 @@
          "autoreg"
         ],
         [
+         "Renal metabolism & oxygen consumption",
+         "o2"
+        ],
+        [
          "Renal clearance",
          "clearance"
         ],
@@ -8425,6 +8429,10 @@
          "incont"
         ],
         [
+         "Acute urinary retention",
+         "retention"
+        ],
+        [
          "Cystitis",
          "cystitis"
         ],
@@ -8559,6 +8567,10 @@
          "aki-dx"
         ],
         [
+         "Anuria, oliguria & polyuria",
+         "urineout"
+        ],
+        [
          "Acute interstitial nephritis",
          "tin-ain"
         ],
@@ -8593,6 +8605,10 @@
         [
          "Nephrosclerosis (hypertensive)",
          "nephrosclerosis"
+        ],
+        [
+         "Renal artery stenosis",
+         "ras"
         ],
         [
          "Thrombotic microangiopathies & other vascular",
@@ -10446,7 +10462,7 @@
       {
        "id": "pharm-renal:oab",
        "sub": "Pharmacology",
-       "t": "ยารักษาปัสสาวะเล็ดและกระเพาะปัสสาวะไวเกิน",
+       "t": "Drugs for incontinence & overactive bladder",
        "link": {
         "m": "pharm-renal",
         "h": "oab"
@@ -10455,7 +10471,7 @@
       {
        "id": "pharm-renal:utiabx",
        "sub": "Pharmacology",
-       "t": "ยาปฏิชีวนะสำหรับการติดเชื้อทางเดินปัสสาวะ",
+       "t": "Antibiotics for urinary tract infection",
        "link": {
         "m": "pharm-renal",
         "h": "utiabx"
@@ -10590,7 +10606,7 @@
       {
        "id": "renal-micro:upath",
        "sub": "Microbiology",
-       "t": "Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",
+       "t": "Uropathogen line-up: which organism, which setting",
        "link": {
         "m": "renal-micro",
         "h": "upath"
@@ -10608,7 +10624,7 @@
       {
        "id": "renal-micro:gp-cocci",
        "sub": "Microbiology",
-       "t": "S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",
+       "t": "S. saprophyticus, Enterococcus & CoNS in urine",
        "link": {
         "m": "renal-micro",
         "h": "gp-cocci"
@@ -10626,7 +10642,7 @@
       {
        "id": "renal-micro:fungi-myco",
        "sub": "Microbiology",
-       "t": "Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",
+       "t": "Candida & M. tuberculosis in urine: the laboratory view",
        "link": {
         "m": "renal-micro",
         "h": "fungi-myco"
@@ -10635,7 +10651,7 @@
       {
        "id": "renal-micro:virulence",
        "sub": "Microbiology",
-       "t": "การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",
+       "t": "Adhesion, ascent and host defences",
        "link": {
         "m": "renal-micro",
         "h": "virulence"
@@ -10644,7 +10660,7 @@
       {
        "id": "renal-micro:biofilm",
        "sub": "Microbiology",
-       "t": "Biofilm และการติดเชื้อที่สายสวน",
+       "t": "Biofilm & catheter-associated infection",
        "link": {
         "m": "renal-micro",
         "h": "biofilm"
@@ -10653,7 +10669,7 @@
       {
        "id": "renal-micro:specimen",
        "sub": "Microbiology",
-       "t": "การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",
+       "t": "Collecting urine for culture: midstream · catheter · suprapubic",
        "link": {
         "m": "renal-micro",
         "h": "specimen"
@@ -10671,7 +10687,7 @@
       {
        "id": "renal-micro:id",
        "sub": "Microbiology",
-       "t": "การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",
+       "t": "Identifying the organism: the basic branch points",
        "link": {
         "m": "renal-micro",
         "h": "id"
@@ -10689,7 +10705,7 @@
       {
        "id": "renal-micro:resist",
        "sub": "Microbiology",
-       "t": "กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",
+       "t": "Resistance mechanisms and phenotypes in uropathogens",
        "link": {
         "m": "renal-micro",
         "h": "resist"
@@ -10698,7 +10714,7 @@
       {
        "id": "renal-micro:other",
        "sub": "Microbiology",
-       "t": "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
+       "t": "Viruses and parasites of the urinary tract",
        "link": {
         "m": "renal-micro",
         "h": "other"
@@ -10786,12 +10802,48 @@
        }
       },
       {
+       "id": "renal-patho-2:retention",
+       "sub": "Pathology",
+       "t": "Acute urinary retention",
+       "link": {
+        "m": "renal-patho-2",
+        "h": "retention"
+       }
+      },
+      {
        "id": "renal-patho-3:papnec",
        "sub": "Pathology",
        "t": "Renal papillary & diffuse cortical necrosis",
        "link": {
         "m": "renal-patho-3",
         "h": "papnec"
+       }
+      },
+      {
+       "id": "renal-patho-3:urineout",
+       "sub": "Pathology",
+       "t": "Anuria, oliguria & polyuria",
+       "link": {
+        "m": "renal-patho-3",
+        "h": "urineout"
+       }
+      },
+      {
+       "id": "renal-patho-3:ras",
+       "sub": "Pathology",
+       "t": "Renal artery stenosis",
+       "link": {
+        "m": "renal-patho-3",
+        "h": "ras"
+       }
+      },
+      {
+       "id": "renal-physio-1:o2",
+       "sub": "Physiology",
+       "t": "Renal metabolism & oxygen consumption",
+       "link": {
+        "m": "renal-physio-1",
+        "h": "o2"
        }
       },
       {

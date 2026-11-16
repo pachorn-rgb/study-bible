@@ -60,7 +60,7 @@ draw(){const c=ST.cy||"acute";let b=`<rect class="lm-bg" x="0" y="0" width="640"
  b+=T(10,104,"urothelium",{a:"start",c:"s"})+T(10,170,"lamina propria",{a:"start",c:"s"})+T(10,262,"muscularis propria",{a:"start",c:"s"});
  const info={acute:["Acute / chronic cystitis","E. coli > Proteus, Klebsiella, Enterobacter · neutrophils → mononuclear (chronic)","ar"],ic:["Interstitial cystitis","หญิง · ปวด suprapubic > 6 สัปดาห์ ไม่มีเชื้อ · mast cells · biopsy เพื่อแยก CIS","vn"],mala:["Malakoplakia","macrophages เต็ม debris แบคทีเรีย · Michaelis–Gutmann bodies (Ca²⁺) · phagolysosome บกพร่อง","gl"],poly:["Polypoid cystitis","submucosal edema จากสายสวน → ยื่นเป็นติ่ง · คล้าย papillary carcinoma",""]}[c];
  b+=`<rect class="box ${info[2]}" x="0" y="310" width="640" height="64" rx="12"/>`+T(16,336,info[0],{a:"start",c:"bh"})+T(16,358,info[1],{a:"start",c:"s"});return svg(b,"0 0 640 380")},
-notes:()=>`<h3>Acute & chronic cystitis</h3><ul><li>ปัจจัยเสี่ยง: นิ่วใน bladder, obstruction, <b>DM</b>, instrumentation, immunodeficiency · หญิงเสี่ยงกว่า (urethra สั้น) ${S.r}</li>
+notes:()=>mc("B9.2.2",1)+`<h3>Acute & chronic cystitis</h3><ul><li>ปัจจัยเสี่ยง: นิ่วใน bladder, obstruction, <b>DM</b>, instrumentation, immunodeficiency · หญิงเสี่ยงกว่า (urethra สั้น) ${S.r}</li>
  <li>เชื้อ: coliforms (<b>E. coli</b>) · TB (ตามหลัง renal TB) · Candida · <i>Schistosoma haematobium</i> · adenovirus/<b>BK virus</b> → hemorrhagic cystitis · Clostridium → emphysematous ${S.r}</li>
  <li>Noninfectious: <b>cyclophosphamide</b> → hemorrhagic cystitis · radiation · follicular · eosinophilic ${S.r}</li>
  <li>Triad: <b>frequency, suprapubic pain, dysuria</b> ${S.r}</li></ul>
@@ -85,7 +85,7 @@ draw(){let b="";
  b+=`<path class="arw" d="M160,198 L290,250" marker-end="url(#ah)"/><path class="arw" d="M480,198 L350,250" marker-end="url(#ah)"/>`;
  b+=`<rect class="box ar" x="200" y="254" width="240" height="44" rx="12"/>`+T(320,281,"Invasive urothelial carcinoma",{c:"bh"});
  b+=T(320,326,"Risk: บุหรี่ · aryl amines (2-naphthylamine) · S. haematobium · cyclophosphamide · analgesics · radiation",{c:"s"});return svg(b,"0 0 640 340")},
-notes:()=>`<h3>Epidemiology</h3><ul><li>Bladder cancer เป็นมะเร็งพบบ่อยอันดับ 4 ในชายอเมริกัน · ชาย:หญิง <b>3:1</b> · 80% อายุ 50–80 · แทบไม่เป็นกรรมพันธุ์ ${S.r}</li>
+notes:()=>mc("B9.2.4",3)+`<h3>Epidemiology</h3><ul><li>Bladder cancer เป็นมะเร็งพบบ่อยอันดับ 4 ในชายอเมริกัน · ชาย:หญิง <b>3:1</b> · 80% อายุ 50–80 · แทบไม่เป็นกรรมพันธุ์ ${S.r}</li>
  <li>&gt;95% เป็น epithelial · urothelial ~90% · multifocal ได้ทุกตำแหน่งที่มี urothelium ${S.r}</li></ul>
  <h3>Risk factors</h3><ul><li><b>สูบบุหรี่</b> สำคัญที่สุด (เสี่ยง 3–7 เท่า · 50–80% ของมะเร็ง bladder ในชาย) ${S.r}</li>
  <li><b>Aryl amines</b> (2-naphthylamine) อุตสาหกรรม · มะเร็งตามมา 15–40 ปี ${S.r}</li>

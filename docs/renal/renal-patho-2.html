@@ -203,7 +203,7 @@ notes:()=>`<h3>Podocyte injury</h3><ul><li>Effacement ของ foot processes, 
 
 /* ---------- c · nephritic ---------- */
 G("psgn","c","Acute postinfectious GN",{em:{sub_ep:"humps",neut:true},if:"granular",lm:{prolif:true,neut:true},sum:[["LM","diffuse endocapillary proliferation + neutrophils"],["IF","granular IgG, C3 (GBM + mesangium)"],["EM","subepithelial humps"]]},
-()=>`<h3>Poststreptococcal GN</h3><ul><li>เด็ก 6–10 ปี · 1–4 สัปดาห์หลัง group A strep (pharyngitis/skin) ด้วย nephritogenic strains ${S.r}</li>
+()=>mc("B9.2.2",1)+`<h3>Poststreptococcal GN</h3><ul><li>เด็ก 6–10 ปี · 1–4 สัปดาห์หลัง group A strep (pharyngitis/skin) ด้วย nephritogenic strains ${S.r}</li>
  <li>Antigen: <b>SpeB</b> (streptococcal pyrogenic exotoxin B) · serum <b>C3 ต่ำ</b> · ASO สูง ${S.r}</li>
  <li>อาการ: malaise, fever, nausea, <b>oliguria</b>, hematuria (สีโค้ก) · periorbital edema · HT ปานกลาง ${S.r}</li>
  <li>เด็ก &gt;95% หายเอง · ผู้ใหญ่ 15–50% กลายเป็น ESRD ภายในไม่กี่ปี ${S.r}</li></ul>
@@ -231,7 +231,7 @@ draw(){let b="";const R=[["Minimal change",75,8],["FSGS",10,35],["Membranous",3,
  b+=T(170,30,"เด็ก (%)",{c:"bh"})+T(470,30,"ผู้ใหญ่ (%)",{c:"bh"});
  R.forEach(([n,c,a],i)=>{const y=50+i*56;b+=T(320,y+20,n,{c:"b"})+`<rect class="cbar on" x="${300-c*3.4}" y="${y+28}" width="${c*3.4}" height="20" rx="5"/><rect class="cbar on" x="340" y="${y+28}" width="${a*3.4}" height="20" rx="5" style="opacity:.6"/>`+T(296-c*3.4,y+43,c,{a:"end",c:"s"})+T(344+a*3.4,y+43,a,{a:"start",c:"s"})});
  b+=T(320,350,"Table 20.7 · primary glomerular disease (ค่าประมาณ)",{c:"s m"})+T(320,374,"Systemic: diabetes · amyloidosis · SLE · drugs · infection · malignancy",{c:"h"});return svg(b,"0 0 640 390")},
-notes:()=>`<h3>นิยาม</h3><ul><li>Proteinuria &gt;3.5 g/วัน · hypoalbuminemia &lt;3 g/dL · generalized edema · hyperlipidemia + lipiduria (oval fat bodies) ${S.r}</li>
+notes:()=>mc("B9.2.2",1)+`<h3>นิยาม</h3><ul><li>Proteinuria &gt;3.5 g/วัน · hypoalbuminemia &lt;3 g/dL · generalized edema · hyperlipidemia + lipiduria (oval fat bodies) ${S.r}</li>
  <li>เสี่ยงติดเชื้อ (สูญเสีย Ig), thrombosis (สูญเสีย antithrombin III → renal vein thrombosis) ${S.r}</li></ul>
  <h3>สาเหตุ</h3><ul><li>เด็ก: <b>minimal change</b> ~75% · ผู้ใหญ่: <b>FSGS</b> และ <b>membranous</b> ใกล้เคียงกัน ${S.r}</li>
  <li>Systemic ที่พบบ่อย: <b>เบาหวาน, amyloidosis, SLE</b> ${S.r}</li></ul>`});
@@ -300,7 +300,7 @@ draw(){const a=(ST.py||"acute")==="acute";let b="";
  if(a){for(let i=0;i<14;i++){const x=340+Math.cos(i)*120*Math.random(),y=120+i*18;b+=`<circle class="abs" cx="${380+((i*37)%110)}" cy="${y}" r="7"/>`}b+=T(14,150,"Abscesses ที่ผิวไต",{a:"start",c:"s"})+T(14,180,"Neutrophils ใน tubule + interstitium",{a:"start",c:"s"})+T(14,210,"WBC casts",{a:"start",c:"s"})}
  else{b+=`<path class="scar" d="M430,60 C470,90 470,120 450,140 L410,120Z"/><path class="scar" d="M460,340 C480,370 450,400 420,400 L410,360Z"/>`+T(14,150,"U-shaped scars ที่ขั้วบน/ล่าง",{a:"start",c:"s"})+T(14,180,"Calyces ผิดรูป/ทื่อ",{a:"start",c:"s"})+T(14,210,"Thyroidization ของ tubules",{a:"start",c:"s"})}
  b+=`<path class="ureter" d="M290,320 C260,360 240,400 230,430"/>`+T(200,430,a?"ascending: bladder → ureter → pelvis":"vesicoureteral reflux",{a:"end",c:"s"});return svg(b,"0 0 640 450")},
-notes:()=>`<h3>Acute pyelonephritis</h3><ul><li>เชื้อส่วนใหญ่ <b>gram-negative (E. coli)</b> · ทาง <b>ascending</b> (บ่อยสุด) หรือ hematogenous ${S.r}</li>
+notes:()=>mc("B9.2.2",1)+`<h3>Acute pyelonephritis</h3><ul><li>เชื้อส่วนใหญ่ <b>gram-negative (E. coli)</b> · ทาง <b>ascending</b> (บ่อยสุด) หรือ hematogenous ${S.r}</li>
  <li>ปัจจัยเสี่ยง: obstruction, instrumentation, <b>vesicoureteral reflux</b>, pregnancy, female, DM, immunosuppression ${S.r}</li>
  <li>Morphology: patchy interstitial suppurative inflammation, neutrophils ใน tubule · ภาวะแทรกซ้อน: <b>papillary necrosis</b>, pyonephrosis, perinephric abscess ${S.r}</li></ul>
  <h3>Chronic pyelonephritis & reflux nephropathy</h3><ul><li>Coarse, irregular corticomedullary scars เหนือ calyx ที่ทื่อผิดรูป · thyroidization ${S.r}</li>
@@ -369,7 +369,7 @@ notes:()=>`<ul><li>Hydronephrosis = pelvis และ calyces ขยาย ร่
 SEC.push({id:"stones",k:"i",t:"Urolithiasis",leg:[],
 draw(){let b="";const R=[["Calcium oxalate/phosphate",70,"hypercalciuria (55% ไม่มี hypercalcemia), hyperoxaluria, hypocitraturia","--s-ca"],["Struvite (Mg NH₄ PO₄)",15,"urease bacteria (Proteus) · staghorn · alkaline urine","--s-pi"],["Uric acid",7,"gout, tumor lysis · acidic urine · radiolucent","--s-urea"],["Cystine",2,"cystinuria (dibasic AA transport) · hexagonal","--s-k"]];
  R.forEach(([n,p,d,c],i)=>{const y=30+i*90;b+=T(20,y+16,n,{a:"start",c:"bh"})+`<rect class="seg" x="20" y="${y+26}" width="${p*5.5}" height="24" rx="6" style="fill:var(${c})"/>`+T(28+p*5.5,y+43,(i===2?"5–10":i===3?"1–2":p)+"%",{a:"start",c:"s"})+T(20,y+70,d,{a:"start",c:"s"})});return svg(b,"0 0 640 400")},
-notes:()=>`<h3>Table 20.13</h3><ul><li>Calcium ~70% · struvite ~15% · uric acid 5–10% · cystine 1–2% · ทุกก้อนมี mucoprotein matrix 1–5% ${S.r}</li>
+notes:()=>mc("B9.2.3",3)+`<h3>Table 20.13</h3><ul><li>Calcium ~70% · struvite ~15% · uric acid 5–10% · cystine 1–2% · ทุกก้อนมี mucoprotein matrix 1–5% ${S.r}</li>
  <li>ปัจจัยสำคัญที่สุด: ความเข้มข้นของสารในปัสสาวะสูง (supersaturation) · ชาย &gt; หญิง · peak 20–30 ปี ${S.r}</li>
  <li>Calcium: hypercalcemia + hypercalciuria (~5%: hyperparathyroidism, sarcoidosis), hypercalciuria ไม่มี hypercalcemia (~55%), hyperuricosuria (~20%), hypocitraturia ${S.r}</li>
  <li>Uric acid เกิดใน urine pH &lt;5.5 · struvite ใน urine ด่าง (urease) ${S.r}</li></ul>
@@ -379,7 +379,7 @@ notes:()=>`<h3>Table 20.13</h3><ul><li>Calcium ~70% · struvite ~15% · uric aci
 SEC.push({id:"benign",k:"j",t:"Benign renal tumors",leg:[],
 draw(){let b="";const R=[["Papillary adenoma","≤15 mm · พบบ่อยในชันสูตร · จาก tubule","" ],["Angiomyolipoma","vessels + smooth muscle + fat · TSC 25–50% · เลือดออกได้","vn"],["Oncocytoma","5–15% · intercalated cells · mitochondria มาก · central scar","gl"]];
  R.forEach(([n,d,c],i)=>{const y=30+i*110;b+=`<rect class="box ${c}" x="20" y="${y}" width="600" height="96" rx="12"/>`+T(36,y+36,n,{a:"start",c:"bh"})+T(36,y+64,d,{a:"start",c:"s"})});return svg(b,"0 0 640 370")},
-notes:()=>`<ul><li><b>Papillary adenoma</b>: เล็ก ≤15 mm · มีความผิดปกติทางยีนคล้าย papillary RCC ${S.r}</li>
+notes:()=>mc("B9.2.4",3)+`<ul><li><b>Papillary adenoma</b>: เล็ก ≤15 mm · มีความผิดปกติทางยีนคล้าย papillary RCC ${S.r}</li>
  <li><b>Angiomyolipoma</b>: PEComa · สัมพันธ์กับ <b>tuberous sclerosis</b> (TSC1/2) · ใหญ่ → spontaneous hemorrhage ${S.r}</li>
  <li><b>Oncocytoma</b>: เนื้องอกสีน้ำตาลมีแผลเป็นกลาง · eosinophilic cells (mitochondria) · benign แต่แยกจาก chromophobe RCC ยาก ${S.r}</li></ul>`});
 SEC.push({id:"rcc",k:"j",t:"Renal cell carcinoma",tools:[["rc",[["clear","Clear cell"],["pap","Papillary"],["chromo","Chromophobe"],["cd","Collecting duct"]]]],leg:[],
@@ -391,7 +391,7 @@ draw(){const c=ST.rc||"clear";let b="";const pct={clear:"70–80%",pap:"10–15%
  if(c==="cd")for(let i=0;i<10;i++)b+=`<circle class="cdg" cx="${40+r()*280}" cy="${40+r()*320}" r="${16+r()*10}"/>`;
  b+=B(380,40,250,170,c==="clear"?"Clear cell":c==="pap"?"Papillary":c==="chromo"?"Chromophobe":"Collecting duct",[pct+" ของ RCC",...info],"ar");
  b+=B(380,230,250,150,"Triad (10–15%)",["hematuria (บ่อยสุด)","flank pain · palpable mass","paraneoplastic: EPO, PTHrP, renin"],"vn");return svg(b,"0 0 640 400")},
-notes:()=>`<h3>Risk factors</h3><ul><li><b>สูบบุหรี่</b> (สำคัญสุด), HT, obesity, cadmium, acquired cystic disease, TSC · familial: <b>VHL</b> (hemangioblastoma), hereditary papillary (MET), HLRCC (fumarate hydratase), Birt-Hogg-Dubé ${S.r}</li></ul>
+notes:()=>mc("B9.2.4",3)+`<h3>Risk factors</h3><ul><li><b>สูบบุหรี่</b> (สำคัญสุด), HT, obesity, cadmium, acquired cystic disease, TSC · familial: <b>VHL</b> (hemangioblastoma), hereditary papillary (MET), HLRCC (fumarate hydratase), Birt-Hogg-Dubé ${S.r}</li></ul>
  <h3>Subtypes</h3><ul><li><b>Clear cell</b> 70–80%: <b>3p loss/VHL</b> ใน 98% → HIF stabilization; sporadic 95% ${S.r}</li><li><b>Papillary</b> 10–15%: trisomy 7, 17 · MET ${S.r}</li><li><b>Chromophobe</b> 5%: พยากรณ์ดี ${S.r}</li><li>Xp11 translocation (TFE3) ในคนอายุน้อย · collecting duct carcinoma ${S.r}</li></ul>
  <h3>Clinical</h3><ul><li>อายุ 60–70 · hematuria บ่อยสุด · triad พบแค่ 10% · paraneoplastic: polycythemia (EPO), hypercalcemia (PTHrP), HT, Cushing · metastasis ไป lung, bone ${S.r}</li></ul>`});
 SEC.push({id:"wilms",k:"j",t:"Wilms tumor (nephroblastoma)",leg:[],
@@ -401,7 +401,7 @@ draw(){let b="";const r=rng(9);b+=`<rect class="lm-bg lm-p" x="0" y="0" width="3
  for(let i=0;i<20;i++)b+=`<path class="fibr" d="M${180+r()*160},${20+r()*360} q20,6 40,0"/>`;
  b+=T(95,392,"blastema",{c:"s"})+T(260,392,"epithelial + stroma",{c:"s"});
  b+=B(380,40,250,160,"Triphasic",["blastema (small blue cells)","epithelial (tubules, glomeruloid)","stromal (fibrous, myxoid)"],"vn")+B(380,220,250,160,"Syndromes",["WAGR (WT1 deletion)","Denys–Drash (WT1 dominant-negative)","Beckwith–Wiedemann (WT2, 11p15.5)"],"ar");return svg(b,"0 0 640 400")},
-notes:()=>`<ul><li>เนื้องอกไตที่พบบ่อยที่สุดในเด็ก อายุ 2–5 ปี ${S.r}</li>
+notes:()=>mc("B9.2.4",3)+`<ul><li>เนื้องอกไตที่พบบ่อยที่สุดในเด็ก อายุ 2–5 ปี ${S.r}</li>
  <li>Syndromes: <b>WAGR</b> (Wilms, aniridia, genital anomalies, retardation; WT1 deletion 11p13) · <b>Denys–Drash</b> (gonadal dysgenesis + diffuse mesangial sclerosis; WT1 dominant-negative) · <b>Beckwith–Wiedemann</b> (organomegaly, hemihypertrophy; WT2 imprinting 11p15.5) ${S.r}</li>
  <li><b>Nephrogenic rests</b> = precursor lesion ${S.r}</li><li>Anaplasia (TP53) → พยากรณ์แย่ · โดยรวมรักษาหายได้ ~90% ${S.r}</li>
  <li>มาด้วยก้อนในท้องใหญ่ ไม่ข้ามเส้นกลาง · hematuria, pain, HT ${S.r}</li></ul>`});
@@ -580,7 +580,7 @@ draw(){const c=ST.cy||"acute";let b=`<rect class="lm-bg" x="0" y="0" width="640"
  b+=T(10,104,"urothelium",{a:"start",c:"s"})+T(10,170,"lamina propria",{a:"start",c:"s"})+T(10,262,"muscularis propria",{a:"start",c:"s"});
  const info={acute:["Acute / chronic cystitis","E. coli > Proteus, Klebsiella, Enterobacter · neutrophils → mononuclear (chronic)","ar"],ic:["Interstitial cystitis","หญิง · ปวด suprapubic > 6 สัปดาห์ ไม่มีเชื้อ · mast cells · biopsy เพื่อแยก CIS","vn"],mala:["Malakoplakia","macrophages เต็ม debris แบคทีเรีย · Michaelis–Gutmann bodies (Ca²⁺) · phagolysosome บกพร่อง","gl"],poly:["Polypoid cystitis","submucosal edema จากสายสวน → ยื่นเป็นติ่ง · คล้าย papillary carcinoma",""]}[c];
  b+=`<rect class="box ${info[2]}" x="0" y="310" width="640" height="64" rx="12"/>`+T(16,336,info[0],{a:"start",c:"bh"})+T(16,358,info[1],{a:"start",c:"s"});return svg(b,"0 0 640 380")},
-notes:()=>`<h3>Acute & chronic cystitis</h3><ul><li>ปัจจัยเสี่ยง: นิ่วใน bladder, obstruction, <b>DM</b>, instrumentation, immunodeficiency · หญิงเสี่ยงกว่า (urethra สั้น) ${S.r}</li>
+notes:()=>mc("B9.2.2",1)+`<h3>Acute & chronic cystitis</h3><ul><li>ปัจจัยเสี่ยง: นิ่วใน bladder, obstruction, <b>DM</b>, instrumentation, immunodeficiency · หญิงเสี่ยงกว่า (urethra สั้น) ${S.r}</li>
  <li>เชื้อ: coliforms (<b>E. coli</b>) · TB (ตามหลัง renal TB) · Candida · <i>Schistosoma haematobium</i> · adenovirus/<b>BK virus</b> → hemorrhagic cystitis · Clostridium → emphysematous ${S.r}</li>
  <li>Noninfectious: <b>cyclophosphamide</b> → hemorrhagic cystitis · radiation · follicular · eosinophilic ${S.r}</li>
  <li>Triad: <b>frequency, suprapubic pain, dysuria</b> ${S.r}</li></ul>
@@ -605,7 +605,7 @@ draw(){let b="";
  b+=`<path class="arw" d="M160,198 L290,250" marker-end="url(#ah)"/><path class="arw" d="M480,198 L350,250" marker-end="url(#ah)"/>`;
  b+=`<rect class="box ar" x="200" y="254" width="240" height="44" rx="12"/>`+T(320,281,"Invasive urothelial carcinoma",{c:"bh"});
  b+=T(320,326,"Risk: บุหรี่ · aryl amines (2-naphthylamine) · S. haematobium · cyclophosphamide · analgesics · radiation",{c:"s"});return svg(b,"0 0 640 340")},
-notes:()=>`<h3>Epidemiology</h3><ul><li>Bladder cancer เป็นมะเร็งพบบ่อยอันดับ 4 ในชายอเมริกัน · ชาย:หญิง <b>3:1</b> · 80% อายุ 50–80 · แทบไม่เป็นกรรมพันธุ์ ${S.r}</li>
+notes:()=>mc("B9.2.4",3)+`<h3>Epidemiology</h3><ul><li>Bladder cancer เป็นมะเร็งพบบ่อยอันดับ 4 ในชายอเมริกัน · ชาย:หญิง <b>3:1</b> · 80% อายุ 50–80 · แทบไม่เป็นกรรมพันธุ์ ${S.r}</li>
  <li>&gt;95% เป็น epithelial · urothelial ~90% · multifocal ได้ทุกตำแหน่งที่มี urothelium ${S.r}</li></ul>
  <h3>Risk factors</h3><ul><li><b>สูบบุหรี่</b> สำคัญที่สุด (เสี่ยง 3–7 เท่า · 50–80% ของมะเร็ง bladder ในชาย) ${S.r}</li>
  <li><b>Aryl amines</b> (2-naphthylamine) อุตสาหกรรม · มะเร็งตามมา 15–40 ปี ${S.r}</li>
@@ -855,7 +855,7 @@ draw(){const r=ST.scr1/ST.scr0,d=ST.scr1-ST.scr0;let sc=0;if(r>=1.5||d>=0.3)sc=1
  let su=0;if(ST.uo<0.5&&ST.uoh>=6)su=1;if(ST.uo<0.5&&ST.uoh>=12)su=2;if((ST.uo<0.3&&ST.uoh>=24)||(ST.uo===0&&ST.uoh>=12))su=3;const st=Math.max(sc,su);
  let b="";["Stage 1","Stage 2","Stage 3"].forEach((n,i)=>{const on=st===i+1,x=14+i*208;b+=`<rect class="box ${on?"ar":""}" x="${x}" y="14" width="196" height="190" rx="14"${on?' style="stroke:var(--sb-bad);stroke-width:3"':""}/>`+T(x+98,42,n,{c:"bb"})+wrapT(x+12,70,["Cr ×1.5–1.9 หรือ ↑ ≥0.3","Cr ×2.0–2.9","Cr ×3 หรือ ≥4.0 หรือเริ่ม RRT"][i],26,"s")+`<line x1="${x+12}" x2="${x+184}" y1="128" y2="128" style="stroke:var(--sb-line)"/>`+wrapT(x+12,150,["UO <0.5 นาน 6–12 ชม.","UO <0.5 ≥12 ชม.","UO <0.3 ≥24 ชม. หรือ anuria ≥12 ชม."][i],26,"s")});
  b+=`<rect class="gsum" x="0" y="218" width="640" height="66" rx="12"/>`+T(16,244,`Cr ×${f1(r)} (↑${f1(d)}) → stage ${sc||"–"} · UO → stage ${su||"–"}`,{a:"start",c:"b"})+T(16,268,st?`ผล: AKI stage ${st} (เลือกค่าที่สูงกว่า)`:"ยังไม่เข้าเกณฑ์ AKI",{a:"start",c:st?"bad":"h"});return svg(b,"0 0 640 290")},
-notes:()=>`<h3>KDIGO definition</h3><ul><li>Cr เพิ่ม ≥0.3 mg/dL ใน 48 ชม. · หรือ ≥1.5 เท่าของ baseline ใน 7 วัน · หรือ UO &lt;0.5 mL/kg/h นาน &gt;6 ชม. ${S.h}</li>
+notes:()=>mc("B9.2.7",1)+`<h3>KDIGO definition</h3><ul><li>Cr เพิ่ม ≥0.3 mg/dL ใน 48 ชม. · หรือ ≥1.5 เท่าของ baseline ใน 7 วัน · หรือ UO &lt;0.5 mL/kg/h นาน &gt;6 ชม. ${S.h}</li>
  <li>AKI เป็น clinical diagnosis ไม่ใช่ structural · ไม่จำเป็นต้องมีเนื้อไตเสียหาย ${S.h}</li></ul>
  <h3>Epidemiology</h3><ul><li>5–7% ของผู้ป่วยใน · สูงถึง 30% ใน ICU · เพิ่ม &gt;4 เท่าตั้งแต่ 1988 ${S.h}</li><li>เพิ่มความเสี่ยง CKD และโรคหัวใจหลอดเลือดในอนาคต ${S.h}</li>
  <li>Community: volume depletion, HF, ยา, obstruction, malignancy · Hospital: <b>sepsis</b>, ผ่าตัดใหญ่, critical illness, nephrotoxins ${S.h}</li></ul>
@@ -908,7 +908,7 @@ draw(){const G=["G1","G2","G3a","G3b","G4","G5"],GL=["≥90","60–89","45–59"
  G.forEach((g,i)=>{const y=60+i*50;b+=T(70,y+30,g,{c:"bh"})+T(140,y+30,GL[i],{c:"s m"});A.forEach((a,j)=>{const r=Math.min(4,risk(i,j)),on=ST.gG===g&&ST.gA===a;b+=`<rect x="${190+j*130}" y="${y}" width="122" height="44" rx="8" style="fill:${col[r]};opacity:${on?1:.45};stroke:${on?"var(--sb-ink)":"none"};stroke-width:3"/>`})});
  const gi=G.indexOf(ST.gG),aj=A.indexOf(ST.gA),r=Math.min(4,risk(gi,aj));
  b+=`<rect class="gsum" x="0" y="370" width="640" height="56" rx="12"/>`+T(16,394,`${ST.gG}${ST.gA}: GFR ${GL[gi]} · ACR ${AL[aj]} → risk ${lab[r]}`,{a:"start",c:"b"})+T(16,414,"ความเสี่ยงตาย, CV death และ progression สูงขึ้นทั้งเมื่อ GFR ลดและ albuminuria เพิ่ม",{a:"start",c:"s"});return svg(b,"0 0 640 430")},
-notes:()=>`<h3>นิยาม</h3><ul><li>CKD = ความผิดปกติของโครงสร้างหรือการทำงานของไตนาน &gt;3 เดือน · จัดตาม <b>GFR (G1–G5)</b> และ <b>albuminuria (A1–A3)</b> (Fig 322-1) ${S.h}</li>
+notes:()=>mc("B9.2.7",1)+`<h3>นิยาม</h3><ul><li>CKD = ความผิดปกติของโครงสร้างหรือการทำงานของไตนาน &gt;3 เดือน · จัดตาม <b>GFR (G1–G5)</b> และ <b>albuminuria (A1–A3)</b> (Fig 322-1) ${S.h}</li>
  <li>eGFR คำนวณจาก creatinine ± cystatin C (Table 322-3) ${S.h}</li></ul>
  <h3>Progression</h3><ul><li>Nephron ลด → nephron ที่เหลือ hyperfiltration + intraglomerular hypertension → sclerosis (Fig 322-2) ${S.h}</li>
  <li>Risk factors (Table 322-1) และ monogenic loci เช่น APOL1 (Table 322-2) ${S.h}</li></ul>
@@ -919,7 +919,7 @@ draw:()=>tbl(["Problem","How it behaves in CKD"],[
  ["Potassium","ขับทาง distal (aldosterone) + GI ชดเชย · K สูงเมื่อ RAS inhibitor, MRA, acidosis, hemolysis"],
  ["Type 4 pattern","hyporeninemic hypoaldosteronism (DM), obstruction, sickle cell → K สูงก่อน GFR ลดมาก"],
  ["Metabolic acidosis","ammonia ลด → non-AG ระยะแรก · GFR ต่ำมาก → AG acidosis"]]),
-notes:()=>`<ul><li>ECF ขยายแบบ isonatric ถ้าดื่มน้ำไม่เกินความสามารถขับ · จำกัดเกลือ · chlorthalidone ใช้ได้แม้ stage 4 ${S.h}</li>
+notes:()=>mc("B9.2.5",1)+`<ul><li>ECF ขยายแบบ isonatric ถ้าดื่มน้ำไม่เกินความสามารถขับ · จำกัดเกลือ · chlorthalidone ใช้ได้แม้ stage 4 ${S.h}</li>
  <li>ยาที่ทำให้ K สูง: RAS inhibitors, spironolactone, amiloride, eplerenone, triamterene, nonsteroidal MRA · <b>gliflozins</b> ช่วยถ่วงสมดุล K ${S.h}</li>
  <li>Acidosis: ยังทำให้ปัสสาวะเป็นกรดได้ แต่สร้าง ammonia น้อย · net acid excretion อาจ &lt;30–40 mmol/วัน ${S.h}</li></ul>`});
 HS("322","b","ckd-mbd","CKD–mineral bone disorder",{
@@ -1044,7 +1044,7 @@ draw:()=>{let b="";b+=`<rect class="box vn" x="14" y="14" width="300" height="15
  b+=`<rect class="box ar" x="326" y="14" width="300" height="150" rx="14"/>`+T(476,42,"Renal",{c:"bb"})+wrapT(342,70,"ปวดหลัง/สีข้าง ~60% · hematuria · cyst infection · stones · HT ก่อน GFR ลด · ESRD วัยกลางคนตอนปลาย",38,"s");
  b+=`<rect class="box gl" x="14" y="176" width="300" height="130" rx="14"/>`+T(164,204,"Extrarenal",{c:"bb"})+wrapT(30,232,"liver cysts (พบบ่อยสุด) · intracranial aneurysm 4–5 เท่า · diverticula · hernia",38,"s");
  b+=`<rect class="box" x="326" y="176" width="300" height="130" rx="14"/>`+T(476,204,"Diagnosis & Rx",{c:"bb"})+wrapT(342,232,"US: อายุ 30–59 ≥2 cysts แต่ละข้าง · ≥60 ≥4 cysts แต่ละข้าง · tolvaptan (V2 antagonist)",38,"s");return svg(b,"0 0 640 320")},
-notes:()=>`<ul><li>Prevalence 1:400–1:1000 ทุกเชื้อชาติ ${S.h}</li><li>PKD2 อาการอ่อนกว่า เริ่มช้ากว่า จึงถูกวินิจฉัยน้อยกว่าความจริง ${S.h}</li>
+notes:()=>mc("B9.2.1",3)+`<ul><li>Prevalence 1:400–1:1000 ทุกเชื้อชาติ ${S.h}</li><li>PKD2 อาการอ่อนกว่า เริ่มช้ากว่า จึงถูกวินิจฉัยน้อยกว่าความจริง ${S.h}</li>
  <li>Polycystins อยู่บน <b>primary cilium</b> ควบคุม Ca²⁺ signaling (Fig 327-1) ${S.h}</li>
  <li>Cyst infection และ acute pyelonephritis มักเป็น gram-negative ${S.h}</li><li>อายุ 30–59 ที่ไม่มี ≥2 cysts ในแต่ละข้าง → ตัดโรคออกได้ ${S.h}</li>
  <li><b>Tolvaptan</b> ยับยั้ง vasopressin V2 receptor → cAMP ลด → cyst โตช้าลง ${S.h}</li></ul>`});
@@ -1183,10 +1183,37 @@ SEC.push({id:"ic",k:"d",t:"Interstitial cystitis (bladder pain syndrome)",leg:[]
  ["Treatment","เลี่ยงสิ่งกระตุ้น ปรับพฤติกรรม · ไม่ดีขึ้นใช้ amitriptyline หรือ pentosan polysulfate · ต่อไปจึงพิจารณายาหยอดเข้ากระเพาะปัสสาวะ"]]),
  notes:()=>`<ul><li>พบบ่อยในหญิง และสัมพันธ์กับกลุ่มอาการปวดเรื้อรังอื่น (fibromyalgia, IBS) และโรคทางจิตเวช ${S.fa2}</li><li>ต่างจาก cystitis จากเชื้อ: ไม่มีไข้ ไม่มี pyuria เพาะเชื้อไม่ขึ้น ${S.fa2}</li></ul>`});
 
+/* B9.2.3 acute urinary retention — กลุ่มที่ 1 และ 2 in the criteria, so a new doctor has to
+   recognise and relieve it. It was the one disease named in B9 that this chapter did not have. */
+SEC.push({id:"retention",k:"c",t:"Acute urinary retention",mm:"Acute retention",leg:[],
+ draw:()=>psvg(
+  `<ellipse class="box ar" cx="250" cy="128" rx="118" ry="94"/>
+   ${T(250,120,"Bladder",{c:"h"})}${T(250,146,"tense, 600–1,000 mL",{c:"s"})}
+   <rect class="box" x="150" y="236" width="56" height="22" rx="8"/>${T(178,251,"pubis",{c:"s m"})}
+   <path d="M250,222 L250,300" style="stroke:var(--s-h2o);stroke-width:14;fill:none;opacity:.45"/>
+   <circle class="box vn" cx="250" cy="252" r="27"/>${T(250,256,"prostate",{c:"s"})}
+   ${blk(250,294,"")}${T(250,324,"not a drop passes",{c:"bad"})}
+   <path class="ld" d="M370,128 L394,128"/>
+   ${T(400,84,"sudden and painful",{a:"start",c:"bh"})}
+   ${T(400,106,"unable to pass urine at all",{a:"start",c:"s"})}
+   ${T(400,138,"bladder palpable and dull",{a:"start",c:"s"})}
+   ${T(400,160,"to percussion above the pubis",{a:"start",c:"s"})}
+   ${T(400,200,"catheterise first",{a:"start",c:"bh"})}
+   ${T(400,222,"the diagnosis is clinical",{a:"start",c:"s"})}`,
+  "0 0 640 340"),
+ notes:()=>mc("B9.2.3",1)+`<ul>
+<li><b>นิยาม</b> — ปัสสาวะไม่ออกโดยเฉียบพลันทั้งที่กระเพาะปัสสาวะมีน้ำปัสสาวะอยู่เต็ม ต่างจาก anuria ที่ไตไม่สร้างปัสสาวะและกระเพาะปัสสาวะว่าง การคลำและเคาะเหนือหัวหน่าวจึงแยกสองภาวะนี้ออกจากกันได้ที่ข้างเตียง ${S.x}</li>
+<li><b>สาเหตุที่พบบ่อยที่สุดคือ benign prostatic hyperplasia</b> — ต่อมลูกหมากโตเบียดท่อปัสสาวะจนเหลือปัสสาวะค้าง ผู้ป่วยมักมีอาการนำมาก่อนคือปัสสาวะบ่อย ตื่นปัสสาวะกลางคืน เริ่มถ่ายยาก ปัสสาวะไหลอ่อน และหยดเมื่อสุด แล้ววันหนึ่งจึงเกิดการอุดกั้นเฉียบพลันที่ต้องสวนปัสสาวะฉุกเฉิน ${S.r}</li>
+<li><b>สาเหตุอื่น</b> — urethral stricture · นิ่วหรือลิ่มเลือดอุดท่อปัสสาวะ · มะเร็งต่อมลูกหมาก · ท้องผูกรุนแรง · ภาวะทางระบบประสาทที่ทำให้ detrusor ไม่หดตัว เช่น เบาหวานระยะยาว ไขสันหลังบาดเจ็บ ${S.h}</li>
+<li><b>ยาเป็นสาเหตุที่มองข้ามบ่อย</b> — anticholinergic และยาแก้แพ้รุ่นเก่าลดการหดตัวของ detrusor ส่วน α-agonist ในยาแก้คัดจมูกเพิ่มแรงต้านที่คอกระเพาะปัสสาวะ opioid ก็ทำให้เกิดได้ · ถามประวัติยาก่อนเสมอ เพราะหยุดยาแล้วอาจหายเอง ${S.x}</li>
+<li><b>การรักษาคือการระบายปัสสาวะทันที</b> ด้วย urethral catheter และถ้าใส่ไม่ได้จึงเจาะ suprapubic · บันทึกปริมาณที่ระบายออกไว้เสมอ เพราะเป็นทั้งการยืนยันการวินิจฉัยและตัวบอกความเสี่ยงของภาวะแทรกซ้อน ${S.r}</li>
+<li><b>หลังระบายต้องเฝ้าสองอย่าง</b> — <b>post-obstructive diuresis</b> ที่ปัสสาวะออกมากจนขาดน้ำและเกลือแร่ และ <b>haematuria ex vacuo</b> จากการที่กระเพาะปัสสาวะยุบเร็ว · ตรวจ creatinine ทุกรายเพราะการอุดกั้นสองข้างทำให้เกิด postrenal AKI ได้ ${S.h}</li>
+<li>เมื่อพ้นภาวะเฉียบพลันจึงแก้ที่ต้นเหตุ — BPH เริ่มด้วย <b>α₁-blocker</b> ก่อนลองถอดสายสวน และใช้ <b>5α-reductase inhibitor</b> เมื่อต่อมโตมาก ${S.r}</li></ul>`});
+
 Object.assign(GN,{a:"Kidney stones",b:"Obstruction & hydronephrosis",c:"Urinary incontinence",d:"Urinary tract infection",e:"Cysts & congenital disorders",f:"Tumors"});
 regroup({stones:"a","st-type":"a","st-risk":"a","st-mx":"a",
  obstruction:"b","uo-cause":"b","uo-phys":"b","uo-dx":"b",ureterobs:"b",
- incont:"c",cystitis:"d",pyelo:"d",ic:"d",urethra:"d",
+ incont:"c",retention:"c",cystitis:"d",pyelo:"d",ic:"d",urethra:"d",
  cystic:"e","pkd-ad":"e","pkd-ar":"e","pkd-oth":"e","cb-inh":"e",congenital:"e",bladdercong:"e",
  rcc:"f",benign:"f",wilms:"f",urothelial:"f",grading:"f",staging:"f",othertum:"f",metaplasia:"f",ureter:"f"},
  {stones:"Urolithiasis","st-type":"Stone types & urine pH","st-risk":"Risk factors & diet","st-mx":"Colic & prevention",obstruction:"Hydronephrosis","uo-cause":"Causes by level","uo-phys":"Pathophysiology","uo-dx":"Diagnosis & relief",ureterobs:"Ureteral obstruction",
