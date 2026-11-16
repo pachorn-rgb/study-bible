@@ -353,7 +353,9 @@ SEC.push({id:"systemic",k:"e",t:"Other systemic glomerular disease",tools:[...GV
 draw(){const s=ST.sys||"amy";const D={amy:{em:{fib:true,eff:true},lm:{nod:true}},fib:{em:{fib:true,mes:true},lm:{prolif:true}},hsp:{em:{sub_en:true,mes:true},lm:{prolif:true,neut:true}}}[s];
  return svg((ST.gv==="lm"?glomLM(D.lm):glomEM(D.em))+`<rect class="gsum" x="0" y="420" width="640" height="44"/>`+T(14,447,{amy:"Amyloid: fibrils 7.5–10 nm · Congo red apple-green birefringence",fib:"Fibrillary GN: fibrils 15–25 nm · DNAJB9",hsp:"Endocarditis: immune complex focal proliferative GN"}[s],{a:"start",c:"bh"}),"0 0 640 466")},
 notes:()=>`<ul><li><b>Amyloidosis</b> (AL หรือ AA): deposits ใน mesangium/GBM → nephrotic · ไตมักโตหรือขนาดปกติ ${S.r}</li>
- <li><b>Fibrillary GN</b>: fibrils ใหญ่กว่า amyloid, Congo red ลบ · nephrotic + hematuria ${S.r}</li>
+ <li><b>Fibrillary GN</b> เป็นโรคที่พบน้อย นิยามด้วย fibrillary deposit ใน glomerulus ที่<b>ย้อม Congo red ไม่ติด</b> และยังไม่รู้สาเหตุ ${S.r}</li>
+ <li>Deposit อยู่ทั้งใน mesangium และผนัง capillary และ<b>ดูเผิน ๆ คล้าย amyloid fibril</b> — ซึ่งเป็นเหตุผลว่าทำไมสองโรคนี้ต้องแยกกันด้วย Congo red และด้วยขนาดของ fibril ใต้ EM (amyloid 7.5–10 nm · fibrillary 15–25 nm) ไม่ใช่ด้วยภาพ LM ${S.r}</li>
+ <li>ทางคลินิกมาด้วย nephrotic syndrome ร่วมกับ hematuria ${S.r}</li>
  <li><b>Bacterial endocarditis</b>: IC focal/diffuse proliferative GN ${S.r}</li>
  <li><b>Monoclonal gammopathy</b>: light-chain deposition, cryoglobulinemia (HCV) ${S.r}</li><li>Table 20.10: tumor ทำให้เกิด membranous (carcinoma), MCD (Hodgkin), MPGN (leukemia/lymphoma) ${S.r}</li></ul>`});
 
@@ -731,10 +733,21 @@ draw:()=>tbl(["Pattern","What points to it"],[
  ["Nephrotic crisis in children","albumin <2 g/dL → ischemia ลำไส้ ปวดท้องเหมือน surgical abdomen"],
  ["Large kidneys with proteinuria in late CKD","diabetic nephropathy · amyloid · HIVAN · MN ที่มี RVT"],
  ["Secondary MN","NSAIDs, penicillamine, gold, mercury · solid tumor (lung, GI, breast, prostate) · syphilis, malaria, HBV"]]),
-notes:()=>`<ul><li>อายุ 20 ปีกับ nephrotic: MCD, FSGS หรือ MN ${S.h}</li>
- <li>Nephrotic เป็น hypercoagulable โดยเฉพาะ albumin &lt;2 g/dL · MN สัมพันธ์กับ <b>renal vein thrombosis</b> (เสีย antithrombin III, plasminogen, fibrinogen สูง) ${S.h}</li>
- <li>RVT: ปวดหลัง, ไตวาย, hematuria, ขาบวมมากขึ้น, pulmonary embolism ${S.h}</li>
- <li>Primary MN ~70% มี <b>anti-PLA2R</b> · หายเองได้บ่อยกว่า ${S.h}</li><li>Diabetic nephropathy เป็นเหตุให้เริ่ม dialysis มากที่สุด ${S.h}</li></ul>`});
+notes:()=>`<h3>Proteinuria is not nephrotic syndrome</h3><ul>
+ <li>ผู้ป่วยมักสังเกตเองว่าบวมทั้งตัวและปัสสาวะเป็นฟอง ซึ่งเป็นอาการของ albuminuria · แต่ proteinuria ไม่ได้แปลว่าเป็น nephrotic syndrome ${S.h}</li>
+ <li>Glomerular proteinuria ในเบาหวานเกิดหลังจากโรคหลอดเลือดเล็กดำเนินมาหลายปี — ซึ่งอธิบายว่าทำไมจึงมัก<b>พบ retinopathy ร่วมด้วย</b> · และมันทำนายว่าจะเกิดไตวายที่ดำเนินต่อและ nephrotic syndrome ตามมา ${S.h}</li>
+ <li>สิ่งที่เร่งให้ไตเสื่อมเร็วขึ้น: ความดันสูง อ้วน และคุมน้ำตาลได้ไม่ดี · ความเสี่ยงอื่นได้แก่ partial nephrectomy, hepatitis C และ FSGS ${S.h}</li></ul>
+ <h3>APOL1 — why a gene needs a second hit</h3><ul>
+ <li>โรคไตจาก <b>APOL1</b> เกิดจาก risk variant สองตัวของยีนนี้ · แต่ยีนจะแสดงออกก็ต่อเมื่อมี <b>second hit</b> คือการติดเชื้อหรือการอักเสบมากระตุ้น ${S.h}</li>
+ <li>เมื่อแสดงออกแล้วมันทำลาย podocyte และ glomerular endothelial cell โดยสร้างช่องในเซลล์เหล่านั้น จนเกิดความผิดปกติและ proteinuria ${S.h}</li></ul>
+ <h3>Nephrotic syndrome in practice</h3><ul>
+ <li>คนอายุ 20 ปีที่มาด้วย nephrotic syndrome ให้นึกถึง MCD, FSGS หรือ MN ${S.h}</li>
+ <li>เด็กที่ serum albumin &lt;2 g/dL อาจเกิด tissue ischemia เป็น <b>nephrotic crisis</b> ที่ปวดท้องรุนแรงจนถูกเข้าใจผิดว่าเป็น surgical abdomen ${S.h}</li>
+ <li>Nephrotic syndrome ทำให้เลือดแข็งตัวง่าย โดยเฉพาะเมื่อ albumin &lt;2 g/dL · MN เป็นตัวที่สัมพันธ์กับ <b>renal vein thrombosis</b> มากที่สุด เพราะเสีย antithrombin III และ plasminogen ทางปัสสาวะ ร่วมกับ hyperfibrinogenemia ${S.h}</li>
+ <li>RVT มาด้วยปวดหลัง ไตวาย hematuria ขาบวมมากขึ้น หรือ pulmonary embolism ${S.h}</li>
+ <li>Primary MN ราว <b>70% มี anti-PLA2R</b> ซึ่งเป็น antibody ต่อ antigen ที่ฝังอยู่ใน basement membrane ด้าน subepithelial · กลุ่มนี้หายเองได้บ่อยกว่า ${S.h}</li>
+ <li><b>AL amyloid</b> มาจากการสะสม &lambda; light chain ส่วน <b>SAA</b> เป็นโปรตีนของโรคอักเสบเรื้อรัง เช่น rheumatoid arthritis, familial Mediterranean fever และวัณโรค ${S.h}</li>
+ <li>Diabetic nephropathy เป็นเหตุให้เริ่ม dialysis มากที่สุด ${S.h}</li></ul>`});
 HS("319","b","ap-hem","Hematuria & lower urinary tract",{
 draw:()=>flow([["Hematuria (dipstick +)","แยก hemoglobinuria / myoglobinuria ด้วย microscopy",""],["มี RBC จริง?","exercise-induced: ตรวจซ้ำหลังพัก 1–2 สัปดาห์","vn"],["Glomerular?","RBC casts, dysmorphic RBC, proteinuria → thin BM, Alport, IgAN","ar"],["Non-glomerular","colic/flank pain → stone · clot → lower tract · ปวด + HT → embolus","gl"],["อายุ ≥40 เริ่มใหม่","urologic evaluation + cystoscopy",""]]),
 notes:()=>`<ul><li>Flank pain + colic → นิ่วหรือการอุดตัน · flank pain ไม่มี colic → ไตบวม (obstruction, infection, AIN, acute GN) ${S.h}</li>
@@ -971,8 +984,20 @@ draw:()=>tbl(["Access or problem","Detail"],[
  ["Outflow stenosis","pulsatility เพิ่ม ไม่นุ่มช่วง diastole · เสียงสูงที่จุดตีบ"],
  ["Inflow stenosis","systolic อ่อน · access ‘ว่าง’ ช่วง diastole"],
  ["Intervention","angioplasty ที่ stenosis · high flow → banding"]]),
-notes:()=>`<ul><li>ตรวจร่างกาย access: pulse, thrill, bruit ช่วยแยก inflow/outflow stenosis ${S.h}</li><li>Catheter thrombus เล็กน้อยไม่ต้องรักษา · intra-atrial thrombus &gt;2 cm อาจต้อง intervention ${S.h}</li>
- <li>Access flow สูงเกิน → <b>banding</b> สร้างการตีบที่ inflow ${S.h}</li></ul>`});
+notes:()=>`<h3>Why the fistula moved up the arm</h3><ul>
+ <li>สมัยแรกผู้ป่วยฟอกเลือดยังอายุน้อยและหลอดเลือดดี การทำ forearm Cimino AVF จึงเป็นเรื่องปกติ · เมื่อเบาหวานและความดันสูงกลายเป็นสาเหตุหลักของ CKD หลอดเลือดแย่ลง การใช้ AVG จึงเพิ่มขึ้นจน<b>ถึง 65% ในกลางทศวรรษ 1990</b> ${S.h}</li>
+ <li>หลังการรณรงค์ <b>Fistula First</b> แล้ว Fistula First, Catheter Last · AVG ลดลงเหลือ &lt;20% และ AVF ขึ้นมาเกือบ 65% ${S.h}</li>
+ <li>แต่สภาพหลอดเลือดยังเป็นปัญหา ทุกวันนี้ <b>75% ของ AVF ทำที่ต้นแขน</b> เพราะหลอดเลือดดำที่นั่นใหญ่กว่าตั้งแต่ต้น และหลอดเลือดแดงส่งเลือดได้แรงกว่าเพราะเส้นผ่านศูนย์กลางใหญ่กว่า ${S.h}</li></ul>
+ <h3>How much flow an access must carry</h3><ul>
+ <li>Access ต้องส่งเลือดได้อย่างน้อยเท่าความเร็วปั๊มที่ตั้งไว้ <b>บวกอีก 100–200 mL/min</b> เพื่อลด recirculation และกันไม่ให้ access แฟบ · ในทางปฏิบัติคือราว 600–800 mL/min ${S.h}</li>
+ <li>Fistula ที่ใช้หลอดเลือดแดง &ge;2 mm กับหลอดเลือดดำ &ge;3 mm มักให้ flow &gt;500 mL/min เมื่อ systolic &gt;100 mmHg ${S.h}</li>
+ <li>Brachial artery ขณะพักมี flow &lt;50 mL/min · หลังทำ anastomosis แล้ว AVF จะขึ้นไปถึง 800 mL/min ภายในไม่กี่สัปดาห์ ส่วน AVG ขึ้นถึง 1000 mL/min <b>ภายในไม่กี่นาที</b> ${S.h}</li>
+ <li>Flow ที่เพิ่มเปลี่ยน shear stress ทำให้หลอดเลือดแดงขยายตัวตามเวลา — ใน AVG กระบวนการนี้ถูกจำกัดด้วยตัว graft เอง (เส้นผ่านศูนย์กลาง 6 mm ยาว 35–40 cm) flow จึงค้างอยู่ที่ 1200–1800 mL/min ${S.h}</li></ul>
+ <h3>At the bedside</h3><ul>
+ <li>การตรวจ access ด้วย pulse, thrill และ bruit แยก inflow จาก outflow stenosis ได้ ${S.h}</li>
+ <li>Access ที่ flow สูงเกินแก้ด้วย <b>banding</b> คือสร้างการตีบที่ inflow โดยตั้งใจ ${S.h}</li>
+ <li>Catheter thrombus เล็กน้อยไม่ต้องรักษา · ก้อนที่เกาะผนังมักจัดระเบียบตัวแล้วและดื้อต่อยาละลายลิ่ม · pulmonary embolism จาก catheter thrombus พบน้อยมาก อาจมีเพียง <b>intra-atrial thrombus &gt;2 cm</b> ที่ควรทำอะไรกับมัน ${S.h}</li>
+ <li>การหมุนตำแหน่งแทงเข็มเป็นช่วง ๆ รักษาผิวหนังไว้ได้แม้ใช้ AVG มา 7 ปี · ส่วนการแทงซ้ำที่เดิมทำให้เกิดแผลทะลุผิวหนังได้ภายใน 3 ปี ${S.h}</li></ul>`});
 
 /* ---------- 325 · Transplant ---------- */
 HS("325","a","tx-imm","Immunology of rejection",{
@@ -1170,8 +1195,20 @@ draw:()=>tbl(["Cause","Features"],[
  ["IgG4-related","pancreatitis, cholangitis, retroperitoneal fibrosis · pseudotumor"],
  ["Immune checkpoint inhibitors","ไตได้รับผล 2% (เดี่ยว) – 5% (คู่) · มักใช้ PPI/NSAID ร่วม"],
  ["SLE","TIN ร่วมกับ GN"]]),
-notes:()=>`<h3>Absolute indications for steroids (Table 328-2)</h3><ul><li>Sjögren · sarcoidosis · SLE IN · TINU ในผู้ใหญ่ · IgG4-related · idiopathic/granulomatous IN ${S.h}</li></ul>
- <ul><li>ICI-associated AIN: steroid, หยุดยาที่เป็นตัวกระตุ้น, เว้น ICI จนไตฟื้น · กลับมาใช้ได้ในบางราย ${S.h}</li></ul>`});
+notes:()=>`<h3>TINU — the eye and the kidney rarely arrive together</h3><ul>
+ <li>TINU เป็นโรค autoimmune ทั้งระบบที่ยังไม่รู้สาเหตุ · คิดเป็น &lt;5% ของ AIN ทั้งหมด พบในผู้หญิงมากกว่าผู้ชาย 3 เท่า และอายุกลางที่เริ่มเป็นคือ 15 ปี ${S.h}</li>
+ <li>ลักษณะเด่นคือ interstitial nephritis ที่มี lymphocyte เป็นหลัก ร่วมกับ <b>anterior uveitis ที่เจ็บ</b> มักเป็นสองข้าง มองไม่ชัดและสู้แสงไม่ได้ ${S.h}</li>
+ <li>ที่ทำให้วินิจฉัยยากคือ อาการทางตามาก่อนหรือมาพร้อมโรคไต<b>เพียงหนึ่งในสาม</b>ของผู้ป่วยเท่านั้น ${S.h}</li>
+ <li>สิ่งที่ควรทำให้นึกถึง: ไข้ เบื่ออาหาร น้ำหนักลด ปวดท้อง ปวดข้อ ร่วมกับ creatinine สูง sterile pyuria proteinuria เล็กน้อย ลักษณะของ Fanconi syndrome และ ESR สูง ${S.h}</li>
+ <li>Serology ของโรค autoimmune ที่พบบ่อยกว่ามักให้ผลลบ · TINU จึงเป็น<b>การวินิจฉัยโดยการคัดออก</b> หลังพิจารณา Sjögren, Behçet, sarcoidosis และ SLE แล้ว ${S.h}</li>
+ <li>ในเด็กอาการมักหายเอง แต่<b>ในผู้ใหญ่มักเป็นซ้ำ</b> — ซึ่งเป็นเหตุผลที่ผู้ใหญ่อยู่ในกลุ่มข้อบ่งชี้เด็ดขาดของการให้ steroid ${S.h}</li></ul>
+ <h3>Steroids, then something to hold the remission</h3><ul>
+ <li>ข้อบ่งชี้เด็ดขาดของ steroid (Table 328-2): Sjögren · sarcoidosis · lupus interstitial nephritis · TINU ในผู้ใหญ่ · IgG4-related · idiopathic และ granulomatous IN ${S.h}</li>
+ <li>เริ่มด้วย glucocorticoid แต่หลายรายต้องมียา maintenance เช่น azathioprine, mycophenolate mofetil หรือ methotrexate เพื่อกันกลับเป็นซ้ำ ${S.h}</li></ul>
+ <h3>Lupus and checkpoint inhibitors</h3><ul>
+ <li>ใน lupus nephritis class III หรือ IV ส่วนใหญ่มี interstitial mononuclear inflammation ร่วมด้วย และราวครึ่งหนึ่งตรวจพบ immune complex ที่ <b>tubular basement membrane</b> ${S.h}</li>
+ <li>บางรายการอักเสบที่ interstitium เด่นกว่า จึงมาด้วย azotemia และ <b>type IV RTA</b> แทนที่จะมาด้วยภาพของ glomerulonephritis ${S.h}</li>
+ <li>ICI-associated AIN: ให้ steroid หยุดยาอื่นที่เป็นตัวกระตุ้น และเว้น ICI จนไตฟื้น · กลับมาใช้ต่อได้ในบางราย ${S.h}</li></ul>`});
 HS("328","b","tin-chronic","Chronic tubulointerstitial nephropathies",{
 draw:()=>tbl(["Exposure","Kidney injury"],[
  ["Analgesic nephropathy","papillary necrosis · ไตเล็ก ขรุขระ · เสี่ยง urothelial ca"],

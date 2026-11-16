@@ -148,7 +148,9 @@ SEC.push({id:"systemic",k:"e",t:"Other systemic glomerular disease",tools:[...GV
 draw(){const s=ST.sys||"amy";const D={amy:{em:{fib:true,eff:true},lm:{nod:true}},fib:{em:{fib:true,mes:true},lm:{prolif:true}},hsp:{em:{sub_en:true,mes:true},lm:{prolif:true,neut:true}}}[s];
  return svg((ST.gv==="lm"?glomLM(D.lm):glomEM(D.em))+`<rect class="gsum" x="0" y="420" width="640" height="44"/>`+T(14,447,{amy:"Amyloid: fibrils 7.5–10 nm · Congo red apple-green birefringence",fib:"Fibrillary GN: fibrils 15–25 nm · DNAJB9",hsp:"Endocarditis: immune complex focal proliferative GN"}[s],{a:"start",c:"bh"}),"0 0 640 466")},
 notes:()=>`<ul><li><b>Amyloidosis</b> (AL หรือ AA): deposits ใน mesangium/GBM → nephrotic · ไตมักโตหรือขนาดปกติ ${S.r}</li>
- <li><b>Fibrillary GN</b>: fibrils ใหญ่กว่า amyloid, Congo red ลบ · nephrotic + hematuria ${S.r}</li>
+ <li><b>Fibrillary GN</b> เป็นโรคที่พบน้อย นิยามด้วย fibrillary deposit ใน glomerulus ที่<b>ย้อม Congo red ไม่ติด</b> และยังไม่รู้สาเหตุ ${S.r}</li>
+ <li>Deposit อยู่ทั้งใน mesangium และผนัง capillary และ<b>ดูเผิน ๆ คล้าย amyloid fibril</b> — ซึ่งเป็นเหตุผลว่าทำไมสองโรคนี้ต้องแยกกันด้วย Congo red และด้วยขนาดของ fibril ใต้ EM (amyloid 7.5–10 nm · fibrillary 15–25 nm) ไม่ใช่ด้วยภาพ LM ${S.r}</li>
+ <li>ทางคลินิกมาด้วย nephrotic syndrome ร่วมกับ hematuria ${S.r}</li>
  <li><b>Bacterial endocarditis</b>: IC focal/diffuse proliferative GN ${S.r}</li>
  <li><b>Monoclonal gammopathy</b>: light-chain deposition, cryoglobulinemia (HCV) ${S.r}</li><li>Table 20.10: tumor ทำให้เกิด membranous (carcinoma), MCD (Hodgkin), MPGN (leukemia/lymphoma) ${S.r}</li></ul>`});
 
