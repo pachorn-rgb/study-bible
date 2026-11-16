@@ -181,43 +181,49 @@ srv.listen(0, async () => {
        Every abbreviation a reader meets must be either spelled out (ABBR, which the
        renderer expands once per topic) or on the never-expand list (ABBR_OK: ion and
        formula fragments, gene and protein symbols, names read as words). Source badges,
-       figure text and the generated abbreviation footer are not prose and are skipped.
-       Scoped to the chapters that have been through the abbreviation pass; add a chapter
-       here once its content has been reviewed. */
+       figure text and the generated abbreviation footer are not prose and are skipped;
+       so is a token the author spelled out in place, as in "Vein → Artery → Pelvis (VAP)".
+       A page renders one group at a time and discards the last, so each topic has to be
+       read while it is on screen rather than all at the end.
+       Scoped to the chapters whose content has been through the abbreviation pass; widen
+       DONE as each further chapter is reviewed. */
     const DONE = /^(renal-|kub-|nephron-|pharm-renal)/;
     for (const h of hrefs.filter(h => DONE.test(path.basename(h, ".html")))) {
-      const pg = await ctx.newPage();
+      const pg = await ctx.newPage(); const found = new Map();
       try {
         await pg.goto(base + h, { waitUntil: "load", timeout: 20000 }); await pg.waitForTimeout(500);
-        /* a page renders one group at a time, so walk every topic before reading */
         const ids = await pg.evaluate(() => [...document.querySelectorAll("a[href^='#'],[data-id]")].map(a => a.dataset.id || a.getAttribute("href").slice(1)).filter(Boolean));
-        for (const id of [...new Set(ids)]) { await pg.evaluate(i => { location.hash = i }, id); await pg.waitForTimeout(70) }
-        await pg.waitForTimeout(250);
-        const miss = await pg.evaluate(() => {
-          if (typeof ABBR === "undefined") return [];
-          const out = new Map();
-          const ROMAN = /^(I{1,3}V?|IV|VI{0,3}|IX|XI{0,3}|XII)$/;
-          document.querySelectorAll('[id^="notes-"],[id^="dia-"]').forEach(n => {
-            const c = n.cloneNode(true);
-            c.querySelectorAll("svg,.sbb,.abbrl,.mcbar,nav,.drawer").forEach(e => e.remove());
-            c.querySelectorAll("*").forEach(e => e.appendChild(document.createTextNode(" ")));
-            const t = c.textContent || "";
-            let m; const re = /\b([A-Za-z][A-Za-z0-9]{1,7})\b/g;
-            while ((m = re.exec(t))) {
-              const a = m[1];
-              if (!/[A-Z]{2}/.test(a) || ROMAN.test(a)) continue;
-              const sg = a.endsWith("s") ? a.slice(0, -1) : a;
-              if (a in ABBR || ABBR_OK.has(a) || sg in ABBR || ABBR_OK.has(sg)) continue;
-              /* an author may also spell it out in place: "... (VAP)" or "VAP (...)" */
-              const e = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-              if (new RegExp("\\S[^()\\n]{3,70}\\(\\s*" + e + "[ ,)]|\\b" + e + "\\s*\\([^()\\n]{3,70}\\)").test(t)) continue;
-              out.set(a, (out.get(a) || 0) + 1);
+        for (const id of [...new Set(ids)]) {
+          const miss = await pg.evaluate(async i => {
+            location.hash = i; await new Promise(r => setTimeout(r, 70));
+            if (typeof ABBR === "undefined") return [];
+            const parts = [document.getElementById("notes-" + i), document.getElementById("dia-" + i)].filter(Boolean);
+            if (!parts.length) return [];
+            const ROMAN = /^(I{1,3}V?|IV|VI{0,3}|IX|XI{0,3}|XII)$/;
+            const out = [];
+            for (const n of parts) {
+              const c = n.cloneNode(true);
+              c.querySelectorAll("svg,.sbb,.abbrl,.mcbar").forEach(e => e.remove());
+              c.querySelectorAll("*").forEach(e => e.appendChild(document.createTextNode(" ")));
+              const t = c.textContent || "";
+              let m; const re = /\b([A-Za-z][A-Za-z0-9]{1,7})\b/g;
+              while ((m = re.exec(t))) {
+                const a = m[1];
+                if (!/[A-Z]{2}/.test(a) || ROMAN.test(a)) continue;
+                const sg = a.endsWith("s") ? a.slice(0, -1) : a;
+                if (a in ABBR || ABBR_OK.has(a) || sg in ABBR || ABBR_OK.has(sg)) continue;
+                const e = a.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+                if (new RegExp("\\S[^()\\n]{3,70}\\(\\s*" + e + "[ ,)]|\\b" + e + "\\s*\\([^()\\n]{3,70}\\)").test(t)) continue;
+                out.push(a);
+              }
             }
-          });
-          return [...out].sort((x, y) => y[1] - x[1]);
-        });
-        if (miss.length) bad(`${h}: abbreviation(s) in neither ABBR nor ABBR_OK — ${miss.slice(0, 12).map(([a, n]) => a + "\u00d7" + n).join(", ")}`);
+            return out;
+          }, id);
+          for (const a of miss) found.set(a, (found.get(a) || 0) + 1);
+        }
       } catch (e) { bad(`${h}: abbreviation check ${e.message.split("\n")[0]}`) }
+      if (found.size) { const r = [...found].sort((x, y) => y[1] - x[1]);
+        bad(`${h}: abbreviation(s) in neither ABBR nor ABBR_OK — ${r.slice(0, 12).map(([a, n]) => a + "\u00d7" + n).join(", ")}`) }
       await pg.close();
     }
   }
