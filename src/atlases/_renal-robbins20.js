@@ -210,10 +210,24 @@ notes:()=>`<h3>TMA</h3><ul><li>Endothelial injury → microthrombi (platelet ± 
 SEC.push({id:"congenital",k:"h",t:"Congenital anomalies",leg:[],
 draw(){let b="";const R=[["Agenesis","bilateral → Potter · unilateral → อีกข้างโตชดเชย"],["Hypoplasia","ไตเล็กแต่โครงสร้างปกติ · oligomeganephronia"],["Ectopic kidney","มักอยู่ pelvis · ureter คด → obstruction/infection"],["Horseshoe","ขั้วล่างเชื่อมกัน 90% · 1 ใน 500–1000"]];
  R.forEach(([n,d],i)=>{const y=20+i*92;b+=`<rect class="box" x="20" y="${y}" width="600" height="80" rx="12"/>`+T(36,y+32,n,{a:"start",c:"bh"})+T(36,y+56,d,{a:"start",c:"s"})});return svg(b,"0 0 640 400")},
-notes:()=>`<ul><li>~10% ของคนเกิดมามีความผิดปกติของระบบปัสสาวะ · ส่วนใหญ่มาจาก developmental ไม่ใช่ยีนเดี่ยว ${S.r}</li>
- <li><b>Bilateral agenesis</b>: เข้ากับชีวิตไม่ได้ · Potter sequence · <b>unilateral</b>: อีกข้าง hypertrophy → FSGS ได้ในระยะยาว ${S.r}</li>
- <li><b>Horseshoe</b>: ขั้วล่างเชื่อม 90% ขั้วบน 10% ${S.r}</li></ul>
- <div class="pearl">ดูการเกิดแต่ละความผิดปกติใน <b>KUB Embryology Atlas</b></div>`});
+notes:()=>`<h3>ทำไมต้องรู้</h3><ul>
+<li><b>ความผิดปกติของการเจริญของไตคิดเป็น 20% ของโรคไตเรื้อรังในเด็ก</b> จึงไม่ใช่เรื่องของรูปร่างแปลก ๆ อย่างเดียว ${S.r}</li>
+<li>ส่วนใหญ่<b>ไม่ได้ถ่ายทอดทางพันธุกรรม แต่เป็นความผิดพลาดของการเจริญระหว่างตั้งครรภ์</b> · ยีนที่ควบคุมการเจริญของไตเมื่อเสียไปมักทำให้<b>ผิดปกติทั้งไตและทางเดินปัสสาวะไปด้วยกัน</b> ไม่ใช่อย่างใดอย่างเดียว ${S.r}</li>
+<li>ยกเว้น horseshoe kidney แล้ว <b>ที่เหลือทั้งหมดพบไม่บ่อย</b> ${S.r}</li></ul>
+<h3>Agenesis</h3><ul>
+<li><b>สองข้างเข้ากันไม่ได้กับการมีชีวิต</b> พบในทารกตายคลอด และมาพร้อมความผิดปกติอื่นรวมทั้งปอดที่เจริญไม่เต็มที่ ${S.r}</li>
+<li><b>ข้างเดียวพบไม่บ่อยและอยู่ได้ปกติ</b>ถ้าไม่มีความผิดปกติอื่นร่วม · ไตที่เหลือจะโตขึ้นเพื่อชดเชย ${S.r}</li>
+<li>แต่จุดสำคัญคือ<b>บางรายไตข้างที่เหลือค่อย ๆ เกิด glomerular sclerosis</b> จากการที่ nephron ที่โตขึ้นต้องปรับตัวรับงานเกินตัว และกลายเป็นโรคไตเรื้อรังในที่สุด — เป็นเหตุผลที่คนไตเดียวต้องติดตามความดันและโปรตีนในปัสสาวะไปตลอด ${S.r}</li></ul>
+<h3>Hypoplasia</h3><ul>
+<li>คือไต<b>เจริญไม่ถึงขนาดปกติ</b> · สองข้างทำให้ไตวายในวัยเด็กต้น ๆ แต่<b>พบบ่อยกว่าแบบข้างเดียว</b> ${S.r}</li>
+<li>พบใน<b>ทารกน้ำหนักตัวน้อย</b> · การแยกจากไตที่ฝ่อภายหลังอาจทำไม่ได้เลยด้วยตาเปล่า ${S.r}</li></ul>
+<h3>Ectopic kidney</h3><ul>
+<li>ไตอยู่ผิดที่ โดย<b>อยู่เหนือ pelvic brim หรือในอุ้งเชิงกราน</b> · ขนาดมักปกติหรือเล็กลงเล็กน้อย และเนื้อไตไม่มีอะไรผิด ${S.r}</li>
+<li>ปัญหาเกิดจาก<b>ตำแหน่ง ไม่ใช่จากเนื้อไต</b> — ท่อไตหักงอหรือบิดจนปัสสาวะไหลไม่สะดวก และนำไปสู่<b>การติดเชื้อแบคทีเรีย</b> ${S.r}</li></ul>
+<h3>Horseshoe kidney</h3><ul>
+<li>ไตสองข้างเชื่อมกัน โดย<b>เชื่อมที่ขั้วล่าง 90% และที่ขั้วบนเพียง 10%</b> กลายเป็นรูปเกือกม้าที่ทอดข้ามแนวกลางลำตัวอยู่<b>ด้านหน้าของหลอดเลือดใหญ่</b> ${S.r}</li>
+<li>พบ <b>1 ใน 500 ถึง 1 ใน 1,000 ของการชันสูตร</b> จึงเป็นความผิดปกติแต่กำเนิดของไตที่พบบ่อยที่สุด ${S.r}</li>
+<li>เป็น<b>สองข้างโดยนิยาม</b> — รายที่รายงานว่าเป็นข้างเดียวน่าจะเป็น multicystic dysplasia มากกว่า ${S.r}</li></ul>`});
 SEC.push({id:"cystic",k:"h",t:"Cystic diseases",tools:[["cy",[["ad","ADPKD"],["ar","ARPKD"],["mcdk","MCDK"],["msk","Medullary sponge"],["nphp","Nephronophthisis"]]]],leg:[],
 draw(){const c=ST.cy||"ad";let b="";const kid=(x,big)=>`<path class="kid" d="M${x},40 C${x+(big?150:110)},40 ${x+(big?220:170)},120 ${x+(big?220:170)},220 C${x+(big?220:170)},320 ${x+(big?150:110)},400 ${x},400 C${x-30},400 ${x-40},360 ${x-25},320 C${x-12},290 ${x-12},150 ${x-25},120 C${x-40},80 ${x-30},40 ${x},40Z"/>`;
  b+=kid(220,c==="ad"||c==="ar");const r=rng(c.length*7);
@@ -271,9 +285,18 @@ notes:()=>mc("B9.2.3",3)+`<h3>Table 20.13</h3><ul><li>Calcium ~70% · struvite ~
 SEC.push({id:"benign",k:"j",t:"Benign renal tumors",leg:[],
 draw(){let b="";const R=[["Papillary adenoma","≤15 mm · พบบ่อยในชันสูตร · จาก tubule","" ],["Angiomyolipoma","vessels + smooth muscle + fat · TSC 25–50% · เลือดออกได้","vn"],["Oncocytoma","5–15% · intercalated cells · mitochondria มาก · central scar","gl"]];
  R.forEach(([n,d,c],i)=>{const y=30+i*110;b+=`<rect class="box ${c}" x="20" y="${y}" width="600" height="96" rx="12"/>`+T(36,y+36,n,{a:"start",c:"bh"})+T(36,y+64,d,{a:"start",c:"s"})});return svg(b,"0 0 640 370")},
-notes:()=>mc("B9.2.4",3)+`<ul><li><b>Papillary adenoma</b>: เล็ก ≤15 mm · มีความผิดปกติทางยีนคล้าย papillary RCC ${S.r}</li>
- <li><b>Angiomyolipoma</b>: PEComa · สัมพันธ์กับ <b>tuberous sclerosis</b> (TSC1/2) · ใหญ่ → spontaneous hemorrhage ${S.r}</li>
- <li><b>Oncocytoma</b>: เนื้องอกสีน้ำตาลมีแผลเป็นกลาง · eosinophilic cells (mitochondria) · benign แต่แยกจาก chromophobe RCC ยาก ${S.r}</li></ul>`});
+notes:()=>`<h3>Renal papillary adenoma</h3><ul>
+<li>เป็นเนื้องอกที่พบบ่อยในการชันสูตร · มีลักษณะทางพันธุกรรมคือ<b>trisomy 7 และ 17</b> ซึ่ง<b>เหมือนกับ papillary renal cell carcinoma</b> จึงเป็นเหตุที่เส้นแบ่งระหว่างสองอย่างนี้ไม่คมชัด ${S.r}</li>
+<li><b>ใช้ขนาดเป็นตัวบอกพยากรณ์โรค</b> โดยมีจุดตัดที่แยกก้อนที่แพร่กระจายจากก้อนที่แทบไม่แพร่ · แต่เพราะมีรายงานก้อนเล็กที่แพร่กระจายอยู่เป็นครั้งคราว <b>บางคนจึงถือว่า adenoma ทุกก้อนไม่ว่าขนาดเท่าไรมีศักยภาพเป็นมะเร็งได้</b> ${S.r}</li></ul>
+<h3>Angiomyolipoma</h3><ul>
+<li>ประกอบด้วย<b>หลอดเลือด กล้ามเนื้อเรียบ และไขมัน</b> ซึ่งมาจาก perivascular epithelioid cell — องค์ประกอบไขมันนี้คือสิ่งที่ทำให้<b>วินิจฉัยได้จากภาพถ่ายโดยไม่ต้องเจาะ</b> ${S.r}</li>
+<li>พบในผู้ป่วย <b>tuberous sclerosis</b> ซึ่งเกิดจากการกลายพันธุ์แบบสูญเสียการทำงานของยีนกดเนื้องอก <b>TSC1 หรือ TSC2</b> ${S.r}</li>
+<li>tuberous sclerosis มีลักษณะคือ<b>รอยโรคใน cerebral cortex ที่ทำให้ชักและมี intellectual disability</b> ร่วมกับความผิดปกติของผิวหนังหลายแบบ ${S.r}</li>
+<li>ความสำคัญทางคลินิกคือ<b>เสี่ยงต่อการมีเลือดออก</b> ซึ่งเป็นเหตุผลของการติดตามและการรักษาเมื่อก้อนโตถึงขนาดหนึ่ง ${S.x}</li></ul>
+<h3>Oncocytoma</h3><ul>
+<li>เป็นเนื้องอกของเยื่อบุที่ประกอบด้วย<b>เซลล์ขนาดใหญ่ติดสี eosinophil เข้ม มีนิวเคลียสกลมเล็กที่หน้าตาไม่ร้าย</b> ${S.r}</li>
+<li><b>โตได้ถึง 12 เซนติเมตร</b> ซึ่งใหญ่พอที่จะทำให้สับสนกับมะเร็ง ${S.r}</li>
+<li>มี<b>บางครอบครัวที่เนื้องอกชนิดนี้เกิดหลายก้อนหลายตำแหน่งแทนที่จะเป็นก้อนเดียว</b> ${S.r}</li></ul>`});
 SEC.push({id:"rcc",k:"j",t:"Renal cell carcinoma",tools:[["rc",[["clear","Clear cell"],["pap","Papillary"],["chromo","Chromophobe"],["cd","Collecting duct"]]]],leg:[],
 draw(){const c=ST.rc||"clear";let b="";const pct={clear:"70–80%",pap:"10–15%",chromo:"5%",cd:"~1%"}[c];
  const info={clear:["VHL loss (3p) ใน 98% · HIF ↑ → VEGF","cells ใส (glycogen, lipid) · ก้อนเหลือง เลือดออก","มักลุก renal vein → IVC"],pap:["Trisomy 7, 17, loss of Y · MET (familial)","papillae + foamy macrophages, psammoma","bilateral/multifocal ได้"],chromo:["หลายโครโมโซมหาย (hypodiploid)","cells ใสพอง ขอบชัด perinuclear halo","จาก intercalated cells · พยากรณ์ดี"],cd:["Bellini duct carcinoma","medulla · tubules ใน desmoplastic stroma","aggressive"]}[c];

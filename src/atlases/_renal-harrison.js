@@ -374,9 +374,17 @@ draw:()=>tbl(["Exposure","Kidney injury"],[
  ["Uric acid · hypercalcemia · hypoK","crystal / metabolic nephropathy"],
  ["Myeloma cast nephropathy","light chain + Tamm–Horsfall casts"],
  ["Calcineurin inhibitor","striped fibrosis, arteriolar hyalinosis"]]),
-notes:()=>`<h3>Papillary necrosis (Table 328-3)</h3><ul><li>Analgesic nephropathy · sickle cell · DM + UTI · NSAID นาน (พบน้อย) ${S.h}</li></ul>
- <ul><li><b>Aristolochic acid nephropathy</b>: เดิมพบในหญิงสาวกินสมุนไพรลดน้ำหนัก · Aristolochia เป็น carcinogen ${S.h}</li>
- <li><b>Light chain cast nephropathy</b>: tubule ฝ่อเต็มไปด้วย casts (Fig 328-3) ${S.h}</li><li><b>Reflux nephropathy</b>: VUR ในเด็ก → scarring (Fig 328-4) ${S.h}</li></ul>`});
+notes:()=>`<h3>นิยามและเบาะแสที่ใช้วินิจฉัย</h3><ul>
+<li><b>Chronic pyelonephritis</b> คือภาวะที่มี<b>การอักเสบเรื้อรังและแผลเป็นของเนื้อเยื่อระหว่างท่อไต ซึ่งกินไปถึง calyces และ pelvis</b> ${S.r}</li>
+<li>เบาะแสสำคัญที่สุดคือ — มีหลายโรคที่ทำให้เนื้อเยื่อระหว่างท่อไตเสียหายเรื้อรัง แต่<b>มีเพียง chronic pyelonephritis และ analgesic nephropathy เท่านั้นที่กิน calyces ด้วย</b> ความเสียหายของ pelvis และ calyces จึงเป็นจุดแยกที่มีค่า ${S.r}</li></ul>
+<h3>ภาพที่เห็นด้วยตาเปล่า</h3><ul>
+<li>ไต<b>มีแผลเป็นแบบไม่สม่ำเสมอ</b> และถ้าเป็นสองข้างก็<b>ไม่เท่ากันสองข้าง</b> ${S.r}</li>
+<li>จุดเปรียบเทียบที่ต้องจำคือ <b>chronic glomerulonephritis มีแผลเป็นกระจายทั่วและสมมาตรทั้งสองข้าง</b> — ความไม่สมมาตรจึงชี้มาทาง pyelonephritis ${S.r}</li>
+<li>ลักษณะเฉพาะคือ<b>แผลเป็นหยาบ ๆ แยกกันเป็นจุด ๆ พาดจาก cortex ถึง medulla ทับอยู่บน calyx ที่ขยาย ทู่ หรือผิดรูป</b> พร้อมกับ<b>papilla ที่แบนราบ</b> ${S.r}</li>
+<li>แผลเป็นมีตั้งแต่หนึ่งถึงหลายจุด และ<b>ส่วนใหญ่อยู่ที่ขั้วบนและขั้วล่างของไต</b> ซึ่งเข้ากับตำแหน่งที่เกิด reflux บ่อยที่สุด — รูปร่างของรอยโรคจึงบอกกลไกของมันเอง ${S.r}</li></ul>
+<h3>ความสำคัญทางคลินิก</h3><ul>
+<li>เคยเป็นสาเหตุของผู้ป่วยใน<b>หน่วยปลูกถ่ายไตและฟอกเลือดถึง 10–20%</b> จนกระทั่งภาวะที่นำมาก่อนอย่าง reflux ถูกรู้จักและจัดการได้ดีขึ้น ${S.r}</li>
+<li>ทุกวันนี้ยังเป็น<b>สาเหตุสำคัญของการทำลายไตในเด็กที่มีความผิดปกติรุนแรงของทางเดินปัสสาวะส่วนล่าง</b> ${S.r}</li></ul>`});
 
 /* ---------- 329 · TMA & renovascular ---------- */
 HS("329","a","tma-types","Thrombotic microangiopathies",{tools:[["tma",[["ttp","TTP"],["stec","STEC-HUS"],["ahus","aHUS"],["drug","Drug / other"]]]],
@@ -394,7 +402,19 @@ draw:()=>tbl(["Topic","Detail"],[
  ["Treatment","ACE inhibitor · ก่อนมียานี้ตาย >90% ใน 1 เดือน"],
  ["Outcome","~2/3 ต้อง dialysis · ฟื้น 50% (median 1 ปี)"],
  ["Renal vein thrombosis","nephrotic (โดยเฉพาะ MN), hypercoagulable, tumor · ปวดหลัง hematuria PE"]]),
-notes:()=>`<ul><li>MAHA พบได้ใน scleroderma renal crisis แต่ไม่จำเป็นต้องมีครบทุกข้อ ${S.h}</li><li>Sickle cell nephropathy และ HELLP ก็เป็น vascular injury ในบทนี้ ${S.h}</li></ul>`});
+notes:()=>`<h3>คำนี้ครอบคลุมอะไร</h3><ul>
+<li><b>Thrombotic microangiopathy</b> เป็นคำรวมของกลุ่มอาการที่มีทั้ง <b>TTP</b> และ <b>HUS</b> อยู่ด้วยกัน ซึ่งเกิดจากเหตุที่หลากหลายแต่ลงเอยเหมือนกันคือ<b>ลิ่มเลือดในหลอดเลือดฝอยและใน arteriole</b> ของหลายอวัยวะ รวมทั้งของไต ${S.r}</li></ul>
+<h3>สามอย่างที่เกิดจากลิ่มเลือดเดียวกัน</h3><ul>
+<li>ลิ่มเลือดทำให้<b>การไหลของเลือดผิดปกติจนเม็ดเลือดแดงถูกเฉือนขาด</b> จึงเกิด microangiopathic hemolytic anemia และเห็น schistocyte ในสเมียร์ ${S.r}</li>
+<li>ที่สำคัญกว่านั้นคือลิ่มเลือด<b>อุดหลอดเลือดขนาดเล็กจนเนื้อเยื่อขาดเลือดและอวัยวะทำงานผิดปกติ</b> ซึ่งในไตคือ AKI ${S.r}</li>
+<li>และการที่<b>เกล็ดเลือดถูกใช้ไปอย่างกว้างขวาง</b>ทำให้เกล็ดเลือดต่ำ · สามอย่างนี้จึงไม่ใช่โรคสามโรค แต่เป็นผลสามทางของเหตุเดียว ${S.r}</li></ul>
+<h3>แยกตามต้นเหตุ</h3><ul>
+<li><b>Typical HUS</b> ซึ่งมีชื่ออื่นว่า epidemic, classic หรือ diarrhea-positive — สัมพันธ์กับ<b>การกินอาหารที่ปนเปื้อนแบคทีเรียที่สร้าง Shiga-like toxin</b> มากที่สุด ${S.r}</li>
+<li><b>Atypical HUS ชนิดที่ถ่ายทอดทางพันธุกรรม</b> — ต้นเหตุของการบาดเจ็บของ endothelium คือ<b>การกระตุ้น complement ที่มากเกินและไม่เหมาะสม</b> จากความผิดปกติของโปรตีนที่ควบคุม complement ${S.r}</li>
+<li>มีสิ่งกระตุ้นและภาวะอื่นอีกหลายอย่างที่ทำให้เกิดภาพคล้าย HUS ได้เป็นครั้งคราว ซึ่งเชื่อว่าผ่านการ<b>ทำร้าย endothelium</b> เช่นกัน ${S.r}</li></ul>
+<h3>กลไกที่ปลายทาง</h3><ul>
+<li>การบาดเจ็บของ endothelium นำไปสู่<b>การกระตุ้นเกล็ดเลือดและการเกิดลิ่มเลือด</b>ในหลอดเลือดขนาดเล็ก ${S.r}</li>
+<li>มีหลักฐานว่า endothelium ที่เสียหาย<b>สร้าง prostaglandin I₂ และ nitric oxide ได้น้อยลง</b> ซึ่งทั้งสองตัวเป็นสารยับยั้งการเกาะกลุ่มของเกล็ดเลือด การขาดไปจึงยิ่งส่งเสริมการเกิดลิ่มเลือด ${S.r}</li></ul>`});
 
 /* ---------- 330 · Nephrolithiasis ---------- */
 HS("330","a","st-type","Stone types & urine pH",{tools:[["stn",[["caox","Ca oxalate"],["caph","Ca phosphate"],["uric","Uric acid"],["cys","Cystine"],["struv","Struvite"]]]],
@@ -411,8 +431,20 @@ HS("330","a","st-risk","Risk factors & diet",{
 draw:()=>{let b="";b+=`<rect class="box ar" x="14" y="14" width="300" height="200" rx="14"/>`+T(164,42,"เพิ่มความเสี่ยง",{c:"bb"});["animal protein","oxalate","sodium","sucrose · fructose","calcium supplements"].forEach((t,i)=>b+=T(164,74+i*28,t,{c:"s"}));
  b+=`<rect class="box vn" x="326" y="14" width="300" height="200" rx="14"/>`+T(476,42,"ลดความเสี่ยง",{c:"bb"});["dietary calcium (!)","potassium","phytate","น้ำมาก (urine ≥2 L/วัน)"].forEach((t,i)=>b+=T(476,74+i*28,t,{c:"s"}));
  b+=`<rect class="gsum" x="0" y="226" width="640" height="56" rx="12"/>`+T(16,250,"Calcium ในอาหารสูง → นิ่วน้อยลง (จับ oxalate ในลำไส้) · แต่ calcium supplement อาจเพิ่ม",{a:"start",c:"b"})+T(16,272,"กลับเป็นซ้ำ >50% ใน 10 ปี หลังนิ่วก้อนแรก",{a:"start",c:"s"});return svg(b,"0 0 640 290")},
-notes:()=>`<ul><li>ไม่ควรจำกัด calcium ในอาหาร · RCT และ cohort แสดงว่า calcium ในอาหารสูงลดความเสี่ยง ${S.h}</li><li>อาหาร oxalate สูง: spinach, rhubarb, potatoes ${S.h}</li>
- <li>24-h urine: volume, Ca, oxalate, citrate, uric acid, Na, K, PO₄, Mg, pH, creatinine ${S.h}</li></ul>`});
+notes:()=>`<h3>กลไกเดียวที่อยู่เบื้องหลังนิ่วทุกชนิด</h3><ul>
+<li>นิ่วเกิดเมื่อ<b>ความเข้มข้นของสารตั้งต้นในปัสสาวะสูงเกินกว่าที่จะละลายอยู่ได้</b> คือภาวะ supersaturation · ปัสสาวะที่มีปริมาณน้อยจึงเอื้อให้เกิดภาวะนี้ และเป็นเหตุผลที่คำแนะนำข้อแรกของทุกชนิดคือดื่มน้ำมาก ${S.r}</li>
+<li>แต่ความอิ่มตัวเกินอย่างเดียวอธิบายไม่หมด เพราะ<b>คนจำนวนมากที่ปัสสาวะอิ่มตัวเกินก็ไม่เกิดนิ่ว</b> · สมมติฐานที่ใช้อธิบายคือคนที่เป็นนิ่ว<b>ขาดสารยับยั้งการก่อผลึก</b>ในปัสสาวะ ${S.r}</li></ul>
+<h3>Calcium oxalate — ชนิดที่พบบ่อยที่สุด</h3><ul>
+<li>ราว <b>5%</b> มาพร้อม<b>แคลเซียมในเลือดสูงและในปัสสาวะสูง</b> ซึ่งต้องตามหา hyperparathyroidism และสาเหตุอื่นของแคลเซียมสูง ${S.r}</li>
+<li>กลุ่มที่ใหญ่กว่าคือ<b>แคลเซียมในปัสสาวะสูงโดยที่ในเลือดปกติ</b> ซึ่งมีได้สามทาง — ลำไส้ดูดซึมแคลเซียมมากเกิน · ท่อไตดูดกลับแคลเซียมได้ไม่ดี · และชนิดที่ไม่ทราบสาเหตุโดยที่ต่อมพาราไทรอยด์ทำงานปกติ ${S.r}</li>
+<li><b>ถึง 20% ของนิ่ว calcium oxalate มาพร้อมการขับกรดยูริกมากเกิน</b> โดยอาจมีหรือไม่มีแคลเซียมในปัสสาวะสูงร่วม · กลไกคือ<b>ผลึกกรดยูริกใน collecting duct ทำหน้าที่เป็นแกนให้ calcium oxalate มาเกาะ</b> ${S.r}</li>
+<li>อีก <b>5%</b> มาจาก<b>ออกซาเลตในปัสสาวะสูง</b> ซึ่งมีทั้งชนิดที่ถ่ายทอดทางพันธุกรรมและที่ได้รับมา ${S.r}</li>
+<li><b>ซิเตรตในปัสสาวะต่ำ</b>ก็ทำให้เกิดนิ่วแคลเซียมได้ พบได้ทั้งแบบไม่ทราบสาเหตุ และแบบที่มาพร้อมภาวะเลือดเป็นกรดหรือท้องเสียเรื้อรัง — ซิเตรตเป็นสารยับยั้งตามธรรมชาติ เมื่อขาดไปจึงเกิดนิ่วง่าย ${S.r}</li>
+<li>ส่วนหนึ่งหาสาเหตุไม่ได้เลย เรียกว่า <b>idiopathic calcium stone disease</b> ${S.r}</li></ul>
+<h3>ชนิดอื่นกับเงื่อนไขของมัน</h3><ul>
+<li><b>Magnesium ammonium phosphate หรือ struvite</b> เกิดหลังการติดเชื้อ<b>แบคทีเรียที่ย่อยยูเรียได้</b> เช่น Proteus และ staphylococci บางชนิด ซึ่งเปลี่ยนยูเรียเป็นแอมโมเนียจนปัสสาวะเป็นด่าง เกลือจึงตกตะกอน · เป็น<b>นิ่วที่โตที่สุด</b>เพราะยูเรียที่ขับออกมามีมาก ${S.r}</li>
+<li><b>Uric acid stones</b> พบในผู้ที่กรดยูริกสูง แต่จุดที่ต้องจำคือ<b>มากกว่าครึ่งของผู้ป่วยนิ่วกรดยูริกไม่มีกรดยูริกสูงเลย</b> — สิ่งที่ร่วมกันคือ<b>แนวโน้มที่จะขับปัสสาวะที่มี pH ต่ำกว่า 5.5</b> · และต่างจากนิ่วแคลเซียมที่ทึบรังสี นิ่วชนิดนี้<b>ไม่ทึบรังสี</b> ${S.r}</li>
+<li><b>Cystine stones</b> จาก cystinuria และ<b>ก่อตัวที่ pH ต่ำเช่นเดียวกัน</b> ซึ่งอธิบายว่าทำไมการทำให้ปัสสาวะเป็นด่างจึงใช้รักษาได้ทั้งสองชนิด ${S.r}</li></ul>`});
 HS("330","b","st-mx","Acute colic & prevention",{
 draw:()=>tbl(["Step","What to do"],[
  ["Imaging","noncontrast CT (low-dose) เป็นมาตรฐาน"],
@@ -421,8 +453,19 @@ draw:()=>tbl(["Step","What to do"],[
  ["Prevention, whatever the stone","urine ≥2 L/วัน"],
  ["Ca oxalate · uric acid","thiazide, citrate · alkalinize ± allopurinol"],
  ["Cystine · struvite","K citrate (ไม่ใช้ Na), tiopronin · ผ่าตัดเอาออก + acetohydroxamic acid"]]),
-notes:()=>`<ul><li>Low-dose renal-limited noncontrast CT ใช้กำหนด stone burden ${S.h}</li><li>Cystine: alkalinize ด้วย K citrate เพราะ Na เพิ่มการขับ cystine · น้ำมากเป็นหัวใจ ${S.h}</li>
- <li>Urease inhibitor (acetohydroxamic acid) ใช้ในบางรายที่ผ่าตัดไม่ได้ ${S.h}</li><li>Thiazide ลด urinary calcium, citrate เพิ่ม inhibitor · allopurinol ใน hyperuricosuria ${S.x}</li></ul>`});
+notes:()=>`<h3>ตำแหน่งและขนาด</h3><ul>
+<li><b>นิ่วเป็นข้างเดียวราว 80% ของผู้ป่วย</b> ${S.r}</li>
+<li>ตำแหน่งที่ก่อตัวบ่อยที่สุดคือ<b>ใน calyces และ renal pelvis</b> และในกระเพาะปัสสาวะ ${S.r}</li>
+<li>นิ่วที่เกิดใน renal pelvis มักอยู่เล็ก โดย<b>เฉลี่ยราว 2 ถึง 3 มิลลิเมตร</b> ผิวอาจเรียบหรือเป็นก้อนขรุขระมีหนามแหลม · มักพบหลายก้อนในไตเดียวกัน ${S.r}</li>
+<li>เมื่อเกลือพอกทับไปเรื่อย ๆ จะกลายเป็น<b>staghorn calculus</b> ที่แตกกิ่งเป็นรูปหล่อของระบบ pelvis และ calyces ทั้งหมด ${S.r}</li></ul>
+<h3>อาการทั้งสามแบบ</h3><ul>
+<li><b>ไม่มีอาการเลย</b> — พบโดยบังเอิญ ${S.r}</li>
+<li><b>ปวดบิดรุนแรง</b> คือ renal colic ร่วมกับปวดท้อง ${S.r}</li>
+<li><b>ไตเสียหายอย่างมีนัยสำคัญ</b> ซึ่งเป็นปลายทางที่ต้องป้องกัน ${S.r}</li>
+<li>จุดที่มักเข้าใจผิดคือ<b>นิ่วก้อนใหญ่มักไม่ปวด</b> แต่มาด้วย<b>เลือดปนปัสสาวะ</b>แทน ส่วนก้อนเล็กที่เคลื่อนลงท่อไตคือก้อนที่ปวดที่สุด ${S.r}</li></ul>
+<h3>ภาวะแทรกซ้อน</h3><ul>
+<li>นิ่วเปิดทางให้<b>ติดเชื้อซ้อน</b>ได้สองทาง — จากการอุดกั้นที่ทำให้ปัสสาวะค้าง และจาก<b>การครูดบาดเยื่อบุ</b> ${S.r}</li>
+<li>และเพราะ struvite เกิดจากการติดเชื้ออยู่แล้ว การติดเชื้อกับนิ่วจึง<b>ส่งเสริมกันเป็นวงจร</b> ${S.r}</li></ul>`});
 
 /* ---------- 331 · Obstruction ---------- */
 HS("331","a","uo-cause","Causes by level",{

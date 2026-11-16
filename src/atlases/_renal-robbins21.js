@@ -25,10 +25,16 @@ draw:()=>tbl(["Ureteric lesion","Features"],[
  ["Hydroureter / megaloureter","ureter ยาวคดและขยาย · neurogenic หรือ obstruction"],
  ["Tumors","ส่วนใหญ่ urothelial carcinoma อายุ 60–70 · มักพบร่วมกับใน bladder/pelvis"],
  ["Fibroepithelial polyp","tumor-like lesion ในเด็ก · loose vascular CT คลุมด้วย urothelium"]]),
-notes:()=>`<h3>Congenital (Table 21.1)</h3><ul><li><b>Vesicoureteral reflux</b> เป็นความผิดปกติที่สำคัญที่สุด → infection, reflux nephropathy ${S.r}</li>
- <li><b>UPJ obstruction</b>: smooth muscle bundle เรียงผิดปกติหรือ collagen เกินที่ UPJ · ไม่ค่อยบ่อยจาก renal vessel กดทับ · ส่วนน้อยมี agenesis ของไตอีกข้าง ${S.r}</li>
-<li>ความผิดปกติของ ureter แบบ congenital พบได้ราว <b>2–3% ของการชันสูตร</b> ${S.r}</li></ul>
- <h3>Tumors</h3><ul><li>เนื้องอกปฐมภูมิของ ureter พบน้อย · ส่วนใหญ่เป็น urothelial carcinoma · มักมี multifocal ร่วมกับ bladder หรือ renal pelvis ${S.r}</li></ul>`});
+notes:()=>`<h3>ความถี่และความสำคัญ</h3><ul>
+<li>ความผิดปกติแต่กำเนิดของท่อไตพบ <b>ราว 2–3% ของการชันสูตรทั้งหมด</b> · <b>ส่วนใหญ่ไม่มีความสำคัญทางคลินิก</b> แต่บางอย่างทำให้ปัสสาวะไหลไม่ได้จนก่อโรค ${S.r}</li></ul>
+<h3>Ureteropelvic junction obstruction</h3><ul>
+<li>เป็น<b>สาเหตุของ hydronephrosis ที่พบบ่อยที่สุดในทารกและเด็ก</b> ${S.r}</li>
+<li>รายที่มาตั้งแต่วัยทารก<b>พบในเพศชายมากกว่า</b> · <b>เป็นสองข้างราว 20%</b> · และ<b>มักมีความผิดปกติอื่นร่วม</b> ${S.r}</li>
+<li>ส่วนน้อยมี<b>ไตอีกข้างไม่เจริญเลย</b> ซึ่งทำให้ข้างที่เหลือกลายเป็นไตเดียวที่ยังอุดกั้นอยู่ — เป็นสถานการณ์ที่ต้องจัดการเร็ว ${S.r}</li>
+<li>ในผู้ใหญ่กลับกัน คือ<b>พบในผู้หญิงมากกว่า</b> ${S.r}</li></ul>
+<h3>เนื้องอกของท่อไต</h3><ul>
+<li>เนื้องอกปฐมภูมิของท่อไตพบน้อย และ<b>ส่วนใหญ่เป็น urothelial carcinoma</b> ซึ่งเป็นชนิดเดียวกับที่เกิดในกระเพาะปัสสาวะ ${S.r}</li>
+<li>เพราะเยื่อบุชนิดเดียวกันเรียงตลอดทางเดินปัสสาวะ <b>เมื่อพบที่หนึ่งต้องตรวจทั้งทาง</b> ตั้งแต่ renal pelvis ลงมาถึงกระเพาะปัสสาวะ ${S.x}</li></ul>`});
 SEC.push({id:"ureterobs",k:"a",t:"Obstructive lesions & retroperitoneal fibrosis",leg:[],
 draw(){let b="";const col=(x,ttl,R,c)=>{b+=`<rect class="box ${c}" x="${x}" y="14" width="300" height="34" rx="10"/>`+T(x+150,36,ttl,{c:"bh"});R.forEach(([n,dd],i)=>{const y=60+i*58;b+=`<rect class="box" x="${x}" y="${y}" width="300" height="50" rx="10"/>`+T(x+12,y+21,n,{a:"start",c:"b"})+T(x+12,y+40,dd,{a:"start",c:"s"})})};
  col(14,"Intrinsic",[["Calculi","ติดที่ UPJ, pelvic brim, UVJ"],["Strictures","congenital หรือ acquired"],["Tumors","urothelial carcinoma"],["Blood clots","hematuria มาก, papillary necrosis"],["Neurogenic","neural pathway ไป bladder ขาด"]],"ar");
