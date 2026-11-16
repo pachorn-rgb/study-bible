@@ -230,10 +230,17 @@ draw(){let b="";const R=[["Minimal change",75,8],["FSGS",10,35],["Membranous",3,
  b+=T(170,30,"เด็ก (%)",{c:"bh"})+T(470,30,"ผู้ใหญ่ (%)",{c:"bh"});
  R.forEach(([n,c,a],i)=>{const y=50+i*56;b+=T(320,y+20,n,{c:"b"})+`<rect class="cbar on" x="${300-c*3.4}" y="${y+28}" width="${c*3.4}" height="20" rx="5"/><rect class="cbar on" x="340" y="${y+28}" width="${a*3.4}" height="20" rx="5" style="opacity:.6"/>`+T(296-c*3.4,y+43,c,{a:"end",c:"s"})+T(344+a*3.4,y+43,a,{a:"start",c:"s"})});
  b+=T(320,350,"Table 20.7 · primary glomerular disease (ค่าประมาณ)",{c:"s m"})+T(320,374,"Systemic: diabetes · amyloidosis · SLE · drugs · infection · malignancy",{c:"h"});return svg(b,"0 0 640 390")},
-notes:()=>mc("B9.2.2",1)+`<h3>นิยาม</h3><ul><li>Proteinuria &gt;3.5 g/วัน · hypoalbuminemia &lt;3 g/dL · generalized edema · hyperlipidemia + lipiduria (oval fat bodies) ${S.r}</li>
- <li>เสี่ยงติดเชื้อ (สูญเสีย Ig), thrombosis (สูญเสีย antithrombin III → renal vein thrombosis) ${S.r}</li></ul>
- <h3>สาเหตุ</h3><ul><li>เด็ก: <b>minimal change</b> ~75% · ผู้ใหญ่: <b>FSGS</b> และ <b>membranous</b> ใกล้เคียงกัน ${S.r}</li>
- <li>Systemic ที่พบบ่อย: <b>เบาหวาน, amyloidosis, SLE</b> ${S.r}</li></ul>`});
+notes:()=>`<h3>นิยามและกลไกร่วม</h3><ul>
+<li>Nephrotic syndrome คือ<b>โปรตีนรั่วมากกว่า 3.5 กรัมต่อวัน</b> ซึ่งนำไปสู่ albumin ในเลือดต่ำและบวมทั่วตัว ร่วมกับไขมันในเลือดสูงและไขมันในปัสสาวะ ${S.r}</li>
+<li><b>กลไกต้นทางของทุกโรคในกลุ่มนี้คือการบาดเจ็บของ podocyte</b> — เมื่อ foot process แบนราบลง ช่องกรองที่เคยกั้นโปรตีนไว้ก็เปิดออก · จำไว้ว่าเป็นโรคของ<b>ตัวกรอง</b> ไม่ใช่โรคของการอักเสบ ซึ่งเป็นเหตุที่ปัสสาวะมักไม่มีเม็ดเลือดแดงหรือ cast แบบ nephritic ${S.r}</li>
+<li>ผลตามมาที่อธิบายอาการได้ทั้งหมด — albumin ต่ำทำให้ oncotic pressure ลดและเกิดบวม · ตับเร่งสร้างไลโปโปรตีนชดเชยจึงเกิดไขมันสูง · และ<b>การสูญเสียโปรตีนตัวอื่นไปกับปัสสาวะ</b> ทั้ง immunoglobulin ที่ทำให้ติดเชื้อง่าย และ antithrombin III ที่ทำให้เกิดลิ่มเลือด ${S.x}</li></ul>
+<h3>สาเหตุหลักเรียงตามอายุ</h3><ul>
+<li><b>Minimal change disease เป็นสาเหตุที่พบบ่อยที่สุดในเด็ก</b> — โปรตีนรั่วพร้อม <b>foot process แบนราบ แต่ไม่มี antibody สะสมเลย</b> จึงเห็นทุกอย่างปกติด้วยกล้องธรรมดา · ยังไม่ทราบกลไกที่แท้จริง · ชนิดทุติยภูมิถูกกระตุ้นได้ด้วยการติดเชื้อ การฉีดวัคซีน ยา และเนื้องอกบางชนิด · <b>ตอบสนองต่อ steroid ดีมาก</b> ${S.r}</li>
+<li><b>FSGS</b> — ชนิดปฐมภูมิเกิดจาก podocyte บาดเจ็บโดยไม่ทราบสาเหตุ ส่วนชนิดทุติยภูมิตามหลัง glomerulonephritis เดิม ความดันโลหิตสูง หรือการติดเชื้ออย่าง HIV · กล้องเห็นหลอดเลือดฝอย<b>ตันเป็นบางส่วนในบาง glomerulus</b> พร้อม foot process ที่หายไป · <b>มักดื้อต่อการรักษาและลุกลามไปเป็น ESRD</b> ${S.r}</li>
+<li><b>Membranous nephropathy</b> — สาเหตุที่พบบ่อยในผู้ใหญ่ เกิดจาก immune complex ใต้ epithelium ${S.r}</li>
+<li><b>MPGN</b> — ส่วนใหญ่เกิดจาก immune complex สะสมทั้งที่ mesangium และที่ผนังหลอดเลือดฝอย มักสัมพันธ์กับการติดเชื้อทั่วร่างกาย ${S.r}</li>
+<li><b>Dense deposit disease</b> ซึ่งเดิมเรียก MPGN type II นิยามด้วยสารทึบอิเล็กตรอนที่แทรกอยู่ใน GBM · พบในเด็กและผู้ใหญ่ตอนต้น และเกิดจาก<b>ความผิดปกติของการควบคุม complement ทางเลือก</b> ทั้งที่เป็นมาแต่กำเนิดและที่เกิดภายหลัง ${S.r}</li>
+<li><b>Diabetic nephropathy และ amyloidosis</b> เป็นสาเหตุทุติยภูมิที่ต้องนึกถึงเสมอในผู้ใหญ่ ${S.r}</li></ul>`});
 G("membranous","d","Membranous nephropathy",{em:{sub_ep:"spikes",eff:true},if:"granular",lm:{thick:true},sum:[["LM","capillary walls หนา (diffuse) · silver: spikes"],["IF","granular IgG (IgG4) + C3 ตาม GBM"],["EM","subepithelial deposits · spike & dome · effacement"]]},
 ()=>`<h3>กลไก</h3><ul><li><b>Primary (~75%)</b>: autoantibody ต่อ podocyte antigen — <b>PLA2R</b> (70–80%), THSD7A ${S.r}</li>
  <li><b>Secondary</b>: infections (HBV, HCV, syphilis, malaria), malignant tumors (lung, colon, melanoma), SLE, drugs (NSAIDs, penicillamine, gold) ${S.r}</li>
@@ -264,9 +271,20 @@ draw(){const c=ST.lc||"4";const D={"2":{em:{mes:true},if:"mesangial",lm:{prolif:
  const txt={"2":"Mesangial proliferative · deposits ใน mesangium","3":"Focal (<50%) proliferative · subendothelial","4":"Diffuse (≥50%) proliferative · wire loops · พบบ่อยและรุนแรงที่สุด","5":"Membranous · subepithelial → nephrotic","6":"Advanced sclerosing (>90% sclerosed)"}[c];
  const b=(ST.gv==="if"?glomIF(D.if):ST.gv==="lm"?glomLM(D.lm):glomEM(D.em))+`<rect class="gsum" x="0" y="420" width="640" height="44"/>`+T(14,447,`Class ${c==="2"?"II":c==="3"?"III":c==="4"?"IV":c==="5"?"V":"VI"} · ${txt}`,{a:"start",c:"bh"});
  return svg(b,"0 0 640 466")},
-notes:()=>`<h3>ISN/RPS classes</h3>${tbl(["Class","ลักษณะ"],[["I","Minimal mesangial: deposits แต่ LM ปกติ"],["II","Mesangial proliferative"],["III","Focal (&lt;50%) · subendothelial deposits"],["IV","Diffuse (≥50%) · <b>wire loops</b> · พบบ่อยและรุนแรงที่สุด"],["V","Membranous · nephrotic"],["VI","Advanced sclerosing &gt;90%"]])}
- <ul><li>เกิดใน 50–70% ของ SLE · immune complex (DNA–anti-DNA) · IF ‘full house’ · C3/C4 ต่ำ ${S.r}</li><li>มี tubulointerstitial และ vascular lesions ร่วมได้ ${S.r}</li></ul>
- <div class="pearl">เลือก class ด้านบน แล้วสลับ EM/IF/LM</div>`});
+notes:()=>`<h3>ทำไมต้องแบ่งเป็นชั้น</h3><ul>
+<li>SLE ทำให้ไตเสียหายได้<b>แทบทุกแบบ</b> ตั้งแต่เลือดปนปัสสาวะแบบมองไม่เห็น ไปจนถึง nephritic syndrome, RPGN, nephrotic syndrome, ไตวายเฉียบพลันหรือเรื้อรัง และความดันโลหิตสูง — <b>อาการทางคลินิกอย่างเดียวจึงบอกไม่ได้ว่าไตเสียหายแบบไหน</b> ต้องเจาะชิ้นเนื้อ ${S.r}</li>
+<li>กลไกเดียวกันทั้งหมดคือ<b>การสะสมของ immune complex</b> ที่ glomerular basement membrane ที่ mesangium หรือทั่วทั้ง glomerulus · ความต่างของแต่ละชั้นคือ<b>สะสมที่ไหนและมากแค่ไหน</b> ${S.r}</li>
+<li>ชั้นเหล่านี้<b>คาบเกี่ยวกันได้และเปลี่ยนจากชั้นหนึ่งไปอีกชั้นเมื่อเวลาผ่านไป</b> การเจาะซ้ำเมื่ออาการเปลี่ยนจึงมีเหตุผล ${S.r}</li></ul>
+<h3>หกชั้นตามลำดับความรุนแรง</h3><ul>
+<li><b>Class I · minimal mesangial</b> — พบน้อยที่สุด มี immune complex ที่ mesangium เห็นได้ด้วย immunofluorescence และ electron microscopy เท่านั้น <b>light microscopy ปกติ</b> ${S.r}</li>
+<li><b>Class II · mesangial proliferative</b> — mesangial cell เพิ่มจำนวนพร้อม matrix และมี deposit แบบ granular ที่ mesangium <b>แต่ยังไม่แตะผนังหลอดเลือดฝอย</b> ${S.r}</li>
+<li><b>Class III · focal</b> — <b>น้อยกว่า 50% ของ glomeruli</b> เสียหาย อาจเป็นบางส่วนหรือทั้งลูก · เห็น endothelial และ mesangial cell บวมและเพิ่มจำนวน มีเม็ดเลือดขาวแทรก capillary necrosis และ hyaline thrombi บางรายมี crescent · ทางคลินิกตั้งแต่เลือดและโปรตีนในปัสสาวะเล็กน้อยไปจนถึงไตวายเฉียบพลัน และ <b>RBC cast พบบ่อยเมื่อโรคกำลัง active</b> ${S.r}</li>
+<li><b>Class IV · diffuse</b> — <b>พบบ่อยที่สุดและรุนแรงที่สุด</b> รอยโรคเหมือน class III แต่กินมากกว่า คือ<b>ตั้งแต่ครึ่งหนึ่งของ glomeruli ขึ้นไป</b> · ลักษณะเด่นคือ <b>wire loop</b> ซึ่งเกิดจาก immune complex สะสมใต้ endothelium จำนวนมากจนผนังหลอดเลือดฝอยหนาขึ้นเห็นได้ด้วยกล้องธรรมดา · ผู้ป่วยมักมีอาการชัดเจน ทั้งเลือดและโปรตีนในปัสสาวะ ความดันสูง และไตเสื่อม ${S.r}</li>
+<li><b>Class V · membranous</b> — ผนังหลอดเลือดฝอยหนาขึ้นทั่วจาก immune complex ที่สะสม<b>เหนือ</b> basement membrane เหมือน idiopathic membranous nephropathy · ทำให้เกิด<b>โปรตีนรั่วมากหรือ nephrotic syndrome</b> และเกิดพร้อมกับ class III หรือ IV ได้ ${S.r}</li>
+<li><b>Class VI · advanced sclerosing</b> — <b>glomeruli แข็งตัวไปมากกว่า 90%</b> คือ ESRD แล้ว การให้ยากดภูมิไม่ช่วยอะไรอีก ${S.r}</li></ul>
+<h3>จุดที่มักถูกมองข้าม</h3><ul>
+<li>ความเสียหายไม่ได้อยู่แค่ที่ glomerulus — <b>พบการเปลี่ยนแปลงที่ท่อไตและเนื้อเยื่อระหว่างท่อบ่อย</b> และบางรายรอยโรคที่ tubulointerstitium เด่นกว่าที่ glomerulus เสียอีก ${S.r}</li>
+<li>พบ immune complex แบบเดียวกันที่ basement membrane ของท่อไตและของหลอดเลือดฝอยรอบท่อในผู้ป่วยจำนวนมาก ${S.r}</li></ul>`});
 G("diabetic","e","Diabetic nephropathy",{em:{thick:true,nod:true},if:"none",lm:{nod:true,thick:true},sum:[["LM","mesangial expansion · nodular glomerulosclerosis (KW) · hyaline arteriolosclerosis"],["IF","linear IgG/albumin ‘sticking’ (nonimmune)"],["EM","GBM หนาทั่วไป (สิ่งแรกที่เห็น)"]]},
 ()=>`<h3>Lesions</h3><ul><li><b>GBM thickening</b> ทั่วไป · <b>diffuse mesangial sclerosis</b> · <b>nodular (Kimmelstiel–Wilson)</b> PAS+ ${S.r}</li>
  <li><b>Hyaline arteriolosclerosis</b> ทั้ง afferent และ efferent · pyelonephritis และ <b>papillary necrosis</b> พบบ่อย ${S.r}</li>
