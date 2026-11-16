@@ -206,8 +206,20 @@ draw(){const c=ST.cy||"ad";let b="";const kid=(x,big)=>`<path class="kid" d="M${
  if(c==="nphp")for(let i=0;i<10;i++)b+=`<circle class="cyst" cx="${290+r()*70}" cy="${170+r()*100}" r="${5+r()*7}"/>`;
  const info={ad:["Autosomal dominant · PKD1 (polycystin-1, 85%) / PKD2","ไตโตมาก ทั้งสองข้าง · liver cysts · berry aneurysm · MVP","ESRD อายุ 40–60"],ar:["Autosomal recessive · PKHD1 (fibrocystin)","ไตโตตั้งแต่เกิด · cysts ยาวรัศมีจาก CD","congenital hepatic fibrosis"],mcdk:["Developmental (ไม่ใช่กรรมพันธุ์) · มักข้างเดียว","cysts + dysplastic stroma, cartilage","มักมี obstruction ร่วม"],msk:["Medullary sponge kidney","cysts เล็กใน medullary CD","stones, hematuria · ไตทำงานดี"],nphp:["Nephronophthisis (ciliopathy)","cysts ที่ corticomedullary junction","ESRD ในเด็ก/วัยรุ่น · polyuria"]}[c];
  b+=`<rect class="box vn" x="440" y="100" width="194" height="230" rx="12"/>`+T(537,126,info[0].split(" · ")[0],{c:"bh"})+wrapT(452,150,[info[0].split(" · ")[1]||"",info[1],info[2]].join(" · "),24,"s");return svg(b,"0 0 640 440")},
-notes:()=>`${tbl(["โรค","ลักษณะ","Outcome"],[["ADPKD","ไตโตมีซีสต์มาก, liver cysts, berry aneurysm · hematuria, flank pain, UTI, stones, HT","CKD เริ่ม 40–60 ปี"],["ARPKD","ไตโตตั้งแต่เกิด, hepatic fibrosis","เสียชีวิตในวัยทารก/เด็ก (แปรผัน)"],["Medullary sponge","medullary cysts บน urogram · hematuria, UTI, stones","ดี"],["Nephronophthisis","ไตเล็ก cysts ที่ corticomedullary · polyuria, anemia","ESRD ในเด็ก"],["MCDK","ซีสต์ + dysplasia, ข้างเดียว","ดี (ถ้าอีกข้างปกติ)"],["Acquired (dialysis)","ซีสต์ใน ESRD ที่ฟอกเลือดนาน","เสี่ยง RCC"],["Simple cysts","พบบ่อย ผนังบาง ใส","ไม่มีผล"]])}
- <ul><li>ADPKD: polycystin เกี่ยวกับ primary cilium → cilia–centrosome complex ผิดปกติ · ~10% เสียชีวิตจาก berry aneurysm แตก ${S.r}</li></ul>`});
+notes:()=>`<h3>วิธีจัดกลุ่มที่ใช้ได้จริง</h3><ul>
+<li>ถุงน้ำในไตเป็นกลุ่มโรคที่ปนกันทั้ง<b>กรรมพันธุ์ ความผิดปกติของการเจริญ และที่เกิดขึ้นภายหลัง</b> จึงต้องแยกด้วยคำถามสามข้อคือ <b>ไตโตหรือเล็ก ถุงน้ำอยู่ตรงไหน และอายุที่เริ่มเป็น</b> ${S.r}</li>
+<li>ที่ต้องรู้จักเพราะสามเหตุผล — พบได้บ่อยและมักเป็นปัญหาในการแปลผลภาพถ่าย · บางชนิดเป็น<b>สาเหตุสำคัญของไตวายเรื้อรัง</b> · และบางครั้ง<b>แยกจากเนื้องอกร้ายได้ยาก</b> ${S.r}</li></ul>
+<h3>ไตโตทั้งสองข้าง</h3><ul>
+<li><b>ADPKD</b> — ถุงน้ำกลมหลายขนาดกระจายทั่วไต เริ่มเห็นในวัยผู้ใหญ่ มาพร้อมถุงน้ำที่ตับและ berry aneurysm · ไตวายในช่วงอายุ 40–60 ปี ${S.r}</li>
+<li><b>ARPKD</b> — ไตโตตั้งแต่แรกเกิด ถุงน้ำเรียงเป็นแนวรัศมีตั้งฉากกับผิวไต มาพร้อม congenital hepatic fibrosis ${S.r}</li></ul>
+<h3>ไตเล็กหรือไตผิดรูป</h3><ul>
+<li><b>Nephronophthisis</b> — ถุงน้ำอยู่ที่รอยต่อ cortex กับ medulla แต่<b>ไตหดเล็กลง</b> เด็กมาด้วยปัสสาวะมาก ซีด และการเจริญเติบโตช้า ${S.r}</li>
+<li><b>Multicystic renal dysplasia</b> — ไม่ใช่กรรมพันธุ์ เป็นความผิดปกติของการเจริญ มีถุงน้ำขนาดไม่เท่ากันร่วมกับเนื้อเยื่อผิดที่อย่างกระดูกอ่อน · มักมีความผิดปกติอื่นของทางเดินปัสสาวะร่วมด้วย และ<b>ถ้าเป็นข้างเดียวผ่าตัดออกก็หายขาด</b> ${S.r}</li></ul>
+<h3>ถุงน้ำที่อยู่เฉพาะใน medulla</h3><ul>
+<li><b>Medullary sponge kidney</b> — collecting duct ใน medulla ขยายเป็นถุงเล็ก ๆ · การทำงานของไตปกติ ปัญหาคือนิ่ว เลือดปนปัสสาวะ และการติดเชื้อซ้ำ · <b>เป็นภาวะที่ไม่ร้ายแรง</b> ${S.r}</li></ul>
+<h3>ที่เกิดขึ้นภายหลัง</h3><ul>
+<li><b>Acquired cystic disease</b> ในผู้ที่ฟอกเลือดมานาน — ไตเสื่อมแล้วเกิดถุงน้ำขึ้นใหม่ ภาวะแทรกซ้อนคือเลือดออกและการกลายเป็นมะเร็ง ${S.r}</li>
+<li><b>Simple cysts</b> ที่ cortex ขนาด 1–5 เซนติเมตร ผนังเรียบใส · พบบ่อยมากและ<b>ไม่มีความหมายทางคลินิก</b> ข้อควรระวังเพียงอย่างเดียวคืออย่าสับสนกับเนื้องอก ${S.r}</li></ul>`});
 
 /* ---------- i · obstruction & stones ---------- */
 SEC.push({id:"obstruction",k:"i",t:"Obstruction & hydronephrosis",leg:[],

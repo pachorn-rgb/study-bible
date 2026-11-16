@@ -21,11 +21,14 @@ SEC.push({id:"casts",k:"a",t:"Urinary casts & glomerular nomenclature",leg:[],
 <h3>คำเรียกรอยโรคของ glomerulus</h3><ul><li><b>Focal</b> = ไม่ถึงครึ่งของ glomeruli · <b>diffuse</b> = เกินครึ่ง ${S.r}</li><li><b>Segmental</b> = บางส่วนของ glomerulus หนึ่ง · <b>global</b> = ทั้ง glomerulus ${S.r}</li>
 <li><b>Proliferative</b> = เซลล์เพิ่ม (มักเป็น nephritic) · <b>membranous</b> = GBM หนา · <b>crescentic</b> = เซลล์ parietal + macrophage + fibrin ใน Bowman space ${S.r}</li></ul>`});
 
-Object.assign(GN,{a:"Glomerular disease basics",b:"Nephritic syndrome",c:"Nephrotic syndrome",d:"Systemic disease & the glomerulus",e:"Management"});
+Object.assign(GN,{a:"Glomerular disease basics",b:"Hereditary · congenital · structural",c:"Infectious · immunologic: nephritic",d:"Infectious · immunologic: nephrotic",e:"Infectious · immunologic: systemic",f:"Metabolic · regulatory",g:"Management"});
 regroup({casts:"a",syndromes:"a","ap-syn":"a","gd-pat":"a","gd-prot":"a",immune:"a",glomresp:"a",progression:"a",
- psgn:"b",rpgn:"b",iga:"b",alport:"b",mpgn:"b",
- nephrotic:"c",mcd:"c",fsgs:"c",membranous:"c",diabetic:"c",
- lupus:"d",systemic:"d","gd-tx":"e","ap-hem":"e"},
+ alport:"b",
+ psgn:"c",rpgn:"c",iga:"c",mpgn:"c",
+ nephrotic:"d",mcd:"d",fsgs:"d",membranous:"d",
+ lupus:"e",systemic:"e",
+ diabetic:"f",
+ "gd-tx":"g","ap-hem":"g"},
  {casts:"Casts & nomenclature",syndromes:"Glomerular syndromes","ap-syn":"Nephritic vs nephrotic","gd-pat":"Clinical patterns","gd-prot":"Measuring proteinuria",immune:"Immune mechanisms",glomresp:"Glomerular responses",progression:"Podocytes & progression",
   psgn:"Poststreptococcal GN",rpgn:"RPGN (crescentic)",iga:"IgA nephropathy",alport:"Alport syndrome",mpgn:"MPGN · C3G",nephrotic:"Nephrotic: causes",mcd:"Minimal change",fsgs:"FSGS",membranous:"Membranous",diabetic:"Diabetic nephropathy",
   lupus:"Lupus nephritis",systemic:"Amyloid & other systemic","gd-tx":"Treatment by disease","ap-hem":"Hematuria"});

@@ -8311,6 +8311,10 @@
          "glomresp"
         ],
         [
+         "Hereditary nephritis (Alport) & thin BM",
+         "alport"
+        ],
+        [
          "Acute postinfectious GN",
          "psgn"
         ],
@@ -8321,10 +8325,6 @@
         [
          "IgA nephropathy & HSP",
          "iga"
-        ],
-        [
-         "Hereditary nephritis (Alport) & thin BM",
-         "alport"
         ],
         [
          "MPGN & C3 glomerulopathy",
@@ -8347,16 +8347,16 @@
          "membranous"
         ],
         [
-         "Diabetic nephropathy",
-         "diabetic"
-        ],
-        [
          "Lupus nephritis",
          "lupus"
         ],
         [
          "Other systemic glomerular disease",
          "systemic"
+        ],
+        [
+         "Diabetic nephropathy",
+         "diabetic"
         ],
         [
          "Measuring proteinuria",
@@ -8401,6 +8401,30 @@
          "map"
         ],
         [
+         "Cystic diseases",
+         "cystic"
+        ],
+        [
+         "ADPKD",
+         "pkd-ad"
+        ],
+        [
+         "ARPKD",
+         "pkd-ar"
+        ],
+        [
+         "Cystitis",
+         "cystitis"
+        ],
+        [
+         "Pyelonephritis & UTI",
+         "pyelo"
+        ],
+        [
+         "Interstitial cystitis (bladder pain syndrome)",
+         "ic"
+        ],
+        [
          "Urolithiasis",
          "stones"
         ],
@@ -8433,30 +8457,6 @@
          "retention"
         ],
         [
-         "Cystitis",
-         "cystitis"
-        ],
-        [
-         "Pyelonephritis & UTI",
-         "pyelo"
-        ],
-        [
-         "Interstitial cystitis (bladder pain syndrome)",
-         "ic"
-        ],
-        [
-         "Cystic diseases",
-         "cystic"
-        ],
-        [
-         "ADPKD",
-         "pkd-ad"
-        ],
-        [
-         "ARPKD",
-         "pkd-ar"
-        ],
-        [
          "Renal cell carcinoma",
          "rcc"
         ],
@@ -8477,22 +8477,6 @@
          "othertum"
         ],
         [
-         "Acute colic & prevention",
-         "st-mx"
-        ],
-        [
-         "Diagnosis, relief & recovery",
-         "uo-dx"
-        ],
-        [
-         "Obstructive lesions & retroperitoneal fibrosis",
-         "ureterobs"
-        ],
-        [
-         "Urethra: inflammation & tumors",
-         "urethra"
-        ],
-        [
          "Other inherited cystic & tubular diseases",
          "pkd-oth"
         ],
@@ -8509,6 +8493,26 @@
          "bladdercong"
         ],
         [
+         "Ureter: congenital anomalies & tumors",
+         "ureter"
+        ],
+        [
+         "Urethra: inflammation & tumors",
+         "urethra"
+        ],
+        [
+         "Acute colic & prevention",
+         "st-mx"
+        ],
+        [
+         "Diagnosis, relief & recovery",
+         "uo-dx"
+        ],
+        [
+         "Obstructive lesions & retroperitoneal fibrosis",
+         "ureterobs"
+        ],
+        [
          "Noninvasive urothelial tumors: grading",
          "grading"
         ],
@@ -8519,10 +8523,6 @@
         [
          "Metaplastic lesions",
          "metaplasia"
-        ],
-        [
-         "Ureter: congenital anomalies & tumors",
-         "ureter"
         ]
        ],
        "ref": {

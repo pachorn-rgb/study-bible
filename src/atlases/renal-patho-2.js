@@ -58,12 +58,11 @@ SEC.push({id:"retention",k:"c",t:"Acute urinary retention",mm:"Acute retention",
 <li><b>หลังระบายต้องเฝ้าสองอย่าง</b> — <b>post-obstructive diuresis</b> ที่ปัสสาวะออกมากจนขาดน้ำและเกลือแร่ และ <b>haematuria ex vacuo</b> จากการที่กระเพาะปัสสาวะยุบเร็ว · ตรวจ creatinine ทุกรายเพราะการอุดกั้นสองข้างทำให้เกิด postrenal AKI ได้ ${S.h}</li>
 <li>เมื่อพ้นภาวะเฉียบพลันจึงแก้ที่ต้นเหตุ — BPH เริ่มด้วย <b>α₁-blocker</b> ก่อนลองถอดสายสวน และใช้ <b>5α-reductase inhibitor</b> เมื่อต่อมโตมาก ${S.r}</li></ul>`});
 
-Object.assign(GN,{a:"Kidney stones",b:"Obstruction & hydronephrosis",c:"Urinary incontinence",d:"Urinary tract infection",e:"Cysts & congenital disorders",f:"Tumors"});
-regroup({stones:"a","st-type":"a","st-risk":"a","st-mx":"a",
- obstruction:"b","uo-cause":"b","uo-phys":"b","uo-dx":"b",ureterobs:"b",
- incont:"c",retention:"c",cystitis:"d",pyelo:"d",ic:"d",urethra:"d",
- cystic:"e","pkd-ad":"e","pkd-ar":"e","pkd-oth":"e","cb-inh":"e",congenital:"e",bladdercong:"e",
- rcc:"f",benign:"f",wilms:"f",urothelial:"f",grading:"f",staging:"f",othertum:"f",metaplasia:"f",ureter:"f"},
+Object.assign(GN,{a:"Hereditary · congenital · structural",b:"Infectious · inflammatory · immunologic",c:"Traumatic · mechanical",d:"Neoplastic & tumour-like"});
+regroup({cystic:"a","pkd-ad":"a","pkd-ar":"a","pkd-oth":"a","cb-inh":"a",congenital:"a",bladdercong:"a",ureter:"a",
+ cystitis:"b",pyelo:"b",ic:"b",urethra:"b",
+ stones:"c","st-type":"c","st-risk":"c","st-mx":"c",obstruction:"c","uo-cause":"c","uo-phys":"c","uo-dx":"c",ureterobs:"c",incont:"c",retention:"c",
+ rcc:"d",benign:"d",wilms:"d",urothelial:"d",grading:"d",staging:"d",othertum:"d",metaplasia:"d"},
  {stones:"Urolithiasis","st-type":"Stone types & urine pH","st-risk":"Risk factors & diet","st-mx":"Colic & prevention",obstruction:"Hydronephrosis","uo-cause":"Causes by level","uo-phys":"Pathophysiology","uo-dx":"Diagnosis & relief",ureterobs:"Ureteral obstruction",
   incont:"Incontinence types",cystitis:"Cystitis",ic:"Interstitial cystitis",pyelo:"Pyelonephritis",urethra:"Urethra",cystic:"Renal cysts","pkd-ad":"ADPKD","pkd-ar":"ARPKD","pkd-oth":"Other inherited cystic","cb-inh":"Inherited tubular disorders",congenital:"Kidney anomalies",bladdercong:"Bladder anomalies",
   rcc:"Renal cell carcinoma",benign:"Oncocytoma · angiomyolipoma",wilms:"Wilms tumor",urothelial:"Urothelial carcinoma",grading:"Grading",staging:"Staging",othertum:"SCC & other bladder tumors",metaplasia:"Metaplastic lesions",ureter:"Ureter lesions"});
