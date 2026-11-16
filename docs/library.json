@@ -1934,6 +1934,92 @@
         "ch": "Murray Ch 12–13",
         "sort": 5
        }
+      },
+      {
+       "id": "micro-bact-1",
+       "title": "Gram-positive cocci",
+       "subs": [
+        "Clinical Bacteriology"
+       ],
+       "src": "Murray 9e Ch 18–19",
+       "href": "micro/micro-bact-1.html",
+       "thumb": "thumbs/micro-bact-1.jpg",
+       "desc": "Staphylococcus: catalase และ coagulase, ปัจจัยก่อโรคของ S. aureus, โรคจากสารพิษสามอย่าง, แผลหนองตามความลึก, MRSA กับ PBP2a, coagulase-negative staphylococci",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Staphylococcus: the genus and its two tests",
+         "staph-bio"
+        ],
+        [
+         "Staphylococcus aureus virulence factors",
+         "staph-vir"
+        ],
+        [
+         "The three toxin-mediated diseases",
+         "staph-tox"
+        ],
+        [
+         "Pyogenic skin disease, by depth",
+         "staph-pyo"
+        ],
+        [
+         "MRSA and why β-lactams stop working",
+         "mrsa"
+        ],
+        [
+         "Coagulase-negative staphylococci",
+         "cons"
+        ],
+        [
+         "Classifying streptococci: hemolysis and Lancefield",
+         "strep-class"
+        ],
+        [
+         "Streptococcus pyogenes: the surface and what it secretes",
+         "gas-vir"
+        ],
+        [
+         "Soft-tissue disease, by depth",
+         "gas-sup"
+        ],
+        [
+         "Rheumatic fever versus acute glomerulonephritis",
+         "gas-seq"
+        ],
+        [
+         "Streptococcus agalactiae and the neonate",
+         "gbs"
+        ],
+        [
+         "Streptococcus pneumoniae",
+         "spn"
+        ],
+        [
+         "Viridans streptococci",
+         "vgs"
+        ],
+        [
+         "Enterococcus and vancomycin resistance",
+         "ent"
+        ],
+        [
+         "Telling the gram-positive cocci apart",
+         "gpc-lab"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 18–19",
+        "sort": 6
+       }
       }
      ],
      "checklist": [

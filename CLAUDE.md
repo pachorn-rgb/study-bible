@@ -48,7 +48,10 @@ Thai explains, English names. Aim for **≈45% Thai characters** per atlas file;
   exam question would print in English. Write `myocardial infarction`, not
   `กล้ามเนื้อหัวใจขาดเลือด`; `myelosuppression`, not `ไขกระดูกกด`.
 - **Always English**: every topic title (`t:`), card label, table header, group
-  name (`GN`) and figure caption.
+  name (`GN`) and figure caption — and every structure, property and process name
+  inside a figure. A leader label is `English name` on the first line; only the gloss
+  line under it is Thai. Write `antiphagocytic`, not `กันการถูกกลืนกิน`; `thin wall`,
+  not `ผนังบาง`.
 - **Thai**: the connective prose that explains mechanism, reason and consequence —
   the part that makes the English terms make sense.
 
@@ -78,4 +81,30 @@ A `draw()` must earn its space. Decide per topic:
 
 A stack of captioned text boxes is never the answer: it costs more room than a list,
 shrinks the text and tells the reader nothing new. The `cards()` helper that used to
-draw them has been removed, and `check.js` fails any new block of them.
+draw them has been removed, and `check.js` fails any new block of them. Text that would
+have gone in such a box goes under a thin rule (`.m-sep`) as a heading line plus a gloss
+line, or on a leader line pointing at the thing it describes.
+
+#### Figure language
+Artistic quality counts. A figure is judged on whether it looks like the thing, not only
+on whether it is labelled correctly. The standard was set by the glomerular-disease EM
+figures and extended in `src/atlases/_micro-helpers.js` + `src/engine/micro.css`:
+- **Draw the structure, not a swatch of it.** A membrane is a bilayer with heads and
+  tails; a wall is woven strands with cross-links; a sugar is a ring; a phage has facets,
+  a striated sheath and fibres. The reader should be able to see the difference between
+  two things without reading the labels.
+- **One wave function per cross-section.** Every layer undulates off the same baseline so
+  the picture reads as one piece of tissue instead of stacked rectangles.
+- **Nothing is geometrically perfect.** Cell outlines, blobs and loops come from a seeded
+  wobble, so no two are identical and none is a plain ellipse.
+- **Texture.** Cytoplasm gets grain and ribosomes; fills get a soft inner shade and one
+  specular highlight. A flat tint reads as plastic.
+- **One accent at a time** on a quiet ground. Where the teaching point is shape, every
+  item takes the same colour so that shape is the only variable.
+- **Labels are leader lines** to the structure they name: a thin line, a dot on the
+  structure, the English name in bold, one Thai gloss line under it.
+- **Comparisons are drawn together.** If the topic is "A versus B", A and B go in one
+  figure on a shared baseline — never behind tool chips, because something you have to
+  click to see is not a comparison.
+- Per-chapter figure CSS goes in `src/engine/<chapter>.css` and is attached with
+  `"css": ["<chapter>.css"]` in the atlas meta, so no other chapter is affected.

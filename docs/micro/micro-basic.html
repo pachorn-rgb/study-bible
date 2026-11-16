@@ -323,7 +323,7 @@ draw:()=>{
   ["Safranin red","counterstain ติดเฉพาะเซลล์ที่ถูกล้างสีไปแล้ว","m-stP","m-stR"]];
  const GPX=404,GNX=534,row=y=>76+y*78;
  let b=mL(GPX,38,"Gram-positive",{c:"bh"})+mL(GNX,38,"Gram-negative",{c:"bh"})
-  +mL(GPX,54,"ผนังหนา",{c:"s m"})+mL(GNX,54,"ผนังบาง + OM",{c:"s m"});
+  +mL(GPX,54,"thick wall",{c:"s m"})+mL(GNX,54,"thin wall + outer membrane",{c:"s m"});
  /* the decolorizer step is the one that matters — mark it on the ground */
  b+=`<rect class="m-decol" x="26" y="${row(2)-32}" width="588" height="64" rx="16"/>`;
  steps.forEach(([n,d,gp,gn],i)=>{const y=row(i);
@@ -479,7 +479,7 @@ draw:()=>{let b="";
  /* lysozyme cuts the glycan backbone */
  const lx=X0+step*1.5;
  b+=`<path d="M${lx},${GY-40} L${lx},${GY+40}" style="fill:none;stroke:${MB.bad};stroke-width:2.6;stroke-dasharray:4 3"/>`
-  +mL(lx,GY-48,"lysozyme ตัดที่นี่",{c:"bad"});
+  +mL(lx,GY-48,"lysozyme cuts here",{c:"bad"});
  /* where the drugs bind — stated on the picture, not in a box */
  b+=`<path class="m-sep" d="M30,296 L610,296"/>`
   +mL(40,324,"β-lactams",{a:"start",c:"bh"})
@@ -523,7 +523,7 @@ draw:()=>{let b="";const cx=236,cy=126;
  /* flagellum with its basal body */
  b+=`<path class="m-fla" d="M${cx+88},${cy} ${[...Array(5)].map((_,k)=>`Q${cx+100+k*26},${cy+(k%2?21:-21)} ${cx+113+k*26},${cy}`).join(" ")}"/>`
   +`<circle class="m-flb" cx="${cx+88}" cy="${cy}" r="6"/><circle class="m-flb" cx="${cx+80}" cy="${cy}" r="4"/>`;
- b+=mlead2(cx,cy-60,470,36,["Capsule","กันการถูกกลืนกิน · ภูมิคุ้มกันเห็นได้ยาก"])
+ b+=mlead2(cx,cy-60,470,36,["Capsule","antiphagocytic · poorly antigenic"])
   +mlead2(cx-70,cy-44,470,74,["Fimbriae (pili)","3–8 nm · adhesin ที่ใช้เกาะ"])
   +mlead2(cx-152,cy+50,170,250,["Sex pilus","ท่อที่ใช้ส่ง DNA ตอน conjugation"],{a:"end"})
   +mlead2(cx+150,cy-20,470,112,["Flagellum","15–20 nm · ใช้เคลื่อนที่ตามเคมี"]);
@@ -572,7 +572,7 @@ draw:()=>{const cx=196,cy=146,LX=372;let b="";
   +mlead2(cx+64,cy-32,LX,116,["Cortex","peptidoglycan ที่เชื่อมขวางหลวม"])
   +mlead2(cx+52,cy+24,LX,154,["Inner membrane","กั้นน้ำออกจาก core"])
   +mlead2(cx,cy,LX,192,["Core","DNA + Ca²⁺-dipicolinic acid · แทบไม่มีน้ำ"]);
- b+=mL(cx,cy+96,"ติดอยู่ในภาวะ suspended animation",{c:"bh"});
+ b+=mL(cx,cy+96,"In suspended animation until it germinates",{c:"bh"});
 
  /* --- the cycle, drawn as a cycle ---------------------------------- */
  const vy=318,ax=120,bx=320,ddx=520;
@@ -679,7 +679,7 @@ draw:()=>{let b="";
   +mL(c3,cy1+152,"พกยีนของมันเข้ามาด้วย",{c:"s m"});
  /* the point of lysogeny, said once on its own line */
  b+=`<path class="m-sep" d="M28,312 L612,312"/>`
-  +mL(320,336,"corynephage β พกยีน diphtheria toxin มาให้ C. diphtheriae",{c:"bh"})
+  +mL(320,336,"corynephage β carries the diphtheria toxin gene",{c:"bh"})
   +mL(320,356,"เชื้อที่ไม่มี phage ตัวนี้จะไม่สร้างสารพิษ — ความรุนแรงมาจากไวรัสของแบคทีเรีย",{c:"s m"});
  return svg(b,"0 0 640 372")},
 notes:()=>`<h3>Chromosome</h3><ul>
@@ -755,7 +755,7 @@ draw:()=>{let b="";
   +`<rect x="450" y="156" width="26" height="28" rx="5" style="${mbF(MB.ok,40)}"/>`;
  b+=arr("M300,114 L300,150")+mbL(372,136,"ยกตัวเองไปวางที่อื่นได้ ทั้งในจีโนมเดียวกันและข้ามโมเลกุล",{c:"s"});
  b+=`<path class="m-sep" d="M24,214 L616,214"/>`
-  +mL(24,240,"ที่ย้ายไปได้",{a:"start",c:"bh"})
+  +mL(24,240,"What moves, and where",{a:"start",c:"bh"})
   +mL(24,260,"ตำแหน่งหนึ่งในจีโนม → อีกตำแหน่ง · plasmid → plasmid · plasmid → chromosome",{a:"start",c:"s m"})
   +mL(24,292,"Pathogenicity island",{a:"start",c:"bad"})
   +mL(24,312,"ยีนก่อโรคทั้งชุดถูกมัดรวมไว้ด้วยกัน ล้อมด้วย mobile element จึงย้ายไปได้ทั้งชุด",{a:"start",c:"s m"});

@@ -190,3 +190,68 @@ function mphage(cx, cy, s = 1) {
   });
   return b;
 }
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}

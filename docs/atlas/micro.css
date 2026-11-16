@@ -92,3 +92,26 @@
 .m-pdna {fill:none;stroke:color-mix(in srgb,#C2410C 50%,var(--sb-surface));stroke-width:1.6}
 .m-ring2{fill:color-mix(in srgb,#0E8A7E 12%,var(--sb-surface));
          stroke:color-mix(in srgb,#0E8A7E 58%,var(--sb-surface));stroke-width:2;stroke-linejoin:round}
+
+/* ---- skin cross-section --------------------------------------------- */
+.m-corn{fill:color-mix(in srgb,#B7791F 13%,var(--sb-surface));stroke:none}
+.m-gran{fill:color-mix(in srgb,#B7791F 20%,var(--sb-surface));stroke:none}
+.m-spin{fill:color-mix(in srgb,#C2185B 9%,var(--sb-surface));stroke:none}
+.m-derm{fill:color-mix(in srgb,#C2334A 7%,var(--sb-surface));stroke:none}
+.m-subq{fill:color-mix(in srgb,#B7791F 8%,var(--sb-surface));stroke:none}
+.m-fasc{fill:color-mix(in srgb,#3E6FB0 13%,var(--sb-surface));stroke:none}
+.m-musc{fill:color-mix(in srgb,#C2334A 13%,var(--sb-surface));stroke:none}
+.m-coll{fill:none;stroke:color-mix(in srgb,#C2334A 22%,var(--sb-surface));stroke-width:1}
+.m-kera{fill:none;stroke:color-mix(in srgb,#B7791F 34%,var(--sb-surface));stroke-width:.9}
+.m-kcell{fill:none;stroke:color-mix(in srgb,var(--sb-ink) 16%,var(--sb-surface));stroke-width:.9}
+.m-fat {fill:color-mix(in srgb,#B7791F 12%,var(--sb-surface));stroke:color-mix(in srgb,#B7791F 34%,var(--sb-surface));stroke-width:1}
+.m-foll{fill:color-mix(in srgb,var(--sb-ink) 5%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 24%,var(--sb-surface));stroke-width:1.2}
+.m-hair{fill:none;stroke:color-mix(in srgb,var(--sb-ink) 45%,var(--sb-surface));stroke-width:2}
+.m-pus {fill:color-mix(in srgb,#B7791F 40%,var(--sb-surface));stroke:color-mix(in srgb,#B7791F 60%,var(--sb-surface));stroke-width:1.2}
+.m-split{fill:none;stroke:#C2334A;stroke-width:2.2;stroke-dasharray:6 4}
+
+/* ---- blood agar ------------------------------------------------------ */
+.m-agar {fill:color-mix(in srgb,#C2334A 26%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 18%,var(--sb-surface));stroke-width:1.5}
+.m-beta {fill:var(--sb-surface)}
+.m-alpha{fill:color-mix(in srgb,#2F8A78 30%,color-mix(in srgb,#C2334A 20%,var(--sb-surface)))}
+.m-col  {fill:color-mix(in srgb,var(--sb-surface) 86%,#B7791F);stroke:color-mix(in srgb,var(--sb-ink) 22%,var(--sb-surface));stroke-width:.8}

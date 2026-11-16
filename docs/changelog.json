@@ -1,5 +1,16 @@
 [
  {
+  "v": "6.85",
+  "date": "2026-11-16",
+  "th": [
+   "เพิ่มโมดูล Gram-positive cocci ในบท Microbiology — 15 หัวข้อ อ่านจาก Murray บท 18–19 ตามคาบ Gram-positive cocci ของวิชา 204-221",
+   "Staphylococcus: catalase กับ coagulase, ปัจจัยก่อโรคของ S. aureus, โรคจากสารพิษสามอย่าง (scalded skin, food poisoning, toxic shock), แผลหนองตามความลึก, MRSA กับ PBP2a, coagulase-negative staphylococci",
+   "Streptococcus: hemolysis กับ Lancefield, S. pyogenes และสิ่งที่มันหลั่ง, โรคเนื้อเยื่ออ่อนตามความลึก, rheumatic fever เทียบ acute glomerulonephritis, group B กับทารกแรกเกิด, pneumococcus, viridans, Enterococcus กับการดื้อ vancomycin และแผนผังแยกเชื้อที่ห้องแล็บใช้จริง",
+   "ภาพผิวหนังตัดขวางวาดใหม่ทั้งชั้น — corneum เป็นเกล็ด keratinocyte เป็นรูปหลายเหลี่ยม collagen เป็นมัด ไขมันเป็นก้อน — แล้ววาง impetigo folliculitis furuncle carbuncle และ erysipelas cellulitis necrotizing fasciitis ไว้ที่ความลึกจริงของมัน",
+   "บันทึกมาตรฐานภาพของแอปลงใน CLAUDE.md และไล่แก้ชื่อโครงสร้างในรูปที่เผลอเขียนเป็นภาษาไทยให้กลับเป็น English"
+  ]
+ },
+ {
   "v": "6.84",
   "date": "2026-11-16",
   "th": [

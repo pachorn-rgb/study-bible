@@ -1,0 +1,28 @@
+{
+ "id": "micro-bact-1",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Clinical Bacteriology",
+ "draft": false,
+ "title_tag": "Gram-positive cocci",
+ "h1": "Gram-positive cocci",
+ "lede": "Staphylococcus, Streptococcus และ Enterococcus — เชื้อที่เจอบ่อยที่สุดในสิ่งส่งตรวจจริง · เนื้อหาตามคาบ Gram-positive cocci ของวิชา 204-221 อ่านจาก Murray บท 18–19 · ภาพแผลผิวหนังวาดตามความลึกจริงของรอยโรค จึงเทียบ impetigo furuncle carbuncle erysipelas และ necrotizing fasciitis ได้ในภาพเดียว",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 18 Staphylococcus และ Ch 19 Streptococcus and Enterococcus"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Clinical Bacteriology"],
+  "title": "Gram-positive cocci",
+  "src": "Murray 9e Ch 18–19",
+  "desc": "Staphylococcus: catalase และ coagulase, ปัจจัยก่อโรคของ S. aureus, โรคจากสารพิษสามอย่าง, แผลหนองตามความลึก, MRSA กับ PBP2a, coagulase-negative staphylococci",
+  "ch": "Murray Ch 18–19",
+  "sort": 6,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}
