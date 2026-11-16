@@ -15,7 +15,19 @@ SEC.push({id:"papnec",k:"b",t:"Renal papillary & diffuse cortical necrosis",leg:
  ["Causes of papillary necrosis","sickle cell disease/trait, pyelonephritis เฉียบพลัน, analgesics (NSAIDs), เบาหวาน"],
  ["Diffuse cortical necrosis","cortex ทั้งสองข้างขาดเลือดทั่ว · หลอดเลือดหดเกร็ง + DIC"],
  ["Causes of cortical necrosis","ภาวะแทรกซ้อนทางสูติกรรม (รกลอกตัวก่อนกำหนด), septic shock"]]),
- notes:()=>`<ul><li>Medulla ส่วน papilla ได้เลือดน้อยอยู่แล้ว จึงขาดเลือดง่ายเมื่อมีปัจจัยร่วม ${S.x}</li><li>Papilla ที่หลุดอาจเห็นเป็นชิ้นเนื้อในปัสสาวะ หรือ "ring sign" ในภาพถ่ายรังสี ${S.x}</li><li>Diffuse cortical necrosis ทำให้ไตวายเฉียบพลันที่มักไม่ฟื้น ${S.x}</li></ul>`});
+ notes:()=>`<h3>Why the papilla and not somewhere else</h3><ul>
+ <li>Papilla อยู่ปลายสุดของ medulla ซึ่งได้เลือดน้อยอยู่แล้วเป็นทุนเดิม จึงขาดเลือดง่ายที่สุดเมื่อมีปัจจัยอื่นมาซ้ำ ${S.x}</li>
+ <li>Papilla ที่หลุดอาจเห็นเป็นชิ้นเนื้อในปัสสาวะ หรือเห็นเป็น "ring sign" ในภาพถ่ายรังสี ${S.x}</li></ul>
+ <h3>Four causes, told apart by the pattern (Table 20.9)</h3><ul>
+ <li><b>Diabetes</b>: หญิงมากกว่าชาย 3 ต่อ 1 · ใช้เวลาราว 10 ปีจึงเกิด · <b>80% มีการติดเชื้อร่วม</b> · พบ calcification ได้น้อย · papilla เสียหลายอัน และทั้งหมดอยู่ใน<b>ระยะเดียวกัน</b> ${S.r}</li>
+ <li><b>Analgesic nephropathy</b>: หญิงมากกว่าชาย 5 ต่อ 1 · ต้องใช้ยาเกินขนาดนานกว่า 5 ปี · ติดเชื้อร่วม 25% · <b>calcification พบบ่อย</b> · papilla เสียเกือบทั้งหมด และอยู่<b>คนละระยะกัน</b> ซึ่งเป็นจุดที่แยกจากเบาหวานได้ชัดที่สุด ${S.r}</li>
+ <li><b>Sickle cell disease</b>: papilla เสียเพียงไม่กี่อัน ${S.r}</li>
+ <li><b>Obstruction</b>: จำนวน papilla ที่เสียไม่แน่นอน ${S.r}</li>
+ <li>อุบัติการณ์ของ analgesic nephropathy ลดลงมากหลังจาก <b>phenacetin</b> ซึ่งเป็นสาเหตุหลักถูกถอนออกจากตลาดในเกือบทุกประเทศ และยาแก้ปวดสูตรผสมไม่ขายโดยไม่มีใบสั่งแพทย์อีกต่อไป ${S.r}</li></ul>
+ <h3>Diffuse cortical necrosis</h3><ul>
+ <li>เป็นคนละเรื่องกัน — cortex ทั้งสองข้างตายทั่วจากหลอดเลือดหดเกร็งร่วมกับ DIC ${S.x}</li>
+ <li>บริบทที่พบคือภาวะแทรกซ้อนทางสูติกรรม โดยเฉพาะรกลอกตัวก่อนกำหนด และ septic shock ${S.x}</li>
+ <li>ผลคือไตวายเฉียบพลันที่<b>มักไม่ฟื้น</b> ต่างจาก papillary necrosis ที่เสียเฉพาะส่วน ${S.x}</li></ul>`});
 
 /* B9.2.5 anuria / oliguria / polyuria — the criteria names them as a group-1-2 problem, and
    the thresholds are the whole content, so the picture is the scale itself. */

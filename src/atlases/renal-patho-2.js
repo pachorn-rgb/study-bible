@@ -29,7 +29,20 @@ SEC.push({id:"ic",k:"d",t:"Interstitial cystitis (bladder pain syndrome)",leg:[]
  ["Triggers","อาหารบางชนิด (กาแฟ ส้ม เผ็ด), แอลกอฮอล์, เพศสัมพันธ์, ประจำเดือน, ความเครียด"],
  ["Investigation","urinalysis และเพาะเชื้อปกติ · วินิจฉัยทางคลินิกหลังตัดสาเหตุอื่น"],
  ["Treatment","เลี่ยงสิ่งกระตุ้น ปรับพฤติกรรม · ไม่ดีขึ้นใช้ amitriptyline หรือ pentosan polysulfate · ต่อไปจึงพิจารณายาหยอดเข้ากระเพาะปัสสาวะ"]]),
- notes:()=>`<ul><li>พบบ่อยในหญิง และสัมพันธ์กับกลุ่มอาการปวดเรื้อรังอื่น (fibromyalgia, IBS) และโรคทางจิตเวช ${S.fa2}</li><li>ต่างจาก cystitis จากเชื้อ: ไม่มีไข้ ไม่มี pyuria เพาะเชื้อไม่ขึ้น ${S.fa2}</li></ul>`});
+ notes:()=>`<h3>A diagnosis made by exclusion, by definition</h3><ul>
+ <li>American Urological Association นิยามว่าเป็น<b>ความรู้สึกไม่สบาย</b> (ปวด แน่น หรือระคาย) ที่รู้สึกว่ามาจากกระเพาะปัสสาวะ ร่วมกับอาการทางทางเดินปัสสาวะนาน<b>เกิน 6 สัปดาห์</b> โดย<b>ไม่มีการติดเชื้อหรือสาเหตุอื่นที่ระบุได้</b> — คำว่า "ไม่มีสาเหตุอื่น" อยู่ในนิยามเลย ${S.r}</li>
+ <li>พบบ่อยที่สุดในผู้หญิง · ยังไม่ทราบสาเหตุ ${S.r}</li>
+ <li>อาการคือปวดเหนือหัวหน่าวเป็นพัก ๆ ซึ่งบางครั้งรุนแรง ร่วมกับปัสสาวะบ่อย ปวดปัสสาวะทันที ปัสสาวะเป็นเลือด และแสบขัด ${S.r}</li>
+ <li>สัมพันธ์กับกลุ่มอาการปวดเรื้อรังอื่น เช่น fibromyalgia และ IBS และกับโรคทางจิตเวช ${S.fa2}</li>
+ <li>ต่างจาก cystitis จากเชื้อตรงที่ไม่มีไข้ ไม่มี pyuria และเพาะเชื้อไม่ขึ้น ${S.fa2}</li></ul>
+ <h3>What cystoscopy and biopsy are actually for</h3><ul>
+ <li>ภาพจาก cystoscopy ที่พบได้คือรอยแยกของเยื่อบุและจุดเลือดออกเล็ก ๆ ทั่วไป เรียก <b>glomerulations</b> ${S.r}</li>
+ <li>ภาพใต้กล้องจุลทรรศน์<b>ไม่จำเพาะ</b> · มักพบ mast cell เพิ่มขึ้นใน submucosa แต่ยังไม่รู้ว่ามีความสำคัญทางพยาธิกำเนิดหรือไม่ ${S.r}</li>
+ <li>หน้าที่หลักของการตัดชิ้นเนื้อจึงคือ<b>ตัด carcinoma in situ (CIS) ออก</b> ซึ่งอาการทางคลินิกเลียนแบบ interstitial cystitis ได้ ${S.r}</li></ul>
+ <h3>The late phase</h3><ul>
+ <li>บางรายมีแผลเรื้อรังที่เยื่อบุ เรียก <b>Hunner ulcer</b> — เป็นระยะท้าย (classic, ulcerative phase) ${S.r}</li>
+ <li>ปลายทางคือ transmural fibrosis ทำให้กระเพาะปัสสาวะ<b>หดเล็กลง</b> ${S.r}</li>
+ <li>การรักษาส่วนใหญ่ยัง<b>เป็นไปตามประสบการณ์</b> ไม่ได้มาจากกลไกที่เข้าใจแล้ว ${S.r}</li></ul>`});
 
 /* B9.2.3 acute urinary retention — กลุ่มที่ 1 และ 2 in the criteria, so a new doctor has to
    recognise and relieve it. It was the one disease named in B9 that this chapter did not have. */
