@@ -335,7 +335,7 @@ notes:()=>`<h3>ทำไมต้องรู้จักกลุ่มนี�
 <h3>กลุ่มอื่นที่ควรรู้ชื่อ</h3><ul>
 <li><b>ADTKD</b> (UMOD, MUC1, REN, HNF1B) — CKD ที่ค่อยเป็นค่อยไปพร้อมโรคเกาต์ โดยมีถุงน้ำน้อยมาก · ชนิด HNF1B มาพร้อมเบาหวาน MODY5 ${S.h}</li>
 <li><b>CAKUT</b> คือความผิดปกติแต่กำเนิดของไตและทางเดินปัสสาวะ และเป็น<b>สาเหตุหลักของ ESRD ในเด็ก</b> ${S.h}</li>
-<li><b>Acquired cystic disease</b> เกิดในไตที่ฟอกเลือดมานาน ไตฝ่อแต่มีถุงน้ำขึ้นใหม่ · ภาวะแทรกซ้อนที่ต้องระวังคือ<b>เลือดออกและการกลายเป็นมะเร็ง</b> ${S.r}</li></ul>`});
+<li><b>Acquired cystic disease</b> เกิดในผู้ป่วย ESRD ที่ฟอกเลือดมานาน — มีถุงน้ำขึ้นใหม่ทั้งใน cortex และ medulla ขนาด 0.1–4 เซนติเมตร บุด้วยเซลล์ท่อไตที่แบนหรือที่เพิ่มจำนวน และมัก<b>มีผลึก calcium oxalate อยู่ภายใน</b> · เชื่อว่าเกิดจากท่อไตถูกอุดด้วยพังผืดหรือด้วยผลึกเอง ${S.r}</li><li>ส่วนใหญ่ไม่มีอาการ แต่<b>ถุงน้ำเลือดออกได้จนปัสสาวะเป็นเลือด</b> · ที่สำคัญกว่านั้นคือ<b>ความเสี่ยงต่อ renal cell carcinoma สูงขึ้นได้ถึงร้อยเท่า และเกิดจริงใน 7% ของผู้ป่วยที่ติดตามไปสิบปี</b> จึงเป็นเหตุผลที่ต้องเฝ้าระวังมะเร็งไตในผู้ที่ฟอกเลือดมานาน ${S.r}</li></ul>`});
 
 /* ---------- 328 · TIN ---------- */
 HS("328","a","tin-ain","Acute interstitial nephritis",{
@@ -428,9 +428,17 @@ notes:()=>`<ul><li>Low-dose renal-limited noncontrast CT ใช้กำหน�
 HS("331","a","uo-cause","Causes by level",{
 draw(){let b="";const L=[["Kidney / UPJ","UPJ stenosis (เด็ก), stones, papillary necrosis, tumor"],["Ureter","stones, stricture, tumor, retroperitoneal fibrosis, pregnancy, iatrogenic"],["Bladder","neurogenic bladder, tumor, stones · lesions ระดับนี้ทำให้ bilateral"],["Bladder outlet / urethra","BPH, prostate ca, posterior urethral valves (เด็กชาย), stricture"]];
  L.forEach(([n,d],i)=>{const y=14+i*80;b+=`<rect class="box ${["vn","","gl","ar"][i]}" x="14" y="${y}" width="612" height="70" rx="12"/>`+T(30,y+28,n,{a:"start",c:"bh"})+T(30,y+52,d,{a:"start",c:"s"})});return svg(b,"0 0 640 340")},
-notes:()=>`<ul><li>อุดเหนือ bladder → hydroureter/hydronephrosis ข้างเดียว · ที่ bladder หรือต่ำกว่า → ทั้งสองข้าง ${S.h}</li>
- <li>เด็ก: UPJ narrowing, ureter เข้า bladder ผิดที่ · <b>posterior urethral valves</b> สาเหตุ bilateral hydronephrosis ที่พบบ่อยที่สุดในเด็กชาย ${S.h}</li>
- <li>Flank pain เป็นอาการที่ทำให้มาพบแพทย์บ่อยที่สุด ${S.h}</li></ul>`});
+notes:()=>`<h3>วิธีคิดเรื่องตำแหน่ง</h3><ul>
+<li>การอุดกั้นเกิดได้ทุกจุด<b>ตั้งแต่ท่อปัสสาวะขึ้นไปจนถึง renal pelvis</b> และแบ่งเป็นสองแบบคือ<b>รอยโรคในตัวทางเดินปัสสาวะเอง</b> กับ<b>สิ่งที่กดจากภายนอก</b> ${S.r}</li>
+<li>คำถามแรกที่ใช้ได้เสมอคือ<b>ข้างเดียวหรือสองข้าง</b> — รอยโรคเหนือกระเพาะปัสสาวะมักเป็นข้างเดียว ส่วนรอยโรคที่คอกระเพาะปัสสาวะ ต่อมลูกหมาก หรือท่อปัสสาวะจะกระทบทั้งสองข้าง และเป็นกลุ่มเดียวที่ทำให้เกิด<b>postrenal AKI</b> ${S.x}</li></ul>
+<h3>ไล่จากบนลงล่าง</h3><ul>
+<li><b>Renal pelvis</b> — นิ่ว · เนื้องอก · <b>ureteropelvic stricture</b> ซึ่งเป็นสาเหตุที่พบในเด็ก ${S.r}</li>
+<li><b>Ureter จากภายใน</b> — นิ่ว · เนื้องอก · <b>ก้อนเลือด</b> · <b>papilla ที่หลุดลอก</b> ซึ่งโยงกลับไปหาเบาหวาน sickle cell และการใช้ยาแก้ปวดเกิน · และการอักเสบ ${S.r}</li>
+<li><b>Ureter จากภายนอก</b> — <b>การตั้งครรภ์</b> · เนื้องอกของอวัยวะข้างเคียงโดยเฉพาะ<b>มะเร็งปากมดลูก</b> · และ <b>retroperitoneal fibrosis</b> ${S.r}</li>
+<li><b>กระเพาะปัสสาวะ</b> — นิ่ว · เนื้องอก · และสาเหตุเชิงหน้าที่คือ<b>กระเพาะปัสสาวะพิการจากระบบประสาท</b> ทั้งจากไขสันหลังบาดเจ็บและจากเบาหวานที่เป็นมานาน ${S.r}</li>
+<li><b>ต่อมลูกหมาก</b> — ต่อมโตชนิดไม่ร้าย และมะเร็งต่อมลูกหมาก ${S.r}</li>
+<li><b>ท่อปัสสาวะ</b> — <b>posterior urethral valve</b> ในทารกเพศชาย · ท่อตีบ · เนื้องอกซึ่งพบน้อย ${S.r}</li>
+<li>สาเหตุอื่นที่ไม่เข้ากับการไล่ตามระดับ — <b>vesicoureteral reflux</b> · <b>มดลูกหย่อนและกระเพาะปัสสาวะหย่อน</b> ${S.r}</li></ul>`});
 HS("331","a","uo-phys","Pathophysiology",{
 draw:()=>tbl(["Pattern","Effect on the kidney"],[
  ["Hemodynamic","RBF ↑ ระยะแรก (PG, NO) → GFR ↓, medullary flow ↓"],
@@ -438,7 +446,17 @@ draw:()=>tbl(["Pattern","Effect on the kidney"],[
  ["Partial bilateral","distal RTA · hyperkalemia · salt wasting"],
  ["Acute partial bilateral","เลียนแบบ prerenal (BUN/Cr สูง, ปัสสาวะเข้มข้น, Na คั่ง)"],
  ["Chronic","CKD + ECF ขยาย → HT"]]),
-notes:()=>`<ul><li>Table 331-2 · complete bilateral obstruction → anuria ${S.h}</li><li>Azotemia เกิดเมื่อ bladder outlet obstruction, bilateral obstruction หรือข้างเดียวในคนมีไตข้างเดียว ${S.h}</li></ul>`});
+notes:()=>`<h3>ทำไมการอุดกั้นถึงทำลายไต</h3><ul>
+<li>ลำดับเหตุการณ์เริ่มจาก<b>ความดันในระบบรวบรวมปัสสาวะสูงขึ้น</b> ซึ่งย้อนไปถึง Bowman space ทำให้แรงที่ต้านการกรองเพิ่มขึ้นและ GFR ตกลง ${S.x}</li>
+<li>สิ่งที่ทำลายเนื้อไตจริง ๆ ไม่ใช่ความดันเพียงอย่างเดียว แต่เป็น<b>การอักเสบของเนื้อเยื่อระหว่างท่อไตที่ตามมา ซึ่งเกิดขึ้นแม้ไม่มีการติดเชื้อ</b> และลงเอยด้วยท่อไตฝ่อพร้อมพังผืดกระจายทั่ว cortex ${S.r}</li>
+<li>นี่คือเหตุผลที่<b>เวลาสำคัญกว่าความรุนแรง</b> — การอุดกั้นบางส่วนที่ทิ้งไว้นานทำลายไตได้มากกว่าการอุดกั้นสมบูรณ์ที่แก้ได้เร็ว ${S.x}</li></ul>
+<h3>ผลต่อท่อไตที่อธิบายอาการ</h3><ul>
+<li>ท่อไตที่ถูกยืดและอักเสบ<b>เสียความสามารถในการเข้มข้นปัสสาวะก่อนเป็นอย่างแรก</b> ผู้ป่วยจึงปัสสาวะมากและตื่นปัสสาวะกลางคืน ทั้งที่กำลัง "อุดกั้น" อยู่ ซึ่งฟังดูขัดกันแต่เป็นภาพที่พบจริง ${S.x}</li>
+<li>ตามมาด้วย<b>การเสียความสามารถในการขับกรดและโพแทสเซียม</b> จึงเกิดภาวะเลือดเป็นกรดแบบ anion gap ปกติ ร่วมกับโพแทสเซียมสูง ${S.x}</li>
+<li>เมื่อแก้การอุดกั้นสองข้างแล้วจึงเกิด <b>post-obstructive diuresis</b> — ปัสสาวะออกมากจากทั้งยูเรียที่คั่งซึ่งลากน้ำตามออกมา และจากท่อไตที่ยังเข้มข้นปัสสาวะไม่ได้ · ต้องชดเชยน้ำและเกลือแร่และติดตามอย่างใกล้ชิด ${S.h}</li></ul>
+<h3>ภาวะแทรกซ้อน</h3><ul>
+<li>ปัสสาวะที่ค้างเป็น<b>อาหารเลี้ยงเชื้อ</b> การติดเชื้อซ้อนบนการอุดกั้นจึงเป็นภาวะฉุกเฉิน เพราะกลายเป็น pyonephrosis และ sepsis ได้เร็ว ${S.r}</li>
+<li>การค้างยังทำให้<b>เกิดนิ่วง่ายขึ้น</b> และนิ่วก็ยิ่งอุดกั้นมากขึ้น เป็นวงจรที่ส่งเสริมกันเอง ${S.r}</li></ul>`});
 HS("331","b","uo-dx","Diagnosis, relief & recovery",{
 draw:()=>flow([["Unexplained renal failure","ใส่สายสวนปัสสาวะ",""],["มี diuresis","obstruction ใต้ bladder neck","gl"],["ไม่มี diuresis → ultrasound","hydronephrosis?","vn"],["มี hydronephrosis","CT หาตำแหน่งและสาเหตุ → urology","ar"],["Relief","GFR ฟื้นบางส่วนถ้าอุด 1–2 สัปดาห์ · >8 สัปดาห์ฟื้นยาก",""]]),
 notes:()=>`<ul><li>Ultrasound อาจ <b>ไม่เห็น hydronephrosis</b> ถ้าอุด &lt;48 ชม., volume contraction, staghorn, retroperitoneal fibrosis, infiltrative disease ${S.h}</li>
