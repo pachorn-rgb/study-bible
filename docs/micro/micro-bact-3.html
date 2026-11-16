@@ -1,0 +1,544 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Gram-negative cocci</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+<link rel="stylesheet" href="../atlas/micro.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Microbiology · Clinical Bacteriology</div>
+    <h1>Gram-negative cocci</h1>
+    <p class="sb-lede">Neisseria gonorrhoeae และ Neisseria meningitidis — สองสปีชีส์ที่หน้าตาเหมือนกันบน Gram stain แต่ก่อโรคคนละแบบสิ้นเชิง เพราะตัวหนึ่งลงทุนกับผิวที่เปลี่ยนแอนติเจนได้ อีกตัวลงทุนกับ capsule · เนื้อหาตามคาบ Gram-negative cocci ของวิชา 204-221 อ่านจาก Murray บท 23</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 23 Neisseria and Related Genera</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "micro-bact-3", "kind": "patho", "sys": "Microbiology", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ---------------------------------------------------------------------
+   Microbiology drawing helpers.
+   Everything here draws the real thing: membranes have leaflets, walls are
+   woven, cytoplasm has grain. Nothing here draws a captioned box.
+   --------------------------------------------------------------------- */
+
+/* deterministic pseudo-random — same picture on every reload */
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* closed seeded wobble — periodic over 2π so blobs always shut cleanly */
+function mwobC(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return a => amp * (Math.sin(a * 3 + p[0]) * .55 + Math.sin(a * 5 + p[1]) * .3 + Math.sin(a * 7 + p[2]) * .15);
+}
+
+/* open seeded wobble for baselines */
+function mwob(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return t => amp * (Math.sin(t / 47 + p[0]) * .6 + Math.sin(t / 23 + p[1]) * .28 + Math.sin(t / 11 + p[2]) * .12);
+}
+
+/* an organic cell outline — never a perfect ellipse */
+function mblob(cx, cy, rx, ry, seed, wob = .055, n = 72) {
+  const w = mwobC(seed); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * k).toFixed(1) + "," + (cy + Math.sin(a) * ry * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a rod with rounded caps and a living outline */
+function mrod(cx, cy, len, rad, seed, wob = .05, n = 76) {
+  const w = mwobC(seed), h = Math.max(0, len / 2 - rad); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    const x = Math.cos(a), y = Math.sin(a);
+    d += (i ? "L" : "M") + (cx + x * rad * k + (x > 0 ? h : -h)).toFixed(1) + "," + (cy + y * rad * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* grain: the texture that stops a fill looking like plastic */
+function mgrain(x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  const q = rng(seed); let b = "";
+  for (let i = 0; i < n; i++)
+    b += `<circle class="${cls}" cx="${(x + q() * w).toFixed(1)}" cy="${(y + q() * h).toFixed(1)}" r="${(rad * (.45 + q())).toFixed(2)}"/>`;
+  return b;
+}
+
+/* grain clipped to a path — for cytoplasm inside a cell */
+function mgrainIn(id, path, x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  return `<clipPath id="${id}"><path d="${path}"/></clipPath>`
+    + `<g clip-path="url(#${id})">${mgrain(x, y, w, h, n, seed, cls, rad)}</g>`;
+}
+
+/* ---------------------------------------------------------------------
+   Phospholipid bilayer along a baseline yf(x).
+   up/down decide which leaflet the tails point from; this is drawn as
+   heads and tails, never as a coloured band.
+   --------------------------------------------------------------------- */
+function mbil(x0, x1, yf, o = {}) {
+  const h = o.h || 15, step = o.step || 8.2, hr = o.hr || 3.05,
+    core = o.core || "m-core", head = o.head || "m-head", tail = o.tail || "m-tail";
+  const N = Math.max(2, Math.round((x1 - x0) / step));
+  let top = "", bot = "";
+  for (let i = 0; i <= N; i++) { const x = x0 + (x1 - x0) * i / N, y = yf(x); top += (i ? "L" : "M") + x.toFixed(1) + "," + (y - h / 2).toFixed(1); }
+  for (let i = N; i >= 0; i--) { const x = x0 + (x1 - x0) * i / N, y = yf(x); bot += "L" + x.toFixed(1) + "," + (y + h / 2).toFixed(1); }
+  let b = `<path class="${core}" d="${top + bot}Z"/>`;
+  for (let x = x0 + step / 2; x < x1; x += step) {
+    const y = yf(x), ty = y - h / 2 + hr * .92, by = y + h / 2 - hr * .92;
+    b += `<circle class="${head}" cx="${x.toFixed(1)}" cy="${ty.toFixed(1)}" r="${hr}"/>`
+      + `<circle class="${head}" cx="${x.toFixed(1)}" cy="${by.toFixed(1)}" r="${hr}"/>`;
+    const inT = ty + hr * .8, inB = by - hr * .8, mid = (inT + inB) / 2;
+    b += `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   Woven peptidoglycan: glycan strands running across, peptide bridges
+   linking them. rows = how many layers thick.
+   --------------------------------------------------------------------- */
+function mpgl(x0, x1, yf, rows, gap, seed, o = {}) {
+  const w = mwob(seed, o.amp === undefined ? 1.6 : o.amp), q = rng(seed + 11);
+  const strand = (y0, cls) => {
+    let d = ""; for (let x = x0; x <= x1; x += 6) d += (x === x0 ? "M" : "L") + x.toFixed(1) + "," + (yf(x) + y0 + w(x)).toFixed(1);
+    return `<path class="${cls}" d="${d}"/>`;
+  };
+  let b = "";
+  for (let r = 0; r < rows; r++) {
+    const y0 = r * gap;
+    b += strand(y0, r % 2 ? "m-gly2" : "m-gly");
+    if (r < rows - 1) for (let x = x0 + 7 + q() * 9; x < x1 - 5; x += 15 + q() * 11) {
+      const ya = yf(x) + y0 + w(x), yb = yf(x) + y0 + gap + w(x);
+      const dx = (q() - .5) * 5;
+      b += `<path class="m-pep" d="M${x.toFixed(1)},${ya.toFixed(1)} L${(x + dx).toFixed(1)},${yb.toFixed(1)}"/>`;
+    }
+  }
+  return b;
+}
+
+/* teichoic acid: a beaded strand threading out through the wall */
+function mteic(x, yTop, yBot, seed, beads) {
+  const q = rng(seed); let d = `M${x},${yBot}`, b = "";
+  const n = beads || Math.max(3, Math.round((yBot - yTop) / 9));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, y = yBot + (yTop - yBot) * t, xx = x + Math.sin(t * 7 + q() * 2) * 2.4;
+    d += ` L${xx.toFixed(1)},${y.toFixed(1)}`;
+    b += `<circle class="m-teicb" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5"/>`;
+  }
+  return `<path class="m-teic" d="${d}"/>` + b;
+}
+
+/* LPS: core sugars then a waving O-antigen chain of beads */
+function mlps(x, y, seed, len) {
+  const q = rng(seed); let d = `M${x},${y}`, b = "";
+  const n = len || 7;
+  for (let i = 1; i <= n; i++) {
+    const yy = y - i * 6.4, xx = x + Math.sin(i * .9 + q() * 3) * 3.6;
+    d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
+    b += `<circle class="${i <= 2 ? "m-oantib" : "m-oantib"}" cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="${i <= 2 ? 2.1 : 1.6}"/>`;
+  }
+  return `<path class="m-oanti" d="${d}"/>` + b;
+}
+
+/* mycolic acids: very long tails packed shoulder to shoulder */
+function mmyco(x0, x1, yBase, hgt, seed, step) {
+  const q = rng(seed); let b = "";
+  for (let x = x0; x < x1; x += (step || 5.2)) {
+    const k = .8 + q() * .4, h = hgt * k, bend = (q() - .5) * 4;
+    b += `<path class="m-myco" d="M${x.toFixed(1)},${yBase} C${(x + bend).toFixed(1)},${(yBase - h * .45).toFixed(1)} ${(x - bend).toFixed(1)},${(yBase - h * .7).toFixed(1)} ${(x + bend * .6).toFixed(1)},${(yBase - h).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* a label on a thin leader line with a dot at the thing it names */
+function mlead(px, py, tx, ty, s, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start");
+  return `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`
+    + T(tx + (a === "end" ? -5 : 5), ty + 4, s, { a, c: o.c || "s" });
+}
+
+/* plain label, respecting the Labels toggle */
+const mL = (x, y, s, o) => ST.labels ? T(x, y, s, o) : "";
+
+/* a leader line carrying two short lines of text — long labels never fit */
+function mlead2(px, py, tx, ty, lines, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start"), dx = a === "end" ? -5 : 5;
+  let b = `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`;
+  lines.forEach((l, i) => { b += T(tx + dx, ty + 4 + i * 15, l, { a, c: i ? "s m" : (o.c || "bh") }) });
+  return b;
+}
+
+/* a closed, lobed loop — what a relaxed circular chromosome actually looks like */
+function mloop(cx, cy, R, seed, lob = .3, n = 220, sq = .8) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28]; let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2;
+    const k = 1 + lob * (Math.sin(a * 3 + p[0]) * .5 + Math.sin(a * 5 + p[1]) * .32 + Math.sin(a * 8 + p[2]) * .18);
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * R * k).toFixed(1) + "," + (cy + Math.sin(a) * R * sq * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a tailed phage, drawn with its facets, striated sheath and fibres */
+function mphage(cx, cy, s = 1) {
+  const R = 44 * s, hy = cy - 4 * s; let b = "";
+  const V = [...Array(6)].map((_, i) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + Math.cos(a) * R, hy + Math.sin(a) * R] });
+  b += `<path class="m-head" d="M${V.map(v => v[0].toFixed(1) + "," + v[1].toFixed(1)).join(" L")}Z"/>`;
+  [0, 2, 4].forEach(i => { b += `<path class="m-face" d="M${cx},${hy} L${V[i][0].toFixed(1)},${V[i][1].toFixed(1)}"/>` });
+  /* the genome, coiled inside the head */
+  b += `<path class="m-pdna" d="${mloop(cx, hy, R * .42, 9, .34, 120, .9)}"/>`;
+  const ty = hy + R, L = 52 * s, w = 9 * s;
+  b += `<rect class="m-tail" x="${cx - w - 3}" y="${ty - 2}" width="${(w + 3) * 2}" height="${6 * s}" rx="2"/>`
+    + `<rect class="m-tail" x="${cx - w}" y="${ty + 5 * s}" width="${w * 2}" height="${L}" rx="2"/>`;
+  for (let i = 1; i * 7 * s < L; i++) b += `<path class="m-face" d="M${cx - w},${(ty + 5 * s + i * 7 * s).toFixed(1)} L${cx + w},${(ty + 5 * s + i * 7 * s).toFixed(1)}"/>`;
+  const by = ty + 5 * s + L;
+  b += `<rect class="m-tail" x="${cx - w - 6}" y="${by}" width="${(w + 6) * 2}" height="${6 * s}" rx="3"/>`;
+  [-1, 1].forEach(sg => {
+    b += `<path class="m-fib" d="M${cx + sg * (w + 4)},${by + 6 * s} q${sg * 12 * s},${10 * s} ${sg * 8 * s},${24 * s}"/>`
+      + `<path class="m-fib" d="M${cx + sg * (w + 1)},${by + 6 * s} q${sg * 20 * s},${6 * s} ${sg * 24 * s},${18 * s}"/>`;
+  });
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
+
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"Neisseria",b:"Disease",c:"At the bench"});
+
+/* ===================================================================
+   Gram-negative cocci — Murray ch 23 (Neisseria and Related Genera).
+   =================================================================== */
+
+SEC.push({id:"neisseria",k:"a",t:"Gram-negative diplococci inside the neutrophil",mm:"The genus",leg:[],
+draw:()=>{let b="";
+ b+=mL(24,26,"Urethral discharge · Gram stain",{a:"start",c:"bh"})
+  +mL(24,46,"ภาพนี้คือสิ่งที่ทำให้วินิจฉัย gonorrhea ในผู้ชายที่มีอาการได้ทันทีข้างเตียง",{a:"start",c:"s m"});
+ /* two neutrophils with intracellular diplococci, plus some free pairs */
+ b+=mpmn(150,170,72,5)+mpmn(320,196,64,11);
+ [[126,148,0],[170,186,22],[138,200,-16],[182,146,38]].forEach(([x,y,r],i)=>{
+  b+=mdiplo(x,y,9,i*7+3,r)});
+ [[300,176,10],[340,214,-24],[310,222,34]].forEach(([x,y,r],i)=>{
+  b+=mdiplo(x,y,8.5,i*9+13,r)});
+ [[396,112,20],[412,166,-32],[386,214,8]].forEach(([x,y,r],i)=>{
+  b+=mdiplo(x,y,9,i*11+5,r)});
+ b+=mlead2(150,108,462,62,["Neutrophil","นิวเคลียสหลายพู"],{a:"start"})
+  +mlead2(182,146,462,108,["Intracellular diplococci","อยู่ในไซโทพลาซึมของ neutrophil"],{a:"start"})
+  +mlead2(396,112,462,154,["Extracellular pairs","คู่ที่อยู่นอกเซลล์ก็พบได้"],{a:"start"});
+ b+=mL(462,202,"ด้านที่ชนกันแบนเข้าหากัน",{a:"start",c:"s m"})
+  +mL(462,220,"เหมือนเมล็ดถั่วสองเมล็ดวางประกบ",{a:"start",c:"s m"});
+ /* how the genus is pinned down */
+ b+=`<path class="m-sep" d="M24,268 L616,268"/>`
+  +mL(24,294,"How the genus is pinned down",{a:"start",c:"bh"});
+ [["Oxidase positive","หยดน้ำยาแล้วโคโลนีเปลี่ยนสีภายในไม่กี่วินาที",24,322],
+  ["Catalase positive","สองอย่างนี้คู่กันคือด่านแรกของการระบุสกุล",330,322],
+  ["Fastidious","ต้องใช้ chocolate agar · โตดีที่ 35–37 °C ในบรรยากาศชื้นที่เติม CO₂",24,368],
+  ["Oxidative, not fermentative","สร้างกรดจากน้ำตาลแบบ oxidative · ชนิดน้ำตาลที่ใช้ได้แยกสปีชีส์",24,414],
+  ["Dies quickly","ตายเร็วเมื่อเจอความเย็นหรือความแห้ง — สิ่งส่งตรวจต้องรีบส่ง",24,460]
+ ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+(d?mL(x,y+20,d,{a:"start",c:"s m"}):"")});
+ return svg(b,"0 0 640 496")},
+notes:()=>`<h3>Two species matter</h3><ul>
+ <li><b><i>N. gonorrhoeae</i></b> และ <b><i>N. meningitidis</i></b> เป็นสมาชิกที่สำคัญที่สุดของสกุลนี้ · ตัวอื่น ๆ ในสกุลเป็นเชื้อประจำถิ่นของ nasopharynx ${S.mu}</li>
+ <li>ผนังเซลล์เป็นแบบ gram-negative ตามปกติ — peptidoglycan บาง ๆ อยู่ระหว่าง cytoplasmic membrane กับ outer membrane ${S.mu}</li>
+ <li><b>เหล็กจำเป็นต่อการเติบโตและเมแทบอลิซึม</b>ของทั้งสองสปีชีส์ และทั้งคู่มี receptor สำหรับ transferrin, lactoferrin และ hemoglobin เพื่อแย่งเหล็กจาก host ${S.mu}</li>
+ <li>ทั้งคู่<b>ปล่อยถุง outer membrane bleb</b> ออกมาระหว่างที่โตเร็ว · ถุงเหล่านี้มี lipooligosaccharide และโปรตีนผิวอยู่ จึงทั้งเพิ่มความเป็นพิษของ endotoxin และดักแอนติบอดีให้พ้นจากตัวเชื้อที่กำลังแบ่งตัว ${S.mu}</li></ul>
+ <h3>What the Gram stain can settle</h3><ul>
+ <li>Gram stain ของสิ่งส่งตรวจจากท่อปัสสาวะ<b>แม่นยำเฉพาะในผู้ชายที่มีอาการ</b> — ในผู้หญิงและในตำแหน่งอื่นความไวต่ำเกินกว่าจะเชื่อถือได้ ${S.mu}</li>
+ <li>Gram stain ของ CSF มีทั้งความไวและความจำเพาะดีสำหรับ meningococcus แต่<b>ใช้กับเลือดไม่ได้</b> เพราะปกติมีเชื้อน้อยเกินไป ยกเว้นในภาวะ sepsis ที่รุนแรงมาก ${S.mu}</li>
+ <li>การเพาะเชื้อให้ผลชี้ขาด แต่เชื้อเลือกกินและ<b>ตายเร็วเมื่อเจอความเย็นหรือความแห้ง</b> ${S.mu}</li>
+ <li>ปัจจุบันการเพาะเชื้อสำหรับ gonorrhea ถูกแทนที่ด้วย <b>nucleic acid test</b> ในห้องปฏิบัติการส่วนใหญ่ ${S.mu}</li></ul>`});
+
+SEC.push({id:"gc-vir",k:"a",t:"Neisseria gonorrhoeae: the surface is the virulence",mm:"Gonococcus virulence",leg:[],
+draw:()=>{let b="";
+ const wv=mwob(5,2.2),YM=176,X0=24,X1=380,LX=398;
+ /* the gram-negative envelope, as drawn in Basic Bacteriology */
+ const cyTop=x=>YM+9+wv(x);
+ let cy=`M${X0},${cyTop(X0)}`;for(let x=X0;x<=X1;x+=7)cy+=`L${x.toFixed(1)},${cyTop(x).toFixed(1)}`;
+ cy+=`L${X1},${YM+54} L${X0},${YM+54} Z`;
+ b+=`<path class="m-cyto" d="${cy}"/>`+mgrainIn("gcc",cy,X0,YM,X1-X0,54,70,3,"m-gr",.85);
+ b+=mbil(X0,X1,x=>YM+wv(x));
+ const pgB=YM-26,OM=YM-72;
+ let pp=`M${X0},${OM+9+wv(X0)}`;for(let x=X0;x<=X1;x+=7)pp+=`L${x.toFixed(1)},${(OM+9+wv(x)).toFixed(1)}`;
+ for(let x=X1;x>=X0;x-=7)pp+=`L${x.toFixed(1)},${(YM-9+wv(x)).toFixed(1)}`;
+ b+=`<path class="m-peri" d="${pp}Z"/>`+mpgl(X0,X1,x=>pgB+wv(x),2,-6.4,9,{amp:1.1});
+ b+=mbil(X0,X1,x=>OM+wv(x),{core:"m-ocore",head:"m-ohead",tail:"m-otail"});
+ /* lipooligosaccharide — short, because it is oligo not poly */
+ for(let i=0;i<9;i++){const x=X0+20+i*40;b+=mlps(x,OM-8+wv(x),40+i,3)}
+ /* Por and Opa in the outer membrane */
+ [1,5].forEach(i=>{const x=X0+20+i*40,y=OM+wv(x);
+  b+=`<path class="m-porin" d="${(`M${(x-9).toFixed(1)},${(y-9).toFixed(1)} l0,18 l6,0 l0,-18 Z`)}"/>`
+   +`<path class="m-porin" d="${(`M${(x+3).toFixed(1)},${(y-9).toFixed(1)} l0,18 l6,0 l0,-18 Z`)}"/>`});
+ [3,7].forEach(i=>{const x=X0+20+i*40,y=OM+wv(x);
+  b+=`<path class="m-gene" d="${mblob(x,y,9,12,i*5+3,.1)}"/>`});
+ /* pili reaching out */
+ const pq=rng(19);
+ for(let i=0;i<8;i++){const x=X0+34+i*44,y=OM-9+wv(x),L=30+pq()*14;
+  b+=`<path class="m-pil" d="M${x.toFixed(1)},${y.toFixed(1)} q${(pq()*10-5).toFixed(1)},${(-L*.6).toFixed(1)} ${(pq()*14-7).toFixed(1)},${(-L).toFixed(1)}"/>`}
+ b+=mlead2(X0+34,OM-40,LX,48,["Pilin","เกาะครั้งแรก · เปลี่ยนแอนติเจนได้"],{a:"start"})
+  +mlead2(X0+60,OM,LX,100,["Por protein (PorB)","กันไม่ให้ phagolysosome รวมตัว"],{a:"start"})
+  +mlead2(X0+140,OM,LX,152,["Opa protein","เกาะแน่นกับเซลล์ host"],{a:"start"})
+  +mlead2(X0+300,OM-22,LX,204,["Lipooligosaccharide","สายน้ำตาลสั้นกว่า LPS"],{a:"start"});
+ b+=`<path class="m-sep" d="M24,260 L616,260"/>`;
+ [["IgA1 protease","ตัดบานพับของ IgA1 จนได้ Fc กับ Fab ที่ไม่ทำงาน",24,286],
+  ["β-lactamase","บางสายพันธุ์ย่อย penicillin ได้",330,286],
+  ["Rmp protein","กระตุ้นแอนติบอดีที่ไปขวางการฆ่าเชื้อด้วยซีรัม",24,332],
+  ["Iron receptors","transferrin · lactoferrin · hemoglobin",330,332],
+  ["Antigenic variation ของ pilin","เป็นเหตุผลสำคัญที่ติดเชื้อซ้ำได้และยังไม่มีวัคซีน",24,378]
+ ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
+ return svg(b,"0 0 640 422")},
+notes:()=>`<h3>Attachment, then invasion</h3><ul>
+ <li>Gonococci เกาะเซลล์เยื่อเมือก บุกเข้าไปในเซลล์ เพิ่มจำนวน แล้ว<b>ทะลุผ่านเซลล์ออกไปยังช่องใต้เยื่อบุ</b> ซึ่งเป็นที่ที่การติดเชื้อตั้งตัวขึ้น ${S.mu}</li>
+ <li><b>Pili, PorB และ Opa</b> เป็นสามตัวที่ทำหน้าที่เกาะและบุกเข้าเซลล์ ${S.mu}</li>
+ <li><b>Lipooligosaccharide</b> ของ gonococcus กระตุ้นการหลั่ง <b>TNF-α</b> ซึ่งเป็นต้นเหตุของอาการส่วนใหญ่ของโรค ${S.mu}</li></ul>
+ <h3>Why immunity does not stick</h3><ul>
+ <li>Pilin มี<b>การสลับยีนจนเปลี่ยนแอนติเจนได้</b> ภูมิคุ้มกันที่สร้างไว้จึงใช้กับสายพันธุ์ถัดไปไม่ได้ ${S.mu}</li>
+ <li>PorB บางแบบทำให้เชื้อ<b>ทนต่อการถูกฆ่าด้วยซีรัมที่อาศัย complement</b> ${S.mu}</li>
+ <li>แอนติบอดีต่อ lipooligosaccharide กระตุ้น complement ได้ C5a ที่เรียก neutrophil เข้ามา · แต่ <b>IgG และ secretory IgA1 ที่ต่อต้าน Rmp กลับไปขวางการฆ่าเชื้อนั้นเสียเอง</b> ${S.mu}</li>
+ <li>IgG3 เป็นแอนติบอดี IgG หลักที่สร้างขึ้นตอบสนองต่อการติดเชื้อ gonococcus ${S.mu}</li></ul>
+ <h3>Opaque or transparent colonies</h3><ul>
+ <li>เชื้อที่แสดง Opa protein ให้<b>โคโลนีขุ่น</b> และพบบ่อยที่สุดในผู้ป่วยที่มีการติดเชื้อเฉพาะที่ — endocervicitis, urethritis, pharyngitis, proctitis ${S.mu}</li>
+ <li><b>โคโลนีใส</b>สัมพันธ์กับ pelvic inflammatory disease และการติดเชื้อที่กระจายทั่วร่างกายมากกว่า ${S.mu}</li></ul>`});
+
+SEC.push({id:"gonorrhea",k:"b",t:"Gonorrhea by site and by host",mm:"Gonorrhea",leg:[],
+draw:()=>tbl(["Host","Picture","Note"],[
+ ["Man","urethritis — หนองไหลและแสบขณะปัสสาวะ","ผู้ชายส่วนใหญ่มีอาการตั้งแต่แรก"],
+ ["Woman","endocervicitis · อาจมีตกขาวหรือแสบขณะปัสสาวะ","ราวครึ่งหนึ่งมีอาการน้อยหรือไม่มีเลย — นี่คือแหล่งกักโรคหลัก"],
+ ["Woman — ascending","pelvic inflammatory disease · salpingitis · tubo-ovarian abscess","ทำให้มีบุตรยากและตั้งครรภ์นอกมดลูก"],
+ ["Rectum · pharynx","proctitis · pharyngitis","ไม่มีอาการบ่อยกว่าการติดเชื้อที่อวัยวะเพศ"],
+ ["Disseminated","ข้ออักเสบและผื่นผิวหนัง","กระจายเข้ากระแสเลือดจากจุดติดเชื้อเดิม"],
+ ["Newborn","ophthalmia neonatorum — เยื่อบุตาอักเสบเป็นหนอง","ติดจากแม่ขณะคลอด"]]),
+notes:()=>`<h3>The reservoir is the person without symptoms</h3><ul>
+ <li>แหล่งกักโรคหลักของ gonococci คือ<b>ผู้ติดเชื้อที่ไม่มีอาการ</b> ${S.mu}</li>
+ <li>การเป็นพาหะแบบไม่มีอาการพบใน<b>ผู้หญิงบ่อยกว่าผู้ชาย</b> — ผู้หญิงที่ติดเชื้อมากถึงครึ่งหนึ่งมีอาการน้อยหรือไม่มีเลย ขณะที่ผู้ชายส่วนใหญ่มีอาการตั้งแต่แรก ${S.mu}</li>
+ <li>ในผู้ที่ไม่ได้รักษา อาการมักหายไปเองภายในไม่กี่สัปดาห์ แล้ว<b>กลายเป็นพาหะต่อ</b> ${S.mu}</li>
+ <li>ตำแหน่งที่ติดเชื้อก็กำหนดด้วยว่าจะมีอาการหรือไม่ — <b>การติดเชื้อที่ทวารหนักและคอหอยไม่มีอาการบ่อยกว่า</b>ที่อวัยวะเพศ ${S.mu}</li>
+ <li>ทารกแรกเกิดเสี่ยงเมื่อแม่ติดเชื้อ ${S.mu}</li></ul>
+ <h3>Treatment</h3><ul>
+ <li>ยาที่แนะนำในขณะนี้คือ <b>ceftriaxone ร่วมกับ azithromycin</b> ${S.mu}</li>
+ <li>แต่มีรายงาน<b>การดื้อ cephalosporin และ azithromycin ในระดับสูง</b>แล้ว ซึ่งเป็นเหตุผลที่แนวทางการรักษาเปลี่ยนบ่อย — ให้ยึดแนวทางฉบับปัจจุบันเสมอ ${S.mu}</li>
+ <li>ทารกแรกเกิดป้องกันด้วย <b>silver nitrate 1%</b> · ถ้าเป็น ophthalmia neonatorum แล้วรักษาด้วย ceftriaxone ${S.mu}</li>
+ <li>การป้องกันอาศัยการให้ความรู้ การใช้ถุงยางอนามัย การใช้ฆ่าเชื้ออสุจิอย่าง nonoxynol-9 ซึ่งได้ผลเพียงบางส่วน และ<b>การตามรักษาคู่ของผู้ป่วย</b> ${S.mu}</li>
+ <li><b>ยังไม่มีวัคซีนสำหรับ <i>N. gonorrhoeae</i></b> ซึ่งต่างจาก <i>N. meningitidis</i> ${S.mu}</li></ul>`});
+
+SEC.push({id:"meningococcus",k:"b",t:"Neisseria meningitidis: carriage, then catastrophe",mm:"Meningococcus",leg:[],
+draw:()=>{let b="";
+ /* the route: nasopharynx → blood → meninges */
+ b+=mL(24,26,"From a quiet nasopharynx to the meninges",{a:"start",c:"bh"});
+ const step=(x,y,t2,d)=>{let g=`<path class="m-body" d="${mblob(x,y,44,30,Math.round(x),.07)}"/>`
+   +mL(x,y+5,t2,{c:"bh"});
+  return g+mL(x,y+52,d,{c:"s m"})};
+ b+=step(96,88,"Nasopharynx","ตั้งรกรากเงียบ ๆ")
+  +step(300,88,"Bloodstream","capsule กันการถูกกลืนกิน")
+  +step(520,88,"Meninges","หรือหลอดเลือดทั่วร่างกาย");
+ [[140,96,256],[344,96,476]].forEach(([x1,y,x2])=>{
+  b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${x1},${88} L${x2},${88}"/>`});
+ b+=mL(24,162,"capsule ขัดขวางการเกาะเซลล์เยื่อบุ เชื้อจึงกดการสร้างมันลงก่อนเกาะ แล้วค่อยสร้างใหม่ตอนเข้ากระแสเลือด",{a:"start",c:"s m"});
+ /* the skin: petechiae coalescing into purpura */
+ const sk=mskin(24,452,196,{seed:13,scale:.74});b+=sk.b;const Y=sk.y;
+ const pq=rng(23);
+ for(let i=0;i<26;i++){const x=48+pq()*180,y=Y.spin+6+pq()*(Y.derm-Y.spin-10);
+  b+=`<path class="m-body2" style="opacity:.9" d="${mblob(x,y,3+pq()*2.5,2.6+pq()*2,i*5+3,.3)}"/>`}
+ [300,372,430].forEach((x,i)=>{
+  b+=`<path class="m-body2" style="opacity:.92" d="${mblob(x,Y.spin+26,30+i*7,20,i*9+5,.26)}"/>`});
+ b+=mlead2(120,Y.spin+22,470,236,["Petechiae","หลอดเลือดฝอยอุดตัน"],{a:"start"})
+  +mlead2(372,Y.spin+26,470,282,["Purpura","รวมกันเป็นปื้นใหญ่"],{a:"start"})
+  +mL(470,328,"ผื่นที่ลามเร็ว",{a:"start",c:"bad"})
+  +mL(470,346,"ในผู้ป่วยไข้สูง",{a:"start",c:"bad"})
+  +mL(470,364,"คือภาวะฉุกเฉิน",{a:"start",c:"bad"});
+ /* the serogroups */
+ b+=`<path class="m-sep" d="M24,${Y.bot+30} L616,${Y.bot+30}"/>`
+  +mL(24,Y.bot+56,"Serogroups",{a:"start",c:"bh"});
+ [["A, B, C, W135, X, Y","โรคประจำถิ่นและการระบาดเกือบทั้งหมดมาจากหกกลุ่มนี้",24,Y.bot+84],
+  ["Y และ W135","เป็นสาเหตุของ pneumonia จาก meningococcus บ่อยที่สุด",24,Y.bot+128],
+  ["A และ W135","สัมพันธ์กับโรคในประเทศกำลังพัฒนา",24,Y.bot+172],
+  ["B","วัคซีนพอลิแซ็กคาไรด์ครอบคลุมเฉพาะ A, C, Y และ W135 — ไม่ครอบคลุม B",24,Y.bot+216]
+ ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:n==="B"?"bad":"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
+ return svg(b,"0 0 640 "+(Y.bot+252))},
+notes:()=>`<h3>The capsule is the virulence factor</h3><ul>
+ <li>ปัจจัยก่อโรคหลักของ <i>N. meningitidis</i> คือ <b>polysaccharide capsule</b> ซึ่งกันการถูกกลืนกินในกระแสเลือด ${S.mu}</li>
+ <li>ความต่างของแอนติเจนใน capsule คือพื้นฐานของการแบ่ง <b>serogroup</b> และมีบทบาทสำคัญในการกำหนดว่าสายพันธุ์ไหนก่อโรคได้ ${S.mu}</li>
+ <li>มี serogroup ที่รู้จักหลายกลุ่ม แต่<b>แทบทุกการติดเชื้อมาจากหกกลุ่ม: A, B, C, W135, X และ Y</b> ${S.mu}</li>
+ <li>มีจุดที่ขัดกันเองอย่างน่าสนใจ: <b>capsule ขัดขวางการเกาะเซลล์เยื่อบุ</b> เชื้อจึงกดการสร้างมันลงก่อนจะเกาะ แล้วค่อยสร้างใหม่เมื่อต้องเข้ากระแสเลือด ${S.mu}</li>
+ <li>Meningococci เกาะอย่างจำเพาะกับ receptor บน <b>nonciliated columnar cell ของ nasopharynx</b> · หลังเกาะแล้วจะเพิ่มจำนวนจนเป็นกลุ่มก้อนที่ยึดติดกับเนื้อเยื่อ host ${S.mu}</li></ul>
+ <h3>Who gets sick</h3><ul>
+ <li>แพร่ผ่าน<b>ละอองจากทางเดินหายใจ</b> ${S.mu}</li>
+ <li>อุบัติการณ์สูงที่สุดใน<b>เด็กอายุต่ำกว่า 1 ปี ผู้ที่อยู่ในสถานสงเคราะห์หรือสถานที่รวมคน และผู้ที่พร่อง complement ตัวท้าย ๆ</b> ${S.mu}</li>
+ <li>ทารกที่กินนมแม่มีภูมิคุ้มกันรับมาใน <b>6 เดือนแรก</b> ${S.mu}</li>
+ <li>โรคพบทั่วโลก และพบบ่อยที่สุดใน<b>เดือนที่อากาศแห้งและเย็น</b> ${S.mu}</li>
+ <li>การระบาดเกิดเมื่อมี<b>สายพันธุ์ก่อโรคใหม่เข้าสู่ประชากรที่ยังไม่มีภูมิคุ้มกัน</b> ${S.mu}</li></ul>
+ <h3>Three faces of the disease</h3><ul>
+ <li><b>Meningitis</b> — เยื่อหุ้มสมองอักเสบเป็นหนอง ปวดศีรษะ มีอาการแสดงของเยื่อหุ้มสมอง และไข้ · <b>อัตราตายสูงถ้าไม่ได้ยาปฏิชีวนะที่ได้ผลอย่างรวดเร็ว</b> ${S.mu}</li>
+ <li><b>Meningococcemia</b> — การติดเชื้อกระจายที่มีลิ่มเลือดอุดหลอดเลือดเล็ก ๆ และอวัยวะหลายระบบเสียหาย · <b>จุดเลือดออกเล็ก ๆ รวมกันเป็นปื้นเลือดออกใหญ่</b> ${S.mu}</li>
+ <li><b>Pneumonia</b> — รูปแบบที่อ่อนกว่า เป็น bronchopneumonia ในผู้ที่มีโรคปอดอยู่เดิม ${S.mu}</li></ul>
+ <h3>Treatment and prophylaxis</h3><ul>
+ <li>ผู้ป่วยที่สงสัย meningitis หรือ bacteremia เริ่มด้วย <b>ceftriaxone</b> · ถ้าผลพบว่าเชื้อไวต่อ penicillin เปลี่ยนเป็น penicillin G ได้ ${S.mu}</li>
+ <li><b>ผู้สัมผัสใกล้ชิด</b>ต้องได้ยาป้องกัน — rifampin, ciprofloxacin หรือ ceftriaxone ${S.mu}</li>
+ <li>วัคซีนเป็น<b>ส่วนเสริมของการให้ยาป้องกัน ไม่ใช่สิ่งทดแทน</b> ${S.mu}</li>
+ <li>การตรวจหาแอนติเจนของ meningococcus มีทั้งความไวและความจำเพาะต่ำ จึงไม่ใช้เป็นหลัก ${S.mu}</li></ul>`});
+
+SEC.push({id:"neisseria-lab",k:"c",t:"Specimen, plate and report",mm:"Neisseria lab",leg:[],
+draw:()=>{let b="";
+ /* the chain of custody, drawn as the chain it is */
+ const Y=96;
+ b+=mL(24,26,"เชื้อนี้ตายเร็วเมื่อเจอความเย็นหรือความแห้ง ลำดับขั้นจึงสำคัญพอ ๆ กับการตรวจ",{a:"start",c:"bh"});
+ const nodes=[["Collect","swab จากท่อปัสสาวะ ปากมดลูก คอหอย ทวารหนัก หรือ CSF"],
+  ["Transport","ส่งทันที · อย่าแช่เย็น"],
+  ["Plate","chocolate agar และสื่อแบบเลือก · บ่มใน CO₂"],
+  ["Identify","oxidase + · ดูน้ำตาลที่ใช้ได้"]];
+ nodes.forEach(([n,d],i)=>{const x=86+i*158;
+  b+=`<path class="m-body" d="${mblob(x,Y,62,30,i*9+5,.06)}"/>`+mL(x,Y+5,n,{c:"bh"})
+   +mL(x,Y+54,d,{c:"s m"});
+  if(i<3)b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${x+64},${Y} L${x+92},${Y}"/>`});
+ b+=`<path class="m-sep" d="M24,172 L616,172"/>`;
+ [["Nucleic acid test","แทนที่การเพาะเชื้อสำหรับ gonorrhea ในห้องปฏิบัติการส่วนใหญ่แล้ว · ใช้กับปัสสาวะได้",24,198],
+  ["Gram stain ของ CSF","ไวและจำเพาะสำหรับ meningococcus",24,244],
+  ["Gram stain ของเลือด","ใช้ไม่ได้ ปกติมีเชื้อน้อยเกินไป ยกเว้น sepsis ที่รุนแรงมาก",330,244],
+  ["Meningococcal antigen test","ความไวและความจำเพาะต่ำ ไม่แนะนำให้ใช้ตัดสิน",24,290]
+ ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:n.indexOf("เลือด")>0||n.indexOf("antigen")>0?"bad":"bh"})
+   +mL(x,y+20,d,{a:"start",c:"s m"})});
+ return svg(b,"0 0 640 336")},
+notes:()=>`<h3>Growth requirements decide the plate</h3><ul>
+ <li>ทั้งสองสปีชีส์โตดีที่ <b>35–37 °C ในบรรยากาศชื้นที่เติม CO₂</b> ${S.mu}</li>
+ <li>ทั้งคู่ <b>oxidase positive และ catalase positive</b> และสร้างกรดจากน้ำตาลแบบ oxidative ไม่ใช่การหมัก ${S.mu}</li>
+ <li>ชนิดของน้ำตาลที่ใช้ได้เป็นตัวแยกสปีชีส์ในสกุลนี้ออกจากกัน ${S.mu}</li></ul>
+ <h3>Three answers the lab gives</h3><ul>
+ <li><b>Gram stain</b> ให้คำตอบทันทีกับสองสถานการณ์เท่านั้น: หนองจากท่อปัสสาวะของผู้ชายที่มีอาการ และ CSF ${S.mu}</li>
+ <li><b>การเพาะเชื้อ</b>ให้ผลชี้ขาด แต่เชื้อเลือกกินและตายเร็ว จึงขึ้นกับคุณภาพการเก็บและการส่งเป็นอย่างมาก ${S.mu}</li>
+ <li><b>Nucleic acid test</b> มีความไวและความจำเพาะสูง และได้เข้ามาแทนที่การเพาะเชื้อสำหรับ gonorrhea ในห้องปฏิบัติการส่วนใหญ่แล้ว ${S.mu}</li></ul>
+ <h3>One more organism in this chapter</h3><ul>
+ <li><b><i>Eikenella corrodens</i></b> อยู่ในบทเดียวกันใน Murray · เป็นเชื้อประจำถิ่นในช่องปาก ${S.mu}</li>
+ <li>มันก่อการติดเชื้อที่<b>แผลจากการกัดของคน</b> รวมถึงแผลจากหมัดที่ไปโดนฟัน ซึ่งพาเชื้อในช่องปากเข้าไปในเนื้อเยื่อชั้นลึก ${S.mu}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

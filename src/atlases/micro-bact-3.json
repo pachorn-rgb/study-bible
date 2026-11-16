@@ -1,0 +1,28 @@
+{
+ "id": "micro-bact-3",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Clinical Bacteriology",
+ "draft": false,
+ "title_tag": "Gram-negative cocci",
+ "h1": "Gram-negative cocci",
+ "lede": "Neisseria gonorrhoeae และ Neisseria meningitidis — สองสปีชีส์ที่หน้าตาเหมือนกันบน Gram stain แต่ก่อโรคคนละแบบสิ้นเชิง เพราะตัวหนึ่งลงทุนกับผิวที่เปลี่ยนแอนติเจนได้ อีกตัวลงทุนกับ capsule · เนื้อหาตามคาบ Gram-negative cocci ของวิชา 204-221 อ่านจาก Murray บท 23",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 23 Neisseria and Related Genera"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Clinical Bacteriology"],
+  "title": "Gram-negative cocci",
+  "src": "Murray 9e Ch 23",
+  "desc": "diplococci ใน neutrophil, ปัจจัยก่อโรคบนผิวของ gonococcus, gonorrhea แยกตามตำแหน่งและเพศ, meningococcus จากการเป็นพาหะสู่ meningococcemia, serogroup และวัคซีน, การเก็บและส่งสิ่งส่งตรวจ",
+  "ch": "Murray Ch 23",
+  "sort": 8,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

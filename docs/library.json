@@ -2090,6 +2090,52 @@
         "ch": "Murray Ch 20, 21, 30",
         "sort": 7
        }
+      },
+      {
+       "id": "micro-bact-3",
+       "title": "Gram-negative cocci",
+       "subs": [
+        "Clinical Bacteriology"
+       ],
+       "src": "Murray 9e Ch 23",
+       "href": "micro/micro-bact-3.html",
+       "thumb": "thumbs/micro-bact-3.jpg",
+       "desc": "diplococci ใน neutrophil, ปัจจัยก่อโรคบนผิวของ gonococcus, gonorrhea แยกตามตำแหน่งและเพศ, meningococcus จากการเป็นพาหะสู่ meningococcemia, serogroup และวัคซีน, การเก็บและส่งสิ่งส่งตรวจ",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Gram-negative diplococci inside the neutrophil",
+         "neisseria"
+        ],
+        [
+         "Neisseria gonorrhoeae: the surface is the virulence",
+         "gc-vir"
+        ],
+        [
+         "Gonorrhea by site and by host",
+         "gonorrhea"
+        ],
+        [
+         "Neisseria meningitidis: carriage, then catastrophe",
+         "meningococcus"
+        ],
+        [
+         "Specimen, plate and report",
+         "neisseria-lab"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 23",
+        "sort": 8
+       }
       }
      ],
      "checklist": [

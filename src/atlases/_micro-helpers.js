@@ -255,3 +255,44 @@ function magar(cx, cy, R, sectors, seed = 5) {
   });
   return b;
 }
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
