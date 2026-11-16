@@ -1,0 +1,1937 @@
+{
+ "source": "เกณฑ์ความรู้ความสามารถในการประเมินเพื่อรับใบอนุญาตเป็นผู้ประกอบวิชาชีพเวชกรรม พ.ศ. 2567 (Medical Competency Assessment Criteria for National License 2024), ส่วนที่ 1 ก. ความรู้วิทยาศาสตร์การแพทย์พื้นฐาน",
+ "pages": "5-47 of 105",
+ "method": "the PDF is a flatbed scan with no text layer; pages were rasterised at 250 dpi and read with tesseract (tha+eng), then parsed to leaf level by src/scope/parse.py",
+ "caveat": "OCR and two-column layout lose some leaf items and garble some words; treat the leaf lists as a floor, not a complete transcript, and check the page image before relying on any single line",
+ "sections": {
+  "B1": "General Principles",
+  "B2": "Hematopoietic & lymphoreticular system",
+  "B3": "Central & peripheral nervous system",
+  "B4": "Skin & related connective tissue",
+  "B5": "Musculoskeletal system & connective tissue",
+  "B6": "Respiratory system",
+  "B7": "Cardiovascular system",
+  "B8": "Gastrointestinal system",
+  "B9": "Renal & urinary system",
+  "B10": "Reproductive system & perinatal period",
+  "B11": "Endocrine system, nutrition & metabolic disorders"
+ },
+ "chapters": {
+  "B1.1": [
+   "biochem"
+  ],
+  "B1.2": [
+   "biochem"
+  ],
+  "B1.3": [
+   "biochem"
+  ],
+  "B1.4": [
+   "immuno"
+  ],
+  "B1.5": [
+   "micro"
+  ],
+  "B1.6": [
+   "patho"
+  ],
+  "B1.7": [
+   "pharm"
+  ],
+  "B1.8": [
+   "phs"
+  ],
+  "B1.9": [
+   "phs"
+  ],
+  "B2": [
+   "heme"
+  ],
+  "B3": [
+   "neuro",
+   "psych"
+  ],
+  "B4": [
+   "msk"
+  ],
+  "B5": [
+   "msk"
+  ],
+  "B6": [
+   "resp"
+  ],
+  "B7": [
+   "cvs"
+  ],
+  "B8": [
+   "gi"
+  ],
+  "B9": [
+   "renal"
+  ],
+  "B10": [
+   "repro"
+  ],
+  "B11": [
+   "endo"
+  ]
+ },
+ "codes": [
+  {
+   "c": "B1.1",
+   "t": "Biochemistry and molecular biology",
+   "p": 10,
+   "k": []
+  },
+  {
+   "c": "B1.1.1",
+   "t": "Chemicai and biologic foundation",
+   "p": 10,
+   "k": [
+    "Water, acids, bases, redox and buffers in biological system",
+    "Enzyme kinetics, reaction mechanism and regulation of enzyme function"
+   ]
+  },
+  {
+   "c": "B1.1.2",
+   "t": "Gene expression and the synthesis of proteins",
+   "p": 10,
+   "k": [
+    "Structure, function and organization of DNA, RNA, gene and human genome",
+    "Mechanism and regulation of DNA replication, DNA transcription, DNA repair, RNA",
+    "Regulation of human gene expression",
+    "Genetic and epigenetic modification"
+   ]
+  },
+  {
+   "c": "B1.1.3",
+   "t": "Molecular technology",
+   "p": 10,
+   "k": [
+    "Recombinant DNA, gene editing, gene therapy technology and applications"
+   ]
+  },
+  {
+   "c": "B1.1.4",
+   "t": "Energy and metabolism",
+   "p": 10,
+   "k": [
+    "Energy transformation, free energy, ATP and high-energy compound",
+    "Regulation of metabolic pathways of carbohydrates, proteins, lipids, nucleotides and",
+    "Tissue and organ metabolism, metabolic adjustment during absorptive and post"
+   ]
+  },
+  {
+   "c": "B1.1.5",
+   "t": "Nutrition, vitamins, minerals and trace elements",
+   "p": 10,
+   "k": [
+    "Structure, function and medical importance of the nutrients",
+    "Absorption, storage and excretion of the nutrients",
+    "Alternative diets and nutritional supplements"
+   ]
+  },
+  {
+   "c": "B1.2",
+   "t": "= Cell Biology",
+   "p": 10,
+   "k": []
+  },
+  {
+   "c": "B1.2.1",
+   "t": "Structure and function of cell components (e.g., endoplasmic reticulum, Golgi complex,",
+   "p": 10,
+   "k": []
+  },
+  {
+   "c": "B1.2.2",
+   "t": "Signal transduction (including basic principles, receptors and channels, second",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.2.3",
+   "t": "Cell-cell and cell-matrix adhesion",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.2.4",
+   "t": "Cell motility",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.2.5",
+   "t": "Cellular homeostasis (e.g., turnover, pH maintenance, proteasome, ions, soluble proteins)",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.2.6",
+   "t": "Cell cycle (e.g. mitosis, meiosis, structure of spindle apparatus, cell cycle regulation)",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.2.7",
+   "t": "Structure and function of basic tissue components (including epithelial cells, connective",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.2.8",
+   "t": "Intraceltular accumulations (e.g. pigments, fats, proteins, carbohydrates, minerals,",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.3",
+   "t": "Human embryogenesis and genetics",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.3.1",
+   "t": "Embryogenesis",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.3.2",
+   "t": "Congenital abnormalities: principles, patterns of anomalies, dysmorphogenesis",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.3.3",
+   "t": "Mechanism of genetic exchange, mutations and associated diseases",
+   "p": 11,
+   "k": [
+    "Chromosomal abnormalities",
+    "Single gene disorders",
+    "Complex multigenic disorders and non-mendelian inheritance"
+   ]
+  },
+  {
+   "c": "B1.3.4",
+   "t": "Clinical genetics",
+   "p": 11,
+   "k": [
+    "Indication and specimen collection of genetic testing, prenatal diagnosis, and",
+    "Pedigree, pedigree analysis and genetic counselling (inheritance patterns, occurrence"
+   ]
+  },
+  {
+   "c": "B1.4",
+   "t": "Principle of immunology",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.1",
+   "t": "Innate and regional Immunity (e.g., surface barriers, pattern recognition receptors, mucosal",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.2",
+   "t": "Development and function of innate (เทททานทอ cells (e.g, granulocytes, natural killer cells,",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.3",
+   "t": "Development and function of T lymphocytes, T-lymphocyte receptors",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.4",
+   "t": "Development and function of B lymphocytes and plasma cells, antibody structure and",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.5",
+   "t": "Antigenicity and immunogenicity, antigen processing and presentation, cell activation and",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.6",
+   "t": "immunologic mediators: complement pathways, cytokines, chemokines, antimicrobial",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.7",
+   "t": "Immunogenetics: MHC structure and function",
+   "p": 11,
+   "k": []
+  },
+  {
+   "c": "B1.4.8",
+   "t": "immunizations",
+   "p": 12,
+   "k": []
+  },
+  {
+   "c": "B1.4.9",
+   "t": "immunity to microbes",
+   "p": 12,
+   "k": []
+  },
+  {
+   "c": "B1.4.10",
+   "t": "immunodeficiency",
+   "p": 12,
+   "k": [
+    "Primary immunodeficiency: combined immunodeficiency, T cell, B cell, phagocyte",
+    "Secondary Immunodeficiency (e.g., infection, radiation, sptenectomy, mainutrition)"
+   ]
+  },
+  {
+   "c": "B1.4.11",
+   "t": "Hypersensitivity disorders (type | - IV)",
+   "p": 12,
+   "k": [
+    "anaphylaxis and allergic disorders",
+    "transplantation and graft rejection including graft VS host reaction"
+   ]
+  },
+  {
+   "c": "B1.4.12",
+   "t": "Tumor immunology",
+   "p": 12,
+   "k": []
+  },
+  {
+   "c": "B1.4.13",
+   "t": "Laboratory investigation (e.g., ELISA, aggtutination, flow cytometry, immunofluorescence,",
+   "p": 12,
+   "k": []
+  },
+  {
+   "c": "B1.4.14",
+   "t": "Principle of immunomodulation and immunotherapy (e.g., biologics, allergen-specific",
+   "p": 12,
+   "k": []
+  },
+  {
+   "c": "B1.5",
+   "t": "Principle of medical microbiology and parasitology",
+   "p": 12,
+   "k": []
+  },
+  {
+   "c": "B1.5.1",
+   "t": "Basic concept of human infectious diseases",
+   "p": 12,
+   "k": [
+    "Human pathogen classification (bacteria, virus, fungus, parasite, prion)",
+    "Basic human microbiota (microbiome, virome, mycobiome)",
+    "Basic biosafety for general practitioner (Biosafety Level, Personal protective",
+    "Microbes in medical biotechnology applications (probiotics, viral vector vaccine, gene",
+    "Vectors control, and prevention (mosquito, flea, tick, mite and fly)",
+    "Emerging infectious diseases (e.g., COVID 19)",
+    "Principle of drug resistance pathogens",
+    "Principle of serologic studies",
+    "Principle of molecular diagnosis"
+   ]
+  },
+  {
+   "c": "B1.5.2",
+   "t": "General Principles of medical bacteriology",
+   "p": 12,
+   "k": [
+    "Classification of medically important bacteria",
+    "Structure, genome and plasmid",
+    "Important bacterial physiology (e.g., metabolism, replication, biofilm formation that",
+    "Pathogenesis",
+    "Gram staining, acid fast staining and modified acid-fast staining",
+    "Principles of cultivation, assay and laboratory diagnosis",
+    "Interpretation of antimicrobial susceptibility test",
+    "Zoonosis and vector-borne diseases of pathogenic bacteria"
+   ]
+  },
+  {
+   "c": "B1.5.3",
+   "t": "General Principles of medical virology",
+   "p": 13,
+   "k": [
+    "Classification of medically important virus",
+    "Replication (general concept for understanding antiviral agents, antibody)",
+    "Pathogenesis",
+    "Principles of cultivation, assay and laboratory diagnosis",
+    "Zoonosis, vector-borne disease of pathogenic viruses: dengue hemorrhagic fever, zika"
+   ]
+  },
+  {
+   "c": "B1.5.4",
+   "t": "General principles of medical mycology",
+   "p": 13,
+   "k": [
+    "Classification of medically inportant fungus (yeast & mold)",
+    "Pathogenesis",
+    "Principles of cultivation, assay and laboratory diagnosis"
+   ]
+  },
+  {
+   "c": "B1.5.5",
+   "t": "General Principles of medical parasitology and entomology",
+   "p": 13,
+   "k": [
+    "Classification of medically important parasites (pathogenic protozoa, helminths, and",
+    "Pathogenesis",
+    "Principles of cultivation, assay and laboratory diagnosis",
+    "Principle of prevention and treatment",
+    "Epidemiology",
+    "Venomous arthropods (paederous, blister beetle, etc.)"
+   ]
+  },
+  {
+   "c": "B1.5.6",
+   "t": "Specimen collection, handling and transport",
+   "p": 13,
+   "k": []
+  },
+  {
+   "c": "B1.6",
+   "t": "Principle of pathology",
+   "p": 13,
+   "k": []
+  },
+  {
+   "c": "B1.6.1",
+   "t": "Principle of pathological diagnosis:",
+   "p": 13,
+   "k": [
+    "Tissue biopsy, histopathology, cytology, molecular diagnosis",
+    "Specimen collection and handling"
+   ]
+  },
+  {
+   "c": "B1.6.2",
+   "t": "Acute and chronic inflammation",
+   "p": 13,
+   "k": [
+    "Acute inflammation and mediator system",
+    "Cell and tissue injury, apoptosis",
+    "Chronic inflammation"
+   ]
+  },
+  {
+   "c": "B1.6.3",
+   "t": "Tissue renewal, regeneration and repair",
+   "p": 13,
+   "k": [
+    "Mechanism of tissue and organ regeneration",
+    "Healing by repair, scar formation and fibrosis"
+   ]
+  },
+  {
+   "c": "B1.6.4",
+   "t": "Neoplasm",
+   "p": 14,
+   "k": [
+    "Neoplasm biology transformation, oncogenes, oncogenesis, altered cell differentiation",
+    "Classification, grading and staging of Neoplasm",
+    "Tumor markers",
+    "Neoplasm epidemiology and prevention"
+   ]
+  },
+  {
+   "c": "B1.6.4",
+   "t": "Adaptation to environmental extremes, including occupational exposures",
+   "p": 14,
+   "k": [
+    "physical and associated disorders (e.g. mechanical trauma & radiation, decreased",
+    "Chemical poisoning and therapy (e.g. agricultural hazards, biological venom and"
+   ]
+  },
+  {
+   "c": "B1.7",
+   "t": "Principle of pharmacology",
+   "p": 14,
+   "k": []
+  },
+  {
+   "c": "B1.7.1",
+   "t": "Pharmacodynamic and pharmacokinetic processes",
+   "p": 14,
+   "k": [
+    "Pharmacokinetics: absorption and bioavailability, distribution, metabolism, excretion",
+    "Pharmacodynamics: mechanisms of drug action, receptors (e.g., types, signal",
+    "Factors altering pharmacokinetics and pharmacodynamics in special population (e.g",
+    "Adverse drug effects including contraindication, warning, precautions, side effects",
+    "Drug development and regulatory issues (e.g., approval scheduling, bioequivalence",
+    "Concept of rational drug use"
+   ]
+  },
+  {
+   "c": "B1.7.2",
+   "t": "Antimicrobials and anthelminthic agents: mechanism of action, adverse effect",
+   "p": 14,
+   "k": []
+  },
+  {
+   "c": "B1.7.3",
+   "t": "General principles of antineoplastic agents (e.g., chemotherapy, hormonal and targeted",
+   "p": 14,
+   "k": []
+  },
+  {
+   "c": "B1.7.4",
+   "t": "General principles of immunomodulating agents (e.g., corticosteroid)",
+   "p": 14,
+   "k": []
+  },
+  {
+   "c": "B1.7.5",
+   "t": "General principle of autonomic pharmacology",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.7.6",
+   "t": "General principles of antidotes (e.g., insecticide poisoning, heavy metal poisoning,",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.8",
+   "t": "Human life (after birth)",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.8.1",
+   "t": "Normal growth and development through each period",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.8.2",
+   "t": "Physical performance across lifespan",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.8.3",
+   "t": "Socioemotional, interpersonal and personality development of infancy, toddlers,",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.8.4",
+   "t": "Cognitive and language development",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.8.5",
+   "t": "Sex and gender",
+   "p": 15,
+   "k": [
+    "Gender equity and equality",
+    "Health and well-being of gender-diverse population"
+   ]
+  },
+  {
+   "c": "B1.9",
+   "t": "Research methodology and biostatistics",
+   "p": 15,
+   "k": []
+  },
+  {
+   "c": "B1.9.1",
+   "t": "Research methodology",
+   "p": 15,
+   "k": [
+    "Research design",
+    "Chance, bias, confounder",
+    "Relative risk, odds ratio",
+    "Sensitivity, specificity, predictive value, likelihood ratio, ROC curve",
+    "Relative risk reduction, absolute risk reduction, NNT"
+   ]
+  },
+  {
+   "c": "B1.9.2",
+   "t": "Biostatistics",
+   "p": 15,
+   "k": [
+    "Descriptive statistics: Measures of central tendency, measures of dispersion",
+    "Statistical inference (estimation, confidence interval)",
+    "Hypothesis generation, hypothesis testing (statistical testing and regression)"
+   ]
+  },
+  {
+   "c": "B21",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 16,
+   "k": []
+  },
+  {
+   "c": "B2.1.1",
+   "t": "Structures",
+   "p": 16,
+   "k": [
+    "Bone marrow",
+    "Spleen",
+    "Lymph node and other lymphoid tissues"
+   ]
+  },
+  {
+   "c": "B2.1.2",
+   "t": "Functions",
+   "p": 16,
+   "k": [
+    "Function of bone marrow, thyrnus, spleen, lymph node and other tymphoid",
+    "Production and function of leukocytes",
+    "Production and function of platelets",
+    "Production and function of coagulation, fibrinolytic factors and natural"
+   ]
+  },
+  {
+   "c": "B2.1.3",
+   "t": "Important changes associated with stages of life",
+   "p": 16,
+   "k": []
+  },
+  {
+   "c": "B2.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 16,
+   "k": []
+  },
+  {
+   "c": "B2.2.1",
+   "t": "Hereditary/congenital/structural disorders",
+   "p": 16,
+   "k": [
+    "Thalassemia",
+    "Hereditary RBC membrane defect",
+    "Hereditary coagulation disorders",
+    "G-6-PD deficiency",
+    "Hemophilia"
+   ]
+  },
+  {
+   "c": "B2.2.2",
+   "t": "_ Infectious/inflammatory/immunolosgic disorders",
+   "p": 16,
+   "k": [
+    "Autoimmune hemolytic anemia",
+    "Aplastic anemia",
+    "Drug-induced hemolytic anemia",
+    "immune deficiency states",
+    "immune thrombocytopenia",
+    "Filariasis",
+    "incompatible blood transfusion",
+    "Malaria",
+    "infectious mononucleosis",
+    "Agranulocytosis",
+    "Disseminated intravascular coagulation",
+    "Lymphadenitis"
+   ]
+  },
+  {
+   "c": "B2.2.3",
+   "t": "Traumatic and mechanical disorders (ไม่มีโรคกลุ่มนี้ในเกณฑ์ฯ)",
+   "p": 17,
+   "k": []
+  },
+  {
+   "c": "B2.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 17,
+   "k": [
+    "Leukemias",
+    "Myeloproliferative neoplasm",
+    "Lyrnphomas",
+    "Multiple myeloma",
+    "Thymoma"
+   ]
+  },
+  {
+   "c": "B2.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 17,
+   "k": [
+    "Nutritional deficiency anemia",
+    "Non-immune hemolytic anemia (e.g",
+    "Acquired coagulation disorder {Vitamin",
+    "Acquired platelet disorders"
+   ]
+  },
+  {
+   "c": "B2.2.6",
+   "t": "Vascular disorders",
+   "p": 17,
+   "k": []
+  },
+  {
+   "c": "B2.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 18,
+   "k": [
+    "Specimen collection, handling and transport of blood samples (patient identification, tube",
+    "Reticulocyte count",
+    "Hemoglobin typing",
+    "Inclusion bodies, Heinz bodies",
+    "Hemostatic study: 20-min whole blood clotting test (20W8CT), Clot retraction, clot lysis",
+    "Coagulation study (prothrombin time (PT), activated partial thromboplastin time (APTT)",
+    "Erythrocyte sedimentation rate",
+    "Malarial parasite: thick and thin film",
+    "ABO blood group, Rh and cross matching"
+   ]
+  },
+  {
+   "c": "B2.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการ และภาวะผิดปกติในข้อ 82.2",
+   "p": 18,
+   "k": [
+    "Whole blood and blood products",
+    "Drugs used in anemia",
+    "Anticoagulants, antiplatelet drugs, fibrinolytic drugs and hemostatic agents",
+    "Hematopoietic growth factors e.g. erythropoietin, G-CSF"
+   ]
+  },
+  {
+   "c": "B3",
+   "t": "Central and peripheral nervous system",
+   "p": 19,
+   "k": []
+  },
+  {
+   "c": "B3.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 19,
+   "k": []
+  },
+  {
+   "c": "B3.1.1",
+   "t": "Structures",
+   "p": 19,
+   "k": [
+    "Morphology of neuron, axon, dendrite, glia cells and myelin sheath",
+    "Structures in the peripheral nervous system",
+    "Spinal cord structures",
+    "Brainstern structures",
+    "Cranial nerves",
+    "Cerebellum",
+    "Structures in the subcortical region (e.g. hypothalamus and timbic system)",
+    "Structures of the cerebral cortex",
+    "Coverage of the central nervous system",
+    "Vascular supply of the brain, spinal cord and blood brain barrier",
+    "Cerebrospinal fluid pathway including ventricular system and cisterns",
+    "Structures in the visual system including eyeball and its components, eyelid muscles",
+    "Structures in the audio-vestibular system including outer, middle, and inner ears"
+   ]
+  },
+  {
+   "c": "B3.1.2",
+   "t": "Functions",
+   "p": 19,
+   "k": [
+    "Membrane potentials",
+    "Biochemical components of neural tissues and brain energy metabolism",
+    "Neurotransmitters: basic principles, glutamate, GABA, acetylcholine, dopamine",
+    "Motor system: types of muscle fiber, motor unit, neuromuscular junction, pyramidal",
+    "Sensory system: somatic sensation, pain sensation, special senses (vision",
+    "Autonomic nervous system",
+    "Reflexes: spinal reflexes and brainstem reflexes",
+    "Cognitive functions: perception, motor planning, language, executive functions",
+    "Reward system, addictive state and tolerance",
+    "Consciousness and physiology of sleep",
+    "Formation, flow, and absorption of cerebrospinal fluid",
+    "Appetite regulation"
+   ]
+  },
+  {
+   "c": "B3.1.3",
+   "t": "Important changes associated with stages of life",
+   "p": 20,
+   "k": [
+    "Embryonic development and fetal maturation essential to hereditary/congenitaV",
+    "Somatic and special senses in older people",
+    "Age-associated cognitive decline"
+   ]
+  },
+  {
+   "c": "B3.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เหศ วัย เชื้อชาติ",
+   "p": 20,
+   "k": [
+    "Neural tube defect",
+    "Neurofibromatosis",
+    "Tuberous sclerosis",
+    "Hydrocephalus"
+   ]
+  },
+  {
+   "c": "B3.2.2",
+   "t": "Infectious/inflammatory/immunologic disorders",
+   "p": 20,
+   "k": [
+    "Meningitis (bacterial, viral",
+    "Intracranial abscess",
+    "Guillain-Barre syndrome",
+    "Myasthenia gravis",
+    "Encephalitis (viral, immune-mediated)",
+    "Myelitis (viral, immune-mediated)",
+    "Tetanus",
+    "Botutism",
+    "Facial nerve paralysis (Bell’s palsy)"
+   ]
+  },
+  {
+   "c": "B3.2.3",
+   "t": "Traumatic and mechanical disorders",
+   "p": 20,
+   "k": [
+    "Traumatic brain injury (e.g., cerebral",
+    "Peripheral nerve entrapment (carpal",
+    "Increased intracranial pressure and",
+    "Spinal cord injury and spinal cord"
+   ]
+  },
+  {
+   "c": "B3.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 21,
+   "k": [
+    "Benign neoplasms of the nervous",
+    "Malignant neoplasms of the nervous"
+   ]
+  },
+  {
+   "c": "B3.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 21,
+   "k": [
+    "Periodic paralysis",
+    "Drug-induced extrapyramidal",
+    "Toxic encephalopathy (opioid",
+    "Alcohol withdrawal syndrome",
+    "Neurotoxic effects of contact with"
+   ]
+  },
+  {
+   "c": "B3.2.6",
+   "t": "Vascular disorders",
+   "p": 21,
+   "k": [
+    "Acute ischemic stroke and transient"
+   ]
+  },
+  {
+   "c": "B3.2.7",
+   "t": "Paroxysmal and episodic disorders",
+   "p": 22,
+   "k": [
+    "Seizures",
+    "Trigeminal neuralgia",
+    "Tension headache",
+    "Migraine"
+   ]
+  },
+  {
+   "c": "B3.2.8",
+   "t": "Neurodegenerative disorders",
+   "p": 22,
+   "k": [
+    "Alzheimer’s diseases",
+    "Normat pressure hydrocephalus",
+    "Amyotrophic lateral sclerosis"
+   ]
+  },
+  {
+   "c": "B3.2.9",
+   "t": "Psychiatric disorders",
+   "p": 22,
+   "k": [
+    "Hyperventilation syndrome",
+    "Attention deficit hyperactivity disorder",
+    "Acute psychosis and detirium",
+    "Maltreatrnent syndromes (e.g",
+    "Depressive disorders",
+    "Panic disorder and generalized anxiety",
+    "Suicide attempt, suicidal ideation"
+   ]
+  },
+  {
+   "c": "B3.2.10",
+   "t": "Disorders of the special sense organs",
+   "p": 22,
+   "k": [
+    "Conjunctivitis",
+    "Cataract",
+    "Hordeolum and chatazion",
+    "Acute corneal abrasion and ulcer",
+    "Retinopathy",
+    "Disorders of refraction and",
+    "Disorders of ocular muscles, refraction",
+    "Conductive and sensorineural hearing",
+    "Disorders of vestibular function and"
+   ]
+  },
+  {
+   "c": "B3.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 23,
+   "k": [
+    "Lumbar puncture, cerebrospinal fluid analysis and staining for diagnosing meningitis (including"
+   ]
+  },
+  {
+   "c": "B3.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 83.2",
+   "p": 23,
+   "k": [
+    "Drugs used in neuromuscular disorders (drugs enhancing neuromuscular transmission",
+    "Antiepileptics",
+    "Antipsychotic drugs, antidepressants, hypnotics and anxiolytics",
+    "Central nervous system stimulants",
+    "Drugs used in substance dependence",
+    "Analgesics, antipyretics, drugs for neuropathic pain and antimigraine drugs",
+    "Local anesthetics",
+    "Drugs used in vertigo and vestibular disorders"
+   ]
+  },
+  {
+   "c": "B4",
+   "t": "Skin and related connective tissue",
+   "p": 24,
+   "k": []
+  },
+  {
+   "c": "B4.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 24,
+   "k": []
+  },
+  {
+   "c": "B4.1.1",
+   "t": "Structures",
+   "p": 24,
+   "k": [
+    "Cell/tissue structure",
+    "Fibroblasts, endothelial ceils and mesenchymal cells, basement membrane"
+   ]
+  },
+  {
+   "c": "B4.1.2",
+   "t": "Functions",
+   "p": 24,
+   "k": []
+  },
+  {
+   "c": "B4.1.3",
+   "t": "Important changes associated with stages of life",
+   "p": 24,
+   "k": [
+    "Embryonic development and fetal maturation essential to hereditary/congenital/",
+    "Changes associated with stage of life (e.g, senile purpura, male pattern baldness"
+   ]
+  },
+  {
+   "c": "B42",
+   "t": "สาเหตุ หยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 24,
+   "k": []
+  },
+  {
+   "c": "B4.2.2",
+   "t": "Infectious/inflammatory/immunologic disorders",
+   "p": 24,
+   "k": [
+    "Acne",
+    "Leprosy",
+    "Abscess",
+    "Cellulitis",
+    "Staphylococcal scaled skin syndrome",
+    "Cutaneous larva migrans",
+    "Herpes simplex infection",
+    "Bullous dermatoses",
+    "Varicelia zoster virus infections",
+    "Cutaneous lupus erythematosus",
+    "Viral exanthemata",
+    "Erythema multiforme, erythema",
+    "Wart (verrucae)",
+    "Papulosquamous disorders",
+    "Superficial mycoses (tinea, pityriasis",
+    "Infestation by ectoparasites",
+    "Scleroderma",
+    "Alopecia",
+    "Eczema, dermatitis",
+    "Urticaria",
+    "Steven Johnson’s syndrome",
+    "Dyshidrosis, miliaria"
+   ]
+  },
+  {
+   "c": "B4.2.3",
+   "t": "Traumatic and mechanical disorders",
+   "p": 25,
+   "k": [
+    "Burns",
+    "Keloid, hypertrophic scar",
+    "Corn",
+    "Scar",
+    "Ulcers",
+    "Wound"
+   ]
+  },
+  {
+   "c": "B4.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 25,
+   "k": [
+    "Cyst",
+    "Basal cell carcinoma",
+    "Lipoma",
+    "Malignant melanoma",
+    "Sebaceous cyst",
+    "Squamous cell carcinoma"
+   ]
+  },
+  {
+   "c": "B4.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 25,
+   "k": []
+  },
+  {
+   "c": "B4.2.6",
+   "t": "Vascular disorders",
+   "p": 25,
+   "k": []
+  },
+  {
+   "c": "B6.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 25,
+   "k": [
+    "KOH smear"
+   ]
+  },
+  {
+   "c": "B4.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 84.2",
+   "p": 25,
+   "k": [
+    "Emoltient and barrier preparations",
+    "Drugs used in psoriasis",
+    "Preparations for warts and caliuses",
+    "Drugs used in acnes",
+    "Drugs used in melasma"
+   ]
+  },
+  {
+   "c": "B5",
+   "t": "Musculoskeletal system and connective tissue",
+   "p": 27,
+   "k": []
+  },
+  {
+   "c": "B5.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 27,
+   "k": []
+  },
+  {
+   "c": "B5.1.1",
+   "t": "Structures",
+   "p": 27,
+   "k": [
+    "Bones and cartilage",
+    "Skeletal muscles",
+    "Connective tissues"
+   ]
+  },
+  {
+   "c": "B5.1.2",
+   "t": "Functions",
+   "p": 27,
+   "k": [
+    "Bones and cartilage: bone growth, bone remodelling, bone healing",
+    "Joints and tendons: mechanical support",
+    "Skeletal muscles: mechanism of contraction, mechanic and energetic of skeletal",
+    "Connective tissues"
+   ]
+  },
+  {
+   "c": "B5.1.3",
+   "t": "Important changes associated with stages of life",
+   "p": 27,
+   "k": [
+    "Embryonic development and fetal maturation essential to hereditary/conegenital/"
+   ]
+  },
+  {
+   "c": "B5.1.4",
+   "t": "Others",
+   "p": 27,
+   "k": [
+    "Exercise and physical conditioning"
+   ]
+  },
+  {
+   "c": "B5.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 27,
+   "k": []
+  },
+  {
+   "c": "B5.2.1",
+   "t": "Hereditary/congenitaVstructural disorders",
+   "p": 27,
+   "k": []
+  },
+  {
+   "c": "B5.2.2",
+   "t": "Infectious/inflammatory/imrunologic disorders",
+   "p": 27,
+   "k": [
+    "Necrotizing fasciitis",
+    "infective arthritis",
+    "Polymyositis, dermatomyositis",
+    "Spondyloarthropathies",
+    "Rheumatoid arthritis",
+    "Systemic lupus erythematosus",
+    "vasculitis syndrome (e.g., Kawasaki",
+    "Osteomyelitis",
+    "pyomyositis"
+   ]
+  },
+  {
+   "c": "B5.2.3",
+   "t": "Traumatic and mechanical disorders",
+   "p": 28,
+   "k": [
+    "Soft-tissue rheumatism (e.g., tendinitis, |",
+    "Fractures (extremities)",
+    "Intervertebral disc disorders"
+   ]
+  },
+  {
+   "c": "B5.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 28,
+   "k": [
+    "Benign neoplasm of bone"
+   ]
+  },
+  {
+   "c": "B5.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 28,
+   "k": [
+    "Crystal arthropathy (gout, pseudogout) |",
+    "Myopathy (e.g, inflammatory"
+   ]
+  },
+  {
+   "c": "B5.2.6",
+   "t": "Vascular disorders (ไม่มีโรคกลุ่มนี้ในเกณฑ์ฯ)",
+   "p": 28,
+   "k": []
+  },
+  {
+   "c": "B5.2.7",
+   "t": "Degenerative disorders",
+   "p": 28,
+   "k": []
+  },
+  {
+   "c": "B5.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 28,
+   "k": [
+    "Plain film of bones and joints",
+    "Synovial fluid analysis",
+    "Serum uric acid",
+    "Serologic studies: antinuclear antibody (ANA), rheumatoid factors"
+   ]
+  },
+  {
+   "c": "B5.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 85.2",
+   "p": 29,
+   "k": [
+    "Non-steroidal anti-inflammatory drugs",
+    "Disease-modifying antirheumatic drugs",
+    "Drugs for treatment of gout and hyperuricemia",
+    "Drugs affecting bone metabolism"
+   ]
+  },
+  {
+   "c": "B6.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 30,
+   "k": []
+  },
+  {
+   "c": "B6.1.1",
+   "t": "Structures",
+   "p": 30,
+   "k": [
+    "Nasal cavity, nasopharynx and sinuses",
+    "Lung parenchyma",
+    "Pleura, pleural cavity, and pleural fluid",
+    "Thoracic cavities and respiratory muscle"
+   ]
+  },
+  {
+   "c": "B6.1.2",
+   "t": "Functions",
+   "p": 30,
+   "k": [
+    "Air conduction",
+    "Respiratory control including neural regulation, chemical regulation, and respiratory",
+    "Gas diffusion and gas exchange",
+    "Blood gas transportation (02 and CO2 transport)",
+    "Respiratory response to special conditions including high-altitude, diving and exercise"
+   ]
+  },
+  {
+   "c": "B6.1.3",
+   "t": "Important changes associated with stage of life",
+   "p": 30,
+   "k": [
+    "Embryonic development and fetal maturation essential to hereditary/congenitaV"
+   ]
+  },
+  {
+   "c": "B6.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 30,
+   "k": []
+  },
+  {
+   "c": "B6.2.1",
+   "t": "Hereditary/congenital/structural disorders",
+   "p": 30,
+   "k": []
+  },
+  {
+   "c": "B6.2.2",
+   "t": "Infectious/inflammatory/immunologic disorders",
+   "p": 30,
+   "k": [
+    "Vasomotor and allergic rhinitis",
+    "Lung parasitic infestation (e.g",
+    "Upper respiratory tract infections",
+    "Lower respiratory tract infections",
+    "Chronic obstructive lung disease",
+    "Diphtheria",
+    "Tuberculosis",
+    "Influenza",
+    "Pleuritis/pleural effusion"
+   ]
+  },
+  {
+   "c": "B6.2.3",
+   "t": "Traumatic and mechanical disorders",
+   "p": 31,
+   "k": [
+    "Foreign body aspiration",
+    "Obstructive sleep apnea",
+    "Airway obstruction",
+    "Hemothorax",
+    "Pneumothorax",
+    "Atelectasis"
+   ]
+  },
+  {
+   "c": "B6.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 31,
+   "k": [
+    "Benign neoplasm of respiratory",
+    "Malignant neoplasm of respiratory"
+   ]
+  },
+  {
+   "c": "B6.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 32,
+   "k": [
+    "Respiratory failure (hypoventilation",
+    "Acute respiratory distress syndrome"
+   ]
+  },
+  {
+   "c": "B6.2.6",
+   "t": "Vascular disorders",
+   "p": 32,
+   "k": [
+    "Pulmonary edema"
+   ]
+  },
+  {
+   "c": "B6.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งสุ่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 32,
+   "k": [
+    "Pleural fluid analysis",
+    "Arterial blood gas analysis",
+    "Spirometry, peak expiratory flow rate measurement"
+   ]
+  },
+  {
+   "c": "B6.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 86.2",
+   "p": 32,
+   "k": [
+    "Antihistamines",
+    "Cough preparations (cough suppressants, mucolytics, expectorant and demutcent cough",
+    "Bronchoditators (adrenoceptor agonists, compound antimuscarinic bronchoditators and",
+    "Intranasal and inhaled corticosteroids",
+    "Leukotriene receptor antagonists"
+   ]
+  },
+  {
+   "c": "B7.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 33,
+   "k": []
+  },
+  {
+   "c": "B7.1.1",
+   "t": "Structures",
+   "p": 33,
+   "k": [
+    "Cardiac chambers, heart valves, inlet and outlet of heart with relation to great vessel",
+    "Arteries, veins and lymphatic vessels",
+    "Endothelium and secretory function, vascular smooth muscle, microcirculation, and",
+    "Circulation in specific vascular beds including brain, renal, splanchnic, and splenic",
+    "Mediastinum"
+   ]
+  },
+  {
+   "c": "B7.1.2",
+   "t": "Functions",
+   "p": 33,
+   "k": [
+    "Cardiac cycle, mechanics, and heart sounds",
+    "Hemodynamics, including systemic and pulmonary circulation",
+    "Pacemaker activity and cardiac conduction",
+    "Neural and hormonal regulation of blood pressure, blood volume and autoregulation",
+    "Cardiovascular response to special conditions including posture, exercise, and"
+   ]
+  },
+  {
+   "c": "B7.1.3",
+   "t": "Important changes associated with stage of life",
+   "p": 33,
+   "k": []
+  },
+  {
+   "c": "B7.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 33,
+   "k": []
+  },
+  {
+   "c": "B7.2.1",
+   "t": "Hereditary/congenitaVstructural disorders",
+   "p": 33,
+   "k": [
+    "Congenital malformations of heart"
+   ]
+  },
+  {
+   "c": "B7.2.2",
+   "t": "ไทเฮ6นอนร/ไหไลดททเทสไอพ/เททานทอ๐1๐ดแต disorders",
+   "p": 34,
+   "k": [
+    "Acute rheumatic fever",
+    "Pericarditis",
+    "Myocarditis"
+   ]
+  },
+  {
+   "c": "B7.2.3",
+   "t": "Traurnatic and mechanical disorders",
+   "p": 34,
+   "k": [
+    "Cardiac tamponade",
+    "Valvular heart diseases"
+   ]
+  },
+  {
+   "c": "B7.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 34,
+   "k": []
+  },
+  {
+   "c": "B7.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 34,
+   "k": [
+    "Hypertension",
+    "Heart failure",
+    "Cardiopulmonary arrest",
+    "Shock (hypovolemic, anaphylactic",
+    "Cardiac arrhythmias (atrial fibrillation",
+    "Disorders of lipoprotein metabolism"
+   ]
+  },
+  {
+   "c": "B7.2.6",
+   "t": "Vascular disorders",
+   "p": 35,
+   "k": [
+    "Acute coronary syndrome",
+    "Aortic aneurysm and dissection",
+    "Ischemic heart diseases (e.g., angina",
+    "Peripheral arterial occlusive disease",
+    "Diseases of peripheral veins"
+   ]
+  },
+  {
+   "c": "B7.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 35,
+   "k": [
+    "Lipid profile",
+    "Cardiac markers",
+    "Electrocardiography"
+   ]
+  },
+  {
+   "c": "B7.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 87.2",
+   "p": 35,
+   "k": [
+    "Beta-adrenoceptor blocking drugs",
+    "Nitrates, calcium-channel blockers and other vasodilators",
+    "Other antihypertensive drugs (e.g., vasodilator antihypertensive drugs, centrally acting",
+    "Positive inotropic drugs",
+    "Inotropic sympathomimetics, vasoconstrictor sympathomimetics and drugs used in",
+    "Drugs affecting lipid and lipoprotein metabolism"
+   ]
+  },
+  {
+   "c": "B8.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 36,
+   "k": []
+  },
+  {
+   "c": "B8.1.1",
+   "t": "Structures",
+   "p": 36,
+   "k": [
+    "Mouth, pharynx, esophagus, stomach, small intestine, large intestine, anus",
+    "Vascular supply of the gastrointestinal system and hepato-pancreato-biliary system"
+   ]
+  },
+  {
+   "c": "B8.1.2",
+   "t": "Functions",
+   "p": 36,
+   "k": [
+    "Gastrointestinal motility (swallowine reflex, gastric and intestinal motility)",
+    "Gastrointestinal secretion (salivary, exocrine pancreatic, gastric, intestinal and biliary",
+    "Synthetic and metabolic functions of the liver",
+    "Nutrient digestion and absorption"
+   ]
+  },
+  {
+   "c": "B8.1.3",
+   "t": "Important changes associated with stage of life",
+   "p": 36,
+   "k": []
+  },
+  {
+   "c": "B8.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 36,
+   "k": []
+  },
+  {
+   "c": "B8.2.1",
+   "t": "Hereditary/congenitaVstructural disorders",
+   "p": 36,
+   "k": [
+    "Abdominal wall defects",
+    "Congenital gastrointestinal",
+    "Congenital hepatobiliary malformation"
+   ]
+  },
+  {
+   "c": "B8.2.2",
+   "t": "Infectious/inflammatory/immunologic disorders",
+   "p": 37,
+   "k": [
+    "Chronic diarrhea",
+    "Acute appendicitis",
+    "Peritonitis",
+    "Peptic ulcer, gastritis",
+    "Perianal abscess",
+    "Gastrointestinal infection and food-",
+    "Viral hepatitis",
+    "Cholelithiasis, cholecystitis, cholangitis",
+    "Gastrointestinal and hepatobiliary",
+    "Esophageal varices",
+    "intestinal diverticular diseases",
+    "Liver abscess",
+    "Acute pancreatitis"
+   ]
+  },
+  {
+   "c": "B8.2.3",
+   "t": "Traumatic and mechanical disorders",
+   "p": 37,
+   "k": [
+    "Gastrointestinal obstruction"
+   ]
+  },
+  {
+   "c": "B8.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 37,
+   "k": [
+    "Benign and malignant neoplasm of"
+   ]
+  },
+  {
+   "c": "B8.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 37,
+   "k": [
+    "Alcoholic tiver disease",
+    "Cirrhosis"
+   ]
+  },
+  {
+   "c": "B8.2.6",
+   "t": "Vascular disorders",
+   "p": 38,
+   "k": []
+  },
+  {
+   "c": "B8.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 38,
+   "k": [
+    "Liver function test, amylase and lipase",
+    "Viral hepatitis serologies",
+    "Urea breath test, CLO test",
+    "Ascitic fluid analysis",
+    "Specimen collection, handting and transport of stool samples",
+    "Stool examination, stool occult blood, stool concentration for parasite"
+   ]
+  },
+  {
+   "c": "B8.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 88.2",
+   "p": 38,
+   "k": [
+    "Antacids, ulcer-healing drugs and other drugs for dyspepsia",
+    "Antispasmodics, prokinetics, antiemetics",
+    "Drugs used in acute diarrhea",
+    "Laxatives",
+    "Local preparation for anorectal disorders"
+   ]
+  },
+  {
+   "c": "B9.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 39,
+   "k": []
+  },
+  {
+   "c": "B9.1.1",
+   "t": "Structures",
+   "p": 39,
+   "k": [
+    "Kidneys",
+    "Innervation and blood supply of kidneys, ureters, bladder, urethra"
+   ]
+  },
+  {
+   "c": "B9.1.2",
+   "t": "Functions",
+   "p": 39,
+   "k": [
+    "Tubular reabsorption and secretion, including transport processes and proteins:",
+    "Renal handling of sodium-blood volume, potassium, chloride, calcium, magnesium",
+    "Urinary concentration and dilution",
+    "Renal mechanisms in acid-base balance",
+    "Hormones produced by or acting on the kidney: erythropoietin, vitamin D",
+    "Renal metabolism and oxygen consumption"
+   ]
+  },
+  {
+   "c": "B9.1.3",
+   "t": "important changes associated with stages of life",
+   "p": 39,
+   "k": [
+    "Embryonic development and fetal maturation essential to hereditary/congenita/"
+   ]
+  },
+  {
+   "c": "B9.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 39,
+   "k": []
+  },
+  {
+   "c": "B9.2.1",
+   "t": "Hereditary/congenitaVstructural disorders",
+   "p": 39,
+   "k": [
+    "Autosomal dominant polycystic"
+   ]
+  },
+  {
+   "c": "B9.2.2",
+   "t": "Infectious/inflammatory/immunologic disorders",
+   "p": 40,
+   "k": [
+    "Acute cystitis",
+    "Acute pyelonephritis",
+    "Acute post-streptococcal",
+    "Nephrotic syndrome"
+   ]
+  },
+  {
+   "c": "B9.2.3",
+   "t": "Traumatic and mechanical disorders",
+   "p": 40,
+   "k": []
+  },
+  {
+   "c": "B9.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 40,
+   "k": [
+    "Benign neopiasm of urinary system",
+    "Malignant neoplasm of urinary system"
+   ]
+  },
+  {
+   "c": "B9.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 40,
+   "k": [
+    "Anuria/oliguria/polyuria"
+   ]
+  },
+  {
+   "c": "B9.2.6",
+   "t": "Vascular disorders",
+   "p": 40,
+   "k": []
+  },
+  {
+   "c": "B9.2.7",
+   "t": "Others",
+   "p": 41,
+   "k": [
+    "Acute kidney injury"
+   ]
+  },
+  {
+   "c": "B9.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 41,
+   "k": [
+    "Serum and urine osmolarity",
+    "Renal function test: blood urea nitrogen (BUN), creatinine (Cr), glomerular filtration rate (GFR)",
+    "Serum electrolytes: sodium, potassium, chloride, bicarbonate, calcium, phosphate"
+   ]
+  },
+  {
+   "c": "B9.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 89.2",
+   "p": 41,
+   "k": [
+    "Drugs for urinary frequency, enuresis and incontinence"
+   ]
+  },
+  {
+   "c": "B10.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 42,
+   "k": []
+  },
+  {
+   "c": "B10.1.1",
+   "t": "Structures",
+   "p": 42,
+   "k": [
+    "Hypothalamic-pituitary-gonadal axis",
+    "Male structure, including gonad, internal and external genital organs (เพิ่มจากเกณฑ์ 55)",
+    "Female structure, including gonad, internal and external genital organs, breast"
+   ]
+  },
+  {
+   "c": "B10.1.2",
+   "t": "Functions",
+   "p": 42,
+   "k": [
+    "Male function: spermatogenesis, semen production, sex steroids, intercourse, sexual"
+   ]
+  },
+  {
+   "c": "B10.1.3",
+   "t": "Important changes associated with stage of life",
+   "p": 42,
+   "k": [
+    "Embryonic development and fetal maturation essential to hereditary/congenita/",
+    "Pregnancy, including gestational uterus, placenta, gestational hormones, labor and",
+    "Menopause, andropause"
+   ]
+  },
+  {
+   "c": "B10.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 42,
+   "k": []
+  },
+  {
+   "c": "B10.2.1",
+   "t": "Hereditary/congenitaVstructural disorders",
+   "p": 42,
+   "k": [
+    "Ambiguous genitalia",
+    "imperforate hymen",
+    "Undescended testis"
+   ]
+  },
+  {
+   "c": "B10.2.2",
+   "t": "Infectious/inflammatory/immunologic disorders",
+   "p": 42,
+   "k": [
+    "Sexually transmitted infections:",
+    "Intrauterine and perinatal infections",
+    "Orchitis and epididymitis",
+    "Urethritis",
+    "Vulvovaginitis",
+    "Pelvic inflammatory disease"
+   ]
+  },
+  {
+   "c": "B10.2.3",
+   "t": "Traumatic and mechanical disorders",
+   "p": 43,
+   "k": [
+    "Foreign body",
+    "Hydrocele of testis",
+    "Stress incontinence",
+    "Vascular disturbances of testis",
+    "Pelvic organ prolapses (cystocele"
+   ]
+  },
+  {
+   "c": "B10.2.4",
+   "t": "Neoplastic disorders and tumor-tike conditions",
+   "p": 43,
+   "k": [
+    "Cervical polyp",
+    "Hydatidiform mole",
+    "Hyperplasia of prostate",
+    "Germ cell tumor",
+    "Benign neoplasm of reproductive",
+    "Matignant neoplasm of reproductive"
+   ]
+  },
+  {
+   "c": "B10.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 43,
+   "k": [
+    "Menstrual disorders",
+    "Endometriosis",
+    "Menopausal syndrome",
+    "Hypogonadism",
+    "Abnormal uterine or vaginal bleeding |",
+    "Erectile dysfunction"
+   ]
+  },
+  {
+   "c": "B10.2.6",
+   "t": "Disorders relating to pregnancy, the puerperium, and the post-partum period",
+   "p": 44,
+   "k": [
+    "Abortion",
+    "Multiple gestation",
+    "Hyperemesis gravidarum",
+    "Postpartum hemorrhage",
+    "Breast infection associated with",
+    "Ectopic pregnancy",
+    "Septic abortion",
+    "Disorders of breast and lactation",
+    "Dead fetus in utero",
+    "Hypertensive disorder in pregnancy",
+    "Puerperal infection",
+    "Chorio-amnionitis"
+   ]
+  },
+  {
+   "c": "B10.2.7",
+   "t": "Disorders in the perinatal period",
+   "p": 44,
+   "k": [
+    "Neonatal jaundice",
+    "Respiratory distress in newborn"
+   ]
+  },
+  {
+   "c": "B10.3",
+   "t": "การสืบค้นโรค รวมถึงการเก็บสิ่งส่งตรวจทางห้องปฏิบัติการและการแปลผล",
+   "p": 44,
+   "k": [
+    "Urine pregnancy test",
+    "KOH preparation, wet preparation",
+    "Gynecotogical cytology: Pap smear",
+    "Serum beta human chorionic gonadotropin",
+    "Hypothalamic-pituitary-ovarian axis investigation",
+    "Human immunodeficiency virus tests",
+    "Human papillomavirus DNA test",
+    "Serologic studies: treponema test"
+   ]
+  },
+  {
+   "c": "B10.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ B10.2",
+   "p": 44,
+   "k": [
+    "Prostaglandins and prostaglandin antagonists",
+    "Contraceptive drugs",
+    "Femate sex hormones and treatment of menopause",
+    "Stimulators and inhibitors of lactation",
+    "Male sex hormones",
+    "Drugs for hyperplasia of prostate",
+    "Drugs for erectile dysfunction (e.g., phosphodiesterase type 5 inhibitor)"
+   ]
+  },
+  {
+   "c": "B11.1",
+   "t": "โครงสร้าง การทํางาน และการเปลี่ยนแปลงที่สําคัญในแต่ละช่วงชีวิต",
+   "p": 45,
+   "k": []
+  },
+  {
+   "c": "B11.1.1",
+   "t": "Structures",
+   "p": 45,
+   "k": [
+    "Hypothalamus",
+    "Pineal gland",
+    "Thyroid gland",
+    "Parathyroid glands",
+    "Adrenal glands",
+    "Endocrine pancreas and gastrointestinal mucosa",
+    "Adipose tissue"
+   ]
+  },
+  {
+   "c": "B11.1.2",
+   "t": "Functions",
+   "p": 45,
+   "k": [
+    "Biochemistry of hormones",
+    "Actions of hormones",
+    "Control of hormone secretion"
+   ]
+  },
+  {
+   "c": "B11.1.3",
+   "t": "important changes associated with stage of life",
+   "p": 46,
+   "k": [
+    "Embryonic development and fetal maturation essential to hereditary/congenitaV",
+    "Aging related changes in endocrine glands and related organs stich as aging thyroid",
+    "Physiology of growth in children: growth hormone - insulin-like growth factor 1 axis"
+   ]
+  },
+  {
+   "c": "B11.2",
+   "t": "สาเหตุ พยาธิกําเนิด พยาธิสรีรวิทยา พยาธิสภาพ การวินิจฉัยโรค และปัจจัย (พฤติกรรมสุขภาพ เพศ วัย เชื้อชาติ",
+   "p": 46,
+   "k": []
+  },
+  {
+   "c": "B11.2.1",
+   "t": "Hereditary/congenitaV/structural disorders (ไม่มีโรคกลุ่มนี้ในเกณฑ์ๆ)",
+   "p": 46,
+   "k": []
+  },
+  {
+   "c": "B11.2.2",
+   "t": "Infectious/inflammatory/immunologic disorders (ไม่มีโรคกลุ่มนี้ในเกณฑ์ฯ)",
+   "p": 46,
+   "k": []
+  },
+  {
+   "c": "B11.2.3",
+   "t": "Traumatic and mechanical disorders (ไม่มีโรคกลุ่มนี้ในเกณฑ์ฯ)",
+   "p": 46,
+   "k": []
+  },
+  {
+   "c": "B11.2.4",
+   "t": "Neoplastic disorders and tumor-like conditions",
+   "p": 46,
+   "k": [
+    "Benign neoplasm of endocrine"
+   ]
+  },
+  {
+   "c": "B11.2.5",
+   "t": "Metabolic and regulatory disorders",
+   "p": 46,
+   "k": [
+    "Goiter",
+    "Prolactinoma",
+    "Thyrotoxicosis",
+    "Sheehan syndrome",
+    "Hypothyroidism",
+    "Acromegaly, gigantismm, dwarfism",
+    "Diabetes mellitus",
+    "Thyroid crisis or storm",
+    "Hyperglycemic crisis",
+    "Parathyroid gland disorders",
+    "Obesity",
+    "Diabetes insipidus",
+    "Metabolic syndrome",
+    "Protein-enerey matnutrition",
+    "Addison’s disease",
+    "Vitamin deficiency (A, B, C, D, E, kK)",
+    "Congenital adrenal hyperplasia",
+    "Primary aldosteronism",
+    "Syndrome of inappropriate",
+    "Vitamin toxicities"
+   ]
+  },
+  {
+   "c": "B11.3",
+   "t": "การสืบค้นโรค รวมถึง การเก็บสิ่งส่งตรวจทางห้องปฏิบัติการ และการแปลผล",
+   "p": 47,
+   "k": [
+    "Point-of-care testing (ชูใน6๐5ร68)",
+    "Thyroid function test",
+    "Morning serum cortisol, ACTH stimulation test, dexamethasone suppression test"
+   ]
+  },
+  {
+   "c": "B11.4",
+   "t": "หลักการใช้กลุ่มยาต่อไปนี้อย่างสมเหตุผลเพื่อการรักษาโรค กลุ่มอาการและภาวะผิดปกติในข้อ 811.2",
+   "p": 47,
+   "k": [
+    "Drugs used in diabetes mellitus (insulins, antidiabetic drugs} and treatment of hypoglycemia",
+    "Corticosteroids",
+    "Hypothalamic, pituitary hormones, and drugs affecting hypothalamic and pituitary functions"
+   ]
+  }
+ ]
+}

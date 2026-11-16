@@ -1,0 +1,2606 @@
+{
+ "source": "Siam University School of Medicine student guides and lesson plans supplied by the owner",
+ "method": "pdftotext -layout, then session titles and the numbered learning objectives under each 'Learning objective(s)' heading were extracted by src/scope/parse.py",
+ "courses": {
+  "240-224 Integumentary system": {
+   "chapter": "msk",
+   "sessions": [
+    {
+     "t": "Histology of skin and breast",
+     "lo": [
+      "describe the cellular components and histological structure of each layer of the skin correctly.",
+      "describe the normal replacement process of surface cells in the basal layer correctly.",
+      "explain the histological structure of skin derivatives correctly.",
+      "explain the histological structure of breast correctly.",
+      "behave according to the ground rules of school of Medicine strictly.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning. Pre-class preparation: Required",
+      "Study learning objective",
+      "Skim the contents related to objectives in the lecture handout",
+      "Read textbooks - Anthony L. Mescher. Junqueira’s Basic Histology text and atlas. 14th ed. Mc Grew Hill Education. New York, 2016; chapter 18, page 371-391."
+     ]
+    },
+    {
+     "t": "Embryonic development, fetal maturation and perinatal changes of",
+     "lo": [
+      "explain the development of skin and skin derivatives correctly.",
+      "explain the development of breast correctly.",
+      "explain and example the developmental anomalies of breast correctly.",
+      "behave according to the ground rule of school of Medicine strictly.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning. Pre-class preparation: Required: reading:",
+      "Study learning objective",
+      "Skim the contents related to objectives in the lecture handout",
+      "Read textbooks - Moore KL, Persuad TVN. and Torchia MG. The Developing Human. Clinical Oriented Embryology. 9th ed. Philadelphia Saunders. Elsevier, 2013."
+     ]
+    },
+    {
+     "t": "laboratory: Histology of skin, connective tissue and breast",
+     "lo": [
+      "identify the histological structure of skin and the components in each layer correctly.",
+      "identify the histological differentiation structure of skin in each layer correctly.",
+      "explain and identify the histological structure of skin derivatives correctly.",
+      "explain and identify the histological structure of mammary gland correctly.",
+      "explain the different of histological structure between normal mammary gland and during pregnancy correctly.",
+      "behave according to the ground rule of school of Medicine strictly.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning. Pre-class preparation: Required: reading:",
+      "Study learning objective",
+      "Skim the contents related to objectives in the lecture handout",
+      "Read textbooks - Young, B. and Heath, J.W. Wheater’s Functional Histology. 6th ed. Grafos. Churchill Livingstone, 2014."
+     ]
+    },
+    {
+     "t": "General properties of sensory receptors and cutaneous sensation",
+     "lo": [
+      "explain the general functions of skin, sense of touch (somatosensory system); cutaneous sensitivity and resolving capacity; exteroceptive -, proprioceptive-, and interoceptive sensations. Cortical (combined) sensation.",
+      "explain the sensory receptors and nerve endings of skin.",
+      "explain generator potential, sensation encoded by each receptors and its adaptation.",
+      "explain roles of cutaneous and kinesthetic inputs on haptic perception.",
+      "explain protopathic and epicritic cutaneous sensibilities.",
+      "behave according to the ground rules of medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning. Pre-class preparation: Required reading:"
+     ]
+    },
+    {
+     "t": "Eccrine function, skin repair and regeneration",
+     "lo": [
+      "explain eccrine functions.",
+      "explain process of skin repair and regeneration Pre-class preparation Required reading:"
+     ]
+    },
+    {
+     "t": "Lec. Skin Immunology: Basic to clinical approach",
+     "lo": [
+      "describe organs, functions and maturation of immune cells of skin.",
+      "characteristics and types of hypersensitivities.",
+      "describe common dermatologic diseases in relation to immune response. Pre-class preparation Required active learning and lecture power point slides"
+     ]
+    },
+    {
+     "t": "Laboratory: Skin sensations",
+     "lo": [
+      "identify and demonstrate the differentiation patterns in temperature receptor locations.",
+      "identify and demonstrate the differentiation patterns in touch receptor locations.",
+      "identify and demonstrate the differentiation patterns in tactile receptor locations.",
+      "identify and demonstrate the sensitivity of various regions of the skin.",
+      "identify and demonstrate the touch adaptation.",
+      "identify and demonstrate the temperature adaptation.",
+      "behave according to the ground rules of medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning. Pre-class preparation. Required reading:"
+     ]
+    },
+    {
+     "t": "Integrated and holistic medicine care in Integumentary System",
+     "lo": [
+      "emotional and behavioral factor.",
+      "influence on person, family, and society.",
+      "occupational and other environmental risk factors.",
+      "gender and ethic factors"
+     ]
+    },
+    {
+     "t": "Etiology, symptomatology and clinical diagnosis of the skin infection",
+     "lo": [
+      "List five viral, four bacterial, and two fungal pathogens that commonly cause skin diseases",
+      "Define and describe common clinical presentations and features for the following viral skin infections or skin manifestation of viral infection:",
+      "1 Herpes simplex",
+      "2 Varicella-zoster",
+      "3 Molluscum contagiosum",
+      "4 Human papilloma virus infection",
+      "5 Human herpesvirus 8 (HHV8) or the Kaposi sarcoma--associated herpesvirus (KSHV)",
+      "6 Monkeypox virus (a member of the Orthopoxvirus genus in the family Poxviridae)",
+      "Define and describe the following infections of the skin or skin manifestations of bacterial infection:",
+      "1 Impetigo - bullous and non-bullous",
+      "2 Cellulitis",
+      "3 Folliculitis and furunculosis",
+      "4 Scarlet fever",
+      "5 Staphylococcal scalded-skin syndrome",
+      "6 Meningococcal infection",
+      "7 Erythrasma",
+      "8 Syphilis",
+      "9 Monkeypox",
+      "Define and describe the following fungal diseases of the skin and basic diagnostic tests",
+      "1 Superficial dermatophyte infection",
+      "2 Candidiasis - cutaneous and systemic",
+      "3 Pityrosporum",
+      "Define and describe the following skin infestations",
+      "1 Pediculosis",
+      "2 Scabies"
+     ]
+    },
+    {
+     "t": "Parasitic infection of the skin",
+     "lo": [
+      "State the common name of the parasitic disease of the skin and soft tissues.",
+      "Identify and describe the etiological parasites of the skin and soft tissues.",
+      "Describe route of transmission of the etiological parasites and soft tissues.",
+      "Describe pathogenesis of the parasitic disease of the skin and soft tissues.",
+      "Identify and describe the clinical signs and symptoms of the parasitic disease of the skin and soft tissues.",
+      "Determine and select the suitable methods of specimen collection and laboratory diagnostic technique required for the recovery of the parasites",
+      "Describe the prevention and control measures of the parasitic disease of the skin and soft tissues."
+     ]
+    },
+    {
+     "t": "Microbiology of skin infection",
+     "lo": [
+      "describe common etiologic agents of skin infections",
+      "explain characteristics of common pathogenic bacteria, fungi and virus",
+      "describe the suitable methods of specimen collection and transport",
+      "select the suitable laboratory identification methods",
+      "behave according to medical student code of conduct, faculty rule and regulation",
+      "utilize the IT as tools for lifelong learning",
+      "develop critical thinking and creative thinking during group discussion Pre-class preparation Required reading: learning objectives and review the topic of skin infection"
+     ]
+    },
+    {
+     "t": "Pathogenesis, pathophysiology and pathology of the skin",
+     "lo": [
+      "explain mechanism of trauma and mechanical disorder of integumentary system.",
+      "interpret the anatomical histological and pathophysiology changes in structure of traumatic mechanism and mechanical disorder of integumentary system",
+      "explain neoplastic disorders and tumor-like conditions disorder of skin.",
+      "describe the pathophysiological changes in structure of neoplastic disorders and tumor- like conditions disorders of skin.",
+      "explain clinical presentation and term about neoplastic disorders and tumor- like conditions disorders",
+      "behave according to the ground rule of School of Medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: IPIL/Multimedia Guided Self Study: Pathology of the skin",
+     "lo": [
+      "identify the manifestation and appearance of neoplastic disorders and tumor- like conditions of skin.",
+      "explain and identify the pathological structure of neoplastic disorders and tumor-like conditions of skin.",
+      "identify the different of histological structure between normal and abnormal tissue.",
+      "behave according to the ground rule of School of Medicine.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "History taking and physical examination in Integumentary system",
+     "lo": [
+      "Explain principle of history taking for integumentary system.",
+      "Describe common dermatological terms and conditions.",
+      "Explain differential diagnosis of common diseases related to integumentary system from history and physical examination.",
+      "Use appropriate laboratory investigations for common diseases related to integumentary system Pre-class preparation Required reading: Study learning objectives and do self-directed learning on handout before the class"
+     ]
+    },
+    {
+     "t": "Pharmacology of drugs acting on the integumentary system",
+     "lo": [
+      "Describe principles and roles of dermatologic pharmacology in the treatment of skin disorders",
+      "Explain classification of various dermatologic agents",
+      "Explain mechanisms of action and important pharmacokinetics of dermatologic agents.",
+      "Describe pharmacological effects, clinical indications, contraindications, precautions, side effects, adverse drug reactions, drug interactions, toxicity, including advantages and disadvantages of various dermatologic agents"
+     ]
+    }
+   ]
+  },
+  "240-225 Musculoskeletal system": {
+   "chapter": "msk",
+   "sessions": [
+    {
+     "t": "Gross anatomy of back, suboccipital and scapula region",
+     "lo": [
+      "differentiate the layers of the back muscle.",
+      "describe action, blood supply and nerve supply of the back muscle and scapula region.",
+      "explain the boundary and contents of suboccipital triangle.",
+      "describe atlanto-occipital joint and atlanto- axial joint.",
+      "identify the features of the different vertebrae and scapula.",
+      "behave according to the ground rule of School of Medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: gross anatomy of back, suboccipital and scapula region",
+     "lo": [
+      "perform dissection and identify bones and bony landmark of skull, spine and scapula.",
+      "explain and identify joint of skull and vertebral body.",
+      "perform dissection and identify muscles, origin, insertion and action of back, suboccipital and scapula muscle",
+      "identify blood vessels, nerves of back, suboccipital and scapula region.",
+      "perform dissection and identify boundary and content of suboccipital triangle.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Gross anatomy of pectoral and abdominal region",
+     "lo": [
+      "identify bones of anterior chest wall.",
+      "explain joint of anterior chest wall.",
+      "explain fascia of pectoral and abdominal region.",
+      "identify muscles of pectoral and abdominal region.",
+      "identify nerves and blood vessels of pectoral region and abdominal region",
+      "apply basic knowledge of pectoral and abdominal region to clinical correlation.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of pectoral and abdominal region",
+     "lo": [
+      "perform dissection and identify sternum and ribs",
+      "explain and identify joint of thoracic wall.",
+      "explain and identify the fascia of thoracic and abdominal region.",
+      "perform dissection and identify muscles, blood vessel and nerve of thoracic and abdominal region.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Gross anatomy of axilla region, brachial plexus and lumbrosacral plexus",
+     "lo": [
+      "explain boundary and contents of axilla",
+      "explain components of the brachial and lumbrosacral plexus: Roots, trunks, divisions and cords.",
+      "explain branches from the brachial and lumbrosacral plexus supply of muscles and the cutaneous branches.",
+      "apply basic knowledge of the brachial and sacral plexus to clinical correlation.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of axillary and arm",
+     "lo": [
+      "perform dissection and identify boundary, content, blood vessel and nerve of axilla region.",
+      "identify bone, muscles, nerve and blood supply of arm.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Gross anatomy of upper extremity",
+     "lo": [
+      "identify bones of upper extremity.",
+      "explain joint of upper extremity.",
+      "identify muscles of upper extremity.",
+      "identify nerves and blood vessels of upper extremity.",
+      "apply basic knowledge of the upper extremity to clinical correlation.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of Faculty of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of upper extremity",
+     "lo": [
+      "perform and identify bones and bony landmark of forearm and hand.",
+      "perform dissection and identify muscles, origin, insertion and action.",
+      "perform dissection and identify blood vessel and nerve of forearm and hand.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Gross anatomy of lower extremity",
+     "lo": [
+      "explain bones of lower extremity.",
+      "explain joint of lower extremity.",
+      "explain muscles of lower extremity.",
+      "explain lumbrosacral plexus, nerves and blood vessels of lower extremity.",
+      "apply basic knowledge of the lower extremity to clinical correlation.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of Faculty of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of posterior part of lower extremity",
+     "lo": [
+      "perform and identify bones and bony landmark of gluteal region, posterior thigh and posterior leg.",
+      "perform dissect and identify muscles, origin, insertion and action.",
+      "perform dissect and identify blood vessel and nerve of gluteal region, posterior thigh and posterior leg.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of anterior part of lower extremity",
+     "lo": [
+      "perform and identify bones and bony landmark of anterior and medial thigh, anterior and lateral leg.",
+      "perform dissect and identify muscles, origin, insertion and action.",
+      "perform dissect and identify blood vessel and nerve of anterior and medial thigh, anterior and lateral leg.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Face and neck",
+     "lo": [
+      "identify bones of skull",
+      "identify the important muscles of facial expression.",
+      "list the five terminal branches of the facial nerve.",
+      "describe the blood supply of face.",
+      "describe anterior and posterior triangle of neck.",
+      "identify structures in carotid sheath.",
+      "describe the external jugular vein and lymphatic drainage of the neck.",
+      "apply knowledge concerning carotid sheath injury.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information and understanding with other team members",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of face and neck",
+     "lo": [
+      "Perform dissection and identify muscles, blood vessels and nerves of face.",
+      "perform dissection and identify muscles, blood vessels and nerves of neck.",
+      "perform dissection and identify the salivary gland of face and neck.",
+      "describe the location and relation to adjacent organs of the salivary gland.",
+      "perform dissection and identify the compartment and structure of triangle of neck.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Scalp, temporal and infratemporal region",
+     "lo": [
+      "describe the layers of scalp.",
+      "explain the temporal and infratemporal region",
+      "describe blood vessels and nerve supply of muscles of mastication",
+      "describe the temporomandibular joint",
+      "apply knowledge concerning the mandibular nerve injury near the ear.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of Scalp, temporal and infratemporal region",
+     "lo": [
+      "Perform dissection and identify the layer of scalp.",
+      "perform dissection and identify muscles, blood vessel and nerve of scalp.",
+      "describe the action of muscle on scalp.",
+      "perform dissection and identify the muscle of mastication.",
+      "describe the location and boundary of the infratemporal fossa.",
+      "identify the relation of foramen and structure of skull.",
+      "use appropriate surgical instruments to perform cadaver dissections.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Histology of Musculoskeletal System",
+     "lo": [
+      "explain the histological structure of cartilage, bone, smooth muscle, skeletal muscle and cardiac muscle.",
+      "classify the different of histological structure between cartilage, bone, smooth muscle, skeletal muscle and cardiac muscle.",
+      "explain the histological structure of neuromuscular junction and musculotendinous junction",
+      "behave according to the ground rule of School of Medicine.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Laboratory: Histology of Musculoskeletal System",
+     "lo": [
+      "identify the histological structure of cartilage, bone, smooth muscle, skeletal muscle and cardiac muscle.",
+      "diffentiate of histological structure of cartilage, bone, smooth muscle, skeletal muscle and cardiac muscle.",
+      "diffentiate the histological structure of neuromuscular junction and musculotendinous junction",
+      "use appropriate laboratory instruments to perform microscopic study",
+      "behave according to the ground rule of School of Medicine.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Development of Musculoskeletal System",
+     "lo": [
+      "explain the development of musculoskeletal system.",
+      "explain the components of a somite and the adult derivatives of each component.",
+      "behave according to the ground rule of School of Medicine.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Laboratory: Radiologic image: Upper and lower extremity",
+     "lo": [
+      "identify anatomical structures on a radiograph or other imaging resources.",
+      "apply basic knowledge of anatomy to radiologic images.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine."
+     ]
+    },
+    {
+     "t": "Laboratory: Radiologic image: Back, neck and skull",
+     "lo": [
+      "identify anatomical structures on a radiograph or other imaging resources.",
+      "apply knowledge of anatomy to radiologic images.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine."
+     ]
+    },
+    {
+     "t": "Infectious and inflammatory disease",
+     "lo": [
+      "explain the signs and symptoms of musculoskeletal disorders.",
+      "explain site specific conditions of musculoskeletal disorders.",
+      "explain the etiology of musculoskeletal disease.",
+      "preliminary diagnose of the disease in Musculoskeletal System.",
+      "explain the appropriate laboratory methods for etiologic identification.",
+      "select the drugs of choice for each etiology of disease.",
+      "share information and understanding with other team members."
+     ]
+    },
+    {
+     "t": "Nonsteroidal anti-inflammatory drugs (NSAIDs) and non-opioid analgesics",
+     "lo": [
+      "explain therapeutic roles of NSAIDs in the treatment of musculoskeletal disorders.",
+      "explainthe classification, mode and mechanism of action of NSAIDs.",
+      "elaborate pharmacokinetic properties of various groups of NSAIDs and their influences on therapeutic outcome",
+      "discuss advantages and disadvantages of various NSAID groups including the comparison with paracetamol, a non-opioid analgesic-antipyretic.",
+      "apply pharmacotherapeutic principles of NSAIDs in different clinical settings.",
+      "rationally select effective and safe analgesic-anti-inflammatory drugs for individual patients with musculoskeletal disorders."
+     ]
+    },
+    {
+     "t": "Antirheumatic drugs",
+     "lo": [
+      "explain mode and mechanism of action of drugs used in the treatment of rheumatoid arthritis",
+      "elaborate pharmacokinetic properties of various groups of antirheumatic drugs and their influences on therapeutic outcome",
+      "discuss and compare pharmacological activities, clinical indications, contraindications, precautions, side effects, adverse drug reactions, drug interactions, and toxicity among various groups of antirheumatic drugs",
+      "apply pharmacotherapeutic principles of antirheumatic drugs in different clinical settings.",
+      "rationally select effective and safe antirheumatic drugs for individual patients with rheumatoid arthritis."
+     ]
+    },
+    {
+     "t": "Drugs used in the treatment of gout and hyperuricemia",
+     "lo": [
+      "explain mode and mechanism of action of drugs used in the treatment of gout and hyperuricemia",
+      "elaborate pharmacokinetic properties of drugs used in the treatment of gout and hyperuricemia and their influences on therapeutic outcome",
+      "discuss and compare pharmacological activities, clinical indications, contraindications, precautions, side effects, adverse drug reactions, drug interactions, and toxicity among various drugs used in the treatment of gout and hyperuricemia",
+      "apply pharmacotherapeutic principles of drugs used in the treatment of gout and hyperuricemia in different clinical settings. Musculoskeletal system / 65",
+      "rationally select effective and safe drugs used in the treatment of individual patients with gout and hyperuricemia."
+     ]
+    },
+    {
+     "t": "Drugs for relief of soft tissue inflammation (rubefacients)",
+     "lo": [
+      "explain mode and mechanism of action of various rubefacients (counter-irritants)",
+      "elaborate basic pharmacological properties of rubefacients and their influences on therapeutic outcome",
+      "comparison among various rubefacients: Advantages and disadvantages",
+      "rationally select effective and safe rubefacients used in the relief of soft tissue inflammation"
+     ]
+    },
+    {
+     "t": "Laboratory: Personal drug selection exercise (Musculoskeletal disorders)",
+     "lo": [
+      "apply critical thinking and critical reading ability to search, read, interpret, analyze, and evaluate medical research articles effectively",
+      "recognize and differentiate pharmacological properties of various drugs used in the treatment of musculoskeletal disorders",
+      "elaborate various pharmacodynamic and pharmacokinetic influences on pharmacotherapeutic outcome of musculoskeletal disorders",
+      "analyze, evaluate and criticize various drug treatment choices for musculoskeletal disorders based on critical thinking and relevant scientific evidence",
+      "gain practical experience and skill in rational selection of effective and safe drug treatment to individual patients with musculoskeletal disorders",
+      "develop critical listening and interpersonal communication skills through effective oral presentation and panel discussion Musculoskeletal system / 70"
+     ]
+    },
+    {
+     "t": "Integrated and holistic care of Musculoskeletal system",
+     "lo": [
+      "emotional and behavioral factor.",
+      "influence on person, family and society.",
+      "occupational and other environmental risk factor.",
+      "gender and ethic factor",
+      "Apply the basic concepts, rules, principles, theory and problem solving of integrated care to the common musculoskeletal problems"
+     ]
+    },
+    {
+     "t": "Case scenario and clinical correlation in musculoskeletal system",
+     "lo": [
+      "Identify common musculoskeletal system diseases and their clinical presentations.",
+      "Apply clinical knowledge to diagnose common musculoskeletal system diseases.",
+      "Correlate common musculoskeletal system diseases with their underlying anatomical, physiological, pathological, and pathophysiological mechanisms.",
+      "Develop critical thinking through case scenarios.",
+      "Demonstrate effective communication and constructive argumentation with peers during group discussions."
+     ]
+    }
+   ]
+  },
+  "240-226 Nervous system I": {
+   "chapter": "neuro",
+   "sessions": [
+    {
+     "t": "Brain, cerebrum and spinal cord",
+     "lo": [
+      "describe the brain: cerebrum, diencephalon, cerebellum and brain stem.",
+      "describe cerebrum into lobes, lobules and gyri.",
+      "describe the Brodmann’s area.",
+      "explain the enlargement of spinal cord.",
+      "define the covering of spinal cord and spaces.",
+      "describe internal structure of spinal cord.",
+      "describe blood supply of brain and spinal cord.",
+      "share information & understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Histology of the nervous system",
+     "lo": [
+      "describe the structure of neurons.",
+      "describe the types of neurons.",
+      "explain the large multipolar neurons in anterior gray horn.",
+      "explain the pyramidal cell in cerebral cortex.",
+      "explain the Purkinje cell in cerebellar cortex.",
+      "describe the sensory ganglion and autonomic ganglion.",
+      "describe nerve fibers, myelin sheath and connective tissue.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Brain, cerebrum and spinal cord",
+     "lo": [
+      "describe the brain into cerebrum, diencephalon, midbrain, pons, cerebellum and medulla oblongata.",
+      "describe cerebrum: lobes, lobule and gyri.",
+      "describe Brodmann’s area.",
+      "describe the enlargement of the spinal cord ,segments and nerve roots.",
+      "explain the meninges of the spinal cord and spaces.",
+      "use appropriate laboratory instruments to perform microscopic study.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information &understanding with other team members."
+     ]
+    },
+    {
+     "t": "Brain stem and cranial nerves",
+     "lo": [
+      "describe brain stem into medulla oblongata, pons and midbrain.",
+      "describe the internal structures in medulla oblongata, pons and midbrain.",
+      "explain the cranial nerves of the brain stem (functional components and clinical consideration).",
+      "describe blood supply of the brain stem.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of school of medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Sensory pathways",
+     "lo": [
+      "describe pathway of pain and temperature.",
+      "describe pathway of touch.",
+      "explain general sensation and special sensation, GSA pathway from face and body.",
+      "describe primary sensory cortex.",
+      "apply the sensory pathway to clinical correlation.",
+      "share information & understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Motor pathways",
+     "lo": [
+      "explain corticospinal tract (anterior and lateral corticospinal tract).",
+      "describe mortor cortex and function.",
+      "describe the lesion of motor system (UMNL and LMNL).",
+      "apply the motor pathway to clinical correlation.",
+      "share information & understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Brain stem and cranial nerves",
+     "lo": [
+      "identify the brain stem: medulla oblongata , pons and midbrain.",
+      "explain the cranial nerves of the brain stem and functional components.",
+      "explain the internal structure of medulla oblongata, pons and midbrain.",
+      "use appropriate laboratory instruments to perform microscopic study.",
+      "share information & understanding with other team members.",
+      "behave according to the ground rules of school of medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Sensory and motor pathways",
+     "lo": [
+      "describe spinothalamic tract.",
+      "describe medial lemniscus system.",
+      "explain the sensory pathway of the face.",
+      "describecorticospinal tract and corticobulbar tract.",
+      "describe primary sensory cortex, primary motor cortex and premotor cortex.",
+      "use appropriate laboratory instruments to perform microscopic study.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Laboratory: Histology of the nervous tissue",
+     "lo": [
+      "identify histological structure of the neuron.",
+      "identify the types of the neuron.",
+      "identify the large multipolar neuron in anterior gray horn.",
+      "identify the pyramidal cells in cerebral cortex.",
+      "identify the Purkinje cells in cerebellar cortex.",
+      "explain the sensory and autonomic ganglions.",
+      "describe the myelin sheath.",
+      "use appropriate laboratory instruments to perform microscopic study.",
+      "behave according to the rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Development of nervous system",
+     "lo": [
+      "describe the formation of the neural tube.",
+      "explain the primary brain vesicles and flexures.",
+      "explain the secondary brain vesicles and flexures.",
+      "describe the ventricles in the brain.",
+      "explain the growth of the secondary brain vesicles.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information &understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Diencephalon",
+     "lo": [
+      "describe the diencephalon.",
+      "explain the thalamus, epithalamus, hypothalamus and subthalamus.",
+      "describe the nuclei of thalamus and hypothalamus.",
+      "describe the connection and lesion in thalamus and hypothalamus.",
+      "apply the sensory pathway to clinical correlation.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Limbic system and olfactory system",
+     "lo": [
+      "Explain the limbic lobes: subcallosal gyrus, cingulate gyrus, parahippocampal gyrus and amygdaloid nucleus",
+      "Describe the hippocampal formation: dentate gyrus, hippocampus and subiculum",
+      "Describe the connecting pathways of the limbic system",
+      "Explain the afferent and efferent connections of the hippocampus",
+      "Describe the functions of the limbic system",
+      "Explain the lesions of the limbic system",
+      "Describe the components of the olfactory pathway",
+      "Explain the connections and lesions of the olfactory system",
+      "Share information & understanding with other team members",
+      "Behave according to the ground rules of School of Medicine",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Basal ganglia",
+     "lo": [
+      "describe the basal ganglia.",
+      "describe amygdala and claustrum.",
+      "explain the corpus striatum ; caudate nucleus, lentiform nucleus.",
+      "explain connection of corpus striatum.",
+      "conclude pathology of corpus striatum to clinical disorder.",
+      "shareinformation and understanding with other team members.",
+      "behave according to the ground rules of school of medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Limbic system, Olfactory pathway and basal ganglia",
+     "lo": [
+      "explain the components of basal ganglia.",
+      "identify amygdala and claustrum.",
+      "explain the corpus striatum: caudate nucleus and lentiform nucleus.",
+      "demonstrate connection of corpus striatum.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Development of the nervous system",
+     "lo": [
+      "identify the neural tube.",
+      "describe the primary brain vesicles and flexures.",
+      "describe the secondary brain vesicles and flexures.",
+      "explain the ventricles in the brain.",
+      "use appropriate laboratory instruments to perform microscopic study.",
+      "use education technology for continuous learning.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with our team members."
+     ]
+    },
+    {
+     "t": "Laboratory: Cerebellum and diencephalon",
+     "lo": [
+      "explain lobes, lobules and vermis of cerebellum.",
+      "identify inferior, middle and superior cerebellar peduncles.",
+      "identify deep cerebellar nuclei.",
+      "describe diencephalon : thalamus, hypothalamus, epithalamus,subthalamus.",
+      "describe the nuclei of thalamus and hypothalamus.",
+      "describe the subthalamic nucleus and epithalamus.",
+      "use appropriate laboratory instruments to perform microscopic study.",
+      "behave according to the ground rules of School of Medicine.",
+      "Share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Pathology of nervous system 1 (Cerebrovascular diseases (CVD))",
+     "lo": [
+      "describe type of cerebrovascular diseases.",
+      "describe different pathogenesis of ischemic brain damage .",
+      "describe pathogenesis of hemorrhagic cerebrovascular diseases.",
+      "describe pathology found in cerebrovascular diseases.",
+      "correlate pathogenesis and pathologic findings to symptoms and signs in cerebrovascular diseases.",
+      "describe demyelinating diseases.",
+      "describe pathology found in demyelinating diseases.",
+      "correlate pathogenesis and pathologic findings to symptoms and signs in demyelinating diseases.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Pathology of nervous system 1 (Degenerative diseases of the brain, traumatic and toxic",
+     "lo": [
+      "describe common degenerative disease of the brain.",
+      "describe pathogenesis of degenerative disease of the brain.",
+      "describe pathology found in degenerative disease of the brain",
+      "correlate pathogenesis and pathologic findings to symptoms and signs in degenerative disease of the brain.",
+      "describe traumatic injury of the brain.",
+      "describe pathogenesis of traumatic brain injury.",
+      "describe pathology found in trauma of the brain.",
+      "correlate pathogenesis and pathologic findings to symptoms and signs in trauma of the brain.",
+      "describe metabolic diseases of the brain.",
+      "describe pathogenesis of metabolic diseases of the brain.",
+      "describe pathology found in metabolic diseases of the brain.",
+      "correlate pathogenesis and pathologic findings to symptoms and signs in metabolic diseases of the brain.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Psychopathologic disorders and etiological factors",
+     "lo": [
+      "describe classification of psychopathologic disorders.",
+      "describe biological factors of psychopathologic disorders.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Psychopathologic disorders process and their evaluation",
+     "lo": [
+      "describe sign and symptoms in psychopathologic disorders.",
+      "describe the evaluation methods of psychopathologic disorders.",
+      "behave according to the ground rule of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Drug treatment of Parkinson’s and Alzheimer’s diseases",
+     "lo": [
+      "explain pharmacotherapeutic principles for the treatment of neurodegenerative diseases.",
+      "explain the classification, mode and mechanism of action, and clinical indications of drugs used in Parkinson’s and Alzheimer’s diseases.",
+      "recognize pharmacokinetic and pharmacodynamic properties of drugs used in Parkinson’s and Alzheimer’s diseases and their influences on therapeutic outcome.",
+      "discuss advantages and disadvantages of various drugs used in Parkinson’s and Alzheimer’s diseases.",
+      "synthesize guidelines for rational uses of drugs in the treatment of Parkinson’s and Alzheimer’s diseases.",
+      "rationally select effective and safe drugs for individual patients with Parkinson’s and Alzheimer’s diseases.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Antipsychotic drugs",
+     "lo": [
+      "explain pharmacotherapeutic principles for the treatment of schizophrenia.",
+      "explain the classification, mode and mechanism of action, and clinical indications of drugs used in schizophrenia.",
+      "Recognize pharmacokinetic and pharmacodynamic properties of drugs used in schizophrenia and their influences on therapeutic outcome.",
+      "discuss advantages and disadvantages of various drugs used in schizophrenia.",
+      "synthesize guidelines for rational uses of drugs in the treatment of schizophrenia.",
+      "rationally select effective and safe drugs for individual patients with schizophrenia.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Principle of pharmacology of central nervous system",
+     "lo": [
+      "Explain neuropharmacological basis of drugs acting on the central Nervous System (CNS). - Drugs acting on presynaptic neurotransmission - Drugs acting on postsynaptic neurotransmission - Drugs acting on neuronal adaptation (plasticity)",
+      "recognize major defects in neurotransmitters’ functions implicated in CNS disorders",
+      "explain pharmacotherapeutic principles of CNS disorders.",
+      "explain the classification, mode and mechanism of action, and indications for clinical use of drugs acting on the CNS."
+     ]
+    },
+    {
+     "t": "Drugs use in migraine",
+     "lo": [
+      "explain pharmacotherapeutic principles for the treatment of migraine.",
+      "explain the classification, mode and mechanism of action, and clinical indications of drugs used in migraine.",
+      "recognize pharmacokinetic and pharmacodynamic properties of drugs used in migraine and their influences on therapeutic outcome.",
+      "discuss advantages and disadvantages of various drugs used in migraine.",
+      "synthesize guidelines for rational uses of drugs in the treatment of migraine.",
+      "rationally select effective and safe drugs for individual patients with migraine."
+     ]
+    },
+    {
+     "t": "Anticonvulsant/antiepileptic drugs",
+     "lo": [
+      "explain pharmacotherapeutic principles for the treatment of epilepsy.",
+      "explain the classification, mode and mechanism of action, and clinical indications of drugs used in epilepsy.",
+      "recognize pharmacokinetic and pharmacodynamic properties of drugs used in epilepsy and their influences on therapeutic outcome.",
+      "discuss advantages and disadvantages of various drugs used in epilepsy.",
+      "synthesize guidelines for rational uses of drugs in the treatment of epilepsy.",
+      "rationally select effective and safe drugs for individual patients with epilepsy.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Cerebrovascular diseases and tumor of the nervous system",
+     "lo": [
+      "differentiate gross pathology and histological findings between ischemic and hemorrhage cerebrovascular diseases.",
+      "differentiate gross pathology and histological findings in varies type of brain tumors.",
+      "correlate site of cerebrovascular diseases and tumor to signs and symptom.",
+      "behave according to the ground rule of learning in School of Medicine.",
+      "share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Integrated and holistic care in CNS",
+     "lo": [
+      "Apply the basic concepts, rules, principles, theory and problem solving of integrated care to the common central nervous system problems"
+     ]
+    },
+    {
+     "t": "Lab: Electroencephalogram",
+     "lo": [
+      "describe procedure of electroencephalogram.",
+      "list indication to do electroencephalogram.",
+      "place leads on the scalp correctly for recording electroencephalogram.",
+      "operate the machine to record the waves correctly.",
+      "identify and describe the waves form in normal EEG record.",
+      "identify the abnormality of the waves in some diseases.",
+      "list advantages and artifacts found in EEG.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Drugs used in affective disorders: antidepressant drugs and mood stabilizers",
+     "lo": [
+      "explain pharmacotherapeutic principles for the treatment of affective disorders.",
+      "explain the classification, mode and mechanism of action, and clinical indications of drugs used in affective disorders.",
+      "recognize pharmacokinetic and pharmacodynamic properties of drugs used in affective disorders and their influences on therapeutic outcome.",
+      "discuss advantages and disadvantages of various drugs used in affective disorders.",
+      "synthesize guidelines for rational uses of drugs in the treatment of affective disorders.",
+      "rationally select effective and safe drugs for individual patients with affective disorders.",
+      "behave according to the ground rule of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "CNS infection",
+     "lo": [
+      "explain the signs and symptoms of central nervous system disorders.",
+      "describe the infectious disease in central nervous system.",
+      "explain the common causative agents of central Nervous System Infection.",
+      "describe the suitable specimen for etiology identification.",
+      "select the antimicrobial of choice for each pathogen."
+     ]
+    },
+    {
+     "t": "Anxiolytic and hypnotic drugs",
+     "lo": [
+      "explain pharmacotherapeutic principles for the treatment of anxiety and insomnia.",
+      "explain the classification, mode and mechanism of action, and clinical indications of anxiolytic and hypnotic drugs.",
+      "recognize pharmacokinetic and pharmacodynamic properties of anxiolytic and hypnotic drugs and their influences on therapeutic outcome.",
+      "discuss advantages and disadvantages of various anxiolytic and hypnotic drugs.",
+      "synthesize guidelines for rational uses of anxiolytic and hypnotic drugs.",
+      "rationally select effective and safe anxiolytic and hypnotic drugs for individual patients with anxiety and insomnia, respectively."
+     ]
+    },
+    {
+     "t": "Opioid Analgesics and Antagonists",
+     "lo": [
+      "Define and classify opioid analgesics, explain the mechanism of action of opioid analgesics at the molecular level and differentiate between agonists, partial agonists, and antagonists in the context of opioid receptors.",
+      "Describe the pharmacokinetics of opioids.",
+      "Recognize adverse effects and complications, including opioid addiction and overdose.",
+      "Define opioid antagonists and discuss pharmacokinetics, mechanisms of action and their clinical role in reversing opioid effects.",
+      "List commonly used opioids in clinical practice.",
+      "Apply critical thinking in clinical scenarios."
+     ]
+    },
+    {
+     "t": "Drugs of abuse",
+     "lo": [
+      "Explain basic neurobiology of drug abuse",
+      "Categorize addictive drugs based on mechanism of action and list name of the substances in each group",
+      "Explain their pharmacological effects and mechanisms of action",
+      "Describe specific treatment of addiction, withdrawal symptoms, and overdose caused by drugs of abuse"
+     ]
+    },
+    {
+     "t": "Case clinical correlation (Coma)",
+     "lo": [
+      "Demonstrate how to apply basic knowledge about etiology, pathogenesity, pathophysiology, treatment, disease prevention and health promotion.",
+      "Demonstrate how to apply appropriately the specimen collection, transportation for diagnosis and treatment.",
+      "Demonstrate communication skill, roles and function as a team member effectively."
+     ]
+    },
+    {
+     "t": "Infection in nervous system and laboratory diagnosis",
+     "lo": [
+      "explain the common causative agents of nervous system infection",
+      "briefly describe the pathogenesis of important pathogen",
+      "identify common bacterial pathogens using microbiologic examination result",
+      "differentiate meningitis caused by various pathogens using laboratory result",
+      "explain the specimen that should be used to diagnose infection in nervous system",
+      "explain transport condition for specimen suspected nervous system infection"
+     ]
+    }
+   ]
+  },
+  "240-227 Nervous system II": {
+   "chapter": "neuro",
+   "sessions": [
+    {
+     "t": "Gross anatomy of the eye and visual pathway",
+     "lo": [
+      "Describe the structures of the eye and related bones of the orbit",
+      "Explain the nerves and blood supply of the eye",
+      "Describe the autonomic nerves and ganglion of the eye",
+      "Explain the lesions of the nerves of the eye related to the actions of the extraocular muscles",
+      "Explain the lacrimal apparatus",
+      "Describe the visual pathway and disorders",
+      "Behave according to the ground rules of School of Medicine",
+      "Share information and understanding with other team members",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Gross anatomy of the ear and auditory pathway",
+     "lo": [
+      "Describe the structures of the ear and related bones of the ear",
+      "Explain the nerves and blood supply of the ear",
+      "Describe the autonomic nerves and ganglion of the ear",
+      "Explain the lesions of the nerves of the ear",
+      "Describe the auditory pathway and disorders",
+      "Behave according to the ground rules of School of Medicine",
+      "Share information and understanding with other team members",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Gross anatomy of the ear and auditory pathway",
+     "lo": [
+      "Describe the structures of the ear and related bones of the ear",
+      "Explain the nerves and blood supply of the ear",
+      "Describe the autonomic nerves and ganglion of the ear",
+      "Explain the lesions of the nerves of the ear",
+      "Describe the auditory pathway and disorders",
+      "Behave according to the ground rules of School of Medicine",
+      "Share information and understanding with other team members",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Peripheral nervous system",
+     "lo": [
+      "Describe the components of the peripheral nervous system: cranial nerves, spinal nerves and autonomic nervous system",
+      "Describe the functions of the cranial nerves",
+      "Describe the autonomic ganglions in the head and neck",
+      "Describe the disorders of the cranial nerves and autonomic nervous system",
+      "Behave according to the ground rules of School of Medicine",
+      "Share information and understanding with other team members",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Histology and development of the eye and the ear",
+     "lo": [
+      "describe the development of eye and ear.",
+      "describe the congenital anomaly of eye and ear.",
+      "describe the histological structure of eye ball, eyelid, lacrimal apparatus.",
+      "explain the histological structure of external, middle and inner ear.",
+      "distinguish the auditory parts of the inner ear between vestibular system and hearing system.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of school of medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Special sense I: eyes",
+     "lo": [
+      "explain layers of retina; mechanisms that brought light ray to focus on the retina and accommodation process.",
+      "explain hyperopia, myopia, amblyopia, astigmatism, presbyopia and strabismus.",
+      "explain electrical responses produced by rods, cones, bipolar, horizontal, amacrine and ganglion cells.",
+      "explain responses of cells in the visual cortex and the functional organization of the dorsal and ventral pathways to the parietal cortex.",
+      "explain light, dark adaptation and visual acuity.",
+      "explain neural pathways involved in color vision.",
+      "understand intraocular pressure measurement by tonometry.",
+      "behave according to the ground rules of Faculty of Medicine, Siam University.",
+      "share information and understanding with other students.",
+      "use education technology for continuous learning. Pre-class preparation: required reading:"
+     ]
+    },
+    {
+     "t": "Laboratory of gross anatomy of the eye and ear",
+     "lo": [
+      "Describe the extraocular muscles",
+      "Explain the bones of the orbit and the ear",
+      "Describe the nerves and blood supply of the eye and ear",
+      "Describe the autonomic ganglion related to the eye and ear",
+      "Explain the lacrimal apparatus",
+      "Behave according to the ground rules of School of Medicine",
+      "Share information and understanding with other team members",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Special sense II: hearing and equilibrium",
+     "lo": [
+      "Explain the components of the ear and mechanisms that convert sound wave into nerve impulse in the hair cells of the cochlea.",
+      "Explain mechanisms of sound transmission by the tympanic membrane, the auditory ossicles and scala vestibuli.",
+      "Explain neuronal code of various sound waves.",
+      "Explain various forms of deafness and the tests used to distinguish between them.",
+      "Explain mechanisms that receptors in the semicircular canals detect rotational acceleration, and receptors in the saccule and utricle detect linear acceleration.",
+      "Explain major sensory inputs essential for the brain to sense the body position in space.",
+      "Understand normal hearing by audiogram.",
+      "Behave according to the ground rules of Faculty of Medicine, Siam University.",
+      "Share information and understanding with other students.",
+      "Use education technology for continuous learning. Pre-class preparation: required reading:"
+     ]
+    },
+    {
+     "t": "Special sense III: smell and taste",
+     "lo": [
+      "Explain the basic features of the neural elements in the olfactory epithelium and olfactory bulb.",
+      "Explain mechanism of excitation of the olfactory cells.",
+      "Explain the transmission of smell signals into the central nervous system.",
+      "Explain the location and cellular composition of taste buds.",
+      "Explain the types of taste receptors and their transduction mechanism.",
+      "Explain the transmission of taste signals into the central nervous system.",
+      "Behave according to the ground rules of Faculty of Medicine, Siam University.",
+      "Share information and understanding with other students.",
+      "Use education technology for continuous learning. Pre-class preparation: required reading:"
+     ]
+    },
+    {
+     "t": "Laboratory: Histology and development of eye",
+     "lo": [
+      "Identify optic vesicle, optic cup, lens vesicle and optic stalk.",
+      "Explain outer pigment layer and inner nervous layer of optic cup.",
+      "Describe the external layer of eye (sclera and cornea) middle layer (uvea) and inner layer of nervous tissue (retina).",
+      "Explain the middle layer: choroid, ciliary body and iris.",
+      "Explain the layer of cells in retina - photo receptor (rod and cone cells) - bipolarnervous - ganglion cells",
+      "Identify the lens of the eye (lens capsule subcapsular epithelium and lens fibers).",
+      "Use appropriate laboratory instruments to perform microscopic study.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rules of School of Medicine."
+     ]
+    },
+    {
+     "t": "Special sense: eyes and vision",
+     "lo": [
+      "Apply visual acuity test.",
+      "Apply refraction test.",
+      "Apply visual field test.",
+      "Apply color vision test.",
+      "Behave according to the ground rules of Faculty of Medicine, Siam University.",
+      "Share information and understanding with other team members.",
+      "Use education technology for continuous learning. Pre-class preparation: required reading:"
+     ]
+    },
+    {
+     "t": "Special sense: hearing and equilibrium",
+     "lo": [
+      "Apply hearing tests: Weber test, Rinne test, Bing test, and test of sound location.",
+      "Apply equilibrium tests: Postural reflex test, Barany’s test and Romberg test.",
+      "Evaluate hearing and equilibrium tests.",
+      "Behave according to the ground rules of Faculty of Medicine, Siam University.",
+      "Share information and understanding with other team members.",
+      "Use education technology for continuous learning. Pre-class preparation: required reading:"
+     ]
+    },
+    {
+     "t": "Disease of eye",
+     "lo": [
+      "describe the cause of eye disease.",
+      "explain pathophysiology the cause of eye disease.",
+      "describe pathology of disease of eye.",
+      "correlate the pathology and pathophysiology of the diseases of eye to clinical symptoms and signs.",
+      "behave according to the ground rule of medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Disease of ear",
+     "lo": [
+      "describe the causes of ear disease.",
+      "explain the pathophysiological changes in diseases of the ear.",
+      "describe pathology of diseases of the ear.",
+      "correlate the pathology and pathophysiology of the ear to clinical symptoms and signs.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Local anesthetics",
+     "lo": [
+      "Name drugs that commonly used as local anesthetics",
+      "Elaborate pharmacokinetics and pharmacodynamics of local anesthetics",
+      "Summarized side effects and toxicities of local anesthetics",
+      "Describe clinical pharmacology of local anesthetics and their applications"
+     ]
+    },
+    {
+     "t": "Drugs acting on autonomic nervous system (ANS) and neuromuscular junction (NMJ)",
+     "lo": [
+      "Identify the four major classes of pharmacological agents in autonomic pharmacology.",
+      "Summarize the mechanism of action of each of the four main categories of autonomic pharmacological agents.",
+      "Explain the side effects of each of the four classes of autonomic pharmacological agents.",
+      "Outline the major therapeutic uses of these classes of medications",
+      "Identify the two types of neuromuscular blockers, explain their mechanisms of action, list side effects, toxicities and antidotes for each drug."
+     ]
+    },
+    {
+     "t": "Toxicology",
+     "lo": [
+      "Define the terms of toxicology, toxicokinetics and toxicodynamics",
+      "Explain the differences between toxicokinetics and toxicodynamics",
+      "Describe initial management of the poisoned patient",
+      "List common toxic syndromes caused by drug overdose and the antidotes",
+      "Elaborate the toxicology of heavy metals and treatments"
+     ]
+    },
+    {
+     "t": "Reflex arc",
+     "lo": [
+      "describe the elements of the withdrawal reflexes.",
+      "describe the elements of the stretch reflex.",
+      "explain the activity of γ-motor neurons alters the response of muscle stretch.",
+      "explain the role of Golgi tendon organs in control of skeletal muscle.",
+      "describe spinal shock and the initial and long-term changes in spinal reflex that follow transaction of the spinal cord.",
+      "behave according to the ground rules of Faculty of Medicine, Siam University.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning. Pre-class preparation: required reading:"
+     ]
+    },
+    {
+     "t": "Diseases of the peripheral nerves: polyneuropathy, traumatic and tumor in PNS.",
+     "lo": [
+      "describe type of peripheral nerve.",
+      "describe different pathogenesis of peripheral nerve disease .",
+      "describe pathology found in peripheral nerve disease.",
+      "correlate pathogenesis and pathologic findings to symptoms and signs in peripheral nerve disease.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information and understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Integrated and holistic care",
+     "lo": [
+      "emotional and behavioral factor.",
+      "influence on person, family and society.",
+      "occupational and other environmental risk factor.",
+      "gender and ethic factor"
+     ]
+    }
+   ]
+  },
+  "240-228 Respiratory system I": {
+   "chapter": "resp",
+   "sessions": [
+    {
+     "t": "Lec.: Gross anatomy of nose, larynx and pharynx",
+     "lo": [
+      "describe the walls, floor and roof of the nasal cavities",
+      "explain the skeletal framework of the nose",
+      "identify the innervation and blood supply of the nose",
+      "describe the paranasal sinuses",
+      "identify the cartilage framework of larynx.",
+      "describe cavity of the larynx",
+      "explain laryngeal joints, extrinsic and intrinsic ligaments and membranes.",
+      "identify the muscle acting on the larynx and the movement of vocal folds.",
+      "identify and explain blood supply and nerve supply of larynx.",
+      "identify the skeletal framework of the pharynx",
+      "describe the pharyngeal wall and fascia",
+      "describe the nasopharynx, oropharynx and laryngopharynx",
+      "identify the vessels and nerves of the pharynx",
+      "use appropriate surgical instruments to perform cadaver dissection.",
+      "behave according to the ground rules of School of Medicine. 15/72",
+      "share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Lec: Gross anatomy of thoracic wall, Respiratory System and thymus",
+     "lo": [
+      "describe the thoracic wall and thymus.",
+      "describe the pleura and pleural cavity.",
+      "explain the lungs: lobes and segments.",
+      "describe blood supply of the lungs.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lec: Histology of the respiratory system",
+     "lo": [
+      "describe Respiratory System in : conducting portion. : respiratory portion.",
+      "identify respiratory epithelium and olfactory epithelium.",
+      "describe the epithelium of superior, middle and inferior conchae in nasal fossa.",
+      "explain the histological structures of paranasal sinuses, larynx, trachea, bronchus, bronchioles, alveolar ducts alveolar sac and alveoli.",
+      "describe blood-air barrier and alveolar septum.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning ."
+     ]
+    },
+    {
+     "t": "Lec: Development of Respiratory System",
+     "lo": [
+      "describe the development of larynx.",
+      "describe the development of trachea.",
+      "describe the development of bronchi and lungs.",
+      "describe the development of diaphragm.",
+      "explain the development of body cavities.",
+      "describe congenital anomalies of respiratory system.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lab: Gross anatomy of nose and pharynx",
+     "lo": [
+      "describe the walls, floor and roof of the nasal cavities",
+      "explain the skeletal framework of the nose",
+      "identify the innervation and blood supply of the nose",
+      "describe the paranasal sinuses",
+      "identify the cartilage framework of larynx.",
+      "describe cavity of the larynx",
+      "explain laryngeal joints, extrinsic and intrinsic ligaments and membranes.",
+      "identify the muscle acting on the larynx and the movement of vocal folds.",
+      "identify and explain blood supply and nerve supply of larynx."
+     ]
+    },
+    {
+     "t": "Lab: Gross anatomy of larynx",
+     "lo": [
+      "identify the cartilage framework of larynx.",
+      "explain laryngeal joints, ligaments and membranes.",
+      "identify the muscle acting on the larynx and the movement of vocal folds.",
+      "identify and explain blood supply and nerve supply of larynx.",
+      "use appropriate surgical instruments to perform cadaver dissection.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Lab: Histology of respiratory system",
+     "lo": [
+      "identify histological structure of respiratory epithelium and olfactory epithelium.",
+      "describe histological structure of the epithelium of superior, middle and inferior conchae.",
+      "explain the histological structures of paranasal sinuses , larynx, trachea, bronchus, bronchioles, alveolar ducts alveolar sac and alveoli.",
+      "describe blood-air barrier and alveolar septum."
+     ]
+    },
+    {
+     "t": "Lab: Gross anatomy of thoracic wall and cavity",
+     "lo": [
+      "explain skeleton of the thorax.",
+      "identify intercostal muscles.",
+      "describe the nerves and blood vessels of thoracic wall.",
+      "explain the thoracic sympathetic trunk.",
+      "describe the pleura and pleural cavity.",
+      "use appropriate surgical instruments to perform cadaver dissection.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Lab: Gross anatomy of the lung",
+     "lo": [
+      "identify the respiratory tract.",
+      "describe the lungs and the root of lungs.",
+      "differentiate the right and left lungs.",
+      "explain the blood supply and nerve supply of the respiratory tract.",
+      "use appropriate surgical instrument to perform cadaver dissection.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members."
+     ]
+    },
+    {
+     "t": "Lect: Roentgenologic anatomy of the respiratory system",
+     "lo": [
+      "identify anatomical structures on a radiograph or other imaging resources.",
+      "apply basic knowledge of anatomy to radiologic imagine.",
+      "share information & understanding with other team members.",
+      "behave according to the ground rules of School of Medicine."
+     ]
+    },
+    {
+     "t": "Lab: Pulmonary function I: Control of breathing",
+     "lo": [
+      "Explain normal breathing pattern.",
+      "Determine lung volumes and capacities from spirogram.",
+      "Examine breathing pattern and respiratory of each conditions including O 2 deficit with CO2 accumulation, voluntary apnea, speech, mental concentration, swallowing and exercise.",
+      "Discuss and explain physiological responses affecting by those conditions.",
+      "Behave according to the ground rules of Faculty of Medicine, Siam University.",
+      "Collaborate and share information with other team members.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lab: Pulmonary function II: Spirometry: Pulmonary function test",
+     "lo": [
+      "Perform steps of Spirometrics pulmonary function tests and force expiration by power lab.",
+      "Identify lung volumes capacities, and flow rates.",
+      "Calculate minute ventilation, lung volume and flow rate from spirogram.",
+      "Describe flow-volume graph and relate with volume-time and flow-time graphs.",
+      "Interpret lung volume and flow rate by compare with normal range.",
+      "Calculate forced expiration in one second (FEV1), forced vital capacity (FVC), FEV1/FVC, etc.",
+      "Interpret the Spirometrics flow-volume graph with lung diseases."
+     ]
+    },
+    {
+     "t": "Laboratory diagnosis and investigation for respiratory infection I",
+     "lo": [
+      "explain the clinical sign and symptoms of respiratory tract infection",
+      "explain the site-specific symptoms of respiratory tract infectious disease",
+      "explain the suitable methods for specimen collection and transportation",
+      "describe the principle of basic laboratory identification techniques",
+      "describe the characteristic of common causative agent",
+      "preliminary identify the causative agent from direct examination of the specimen",
+      "share information and understanding with other team members"
+     ]
+    },
+    {
+     "t": "Lec: Infectious disease: pneumonia in healthy person and immunocompromised host,",
+     "lo": [
+      "explain clinical symptoms and onset of lung infection in healthy and immunocompromised host.",
+      "classify the type of lung infectious disease in healthy and immunocompromised host.",
+      "describe the common causative agents of lung infection.",
+      "describe the suitable methods of specimen collection.",
+      "define the suitable laboratory for identify each etiologic agent.",
+      "select the antimicrobial of choice for each pathogen.",
+      "behave according to the ground rule of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning. 56/72"
+     ]
+    },
+    {
+     "t": "Lec: Basic clinical investigation in respiratory system.",
+     "lo": [
+      "describe the principle of roentgenogram, computerized tomography, ultrasonography and MRI.",
+      "describe the plain film of thorax.",
+      "recognize abnormal spot on chest X-ray",
+      "describe principle of invasive investigation.",
+      "explain the principle of pathological specimen collection",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lab: Basic clinical investigation in respiratory system",
+     "lo": [
+      "describe normal radiograph image of chest",
+      "identify abnormal finding of radiological images of chest",
+      "differentiate normal and abnormal finding of ultrasonogram, menetic resonance images, laryngoscopy, bronchoscopy, pleuroscopy of the respiratory system",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    }
+   ]
+  },
+  "240-229 Respiratory system II": {
+   "chapter": "resp",
+   "sessions": [
+    {
+     "t": "Lec: Hereditary, congenital and structural disorders and traumatic and mechanical",
+     "lo": [
+      "describe cause of hereditary and congenital disorders of respiratory system.",
+      "describe pathology of hereditary, congenital and traumatic disorders of chest wall and respiratory system.",
+      "describe pathology of chest in trauma and mechanical disorders",
+      "explain the mechanic and pathophysiologic changes of chest injury.",
+      "correlate the pathology, pathophysiology to clinical setting of hereditary, congenital and trauma disorder."
+     ]
+    },
+    {
+     "t": "Lec: Vascular and circulatory disorder",
+     "lo": [
+      "describe cause of pulmonary edema, pulmonary effusion, pulmonary embolism, pulmonary hypertension.",
+      "explain the pathophysiology changes in pulmonary edema, pulmonary effusion, pulmonary embolism, pulmonary hypertension.",
+      "describe pathology of pulmonary edema, pulmonary effusion, pulmonary embolism, pulmonary hypertension.",
+      "correlate the pathology, pathophysiology to clinical setting of pulmonary edema, pulmonary effusion, pulmonary embolism, pulmonary hypertension.",
+      "explain principle of health care system.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lec: Inflammatory disorders",
+     "lo": [
+      "describe cause of chronic inflammatory disorders.",
+      "explain the pathophysiology changes in chronic inflammatory disorders.",
+      "describe pathology of chronic inflammatory disorders.",
+      "correlate the pathology, pathophysiology to clinical setting of chronic inflammatory disorders.",
+      "explain principle of health care system.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lec: Metabolic disorders",
+     "lo": [
+      "describe cause of metabolic regulatory disorders.",
+      "explain the pathophysiological changes in metabolic regulatory disorders.",
+      "describe pathology of metabolic regulatory disorders in respiratory tract.",
+      "correlate the pathology, pathophysiology to clinical setting of metabolic regulatory disorders.",
+      "explain principle of health care system.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lec: Neoplastic disorders",
+     "lo": [
+      "describe cause of neoplastic disorders and tumor-like conditions.",
+      "explain the pathophysiology changes in neoplastic disorders and tumor-like conditions.",
+      "describe pathology of neoplastic disorders and tumor-like conditions.",
+      "correlate the pathology, pathophysiology to clinical setting of neoplastic disorders and tumor-like conditions.",
+      "explain principle of health care system.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "25 Lec: Integrated and holistic care",
+     "lo": [
+      "emotional and behavioral factor.",
+      "influence on person, family and society.",
+      "occupational and other environmental risk factor.",
+      "gender and ethic factor"
+     ]
+    },
+    {
+     "t": "Case scenario and clinical correlation in respiratory system",
+     "lo": [
+      "Identify common respiratory system diseases and their clinical presentations.",
+      "Apply clinical knowledge to diagnose common respiratory system diseases.",
+      "Correlate common respiratory system diseases with their underlying anatomical, physiological, pathological, and pathophysiological mechanisms.",
+      "Develop critical thinking through case scenarios.",
+      "Demonstrate effective communication and constructive argumentation with peers during group discussions."
+     ]
+    }
+   ]
+  },
+  "Hematopoietic & lymphoreticular system": {
+   "chapter": "heme",
+   "sessions": [
+    {
+     "t": "Lecture: Hematopoiesis and bone marrow",
+     "lo": [
+      "describe formation of various types of blood cell",
+      "explain the function of growth factor",
+      "explain pathophysiology of hematopoietic system",
+      "describe the significant signs and symptoms of abnormal hematopoietic",
+      "bone marrow structure and indication for bone marrow aspiration or biopsy",
+      "hematopoietic cells and non-hematopoietic cells in bone marrow",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lecture: Interpretation of complete blood count",
+     "lo": [
+      "state the purpose and principle of interpretation of peripheral blood smear and complete blood counts.",
+      "perform Interpretation of peripheral blood smear and complete blood counts with correct technique",
+      "perform the laboratory to determine hemoglobin and hematocrit values",
+      "perform white cell counting with correct technique",
+      "explain the principle of peripheral blood smear preparation",
+      "interpret peripheral blood smear",
+      "differentiate normal and abnormal blood smear",
+      "explain the character of normal and abnormal blood cell",
+      "prepare proper blood smear and evaluate using microscope",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory: Peripheral blood smear and normal blood smear",
+     "lo": [
+      "prepare blood smear",
+      "perform Interpretation of normal peripheral blood smear",
+      "perform the laboratory to determine hematocrit values",
+      "share information & understanding with other team members",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Lecture: Red blood cells, approach to anemia, hypoproliferative anemia and hemolytic anemia",
+     "lo": [
+      "differentiate various types of anemia",
+      "describe the cause and mechanism of anemia",
+      "explain how to diagnose of the disease that led to anemia",
+      "explain how to manage patient with anemia",
+      "describe various condition of red blood cell destruction",
+      "explain the principle of laboratory procedure to differentiate anemia"
+     ]
+    },
+    {
+     "t": "Lecture: Immunology system and Hematopoietc & Lymphoreicular system",
+     "lo": [
+      "describe organs, functions and maturation of immune cells.",
+      "characteristics and types of immunodeficiency. Pre-class preparation Required reading the reading assignments and lecture power point slides"
+     ]
+    },
+    {
+     "t": "Lecture: Hemoglobinopathy and Thalassemia",
+     "lo": [
+      "describe the production of hemoglobin in normal and thalassemic patient",
+      "explain genetic abnormalities causing thalassemia",
+      "differentiate various types of thalassemia",
+      "predict disease transfer between patient to the offspring",
+      "explain the principle and method of diagnosis of thalassemia in carriers and patients",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Laboratory: Hematologic disease blood smear I (abnormal RBC and relate)",
+     "lo": [
+      "practice slide evaluation according to laboratory manual",
+      "differentiate normal and red cell diseases",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Lecture: Drugs used in anemia ( Hematinic drugs )",
+     "lo": [
+      "Describe pharmacotherapeutic principles of drugs used in anemia",
+      "Explain the classification, mode and mechanism of action of drugs used in anemia",
+      "Elaborate pharmacokinetic properties of various drugs used in anemia and their influences on therapeutic outcome",
+      "Discuss advantages and disadvantages of various drugs used in anemia (therapeutic efficacy, contraindications, precautions, side effects, adverse drug reactions, drug interactions, and toxicity)",
+      "Synthesize guidelines for rational uses of drugs used in anemia in different clinical settings",
+      "Rationally select effective and safe drugs for individual patients with anemia"
+     ]
+    },
+    {
+     "t": "Laboratory: Hematologic disease blood smear II (leukemia and relate)",
+     "lo": [
+      "practice slide evaluation according to laboratory manual",
+      "differentiate common leukemia diseases using microscopic examination",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Lecture: Principle of blood coagulation and approach to bleeding disorders ( Normal and abnormal",
+     "lo": [
+      "explain blood coagulation system",
+      "describe the cause of bleeding disorder",
+      "explain the mechanism of blood coagulation",
+      "describe the symptom related to bleeding disorder",
+      "describe the symptom related to thrombosis",
+      "describe laboratory techniques used in bleeding disorder and thrombosis diagnosis",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Laboratory: Hemostatic test",
+     "lo": [
+      "describe the principle, procedure, interpretation, and pitfall of tourniquet test, bleeding time, whole blood clotting time, tourniquet test, clot retraction time and clot lysis time",
+      "perform the coagulation tests",
+      "interpret the results of coagulation tests (both normal and abnormal)",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Lecture: Anticoagulants, antiplatelet drugs, fibrinolytic drugs, hemostatic drugs.",
+     "lo": [
+      "Describe therapeutic principles of anticoagulants, antiplatelet drugs, and fibrinolytic drugs",
+      "Explain the classification, mode and mechanism of action of anticoagulants, antiplatelet drugs, and fibrinolytic drugs",
+      "Elaborate pharmacokinetic properties of various anticoagulants, antiplatelet drugs, and fibrinolytic drugs and their influences on therapeutic outcome",
+      "Discuss advantages and disadvantages of various anticoagulants, antiplatelet drugs, and fibrinolytic drugs (therapeutic efficacy, contraindications, precautions, side effects, adverse drug reactions, drug interactions, and toxicity)",
+      "Synthesize guidelines for rational uses of anticoagulants, antiplatelet drugs, and fibrinolytic drugs in different clinical settings",
+      "Rationally select effective and safe anticoagulants, antiplatelet drugs, and fibrinolytic drugs for individual patients with blood clotting disorders"
+     ]
+    },
+    {
+     "t": "Lecture: Hematologic malignancy : myeloid and lymphoid neoplasia",
+     "lo": [
+      "describe definition, cause, and pathogenesis of acute leukemia",
+      "describe significant symptom of common acute leukemia",
+      "describe definition, cause, and pathogenesis of myeloproliferative disorders",
+      "differentiate various types of myeloproliferative disorders",
+      "describe significant symptom of myeloproliferative disorders",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Lecture: Hematopoietic and lymphoreticular disorder due to infection",
+     "lo": [
+      "identify and describe the microbial, protozoa, parasitic infection of hematologic system.",
+      "describe route of transmission of the etiological microbiology, protozoa, parasite.",
+      "describe pathogenesis of the dengue, EBV, parvo B19 infection, filariasis, Hookworm, fish tapeworm infection, schistosomiasis, and malaria.",
+      "identify and describe the clinical signs and symptoms of the infection of hematologic system.",
+      "determine and select the suitable methods of specimen collection and laboratory diagnostic technique required for the recovery of the infection of hematologic system.",
+      "describe the prevention and control measures of the infectious disease of hematologic and lymphatic system."
+     ]
+    },
+    {
+     "t": "Laboratory: Hematopoietic and lymphoreticular disorder due to microbial and parasitology infection",
+     "lo": [
+      "identify the etiological parasite and protozoa of hematologic system from clinical specimen.",
+      "collect the suitable specimen for investigation of dengue, EBV, parasite and protozoan infection in hematologic system: finger prick, venipuncture etc.",
+      "preparation of specimen (thick & thin blood film) and buffy coat smear and staining.",
+      "explain clinical correlation between physical examination, patient history and laboratory result."
+     ]
+    },
+    {
+     "t": "Laboratory: Hematopathology of reticuloendothelial system (lymph node, spleen and thymus)",
+     "lo": [
+      "practice slide evaluation according to laboratory manual",
+      "differentiate normal and abnormal tissue related to hematopoietic system",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Lecture: Human blood group, blood collection and processing",
+     "lo": [
+      "explain selection of donors for blood collection 2 explain clinical significant blood group",
+      "explain antigen-antibody system in ABO and Rh",
+      "explain the principle and method of ABO and Rh group determination",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Lecture: Blood compatibility",
+     "lo": [
+      "describe the types blood and blood component that able to use in patient",
+      "explain the proper donor selection before crossmatching",
+      "explain the principle and application of Coombs’ test",
+      "explain how to evaluate blood and blood component before use in patient",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Laboratory: Blood grouping, crossmatch and Coombs’ test (Antiglobulin test)",
+     "lo": [
+      "perform blood grouping; cell grouping and serum grouping and leading to result interpretation. 2, understand ABO discrepancies.",
+      "understand blood compatibility test of each blood component.",
+      "practice the major crossmatching between donor red blood cells and recipient serum",
+      "understand how to screen and detect unexpected antibody in recipient serum",
+      "perform direct and indirect antiglobulin test and interpret the results. Pre-class preparation Required reading the reading lab manual and mini-lecture power point slides"
+     ]
+    },
+    {
+     "t": "Lecture: Anticancer Drugs (chemotherapy, target therapy, immunotherapy)",
+     "lo": [
+      "Describe the principles of cancer chemotherapy, the importance of tumor cell heterogeneity and the development of malignant cell resistance to chemotherapy",
+      "Explain the characteristic indications, the mechanisms of action and mechanisms of resistance for each group of drugs commonly used in cancer chemotherapy",
+      "Recognize the principal adverse effects of the drugs used in cancer chemotherapy",
+      "Summarize the use of specific cytotoxic and biologic agents for each of the main cancers"
+     ]
+    },
+    {
+     "t": "Lecture: Immunomodulators, Immunosuppressants and Immunostimulants",
+     "lo": [
+      "Describe roles of drugs on human immunity and the treatment of immunological disorders",
+      "Explain classification, general properties, and mechanisms of action of drugs acting on immunological system",
+      "Elaborate pharmacokinetic properties of drugs acting on immunological system",
+      "Comparatively analyze pharmacological effects, clinical indications, contraindications, precautions, side effects, adverse drug reactions, drug interactions, toxicity, including advantages and disadvantages of drugs acting on immunological system",
+      "Apply principles of immunopharmacology rationally in the treatment of patients"
+     ]
+    },
+    {
+     "t": "Lecture: Hemotherapy and complications",
+     "lo": [
+      "explain appropriate use blood group and component in patients (hemotherapy)",
+      "explain complications for hemotherapy",
+      "explain test result if any problem in blood transfusion has occurred",
+      "share information & understanding with other team members",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Integrated and holistic medicine care",
+     "lo": [
+      "explain the causative factors which effect health according to concepts of the integrated and holistic care: a. emotional and behavioral factors. b. influence on person, family and society. c. occupational and other environmental risk factors. d. gender and ethnic factors",
+      "behave according to the ground rule of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning."
+     ]
+    }
+   ]
+  },
+  "240-302/240-321 Cardiovascular system I": {
+   "chapter": "cvs",
+   "sessions": [
+    {
+     "t": "Gross anatomy of the heart and mediastinum",
+     "lo": [
+      "describe divisions and contents of the mediastinum",
+      "describe the outline and normal position of the heart",
+      "identify relations of different parts of the heart in the middle mediastinum",
+      "define the pericardium and describe its covering layers",
+      "describe its attachment to the diaphragm and the root of the great vessels",
+      "discuss the pericardial space and its recesses and pericardial fluid in normal conditions",
+      "describe innervations of the fibrous pericardium",
+      "describe divisions of the heart into four chambers and the internal and external features of each chamber",
+      "describe different parts of the conductive system of the heart and their arrangement and function within the myocardium",
+      "apply basic knowledge of mediastinum to clinical correlation",
+      "Describe the atrio-ventricular valves and their position and the attachment of the cusps to papillary muscles and their functional importance",
+      "Describe the aortic and pulmonary semilunar valves and their position and functional Importance",
+      "apply basic knowledge of Anatomy of heart and pericardial cavity, chambers of the heart, cardiac musculature and blood vessels and lymph to clinical correlation",
+      "share information and understanding with other team members",
+      "behave according to the ground rule of School of Medicine",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Laboratory of gross anatomy of the heart and mediastinum",
+     "lo": [
+      "perform dissection the contents in superior mediastinum - thymus gland, trachea and esophagus - right and left brachiocephalic vein - superior vena cava - arch of aorta, brachiocephalic artery, left common carotid artery, and left subclavian artery - vagus and phrenic nerves",
+      "perform dissection : middle mediastinum - heart - ascending aorta, pulmonary trunk and pulmonary arteries - SVC, azygos vein and pulmonary veins - phrenic nerve - bifurcation of trachea and bronchi",
+      "describe the location and position of the heart within the body cavity",
+      "describe the internal and external anatomy of the heart",
+      "describe divisions of the heart into four chambers and the internal and external features of each chamber",
+      "describe different parts of the conductive system of the heart and their arrangement and function within the myocardium",
+      "describe the atrio-ventricular valves and their position and the attachment of the cusps to papillary muscles and their functional importance",
+      "describe the aortic and pulmonary semilunar valves and their position and functional Importance",
+      "apply basic knowledge of Anatomy of heart and pericardial cavity, chambers of the heart, cardiac musculature and blood vessels and lymph to clinical correlation",
+      "share information and understanding with other team members",
+      "behave according to the ground rule of School of Medicine",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Development of cardiovascular and lymphatic system",
+     "lo": [
+      "describe the early development of heart and vessels",
+      "explain the development of vein : vitelline veins, umbilical veins, common cardinal vein and IVC",
+      "describe dorsal aorta, aortic arches and umbilical artery",
+      "explain the development of sinus venosus, atrium, ventricle and bulbus cordis",
+      "explain partitioning of a trioventricular canal, partitioning of atrium and ventricle",
+      "describe the development of cardiac valves and aortic arch derivatives",
+      "explain anomalies of heart and great vessels",
+      "describe the development of lymphatic system - Lymph sacs and lymphatic ducts - Thoracic duct and lymph nodes - Anomalies of lymphatic system",
+      "behave accordion to the ground rules of School of Medicine",
+      "share information & understanding with other team members"
+     ]
+    },
+    {
+     "t": "Histology of the cardiovascular system",
+     "lo": [
+      "describe general structures of blood vessels",
+      "describe specific structures of capillaries, arterioles, muscular arteries and large elastic arteries",
+      "describe venules, small vein, medium vein and large veins",
+      "describe the heart : endocardium, myocardium and epicardium",
+      "behave according to the ground rules of School of Medicine",
+      "share information & understanding with other team members",
+      "use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Laboratory: Histology of cardiovascular and lymphatic system",
+     "lo": [
+      "describe histological structures of capillaries, arterioles, muscular arteries, large elastic arteries",
+      "describe histological structures of venules, small vein, medium vein, large vein",
+      "describe the heart : endocardium, myocardium, epicardium",
+      "use appropriate instruments to perform microscopic study",
+      "behave accordion to the ground rules of School of Medicine",
+      "share information & understanding with other team members"
+     ]
+    },
+    {
+     "t": "Functions of the cardiovascular system",
+     "lo": [
+      "Explain why large organisms require a cardiovascular system.",
+      "Explain function and mechanism of heart in blood pressure regulation.",
+      "Explain function and mechanism of cardiovascular system in exchange of blood oxygen and carbon dioxide.",
+      "Explain function and regulation of cardiovascular system in maintenance of body temperature.",
+      "Explain function, mechanism and regulation of body fluid, electrolyte balance and nutrition.",
+      "Describe the significance of the series and parallel arrangement of the cardiovascular system.",
+      "Describe the components and roles of the circulatory system.",
+      "Describe the physiological mechanisms of blood clotting.",
+      "Correlate sign and symptom to clinical management",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "The electrical activity of cardiac cells and conduction of the heart",
+     "lo": [
+      "explain function and regulation of plasma membrane potential, sodium ion, calcium ion, potassium ion channel, depolarization and repolarization of cardiac cells.",
+      "explain function of electrical character of pacemaker potential initiation, SA node, AV node, Purkinje’s system fiber and myocardium.",
+      "explain change in heart rate and control.",
+      "describe the abnormality electrical activity of cardiac muscle.",
+      "correlate sign and symptom to clinical management",
+      "share information and understanding with other team members.",
+      "behave according to the ground rule of School of Medicine.",
+      "use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lab: Property of cardiac muscle",
+     "lo": [
+      "Record frog’s cardiac muscle contraction and interpret the results",
+      "Explain the sequence of cardiac contraction.",
+      "Describe the effect of temperature on cardiac muscle contraction.",
+      "Explain the reason for using acetylcholine and epinephrine and describe the effect of these chemicals on cardiac muscle.",
+      "Describe extra-systole and compensatory pause.",
+      "Describe physiological differences between cardiac muscle and skeletal muscle.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Electrocardiography (ECG or EKG)",
+     "lo": [
+      "Describe common electrocardiography (ECG or EKG) waves: P wave, Q wave, R wave, S wave, and T wave and heart rate.",
+      "Describe standard limb leads lead I, II, and III, aVR, aVL, and aVF, and chest leads V1-V6.",
+      "Describe basic abnormalities of ECG and electrical activity of the cardiac muscle.",
+      "Correlate sign and symptom to clinical management.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Laboratory Electrocardiography",
+     "lo": [
+      "Perform and record the Electrocardiography from human correctly",
+      "Indicate a typical electrocardiogram tracing to the cardiac cycle in term of P wave, QRS complex, T wave, (U wave), PR interval, ST segment, QT interval and R-R interval explain the creation of electrocardiogram and the relationship of electrocardiogram under action potential to position of hart chamber",
+      "Interpret the electrocardiogram in terms of: - heart rate (HR) - instantaneous HR - differentiate normal/abnormal sinus rhythm - differentiate the cardiac cycle normal/abnormal - determine the direction of mean electric axis of heart at frontal plane",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning"
+     ]
+    },
+    {
+     "t": "Cardiodynamics, cardiac cycle and heart sound",
+     "lo": [
+      "Explain function and control regulation of cardiodynamics",
+      "Explain energy consumptions, oxygen consumption and methods of studying.",
+      "Explain cardiac cycle; atrial filling, right ventricle filling, right ventricle ejection, pulmonary system circulation, let atrial filling, left ventricle fill, left ventricle ejection.",
+      "Explain cardiac output, stroke volume, vascular resistance, determination of blood pressure, vessel compliance, and arterial pressure assessment.",
+      "Explain origin of heart sounds.",
+      "Describe abnormality of hear sounds (murmurs).",
+      "Explain blood distribution of systemic system, peripheral system, intra thoracic, extra thoracic system and central nervous system, venous return and central venous pressure. blood volume.",
+      "Correlate sign and symptom to clinical management",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Control of heart rate, cardiac output and venous return",
+     "lo": [
+      "Explain function and regulatory mechanism of the heart contraction rate.",
+      "Explain influence of cardiac perfusion, blood volume, blood pressure on cardiac output.",
+      "Explain influence of extracellular K+, Mg2+, Ca2+ ion concentration on heart rate and cardiac output.",
+      "Explain influence of activity, temperature, blood pressure, blood volume and position on heart rate and cardiac output.",
+      "Defines mean circulatory filling pressure and states the primary factors that determine it.",
+      "Lists the factors that control venous return.",
+      "Defines venous return and explains how it is distinguished from cardiac output.",
+      "Describe determinants of cardiac output and venous return",
+      "Describe relationships between cardiac output and venous return.",
+      "Explain the reasons that cardiac output and venous return must be equal in the steady state.",
+      "Predicts how normal venous return, cardiac output, and central venous pressure will be altered with any given combination of changes in cardiac sympathetic tone, peripheral venous sympathetic tone, or circulating blood volume.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Biochemistry of the heart",
+     "lo": [
+      "explain fuel source of cardiac muscle",
+      "describe the important of oxygen to cardiac muscle",
+      "explain cardiac metabolism in normal and ischemic condition"
+     ]
+    },
+    {
+     "t": "Hemodynamics and vascular system",
+     "lo": [
+      "Name the different types and describe general function of blood vessels constituting the vascular network of the body.",
+      "Define the relation between the velocity of blood flow and vascular cross-sectional area.",
+      "Describe the factors that govern the relationship between blood flow and pressure gradient.",
+      "Distinguish between resistances in series and resistances in parallel.",
+      "Distinguish between laminar flow and turbulent flow.",
+      "Describe the influence of the particulates in blood on blood flow.",
+      "Explain how the pulsatile blood flow in the large arteries is converted into a steady flow in the capillaries.",
+      "Discuss arterial compliance and its relation to stroke volume and pulse pressure.",
+      "Explain the factors that determine the mean, systolic, and diastolic arterial pressures and the arterial pulse pressure.",
+      "Describe in quantitative terms the relation between vessel radius, vessel length, blood viscosity, and perfusion pressure with blood flow.",
+      "Describe the common procedure for measuring the arterial blood pressure in humans.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Regulation of arterial pressure and blood volume",
+     "lo": [
+      "Explain response and adaptive regulation of cardiovascular system on change of systemic blood pressure.",
+      "Explain response and adaptive regulation of cardiovascular system on change of volume.",
+      "Explain function and regulation of autonomic nervous system on the cardiovascular system",
+      "Explain function and regulation of receptors and hormonal regulation.",
+      "Explain function, mechanism and regulation of CNS and neural control on cardiac output, systemic vascular resistance, and mean arterial pressure, pulse pressure.",
+      "Explain function, mechanism and regulation of hormonal control on arterial pressure, stroke volume, and arterial compliance.",
+      "Explain mechanism and regulation of systemic distribution, arterial fraction and venous fraction on different organs.",
+      "Explain mechanism and regulation of blood pressure in different posture and condition.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Microcirculation and lymphatic system",
+     "lo": [
+      "Explain structure, function and regulation of arterial micro vascular system, capillaries, venous microvasculature.",
+      "Explain structure, function and regulation of vascular and tissue exchange of solute.",
+      "Explain structure, function and determinants of transcapillary exchange.",
+      "Explain factors affecting transcapillary exchange.",
+      "Explain structure, function and regulation of lymphatic system.",
+      "Explain basis of edema formation.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Blood flow regulation and special circulation",
+     "lo": [
+      "Explain function, structure and regulation of blood supply to tissues.",
+      "Explain function, structure and regulation of blood supply of cardiac muscle.",
+      "Explain function, structure and regulation of blood supply of central nervous system.",
+      "Explain function, structure and regulation of blood supply of fetus.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lab: Arterial pulse and arterial blood pressure",
+     "lo": [
+      "Describe the method for arterial pulses, blood pressure measurement, Korotkoff’s sound.",
+      "Define the normal value and normal performance of arterial pulses, blood pressure.",
+      "Select and using the right instrument for each measurement such as sphygmomanometer, arm cuff and stethoscope.",
+      "Perform a correct standard procedure for indirect blood pressure measurement in human.",
+      "Describe cardiovascular responses to postural change and exercise."
+     ]
+    },
+    {
+     "t": "Cardiovascular integrative responses to stress: postural change, exercise and",
+     "lo": [
+      "Explain physiology and regulation of cardiovascular system in posture change.",
+      "Explain physiology and regulation of cardiovascular system in hemorrhage.",
+      "Explain physiology and regulation of cardiovascular system in exercise.",
+      "Explain physiology and regulation of cardiovascular system in aging.",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Lab: Heart rate and blood pressure regulation",
+     "lo": [
+      "Describe the method for direct blood pressure measurement in experimental animal.",
+      "Describe the method for electrocardiographic measurement in animal.",
+      "Describe the mechanisms of various factors and conditions affecting arterial blood pressure and heart rate.",
+      "Define the normal value and normal performance of Arterial pulses, blood pressure, apex beat, cardiac dullness, and the other rhythm or sound.",
+      "Explain the purposes of using concentrated MgSO4 or KCl solution as euthanasia and mechanisms of action."
+     ]
+    },
+    {
+     "t": "Shock: Inadequate blood flow phenomena",
+     "lo": [
+      "Explain low-flow state and cause of low-flow state",
+      "Describe the four types of hypoxia, stages of hypoxia",
+      "Share information and understanding with other team members.",
+      "Behave according to the ground rule of School of Medicine.",
+      "Use education technology for continuous learning."
+     ]
+    },
+    {
+     "t": "Pharmacology of vascular tone and drugs used in cardiac arrhythmias",
+     "lo": [
+      "explain pharmacology of vascular tone.",
+      "discuss the uses, general drug action, general adverse reactions, contraindications, precaution interactions of inotropic drugs.",
+      "discuss the use of other drugs with positive inotropic drugs.",
+      "identify the symptoms of digitalis. Anti-arrhythmic drugs:",
+      "categorized and explain disease caused by ischemic heart disease and anti-arrhythmic drugs",
+      "mention the effect of ischemic heart disease and anti-arrhythmic drugs on various organs producing diseases.",
+      "mention plans of treatment of the diseases.",
+      "list the drugs in both categories and describes mechanism of drug actions"
+     ]
+    }
+   ]
+  },
+  "240-322 Cardiovascular system II": {
+   "chapter": "cvs",
+   "sessions": [
+    {
+     "t": "Infectious disease, treatment and prophylaxis in cardiovascular system",
+     "lo": [
+      "explain clinical signs and symptoms of cardiovascular disease caused by infection.",
+      "describe the common infections and their etiologies in cardiovascular system.",
+      "explain the common causative agents of cardiovascular infectious disease.",
+      "select the drug of choice for treatment, prophylaxis and prevention the disease"
+     ]
+    },
+    {
+     "t": "Laboratory of infectious disease and immunological disorder in cardiovascular system",
+     "lo": [
+      "explain etiology of cardiovascular disease that caused from infection and immune disorder.",
+      "describe appropriate blood collection and transportation technique of hemoculture.",
+      "perform the basic laboratory identification technique.",
+      "preliminary identify the causative agent from direct examination of the specimen.",
+      "integrate the basic medical science knowledge in order to diagnose infectious disease.",
+      "choose the appropriate laboratory test for diagnosis of rheumatic fever from post streptococcal infection and inflammation of heart.",
+      "understand the principle of anti-streptolysin O (ASO) detection using latex agglutination test",
+      "perform anti-streptolysin O test and interpret the result.",
+      "explain the use of C reactive protein (CRP) and highly sensitive CRP for diagnosis of inflammation of heart."
+     ]
+    },
+    {
+     "t": "Fetal circulation, atherosclerosis, coronary heart failure Rheumatic heart disease,",
+     "lo": [
+      "explain pathology which includes etiology, pathogenesis, gross and histopathology, pathophysiology, complication, associated imaging study/investigation, principle of diagnosis, management and prognosis of the following diseases/disorders of the cardiovascular system:",
+      "1 rheumatic heart disease (RHD); acute and chronic",
+      "2 infective endocarditis (IE)",
+      "3 atherosclerosis (ATH)",
+      "describe essential clinicopathological correlation including symptomatology of diseases/disorders in (1)"
+     ]
+    },
+    {
+     "t": "ISHD, CMP, heart Tx, Corpulmonale, Peri-myo-valve, Neoplasm, Vascular disease,",
+     "lo": [
+      "1 ischemic heart disease (ISHD)",
+      "2 arterial hypertension (HT) and cor pulmonale",
+      "3 cardiomyopathy (CMP)",
+      "4 myocardial disease",
+      "5 valvular disease",
+      "6 pericardial disease",
+      "7 congenital anomaly",
+      "8 tumor",
+      "9 cardiac arrhythmia",
+      "10 vascular disease (artery, vein, lymphatic) - Describe essential clinicopathological correlation including symptomatology, diseases/disorders"
+     ]
+    },
+    {
+     "t": "Drugs Used in Heart Failure",
+     "lo": [
+      "enumerate and explain the antihypertensive mechanisms of the drug’s action.",
+      "categorize antihypertensive by pathogenesis of the diseases and explain their molecular mechanism of actions.",
+      "describe therapeutic uses, side/adverse effects of each drugs.",
+      "discuss the choice of drugs for the demonstrated patients."
+     ]
+    },
+    {
+     "t": "Anti-Hypertensive drug",
+     "lo": [
+      "Diagnosis and giving differential diagnosis of 6 patients assigned by group discussion.",
+      "Describe common, non-complicated mechanism of action to diagnosis these diseases",
+      "Discus pathogenesis, pathology and pathophysiology of the drugs",
+      "Discuss of the appropriate treatment for each patients",
+      "Choose the appropriate to treat the disease",
+      "Discuss pharmacological of the drugs used."
+     ]
+    },
+    {
+     "t": "Drug Treatment of Ischemic Heart Disease",
+     "lo": [
+      "Categorize and explain disease caused by atherosclerosis, thrombolytic drugs, and drug treatment of coronary heart disease",
+      "Explain pathology, pathophysiology causing atherosclerosis, thrombolytic drugs, and drug treatment of coronary heart disease",
+      "Discuss etiology and epidemiology of the disease",
+      "Mention the effect of atherosclerosis, thrombolytic drugs, and drug treatment of coronary heart disease on various organs producing diseases.",
+      "Mention plans of treatment of the diseases.",
+      "List the drugs in both categories and describes mechanism of drug actions, and other pharmacological topics",
+      "Describe drugs application for these disease."
+     ]
+    },
+    {
+     "t": "Integrated and holistic medicine care I",
+     "lo": [
+      "Apply the basic concepts, rules, principles, theory and problem solving of integrated care to the common Cardiovascular problems"
+     ]
+    },
+    {
+     "t": "Integrated and holistic medicine care II",
+     "lo": [
+      "Apply the basic concepts, rules, principles, theory and problem solving of integrated care to the common Cardiovascular problems"
+     ]
+    }
+   ]
+  },
+  "Gastrointestinal system 2026": {
+   "chapter": "gi",
+   "sessions": [
+    {
+     "t": "Gross anatomy of gastrointestinal system",
+     "lo": [
+      "explain the structures, differentiation structures, locations, positions and relations of abdominal wall, inguinal canal, peritoneum, peritoneal cavity and gastrointestinal organ",
+      "explain the nerves innervation, blood supply and lymphatic drainage of abdominal wall and gastrointestinal system",
+      "apply basic knowledge of gastrointestinal system to the other clinical correlation",
+      "behave according to medical student code of conduct, faculty rule and regulation",
+      "utilize the IT as tools for lifelong learning Pre-class preparation: Required",
+      "Learning objective (LO).",
+      "Gross anatomy of abdominal wall, peritoneum, peritoneal cavity and abdominal cavity: Gray’s Anatomy for Student.",
+      "Bring at least one question to the class."
+     ]
+    },
+    {
+     "t": "Development of GI system",
+     "lo": [
+      "Describe how the germ layers contribute to the development of the digestive system.",
+      "Define of the developmental processes of the three main gastrointestinal embryonic divisions (foregut, midgut, and hindgut)",
+      "Understand the mechanical changes (rotations) during gastrointestinal development",
+      "Understanding of associated organ development including liver, pancreas, spleen, gallbladder.",
+      "behave according to the ground rules of school of medicine",
+      "share information & understanding with other team members",
+      "use education technology for continuous learning Pre-class preparation: Required",
+      "Learning objectives (LO)",
+      "Embryology of the gastrointestinal system: Sadler, T.W. Langman’s medical embryology, 9th ed. International edition, Williams and Wilkins. 2004"
+     ]
+    },
+    {
+     "t": "Histology of GI system",
+     "lo": [
+      "describe histological structures of the gastrointestinal tract.",
+      "describe the cells and their functions in gastric and intestinal glands.",
+      "describe the histological structures of the accessory digestive organs.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required",
+      "Learning objectives (LO)",
+      "Histology of the gastrointestinal tract: Mescher, A. L. (2021). Junqueira’s basic histology: Text and atlas (16th ed.). McGraw-Hill Education.",
+      "Bring the questions to ask in the class"
+     ]
+    },
+    {
+     "t": "Histology of hepatobiliary system",
+     "lo": [
+      "describe the histological structures of the accessory digestive organs.",
+      "describe the flow of portal triad in liver.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required",
+      "Learning objectives (LO)",
+      "Histology of the gastrointestinal tract: Mescher, A. L. (2021). Junqueira’s basic histology: Text and atlas (16th ed.). McGraw-Hill Education.",
+      "Bring the questions to ask in the class"
+     ]
+    },
+    {
+     "t": "GI system and liver functions",
+     "lo": [
+      "explain electrical activities of gastrointestinal smooth muscle: slow wave, spike potentials (action potential) changes in voltage of the resting membrane potential, calcium ion and muscle contraction, tonic contraction of some gastrointestinal smooth muscle.",
+      "explain neural control of gastrointestinal function: difference between the myenteric and submucosal plexus, autonomic control of the gastrointestinal tract and gastrointestinal reflexes.",
+      "explain regulation and type of movements in the gastrointestinal tract: neurotransmitters control of gastrointestinal motility, propulsive movements and mixing of food, ingestion of food, motor function of gastrointestinal tract",
+      "explain autonomic stimulation of secretion.",
+      "explain secretion of saliva: nervous regulation of salivary secretion.",
+      "explain gastric secretion: secretions from gastric gland, secretions and stimulation of mucus and gastrin from the pyloric gland.",
+      "explain pancreatic secretion and regulation.",
+      "explain secretion of mucus by the small intestine and large intestine.",
+      "explain digestion of carbohydrate in the mouth, stomach and small intestine: hydrolysis of disaccharides.",
+      "explain digestion of protein in the stomach and small intestine: protein digestion by pancreatic proteolytic enzymes, digestion of peptides by peptidases.",
+      "explain digestion of fat in the small intestine: fat digestion by bile acids and lecithin, digested triglycerides by pancreatic lipase, digestion of cholesterol esters and phospholipids.",
+      "explain absorption in the small intestine: absorption of water by osmosis, absorption of ion and nutrient, formation of feces.",
+      "describe bile formation and bilirubin excretion.",
+      "explain the transportation in the hepatocytes.",
+      "explain enterohepatic circulation of bile acids.",
+      "understand the liver as a metabolic organ.",
+      "identify the mechanism that permits normal function of the gallbladder.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required",
+      "Study the learning objective",
+      "Bring the questions to ask in the class"
+     ]
+    },
+    {
+     "t": "Gastrointestinal system infection",
+     "lo": [
+      "explain the signs and symptoms of common infectious diseases in gastrointestinal system.",
+      "describe the common infectious diseases and etiologic agent in gastrointestinal system.",
+      "know the antimicrobial of choice for each pathogen.",
+      "behave according to the ground rule of School of Medicine.",
+      "share information & understanding with other team members.",
+      "use education technology for continuous learning. Pre-class preparation: Required reading",
+      "Miriam Baron Barshak, Dennis L. Kasper. Chapter 159: Intraabdominal Infections and Abscesses. In Kasper DL, Braunwald E, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. Harrison's Principles of Internal Medicine. 19th edition, New York. McGraw- Hill Medical Publishing Division 2015, page 846-852.",
+      "Regina C. LaRocque, Edward T. Ryan, Stephen B. Calderwood. Chapter 160: Acute Infectious Diarrheal Diseases and Bacterial Food Poisoning. In Kasper DL, Braunwald E, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. Harrison's Principles of Internal Medicine. 19th edition, New York. McGraw-Hill Medical Publishing Division 2015, page 852-857.",
+      "Dale N. Gerding, Stuart Johnson. Chapter 161: Clostridium difficile Infection including Pseudomembranous Colitis. In Kasper DL, Braunwald E, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. Harrison's Principles of Internal Medicine. 19th edition, New York. McGraw-Hill Medical Publishing Division 2015, page 857-861.",
+      "Dienstag JL. Chapter 360: Acute Viral Hepatitis. In Kasper DL, Braunwald E, Fauci AS, Hauser SL, Longo DL, Jameson JL, Loscalzo J. Harrison's Principles of Internal Medicine. 19th edition, New York. McGraw-Hill Medical Publishing Division 2015, page 2004-22.",
+      "Learning objective (LO)",
+      "Alteration in gastrointestinal function: Harrison's Principles of Internal Medicine Bring at least one question to the class.",
+      "UpToDate™ on acute diarrhea and other GI infection, hepatitis viruses"
+     ]
+    },
+    {
+     "t": "Pathology of the upper digestive tract",
+     "lo": [
+      "explain pathology and complication of the common diseases/disorders of the oral cavity and upper gastrointestinal tract: the oral cavity, salivary gland, esophagus, and stomach",
+      "describe essential clinicopathological correlation including symptomatology of diseases/disorders.",
+      "behave according to the ground rules of School of Medicine",
+      "share information & understanding with other team members Pre-class preparation: Required",
+      "Study the learning objective",
+      "Handouts for lectures (pdf files)"
+     ]
+    },
+    {
+     "t": "Pathology of the lower digestive tract",
+     "lo": [
+      "explain pathology which includes etiology, pathogenesis, gross and histopathology, pathophysiology, complication, related imaging study, principle of diagnosis, investigation, management and prognosis of the common diseases/disorders of the oral cavity and lower gastrointestinal tract.",
+      "describe essential clinicopathological correlation including symptomatology of diseases/disorders.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members. Pre-class preparation: Required",
+      "Study the learning objective",
+      "Handouts for lectures (pdf files)"
+     ]
+    },
+    {
+     "t": "Pathology of the hepatobiliary system and exocrine pancreas",
+     "lo": [
+      "explain pathology which includes etiology, pathogenesis, gross and histopathology, pathophysiology, complication, related imaging study, principle of diagnosis, investigation, management and prognosis of the common diseases/disorders of the hepatobiliary system and the exocrine pancreas.",
+      "describe essential clinicopathological correlation including symptomatology of diseases/disorders.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members. Pre-class preparation: Required",
+      "Study the learning objective",
+      "Handouts for lectures (pdf files)"
+     ]
+    },
+    {
+     "t": "Pharmacology of Drugs Used in Gastrointestinal Disorders",
+     "lo": [
+      "describe the pathophysiology, clinical manifestations, diagnostic principles, and therapeutic goals of common gastrointestinal disorders, including dyspepsia, gastroesophageal reflux disease (GERD), peptic ulcer disease (PUD), acute diarrhea, irritable bowel syndrome (IBS), inflammatory bowel disease (IBD), constipation, anorectal disorders, and selected hepatobiliary and pancreatic disorders.",
+      "explain the mechanisms of action, pharmacological effects, therapeutic indications, contraindications, adverse drug reactions, clinically important drug interactions, and monitoring requirements of medications used in the management of gastrointestinal disorders.",
+      "compare the advantages, limitations, and clinical applications of major gastrointestinal drug classes to support evidence-based therapeutic decision-making.",
+      "select appropriate pharmacological therapy based on individual patient characteristics, disease severity, current clinical practice guidelines, and principles of rational drug use.",
+      "apply pharmacological knowledge to patient-based clinical scenarios to formulate safe, effective, and evidence-based treatment plans for common gastrointestinal disorders, including special populations when appropriate.",
+      "behave according to the ground rules of School of Medicine.",
+      "share information & understanding with other team members. Pre-class preparation: Required",
+      "Review the learning objectives (LOs).",
+      "Review the assigned lecture notes on gastrointestinal pharmacology, including gastric acid secretion, upper and lower gastrointestinal disorders, and pharmacological management of common gastrointestinal diseases.",
+      "Complete the online pre-class quiz.",
+      "Bring at least one question related to gastrointestinal pharmacology for classroom discussion"
+     ]
+    },
+    {
+     "t": "History taking and physical examination in GI system",
+     "lo": [
+      "Understand effective history taking of the gastrointestinal system.",
+      "Understand the physical examination of the gastrointestinal system.",
+      "Behave according to the ground rules of medicine.",
+      "Share information and understanding with other team members.",
+      "Use education technology for continuous learning (Google Classroom). Pre-class preparation: Required",
+      "LO (learning objectives)",
+      "Gastrointestinal system and nutrition (240-323): Medical competence assessment criteria for national license 2012",
+      "Learning materials prior attending the class"
+     ]
+    },
+    {
+     "t": "Gross anatomy of gastrointestinal system",
+     "lo": [
+      "Identify and describe the structures, differentiation structures, locations, positions, relations and blood supply of gastrointestinal organ in abdominal cavity.",
+      "describe nerves innervation and lymphatic drainage of gastrointestinal system in abdominal cavity.",
+      "use appropriate surgical instruments to perform cadaver dissection.",
+      "share information & understanding with other team members.",
+      "behave according to medical student code of conduct, faculty rule and regulation. Pre-class preparation: Required",
+      "Learning objectives (LO).",
+      "Gross anatomy laboratory direction: The abdomen - Grant’s Dissector.",
+      "Bring at least one question to the class."
+     ]
+    },
+    {
+     "t": "Histology of the gastrointestinal and hepatobiliary systems",
+     "lo": [
+      "identify histological structures of lips, teeth, tongue, and taste buds.",
+      "identify and explain the histological structures of the esophagus , stomach, small intestine, large intestine, and anus.",
+      "distinguish the histological structures of small intestine : duodenum, jejunum, and ileum.",
+      "identify and explain the cells in gastric and intestinal glands.",
+      "identify the histological structures of the liver: hepatocytes, liver lobule, portal triads, liver sinusoids, space of Disse, and Kupffer cells.",
+      "identify the histological structures of the accessory digestive organs; salivary glands, liver, gall bladder, and pancreas",
+      "use appropriate laboratory instruments to perform microscopic study.",
+      "behave according to the ground rules of Faculty of Medicine.",
+      "share information & understanding with other team members. Pre-class preparation: Required",
+      "Learning objectives (LO)",
+      "Histology laboratory direction: Mescher, A. L. (2021). Junqueira’s basic histology: Text and atlas (16th ed.). McGraw-Hill Education.",
+      "Bring at least one question to the class."
+     ]
+    },
+    {
+     "t": "Investigation in GI system and GI infection",
+     "lo": [
+      "describe laboratory investigation/assessment in digestive system and accessory organs",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required",
+      "DM Vasudevan, Sreekumari S, Kannan Vaidyanathan. Textbook of Biochemistry for Medical Students. 6th ed. Jaypee brothers medical publishers (P) Ltd. 2011. 301-313."
+     ]
+    },
+    {
+     "t": "Pathology of GI and hepatobiliary system 1 and 2",
+     "lo": [
+      "exposed to morphology of various examples of lesions.",
+      "know pathology of diseases or disorders listed in the lectures.",
+      "should be able to gain more understanding of these contents as well as be able to correlate structural changes with the pathophysiology concerned.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required",
+      "Reading learning objectives"
+     ]
+    },
+    {
+     "t": "Integrated and holistic care",
+     "lo": [
+      "emotional and behavioral factor.",
+      "influence on person, family and society.",
+      "occupational and other environmental risk factor.",
+      "gender and ethic factor.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required",
+      "LO (learning objectives)",
+      "Gastrointestinal system and nutrition (240-323): Medical competence assessment criteria for national license 2012",
+      "Four groups of students will be assigned to prepare the common gastrointestinal diseases for in class presentation."
+     ]
+    },
+    {
+     "t": "Case scenario and clinical correlation in gastrointestinal system",
+     "lo": [
+      "identify common GI diseases and their clinical presentations.",
+      "apply clinical knowledge to diagnose common GI diseases.",
+      "correlate common GI diseases with their underlying anatomical, physiological, pathological, and pathophysiological mechanisms.",
+      "develop critical thinking through case scenarios.",
+      "demonstrate effective communication and constructive argumentation with peers during group discussions.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required Review common GI diseases following the Thailand Medical Competency Assessment Criteria for National License 2024"
+     ]
+    },
+    {
+     "t": "CBL",
+     "lo": [
+      "apply clinical knowledge to diagnose common GI diseases.",
+      "demonstrate group teamwork and leadership.",
+      "share information and understanding with other team members.",
+      "behave according to the ground rules of School of Medicine.",
+      "use education technology for continuous learning. Pre-class preparation: Required Review common GI diseases following the Thailand Medical Competency Assessment Criteria for National License 2024"
+     ]
+    }
+   ]
+  },
+  "240-324 Renal & urinary system (KUB) 2026": {
+   "chapter": "renal",
+   "sessions": [
+    {
+     "t": "Lecture: Development of the Urinary System",
+     "lo": [
+      "Explain the three main stages of kidney development.",
+      "Describe positional changes of kidneys.",
+      "Describe changes in blood supply of kidneys.",
+      "Explain congenital anomalies of kidney and ureters.",
+      "Describe the development of urinary bladder and urethra Pre-class preparation Required reading: lecture power point slides Video: https://www.youtube.com/watch?v=v3Tv86bITZ4"
+     ]
+    },
+    {
+     "t": "Lecture: Gross anatomy of kidneys, ureters, urinary bladder",
+     "lo": [
+      "explain the structures, position, relation, blood supply, nerve supply and lymphatic drainage of kidney, ureters, urinary bladder and urethra",
+      "summarize functional anatomy of kidneys, ureters, bladder and urethra",
+      "explain the structures of posterior abdominal wall",
+      "behave according to medical student code of conduct, faculty rule and regulation 5. utilize the IT as tools for lifelong learning",
+      "develop critical thinking and creative thinking during group discussion Pre-class preparation Required reading: study learning objectives and skim on content related to objectives. In-Class 4 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026"
+     ]
+    },
+    {
+     "t": "Lecture: Histology of the urinary system",
+     "lo": [
+      "Describe the histological structure of the urinary system: kidneys, ureters, urinary bladder and urethra.",
+      "Describe the histological structure of the nephrons : renal corpuscle, renal tubules 3. Describe the histological structure of the juxtaglomerular apparatus.",
+      "Describe and distinguish the histological structure of renal blood vessels. 5. Behave according to the ground rules of school of medicine",
+      "Share information & understanding with other team members",
+      "Use education technology for continuous learning. Pre-class preparation Required reading: Study learning objectives and skim on content related to objectives. In-Class 6 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026"
+     ]
+    },
+    {
+     "t": "Laboratory: Gross anatomy of kidney, ureter, bladder, urethra",
+     "lo": [
+      "Identify the structures, position, relation, blood supply, nerve supply and lymphatic drainage of kidney, ureters, urinary bladder and urethra",
+      "Identify the structures of posterior abdominal wall",
+      "behave according to medical student code of conduct, faculty rule and regulation 4. utilize the IT as tools for lifelong learning",
+      "develop critical thinking and creative thinking during group discussion Pre-class preparation Required reading: Study learning objectives and skim on content related to objectives. 8 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026"
+     ]
+    },
+    {
+     "t": "Lecture: Clearance concept and determination of glomerular filtration rate (GFR)",
+     "lo": [
+      "Define the term clearance.",
+      "List the information required to calculate renal clearance.",
+      "State the criteria that must be met for a substance so that its clearance can be used as a measure of glomerular filtration rate (GFR); state which substances are used to measure glomerular filtration rate and effective renal plasma flow.",
+      "Calculate the clearance of any excreted substance.",
+      "Describe how to estimate GFR from creatinine clearance and describe the limitations of this estimate.",
+      "Predict whether a substance undergoes net reabsorption or net secretion by comparing its clearance with that of inulin or by comparing its rate of filtration with its rate of excretion. 7. Describe how to estimate renal plasma flow rate using clearance concept. 8. Describe how to use plasma concentrations of urea and creatinine as indicators of changes in glomerular filtration rate.",
+      "Calculate net rate of reabsorption or secretion for any substance. 10 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026",
+      "Calculate fractional excretion of any substance.",
+      "Calculate effective renal plasma flow rate and estimate effective renal blood flow rate.",
+      "Explain if a substance is reabsorbed or secreted by the kidney by comparing the filtered load of the substance with the amount excreted in the urine; or explain by comparing the renal clearance of the substance with inulin clearance. Pre-class preparation Required reading:"
+     ]
+    },
+    {
+     "t": "Lecture: Basic renal transport mechanisms, and tubular reabsorption and",
+     "lo": [
+      "State how transport mechanisms combine to achieve active transcellular reabsorption in epithelial tissues.",
+      "Define iso-osmotic transport.",
+      "Define paracellular transport and differentiate between transcellular and 13 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026 paracellular transport. 4. Describe qualitatively the forces that determine movement of reabsorbed fluid from the interstitium into peritubular capillaries.",
+      "Compare and contrast the concepts of Tm and gradient- limited transport.",
+      "Explain how to quantify tubular reabsorption and secretion.",
+      "Describe the renal handling of glucose and state the conditions under which glycosuria is likely to occur.",
+      "Describe the renal handling of proteins and small peptides.",
+      "Describe the secretion of para-aminohippurate.",
+      "Outline the handling of urate.",
+      "Describe the secretion of organic cations.",
+      "Describe how tubular pH affects the excretion and reabsorption of weak acids and bases.",
+      "Describe the renal handling of urea, including the medullary recycling of urea from the collecting duct to the loop of Henle. Pre-class preparation - Required reading:"
+     ]
+    },
+    {
+     "t": "Lecture: Renal handling and its regulation of sodium and water reabsorption, and",
+     "lo": [
+      "List approximate percentages of sodium reabsorbed in major tubular segments. 2. List approximate percentages of water reabsorbed in major tubular segments. 3. Describe proximal tubule sodium reabsorption, including the functions of the apical membrane sodium entry mechanisms and the basolateral Na+/K+-ATPase.",
+      "Explain why chloride reabsorption is coupled with sodium reabsorption, and list the major pathways of proximal tubule chloride reabsorption.",
+      "State the maximum and minimum values of urine osmolality.",
+      "Define osmotic diuresis and water diuresis. 16 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026",
+      "Explain why there is always an obligatory water loss.",
+      "Describe the handling of sodium by the descending and ascending limbs, distal tubule, and collecting-duct system.",
+      "Describe the role of sodium-potassium-2 chloride symporter (aka. Na+-K+-2Cl cotransporter; NKCC) in the thick ascending limb.",
+      "Describe the handling of water by descending and ascending limbs, distal tubule, and collecting duct system.",
+      "Describe the process of \"separating salt from water\" and why this is required to excrete either concentrated or dilute urine.",
+      "Describe how antidiuretic hormone affects water and urea reabsorption. 13. Describe the characteristics of the medullary osmotic gradient.",
+      "Explain the role of the thick ascending limb, urea recycling, and medullary blood flow in generating the medullary osmotic gradient.",
+      "State why the medullary osmotic gradient is partially \"washed out\" during a water diuresis. Pre-class preparation Required reading:"
+     ]
+    },
+    {
+     "t": "Lecture: Renal regulation of potassium, calcium, phosphate and",
+     "lo": [
+      "State the normal balance and distribution of potassium between cells and extracellular fluid. 2. Describe how potassium moves between cells and the extracellular fluid, and how, on a short term basis, the movement protects the extracellular fluid from large changes in potassium concentration.",
+      "State how insulin and epinephrine influence the cellular uptake of potassium and identify the situations in which these hormonal influences are most important.",
+      "State the relative amounts of potassium reabsorbed by the proximal tubule and thick ascending limb of Henle's loop regardless of the state of potassium intake.",
+      "Describe how nephron segments beyond the thick ascending limb can manifest net secretion or reabsorption; describe the role of principal cells and intercalated cells in these processes. 6. List inputs that control the rate of potassium secretion by the distal nephron. 7. State the normal total plasma calcium concentration and the fraction that is free. 8. Describe the distribution of calcium between bone and extracellular fluid and the role of bone in regulating extracellular calcium.",
+      "Describe and compare the roles of the gastrointestinal tract and kidneys in calcium balance. 10. Describe and compare bone remodeling and calcium buffering by bone. 11. Describe the role of vitamin D in calcium balance.",
+      "Describe how the synthesis of the active form of vitamin D (calcitriol) is regulated. 13. Describe the regulation of parathyroid hormone secretion and state its major actions. 14. Describe the source, major actions and regulation 19 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026 of FGF23.",
+      "Describe the renal handling of phosphate and how it is regulated by parathyroid hormone and FGF23.",
+      "Describe the renal handling of magnesium. Pre-class preparation Required reading:"
+     ]
+    },
+    {
+     "t": "Lecture: Renal mechanism in acid-base balance",
+     "lo": [
+      "State the Henderson-Hasselbalch equation for the carbon dioxide-bicarbonate buffer system. 2. State the major sources for the input of fixed acids and bases into the body, including metabolic processes and activities of the gastrointestinal tract.",
+      "Describe how the input of fixed acids and bases affects body levels of bicarbonate.",
+      "Explain why body levels of carbon dioxide are usually not altered by the input of fixed acids and bases.",
+      "Explain why some low-pH fluids alkalinize the blood after they are metabolized. 6. Explain renal function in acid-base balance.",
+      "Describe the reabsorption of filtered bicarbonate by the proximal tubule. 22 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026",
+      "Describe how bicarbonate is excreted in response to an alkaline load.",
+      "Describe how excretion of acid and generation of new bicarbonate are linked. 10. Describe how the titration of filtered bases is a means of excreting acid.",
+      "Describe how the conversion of glutamine to ammonium and subsequent excretion of ammonium accomplishes the goal of excreting acid.",
+      "Describe how the kidneys handle ammonium that has been secreted in the proximal tubule. 13. State how total acid excretion is related to titratable acidity and ammonium excretion. 14. Define the 4 categories of primary acid-base disturbance and the meaning of compensation. 15. Explain clinical correlation to pathophysiologic change of acid-base disturbances and renal function. Pre-class preparation Required reading:"
+     ]
+    },
+    {
+     "t": "Laboratory: Urine flow in mammals",
+     "lo": [
+      "Acquaintance to the in vivo experiments on changes in urine formation in mammals. 2. Observe the changes of urine flow rate under various conditions and describe renal function response that results in such urine flow rate changes. The conditions are the following. i) Intravenous infusion of normal saline solution. ii) Intravenous infusion of sucrose solution. iii) Intravenous injection of epinephrine. iv) Intravenous injection of nitroglycerine v) Intravenous injection of furosemide vi) Hemorrhage and blood transfusion. Pre-class preparation Required reading:",
+      "Learning objective (LO)",
+      "Laboratory manual",
+      "Physiology textbooks on urine formation processes. 25 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026"
+     ]
+    },
+    {
+     "t": "Lab: TBL integration of Renal Physiology I",
+     "lo": [
+      "water intake and urine formation",
+      "summarize the causes of oliguria and organize the treatment",
+      "explain the normal renal mechanisms of potassium balance",
+      "summarize the causes of hyperkalemia and organize the treatment",
+      "demonstrate the ability to perform leadership and leader during group dynamic 6. utilize the IT as tools for lifelong learning Pre-class preparation Required reading: Study learning objectives and skim on content related to objectives 27 Lesson plan 240-324 Renal and Urinary System semester 2/ 2026"
+     ]
+    },
+    {
+     "t": "Lecture: Urinary tract infection",
+     "lo": [
+      "Explain the general sign and symptom of common infectious disease in urinary system. 2. Describe characteristic of common infectious disease in urinary system.",
+      "Describe the common causative agents of urinary tract infection",
+      "Select the antimicrobial of choice for each pathogen",
+      "Behave according to the ground rule of school of medicine",
+      "Share information & understanding with other team members",
+      "Use education technology for continuous learning Pre-class preparation Required reading"
+     ]
+    },
+    {
+     "t": "Lecture and Laboratory: Diagnosis for urinary tract",
+     "lo": [
+      "Explain the general sign and symptom of common infectious disease in urinary system. 2. Preliminary diagnose the infectious disease in urinary system.",
+      "Select the suitable specimen collection and transportation for identification. 4. Define the suitable laboratory for identify each etiologic agent.",
+      "Perform the basic laboratory technique for diagnosis.",
+      "Describe the morphology of common causative agents. Pre-class preparation Required reading"
+     ]
+    },
+    {
+     "t": "Lecture: Laboratory investigation in renal and urinary",
+     "lo": [
+      "Explain how to collect the suitable specimen and preserve specimen for laboratory investigation in renal and urinary system.",
+      "Describe how to assess renal function using serum creatinine and blood urea nitrogen (BUN) contributes to diagnostic help, surveillance and the evaluation of therapeutic interventions. 3. Calculate glomerular filtration rate (eGFR) and creatinine clearance",
+      "Understand and interpret normal and abnormal routine urinalysis result. 5. Identify proteinuria such as macroalbumin/microalbumin, Bence jones protein, etc. 6. Recognize the measurement of urine osmolality and novel biomarkers in renal system. 7. Correlate laboratory results with clinical abnormality or pathophysiologic changes. Pre-class preparation Required reading"
+     ]
+    },
+    {
+     "t": "Diuretics and drugs for urinary frequency, enuresis, and incontinence",
+     "lo": [
+      "List side effects and clinical application of diuretics",
+      "List the treatment goals for a patient with UI",
+      "Compare and contrast available therapeutic agents for managing UI; identify factors that guide drug selection for an individual patient",
+      "Recognize medication influencing lower urinary tract function"
+     ]
+    },
+    {
+     "t": "Drug used in urinary tract infection",
+     "lo": [
+      "Recommend appropriate empiric and targeted pharmacotherapy for the treatment, based on clinical signs, symptoms, and laboratory parameters.",
+      "Describe pharmacodynamics and pharmacokinetics antimicrobials used in urinary tract infection"
+     ]
+    },
+    {
+     "t": "Case scenario and clinical correlation in renal and urinary system",
+     "lo": [
+      "Identify common renal and urinary system diseases and their clinical presentations. 2. Apply clinical knowledge to diagnose common renal and urinary system diseases.",
+      "Correlate common renal and urinary system diseases with their underlying anatomical, physiological, pathological, and pathophysiological mechanisms.",
+      "Develop critical thinking through case scenarios.",
+      "Demonstrate effective communication and constructive argumentation with peers during group discussions."
+     ]
+    },
+    {
+     "t": "Integrated holistic care",
+     "lo": [
+      "Apply the basic concepts, rules, principles, theory and problem solving of integrated care to the common renal and urinary problems Pre-class preparation Required reading"
+     ]
+    }
+   ]
+  }
+ }
+}
