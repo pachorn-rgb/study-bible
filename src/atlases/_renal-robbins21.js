@@ -78,9 +78,19 @@ draw:()=>tbl(["Change","What it is"],[
  ["Intestinal metaplasia","มี goblet cells · extensive/multifocal → precursor ของ adenocarcinoma"],
  ["Squamous metaplasia","ตอบสนองต่อ chronic injury · keratinizing multifocal → precursor ของ SCC (schistosomiasis)"],
  ["Nephrogenic adenoma","renal tubular cells หลุดมาฝังที่ urothelium ที่บาดเจ็บ · benign"]]),
-notes:()=>`<ul><li>Cystitis cystica และ glandularis มักเกิดร่วมกัน · พบบ่อย ไม่มีความสำคัญมากเว้นแต่ intestinal metaplasia กว้างขวาง ${S.r}</li>
- <li>แยก <b>squamous metaplasia</b> จาก glycogenated squamous epithelium ปกติที่ trigone ของหญิง ${S.r}</li>
- <li><b>Nephrogenic adenoma</b>: เดิมคิดว่าเป็น metaplasia แต่จริงๆ คือ tubular cells ที่หลุดมาฝัง (พบหลัง renal transplant ตรงกับ donor) ${S.r}</li></ul>`});
+notes:()=>`<h3>Why this group is worth knowing at all</h3><ul>
+ <li>รอยโรคกลุ่มนี้สำคัญเพราะมัน<b>เลียนแบบมะเร็ง bladder ทั้งทางคลินิกและทางจุลพยาธิวิทยา</b> — malakoplakia, polypoid cystitis, cystitis cystica et glandularis และ nephrogenic adenoma ${S.r}</li>
+ <li><b>Polypoid cystitis</b> เกิดจากการระคายเคืองเยื่อบุ โดยเฉพาะจากการใส่เครื่องมือและสายสวนคาไว้ · submucosal edema ดัน urothelium ขึ้นเป็นติ่งป้าน ๆ จนถูกเข้าใจผิดว่าเป็น papillary urothelial carcinoma ${S.r}</li></ul>
+ <h3>Cystitis cystica et glandularis</h3><ul>
+ <li>von Brunn nest งอกลงไปใน lamina propria แล้วเซลล์ตรงกลาง nest เปลี่ยนเป็น cuboidal/columnar (glandularis) หรือยุบเป็นโพรงบุด้วย urothelium แบน (cystica) · สองอย่างนี้มักอยู่ด้วยกันจึงเรียกรวม ${S.r}</li>
+ <li>พบบ่อยและไม่มีความสำคัญ ยกเว้นเมื่อเป็น <b>intestinal metaplasia</b> ที่กว้างขวางและหลายตำแหน่ง ซึ่งเป็น precursor ของ adenocarcinoma ${S.r}</li></ul>
+ <h3>Squamous metaplasia — the adjective matters</h3><ul>
+ <li>เป็นการตอบสนองต่อการบาดเจ็บเรื้อรัง โดยเปลี่ยนไปเป็นเยื่อบุชนิด squamous ซึ่ง<b>ทนกว่า</b> · เป็นได้ทั้งชนิด keratinizing และ nonkeratinizing ${S.r}</li>
+ <li>ที่เป็น precursor ของ dysplasia, CIS และ SCC คือชนิด <b>keratinizing</b> ที่กว้างขวางและหลายตำแหน่งเท่านั้น · ตัวอย่างคลาสสิกคือ schistosomiasis ของ bladder ${S.r}</li>
+ <li>ต้องแยกจาก glycogenated squamous epithelium ซึ่ง<b>ปกติ</b>อยู่ที่ trigone ของผู้หญิง ${S.r}</li></ul>
+ <h3>Nephrogenic adenoma</h3><ul>
+ <li>อาจไม่ใช่ metaplasia จริง — หลักฐานจากผู้รับไตปลูกถ่ายชี้ว่าอย่างน้อยบางรอยโรคเกิดจาก renal tubular cell ที่หลุดมาฝังตรงที่เยื่อบุ bladder ถลอก ${S.r}</li>
+ <li>ส่วนใหญ่เล็กกว่า 1 cm แต่ที่ใหญ่กว่านั้นมีรายงานและทำให้สงสัยมะเร็งได้ · ที่หลอกยิ่งกว่าคือ tubular proliferation สามารถแทรกลงไปใน lamina propria และ detrusor ชั้นตื้น จนดูเหมือนมะเร็งลุกล้ำใต้กล้อง ${S.r}</li></ul>`});
 
 SEC.push({id:"urothelial",k:"c",t:"Urothelial neoplasms: pathways & risk",leg:[],
 draw(){let b="";
@@ -110,8 +120,20 @@ draw(){const g=ST.gr||"lg";const r=rng(17);let b=`<rect class="lm-bg" x="0" y="0
  const info={pap:["Papilloma","≤1% · fibrovascular core บาง · urothelium ปกติ · benign · inverted papilloma ก็ benign"],punlmp:["PUNLMP","urothelium หนากว่า ไม่ค่อย atypia · recur ได้ progression น้อย"],lg:["Low-grade papillary UC","เรียงตัวเป็นระเบียบ polarity ดี · nuclei เข้มประปราย · recur · <10% ไปเป็น high grade"],hg:["High-grade papillary UC","dyscohesive, anaplasia, mitoses มาก · ลุกล้ำและเสียชีวิต ~25%"],cis:["Carcinoma in situ","cytologically malignant ในชั้นแบน · pagetoid spread · cystoscopy: mucosa แดง granular · multifocal"]}[g];
  b+=`<rect class="box ${g==="hg"||g==="cis"?"ar":g==="pap"?"":"vn"}" x="0" y="326" width="640" height="62" rx="12"/>`+T(16,352,info[0],{a:"start",c:"bh"})+T(16,374,info[1],{a:"start",c:"s"});return svg(b,"0 0 640 392")},
 notes:()=>`<h3>Table 21.4 · WHO/ISUP grading</h3>${tbl(["Category","ลักษณะ"],[["Urothelial papilloma","≤1% ของเนื้องอก bladder · คนอายุน้อย · ไม่ค่อย recur"],["PUNLMP","urothelium หนาขึ้น เซลล์หนาแน่น · recur ได้ progression หายาก"],["Papillary UC, low grade","เรียงเป็นระเบียบ · atypia น้อย · recur ได้ ลุกล้ำไม่บ่อย"],["Papillary UC, high grade","dyscohesive · anaplastic · ลุกล้ำ ~25% เสียชีวิต · metastasis ไป LN, liver, lung"],["Urothelial CIS","flat · full thickness หรือ pagetoid · หลุดลงปัสสาวะ (cytology)"]])}
- <ul><li>CIS อย่างเดียว vs CIS + invasive: ไปเป็น muscle-invasive 28% vs 59% · เสียชีวิต 7% vs 45% ${S.r}</li>
- <li>Non-muscle-invasive ต้องติดตามตลอดชีวิต: cystoscopy, biopsy, urine cytology ${S.r}</li></ul>`});
+ <h3>Two precursor routes, not one ladder</h3><ul>
+ <li>เนื้องอก papillary มาจาก papillary urothelial hyperplasia แล้วไล่ระดับตามพฤติกรรมทางชีววิทยา · ส่วน <b>CIS</b> เป็น precursor อีกเส้นหนึ่งที่เป็น flat noninvasive · ทั้งสองเส้นไปจบที่ invasive carcinoma ได้เหมือนกัน ${S.r}</li>
+ <li>CIS คือเซลล์ที่มีลักษณะมะเร็งแต่ยังอยู่ในชั้นเยื่อบุ ไม่ลุกล้ำ basement membrane · ตามนิยามแล้วถือเป็น <b>high grade เสมอ</b> ${S.r}</li>
+ <li>ในผู้ป่วยมะเร็ง bladder ที่ลุกล้ำประมาณครึ่งหนึ่ง ก้อนลุกล้ำผนังไปแล้วตั้งแต่แรกพบและ<b>หา precursor ไม่เจอ</b> — เข้าใจว่าถูกส่วน high-grade ที่ลุกล้ำทำลายไปหมด ${S.r}</li></ul>
+ <h3>The two papillomas</h3><ul>
+ <li><b>Exophytic papilloma</b> มี fibrovascular core บุด้วย urothelium ที่เหมือนปกติทุกประการ · recur และ progression พบน้อยมาก ${S.r}</li>
+ <li><b>Inverted papilloma</b> เป็นสายเซลล์ urothelium หน้าตาปกติที่ไหลลงไปใน lamina propria — <b>ดูเหมือนลุกล้ำแต่ benign สนิท</b> ${S.r}</li></ul>
+ <h3>Why cytology works, and why recurrence is not failure</h3><ul>
+ <li>High-grade papillary UC และ CIS มีจุดร่วมคือเซลล์<b>ไม่เกาะกัน</b> จึงหลุดลงปัสสาวะ ซึ่งเป็นเหตุผลที่ urine cytology จับสองตัวนี้ได้ดี · ถ้าหลุดมากอาจเหลือเซลล์เกาะอยู่บน basement membrane เพียงไม่กี่เซลล์ ${S.r}</li>
+ <li>การกลับเป็นซ้ำส่วนใหญ่ขึ้นที่<b>ตำแหน่งอื่น</b> แต่ยังเป็น clone เดียวกับก้อนเดิม — คือเซลล์หลุดไปฝังที่อื่น · บางส่วนเป็น clone คนละอันซึ่งคือ second primary ${S.r}</li>
+ <li>ความเสี่ยงของการกลับเป็นซ้ำและการเลื่อนระดับขึ้นกับขนาด stage grade ความหลายตำแหน่ง ประวัติเคยเป็นซ้ำ และการมี <b>CIS ในเยื่อบุรอบ ๆ</b> ${S.r}</li>
+ <li>Papilloma, PUNLMP และ low-grade papillary UC มี 10-year survival <b>98% ไม่ว่าจะเป็นซ้ำกี่ครั้ง</b> — การเป็นซ้ำจึงไม่เท่ากับพยากรณ์โรคแย่ ${S.r}</li>
+ <li>CIS อย่างเดียว vs CIS ที่มากับ invasive: ไปเป็น muscle-invasive 28% vs 59% · เสียชีวิต 7% vs 45% ${S.r}</li>
+ <li>Non-muscle-invasive ต้องติดตามตลอดชีวิตด้วย cystoscopy, biopsy และ urine cytology ${S.r}</li></ul>`});
 SEC.push({id:"staging",k:"c",t:"Invasive carcinoma: pathologic staging",tools:[["pt",[["Ta","Ta"],["Tis","Tis"],["T1","T1"],["T2a","T2a"],["T2b","T2b"],["T3","T3"],["T4","T4"]]]],leg:[],
 draw(){const s=ST.pt||"T1";let b="";const L=[["Urothelium",0,22,"uro"],["Lamina propria",22,70,"lp"],["Muscularis propria · inner",92,70,"mp"],["Muscularis propria · outer",162,70,"mp"],["Perivesical fat",232,70,"cyst"],["Adjacent organs",302,60,"box"]];
  L.forEach(([n,y,h,c])=>{b+=`<rect class="${c}" x="140" y="${40+y}" width="480" height="${h}"${c==="mp"&&n.includes("outer")?' style="opacity:.75"':""}/>`+T(132,40+y+h/2+4,n,{a:"end",c:"s"})});
@@ -124,9 +146,19 @@ draw(){const s=ST.pt||"T1";let b="";const L=[["Urothelium",0,22,"uro"],["Lamina 
  const mi=["T2a","T2b","T3","T4"].includes(s);
  b+=`<rect class="box ${mi?"ar":"vn"}" x="0" y="372" width="640" height="62" rx="12"/>`+T(16,398,`${s} · ${D}`,{a:"start",c:"bh"})+T(16,420,mi?"Muscle-invasive (20–30%) → radical cystectomy / radiation + chemotherapy":"Non-muscle-invasive (70–80%) → TURBT ± intravesical BCG · ติดตามตลอดชีวิต",{a:"start",c:"s"});return svg(b,"0 0 640 440")},
 notes:()=>`<h3>Table 21.5</h3>${tbl(["Stage","นิยาม"],[["Ta","Noninvasive papillary"],["Tis","CIS (flat)"],["T1","Lamina propria"],["T2a / T2b","Muscularis propria ครึ่งใน / ครึ่งนอก"],["T3a / T3b","Perivesical tissue: microscopic / macroscopic"],["T4a / T4b","Prostatic stroma, SV, uterus, vagina / pelvic, abdominal wall"]])}
- <ul><li>ตัวแปรสำคัญที่สุดคือ <b>muscle-invasive หรือไม่</b> · non-muscle-invasive (Ta, Tis, T1) = 70–80% ${S.r}</li>
- <li>อาการพบบ่อยที่สุด: <b>painless hematuria</b> · อาจมี frequency, urgency, dysuria · อุด ureteral orifice → hydronephrosis ${S.r}</li>
- <li>Non-muscle-invasive: TURBT + intravesical <b>BCG</b> (กระตุ้น immune response) ${S.r}</li><li>Metastatic: บางรายตอบสนองต่อ <b>immune checkpoint inhibitors</b> ${S.r}</li></ul>
+ <h3>Where the survival curve actually breaks</h3><ul>
+ <li>การลุกล้ำ lamina propria ทำให้พยากรณ์โรคแย่ลงก็จริง แต่ที่อัตรารอดชีวิต<b>ตกฮวบ</b>คือเมื่อลุกล้ำ muscularis propria (detrusor) · เมื่อถึงจุดนั้นแล้วอัตราตายที่ 5 ปีคือ 30% ${S.r}</li>
+ <li>Non-muscle-invasive (Ta, Tis, T1) = 70–80% · muscle-invasive = 20–30% และ<b>ส่วนน้อยเท่านั้น</b>ที่มีประวัติเป็น non-muscle-invasive มาก่อน — ส่วนใหญ่จึงเกิดขึ้นแบบลุกล้ำตั้งแต่ต้น ${S.r}</li>
+ <li>อาการที่พบบ่อยที่สุดคือ <b>painless hematuria</b> · อาจมี frequency, urgency, dysuria ร่วม · ถ้าอุด ureteral orifice จะเกิด pyelonephritis หรือ hydronephrosis ${S.r}</li></ul>
+ <h3>Treatment follows the pathology report</h3><ul>
+ <li>ก้อน papillary ที่เล็ก เฉพาะที่ และ low grade — <b>TURBT เพื่อวินิจฉัยก็พอ</b> ไม่ต้องทำอะไรต่อ ${S.r}</li>
+ <li>CIS และก้อน papillary ที่ใหญ่ high grade หลายตำแหน่ง เคยเป็นซ้ำ หรือลุกล้ำ lamina propria — ใส่ <b>BCG</b> (เชื้อ Mycobacterium bovis ที่ลดความรุนแรง) เข้ากระเพาะปัสสาวะ ซึ่งกระตุ้นการอักเสบเฉพาะที่ไปทำลายก้อน ${S.r}</li>
+ <li>Non-muscle-invasive กลับเป็นซ้ำได้สูงถึง <b>70%</b> และเลื่อนระดับ grade หรือ stage ขึ้นได้ จึงต้องติดตามตลอด ${S.r}</li></ul>
+ <h3>When cystectomy is needed even without muscle invasion</h3><ul>
+ <li>CIS หรือ high-grade papillary ที่<b>ดื้อต่อ BCG</b> และยาใส่กระเพาะปัสสาวะอื่น ${S.r}</li>
+ <li>CIS ที่ลามเข้า <b>prostatic urethra และ duct</b> ซึ่งเป็นที่ที่ BCG ที่หยอดเข้าไปสัมผัสเซลล์มะเร็งไม่ถึง ${S.r}</li>
+ <li>บางรายของ non-muscle-invasive high-grade papillary ที่หลายตำแหน่งจนใหญ่เกินกว่าจะตัดหมดด้วย TURBT ${S.r}</li>
+ <li>เมื่อ metastasis แล้วทางเลือกเหลือน้อย — ตอบสนองต่อ chemotherapy ไม่ดี 5-year survival เพียง 15% · แต่เพราะเป็นมะเร็งที่เกิดจากสารก่อมะเร็งและมี mutational load สูง ราว <b>30% ตอบสนองต่อ immune checkpoint inhibitors</b> บางรายดีอย่างชัดเจน ${S.r}</li></ul>
  <div class="pearl">เลือก stage ด้านบนเพื่อดูความลึกที่ก้อนลงไป</div>`});
 SEC.push({id:"othertum",k:"c",t:"Other bladder tumors",leg:[],
 draw:()=>tbl(["Tumour","Features"],[
@@ -137,9 +169,15 @@ draw:()=>tbl(["Tumour","Features"],[
  ["Embryonal rhabdomyosarcoma","sarcoma ในเด็ก · sarcoma botryoides (พวงองุ่น)"],
  ["Leiomyosarcoma","sarcoma ที่พบบ่อยที่สุดในผู้ใหญ่"],
  ["Secondary","ลามตรงจาก cervix, uterus, prostate, rectum · lymphoma"]]),
-notes:()=>`<ul><li>SCC แท้เกิดจาก keratinizing dysplasia/CIS · mixed urothelial + squamous พบบ่อยกว่า SCC แท้ ${S.r}</li>
- <li>Inflammatory myofibroblastic tumor และ sarcomatoid carcinoma พบบ่อยกว่า sarcoma แท้ ${S.r}</li>
- <li>Urothelial variants: nested, micropapillary, plasmacytoid, sarcomatoid, lymphoepithelioma-like (Table 21.3) ${S.r}</li></ul>`});
+notes:()=>`<h3>Most of this list is rarer than it looks</h3><ul>
+ <li>เนื้องอก bladder มากกว่า 95% เป็นชนิด epithelial และกลุ่ม urothelial neoplasm กินสัดส่วนราว <b>90% ของทั้งหมด</b> · ที่เหลือจึงเป็นของแปลกที่ต้องรู้จักแต่ไม่ได้เจอบ่อย ${S.r}</li>
+ <li>SCC แท้เกิดจาก keratinizing dysplasia หรือ CIS ชนิด squamous · แต่ที่พบบ่อยกว่าคือ <b>mixed urothelial + squamous</b> ไม่ใช่ SCC แท้ ${S.r}</li>
+ <li>เช่นเดียวกัน <b>inflammatory myofibroblastic tumor</b> และ sarcomatoid carcinoma พบบ่อยกว่า sarcoma แท้ ${S.r}</li></ul>
+ <h3>Urothelial variants worth naming</h3><ul>
+ <li><b>Nested variant</b> อันตรายตรงที่เซลล์หน้าตา<b>เรียบร้อยจนหลอก</b> (deceptively bland cytology) ทั้งที่พฤติกรรมเป็นมะเร็ง ${S.r}</li>
+ <li>ตัวอื่นในกลุ่มเดียวกัน: micropapillary, plasmacytoid, lymphoepithelioma-like และ sarcomatoid carcinoma (Table 21.3) ${S.r}</li></ul>
+ <h3>Secondary involvement</h3><ul>
+ <li>มะเร็งที่มาถึง bladder ส่วนใหญ่มาจาก<b>การลามตรง</b>ของมะเร็งอวัยวะข้างเคียง — cervix, uterus, prostate, rectum · การแพร่กระจายมาที่ bladder จริง ๆ พบได้แต่น้อยมาก ${S.r}</li></ul>`});
 
 SEC.push({id:"urethra",k:"d",t:"Urethra: inflammation & tumors",leg:[],
 draw:()=>tbl(["Urethral lesion","Features"],[
