@@ -129,6 +129,13 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
     const gn = /Object\.assign\(GN,\{([\s\S]*?)\}\)/g;
     while ((m = gn.exec(src))) { let g; const one = /[a-z0-9]+:"([^"]*)"/g;
       while ((g = one.exec(m[1]))) if (THAI.test(g[1])) bad(`${f}: group name in Thai — "${g[1]}"`); }
+  }
+  { /* Review-list labels are what the reader scans in the review run, the scope list and
+       the boss screen, so they follow the same rule as topic titles: English. Most are
+       generated from the atlas title by questions.py, so a Thai one here usually means
+       the module needs re-integrating rather than editing by hand. */
+    for (const c of chs) for (const x of c.checklist)
+      if (THAI.test(x.t)) bad(`${c.id}: review-list label in Thai — "${x.t}" (${x.id})`);
   } }
 
 { /* cards() must not be a stack of captioned text boxes: that costs more room than a

@@ -110,11 +110,11 @@
          "map"
         ],
         [
-         "กรดอะมิโน: การแบ่งกลุ่ม",
+         "Amino acid classification",
          "aa"
         ],
         [
-         "การขนไนโตรเจนและแอมโมเนีย",
+         "Nitrogen transport & ammonia",
          "nh3"
         ],
         [
@@ -122,15 +122,15 @@
          "urea"
         ],
         [
-         "ภาวะแอมโมเนียสูง",
+         "Hyperammonaemia",
          "hyperam"
         ],
         [
-         "ภาวะพร่อง OTC",
+         "OTC deficiency",
          "otc"
         ],
         [
-         "อนุพันธ์ของกรดอะมิโน",
+         "Amino acid derivatives",
          "aader"
         ],
         [
@@ -192,11 +192,11 @@
          "hmp"
         ],
         [
-         "ภาวะพร่อง G6PD",
+         "G6PD deficiency",
          "g6pd"
         ],
         [
-         "ไกลโคเจน: โครงสร้างและการสลาย",
+         "Glycogen structure & breakdown",
          "glycogen"
         ],
         [
@@ -204,15 +204,15 @@
          "gsd"
         ],
         [
-         "ความผิดปกติของฟรุกโตส",
+         "Disorders of fructose",
          "fructose"
         ],
         [
-         "ความผิดปกติของกาแลกโตส",
+         "Disorders of galactose",
          "galactose"
         ],
         [
-         "เส้นทาง polyol และภาวะแทรกซ้อนของเบาหวาน",
+         "The polyol pathway & diabetic complications",
          "sorbitol"
         ],
         [
@@ -250,35 +250,35 @@
          "map"
         ],
         [
-         "β-oxidation และกระสวย carnitine",
+         "β-oxidation & the carnitine shuttle",
          "faox"
         ],
         [
-         "ภาวะพร่องการเผากรดไขมัน",
+         "Fatty acid oxidation disorders",
          "mcad"
         ],
         [
-         "การสร้างกรดไขมัน",
+         "Fatty acid synthesis",
          "fasyn"
         ],
         [
-         "คีโตน",
+         "Ketone bodies",
          "ketone"
         ],
         [
-         "สภาวะอิ่มเทียบสภาวะอด",
+         "Fed vs fasting state",
          "fedfast"
         ],
         [
-         "การสร้างคอเลสเตอรอล",
+         "Cholesterol synthesis",
          "chol"
         ],
         [
-         "เอนไซม์ของไขมัน",
+         "The lipid enzymes",
          "lipenz"
         ],
         [
-         "Lipoprotein ทั้งห้าชนิด",
+         "The five lipoproteins",
          "lipoprot"
         ],
         [
@@ -316,47 +316,47 @@
          "map"
         ],
         [
-         "นิวคลีโอโซมและฮิสโตน",
+         "Nucleosomes & histones",
          "chrom"
         ],
         [
-         "Epigenetics: เมทิลและอะซิติล",
+         "Epigenetics: methylation & acetylation",
          "epig"
         ],
         [
-         "การสร้างพิวรีน",
+         "Purine synthesis",
          "purine"
         ],
         [
-         "การสร้างไพริมิดีนและ ribonucleotide reductase",
+         "Pyrimidine synthesis & ribonucleotide reductase",
          "pyrim"
         ],
         [
-         "ยาที่ออกฤทธิ์ที่เส้นทางนิวคลีโอไทด์",
+         "Drugs acting on nucleotide synthesis",
          "nucdrug"
         ],
         [
-         "เส้นทางกู้คืน: Lesch-Nyhan และ ADA",
+         "Salvage pathway: Lesch-Nyhan & ADA",
          "salvage"
         ],
         [
-         "ขั้นตอนการจำลอง DNA",
+         "Steps of DNA replication",
          "repl"
         ],
         [
-         "เอนไซม์จำลองและกิจกรรม exonuclease",
+         "Replication enzymes & exonuclease activity",
          "replenz"
         ],
         [
-         "Telomere และ telomerase",
+         "Telomeres & telomerase",
          "telo"
         ],
         [
-         "กลไกซ่อม DNA ทั้งห้าแบบ",
+         "The five DNA repair mechanisms",
          "repair"
         ],
         [
-         "ชนิดของการกลายพันธุ์",
+         "Types of mutation",
          "mut"
         ]
        ],
@@ -444,15 +444,15 @@
          "map"
         ],
         [
-         "Penetrance และ expressivity",
+         "Penetrance & expressivity",
          "penexp"
         ],
         [
-         "Allele ทำงานต่างแบบ",
+         "How alleles behave",
          "allele"
         ],
         [
-         "ความหลากหลายของสาเหตุและ LOH",
+         "Heterogeneity & loss of heterozygosity",
          "hetero"
         ],
         [
@@ -460,23 +460,23 @@
          "mosaic"
         ],
         [
-         "Imprinting และ uniparental disomy",
+         "Imprinting & uniparental disomy",
          "imprint"
         ],
         [
-         "Heteroplasmy และการถ่ายทอดทางมารดา",
+         "Heteroplasmy & maternal inheritance",
          "mito"
         ],
         [
-         "กฎ Hardy-Weinberg",
+         "The Hardy-Weinberg law",
          "hw"
         ],
         [
-         "Autosomal dominant และ recessive",
+         "Autosomal dominant & recessive",
          "ad"
         ],
         [
-         "X-linked และ mitochondrial",
+         "X-linked & mitochondrial",
          "xlink"
         ]
        ],
@@ -506,7 +506,7 @@
          "map"
         ],
         [
-         "การขยายของลำดับซ้ำและ anticipation",
+         "Repeat expansion & anticipation",
          "repeat"
         ],
         [
@@ -514,7 +514,7 @@
          "fragx"
         ],
         [
-         "Duchenne เทียบ Becker",
+         "Duchenne vs Becker",
          "dmd"
         ],
         [
@@ -522,15 +522,15 @@
          "rett"
         ],
         [
-         "Trisomy ทั้งสามชนิดที่รอดถึงคลอด",
+         "The three liveborn trisomies",
          "trisomy"
         ],
         [
-         "Nondisjunction และ Robertsonian translocation",
+         "Nondisjunction & Robertsonian translocation",
          "robert"
         ],
         [
-         "กลุ่มอาการจากการขาดหายของโครโมโซม",
+         "Chromosomal deletion syndromes",
          "del"
         ]
        ],
@@ -626,7 +626,7 @@
          "map"
         ],
         [
-         "ปฏิกิริยาลูกโซ่พอลิเมอเรส",
+         "Polymerase chain reaction",
          "pcr"
         ],
         [
@@ -634,23 +634,23 @@
          "crispr"
         ],
         [
-         "Blot ทั้งสามชนิด",
+         "The three blots",
          "blot"
         ],
         [
-         "ELISA และ flow cytometry",
+         "ELISA & flow cytometry",
          "elisa"
         ],
         [
-         "การตรวจโครโมโซมและ FISH",
+         "Karyotyping & FISH",
          "karyo"
         ],
         [
-         "Microarray และการวัดการแสดงออกของยีน",
+         "Microarray & gene expression",
          "array"
         ],
         [
-         "การโคลนยีนและ RNA interference",
+         "Gene cloning & RNA interference",
          "clone"
         ]
        ],
@@ -756,7 +756,7 @@
       {
        "id": "biochem-genetics-1:penexp",
        "sub": "Genetics",
-       "t": "Penetrance และ expressivity",
+       "t": "Penetrance & expressivity",
        "link": {
         "m": "biochem-genetics-1",
         "h": "penexp"
@@ -765,7 +765,7 @@
       {
        "id": "biochem-genetics-1:allele",
        "sub": "Genetics",
-       "t": "Allele ทำงานต่างแบบ",
+       "t": "How alleles behave",
        "link": {
         "m": "biochem-genetics-1",
         "h": "allele"
@@ -774,7 +774,7 @@
       {
        "id": "biochem-genetics-1:hetero",
        "sub": "Genetics",
-       "t": "ความหลากหลายของสาเหตุและ LOH",
+       "t": "Heterogeneity & loss of heterozygosity",
        "link": {
         "m": "biochem-genetics-1",
         "h": "hetero"
@@ -792,7 +792,7 @@
       {
        "id": "biochem-genetics-1:imprint",
        "sub": "Genetics",
-       "t": "Imprinting และ uniparental disomy",
+       "t": "Imprinting & uniparental disomy",
        "link": {
         "m": "biochem-genetics-1",
         "h": "imprint"
@@ -801,7 +801,7 @@
       {
        "id": "biochem-genetics-1:mito",
        "sub": "Genetics",
-       "t": "Heteroplasmy และการถ่ายทอดทางมารดา",
+       "t": "Heteroplasmy & maternal inheritance",
        "link": {
         "m": "biochem-genetics-1",
         "h": "mito"
@@ -810,7 +810,7 @@
       {
        "id": "biochem-genetics-1:hw",
        "sub": "Genetics",
-       "t": "กฎ Hardy-Weinberg",
+       "t": "The Hardy-Weinberg law",
        "link": {
         "m": "biochem-genetics-1",
         "h": "hw"
@@ -819,7 +819,7 @@
       {
        "id": "biochem-genetics-1:ad",
        "sub": "Genetics",
-       "t": "Autosomal dominant และ recessive",
+       "t": "Autosomal dominant & recessive",
        "link": {
         "m": "biochem-genetics-1",
         "h": "ad"
@@ -828,7 +828,7 @@
       {
        "id": "biochem-genetics-1:xlink",
        "sub": "Genetics",
-       "t": "X-linked และ mitochondrial",
+       "t": "X-linked & mitochondrial",
        "link": {
         "m": "biochem-genetics-1",
         "h": "xlink"
@@ -837,7 +837,7 @@
       {
        "id": "biochem-genetics-2:repeat",
        "sub": "Genetics",
-       "t": "การขยายของลำดับซ้ำและ anticipation",
+       "t": "Repeat expansion & anticipation",
        "link": {
         "m": "biochem-genetics-2",
         "h": "repeat"
@@ -855,7 +855,7 @@
       {
        "id": "biochem-genetics-2:dmd",
        "sub": "Genetics",
-       "t": "Duchenne เทียบ Becker",
+       "t": "Duchenne vs Becker",
        "link": {
         "m": "biochem-genetics-2",
         "h": "dmd"
@@ -873,7 +873,7 @@
       {
        "id": "biochem-genetics-2:trisomy",
        "sub": "Genetics",
-       "t": "Trisomy ทั้งสามชนิดที่รอดถึงคลอด",
+       "t": "The three liveborn trisomies",
        "link": {
         "m": "biochem-genetics-2",
         "h": "trisomy"
@@ -882,7 +882,7 @@
       {
        "id": "biochem-genetics-2:robert",
        "sub": "Genetics",
-       "t": "Nondisjunction และ Robertsonian translocation",
+       "t": "Nondisjunction & Robertsonian translocation",
        "link": {
         "m": "biochem-genetics-2",
         "h": "robert"
@@ -891,7 +891,7 @@
       {
        "id": "biochem-genetics-2:del",
        "sub": "Genetics",
-       "t": "กลุ่มอาการจากการขาดหายของโครโมโซม",
+       "t": "Chromosomal deletion syndromes",
        "link": {
         "m": "biochem-genetics-2",
         "h": "del"
@@ -900,7 +900,7 @@
       {
        "id": "biochem-lab:pcr",
        "sub": "Laboratory Techniques",
-       "t": "ปฏิกิริยาลูกโซ่พอลิเมอเรส",
+       "t": "Polymerase chain reaction",
        "link": {
         "m": "biochem-lab",
         "h": "pcr"
@@ -918,7 +918,7 @@
       {
        "id": "biochem-lab:blot",
        "sub": "Laboratory Techniques",
-       "t": "Blot ทั้งสามชนิด",
+       "t": "The three blots",
        "link": {
         "m": "biochem-lab",
         "h": "blot"
@@ -927,7 +927,7 @@
       {
        "id": "biochem-lab:elisa",
        "sub": "Laboratory Techniques",
-       "t": "ELISA และ flow cytometry",
+       "t": "ELISA & flow cytometry",
        "link": {
         "m": "biochem-lab",
         "h": "elisa"
@@ -936,7 +936,7 @@
       {
        "id": "biochem-lab:karyo",
        "sub": "Laboratory Techniques",
-       "t": "การตรวจโครโมโซมและ FISH",
+       "t": "Karyotyping & FISH",
        "link": {
         "m": "biochem-lab",
         "h": "karyo"
@@ -945,7 +945,7 @@
       {
        "id": "biochem-lab:array",
        "sub": "Laboratory Techniques",
-       "t": "Microarray และการวัดการแสดงออกของยีน",
+       "t": "Microarray & gene expression",
        "link": {
         "m": "biochem-lab",
         "h": "array"
@@ -954,7 +954,7 @@
       {
        "id": "biochem-lab:clone",
        "sub": "Laboratory Techniques",
-       "t": "การโคลนยีนและ RNA interference",
+       "t": "Gene cloning & RNA interference",
        "link": {
         "m": "biochem-lab",
         "h": "clone"
@@ -1062,7 +1062,7 @@
       {
        "id": "biochem-metab-2:aa",
        "sub": "Metabolism",
-       "t": "กรดอะมิโน: การแบ่งกลุ่ม",
+       "t": "Amino acid classification",
        "link": {
         "m": "biochem-metab-2",
         "h": "aa"
@@ -1071,7 +1071,7 @@
       {
        "id": "biochem-metab-2:nh3",
        "sub": "Metabolism",
-       "t": "การขนไนโตรเจนและแอมโมเนีย",
+       "t": "Nitrogen transport & ammonia",
        "link": {
         "m": "biochem-metab-2",
         "h": "nh3"
@@ -1089,7 +1089,7 @@
       {
        "id": "biochem-metab-2:hyperam",
        "sub": "Metabolism",
-       "t": "ภาวะแอมโมเนียสูง",
+       "t": "Hyperammonaemia",
        "link": {
         "m": "biochem-metab-2",
         "h": "hyperam"
@@ -1098,7 +1098,7 @@
       {
        "id": "biochem-metab-2:otc",
        "sub": "Metabolism",
-       "t": "ภาวะพร่อง OTC",
+       "t": "OTC deficiency",
        "link": {
         "m": "biochem-metab-2",
         "h": "otc"
@@ -1107,7 +1107,7 @@
       {
        "id": "biochem-metab-2:aader",
        "sub": "Metabolism",
-       "t": "อนุพันธ์ของกรดอะมิโน",
+       "t": "Amino acid derivatives",
        "link": {
         "m": "biochem-metab-2",
         "h": "aader"
@@ -1188,7 +1188,7 @@
       {
        "id": "biochem-metab-3:g6pd",
        "sub": "Metabolism",
-       "t": "ภาวะพร่อง G6PD",
+       "t": "G6PD deficiency",
        "link": {
         "m": "biochem-metab-3",
         "h": "g6pd"
@@ -1197,7 +1197,7 @@
       {
        "id": "biochem-metab-3:glycogen",
        "sub": "Metabolism",
-       "t": "ไกลโคเจน: โครงสร้างและการสลาย",
+       "t": "Glycogen structure & breakdown",
        "link": {
         "m": "biochem-metab-3",
         "h": "glycogen"
@@ -1215,7 +1215,7 @@
       {
        "id": "biochem-metab-3:fructose",
        "sub": "Metabolism",
-       "t": "ความผิดปกติของฟรุกโตส",
+       "t": "Disorders of fructose",
        "link": {
         "m": "biochem-metab-3",
         "h": "fructose"
@@ -1224,7 +1224,7 @@
       {
        "id": "biochem-metab-3:galactose",
        "sub": "Metabolism",
-       "t": "ความผิดปกติของกาแลกโตส",
+       "t": "Disorders of galactose",
        "link": {
         "m": "biochem-metab-3",
         "h": "galactose"
@@ -1233,7 +1233,7 @@
       {
        "id": "biochem-metab-3:sorbitol",
        "sub": "Metabolism",
-       "t": "เส้นทาง polyol และภาวะแทรกซ้อนของเบาหวาน",
+       "t": "The polyol pathway & diabetic complications",
        "link": {
         "m": "biochem-metab-3",
         "h": "sorbitol"
@@ -1260,7 +1260,7 @@
       {
        "id": "biochem-metab-4:faox",
        "sub": "Metabolism",
-       "t": "β-oxidation และกระสวย carnitine",
+       "t": "β-oxidation & the carnitine shuttle",
        "link": {
         "m": "biochem-metab-4",
         "h": "faox"
@@ -1269,7 +1269,7 @@
       {
        "id": "biochem-metab-4:mcad",
        "sub": "Metabolism",
-       "t": "ภาวะพร่องการเผากรดไขมัน",
+       "t": "Fatty acid oxidation disorders",
        "link": {
         "m": "biochem-metab-4",
         "h": "mcad"
@@ -1278,7 +1278,7 @@
       {
        "id": "biochem-metab-4:fasyn",
        "sub": "Metabolism",
-       "t": "การสร้างกรดไขมัน",
+       "t": "Fatty acid synthesis",
        "link": {
         "m": "biochem-metab-4",
         "h": "fasyn"
@@ -1287,7 +1287,7 @@
       {
        "id": "biochem-metab-4:ketone",
        "sub": "Metabolism",
-       "t": "คีโตน",
+       "t": "Ketone bodies",
        "link": {
         "m": "biochem-metab-4",
         "h": "ketone"
@@ -1296,7 +1296,7 @@
       {
        "id": "biochem-metab-4:fedfast",
        "sub": "Metabolism",
-       "t": "สภาวะอิ่มเทียบสภาวะอด",
+       "t": "Fed vs fasting state",
        "link": {
         "m": "biochem-metab-4",
         "h": "fedfast"
@@ -1305,7 +1305,7 @@
       {
        "id": "biochem-metab-4:chol",
        "sub": "Metabolism",
-       "t": "การสร้างคอเลสเตอรอล",
+       "t": "Cholesterol synthesis",
        "link": {
         "m": "biochem-metab-4",
         "h": "chol"
@@ -1314,7 +1314,7 @@
       {
        "id": "biochem-metab-4:lipenz",
        "sub": "Metabolism",
-       "t": "เอนไซม์ของไขมัน",
+       "t": "The lipid enzymes",
        "link": {
         "m": "biochem-metab-4",
         "h": "lipenz"
@@ -1323,7 +1323,7 @@
       {
        "id": "biochem-metab-4:lipoprot",
        "sub": "Metabolism",
-       "t": "Lipoprotein ทั้งห้าชนิด",
+       "t": "The five lipoproteins",
        "link": {
         "m": "biochem-metab-4",
         "h": "lipoprot"
@@ -1350,7 +1350,7 @@
       {
        "id": "biochem-molecular-1:chrom",
        "sub": "Molecular",
-       "t": "นิวคลีโอโซมและฮิสโตน",
+       "t": "Nucleosomes & histones",
        "link": {
         "m": "biochem-molecular-1",
         "h": "chrom"
@@ -1359,7 +1359,7 @@
       {
        "id": "biochem-molecular-1:epig",
        "sub": "Molecular",
-       "t": "Epigenetics: เมทิลและอะซิติล",
+       "t": "Epigenetics: methylation & acetylation",
        "link": {
         "m": "biochem-molecular-1",
         "h": "epig"
@@ -1368,7 +1368,7 @@
       {
        "id": "biochem-molecular-1:purine",
        "sub": "Molecular",
-       "t": "การสร้างพิวรีน",
+       "t": "Purine synthesis",
        "link": {
         "m": "biochem-molecular-1",
         "h": "purine"
@@ -1377,7 +1377,7 @@
       {
        "id": "biochem-molecular-1:pyrim",
        "sub": "Molecular",
-       "t": "การสร้างไพริมิดีนและ ribonucleotide reductase",
+       "t": "Pyrimidine synthesis & ribonucleotide reductase",
        "link": {
         "m": "biochem-molecular-1",
         "h": "pyrim"
@@ -1386,7 +1386,7 @@
       {
        "id": "biochem-molecular-1:nucdrug",
        "sub": "Molecular",
-       "t": "ยาที่ออกฤทธิ์ที่เส้นทางนิวคลีโอไทด์",
+       "t": "Drugs acting on nucleotide synthesis",
        "link": {
         "m": "biochem-molecular-1",
         "h": "nucdrug"
@@ -1395,7 +1395,7 @@
       {
        "id": "biochem-molecular-1:salvage",
        "sub": "Molecular",
-       "t": "เส้นทางกู้คืน: Lesch-Nyhan และ ADA",
+       "t": "Salvage pathway: Lesch-Nyhan & ADA",
        "link": {
         "m": "biochem-molecular-1",
         "h": "salvage"
@@ -1404,7 +1404,7 @@
       {
        "id": "biochem-molecular-1:repl",
        "sub": "Molecular",
-       "t": "ขั้นตอนการจำลอง DNA",
+       "t": "Steps of DNA replication",
        "link": {
         "m": "biochem-molecular-1",
         "h": "repl"
@@ -1413,7 +1413,7 @@
       {
        "id": "biochem-molecular-1:replenz",
        "sub": "Molecular",
-       "t": "เอนไซม์จำลองและกิจกรรม exonuclease",
+       "t": "Replication enzymes & exonuclease activity",
        "link": {
         "m": "biochem-molecular-1",
         "h": "replenz"
@@ -1422,7 +1422,7 @@
       {
        "id": "biochem-molecular-1:telo",
        "sub": "Molecular",
-       "t": "Telomere และ telomerase",
+       "t": "Telomeres & telomerase",
        "link": {
         "m": "biochem-molecular-1",
         "h": "telo"
@@ -1431,7 +1431,7 @@
       {
        "id": "biochem-molecular-1:repair",
        "sub": "Molecular",
-       "t": "กลไกซ่อม DNA ทั้งห้าแบบ",
+       "t": "The five DNA repair mechanisms",
        "link": {
         "m": "biochem-molecular-1",
         "h": "repair"
@@ -1440,7 +1440,7 @@
       {
        "id": "biochem-molecular-1:mut",
        "sub": "Molecular",
-       "t": "ชนิดของการกลายพันธุ์",
+       "t": "Types of mutation",
        "link": {
         "m": "biochem-molecular-1",
         "h": "mut"
@@ -8775,39 +8775,39 @@
          "map"
         ],
         [
-         "การเก็บและรักษาสิ่งส่งตรวจ",
+         "Specimen collection & handling",
          "spec"
         ],
         [
-         "การตรวจทางกายภาพและความถ่วงจำเพาะ",
+         "Physical examination & specific gravity",
          "phys"
         ],
         [
-         "แถบจุ่ม: เลือด โปรตีน กลูโคส คีโตน",
+         "Dipstick: blood, protein, glucose, ketones",
          "dip1"
         ],
         [
-         "แถบจุ่ม: ไนไตรท์ เม็ดเลือดขาว และช่องอื่น",
+         "Dipstick: nitrite, leukocyte esterase & the rest",
          "dip2"
         ],
         [
-         "ตะกอนปัสสาวะ: เซลล์และ cast",
+         "Urine sediment: cells & casts",
          "sed"
         ],
         [
-         "ผลึกในปัสสาวะ",
+         "Urinary crystals",
          "cryst"
         ],
         [
-         "การวัดโปรตีน: UACR และ Bence Jones",
+         "Measuring protein: UACR & Bence Jones",
          "prot"
         ],
         [
-         "ครีแอตินีน BUN และการประเมิน GFR",
+         "Creatinine, BUN & estimating GFR",
          "gfr"
         ],
         [
-         "Biomarker รุ่นใหม่",
+         "Newer biomarkers",
          "biomark"
         ]
        ],
@@ -8837,23 +8837,23 @@
          "map"
         ],
         [
-         "อาการสำคัญที่ต้องถาม",
+         "Urinary symptoms",
          "hx"
         ],
         [
-         "แยกตำแหน่งของอาการปวด",
+         "Localising the pain",
          "pain"
         ],
         [
-         "ภาวะกลั้นปัสสาวะไม่อยู่ห้าชนิด",
+         "Five types of incontinence",
          "incont"
         ],
         [
-         "ตรวจช่องท้องและคลำไต",
+         "Abdominal examination & CVA percussion",
          "exam"
         ],
         [
-         "การบันทึกผลตรวจ",
+         "Recording the findings",
          "record"
         ]
        ],
@@ -10480,7 +10480,7 @@
       {
        "id": "renal-clinical:hx",
        "sub": "Clinical skills",
-       "t": "อาการสำคัญที่ต้องถาม",
+       "t": "Urinary symptoms",
        "link": {
         "m": "renal-clinical",
         "h": "hx"
@@ -10489,7 +10489,7 @@
       {
        "id": "renal-clinical:pain",
        "sub": "Clinical skills",
-       "t": "แยกตำแหน่งของอาการปวด",
+       "t": "Localising the pain",
        "link": {
         "m": "renal-clinical",
         "h": "pain"
@@ -10498,7 +10498,7 @@
       {
        "id": "renal-clinical:incont",
        "sub": "Clinical skills",
-       "t": "ภาวะกลั้นปัสสาวะไม่อยู่ห้าชนิด",
+       "t": "Five types of incontinence",
        "link": {
         "m": "renal-clinical",
         "h": "incont"
@@ -10507,7 +10507,7 @@
       {
        "id": "renal-clinical:exam",
        "sub": "Clinical skills",
-       "t": "ตรวจช่องท้องและคลำไต",
+       "t": "Abdominal examination & CVA percussion",
        "link": {
         "m": "renal-clinical",
         "h": "exam"
@@ -10516,7 +10516,7 @@
       {
        "id": "renal-clinical:record",
        "sub": "Clinical skills",
-       "t": "การบันทึกผลตรวจ",
+       "t": "Recording the findings",
        "link": {
         "m": "renal-clinical",
         "h": "record"
@@ -10525,7 +10525,7 @@
       {
        "id": "renal-lab:spec",
        "sub": "Laboratory",
-       "t": "การเก็บและรักษาสิ่งส่งตรวจ",
+       "t": "Specimen collection & handling",
        "link": {
         "m": "renal-lab",
         "h": "spec"
@@ -10534,7 +10534,7 @@
       {
        "id": "renal-lab:phys",
        "sub": "Laboratory",
-       "t": "การตรวจทางกายภาพและความถ่วงจำเพาะ",
+       "t": "Physical examination & specific gravity",
        "link": {
         "m": "renal-lab",
         "h": "phys"
@@ -10543,7 +10543,7 @@
       {
        "id": "renal-lab:dip1",
        "sub": "Laboratory",
-       "t": "แถบจุ่ม: เลือด โปรตีน กลูโคส คีโตน",
+       "t": "Dipstick: blood, protein, glucose, ketones",
        "link": {
         "m": "renal-lab",
         "h": "dip1"
@@ -10552,7 +10552,7 @@
       {
        "id": "renal-lab:dip2",
        "sub": "Laboratory",
-       "t": "แถบจุ่ม: ไนไตรท์ เม็ดเลือดขาว และช่องอื่น",
+       "t": "Dipstick: nitrite, leukocyte esterase & the rest",
        "link": {
         "m": "renal-lab",
         "h": "dip2"
@@ -10561,7 +10561,7 @@
       {
        "id": "renal-lab:sed",
        "sub": "Laboratory",
-       "t": "ตะกอนปัสสาวะ: เซลล์และ cast",
+       "t": "Urine sediment: cells & casts",
        "link": {
         "m": "renal-lab",
         "h": "sed"
@@ -10570,7 +10570,7 @@
       {
        "id": "renal-lab:cryst",
        "sub": "Laboratory",
-       "t": "ผลึกในปัสสาวะ",
+       "t": "Urinary crystals",
        "link": {
         "m": "renal-lab",
         "h": "cryst"
@@ -10579,7 +10579,7 @@
       {
        "id": "renal-lab:prot",
        "sub": "Laboratory",
-       "t": "การวัดโปรตีน: UACR และ Bence Jones",
+       "t": "Measuring protein: UACR & Bence Jones",
        "link": {
         "m": "renal-lab",
         "h": "prot"
@@ -10588,7 +10588,7 @@
       {
        "id": "renal-lab:gfr",
        "sub": "Laboratory",
-       "t": "ครีแอตินีน BUN และการประเมิน GFR",
+       "t": "Creatinine, BUN & estimating GFR",
        "link": {
         "m": "renal-lab",
         "h": "gfr"
@@ -10597,7 +10597,7 @@
       {
        "id": "renal-lab:biomark",
        "sub": "Laboratory",
-       "t": "Biomarker รุ่นใหม่",
+       "t": "Newer biomarkers",
        "link": {
         "m": "renal-lab",
         "h": "biomark"
@@ -10723,7 +10723,7 @@
       {
        "id": "nephron-pathway:tracker",
        "sub": "Physiology",
-       "t": "ติดตามสาร: สารแต่ละตัวเคลื่อนที่ที่ไหน",
+       "t": "Substance tracker: where each solute moves",
        "link": {
         "m": "nephron-pathway",
         "h": "tracker"
@@ -10750,7 +10750,7 @@
       {
        "id": "nephron-pathway:dct",
        "sub": "Physiology",
-       "t": "DCT",
+       "t": "Distal convoluted tubule",
        "link": {
         "m": "nephron-pathway",
         "h": "dct"
