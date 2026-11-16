@@ -1,0 +1,45 @@
+{
+ "id": "micro-basic",
+ "kind": "patho",
+ "override": {
+  "root": "Microbiology"
+ },
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Basic Bacteriology",
+ "draft": false,
+ "title_tag": "Basic Bacteriology",
+ "h1": "Basic Bacteriology",
+ "lede": "โครงสร้าง การเติบโต และพันธุกรรมของแบคทีเรีย — พื้นฐานที่ทุกหัวข้อในบทจุลชีววิทยาอ้างถึง · เนื้อหาตามคาบ Basic Bacteriology ของวิชา 204-221 Principles of Medical Sciences 2 อ่านจาก Murray บท 12–13 · ลองสลับดูผนังเซลล์ทั้งสามแบบ และไล่ดูว่ายีนดื้อยาเดินทางระหว่างเชื้อได้สามทางอย่างไร",
+ "sources": [
+  [
+   "murray",
+   "Mu",
+   "Murray Medical Microbiology 9e · Ch 12 (p.114–126) และ Ch 13 (p.127–141)"
+  ],
+  [
+   "gen",
+   "Gen",
+   "ความรู้ทั่วไปที่ใช้เติม"
+  ]
+ ],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": [
+   "Basic Bacteriology"
+  ],
+  "title": "Basic Bacteriology",
+  "src": "Murray 9e Ch 12–13",
+  "desc": "การจำแนกและการตั้งชื่อเชื้อ, รูปร่างและการเรียงตัว, Gram stain ทีละขั้นและกรณีที่มันหลอก, ผนังเซลล์สี่แบบ, prokaryote เทียบ eukaryote, envelope ของ gram-positive / gram-negative / acid-fast, peptidoglycan กับจุดที่ยาออกฤทธิ์, capsule pili flagella และ biofilm, endospore, growth curve, ความต้องการในการเติบโตและออกซิเจน, chromosome พลาสมิดและ bacteriophage, transformation conjugation transduction, transposon และการแพร่ของยีนดื้อยา",
+  "ch": "Murray Ch 12–13",
+  "sort": 5,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": [
+   "microbiology"
+  ]
+ },
+ "css": [
+  "micro.css"
+ ]
+}

@@ -1,0 +1,94 @@
+/* Microbiology figure language — quiet plate, organic forms, one accent at a time.
+   Loaded only by micro pages (meta.css), so no other chapter is affected. */
+
+/* the graph-paper plate fights the drawing; replace it with a soft field */
+.dia{background-size:auto;background-image:radial-gradient(130% 100% at 50% 0%,
+      color-mix(in srgb,var(--sb-ink) 5%,var(--sb-plate)) 0%,
+      var(--sb-plate) 66%)}
+
+/* ---- ground tones --------------------------------------------------- */
+.m-cyto{fill:color-mix(in srgb,#8d8578 16%,var(--sb-surface));stroke:none}
+.m-peri{fill:color-mix(in srgb,#3E6FB0 9%,var(--sb-surface));stroke:none}
+.m-out {fill:none}
+.m-gr  {fill:var(--sb-ink);opacity:.055}
+.m-gr2 {fill:var(--sb-ink);opacity:.09}
+
+/* ---- membrane ------------------------------------------------------- */
+.m-core{fill:color-mix(in srgb,#0E8A7E 9%,var(--sb-surface));stroke:none}
+.m-head{fill:color-mix(in srgb,#0E8A7E 62%,var(--sb-surface));stroke:none}
+.m-tail{fill:none;stroke:color-mix(in srgb,#0E8A7E 42%,var(--sb-surface));stroke-width:1.05;stroke-linecap:round}
+
+/* ---- wall ----------------------------------------------------------- */
+.m-gly {fill:none;stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:2.5;stroke-linecap:round}
+.m-gly2{fill:none;stroke:color-mix(in srgb,#6B4FC8 26%,var(--sb-surface));stroke-width:2.1;stroke-linecap:round}
+.m-pep {fill:none;stroke:color-mix(in srgb,#C2410C 52%,var(--sb-surface));stroke-width:1.5;stroke-linecap:round}
+.m-teic{fill:none;stroke:color-mix(in srgb,#B7791F 62%,var(--sb-surface));stroke-width:1.6;stroke-linecap:round}
+.m-teicb{fill:color-mix(in srgb,#B7791F 62%,var(--sb-surface));stroke:none}
+
+/* ---- outer membrane / LPS / mycolate -------------------------------- */
+.m-ocore{fill:color-mix(in srgb,#C2185B 8%,var(--sb-surface));stroke:none}
+.m-ohead{fill:color-mix(in srgb,#C2185B 58%,var(--sb-surface));stroke:none}
+.m-otail{fill:none;stroke:color-mix(in srgb,#C2185B 38%,var(--sb-surface));stroke-width:1.05;stroke-linecap:round}
+.m-oanti{fill:none;stroke:color-mix(in srgb,#3E6FB0 60%,var(--sb-surface));stroke-width:1.5;stroke-linecap:round}
+.m-oantib{fill:color-mix(in srgb,#3E6FB0 60%,var(--sb-surface));stroke:none}
+.m-porin{fill:color-mix(in srgb,#C2185B 20%,var(--sb-surface));stroke:color-mix(in srgb,#C2185B 62%,var(--sb-surface));stroke-width:1.5}
+.m-myco{fill:none;stroke:color-mix(in srgb,#B7791F 55%,var(--sb-surface));stroke-width:1.25;stroke-linecap:round}
+.m-arab{fill:none;stroke:color-mix(in srgb,#2F8A78 48%,var(--sb-surface));stroke-width:1.6;stroke-linecap:round}
+
+/* ---- cell bodies ---------------------------------------------------- */
+.m-cell {stroke-width:2.2;stroke-linejoin:round}
+.m-wallR{fill:none;stroke-width:5.5;stroke-linejoin:round}
+.m-wallT{fill:none;stroke-width:2.2;stroke-linejoin:round}
+.m-shade{fill:var(--sb-ink);opacity:.07}
+.m-spec {fill:var(--sb-surface);opacity:.5}
+
+/* ---- annotation ----------------------------------------------------- */
+.m-lead{fill:none;stroke:var(--sb-ink2);stroke-width:.9;opacity:.6}
+.m-dot {fill:var(--sb-ink2);opacity:.75}
+.m-rule{fill:none;stroke:var(--sb-line);stroke-width:1}
+
+/* ---- cell bodies: one quiet colour so that SHAPE is what differs ---- */
+.m-body {fill:color-mix(in srgb,#6B4FC8 13%,var(--sb-surface));
+         stroke:color-mix(in srgb,#6B4FC8 58%,var(--sb-surface));stroke-width:2;stroke-linejoin:round}
+.m-body2{fill:color-mix(in srgb,#C2185B 12%,var(--sb-surface));
+         stroke:color-mix(in srgb,#C2185B 55%,var(--sb-surface));stroke-width:1.9;stroke-linejoin:round}
+.m-line {fill:none;stroke:color-mix(in srgb,#6B4FC8 58%,var(--sb-surface));stroke-linecap:round}
+.m-in   {fill:var(--sb-ink);opacity:.055}
+.m-hi   {fill:var(--sb-surface);opacity:.55}
+
+/* ---- Gram stain: the dye itself, not a swatch ----------------------- */
+.m-stP{fill:color-mix(in srgb,#5B3FB8 58%,var(--sb-surface));stroke:color-mix(in srgb,#5B3FB8 82%,var(--sb-surface));stroke-width:2}
+.m-stR{fill:color-mix(in srgb,#C2334A 55%,var(--sb-surface));stroke:color-mix(in srgb,#C2334A 80%,var(--sb-surface));stroke-width:2}
+.m-stC{fill:var(--sb-surface);stroke:color-mix(in srgb,var(--sb-ink) 34%,var(--sb-surface));stroke-width:1.8}
+.m-stepN{fill:color-mix(in srgb,var(--sb-ink) 10%,var(--sb-surface));stroke:none}
+.m-sep{fill:none;stroke:color-mix(in srgb,var(--sb-ink) 12%,var(--sb-surface));stroke-width:1}
+.m-decol{fill:color-mix(in srgb,#C2334A 7%,var(--sb-surface));stroke:none}
+
+/* ---- surface appendages --------------------------------------------- */
+.m-cap {fill:color-mix(in srgb,#3E6FB0 10%,var(--sb-surface));
+        stroke:color-mix(in srgb,#3E6FB0 40%,var(--sb-surface));stroke-width:1.4;stroke-dasharray:6 5}
+.m-pil {fill:none;stroke:color-mix(in srgb,#C2185B 52%,var(--sb-surface));stroke-width:1.5;stroke-linecap:round}
+.m-fla {fill:none;stroke:color-mix(in srgb,#0E8A7E 62%,var(--sb-surface));stroke-width:3.4;stroke-linecap:round}
+.m-flb {fill:color-mix(in srgb,#0E8A7E 55%,var(--sb-surface));stroke:none}
+.m-eps {fill:color-mix(in srgb,#3E6FB0 11%,var(--sb-surface));stroke:none}
+
+/* ---- endospore: layers of one material, told apart by density ------- */
+.m-sp-exo {fill:color-mix(in srgb,#8C6D46 11%,var(--sb-surface));stroke:color-mix(in srgb,#8C6D46 38%,var(--sb-surface));stroke-width:1.3}
+.m-sp-coat{fill:none;stroke:color-mix(in srgb,#8C6D46 46%,var(--sb-surface));stroke-width:1.5}
+.m-sp-cor {fill:color-mix(in srgb,#6B4FC8 10%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 40%,var(--sb-surface));stroke-width:1.3}
+.m-sp-im  {fill:none;stroke:color-mix(in srgb,#0E8A7E 58%,var(--sb-surface));stroke-width:2.4}
+.m-sp-core{fill:color-mix(in srgb,#C2410C 17%,var(--sb-surface));stroke:color-mix(in srgb,#C2410C 50%,var(--sb-surface));stroke-width:1.6}
+.m-cyc{fill:none;stroke:var(--sb-ink2);stroke-width:1.5;opacity:.55}
+
+/* ---- DNA and phage --------------------------------------------------- */
+.m-nuc  {fill:color-mix(in srgb,#C2410C 7%,var(--sb-surface));stroke:none}
+.m-dna  {fill:none;stroke:color-mix(in srgb,#C2410C 62%,var(--sb-surface));stroke-width:2.6;stroke-linecap:round}
+.m-dna2 {fill:none;stroke:color-mix(in srgb,#0E8A7E 62%,var(--sb-surface));stroke-width:2.4;stroke-linecap:round}
+.m-gene {fill:color-mix(in srgb,#C2185B 50%,var(--sb-surface));stroke:none}
+.m-head {fill:color-mix(in srgb,#3E6FB0 12%,var(--sb-surface));stroke:color-mix(in srgb,#3E6FB0 62%,var(--sb-surface));stroke-width:2}
+.m-face {fill:none;stroke:color-mix(in srgb,#3E6FB0 34%,var(--sb-surface));stroke-width:1.1}
+.m-tail {fill:color-mix(in srgb,#3E6FB0 22%,var(--sb-surface));stroke:color-mix(in srgb,#3E6FB0 58%,var(--sb-surface));stroke-width:1.4}
+.m-fib  {fill:none;stroke:color-mix(in srgb,#3E6FB0 58%,var(--sb-surface));stroke-width:1.8;stroke-linecap:round}
+.m-pdna {fill:none;stroke:color-mix(in srgb,#C2410C 50%,var(--sb-surface));stroke-width:1.6}
+.m-ring2{fill:color-mix(in srgb,#0E8A7E 12%,var(--sb-surface));
+         stroke:color-mix(in srgb,#0E8A7E 58%,var(--sb-surface));stroke-width:2;stroke-linejoin:round}

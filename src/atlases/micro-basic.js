@@ -1,0 +1,551 @@
+//@include _micro-helpers.js
+/* ================= Basic Bacteriology =================
+   204-221 Principles of Medical Sciences 2 · "Basic Bacteriology" session (Thidarat Netikul, PhD)
+   Murray Medical Microbiology 9e Ch 12 (Bacterial Classification, Structure and Replication, p.114-126)
+   และ Ch 13 (Bacterial Metabolism and Genetics, p.127-141) ตามที่ lesson plan อ้างถึง
+   First Aid Step 1 2025 ใช้เสริมหัวข้อที่ตำราไม่ได้จัดกลุ่มไว้ให้
+   ภาพทั้งหมดเป็น schematic ที่วาดขึ้นเอง */
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"Classification & staining",b:"Bacterial structure",c:"Growth & metabolism",d:"Genetics & resistance"});
+Object.assign(ST,{tx:"transformation"});
+
+/* ---------- palette & small helpers ---------- */
+const MB={pg:"#6B4FC8",om:"#C2185B",cm:"#0E8A7E",wax:"#B7791F",cap:"#3E6FB0",dna:"#C2410C",bad:"#C2334A",ok:"#2F8A78"};
+const mbF=(c,p=18)=>`fill:color-mix(in srgb,${c} ${p}%,var(--sb-surface));stroke:${c};stroke-width:1.6`;
+const mbL=(x,y,s,o)=>ST.labels?T(x,y,s,o):"";
+/* a rod-shaped bacterium outline */
+const mbRod=(x,y,w,h,st)=>`<rect x="${x-w/2}" y="${y-h/2}" width="${w}" height="${h}" rx="${h/2}" style="${st}"/>`;
+/* a stack of concentric envelope layers drawn as horizontal bands */
+function mbBands(x,y,w,rows){let b="",cy=y;
+ rows.forEach(([h,c,lab,p])=>{b+=`<rect x="${x}" y="${cy}" width="${w}" height="${h}" rx="${Math.min(4,h/2)}" style="${mbF(c,p===undefined?26:p)}"/>`;
+  if(lab)b+=mbL(x+w+10,cy+h/2+4,lab,{a:"start",c:"s"});cy+=h+2});
+ return b}
+
+/* =========================================================
+   a · Classification & staining
+   ========================================================= */
+
+SEC.push({id:"classify",k:"a",t:"Classifying and naming bacteria",mm:"Classification",leg:[],
+draw:()=>flowD([
+ ["Macroscopic & microscopic","colony บนอาหารเลี้ยงเชื้อ · shape · Gram stain","ok"],
+ ["Metabolic & structural","ต้องการออกซิเจนหรือไม่ · หมักน้ำตาลตัวไหน · เอนไซม์เฉพาะ",""],
+ ["Antigenic (serotyping)","ใช้ antibody จับ antigen ประจำสายพันธุ์",""],
+ ["Genotypic","PCR · DNA sequencing · ribosomal DNA · MALDI-TOF","bad"]]),
+notes:()=>`<h3>Four levels, cheapest first</h3><ul>
+ <li>Murray เรียงวิธีจำแนกเชื้อจากหยาบไปละเอียด และ<b>ลำดับนี้ก็คือลำดับที่ห้องปฏิบัติการใช้จริง</b> — เริ่มจากสิ่งที่ดูได้ด้วยตาและกล้อง แล้วค่อยลงลึกเมื่อจำเป็น ${S.mu}</li>
+ <li><b>Colony</b> หนึ่งโคโลนีคือเมืองของเชื้อเป็นล้านตัว · สี ขนาด รูปร่าง และกลิ่นรวมกันเป็นลักษณะประจำตัว · อาหารเลี้ยงเชื้อที่เลือกไว้ยังบอกได้อีกว่าเชื้อหมัก lactose ไหม (แยก E. coli จาก Salmonella) สลายเม็ดเลือดแดงแบบใด หรือย่อยไขมันได้หรือไม่ ${S.mu}</li>
+ <li><b>Serotyping</b> มีที่ใช้เมื่อเชื้อเพาะยาก (Treponema pallidum) อันตรายเกินกว่าจะเพาะ (Francisella) ผูกกับกลุ่มอาการเฉพาะ (E. coli O157:H7) หรือต้องการคำตอบเร็ว (S. pyogenes) ${S.mu}</li>
+ <li><b>วิธีทางพันธุกรรมแม่นที่สุด</b> และข้อได้เปรียบคือ<b>ไม่ต้องการเชื้อที่มีชีวิตหรือกำลังเติบโต</b> จึงใช้กับเชื้อที่โตช้าอย่าง mycobacteria และเชื้อรา หรือกับชิ้นเนื้อที่มีเชื้อรุนแรงได้ ${S.mu}</li></ul>
+ <h3>Nomenclature</h3><ul>
+ <li>ชื่อวิทยาศาสตร์เป็น <i>Genus species</i> — <b>Genus ขึ้นต้นด้วยตัวใหญ่ species ตัวเล็ก และทั้งคู่เป็นตัวเอน</b> เช่น <i>Staphylococcus aureus</i> ${S.x}</li>
+ <li>เมื่อพิมพ์ด้วยลายมือหรือพิมพ์ไม่ได้ตัวเอน ให้ขีดเส้นใต้แทน · เมื่อกล่าวถึงครั้งแรกแล้ว ย่อ genus เหลือตัวอักษรเดียวได้ (<i>S. aureus</i>) แต่<b>ห้ามย่อ species</b> ${S.x}</li>
+ <li>ชื่อกลุ่มที่ไม่ใช่ชื่อวิทยาศาสตร์ เช่น staphylococci, streptococci ไม่ต้องเอนและไม่ต้องขึ้นต้นตัวใหญ่ ${S.x}</li></ul>`});
+
+SEC.push({id:"shapes",k:"a",t:"Morphology and arrangement",mm:"Shape",leg:[],
+draw:()=>{
+ /* one body colour throughout: the only thing that differs is the shape */
+ const sh=(cx,cy,rx,ry)=>`<ellipse class="m-in" cx="${cx+rx*.18}" cy="${cy+ry*.3}" rx="${rx*.78}" ry="${ry*.72}"/>`
+  +`<ellipse class="m-hi" cx="${cx-rx*.3}" cy="${cy-ry*.38}" rx="${rx*.3}" ry="${ry*.26}"/>`;
+ const S1=[["Coccus","Staphylococcus"],["Bacillus","Escherichia"],["Coccobacillus","Haemophilus"],
+  ["Fusiform bacillus","Fusobacterium"],["Vibrio","Vibrio cholerae"],["Spirillum","Campylobacter"],
+  ["Spirochete","Treponema"],["Branching filament","Nocardia"]];
+ let b=mL(22,24,"Shapes",{a:"start",c:"bh"});
+ S1.forEach(([n,ex],i)=>{const x=86+(i%4)*152,y=76+Math.floor(i/4)*120,sd=i*7+3;
+  if(n==="Coccus")b+=`<path class="m-body" d="${mblob(x,y,18,17.4,sd,.045)}"/>`+sh(x,y,18,17);
+  else if(n==="Bacillus")b+=`<path class="m-body" d="${mrod(x,y,60,12,sd,.06)}"/>`+sh(x,y,28,11);
+  else if(n==="Coccobacillus")b+=`<path class="m-body" d="${mrod(x,y,38,13,sd,.055)}"/>`+sh(x,y,18,12);
+  else if(n==="Fusiform bacillus"){const w=mwobC(sd);let d="";
+   for(let k=0;k<=72;k++){const a=k/72*Math.PI*2,t=Math.cos(a);
+    const rr=13.5*Math.pow(Math.max(0,1-t*t),.42)*(1+w(a)*.05);
+    d+=(k?"L":"M")+(x+t*34).toFixed(1)+","+(y+Math.sin(a)*rr/Math.max(.25,Math.abs(Math.sin(a))||1)*Math.abs(Math.sin(a))).toFixed(1)}
+   b+=`<path class="m-body" d="M${x-34},${y} Q${x-17},${y-14.5} ${x},${y-14} Q${x+17},${y-14.5} ${x+34},${y} Q${x+17},${y+14.5} ${x},${y+14} Q${x-17},${y+14.5} ${x-34},${y}Z"/>`+sh(x,y,26,12)}
+  else if(n==="Vibrio")b+=`<path class="m-line" style="stroke-width:13" d="M${x-28},${y+11} Q${x},${y-25} ${x+28},${y+11}"/>`
+   +`<path class="m-line" style="stroke-width:6;stroke:var(--sb-surface);opacity:.28" d="M${x-25},${y+8} Q${x},${y-20} ${x+25},${y+8}"/>`;
+  else if(n==="Spirillum")b+=`<path class="m-line" style="stroke-width:10" d="M${x-34},${y+2} Q${x-22},${y-18} ${x-10},${y+2} Q${x+2},${y+20} ${x+14},${y+2} Q${x+26},${y-18} ${x+36},${y+2}"/>`;
+  else if(n==="Spirochete")b+=`<path class="m-line" style="stroke-width:4.6" d="M${x-36},${y} ${[...Array(8)].map((_,k)=>`Q${x-31+k*9},${y+(k%2?14:-14)} ${x-27+k*9},${y}`).join(" ")}"/>`;
+  else b+=`<path class="m-line" style="stroke-width:5.8" d="M${x-32},${y+15} C${x-22},${y+6} ${x-16},${y-1} ${x-5},${y-5} C${x+8},${y-10} ${x+20},${y-12} ${x+32},${y-15}`
+   +` M${x-5},${y-5} C${x-1},${y+3} ${x+1},${y+9} ${x+3},${y+17}`
+   +` M${x+13},${y-8} C${x+17},${y-14} ${x+20},${y-18} ${x+27},${y-22}`
+   +` M${x-16},${y-1} C${x-19},${y-7} ${x-21},${y-11} ${x-26},${y-15}"/>`;
+  b+=mL(x,y+40,n,{c:"bh"})+mL(x,y+56,ex,{c:"s m"})});
+
+ let c=mL(22,278,"Arrangements",{a:"start",c:"bh"});
+ const A=[["Diplococcus","S. pneumoniae · Neisseria",[[-11,0],[11,0]]],
+  ["Chain","Streptococcus",[[-30,1],[-10,-1],[10,1],[30,-1]]],
+  ["Cluster","Staphylococcus",[[-12,-10],[7,-13],[-13,9],[6,8],[22,-3],[1,-2]]],
+  ["Palisade","Corynebacterium",[]]];
+ A.forEach(([n,ex,pts],i)=>{const x=86+i*152,y=330;
+  if(n==="Palisade")[[-26,0,17],[-7,-5,-7],[11,4,13],[29,-2,-15]].forEach(([dx,dy,r],k)=>{
+   c+=`<g transform="rotate(${r} ${x+dx} ${y+dy})"><path class="m-body2" d="${mrod(x+dx,y+dy,30,7,k*5+2,.05)}" transform="rotate(90 ${x+dx} ${y+dy})"/></g>`});
+  else pts.forEach(([dx,dy],k)=>{c+=`<path class="m-body2" d="${mblob(x+dx,y+dy,11,10.6,k*9+5,.05)}"/>`});
+  c+=mL(x,y+38,n,{c:"bh"})+mL(x,y+54,ex,{c:"s m"})});
+ return svg(b+c,"0 0 640 398")},
+notes:()=>`<h3>Why shape is the first clue</h3><ul>
+ <li>รูปร่างกับการติดสี Gram เป็น<b>สองอย่างแรกที่แยกเชื้อได้</b> และได้คำตอบภายในสิบนาทีจากสิ่งส่งตรวจจริง ${S.mu}</li>
+ <li>รูปร่างถูกกำหนดโดย peptidoglycan และโดยเส้นใยคล้าย actin ที่เรียงอยู่ด้านในของ cytoplasmic membrane — เส้นใยชุดนี้เองที่ทำให้ treponeme เป็นเกลียว ${S.mu}</li>
+ <li>ขนาดส่วนใหญ่ราว 1 µm จึงเห็นได้ด้วยกล้องจุลทรรศน์ใช้แสงซึ่งแยกได้ถึง 0.2 µm · ที่เล็กที่สุดคือ <i>Chlamydia</i> และ <i>Rickettsia</i> เพียง 0.1–0.2 µm ${S.mu}</li></ul>
+ <h3>Arrangement comes from how the septum is placed</h3><ul>
+ <li>การเรียงตัวไม่ใช่เรื่องบังเอิญ — มันคือผลของ<b>ทิศทางของ septum และการที่เซลล์ลูกแยกไม่ขาด</b> ${S.mu}</li>
+ <li>Streptococci สร้าง septum ในระนาบเดียวกัน (ห่างกัน 180°) เซลล์ที่แยกไม่ขาดจึงต่อกันเป็น<b>สาย</b> ${S.mu}</li>
+ <li>Staphylococci สร้าง septum สลับระนาบ 90° จึงได้<b>กลุ่มคล้ายพวงองุ่น</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"gram",k:"a",t:"The Gram stain",mm:"Gram stain",leg:[],
+draw:()=>{
+ const steps=[["Crystal violet","ย้อมทุกเซลล์เป็นสีม่วง","m-stP","m-stP"],
+  ["Gram iodine","mordant · ตกตะกอนสีให้เป็นก้อนใหญ่ขึ้น","m-stP","m-stP"],
+  ["Decolorizer","alcohol หรือ acetone — ขั้นตอนชี้ขาด","m-stP","m-stC"],
+  ["Safranin red","counterstain ติดเฉพาะเซลล์ที่ถูกล้างสีไปแล้ว","m-stP","m-stR"]];
+ const GPX=404,GNX=534,row=y=>76+y*78;
+ let b=mL(GPX,38,"Gram-positive",{c:"bh"})+mL(GNX,38,"Gram-negative",{c:"bh"})
+  +mL(GPX,54,"ผนังหนา",{c:"s m"})+mL(GNX,54,"ผนังบาง + OM",{c:"s m"});
+ /* the decolorizer step is the one that matters — mark it on the ground */
+ b+=`<rect class="m-decol" x="26" y="${row(2)-32}" width="588" height="64" rx="16"/>`;
+ steps.forEach(([n,d,gp,gn],i)=>{const y=row(i);
+  if(i)b+=`<path class="m-sep" d="M40,${y-39} L600,${y-39}"/>`;
+  b+=`<circle class="m-stepN" cx="56" cy="${y-4}" r="15"/>`+mL(56,y+1,String(i+1),{c:"bh"})
+   +mL(84,y-6,n,{a:"start",c:"bh"})+mL(84,y+13,d,{a:"start",c:"s m"});
+  /* a pair of cocci and a rod, drawn as cells */
+  b+=`<path class="${gp}" d="${mblob(GPX-11,y-4,12,11.4,i*5+3,.05)}"/>`
+   +`<path class="${gp}" d="${mblob(GPX+12,y-1,12,11.4,i*5+9,.05)}"/>`
+   +`<path class="${gn}" d="${mrod(GNX,y-3,54,11,i*5+21,.05)}"/>`});
+ return svg(b,"0 0 640 352")},
+notes:()=>`<h3>What actually happens in the four steps</h3><ul>
+ <li>ย้อม <b>crystal violet</b> ให้ทุกเซลล์เป็นสีม่วงก่อน แล้ว <b>Gram iodine</b> ทำหน้าที่ mordant คือทำให้สีตกตะกอนเป็นก้อนใหญ่ขึ้น ${S.mu}</li>
+ <li>ขั้นที่ชี้ขาดคือ <b>decolorizer</b> ที่เป็น acetone หรือ alcohol · ใน gram-positive ตะกอนสีถูกขังอยู่ใน<b>ตาข่าย peptidoglycan ที่หนาและเชื่อมขวางแน่น</b> จึงล้างไม่ออก ${S.mu}</li>
+ <li>ใน gram-negative decolorizer <b>ละลาย outer membrane</b> ทิ้ง และ peptidoglycan ที่บางเกินกว่าจะขังสีไว้ก็ถูกล้างจนหมด ${S.mu}</li>
+ <li><b>Safranin</b> จึงติดเฉพาะเซลล์ที่โดนล้างสีไปแล้ว ทำให้ gram-negative เป็นสีแดง · ทั้งกระบวนการใช้เวลาไม่ถึงสิบนาที ${S.mu}</li>
+ <li>ช่วยจำแบบที่ Murray ใช้: <b>P-PURPLE-POSITIVE</b> ${S.mu}</li></ul>
+ <h3>When the Gram stain lies</h3><ul>
+ <li>เชื้อที่<b>อดอาหาร</b> เช่นเพาะทิ้งไว้นานจนเข้า stationary phase จะติดสีไม่น่าเชื่อถือ เพราะเมื่อไม่มีการสร้าง peptidoglycan ใหม่ autolysin ก็ยังทำงานต่อจนตาข่ายอ่อนแอลง ${S.mu}</li>
+ <li>เชื้อที่<b>เพิ่งได้ยาปฏิชีวนะ</b> ก็เช่นกัน เพราะ peptidoglycan ถูกทำลายไปแล้ว ${S.mu}</li>
+ <li>มีเชื้อสองกลุ่มที่<b>จำแนกด้วย Gram stain ไม่ได้เลย</b>: mycobacteria ซึ่งมีเปลือกไขหุ้มจึงต้องใช้ acid-fast stain และ mycoplasma ซึ่งไม่มี peptidoglycan ${S.mu}</li></ul>`});
+
+SEC.push({id:"walltypes",k:"a",t:"Four wall types, four consequences",mm:"Wall types",leg:[],
+draw:()=>tbl(["","Gram-positive","Gram-negative","Mycobacteria","Mycoplasma"],[
+ ["Outer membrane","−","+","−","−"],
+ ["Peptidoglycan","หนา หลายชั้น","บาง 5–10% ของผนัง","มี แต่เชื่อมกับ arabinogalactan","<b>ไม่มีเลย</b>"],
+ ["Outer layer","teichoic · lipoteichoic acid","lipopolysaccharide","mycolic acid, cord factor, wax D, sulfolipid","steroid ที่ขโมยมาจาก host"],
+ ["Endotoxin","−","+","−","−"],
+ ["Stain","Gram ⊕ (purple)","Gram ⊖ (red)","<b>acid-fast</b>","ติดสี Gram ไม่ได้"],
+ ["Lysozyme","sensitive","resistant","resistant","ไม่เกี่ยว (ไม่มีเป้า)"],
+ ["Penicillin","susceptible กว่า","resistant กว่า","ไม่ตอบสนอง","<b>ดื้อโดยธรรมชาติ</b>"],
+ ["Sporulation","บางสกุล","ไม่มี","ไม่มี","ไม่มี"],
+ ["Drying & physical disruption","ทนกว่า","ทนน้อยกว่า","ทนมาก","ทนน้อย"]]),
+notes:()=>`<h3>Read the table as cause and effect</h3><ul>
+ <li>ทุกแถวในตารางนี้<b>ไหลมาจากแถวแรกสองแถว</b> คือมี outer membrane หรือไม่ และ peptidoglycan หนาแค่ไหน ${S.mu}</li>
+ <li><b>Lysozyme</b> ในน้ำตาและน้ำมูกตัดโครงน้ำตาลของ peptidoglycan ได้ตรง ๆ ใน gram-positive · แต่ใน gram-negative มันเป็นโมเลกุลใหญ่ที่ <b>outer membrane กันไว้</b> จึงเข้าไม่ถึง ${S.mu}</li>
+ <li>ถ้าทำลาย outer membrane ก่อน เช่นด้วย polymyxin หรือด้วยการดึง Mg²⁺ และ Ca²⁺ ออกด้วย EDTA lysozyme ก็เข้าถึงได้และเกิด spheroplast ซึ่งแตกง่ายเหมือน protoplast ${S.mu}</li>
+ <li>Mycoplasma <b>ดื้อ β-lactam โดยธรรมชาติ</b> ไม่ใช่เพราะมีกลไกต้านยา แต่เพราะ<b>ไม่มีเป้าให้ยาจับ</b> ${S.x}</li>
+ <li>Porin ของ gram-negative ยอมให้โมเลกุลชอบน้ำที่เล็กกว่า <b>700 Da</b> ผ่าน และกันโมเลกุลใหญ่หรือไม่ชอบน้ำไว้ รวมถึงยาปฏิชีวนะหลายตัว — นี่คือพื้นฐานของการดื้อยาโดยธรรมชาติของเชื้อกลุ่มนี้ ${S.mu}</li></ul>`});
+
+/* =========================================================
+   b · Bacterial structure
+   ========================================================= */
+
+SEC.push({id:"prokaryote",k:"b",t:"Prokaryote versus eukaryote",mm:"Prokaryote",leg:[],
+draw:()=>tbl(["Characteristic","Eukaryote","Prokaryote"],[
+ ["Size","&gt;5 µm","0.5–3.0 µm"],
+ ["Nucleus","มี nuclear membrane","ไม่มี · DNA อยู่ในบริเวณที่เรียก nucleoid"],
+ ["Chromosome","DNA หลายเส้น · diploid","วงเดียว วงกลม · haploid"],
+ ["Mitochondria · Golgi · ER","มี","ไม่มี"],
+ ["Ribosome","80S (60S + 40S)","<b>70S (50S + 30S)</b>"],
+ ["Cytoplasmic membrane","มี sterol","<b>ไม่มี sterol</b> (ยกเว้น mycoplasma)"],
+ ["Cell wall","มีในเชื้อรา นอกนั้นไม่มี","peptidoglycan และส่วนประกอบอื่น"],
+ ["Reproduction","sexual และ asexual","asexual (binary fission)"],
+ ["Electron transport","mitochondria","<b>cytoplasmic membrane</b>"]]),
+notes:()=>`<h3>Every difference here is a drug target</h3><ul>
+ <li>Murray เปิดบทด้วยประโยคที่เป็นหัวใจของเภสัชวิทยาต้านจุลชีพทั้งหมด: <b>ความต่างเชิงโครงสร้างระหว่างแบคทีเรียกับ eukaryote คือทั้งสิ่งที่กระตุ้นภูมิคุ้มกันของคน และเป็นฐานของการรักษาด้วยยาต้านจุลชีพ</b> ${S.mu}</li>
+ <li><b>Ribosome 70S</b> ต่างจาก 80S ของเราทั้งโปรตีนและ RNA จึงเป็นเป้าหลักของยาต้านแบคทีเรียกลุ่มที่ยับยั้งการสร้างโปรตีน ${S.mu}</li>
+ <li><b>Peptidoglycan</b> ไม่มีในเซลล์คนเลย ยาที่ยับยั้งการสร้างมันจึงแทบไม่กระทบ host ${S.mu}</li>
+ <li>เพราะไม่มี nuclear membrane <b>transcription กับ translation จึงเกิดพร้อมกัน</b> — ribosome จับ mRNA และสร้างโปรตีนได้ขณะที่ mRNA ยังถูกถอดรหัสและยังติดอยู่กับ DNA ${S.mu}</li>
+ <li>Chromosome ของ <i>E. coli</i> มีราว 5 ล้านคู่เบส ยาวราว 1.3 mm ซึ่ง<b>ยาวกว่าเส้นผ่านศูนย์กลางของเซลล์เกือบพันเท่า</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"envelope",k:"b",t:"The bacterial envelope",mm:"Envelope",
+leg:[],
+draw:()=>{const X0=24,X1=392,LX=412;let b="";
+ const wv=mwob(5,2.2),Y=yy=>x=>yy+wv(x);
+ /* three envelopes stacked so the wall thickness can actually be compared */
+ const slab=(YM,kind)=>{let g="";
+  const cyB=YM+42,cyTop=x=>YM+9+wv(x);
+  let cy=`M${X0},${cyTop(X0)}`;for(let x=X0;x<=X1;x+=7)cy+=`L${x.toFixed(1)},${cyTop(x).toFixed(1)}`;
+  cy+=`L${X1},${cyB} L${X0},${cyB} Z`;
+  g+=`<path class="m-cyto" d="${cy}"/>`+mgrainIn("mcy-"+kind,cy,X0,YM,X1-X0,cyB-YM,70,3,"m-gr",.85);
+  const rb=rng(21);for(let i=0;i<12;i++)g+=`<circle class="m-gr2" cx="${(X0+rb()*(X1-X0)).toFixed(1)}" cy="${(YM+16+rb()*22).toFixed(1)}" r="${(1.4+rb()).toFixed(2)}"/>`;
+  g+=mbil(X0,X1,Y(YM));
+
+  if(kind==="gp"){const pgB=YM-22,rows=7,gap=6.4,pgT=pgB-(rows-1)*gap;
+   g+=mpgl(X0,X1,Y(pgB),rows,-gap,7);
+   [0,1,2,3,4].forEach(i=>{const x=X0+30+i*74;g+=mteic(x,pgT-13+wv(x),YM-7+wv(x),30+i)});
+   [0,1,2].forEach(i=>{const x=X0+60+i*124;g+=mteic(x,pgT-5+wv(x),YM+2+wv(x),60+i)});
+   g+=mL(X0,YM-110,"Gram-positive",{a:"start",c:"bh"})
+    +mlead2(X0+30,pgT-10,LX,YM-96,["Teichoic acid","ประจุลบ ฝังทะลุผนังออกมา"])
+    +mlead2(X0+190,pgB-3*gap,LX,YM-58,["Peptidoglycan","หนาหลายชั้น · เชื่อมขวางสามมิติ"])
+    +mlead2(X0+60,YM+2,LX,YM-20,["Lipoteichoic acid","หางไขมันยึดที่เยื่อหุ้มเซลล์"])
+    +mlead2(X0+300,YM,LX,YM+18,["Cytoplasmic membrane","ชั้นนี้เหมือนกันทั้งสามแบบ"]);}
+
+  if(kind==="gn"){const pgB=YM-26,rows=2,gap=6.4,OM=YM-72;
+   let pp=`M${X0},${OM+9+wv(X0)}`;for(let x=X0;x<=X1;x+=7)pp+=`L${x.toFixed(1)},${(OM+9+wv(x)).toFixed(1)}`;
+   for(let x=X1;x>=X0;x-=7)pp+=`L${x.toFixed(1)},${(YM-9+wv(x)).toFixed(1)}`;
+   g+=`<path class="m-peri" d="${pp}Z"/>`+mpgl(X0,X1,Y(pgB),rows,-gap,9,{amp:1.1});
+   g+=mbil(X0,X1,Y(OM),{core:"m-ocore",head:"m-ohead",tail:"m-otail"});
+   for(let i=0;i<9;i++){const x=X0+24+i*42;g+=mlps(x,OM-8+wv(x),40+i,5)}
+   [1,4,7].forEach(i=>{const x=X0+24+i*42,y=OM+wv(x);
+    g+=`<rect class="m-porin" x="${(x-9).toFixed(1)}" y="${(y-9).toFixed(1)}" width="6" height="18" rx="3"/>`
+     +`<rect class="m-porin" x="${(x+3).toFixed(1)}" y="${(y-9).toFixed(1)}" width="6" height="18" rx="3"/>`});
+   g+=mL(X0,YM-132,"Gram-negative",{a:"start",c:"bh"})
+    +mlead2(X0+66,OM-32,LX,YM-116,["O-antigen","สายน้ำตาลที่ยื่นออกไปไกลสุด"])
+    +mlead2(X0+120,OM,LX,YM-80,["Outer membrane","ชั้นนอกเป็น LPS (endotoxin) ล้วน"],{c:"bad"})
+    +mlead2(X0+276,OM,LX,YM-46,["Porin","ผ่านได้เฉพาะที่เล็กกว่า 700 Da"])
+    +mlead2(X0+240,OM+32,LX,YM-12,["Periplasm","β-lactamase อยู่ตรงนี้"])
+    +mlead2(X0+140,pgB-gap/2,LX,YM+22,["Peptidoglycan","บางชั้นเดียว"]);}
+
+  if(kind==="af"){const pgB=YM-22,rows=4,gap=6.4,agT=YM-62,myB=YM-70;
+   g+=mpgl(X0,X1,Y(pgB),rows,-gap,13);
+   for(let x=X0+6;x<X1;x+=11){const yb=pgB-(rows-1)*gap+wv(x);
+    g+=`<path class="m-arab" d="M${x.toFixed(1)},${yb.toFixed(1)} L${(x+1.5).toFixed(1)},${(agT+wv(x)).toFixed(1)}"/>`}
+   g+=mmyco(X0,X1,myB,38,17,4.6);
+   const gq=rng(23);for(let x=X0+4;x<X1;x+=9)g+=`<circle class="m-teicb" cx="${x.toFixed(1)}" cy="${(myB-40+gq()*5).toFixed(1)}" r="1.6"/>`;
+   g+=mL(X0,YM-132,"Acid-fast (mycobacteria)",{a:"start",c:"bh"})
+    +mlead2(X0+110,myB-40,LX,YM-112,["Cord factor · sulfolipid","ไขที่ผิวนอกสุด"])
+    +mlead2(X0+230,myB-20,LX,YM-74,["Mycolic acid","ชั้นไขหนาที่ทำให้ติดสี acid-fast"])
+    +mlead2(X0+80,(agT+myB)/2+4,LX,YM-36,["Arabinogalactan","เชื่อมโควาเลนต์กับ peptidoglycan"])
+    +mlead2(X0+300,pgB-gap,LX,YM+2,["Peptidoglycan","โครงสร้างต่างไปเล็กน้อย"]);}
+  return g};
+ b+=slab(148,"gp")+`<path class="m-sep" d="M${X0},200 L616,200"/>`
+  +slab(336,"gn")+`<path class="m-sep" d="M${X0},388 L616,388"/>`
+  +slab(524,"af");
+ return svg(b,"0 0 640 580")},
+notes:()=>`<h3>Gram-positive: one thick mesh</h3><ul>
+ <li>Peptidoglycan หนา 150–500 Å เป็น<b>โครงนอกคล้ายเปลือกแมลง</b> แต่ต่างตรงที่มันพรุนพอให้สารอาหารแพร่เข้าถึงเยื่อหุ้มเซลล์ได้ ${S.mu}</li>
+ <li><b>Teichoic acid</b> เป็นพอลิเมอร์ประจุลบที่เชื่อมโควาเลนต์กับ peptidoglycan และ<b>จำเป็นต่อการมีชีวิต</b> · <b>Lipoteichoic acid</b> มีกรดไขมันยึดอยู่ที่ cytoplasmic membrane ${S.mu}</li>
+ <li>ทั้งคู่เป็น surface antigen ที่ใช้แยก serotype และช่วยให้เชื้อเกาะกับตัวรับบนเซลล์คน · lipoteichoic acid ที่หลุดออกมาจับ pathogen pattern receptor และกระตุ้นภูมิคุ้มกันโดยกำเนิดคล้าย endotoxin แม้จะอ่อนกว่า ${S.mu}</li>
+ <li>โปรตีนก่อโรคอย่าง <b>M protein</b> ของ streptococci และ <b>protein A</b> ของ <i>S. aureus</i> เชื่อมโควาเลนต์อยู่กับ peptidoglycan โดยตรง ${S.mu}</li></ul>
+ <h3>Gram-negative: a sack, a space, and a thin mesh</h3><ul>
+ <li>Outer membrane เป็น<b>ถุงผ้าใบแข็ง</b>รอบตัวเชื้อ ทำหน้าที่กั้นโมเลกุลใหญ่และโมเลกุลไม่ชอบน้ำ และกันสภาพแวดล้อมที่โหดร้ายอย่างทางเดินอาหารของ host ${S.mu}</li>
+ <li>มันเป็น bilayer ที่<b>ไม่สมมาตร</b> ต่างจากเยื่อหุ้มชีวภาพอื่นทั้งหมด — ชั้นในเป็น phospholipid ตามปกติ แต่ชั้นนอกเป็น <b>LPS</b> เกือบทั้งหมด และนี่คือที่เดียวในเซลล์ที่พบ LPS ${S.mu}</li>
+ <li><b>LPS คือ endotoxin</b> · มันหลุดออกสู่ host จับ pathogen pattern receptor กระตุ้น B cell และทำให้ macrophage กับ dendritic cell หลั่ง IL-1, IL-6 และ TNF จนเกิดไข้และ shock · การปล่อย endotoxin ปริมาณมากเข้ากระแสเลือดตามด้วย DIC คือ <b>Shwartzman reaction</b> ${S.mu}</li>
+ <li><i>Neisseria</i> ปล่อยโมเลกุลพี่น้องที่สั้นกว่าชื่อ <b>lipooligosaccharide (LOS)</b> ออกมาในปริมาณมาก จึงมีไข้และอาการรุนแรง ${S.mu}</li>
+ <li><b>Periplasmic space</b> ไม่ใช่ช่องว่าง แต่เป็นห้องเก็บระบบขนส่งเหล็ก โปรตีนและน้ำตาล กับเอนไซม์ย่อยสลายอย่าง protease, phosphatase, lipase, nuclease — และในเชื้อก่อโรคหลายชนิด ปัจจัยก่อโรคอย่าง collagenase, hyaluronidase และ <b>β-lactamase</b> ก็อยู่ตรงนี้ ${S.mu}</li>
+ <li><b>Type III secretion</b> เป็นปัจจัยก่อโรคสำคัญ — โครงสร้างซับซ้อนที่ทะลุทั้งเยื่อชั้นในและชั้นนอก หน้าตาและการทำงานเหมือน<b>เข็มฉีดยา</b>ที่ฉีดโปรตีนเข้าไปในเซลล์อื่น ทั้งเซลล์แบคทีเรียและเซลล์คน ${S.mu}</li></ul>
+ <h3>Acid-fast and no-wall</h3><ul>
+ <li>Mycobacteria มี peptidoglycan ที่โครงสร้างต่างเล็กน้อย เชื่อมโควาเลนต์กับ <b>arabinogalactan</b> แล้วหุ้มด้วยชั้นไข: mycolic acid, cord factor, wax D และ sulfolipid · เปลือกนี้เองที่ทำให้ติดสี acid-fast และทำให้เชื้อ<b>ต้านการถูกกลืนกิน</b> ${S.mu}</li>
+ <li><i>Corynebacterium</i> และ <i>Nocardia</i> ก็สร้าง mycolic acid เหมือนกัน ${S.mu}</li>
+ <li>Mycoplasma ไม่มี peptidoglycan เลย และ<b>ขโมย steroid จาก host</b> มาใส่ในเยื่อหุ้มเซลล์ของตัวเอง ${S.mu}</li></ul>`});
+
+SEC.push({id:"pg",k:"b",t:"Peptidoglycan and where the drugs bind",mm:"Peptidoglycan",leg:[],
+draw:()=>{let b="";
+ const GY=84,GY2=206,X0=72,step=62,HR=24;
+ /* sugars drawn as rings, because that is what they are */
+ const hexd=(x,y)=>[...Array(6)].map((_,i)=>{const a=-Math.PI/2+i*Math.PI/3;
+  return (i?"L":"M")+(x+Math.cos(a)*HR).toFixed(1)+","+(y+Math.sin(a)*HR*.92).toFixed(1)}).join(" ")+"Z";
+ [GY,GY2].forEach(y=>{for(let i=0;i<8;i++){const x=X0+i*step,gm=i%2===0;
+  b+=`<path class="${gm?"m-body":"m-ring2"}" d="${hexd(x,y)}"/>`+mL(x,y+5,gm?"G":"M",{c:"bh"});
+  if(i<7)b+=`<path class="m-line" style="stroke-width:2" d="M${x+HR-2},${y} L${x+step-HR+2},${y}"/>`}});
+ b+=mL(X0-HR,GY-34,"β-1,4 glycosidic bond",{a:"start",c:"s m"});
+ /* peptide stems hang from MurNAc; the dashed green segment is the cross-link */
+ [1,3,5].forEach(i=>{const x=X0+i*step,s1=GY+HR*.92,e1=GY+36,s2=GY2-HR*.92,e2=GY2-36;
+  b+=`<path class="m-pep" style="stroke-width:3.4" d="M${x},${s1} L${x},${e1}"/>`
+   +`<path class="m-pep" style="stroke-width:3.4" d="M${x},${s2} L${x},${e2}"/>`
+   +`<path d="M${x},${e1} L${x},${e2}" style="fill:none;stroke:${MB.ok};stroke-width:5;stroke-dasharray:7 4"/>`
+   +mL(x,e1-5,"D-Ala",{c:"s m"})+mL(x,e2+13,"Lys",{c:"s m"})});
+ b+=mL(320,GY2+48,"transpeptidation",{c:"bh"})
+  +mL(320,GY2+68,"แลกพันธะเปปไทด์หนึ่งกับอีกพันธะหนึ่ง · ปล่อย D-Ala ตัวปลายออกไป",{c:"s m"});
+ /* lysozyme cuts the glycan backbone */
+ const lx=X0+step*1.5;
+ b+=`<path d="M${lx},${GY-40} L${lx},${GY+40}" style="fill:none;stroke:${MB.bad};stroke-width:2.6;stroke-dasharray:4 3"/>`
+  +mL(lx,GY-48,"lysozyme ตัดที่นี่",{c:"bad"});
+ /* where the drugs bind — stated on the picture, not in a box */
+ b+=`<path class="m-sep" d="M30,296 L610,296"/>`
+  +mL(40,324,"β-lactams",{a:"start",c:"bh"})
+  +mL(40,344,"เลียนโครงสร้าง D-Ala-D-Ala ขณะจับ PBP",{a:"start",c:"s m"})
+  +mL(336,324,"Vancomycin",{a:"start",c:"bh"})
+  +mL(336,344,"หนีบที่ตัว D-Ala-D-Ala เอง ไม่ใช่ที่เอนไซม์",{a:"start",c:"s m"});
+ return svg(b,"0 0 640 366")},
+notes:()=>`<h3>The mesh</h3><ul>
+ <li>Peptidoglycan คือ<b>ตาข่ายแข็ง</b>ที่ประกอบจากสายพอลิแซ็กคาไรด์เรียงคล้ายเสารั้ว แล้วเชื่อมขวางกันด้วยเปปไทด์ ${S.mu}</li>
+ <li>สายน้ำตาลเป็นไดแซ็กคาไรด์ซ้ำ ๆ ของ <b>N-acetylglucosamine (GlcNAc)</b> กับ <b>N-acetylmuramic acid (MurNAc)</b> ${S.mu}</li>
+ <li>เปปไทด์ที่ห้อยจาก MurNAc แปลกสองอย่าง: มีทั้งกรดอะมิโน D และ L ทั้งที่ธรรมชาติปกติไม่ใช้ D-amino acid และมัน<b>ถูกสร้างด้วยเอนไซม์ ไม่ใช่ด้วย ribosome</b> ${S.mu}</li>
+ <li>กรดอะมิโนตำแหน่งที่สามต้องเป็นชนิดที่มีสองหมู่อะมิโน (lysine, diaminopimelic acid) เพราะเป็นตัวที่ใช้เชื่อมขวาง · <i>S. aureus</i> ใช้สะพาน <b>pentaglycine</b> มาต่อให้ยาวขึ้น ${S.mu}</li>
+ <li>ใน gram-positive ตาข่ายซ้อนกันหลายชั้นและเชื่อมขวางแบบสามมิติ ส่วนใน gram-negative หนาเพียง<b>หนึ่งโมเลกุล</b> ${S.mu}</li></ul>
+ <h3>Why this is where so many antibiotics act</h3><ul>
+ <li>การเชื่อมขวางเป็นปฏิกิริยา <b>transpeptidation</b> ที่แลกพันธะเปปไทด์หนึ่งกับอีกพันธะหนึ่ง โดยปล่อย D-alanine ตัวปลายออกไป — จึง<b>ไม่ต้องใช้พลังงานเพิ่ม</b> ทั้งที่เกิดนอกเซลล์ ${S.mu}</li>
+ <li>เอนไซม์ที่เร่งปฏิกิริยานี้คือ transpeptidase และ carboxypeptidase ซึ่งเรียกรวมกันว่า <b>penicillin-binding proteins (PBPs)</b> ${S.mu}</li>
+ <li><b>β-lactam</b> ออกฤทธิ์ได้เพราะมันมีรูปร่างเหมือน <b>transition state ของ D-Ala-D-Ala ขณะจับอยู่กับเอนไซม์</b> · ส่วน <b>vancomycin</b> ไม่ยุ่งกับเอนไซม์เลย มันหนีบที่ตัว D-Ala-D-Ala โดยตรงจนปฏิกิริยาเกิดไม่ได้ ${S.mu}</li>
+ <li>PBP คนละตัวทำงานคนละหน้าที่ — ตัวหนึ่งต่อความยาว ตัวหนึ่งสร้าง septum สำหรับแบ่งเซลล์ และอีกตัวทำให้ตาข่ายโค้งเป็นรูปร่างของเซลล์ ${S.mu}</li>
+ <li><b>Bacitracin</b> ออกฤทธิ์คนละจุด — มันบล็อกการรีไซเคิล bactoprenol ซึ่งเป็นสายพานลำเลียงหน่วยย่อยออกไปนอกเซลล์ ${S.mu}</li></ul>
+ <h3>Why inhibiting synthesis kills rather than just stops</h3><ul>
+ <li>Peptidoglycan ถูก<b>สร้างและย่อยสลายตลอดเวลาอย่างประสานกัน</b> โดยเอนไซม์ย่อยชื่อ autolysin ซึ่งเป็นตัวกำหนดรูปร่างเซลล์ ${S.mu}</li>
+ <li>เมื่อยาหยุดการสร้างหรือการเชื่อมขวาง <b>autolysin ไม่ได้หยุดตาม</b> มันย่อยต่อไปจนตาข่ายอ่อนแอ เซลล์จึงแตกและตาย ${S.mu}</li>
+ <li>ด้วยเหตุผลเดียวกัน เซลล์ที่<b>อดอาหาร</b>ก็ไม่สร้าง peptidoglycan ใหม่ ตาข่ายจึงอ่อนลงและ Gram stain เชื่อถือไม่ได้ ${S.mu}</li>
+ <li><b>Lysozyme</b> ตัดโครงน้ำตาล ไม่ใช่เปปไทด์ · เมื่อไม่มี peptidoglycan เซลล์ทนความต่างของแรงดันออสโมติกคร่อมเยื่อหุ้มไม่ไหวและแตก เหลือเป็น <b>protoplast</b> ที่อยู่ได้เฉพาะในสารละลายที่ปรับออสโมลาริตีไว้ ${S.mu}</li></ul>`});
+
+SEC.push({id:"surface",k:"b",t:"Capsule, pili, flagella and biofilm",mm:"Surface structures",leg:[],
+draw:()=>{let b="";const cx=236,cy=126;
+ /* capsule — a loose, uneven coat, which is what it is */
+ b+=`<path class="m-cap" d="${mblob(cx,cy,126,62,31,.07)}"/>`;
+ /* pili all round, each one a little different */
+ const pq=rng(41);
+ for(let i=0;i<30;i++){const a=i/30*Math.PI*2+pq()*.1,x=cx+Math.cos(a)*88,y=cy+Math.sin(a)*35,
+  L=16+pq()*12,bend=(pq()-.5)*8;
+  b+=`<path class="m-pil" d="M${x.toFixed(1)},${y.toFixed(1)} Q${(x+Math.cos(a)*L*.6+bend).toFixed(1)},${(y+Math.sin(a)*L*.6).toFixed(1)} ${(x+Math.cos(a)*L).toFixed(1)},${(y+Math.sin(a)*L).toFixed(1)}"/>`}
+ /* the cell itself */
+ b+=`<path class="m-body" d="${mrod(cx,cy,176,36,7,.035)}"/>`
+  +`<ellipse class="m-in" cx="${cx+16}" cy="${cy+10}" rx="72" ry="24"/>`
+  +`<ellipse class="m-hi" cx="${cx-44}" cy="${cy-14}" rx="30" ry="9"/>`;
+ /* one sex pilus, thicker and longer than the rest */
+ b+=`<path class="m-pil" style="stroke-width:3" d="M${cx-86},${cy+4} C${cx-128},${cy+14} ${cx-150},${cy+34} ${cx-168},${cy+52}"/>`;
+ /* flagellum with its basal body */
+ b+=`<path class="m-fla" d="M${cx+88},${cy} ${[...Array(5)].map((_,k)=>`Q${cx+100+k*26},${cy+(k%2?21:-21)} ${cx+113+k*26},${cy}`).join(" ")}"/>`
+  +`<circle class="m-flb" cx="${cx+88}" cy="${cy}" r="6"/><circle class="m-flb" cx="${cx+80}" cy="${cy}" r="4"/>`;
+ b+=mlead2(cx,cy-60,470,36,["Capsule","กันการถูกกลืนกิน · ภูมิคุ้มกันเห็นได้ยาก"])
+  +mlead2(cx-70,cy-44,470,74,["Fimbriae (pili)","3–8 nm · adhesin ที่ใช้เกาะ"])
+  +mlead2(cx-152,cy+50,170,250,["Sex pilus","ท่อที่ใช้ส่ง DNA ตอน conjugation"],{a:"end"})
+  +mlead2(cx+150,cy-20,470,112,["Flagellum","15–20 nm · ใช้เคลื่อนที่ตามเคมี"]);
+
+ /* --- biofilm: a community under its own slime ---------------------- */
+ const bfY=272;
+ b+=`<path class="m-sep" d="M26,${bfY-42} L614,${bfY-42}"/>`
+  +mL(32,bfY-22,"Biofilm",{a:"start",c:"bh"})
+  +mL(32,bfY-4,"สร้างเมื่อมีเชื้อมากพอ (quorum) · ปกป้องทั้งชุมชนจากยาและจากภูมิคุ้มกัน",{a:"start",c:"s m"});
+ let eps=`M40,${bfY+54}`;for(let x=40;x<=600;x+=10)eps+=`L${x},${(bfY+14-16*Math.sin((x-40)/95)-6*Math.sin((x-40)/31)).toFixed(1)}`;
+ b+=`<path class="m-eps" d="${eps}L600,${bfY+54}Z"/>`;
+ const bq=rng(53);
+ for(let i=0;i<54;i++){const x=56+bq()*528,y=bfY+30+bq()*20;
+  b+=`<path class="m-body" style="stroke-width:1.5" d="${mrod(x,y,24+bq()*10,6.5,i*3+5,.06)}" transform="rotate(${(bq()*60-30).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`}
+ b+=`<path d="M40,${bfY+54} L600,${bfY+54}" class="m-rule" style="stroke-width:2.5"/>`
+  +mlead2(320,bfY+6,470,bfY-4,["Extracellular matrix","เมือกที่ชุมชนสร้างคลุมตัวเอง"],{a:"start"});
+ return svg(b,"0 0 640 344")},
+notes:()=>`<h3>Capsule</h3><ul>
+ <li>Capsule เป็นชั้นพอลิแซ็กคาไรด์หรือโปรตีนที่หุ้มหลวม ๆ บางครั้งเรียก slime layer หรือ glycocalyx · <b><i>Bacillus anthracis</i> เป็นข้อยกเว้นที่สร้าง capsule เป็นพอลิเปปไทด์</b> ${S.mu}</li>
+ <li>มันมองเห็นยากใต้กล้อง แต่เห็นที่ว่างของมันได้จากการที่<b>อนุภาค India ink เข้าไปไม่ได้</b> ${S.mu}</li>
+ <li>เชื้อไม่จำเป็นต้องมี capsule เพื่อเติบโต แต่<b>จำเป็นมากเพื่อรอดในตัว host</b> — มันกระตุ้นภูมิคุ้มกันได้ไม่ดี ต้านการถูกกลืนกิน และเป็นปัจจัยก่อโรคหลักของ <i>S. pneumoniae</i> ${S.mu}</li>
+ <li>ผลที่ตามมาในห้องปฏิบัติการ: เชื้อที่เลี้ยงต่อ ๆ กันไปโดยไม่มีแรงกดดันจาก host อาจ<b>เสีย capsule ไปและก่อโรคได้น้อยลง</b> ${S.mu}</li></ul>
+ <h3>Pili and flagella — told apart by size</h3><ul>
+ <li>แยกกันได้ใต้กล้องอิเล็กตรอนจากขนาด: pili กว้าง <b>3–8 nm</b> และมักไม่ขด ส่วน flagella กว้าง <b>15–20 nm</b> ${S.mu}</li>
+ <li><b>Fimbriae (pili)</b> มีหลายร้อยเส้นกระจายทั่วผิวเซลล์ · ปลายของมันมีโปรตีน lectin ที่จับน้ำตาลจำเพาะ เช่น mannose · ในฐานะ adhesin มันเป็นปัจจัยก่อโรคสำคัญของ <i>E. coli</i> และ <i>N. gonorrhoeae</i> ในการตั้งรกรากที่ทางเดินปัสสาวะ ${S.mu}</li>
+ <li><b>F pili (sex pili)</b> ต่างออกไป — มันจับกับแบคทีเรียตัวอื่นและเป็น<b>ท่อส่งชิ้นส่วนโครโมโซมขนาดใหญ่</b> ระหว่างเซลล์ · ถูกเข้ารหัสโดยพลาสมิด F ${S.mu}</li>
+ <li><b>Flagella</b> เป็นใบพัดเกลียวจากโปรตีน flagellin ยึดกับเยื่อหุ้มผ่าน hook และ basal body และ<b>ขับเคลื่อนด้วย membrane potential ไม่ใช่ ATP</b> ${S.mu}</li>
+ <li>เชื้อว่ายตรงแล้วหมุนตัวเปลี่ยนทิศ · ช่วงที่ว่ายตรงจะยาวขึ้นเมื่อความเข้มข้นของสารดึงดูดสูงขึ้น ซึ่งเป็นกลไกของ chemotaxis · <b>ทิศการหมุนของ flagellum เป็นตัวกำหนดว่าจะว่ายหรือจะหมุนตัว</b> ${S.mu}</li></ul>
+ <h3>Biofilm</h3><ul>
+ <li>เชื้ออย่าง <i>P. aeruginosa</i> และ <i>S. aureus</i> สร้าง biofilm เมื่อมีจำนวนมากพอ (<b>quorum</b>) และอยู่ในสภาพที่เอื้อต่อการเติบโต ${S.mu}</li>
+ <li>Biofilm <b>กักและปกป้องทั้งชุมชน</b>จากยาปฏิชีวนะและจากภูมิคุ้มกันของ host ${S.mu}</li>
+ <li>ใน <i>S. mutans</i> biofilm ที่ทำจาก dextran และ levan ช่วยให้เกาะเคลือบฟันและกลายเป็นคราบพลัค ${S.mu}</li></ul>`});
+
+SEC.push({id:"spore",k:"b",t:"The endospore",mm:"Spore",leg:[],
+draw:()=>{const cx=196,cy=146,LX=372;let b="";
+ /* the spore: concentric but never concentric-perfect */
+ b+=`<path class="m-sp-exo" d="${mblob(cx,cy,118,74,11,.045)}"/>`;
+ /* the coat really is lamellar — draw the lamellae */
+ [100,94,88].forEach((r,i)=>b+=`<path class="m-sp-coat" d="${mblob(cx,cy,r,r*.615,21+i*4,.04)}"/>`);
+ b+=`<path class="m-sp-cor" d="${mblob(cx,cy,78,48,37,.04)}"/>`
+  +`<path class="m-sp-im" d="${mblob(cx,cy,58,36,43,.035)}"/>`
+  +`<path class="m-sp-core" id="sp-core" d="${mblob(cx,cy,50,31,51,.04)}"/>`
+  +mgrainIn("sp-cg",mblob(cx,cy,50,31,51,.04),cx-50,cy-31,100,62,80,5,"m-gr2",.85);
+ b+=mlead2(cx-24,cy-72,LX,40,["Exosporium","เปลือกนอกหลวม ๆ"])
+  +mlead2(cx+16,cy-58,LX,78,["Protein coat","คล้าย keratin · ซ้อนเป็นแผ่น"])
+  +mlead2(cx+64,cy-32,LX,116,["Cortex","peptidoglycan ที่เชื่อมขวางหลวม"])
+  +mlead2(cx+52,cy+24,LX,154,["Inner membrane","กั้นน้ำออกจาก core"])
+  +mlead2(cx,cy,LX,192,["Core","DNA + Ca²⁺-dipicolinic acid · แทบไม่มีน้ำ"]);
+ b+=mL(cx,cy+96,"ติดอยู่ในภาวะ suspended animation",{c:"bh"});
+
+ /* --- the cycle, drawn as a cycle ---------------------------------- */
+ const vy=318,ax=120,bx=320,ddx=520;
+ b+=`<path class="m-sep" d="M24,252 L616,252"/>`;
+ b+=`<path class="m-body" d="${mrod(ax,vy,66,15,3,.05)}"/>`+mL(ax,vy+34,"Vegetative cell",{c:"s m"});
+ b+=`<path class="m-sp-exo" d="${mblob(bx,vy,34,22,11,.05)}"/>`
+  +`<path class="m-sp-core" d="${mblob(bx,vy,15,10,51,.05)}"/>`+mL(bx,vy+34,"Endospore",{c:"s m"});
+ b+=`<path class="m-body" d="${mrod(ddx,vy,66,15,9,.05)}"/>`+mL(ddx,vy+34,"Vegetative cell",{c:"s m"});
+ b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${ax+40},${vy-12} Q${(ax+bx)/2},${vy-54} ${bx-40},${vy-12}"/>`
+  +mL((ax+bx)/2,vy-54,"Sporulation",{c:"bh"})+mL((ax+bx)/2,vy-38,"6–8 ชั่วโมง · เมื่อขาดสารอาหาร",{c:"s m"});
+ b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${bx+40},${vy-12} Q${(bx+ddx)/2},${vy-54} ${ddx-40},${vy-12}"/>`
+  +mL((bx+ddx)/2,vy-54,"Germination",{c:"bh"})+mL((bx+ddx)/2,vy-38,"ราว 90 นาที · ต้องมีน้ำและ alanine",{c:"s m"});
+ return svg(b,"0 0 640 368")},
+notes:()=>`<h3>Who makes them, and why it matters</h3><ul>
+ <li>มีเฉพาะ gram-positive บางสกุลเท่านั้นที่สร้าง spore — <i>Bacillus</i> และ <i>Clostridium</i> ซึ่งเป็นเชื้อในดิน · <b>gram-negative ไม่สร้าง spore เลย</b> ${S.mu}</li>
+ <li>ตำแหน่งของ spore ในเซลล์เป็นลักษณะประจำชนิด และใช้ช่วยระบุเชื้อได้ ${S.mu}</li>
+ <li>Spore เป็นโครงสร้างหลายชั้นที่ขาดน้ำ บรรจุ<b>สำเนาโครโมโซมครบชุด</b> โปรตีนและ ribosome ขั้นต่ำที่จำเป็น และ <b>calcium ที่จับกับ dipicolinic acid ในความเข้มข้นสูง</b> ${S.mu}</li>
+ <li>ใต้กล้องมันดู<b>หักเหแสง (refractile)</b> คือสว่างกว่าส่วนอื่น ${S.mu}</li></ul>
+ <h3>Why spores defeat disinfection</h3><ul>
+ <li>โครงสร้างนี้ปกป้อง DNA จาก<b>ความร้อนจัด รังสี และเอนไซม์กับสารเคมีเกือบทุกชนิด</b> ${S.mu}</li>
+ <li>Murray ระบุว่า spore ทนทนจน<b>อยู่ได้นานเป็นศตวรรษ</b> และ<b>กำจัดยากด้วยน้ำยาฆ่าเชื้อหรือเงื่อนไขการนึ่งฆ่าเชื้อมาตรฐาน</b> ${S.mu}</li>
+ <li>แต่จุดอ่อนอยู่ที่จังหวะงอก — <b>เมื่อ germination เริ่มแล้วและเปลือกถูกทำลาย spore จะอ่อนแอและถูกฆ่าได้เหมือนเชื้อทั่วไป</b> ${S.mu}</li></ul>
+ <h3>The two halves of the cycle</h3><ul>
+ <li>การขาดสารอาหารจำเพาะ เช่น alanine กระตุ้นคาสเคดของยีนที่เทียบได้กับการ differentiate · spore mRNA ถูกถอดรหัส ส่วน mRNA อื่นถูกปิด และมักมีการขับ antibiotic กับ toxin ออกมาด้วย ${S.mu}</li>
+ <li>หลังจำลองโครโมโซมแล้ว สำเนาหนึ่งถูกห่อด้วยเยื่อหุ้มและ peptidoglycan ของ septum — คือ<b>ใช้โครงสร้างที่ปกติจะแบ่งเซลล์มาห่อ DNA แทน</b> ${S.mu}</li>
+ <li>Germination ใช้เวลาราว 90 นาที: spore ดูดน้ำ บวม สลัดเปลือกทิ้ง แล้วให้เซลล์ปกติหนึ่งเซลล์ที่เหมือนเดิมทุกอย่าง ${S.mu}</li></ul>`});
+
+/* =========================================================
+   c · Growth & metabolism
+   ========================================================= */
+
+SEC.push({id:"growth",k:"c",t:"The growth curve",mm:"Growth curve",leg:[],
+draw:()=>{const X0=76,X1=600,Y0=250,Y1=52;
+ const pts=[[0,.1],[.1,.1],[.17,.13],[.3,.5],[.42,.8],[.5,.9],[.72,.93],[.78,.91],[1,.58]];
+ const P=pts.map(([u,v])=>[X0+u*(X1-X0),Y0-v*(Y0-Y1)]);
+ let b=`<path d="M${X0},${Y1-10} L${X0},${Y0} L${X1},${Y0}" style="fill:none;stroke:var(--sb-ink2);stroke-width:2"/>`
+  +mbL(X1,Y0+22,"Time",{a:"end",c:"s"})+mbL(X0-18,(Y0+Y1)/2,"Cell number",{c:"s",r:-90});
+ b+=`<path d="${sm(P,false)}" style="fill:none;stroke:${MB.pg};stroke-width:3.4"/>`;
+ const bands=[[0,.17,"Lag","ปรับตัวเข้ากับอาหารใหม่ ยังไม่แบ่งตัว"],
+  [.17,.5,"Exponential (log)","แบ่งตัวด้วย doubling time ประจำสายพันธุ์ → 2ⁿ"],
+  [.5,.78,"Stationary","อาหารหมดหรือของเสียคั่ง"],
+  [.78,1,"Decline (death)","บางตัวหยุดแบ่งแต่ยังมีชีวิต และมักไม่ตอบสนองต่อยา"]];
+ bands.forEach(([u0,u1,n],i)=>{const x=X0+u0*(X1-X0),x2=X0+u1*(X1-X0);
+  if(i)b+=`<path d="M${x},${Y1-6} L${x},${Y0}" style="fill:none;stroke:var(--sb-line);stroke-width:1.4;stroke-dasharray:4 4"/>`;
+  b+=mbL((x+x2)/2,Y1-18,n,{c:"bh"})});
+ bands.forEach(([,,n,d],i)=>b+=mbL(40,288+i*22,`${n} — ${d}`,{a:"start",c:"s"}));
+ return svg(b,"0 0 640 378")},
+notes:()=>`<h3>Four phases</h3><ul>
+ <li>เมื่อย้ายเชื้อลงอาหารใหม่ มันต้องใช้เวลาปรับตัวก่อนจะเริ่มแบ่ง ช่วงนี้คือ <b>lag phase</b> ${S.mu}</li>
+ <li>ใน <b>log phase</b> เชื้อแบ่งตัวด้วย doubling time ประจำสายพันธุ์และขึ้นกับสภาพแวดล้อม · จำนวนเพิ่มเป็น <b>2ⁿ</b> เมื่อ n คือจำนวนรอบการแบ่ง ${S.mu}</li>
+ <li>เมื่ออาหารหมดหรือของเสียคั่ง เชื้อหยุดโตและเข้าสู่ <b>stationary phase</b> ตามด้วย <b>death phase</b> ${S.mu}</li>
+ <li>จุดที่มีความหมายทางคลินิก: ใน death phase <b>เชื้อบางส่วนหยุดแบ่งแต่ยังมีชีวิต และมักไม่ตอบสนองต่อยาปฏิชีวนะ</b> ${S.mu}</li></ul>
+ <h3>Two consequences you will meet again</h3><ul>
+ <li>ยาส่วนใหญ่ออกฤทธิ์กับเชื้อที่<b>กำลังแบ่งตัว</b> — เชื้อใน stationary phase หรือใน biofilm จึงรอดได้แม้ระดับยาเพียงพอ ${S.x}</li>
+ <li>ความสามารถรับ DNA แปลกปลอม (competence) <b>เกิดขึ้นช่วงท้ายของ log phase</b> และในบางสปีชีส์ การอดอาหารเองก็กระตุ้นให้รับ DNA เข้ามา ซึ่งอาจเป็น DNA ที่เข้ารหัสวิธีรอดจากภาวะนั้น ${S.mu}</li></ul>`});
+
+SEC.push({id:"require",k:"c",t:"Growth requirements and oxygen",mm:"Requirements",leg:[],
+draw:()=>tbl(["Oxygen class","ความสัมพันธ์กับออกซิเจน","Superoxide dismutase · catalase","ตัวอย่าง"],[
+ ["Obligate aerobe","ต้องมี O₂ จึงเติบโตได้","มี","<i>Mycobacterium tuberculosis</i>"],
+ ["Facultative anaerobe","โตได้ทั้งมีและไม่มี O₂ · เป็นกลุ่มที่พบมากที่สุด","มี","<i>Escherichia coli</i> และ Enterobacterales อื่น"],
+ ["Obligate anaerobe","O₂ เป็นพิษ โตไม่ได้เลย","ไม่มีหรือมีน้อย","<i>Clostridium perfringens</i>"]]),
+notes:()=>`<h3>The minimum list</h3><ul>
+ <li>สิ่งที่ต้องมีขั้นต่ำสำหรับการเติบโตคือ <b>แหล่งคาร์บอน แหล่งไนโตรเจน แหล่งพลังงาน น้ำ และไอออนต่าง ๆ</b> ${S.mu}</li>
+ <li>ธาตุที่จำเป็นได้แก่องค์ประกอบของโปรตีน ไขมันและกรดนิวคลีอิก (C, O, H, N, S, P) ไอออนสำคัญ (K, Na, Mg, Ca, Cl) และองค์ประกอบของเอนไซม์ (Fe, Zn, Mn, Mo, Se, Co, Cu, Ni) ${S.mu}</li>
+ <li><b>เหล็กสำคัญมากจนกลายเป็นสนามรบ</b> — เชื้อหลายชนิดหลั่งโปรตีนชื่อ <b>siderophore</b> ออกมาดึงเหล็กจากสารละลายที่เจือจาง ส่วนร่างกายเราก็<b>กักเหล็กไว้เพื่อลดปริมาณที่เชื้อเอาไปใช้ได้</b> ซึ่งเป็นกลไกป้องกันตัวอย่างหนึ่ง ${S.mu}</li></ul>
+ <h3>Oxygen is a poison for many bacteria</h3><ul>
+ <li>ออกซิเจนจำเป็นสำหรับเรา แต่<b>เป็นพิษต่อแบคทีเรียจำนวนมาก</b> ${S.mu}</li>
+ <li>แบคทีเรียที่ใช้อากาศสร้าง <b>superoxide dismutase</b> และ <b>catalase</b> เพื่อกำจัด hydrogen peroxide และ superoxide radical ${S.mu}</li>
+ <li>สารสองตัวนั้นไม่ได้มาจาก metabolism ของตัวเองอย่างเดียว — มัน<b>เป็นอาวุธที่ neutrophil และ macrophage ใช้ฆ่าเชื้อ</b>ด้วย ซึ่งอธิบายว่าทำไมเอนไซม์ชุดนี้จึงมีความหมายมากกว่าเรื่องการหายใจ ${S.mu}</li></ul>
+ <h3>How demanding a bug is tells you something</h3><ul>
+ <li><i>E. coli</i> บางสายพันธุ์สังเคราะห์กรดอะมิโน นิวคลีโอไทด์ ไขมันและคาร์โบไฮเดรตที่ต้องใช้ได้เองทั้งหมด ${S.mu}</li>
+ <li>ตรงข้ามกับ <i>Treponema pallidum</i> ซึ่งความต้องการซับซ้อนจน<b>ยังไม่มีใครคิดสูตรอาหารเลี้ยงเชื้อที่เลี้ยงมันได้สำเร็จ</b> ${S.mu}</li>
+ <li>เชื้อที่พึ่งสารอนินทรีย์ล้วนเรียก <b>autotroph (lithotroph)</b> ส่วนเชื้อและเซลล์สัตว์ที่ต้องการคาร์บอนอินทรีย์เรียก <b>heterotroph (organotroph)</b> ${S.mu}</li></ul>`});
+
+/* =========================================================
+   d · Genetics & resistance
+   ========================================================= */
+
+SEC.push({id:"genome",k:"d",t:"Chromosome, plasmid and bacteriophage",mm:"Genome",leg:[],
+draw:()=>{let b="";
+ /* chromosome — a single closed loop, folded into the nucleoid */
+ const c1=132,cy1=132;
+ b+=`<path class="m-nuc" d="${mblob(c1,cy1,96,78,13,.08)}"/>`
+  +`<path class="m-dna" d="${mloop(c1,cy1,66,5,.3,240,.82)}"/>`
+  +mL(c1,cy1+118,"Chromosome",{c:"bh"})
+  +mL(c1,cy1+136,"วงเดียว · อยู่ใน nucleoid",{c:"s m"})
+  +mL(c1,cy1+152,"ไม่มี histone",{c:"s m"});
+ /* plasmids — small, supercoiled, carrying a cassette or two */
+ const c2=330,cy2=132;
+ b+=`<path class="m-dna2" d="${mloop(c2,cy2,52,7,.16,160,.92)}"/>`
+  +`<path class="m-dna2" style="stroke-width:1.8;opacity:.6" d="${mloop(c2-34,cy2+44,22,17,.18,110,.9)}"/>`;
+ [[-.35,"amp"],[.3,"tet"]].forEach(([t,g])=>{const a=t*Math.PI*2,
+  x=c2+Math.cos(a)*52,y=cy2+Math.sin(a)*52*.92;
+  b+=`<rect class="m-gene" x="${(x-11).toFixed(1)}" y="${(y-5).toFixed(1)}" width="22" height="10" rx="5" transform="rotate(${(a*180/Math.PI+90).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"/>`
+   +mL(x,y-12,g,{c:"s m"})});
+ b+=mL(c2,cy2+118,"Plasmid",{c:"bh"})
+  +mL(c2,cy2+136,"replicon อิสระ · 1.5–400 kb",{c:"s m"})
+  +mL(c2,cy2+152,"มักพกยีนดื้อยา",{c:"s m"});
+ /* bacteriophage */
+ const c3=524;
+ b+=mphage(c3,86,.92)
+  +mL(c3,cy1+118,"Bacteriophage",{c:"bh"})
+  +mL(c3,cy1+136,"lytic หรือ lysogenic",{c:"s m"})
+  +mL(c3,cy1+152,"พกยีนของมันเข้ามาด้วย",{c:"s m"});
+ /* the point of lysogeny, said once on its own line */
+ b+=`<path class="m-sep" d="M28,312 L612,312"/>`
+  +mL(320,336,"corynephage β พกยีน diphtheria toxin มาให้ C. diphtheriae",{c:"bh"})
+  +mL(320,356,"เชื้อที่ไม่มี phage ตัวนี้จะไม่สร้างสารพิษ — ความรุนแรงมาจากไวรัสของแบคทีเรีย",{c:"s m"});
+ return svg(b,"0 0 640 372")},
+notes:()=>`<h3>Chromosome</h3><ul>
+ <li>โครโมโซมของแบคทีเรียส่วนใหญ่เป็น<b>วงกลมสายคู่วงเดียว</b> ไม่ได้อยู่ในนิวเคลียส แต่อยู่ในบริเวณที่เรียก <b>nucleoid</b> ${S.mu}</li>
+ <li>บางชนิดมีโครโมโซมวงกลมสองหรือสามวง หรือแม้แต่วงเดียวที่เป็นเส้นตรง ${S.mu}</li>
+ <li><b>ไม่มี histone</b> มาช่วยรักษารูปร่างของ DNA และ DNA ก็ไม่สร้าง nucleosome ${S.mu}</li></ul>
+ <h3>Plasmid</h3><ul>
+ <li>พลาสมิดเป็น DNA วงกลมสายคู่ขนาด <b>1500 ถึง 400,000 คู่เบส</b> ที่จำลองตัวเองได้เป็นอิสระจากโครโมโซม จึงเรียกว่า <b>replicon</b> ${S.mu}</li>
+ <li>ปกติไม่จำเป็นต่อการมีชีวิต แต่<b>มักให้ข้อได้เปรียบ</b> และจำนวนมากให้ความดื้อต่อยาปฏิชีวนะหนึ่งชนิดขึ้นไป ${S.mu}</li>
+ <li>พลาสมิดใหญ่ (20–120 kb) อย่าง <b>F (fertility factor)</b> ของ <i>E. coli</i> หรือ resistance transfer factor (80 kb) <b>ย้ายตัวเองไปเซลล์อื่นได้ด้วยการ conjugation</b> เพราะพกยีนที่จำเป็นทั้งหมดรวมถึงยีนสร้าง pilus ${S.mu}</li>
+ <li><i>Borrelia burgdorferi</i> ซึ่งก่อโรค Lyme เป็นข้อยกเว้นที่โดดเด่น — มันมีทั้ง<b>จีโนมและพลาสมิดที่เป็นเส้นตรง</b> ซึ่งไม่เหมือน eubacteria ตัวอื่นเลย ${S.mu}</li></ul>
+ <h3>Bacteriophage</h3><ul>
+ <li>Bacteriophage คือไวรัสของแบคทีเรีย · มันอยู่นอกเซลล์เจ้าบ้านได้และส่งต่อจากเซลล์หนึ่งไปอีกเซลล์หนึ่งได้ ${S.mu}</li>
+ <li>เมื่อเข้าเซลล์แล้วมีสองทาง: เพิ่มจำนวนจนเซลล์แตก (<b>lytic</b>) หรือแทรกเข้าจีโนมของเจ้าบ้านโดยไม่ฆ่ามัน (<b>lysogenic</b>) อย่าง bacteriophage lambda ของ <i>E. coli</i> ${S.mu}</li>
+ <li>เหตุผลที่เรื่องนี้สำคัญทางคลินิก: <b>lysogenic phage บางตัวพกยีนสารพิษมาด้วย</b> — corynephage β พกยีน diphtheria toxin ${S.mu}</li>
+ <li>สัญญาณที่ทำให้ phage เปลี่ยนจาก lysogenic เป็น lytic คือสัญญาณว่า<b>เซลล์เจ้าบ้านกำลังไม่รอด</b> เช่น DNA เสียหายจากรังสี จึงไม่ใช่ที่อาศัยที่ดีอีกต่อไป ${S.mu}</li></ul>`});
+
+SEC.push({id:"transfer",k:"d",t:"Three ways DNA moves between bacteria",mm:"Gene transfer",
+tools:[["tx",[["transformation","Transformation"],["conjugation","Conjugation"],["transduction","Transduction"]]]],leg:[],
+draw:()=>{const m=ST.tx;let b="";
+ const cell=(x,y,lab)=>mbRod(x,y,132,58,mbF(MB.pg,22))+mbL(x,y+5,lab,{c:"bh"});
+ if(m==="transformation"){
+  b+=cell(420,150,"Recipient");
+  for(let i=0;i<7;i++)b+=`<path d="M${120+i*22},${86+(i%3)*14} l16,8" style="fill:none;stroke:${MB.dna};stroke-width:3;stroke-linecap:round"/>`;
+  b+=mbL(180,62,"naked DNA ที่หลุดจากเซลล์ที่ตายแล้ว",{c:"s"})
+   +arr("M280,120 L344,142")
+   +mbL(312,170,"competent cell เท่านั้นที่ดูดเข้าไปได้",{c:"s m"});}
+ if(m==="conjugation"){
+  b+=cell(170,150,"Donor · F⁺")+cell(470,150,"Recipient · F⁻")
+   +`<path d="M236,150 L404,150" style="fill:none;stroke:${MB.om};stroke-width:7"/>`
+   +mbL(320,132,"sex pilus",{c:"bh"})+mbL(320,186,"type IV secretion device",{c:"s m"})
+   +`<circle cx="150" cy="150" r="20" style="fill:none;stroke:${MB.ok};stroke-width:3.4"/>`+mbL(150,196,"F plasmid",{c:"s m"})
+   +arr("M250,164 L392,164");}
+ if(m==="transduction"){
+  b+=cell(470,150,"Recipient")
+   +`<path d="M150,96 L180,114 L180,146 L150,164 L120,146 L120,114Z" style="${mbF(MB.cap,24)}"/>`
+   +`<path d="M150,164 L150,190" style="fill:none;stroke:${MB.cap};stroke-width:4"/>`
+   +mbL(150,214,"phage particle",{c:"s m"})
+   +`<path d="M138,118 l10,6 m-10,6 l10,6" style="fill:none;stroke:${MB.dna};stroke-width:3;stroke-linecap:round"/>`
+   +mbL(150,78,"บรรจุ DNA ของแบคทีเรีย ไม่ใช่ของ phage",{c:"bad"})
+   +arr("M196,140 L396,146");}
+ b+=`<path class="m-sep" d="M24,250 L616,250"/>`
+  +mL(330,276,m==="transformation"?"Transformation":m==="conjugation"?"Conjugation":"Transduction",{c:"bh"})
+  +mL(330,296,m==="transformation"?"ดูด DNA เปลือยจากภายนอกเข้ามาตรง ๆ":m==="conjugation"?"ต่อท่อ pilus แล้วส่ง DNA ข้ามไปอีกเซลล์":"phage พา DNA ของเซลล์เดิมติดไปด้วย",{c:"s m"});
+ return svg(b,"0 0 640 324")},
+notes:()=>`<h3>Transformation</h3><ul>
+ <li>คือการที่เชื้อ<b>ดูดชิ้นส่วน DNA เปลือย</b>เข้ามาแล้วรวมเข้ากับจีโนมของตัวเอง · เป็นกลไกถ่ายทอดยีนกลไกแรกที่ถูกค้นพบ ${S.mu}</li>
+ <li>Griffith สังเกตในปี 1928 ว่าความรุนแรงของ pneumococcus ผูกกับการมี capsule และสารสกัดจากเชื้อที่มี capsule <b>ส่งต่อคุณสมบัตินั้นให้เชื้อที่ไม่มีได้</b> · อีกราวสิบห้าปีต่อมา Avery, MacLeod และ McCarty จึงระบุได้ว่าสารนั้นคือ DNA ${S.mu}</li>
+ <li>เชื้อที่ดูด DNA ได้เองตามธรรมชาติเรียกว่า <b>competent</b> ได้แก่ <i>Haemophilus influenzae</i>, <i>Streptococcus pneumoniae</i>, <i>Bacillus</i> และ <i>Neisseria</i> ${S.mu}</li>
+ <li><b>Competence เกิดช่วงท้ายของ log phase</b> · <i>E. coli</i> และเชื้อส่วนใหญ่ไม่มีความสามารถนี้ตามธรรมชาติ ต้องเหนี่ยวนำด้วยสารเคมีหรือ electroporation ${S.mu}</li></ul>
+ <h3>Conjugation</h3><ul>
+ <li>เป็นการส่ง DNA <b>ทางเดียว</b>จากเซลล์ผู้ให้ไปยังเซลล์ผู้รับผ่าน <b>sex pilus</b> ซึ่งก็คือ type IV secretion device ${S.mu}</li>
+ <li>เพศของเซลล์ถูกกำหนดโดย<b>การมีหรือไม่มีพลาสมิดชนิด conjugative</b> เช่น F plasmid ของ <i>E. coli</i> — พลาสมิดนี้เรียกว่า conjugative เพราะพกยีนที่จำเป็นต่อการย้ายตัวเองครบ รวมถึงยีนสร้าง sex pilus ${S.mu}</li>
+ <li>เกิดได้ในเชื้อ eubacteria เกือบทั้งหมด มักเป็นระหว่างสปีชีส์เดียวกันหรือใกล้เคียง แต่<b>มีรายงานระหว่าง prokaryote กับเซลล์พืช สัตว์ และเชื้อรา</b>ด้วย ${S.mu}</li>
+ <li>ข้อต่อระหว่างคู่ผสมเปราะ การส่งจึงมัก<b>ถูกตัดก่อนจบ</b> ทำให้ได้เฉพาะลำดับโครโมโซมที่อยู่ติดกับ F ที่แทรกไว้ · การจงใจตัดการผสมที่เวลาต่าง ๆ กันนี่เองที่ถูกใช้สร้างแผนที่โครโมโซมของ <i>E. coli</i> โดยบอกตำแหน่งยีนเป็น<b>นาที</b> ${S.mu}</li></ul>
+ <h3>Transduction</h3><ul>
+ <li>เป็นการถ่ายทอดยีนที่<b>มี bacteriophage เป็นตัวพา</b> — phage เก็บชิ้น DNA ของแบคทีเรียใส่เข้าไปในอนุภาคของตัวเองแทนที่จะเป็น DNA ของ phage ${S.mu}</li>
+ <li><b>Specialized transduction</b> คือเมื่อ phage ย้ายยีนเฉพาะกลุ่ม ซึ่งมักเป็นยีนที่อยู่ติดกับตำแหน่งที่มันแทรกเข้าจีโนม ${S.mu}</li>
+ <li><b>Generalized transduction</b> คือเมื่อการบรรจุ DNA เกิดขึ้นแบบสุ่ม เพราะ DNA ของเจ้าบ้านถูกใส่เข้าแคปซิดโดยบังเอิญ ${S.mu}</li>
+ <li>ยิ่งยีนสองยีนอยู่ใกล้กันบนโครโมโซมมากเท่าไร โอกาสที่มันจะถูก<b>ส่งไปด้วยกันในชิ้นเดียว</b>ก็ยิ่งสูง ซึ่งเป็นหลักการที่ใช้ทำแผนที่พันธุกรรม ${S.mu}</li></ul>`});
+
+SEC.push({id:"transposon",k:"d",t:"Transposons and how resistance spreads",mm:"Transposons",leg:[],
+draw:()=>{let b="";
+ const bar=(y,lab)=>`<rect x="40" y="${y}" width="560" height="20" rx="8" style="${mbF(MB.dna,14)}"/>`+mbL(40,y-8,lab,{a:"start",c:"bh"});
+ b+=bar(60,"Insertion sequence · 150–1500 bp");
+ b+=`<rect x="200" y="56" width="26" height="28" rx="5" style="${mbF(MB.ok,40)}"/>`+mbL(213,100,"IR",{c:"s m"})
+  +`<rect x="226" y="56" width="140" height="28" rx="5" style="${mbF(MB.pg,30)}"/>`+mbL(296,76,"transposase",{c:"bh"})
+  +`<rect x="366" y="56" width="26" height="28" rx="5" style="${mbF(MB.ok,40)}"/>`+mbL(379,100,"IR",{c:"s m"});
+ b+=bar(160,"Complex transposon");
+ b+=`<rect x="140" y="156" width="26" height="28" rx="5" style="${mbF(MB.ok,40)}"/>`
+  +`<rect x="166" y="156" width="120" height="28" rx="5" style="${mbF(MB.pg,30)}"/>`+mbL(226,176,"transposase",{c:"bh"})
+  +`<rect x="286" y="156" width="164" height="28" rx="5" style="${mbF(MB.bad,34)}"/>`+mbL(368,176,"resistance gene",{c:"bh"})
+  +`<rect x="450" y="156" width="26" height="28" rx="5" style="${mbF(MB.ok,40)}"/>`;
+ b+=arr("M300,114 L300,150")+mbL(372,136,"ยกตัวเองไปวางที่อื่นได้ ทั้งในจีโนมเดียวกันและข้ามโมเลกุล",{c:"s"});
+ b+=`<path class="m-sep" d="M24,214 L616,214"/>`
+  +mL(24,240,"ที่ย้ายไปได้",{a:"start",c:"bh"})
+  +mL(24,260,"ตำแหน่งหนึ่งในจีโนม → อีกตำแหน่ง · plasmid → plasmid · plasmid → chromosome",{a:"start",c:"s m"})
+  +mL(24,292,"Pathogenicity island",{a:"start",c:"bad"})
+  +mL(24,312,"ยีนก่อโรคทั้งชุดถูกมัดรวมไว้ด้วยกัน ล้อมด้วย mobile element จึงย้ายไปได้ทั้งชุด",{a:"start",c:"s m"});
+ return svg(b,"0 0 640 330")},
+notes:()=>`<h3>Jumping genes</h3><ul>
+ <li>Transposon เป็น<b>ชิ้นส่วนพันธุกรรมที่เคลื่อนที่ได้</b> — ย้าย DNA ภายในเซลล์เดียวกัน จากตำแหน่งหนึ่งไปอีกตำแหน่งหนึ่งในจีโนม หรือข้ามระหว่างโมเลกุล DNA คนละอัน เช่นจากพลาสมิดไปพลาสมิด หรือจากพลาสมิดไปโครโมโซม ${S.mu}</li>
+ <li>พบทั้งใน prokaryote และ eukaryote ${S.mu}</li>
+ <li>ตัวที่ง่ายที่สุดเรียก <b>insertion sequence</b> ยาว 150–1500 คู่เบส มี inverted repeat 15–40 คู่เบสที่ปลายทั้งสอง และมีข้อมูลพันธุกรรมขั้นต่ำที่จำเป็นต่อการย้ายตัวเองเท่านั้น คือ<b>ยีน transposase</b> ${S.mu}</li>
+ <li><b>Complex transposon</b> พกยีนอื่นมาด้วย ซึ่ง<b>มักเป็นยีนดื้อยา</b> ${S.mu}</li>
+ <li>บางครั้ง transposon แทรกลงกลางยีนและทำให้ยีนนั้นใช้ไม่ได้ · ถ้ายีนนั้นเข้ารหัสโปรตีนที่จำเป็น เซลล์จะตาย ${S.mu}</li></ul>
+ <h3>Pathogenicity islands</h3><ul>
+ <li>เชื้อก่อโรคบางชนิดใช้กลไกแบบ transposon เพื่อ<b>ประสานการแสดงออกของปัจจัยก่อโรคทั้งระบบ</b> ${S.mu}</li>
+ <li>ยีนของระบบนั้นถูกมัดรวมไว้เป็น <b>pathogenicity island</b> หรือ virulence island ที่ล้อมด้วย mobile element คล้าย transposon ${S.mu}</li>
+ <li>ผลคือมันย้ายได้ทั้งภายในโครโมโซมและ<b>ย้ายไปยังแบคทีเรียตัวอื่นได้ทั้งชุด</b> — ความรุนแรงจึงแพร่ได้เหมือนความดื้อยา ${S.mu}</li></ul>
+ <h3>Why resistance spreads so fast</h3><ul>
+ <li>Murray เขียนตรง ๆ ว่าแบคทีเรียหลายชนิด โดยเฉพาะชนิดก่อโรค <b>"promiscuous with their DNA"</b> · การแลก DNA ทำให้เกิดสายพันธุ์ใหม่ และเป็นประโยชน์กับผู้รับเป็นพิเศษเมื่อ DNA นั้นเข้ารหัสความดื้อยา ${S.mu}</li>
+ <li>DNA ที่ได้รับมาจะถูกแทรกเข้าโครโมโซม หรือคงอยู่เป็นพลาสมิดหรือ phage และ<b>ส่งต่อให้เซลล์ลูกในฐานะหน่วยที่จำลองตัวเองได้</b> ${S.mu}</li>
+ <li><b>vancomycin-resistant <i>S. aureus</i></b> เป็นตัวอย่างที่ต้องใช้กลไกเหล่านี้หลายอย่างร่วมกันจึงจะเกิดขึ้นได้ ${S.mu}</li></ul>
+ <div class="pearl">ระบบ <b>CRISPR/Cas</b> ของแบคทีเรียมีไว้ป้องกันไม่ให้ phage และพลาสมิดแปลกปลอมแทรกเข้าโครโมโซม — มันเก็บลำดับที่เข้าคู่กับ DNA แปลกปลอมไว้ แล้วให้ Cas ตัดทิ้ง · กลไกนี้เองที่ถูกนำมาใช้เป็นเครื่องมือแก้ไขยีน ${S.mu}</div>`});

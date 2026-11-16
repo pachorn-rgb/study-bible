@@ -1852,6 +1852,88 @@
         "ch": "Murray Ch 14–27",
         "sort": 30
        }
+      },
+      {
+       "id": "micro-basic",
+       "title": "Basic Bacteriology",
+       "subs": [
+        "Basic Bacteriology"
+       ],
+       "src": "Murray 9e Ch 12–13",
+       "href": "micro/micro-basic.html",
+       "thumb": "thumbs/micro-basic.jpg",
+       "desc": "การจำแนกและการตั้งชื่อเชื้อ, รูปร่างและการเรียงตัว, Gram stain ทีละขั้นและกรณีที่มันหลอก, ผนังเซลล์สี่แบบ, prokaryote เทียบ eukaryote, envelope ของ gram-positive / gram-negative / acid-fast, peptidoglycan กับจุดที่ยาออกฤทธิ์, capsule pili flagella และ biofilm, endospore, growth curve, ความต้องการในการเติบโตและออกซิเจน, chromosome พลาสมิดและ bacteriophage, transformation conjugation transduction, transposon และการแพร่ของยีนดื้อยา",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Classifying and naming bacteria",
+         "classify"
+        ],
+        [
+         "Morphology and arrangement",
+         "shapes"
+        ],
+        [
+         "The Gram stain",
+         "gram"
+        ],
+        [
+         "Four wall types, four consequences",
+         "walltypes"
+        ],
+        [
+         "Prokaryote versus eukaryote",
+         "prokaryote"
+        ],
+        [
+         "The bacterial envelope",
+         "envelope"
+        ],
+        [
+         "Peptidoglycan and where the drugs bind",
+         "pg"
+        ],
+        [
+         "Capsule, pili, flagella and biofilm",
+         "surface"
+        ],
+        [
+         "The endospore",
+         "spore"
+        ],
+        [
+         "The growth curve",
+         "growth"
+        ],
+        [
+         "Growth requirements and oxygen",
+         "require"
+        ],
+        [
+         "Chromosome, plasmid and bacteriophage",
+         "genome"
+        ],
+        [
+         "Three ways DNA moves between bacteria",
+         "transfer"
+        ],
+        [
+         "Transposons and how resistance spreads",
+         "transposon"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 12–13",
+        "sort": 5
+       }
       }
      ],
      "checklist": [
