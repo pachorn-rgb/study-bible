@@ -185,9 +185,8 @@ srv.listen(0, async () => {
        so is a token the author spelled out in place, as in "Vein → Artery → Pelvis (VAP)".
        A page renders one group at a time and discards the last, so each topic has to be
        read while it is on screen rather than all at the end.
-       Scoped to the chapters whose content has been through the abbreviation pass; widen
-       DONE as each further chapter is reviewed. */
-    const DONE = /^(renal-|kub-|nephron-|pharm-renal)/;
+       Every chapter is in scope. */
+    const DONE = /./;
     for (const h of hrefs.filter(h => DONE.test(path.basename(h, ".html")))) {
       const pg = await ctx.newPage(); const found = new Map();
       try {

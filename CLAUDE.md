@@ -60,8 +60,7 @@ Thai explains, English names. Aim for **≈45% Thai characters** per atlas file;
 `check.js` fails on any abbreviation in a built page that is in neither list, so a new
 abbreviation means one line in `abbr.js`. An author may also define one in place —
 `Vein → Artery → Pelvis (VAP)` — and the check accepts that.
-The rule currently covers the Renal chapter; widen `DONE` in `check.js` as each further
-chapter is reviewed.
+The rule covers **every chapter**.
 
 ### Pictures
 A `draw()` must earn its space. Decide per topic:
