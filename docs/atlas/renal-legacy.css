@@ -14,20 +14,30 @@
 .em-bg{fill:var(--em-cell)}
 .em-lum{fill:var(--em-lum)}
 .em-rbc{fill:#6d6d6a}
+.em-rbcp{fill:#7d7d7a}
 .em-pmn{fill:#9b9b96;stroke:#555}
 .em-n{fill:#3a3a3a}
 .em-mes{fill:#a3a39e}
 .em-mc{fill:#7b7b77}
-.em-nod{fill:#bdbdb6;stroke:#777}
-.em-dep{fill:var(--em-dep)}
+.em-nod{fill:#9c9c96}
+.em-dep{fill:#1b1b1b}
+.em-gran{fill:#000;opacity:.6}
 .em-fib{stroke:#222;stroke-width:1.4}
-.em-endo{fill:#8f8f8a}
+.em-mfib{stroke:#6f6f6a;stroke-width:1.3}
+.em-endo{fill:#6f6f6b}
 .em-mesx{fill:#7b7b77}
 .em-gbm{fill:var(--em-gbm)}
 .em-gbm-l{fill:none;stroke:var(--em-gbm);stroke-width:3}
+.em-lr{fill:#9a9a94}
+.em-densa{fill:#44443f}
 .em-dense{fill:#0a0a0a}
 .em-lin{fill:#C2410C;opacity:.9}
-.em-pod{fill:#b1b1ac;stroke:#6b6b67}
+.em-pod{fill:#b8b8b2;stroke:#70706b;stroke-width:1.1}
+.em-slit{stroke:#3c3c38;stroke-width:1.6}
+.em-chr{fill:#1e1e1c;opacity:.55}
+.em-grn{fill:#55554f;opacity:.55}
+.em-gr{fill:#000;opacity:.055}
+.em-lead{fill:none;stroke:#1a1a1a;stroke-width:1.2;opacity:.55}
 .em-us{fill:var(--em-us)}
 .dia svg .em-bg~.t,.dia svg .if-bg~.t,.dia svg .lm-bg:not(.lm-p)~.t{fill:#111;stroke:rgba(255,255,255,.85)}
 .dia svg .if-bg~.t{fill:#d7ffe0;stroke:rgba(0,0,0,.9)}
