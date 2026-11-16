@@ -163,13 +163,35 @@ draw:()=>tbl(["Problem","How it behaves in CKD"],[
  ["Potassium","ขับทาง distal (aldosterone) + GI ชดเชย · K สูงเมื่อ RAS inhibitor, MRA, acidosis, hemolysis"],
  ["Type 4 pattern","hyporeninemic hypoaldosteronism (DM), obstruction, sickle cell → K สูงก่อน GFR ลดมาก"],
  ["Metabolic acidosis","ammonia ลด → non-AG ระยะแรก · GFR ต่ำมาก → AG acidosis"]]),
-notes:()=>mc("B9.2.5",1)+`<ul><li>ECF ขยายแบบ isonatric ถ้าดื่มน้ำไม่เกินความสามารถขับ · จำกัดเกลือ · chlorthalidone ใช้ได้แม้ stage 4 ${S.h}</li>
- <li>ยาที่ทำให้ K สูง: RAS inhibitors, spironolactone, amiloride, eplerenone, triamterene, nonsteroidal MRA · <b>gliflozins</b> ช่วยถ่วงสมดุล K ${S.h}</li>
- <li>Acidosis: ยังทำให้ปัสสาวะเป็นกรดได้ แต่สร้าง ammonia น้อย · net acid excretion อาจ &lt;30–40 mmol/วัน ${S.h}</li></ul>`});
+notes:()=>mc("B9.2.5",1)+`<h3>Sodium and water</h3><ul>
+ <li>ECF ขยายแบบ isonatric ถ้าผู้ป่วยดื่มน้ำไม่เกินความสามารถในการขับ — คือ Na⁺ คั่งแต่ระดับ Na⁺ ในเลือดยังปกติ · จำกัดเกลือคือหัวใจของการรักษา · chlorthalidone ยังใช้ได้แม้ stage 4 ${S.h}</li></ul>
+ <h3>Potassium — a treatment dilemma</h3><ul>
+ <li>ยาที่ทำให้ K สูงคือยาเดียวกับที่สั่งเพื่อ<b>ชะลอ CKD และปกป้องหัวใจ</b> — RAS inhibitors และ mineralocorticoid antagonist ทั้งชนิด steroidal และ nonsteroidal · จึงเป็นการชั่งน้ำหนัก ไม่ใช่การเลี่ยง ${S.h}</li>
+ <li>ก่อนจะหยุดยาเหล่านั้น ให้ไล่แหล่ง potassium ที่ซ่อนอยู่ก่อน โดยเฉพาะ<b>เกลือแกงชนิดลดโซเดียม</b>ที่ใช้โพแทสเซียมแทน และอาหารเสริม ${S.h}</li>
+ <li>เครื่องมือที่เหลือ: kaliuretic diuretic ขับ K ทางปัสสาวะ · potassium-binding resin (calcium resonium, sodium polystyrene และตัวใหม่อย่าง patiromer, sodium zirconium cyclosilicate) ขับ K ทางลำไส้ ${S.h}</li>
+ <li><b>Intractable hyperkalemia</b> เป็นข้อบ่งชี้หนึ่งในการเริ่ม dialysis ใน CKD แม้จะพบไม่บ่อย ${S.h}</li></ul>
+ <h3>Acidosis — treat earlier than you think</h3><ul>
+ <li>ไตยังทำปัสสาวะให้เป็นกรดได้ แต่สร้าง ammonia ได้น้อยลง · net acid excretion อาจเหลือ &lt;30–40 mmol/วัน ${S.h}</li>
+ <li>ให้ alkali เมื่อ serum bicarbonate ตกต่ำกว่า <b>20–23 mmol/L</b> เพื่อเลี่ยงภาวะ protein catabolic ที่เกิดได้แม้ acidosis จะไม่รุนแรง ${S.h}</li>
+ <li>มีการศึกษาที่ชี้ว่าการให้ bicarbonate ใน CKD stage 3–5 สัมพันธ์กับการเข้าสู่ dialysis ช้าลง · แต่ต้องนับ<b>ปริมาณโซเดียม</b>ที่มาพร้อมกันด้วยเมื่อผู้ป่วยมี ECF ขยายอยู่แล้ว ${S.h}</li></ul>`});
 HS("322","b","ckd-mbd","CKD–mineral bone disorder",{
 draw:()=>flow([["GFR ↓ → phosphate คั่ง","FGF-23 ขึ้นเร็วมาก (osteocytes)","gl"],["Calcitriol ↓","phosphate + FGF-23 ยับยั้ง 1α-hydroxylase","vn"],["Ca²⁺ ↓ + PTH ↑","secondary hyperparathyroidism · Klotho ↓ → FGF-23 ยับยั้ง PTH ไม่ได้","ar"],["High turnover","osteitis fibrosa cystica","ar"],["Low turnover","adynamic bone disease · vascular calcification, calciphylaxis",""]]),
-notes:()=>`<ul><li>PTH สูง → bone turnover สูง → <b>osteitis fibrosa cystica</b> ${S.h}</li><li><b>Adynamic bone disease</b> (PTH ต่ำ/ปกติ) พบมากขึ้น โดยเฉพาะ DM, ผู้สูงอายุ · เสี่ยงกระดูกหักและ vascular calcification ${S.h}</li>
- <li><b>Calciphylaxis</b>: ภาวะร้ายแรงเกือบเฉพาะในผู้ป่วยไตวายระยะท้าย · หลอดเลือดเล็กมี calcification → ผิวหนังตาย ${S.h}</li><li>FGF-23 สูงเป็นปัจจัยเสี่ยงอิสระของ LVH ${S.h}</li></ul>`});
+notes:()=>`<h3>The chain that starts with phosphate</h3><ul>
+ <li>GFR ตก → ขับ phosphate ได้น้อยลง → <b>phosphate คั่ง</b> ซึ่งเป็นจุดเริ่มของทุกอย่างที่ตามมา ${S.h}</li>
+ <li>Phosphate ที่คั่งกระตุ้นให้ osteocyte สร้าง <b>FGF-23</b> มากขึ้น กระตุ้น PTH และกระตุ้นให้ต่อม parathyroid โตขึ้นด้วย ${S.h}</li>
+ <li>Ionized calcium ลดลงเพราะไตสร้าง <b>calcitriol</b> ได้น้อยลง — ทั้งจาก phosphate ที่คั่งและจาก FGF-23 ที่สูง ซึ่งยังเร่งการสลาย calcitriol อีกทาง ${S.h}</li>
+ <li>Calcitriol ที่ต่ำดัน PTH ขึ้นสองทาง คือผ่าน hypocalcemia และโดยออกฤทธิ์ตรงที่การ transcribe ยีน PTH ${S.h}</li>
+ <li>ปกติ FGF-23 จะช่วยยับยั้ง PTH ได้ แต่ฤทธิ์นั้นต้องพึ่ง <b>Klotho</b> ซึ่งลดลงใน CKD เบรกตัวนี้จึงหายไป ${S.h}</li>
+ <li>วงจรนี้เริ่มเมื่อ GFR ต่ำกว่า 60 mL/min — บางการศึกษาชี้ว่า phosphate คั่งและ FGF-23 ขึ้นมา<b>ก่อน</b>ที่ GFR จะวัดได้ว่าลดลงเสียอีก ${S.h}</li></ul>
+ <h3>Three bone lesions, not one</h3><ul>
+ <li><b>High turnover</b> จาก PTH สูง → osteitis fibrosa cystica ซึ่งเป็นรอยโรคคลาสสิกของ secondary hyperparathyroidism ${S.h}</li>
+ <li><b>Osteomalacia</b> จากฤทธิ์ vitamin D ที่ลดลง ${S.h}</li>
+ <li><b>Adynamic bone disease</b> — turnover ต่ำโดยที่ PTH ต่ำหรือปกติ · พบมากขึ้น โดยเฉพาะในเบาหวานและผู้สูงอายุ · ผู้ป่วยคนเดียวมีหลายแบบผสมกันได้ ${S.h}</li>
+ <li>กระดูกที่ turnover ต่ำอาจรับแคลเซียมที่กินเข้าไปไม่ได้ แคลเซียมจึงไปลงที่อื่นแทน ซึ่งเชื่อมกับ<b>vascular calcification</b> ที่พบใน media ของ coronary artery และลิ้นหัวใจ มากกว่าคนที่ไตปกติหลายเท่าตัว ${S.h}</li>
+ <li><b>Calciphylaxis</b> เกือบพบเฉพาะในผู้ป่วยไตวายระยะท้าย — หลอดเลือดเล็กมี calcification จนผิวหนังตาย · <b>FGF-23</b> ที่สูงเป็นปัจจัยเสี่ยงอิสระของ LVH ${S.h}</li></ul>
+ <h3>Where the drugs act on this chain</h3><ul>
+ <li><b>Tenapanor</b> เป็น sodium–proton inhibitor ที่ลดการดูดซึม phosphate ทางลำไส้ ใช้คุม hyperphosphatemia ได้ ${S.h}</li>
+ <li><b>Calcitriol</b> กด PTH ทั้งโดยตรงและโดยดัน ionized calcium ขึ้น · แต่ทำให้ hypercalcemia หรือ hyperphosphatemia ได้จากการดูดซึมทางลำไส้ที่เพิ่มขึ้น · analogue อย่าง <b>paricalcitol</b> กด PTH โดยทำให้แคลเซียมสูงน้อยกว่า ${S.h}</li></ul>`});
 HS("322","c","ckd-sys","CV, hematologic & other manifestations",{
 draw:()=>tbl(["System","Effect of uraemia"],[
  ["Cardiovascular","สาเหตุตายอันดับ 1 · HT, LVH, accelerated atherosclerosis, pericarditis"],
@@ -260,20 +282,50 @@ draw:()=>tbl(["Type of rejection","Mechanism"],[
  ["T cell–mediated","CD4 ตอบสนอง class II (DR) · CD8 ทำลายผ่าน class I (A, B) · ต้องมี costimulation (CD28–CD80/86)"],
  ["Antibody-mediated","donor-specific Ab ต่อ HLA/non-HLA · C4d ใน peritubular capillaries"],
  ["HLA matching","จำนวน mismatch ที่ A, B, DR ยิ่งมากยิ่ง rejection มาก · HLA อยู่บน chromosome 6"]]),
-notes:()=>`<ul><li>ข้อห้ามทาง immunology ที่สำคัญ: preformed antibodies → <b>hyperacute rejection</b> · คัดด้วย ABO และ cytotoxic crossmatch ${S.h}</li>
- <li>Crossmatch ใช้ donor T cells (มี class I) · ไม่เกี่ยวกับความเสี่ยงของ T cell–mediated rejection ${S.h}</li>
- <li>HLA-identical ก็ rejection ได้จาก non-HLA antigens (เช่น LIMS-1) ${S.h}</li><li>Graft survival 1 ปี: deceased 94%, living 98% · 5 ปี: 76% และ 87% (Table 325-2) ${S.h}</li></ul>`});
+notes:()=>`<h3>Two recognition pathways — unique to transplantation</h3><ul>
+ <li><b>Direct pathway</b>: T cell ของผู้รับมอง MHC ของ donor APC ทั้งโมเลกุลเลย — CD4 จับ class II, CD8 จับ class I แล้วกลายเป็น cytotoxic cell · ทางนี้<b>ไม่ใช่</b>วิธีที่ T cell รู้จัก antigen ตามปกติ ${S.h}</li>
+ <li><b>Indirect pathway</b>: MHC ของ donor ถูกย่อยเป็น peptide แล้วนำเสนอโดย self-APC ของผู้รับ ซึ่งเป็นกระบวนการปกติทางสรีรวิทยา · การปลูกถ่ายจึงเป็นสถานการณ์เดียวที่มี T cell clone สองชุดทำงานพร้อมกัน ${S.h}</li>
+ <li>เมื่อ CD4 helper ถูกกระตุ้นแล้ว มันช่วยทั้ง macrophage, cytotoxic T cell และ B cell ผ่าน cytokine และการสัมผัสโดยตรง ${S.h}</li></ul>
+ <h3>Diagnosis and treatment</h3><ul>
+ <li><b>Allograft biopsy</b> เป็น gold standard ของทั้ง T cell–mediated และ antibody-mediated rejection · TCMR วินิจฉัยจาก immune cell แทรกใน interstitium, tubule หรือหลอดเลือด ตาม <b>Banff classification</b> ${S.h}</li>
+ <li>รักษา TCMR ด้วย methylprednisolone ขนาดสูง 500–1000 mg IV วันละครั้ง 3 วัน · ถ้าไม่ตอบสนองคือข้อบ่งชี้ให้ใช้ antibody therapy ซึ่งมักเป็น ATG ${S.h}</li>
+ <li><b>AMR</b>: endothelial injury + C4d ใน peritubular capillaries ร่วมกับ donor-specific antibody ในเลือด · การรักษายังยาก ใช้ plasmapheresis, IVIG, rituximab (B cell) และ bortezomib (plasma cell) ${S.h}</li>
+ <li>ตัวช่วยที่ไม่ต้อง biopsy: donor-derived cell-free DNA, urine chemokine เช่น CXCL9 และ urine exosome ${S.h}</li></ul>
+ <h3>Screening before transplant</h3><ul>
+ <li>Preformed antibodies → <b>hyperacute rejection</b> · คัดกรองด้วย ABO matching และ cytotoxic crossmatch ${S.h}</li>
+ <li>Crossmatch ใช้ donor T cells (มี class I) · ไม่ได้บอกความเสี่ยงของ T cell–mediated rejection ${S.h}</li>
+ <li>HLA-identical ก็ยัง rejection ได้จาก non-HLA antigens เช่น LIMS-1 ${S.h}</li>
+ <li>Graft survival 1 ปี: deceased 94%, living 98% · 5 ปี: 76% และ 87% (Table 325-2) ${S.h}</li></ul>`});
 HS("325","a","tx-drug","Maintenance immunosuppression",{
 draw:()=>{const R=[["Glucocorticoids","ยับยั้ง transcription ของ IL-1, 2, 3, 6, TNF","HT, glucose, lipid, osteoporosis"],["Cyclosporine","cyclophilin + calcineurin → IL-2 ↓","nephrotoxic, HT, hirsutism, gum hyperplasia"],["Tacrolimus","FKBP-12 + calcineurin","คล้าย CsA · DM มากกว่า · ไม่มี hirsutism"],["Azathioprine","ยับยั้ง purine synthesis","marrow suppression"],["Mycophenolate","ยับยั้ง IMPDH","GI, marrow"],["Sirolimus/everolimus","FKBP-12 → mTOR","lipid, proteinuria, wound healing"],["Belatacept","จับ CD80/86 กัน CD28","PTLD (EBV−)"]];
  let b="";R.forEach(([n,m,s],i)=>{const y=12+i*52;b+=`<rect class="box ${i===1||i===2?"vn":""}" x="10" y="${y}" width="620" height="46" rx="10"/>`+T(22,y+19,n,{a:"start",c:"bh"})+T(22,y+37,m,{a:"start",c:"s"})+T(620,y+28,s,{a:"end",c:"s m"})});return svg(b,"0 0 640 380")},
-notes:()=>`<h3>Table 325-3</h3><ul><li>Calcineurin inhibitors (cyclosporine, tacrolimus) เป็นแกนหลัก · ระวัง <b>CNI nephrotoxicity</b> ${S.h}</li>
- <li>หยุดหรือหลีกเลี่ยง steroid เร็วเพื่อลดผลต่อกระดูก ผิว และ glucose ${S.h}</li><li>mTOR inhibitors ใช้มากขึ้นในผู้ที่เป็นมะเร็งผิวหนังซ้ำ ${S.h}</li></ul>`});
+notes:()=>`<h3>The calcineurin inhibitors</h3><ul>
+ <li>ทั้งคู่ทำงานแบบเดียวกันคือสร้าง trimolecular complex แล้วบล็อก calcineurin จนสร้าง cytokine โดยเฉพาะ IL-2 ไม่ได้ — ต่างกันที่โปรตีนที่จับ: cyclosporine จับ <b>cyclophilin</b> ส่วน tacrolimus จับ <b>FKBP-12</b> ${S.h}</li>
+ <li>ทั้งคู่ยัง<b>กระตุ้นการสร้าง TGF-β</b> ด้วย ซึ่งเป็นเหตุผลที่ CNI ไม่ได้กดภูมิอย่างเดียวแต่ทิ้ง fibrosis ไว้ในไตด้วย ${S.h}</li>
+ <li>ผลข้างเคียงต่างกันพอให้เลือกยา: cyclosporine ให้ <b>hirsutism และเหงือกบวม</b> ซึ่ง tacrolimus แทบไม่ให้ · แต่ tacrolimus ทำให้<b>เป็นเบาหวาน</b>มากกว่า ${S.h}</li>
+ <li>Cyclosporine ดูดซึมไม่แน่นอน รูปแบบ microemulsion คาดเดาระดับยาได้ดีกว่า · tacrolimus เป็น macrolide ที่ดูดซึมดี ${S.h}</li></ul>
+ <h3>The rest of the toolbox</h3><ul>
+ <li><b>Sirolimus/everolimus</b> จับ FKBP-12 เหมือน tacrolimus แต่ไปบล็อก p70 S6 kinase ในเส้นทางหลัง IL-2 receptor จึงหยุดการแบ่งตัวแทนที่จะหยุดการสร้าง cytokine ${S.h}</li>
+ <li><b>Azathioprine</b> เป็น prodrug ของ mercaptopurine ยับยั้ง purine synthesis · กดไขกระดูกโดยกระทบ WBC &gt; RBC &gt; platelet ${S.h}</li>
+ <li><b>Belatacept</b> จับ CD80/CD86 กัน CD28 คือตัดสัญญาณ costimulation โดยตรง · ราคาที่ต้องจ่ายคือ PTLD ${S.h}</li>
+ <li>Steroid ใช้ทั้ง induction และ maintenance — methylprednisolone 250–500 mg ให้ทันทีก่อนหรือขณะผ่าตัด แล้วค่อย taper ${S.h}</li>
+ <li>แนวโน้มปัจจุบันคือเลี่ยง steroid ให้เร็วเพื่อลดผลต่อกระดูก ผิวหนังและน้ำตาล · และใช้ mTOR inhibitor มากขึ้นในผู้ที่เป็นมะเร็งผิวหนังซ้ำ ${S.h}</li></ul>`});
 HS("325","b","tx-inf","Infections & malignancy after transplant",{tools:[["txt",[["early","<1 เดือน"],["mid","1–6 เดือน"],["late",">6 เดือน"]]]],
 draw(){const P={early:["Wound infection","Herpesvirus","Oral candidiasis","UTI"],mid:["Pneumocystis","CMV","Legionella","Listeria","Hepatitis B","Hepatitis C"],late:["Aspergillus","Nocardia","BK virus (polyoma)","Herpes zoster","Hepatitis B","Hepatitis C"]};
  let b="";["early","mid","late"].forEach((k,i)=>{const on=ST.txt===k,x=14+i*208;b+=`<rect class="box ${on?"ar":""}" x="${x}" y="14" width="196" height="40" rx="12"/>`+T(x+98,40,["Peritransplant <1 เดือน","Early 1–6 เดือน","Late >6 เดือน"][i],{c:"bh"});
   P[k].forEach((n,j)=>b+=`<rect class="box" x="${x}" y="${64+j*40}" width="196" height="34" rx="10" style="opacity:${on?1:.45}"/>`+T(x+98,86+j*40,n,{c:"s"}))});
  b+=`<rect class="gsum" x="0" y="320" width="640" height="60" rx="12"/>`+T(16,344,"Malignancy: มะเร็งผิวหนังและริมฝีปากพบบ่อยที่สุด",{a:"start",c:"b"})+T(16,366,"PTLD: เกิดช่วงแรก (<1 ปี) หรือหลัง 7–10 ปี · ส่วนใหญ่สัมพันธ์กับ EBV",{a:"start",c:"s"});return svg(b,"0 0 640 384")},
-notes:()=>`<h3>Table 325-4</h3><ul><li>&lt;1 เดือน: wound, herpesvirus, oral candida, UTI · 1–6 เดือน: <b>PCP, CMV</b>, Legionella, Listeria, HBV, HCV · &gt;6 เดือน: Aspergillus, Nocardia, <b>BK virus</b>, zoster ${S.h}</li></ul>
+notes:()=>`<h3>Why the timetable has three windows</h3><ul>
+ <li>&lt;1 เดือน: wound, herpesvirus, oral candida, UTI · 1–6 เดือน: <b>PCP, CMV</b>, Legionella, Listeria, HBV, HCV · &gt;6 เดือน: Aspergillus, Nocardia, <b>BK virus</b>, zoster ${S.h}</li></ul>
+ <h3>CMV</h3><ul>
+ <li>ผู้รับที่ seronegative แต่ได้ไตจาก donor ที่ seropositive เสี่ยงสูงสุด ${S.h}</li>
+ <li>อาการมีได้ตั้งแต่ viremia ที่ไม่มีอาการ ไปจนถึง systemic syndrome (ไข้ leukopenia) และโรคเฉพาะอวัยวะ — hepatitis, gastroenteritis, retinopathy ${S.h}</li>
+ <li>วินิจฉัยด้วย plasma viral load ร่วมกับ IgM ต่อ CMV ที่ขึ้น · <b>valganciclovir</b> ใช้ได้ทั้งป้องกันและรักษา · HSV ใช้ acyclovir ${S.h}</li></ul>
+ <h3>BK virus — a dose problem, not a drug problem</h3><ul>
+ <li>BK เป็น polyomavirus ที่หลบอยู่เงียบ ๆ ในไตและ urothelium แล้วตื่นขึ้นเมื่อถูกกดภูมิ · ถ้าปล่อยไว้ จะเกิด fibrosis ลุกลามและเสียไตภายใน 1 ปีในผู้ป่วยส่วนใหญ่ ${S.h}</li>
+ <li>แต่เพราะความเสี่ยงผูกกับ<b>ระดับการกดภูมิโดยรวม</b> การจัดการหลักจึงคือตรวจ BK viral load สม่ำเสมอแล้ว<b>ลดยากดภูมิอย่างพอเหมาะ</b> ไม่ใช่เพิ่มยาต้านไวรัส ${S.h}</li>
+ <li>Biopsy ช่วยดู interstitial nephritis, tubular cytopathic change และ viral antigen ในไตที่ปลูกถ่าย ${S.h}</li>
+ <li>รายที่ยาก มีผู้ลอง leflunomide, cidofovir, quinolone (ออกฤทธิ์ต่อ polyoma helicase) และ IVIG แต่ผลไม่สม่ำเสมอ ${S.h}</li></ul>
  <h3>Malignancy</h3><ul><li>มะเร็งผิวหนังและริมฝีปากพบบ่อยที่สุด · ต้องเฝ้าระวังและกัน UV ${S.h}</li><li><b>PTLD</b>: ส่วนใหญ่ EBV · พยากรณ์แย่ ${S.h}</li></ul>`});
 
 /* ---------- 326 · Glomerular ---------- */
