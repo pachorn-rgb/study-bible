@@ -1,0 +1,374 @@
+{
+  "source": "Student Guide · 204-221 Principles of Medical Sciences 2 · Faculty of Medicine, Siam University · Academic Year 2025 · 4(3-2-7)",
+  "method": "Transcribed by hand from the student guide PDF (57 pages). The lesson-plan section (printed pages 10-54) gives one page per class with its Lesson Learning Outcomes, Key concepts and Learning resources; every field below is copied from those pages, not inferred. Immunology sessions are listed for completeness but belong to the immuno chapter, not micro.",
+  "caveat": "This is the course the Microbiology chapter is scoped to. It fixes both the depth (general knowledge, moderately deep) and the organism list. It does NOT cover the per-system infection classes taught inside the organ-system courses (see lesson-plans.json) - those feed the organ chapters and the Microbiology 'Systems' sub.",
+  "assessment": {
+    "formative": "T/F questions or short answer",
+    "summative": "MCQ; laboratory sessions use spot diagnosis, spot test and essay"
+  },
+  "books": {
+    "primary": "Murray PM, Rosenthal KS, Pfaller MA. Medical Microbiology. 9th ed. Elsevier Saunders; 2021. 872 p.",
+    "secondary": [
+      "Ryan KJ, Ray CG, Sherris JC. Sherris Medical Microbiology. 7th ed. McGraw Hill Medical; 2018.",
+      "Sherman A. Medical Parasitology. Ed-Tech press; 2018.",
+      "Ghosh S. Paniker's Textbook of Medical Parasitology. 9th ed. Jaypee; 2021.",
+      "John DT, William AP. Markell and Voge's Medical Parasitology. WB Saunders; 1999.",
+      "Mullen GR, Durden LA. Medical and Veterinary Entomology. 3rd ed. Elsevier; 2019.",
+      "Radomyos P. Atlas of Medical Parasitology. Parbpim; 2016.",
+      "Jeffrey & Leach. Atlas of Medical Helminthology and Protozoology. London; 2001."
+    ]
+  },
+  "immunology_sessions_not_in_this_chapter": [
+    "Innate immune response",
+    "Adaptive immune response",
+    "Immune regulation and Immune disorders",
+    "Clinical Immunology",
+    "Basic and Application of Immunology to Clinical Immunology"
+  ],
+  "sessions": [
+    {
+      "t": "Basic Bacteriology",
+      "sub": "Basic Bacteriology",
+      "lo": [
+        "explain the classification methods of bacteria",
+        "use bacterial nomenclature in any context correctly",
+        "criticize bacterial structures and roles in infection",
+        "explain basic physiology of bacteria and mechanism of infection",
+        "explain bacterial genetic, genetic regulation and dissemination of bacterial genetic involving in resistance gene spreading"
+      ],
+      "key": [
+        "Bacterial cell wall component and bacterial morphology",
+        "Gram staining and other staining and different component of Gram-positive, Gram-negative and acid-fast bacteria",
+        "Bacteria nomenclature",
+        "Virulence factors and infectious diseases",
+        "Growth requirement",
+        "Environmental reservoir",
+        "Bacterial growth",
+        "Bacterial chromosome and plasmid",
+        "Genetic regulation: replication, transcription and translation",
+        "Resistance gene"
+      ],
+      "pages": "Murray 9e p.114-126 (classification, structure and replication) · p.127-141 (metabolism and genetics)"
+    },
+    {
+      "t": "Gram-positive cocci bacteria",
+      "sub": "Clinical Bacteriology",
+      "lo": [
+        "criticize virulence factor and its role in infectious disease",
+        "explain mechanism of infection of important Gram-positive cocci bacteria",
+        "explain bacterial dissemination and infectious disease spreading of Gram-positive cocci bacteria",
+        "explain general laboratory protocol for cultivation and identification of Gram-positive cocci bacteria"
+      ],
+      "key": [
+        "Staphylococci: Staphylococcus aureus and MRSA; coagulase-negative staphylococci",
+        "S. aureus virulence factors: exotoxins, enzymes",
+        "S. aureus common infectious diseases: skin and soft tissue infection, toxic shock syndrome",
+        "Important laboratory identification: coagulase test",
+        "Streptococci and related bacteria: Streptococcus pyogenes (group A), Streptococcus agalactiae (group B), Streptococcus pneumoniae, viridans Streptococcus, Enterococcus (group D)",
+        "Group A streptococcus virulence factors: M protein, exotoxins, enzymes",
+        "Common infectious diseases: sore throat, skin and soft tissue infection, nosocomial infection"
+      ]
+    },
+    {
+      "t": "Gram-positive bacilli bacteria",
+      "sub": "Clinical Bacteriology",
+      "lo": [
+        "criticize virulence factor and its role in infectious disease",
+        "explain mechanism of infection of important Gram-positive bacilli bacteria",
+        "explain bacterial dissemination and infectious disease spreading of Gram-positive bacilli bacteria",
+        "explain general laboratory protocol for cultivation and identification of Gram-positive bacilli bacteria"
+      ],
+      "key": [
+        "Bacillus: B. cereus, B. anthracis - virulence factors: exotoxins; diseases: food-borne disease, anthrax",
+        "Listeria monocytogenes - diseases: food-borne disease, meningitis",
+        "Corynebacterium: C. diphtheriae, diphtheroids - virulence factors: exotoxins; disease: diphtheria",
+        "Clostridium: C. tetani, C. botulinum, C. difficile - virulence factors: exotoxins; diseases: tetanus, botulism, antibiotic-associated diarrhea"
+      ]
+    },
+    {
+      "t": "Gram-negative cocci bacteria",
+      "sub": "Clinical Bacteriology",
+      "lo": [
+        "criticize virulence factor and its role in infectious disease",
+        "explain mechanism of infection of important Gram-negative cocci bacteria",
+        "explain bacterial dissemination and infectious disease spreading of Gram-negative cocci bacteria",
+        "explain general laboratory protocol for cultivation and identification of Gram-negative cocci bacteria"
+      ],
+      "key": [
+        "Neisseria: N. meningitidis, N. gonorrhoeae",
+        "Virulence factors: capsule",
+        "Common infectious diseases: meningitis, gonorrhea"
+      ]
+    },
+    {
+      "t": "Gram-negative bacilli bacteria",
+      "sub": "Clinical Bacteriology",
+      "lo": [
+        "criticize virulence factor and its role in infectious disease",
+        "explain mechanism of infection of important Gram-negative bacteria",
+        "explain bacterial dissemination and infectious disease spreading of Gram-negative bacilli bacteria",
+        "explain general laboratory protocol for cultivation and identification of Gram-negative bacilli bacteria"
+      ],
+      "key": [
+        "Enterobacterales",
+        "Non-fermentative bacteria: Pseudomonas aeruginosa, Acinetobacter baumannii, Burkholderia pseudomallei",
+        "Others: Helicobacter & Campylobacter (gull wing-shape), Haemophilus (coccobacilli), Bordetella pertussis, Legionella, Francisella & Brucella",
+        "Virulence factors - exotoxins: Escherichia coli, Shigella, Yersinia, Vibrio, Bordetella; enzymes: Helicobacter; capsule: Klebsiella pneumoniae",
+        "Common infectious diseases: food-borne disease, gastric ulcer (Helicobacter), whooping cough (Bordetella pertussis), melioidosis (Burkholderia pseudomallei), nosocomial infection"
+      ]
+    },
+    {
+      "t": "Mycobacteria, Spirochete, and Miscellaneous bacteria",
+      "sub": "Clinical Bacteriology",
+      "lo": [
+        "criticize virulence factor and its role in infectious disease",
+        "explain mechanism of infection of important Mycobacteria, Spirochete, and Miscellaneous bacteria",
+        "explain bacterial dissemination and infectious disease spreading of Mycobacteria, Spirochete, and Miscellaneous bacteria",
+        "explain general laboratory protocol for cultivation and identification of Mycobacteria, Spirochete, and Miscellaneous bacteria"
+      ],
+      "key": [
+        "Mycobacteria: Mycobacterium tuberculosis; non-tuberculous mycobacteria; disease: tuberculosis",
+        "Spirochetes: Treponema pallidum (syphilis), Borrelia (zoonosis), Leptospira (leptospirosis)",
+        "Rickettsia: zoonosis",
+        "Chlamydia trachomatis: sexually transmitted disease",
+        "Mycoplasma & Ureaplasma: atypical pneumonia (Mycoplasma pneumoniae)",
+        "Anaerobic bacteria"
+      ]
+    },
+    {
+      "t": "Laboratory of bacteria and bacterial infection I, II and III",
+      "sub": "Clinical Bacteriology",
+      "lo": [
+        "perform basic laboratory technique for bacterial cultivation",
+        "explain bacterial colonies' characteristic on solid culture media",
+        "observe bacterial growth characteristic on selective media and presume bacterial group rationally",
+        "characterize bacteria under microscope based on Gram staining and shape",
+        "describe general process for bacterial cultivation and identification",
+        "explain basic specimen collection and processing"
+      ],
+      "key": [
+        "Microscopic examination for bacteria: Gram staining, colony observation",
+        "General laboratory process: specimen collection and transportation, bacterial cultivation using culture media, biochemical identification",
+        "Antimicrobial susceptibility testing: principle and general protocol; susceptibility interpretation: resistant, intermediate and susceptible"
+      ],
+      "pages": "Murray 9e p.17-29 (laboratory diagnosis of bacterial diseases)",
+      "assessment": "Spot diagnosis"
+    },
+    {
+      "t": "Introduction to medical virology",
+      "sub": "Virology",
+      "lo": [
+        "describe characteristics of viruses (biology, viral structure, viral replication)",
+        "explain virus classification (DNA virus, RNA virus, Prion, bacteriophage)",
+        "describe mechanism of virus infection (route of infection, target tissue, cytopathogenesis, host-virus interaction)",
+        "describe viral genetic and viral vector for therapy",
+        "describe the principle basic laboratory identification methods"
+      ]
+    },
+    {
+      "t": "Human DNA virus",
+      "sub": "Virology",
+      "lo": [
+        "classify DNA viruses and their important members",
+        "describe characteristics and mechanism of infection of each DNA virus",
+        "describe epidemiology of the viruses"
+      ],
+      "key": [
+        "Poxviridae: smallpox virus, vaccinia virus, monkeypox, canarypox, molluscum contagiosum",
+        "Herpesviridae: herpes simplex virus types 1 and 2, varicella-zoster virus, Epstein-Barr virus, cytomegalovirus, human herpesviruses 6, 7 and 8",
+        "Adenoviridae: adenovirus",
+        "Papillomaviridae: papillomavirus",
+        "Polyomaviridae: JC virus, BK virus, SV40",
+        "Parvoviridae: parvovirus B19, adeno-associated virus",
+        "Hepadnaviridae: hepatitis B virus"
+      ]
+    },
+    {
+      "t": "Human RNA virus",
+      "sub": "Virology",
+      "lo": [
+        "classify RNA viruses and their important members",
+        "describe characteristics and mechanism of infection of each RNA virus",
+        "describe epidemiology of the viruses",
+        "describe mosquito-borne viruses"
+      ],
+      "key": [
+        "Paramyxoviridae: parainfluenza virus, measles virus, mumps virus, respiratory syncytial virus",
+        "Orthomyxoviridae: influenza virus types A, B, C",
+        "Coronaviridae: coronavirus, SARS virus, MERS virus",
+        "Rhabdoviridae: rabies virus",
+        "Bunyaviridae: hemorrhagic fever virus, hantavirus",
+        "Retroviridae: human T-cell leukemia virus types I and II, HIV, animal oncoviruses",
+        "Reoviridae: rotavirus",
+        "Togaviridae: rubella virus, chikungunya virus",
+        "Flaviviridae: yellow fever virus, dengue virus, St. Louis encephalitis virus, West Nile virus, hepatitis C virus",
+        "Caliciviridae: Norwalk virus, calicivirus",
+        "Picornaviridae: rhinoviruses, poliovirus, echoviruses, parechovirus, coxsackievirus, hepatitis A virus",
+        "Hepeviridae: hepatitis E virus",
+        "Astroviridae: astrovirus"
+      ]
+    },
+    {
+      "t": "Laboratory demonstration of viral detection and application",
+      "sub": "Virology",
+      "lo": [
+        "explain the basic principle of laboratory identification methods",
+        "understand the suitable methods for specimen collection and transport",
+        "interpret laboratory result for identification"
+      ],
+      "assessment": "Essay and spot test"
+    },
+    {
+      "t": "Introduction to mycology and Yeast",
+      "sub": "Mycology",
+      "lo": [
+        "describe biology of fungi (fungal classification, structure and reproduction)",
+        "explain the classification of human mycoses (superficial, cutaneous and subcutaneous mycoses; the endemic mycoses; the opportunistic mycoses)",
+        "describe the mechanism of fungal infection",
+        "explain the characteristic of each medically important yeast"
+      ]
+    },
+    {
+      "t": "Mold and miscellaneous",
+      "sub": "Mycology",
+      "lo": [
+        "describe the morphological characteristics of medically important molds and dimorphic fungi",
+        "explain the characteristic of miscellaneous fungi and infection",
+        "describe clinically significant mycotoxins and mycotoxicoses",
+        "describe the mode of action of antifungals"
+      ]
+    },
+    {
+      "t": "Laboratory demonstration of Fungi and fungal infections",
+      "sub": "Mycology",
+      "lo": [
+        "explain direct examination method for fungal infection",
+        "explain the basic principle of laboratory identification methods",
+        "understand the suitable methods for specimen collection and transport"
+      ],
+      "assessment": "Essay and spot test"
+    },
+    {
+      "t": "Medical Entomology",
+      "sub": "Parasitology",
+      "lo": [
+        "describe general concept of Medical Entomology",
+        "explain the effect of arthropod toxin and venom",
+        "explain epidemiology of medically important arthropods and vector-borne diseases",
+        "demonstrate their characteristics, life cycle and mode of transmission of arthropods such as tick, mite, lice, flea, mosquitoes, flies, bugs, ants, wasp, bee, crustacean etc.",
+        "state and list the appropriate specimen and identification of the arthropods"
+      ]
+    },
+    {
+      "t": "Introduction to Medical Protozoology and intestinal protozoa and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "state the general characteristics of protozoa",
+        "correctly use terms and explain the morphology of each stage and reproduction of human protozoa",
+        "explain classification of human protozoa",
+        "demonstrate graphically their characteristics, life cycle and mode of transmission of common intestinal protozoa",
+        "describe the distribution and epidemiology of common intestinal protozoa",
+        "discuss the pathology and pathogenesis of common intestinal protozoa",
+        "state and list the appropriate specimen and laboratory diagnostic method of the infection of common intestinal protozoa"
+      ]
+    },
+    {
+      "t": "Laboratory demonstration of Intestinal protozoa and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "have an appreciation of the general characteristics of common intestinal protozoa such as Entamoeba histolytica, E. coli, Giardia duodenalis, Balantidium coli, Cryptosporidium, Cyclospora, Cystoisospora belli",
+        "identify the common intestinal protozoa from permanent stain slides (stool and culture)"
+      ]
+    },
+    {
+      "t": "Blood and tissue protozoa and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "state the general characteristics of blood and tissue protozoa",
+        "describe the distribution and epidemiology of blood and tissue protozoa",
+        "demonstrate graphically life cycle and mode of transmission of blood and tissue protozoa",
+        "discuss the pathology and pathogenesis of blood and tissue protozoa",
+        "state and list the appropriate specimen and laboratory diagnostic method of the infection"
+      ]
+    },
+    {
+      "t": "Laboratory demonstration of blood and tissue protozoa and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "have an appreciation of the general characteristics of blood and tissue protozoa such as Plasmodium spp., Toxoplasma gondii, Leishmania, Trypanosoma, Trichomonas vaginalis and free-living amoeba",
+        "identify the common blood and tissue protozoa from permanent stain slides"
+      ]
+    },
+    {
+      "t": "Food borne nematodes and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "describe the classification of parasites causing diseases in man",
+        "describe the general structures and classification of helminthes causing diseases in man",
+        "list and write corrected scientific names and diseases caused by nematodes transmitted by food",
+        "describe the morphology of these nematodes and natural habitat of the infection",
+        "describe their life cycle and mode of transmission",
+        "describe the diagnosis of the infection",
+        "describe the distribution and epidemiology"
+      ]
+    },
+    {
+      "t": "Food borne cestodes and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "list and write corrected scientific names and diseases caused by cestodes transmitted by food",
+        "describe the morphology of these cestodes and natural habitat of the infection",
+        "describe their life cycle and mode of transmission",
+        "describe the diagnosis of the infection",
+        "describe the distribution and epidemiology"
+      ]
+    },
+    {
+      "t": "Food borne trematodes and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "list and write corrected scientific names and diseases caused by trematodes transmitted by food",
+        "describe the morphology of these trematodes and natural habitat of the infection",
+        "describe their life cycle and mode of transmission",
+        "describe the diagnosis of the infection",
+        "describe the distribution and epidemiology"
+      ]
+    },
+    {
+      "t": "Fecal borne helminthes and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "list and write corrected scientific names and diseases caused by helminthes transmitted by contamination with fecal materials",
+        "describe the morphology of these helminthes and natural habitat of the infection",
+        "describe their life cycle and mode of transmission",
+        "describe the diagnosis of the infection",
+        "describe the distribution and epidemiology"
+      ]
+    },
+    {
+      "t": "Snail and Arthropod borne helminthes and diseases",
+      "sub": "Parasitology",
+      "lo": [
+        "list and write corrected scientific names and diseases caused by helminthes transmitted by snails and arthropods",
+        "describe the morphology of these helminthes and natural habitat of the infection",
+        "describe their life cycle and mode of transmission",
+        "describe the diagnosis of the infection",
+        "describe the distribution and epidemiology"
+      ]
+    },
+    {
+      "t": "Laboratory demonstration: Helminthology I and II",
+      "sub": "Parasitology",
+      "lo": [
+        "describe structures of parasites",
+        "recognize the transmission host",
+        "describe each diagnosis stage",
+        "perform the correct diagnosis of the infection"
+      ],
+      "key": [
+        "Helminthology I: food borne nematodes and cestodes",
+        "Helminthology II: food borne trematodes, fecal borne helminthes, snail and arthropod borne helminthes"
+      ]
+    }
+  ]
+}

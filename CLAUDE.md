@@ -25,6 +25,9 @@ Topic headings follow **First Aid for the USMLE Step 1**, with clinical topics a
 - Physiology: Guyton & Hall + Boron
 - Pathology: Robbins
 - Pharmacology: Katzung + Pharmacotherapy (Principles & Practice)
+- Microbiology & Parasitology: Murray's Medical Microbiology, with Sherris as a second
+  bacteriology source and Paniker / Markell & Voge for parasitology; Harr for laboratory
+  diagnosis. Guideline-dependent statements are flagged and cite IDSA, CLSI or EUCAST.
 - Every discipline: Harrison as a supplementary clinical source (badge H)
 The user will announce changes to this list.
 

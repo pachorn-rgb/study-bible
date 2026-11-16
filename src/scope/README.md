@@ -4,6 +4,25 @@ Two machine-readable files that say what this app is supposed to cover. They are
 reference data for planning and auditing a chapter — nothing here is shipped to
 `docs/` and nothing here is read at build time.
 
+## `pms2-204-221.json`
+
+The student guide for **204-221 Principles of Medical Sciences 2** (Siam University,
+4(3-2-7)) — the course that actually teaches immunology, microbiology and parasitology.
+This is what the Microbiology chapter is scoped to: it fixes the depth (general
+knowledge, moderately deep) and the organism list, session by session, with each
+session's Lesson Learning Outcomes and Key concepts copied from the guide.
+
+The course's five immunology sessions are listed under
+`immunology_sessions_not_in_this_chapter` — they belong to the `immuno` chapter.
+
+It does **not** cover the per-system infection classes taught inside the organ-system
+courses ("Microbiology of skin infection", "CNS infection", "Laboratory diagnosis for
+respiratory infection" …). Those are in `lesson-plans.json` and they feed the organ
+chapters and the Microbiology `Systems` sub.
+
+Transcribed by hand from the PDF, so unlike the Medical Council file there is no OCR
+to distrust — but it is one year's guide, and the course can change.
+
 ## `medical-council-2024.json`
 
 Part 1 ก. (Basic Medical Science Knowledge) of **เกณฑ์ความรู้ความสามารถในการประเมิน
