@@ -47,7 +47,7 @@ function lyteGrid(){const C=["NaCl","NaHCO₃","K⁺","Body pH","Ca²⁺ ใน�
   b+=`<rect class="lg ${cls}" x="${x+3}" y="${y+4}" width="${cw-6}" height="${rh-8}" rx="9"/>`+T(x+cw/2,y+30,t,{c:"bh"})})});
  b+=T(340,312,"+ = ขับออกเพิ่ม · − = ขับออกลดลง · 0 = ไม่เปลี่ยน",{c:"s m"});return psvg(b,"0 0 680 324")}
 
-Object.assign(GN,{a:"Foundations",b:"Diuretics",c:"Water & RAAS",d:"Using diuretics",e:"Treating kidney disease",f:"Fluids, K⁺, Na⁺ & acid–base",g:"ทางเดินปัสสาวะส่วนล่าง"});
+Object.assign(GN,{a:"Foundations",b:"Diuretics",c:"Water & RAAS",d:"Using diuretics",e:"Treating kidney disease",f:"Fluids, K⁺, Na⁺ & acid–base",g:"Lower urinary tract"});
 
 /* ---------- a · foundations ---------- */
 SEC.push({id:"nephron",k:"a",t:"Nephron drug map",mm:"Nephron drug map",drugs:"",act:[],tools:NT,leg:["inh","bl","ag","mod"],draw:NMAP(["ca","sglt2","osm","nkcc2","ncc","enac","mr","v2","v2d","at1"]),
@@ -201,7 +201,7 @@ notes:()=>`<h3>Metabolic acidosis</h3><ul><li>บทบาทของ NaHCO₃ 
  <h3>Metabolic alkalosis</h3><ul><li>Saline-responsive (diuretic, อาเจียน): NaCl + K⁺ · saline-resistant: แก้ mineralocorticoid excess ${S.p}</li><li><b>Acetazolamide</b> สำหรับคนที่ยังต้องขับน้ำแต่ HCO₃⁻ สูงขึ้น · ค่อย ๆ ได้ผล ไม่ใช่แก้เฉียบพลัน ${S.p}${S.k}</li></ul>
  <h3>ยาที่ทำให้เกิด</h3><ul><li>Acidosis: CA inhibitor, K⁺-sparing · alkalosis: loop, thiazide, corticosteroid ${S.k}${S.p}</li></ul>`});
 
-SEC.push({id:"oab",k:"g",t:"ยารักษาปัสสาวะเล็ดและกระเพาะปัสสาวะไวเกิน",mm:"OAB & incontinence",drugs:"Oxybutynin · Tolterodine · Solifenacin · Mirabegron · Duloxetine · Desmopressin",act:["inh","ag"],leg:[],
+SEC.push({id:"oab",k:"g",t:"Drugs for incontinence & overactive bladder",mm:"OAB & incontinence",drugs:"Oxybutynin · Tolterodine · Solifenacin · Mirabegron · Duloxetine · Desmopressin",act:["inh","ag"],leg:[],
 draw:()=>tbl(["กลุ่มยา","ออกฤทธิ์อย่างไร","ใช้กับชนิดไหน"],[
  ["Antimuscarinic — oxybutynin, tolterodine, solifenacin","ปิดตัวรับ M₃ ที่กล้ามเนื้อ detrusor จึงลดการบีบตัวเอง","Urge incontinence และ OAB"],
  ["β₃ agonist — mirabegron","กระตุ้นตัวรับ β₃ ให้ detrusor คลายตัวขณะเก็บปัสสาวะ","Urge · ทางเลือกเมื่อทนฤทธิ์ antimuscarinic ไม่ไหว"],
@@ -216,7 +216,7 @@ notes:()=>`<ul>
 <li>Katzung ระบุว่า antimuscarinic เคยถูกใช้ในนิ่วทางเดินปัสสาวะเพื่อบรรเทาการเกร็งของท่อไตขณะนิ่วเคลื่อน แต่ <b>ประโยชน์ในภาวะนี้ยังเป็นที่ถกเถียง</b> ${S.k}</li>
 <li>หลักที่ใช้เลือกยาได้ทั้งตาราง: <b>รักษาตามกลไกของการกลั้นไม่อยู่ ไม่ใช่ตามอาการ</b> — urge ลดการบีบตัว stress เพิ่มแรงหูรูด overflow ลดแรงต้าน ${S.x}</li></ul>`});
 
-SEC.push({id:"utiabx",k:"g",t:"ยาปฏิชีวนะสำหรับการติดเชื้อทางเดินปัสสาวะ",mm:"UTI antibiotics",drugs:"Nitrofurantoin · Fosfomycin · TMP-SMX · Fluoroquinolone · Ceftriaxone",act:["inh"],leg:[],
+SEC.push({id:"utiabx",k:"g",t:"Antibiotics for urinary tract infection",mm:"UTI antibiotics",drugs:"Nitrofurantoin · Fosfomycin · TMP-SMX · Fluoroquinolone · Ceftriaxone",act:["inh"],leg:[],
 draw:()=>tbl(["ยา","จุดเด่น","ข้อจำกัดที่ต้องรู้"],[
  ["Nitrofurantoin","ทางเลือกแรกของกระเพาะปัสสาวะอักเสบไม่ซับซ้อน · ดื้อยาเกิดช้า","เข้าเนื้อไตไม่ถึง จึง<b>ใช้ไม่ได้ในกรวยไตอักเสบ</b> · ห้ามเมื่อ GFR ต่ำ"],
  ["Fosfomycin","กินครั้งเดียวจบ","ฤทธิ์อ่อนกว่าเมื่อเชื้อมาก"],

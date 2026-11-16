@@ -115,6 +115,22 @@ for (const f of ["q/index.json", ...ix.parts.map(c => `q/${c}.json`), ...fs.read
     if (THAI_DEBT[f] && pct < ceiling) bad(`${f}: now ${pct}% Thai — lower THAI_DEBT to ${pct}${pct <= 55 ? " or remove the entry" : ""}`);
   } }
 
+{ /* Topic titles and group names are always English (CLAUDE.md > Style > Language):
+     they are what the library, the review list and the search results show, and an exam
+     prints them in English. Thai belongs in the prose that explains them. */
+  const SRC = path.join(__dirname, "..");
+  const THAI = /[\u0E00-\u0E7F]/;
+  for (const f of fs.readdirSync(path.join(SRC, "atlases")).filter(x => x.endsWith(".js"))) {
+    const src = fs.readFileSync(path.join(SRC, "atlases", f), "utf8");
+    let m;
+    const title = /SEC\.push\(\{[^}]*?\bt:"([^"]+)"|HS\("[^"]*","[^"]*","[^"]*","([^"]+)"/g;
+    while ((m = title.exec(src))) { const t = m[1] || m[2];
+      if (THAI.test(t)) bad(`${f}: topic title in Thai — "${t}"`); }
+    const gn = /Object\.assign\(GN,\{([\s\S]*?)\}\)/g;
+    while ((m = gn.exec(src))) { let g; const one = /[a-z0-9]+:"([^"]*)"/g;
+      while ((g = one.exec(m[1]))) if (THAI.test(g[1])) bad(`${f}: group name in Thai — "${g[1]}"`); }
+  } }
+
 { /* cards() must not be a stack of captioned text boxes: that costs more room than a
      list and says nothing the notes do not. Draw the real thing, use tbl(), or omit draw().
      The backlog is cleared: CARD_DEBT is empty, so any new block of text boxes fails. */

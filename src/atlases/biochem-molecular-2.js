@@ -10,7 +10,7 @@ notes:()=>`<ul>
 <li>Lippincott: ความเป็นสากลมี <b>ข้อยกเว้นใน mitochondria ที่บางโคดอนมีความหมายต่างออกไป เช่น UGA ให้ Trp</b> ${S.lir}</li>
 <li>ความซ้ำซ้อนอธิบายว่าทำไม silent mutation จึงมักเกิดที่ตำแหน่งที่สามของโคดอน — ตำแหน่งนั้นเป็นตำแหน่งที่รหัสยืดหยุ่นที่สุด ${S.x}</li></ul>`});
 
-SEC.push({id:"genereg",k:"a",t:"Promoter, enhancer และ silencer",drugs:"",act:[],leg:[],
+SEC.push({id:"genereg",k:"a",t:"Promoter, enhancer & silencer",drugs:"",act:[],leg:[],
 draw:()=>tbl(["Element","Location","Action"],[
  ["Promoter","ต้น gene ติดกับจุดเริ่มถอดรหัส","ที่จับของ RNA polymerase และ transcription factor"],
  ["Enhancer","ไกลออกไป · <b>อยู่ก่อนหรือหลัง gene ก็ได้</b>","<b>เพิ่ม</b> transcription โดย DNA โค้งงอมาหา promoter"],

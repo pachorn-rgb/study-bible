@@ -120,7 +120,7 @@ notes:()=>`<ul>
 <li>Lippincott ระบุว่ามีการค้นพบ <b>mutation มากกว่า 1,000 แบบ ใน 22 gene ที่เข้ารหัส collagen 12 ชนิด</b> ซึ่งอธิบายว่าทำไมกลุ่มโรคนี้จึงหลากหลายมาก ${S.lir}</li>
 <li>วิธีแบ่งจำ: <b>ขั้นในเซลล์จบที่การหลั่ง procollagen ออกไป ส่วนการตัดปลายและการเชื่อมขวางเกิดนอกเซลล์ทั้งคู่</b> ${S.x}</li></ul>`});
 
-SEC.push({id:"coldis",k:"d",t:"Osteogenesis imperfecta และ Ehlers-Danlos",drugs:"",act:[],leg:[],
+SEC.push({id:"coldis",k:"d",t:"Osteogenesis imperfecta & Ehlers-Danlos",drugs:"",act:[],leg:[],
 draw:()=>tbl(["","Osteogenesis imperfecta","Ehlers-Danlos"],[
  ["collagen ที่เสีย","ชนิดที่ 1","ชนิดที่ 3 สำคัญที่สุดทางคลินิก"],
  ["กลไกที่พบบ่อย","glycine ใน Gly-X-Y ถูกแทนด้วย amino acid ที่ใหญ่กว่า","พร่อง enzyme แต่ง collagen หรือกลายพันธุ์ของสายเอง"],

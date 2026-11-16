@@ -87,7 +87,7 @@ function upathD(){const s=ST.up,[h,d]=UPS[s];
   b+=`<g style="opacity:${on?1:.28}"><rect x="${x}" y="${y}" width="296" height="42" rx="10" style="${rmF(RMC[g],on?16:5)};stroke-width:${on?1.8:1}"/>`
    +rmBug(x+26,y+21,t,RMC[g])+T(x+46,y+18,n,{a:"start",c:"bh"})+rmL(x+46,y+34,sub,{a:"start",c:"s m"})+`</g>`});
  return svg(b,"0 0 640 440")}
-SEC.push({id:"upath",k:"a",t:"Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",mm:"Uropathogen line-up",leg:[],
+SEC.push({id:"upath",k:"a",t:"Uropathogen line-up: which organism, which setting",mm:"Uropathogen line-up",leg:[],
  tools:[["up",[["comm","ชุมชน"],["hosp","โรงพยาบาล"],["stone","นิ่ว"],["hem","ทางเลือด"]]]],draw:upathD,
 notes:()=>`${LO(["บอกเชื้อก่อโรคทางเดินปัสสาวะที่พบบ่อยตามบริบทผู้ป่วย (ชุมชน · โรงพยาบาล · นิ่ว · มาทางเลือด)","จับคู่เชื้อกับลักษณะพื้นฐานทาง Gram stain และข้อมูลระบาดวิทยา"])}
 <ul><li>Enterobacterales (วงศ์ Enterobacteriaceae) เป็นสาเหตุของการติดเชื้อทางเดินปัสสาวะ <b>มากกว่า 70%</b> ${S.mu}</li>
@@ -163,7 +163,7 @@ function gpcD(){const s=ST.gc,d=GPC[s];
   +T(252,y+26,k,{a:"start",c:"bh"})+T(608,y+26,v,{a:"end",c:"h"})});
  d.t.forEach((x,i)=>{const y=308+i*44;b+=`<rect x="16" y="${y}" width="608" height="38" rx="9" style="${rmF(RMC.gp,8)};stroke-width:1"/>`+wrapT(32,y+16,x,86,"s",13,"start")});
  return svg(b,"0 0 640 452")}
-SEC.push({id:"gp-cocci",k:"a",t:"S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",mm:"Gram-positive cocci",leg:[],
+SEC.push({id:"gp-cocci",k:"a",t:"S. saprophyticus, Enterococcus & CoNS in urine",mm:"Gram-positive cocci",leg:[],
  tools:[["gc",[["sapro","S. saprophyticus"],["entero","Enterococcus"],["epi","S. epidermidis"]]]],draw:gpcD,
 notes:()=>`${LO(["แยก S. saprophyticus จาก S. epidermidis ด้วย novobiocin","ใช้ catalase, PYR, bile esculin และ 6.5% NaCl แยก Enterococcus จาก streptococci และ staphylococci","เชื่อมบริบทผู้ป่วยของแต่ละเชื้อกับผลห้องปฏิบัติการ"])}
 <h3>S. saprophyticus</h3>
@@ -233,7 +233,7 @@ function fmD(){const s=ST.fm;
  b+=`<rect class="box" x="16" y="250" width="608" height="44" rx="10"/>`+wrapT(32,274,"ทางแก้: เก็บสิ่งส่งตรวจเพิ่มหลายครั้ง และใช้ปริมาตร/เนื้อเยื่อจำนวนมากในการตรวจ",76,"s",15,"start");
  b+=`<rect class="box" x="16" y="306" width="608" height="44" rx="10"/>`+wrapT(32,330,"ปริมาตรปัสสาวะตามตาราง specimen: แบคทีเรีย 1 mL · mycobacteria ตั้งแต่ 10 mL ขึ้นไป",76,"s",15,"start");
  return svg(b,"0 0 640 362")}
-SEC.push({id:"fungi-myco",k:"a",t:"Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",mm:"Candida & TB",leg:[],
+SEC.push({id:"fungi-myco",k:"a",t:"Candida & M. tuberculosis in urine: the laboratory view",mm:"Candida & TB",leg:[],
  tools:[["fm",[["candida","Candida"],["tb","M. tuberculosis"]]]],draw:fmD,
 notes:()=>`${LO(["อธิบายช่วงความรุนแรงของ Candida ในทางเดินปัสสาวะ และบริบทที่ทำให้พบ colonization","บอกเหตุผลที่การแยก M. tuberculosis จากทางเดินปัสสาวะยากกว่าเสมหะ และผลต่อการเก็บสิ่งส่งตรวจ"])}
 <p class="pearl">ทำไมสองเชื้อนี้อยู่ด้วยกัน: ทั้งคู่เป็นกรณีที่ <b>urine culture ตามปกติตอบคำถามไม่ได้ตรง ๆ</b> · Candida มักขึ้นแต่<b>ตีความยาก</b> (colonization หรือติดเชื้อ) ส่วน M. tuberculosis <b>มักไม่ขึ้น</b>ถ้าไม่ได้ร้องขอวิธีและปริมาตรที่ถูกต้อง ${S.x}</p>
@@ -273,7 +273,7 @@ function vrD(){const s=ST.vr;
   b+=`<rect x="16" y="${y-22}" width="608" height="32" rx="9" style="${rmF("#2E9E6B",10)};stroke-width:1.2"/>`+T(32,y,t,{a:"start",c:"s"})});
  b+=T(320,410,"ด่านป้องกันของร่างกาย",{c:"h"});
  return svg(b,"0 0 640 424")}
-SEC.push({id:"virulence",k:"b",t:"การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",mm:"Adhesion & ascending route",leg:[],
+SEC.push({id:"virulence",k:"b",t:"Adhesion, ascent and host defences",mm:"Adhesion & ascending route",leg:[],
  tools:[["vr",[["adh","Adhesin"],["asc","Ascending route & defenses"]]]],draw:vrD,
 notes:()=>`${LO(["อธิบายว่าทำไมการยึดเกาะเป็นเงื่อนไขจำเป็นของการติดเชื้อทางเดินปัสสาวะ","ระบุคู่ adhesin–receptor ของ P fimbriae และความเชื่อมโยงกับ pyelonephritis","ไล่ลำดับทางขึ้นของเชื้อ และบอกด่านป้องกันตามธรรมชาติที่เชื้อต้องผ่าน"])}
 <ul><li>การทำงานตามปกติของกระเพาะปัสสาวะ<b>ขับเชื้อที่ยึดเกาะไม่ได้ออกไป</b> ดังนั้นการยึดเกาะจึงเป็นขั้นที่ขาดไม่ได้ ${S.mu}</li>
@@ -306,7 +306,7 @@ function bfD(){const n=+ST.bf;
    +`<circle cx="44" cy="${y+20}" r="12" style="${rmF(RMC.vi,on?34:8)};stroke-width:1.2"/>`+T(44,y+24,i+1,{c:"s"})
    +T(68,y+17,t,{a:"start",c:"bh"})+T(68,y+33,d,{a:"start",c:"s m"})+`</g>`});
  return svg(b,"0 0 640 496")}
-SEC.push({id:"biofilm",k:"b",t:"Biofilm และการติดเชื้อที่สายสวน",mm:"Biofilm & catheters",leg:[],
+SEC.push({id:"biofilm",k:"b",t:"Biofilm & catheter-associated infection",mm:"Biofilm & catheters",leg:[],
  tools:[["bf",[["1","1 เกาะผิว"],["2","2 quorum"],["3","3 ใยพอลิแซ็กคาไรด์"],["4","4 ป้องกันตัว"]]]],draw:bfD,
 notes:()=>`${LO(["อธิบายขั้นตอนการเกิด biofilm และบทบาทของ quorum","บอกว่าทำไม biofilm ทำให้การรักษาการติดเชื้อที่สายสวนยาก","ยกตัวอย่างเชื้อที่เกาะอุปกรณ์ด้วย slime หรือ biofilm"])}
 <ul><li>เมื่อเชื้อมีจำนวนมากพอ (<b>quorum</b>) จะเปิดการทำงานที่ช่วยกลุ่มของตัวเอง รวมถึง<b>การสร้าง biofilm</b> ${S.mu}</li>
@@ -345,7 +345,7 @@ function spD(){const s=ST.sp,d=SPM[s];
  b+=`<rect class="box" x="328" y="224" width="296" height="52" rx="10"/>`+T(344,246,"ปริมาตร",{a:"start",c:"bh"})+wrapT(344,264,d.v,44,"s",12,"start");
  d.k.forEach((x,i)=>{const y=290+i*54;b+=`<rect x="16" y="${y}" width="608" height="48" rx="10" style="${rmF(RMC.vi,8)};stroke-width:1.2"/>`+wrapT(32,y+20,x,74,"s",15,"start")});
  return svg(b,"0 0 640 462")}
-SEC.push({id:"specimen",k:"c",t:"การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",mm:"Specimen for culture",leg:[],
+SEC.push({id:"specimen",k:"c",t:"Collecting urine for culture: midstream · catheter · suprapubic",mm:"Specimen for culture",leg:[],
  tools:[["sp",[["mid","Midstream"],["cath","Catheter"],["sp","Suprapubic"]]]],draw:spD,
 notes:()=>`${LO(["เลือกวิธีเก็บปัสสาวะให้เหมาะกับคำถามทางจุลชีววิทยา","บอกเหตุผลที่ต้องทิ้งปัสสาวะส่วนแรกและต้องส่งตรวจเร็วหรือแช่เย็น","ระบุปริมาตรที่ต้องการสำหรับแบคทีเรียและ mycobacteria"])}
 <ul><li>ปัสสาวะเป็นสิ่งส่งตรวจที่ถูกส่งเพาะเชื้อ<b>บ่อยที่สุดอย่างหนึ่ง</b> ${S.mu}</li>
@@ -422,7 +422,7 @@ function idD(){const gn=ST.idt==="gn",R=gn?IDGN:IDGP,PAR=gn?[null,0,1,1]:[null,0
   :[["S. aureus","coagulase ⊕"],["S. epidermidis","CoNS · novobiocin ไว"],["S. saprophyticus","CoNS · novobiocin ดื้อ"],["Enterococcus","catalase ⊖ · PYR ⊕ · bile esculin ⊕ · 6.5% NaCl ⊕"]];
  EX.forEach(([n,d],i)=>{const y=392+i*44;b+=`<rect x="16" y="${y}" width="608" height="38" rx="9" class="box"/>`+T(32,y+24,n,{a:"start",c:"bh"})+T(608,y+24,d,{a:"end",c:"s"})});
  return svg(b,"0 0 640 576")}
-SEC.push({id:"id",k:"c",t:"การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",mm:"Identification",leg:[],
+SEC.push({id:"id",k:"c",t:"Identifying the organism: the basic branch points",mm:"Identification",leg:[],
  tools:[["idt",[["gn","Gram − rod"],["gp","Gram + cocci"]]]],draw:idD,
 notes:()=>`${LO(["ไล่ทางแยกการแยกชนิดเชื้อจากปัสสาวะด้วยการทดสอบพื้นฐานทีละขั้น","จับคู่ผลการทดสอบกับเชื้อก่อโรคทางเดินปัสสาวะที่พบบ่อย"])}
 <h3>Gram-negative rod</h3>
@@ -516,7 +516,7 @@ function rsD(){const d=RSP[ST.rs];
  d.d.forEach((x,i)=>{const y=(ST.rs==="vre"?262:214)+i*58;b+=`<rect x="16" y="${y}" width="608" height="50" rx="10" style="${rmF(RMC.vi,9)};stroke-width:1.2"/>`
   +`<circle cx="44" cy="${y+25}" r="12" style="${rmF(RMC.vi,28)};stroke-width:1.2"/>`+T(44,y+29,i+1,{c:"s"})+wrapT(68,y+22,x,70,"s",15,"start")});
  return svg(b,`0 0 640 ${ST.rs==="vre"?510:462}`)}
-SEC.push({id:"resist",k:"c",t:"กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",mm:"Resistance phenotypes",leg:[],
+SEC.push({id:"resist",k:"c",t:"Resistance mechanisms and phenotypes in uropathogens",mm:"Resistance phenotypes",leg:[],
  tools:[["rs",[["mech","กลไก β-lactam"],["esbl","ESBL"],["carba","Carbapenemase"],["vre","VRE"]]]],draw:rsD,
 notes:()=>`${LO(["ระบุกลไกหลักสี่แบบของการดื้อ β-lactam","อธิบายที่มาของ ESBL จาก TEM-1/SHV-1 และผลของการอยู่บน plasmid","บอกเชื้อที่พบ ESBL บ่อยที่สุด และผลของ carbapenemase","อธิบายกลไกของ VRE ในระดับโมเลกุล"])}
 <h3>กลไกการดื้อ β-lactam</h3>
@@ -555,7 +555,7 @@ function otD(){const d=OTH[ST.ot];
    +rmL(320,228,"naked capsid (ไม่มีเปลือกไขมัน)",{c:"s"})}
  d.d.forEach((x,i)=>{const y=252+i*56;b+=`<rect x="16" y="${y}" width="608" height="48" rx="10" style="${rmF(d.c,9)};stroke-width:1.2"/>`+wrapT(32,y+20,x,74,"s",15,"start")});
  return svg(b,"0 0 640 490")}
-SEC.push({id:"other",k:"c",t:"ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",mm:"BK · adenovirus · S. haematobium",leg:[],
+SEC.push({id:"other",k:"c",t:"Viruses and parasites of the urinary tract",mm:"BK · adenovirus · S. haematobium",leg:[],
  tools:[["ot",[["bk","BK virus"],["adeno","Adenovirus"],["sh","S. haematobium"]]]],draw:otD,
 notes:()=>`${LO(["ระบุไวรัสที่ก่อโรคทางเดินปัสสาวะในผู้ภูมิคุ้มกันบกพร่อง และ serotype ของ adenovirus ที่เกี่ยวข้อง","อธิบายวิธีวินิจฉัย S. haematobium จากปัสสาวะ และลักษณะไข่ที่ใช้แยกชนิด"])}
 <ul><li><b>BK virus</b> เป็น polyomavirus ที่ติดเชื้อทอนซิลและเม็ดเลือดขาว แล้วแพร่ทางกระแสเลือดไปที่<b>ไต</b>ตั้งแต่วัยเด็ก · ตั้ง<b>การติดเชื้อแบบ persistent และ latent</b> ในอวัยวะเช่นไตและปอด · พบทั่วโลก การติดเชื้อส่วนใหญ่ไม่มีอาการ ${S.mu}</li>
@@ -568,7 +568,7 @@ notes:()=>`${LO(["ระบุไวรัสที่ก่อโรคทา�
 <li>ยาต้านพยาธิ ดูที่ ${XL("pharm-micro","antiparasite","Antiprotozoal & antihelminthic drugs")}</li></ul>
 <p style="font-size:.78rem;color:var(--sb-muted)">แหล่ง: Murray 9e Ch 41 p411, Ch 42 p421–422 (Table 42.1), Ch 75 p768</p>`});
 
-SEC.push({id:"prostatitis",k:"b",t:"Prostatitis และ UTI ที่ซับซ้อน",mm:"Prostatitis",drugs:"",act:[],leg:[],
+SEC.push({id:"prostatitis",k:"b",t:"Prostatitis & complicated UTI",mm:"Prostatitis",drugs:"",act:[],leg:[],
 draw:()=>tbl(["","Acute bacterial (ABP)","Chronic bacterial (CBP)"],[
  ["อาการ","ไข้ หนาวสั่น ปวดฝีเย็บ ปัสสาวะลำบากเฉียบพลัน","อาการเป็น ๆ หาย ๆ · ติดเชื้อทางเดินปัสสาวะซ้ำจากเชื้อตัวเดิม"],
  ["ตรวจร่างกาย","ต่อมลูกหมากกดเจ็บมาก · <b>ห้ามนวดต่อม</b> เพราะเสี่ยงเชื้อเข้ากระแสเลือด","กดเจ็บน้อยหรือไม่เจ็บ"],

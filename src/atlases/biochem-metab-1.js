@@ -1,6 +1,6 @@
 /* ================= Biochemistry — Metabolism 1: regulation, glycolysis, TCA, ETC ================= */
 Object.assign(S,{lir:'<b class="sbb lir">LIR</b>',tbbio:'<b class="sbb tbbio">TB</b>',fa1:'<b class="sbb fa">FA1</b>',x:'<b class="sbb gen">Gen</b>'});
-Object.assign(GN,{a:"Overview & regulation",b:"Glycolysis",c:"Pyruvate และ TCA",d:"Oxidative phosphorylation"});
+Object.assign(GN,{a:"Overview & regulation",b:"Glycolysis",c:"Pyruvate & the TCA cycle",d:"Oxidative phosphorylation"});
 
 SEC.push({id:"sites",k:"a",t:"Metabolic compartmentation",mm:"เส้นทางอยู่ที่ไหน",drugs:"",act:[],leg:[],
 draw:()=>psvg(

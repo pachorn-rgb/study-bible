@@ -68,7 +68,7 @@
          "pdh"
         ],
         [
-         "ปลายทางของ pyruvate · Cori & Cahill",
+         "Fates of pyruvate · Cori & Cahill",
          "pyrfate"
         ],
         [
@@ -80,7 +80,7 @@
          "etc"
         ],
         [
-         "สารพิษต่อห่วงโซ่หายใจ & uncouplers",
+         "Electron transport poisons & uncouplers",
          "etcpois"
         ]
        ],
@@ -386,11 +386,11 @@
          "map"
         ],
         [
-         "คุณสมบัติของรหัสพันธุกรรม",
+         "Properties of the genetic code",
          "code"
         ],
         [
-         "Promoter, enhancer และ silencer",
+         "Promoter, enhancer & silencer",
          "genereg"
         ],
         [
@@ -398,23 +398,23 @@
          "operon"
         ],
         [
-         "RNA polymerase และชนิดของ RNA",
+         "RNA polymerases & RNA types",
          "rnapol"
         ],
         [
-         "การแต่ง mRNA และการตัดต่อ",
+         "mRNA processing & splicing",
          "rnaproc"
         ],
         [
-         "tRNA และการชาร์จกรดอะมิโน",
+         "tRNA & amino acid charging",
          "trna"
         ],
         [
-         "สามขั้นของการแปลรหัส",
+         "The three stages of translation",
          "transl"
         ],
         [
-         "การปรับแต่งหลังแปลรหัส",
+         "Post-translational modification",
          "posttr"
         ]
        ],
@@ -560,43 +560,43 @@
          "map"
         ],
         [
-         "วัฏจักรเซลล์",
+         "cell cycle",
          "cellcyc"
         ],
         [
-         "เอนโดพลาสมิกเรติคูลัมสองชนิด",
+         "Rough vs smooth endoplasmic reticulum",
          "er"
         ],
         [
-         "เพอรอกซิโซมและโปรตีเอโซม",
+         "Peroxisome & proteasome",
          "perox"
         ],
         [
-         "เส้นใยโครงร่างเซลล์ทั้งสามแบบ",
+         "The three cytoskeletal filaments",
          "cytosk"
         ],
         [
-         "ไมโครทูบูลและยาที่ออกฤทธิ์",
+         "Microtubules & the drugs that act on them",
          "mt"
         ],
         [
-         "ซิเลียและ primary ciliary dyskinesia",
+         "Cilia & primary ciliary dyskinesia",
          "cilia"
         ],
         [
-         "ปั๊มโซเดียมโพแทสเซียมและ digoxin",
+         "The sodium-potassium pump & digoxin",
          "napump"
         ],
         [
-         "การสร้างคอลลาเจน",
+         "Collagen synthesis",
          "collagen"
         ],
         [
-         "Osteogenesis imperfecta และ Ehlers-Danlos",
+         "Osteogenesis imperfecta & Ehlers-Danlos",
          "coldis"
         ],
         [
-         "อีลาสติน Marfan และ α1-antitrypsin",
+         "Elastin, Marfan & α1-antitrypsin",
          "elastin"
         ]
        ],
@@ -1790,7 +1790,7 @@
          "map"
         ],
         [
-         "Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",
+         "Uropathogen line-up: which organism, which setting",
          "upath"
         ],
         [
@@ -1798,7 +1798,7 @@
          "entero-b"
         ],
         [
-         "S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",
+         "S. saprophyticus, Enterococcus & CoNS in urine",
          "gp-cocci"
         ],
         [
@@ -1806,19 +1806,19 @@
          "nonferm"
         ],
         [
-         "Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",
+         "Candida & M. tuberculosis in urine: the laboratory view",
          "fungi-myco"
         ],
         [
-         "การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",
+         "Adhesion, ascent and host defences",
          "virulence"
         ],
         [
-         "Biofilm และการติดเชื้อที่สายสวน",
+         "Biofilm & catheter-associated infection",
          "biofilm"
         ],
         [
-         "การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",
+         "Collecting urine for culture: midstream · catheter · suprapubic",
          "specimen"
         ],
         [
@@ -1826,7 +1826,7 @@
          "culture"
         ],
         [
-         "การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",
+         "Identifying the organism: the basic branch points",
          "id"
         ],
         [
@@ -1834,15 +1834,15 @@
          "ast"
         ],
         [
-         "กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",
+         "Resistance mechanisms and phenotypes in uropathogens",
          "resist"
         ],
         [
-         "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
+         "Viruses and parasites of the urinary tract",
          "other"
         ],
         [
-         "Prostatitis และ UTI ที่ซับซ้อน",
+         "Prostatitis & complicated UTI",
          "prostatitis"
         ]
        ],
@@ -8003,11 +8003,11 @@
          "acidbase"
         ],
         [
-         "ยารักษาปัสสาวะเล็ดและกระเพาะปัสสาวะไวเกิน",
+         "Drugs for incontinence & overactive bladder",
          "oab"
         ],
         [
-         "ยาปฏิชีวนะสำหรับการติดเชื้อทางเดินปัสสาวะ",
+         "Antibiotics for urinary tract infection",
          "utiabx"
         ]
        ],
@@ -8677,7 +8677,7 @@
          "map"
         ],
         [
-         "Uropathogen line-up: เชื้อตัวไหนในสถานการณ์ไหน",
+         "Uropathogen line-up: which organism, which setting",
          "upath"
         ],
         [
@@ -8685,7 +8685,7 @@
          "entero-b"
         ],
         [
-         "S. saprophyticus, Enterococcus & CoNS ในปัสสาวะ",
+         "S. saprophyticus, Enterococcus & CoNS in urine",
          "gp-cocci"
         ],
         [
@@ -8693,19 +8693,19 @@
          "nonferm"
         ],
         [
-         "Candida & M. tuberculosis ในปัสสาวะ (มุมห้องปฏิบัติการ)",
+         "Candida & M. tuberculosis in urine: the laboratory view",
          "fungi-myco"
         ],
         [
-         "การยึดเกาะ ทางขึ้นของเชื้อ และด่านป้องกันของร่างกาย",
+         "Adhesion, ascent and host defences",
          "virulence"
         ],
         [
-         "Biofilm และการติดเชื้อที่สายสวน",
+         "Biofilm & catheter-associated infection",
          "biofilm"
         ],
         [
-         "การเก็บปัสสาวะเพื่อเพาะเชื้อ (midstream · catheter · suprapubic)",
+         "Collecting urine for culture: midstream · catheter · suprapubic",
          "specimen"
         ],
         [
@@ -8713,7 +8713,7 @@
          "culture"
         ],
         [
-         "การแยกชนิดเชื้อจากปัสสาวะ: ทางแยกพื้นฐาน",
+         "Identifying the organism: the basic branch points",
          "id"
         ],
         [
@@ -8721,15 +8721,15 @@
          "ast"
         ],
         [
-         "กลไกและ phenotype การดื้อยาที่พบในเชื้อทางเดินปัสสาวะ",
+         "Resistance mechanisms and phenotypes in uropathogens",
          "resist"
         ],
         [
-         "ไวรัสและพยาธิที่เกี่ยวกับทางเดินปัสสาวะ",
+         "Viruses and parasites of the urinary tract",
          "other"
         ],
         [
-         "Prostatitis และ UTI ที่ซับซ้อน",
+         "Prostatitis & complicated UTI",
          "prostatitis"
         ]
        ],
