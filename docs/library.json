@@ -2136,6 +2136,76 @@
         "ch": "Murray Ch 23",
         "sort": 8
        }
+      },
+      {
+       "id": "micro-bact-4",
+       "title": "Gram-negative bacilli I",
+       "subs": [
+        "Clinical Bacteriology"
+       ],
+       "src": "Murray 9e Ch 25, 27",
+       "href": "micro/micro-bact-4.html",
+       "thumb": "thumbs/micro-bact-4.jpg",
+       "desc": "O H K antigen และ MacConkey, type III secretion system, E. coli ห้า pathotype, Shiga toxin กับ hemolytic uremic syndrome, Salmonella, Shigella, Yersinia, Klebsiella และ Proteus, Pseudomonas aeruginosa, Acinetobacter และ Burkholderia pseudomallei",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "The family, and the three antigens that name it",
+         "entero"
+        ],
+        [
+         "The type III secretion system is a syringe",
+         "entero-vir"
+        ],
+        [
+         "The five diarrhoeagenic Escherichia coli",
+         "ecoli-git"
+        ],
+        [
+         "Shiga toxin and the haemolytic uraemic syndrome",
+         "stec"
+        ],
+        [
+         "Escherichia coli outside the gut",
+         "ecoli-other"
+        ],
+        [
+         "Salmonella and the enteric fever cycle",
+         "salmonella"
+        ],
+        [
+         "Shigella: invasion, then sideways",
+         "shigella"
+        ],
+        [
+         "Yersinia",
+         "yersinia"
+        ],
+        [
+         "Klebsiella, Proteus and the rest of the ward flora",
+         "kleb-proteus"
+        ],
+        [
+         "Pseudomonas aeruginosa",
+         "pseudomonas"
+        ],
+        [
+         "Acinetobacter and Burkholderia",
+         "acineto-burk"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 25, 27",
+        "sort": 9
+       }
       }
      ],
      "checklist": [

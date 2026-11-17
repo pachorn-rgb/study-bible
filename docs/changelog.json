@@ -1,5 +1,17 @@
 [
  {
+  "v": "6.88",
+  "date": "2026-11-17",
+  "th": [
+   "เพิ่มโมดูล Gram-negative bacilli I ในบท Microbiology — 11 หัวข้อ อ่านจาก Murray บท 25 และ 27",
+   "Enterobacterales: O, H และ K antigen วาดบนผนังเซลล์จริง พร้อมจาน MacConkey ที่แยกตัวหมัก lactose ออกจากตัวที่ไม่หมัก",
+   "Type III secretion system วาดเป็นเข็มฉีดยาที่ทะลุทั้งเยื่อของเชื้อและเยื่อของ host — เหตุผลที่สารพิษพ้นจากแอนติบอดีตลอดทาง",
+   "Escherichia coli ห้า pathotype, Shiga toxin กับ hemolytic uremic syndrome ตั้งแต่ AB₅ จับ Gb3 ไปจนถึง glomerulus ที่ถูกทำลาย",
+   "Salmonella วาดเป็นวงจรของ enteric fever ที่วนกลับมาทางถุงน้ำดี, Shigella ที่เดินข้างจากเซลล์หนึ่งไปอีกเซลล์, Yersinia, Klebsiella และ Proteus ที่ลามเป็นคลื่นวงซ้อน",
+   "Pseudomonas aeruginosa กับเม็ดสีที่แพร่ลงวุ้น, Acinetobacter และ Burkholderia pseudomallei ซึ่งเป็นเชื้อประจำถิ่นของบ้านเรา"
+  ]
+ },
+ {
   "v": "6.87",
   "date": "2026-11-17",
   "th": [

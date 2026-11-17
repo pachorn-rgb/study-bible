@@ -115,3 +115,8 @@
 .m-beta {fill:var(--sb-surface)}
 .m-alpha{fill:color-mix(in srgb,#2F8A78 30%,color-mix(in srgb,#C2334A 20%,var(--sb-surface)))}
 .m-col  {fill:color-mix(in srgb,var(--sb-surface) 86%,#B7791F);stroke:color-mix(in srgb,var(--sb-ink) 22%,var(--sb-surface));stroke-width:.8}
+
+/* a host-cell membrane, neutral so it cannot be confused with the bacterium's */
+.m-hcore{fill:color-mix(in srgb,var(--sb-ink) 5%,var(--sb-surface));stroke:none}
+.m-hhead{fill:color-mix(in srgb,var(--sb-ink) 38%,var(--sb-surface));stroke:none}
+.m-htail{fill:none;stroke:color-mix(in srgb,var(--sb-ink) 24%,var(--sb-surface));stroke-width:1.05;stroke-linecap:round}

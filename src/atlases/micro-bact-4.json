@@ -1,0 +1,28 @@
+{
+ "id": "micro-bact-4",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Clinical Bacteriology",
+ "draft": false,
+ "title_tag": "Gram-negative bacilli I",
+ "h1": "Gram-negative bacilli I",
+ "lede": "Enterobacterales และ non-fermenters — วงศ์ที่เจอบ่อยที่สุดในห้องปฏิบัติการ และกลุ่มที่ดื้อยาที่สุดในโรงพยาบาล · เนื้อหาตามคาบ Gram-negative bacilli ของวิชา 204-221 อ่านจาก Murray บท 25 และ 27 · เริ่มจาก O, H และ K antigen ที่เป็นฐานของการแบ่ง serotype แล้วไล่ไปถึงเข็มฉีดยาระดับโมเลกุลและ Shiga toxin",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 25 Enterobacteriaceae และ Ch 27 Pseudomonas and Related Bacteria"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Clinical Bacteriology"],
+  "title": "Gram-negative bacilli I",
+  "src": "Murray 9e Ch 25, 27",
+  "desc": "O H K antigen และ MacConkey, type III secretion system, E. coli ห้า pathotype, Shiga toxin กับ hemolytic uremic syndrome, Salmonella, Shigella, Yersinia, Klebsiella และ Proteus, Pseudomonas aeruginosa, Acinetobacter และ Burkholderia pseudomallei",
+  "ch": "Murray Ch 25, 27",
+  "sort": 9,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}
