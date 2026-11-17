@@ -2310,6 +2310,80 @@
         "ch": "Murray Ch 22, 32",
         "sort": 11
        }
+      },
+      {
+       "id": "micro-bact-7",
+       "title": "Obligate intracellular, wall-less and anaerobic bacteria",
+       "subs": [
+        "Clinical Bacteriology"
+       ],
+       "src": "Murray 9e Ch 31, 33, 34, 35",
+       "href": "micro/micro-bact-7.html",
+       "thumb": "thumbs/micro-bact-7.jpg",
+       "desc": "Rickettsia ที่หนีออกจาก phagosome และสองวิธีที่มันออกจากเซลล์, Rocky Mountain spotted fever กับทิศทางของผื่น, พาหะทั้งสี่ของ typhus group, morula ของ Ehrlichia และ Anaplasma, Q fever, วงจรของ Chlamydia ทีละขั้น, trachoma จนตาบอด, serovar กับโรคที่คู่กัน, Mycoplasma ที่ไม่มีผนังเซลล์, walking pneumonia, และ anaerobe ที่ไม่สร้างสปอร์ ตั้งแต่ Bacteroides fragilis จนถึง sulfur granule ของ Actinomyces",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Rickettsia lives free in the cytoplasm",
+         "rick-intra"
+        ],
+        [
+         "Rocky Mountain spotted fever",
+         "rmsf"
+        ],
+        [
+         "Typhus, rickettsialpox and scrub typhus",
+         "typhus"
+        ],
+        [
+         "Ehrlichia, Anaplasma and Coxiella",
+         "ehrlichia"
+        ],
+        [
+         "The chlamydial developmental cycle",
+         "chl-cycle"
+        ],
+        [
+         "Chlamydia trachomatis",
+         "chl-trachomatis"
+        ],
+        [
+         "Telling the three species apart",
+         "chl-species"
+        ],
+        [
+         "Mycoplasma has no cell wall",
+         "myco-wall"
+        ],
+        [
+         "Atypical pneumonia and the genital mycoplasmas",
+         "myco-clinical"
+        ],
+        [
+         "Where the anaerobes live",
+         "anaer-where"
+        ],
+        [
+         "Bacteroides fragilis and the abscess",
+         "bfragilis"
+        ],
+        [
+         "Actinomyces and the sulfur granule",
+         "actinomyces"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 31, 33, 34, 35",
+        "sort": 12
+       }
       }
      ],
      "checklist": [

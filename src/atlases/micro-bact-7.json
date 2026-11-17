@@ -1,0 +1,28 @@
+{
+ "id": "micro-bact-7",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Clinical Bacteriology",
+ "draft": false,
+ "title_tag": "Obligate intracellular, wall-less and anaerobic bacteria",
+ "h1": "Obligate intracellular, wall-less and anaerobic bacteria",
+ "lede": "Rickettsia, Ehrlichia, Coxiella, Chlamydia, Mycoplasma และ anaerobe ที่ไม่สร้างสปอร์ — กลุ่มที่ Gram stain มองไม่เห็นและอาหารเลี้ยงเชื้อธรรมดาเพาะไม่ขึ้น · เนื้อหาตามคาบ Miscellaneous bacteria ของวิชา 204-221 อ่านจาก Murray บท 31, 33, 34 และ 35 · วงจร elementary body กับ reticulate body วาดครบทั้งเจ็ดขั้นในรูปเดียว",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 31 Non–Spore-Forming Anaerobic Bacteria, Ch 33 Mycoplasma, Ch 34 Rickettsia, Ehrlichia, and Related Bacteria และ Ch 35 Chlamydia"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Clinical Bacteriology"],
+  "title": "Obligate intracellular, wall-less and anaerobic bacteria",
+  "src": "Murray 9e Ch 31, 33, 34, 35",
+  "desc": "Rickettsia ที่หนีออกจาก phagosome และสองวิธีที่มันออกจากเซลล์, Rocky Mountain spotted fever กับทิศทางของผื่น, พาหะทั้งสี่ของ typhus group, morula ของ Ehrlichia และ Anaplasma, Q fever, วงจรของ Chlamydia ทีละขั้น, trachoma จนตาบอด, serovar กับโรคที่คู่กัน, Mycoplasma ที่ไม่มีผนังเซลล์, walking pneumonia, และ anaerobe ที่ไม่สร้างสปอร์ ตั้งแต่ Bacteroides fragilis จนถึง sulfur granule ของ Actinomyces",
+  "ch": "Murray Ch 31, 33, 34, 35",
+  "sort": 12,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}
