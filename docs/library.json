@@ -2206,6 +2206,60 @@
         "ch": "Murray Ch 25, 27",
         "sort": 9
        }
+      },
+      {
+       "id": "micro-bact-5",
+       "title": "Gram-negative bacilli II",
+       "subs": [
+        "Clinical Bacteriology"
+       ],
+       "src": "Murray 9e Ch 24, 26, 28, 29",
+       "href": "micro/micro-bact-5.html",
+       "thumb": "thumbs/micro-bact-5.jpg",
+       "desc": "cholera toxin กับ rice-water stool, Campylobacter และ Guillain-Barré, Helicobacter pylori กับ urease, X และ V factor กับ satellite phenomenon, Bordetella pertussis สามระยะ, Legionella ในระบบน้ำ, Brucella และ Francisella",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Cholera toxin turns the enterocyte into a tap",
+         "cholera"
+        ],
+        [
+         "Campylobacter jejuni",
+         "campylo"
+        ],
+        [
+         "Helicobacter pylori makes its own neighbourhood",
+         "hpylori"
+        ],
+        [
+         "Haemophilus and the two factors it cannot make",
+         "haemophilus"
+        ],
+        [
+         "Bordetella pertussis: three stages, two toxins",
+         "pertussis"
+        ],
+        [
+         "Legionella lives in the water system",
+         "legionella"
+        ],
+        [
+         "Brucella and Francisella",
+         "zoonoses"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 24, 26, 28, 29",
+        "sort": 10
+       }
       }
      ],
      "checklist": [

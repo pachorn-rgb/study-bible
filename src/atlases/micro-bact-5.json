@@ -1,0 +1,28 @@
+{
+ "id": "micro-bact-5",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Clinical Bacteriology",
+ "draft": false,
+ "title_tag": "Gram-negative bacilli II",
+ "h1": "Gram-negative bacilli II",
+ "lede": "Vibrio, Campylobacter, Helicobacter, Haemophilus, Bordetella, Legionella, Brucella และ Francisella — กลุ่มที่แต่ละตัวมีวิธีเอาตัวรอดเฉพาะของมันเอง ตั้งแต่สร้างแอมโมเนียคลุมตัวในกรดกระเพาะ ไปจนถึงเปิดก๊อก cAMP ค้างไว้ในลำไส้ · เนื้อหาตามคาบ Gram-negative bacilli ของวิชา 204-221 อ่านจาก Murray บท 24, 26, 28 และ 29",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 24 Haemophilus, Ch 26 Vibrio, Ch 28 Campylobacter and Helicobacter, Ch 29 Miscellaneous Gram-Negative Rods"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Clinical Bacteriology"],
+  "title": "Gram-negative bacilli II",
+  "src": "Murray 9e Ch 24, 26, 28, 29",
+  "desc": "cholera toxin กับ rice-water stool, Campylobacter และ Guillain-Barré, Helicobacter pylori กับ urease, X และ V factor กับ satellite phenomenon, Bordetella pertussis สามระยะ, Legionella ในระบบน้ำ, Brucella และ Francisella",
+  "ch": "Murray Ch 24, 26, 28, 29",
+  "sort": 10,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}
