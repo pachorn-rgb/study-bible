@@ -2384,6 +2384,64 @@
         "ch": "Murray Ch 31, 33, 34, 35",
         "sort": 12
        }
+      },
+      {
+       "id": "micro-lab",
+       "title": "Diagnostic bacteriology in the laboratory",
+       "subs": [
+        "Laboratory"
+       ],
+       "src": "Murray 9e Ch 4, 16, 17",
+       "href": "micro/micro-lab.html",
+       "thumb": "thumbs/micro-lab.jpg",
+       "desc": "Gram stain ทีละขั้นและกลไกของขั้นล้างสี, สีย้อมกลุ่มอื่นและเมื่อไรจึงสั่ง, รูปร่างและการเรียงตัวบนสไลด์, สิ่งส่งตรวจที่ไม่ควรเพาะ, ปริมาตรเลือดกับ CSF ที่ห้ามแช่เย็น, อาหารเลี้ยงเชื้อสี่แบบกับ blood agar และ MacConkey, ทางแยกการแยกชนิดที่หน้าเคาน์เตอร์, MIC กับ disk diffusion และ gradient strip, และการอ่าน S I R ที่ขึ้นกับเกณฑ์",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "The Gram stain",
+         "gram"
+        ],
+        [
+         "The other stains and when to ask for them",
+         "stains"
+        ],
+        [
+         "What the smear can already tell you",
+         "morphology"
+        ],
+        [
+         "A specimen that is not worth culturing",
+         "specimen"
+        ],
+        [
+         "What the plate is being asked to do",
+         "media"
+        ],
+        [
+         "From colony to name",
+         "ident"
+        ],
+        [
+         "MIC, the disk and the gradient strip",
+         "ast"
+        ],
+        [
+         "Reading S, I and R",
+         "sir"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 4, 16, 17",
+        "sort": 13
+       }
       }
      ],
      "checklist": [

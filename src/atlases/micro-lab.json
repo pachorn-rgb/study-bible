@@ -1,0 +1,29 @@
+{
+ "id": "micro-lab",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Laboratory",
+ "draft": false,
+ "title_tag": "Diagnostic bacteriology in the laboratory",
+ "h1": "Diagnostic bacteriology in the laboratory",
+ "lede": "งานห้องปฏิบัติการตั้งแต่ย้อมสไลด์ เก็บสิ่งส่งตรวจ เลือกอาหารเลี้ยงเชื้อ แยกชนิด จนถึงทดสอบความไวต่อยา · เนื้อหาตามคาบ Laboratory ทั้งสามของวิชา 204-221 อ่านจาก Murray บท 4, 16 และนิยามในบท 17 · ขั้นล้างสีของ Gram stain วาดให้เห็นว่าเกิดอะไรขึ้นกับผนังเซลล์จริง ๆ · ค่า breakpoint ขึ้นกับเกณฑ์ที่ใช้ จึงถูกกำกับไว้แยกจากข้อความของตำรา",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 4 Microscopy and In Vitro Culture, Ch 16 Laboratory Diagnosis of Bacterial Diseases และนิยามใน Ch 17 Antibacterial Agents"],
+  ["gen", "GL", "ข้อความที่ขึ้นกับเกณฑ์: CLSI และ EUCAST — ค่าที่ใช้จริงต้องเปิดจากเอกสารรุ่นปัจจุบัน"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Laboratory"],
+  "title": "Diagnostic bacteriology in the laboratory",
+  "src": "Murray 9e Ch 4, 16, 17",
+  "desc": "Gram stain ทีละขั้นและกลไกของขั้นล้างสี, สีย้อมกลุ่มอื่นและเมื่อไรจึงสั่ง, รูปร่างและการเรียงตัวบนสไลด์, สิ่งส่งตรวจที่ไม่ควรเพาะ, ปริมาตรเลือดกับ CSF ที่ห้ามแช่เย็น, อาหารเลี้ยงเชื้อสี่แบบกับ blood agar และ MacConkey, ทางแยกการแยกชนิดที่หน้าเคาน์เตอร์, MIC กับ disk diffusion และ gradient strip, และการอ่าน S I R ที่ขึ้นกับเกณฑ์",
+  "ch": "Murray Ch 4, 16, 17",
+  "sort": 13,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

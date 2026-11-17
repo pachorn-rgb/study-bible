@@ -95,6 +95,7 @@ const ABBR={
  WBC:"white blood cell",RBC:"red blood cell",RCT:"randomized controlled trial",
  /* drugs */
  NSAID:"nonsteroidal anti-inflammatory drug",ACE:"angiotensin-converting enzyme",
+ KOH:"potassium hydroxide",MBC:"minimum bactericidal concentration",XLD:"xylose-lysine deoxycholate",MALDI:"matrix-assisted laser desorption ionization",
  EB:"elementary body",MOMP:"major outer membrane protein",LGV:"lymphogranuloma venereum",NGU:"nongonococcal urethritis",MIF:"microimmunofluorescence",SOD:"superoxide dismutase",IUD:"intrauterine device",
  ACEi:"angiotensin-converting enzyme inhibitor",ARB:"angiotensin receptor blocker",
  HCTZ:"hydrochlorothiazide",MRA:"mineralocorticoid receptor antagonist",
