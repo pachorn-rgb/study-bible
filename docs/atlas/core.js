@@ -341,9 +341,11 @@ const ABBR={
  STEC:"Shiga toxin-producing Escherichia coli"
 ,
  FHA:"filamentous hemagglutinin"
+,
+ NTM:"nontuberculous mycobacteria"
 };
 /* never expanded: formula fragments, gene and protein symbols, and names read as words */
-const ABBR_OK=new Set(["CTX","BCYE","CFA","LT","PA63","pXO1","pXO2","JK","ETA","ETB","LIM","PURPLE","POSITIVE","ATP","ADP","AMP","cAMP","ATPase","DNA","RNA","mRNA","pH","HCO","NaHCO","NH","PCO","PO","CO","KCl","NaCl","MgSO","CaCl",
+const ABBR_OK=new Set(["TH1","CTX","BCYE","CFA","LT","PA63","pXO1","pXO2","JK","ETA","ETB","LIM","PURPLE","POSITIVE","ATP","ADP","AMP","cAMP","ATPase","DNA","RNA","mRNA","pH","HCO","NaHCO","NH","PCO","PO","CO","KCl","NaCl","MgSO","CaCl",
  "AA","AL","IgA","IgG","IgM","IgE","C3","C4","C1q","C5","CD","CD4","CD8","CD20","CD28","CD80","ABO","WHO","ISUP","AJCC","KDOQI",
  "TSC","TSC1","TSC2","MUC1","REN","HNF1B","COL4A3","COL4A4","COL4A5","PKD1","PKD2","PKHD1","APOL1","PLA2R","LIMS","CXCL9","DNAJB9",
  "HIF","TGF","VEGF","PDGF","FGF","EGF","IGF","TNF","IL","IFN","WNK","CaSR","TRPV5","FKBP","mTOR","IMPDH","NC1","GzmB","TCR","Tfh","Th1","Th2","Th17",

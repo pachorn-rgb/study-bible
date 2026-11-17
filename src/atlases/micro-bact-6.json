@@ -1,0 +1,28 @@
+{
+ "id": "micro-bact-6",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Clinical Bacteriology",
+ "draft": false,
+ "title_tag": "Mycobacteria and spirochetes",
+ "h1": "Mycobacteria and spirochetes",
+ "lede": "Mycobacterium tuberculosis, Mycobacterium leprae และ spirochete ทั้งสามสกุล — กลุ่มที่โรคดำเนินช้าและซ่อนตัวได้นาน · เนื้อหาตามคาบ Mycobacteria, Spirochete and Miscellaneous bacteria ของวิชา 204-221 อ่านจาก Murray บท 22 และ 32 · ภาพ granuloma วาดทุกชั้นตั้งแต่ขอบ lymphocyte เข้าไปจนถึงแกนเนื้อตายที่เชื้อนอนรออยู่",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 22 Mycobacterium and Related Acid-Fast Bacteria และ Ch 32 Treponema, Borrelia, and Leptospira"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Clinical Bacteriology"],
+  "title": "Mycobacteria and spirochetes",
+  "src": "Murray 9e Ch 22, 32",
+  "desc": "acid-fast และผลที่ตามมาจากชั้นไข, granuloma ของวัณโรคทีละชั้น, tuberculin test เทียบ interferon-γ release assay และสูตรยา, leprosy สองขั้ว, nontuberculous mycobacteria, syphilis สามระยะ, Lyme disease, relapsing fever และ leptospirosis",
+  "ch": "Murray Ch 22, 32",
+  "sort": 11,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

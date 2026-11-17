@@ -2260,6 +2260,56 @@
         "ch": "Murray Ch 24, 26, 28, 29",
         "sort": 10
        }
+      },
+      {
+       "id": "micro-bact-6",
+       "title": "Mycobacteria and spirochetes",
+       "subs": [
+        "Clinical Bacteriology"
+       ],
+       "src": "Murray 9e Ch 22, 32",
+       "href": "micro/micro-bact-6.html",
+       "thumb": "thumbs/micro-bact-6.jpg",
+       "desc": "acid-fast และผลที่ตามมาจากชั้นไข, granuloma ของวัณโรคทีละชั้น, tuberculin test เทียบ interferon-γ release assay และสูตรยา, leprosy สองขั้ว, nontuberculous mycobacteria, syphilis สามระยะ, Lyme disease, relapsing fever และ leptospirosis",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Acid-fast, and slow because of it",
+         "mycobact"
+        ],
+        [
+         "The granuloma is both the defence and the hiding place",
+         "tb-patho"
+        ],
+        [
+         "Proving tuberculosis, and treating it",
+         "tb-dx"
+        ],
+        [
+         "Leprosy's two poles, and the mycobacteria that are not tuberculosis",
+         "ntm-leprosy"
+        ],
+        [
+         "Syphilis: three phases and two kinds of serology",
+         "syphilis"
+        ],
+        [
+         "Borrelia and Leptospira",
+         "borrelia-lepto"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 22, 32",
+        "sort": 11
+       }
       }
      ],
      "checklist": [
