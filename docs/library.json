@@ -2077,6 +2077,10 @@
          "listeria-dis"
         ],
         [
+         "Erysipelothrix rhusiopathiae",
+         "erysipelothrix"
+        ],
+        [
          "Diphtheria toxin stops protein synthesis",
          "diphtheria"
         ],
@@ -2143,8 +2147,16 @@
          "meningococcus"
         ],
         [
+         "Preventing meningococcal disease",
+         "mening-prevent"
+        ],
+        [
          "Specimen, plate and report",
          "neisseria-lab"
+        ],
+        [
+         "Eikenella, Kingella and the commensal Neisseria",
+         "related-genera"
         ]
        ],
        "ref": {
@@ -2209,12 +2221,24 @@
          "kleb-proteus"
         ],
         [
+         "Enterobacteriaceae at the bench, and what to treat",
+         "entero-lab"
+        ],
+        [
          "Pseudomonas aeruginosa",
          "pseudomonas"
         ],
         [
+         "Pseudomonas aeruginosa by site",
+         "pseudo-dis"
+        ],
+        [
          "Acinetobacter and Burkholderia",
          "acineto-burk"
+        ],
+        [
+         "Stenotrophomonas maltophilia and Moraxella catarrhalis",
+         "steno-morax"
         ]
        ],
        "ref": {

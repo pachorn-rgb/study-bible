@@ -335,46 +335,64 @@ Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
 Object.assign(GN,{a:"Neisseria",b:"Disease",c:"At the bench"});
 
 /* ===================================================================
-   Gram-negative cocci — Murray ch 23 (Neisseria and Related Genera).
-   =================================================================== */
+ Gram-negative cocci — Murray ch 23 (Neisseria and Related Genera).
+ =================================================================== */
 
 SEC.push({id:"neisseria",k:"a",t:"Gram-negative diplococci inside the neutrophil",mm:"The genus",leg:[],
 draw:()=>{let b="";
  b+=mL(24,26,"Urethral discharge · Gram stain",{a:"start",c:"bh"})
-  +mL(24,46,"ภาพนี้คือสิ่งที่ทำให้วินิจฉัย gonorrhea ในผู้ชายที่มีอาการได้ทันทีข้างเตียง",{a:"start",c:"s m"});
+ +mL(24,46,"ภาพนี้คือสิ่งที่ทำให้วินิจฉัย gonorrhea ในผู้ชายที่มี symptom ได้ทันทีข้างเตียง",{a:"start",c:"s m"});
  /* two neutrophils with intracellular diplococci, plus some free pairs */
  b+=mpmn(150,170,72,5)+mpmn(320,196,64,11);
  [[126,148,0],[170,186,22],[138,200,-16],[182,146,38]].forEach(([x,y,r],i)=>{
-  b+=mdiplo(x,y,9,i*7+3,r)});
+ b+=mdiplo(x,y,9,i*7+3,r)});
  [[300,176,10],[340,214,-24],[310,222,34]].forEach(([x,y,r],i)=>{
-  b+=mdiplo(x,y,8.5,i*9+13,r)});
+ b+=mdiplo(x,y,8.5,i*9+13,r)});
  [[396,112,20],[412,166,-32],[386,214,8]].forEach(([x,y,r],i)=>{
-  b+=mdiplo(x,y,9,i*11+5,r)});
+ b+=mdiplo(x,y,9,i*11+5,r)});
  b+=mlead2(150,108,462,62,["Neutrophil","นิวเคลียสหลายพู"],{a:"start"})
-  +mlead2(182,146,462,108,["Intracellular diplococci","อยู่ในไซโทพลาซึมของ neutrophil"],{a:"start"})
-  +mlead2(396,112,462,154,["Extracellular pairs","คู่ที่อยู่นอกเซลล์ก็พบได้"],{a:"start"});
+ +mlead2(182,146,462,108,["Intracellular diplococci","อยู่ในไซโทพลาซึมของ neutrophil"],{a:"start"})
+ +mlead2(396,112,462,154,["Extracellular pairs","คู่ที่อยู่นอกเซลล์ก็พบได้"],{a:"start"});
  b+=mL(462,202,"ด้านที่ชนกันแบนเข้าหากัน",{a:"start",c:"s m"})
-  +mL(462,220,"เหมือนเมล็ดถั่วสองเมล็ดวางประกบ",{a:"start",c:"s m"});
+ +mL(462,220,"เหมือนเมล็ดถั่วสองเมล็ดวางประกบ",{a:"start",c:"s m"});
  /* how the genus is pinned down */
  b+=`<path class="m-sep" d="M24,268 L616,268"/>`
-  +mL(24,294,"How the genus is pinned down",{a:"start",c:"bh"});
+ +mL(24,294,"How the genus is pinned down",{a:"start",c:"bh"});
  [["Oxidase positive","หยดน้ำยาแล้วโคโลนีเปลี่ยนสีภายในไม่กี่วินาที",24,322],
-  ["Catalase positive","สองอย่างนี้คู่กันคือด่านแรกของการระบุสกุล",330,322],
-  ["Fastidious","ต้องใช้ chocolate agar · โตดีที่ 35–37 °C ในบรรยากาศชื้นที่เติม CO₂",24,368],
-  ["Oxidative, not fermentative","สร้างกรดจากน้ำตาลแบบ oxidative · ชนิดน้ำตาลที่ใช้ได้แยกสปีชีส์",24,414],
-  ["Dies quickly","ตายเร็วเมื่อเจอความเย็นหรือความแห้ง — สิ่งส่งตรวจต้องรีบส่ง",24,460]
+ ["Catalase positive","สองอย่างนี้คู่กันคือด่านแรกของการระบุสกุล",330,322],
+ ["Fastidious","ต้องใช้ chocolate agar · โตดีที่ 35–37 °C ในบรรยากาศชื้นที่เติม CO₂",24,368],
+ ["Oxidative, not fermentative","สร้างกรดจากน้ำตาลแบบ oxidative · ชนิดน้ำตาลที่ใช้ได้แยกสปีชีส์",24,414],
+ ["Dies quickly","ตายเร็วเมื่อเจอความเย็นหรือความแห้ง — specimen ต้องรีบส่ง",24,460]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+(d?mL(x,y+20,d,{a:"start",c:"s m"}):"")});
  return svg(b,"0 0 640 496")},
 notes:()=>`<h3>Two species matter</h3><ul>
  <li><b><i>N. gonorrhoeae</i></b> และ <b><i>N. meningitidis</i></b> เป็นสมาชิกที่สำคัญที่สุดของสกุลนี้ · ตัวอื่น ๆ ในสกุลเป็นเชื้อประจำถิ่นของ nasopharynx ${S.mu}</li>
- <li>ผนังเซลล์เป็นแบบ gram-negative ตามปกติ — peptidoglycan บาง ๆ อยู่ระหว่าง cytoplasmic membrane กับ outer membrane ${S.mu}</li>
+ <li>cell wall เป็นแบบ gram-negative ตามปกติ — peptidoglycan บาง ๆ อยู่ระหว่าง cytoplasmic membrane กับ outer membrane ${S.mu}</li>
  <li><b>เหล็กจำเป็นต่อการเติบโตและเมแทบอลิซึม</b>ของทั้งสองสปีชีส์ และทั้งคู่มี receptor สำหรับ transferrin, lactoferrin และ hemoglobin เพื่อแย่งเหล็กจาก host ${S.mu}</li>
- <li>ทั้งคู่<b>ปล่อยถุง outer membrane bleb</b> ออกมาระหว่างที่โตเร็ว · ถุงเหล่านี้มี lipooligosaccharide และโปรตีนผิวอยู่ จึงทั้งเพิ่มความเป็นพิษของ endotoxin และดักแอนติบอดีให้พ้นจากตัวเชื้อที่กำลังแบ่งตัว ${S.mu}</li></ul>
+ <li>ทั้งคู่<b>ปล่อยถุง outer membrane bleb</b> ออกมาระหว่างที่โตเร็ว · ถุงเหล่านี้มี lipooligosaccharide และโปรตีนผิวอยู่ จึงทั้งเพิ่มความเป็นพิษของ endotoxin และดัก antibody ให้พ้นจากตัวเชื้อที่กำลังแบ่งตัว ${S.mu}</li></ul>
  <h3>What the Gram stain can settle</h3><ul>
- <li>Gram stain ของสิ่งส่งตรวจจากท่อปัสสาวะ<b>แม่นยำเฉพาะในผู้ชายที่มีอาการ</b> — ในผู้หญิงและในตำแหน่งอื่นความไวต่ำเกินกว่าจะเชื่อถือได้ ${S.mu}</li>
+ <li>Gram stain ของ specimen จากท่อปัสสาวะ<b>แม่นยำเฉพาะในผู้ชายที่มี symptom</b> — ในผู้หญิงและในตำแหน่งอื่นความไวต่ำเกินกว่าจะเชื่อถือได้ ${S.mu}</li>
  <li>Gram stain ของ CSF มีทั้งความไวและความจำเพาะดีสำหรับ meningococcus แต่<b>ใช้กับเลือดไม่ได้</b> เพราะปกติมีเชื้อน้อยเกินไป ยกเว้นในภาวะ sepsis ที่รุนแรงมาก ${S.mu}</li>
- <li>การเพาะเชื้อให้ผลชี้ขาด แต่เชื้อเลือกกินและ<b>ตายเร็วเมื่อเจอความเย็นหรือความแห้ง</b> ${S.mu}</li>
- <li>ปัจจุบันการเพาะเชื้อสำหรับ gonorrhea ถูกแทนที่ด้วย <b>nucleic acid test</b> ในห้องปฏิบัติการส่วนใหญ่ ${S.mu}</li></ul>`});
+ <li>การ culture ให้ผลชี้ขาด แต่เชื้อเลือกกินและ<b>ตายเร็วเมื่อเจอความเย็นหรือความแห้ง</b> ${S.mu}</li>
+ <li>ปัจจุบันการ culture สำหรับ gonorrhea ถูกแทนที่ด้วย <b>nucleic acid test</b> ในห้องปฏิบัติการส่วนใหญ่ ${S.mu}</li></ul>
+ <h3>Growth on plain media separates pathogen from commensal</h3><ul>
+ <li><b>Nonpathogenic Neisseria โตได้ทั้งบน blood agar และ nutrient agar</b> ${S.mu}</li>
+ <li><b><i>N. meningitidis</i> โตบน blood agar และโตบน nutrient agar แบบไม่แน่นอน</b> ${S.mu}</li>
+ <li><b><i>N. gonorrhoeae</i> มักไม่โตบนทั้งสองอย่าง</b> — ต้องการ <b>cystine</b> และแหล่งพลังงานอย่าง glucose, pyruvate หรือ lactate และหลาย strain ยังต้องเติม amino acid, purine, pyrimidine และวิตามินลงไปด้วย ${S.mu}</li>
+ <li>ที่เติม <b>soluble starch</b> ลงใน medium ก็เพื่อ<b>ลบล้างพิษของ fatty acid</b> จึงปลูกได้เฉพาะบน enriched chocolate agar และ medium ที่เสริมแล้ว ${S.mu}</li>
+ <li>บรรยากาศชื้นที่เติม <b>CO₂ 5%</b> จำเป็นหรือช่วยให้ <i>N. gonorrhoeae</i> โตดีขึ้น ${S.mu}</li>
+ <li>ผลในทางปฏิบัติ: <b>ถ้าไม่เพาะลงบน enriched medium ที่เหมาะสม จะเก็บเชื้อนี้ไม่ได้เลย</b> — แต่เชื้อที่เลี้ยงยากขนาดนี้กลับติดต่อทางเพศสัมพันธ์จากคนสู่คนได้ง่าย ${S.mu}</li>
+ <li>กรดที่ใช้แยกสปีชีส์เกิดจาก <b>oxidation ของ carbohydrate ไม่ใช่ fermentation</b> · ปัจจุบันวิธีที่เร็วกว่าอย่าง <b>MALDI mass spectrometry</b> เข้ามาแทน ${S.mu}</li></ul>
+ <h3>Capsule and serogroups</h3><ul>
+ <li><b>ปัจจัยก่อโรคหลักของ <i>N. meningitidis</i> คือ polysaccharide capsule</b> ${S.mu}</li>
+ <li><i>N. gonorrhoeae</i> <b>ไม่มี capsule ที่เป็น carbohydrate จริง</b> แต่ผิวเซลล์มี<b>ประจุลบเหมือนมี capsule</b> ${S.mu}</li>
+ <li>ความต่างของแอนติเจนใน capsule เป็นฐานของการแบ่ง <b>serogroup</b> — รู้จักแล้ว <b>13 serogroup</b> โดย <b>6 กลุ่มคือ A, B, C, W135, X และ Y</b> ที่สัมพันธ์กับโรคทั้งแบบประจำถิ่นและแบบระบาด ${S.mu}</li></ul>
+ <h3>Why they are strict human pathogens</h3><ul>
+ <li>ทั้งสองสปีชีส์แย่งเหล็กโดย<b>จับ host transferrin เข้ากับ receptor จำเพาะบนผิวเชื้อ</b> ${S.mu}</li>
+ <li><b>ความจำเพาะต่อ human transferrin นี้น่าจะเป็นเหตุผลที่เชื้อเป็น strict human pathogen</b> ${S.mu}</li>
+ <li>กลไกนี้<b>ต่างจากแบคทีเรียส่วนใหญ่ซึ่งสร้าง siderophore ไปกวาดเหล็ก</b> · gonococci ยังมี receptor สำหรับ lactoferrin และ hemoglobin เพิ่มอีก ${S.mu}</li>
+ <li><b>LOS</b> ของเชื้อประกอบด้วย lipid A กับ core oligosaccharide แต่<b>ขาด O-antigen polysaccharide</b> ที่พบใน lipopolysaccharide ของ gram-negative rod ส่วนใหญ่ · ส่วน lipid A มีฤทธิ์ endotoxin ${S.mu}</li>
+ <li>ทั้งคู่สร้าง <b>IgA1 protease</b> ซึ่ง<b>ตัดที่ hinge region ของ IgA1</b> ได้ Fc และ Fab fragment ที่หมดฤทธิ์ทาง immunology · บาง strain ของ <i>N. gonorrhoeae</i> ยังสร้าง <b>β-lactamase</b> ที่ย่อย penicillin ${S.mu}</li></ul>`});
 
 SEC.push({id:"gc-vir",k:"a",t:"Neisseria gonorrhoeae: the surface is the virulence",mm:"Gonococcus virulence",leg:[],
 draw:()=>{let b="";
@@ -394,115 +412,226 @@ draw:()=>{let b="";
  for(let i=0;i<9;i++){const x=X0+20+i*40;b+=mlps(x,OM-8+wv(x),40+i,3)}
  /* Por and Opa in the outer membrane */
  [1,5].forEach(i=>{const x=X0+20+i*40,y=OM+wv(x);
-  b+=`<path class="m-porin" d="${(`M${(x-9).toFixed(1)},${(y-9).toFixed(1)} l0,18 l6,0 l0,-18 Z`)}"/>`
-   +`<path class="m-porin" d="${(`M${(x+3).toFixed(1)},${(y-9).toFixed(1)} l0,18 l6,0 l0,-18 Z`)}"/>`});
+ b+=`<path class="m-porin" d="${(`M${(x-9).toFixed(1)},${(y-9).toFixed(1)} l0,18 l6,0 l0,-18 Z`)}"/>`
+ +`<path class="m-porin" d="${(`M${(x+3).toFixed(1)},${(y-9).toFixed(1)} l0,18 l6,0 l0,-18 Z`)}"/>`});
  [3,7].forEach(i=>{const x=X0+20+i*40,y=OM+wv(x);
-  b+=`<path class="m-gene" d="${mblob(x,y,9,12,i*5+3,.1)}"/>`});
+ b+=`<path class="m-gene" d="${mblob(x,y,9,12,i*5+3,.1)}"/>`});
  /* pili reaching out */
  const pq=rng(19);
  for(let i=0;i<8;i++){const x=X0+34+i*44,y=OM-9+wv(x),L=30+pq()*14;
-  b+=`<path class="m-pil" d="M${x.toFixed(1)},${y.toFixed(1)} q${(pq()*10-5).toFixed(1)},${(-L*.6).toFixed(1)} ${(pq()*14-7).toFixed(1)},${(-L).toFixed(1)}"/>`}
+ b+=`<path class="m-pil" d="M${x.toFixed(1)},${y.toFixed(1)} q${(pq()*10-5).toFixed(1)},${(-L*.6).toFixed(1)} ${(pq()*14-7).toFixed(1)},${(-L).toFixed(1)}"/>`}
  b+=mlead2(X0+34,OM-40,LX,48,["Pilin","เกาะครั้งแรก · เปลี่ยนแอนติเจนได้"],{a:"start"})
-  +mlead2(X0+60,OM,LX,100,["Por protein (PorB)","กันไม่ให้ phagolysosome รวมตัว"],{a:"start"})
-  +mlead2(X0+140,OM,LX,152,["Opa protein","เกาะแน่นกับเซลล์ host"],{a:"start"})
-  +mlead2(X0+300,OM-22,LX,204,["Lipooligosaccharide","สายน้ำตาลสั้นกว่า LPS"],{a:"start"});
+ +mlead2(X0+60,OM,LX,100,["Por protein (PorB)","กันไม่ให้ phagolysosome รวมตัว"],{a:"start"})
+ +mlead2(X0+140,OM,LX,152,["Opa protein","เกาะแน่นกับเซลล์ host"],{a:"start"})
+ +mlead2(X0+300,OM-22,LX,204,["Lipooligosaccharide","สายน้ำตาลสั้นกว่า LPS"],{a:"start"});
  b+=`<path class="m-sep" d="M24,260 L616,260"/>`;
  [["IgA1 protease","ตัดบานพับของ IgA1 จนได้ Fc กับ Fab ที่ไม่ทำงาน",24,286],
-  ["β-lactamase","บางสายพันธุ์ย่อย penicillin ได้",330,286],
-  ["Rmp protein","กระตุ้นแอนติบอดีที่ไปขวางการฆ่าเชื้อด้วยซีรัม",24,332],
-  ["Iron receptors","transferrin · lactoferrin · hemoglobin",330,332],
-  ["Antigenic variation ของ pilin","เป็นเหตุผลสำคัญที่ติดเชื้อซ้ำได้และยังไม่มีวัคซีน",24,378]
+ ["β-lactamase","บาง strain ย่อย penicillin ได้",330,286],
+ ["Rmp protein","กระตุ้น antibody ที่ไปขวางการฆ่าเชื้อด้วยซีรัม",24,332],
+ ["Iron receptors","transferrin · lactoferrin · hemoglobin",330,332],
+ ["Antigenic variation ของ pilin","เป็นเหตุผลสำคัญที่ติดเชื้อซ้ำได้และยังไม่มีวัคซีน",24,378]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 422")},
 notes:()=>`<h3>Attachment, then invasion</h3><ul>
- <li>Gonococci เกาะเซลล์เยื่อเมือก บุกเข้าไปในเซลล์ เพิ่มจำนวน แล้ว<b>ทะลุผ่านเซลล์ออกไปยังช่องใต้เยื่อบุ</b> ซึ่งเป็นที่ที่การติดเชื้อตั้งตัวขึ้น ${S.mu}</li>
+ <li>Gonococci เกาะเซลล์เยื่อเมือก บุกเข้าไปในเซลล์ เพิ่มจำนวน แล้ว<b>ทะลุผ่านเซลล์ออกไปยังช่องใต้เยื่อบุ</b> ซึ่งเป็นที่ที่ infection ตั้งตัวขึ้น ${S.mu}</li>
  <li><b>Pili, PorB และ Opa</b> เป็นสามตัวที่ทำหน้าที่เกาะและบุกเข้าเซลล์ ${S.mu}</li>
- <li><b>Lipooligosaccharide</b> ของ gonococcus กระตุ้นการหลั่ง <b>TNF-α</b> ซึ่งเป็นต้นเหตุของอาการส่วนใหญ่ของโรค ${S.mu}</li></ul>
+ <li><b>Lipooligosaccharide</b> ของ gonococcus กระตุ้นการหลั่ง <b>TNF-α</b> ซึ่งเป็นต้นเหตุของ symptom ส่วนใหญ่ของโรค ${S.mu}</li></ul>
  <h3>Why immunity does not stick</h3><ul>
- <li>Pilin มี<b>การสลับยีนจนเปลี่ยนแอนติเจนได้</b> ภูมิคุ้มกันที่สร้างไว้จึงใช้กับสายพันธุ์ถัดไปไม่ได้ ${S.mu}</li>
+ <li>Pilin มี<b>การสลับยีนจนเปลี่ยนแอนติเจนได้</b> immunity ที่สร้างไว้จึงใช้กับ strain ถัดไปไม่ได้ ${S.mu}</li>
  <li>PorB บางแบบทำให้เชื้อ<b>ทนต่อการถูกฆ่าด้วยซีรัมที่อาศัย complement</b> ${S.mu}</li>
- <li>แอนติบอดีต่อ lipooligosaccharide กระตุ้น complement ได้ C5a ที่เรียก neutrophil เข้ามา · แต่ <b>IgG และ secretory IgA1 ที่ต่อต้าน Rmp กลับไปขวางการฆ่าเชื้อนั้นเสียเอง</b> ${S.mu}</li>
- <li>IgG3 เป็นแอนติบอดี IgG หลักที่สร้างขึ้นตอบสนองต่อการติดเชื้อ gonococcus ${S.mu}</li></ul>
+ <li>antibody ต่อ lipooligosaccharide กระตุ้น complement ได้ C5a ที่เรียก neutrophil เข้ามา · แต่ <b>IgG และ secretory IgA1 ที่ต่อต้าน Rmp กลับไปขวางการฆ่าเชื้อนั้นเสียเอง</b> ${S.mu}</li>
+ <li>IgG3 เป็น antibody IgG หลักที่สร้างขึ้นตอบสนองต่อ infection gonococcus ${S.mu}</li></ul>
  <h3>Opaque or transparent colonies</h3><ul>
- <li>เชื้อที่แสดง Opa protein ให้<b>โคโลนีขุ่น</b> และพบบ่อยที่สุดในผู้ป่วยที่มีการติดเชื้อเฉพาะที่ — endocervicitis, urethritis, pharyngitis, proctitis ${S.mu}</li>
- <li><b>โคโลนีใส</b>สัมพันธ์กับ pelvic inflammatory disease และการติดเชื้อที่กระจายทั่วร่างกายมากกว่า ${S.mu}</li></ul>`});
+ <li>เชื้อที่แสดง Opa protein ให้<b>โคโลนีขุ่น</b> และพบบ่อยที่สุดในผู้ป่วยที่มี infection เฉพาะที่ — endocervicitis, urethritis, pharyngitis, proctitis ${S.mu}</li>
+ <li><b>โคโลนีใส</b>สัมพันธ์กับ pelvic inflammatory disease และ infection ที่กระจายทั่วร่างกายมากกว่า ${S.mu}</li></ul>
+ <h3>Pili: attachment, and the reason there is no vaccine</h3><ul>
+ <li>Pili ยื่นจาก cytoplasmic membrane ผ่าน outer membrane ออกมา และพบทั้งใน strain ที่ก่อโรคและไม่ก่อโรค ${S.mu}</li>
+ <li>หน้าที่ของ pili: <b>เกาะเซลล์ host, ถ่ายทอดสารพันธุกรรม และการเคลื่อนไหว</b> ${S.mu}</li>
+ <li>ที่สำคัญต่อการก่อโรคคือ <b>pili เกาะ nonciliated epithelial cell และทำให้ทนการฆ่าโดย neutrophil</b> ${S.mu}</li>
+ <li>pili สร้างจาก <b>pilin</b> ที่ซ้ำกัน · มี<b>ส่วนอนุรักษ์ที่ปลายข้างหนึ่ง และส่วนแปรผันสูงที่ปลาย carboxyl ซึ่งโผล่ออกมา</b> ${S.mu}</li>
+ <li>การที่<b>ติดเชื้อซ้ำได้</b>มาจากสองอย่าง — <b>antigenic variation ระหว่าง pilin และ phase variation ของการแสดงออกของ pilin</b> ${S.mu}</li>
+ <li>ส่วนแปรผันที่ปลาย carboxyl เป็น<b>ส่วนที่ immunity ตอบสนองมากที่สุด</b> · antibody ต่อส่วนนี้<b>กัน infection ซ้ำจาก strain เดียวกันได้ แต่กัน strain อื่นได้ไม่ครบ</b> จึงเป็นเหตุผลที่วัคซีนจาก pilin ไม่ได้ผล ${S.mu}</li></ul>
+ <h3>Porin: one gene silent, and why that matters</h3><ul>
+ <li>Porin เป็น integral outer membrane protein ที่สร้างช่องให้สารอาหารเข้าและของเสียออก ${S.mu}</li>
+ <li>ทั้งสองสปีชีส์มี <b>porin สองยีน คือ porA และ porB</b> · <b><i>N. meningitidis</i> แสดงออกทั้งคู่ แต่ porA เงียบใน <i>N. gonorrhoeae</i></b> ${S.mu}</li>
+ <li>ผลคือ <b>PorB เป็น outer membrane protein หลักของ gonococcus ราว 60% ของโปรตีนทั้งหมด</b> และ<b>ต้องทำงานได้จริงเชื้อจึงรอด</b> ${S.mu}</li>
+ <li>น่าจะเป็นเป้าวัคซีนที่ดี แต่ <b>PorB แสดงออกเป็นสองชั้นแอนติเจนคือ PorB1A และ PorB1B</b> ซึ่งแต่ละชั้นมี serologic variant จำนวนมาก — <b>จึงเป็นเป้าวัคซีนที่แย่</b> ${S.mu}</li>
+ <li>PorB ก่อโรคได้สามทาง — <b>ขัดการ degranulation ของ neutrophil</b> คือกัน phagolysosome fusion ที่จะฆ่าเชื้อในเซลล์ · <b>ช่วย adhesin ตัวอื่นพาเชื้อรุกเข้า epithelial cell</b> · และ<b>แอนติเจน PorB บางแบบทำให้เชื้อทน complement-mediated serum killing</b> ${S.mu}</li></ul>
+ <h3>Opa and Rmp</h3><ul>
+ <li><b>Opa protein</b> คือ opacity protein ที่<b>จับ epithelial cell และ phagocyte อย่างแน่น</b> และสำคัญต่อ cell-to-cell signaling · เชื้อตัวเดียวแสดงออกได้หลาย allele ${S.mu}</li>
+ <li>ชื่อมาจากสิ่งที่เห็นบนจาน — <b>gonococci ที่แสดง Opa ให้โคโลนีขุ่น</b> ${S.mu}</li>
+ <li>และสิ่งที่เห็นบนจานพยากรณ์โรคได้: <b>โคโลนีขุ่นพบมากในโรคเฉพาะที่</b> เช่น endocervicitis, urethritis, pharyngitis, proctitis · <b>โคโลนีใสพบมากใน pelvic inflammatory disease และโรคที่กระจายทั่วตัว</b> ${S.mu}</li>
+ <li><b>Rmp protein</b> คือ reduction-modifiable protein ซึ่งอนุรักษ์สูง · มันกระตุ้น antibody ที่<b>ไปขัดฤทธิ์ฆ่าเชื้อของ serum</b> ${S.mu}</li></ul>
+ <h3>What the host does, and why it is not enough</h3><ul>
+ <li>Gonococci <b>เกาะ mucosal cell แล้วเจาะเข้าเซลล์ แบ่งตัว แล้วทะลุเซลล์ไปตั้งหลักใน subepithelial space</b> โดยอาศัย pili, PorB และ Opa ${S.mu}</li>
+ <li><b>LOS กระตุ้นการหลั่ง TNF-α ซึ่งเป็นต้นเหตุของ symptom เกือบทั้งหมด</b>ของโรค ${S.mu}</li>
+ <li><b>IgG3 เป็น IgG หลักที่สร้างขึ้น</b> · การตอบสนองต่อ PorB มีน้อยมาก แต่ตรวจพบ antibody ต่อ pilin, Opa และ LOS ได้ง่าย ${S.mu}</li>
+ <li>จุดที่ระบบ immunity ถูกหักล้าง: antibody ต่อ LOS กระตุ้น complement ปล่อย <b>C5a</b> ที่ดึง neutrophil มา แต่ <b>IgG และ secretory IgA1 ต่อ Rmp ไปปิดกั้นการฆ่าเชื้อนั้นเสีย</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"gonorrhea",k:"b",t:"Gonorrhea by site and by host",mm:"Gonorrhea",leg:[],
 draw:()=>tbl(["Host","Picture","Note"],[
- ["Man","urethritis — หนองไหลและแสบขณะปัสสาวะ","ผู้ชายส่วนใหญ่มีอาการตั้งแต่แรก"],
- ["Woman","endocervicitis · อาจมีตกขาวหรือแสบขณะปัสสาวะ","ราวครึ่งหนึ่งมีอาการน้อยหรือไม่มีเลย — นี่คือแหล่งกักโรคหลัก"],
+ ["Man","urethritis — pus ไหลและแสบขณะปัสสาวะ","ผู้ชายส่วนใหญ่มี symptom ตั้งแต่แรก"],
+ ["Woman","endocervicitis · อาจมีตกขาวหรือแสบขณะปัสสาวะ","ราวครึ่งหนึ่งมี symptom น้อยหรือไม่มีเลย — นี่คือแหล่งกักโรคหลัก"],
  ["Woman — ascending","pelvic inflammatory disease · salpingitis · tubo-ovarian abscess","ทำให้มีบุตรยากและตั้งครรภ์นอกมดลูก"],
- ["Rectum · pharynx","proctitis · pharyngitis","ไม่มีอาการบ่อยกว่าการติดเชื้อที่อวัยวะเพศ"],
- ["Disseminated","ข้ออักเสบและผื่นผิวหนัง","กระจายเข้ากระแสเลือดจากจุดติดเชื้อเดิม"],
- ["Newborn","ophthalmia neonatorum — เยื่อบุตาอักเสบเป็นหนอง","ติดจากแม่ขณะคลอด"]]),
+ ["Rectum · pharynx","proctitis · pharyngitis","ไม่มี symptom บ่อยกว่า infection ที่อวัยวะเพศ"],
+ ["Disseminated","ข้ออักเสบและ rashskin","กระจายเข้ากระแสเลือดจากจุดติดเชื้อเดิม"],
+ ["Newborn","ophthalmia neonatorum — เยื่อบุตาอักเสบเป็น pus","ติดจากแม่ขณะคลอด"]]),
 notes:()=>`<h3>The reservoir is the person without symptoms</h3><ul>
- <li>แหล่งกักโรคหลักของ gonococci คือ<b>ผู้ติดเชื้อที่ไม่มีอาการ</b> ${S.mu}</li>
- <li>การเป็นพาหะแบบไม่มีอาการพบใน<b>ผู้หญิงบ่อยกว่าผู้ชาย</b> — ผู้หญิงที่ติดเชื้อมากถึงครึ่งหนึ่งมีอาการน้อยหรือไม่มีเลย ขณะที่ผู้ชายส่วนใหญ่มีอาการตั้งแต่แรก ${S.mu}</li>
- <li>ในผู้ที่ไม่ได้รักษา อาการมักหายไปเองภายในไม่กี่สัปดาห์ แล้ว<b>กลายเป็นพาหะต่อ</b> ${S.mu}</li>
- <li>ตำแหน่งที่ติดเชื้อก็กำหนดด้วยว่าจะมีอาการหรือไม่ — <b>การติดเชื้อที่ทวารหนักและคอหอยไม่มีอาการบ่อยกว่า</b>ที่อวัยวะเพศ ${S.mu}</li>
- <li>ทารกแรกเกิดเสี่ยงเมื่อแม่ติดเชื้อ ${S.mu}</li></ul>
+ <li>แหล่งกักโรคหลักของ gonococci คือ<b>ผู้ติดเชื้อที่ไม่มี symptom</b> ${S.mu}</li>
+ <li>การเป็นพาหะแบบไม่มี symptom พบใน<b>ผู้หญิงบ่อยกว่าผู้ชาย</b> — ผู้หญิงที่ติดเชื้อมากถึงครึ่งหนึ่งมี symptom น้อยหรือไม่มีเลย ขณะที่ผู้ชายส่วนใหญ่มี symptom ตั้งแต่แรก ${S.mu}</li>
+ <li>ในผู้ที่ไม่ได้รักษา symptom มักหายไปเองภายในไม่กี่สัปดาห์ แล้ว<b>กลายเป็นพาหะต่อ</b> ${S.mu}</li>
+ <li>ตำแหน่งที่ติดเชื้อก็กำหนดด้วยว่าจะมี symptom หรือไม่ — <b>infection ที่ทวารหนักและคอหอยไม่มี symptom บ่อยกว่า</b>ที่อวัยวะเพศ ${S.mu}</li>
+ <li>neonate เสี่ยงเมื่อแม่ติดเชื้อ ${S.mu}</li></ul>
  <h3>Treatment</h3><ul>
  <li>ยาที่แนะนำในขณะนี้คือ <b>ceftriaxone ร่วมกับ azithromycin</b> ${S.mu}</li>
  <li>แต่มีรายงาน<b>การดื้อ cephalosporin และ azithromycin ในระดับสูง</b>แล้ว ซึ่งเป็นเหตุผลที่แนวทางการรักษาเปลี่ยนบ่อย — ให้ยึดแนวทางฉบับปัจจุบันเสมอ ${S.mu}</li>
- <li>ทารกแรกเกิดป้องกันด้วย <b>silver nitrate 1%</b> · ถ้าเป็น ophthalmia neonatorum แล้วรักษาด้วย ceftriaxone ${S.mu}</li>
+ <li>neonate ป้องกันด้วย <b>silver nitrate 1%</b> · ถ้าเป็น ophthalmia neonatorum แล้วรักษาด้วย ceftriaxone ${S.mu}</li>
  <li>การป้องกันอาศัยการให้ความรู้ การใช้ถุงยางอนามัย การใช้ฆ่าเชื้ออสุจิอย่าง nonoxynol-9 ซึ่งได้ผลเพียงบางส่วน และ<b>การตามรักษาคู่ของผู้ป่วย</b> ${S.mu}</li>
- <li><b>ยังไม่มีวัคซีนสำหรับ <i>N. gonorrhoeae</i></b> ซึ่งต่างจาก <i>N. meningitidis</i> ${S.mu}</li></ul>`});
+ <li><b>ยังไม่มีวัคซีนสำหรับ <i>N. gonorrhoeae</i></b> ซึ่งต่างจาก <i>N. meningitidis</i> ${S.mu}</li></ul>
+ <h3>The numbers</h3><ul>
+ <li>Gonorrhea เกิดในคนเท่านั้น <b>ไม่มีแหล่งกักโรคอื่นที่รู้จัก</b> ${S.mu}</li>
+ <li>ในสหรัฐอเมริกาเป็น<b>โรคติดต่อทางเพศสัมพันธ์ที่รายงานมากเป็นอันดับสองรองจาก chlamydia</b> ${S.mu}</li>
+ <li>อัตราติดเชื้อ<b>เท่ากันในชายและหญิง</b> · <b>จุดสูงสุดอยู่ในกลุ่มอายุ 15 ถึง 24 ปี</b> ${S.mu}</li>
+ <li>อุบัติการณ์ลดลงหลังปี 1978 แต่ชะลอราวปี 1996 และ<b>เพิ่มขึ้นอีกตั้งแต่ปี 2010</b> · ปี 2017 รายงาน <b>555,608 ราย ซึ่งสูงที่สุดในกว่า 25 ปี</b> ${S.mu}</li>
+ <li>และตัวเลขนี้<b>ยังต่ำกว่าความจริง</b> — เจ้าหน้าที่สาธารณสุขเชื่อว่าของจริงอาจเป็นสองเท่าของที่รายงาน · WHO ประมาณปี 2012 ว่ามี <b>78 ล้านรายใหม่ทั่วโลก</b> ${S.mu}</li></ul>
+ <h3>Risk per exposure is not symmetrical</h3><ul>
+ <li><b>ผู้หญิงมีความเสี่ยงติดเชื้อ 50% จากการสัมผัสครั้งเดียวกับผู้ชายที่ติดเชื้อ</b> ${S.mu}</li>
+ <li><b>ผู้ชายมีความเสี่ยงราว 20% จากการสัมผัสครั้งเดียวกับผู้หญิงที่ติดเชื้อ</b> ${S.mu}</li>
+ <li>ความเสี่ยงเพิ่มตามจำนวนครั้งที่สัมผัสคู่ที่ติดเชื้อ ${S.mu}</li></ul>
+ <h3>Where the organism can and cannot grow</h3><ul>
+ <li>ในผู้ชาย<b>จำกัดอยู่ที่ urethra เป็นหลัก</b> · pus ไหลและแสบขณะปัสสาวะหลัง<b>ระยะฟักตัว 2 ถึง 5 วัน</b> · <b>ผู้ชายที่ติดเชื้อแทบทุกคนมี symptom เฉียบพลัน</b> ${S.mu}</li>
+ <li>ภาวะแทรกซ้อนในผู้ชายพบน้อย แต่มี <b>epididymitis, prostatitis และ periurethral abscess</b> ${S.mu}</li>
+ <li>ในผู้หญิง<b>ตำแหน่งหลักคือ cervix</b> เพราะเชื้อติด <b>endocervical columnar epithelial cell</b> ${S.mu}</li>
+ <li>จุดที่อธิบายทุกอย่าง: <b>เชื้อติด squamous epithelial cell ที่บุ vagina ของผู้หญิงหลังวัยรุ่นไม่ได้</b> ${S.mu}</li>
+ <li><b>การลุกลามขึ้นไปพบใน 10% ถึง 20% ของผู้หญิง</b> — salpingitis, tubo-ovarian abscess และ pelvic inflammatory disease ${S.mu}</li>
+ <li>ผู้หญิงที่เริ่มแบบไม่มี symptom<b>เสี่ยงต่อ pelvic inflammatory disease, ectopic pregnancy, infertility, destructive arthritis และโรคที่กระจายทั่วตัว มากขึ้น</b> ${S.mu}</li></ul>
+ <h3>Gonococcemia and the other syndromes</h3><ul>
+ <li>โรคที่กระจายพร้อม septicemia และ infection ที่ skin และข้อเกิดใน <b>1% ถึง 3% ของผู้หญิงที่ติดเชื้อ และในสัดส่วนที่ต่ำกว่านั้นมากในผู้ชาย</b> ${S.mu}</li>
+ <li>เหตุผลที่ผู้หญิงมากกว่า<b>ไม่ใช่ความไวต่อโรค แต่เป็นจำนวน infection แบบไม่มี symptom ที่ไม่ได้รักษา</b> ${S.mu}</li>
+ <li>ภาพของโรคที่กระจาย: <b>fever, migratory arthralgia, suppurative arthritis ที่ข้อมือ เข่าและข้อเท้า</b> และ<b>rash ตุ่ม pus บนฐานแดงที่แขนขา แต่ไม่ขึ้นที่ศีรษะและลำตัว</b> ${S.mu}</li>
+ <li><b><i>N. gonorrhoeae</i> เป็นสาเหตุอันดับต้นของ purulent arthritis ในผู้ใหญ่</b> ${S.mu}</li>
+ <li>กลุ่ม symptom อื่น — <b>perihepatitis หรือ Fitz-Hugh–Curtis syndrome</b> · <b>purulent conjunctivitis</b> โดยเฉพาะ ophthalmia neonatorum จากการคลอดทาง vagina · <b>anorectal gonorrhea</b> · และ <b>pharyngitis</b> ${S.mu}</li></ul>
+ <h3>Why antibiotic choice keeps moving</h3><ul>
+ <li><b>Penicillin เคยเป็นยาเลือกแรก</b> แต่<b>ไม่ใช้แล้ว</b> เพราะความเข้มข้นที่ต้องใช้ฆ่า strain ที่ยัง "ไว" เพิ่มขึ้นเรื่อย ๆ และการดื้อแบบชัดเจนกลายเป็นเรื่องธรรมดา ${S.mu}</li>
+ <li><b>การดื้อ tetracycline และ ciprofloxacin ก็แพร่หลาย</b> จึงไม่แนะนำทั้งสองตัว ${S.mu}</li>
+ <li>CDC แนะนำ <b>dual therapy ด้วย ceftriaxone ร่วมกับ azithromycin</b> · มีรายงาน resistance ทั้งสองตัวทั่วโลกแล้ว แต่<b>สูตรรวมยังได้ผล — ไม่มีใครรู้ว่าจะได้ผลอีกนานเท่าไร</b> ${S.mu}</li>
+ <li>การป้องกันตาทารกใช้ <b>silver nitrate 1%, tetracycline 1% หรือ erythromycin ointment 0.5%</b> ${S.mu}</li>
+ <li>แต่<b>การให้ antibiotic เพื่อป้องกันโรคที่อวัยวะเพศไม่ได้ผลและไม่แนะนำ</b> ${S.mu}</li>
+ <li>สิ่งที่ยังต้องพึ่ง: <b>การให้ความรู้ การตรวจหาเชิงรุก และการติดตามคัดกรองคู่ของผู้ป่วย</b> — เพราะ infection เรื้อรังนำไปสู่ภาวะมีบุตรยาก และ infection แบบไม่มี symptom ค้ำแหล่งกักโรคไว้ ${S.mu}</li></ul>`});
 
 SEC.push({id:"meningococcus",k:"b",t:"Neisseria meningitidis: carriage, then catastrophe",mm:"Meningococcus",leg:[],
 draw:()=>{let b="";
  /* the route: nasopharynx → blood → meninges */
  b+=mL(24,26,"From a quiet nasopharynx to the meninges",{a:"start",c:"bh"});
  const step=(x,y,t2,d)=>{let g=`<path class="m-body" d="${mblob(x,y,44,30,Math.round(x),.07)}"/>`
-   +mL(x,y+5,t2,{c:"bh"});
-  return g+mL(x,y+52,d,{c:"s m"})};
+ +mL(x,y+5,t2,{c:"bh"});
+ return g+mL(x,y+52,d,{c:"s m"})};
  b+=step(96,88,"Nasopharynx","ตั้งรกรากเงียบ ๆ")
-  +step(300,88,"Bloodstream","capsule กันการถูกกลืนกิน")
-  +step(520,88,"Meninges","หรือหลอดเลือดทั่วร่างกาย");
+ +step(300,88,"Bloodstream","capsule กันการถูกกลืนกิน")
+ +step(520,88,"Meninges","หรือหลอดเลือดทั่วร่างกาย");
  [[140,96,256],[344,96,476]].forEach(([x1,y,x2])=>{
-  b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${x1},${88} L${x2},${88}"/>`});
+ b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${x1},${88} L${x2},${88}"/>`});
  b+=mL(24,162,"capsule ขัดขวางการเกาะเซลล์เยื่อบุ เชื้อจึงกดการสร้างมันลงก่อนเกาะ แล้วค่อยสร้างใหม่ตอนเข้ากระแสเลือด",{a:"start",c:"s m"});
  /* the skin: petechiae coalescing into purpura */
  const sk=mskin(24,452,196,{seed:13,scale:.74});b+=sk.b;const Y=sk.y;
  const pq=rng(23);
  for(let i=0;i<26;i++){const x=48+pq()*180,y=Y.spin+6+pq()*(Y.derm-Y.spin-10);
-  b+=`<path class="m-body2" style="opacity:.9" d="${mblob(x,y,3+pq()*2.5,2.6+pq()*2,i*5+3,.3)}"/>`}
+ b+=`<path class="m-body2" style="opacity:.9" d="${mblob(x,y,3+pq()*2.5,2.6+pq()*2,i*5+3,.3)}"/>`}
  [300,372,430].forEach((x,i)=>{
-  b+=`<path class="m-body2" style="opacity:.92" d="${mblob(x,Y.spin+26,30+i*7,20,i*9+5,.26)}"/>`});
+ b+=`<path class="m-body2" style="opacity:.92" d="${mblob(x,Y.spin+26,30+i*7,20,i*9+5,.26)}"/>`});
  b+=mlead2(120,Y.spin+22,470,236,["Petechiae","หลอดเลือดฝอยอุดตัน"],{a:"start"})
-  +mlead2(372,Y.spin+26,470,282,["Purpura","รวมกันเป็นปื้นใหญ่"],{a:"start"})
-  +mL(470,328,"ผื่นที่ลามเร็ว",{a:"start",c:"bad"})
-  +mL(470,346,"ในผู้ป่วยไข้สูง",{a:"start",c:"bad"})
-  +mL(470,364,"คือภาวะฉุกเฉิน",{a:"start",c:"bad"});
+ +mlead2(372,Y.spin+26,470,282,["Purpura","รวมกันเป็นปื้นใหญ่"],{a:"start"})
+ +mL(470,328,"rash ที่ลามเร็ว",{a:"start",c:"bad"})
+ +mL(470,346,"ในผู้ป่วย fever สูง",{a:"start",c:"bad"})
+ +mL(470,364,"คือภาวะฉุกเฉิน",{a:"start",c:"bad"});
  /* the serogroups */
  b+=`<path class="m-sep" d="M24,${Y.bot+30} L616,${Y.bot+30}"/>`
-  +mL(24,Y.bot+56,"Serogroups",{a:"start",c:"bh"});
+ +mL(24,Y.bot+56,"Serogroups",{a:"start",c:"bh"});
  [["A, B, C, W135, X, Y","โรคประจำถิ่นและการระบาดเกือบทั้งหมดมาจากหกกลุ่มนี้",24,Y.bot+84],
-  ["Y และ W135","เป็นสาเหตุของ pneumonia จาก meningococcus บ่อยที่สุด",24,Y.bot+128],
-  ["A และ W135","สัมพันธ์กับโรคในประเทศกำลังพัฒนา",24,Y.bot+172],
-  ["B","วัคซีนพอลิแซ็กคาไรด์ครอบคลุมเฉพาะ A, C, Y และ W135 — ไม่ครอบคลุม B",24,Y.bot+216]
+ ["Y และ W135","เป็นสาเหตุของ pneumonia จาก meningococcus บ่อยที่สุด",24,Y.bot+128],
+ ["A และ W135","สัมพันธ์กับโรคในประเทศกำลังพัฒนา",24,Y.bot+172],
+ ["B","วัคซีนพอลิแซ็กคาไรด์ครอบคลุมเฉพาะ A, C, Y และ W135 — ไม่ครอบคลุม B",24,Y.bot+216]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:n==="B"?"bad":"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 "+(Y.bot+252))},
 notes:()=>`<h3>The capsule is the virulence factor</h3><ul>
  <li>ปัจจัยก่อโรคหลักของ <i>N. meningitidis</i> คือ <b>polysaccharide capsule</b> ซึ่งกันการถูกกลืนกินในกระแสเลือด ${S.mu}</li>
- <li>ความต่างของแอนติเจนใน capsule คือพื้นฐานของการแบ่ง <b>serogroup</b> และมีบทบาทสำคัญในการกำหนดว่าสายพันธุ์ไหนก่อโรคได้ ${S.mu}</li>
- <li>มี serogroup ที่รู้จักหลายกลุ่ม แต่<b>แทบทุกการติดเชื้อมาจากหกกลุ่ม: A, B, C, W135, X และ Y</b> ${S.mu}</li>
+ <li>ความต่างของแอนติเจนใน capsule คือพื้นฐานของการแบ่ง <b>serogroup</b> และมีบทบาทสำคัญในการกำหนดว่า strain ไหนก่อโรคได้ ${S.mu}</li>
+ <li>มี serogroup ที่รู้จักหลายกลุ่ม แต่<b>แทบทุก infection มาจากหกกลุ่ม: A, B, C, W135, X และ Y</b> ${S.mu}</li>
  <li>มีจุดที่ขัดกันเองอย่างน่าสนใจ: <b>capsule ขัดขวางการเกาะเซลล์เยื่อบุ</b> เชื้อจึงกดการสร้างมันลงก่อนจะเกาะ แล้วค่อยสร้างใหม่เมื่อต้องเข้ากระแสเลือด ${S.mu}</li>
- <li>Meningococci เกาะอย่างจำเพาะกับ receptor บน <b>nonciliated columnar cell ของ nasopharynx</b> · หลังเกาะแล้วจะเพิ่มจำนวนจนเป็นกลุ่มก้อนที่ยึดติดกับเนื้อเยื่อ host ${S.mu}</li></ul>
+ <li>Meningococci เกาะอย่างจำเพาะกับ receptor บน <b>nonciliated columnar cell ของ nasopharynx</b> · หลังเกาะแล้วจะเพิ่มจำนวนจนเป็นกลุ่มก้อนที่ยึดติดกับ tissue host ${S.mu}</li></ul>
  <h3>Who gets sick</h3><ul>
- <li>แพร่ผ่าน<b>ละอองจากทางเดินหายใจ</b> ${S.mu}</li>
+ <li>แพร่ผ่าน<b>ละอองจาก respiratory tract</b> ${S.mu}</li>
  <li>อุบัติการณ์สูงที่สุดใน<b>เด็กอายุต่ำกว่า 1 ปี ผู้ที่อยู่ในสถานสงเคราะห์หรือสถานที่รวมคน และผู้ที่พร่อง complement ตัวท้าย ๆ</b> ${S.mu}</li>
- <li>ทารกที่กินนมแม่มีภูมิคุ้มกันรับมาใน <b>6 เดือนแรก</b> ${S.mu}</li>
+ <li>ทารกที่กินนมแม่มี immunity รับมาใน <b>6 เดือนแรก</b> ${S.mu}</li>
  <li>โรคพบทั่วโลก และพบบ่อยที่สุดใน<b>เดือนที่อากาศแห้งและเย็น</b> ${S.mu}</li>
- <li>การระบาดเกิดเมื่อมี<b>สายพันธุ์ก่อโรคใหม่เข้าสู่ประชากรที่ยังไม่มีภูมิคุ้มกัน</b> ${S.mu}</li></ul>
+ <li>การระบาดเกิดเมื่อมี<b>strain ก่อโรคใหม่เข้าสู่ประชากรที่ยังไม่มี immunity</b> ${S.mu}</li></ul>
  <h3>Three faces of the disease</h3><ul>
- <li><b>Meningitis</b> — เยื่อหุ้มสมองอักเสบเป็นหนอง ปวดศีรษะ มีอาการแสดงของเยื่อหุ้มสมอง และไข้ · <b>อัตราตายสูงถ้าไม่ได้ยาปฏิชีวนะที่ได้ผลอย่างรวดเร็ว</b> ${S.mu}</li>
- <li><b>Meningococcemia</b> — การติดเชื้อกระจายที่มีลิ่มเลือดอุดหลอดเลือดเล็ก ๆ และอวัยวะหลายระบบเสียหาย · <b>จุดเลือดออกเล็ก ๆ รวมกันเป็นปื้นเลือดออกใหญ่</b> ${S.mu}</li>
+ <li><b>Meningitis</b> — meningitis เป็น pus ปวดศีรษะ มี symptom แสดงของเยื่อหุ้ม brain และ fever · <b>อัตราตายสูงถ้าไม่ได้ antibiotic ที่ได้ผลอย่างรวดเร็ว</b> ${S.mu}</li>
+ <li><b>Meningococcemia</b> — infection กระจายที่มีลิ่มเลือดอุดหลอดเลือดเล็ก ๆ และอวัยวะหลายระบบเสียหาย · <b>จุดเลือดออกเล็ก ๆ รวมกันเป็นปื้นเลือดออกใหญ่</b> ${S.mu}</li>
  <li><b>Pneumonia</b> — รูปแบบที่อ่อนกว่า เป็น bronchopneumonia ในผู้ที่มีโรคปอดอยู่เดิม ${S.mu}</li></ul>
  <h3>Treatment and prophylaxis</h3><ul>
  <li>ผู้ป่วยที่สงสัย meningitis หรือ bacteremia เริ่มด้วย <b>ceftriaxone</b> · ถ้าผลพบว่าเชื้อไวต่อ penicillin เปลี่ยนเป็น penicillin G ได้ ${S.mu}</li>
  <li><b>ผู้สัมผัสใกล้ชิด</b>ต้องได้ยาป้องกัน — rifampin, ciprofloxacin หรือ ceftriaxone ${S.mu}</li>
  <li>วัคซีนเป็น<b>ส่วนเสริมของการให้ยาป้องกัน ไม่ใช่สิ่งทดแทน</b> ${S.mu}</li>
- <li>การตรวจหาแอนติเจนของ meningococcus มีทั้งความไวและความจำเพาะต่ำ จึงไม่ใช้เป็นหลัก ${S.mu}</li></ul>`});
+ <li>การตรวจหาแอนติเจนของ meningococcus มีทั้งความไวและความจำเพาะต่ำ จึงไม่ใช้เป็นหลัก ${S.mu}</li></ul>
+ <h3>Attachment: the capsule gets out of the way first</h3><ul>
+ <li>Meningococci <b>เกาะ receptor จำเพาะบน nonciliated columnar cell ของ nasopharynx</b> ${S.mu}</li>
+ <li>จุดที่ขัดความคาดหมาย: <b>capsule ขัดการเกาะ epithelial cell จึงถูกลดการสร้างลงก่อนเกาะ</b> ${S.mu}</li>
+ <li>หลังเกาะแล้วเชื้อแบ่งตัวเป็น<b>กลุ่มก้อนใหญ่ที่ยึดกับเซลล์ host</b> ${S.mu}</li>
+ <li>ภายในไม่กี่ชั่วโมง <b>pili ถูกปรับแต่งหลังการแปลรหัส ทำให้กลุ่มก้อนนั้นสลายตัว</b> — ผลคือเชื้อทั้งเจาะเข้าเซลล์ได้ดีขึ้นและหลุดออกสู่ respiratory tract จึงแพร่จากคนสู่คนได้มากขึ้น ${S.mu}</li>
+ <li>เหมือน gonococcus ตรงที่เชื้อ<b>ถูกกลืนเข้า phagocytic vacuole แล้วเลี่ยงการตาย แบ่งตัว และย้ายไปยัง subepithelial space</b> โดย<b>capsule ป้องกันการถูกทำลายโดย phagocyte</b> ${S.mu}</li>
+ <li>ความเสียหายของหลอดเลือดแบบกระจาย — endothelial damage, inflammation ของผนังหลอดเลือด, thrombosis, disseminated intravascular coagulation — <b>ยกให้เป็นผลของ LOS endotoxin ใน outer membrane เป็นส่วนใหญ่</b> ${S.mu}</li></ul>
+ <h3>Who is susceptible, in numbers</h3><ul>
+ <li>โรคเกิดใน<b>ผู้ที่ไม่มี antibody จำเพาะต่อ capsule และแอนติเจนอื่นที่เชื้อแสดงออก</b> ${S.mu}</li>
+ <li>ทารกได้รับการป้องกันจาก<b>antibody ที่ส่งผ่านจากแม่</b> แต่<b>immunity นี้จางลงเมื่ออายุ 6 เดือน</b> ซึ่งเข้ากับที่พบว่า<b>อุบัติการณ์สูงสุดอยู่ในเด็กอายุต่ำกว่า 2 ปี</b> ${S.mu}</li>
+ <li>immunity ถูกกระตุ้นได้จากการเป็นพาหะของ <i>N. meningitidis</i> เองหรือของเชื้อที่มีแอนติเจนไขว้กัน — เช่น <b>Neisseria ที่ไม่มี capsule</b> หรือ <b>K1 antigen ของ <i>Escherichia coli</i> ซึ่งไขว้กับ capsule ของ group B</b> ${S.mu}</li>
+ <li>ตัวเลขที่ต้องจำ: <b>ผู้ที่พร่อง C5, C6, C7 หรือ C8 เสี่ยงต่อ meningococcal disease มากกว่าคนทั่วไปประมาณ 6000 เท่า</b> ${S.mu}</li>
+ <li>immunity ที่ใช้จริงเป็น <b>humoral</b> เป็นหลัก แต่<b>การตอบสนองของ lymphocyte ต่อแอนติเจนของเชื้อลดลงชัดเจนในผู้ป่วยระยะเฉียบพลัน</b> ${S.mu}</li></ul>
+ <h3>Carriage and transmission</h3><ul>
+ <li><b>คนเป็นพาหะตามธรรมชาติเพียงชนิดเดียว</b> ${S.mu}</li>
+ <li>ความชุกของการเป็นพาหะแบบไม่มี symptom<b>แปรผันมหาศาล จากต่ำกว่า 1% ถึงเกือบ 40%</b> ${S.mu}</li>
+ <li>อัตราการเป็นพาหะสูงสุดใน<b>เด็กวัยเรียนและผู้ใหญ่วัยหนุ่มสาว</b> · สูงกว่าใน<b>กลุ่มที่มีฐานะต่ำกว่า</b> จากการแพร่ในที่แออัด ${S.mu}</li>
+ <li>ข้อที่น่าสังเกต: <b>อัตราการเป็นพาหะไม่เปลี่ยนตามฤดู แม้โรคจะพบมากที่สุดในเดือนที่แห้งและเย็น</b> ${S.mu}</li>
+ <li>การเป็นพาหะมัก<b>ชั่วคราว และหายไปเมื่อ antibody จำเพาะเกิดขึ้น</b> ${S.mu}</li>
+ <li>แพร่ทาง<b>respiratory droplet ในผู้ที่อยู่ใกล้ชิดกันเป็นเวลานาน</b> เช่นคนในบ้านเดียวกันหรือทหารในโรงนอนเดียวกัน ${S.mu}</li>
+ <li>สิ่งที่<b>ไม่</b>นับเป็นการสัมผัสใกล้ชิด: <b>เพื่อนร่วมชั้นเรียนและเจ้าหน้าที่โรงพยาบาล</b> ซึ่งไม่ถือว่าเสี่ยงสูงขึ้นอย่างมีนัยสำคัญ เว้นแต่สัมผัสสารคัดหลั่ง respiratory tract ของผู้ป่วยโดยตรง ${S.mu}</li>
+ <li>โรคพบมากที่สุดใน<b>เด็กอายุต่ำกว่าหนึ่งปี และมียอดที่สองในวัยรุ่น</b> · ผู้ที่ immunity บกพร่อง ผู้สูงอายุ และผู้ที่อยู่ในประชากรปิดอย่างโรงนอนทหารหรือเรือนจำ เสี่ยงมากขึ้นระหว่างการระบาด ${S.mu}</li></ul>
+ <h3>The clinical pictures, with their mortality</h3><ul>
+ <li><b>Meningitis</b> เริ่ม<b>ฉับพลันด้วยปวดศีรษะ meningeal sign และ fever</b> · แต่<b>เด็กเล็กมากอาจมีเพียง symptom ไม่จำเพาะ เช่น fever และอาเจียน</b> ${S.mu}</li>
+ <li><b>อัตราตายเข้าใกล้ 100% ถ้าไม่รักษา แต่ต่ำกว่า 10% เมื่อให้ antibiotic ที่เหมาะสมอย่างรวดเร็ว</b> ${S.mu}</li>
+ <li><b>ภาวะแทรกซ้อนทางระบบประสาทพบน้อย</b> — ที่พบบ่อยที่สุดคือ <b>การได้ยินบกพร่อง, learning disability และ arthritis</b> ${S.mu}</li>
+ <li><b>Meningococcemia</b> โดยมีหรือไม่มี meningitis เป็นภาวะคุกคามชีวิต · ลักษณะเด่นคือ <b>thrombosis ของหลอดเลือดเล็กและการเกี่ยวข้องหลายอวัยวะ</b> ${S.mu}</li>
+ <li><b>Petechia เล็ก ๆ ที่ลำตัวและขาส่วนล่าง</b>พบบ่อยและอาจรวมกันเป็น<b>รอยเลือดออกขนาดใหญ่</b> ${S.mu}</li>
+ <li>จากนั้นอาจเกิด <b>disseminated intravascular coagulation ที่ควบคุมไม่ได้พร้อม shock และการทำลาย adrenal gland ทั้งสองข้าง ซึ่งคือ Waterhouse-Friderichsen syndrome</b> ${S.mu}</li>
+ <li>มีรูปที่<b>เบากว่าและเรื้อรัง</b>ด้วย — bacteremia อยู่ได้หลายวันถึงหลายสัปดาห์ โดยมีเพียง fever ต่ำ ๆ, arthritis และ petechia · <b>รูปนี้ตอบสนองต่อ antibiotic ดีมาก</b> ${S.mu}</li>
+ <li><b>Meningococcal pneumonia</b> มักตามหลัง infectionrespiratory tract · ไอ เจ็บอก มี rale, fever และหนาวสั่น · <b>พบหลักฐานของ pharyngitis ในผู้ป่วยส่วนใหญ่</b> และ<b>พยากรณ์โรคดี</b> · <b>serogroup Y และ W135 สัมพันธ์กับรูปนี้มากที่สุด</b> ${S.mu}</li>
+ <li>รูปอื่นที่พบได้: <b>arthritis และ urethritis</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"mening-prevent",k:"b",t:"Preventing meningococcal disease",mm:"Meningococcal vaccines",leg:[],
+draw:()=>tbl(["Serogroup","Where it matters","Vaccine"],[
+ ["A","80–85% ของโรคใน sub-Saharan African meningitis belt จาก Senegal ถึง Ethiopia","อยู่ใน tetravalent vaccine · และมี group A conjugate vaccine เฉพาะ"],
+ ["B","พบมากใน Europe และ Americas","ไม่อยู่ใน tetravalent vaccine — ต้องใช้วัคซีนที่ทำจากโปรตีน"],
+ ["C","พบมากใน Europe และ Americas · และเป็นสาเหตุการระบาดใน Africa ปัจจุบัน","อยู่ใน tetravalent vaccine"],
+ ["Y","พบมากใน Europe และ Americas · สัมพันธ์กับ pneumonia","อยู่ใน tetravalent vaccine"],
+ ["W135","การระบาดที่ยังดำเนินอยู่ใน Chile · สัมพันธ์กับ pneumonia","อยู่ใน tetravalent vaccine"],
+ ["X","สัมพันธ์กับโรคทั้งแบบประจำถิ่นและแบบระบาด","ไม่อยู่ในวัคซีนที่ใช้อยู่"]]),
+notes:()=>`<h3>Antibiotics for the patient and for the contact</h3><ul>
+ <li>เริ่มรักษาด้วย <b>cefotaxime หรือ ceftriaxone</b> · ถ้าพิสูจน์ได้ว่าเชื้อไว penicillin จึงเปลี่ยนเป็น <b>penicillin G</b> ${S.mu}</li>
+ <li><b>Chemoprophylaxis ให้แก่ผู้สัมผัสที่มีความเสี่ยงจริง</b> ซึ่งนิยามว่า<b>สัมผัสสารคัดหลั่ง respiratory tract โดยตรง หรืออยู่ใกล้ชิดผู้ป่วยนานกว่า 8 ชั่วโมง</b> ${S.mu}</li>
+ <li>ยาที่แนะนำสำหรับ prophylaxis คือ <b>rifampin, ciprofloxacin หรือ ceftriaxone</b> ${S.mu}</li>
+ <li>สิ่งที่<b>ไม่</b>ได้ผล: <b>การใช้ antibiotic กวาดเชื้อออกจากพาหะที่สุขภาพดี</b> — การป้องกันโรคจึงไปลงที่วัคซีน ${S.mu}</li></ul>
+ <h3>The two tetravalent vaccines</h3><ul>
+ <li>สหรัฐอเมริกาอนุญาตวัคซีนสองชนิดที่ครอบคลุม <b>serogroup A, C, Y และ W135</b> คือ <b>polysaccharide vaccine</b> และ <b>polysaccharide-protein conjugate vaccine</b> ${S.mu}</li>
+ <li><b>Conjugate vaccine แนะนำให้วัยรุ่นอายุ 11 หรือ 12 ปีทุกคน และกระตุ้นอีกครั้งที่อายุ 16 ปี</b> ${S.mu}</li>
+ <li>ผู้ใหญ่ที่เสี่ยงสูงขึ้นให้ได้ทั้งสองชนิด ${S.mu}</li>
+ <li>ปัญหาของ <b>group B</b>: <b>polysaccharide ของมันเป็น immunogen ที่อ่อน และมีแอนติเจนใกล้เคียงกับ polysaccharide ใน tissue ประสาทของคน</b> — จึงต้องพัฒนาวัคซีนจากโปรตีนแทน และงานนั้นยังดำเนินอยู่ ${S.mu}</li></ul>
+ <h3>What the African campaign showed</h3><ul>
+ <li>การระบาดใน sub-Saharan Africa เกิด<b>ทุก 5 ถึง 12 ปี และ attack rate ขึ้นถึง 1% ของประชากร</b> ${S.mu}</li>
+ <li>เดือนธันวาคม 2010 มีการนำ <b>meningococcal A conjugate vaccine</b> เข้าไปใช้ใน Africa และเห็นอุบัติการณ์ meningitis ลดลงในพื้นที่ที่ใช้ ${S.mu}</li>
+ <li>ถึงปี 2016 นำเข้าใช้ใน <b>16 จาก 26 ประเทศเป้าหมายใน meningitis belt พร้อมการกำจัดการระบาดของ serogroup A ได้</b> ${S.mu}</li>
+ <li>ผลที่ตามมาคือภาพใหม่: <b>การระบาดในประเทศเหล่านั้นปัจจุบันเกิดจาก serogroup C และ W เป็นหลัก</b> ${S.mu}</li>
+ <li>ส่วนภาพรวม: โรคประจำถิ่นพบทั่วโลก การระบาดพบบ่อยในประเทศกำลังพัฒนา และ<b>การระบาดเกิดจากการนำ strain ใหม่ที่ก่อโรคเข้าไปในประชากรที่ไม่มี immunity</b> ${S.mu}</li>
+ <li>ในประเทศพัฒนาแล้ว โรคประจำถิ่นและการระบาดใหญ่พบน้อยตั้งแต่หลังสงครามโลกครั้งที่สอง · สหรัฐอเมริการายงานเพียง<b>ราว 370 รายในปี 2016</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"neisseria-lab",k:"c",t:"Specimen, plate and report",mm:"Neisseria lab",leg:[],
 draw:()=>{let b="";
@@ -510,32 +639,98 @@ draw:()=>{let b="";
  const Y=96;
  b+=mL(24,26,"เชื้อนี้ตายเร็วเมื่อเจอความเย็นหรือความแห้ง ลำดับขั้นจึงสำคัญพอ ๆ กับการตรวจ",{a:"start",c:"bh"});
  const nodes=[["Collect","swab จากท่อปัสสาวะ ปากมดลูก คอหอย ทวารหนัก หรือ CSF"],
-  ["Transport","ส่งทันที · อย่าแช่เย็น"],
-  ["Plate","chocolate agar และสื่อแบบเลือก · บ่มใน CO₂"],
-  ["Identify","oxidase + · ดูน้ำตาลที่ใช้ได้"]];
+ ["Transport","ส่งทันที · อย่าแช่เย็น"],
+ ["Plate","chocolate agar และสื่อแบบเลือก · บ่มใน CO₂"],
+ ["Identify","oxidase + · ดูน้ำตาลที่ใช้ได้"]];
  nodes.forEach(([n,d],i)=>{const x=86+i*158;
-  b+=`<path class="m-body" d="${mblob(x,Y,62,30,i*9+5,.06)}"/>`+mL(x,Y+5,n,{c:"bh"})
-   +mL(x,Y+54,d,{c:"s m"});
-  if(i<3)b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${x+64},${Y} L${x+92},${Y}"/>`});
+ b+=`<path class="m-body" d="${mblob(x,Y,62,30,i*9+5,.06)}"/>`+mL(x,Y+5,n,{c:"bh"})
+ +mL(x,Y+54,d,{c:"s m"});
+ if(i<3)b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${x+64},${Y} L${x+92},${Y}"/>`});
  b+=`<path class="m-sep" d="M24,172 L616,172"/>`;
- [["Nucleic acid test","แทนที่การเพาะเชื้อสำหรับ gonorrhea ในห้องปฏิบัติการส่วนใหญ่แล้ว · ใช้กับปัสสาวะได้",24,198],
-  ["Gram stain ของ CSF","ไวและจำเพาะสำหรับ meningococcus",24,244],
-  ["Gram stain ของเลือด","ใช้ไม่ได้ ปกติมีเชื้อน้อยเกินไป ยกเว้น sepsis ที่รุนแรงมาก",330,244],
-  ["Meningococcal antigen test","ความไวและความจำเพาะต่ำ ไม่แนะนำให้ใช้ตัดสิน",24,290]
+ [["Nucleic acid test","แทนที่การ culture สำหรับ gonorrhea ในห้องปฏิบัติการส่วนใหญ่แล้ว · ใช้กับปัสสาวะได้",24,198],
+ ["Gram stain ของ CSF","ไวและจำเพาะสำหรับ meningococcus",24,244],
+ ["Gram stain ของเลือด","ใช้ไม่ได้ ปกติมีเชื้อน้อยเกินไป ยกเว้น sepsis ที่รุนแรงมาก",330,244],
+ ["Meningococcal antigen test","ความไวและความจำเพาะต่ำ ไม่แนะนำให้ใช้ตัดสิน",24,290]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:n.indexOf("เลือด")>0||n.indexOf("antigen")>0?"bad":"bh"})
-   +mL(x,y+20,d,{a:"start",c:"s m"})});
+ +mL(x,y+20,d,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 336")},
 notes:()=>`<h3>Growth requirements decide the plate</h3><ul>
  <li>ทั้งสองสปีชีส์โตดีที่ <b>35–37 °C ในบรรยากาศชื้นที่เติม CO₂</b> ${S.mu}</li>
  <li>ทั้งคู่ <b>oxidase positive และ catalase positive</b> และสร้างกรดจากน้ำตาลแบบ oxidative ไม่ใช่การหมัก ${S.mu}</li>
  <li>ชนิดของน้ำตาลที่ใช้ได้เป็นตัวแยกสปีชีส์ในสกุลนี้ออกจากกัน ${S.mu}</li></ul>
  <h3>Three answers the lab gives</h3><ul>
- <li><b>Gram stain</b> ให้คำตอบทันทีกับสองสถานการณ์เท่านั้น: หนองจากท่อปัสสาวะของผู้ชายที่มีอาการ และ CSF ${S.mu}</li>
- <li><b>การเพาะเชื้อ</b>ให้ผลชี้ขาด แต่เชื้อเลือกกินและตายเร็ว จึงขึ้นกับคุณภาพการเก็บและการส่งเป็นอย่างมาก ${S.mu}</li>
- <li><b>Nucleic acid test</b> มีความไวและความจำเพาะสูง และได้เข้ามาแทนที่การเพาะเชื้อสำหรับ gonorrhea ในห้องปฏิบัติการส่วนใหญ่แล้ว ${S.mu}</li></ul>
+ <li><b>Gram stain</b> ให้คำตอบทันทีกับสองสถานการณ์เท่านั้น: pus จากท่อปัสสาวะของผู้ชายที่มี symptom และ CSF ${S.mu}</li>
+ <li><b>การ culture</b>ให้ผลชี้ขาด แต่เชื้อเลือกกินและตายเร็ว จึงขึ้นกับคุณภาพการเก็บและการส่งเป็นอย่างมาก ${S.mu}</li>
+ <li><b>Nucleic acid test</b> มีความไวและความจำเพาะสูง และได้เข้ามาแทนที่การ culture สำหรับ gonorrhea ในห้องปฏิบัติการส่วนใหญ่แล้ว ${S.mu}</li></ul>
  <h3>One more organism in this chapter</h3><ul>
  <li><b><i>Eikenella corrodens</i></b> อยู่ในบทเดียวกันใน Murray · เป็นเชื้อประจำถิ่นในช่องปาก ${S.mu}</li>
- <li>มันก่อการติดเชื้อที่<b>แผลจากการกัดของคน</b> รวมถึงแผลจากหมัดที่ไปโดนฟัน ซึ่งพาเชื้อในช่องปากเข้าไปในเนื้อเยื่อชั้นลึก ${S.mu}</li></ul>`});
+ <li>มันก่อ infection ที่<b>แผลจากการกัดของคน</b> รวมถึงแผลจากหมัดที่ไปโดนฟัน ซึ่งพาเชื้อในช่องปากเข้าไปใน tissue ชั้นลึก ${S.mu}</li></ul>
+ <h3>Culture: the details that decide recovery</h3><ul>
+ <li>เพาะ <i>N. gonorrhoeae</i> จาก specimen อวัยวะเพศได้ง่าย<b>ถ้าระวังเรื่องการเก็บและการส่ง</b> ${S.mu}</li>
+ <li>เพราะเยื่อบุมีเชื้อประจำถิ่นอยู่ specimen จากอวัยวะเพศ ทวารหนักและคอหอย<b>ต้องเพาะทั้งบน nonselective medium อย่าง chocolate blood agar และ selective medium อย่าง modified Thayer-Martin</b> ${S.mu}</li>
+ <li>เหตุผลที่ต้องมี nonselective ด้วย: <b>บาง strain ของ gonococcus ถูกยับยั้งโดย vancomycin ที่ผสมอยู่ใน selective medium ส่วนใหญ่</b> ${S.mu}</li>
+ <li>เชื้อยังถูกยับยั้งโดย<b>fatty acid และโลหะปริมาณน้อยใน peptone hydrolysate และ agar</b> ของ medium ทั่วไปอย่าง blood agar และ nutrient agar ${S.mu}</li>
+ <li><b>Gonococci ตายเร็วถ้า specimen แห้ง</b> — ต้องหลีกเลี่ยงทั้งความแห้งและความเย็น โดย<b>เพาะลงบน medium ที่อุ่นไว้แล้วตั้งแต่ตอนเก็บ</b> ${S.mu}</li></ul>
+ <h3>Which site to sample</h3><ul>
+ <li>ต้อง<b>เปิด endocervix ให้เห็นชัดเพื่อให้ได้ specimen ที่เพียงพอ</b> · <b>specimen จาก vagina ไม่เพียงพอในผู้หญิงที่ไม่มี symptom</b> ${S.mu}</li>
+ <li>แม้ endocervix เป็นตำแหน่งที่พบบ่อยที่สุดในผู้หญิง แต่<b>ในผู้หญิงที่ไม่มี symptom rectal culture อาจเป็น specimen เดียวที่ขึ้น</b> เช่นเดียวกับในผู้ชายที่มีเพศสัมพันธ์กับผู้ชาย ${S.mu}</li>
+ <li><b>Blood culture ขึ้นเฉพาะในสัปดาห์แรกของโรคที่กระจาย</b> และ<b>ต้องจัดการพิเศษ เพราะสารเสริมใน blood culture medium เป็นพิษต่อ Neisseria</b> ${S.mu}</li>
+ <li><b>น้ำไขข้อขึ้นถ้าเก็บตอนข้ออักเสบเพิ่งเกิด</b> แต่<b>specimen จาก rashskin มักไม่ขึ้น</b> ${S.mu}</li>
+ <li><i>N. meningitidis</i> มักมี<b>จำนวนมากใน CSF, เลือดและเสมหะ</b> · ถูกยับยั้งโดย toxin ใน medium และโดย anticoagulant ใน blood culture เช่นกัน แต่<b>เป็นปัญหาน้อยกว่า <i>N. gonorrhoeae</i></b> ${S.mu}</li>
+ <li>ข้อควรระวังด้านความปลอดภัย: <b>strain ที่ก่อโรคกระจายมีความก่อโรคสูงกว่าและเป็นอันตรายต่อนักเทคนิค</b> — ต้องระวังในการจัดการ CSF และเลือด ${S.mu}</li></ul>
+ <h3>Antigen and nucleic acid tests</h3><ul>
+ <li><b>Antigen test สำหรับ <i>N. gonorrhoeae</i> ไวน้อยกว่าทั้ง culture และ nucleic acid amplification test</b> จึงไม่แนะนำ เว้นแต่จะยืนยันผลลบด้วยวิธีอื่น ${S.mu}</li>
+ <li>ชุดตรวจ capsular antigen ของ <i>N. meningitidis</i> ใน CSF, เลือดและปัสสาวะเคยใช้กันแพร่หลาย แต่<b>เลิกนิยมเพราะไวน้อยกว่า Gram stain และมีผลบวกลวง โดยเฉพาะกับปัสสาวะ</b> ${S.mu}</li>
+ <li><b>Nucleic acid amplification test คือมาตรฐานทองในปัจจุบัน</b> · <b>ชุดตรวจรวม <i>N. gonorrhoeae</i> กับ Chlamydia</b> มีขายและแทนที่ culture ในห้องปฏิบัติการส่วนใหญ่แล้ว · <b>ผลออกใน 1 ถึง 2 ชั่วโมง</b> ${S.mu}</li>
+ <li>ข้อเสียข้อเดียวที่สำคัญ: <b>ใช้ติดตาม resistance ของเชื้อที่ตรวจพบไม่ได้</b> ${S.mu}</li>
+ <li>การระบุชนิดขั้นต้นอาศัย <b>oxidase-positive gram-negative diplococci ที่โตบน chocolate blood agar หรือบน medium ที่เลือกเฉพาะ Neisseria ที่ก่อโรค</b> · การระบุขั้นสุดท้ายใช้<b>รูปแบบการ oxidize น้ำตาล หรือ MALDI mass spectrometry</b> ${S.mu}</li></ul>
+ <h3>What a Gram stain is worth, site by site</h3>
+ ${tbl(["Site","Gram stain","Culture"],[
+ ["Genital — symptomatic male","4+","4+"],
+ ["Genital — asymptomatic male","2+","3+"],
+ ["Genital — symptomatic female","2+","4+"],
+ ["Genital — asymptomatic female","1+","3+"],
+ ["Arthritis — under 1 week","2+","3+"],
+ ["Arthritis — over 1 week","not useful","1+"],
+ ["Skin lesion","2+","2+"],
+ ["Anorectal","+","3+"],
+ ["Pharynx","not useful","3+"],
+ ["Disseminated","not useful","2+"]])}
+ <ul><li>Gram stain <b>ไวกว่า 90% และจำเพาะ 98% ในผู้ชายที่มี purulent urethritis</b> แต่<b>ไวเพียง 60% หรือน้อยกว่าในผู้ชายที่ไม่มี symptom</b> ${S.mu}</li>
+ <li>ใน gonococcal cervicitis ค่อนข้างไม่ไว<b>ทั้งในผู้หญิงที่มีและไม่มี symptom</b> — แต่<b>ผลบวกเชื่อถือได้เมื่อผู้อ่านที่ชำนาญเห็น gram-negative diplococci อยู่ในตัว polymorphonuclear leukocyte</b> ${S.mu}</li>
+ <li>ดังนั้น<b>ผลลบในผู้หญิงและในผู้ชายที่ไม่มี symptom ต้องยืนยันทุกราย</b> ${S.mu}</li>
+ <li>Gram stain ยังมีประโยชน์ใน<b>การวินิจฉัย purulent arthritis ระยะต้น</b> แต่<b>ไม่ไวและไม่จำเพาะใน rashskin infection ที่ทวารหนัก และคอหอย</b> ${S.mu}</li>
+ <li>เหตุผล: <b>Neisseria ประจำถิ่นในคอหอยและแบคทีเรียที่รูปร่างคล้ายกันใน gastrointestinal tract ทำให้สับสนกับ <i>N. gonorrhoeae</i> ได้</b> ${S.mu}</li></ul>`});
+SEC.push({id:"related-genera",k:"c",t:"Eikenella, Kingella and the commensal Neisseria",mm:"Related genera",leg:[],
+draw:()=>tbl(["Organism","What it causes","Clue at the bench"],[
+ ["Eikenella corrodens","บาดแผลจากการกัดของคนและจากการต่อสู้ · endocarditis · sinusitis · meningitis · brain abscess · pneumonia · lung abscess","กัดกินผิว agar เป็นหลุม ในเชื้อไม่ถึงครึ่ง · กลิ่นเหมือนน้ำยาฟอกขาว"],
+ ["Kingella kingae","septic arthritis ในเด็ก · endocarditis ในทุกวัย","โตช้า อาจต้องบ่มถึง 3 วันหรือกว่านั้น · หมักน้ำตาลได้"],
+ ["Neisseria sicca · N. mucosa","meningitis · osteomyelitis · endocarditis · bronchopulmonary infection · acute otitis media · acute sinusitis — เป็นรายที่แยกกัน","เป็นเชื้อประจำถิ่นของ oropharynx จึงต้องแปลผลด้วยความระวัง"]]),
+notes:()=>`<h3>Eikenella corrodens</h3><ul>
+ <li>ต้นทศวรรษ 1960 กลุ่ม gram-negative rod เล็กและเลี้ยงยากกลุ่มหนึ่งถูกจัดเป็น <b>HB group</b> ซึ่งตั้งตามชื่อผู้ป่วยที่เป็นต้นเรื่อง ${S.mu}</li>
+ <li>ต่อมาแยกเป็น <b>HB-1 ซึ่งคือ <i>E. corrodens</i></b>, <b>HB-2 คือ <i>Aggregatibacter aphrophilus</i></b> และ <b>HB-3 กับ HB-4 คือ <i>A. actinomycetemcomitans</i></b> ${S.mu}</li>
+ <li>สิ่งที่ทั้งกลุ่มมีร่วมกันไม่ใช่เพียงรูปร่าง: <b>ทั้งหมดอยู่ใน oropharynx ของคน และก่อ subacute bacterial endocarditis ในผู้ที่มีโรคหัวใจอยู่เดิม</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>gram-negative rod ขนาด 0.2 × 2.0 μm ไม่เคลื่อนที่ ไม่สร้าง spore และเป็น facultative anaerobe</b> ${S.mu}</li>
+ <li>ชื่อมาจาก Eiken ผู้บรรยายเชื้อและสังเกต<b>ความสามารถกัดผิว agar เป็นหลุม</b> ${S.mu}</li>
+ <li>เป็น<b>เชื้อประจำถิ่นของ respiratory tract ส่วนบน</b> แต่<b>ตรวจพบยากถ้าไม่ใช้ selective medium จำเพาะ</b> เพราะเลี้ยงยาก ${S.mu}</li>
+ <li>เป็น <b>opportunistic pathogen</b> ที่ก่อโรคในผู้ที่ immunity บกพร่องหรือมีโรคหรือบาดเจ็บในช่องปาก · <b>พบบ่อยที่สุดในบาดแผลจากการถูกคนกัดและจากการต่อสู้ด้วยหมัด</b> ${S.mu}</li>
+ <li>เพราะ infection ส่วนใหญ่มาจาก oropharynx <b>มักเพาะขึ้นเป็นเชื้อผสมทั้ง aerobe และ anaerobe</b> ${S.mu}</li>
+ <li>การเพาะ: <b>ต้องการ CO₂ 5% ถึง 10%</b> · โคโลนีขนาด 0.5 ถึง 1.0 มม. หลังบ่ม 48 ชั่วโมงบน blood หรือ chocolate agar · <b>โตไม่ดีหรือไม่โตเลยบน selective medium สำหรับ gram-negative rod</b> ${S.mu}</li>
+ <li>การระบุขั้นต้นที่ใช้ได้จริง: <b>gram-negative rod ที่โตช้า กัด blood agar เป็นหลุม และมีกลิ่นเหมือนน้ำยาฟอกขาว</b> ${S.mu}</li>
+ <li>ความไวต่อยาที่ต้องจำเพราะกลับด้าน: <b>ไวต่อ penicillin ซึ่งผิดปกติสำหรับ gram-negative</b>, ampicillin, extended-spectrum cephalosporin, tetracycline และ fluoroquinolone ${S.mu}</li>
+ <li>แต่<b>ดื้อ oxacillin, first-generation cephalosporin, clindamycin, erythromycin และ aminoglycoside</b> — <b>คือดื้อยาหลายตัวที่มักเลือกใช้แบบ empiric ในบาดแผลจากการกัด</b> ${S.mu}</li></ul>
+ <h3>Kingella kingae</h3><ul>
+ <li><b>Gram-negative coccobacilli ขนาดเล็กที่รูปร่างคล้าย Neisseria</b> และอยู่ใน oropharynx ของคน ${S.mu}</li>
+ <li>เป็น <b>facultative anaerobe ที่หมัก carbohydrate</b> และเลี้ยงยาก ${S.mu}</li>
+ <li><i>K. kingae</i> เป็นสปีชีส์ที่พบบ่อยที่สุด และเป็นสาเหตุหลักของ <b>septic arthritis ในเด็ก</b> และ <b>endocarditis ในผู้ป่วยทุกวัย</b> ${S.mu}</li>
+ <li>เพราะโตช้า <b>อาจต้องบ่ม 3 วันหรือมากกว่าจึงตรวจพบ</b> ${S.mu}</li>
+ <li>strain ส่วนใหญ่<b>ไวต่อ β-lactam รวมถึง penicillin, tetracycline, erythromycin, fluoroquinolone และ aminoglycoside</b> ${S.mu}</li></ul>
+ <h3>The commensal Neisseria</h3><ul>
+ <li><i>N. sicca</i> และ <i>N. mucosa</i> เป็น<b>เชื้อประจำถิ่นของ oropharynx</b> แต่มีรายงานก่อ <b>meningitis, osteomyelitis, endocarditis, bronchopulmonary infection, acute otitis media และ acute sinusitis</b> เป็นรายที่แยกกัน ${S.mu}</li>
+ <li><b>อุบัติการณ์จริงของ infectionrespiratory tract จากเชื้อกลุ่มนี้ไม่ทราบ</b> เพราะ specimen ส่วนใหญ่ปนเปื้อนสารคัดหลั่งในช่องปาก ${S.mu}</li>
+ <li>สิ่งที่ช่วยตัดสิน: <b>gram-negative diplococci จำนวนมากร่วมกับเซลล์อักเสบ ใน specimenrespiratory tract ที่เก็บมาดี</b> สนับสนุนว่าเชื้อนี้เป็นต้นเหตุ ${S.mu}</li>
+ <li>เชื้อส่วนใหญ่<b>ไวต่อ penicillin</b> แม้มีรายงาน<b>การดื้อระดับต่ำจาก penicillin-binding protein ที่เปลี่ยนไป คือ PBP2</b> ${S.mu}</li></ul>`});
+
 
 atlasFinish();
 </script>

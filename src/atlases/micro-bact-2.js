@@ -3,9 +3,9 @@ Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
 Object.assign(GN,{a:"Bacillus",b:"Listeria and Corynebacterium",c:"Clostridium"});
 
 /* ===================================================================
-   Gram-positive bacilli — Murray ch 20 (Bacillus), ch 21 (Listeria and
-   related) and ch 30 (Clostridium).
-   =================================================================== */
+ Gram-positive bacilli — Murray ch 20 (Bacillus), ch 21 (Listeria and
+ related) and ch 30 (Clostridium).
+ =================================================================== */
 
 SEC.push({id:"anthracis",k:"a",t:"Bacillus anthracis and the three routes in",mm:"B. anthracis",leg:[],
 draw:()=>{let b="";
@@ -13,45 +13,85 @@ draw:()=>{let b="";
  const cy=92;
  b+=mL(24,34,"Boxcar chains with unstained spores",{a:"start",c:"bh"});
  [0,1,2,3].forEach(i=>{const x=72+i*62;
-  b+=`<path class="m-body" d="${mrod(x,cy,58,17,i*7+3,.035)}"/>`
-   +`<ellipse class="m-in" cx="${x+3}" cy="${cy+3}" rx="20" ry="11"/>`;
-  if(i%2===0)b+=`<path class="m-spec" style="opacity:.95" d="${mblob(x,cy,13,11,i*5+9,.07)}"/>`
-   +`<path class="m-face" style="fill:none" d="${mblob(x,cy,13,11,i*5+9,.07)}"/>`});
+ b+=`<path class="m-body" d="${mrod(x,cy,58,17,i*7+3,.035)}"/>`
+ +`<ellipse class="m-in" cx="${x+3}" cy="${cy+3}" rx="20" ry="11"/>`;
+ if(i%2===0)b+=`<path class="m-spec" style="opacity:.95" d="${mblob(x,cy,13,11,i*5+9,.07)}"/>`
+ +`<path class="m-face" style="fill:none" d="${mblob(x,cy,13,11,i*5+9,.07)}"/>`});
  b+=mlead2(134,cy-12,340,62,["Spore","ไม่ติดสี เห็นเป็นช่องว่างในตัวเชื้อ"],{a:"start"})
-  +mlead2(196,cy+16,340,100,["Non-motile · square ends","ต่อกันเป็นสายเหมือนตู้รถไฟ"],{a:"start"});
+ +mlead2(196,cy+16,340,100,["Non-motile · square ends","ต่อกันเป็นสายเหมือนตู้รถไฟ"],{a:"start"});
  /* the two plasmids */
  b+=`<path class="m-sep" d="M24,146 L616,146"/>`;
- [["pXO1","ยีนของสารพิษสามตัว: protective antigen, edema factor, lethal factor",176],
-  ["pXO2","ยีนสร้าง capsule — capA, capB, capC",224]].forEach(([n,d,y])=>{
-  b+=`<path class="m-dna2" d="${mloop(46,y,20,n==="pXO1"?7:11,.18,120,.95)}"/>`
-   +mL(82,y-6,n,{a:"start",c:"bh"})+mL(82,y+12,d,{a:"start",c:"s m"})});
+ [["pXO1","ยีนของ toxin สามตัว: protective antigen, edema factor, lethal factor",176],
+ ["pXO2","ยีนสร้าง capsule — capA, capB, capC",224]].forEach(([n,d,y])=>{
+ b+=`<path class="m-dna2" d="${mloop(46,y,20,n==="pXO1"?7:11,.18,120,.95)}"/>`
+ +mL(82,y-6,n,{a:"start",c:"bh"})+mL(82,y+12,d,{a:"start",c:"s m"})});
  /* the three routes */
  b+=`<path class="m-sep" d="M24,256 L616,256"/>`
-  +mL(24,282,"Three routes, three diseases",{a:"start",c:"bh"});
- [["Inoculation","95% ของการติดเชื้อตามธรรมชาติ · สปอร์เข้าทางผิวหนังที่มีแผล","Cutaneous anthrax · แผลดำตรงกลาง อัตราตาย 20% ถ้าไม่รักษา",24],
-  ["Ingestion","กินเนื้อสัตว์ที่ปนเปื้อน","Gastrointestinal anthrax · อัตราตายเกือบ 100%",24],
-  ["Inhalation","สูดสปอร์เข้าไป · เส้นทางที่ใช้เป็นอาวุธชีวภาพ","Inhalation anthrax · sepsis เร็ว mediastinal lymphadenopathy เยื่อหุ้มสมองอักเสบครึ่งหนึ่ง",24]
+ +mL(24,282,"Three routes, three diseases",{a:"start",c:"bh"});
+ [["Inoculation","95% ของ infection ตามธรรมชาติ · สปอร์เข้าทาง skin ที่มีแผล","Cutaneous anthrax · แผลดำตรงกลาง อัตราตาย 20% ถ้าไม่รักษา",24],
+ ["Ingestion","กินเนื้อสัตว์ที่ปนเปื้อน","Gastrointestinal anthrax · อัตราตายเกือบ 100%",24],
+ ["Inhalation","สูดสปอร์เข้าไป · เส้นทางที่ใช้เป็นอาวุธชีวภาพ","Inhalation anthrax · sepsis เร็ว mediastinal lymphadenopathy meningitis ครึ่งหนึ่ง",24]
  ].forEach(([n,how,dis],i)=>{const y=312+i*58;
-  b+=`<path class="m-body2" d="${mblob(40,y+2,15,13,i*9+5,.07)}"/>`+mL(40,y+7,String(i+1),{c:"bh"})
-   +mL(66,y,n,{a:"start",c:"bh"})+mL(66+n.length*8.2,y,"· "+how,{a:"start",c:"s m"})
-   +mL(66,y+20,dis,{a:"start",c:"s m"})});
+ b+=`<path class="m-body2" d="${mblob(40,y+2,15,13,i*9+5,.07)}"/>`+mL(40,y+7,String(i+1),{c:"bh"})
+ +mL(66,y,n,{a:"start",c:"bh"})+mL(66+n.length*8.2,y,"· "+how,{a:"start",c:"s m"})
+ +mL(66,y+20,dis,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 496")},
 notes:()=>`<h3>The capsule is protein, which is unusual</h3><ul>
  <li>Capsule ของ <i>B. anthracis</i> เป็น<b>พอลิเปปไทด์ poly-d-glutamic acid</b> ไม่ใช่พอลิแซ็กคาไรด์เหมือน capsule ของเชื้ออื่นแทบทั้งหมด ${S.mu}</li>
  <li>มันมี serotype เดียว เพราะประกอบด้วยกรดกลูตามิกล้วน ${S.mu}</li>
- <li>เห็น capsule ได้ในสิ่งส่งตรวจจริง แต่<b>ไม่ถูกสร้างในหลอดทดลอง</b>เว้นแต่จะใช้สภาวะเลี้ยงพิเศษ ${S.mu}</li>
- <li>ยีน capA, capB และ capC อยู่บนพลาสมิด <b>pXO2</b> ส่วนยีนของสารพิษทั้งสามอยู่บน <b>pXO1</b> — ต้องมีทั้งสองพลาสมิดจึงจะก่อโรคได้เต็มที่ ${S.mu}</li>
- <li>สปอร์เห็นได้ในเชื้อที่เลี้ยงไว้ 2–3 วัน แต่<b>ไม่เห็นในสิ่งส่งตรวจ</b> ${S.mu}</li></ul>
+ <li>เห็น capsule ได้ใน specimen จริง แต่<b>ไม่ถูกสร้างในหลอดทดลอง</b>เว้นแต่จะใช้สภาวะเลี้ยงพิเศษ ${S.mu}</li>
+ <li>ยีน capA, capB และ capC อยู่บนพลาสมิด <b>pXO2</b> ส่วนยีนของ toxin ทั้งสามอยู่บน <b>pXO1</b> — ต้องมีทั้งสองพลาสมิดจึงจะก่อโรคได้เต็มที่ ${S.mu}</li>
+ <li>สปอร์เห็นได้ในเชื้อที่เลี้ยงไว้ 2–3 วัน แต่<b>ไม่เห็นใน specimen</b> ${S.mu}</li></ul>
  <h3>Cutaneous is the common one</h3><ul>
- <li>ราว <b>95%</b> ของการติดเชื้อตามธรรมชาติในคนเกิดจากสปอร์เข้าทางผิวหนังที่สัมผัสดินหรือผลิตภัณฑ์จากสัตว์ที่ติดเชื้อ เช่น หนัง ขนแพะ และขนแกะ ${S.mu}</li>
+ <li>ราว <b>95%</b> ของ infection ตามธรรมชาติในคนเกิดจากสปอร์เข้าทาง skin ที่สัมผัสดินหรือผลิตภัณฑ์จากสัตว์ที่ติดเชื้อ เช่น หนัง ขนแพะ และขนแกะ ${S.mu}</li>
  <li>ชื่อ <i>anthracis</i> มาจาก anthrax ที่แปลว่าถ่าน — หมายถึง<b>แผลเนื้อตายสีดำ</b>ของ cutaneous anthrax ${S.mu}</li>
  <li>อัตราตายของ cutaneous anthrax ที่ไม่ได้รักษาคือ <b>20%</b> ${S.mu}</li></ul>
  <h3>Ingestion and inhalation are far worse</h3><ul>
- <li>Gastrointestinal anthrax: ถ้าเชื้อบุกทางเดินอาหารส่วนบน จะเกิดแผลในปากหรือหลอดอาหาร ตามด้วยต่อมน้ำเหลืองโต บวม และ sepsis · ถ้าบุกที่ cecum หรือ terminal ileum จะมีคลื่นไส้ อาเจียนและอ่อนเพลียที่ลุกลามเร็ว · <b>อัตราตายเชื่อว่าใกล้ 100%</b> ${S.mu}</li>
- <li>Inhalation anthrax เริ่มด้วยอาการไม่จำเพาะ แล้วเข้าสู่ sepsis อย่างรวดเร็ว มีไข้ บวม และ <b>mediastinal lymphadenopathy</b> · ครึ่งหนึ่งมีอาการทางเยื่อหุ้มสมอง และผู้ป่วยส่วนใหญ่เสียชีวิตถ้าไม่เริ่มรักษาทันที ${S.mu}</li>
+ <li>Gastrointestinal anthrax: ถ้าเชื้อบุก gastrointestinal tract ส่วนบน จะเกิดแผลในปากหรือหลอดอาหาร ตามด้วย lymph node โต บวม และ sepsis · ถ้าบุกที่ cecum หรือ terminal ileum จะมีคลื่นไส้ อาเจียนและอ่อนเพลียที่ลุกลามเร็ว · <b>อัตราตายเชื่อว่าใกล้ 100%</b> ${S.mu}</li>
+ <li>Inhalation anthrax เริ่มด้วย symptom ไม่จำเพาะ แล้วเข้าสู่ sepsis อย่างรวดเร็ว มี fever บวม และ <b>mediastinal lymphadenopathy</b> · ครึ่งหนึ่งมี symptom ทางเยื่อหุ้ม brain และผู้ป่วยส่วนใหญ่เสียชีวิตถ้าไม่เริ่มรักษาทันที ${S.mu}</li>
  <li>ต่างจากอีกสองรูปแบบ inhalation anthrax อาจมี<b>ระยะแฝงที่ยาว</b> ${S.mu}</li>
  <li>สิ่งที่เรารู้เกี่ยวกับ inhalation anthrax ส่วนมากมาจากสองเหตุการณ์: การรั่วไหลของสปอร์ที่ Sverdlovsk ในสหภาพโซเวียตปี 1979 (อย่างน้อย 79 ราย เสียชีวิต 68 ราย) และการส่งจดหมายปนเปื้อนถึงพนักงานไปรษณีย์สหรัฐปี 2001 (inhalation 11 ราย cutaneous 11 ราย) ${S.mu}</li>
- <li>Anthrax เป็นโรคของสัตว์กินพืชเป็นหลัก คนติดจากการสัมผัสสัตว์หรือผลิตภัณฑ์จากสัตว์ · ในสหรัฐพบน้อยมาก มีเพียงสี่รายระหว่างปี 2003–2015 ${S.mu}</li></ul>`});
+ <li>Anthrax เป็นโรคของสัตว์กินพืชเป็นหลัก คนติดจากการสัมผัสสัตว์หรือผลิตภัณฑ์จากสัตว์ · ในสหรัฐพบน้อยมาก มีเพียงสี่รายระหว่างปี 2003–2015 ${S.mu}</li></ul>
+ <h3>The organism itself</h3><ul>
+ <li>ขนาดใหญ่ <b>1 × 3–8 μm</b> เรียงเป็น rod เดี่ยวหรือคู่ หรือเป็น<b>สายยาวคดเคี้ยว</b> ${S.mu}</li>
+ <li>จุดที่สำคัญทางการวินิจฉัย: <b>spore เห็นได้ง่ายใน culture อายุ 2–3 วัน แต่ไม่เห็นใน clinical specimen</b> ${S.mu}</li>
+ <li>วงศ์ Bacillaceae มีมากกว่า 50 genus ที่มีสิ่งเดียวร่วมกันคือ<b>การสร้าง endospore</b> · genus <i>Bacillus</i> เองมีเกือบ 400 species แต่ที่สำคัญทางคลินิกมีสองตัว ${S.mu}</li>
+ <li><b>Capsule ของ <i>B. anthracis</i> เป็น polypeptide — poly-D-glutamic acid</b> ซึ่งแปลก เพราะ capsule ของแบคทีเรียส่วนใหญ่เป็น polysaccharide อย่างใน <i>S. aureus</i>, <i>S. pneumoniae</i> และ <i>P. aeruginosa</i> ${S.mu}</li>
+ <li>capsule <b>สร้างในร่างกายแต่ไม่สร้างใน vitro</b> เว้นแต่ใช้สภาวะพิเศษ · ยีน <b>capA, capB, capC</b> อยู่บน plasmid <b>pXO2</b> ${S.mu}</li>
+ <li>มี <b>serotype เดียว</b> ของ capsule เพราะมันประกอบด้วย glutamic acid ล้วน ${S.mu}</li></ul>
+ <h3>Route by route</h3><ul>
+ <li><b>ราว 95% ของ anthrax ที่เกิดตามธรรมชาติในคนมาจากการที่ spore เข้าทางผิวที่เปิด</b> จากดินหรือผลิตภัณฑ์สัตว์ที่ปนเปื้อน เช่น หนัง ขนแพะ และขนแกะ ${S.mu}</li>
+ <li><b>Ingestion anthrax พบน้อยมากในคน</b> แต่เป็นทางติดเชื้อที่พบบ่อยในสัตว์กินพืช · spore ทนทานจน<b>ดินและผลิตภัณฑ์สัตว์ที่ปนเปื้อนติดเชื้อได้นานหลายปี</b> ${S.mu}</li>
+ <li><b>Inhalation anthrax</b> เดิมเรียกว่า <b>wool-sorters disease</b> เพราะติดจากการสูด spore ระหว่างแปรรูปขนแพะ · ปัจจุบันเป็นทางที่น่าจะถูกใช้เป็นอาวุธชีวภาพมากที่สุด และ<b>infectious dose เชื่อว่าต่ำ</b> ${S.mu}</li>
+ <li>เหตุผลที่<b>ไม่ติดจากคนสู่คน</b>: เชื้อ<b>เพิ่มจำนวนที่ mediastinal lymph node ไม่ใช่ที่ bronchopulmonary tree</b> ${S.mu}</li>
+ <li>ส่วนใหญ่ของสิ่งที่รู้เรื่อง inhalation anthrax มาจากสองเหตุการณ์: <b>spore รั่วที่ Sverdlovsk ปี 1979</b> ซึ่งมีผู้ป่วยอย่างน้อย 79 รายและเสียชีวิต 68 ราย และ<b>จดหมายปนเปื้อนในไปรษณีย์สหรัฐปี 2001</b> ซึ่งมี inhalation anthrax 11 รายและ cutaneous anthrax 11 ราย ${S.mu}</li>
+ <li>สหรัฐอเมริกามี anthrax ตามธรรมชาติ<b>เพียง 4 รายระหว่างปี 2003 ถึง 2015</b> ${S.mu}</li></ul>
+ <h3>Each form at the bedside</h3><ul>
+ <li><b>Cutaneous</b>: เริ่มเป็น <b>papule ที่ไม่เจ็บ</b> ตรงจุดที่เชื้อเข้า แล้วกลายเป็น ulcer ล้อมด้วย vesicle และกลายเป็น <b>eschar</b> ที่เป็นเนื้อตาย ${S.mu}</li>
+ <li>อาจมี symptom ทั่วร่างกาย <b>lymphadenopathy ที่เจ็บ</b> และ edema จำนวนมาก · <b>อัตราตายเมื่อไม่รักษา 20%</b> ${S.mu}</li>
+ <li><b>Gastrointestinal</b>: ถ้าเชื้อรุก gastrointestinal tract ส่วนบน เกิด ulcer ที่ปากหรือ esophagus ตามด้วย lymphadenopathy, edema และ sepsis · ถ้ารุกที่ cecum หรือ terminal ileum มาด้วยคลื่นไส้ อาเจียน อ่อนเพลีย แล้วลุกลามเป็นโรคทั่วร่างกายอย่างรวดเร็ว ${S.mu}</li>
+ <li><b>อัตราตายของ gastrointestinal anthrax เชื่อว่าเข้าใกล้ 100%</b> ${S.mu}</li>
+ <li><b>Inhalation</b>: ต่างจากอีกสองแบบตรงที่มี <b>latent period ยาวได้ถึงสองเดือนหรือกว่านั้น</b> โดย spore สงบอยู่ในโพรงจมูกและผู้ป่วยไม่มี symptom ${S.mu}</li>
+ <li>เมื่อโรคเริ่ม spore ลงไป respiratory tract ส่วนล่าง <b>alveolar macrophage กลืนแล้วพามันไปที่ mediastinal lymph node</b> ${S.mu}</li>
+ <li>ระยะแรก symptom ไม่จำเพาะ — fever, myalgia, ไอแห้ง อ่อนเพลีย · <b>ระยะที่สองรุนแรงและเร็ว</b>: fever, edema, <b>mediastinal lymph node โตมหาศาลจนเห็นเป็น widened mediastinum ในภาพรังสี</b>, respiratory failure และ sepsis ${S.mu}</li>
+ <li>สองข้อที่ขัดกับสัญชาตญาณ: <b>แม้เชื้อเข้าทางการหายใจ แต่ pneumonia เกิดได้น้อย</b> และ<b>ครึ่งหนึ่งของผู้ป่วยมี symptom ทางเยื่อหุ้ม brain</b> ${S.mu}</li>
+ <li><b>แทบทุกรายดำเนินไปสู่ช็อกและเสียชีวิตภายใน 3 วันหลังเริ่มมี symptom</b> เว้นแต่สงสัยและเริ่มรักษาทันที · หลักฐานทางซีโรโลยีบอกว่า<b>ไม่มีรูปแบบที่ไม่แสดง symptom ของ inhalation anthrax</b> ${S.mu}</li></ul>
+ <h3>At the bench</h3><ul>
+ <li>anthrax เป็น<b>หนึ่งในไม่กี่โรคที่เห็นเชื้อได้จากการย้อม Gram ของเลือดส่วนปลาย</b> เพราะมีเชื้อจำนวนมหาศาลในแผล ใน lymph node และในเลือด ${S.mu}</li>
+ <li>ความยากจึง<b>ไม่ใช่การตรวจพบ แต่คือการแยกมันออกจากสมาชิกอื่นใน <i>B. cereus</i> group</b> ${S.mu}</li>
+ <li>ใต้กล้องเห็นเป็น <b>rod ยาวบาง gram-positive เรียงเดี่ยวหรือเป็นสายยาว</b> · spore เห็นเฉพาะใน culture ที่บ่มใน CO₂ ต่ำ และเห็นดีที่สุดด้วย <b>malachite green</b> ${S.mu}</li>
+ <li>capsule ดูได้ด้วย <b>India ink</b> ซึ่งทำให้พื้นหลังดำแต่รอบตัวเชื้อใส, <b>M'Fadyean methylene blue</b> หรือ <b>DFA</b> ต่อ capsular polypeptide ${S.mu}</li>
+ <li>โคโลนีบน sheep blood agar <b>ใหญ่ ไม่มีสี ผิวแห้งแบบ ground-glass ขอบไม่เรียบ</b> · <b>เหนียวและติดวุ้น</b> จนเมื่อเขี่ยขอบขึ้นมาจะ<b>ตั้งค้างอยู่เหมือนไข่ขาวที่ตีแล้ว</b> ${S.mu}</li>
+ <li>สองอย่างที่แยกจาก <i>B. cereus</i> ได้: <b>ไม่สลายเม็ดเลือด</b> และ<b>ไม่เคลื่อนที่</b> ${S.mu}</li>
+ <li>การยืนยันทำที่ห้องปฏิบัติการอ้างอิง ด้วย<b>การแสดง capsule, การสลายเชื้อด้วย gamma phage, DFA ต่อ cell wall polysaccharide จำเพาะ หรือ PCR</b> ${S.mu}</li></ul>
+ <h3>Treatment and prevention</h3><ul>
+ <li>เดิม penicillin คือยาที่เลือกใช้ แต่<b>พบการดื้อใน strain ธรรมชาติ</b> รวมถึงดื้อ sulfonamide และ cephalosporin รุ่นขยาย ${S.mu}</li>
+ <li>สูตรปัจจุบันคือ <b>ciprofloxacin หรือ doxycycline ร่วมกับยาอีกหนึ่งถึงสองตัว</b> เช่น rifampin, vancomycin, penicillin, imipenem, clindamycin หรือ clarithromycin ${S.mu}</li>
+ <li>แต่สำหรับ <b>cutaneous anthrax ที่เกิดตามธรรมชาติ ยังแนะนำ amoxicillin ชนิดกิน</b> ${S.mu}</li>
+ <li>การควบคุมต้องคุมที่สัตว์ — <b>ฉีดวัคซีนฝูงสัตว์ในพื้นที่ระบาด และเผาหรือฝังสัตว์ที่ตายจาก anthrax</b> ${S.mu}</li>
+ <li><b>การกำจัดให้หมดไปเป็นไปไม่ได้</b> เพราะ spore อยู่ในดินได้นานหลายปี ${S.mu}</li>
+ <li>วัคซีนใช้ใน<b>คนที่อยู่ในพื้นที่ระบาด คนที่ทำงานกับผลิตภัณฑ์สัตว์นำเข้าจากพื้นที่ระบาด และทหาร</b> ${S.mu}</li>
+ <li>แนวทางใหม่พุ่งไปที่ <b>PA และตัวรับของมัน</b> — <b>monoclonal antibody ต่อ PA</b> ป้องกันการตายได้ในสัตว์ทดลองและทนได้ดีในอาสาสมัคร · peptide สังเคราะห์ที่จับตัวรับของ PA ก็ลบล้าง toxin ได้ในสัตว์ทดลอง ${S.mu}</li></ul>`});
 
 SEC.push({id:"anthrax-tox",k:"a",t:"How anthrax toxin gets inside",mm:"Anthrax toxin",leg:[],
 draw:()=>{let b="";
@@ -63,43 +103,43 @@ draw:()=>{let b="";
  /* 1. PA binds its receptor and is cleaved */
  const x1=108;
  b+=`<path class="m-porin" d="M${x1-8},${YM-9} l0,18 l16,0 l0,-18 Z"/>`
-  +`<path class="m-gene" d="${mblob(x1,YM-26,15,12,7,.1)}"/>`
-  +mL(x1,YM-22,"PA",{c:"bh"})
-  +`<path class="m-cyc" marker-end="url(#ah2)" d="M${x1+22},${YM-30} q18,-8 32,2"/>`
-  +mL(x1,YM-52,"1 · จับ receptor แล้วถูกตัด",{c:"s m"});
+ +`<path class="m-gene" d="${mblob(x1,YM-26,15,12,7,.1)}"/>`
+ +mL(x1,YM-22,"PA",{c:"bh"})
+ +`<path class="m-cyc" marker-end="url(#ah2)" d="M${x1+22},${YM-30} q18,-8 32,2"/>`
+ +mL(x1,YM-52,"1 · จับ receptor แล้วถูกตัด",{c:"s m"});
  /* 2. seven PA63 fragments form the prepore ring */
  const x2=250;
  [...Array(7)].forEach((_,i)=>{const dx=(i-3)*11;
-  b+=`<path class="m-gene" style="stroke:var(--sb-surface);stroke-width:1.4" d="${mblob(x2+dx,YM-18,6,10,i*5+3,.1)}"/>`});
+ b+=`<path class="m-gene" style="stroke:var(--sb-surface);stroke-width:1.4" d="${mblob(x2+dx,YM-18,6,10,i*5+3,.1)}"/>`});
  b+=mL(x2,YM-44,"2 · PA63 เจ็ดตัวรวมเป็นวง (prepore)",{c:"s m"});
  /* 3. LF and EF dock on the ring */
  const x3=388;
  [...Array(7)].forEach((_,i)=>{const dx=(i-3)*11;
-  b+=`<path class="m-gene" style="stroke:var(--sb-surface);stroke-width:1.4" d="${mblob(x3+dx,YM-18,6,10,i*5+3,.1)}"/>`});
+ b+=`<path class="m-gene" style="stroke:var(--sb-surface);stroke-width:1.4" d="${mblob(x3+dx,YM-18,6,10,i*5+3,.1)}"/>`});
  b+=`<path class="m-body2" d="${mblob(x3-14,YM-44,15,13,9,.08)}"/>`+mL(x3-14,YM-40,"LF",{c:"bh"})
-  +`<path class="m-ring2" d="${mblob(x3+16,YM-46,15,13,13,.08)}"/>`+mL(x3+16,YM-42,"EF",{c:"bh"})
-  +mL(x3-30,YM-72,"3 · LF และ EF จับที่วงเดียวกัน จึงแย่งที่กัน",{c:"s m"});
+ +`<path class="m-ring2" d="${mblob(x3+16,YM-46,15,13,13,.08)}"/>`+mL(x3+16,YM-42,"EF",{c:"bh"})
+ +mL(x3-30,YM-72,"3 · LF และ EF จับที่วงเดียวกัน จึงแย่งที่กัน",{c:"s m"});
  /* 4. endocytosis, acidification, release into the cytosol */
  const x4=532;
  b+=`<path class="m-cap" style="stroke-dasharray:none" d="${mblob(x4,YM+56,52,40,17,.08)}"/>`
-  +mL(x4,YM+100,"endosome · กรด",{c:"s m"});
+ +mL(x4,YM+100,"endosome · กรด",{c:"s m"});
  [...Array(7)].forEach((_,i)=>{const dx=(i-3)*10;
-  b+=`<path class="m-gene" style="stroke:var(--sb-surface);stroke-width:1.4" d="${mblob(x4+dx,YM+34,5.5,9,i*5+3,.1)}"/>`});
+ b+=`<path class="m-gene" style="stroke:var(--sb-surface);stroke-width:1.4" d="${mblob(x4+dx,YM+34,5.5,9,i*5+3,.1)}"/>`});
  b+=`<path class="m-body2" d="${mblob(x4-20,YM+72,13,11,9,.08)}"/>`+mL(x4-20,YM+76,"LF",{c:"bh"})
-  +`<path class="m-ring2" d="${mblob(x4+18,YM+76,13,11,13,.08)}"/>`+mL(x4+18,YM+80,"EF",{c:"bh"})
-  +mL(x4-20,YM-34,"4 · ถูกกลืนเข้าเซลล์ แล้วปล่อยเข้าไซโทซอล",{a:"end",c:"s m"});
+ +`<path class="m-ring2" d="${mblob(x4+18,YM+76,13,11,13,.08)}"/>`+mL(x4+18,YM+80,"EF",{c:"bh"})
+ +mL(x4-20,YM-34,"4 · ถูกกลืนเข้าเซลล์ แล้วปล่อยเข้าไซโทซอล",{a:"end",c:"s m"});
  b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${x3+40},${YM-20} q46,20 ${x4-x3-56},${56}"/>`;
  /* what each one does, once inside */
  b+=`<path class="m-sep" d="M24,${YM+128} L616,${YM+128}"/>`;
  [["Lethal factor","zinc-dependent protease ที่ตัด MAP kinase → เซลล์ตาย · กระตุ้น macrophage ให้หลั่ง TNF-α และ IL-1β",24],
-  ["Edema factor","calmodulin-dependent adenylate cyclase ที่ดัน cAMP ขึ้น → บวมน้ำ",24]
+ ["Edema factor","calmodulin-dependent adenylate cyclase ที่ดัน cAMP ขึ้น → บวมน้ำ",24]
  ].forEach(([n,d],i)=>{const y=YM+156+i*40;
-  b+=mL(24,y,n,{a:"start",c:"bh"})+mL(24,y+20,d,{a:"start",c:"s m"})});
+ b+=mL(24,y,n,{a:"start",c:"bh"})+mL(24,y+20,d,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 "+(YM+250))},
 notes:()=>`<h3>Three proteins, two toxins</h3><ul>
  <li>ยีนของโปรตีนสามตัวอยู่บนพลาสมิดใหญ่ <b>pXO1</b>: <b>protective antigen (PA)</b>, <b>edema factor (EF)</b> และ <b>lethal factor (LF)</b> ${S.mu}</li>
- <li>แต่ละตัว<b>ไม่เป็นพิษเมื่ออยู่เดี่ยว ๆ</b> — ต้องประกอบกันจึงจะเป็นสารพิษ: PA + EF คือ <b>edema toxin</b> และ PA + LF คือ <b>lethal toxin</b> ${S.mu}</li>
- <li>PA เป็นโปรตีน 83 kDa ที่จับกับหนึ่งในสอง receptor ซึ่งมีอยู่บนเซลล์และเนื้อเยื่อหลายชนิด — สมอง หัวใจ ลำไส้ ปอด กล้ามเนื้อลาย ตับอ่อน และ macrophage ${S.mu}</li></ul>
+ <li>แต่ละตัว<b>ไม่เป็นพิษเมื่ออยู่เดี่ยว ๆ</b> — ต้องประกอบกันจึงจะเป็น toxin: PA + EF คือ <b>edema toxin</b> และ PA + LF คือ <b>lethal toxin</b> ${S.mu}</li>
+ <li>PA เป็นโปรตีน 83 kDa ที่จับกับหนึ่งในสอง receptor ซึ่งมีอยู่บนเซลล์และ tissue หลายชนิด — brain หัวใจ ลำไส้ ปอด muscle ลาย liver อ่อน และ macrophage ${S.mu}</li></ul>
  <h3>The assembly line</h3><ul>
  <li>หลัง PA จับ receptor โปรตีเอสของ host ตัดมันออก เหลือชิ้น <b>PA63</b> ติดอยู่บนผิวเซลล์ ${S.mu}</li>
  <li>PA63 <b>เจ็ดชิ้นรวมตัวกันเป็นวง</b> เรียก pore precursor หรือ prepore ${S.mu}</li>
@@ -108,123 +148,210 @@ notes:()=>`<h3>Three proteins, two toxins</h3><ul>
  <h3>What each factor does</h3><ul>
  <li><b>LF</b> เป็น zinc-dependent protease ที่ตัด <b>mitogen-activated protein kinase</b> ทำให้เซลล์ตาย · ฤทธิ์ zinc metalloprotease นี้ยังกระตุ้น macrophage ให้หลั่ง TNF-α, IL-1β และ cytokine อักเสบอื่น ${S.mu}</li>
  <li><b>EF</b> เป็น calmodulin-dependent adenylate cyclase ที่ดันระดับ cAMP ในเซลล์ขึ้น ทำให้เกิด<b>การคั่งของน้ำ</b>ที่เห็นใน anthrax · มันเป็นญาติกับ adenylate cyclase ของ <i>Bordetella pertussis</i> และ <i>Pseudomonas aeruginosa</i> ${S.mu}</li>
- <li>ในบรรดาโปรตีนหลักทั้งสาม <b>PA กระตุ้นภูมิคุ้มกันได้ดีที่สุด</b> จึงได้ชื่อว่า protective antigen · ทั้ง LF และ EF กดภูมิคุ้มกันโดยกำเนิดของ host ${S.mu}</li>
- <li>ความพยายามที่จะทำให้สารพิษนี้หมดฤทธิ์จึงมุ่งไปที่ <b>PA และ receptor ของมัน</b> ${S.mu}</li></ul>`});
+ <li>ในบรรดาโปรตีนหลักทั้งสาม <b>PA กระตุ้น immunity ได้ดีที่สุด</b> จึงได้ชื่อว่า protective antigen · ทั้ง LF และ EF กด immunity โดยกำเนิดของ host ${S.mu}</li>
+ <li>ความพยายามที่จะทำให้ toxin นี้หมดฤทธิ์จึงมุ่งไปที่ <b>PA และ receptor ของมัน</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"cereus",k:"a",t:"Bacillus cereus: two enterotoxins, two illnesses",mm:"B. cereus",leg:[],
 draw:()=>tbl(["","Emetic form","Diarrheal form"],[
  ["Toxin","heat-stable · ทนการย่อยด้วยโปรตีเอส","heat-labile"],
  ["Mechanism","ยังไม่ทราบกลไก","กระตุ้นระบบ adenylate cyclase–cAMP ในเซลล์เยื่อบุลำไส้ เหมือน enterotoxin ของ Escherichia coli และ Vibrio cholerae"],
  ["Classic food","ข้าวผัด — สปอร์รอดจากการหุง แล้วงอกเมื่อทิ้งข้าวไว้ไม่แช่เย็น","เนื้อสัตว์ ผัก ซอส"],
- ["Why reheating fails","สารพิษถูกปล่อยไว้ก่อนแล้ว และไม่ถูกทำลายเมื่ออุ่นซ้ำ","ต้องกินตัวเชื้อเข้าไปแล้วจึงสร้างสารพิษในลำไส้"],
+ ["Why reheating fails","toxin ถูกปล่อยไว้ก่อนแล้ว และไม่ถูกทำลายเมื่ออุ่นซ้ำ","ต้องกินตัวเชื้อเข้าไปแล้วจึงสร้าง toxin ในลำไส้"],
  ["Onset","1–6 ชั่วโมง","นานกว่า"],
  ["Duration","น้อยกว่า 24 ชั่วโมง","นานกว่า"],
- ["Symptoms","อาเจียน คลื่นไส้ ปวดท้อง · โดยทั่วไปไม่มีไข้และไม่ถ่ายเหลว","ถ่ายเหลวและปวดบีบในท้อง"]]),
+ ["Symptoms","อาเจียน คลื่นไส้ ปวดท้อง · โดยทั่วไปไม่มี fever และไม่ถ่ายเหลว","ถ่ายเหลวและปวดบีบในท้อง"]]),
 notes:()=>`<h3>An intoxication versus an infection</h3><ul>
- <li>Emetic form เป็น <b>intoxication</b> — คือกินสารพิษที่ถูกสร้างไว้ในอาหารแล้ว ไม่ใช่กินตัวเชื้อ · ระยะฟักตัวจึงสั้น (1–6 ชั่วโมง) และโรคก็สั้น (ไม่ถึง 24 ชั่วโมง) ${S.mu}</li>
- <li>ข้าวคือตัวอย่างคลาสสิก: ตอนหุงความร้อนฆ่าเชื้อที่เป็นตัวได้ แต่<b>สปอร์ทนความร้อนรอดมา</b> · ถ้าไม่แช่เย็น สปอร์จะงอกและเชื้อเพิ่มจำนวนอย่างรวดเร็ว แล้วปล่อย heat-stable enterotoxin ออกมา · <b>การอุ่นซ้ำไม่ทำลายสารพิษนี้</b> ${S.mu}</li>
- <li>มีรายงานว่า<b>ตับวายเฉียบพลัน</b>สัมพันธ์กับการกินอาหารที่ปนเปื้อนสารพิษนี้ด้วย ${S.mu}</li></ul>
+ <li>Emetic form เป็น <b>intoxication</b> — คือกิน toxin ที่ถูกสร้างไว้ในอาหารแล้ว ไม่ใช่กินตัวเชื้อ · ระยะฟักตัวจึงสั้น (1–6 ชั่วโมง) และโรคก็สั้น (ไม่ถึง 24 ชั่วโมง) ${S.mu}</li>
+ <li>ข้าวคือตัวอย่างคลาสสิก: ตอนหุงความร้อนฆ่าเชื้อที่เป็นตัวได้ แต่<b>สปอร์ทนความร้อนรอดมา</b> · ถ้าไม่แช่เย็น สปอร์จะงอกและเชื้อเพิ่มจำนวนอย่างรวดเร็ว แล้วปล่อย heat-stable enterotoxin ออกมา · <b>การอุ่นซ้ำไม่ทำลาย toxin นี้</b> ${S.mu}</li>
+ <li>มีรายงานว่า<b>liver วายเฉียบพลัน</b>สัมพันธ์กับการกินอาหารที่ปนเปื้อน toxin นี้ด้วย ${S.mu}</li></ul>
  <h3>The eye infection is the dangerous one</h3><ul>
- <li>การติดเชื้อที่ตาจาก <i>B. cereus</i> <b>ทำลายลูกตาอย่างรวดเร็วและลุกลาม</b> หลังเชื้อเข้าไปจากการบาดเจ็บ ${S.mu}</li>
- <li>มีสารพิษอย่างน้อยสามตัวที่เกี่ยวข้อง: <b>necrotic toxin</b> ซึ่งเป็น heat-labile enterotoxin, <b>cereolysin</b> ซึ่งเป็น hemolysin ที่แรงและตั้งชื่อตามสปีชีส์ และ <b>phospholipase C</b> ซึ่งเป็น lecithinase ที่แรง ${S.mu}</li></ul>
+ <li>infection ที่ตาจาก <i>B. cereus</i> <b>ทำลายลูกตาอย่างรวดเร็วและลุกลาม</b> หลังเชื้อเข้าไปจากการบาดเจ็บ ${S.mu}</li>
+ <li>มี toxin อย่างน้อยสามตัวที่เกี่ยวข้อง: <b>necrotic toxin</b> ซึ่งเป็น heat-labile enterotoxin, <b>cereolysin</b> ซึ่งเป็น hemolysin ที่แรงและตั้งชื่อตามสปีชีส์ และ <b>phospholipase C</b> ซึ่งเป็น lecithinase ที่แรง ${S.mu}</li></ul>
  <h3>Catheters and contaminants</h3><ul>
- <li><i>Bacillus</i> ตั้งรกรากบนผิวหนังชั่วคราวได้ และมักขึ้นใน blood culture ในฐานะ<b>สิ่งปนเปื้อนที่ไม่มีความหมาย</b> ${S.mu}</li>
- <li>แต่ถ้ามี<b>สิ่งแปลกปลอมในหลอดเลือด</b> มันก่อ bacteremia ที่ต่อเนื่องและอาการ sepsis ได้จริง — ไข้ หนาวสั่น ความดันตก shock ${S.mu}</li>
- <li><i>Bacillus</i> ที่ไม่ใช่ <i>B. anthracis</i> เป็น<b>เชื้อฉวยโอกาสที่มีความสามารถก่อโรคต่ำ</b> · ในกลุ่มนี้ <i>B. cereus</i> สำคัญที่สุด ${S.mu}</li></ul>`});
+ <li><i>Bacillus</i> ตั้งรกรากบน skin ชั่วคราวได้ และมักขึ้นใน blood culture ในฐานะ<b>สิ่งปนเปื้อนที่ไม่มีความหมาย</b> ${S.mu}</li>
+ <li>แต่ถ้ามี<b>สิ่งแปลกปลอมในหลอดเลือด</b> มันก่อ bacteremia ที่ต่อเนื่องและ symptom sepsis ได้จริง — fever หนาวสั่น ความดันตก shock ${S.mu}</li>
+ <li><i>Bacillus</i> ที่ไม่ใช่ <i>B. anthracis</i> เป็น<b>เชื้อฉวยโอกาสที่มีความสามารถก่อโรคต่ำ</b> · ในกลุ่มนี้ <i>B. cereus</i> สำคัญที่สุด ${S.mu}</li></ul>
+ <h3>The two syndromes, side by side</h3>
+ ${tbl(["","Emetic form","Diarrheal form"],[
+ ["อาหารที่เกี่ยวข้อง","ข้าว","เนื้อ ผัก ซอส"],
+ ["ระยะฟักตัว","&lt; 6 ชั่วโมง เฉลี่ย 2","&gt; 6 ชั่วโมง เฉลี่ย 9"],
+ ["symptom","อาเจียน คลื่นไส้ ปวดบิด","ถ่ายเหลว คลื่นไส้ ปวดบิด"],
+ ["ระยะเวลา","8–10 ชั่วโมง เฉลี่ย 9","20–36 ชั่วโมง เฉลี่ย 24"],
+ ["Enterotoxin","heat stable","heat labile"],
+ ["กลไก","intoxication — กิน toxin ที่มีอยู่แล้ว","infection จริง — เชื้อโตในลำไส้แล้วปล่อย toxin"]])}
+ <h3>Why rice</h3><ul>
+ <li>การหุงครั้งแรก<b>ฆ่าเชื้อส่วนใหญ่ได้ แต่ spore ที่ทนความร้อนรอด</b> ${S.mu}</li>
+ <li>ถ้าข้าวที่หุงแล้ว<b>ไม่ได้แช่เย็น spore จะงอกและเชื้อเพิ่มจำนวนอย่างรวดเร็ว</b> ${S.mu}</li>
+ <li><b>Heat-stable enterotoxin ที่ปล่อยออกมาไม่ถูกทำลายเมื่ออุ่นข้าวซ้ำ</b> ${S.mu}</li>
+ <li>emetic form จึงมี<b>ระยะฟักตัวสั้น 1–6 ชั่วโมง และโรคจบใน 24 ชั่วโมง</b> · โดยทั่วไป<b>ไม่มี fever และไม่ถ่ายเหลว</b> ${S.mu}</li>
+ <li>ภาวะแทรกซ้อนที่พบได้ยากแต่ต้องรู้: <b>fulminant liver failure</b> จากการกิน emetic toxin ปริมาณมาก ซึ่ง<b>รบกวน mitochondrial fatty acid metabolism</b> ${S.mu}</li>
+ <li>heat-labile enterotoxin <b>คล้ายของ <i>E. coli</i> และ <i>V. cholerae</i></b> — กระตุ้นระบบ adenylate cyclase และ cAMP ในเซลล์เยื่อบุลำไส้ จน<b>ถ่ายเป็นน้ำจำนวนมาก</b> · <b>กลไกของ heat-stable enterotoxin ยังไม่ทราบ</b> ${S.mu}</li></ul>
+ <h3>The eye, and the other infections</h3><ul>
+ <li>ตาติดเชื้อหลัง<b>บาดเจ็บทะลุจากวัตถุที่เปื้อนดิน</b> · <b><i>Bacillus</i> panophthalmitis ลุกลามเร็วมากและแทบทุกรายสูญเสียตาทั้งข้างภายใน 48 ชั่วโมง</b> ${S.mu}</li>
+ <li>toxin ที่เกี่ยวข้องอย่างน้อยสามตัว: <b>necrotic toxin, cereolysin</b> ซึ่งเป็น hemolysin ที่แรงและตั้งชื่อตาม species และ <b>phospholipase C</b> ซึ่งเป็น lecithinase ที่แรง ${S.mu}</li>
+ <li>infection แบบกระจายที่มี symptom ทางตาเกิดในผู้ใช้ยาเสพติดชนิดฉีดได้ด้วย ${S.mu}</li>
+ <li><i>Bacillus</i> <b>อยู่บน skin ชั่วคราวได้ และขึ้นใน blood culture ในฐานะสิ่งปนเปื้อนที่ไม่มีความหมาย</b> — แต่<b>เมื่อมีสิ่งแปลกปลอมในหลอดเลือด มันทำให้เกิด bacteremia ต่อเนื่องและ sepsis ได้จริง</b> ${S.mu}</li>
+ <li>infection อื่น: สายสวนหลอดเลือด, shunt ในระบบประสาท, endocarditis ซึ่งพบมากที่สุดในผู้ใช้ยาเสพติด, และ pneumonitis, bacteremia กับ meningitis ในผู้ที่ immunity ถูกกดอย่างหนัก ${S.mu}</li>
+ <li>มีรายงานว่า<b>การดื่มชาในผู้ที่ immunity บกพร่องสัมพันธ์กับความเสี่ยงของโรค <i>B. cereus</i> แบบรุกราน</b> ${S.mu}</li>
+ <li>โรคที่ต้องรู้แยกต่างหาก: <b>pneumonia รุนแรงที่เลียนแบบ anthrax ในผู้ที่ immunity ปกติ</b> · ผู้ป่วยสี่รายที่รายงานไว้ล้วนเป็นช่างโลหะในเทกซัสหรือลุยเซียนา และ<b>strain นั้นมียีน toxin บน pXO1 ของ <i>B. anthracis</i> และมี capsule</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"listeria",k:"b",t:"Listeria monocytogenes: moving without leaving the cell",mm:"Listeria",leg:[],
 draw:()=>{let b="";
  const num=(x,y,n)=>`<circle cx="${x}" cy="${y}" r="10" style="fill:var(--sb-ink)"/>`
-  +`<text class="t bh" x="${x}" y="${y+4}" text-anchor="middle" font-size="11" fill="var(--sb-surface)">${n}</text>`;
+ +`<text class="t bh" x="${x}" y="${y+4}" text-anchor="middle" font-size="11" fill="var(--sb-surface)">${n}</text>`;
  /* two host cells side by side; the organism crosses between them */
  const c1=180,c2=460,cy=150;
  [c1,c2].forEach((cx,i)=>{b+=`<path class="m-body" style="fill:color-mix(in srgb,#8d8578 10%,var(--sb-surface))" d="${mblob(cx,cy,126,96,i*11+7,.05)}"/>`
-  +mgrainIn("lm"+i,mblob(cx,cy,126,96,i*11+7,.05),cx-126,cy-96,252,192,90,i*3+5,"m-gr",.9)
-  +`<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#3E6FB0 12%,var(--sb-surface))" d="${mblob(cx+34,cy-26,30,24,i*7+13,.08)}"/>`
-  +mL(cx+34,cy-22,"nucleus",{c:"s m"})});
+ +mgrainIn("lm"+i,mblob(cx,cy,126,96,i*11+7,.05),cx-126,cy-96,252,192,90,i*3+5,"m-gr",.9)
+ +`<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#3E6FB0 12%,var(--sb-surface))" d="${mblob(cx+34,cy-26,30,24,i*7+13,.08)}"/>`
+ +mL(cx+34,cy-22,"nucleus",{c:"s m"})});
  const bact=(x,y,sd)=>`<path class="m-body2" d="${mrod(x,y,30,8,sd,.05)}"/>`;
  /* 1 — internalin binds E-cadherin and the organism is taken in */
  b+=bact(c1-104,cy+54,3)
-  +`<path class="m-pep" style="stroke-width:2.6" d="M${c1-120},${cy+42} L${c1-112},${cy+48}"/>`
-  +num(c1-104,cy+54,"1");
+ +`<path class="m-pep" style="stroke-width:2.6" d="M${c1-120},${cy+42} L${c1-112},${cy+48}"/>`
+ +num(c1-104,cy+54,"1");
  /* 2 — escape from the phagolysosome */
  b+=`<path class="m-cap" style="stroke-dasharray:3 3" d="${mblob(c1-46,cy+10,34,28,9,.1)}"/>`
-  +bact(c1-46,cy+10,7)
-  +num(c1-46,cy+10,"2");
+ +bact(c1-46,cy+10,7)
+ +num(c1-46,cy+10,"2");
  /* 3 — ActA builds an actin tail */
  const tx=c1+40,ty=cy+44;
  b+=bact(tx,ty,11);
  const aq=rng(23);
  for(let i=0;i<40;i++){const t=i/40,x=tx-18-t*86+aq()*6,y=ty+(aq()-.5)*16*(0.3+t);
-  b+=`<circle class="m-gr2" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(1.8+aq()*1.4).toFixed(1)}"/>`}
+ b+=`<circle class="m-gr2" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(1.8+aq()*1.4).toFixed(1)}"/>`}
  b+=num(tx+22,ty,"3");
  /* 4 — filopod pushes into the neighbour */
  b+=`<path class="m-body" style="fill:color-mix(in srgb,#8d8578 10%,var(--sb-surface))" d="M${c1+112},${cy-16} q46,-6 70,8 q-46,20 -70,10Z"/>`
-  +bact(c1+152,cy-2,17)
-  +num(c1+152,cy-22,"4");
+ +bact(c1+152,cy-2,17)
+ +num(c1+152,cy-22,"4");
  /* the four steps, numbered under the figure so no leader has to cross it */
  b+=`<path class="m-sep" d="M24,272 L616,272"/>`;
  [["1","Internalin A","จับ E-cadherin บนเซลล์เยื่อบุ แล้วถูกกลืนเข้าไป",24,298],
-  ["2","Listeriolysin O · phospholipase C","กรดใน phagolysosome ปลุกสารพิษให้เจาะถุง",24,348],
-  ["3","ActA builds an actin tail","actin ต่อเพิ่มตรงปลายเดียวของเชื้อ หางจึงดันมันไปข้างหน้า",330,298],
-  ["4","Filopod","ดันเยื่อหุ้มโป่งเข้าเซลล์ข้างเคียง แล้ววนซ้ำทั้งวงจร",330,348]
+ ["2","Listeriolysin O · phospholipase C","กรดใน phagolysosome ปลุก toxin ให้เจาะถุง",24,348],
+ ["3","ActA builds an actin tail","actin ต่อเพิ่มตรงปลายเดียวของเชื้อ หางจึงดันมันไปข้างหน้า",330,298],
+ ["4","Filopod","ดันเยื่อหุ้มโป่งเข้าเซลล์ข้างเคียง แล้ววนซ้ำทั้งวงจร",330,348]
  ].forEach(([n,t2,d,x,y])=>{
-  b+=`<path class="m-body2" d="${mblob(x+10,y-4,13,12,n.charCodeAt(0),.07)}"/>`+mL(x+10,y+1,n,{c:"bh"})
-   +mL(x+32,y-6,t2,{a:"start",c:"bh"})+mL(x+32,y+14,d,{a:"start",c:"s m"})});
+ b+=`<path class="m-body2" d="${mblob(x+10,y-4,13,12,n.charCodeAt(0),.07)}"/>`+mL(x+10,y+1,n,{c:"bh"})
+ +mL(x+32,y-6,t2,{a:"start",c:"bh"})+mL(x+32,y+14,d,{a:"start",c:"s m"})});
  b+=`<path class="m-sep" d="M24,392 L616,392"/>`
-  +mL(24,416,"เชื้อเดินทางจากเซลล์หนึ่งไปอีกเซลล์หนึ่งโดยไม่โผล่ออกนอกเซลล์เลย",{a:"start",c:"bh"})
-  +mL(24,436,"แอนติบอดีและ complement จึงตามไม่ทัน · ยีนทั้งชุดถูกคุมด้วยยีนเดียวคือ prfA",{a:"start",c:"s m"});
+ +mL(24,416,"เชื้อเดินทางจากเซลล์หนึ่งไปอีกเซลล์หนึ่งโดยไม่โผล่ออกนอกเซลล์เลย",{a:"start",c:"bh"})
+ +mL(24,436,"antibody และ complement จึงตามไม่ทัน · ยีนทั้งชุดถูกคุมด้วยยีนเดียวคือ prfA",{a:"start",c:"s m"});
  return svg(b,"0 0 640 456")},
 notes:()=>`<h3>A facultative intracellular pathogen</h3><ul>
  <li>การเข้าเซลล์อาศัย <b>internalin A (InlA)</b> ที่จับกับ glycoprotein receptor บนผิวเซลล์ host โดยเฉพาะ <b>epithelial cadherin</b> ซึ่งเป็น adhesin ที่ต้องใช้แคลเซียม · internalin ตัวอื่นอย่าง InlB จับ receptor บนเซลล์ได้กว้างกว่า ${S.mu}</li>
- <li>ในสัตว์ทดลอง การติดเชื้อเริ่มที่ <b>enterocyte หรือ M cell ใน Peyer patch</b> ${S.mu}</li>
+ <li>ในสัตว์ทดลอง infection เริ่มที่ <b>enterocyte หรือ M cell ใน Peyer patch</b> ${S.mu}</li>
  <li>หลังเข้าไปแล้ว ความเป็นกรดของ phagolysosome <b>ปลุกฤทธิ์</b> pore-forming cytolysin ชื่อ <b>listeriolysin O</b> กับ phospholipase C อีกสองชนิด ทำให้เชื้อหลุดออกสู่ไซโทซอล ${S.mu}</li>
- <li>จากนั้นเชื้อเพิ่มจำนวนแล้วเคลื่อนไปที่เยื่อหุ้มเซลล์ · การเคลื่อนที่อาศัย <b>ActA</b> ซึ่งอยู่<b>ที่ปลายเดียว</b>ของตัวเชื้อและจัดการประกอบ actin · ปลายหางด้านไกลอยู่นิ่ง ส่วนการต่อเติมเกิดตรงปลายที่ติดกับตัวเชื้อ เชื้อจึง<b>ถูกดันไปข้างหน้า</b> ${S.mu}</li>
- <li>เมื่อถึงเยื่อหุ้มเซลล์จะเกิด <b>filopod</b> ที่ดันเชื้อเข้าไปในเซลล์ข้างเคียง · เซลล์นั้นกลืนเชื้อเข้าไป แล้ววงจรทั้งหมดก็เริ่มใหม่ ${S.mu}</li>
+ <li>จากนั้นเชื้อเพิ่มจำนวนแล้วเคลื่อนไปที่ cytoplasmic membrane · การเคลื่อนที่อาศัย <b>ActA</b> ซึ่งอยู่<b>ที่ปลายเดียว</b>ของตัวเชื้อและจัดการประกอบ actin · ปลายหางด้านไกลอยู่นิ่ง ส่วนการต่อเติมเกิดตรงปลายที่ติดกับตัวเชื้อ เชื้อจึง<b>ถูกดันไปข้างหน้า</b> ${S.mu}</li>
+ <li>เมื่อถึง cytoplasmic membrane จะเกิด <b>filopod</b> ที่ดันเชื้อเข้าไปในเซลล์ข้างเคียง · เซลล์นั้นกลืนเชื้อเข้าไป แล้ววงจรทั้งหมดก็เริ่มใหม่ ${S.mu}</li>
  <li>ยีนที่ควบคุมการเจาะถุง การเพิ่มจำนวนในเซลล์ และการเคลื่อนที่แบบมีทิศทาง <b>อยู่รวมกันเป็นกลุ่มและถูกคุมด้วยยีนเดียวคือ prfA</b> — positive regulatory factor ${S.mu}</li></ul>
  <h3>Why this matters clinically</h3><ul>
- <li>เพราะเชื้อ<b>ไม่เคยโผล่ออกนอกเซลล์</b> แอนติบอดีและ complement จึงเข้าไม่ถึง — การกำจัดเชื้อนี้ต้องอาศัย <b>cell-mediated immunity</b> ${S.mu}</li>
- <li>เมื่อเข้า macrophage หลังผ่านผนังลำไส้ เชื้อจะถูกพาไปที่<b>ตับและม้าม</b> ทำให้เกิดโรคที่กระจายทั่วร่างกาย ${S.mu}</li>
+ <li>เพราะเชื้อ<b>ไม่เคยโผล่ออกนอกเซลล์</b> antibody และ complement จึงเข้าไม่ถึง — การกำจัดเชื้อนี้ต้องอาศัย <b>cell-mediated immunity</b> ${S.mu}</li>
+ <li>เมื่อเข้า macrophage หลังผ่านผนังลำไส้ เชื้อจะถูกพาไปที่<b>liver และ spleen</b> ทำให้เกิดโรคที่กระจายทั่วร่างกาย ${S.mu}</li>
  <li>ชื่อสกุลตั้งตาม Lord Joseph Lister ศัลยแพทย์ชาวอังกฤษ · ชื่อสปีชีส์มาจากการที่สารสกัดจากเยื่อหุ้มกระตุ้นการสร้าง monocyte ในกระต่าย แม้จะไม่พบปรากฏการณ์นี้ในโรคของคน ${S.mu}</li></ul>`});
 
 SEC.push({id:"listeria-dis",k:"b",t:"Listeria: who gets it, and how the lab finds it",mm:"Listeria disease",leg:[],
 draw:()=>tbl(["Group","Disease","Note"],[
- ["Neonate — early onset","ได้เชื้อในครรภ์ · sepsis แรกเกิด · granulomatosis infantiseptica คือฝีกระจายทั่วอวัยวะ","แม่อาจมีเพียงอาการคล้ายไข้หวัดใหญ่"],
+ ["Neonate — early onset","ได้เชื้อในครรภ์ · sepsis แรกเกิด · granulomatosis infantiseptica คือ abscess กระจายทั่วอวัยวะ","แม่อาจมีเพียง symptom คล้าย fever หวัดใหญ่"],
  ["Neonate — late onset","meningitis หรือ meningoencephalitis ราว 2–3 สัปดาห์หลังคลอด","ได้เชื้อตอนคลอดหรือหลังคลอด"],
- ["Pregnant woman","bacteremia ที่มักมีอาการไม่จำเพาะ แต่ทำให้ทารกตายในครรภ์หรือคลอดก่อนกำหนด","cell-mediated immunity ลดลงในการตั้งครรภ์"],
+ ["Pregnant woman","bacteremia ที่มักมี symptom ไม่จำเพาะ แต่ทำให้ทารกตายในครรภ์หรือคลอดก่อนกำหนด","cell-mediated immunity ลดลงในการตั้งครรภ์"],
  ["Adult with reduced cell-mediated immunity","meningitis และ primary bacteremia","ผู้สูงอายุ ผู้ได้ยากดภูมิ ผู้ป่วยมะเร็ง"],
- ["Healthy adult","gastroenteritis จากอาหาร — ถ่ายเหลว ไข้ ปวดเมื่อย","ปริมาณเชื้อที่ได้รับต้องมาก"]]),
+ ["Healthy adult","gastroenteritis จากอาหาร — ถ่ายเหลว fever ปวดเมื่อย","ปริมาณเชื้อที่ได้รับต้องมาก"]]),
 notes:()=>`<h3>It grows where other bacteria do not</h3><ul>
  <li><i>L. monocytogenes</i> เป็น gram-positive rod สั้น ๆ ที่<b>เติบโตได้ที่อุณหภูมิตู้เย็น</b> จึงเพิ่มจำนวนในอาหารแช่เย็นได้ ${S.mu}</li>
- <li>ในอาหารเลี้ยงเชื้อเหลวที่อุณหภูมิห้อง มันเคลื่อนที่แบบ<b>ตีลังกา (tumbling motility)</b> ซึ่งเป็นลักษณะที่ใช้ช่วยระบุเชื้อ ${S.mu}</li>
- <li>ในห้องปฏิบัติการใช้ <b>selective media และ cold enrichment</b> — คือเก็บสิ่งส่งตรวจไว้ที่อุณหภูมิต่ำแล้วเพาะซ้ำเป็นระยะ ${S.mu}</li>
+ <li>ใน medium เหลวที่อุณหภูมิห้อง มันเคลื่อนที่แบบ<b>ตีลังกา (tumbling motility)</b> ซึ่งเป็นลักษณะที่ใช้ช่วยระบุเชื้อ ${S.mu}</li>
+ <li>ในห้องปฏิบัติการใช้ <b>selective media และ cold enrichment</b> — คือเก็บ specimen ไว้ที่อุณหภูมิต่ำแล้วเพาะซ้ำเป็นระยะ ${S.mu}</li>
  <li>บน Gram stain มันหน้าตาคล้าย <i>Corynebacterium</i> และอาจถูกมองข้ามว่าเป็น diphtheroid ที่ปนเปื้อน ${S.mu}</li></ul>
  <h3>Treatment has one trap</h3><ul>
  <li>ยาที่ใช้คือ <b>ampicillin ร่วมกับ gentamicin</b> ${S.mu}</li>
- <li>กับดักคือ <b>cephalosporin ไม่มีฤทธิ์ต่อ <i>Listeria</i> เลย</b> — ซึ่งสำคัญมาก เพราะ cephalosporin คือยาที่ให้ไปก่อนในผู้ป่วยเยื่อหุ้มสมองอักเสบ ${S.mu}</li>
+ <li>กับดักคือ <b>cephalosporin ไม่มีฤทธิ์ต่อ <i>Listeria</i> เลย</b> — ซึ่งสำคัญมาก เพราะ cephalosporin คือยาที่ให้ไปก่อนในผู้ป่วย meningitis ${S.mu}</li>
  <li>ผู้ป่วยที่แพ้ penicillin ใช้ trimethoprim-sulfamethoxazole ${S.mu}</li>
- <li>การป้องกันคือหลีกเลี่ยงอาหารเสี่ยงในหญิงตั้งครรภ์และผู้ที่ภูมิคุ้มกันบกพร่อง — นมที่ไม่ผ่านการพาสเจอไรซ์ ชีสเนื้อนุ่ม และอาหารพร้อมรับประทานที่เก็บแช่เย็น ${S.mu}</li></ul>`});
+ <li>การป้องกันคือหลีกเลี่ยงอาหารเสี่ยงในหญิงตั้งครรภ์และผู้ที่ immunity บกพร่อง — นมที่ไม่ผ่านการพาสเจอไรซ์ ชีสเนื้อนุ่ม และอาหารพร้อมรับประทานที่เก็บแช่เย็น ${S.mu}</li></ul>
+ <h3>Neonatal and maternal disease</h3><ul>
+ <li>infection ในครรภ์ทำให้เกิด <b>abortion, stillbirth หรือคลอดก่อนกำหนด</b> ${S.mu}</li>
+ <li><b>Granulomatosis infantiseptica</b> คือรูปรุนแรงของ early-onset listeriosis — เกิด <b>abscess และ granuloma ในหลายอวัยวะ</b> และ<b>อัตราตายสูงถ้าไม่รักษาทันที</b> ${S.mu}</li>
+ <li><b>Late-onset disease เกิด 2–3 สัปดาห์หลังคลอด</b> เป็น meningitis หรือ meningoencephalitis ร่วมกับ septicemia · symptom ไม่จำเพาะ จึง<b>ต้องแยกจาก group B streptococcal disease</b> ${S.mu}</li>
+ <li>ในหญิงตั้งครรภ์ infection<b>ส่วนใหญ่เกิดในไตรมาสที่สาม ซึ่งเป็นช่วงที่ cellular immunity ถูกกดมากที่สุด</b> ${S.mu}</li>
+ <li>แม่มักมี<b>symptom คล้าย fever หวัดใหญ่ที่ไม่จำเพาะ และอาจหายเองโดยไม่ได้รักษา</b> ${S.mu}</li>
+ <li>จุดที่พลาดกันในเวชปฏิบัติ: <b>ถ้าไม่เก็บ blood culture ในหญิงตั้งครรภ์ที่มี fever โดยไม่มีแหล่งติดเชื้ออื่น ทั้ง bacteremia และความเสี่ยงต่อทารกจะถูกมองข้าม</b> ${S.mu}</li></ul>
+ <h3>Disease in adults</h3><ul>
+ <li>ในผู้ใหญ่สุขภาพดี infection<b>ส่วนใหญ่ไม่มี symptom หรือเป็นแค่ symptom คล้าย fever หวัดใหญ่</b> ${S.mu}</li>
+ <li>บางรายเป็น <b>gastroenteritis เฉียบพลันที่หายเอง</b> — <b>ฟักตัว 1 วัน แล้วมี symptom 2 วัน</b> คือถ่ายเป็นน้ำ fever คลื่นไส้ ปวดศีรษะ ปวด muscle และปวดข้อ ${S.mu}</li>
+ <li><b>Meningitis เป็นรูปที่พบบ่อยที่สุดของ listeriosis แบบกระจายในผู้ใหญ่</b> ${S.mu}</li>
+ <li>ต้องนึกถึง <i>Listeria</i> เสมอใน<b>ผู้ที่ปลูกถ่ายอวัยวะ ผู้ป่วยมะเร็ง และหญิงตั้งครรภ์</b> ที่เกิด meningitis ${S.mu}</li>
+ <li><b>อัตราตาย 20–50% และผู้รอดชีวิตมักมีความพิการทางระบบประสาท</b> ${S.mu}</li>
+ <li>Primary bacteremia อาจมาแค่<b>หนาวสั่นกับ fever ซึ่งพบบ่อยในหญิงตั้งครรภ์</b> หรือมาแบบเฉียบพลันด้วย fever สูงและความดันตก · <b>เฉพาะผู้ที่ immunity บกพร่องรุนแรงและทารกของแม่ที่มี sepsis เท่านั้นที่เสี่ยงเสียชีวิต</b> ${S.mu}</li></ul>
+ <h3>Why the Gram stain is usually negative</h3><ul>
+ <li>ใน CSF <b>มักไม่เห็นเชื้อเลย</b> เพราะเชื้อมีความเข้มข้น<b>ราว 10⁴ ตัวต่อมิลลิลิตรหรือน้อยกว่า ซึ่งต่ำกว่าขีดที่กล้องตรวจพบได้คือ 10⁵</b> ${S.mu}</li>
+ <li>ต่างจากเชื้อก่อโรคระบบประสาทตัวอื่นซึ่งมีความเข้มข้น<b>สูงกว่านี้ 100 ถึง 1000 เท่า</b> ${S.mu}</li>
+ <li>ถ้าเห็นเชื้อ จะเป็น <b>gram-positive coccobacilli ทั้งในและนอกเซลล์</b> — ต้องระวัง<b>ไม่ให้สับสนกับ <i>S. pneumoniae</i></b> ${S.mu}</li>
+ <li>เชื้อขึ้นบน medium ทั่วไป ได้โคโลนีเล็กกลมใน <b>1–2 วัน</b> · ใน specimen ที่ปนเปื้อนเชื้อโตเร็ว อาจต้องใช้ <b>selective medium และ cold enrichment</b> คือเก็บไว้ในตู้เย็นเป็นเวลานาน ${S.mu}</li>
+ <li><b>β-hemolysis บน sheep blood agar</b> ใช้แยกจากแบคทีเรียที่รูปร่างคล้ายกันได้ แต่<b>มักอ่อนและอาจไม่เห็นตั้งแต่แรก</b> ${S.mu}</li>
+ <li>กฎที่ห้องปฏิบัติการใช้: <b>gram-positive rod ทุกตัวที่แยกได้จากเลือดและ CSF ต้องระบุให้ได้ว่าเป็น <i>Corynebacterium</i> ซึ่งน่าจะปนเปื้อนจาก skin หรือเป็น <i>Listeria</i></b> ${S.mu}</li>
+ <li>ปัจจุบัน <b>MALDI mass spectrometry แทนที่การทดสอบทางชีวเคมี</b>ในหลายห้องปฏิบัติการ ${S.mu}</li>
+ <li>มี <b>13 serotype</b> แต่ <b>1/2a, 1/2b และ 4b</b> คิดเป็น infection ส่วนใหญ่ทั้งในทารกและผู้ใหญ่ — <b>การทำ serotype จึงไม่ค่อยมีประโยชน์ทางระบาดวิทยา</b> · ใช้ <b>PFGE หรือ whole genome sequencing</b> แทน ${S.mu}</li></ul>
+ <h3>Treatment</h3><ul>
+ <li>แกนของปัญหา: <b>ยาส่วนใหญ่เป็นเพียง bacteriostatic ต่อ <i>L. monocytogenes</i></b> ${S.mu}</li>
+ <li>ยาที่เลือกใช้สำหรับ infection รุนแรงคือ <b>gentamicin ร่วมกับ penicillin หรือ ampicillin</b> ${S.mu}</li>
+ <li>จุดที่ต้องจำ: <b><i>Listeria</i> ดื้อ cephalosporin โดยธรรมชาติ</b> · และพบการดื้อ macrolide, fluoroquinolone และ tetracycline ด้วย ${S.mu}</li>
+ <li><b>Trimethoprim-sulfamethoxazole เป็น bactericidal</b> ต่อเชื้อนี้ และใช้ได้ผล ${S.mu}</li>
+ <li>linezolid, daptomycin และ tigecycline ออกฤทธิ์ดีใน vitro แต่<b>ยังมีประสบการณ์การใช้จริงไม่มาก</b> ${S.mu}</li>
+ <li>การป้องกันทำได้ยากเพราะเชื้ออยู่ทั่วไปและโรคมักเกิดประปราย · <b>กลุ่มเสี่ยงควรเลี่ยงอาหารดิบหรือสุก ๆ ดิบ ๆ จากสัตว์ soft cheese และผักสดที่ไม่ได้ล้าง</b> · <b>ยังไม่มีวัคซีน</b> ${S.mu}</li></ul>`});
 
+
+SEC.push({id:"erysipelothrix",k:"b",t:"Erysipelothrix rhusiopathiae",mm:"An occupational zoonosis",leg:[],
+notes:()=>`<h3>The organism</h3><ul>
+ <li>เป็น <b>gram-positive rod ที่ไม่สร้าง spore</b> กระจายอยู่ทั่วโลกในสัตว์ป่าและสัตว์เลี้ยง ${S.mu}</li>
+ <li>รูปร่างเรียว <b>0.2–0.5 × 0.8–2.5 μm</b> บางครั้ง pleomorphic และ<b>มีแนวโน้มสร้างเส้นคล้ายเส้นผมยาวได้ถึง 60 μm</b> ${S.mu}</li>
+ <li>กับดักของการย้อม: <b>มันเสียสีง่ายจนดูเป็น gram-negative</b> ${S.mu}</li>
+ <li>เป็น <b>microaerophile</b> โตดีที่สุดในบรรยากาศที่ออกซิเจนลดลงและเติม <b>CO₂ 5–10%</b> ${S.mu}</li>
+ <li>หลังบ่ม 2–3 วันได้<b>โคโลนีเล็กผิวเรียบปนกับโคโลนีใหญ่ผิวขรุขระ</b> · ถ้าไม่มีโคโลนีขรุขระ <b>โคโลนีเรียบเล็ก ๆ อาจถูกมองข้าม</b> ถ้าไม่ตรวจจานอย่างระวัง ${S.mu}</li></ul>
+ <h3>Virulence and epidemiology</h3><ul>
+ <li>รู้เรื่อง virulence factor ไม่มาก · เชื่อว่า <b>neuraminidase</b> สำคัญต่อการเกาะและแทรกเข้าเซลล์เยื่อบุ และ<b>capsule คล้าย polysaccharide ป้องกันการถูกกลืน</b> ${S.mu}</li>
+ <li>พบเชื้อที่<b>ต่อมทอนซิลและ gastrointestinal tract ของสัตว์ป่าและสัตว์เลี้ยงหลายชนิด</b> ทั้งสัตว์เลี้ยงลูกด้วยนม นกและปลา · <b>พบมากเป็นพิเศษในหมูและไก่งวง</b> ${S.mu}</li>
+ <li>เชื้อ<b>ทนความแห้งและอยู่ในดินได้นานหลายเดือนถึงหลายปี</b> · ยัง<b>ทนเกลือเข้มข้นสูง การดองและการรมควัน</b> ${S.mu}</li>
+ <li>โรคในคนเป็น <b>zoonosis และเป็นโรคจากการประกอบอาชีพ</b> — กลุ่มเสี่ยงคือ<b>คนชำแหละเนื้อ คนแปรรูปเนื้อ เกษตรกร คนงานสัตว์ปีก คนจับปลา และสัตวแพทย์</b> ${S.mu}</li>
+ <li>เชื้อเข้าทาง<b>รอยถลอกหรือแผลทิ่มตำขณะจับผลิตภัณฑ์สัตว์หรือดินที่ปนเปื้อน</b> · <b>อุบัติการณ์จริงไม่ทราบ เพราะไม่ใช่โรคที่ต้องรายงาน</b> ${S.mu}</li></ul>
+ <h3>Three forms of human disease</h3><ul>
+ <li><b>Erysipeloid</b> — รอยโรคอักเสบเฉพาะที่ ซึ่ง<b>ต้องไม่สับสนกับ erysipelas ของ streptococcus</b> ${S.mu}</li>
+ <li>เกิดตรงจุดที่บาดเจ็บหลังฟักตัว <b>2–7 วัน</b> · มัก<b>ขึ้นที่นิ้วหรือมือ เป็นสีม่วงคล้ำและขอบนูน</b> ${S.mu}</li>
+ <li>มัน<b>ลามออกด้านข้างช้า ๆ ขณะที่สีตรงกลางจางลง</b> · เจ็บ คัน และผู้ป่วยรู้สึกแสบร้อนหรือตุบ ๆ ${S.mu}</li>
+ <li>จุดแยกที่สำคัญที่สุด: <b>erysipeloid มักไม่เป็น pus ซึ่งต่างจาก streptococcal erysipelas</b> ${S.mu}</li>
+ <li><b>Generalized cutaneous disease</b> — รอยโรคเกิดเพิ่มทั้งรอบ ๆ จุดเดิมและที่ skin ตำแหน่งอื่น · มี fever และปวดข้อได้บ่อย แต่ <b>blood culture มักเป็นลบ</b> ${S.mu}</li>
+ <li><b>Septicemia</b> พบไม่บ่อย แต่เมื่อเกิดมัก<b>มาพร้อม endocarditis</b> ${S.mu}</li>
+ <li>endocarditis จากเชื้อนี้<b>มักเป็นแบบ subacute</b> และ<b>กิน heart valve ที่ไม่เคยเสียมาก่อน โดยเฉพาะ aortic valve</b> ${S.mu}</li>
+ <li>ภาวะแทรกซ้อนอื่นอย่าง abscess, meningitis และ osteomyelitis พบได้ไม่บ่อย ${S.mu}</li></ul>
+ <h3>Why the laboratory struggles</h3><ul>
+ <li><b>เชื้ออยู่เฉพาะใน tissue ชั้นลึกของรอยโรค</b> — ต้องเก็บ<b>ชิ้นเนื้อเต็มความหนาหรือดูดจากชั้นลึกตรงขอบรอยโรค</b> ${S.mu}</li>
+ <li><b>Gram stain มักเป็นลบ</b> · แต่การเห็น rod บาง gram-positive ร่วมกับรอยโรคและประวัติที่เข้าได้ ก็วินิจฉัยได้ ${S.mu}</li>
+ <li>เชื้อไม่เรื่องมาก ขึ้นบน medium ทั่วไปที่บ่มใน CO₂ 5–10% แต่<b>โตช้า ต้องบ่มสามวันขึ้นไปก่อนจะสรุปว่าผลลบ</b> ${S.mu}</li>
+ <li>สิ่งที่แยกจาก <i>Listeria</i> ได้คือ <b>ไม่เคลื่อนที่และไม่สร้าง catalase</b> ${S.mu}</li>
+ <li>เชื้อหมักน้ำตาลได้อ่อนและ<b>สร้าง hydrogen sulfide บน triple-sugar iron agar</b> ${S.mu}</li>
+ <li><b>Serology ใช้ไม่ได้</b> เพราะการตอบสนองของ antibody ในคนอ่อนมาก ${S.mu}</li></ul>
+ <h3>Treatment</h3><ul>
+ <li><b>Penicillin คือยาที่เลือกใช้</b>ทั้งโรคเฉพาะที่และโรคทั่วร่างกาย ${S.mu}</li>
+ <li>ผู้ที่แพ้ penicillin: <b>ciprofloxacin หรือ clindamycin</b> สำหรับรอยโรค skin เฉพาะที่ · <b>ceftriaxone หรือ imipenem</b> สำหรับ infection แบบกระจาย ${S.mu}</li>
+ <li>การป้องกันคือ<b>ปิด skin ที่เปิดอยู่เวลาจับสัตว์และผลิตภัณฑ์สัตว์</b> · <b>ผู้เลี้ยงหมูควรได้รับวัคซีน</b> ${S.mu}</li></ul>`});
 SEC.push({id:"diphtheria",k:"b",t:"Diphtheria toxin stops protein synthesis",mm:"Diphtheria toxin",leg:[],
 draw:()=>{let b="";
- b+=mL(24,26,"ยีน tox มากับ β-phage — เชื้อที่ไม่มี phage ตัวนี้ไม่สร้างสารพิษ",{a:"start",c:"bh"});
+ b+=mL(24,26,"ยีน tox มากับ β-phage — เชื้อที่ไม่มี phage ตัวนี้ไม่สร้าง toxin",{a:"start",c:"bh"});
  /* the A-B toxin: one molecule, two jobs */
  const tx=150,ty=100;
  b+=`<path class="m-body2" d="${mblob(tx-24,ty,26,22,7,.08)}"/>`+mL(tx-24,ty+5,"A",{c:"bh"})
-  +`<path class="m-ring2" d="${mblob(tx+26,ty,30,24,11,.08)}"/>`+mL(tx+26,ty+5,"B",{c:"bh"})
-  +`<path class="m-pep" style="stroke-width:3" d="M${tx-2},${ty} L${tx+2},${ty}"/>`
-  +mlead2(tx,ty-24,300,46,["A–B exotoxin 58,300 Da","สองสายต่อกันด้วย disulfide bond"],{a:"start"})
-  +mlead2(tx-24,ty+22,300,86,["A subunit · catalytic region",""],{a:"start"})
-  +mlead2(tx+30,ty+24,300,122,["B subunit · receptor binding + translocation",""],{a:"start"});
+ +`<path class="m-ring2" d="${mblob(tx+26,ty,30,24,11,.08)}"/>`+mL(tx+26,ty+5,"B",{c:"bh"})
+ +`<path class="m-pep" style="stroke-width:3" d="M${tx-2},${ty} L${tx+2},${ty}"/>`
+ +mlead2(tx,ty-24,300,46,["A–B exotoxin 58,300 Da","สองสายต่อกันด้วย disulfide bond"],{a:"start"})
+ +mlead2(tx-24,ty+22,300,86,["A subunit · catalytic region",""],{a:"start"})
+ +mlead2(tx+30,ty+24,300,122,["B subunit · receptor binding + translocation",""],{a:"start"});
  b+=mL(24,ty+70,"receptor คือ heparin-binding epidermal growth factor",{a:"start",c:"s m"})
-  +mL(24,ty+88,"ซึ่งมีมากบนเซลล์หัวใจและเซลล์ประสาท",{a:"start",c:"s m"});
+ +mL(24,ty+88,"ซึ่งมีมากบนเซลล์หัวใจและเซลล์ประสาท",{a:"start",c:"s m"});
  /* what A does once inside: EF-2 is ADP-ribosylated and the ribosome stalls */
  b+=`<path class="m-sep" d="M24,222 L616,222"/>`
-  +mL(24,248,"สิ่งที่ A subunit ทำเมื่อเข้าไซโทซอล",{a:"start",c:"bh"});
+ +mL(24,248,"สิ่งที่ A subunit ทำเมื่อเข้าไซโทซอล",{a:"start",c:"bh"});
  const ry=330,rx=150;
  /* a ribosome with a nascent chain stuck on it */
  b+=`<path class="m-body" d="${mblob(rx,ry-14,44,26,13,.07)}"/>`
-  +`<path class="m-body" d="${mblob(rx,ry+18,52,22,17,.07)}"/>`+mL(rx,ry+44,"ribosome",{c:"s m"});
+ +`<path class="m-body" d="${mblob(rx,ry+18,52,22,17,.07)}"/>`+mL(rx,ry+44,"ribosome",{c:"s m"});
  let m=`M${rx-74},${ry+2}`;for(let i=0;i<30;i++)m+=`L${(rx-74+i*5).toFixed(1)},${(ry+2+(i%2?3:-3)).toFixed(1)}`;
  b+=`<path class="m-dna" style="stroke-width:2" d="${m}"/>`+mL(rx-74,ry+26,"mRNA",{a:"start",c:"s m"});
  const pq=rng(29);let pep="";
@@ -232,132 +359,207 @@ draw:()=>{let b="";
  b+=pep+mL(rx+70,ry-86,"nascent peptide",{c:"s m"});
  /* EF-2, ADP-ribosylated and dead */
  b+=`<path class="m-ring2" style="opacity:.45" d="${mblob(rx+118,ry-6,30,24,23,.08)}"/>`
-  +mL(rx+118,ry-1,"EF-2",{c:"bh"})
-  +`<path class="m-body2" d="${mblob(rx+150,ry-28,16,13,29,.1)}"/>`+mL(rx+150,ry-24,"ADP",{c:"s m"})
-  +mlead2(rx+118,ry+20,rx+200,ry+40,["A subunit ติด ADP-ribose ลงบน EF-2","EF-2 จึงเลื่อนสายเปปไทด์บน ribosome ไม่ได้ การสร้างโปรตีนหยุด"],{a:"start"});
+ +mL(rx+118,ry-1,"EF-2",{c:"bh"})
+ +`<path class="m-body2" d="${mblob(rx+150,ry-28,16,13,29,.1)}"/>`+mL(rx+150,ry-24,"ADP",{c:"s m"})
+ +mlead2(rx+118,ry+20,rx+200,ry+40,["A subunit ติด ADP-ribose ลงบน EF-2","EF-2 จึงเลื่อนสายเปปไทด์บน ribosome ไม่ได้ การสร้างโปรตีนหยุด"],{a:"start"});
  b+=`<path class="m-split" d="M${rx+56},${ry-30} L${rx+88},${ry+2}"/>`;
  b+=mL(24,ry+96,"EF-2 ผลัดเปลี่ยนช้ามากและมีราวหนึ่งโมเลกุลต่อ ribosome หนึ่งตัว",{a:"start",c:"s m"})
-  +mL(24,ry+114,"จึงประเมินกันว่าสารพิษเพียงโมเลกุลเดียวฆ่าเซลล์ได้ทั้งเซลล์",{a:"start",c:"bh"});
+ +mL(24,ry+114,"จึงประเมินกันว่า toxin เพียงโมเลกุลเดียวฆ่าเซลล์ได้ทั้งเซลล์",{a:"start",c:"bh"});
  return svg(b,"0 0 640 "+(ry+134))},
 notes:()=>`<h3>The gene comes from a virus</h3><ul>
- <li>Diphtheria toxin คือปัจจัยก่อโรคหลักของ <i>C. diphtheriae</i> · ยีน <b>tox</b> ที่เข้ารหัสสารพิษนี้<b>ถูกนำเข้ามาโดย lysogenic bacteriophage ชื่อ β-phage</b> ${S.mu}</li>
- <li>ต้องผ่านสองขั้นตอนกว่าจะได้สารพิษที่ทำงานได้: ตัด leader sequence ออกตอนหลั่งออกจากเซลล์ และตัดโมเลกุลสารพิษเป็น<b>สองสาย A และ B ที่ยังต่อกันด้วย disulfide bond</b> ${S.mu}</li>
+ <li>Diphtheria toxin คือปัจจัยก่อโรคหลักของ <i>C. diphtheriae</i> · ยีน <b>tox</b> ที่เข้ารหัส toxin นี้<b>ถูกนำเข้ามาโดย lysogenic bacteriophage ชื่อ β-phage</b> ${S.mu}</li>
+ <li>ต้องผ่านสองขั้นตอนกว่าจะได้ toxin ที่ทำงานได้: ตัด leader sequence ออกตอนหลั่งออกจากเซลล์ และตัดโมเลกุล toxin เป็น<b>สองสาย A และ B ที่ยังต่อกันด้วย disulfide bond</b> ${S.mu}</li>
  <li>นี่คือตัวอย่างคลาสสิกของ <b>A–B exotoxin</b> ขนาด 58,300 Da ${S.mu}</li>
  <li>มีสามบริเวณหน้าที่: <b>catalytic region</b> บนสาย A กับ <b>receptor-binding region</b> และ <b>translocation region</b> บนสาย B ${S.mu}</li></ul>
  <h3>Why the heart and the nerves</h3><ul>
- <li>Receptor ของสารพิษคือ <b>heparin-binding epidermal growth factor</b> ซึ่งมีอยู่บนผิวเซลล์ยูแคริโอตหลายชนิด<b>โดยเฉพาะเซลล์หัวใจและเซลล์ประสาท</b> ${S.mu}</li>
+ <li>Receptor ของ toxin คือ <b>heparin-binding epidermal growth factor</b> ซึ่งมีอยู่บนผิวเซลล์ยูแคริโอตหลายชนิด<b>โดยเฉพาะเซลล์หัวใจและเซลล์ประสาท</b> ${S.mu}</li>
  <li>นี่คือเหตุผลที่ภาวะแทรกซ้อนของ diphtheria คือ myocarditis และความผิดปกติทางระบบประสาท ${S.mu}</li></ul>
  <h3>One molecule is enough</h3><ul>
  <li>สาย A หยุดการสร้างโปรตีนของ host โดย<b>ทำให้ elongation factor-2 (EF-2) หมดฤทธิ์</b> — EF-2 คือปัจจัยที่จำเป็นต่อการเลื่อนสายเปปไทด์ที่กำลังสร้างบน ribosome ${S.mu}</li>
- <li>เพราะ EF-2 <b>ผลัดเปลี่ยนช้ามาก</b>และมีอยู่ราวหนึ่งโมเลกุลต่อ ribosome หนึ่งตัว จึงประเมินกันว่าสารพิษเพียงโมเลกุลเดียวก็ฆ่าเซลล์ได้ ${S.mu}</li></ul>`});
+ <li>เพราะ EF-2 <b>ผลัดเปลี่ยนช้ามาก</b>และมีอยู่ราวหนึ่งโมเลกุลต่อ ribosome หนึ่งตัว จึงประเมินกันว่า toxin เพียงโมเลกุลเดียวก็ฆ่าเซลล์ได้ ${S.mu}</li></ul>`});
 
 SEC.push({id:"diphtheria-dis",k:"b",t:"Diphtheria at the bedside and the bench",mm:"Diphtheria disease",leg:[],
 draw:()=>{let b="";
  /* the pharynx with a pseudomembrane that will not come off */
  const cx=180,cy=150;
  b+=`<path class="m-derm" d="${mblob(cx,cy,122,98,7,.06)}"/>`
-  +`<path class="m-spin" d="${mblob(cx,cy,88,70,11,.07)}"/>`
-  +mL(cx,cy+118,"pharynx · tonsil",{c:"s m"});
+ +`<path class="m-spin" d="${mblob(cx,cy,88,70,11,.07)}"/>`
+ +mL(cx,cy+118,"pharynx · tonsil",{c:"s m"});
  /* the membrane: fibrin, leukocytes, debris and bacteria */
  b+=`<path class="m-pus" style="opacity:.92" d="${mblob(cx-6,cy-4,62,46,13,.16)}"/>`;
  const gq=rng(31);
  for(let i=0;i<70;i++){const a=gq()*6.28,r=gq()*44;
-  b+=`<circle class="m-gr2" cx="${(cx-6+Math.cos(a)*r*1.3).toFixed(1)}" cy="${(cy-4+Math.sin(a)*r).toFixed(1)}" r="${(1+gq()*1.8).toFixed(1)}"/>`}
- b+=mlead2(cx+40,cy-30,330,56,["Pseudomembrane","fibrin เม็ดเลือดขาว เศษเซลล์และตัวเชื้อ"],{a:"start"})
-  +mlead2(cx-30,cy+34,330,102,["ติดแน่นกับเนื้อเยื่อข้างใต้","ลอกออกแล้วเลือดออก · ถ้าหลุดลงหลอดลมจะอุดทางเดินหายใจ"],{a:"start"})
-  +mlead2(cx,cy-86,330,152,["Bull neck","ต่อมน้ำเหลืองที่คอโตจนคอบวม"],{a:"start"});
+ b+=`<circle class="m-gr2" cx="${(cx-6+Math.cos(a)*r*1.3).toFixed(1)}" cy="${(cy-4+Math.sin(a)*r).toFixed(1)}" r="${(1+gq()*1.8).toFixed(1)}"/>`}
+ b+=mlead2(cx+40,cy-30,330,56,["Pseudomembrane","fibrin leukocyte เศษเซลล์และตัวเชื้อ"],{a:"start"})
+ +mlead2(cx-30,cy+34,330,102,["ติดแน่นกับ tissue ข้างใต้","ลอกออกแล้วเลือดออก · ถ้าหลุดลงหลอดลมจะอุด respiratory tract"],{a:"start"})
+ +mlead2(cx,cy-86,330,152,["Bull neck","lymph node ที่คอโตจนคอบวม"],{a:"start"});
  /* the bench */
  b+=`<path class="m-sep" d="M24,268 L616,268"/>`
-  +mL(24,294,"At the bench",{a:"start",c:"bh"});
+ +mL(24,294,"At the bench",{a:"start",c:"bh"});
  [["Metachromatic granules","ย้อม methylene blue แล้วเห็นเม็ดสีต่างจากตัวเซลล์ · เรียงตัวเป็นรูปตัวอักษรจีน",24,320],
-  ["Elek test","immunodiffusion ในหลอดทดลอง ใช้ยืนยันว่าสายพันธุ์นั้นสร้างสารพิษจริง",24,364],
-  ["Nucleic acid test","ตรวจยีน tox ได้ทั้งจากเชื้อที่แยกได้และจากสิ่งส่งตรวจโดยตรง",24,408],
-  ["แต่ระวัง","มีสายพันธุ์ที่มียีน tox แต่ไม่แสดงออก — ตรวจพบยีนไม่เท่ากับสร้างสารพิษ",24,452]
+ ["Elek test","immunodiffusion ในหลอดทดลอง ใช้ยืนยันว่า strain นั้นสร้าง toxin จริง",24,364],
+ ["Nucleic acid test","ตรวจยีน tox ได้ทั้งจากเชื้อที่แยกได้และจาก specimen โดยตรง",24,408],
+ ["แต่ระวัง","มี strain ที่มียีน tox แต่ไม่แสดงออก — ตรวจพบยีนไม่เท่ากับสร้าง toxin",24,452]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:n==="แต่ระวัง"?"bad":"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 492")},
 notes:()=>`<h3>The membrane is the disease</h3><ul>
- <li>แผลเริ่มเป็น exudate แล้ว<b>พัฒนาเป็นแผ่นเยื่อหนา</b>ที่ประกอบด้วย fibrin เม็ดเลือดขาว เศษเซลล์ และตัวเชื้อ ปกคลุมต่อมทอนซิลและคอหอย ${S.mu}</li>
- <li>มัน<b>ติดแน่นกับเนื้อเยื่อข้างใต้</b> — การพยายามลอกออกทำให้เลือดออก ${S.mu}</li>
- <li>ตัวเชื้อ<b>อยู่เฉพาะที่</b> แต่สารพิษถูกดูดซึมเข้ากระแสเลือดไปทำลายหัวใจและเส้นประสาทที่อยู่ไกลออกไป ${S.mu}</li></ul>
+ <li>แผลเริ่มเป็น exudate แล้ว<b>พัฒนาเป็นแผ่นเยื่อหนา</b>ที่ประกอบด้วย fibrin leukocyte เศษเซลล์ และตัวเชื้อ ปกคลุมต่อมทอนซิลและคอหอย ${S.mu}</li>
+ <li>มัน<b>ติดแน่นกับ tissue ข้างใต้</b> — การพยายามลอกออกทำให้เลือดออก ${S.mu}</li>
+ <li>ตัวเชื้อ<b>อยู่เฉพาะที่</b> แต่ toxin ถูกดูดซึมเข้ากระแสเลือดไปทำลายหัวใจและ nerve ที่อยู่ไกลออกไป ${S.mu}</li></ul>
  <h3>Treatment races the toxin</h3><ul>
- <li>สิ่งสำคัญที่สุดคือ <b>antitoxin</b> ซึ่งต้องให้เร็วที่สุด เพราะมันทำให้สารพิษที่<b>ยังไม่จับเซลล์</b>หมดฤทธิ์ได้เท่านั้น ${S.mu}</li>
- <li>ยาปฏิชีวนะ (penicillin หรือ erythromycin) ใช้เพื่อ<b>กำจัดตัวเชื้อและหยุดการสร้างสารพิษต่อ</b> ไม่ใช่เพื่อรักษาพิษที่เกิดแล้ว ${S.mu}</li>
- <li>การป้องกันคือวัคซีน <b>toxoid</b> ซึ่งเป็นสารพิษที่ทำให้หมดฤทธิ์แล้ว — ภูมิคุ้มกันมุ่งไปที่สารพิษ ไม่ใช่ที่ตัวเชื้อ ดังนั้นผู้ที่ฉีดวัคซีนแล้วยัง<b>เป็นพาหะได้</b> ${S.mu}</li></ul>
+ <li>สิ่งสำคัญที่สุดคือ <b>antitoxin</b> ซึ่งต้องให้เร็วที่สุด เพราะมันทำให้ toxin ที่<b>ยังไม่จับเซลล์</b>หมดฤทธิ์ได้เท่านั้น ${S.mu}</li>
+ <li>antibiotic (penicillin หรือ erythromycin) ใช้เพื่อ<b>กำจัดตัวเชื้อและหยุดการสร้าง toxin ต่อ</b> ไม่ใช่เพื่อรักษาพิษที่เกิดแล้ว ${S.mu}</li>
+ <li>การป้องกันคือวัคซีน <b>toxoid</b> ซึ่งเป็น toxin ที่ทำให้หมดฤทธิ์แล้ว — immunity มุ่งไปที่ toxin ไม่ใช่ที่ตัวเชื้อ ดังนั้นผู้ที่ฉีดวัคซีนแล้วยัง<b>เป็นพาหะได้</b> ${S.mu}</li></ul>
  <h3>The other corynebacteria</h3><ul>
- <li>สกุล <i>Corynebacterium</i> มีเกือบ 150 สปีชีส์และ subspecies · ผนังเซลล์มี arabinose, galactose และ meso-diaminopimelic acid ${S.mu}</li>
- <li>สมาชิกที่ไม่ใช่ <i>C. diphtheriae</i> เรียกรวม ๆ ว่า <b>diphtheroid</b> และมักเป็นเชื้อประจำถิ่นบนผิวหนัง ${S.mu}</li>
- <li><b><i>C. jeikeium</i></b> เดิมเรียกกลุ่ม JK · ก่อการติดเชื้อในผู้ป่วยในโรงพยาบาลที่มีสายสวนและภูมิคุ้มกันต่ำ และ<b>ดื้อยาหลายขนาน</b> ${S.mu}</li>
- <li><b><i>C. urealyticum</i></b> ย่อย urea ได้เร็วมาก จึงสัมพันธ์กับนิ่วและการติดเชื้อทางเดินปัสสาวะที่ปัสสาวะเป็นด่าง ${S.mu}</li>
- <li><b><i>Erysipelothrix rhusiopathiae</i></b> อยู่ในบทเดียวกัน · ชื่อมาจาก erythros แปลว่าแดง เพราะทำให้เกิดรอยโรคผิวหนังสีแดง · เป็นโรคจากอาชีพของผู้สัมผัสสัตว์และปลา · <b>ดื้อ vancomycin โดยธรรมชาติ</b> ซึ่งเป็นเรื่องผิดปกติสำหรับ gram-positive rod ${S.mu}</li></ul>`});
+ <li>สกุล <i>Corynebacterium</i> มีเกือบ 150 สปีชีส์และ subspecies · cell wall มี arabinose, galactose และ meso-diaminopimelic acid ${S.mu}</li>
+ <li>สมาชิกที่ไม่ใช่ <i>C. diphtheriae</i> เรียกรวม ๆ ว่า <b>diphtheroid</b> และมักเป็นเชื้อประจำถิ่นบน skin ${S.mu}</li>
+ <li><b><i>C. jeikeium</i></b> เดิมเรียกกลุ่ม JK · ก่อ infection ในผู้ป่วยในโรงพยาบาลที่มีสายสวนและ immunity ต่ำ และ<b>ดื้อยาหลายขนาน</b> ${S.mu}</li>
+ <li><b><i>C. urealyticum</i></b> ย่อย urea ได้เร็วมาก จึงสัมพันธ์กับนิ่วและ infectionurinary tract ที่ปัสสาวะเป็นด่าง ${S.mu}</li>
+ <li><b><i>Erysipelothrix rhusiopathiae</i></b> อยู่ในบทเดียวกัน · ชื่อมาจาก erythros แปลว่าแดง เพราะทำให้เกิดรอยโรค skin สีแดง · เป็นโรคจากอาชีพของผู้สัมผัสสัตว์และปลา · <b>ดื้อ vancomycin โดยธรรมชาติ</b> ซึ่งเป็นเรื่องผิดปกติสำหรับ gram-positive rod ${S.mu}</li></ul>
+ <h3>Getting it to grow at all</h3><ul>
+ <li><b>กล้องจุลทรรศน์เชื่อถือไม่ได้</b> · <b>metachromatic granule</b> ที่ย้อมด้วย methylene blue มีรายงานไว้จริง แต่<b>ไม่จำเพาะต่อ <i>C. diphtheriae</i></b> ${S.mu}</li>
+ <li>ต้องเก็บ specimen<b>ทั้งจาก nasopharynx และคอ</b> แล้วหยอดลงทั้ง<b>blood agar ที่ไม่เลือกเชื้อ และ selective medium</b> ${S.mu}</li>
+ <li><b>Tellurite กดเชื้อ respiratory tract ส่วนบนส่วนใหญ่และ gram-negative rod</b> และ<b>ถูก <i>C. diphtheriae</i> รีดิวซ์จนโคโลนีเป็นสีเทาถึงดำ</b> ${S.mu}</li>
+ <li>cysteinase ของเชื้อย่อย cysteine จนเกิด<b>วงสีน้ำตาลรอบโคโลนี</b> ${S.mu}</li>
+ <li>ข้อแลกเปลี่ยนของแต่ละ medium: <b>CTBA เก็บได้นานแต่กดเชื้อ <i>C. diphtheriae</i> บาง strain</b> · <b>Tinsdale ดีที่สุดแต่เก็บได้สั้นและต้องเติม horse serum</b> · <b>CNA เป็นทางเลือกที่ใช้ได้จริง</b> เพราะห้องปฏิบัติการมีอยู่แล้ว ${S.mu}</li>
+ <li>กฎที่ตามมา: <b>ทุก isolate ที่คล้าย <i>C. diphtheriae</i> ต้องระบุด้วยการทดสอบทางชีวเคมี และต้องยืนยันว่าสร้าง exotoxin ได้ เพราะมี strain ที่ไม่สร้าง toxin</b> ${S.mu}</li>
+ <li>การระบุเบื้องต้นใช้ <b>cystinase เป็นบวกและ pyrazinamidase เป็นลบ</b> ซึ่งอ่านผลได้เร็วทั้งคู่ ${S.mu}</li></ul>
+ <h3>Proving the strain makes toxin</h3><ul>
+ <li>มาตรฐานอ้างอิงคือ <b>Elek test</b> ซึ่งเป็น in vitro immunodiffusion assay ${S.mu}</li>
+ <li>ทางเลือกคือ <b>PCR ต่อยีน tox</b> ซึ่งตรวจได้ทั้งจาก isolate และจาก specimen โดยตรง เช่น ไม้ป้ายจาก pseudomembrane หรือชิ้นเนื้อ ${S.mu}</li>
+ <li>ข้อจำกัดของ PCR: <b>strain ที่มียีน tox แต่ไม่แสดงออก ก็ให้ผลบวกได้</b> ${S.mu}</li>
+ <li>และ strain ที่ไม่สร้าง toxin <b>ไม่ควรถูกมองข้าม</b> เพราะสัมพันธ์กับ <b>septicemia, endocarditis, septic arthritis, osteomyelitis และ abscess</b> ${S.mu}</li></ul>
+ <h3>Treatment</h3><ul>
+ <li>สิ่งที่สำคัญที่สุดคือ<b>ให้ diphtheria antitoxin เร็วที่สุด เพื่อลบล้าง exotoxin ก่อนที่มันจะถูกเซลล์จับ</b> ${S.mu}</li>
+ <li>เหตุผลที่จังหวะเวลาสำคัญขนาดนั้น: <b>เมื่อเซลล์นำ toxin เข้าไปแล้ว การตายของเซลล์เป็นสิ่งที่เลี่ยงไม่ได้</b> ${S.mu}</li>
+ <li>ปัญหาในทางปฏิบัติคือ<b>มักไม่ได้สงสัยโรคนี้ตั้งแต่แรก โรคจึงลุกลามไปมากก่อนจะได้ antitoxin</b> ${S.mu}</li>
+ <li><b>Penicillin หรือ erythromycin</b> ใช้กำจัดเชื้อและหยุดการสร้าง toxin ${S.mu}</li>
+ <li>การดูแลอื่นที่สำคัญ: <b>นอนพัก แยกผู้ป่วยเพื่อกันการแพร่ และรักษา respiratory tract ให้เปิดอยู่</b> ${S.mu}</li>
+ <li>ข้อที่ขัดกับสัญชาตญาณ: <b>หลังหายแล้วยังต้องฉีด toxoid อยู่ดี เพราะผู้ป่วยส่วนใหญ่ไม่สร้าง antibody ที่ป้องกันได้จาก infection ตามธรรมชาติ</b> ${S.mu}</li></ul>
+ <h3>Vaccination and contacts</h3><ul>
+ <li><b>Toxoid เตรียมโดยใช้ formalin ทำปฏิกิริยากับ toxin</b> จนไม่เป็นพิษแต่ยังกระตุ้น immunity ได้ ${S.mu}</li>
+ <li>เด็กได้ห้าเข็มร่วมกับ pertussis และ tetanus — <b>อายุ 2, 4, 6 เดือน, 15–18 เดือน และ 4–6 ปี</b> · จากนั้น<b>กระตุ้นร่วมกับ tetanus toxoid ทุก 10 ปี</b> ${S.mu}</li>
+ <li>ประสิทธิภาพชัดเจน: <b>โรคจำกัดอยู่เฉพาะผู้ที่ไม่มีภูมิหรือได้วัคซีนไม่ครบ</b> ${S.mu}</li>
+ <li>ผู้สัมผัสใกล้ชิดทุกคนต้อง<b>เก็บ specimen จาก nasopharynx ไป culture และเริ่มยาป้องกันด้วย erythromycin หรือ penicillin ทันที</b> ${S.mu}</li>
+ <li>ผู้สัมผัสที่<b>ฉีดวัคซีนไม่ครบ หรือไม่ได้กระตุ้นในห้าปีที่ผ่านมา ต้องได้ toxoid กระตุ้นหนึ่งเข็ม</b> ${S.mu}</li>
+ <li>ข้อที่มักถูกมองข้าม: <b>ผู้สัมผัส cutaneous diphtheria จัดการเหมือนกัน เพราะมีรายงานว่าผู้ป่วยกลุ่มนี้แพร่เชื้อได้มากกว่า respiratory diphtheria</b> ${S.mu}</li>
+ <li>ถ้า infection เกิดจาก strain ที่ไม่สร้าง toxin <b>ไม่ต้องให้ยาป้องกันแก่ผู้สัมผัส</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"neurotoxins",k:"c",t:"Tetanus and botulism: one circuit, two block points",mm:"Clostridial neurotoxins",leg:[],
 draw:()=>{let b="";
  b+=mL(24,26,"ทั้งคู่เป็น zinc endopeptidase ที่ตัดโปรตีนตัวเดียวกันในกลไกปล่อยสารสื่อประสาท",{a:"start",c:"bh"})
-  +mL(24,46,"ผลที่ต่างกันทั้งหมดมาจากการที่มันไปหยุดคนละจุดในวงจร",{a:"start",c:"s m"});
+ +mL(24,46,"ผลที่ต่างกันทั้งหมดมาจากการที่มันไปหยุดคนละจุดในวงจร",{a:"start",c:"s m"});
  /* the spinal cord end: an inhibitory interneuron onto a motor neuron */
  const sy=140;
  b+=`<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#8d8578 8%,var(--sb-surface))" d="${mblob(150,sy+40,122,86,7,.07)}"/>`
-  +mL(150,sy+140,"spinal cord",{c:"s m"});
+ +mL(150,sy+140,"spinal cord",{c:"s m"});
  /* inhibitory interneuron */
  b+=`<path class="m-body" d="${mblob(96,sy-2,26,22,11,.08)}"/>`+mL(96,sy+3,"inhibitory",{c:"s m"})
-  +`<path class="m-line" style="stroke-width:3" d="M${118},${sy+14} C${146},${sy+36} ${152},${sy+44} ${160},${sy+54}"/>`
-  +`<path class="m-flb" d="${mblob(166,sy+60,13,10,13,.1)}"/>`;
+ +`<path class="m-line" style="stroke-width:3" d="M${118},${sy+14} C${146},${sy+36} ${152},${sy+44} ${160},${sy+54}"/>`
+ +`<path class="m-flb" d="${mblob(166,sy+60,13,10,13,.1)}"/>`;
  /* motor neuron soma and its axon leaving the cord */
  b+=`<path class="m-body2" d="${mblob(176,sy+76,30,25,17,.08)}"/>`+mL(176,sy+81,"motor",{c:"s m"})
-  +`<path class="m-line" style="stroke-width:4;stroke:color-mix(in srgb,#C2185B 50%,var(--sb-surface))" d="M${204},${sy+76} C${300},${sy+76} ${340},${sy+60} ${420},${sy+60}"/>`;
+ +`<path class="m-line" style="stroke-width:4;stroke:color-mix(in srgb,#C2185B 50%,var(--sb-surface))" d="M${204},${sy+76} C${300},${sy+76} ${340},${sy+60} ${420},${sy+60}"/>`;
  /* the neuromuscular junction */
  b+=`<path class="m-flb" d="${mblob(428,sy+60,16,13,19,.1)}"/>`
-  +`<path class="m-musc" d="${mblob(530,sy+62,74,40,23,.07)}"/>`+mL(530,sy+67,"muscle",{c:"s m"});
+ +`<path class="m-musc" d="${mblob(530,sy+62,74,40,23,.07)}"/>`+mL(530,sy+67,"muscle",{c:"s m"});
  const vq=rng(37);
  for(let i=0;i<9;i++)b+=`<circle class="m-ohead" cx="${(448+vq()*34).toFixed(1)}" cy="${(sy+46+vq()*30).toFixed(1)}" r="2.6"/>`;
  b+=mL(452,sy+16,"acetylcholine",{a:"start",c:"s m"});
  /* the two block points */
  b+=`<path class="m-split" d="M${150},${sy+40} L${182},${sy+72}"/>`
-  +mlead2(166,sy+56,24,sy+176,["Tetanospasmin blocks here","ตัดโปรตีนที่ปล่อย glycine และ GABA — สัญญาณยับยั้งหายไป"],{a:"start"})
-  +`<path class="m-split" d="M${412},${sy+40} L${444},${sy+78}"/>`
-  +mlead2(428,sy+60,330,sy+176,["Botulinum toxin blocks here","ตัดโปรตีนที่ปล่อย acetylcholine ที่รอยต่อประสาทกล้ามเนื้อ"],{a:"start"});
+ +mlead2(166,sy+56,24,sy+176,["Tetanospasmin blocks here","ตัดโปรตีนที่ปล่อย glycine และ GABA — สัญญาณยับยั้งหายไป"],{a:"start"})
+ +`<path class="m-split" d="M${412},${sy+40} L${444},${sy+78}"/>`
+ +mlead2(428,sy+60,330,sy+176,["Botulinum toxin blocks here","ตัดโปรตีนที่ปล่อย acetylcholine ที่รอยต่อประสาท muscle"],{a:"start"});
  /* the consequences, side by side */
  const by=sy+240;
  b+=`<path class="m-sep" d="M24,${by-28} L616,${by-28}"/>`;
- [["Tetanus","Spastic paralysis",["กล้ามเนื้อหดเกร็งค้าง เพราะไม่มีอะไรมายับยั้ง","risus sardonicus · trismus · opisthotonos","สารพิษเดินทางย้อนขึ้นไปตามแอกซอนสู่ไขสันหลัง"],24],
-  ["Botulism","Flaccid paralysis",["กล้ามเนื้ออ่อนแรง เพราะไม่มีคำสั่งไปถึงกล้ามเนื้อ","อ่อนแรงลงจากบนลงล่าง เริ่มที่เส้นประสาทสมอง","สารพิษออกฤทธิ์ที่ปลายประสาทส่วนปลาย"],330]
+ [["Tetanus","Spastic paralysis",["muscle หดเกร็งค้าง เพราะไม่มีอะไรมายับยั้ง","risus sardonicus · trismus · opisthotonos","toxin เดินทางย้อนขึ้นไปตามแอกซอนสู่ spinal cord"],24],
+ ["Botulism","Flaccid paralysis",["muscle อ่อนแรง เพราะไม่มีคำสั่งไปถึง muscle","อ่อนแรงลงจากบนลงล่าง เริ่มที่ nervebrain","toxin ออกฤทธิ์ที่ปลายประสาทส่วนปลาย"],330]
  ].forEach(([n,res,lines,x])=>{
-  b+=mL(x,by,n,{a:"start",c:"bh"})+mL(x,by+22,res,{a:"start",c:"bad"});
-  lines.forEach((l,i)=>{b+=mL(x,by+46+i*20,l,{a:"start",c:"s m"})})});
- b+=mL(24,by+120,"การจับของสารพิษเป็นแบบย้อนกลับไม่ได้ — การฟื้นตัวต้องรอให้ปลายแอกซอนงอกใหม่",{a:"start",c:"bh"});
+ b+=mL(x,by,n,{a:"start",c:"bh"})+mL(x,by+22,res,{a:"start",c:"bad"});
+ lines.forEach((l,i)=>{b+=mL(x,by+46+i*20,l,{a:"start",c:"s m"})})});
+ b+=mL(24,by+120,"การจับของ toxin เป็นแบบย้อนกลับไม่ได้ — การฟื้นตัวต้องรอให้ปลายแอกซอนงอกใหม่",{a:"start",c:"bh"});
  return svg(b,"0 0 640 "+(by+140))},
 notes:()=>`<h3>Tetanospasmin</h3><ul>
- <li><i>C. tetani</i> สร้างสารพิษสองตัว: <b>tetanolysin</b> ซึ่งเป็น hemolysin ที่ไวต่อออกซิเจน และ <b>tetanospasmin</b> ซึ่งเป็น neurotoxin ที่ไม่ทนความร้อนและยีนอยู่บนพลาสมิด ${S.mu}</li>
- <li>สารพิษจับกับโปรตีนบนผิว motor neuron แล้วถูกกลืนเข้าไปใน endosome และ<b>ถูกขนย้อนขึ้นไปตามแอกซอนจนถึงตัวเซลล์ในไขสันหลัง</b> ${S.mu}</li>
+ <li><i>C. tetani</i> สร้าง toxin สองตัว: <b>tetanolysin</b> ซึ่งเป็น hemolysin ที่ไวต่อออกซิเจน และ <b>tetanospasmin</b> ซึ่งเป็น neurotoxin ที่ไม่ทนความร้อนและยีนอยู่บนพลาสมิด ${S.mu}</li>
+ <li>toxin จับกับโปรตีนบนผิว motor neuron แล้วถูกกลืนเข้าไปใน endosome และ<b>ถูกขนย้อนขึ้นไปตามแอกซอนจนถึงตัวเซลล์ใน spinal cord</b> ${S.mu}</li>
  <li>ที่นั่น endosome เป็นกรด ทำให้ปลาย N ของสายหนักเปลี่ยนรูป แทรกเข้าเยื่อ และส่งสายเบาเข้าไซโทซอล ${S.mu}</li>
  <li>สายเบาเป็น <b>zinc endopeptidase</b> ที่ตัดโปรตีนแกนกลางของกลไกขนส่งและปล่อยสารสื่อประสาท · โดยเฉพาะมันทำให้โปรตีนที่ควบคุมการปล่อย <b>glycine และ GABA ซึ่งเป็นสารสื่อประสาทยับยั้ง</b> หมดฤทธิ์ ${S.mu}</li>
  <li>ผลคือ motor neuron ถูกกระตุ้นโดยไม่มีอะไรมาห้าม จึงเกิด <b>spastic paralysis</b> ${S.mu}</li>
  <li><b>การจับเป็นแบบย้อนกลับไม่ได้</b> การฟื้นตัวจึงขึ้นกับการสร้างปลายแอกซอนขึ้นใหม่ ${S.mu}</li></ul>
  <h3>Clinical tetanus</h3><ul>
- <li>อาการคลาสสิกคือ <b>trismus</b> คือขากรรไกรแข็ง ตามด้วย <b>risus sardonicus</b> ซึ่งคือการเกร็งของกล้ามเนื้อใบหน้าจนดูเหมือนยิ้มเยาะ และ <b>opisthotonos</b> คือหลังแอ่นค้าง ${S.mu}</li>
- <li>การรักษาประกอบด้วยการตัดเนื้อตายออก ให้ <b>immunoglobulin เพื่อทำให้สารพิษที่ยังไม่จับหมดฤทธิ์</b> และฉีดวัคซีน toxoid เพราะ<b>การติดเชื้อไม่ทำให้เกิดภูมิคุ้มกัน</b> ${S.mu}</li>
+ <li>symptom คลาสสิกคือ <b>trismus</b> คือขากรรไกรแข็ง ตามด้วย <b>risus sardonicus</b> ซึ่งคือการเกร็งของ muscle ใบหน้าจนดูเหมือนยิ้มเยาะ และ <b>opisthotonos</b> คือหลังแอ่นค้าง ${S.mu}</li>
+ <li>การรักษาประกอบด้วยการตัดเนื้อตายออก ให้ <b>immunoglobulin เพื่อทำให้ toxin ที่ยังไม่จับหมดฤทธิ์</b> และฉีดวัคซีน toxoid เพราะ<b>infection ไม่ทำให้เกิด immunity</b> ${S.mu}</li>
  <li>Metronidazole และ penicillin ฤทธิ์เท่ากัน แต่บางคนแนะนำ metronidazole เพราะ<b>penicillin เองก็ยับยั้ง GABA</b> เหมือน tetanospasmin จึงอาจทำให้ระบบประสาทส่วนกลางตื่นตัวมากขึ้น ${S.mu}</li>
- <li>สารพิษที่จับปลายประสาทไปแล้ว<b>ยาเข้าไม่ถึง</b> จึงต้องประคับประคองอาการจนการส่งสัญญาณกลับมาเป็นปกติ ${S.mu}</li>
- <li>วัคซีน toxoid สามเข็มตามด้วย booster ทุก 10 ปี ป้องกันได้ผลดีมาก · ในสหรัฐมีเพียง 33 รายในปี 2017 และส่วนใหญ่เป็นผู้สูงอายุที่ภูมิคุ้มกันเริ่มตก ${S.mu}</li></ul>
+ <li>toxin ที่จับปลายประสาทไปแล้ว<b>ยาเข้าไม่ถึง</b> จึงต้องประคับประคอง symptom จนการส่งสัญญาณกลับมาเป็นปกติ ${S.mu}</li>
+ <li>วัคซีน toxoid สามเข็มตามด้วย booster ทุก 10 ปี ป้องกันได้ผลดีมาก · ในสหรัฐมีเพียง 33 รายในปี 2017 และส่วนใหญ่เป็นผู้สูงอายุที่ immunity เริ่มตก ${S.mu}</li></ul>
  <h3>Botulinum toxin</h3><ul>
- <li>มี <b>botulinum toxin เจ็ดชนิด</b>ที่แยกกันได้ทางภูมิคุ้มกัน · นอกจาก <i>C. botulinum</i> ยังมี <i>C. butyricum</i> ที่สร้าง type E ด้วย ${S.mu}</li>
+ <li>มี <b>botulinum toxin เจ็ดชนิด</b>ที่แยกกันได้ทาง immunity · นอกจาก <i>C. botulinum</i> ยังมี <i>C. butyricum</i> ที่สร้าง type E ด้วย ${S.mu}</li>
  <li>มันจับที่ปลายประสาทของ <b>cholinergic synapse</b> แล้วหยุดการปล่อย acetylcholine ทำให้เกิด <b>flaccid paralysis</b> ${S.mu}</li>
- <li>ต่างจาก tetanospasmin ตรงที่มันออกฤทธิ์ที่<b>ปลายประสาทส่วนปลาย ไม่ได้เดินทางเข้าไขสันหลัง</b> ${S.mu}</li></ul>`});
+ <li>ต่างจาก tetanospasmin ตรงที่มันออกฤทธิ์ที่<b>ปลายประสาทส่วนปลาย ไม่ได้เดินทางเข้า spinal cord</b> ${S.mu}</li></ul>
+ <h3>Tetanus: the forms and the numbers</h3><ul>
+ <li><b>Cephalic tetanus</b> คือรูปที่จุดติดเชื้อหลักอยู่ที่ศีรษะ · <b>พยากรณ์โรคแย่มาก</b> ต่างจาก localized tetanus ${S.mu}</li>
+ <li><b>Neonatal tetanus</b> มักเริ่มจาก infection ที่<b>ตอสายสะดือ</b>แล้วลามทั่วตัว · <b>อัตราตายในทารกเกิน 90%</b> และผู้รอดชีวิตมีพัฒนาการผิดปกติ · <b>แทบทั้งหมดเป็นโรคของประเทศกำลังพัฒนา</b> ${S.mu}</li>
+ <li>อัตราตายสูงที่สุดใน<b>neonate และผู้ที่มีระยะฟักตัวสั้นกว่าหนึ่งสัปดาห์</b> ${S.mu}</li></ul>
+ <h3>Why the laboratory cannot help</h3><ul>
+ <li>การวินิจฉัย tetanus เหมือนโรค clostridia อื่น — <b>อาศัยภาพทางคลินิก</b> ${S.mu}</li>
+ <li><b>การ culture ขึ้นเพียงราว 30% ของผู้ป่วย</b> เพราะโรคเกิดจากเชื้อจำนวนน้อยมาก และเชื้อที่โตช้าตายเร็วเมื่อสัมผัสอากาศ ${S.mu}</li>
+ <li>และ<b>ตรวจไม่พบทั้ง toxin และ antibody ต่อ toxin ในผู้ป่วย</b> เพราะ<b>toxin ถูกจับกับ motor neuron และถูกนำเข้าเซลล์อย่างรวดเร็ว</b> ${S.mu}</li>
+ <li>ถ้า culture ขึ้น ยืนยันการสร้าง toxin ได้ด้วย <b>tetanus antitoxin neutralization test ในหนู</b> ซึ่งทำเฉพาะในห้องปฏิบัติการอ้างอิง ${S.mu}</li></ul>
+ <h3>Treating tetanus: four things at once</h3><ul>
+ <li><b>ตัดเนื้อตายและทำความสะอาดแผลต้นเหตุ</b> ซึ่งอาจดูเล็กน้อยจนไม่น่าสงสัย ${S.mu}</li>
+ <li><b>Penicillin หรือ metronidazole</b> เพื่อฆ่าเชื้อและลดการสร้าง toxin ${S.mu}</li>
+ <li><b>Human tetanus immunoglobulin</b> เพื่อลบล้าง toxin ที่ยังไม่ถูกจับ ${S.mu}</li>
+ <li><b>ฉีด tetanus toxoid</b> เพราะ<b>infection ไม่ทำให้เกิด immunity</b> ${S.mu}</li>
+ <li>เหตุผลที่บางคนเลือก metronidazole มากกว่า penicillin: <b>penicillin ยับยั้งฤทธิ์ของ GABA เช่นเดียวกับ tetanospasmin จึงอาจทำให้ระบบประสาทส่วนกลางตื่นตัวมากขึ้น</b> ${S.mu}</li>
+ <li>ข้อจำกัดที่เปลี่ยนไม่ได้: <b>toxin ที่จับปลายประสาทแล้วอยู่พ้นมือ antibiotic</b> — ต้องประคับประคอง symptom ไปจนกว่าการส่งสัญญาณที่ synapse จะกลับมาเป็นปกติ ${S.mu}</li>
+ <li>การป้องกัน: <b>toxoid สามเข็ม แล้วกระตุ้นทุก 10 ปี ได้ผลดีมาก</b> ${S.mu}</li></ul>
+ <h3>Botulinum toxin: what differs from tetanospasmin</h3><ul>
+ <li>มี <b>botulinum toxin เจ็ดชนิดที่แยกกันทางแอนติเจน A ถึง G</b> · <b>โรคในคนเกิดจากชนิด A, B, E และ F</b> ${S.mu}</li>
+ <li>clostridia ตัวอื่นก็สร้าง botulinum toxin ได้ — <b><i>C. butyricum</i> สร้างชนิด E, <i>C. baratii</i> สร้างชนิด F และ <i>C. argentinense</i> สร้างชนิด G</b> ${S.mu}</li>
+ <li>โครงสร้างเหมือน tetanus toxin คือ <b>A-B toxin ขนาด 150,000 Da</b> — สายเบาเป็น zinc endopeptidase และสายหนักไม่เป็นพิษ ${S.mu}</li>
+ <li>ข้อต่างข้อแรก: <b>botulinum toxin อยู่รวมกับโปรตีนที่ไม่เป็นพิษซึ่งปกป้องมันระหว่างผ่าน gastrointestinal tract</b> — tetanus toxin ไม่ต้องใช้ เพราะไม่ได้เข้าทางการกิน ${S.mu}</li>
+ <li>ข้อต่างข้อที่สอง: <b>มันจับตัวรับคนละชุดกับ tetanospasmin</b> — เป็น sialic acid receptor และ glycoprotein บนผิว motor neuron ${S.mu}</li>
+ <li>ข้อต่างที่สำคัญที่สุด: <b>botulinum toxin อยู่ที่ neuromuscular junction ไม่เดินทางย้อนขึ้นไป</b> ${S.mu}</li>
+ <li>กลไก: <b>ความเป็นกรดใน endosome ปล่อยสายเบาออกมา แล้ว endopeptidase ทำลายโปรตีนที่ควบคุมการหลั่ง acetylcholine</b> จึงปิดกั้นการส่งสัญญาณที่ peripheral cholinergic synapse ${S.mu}</li>
+ <li>เพราะ acetylcholine จำเป็นต่อการกระตุ้น muscle ภาพทางคลินิกจึงเป็น <b>flaccid paralysis</b> · และเหมือน tetanus ตรงที่<b>การฟื้นตัวต้องรอให้ปลายประสาทงอกใหม่</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"botulism",k:"c",t:"Four ways botulism happens",mm:"Botulism",leg:[],
 draw:()=>tbl(["Form","How","Picture"],[
- ["Foodborne","กินสารพิษที่ถูกสร้างไว้ในอาหารแล้ว — อาหารกระป๋องทำเองและอาหารหมักเป็นแหล่งคลาสสิก","อ่อนแรงลงจากบนลงล่าง เริ่มที่เส้นประสาทสมอง แล้วลามลงจนหายใจล้มเหลว"],
- ["Infant","กินสปอร์เข้าไป แล้วสปอร์งอกและสร้างสารพิษในลำไส้ที่ยังไม่มีเชื้อประจำถิ่นเต็มที่ · น้ำผึ้งเป็นแหล่งที่รู้จักกันดี","ดูดนมไม่แรง ร้องเสียงเบา เลี้ยงไม่โต แล้วค่อย ๆ อ่อนแรงลง"],
- ["Wound","สปอร์เข้าแผลแล้วสร้างสารพิษในที่","เหมือน foodborne แต่ไม่มีอาการทางเดินอาหารนำมาก่อน"],
- ["Inhalation","สูดสารพิษเข้าไป — เส้นทางที่เป็นประเด็นด้านอาวุธชีวภาพ","อาการมาเร็ว"]]),
+ ["Foodborne","กิน toxin ที่ถูกสร้างไว้ในอาหารแล้ว — อาหารกระป๋องทำเองและอาหารหมักเป็นแหล่งคลาสสิก","อ่อนแรงลงจากบนลงล่าง เริ่มที่ nervebrain แล้วลามลงจนหายใจล้มเหลว"],
+ ["Infant","กินสปอร์เข้าไป แล้วสปอร์งอกและสร้าง toxin ในลำไส้ที่ยังไม่มีเชื้อประจำถิ่นเต็มที่ · น้ำผึ้งเป็นแหล่งที่รู้จักกันดี","ดูดนมไม่แรง ร้องเสียงเบา เลี้ยงไม่โต แล้วค่อย ๆ อ่อนแรงลง"],
+ ["Wound","สปอร์เข้าแผลแล้วสร้าง toxin ในที่","เหมือน foodborne แต่ไม่มี symptomgastrointestinal tract นำมาก่อน"],
+ ["Inhalation","สูด toxin เข้าไป — เส้นทางที่เป็นประเด็นด้านอาวุธชีวภาพ","symptom มาเร็ว"]]),
 notes:()=>`<h3>An intoxication, usually</h3><ul>
- <li>Foodborne botulism คือการ<b>กินสารพิษที่สร้างไว้แล้ว</b> ไม่ใช่การติดเชื้อ · ส่วน infant botulism และ wound botulism คือการที่เชื้อ<b>งอกและสร้างสารพิษในตัวผู้ป่วย</b> ${S.mu}</li>
- <li>สารพิษนี้<b>ไม่ทนความร้อน</b> — ต้มอาหารให้เดือดทำลายมันได้ ซึ่งต่างจาก enterotoxin ของ <i>S. aureus</i> และ <i>B. cereus</i> ${S.mu}</li>
+ <li>Foodborne botulism คือการ<b>กิน toxin ที่สร้างไว้แล้ว</b> ไม่ใช่ infection · ส่วน infant botulism และ wound botulism คือการที่เชื้อ<b>งอกและสร้าง toxin ในตัวผู้ป่วย</b> ${S.mu}</li>
+ <li>toxin นี้<b>ไม่ทนความร้อน</b> — ต้มอาหารให้เดือดทำลายมันได้ ซึ่งต่างจาก enterotoxin ของ <i>S. aureus</i> และ <i>B. cereus</i> ${S.mu}</li>
  <li>ตัวเชื้อเป็น anaerobic spore-forming rod ขนาดใหญ่ 0.6–1.4 × 3.0–20.2 µm ที่เลือกกิน แบ่งเป็นสี่กลุ่มตามลักษณะทางฟีโนไทป์และพันธุกรรม ${S.mu}</li></ul>
  <h3>The clinical pattern is the clue</h3><ul>
- <li>อาการเป็น <b>descending flaccid paralysis</b> ที่เริ่มด้วยอัมพาตของเส้นประสาทสมอง แล้วลามลงจนเกิดการหายใจล้มเหลว ${S.mu}</li>
+ <li>symptom เป็น <b>descending flaccid paralysis</b> ที่เริ่มด้วยอัมพาตของ nervebrain แล้วลามลงจนเกิดการหายใจล้มเหลว ${S.mu}</li>
  <li>ตัวอย่างการระบาดที่ CDC รายงาน: ผู้ป่วยสามรายในจอร์เจียปี 2006 มาด้วย cranial nerve palsy และอัมพาตอ่อนปวกเปียกที่ลามลงจนหายใจไม่ได้ หลังกินอาหารร่วมกันเมื่อวันก่อน · สาเหตุคือ<b>น้ำแครอทบรรจุขวดที่ปนเปื้อน</b> ${S.mu}</li>
- <li>การรักษาคือ <b>antitoxin</b> ซึ่งต้องให้เร็ว บวกกับการประคับประคองการหายใจ ${S.mu}</li></ul>`});
+ <li>การรักษาคือ <b>antitoxin</b> ซึ่งต้องให้เร็ว บวกกับการประคับประคองการหายใจ ${S.mu}</li></ul>
+ <h3>Where the spores are</h3><ul>
+ <li>ในสหรัฐอเมริกา <b>ชนิด A อยู่ในดินที่เป็นกลางหรือด่างทางตะวันตกของแม่น้ำมิสซิสซิปปี · ชนิด B อยู่ในดินอินทรีย์ทางตะวันออก · ชนิด E อยู่เฉพาะในดินเปียก</b> ${S.mu}</li>
+ <li>แม้เชื้อจะพบทั่วไปในดิน แต่<b>โรคพบไม่บ่อย</b> — ปี 2017 รายงานรวม <b>177 ราย ซึ่ง 137 รายเป็น infant botulism</b> ${S.mu}</li></ul>
+ <h3>The four forms in numbers</h3><ul>
+ <li><b>Foodborne botulism พบน้อยกว่า 25 รายต่อปี</b>ในสหรัฐอเมริกา · ส่วนใหญ่จาก<b>อาหารบรรจุกระป๋องเองที่บ้าน</b> ซึ่งเป็น toxin ชนิด A และ B และบางครั้งจาก<b>ปลาหมัก</b>ซึ่งเป็นชนิด E ${S.mu}</li>
+ <li>จุดที่อันตราย: <b>อาหารอาจไม่ดูเสียเลย และแม้ชิมเพียงเล็กน้อยก็ทำให้เกิดโรคเต็มรูปแบบได้</b> ${S.mu}</li>
+ <li><b>Infant botulism พบบ่อยกว่า</b> · สัมพันธ์กับ<b>น้ำผึ้งและนมผงที่ปนเปื้อน spore</b> และ<b>การกินดินและฝุ่นที่ปนเปื้อน ซึ่งตอนนี้เป็นแหล่งที่พบบ่อยที่สุด</b> ${S.mu}</li>
+ <li><b>Wound botulism พบได้น้อยมาก</b> และอุบัติการณ์จริงไม่ทราบ ${S.mu}</li>
+ <li><b>Inhalation botulism</b> เป็นข้อกังวลในยุคการก่อการร้ายชีวภาพ — <b>toxin ถูกทำให้เข้มข้นเพื่อทำเป็นละอองได้</b> และเมื่อให้ทางนี้<b>โรคมาเร็วและอัตราตายอาจสูง</b> ${S.mu}</li></ul>
+ <h3>Foodborne botulism at the bedside</h3><ul>
+ <li>ผู้ป่วย<b>อ่อนแรงและเวียนศีรษะ 1–3 วันหลังกินอาหารที่ปนเปื้อน</b> ${S.mu}</li>
+ <li>symptom เริ่มแรกคือ<b>ตาพร่า รูม่านตาขยายค้าง ปากแห้ง ท้องผูกและปวดท้อง</b> ซึ่งล้วนเป็นฤทธิ์ anticholinergic ของ toxin · <b>ไม่มี fever</b> ${S.mu}</li>
+ <li>จากนั้นเกิด<b>อ่อนแรงแบบสองข้างเท่ากัน ไล่จากบนลงล่าง</b> และ<b>การตายส่วนใหญ่มาจาก muscle หายใจเป็นอัมพาต</b> ${S.mu}</li>
+ <li>จุดที่ช่วยแยกโรค: <b>ผู้ป่วยรู้สึกตัวดีตลอด</b> ${S.mu}</li>
+ <li>โรคอาจลุกลามต่อแม้รักษาเต็มที่ เพราะ <b>toxin จับอย่างถาวรและยับยั้งการหลั่งสารสื่อประสาทไปนาน</b> · <b>การหายสนิทมักใช้เวลาหลายเดือนถึงหลายปี จนกว่าปลายประสาทจะงอกใหม่</b> ${S.mu}</li>
+ <li><b>อัตราตายเคยเข้าใกล้ 70% ตอนนี้เหลือ 5–10%</b> จากการดูแลประคับประคองที่ดีขึ้น โดยเฉพาะการจัดการภาวะแทรกซ้อนทางการหายใจ ${S.mu}</li></ul>
+ <h3>Infant botulism</h3><ul>
+ <li>รู้จักครั้งแรกปี 1976 และ<b>ตอนนี้เป็นรูปที่พบบ่อยที่สุดในสหรัฐอเมริกา</b> ${S.mu}</li>
+ <li>ต่างจาก foodborne ตรงที่ <b>toxin ถูกสร้างในร่างกาย โดยเชื้อที่เข้าไปอยู่ใน gastrointestinal tract ของทารก</b> ${S.mu}</li>
+ <li>เหตุผลที่เกิดเฉพาะทารก: <b>ผู้ใหญ่ก็ได้รับเชื้อจากอาหาร แต่เชื้ออยู่รอดและเพิ่มจำนวนในลำไส้ผู้ใหญ่ไม่ได้</b> — <b>เมื่อไม่มีจุลินทรีย์ในลำไส้มาแข่ง เชื้อจึงตั้งหลักได้ในทารก</b> ${S.mu}</li>
+ <li>โรคเกิดใน<b>ทารกอายุน้อยกว่าหนึ่งปี ส่วนใหญ่ระหว่าง 1 ถึง 6 เดือน</b> และ symptom ตอนแรกไม่จำเพาะ เช่น ท้องผูก ${S.mu}</li></ul>`});
 
 SEC.push({id:"cdiff",k:"c",t:"Clostridioides difficile",mm:"C. difficile",leg:[],
 draw:()=>{let b="";
@@ -365,39 +567,58 @@ draw:()=>{let b="";
  const y0=56,x0=24,x1=616;
  const wv=mwob(7,3.2);
  const band=(a,bq,cls)=>{let d=`M${x0},${a(x0)}`;for(let x=x0;x<=x1;x+=6)d+=`L${x.toFixed(1)},${a(x).toFixed(1)}`;
-  for(let x=x1;x>=x0;x-=6)d+=`L${x.toFixed(1)},${bq(x).toFixed(1)}`;return `<path class="${cls}" d="${d}Z"/>`};
+ for(let x=x1;x>=x0;x-=6)d+=`L${x.toFixed(1)},${bq(x).toFixed(1)}`;return `<path class="${cls}" d="${d}Z"/>`};
  b+=band(x=>y0+wv(x),x=>y0+86+wv(x),"m-spin")+band(x=>y0+86+wv(x),x=>y0+128+wv(x),"m-derm");
  /* crypts */
  for(let x=x0+22;x<x1-10;x+=34){
-  b+=`<path class="m-foll" d="M${x-7},${(y0+wv(x)).toFixed(1)} L${x-7},${(y0+66+wv(x)).toFixed(1)} q7,10 14,0 L${x+7},${(y0+wv(x)).toFixed(1)} Z"/>`}
+ b+=`<path class="m-foll" d="M${x-7},${(y0+wv(x)).toFixed(1)} L${x-7},${(y0+66+wv(x)).toFixed(1)} q7,10 14,0 L${x+7},${(y0+wv(x)).toFixed(1)} Z"/>`}
  b+=mL(x1-6,y0+112,"colonic mucosa",{a:"end",c:"s m"});
  /* three volcano plaques erupting from crypts */
  [120,300,470].forEach((x,i)=>{
-  b+=`<path class="m-pus" d="${mblob(x,y0-6,36+i*5,18,i*9+5,.2)}"/>`
-   +`<path class="m-pus" style="opacity:.6" d="${mblob(x,y0-16,22+i*4,11,i*9+11,.25)}"/>`});
+ b+=`<path class="m-pus" d="${mblob(x,y0-6,36+i*5,18,i*9+5,.2)}"/>`
+ +`<path class="m-pus" style="opacity:.6" d="${mblob(x,y0-16,22+i*4,11,i*9+11,.25)}"/>`});
  b+=mlead2(300,y0-18,330,y0-50,["Pseudomembranous plaques","เยื่อขาวเหลืองที่พ่นออกมาจากปากต่อม"],{a:"start"});
  /* the two toxins */
  b+=`<path class="m-sep" d="M24,${y0+150} L616,${y0+150}"/>`;
- [["Toxin A · enterotoxin","ดึงเม็ดเลือดขาวมา (chemotactic) · ปล่อย cytokine · ทำให้มีน้ำคั่งและเยื่อบุถูกทำลาย",24,y0+176],
-  ["Toxin B · cytotoxin","ทำลายโครงร่างเซลล์ (cytoskeleton) ของเซลล์เยื่อบุโดยตรง",24,y0+222]
+ [["Toxin A · enterotoxin","ดึง leukocyte มา (chemotactic) · ปล่อย cytokine · ทำให้มีน้ำคั่งและเยื่อบุถูกทำลาย",24,y0+176],
+ ["Toxin B · cytotoxin","ทำลายโครงร่างเซลล์ (cytoskeleton) ของเซลล์เยื่อบุโดยตรง",24,y0+222]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  b+=`<path class="m-sep" d="M24,${y0+262} L616,${y0+262}"/>`
-  +mL(24,y0+288,"การเพาะเชื้อขึ้นแปลว่าเป็นพาหะ ไม่ได้แปลว่าเป็นโรค",{a:"start",c:"bad"})
-  +mL(24,y0+308,"วินิจฉัยด้วยการตรวจพบสารพิษหรือยีน toxin A และ B ในอุจจาระ ร่วมกับอาการที่เข้ากัน",{a:"start",c:"s m"});
+ +mL(24,y0+288,"การ culture ขึ้นแปลว่าเป็นพาหะ ไม่ได้แปลว่าเป็นโรค",{a:"start",c:"bad"})
+ +mL(24,y0+308,"วินิจฉัยด้วยการตรวจพบ toxin หรือยีน toxin A และ B ในอุจจาระ ร่วมกับ symptom ที่เข้ากัน",{a:"start",c:"s m"});
  return svg(b,"0 0 640 "+(y0+330))},
 notes:()=>`<h3>Two toxins</h3><ul>
- <li><i>C. difficile</i> สร้างสารพิษสองตัว: <b>enterotoxin (toxin A)</b> และ <b>cytotoxin (toxin B)</b> ${S.mu}</li>
+ <li><i>C. difficile</i> สร้าง toxin สองตัว: <b>enterotoxin (toxin A)</b> และ <b>cytotoxin (toxin B)</b> ${S.mu}</li>
  <li>Toxin A เป็น <b>chemotactic</b> คือดึงนิวโทรฟิลเข้ามา ทำให้เกิดการหลั่ง cytokine น้ำคั่งในลำไส้ และเยื่อบุถูกทำลาย ${S.mu}</li>
  <li>Toxin B ทำลาย<b>โครงร่างเซลล์</b>ของเซลล์เยื่อบุโดยตรง ${S.mu}</li>
- <li>มีสายพันธุ์ที่ <b>enterotoxin A เป็นลบ</b> แต่ยังก่อโรคได้ — แสดงว่าบทบาทของสารพิษสองตัวนี้ซับซ้อนกว่าที่เคยคิด ${S.mu}</li>
- <li>เคยเชื่อว่าสายพันธุ์ที่รุนแรงขึ้นเป็นเพราะสร้างสารพิษมากขึ้นบวกกับการมี <b>binary toxin</b> · แต่ปัจจุบันเข้าใจว่าความรุนแรง<b>อธิบายด้วยจีโนไทป์ใดจีโนไทป์หนึ่งไม่ได้</b> ต้องมองเป็นหลายฟีโนไทป์รวมกัน ${S.mu}</li></ul>
+ <li>มี strain ที่ <b>enterotoxin A เป็นลบ</b> แต่ยังก่อโรคได้ — แสดงว่าบทบาทของ toxin สองตัวนี้ซับซ้อนกว่าที่เคยคิด ${S.mu}</li>
+ <li>เคยเชื่อว่า strain ที่รุนแรงขึ้นเป็นเพราะสร้าง toxin มากขึ้นบวกกับการมี <b>binary toxin</b> · แต่ปัจจุบันเข้าใจว่าความรุนแรง<b>อธิบายด้วยจีโนไทป์ใดจีโนไทป์หนึ่งไม่ได้</b> ต้องมองเป็นหลายฟีโนไทป์รวมกัน ${S.mu}</li></ul>
  <h3>Diagnosis is about disease, not carriage</h3><ul>
  <li>การแยกเชื้อได้จากการเพาะอุจจาระ<b>ยืนยันแค่การเป็นพาหะ ไม่ได้ยืนยันโรค</b> ${S.mu}</li>
- <li>การวินิจฉัยโรคต้องอาศัยการตรวจพบ enterotoxin หรือ cytotoxin ในอุจจาระของผู้ป่วยที่มีอาการเข้ากัน หรือการตรวจ<b>ยีน toxin A และ B โดยตรงจากสิ่งส่งตรวจ</b>ด้วยวิธี nucleic acid amplification ${S.mu}</li>
+ <li>การวินิจฉัยโรคต้องอาศัยการตรวจพบ enterotoxin หรือ cytotoxin ในอุจจาระของผู้ป่วยที่มี symptom เข้ากัน หรือการตรวจ<b>ยีน toxin A และ B โดยตรงจาก specimen</b>ด้วยวิธี nucleic acid amplification ${S.mu}</li>
  <li>ชุดตรวจระดับโมเลกุลเชิงพาณิชย์ที่ไวและจำเพาะสูงให้ผลภายในไม่กี่ชั่วโมงหลังเก็บตัวอย่าง ${S.mu}</li></ul>
  <h3>Why faecal transplant works</h3><ul>
  <li>การปลูกถ่ายอุจจาระได้ผลดี ซึ่งแสดงให้เห็นว่า <b><i>C. difficile</i> ตั้งรกรากไม่ได้ถ้ามีประชากรแบคทีเรียในลำไส้ที่สมบูรณ์อยู่</b> ${S.mu}</li>
- <li>การป้องกันทำได้ยาก เพราะเชื้ออยู่ทั่วไปในโรงพยาบาล โดยเฉพาะบริเวณใกล้ห้องน้ำ และสปอร์ของมันทนน้ำยาฆ่าเชื้อทั่วไป ${S.mu}</li></ul>`});
+ <li>การป้องกันทำได้ยาก เพราะเชื้ออยู่ทั่วไปในโรงพยาบาล โดยเฉพาะบริเวณใกล้ห้องน้ำ และสปอร์ของมันทนน้ำยาฆ่าเชื้อทั่วไป ${S.mu}</li></ul>
+ <h3>The O27 strain, and what it taught</h3><ul>
+ <li>ปี 2003 มีรายงานโรคจาก strain ที่รุนแรงมากชื่อ <b>O27</b> ทั้งในชุมชนและโรงพยาบาลในแคนาดา สหรัฐอเมริกาและยุโรป ${S.mu}</li>
+ <li>strain นี้ทำให้<b>โรครุนแรงกว่า อัตราตายสูงกว่า เสี่ยงกลับเป็นซ้ำมากกว่า และมีภาวะแทรกซ้อนมากกว่า</b> ${S.mu}</li>
+ <li>ตอนแรกเชื่อว่าเป็นเพราะ<b>สร้าง toxin มากขึ้นร่วมกับการมี binary toxin</b> ${S.mu}</li>
+ <li>แต่ความเข้าใจปัจจุบันคือ <b>ความรุนแรงของ <i>C. difficile</i> ซับซ้อนกว่านั้น และอธิบายด้วย genotype ใดตัวหนึ่งไม่ได้ — มันมาจากหลาย phenotype ที่ก่อโรคได้</b> ${S.mu}</li></ul>
+ <h3>Diagnosis: colonisation is not disease</h3><ul>
+ <li>หลักการที่ต้องยึด: <b>การ culture ขึ้นจากอุจจาระบอกแค่ว่ามีเชื้ออยู่ ไม่ได้บอกว่าเป็นโรค</b> ${S.mu}</li>
+ <li>การวินิจฉัยต้อง<b>แสดง enterotoxin หรือ cytotoxin ในอุจจาระของผู้ป่วยที่มี symptom เข้าได้ หรือตรวจยีน toxin A และ B โดยตรงด้วยการเพิ่มปริมาณกรดนิวคลีอิก</b> ${S.mu}</li>
+ <li>ชุดตรวจระดับโมเลกุลปัจจุบัน<b>ไวและจำเพาะสูง และให้ผลภายในไม่กี่ชั่วโมง</b> ${S.mu}</li></ul>
+ <h3>Treatment and why it relapses</h3><ul>
+ <li>โรคไม่รุนแรง: <b>หยุดยาที่เป็นต้นเหตุก็มักพอ</b> — ampicillin, clindamycin และ fluoroquinolone ${S.mu}</li>
+ <li>ท้องเสียรุนแรงหรือ colitis ต้องให้ <b>metronidazole หรือ vancomycin</b> ${S.mu}</li>
+ <li><b>กลับเป็นซ้ำได้ถึง 20–30% หลังรักษาครบ</b> ${S.mu}</li>
+ <li>เหตุผลคือ <b>ยาฆ่าได้แต่รูป vegetative ส่วน spore ทนยา</b> ${S.mu}</li>
+ <li><b>การรักษาซ้ำด้วยยาตัวเดิมมักได้ผล</b> แม้บางรายจะกลับเป็นซ้ำหลายครั้ง ${S.mu}</li>
+ <li>แนวทางใหม่สำหรับรายที่เป็นซ้ำคือ<b>การใส่อุจจาระจากผู้บริจาคที่สุขภาพดีเข้าไปในลำไส้</b> ซึ่งได้ผลดีอย่างน่าทึ่ง ${S.mu}</li>
+ <li>สิ่งที่ fecal transplant พิสูจน์ให้เห็นคือ <b><i>C. difficile</i> ตั้งหลักไม่ได้เมื่อประชากรแบคทีเรียในลำไส้ที่สุขภาพดียังอยู่ครบ</b> ${S.mu}</li>
+ <li>การป้องกันยาก เพราะเชื้ออยู่ทั่วโรงพยาบาลโดยเฉพาะ<b>บริเวณรอบเตียงและห้องน้ำของผู้ป่วยที่ติดเชื้อ</b> ${S.mu}</li>
+ <li><b>Spore กำจัดยากถ้าไม่ทำความสะอาดอย่างทั่วถึง</b> — เชื้อจึงปนเปื้อนสิ่งแวดล้อมได้นานหลายเดือนและเป็นแหล่งใหญ่ของการระบาดในโรงพยาบาล ${S.mu}</li></ul>`});
 
 SEC.push({id:"perfringens",k:"c",t:"Clostridium perfringens and gas gangrene",mm:"C. perfringens",leg:[],
 draw:()=>{let b="";
@@ -406,36 +627,71 @@ draw:()=>{let b="";
  b+=`<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
  const q=rng(11);
  for(let i=0;i<4;i++){const a=q()*6.28,r=q()*52,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;
-  b+=`<circle class="m-alpha" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="22"/>`
-   +`<circle class="m-beta" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="11"/>`
-   +`<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4"/>`}
+ b+=`<circle class="m-alpha" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="22"/>`
+ +`<circle class="m-beta" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="11"/>`
+ +`<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="3.4"/>`}
  b+=mL(cx,cy-R-14,"Blood agar",{c:"bh"})
-  +mlead2(cx+54,cy-40,290,96,["Double zone of hemolysis","วงในใสจาก theta toxin · วงนอกจาง ๆ จาก alpha toxin"],{a:"start"})
-  +mL(290,150,"นี่คือลายเซ็นของ C. perfringens บนจานเพาะเชื้อ",{a:"start",c:"s m"});
+ +mlead2(cx+54,cy-40,290,96,["Double zone of hemolysis","วงในใสจาก theta toxin · วงนอกจาง ๆ จาก alpha toxin"],{a:"start"})
+ +mL(290,150,"นี่คือลายเซ็นของ C. perfringens บนจาน culture",{a:"start",c:"s m"});
  /* alpha toxin: a lecithinase that takes membranes apart */
  b+=`<path class="m-sep" d="M24,268 L616,268"/>`
-  +mL(24,294,"Alpha toxin",{a:"start",c:"bh"})
-  +mL(24,314,"lecithinase หรือ phospholipase C ที่ย่อย lecithin ในเยื่อหุ้มเซลล์",{a:"start",c:"s m"})
-  +mL(24,334,"จึงสลายเม็ดเลือดแดง เกล็ดเลือด เม็ดเลือดขาวและเซลล์เยื่อบุหลอดเลือด",{a:"start",c:"s m"});
+ +mL(24,294,"Alpha toxin",{a:"start",c:"bh"})
+ +mL(24,314,"lecithinase หรือ phospholipase C ที่ย่อย lecithin ใน cytoplasmic membrane",{a:"start",c:"s m"})
+ +mL(24,334,"จึงสลาย erythrocyte เกล็ดเลือด leukocyte และเซลล์เยื่อบุหลอดเลือด",{a:"start",c:"s m"});
  /* the muscle, with gas */
  const my=420;
  b+=`<path class="m-musc" d="${mblob(200,my,170,46,13,.1)}"/>`;
  const gq=rng(17);
  for(let i=0;i<22;i++){const x=48+gq()*300,y=my-32+gq()*62;
-  b+=`<circle class="m-spec" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(3+gq()*7).toFixed(1)}" style="opacity:.85"/>`
-   +`<circle class="m-face" style="fill:none" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(3+gq()*7).toFixed(1)}"/>`}
+ b+=`<circle class="m-spec" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(3+gq()*7).toFixed(1)}" style="opacity:.85"/>`
+ +`<circle class="m-face" style="fill:none" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(3+gq()*7).toFixed(1)}"/>`}
  b+=mlead2(250,my-20,400,my-30,["Gas in the tissue","ฟองก๊าซจากการหมักของเชื้อ — ที่มาของชื่อ gas gangrene"],{a:"start"})
-  +mlead2(160,my+24,400,my+24,["Myonecrosis","กล้ามเนื้อตายและลามเร็วมาก ต้องผ่าตัดเอาเนื้อตายออกทันที"],{a:"start"});
+ +mlead2(160,my+24,400,my+24,["Myonecrosis","muscle ตายและลามเร็วมาก ต้องผ่าตัดเอาเนื้อตายออกทันที"],{a:"start"});
  return svg(b,"0 0 640 "+(my+80))},
 notes:()=>`<h3>Alpha toxin is a lecithinase</h3><ul>
- <li>Alpha toxin เป็น <b>lecithinase หรือ phospholipase C</b> ที่ย่อยเม็ดเลือดแดง เกล็ดเลือด เม็ดเลือดขาว และเซลล์เยื่อบุหลอดเลือด ${S.mu}</li>
+ <li>Alpha toxin เป็น <b>lecithinase หรือ phospholipase C</b> ที่ย่อย erythrocyte เกล็ดเลือด leukocyte และเซลล์เยื่อบุหลอดเลือด ${S.mu}</li>
  <li>บนจานเลือดโคโลนีของ <i>C. perfringens</i> ให้<b>วงแตกเม็ดเลือดสองชั้น</b> — วงในใสจาก theta toxin และ<b>วงนอกที่แตกเพียงบางส่วนจาก alpha toxin</b> ${S.mu}</li></ul>
  <h3>Gas gangrene</h3><ul>
- <li><b>Clostridial myonecrosis</b> คือการตายของกล้ามเนื้อและเนื้อเยื่ออ่อนที่ลุกลามเร็วมาก ${S.mu}</li>
- <li>เชื้อหมักคาร์โบไฮเดรตในเนื้อเยื่อจนเกิด<b>ก๊าซสะสมในกล้ามเนื้อ</b> ซึ่งเป็นที่มาของชื่อ gas gangrene ${S.mu}</li>
- <li>Gram stain ของเนื้อเยื่อให้เบาะแสที่ดี: เห็น<b>gram-positive rod ตัวใหญ่ แต่แทบไม่มีเม็ดเลือดขาว</b> เพราะ alpha toxin ฆ่ามันไปหมด ${S.mu}</li>
- <li>นอกจาก <i>C. perfringens</i> ยังมี <i>C. septicum</i> และตัวอื่นที่ทำให้เกิดการตายของเนื้อเยื่อได้ ${S.mu}</li>
- <li>การรักษาคือ<b>ผ่าตัดเอาเนื้อตายออกอย่างรวดเร็ว</b>ร่วมกับยาปฏิชีวนะ — ยาอย่างเดียวไม่พอ ${S.mu}</li></ul>
+ <li><b>Clostridial myonecrosis</b> คือการตายของ muscle และ tissue อ่อนที่ลุกลามเร็วมาก ${S.mu}</li>
+ <li>เชื้อหมักคาร์โบไฮเดรตใน tissue จนเกิด<b>ก๊าซสะสมใน muscle</b> ซึ่งเป็นที่มาของชื่อ gas gangrene ${S.mu}</li>
+ <li>Gram stain ของ tissue ให้เบาะแสที่ดี: เห็น<b>gram-positive rod ตัวใหญ่ แต่แทบไม่มี leukocyte</b> เพราะ alpha toxin ฆ่ามันไปหมด ${S.mu}</li>
+ <li>นอกจาก <i>C. perfringens</i> ยังมี <i>C. septicum</i> และตัวอื่นที่ทำให้เกิดการตายของ tissue ได้ ${S.mu}</li>
+ <li>การรักษาคือ<b>ผ่าตัดเอาเนื้อตายออกอย่างรวดเร็ว</b>ร่วมกับ antibiotic — ยาอย่างเดียวไม่พอ ${S.mu}</li></ul>
  <h3>Food poisoning is the mild cousin</h3><ul>
  <li><i>C. perfringens</i> ยังเป็นสาเหตุของอาหารเป็นพิษที่พบบ่อย — มักจากเนื้อสัตว์ที่ปรุงไว้แล้วอุ่นไม่ทั่วถึง ${S.mu}</li>
- <li>อาการคือปวดบีบในท้องและถ่ายเหลว โดยทั่วไป<b>ไม่มีไข้และไม่อาเจียน</b> และหายเองใน 24 ชั่วโมง ${S.mu}</li></ul>`});
+ <li>symptom คือปวดบีบในท้องและถ่ายเหลว โดยทั่วไป<b>ไม่มี fever และไม่อาเจียน</b> และหายเองใน 24 ชั่วโมง ${S.mu}</li></ul>
+ <h3>Five types, four lethal toxins</h3><ul>
+ <li>รูปร่างเฉพาะตัว: <b>rod gram-positive ขนาดใหญ่ 0.6–2.4 × 1.3–19 μm รูปสี่เหลี่ยม</b> ${S.mu}</li>
+ <li>สิ่งที่แยกมันจาก clostridia ตัวอื่นแทบทุกตัว: <b>แทบไม่เห็น spore เลยทั้งในร่างกายและใน culture</b> ${S.mu}</li>
+ <li>โคโลนีก็เป็นลักษณะเฉพาะ — <b>แผ่กว้างเร็วบน medium และ β-hemolytic</b> ${S.mu}</li>
+ <li>การสร้าง major lethal toxin — <b>alpha, beta, epsilon และ iota</b> — ใช้แบ่ง isolate เป็น <b>ห้าชนิด A ถึง E</b> ${S.mu}</li>
+ <li><b>Alpha toxin สร้างโดยทั้งห้าชนิด</b> เป็น <b>lecithinase หรือ phospholipase C</b> ที่สลาย erythrocyte, platelet, leukocyte และ endothelial cell ${S.mu}</li>
+ <li>ผลของ alpha toxin ครบวงจร: <b>hemolysis จำนวนมาก, หลอดเลือดรั่วและเลือดออกซึ่งถูกซ้ำเติมจากการทำลาย platelet, การทำลาย tissue, พิษต่อ liver และหัวใจทำงานผิดปกติ</b> คือหัวใจเต้นช้าและความดันตก ${S.mu}</li>
+ <li><b>Beta toxin</b> ทำให้ลำไส้หยุดเคลื่อนไหว เยื่อบุหลุด เกิดรอยเนื้อตาย และลุกลามเป็น <b>necrotizing enteritis</b> ${S.mu}</li>
+ <li><b>Epsilon toxin เป็น protoxin ที่ถูก trypsin กระตุ้น</b> แล้วเพิ่มการรั่วของหลอดเลือดที่ผนัง gastrointestinal tract ${S.mu}</li>
+ <li><b>Iota toxin</b> สร้างโดยชนิด E ทำให้เนื้อตายและเพิ่มการรั่วของหลอดเลือด ${S.mu}</li></ul>
+ <h3>The enterotoxin is a sporulation product</h3><ul>
+ <li>สร้างโดย<b>ชนิด A เป็นหลัก</b> และ<b>ฤทธิ์แรงขึ้นเมื่อเจอ trypsin</b> ${S.mu}</li>
+ <li>จังหวะที่มันถูกสร้างคือจุดสำคัญ: <b>สร้างระหว่างที่เซลล์เปลี่ยนจากรูป vegetative ไปเป็น spore</b> และ<b>ถูกปล่อยในภาวะด่างของ small intestine ตอนที่เซลล์เข้าสู่ขั้นท้ายของการสร้าง spore</b> ${S.mu}</li>
+ <li>มันจับ<b>ตัวรับที่ brush border ของเยื่อบุ ileum เป็นหลักและ jejunum แต่ไม่จับที่ duodenum</b> ${S.mu}</li>
+ <li>เมื่อแทรกเข้า cytoplasmic membrane ทำให้<b>ความซึมผ่านเปลี่ยนไปและสูญเสียน้ำกับไอออน</b> ${S.mu}</li>
+ <li>และมันยังทำหน้าที่เป็น <b>superantigen</b> กระตุ้น T lymphocyte ${S.mu}</li></ul>
+ <h3>Gas gangrene</h3><ul>
+ <li>โรค tissue อ่อนจากเชื้อนี้มีตั้งแต่ <b>cellulitis, fasciitis หรือ suppurative myositis จนถึง myonecrosis ที่มีแก๊สใน tissue</b> ${S.mu}</li>
+ <li>Clostridial myonecrosis เกิดจาก <i>C. perfringens</i> บ่อยที่สุด แต่ <b><i>C. septicum</i> ก็ทำให้เกิดได้</b> ${S.mu}</li>
+ <li>โรคเริ่มด้วย<b>ความเจ็บปวดอย่างรุนแรง</b> ภายในหนึ่งสัปดาห์หลังเชื้อเข้าสู่ tissue จากอุบัติเหตุหรือการผ่าตัด ${S.mu}</li>
+ <li>ตามด้วย<b>muscle ตายเป็นบริเวณกว้าง ช็อก ไตวาย และเสียชีวิต มักภายในสองวันหลังเริ่มมี symptom</b> ${S.mu}</li>
+ <li><b>แก๊สใน tissue มาจากเมแทบอลิซึมของเชื้อที่กำลังแบ่งตัวอย่างรวดเร็ว</b> — ที่มาของชื่อ gas gangrene ${S.mu}</li>
+ <li>ภาพใต้กล้องที่เป็นลายเซ็นของโรค: <b>rod สี่เหลี่ยม gram-positive จำนวนมาก โดยไม่มีเซลล์อักเสบเลย</b> เพราะเซลล์อักเสบถูก toxin สลายไปหมด ${S.mu}</li>
+ <li>การระบุเบื้องต้นจากจานเพาะ: <b>วง hemolysis สองชั้น — วงในใสสนิทจาก theta toxin และวงนอกที่สลายไม่หมดจาก alpha toxin</b> ร่วมกับรูปร่างใต้กล้อง ${S.mu}</li></ul>
+ <h3>Food poisoning and necrotizing enteritis</h3><ul>
+ <li>Clostridial food poisoning มีสามลักษณะ: <b>ฟักตัวสั้น 8–12 ชั่วโมง · ปวดบิดและถ่ายเป็นน้ำ แต่ไม่มี fever ไม่คลื่นไส้ ไม่อาเจียน · และจบภายใน 24 ชั่วโมง</b> ${S.mu}</li>
+ <li>เกิดจากการกินผลิตภัณฑ์เนื้อที่ปนเปื้อนเชื้อชนิด A จำนวนมหาศาล — <b>10⁸ ถึง 10⁹ ตัว</b> ${S.mu}</li>
+ <li>กลไกในครัว: <b>การตั้งอาหารไว้ที่อุณหภูมิต่ำกว่า 60°C ทำให้ spore ที่รอดจากการปรุงงอกและเพิ่มจำนวน</b> ${S.mu}</li>
+ <li>ป้องกันได้ด้วย<b>แช่เย็นอาหารทันทีหลังปรุง</b> หรือ<b>อุ่นซ้ำถึง 74°C ซึ่งทำลาย enterotoxin ที่ไม่ทนความร้อนได้</b> ${S.mu}</li>
+ <li><b>Necrotizing enteritis</b> หรือ enteritis necroticans หรือ <b>pig-bel</b> เป็นเนื้อตายที่ <b>jejunum</b> · มาด้วยปวดท้องเฉียบพลัน อาเจียน ถ่ายเป็นเลือด เกิด ulcer ที่ small intestine และผนังลำไส้ทะลุจนเกิด peritonitis และช็อก ${S.mu}</li>
+ <li><b>อัตราตายเข้าใกล้ 50%</b> · สาเหตุคือ <b>beta toxin ของชนิด C</b> ${S.mu}</li>
+ <li>พบมากที่สุดใน<b>ปาปัวนิวกินี</b> และเหตุผลอยู่ที่อาหาร: โรคตามหลังการกิน<b>หมูที่ปรุงไม่สุกร่วมกับมันเทศ</b> ${S.mu}</li>
+ <li>กลไกที่สวยงามของเรื่องนี้: <b>มันเทศมี trypsin inhibitor ที่ทนความร้อน ซึ่งปกป้อง beta toxin ไม่ให้ถูก trypsin ทำลาย</b> ${S.mu}</li>
+ <li>ปัจจัยเสี่ยงอื่นคือ<b>การได้รับเชื้อจำนวนมากและภาวะทุพโภชนาการ</b> ซึ่งทำให้เสียฤทธิ์ย่อยโปรตีนที่จะไปทำลาย toxin ${S.mu}</li>
+ <li>ข้อควรระวังในการแปลผล: <b>มากกว่าครึ่งของ clostridia ที่ขึ้นใน blood culture ไม่มีความหมายทางคลินิก</b> — เป็น bacteremia ชั่วคราวหรือการปนเปื้อนจากเชื้อที่ skin ${S.mu}</li></ul>`});

@@ -1,5 +1,26 @@
 [
  {
+  "v": "6.102",
+  "date": "2026-11-23",
+  "th": [
+   "เติมเนื้อหาโมดูล Gram-positive rods (Bacillus, Listeria, Corynebacterium, Clostridium) จากต้นฉบับที่อ่านได้ครบ — จาก 11 เป็น 12 หัวข้อ และเนื้อหาต่อหัวข้อเพิ่มขึ้นมาก",
+   "หัวข้อใหม่ Erysipelothrix rhusiopathiae — erysipeloid ในคนที่ทำงานกับสัตว์และปลา พร้อมการแยกจาก Listeria ที่โต๊ะปฏิบัติการ",
+   "Bacillus anthracis และ cereus ละเอียดขึ้น — edema toxin, lethal toxin, eschar, mediastinal widening, anthrax ทางเดินอาหาร และ Bacillus cereus ทั้งแบบ emetic และ diarrheal รวมถึง ocular infection",
+   "Listeria และ Corynebacterium diphtheriae เพิ่มทั้งกลไกและภาพทางคลินิก — cold enrichment, pregnancy-associated และ neonatal listeriosis, pseudomembrane, myocarditis และ antitoxin",
+   "Clostridium perfringens และ C. difficile ละเอียดขึ้น — alpha toxin, gas gangrene, enteritis necroticans, toxin A/B, pseudomembranous colitis และการรักษาที่ใช้จริง",
+   "Tetanus และ botulism เขียนใหม่ทั้งหมด — เหตุผลที่ห้องปฏิบัติการช่วยไม่ได้, ทำไมบางคนเลือก metronidazole มากกว่า penicillin, toxin ชนิด A–G, infant botulism และตัวเลขอัตราตายที่เปลี่ยนไป",
+   "เติมเนื้อหาโมดูล Gram-negative cocci (Neisseria) จากต้นฉบับที่อ่านได้ครบ — จาก 5 เป็น 7 หัวข้อ",
+   "หัวข้อใหม่ Preventing meningococcal disease — serogroup A, B, C, W135, X, Y แยกตามภูมิภาค, tetravalent vaccine ทั้งสองชนิด, ปัญหาของ group B polysaccharide และผลของ meningococcal A conjugate vaccine ใน African meningitis belt",
+   "หัวข้อใหม่ Eikenella, Kingella and the commensal Neisseria — HB group, บาดแผลจากการกัด, septic arthritis ในเด็ก และยาที่ Eikenella ดื้อซึ่งมักถูกเลือกใช้แบบ empiric",
+   "Neisseria gonorrhoeae ละเอียดขึ้นมาก — pilin antigenic และ phase variation, porA ที่เงียบ, PorB1A/PorB1B, โคโลนีขุ่นกับใสที่พยากรณ์โรคได้, Rmp ที่ปิดกั้นแอนติบอดีฆ่าเชื้อ และค่าของ Gram stain แยกตามตำแหน่งสิ่งส่งตรวจ",
+   "เติมเนื้อหาโมดูล Gram-negative rods (Enterobacteriaceae และ non-fermenters) จากต้นฉบับที่อ่านได้ครบ — จาก 11 เป็น 14 หัวข้อ",
+   "หัวข้อใหม่ Pseudomonas aeruginosa by site — ปอด แผลไฟไหม้ รูขุมขน เล็บ กระดูกและกระดูกอ่อน ทางเดินปัสสาวะ หู ตา และกระแสเลือด พร้อมเงื่อนไขที่เปิดทางให้แต่ละรูป",
+   "หัวข้อใหม่ Stenotrophomonas maltophilia and Moraxella catarrhalis — รวมเหตุผลที่ Stenotrophomonas ดื้อ carbapenem แต่ไวต่อ trimethoprim-sulfamethoxazole",
+   "หัวข้อใหม่ Enterobacteriaceae at the bench — อาหารเลี้ยงเชื้อแต่ละชนิดและหน้าที่, cold enrichment, multiplex nucleic acid test และข้อที่ว่าเมื่อใดไม่ควรให้ยาปฏิชีวนะ",
+   "Enterobacteriaceae ละเอียดขึ้นมาก — สามแอนติเจน O/K/H และหน้าที่ของแต่ละส่วน, ปัจจัยก่อโรคร่วมหกข้อ, Shiga toxin กับ Gb3 และตัวเลขของ hemolytic uremic syndrome, Salmonella pathogenicity island I และ II, Shigella ที่แบ่งตัวใน cytoplasm, Yersinia Yop proteins กับการระบาดใหญ่สามครั้ง และ urease ของ Proteus ที่ทำให้เกิดนิ่ว"
+  ]
+ },
+ {
   "v": "6.98",
   "date": "2026-11-23",
   "th": [
