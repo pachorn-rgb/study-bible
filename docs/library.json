@@ -1917,8 +1917,16 @@
          "require"
         ],
         [
+         "Three ways to make ATP from glucose",
+         "metab-energy"
+        ],
+        [
          "Chromosome, plasmid and bacteriophage",
          "genome"
+        ],
+        [
+         "From gene to protein, and where the drugs bind",
+         "expression"
         ],
         [
          "Three ways DNA moves between bacteria",
@@ -2271,6 +2279,10 @@
          "cholera"
         ],
         [
+         "Vibrio parahaemolyticus, Vibrio vulnificus and Aeromonas",
+         "vibrio-other"
+        ],
+        [
          "Campylobacter jejuni",
          "campylo"
         ],
@@ -2283,6 +2295,14 @@
          "haemophilus"
         ],
         [
+         "Haemophilus influenzae before and after the vaccine",
+         "hib-dis"
+        ],
+        [
+         "Aggregatibacter and Pasteurella",
+         "aggreg-past"
+        ],
+        [
          "Bordetella pertussis: three stages, two toxins",
          "pertussis"
         ],
@@ -2293,6 +2313,10 @@
         [
          "Brucella and Francisella",
          "zoonoses"
+        ],
+        [
+         "Bartonella, Cardiobacterium and Streptobacillus",
+         "bartonella"
         ]
        ],
        "ref": {
@@ -2337,12 +2361,24 @@
          "ntm-leprosy"
         ],
         [
+         "Nocardia: branching filaments, weakly acid-fast",
+         "nocardia"
+        ],
+        [
          "Syphilis: three phases and two kinds of serology",
          "syphilis"
         ],
         [
+         "The two kinds of syphilis serology",
+         "syphilis-sero"
+        ],
+        [
          "Borrelia and Leptospira",
          "borrelia-lepto"
+        ],
+        [
+         "Leptospira: the kidney of a rodent, and the water downstream",
+         "leptospira"
         ]
        ],
        "ref": {

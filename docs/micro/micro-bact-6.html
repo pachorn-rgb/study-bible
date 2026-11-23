@@ -335,44 +335,44 @@ Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
 Object.assign(GN,{a:"Mycobacteria",b:"Spirochetes"});
 
 /* ===================================================================
-   Mycobacteria and spirochetes — Murray ch 22 (Mycobacterium and
-   Related Acid-Fast Bacteria) and ch 32 (Treponema, Borrelia and
-   Leptospira).
-   =================================================================== */
+ Mycobacteria and spirochetes — Murray ch 22 (Mycobacterium and
+ Related Acid-Fast Bacteria) and ch 32 (Treponema, Borrelia and
+ Leptospira).
+ =================================================================== */
 
 SEC.push({id:"mycobact",k:"a",t:"Acid-fast, and slow because of it",mm:"The genus",leg:[],
 draw:()=>{let b="";
  b+=mL(24,26,"ชั้นไขหนาที่ทำให้ติดสี acid-fast คือเหตุผลเดียวกับที่ทำให้มันโตช้าและทนยา",{a:"start",c:"bh"});
  /* two smears side by side: what Gram stain misses and Ziehl-Neelsen finds */
  const panel=(x0,t2,d,cls,bg)=>{let g=mL(x0+130,58,t2,{c:"bh"})+mL(x0+130,76,d,{c:"s m"});
-  g+=`<rect x="${x0}" y="${92}" width="260" height="120" rx="10" style="fill:${bg};stroke:color-mix(in srgb,var(--sb-ink) 14%,var(--sb-surface));stroke-width:1.2"/>`;
-  const q=rng(cls==="af"?7:11);
-  /* host cells as faint background in both */
-  for(let i=0;i<9;i++)g+=`<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,var(--sb-ink) 5%,transparent);stroke:none" d="${mblob(x0+26+q()*210,110+q()*86,16+q()*8,13+q()*6,i*5+3,.12)}"/>`;
-  if(cls==="af")for(let i=0;i<14;i++){const x=x0+22+q()*216,y=104+q()*96,r=(q()*60-30);
-   g+=`<g transform="rotate(${r.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:#C2334A;stroke-width:3.4;stroke-linecap:round" d="M${(x-11).toFixed(1)},${y.toFixed(1)} q5,-3 11,0 q6,3 11,0"/></g>`}
-  return g};
+ g+=`<rect x="${x0}" y="${92}" width="260" height="120" rx="10" style="fill:${bg};stroke:color-mix(in srgb,var(--sb-ink) 14%,var(--sb-surface));stroke-width:1.2"/>`;
+ const q=rng(cls==="af"?7:11);
+ /* host cells as faint background in both */
+ for(let i=0;i<9;i++)g+=`<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,var(--sb-ink) 5%,transparent);stroke:none" d="${mblob(x0+26+q()*210,110+q()*86,16+q()*8,13+q()*6,i*5+3,.12)}"/>`;
+ if(cls==="af")for(let i=0;i<14;i++){const x=x0+22+q()*216,y=104+q()*96,r=(q()*60-30);
+ g+=`<g transform="rotate(${r.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:#C2334A;stroke-width:3.4;stroke-linecap:round" d="M${(x-11).toFixed(1)},${y.toFixed(1)} q5,-3 11,0 q6,3 11,0"/></g>`}
+ return g};
  b+=panel(24,"Gram stain","ติดสีไม่ดีและไม่น่าเชื่อถือ","gram","color-mix(in srgb,#6B4FC8 5%,var(--sb-surface))")
-  +panel(330,"Ziehl-Neelsen","แท่งแดงบาง ๆ บนพื้นน้ำเงิน","af","color-mix(in srgb,#3E6FB0 10%,var(--sb-surface))");
+ +panel(330,"Ziehl-Neelsen","แท่งแดงบาง ๆ บนพื้นน้ำเงิน","af","color-mix(in srgb,#3E6FB0 10%,var(--sb-surface))");
  b+=mL(24,236,"สีย้อมเข้าไปยาก และเมื่อเข้าไปแล้วกรดกับแอลกอฮอล์ก็ล้างออกไม่ได้ — จึงเรียกว่า acid-fast",{a:"start",c:"s m"});
  /* what the wax costs the organism */
  b+=`<path class="m-sep" d="M24,266 L616,266"/>`;
- [["Slow growth","แบ่งตัวหนึ่งครั้งใช้เวลาหลายชั่วโมง · การเพาะเชื้ออาจใช้เวลาหลายสัปดาห์",24,292],
-  ["Resistance","ชั้นไขกันทั้งสารฆ่าเชื้อ ยาปฏิชีวนะหลายชนิด และความแห้ง",330,292],
-  ["Obligate aerobe","จึงชอบยอดปอดซึ่งมีออกซิเจนสูงที่สุด",24,338],
-  ["Intracellular survival","อยู่ใน macrophage ได้ · การกำจัดต้องอาศัยภูมิคุ้มกันระดับเซลล์",330,338],
-  ["Culture media","Löwenstein-Jensen และ Middlebrook · บางสปีชีส์สร้างเม็ดสีเมื่อโดนแสง",24,384],
-  ["Auramine-rhodamine","ย้อมเรืองแสง อ่านเร็วกว่าและไวกว่า Ziehl-Neelsen",330,384]
+ [["Slow growth","แบ่งตัวหนึ่งครั้งใช้เวลาหลายชั่วโมง · การ culture อาจใช้เวลาหลายสัปดาห์",24,292],
+ ["Resistance","ชั้นไขกันทั้งสารฆ่าเชื้อ antibiotic หลายชนิด และความแห้ง",330,292],
+ ["Obligate aerobe","จึงชอบยอด lung ซึ่งมีออกซิเจนสูงที่สุด",24,338],
+ ["Intracellular survival","อยู่ใน macrophage ได้ · การกำจัดต้องอาศัย immunity ระดับเซลล์",330,338],
+ ["Culture media","Löwenstein-Jensen และ Middlebrook · บางสปีชีส์สร้างเม็ดสีเมื่อโดนแสง",24,384],
+ ["Auramine-rhodamine","ย้อมเรืองแสง อ่านเร็วกว่าและไวกว่า Ziehl-Neelsen",330,384]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 430")},
 notes:()=>`<h3>The wall explains everything else</h3><ul>
- <li>Mycobacteria มีผนังเซลล์ที่<b>มี mycolic acid เป็นชั้นไขหนา</b> อยู่เหนือ peptidoglycan ที่เชื่อมกับ arabinogalactan — โครงสร้างนี้วาดไว้แล้วในหัวข้อ envelope ของ Basic Bacteriology ${S.mu}</li>
+ <li>Mycobacteria มี cell wall ที่<b>มี mycolic acid เป็นชั้นไขหนา</b> อยู่เหนือ peptidoglycan ที่เชื่อมกับ arabinogalactan — โครงสร้างนี้วาดไว้แล้วในหัวข้อ envelope ของ Basic Bacteriology ${S.mu}</li>
  <li>ชั้นไขนี้คือเหตุผลที่สีย้อมธรรมดาเข้าไม่ได้ · เมื่อใช้ความร้อนหรือสารลดแรงตึงผิวดันสีเข้าไปแล้ว <b>กรดกับแอลกอฮอล์ก็ล้างสีออกไม่ได้</b> จึงเรียกว่า acid-fast ${S.mu}</li>
  <li>การย้อม <b>auramine-rhodamine</b> ซึ่งเรืองแสงนั้นไวกว่าและอ่านเร็วกว่า Ziehl-Neelsen ${S.mu}</li>
  <li>ชั้นไขยังทำให้เชื้อ<b>ทนสารฆ่าเชื้อ ทนความแห้ง และทนยาหลายชนิด</b> ${S.mu}</li>
- <li>และมันทำให้สารอาหารเข้าออกช้า — เชื้อจึง<b>แบ่งตัวช้ามาก</b> การเพาะเชื้ออาจใช้เวลาหลายสัปดาห์ ${S.mu}</li></ul>
+ <li>และมันทำให้สารอาหารเข้าออกช้า — เชื้อจึง<b>แบ่งตัวช้ามาก</b> การ culture อาจใช้เวลาหลายสัปดาห์ ${S.mu}</li></ul>
  <h3>Where it grows in the lab</h3><ul>
- <li>อาหารเลี้ยงเชื้อที่ใช้คือ <b>Löwenstein-Jensen</b> และ <b>Middlebrook</b> ${S.mu}</li>
+ <li>medium ที่ใช้คือ <b>Löwenstein-Jensen</b> และ <b>Middlebrook</b> ${S.mu}</li>
  <li>บางสปีชีส์เช่น <i>M. kansasii</i> <b>สร้างเม็ดสีเหลืองหลังโดนแสงช่วงสั้น ๆ</b> ซึ่งใช้ช่วยจำแนกสปีชีส์ได้ ${S.mu}</li></ul>`});
 
 SEC.push({id:"tb-patho",k:"a",t:"The granuloma is both the defence and the hiding place",mm:"TB granuloma",leg:[],
@@ -384,60 +384,60 @@ draw:()=>{let b="";
  /* the wall of lymphocytes */
  const lq=rng(13);
  for(let i=0;i<46;i++){const a=i/46*Math.PI*2+lq()*.08,r=112+lq()*22;
-  b+=`<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#3E6FB0 26%,var(--sb-surface));stroke:none" d="${mblob(cx+Math.cos(a)*r,cy+Math.sin(a)*r*.86,8,7.4,i*5+3,.12)}"/>`}
+ b+=`<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#3E6FB0 26%,var(--sb-surface));stroke:none" d="${mblob(cx+Math.cos(a)*r,cy+Math.sin(a)*r*.86,8,7.4,i*5+3,.12)}"/>`}
  /* epithelioid macrophages inside that */
  for(let i=0;i<18;i++){const a=i/18*Math.PI*2+.1,r=72+lq()*14;
-  b+=`<path class="m-body" style="fill:color-mix(in srgb,#C2185B 11%,var(--sb-surface));stroke:color-mix(in srgb,#C2185B 38%,var(--sb-surface));stroke-width:1.3" d="${mblob(cx+Math.cos(a)*r,cy+Math.sin(a)*r*.86,16,13,i*7+5,.14)}"/>`}
+ b+=`<path class="m-body" style="fill:color-mix(in srgb,#C2185B 11%,var(--sb-surface));stroke:color-mix(in srgb,#C2185B 38%,var(--sb-surface));stroke-width:1.3" d="${mblob(cx+Math.cos(a)*r,cy+Math.sin(a)*r*.86,16,13,i*7+5,.14)}"/>`}
  /* Langhans giant cells: fused, nuclei pushed to the rim */
  [[cx-56,cy-46],[cx+58,cy+36]].forEach(([x,y],i)=>{
-  b+=`<path class="m-body" style="fill:color-mix(in srgb,#C2185B 15%,var(--sb-surface));stroke:color-mix(in srgb,#C2185B 48%,var(--sb-surface));stroke-width:1.8" d="${mblob(x,y,28,22,i*9+11,.1)}"/>`;
-  for(let k=0;k<9;k++){const a=k/9*Math.PI+ (i?0:Math.PI);
-   b+=`<circle class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));stroke:none" cx="${(x+Math.cos(a)*19).toFixed(1)}" cy="${(y+Math.sin(a)*15).toFixed(1)}" r="3.4"/>`}});
+ b+=`<path class="m-body" style="fill:color-mix(in srgb,#C2185B 15%,var(--sb-surface));stroke:color-mix(in srgb,#C2185B 48%,var(--sb-surface));stroke-width:1.8" d="${mblob(x,y,28,22,i*9+11,.1)}"/>`;
+ for(let k=0;k<9;k++){const a=k/9*Math.PI+ (i?0:Math.PI);
+ b+=`<circle class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));stroke:none" cx="${(x+Math.cos(a)*19).toFixed(1)}" cy="${(y+Math.sin(a)*15).toFixed(1)}" r="3.4"/>`}});
  /* the caseous centre */
  b+=`<path style="fill:color-mix(in srgb,#8C6D46 30%,var(--sb-surface));stroke:none" d="${mblob(cx,cy,48,40,17,.14)}"/>`
-  +mgrainIn("tbc",mblob(cx,cy,48,40,17,.14),cx-48,cy-40,96,80,90,5,"m-gr2",.9);
+ +mgrainIn("tbc",mblob(cx,cy,48,40,17,.14),cx-48,cy-40,96,80,90,5,"m-gr2",.9);
  /* dormant bacilli in the centre */
  const aq=rng(19);
  for(let i=0;i<7;i++){const a=aq()*6.28,r=aq()*32,x=cx+Math.cos(a)*r,y=cy+Math.sin(a)*r;
-  b+=`<g transform="rotate(${(aq()*80-40).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:#C2334A;stroke-width:2.8;stroke-linecap:round" d="M${(x-8).toFixed(1)},${y.toFixed(1)} q4,-2 8,0 q4,2 8,0"/></g>`}
- b+=mlead2(cx,cy,400,66,["Caseous centre","เนื้อตายคล้ายเนยแข็ง · เชื้ออยู่ในนี้ได้เป็นปี"],{a:"start"})
-  +mlead2(cx-56,cy-46,400,118,["Langhans giant cell","macrophage หลอมรวมกัน นิวเคลียสอยู่ขอบ"],{a:"start"})
-  +mlead2(cx+78,cy-56,400,170,["Epithelioid macrophages","macrophage ที่ถูกกระตุ้นจนเปลี่ยนรูป"],{a:"start"})
-  +mlead2(cx+118,cy+72,400,222,["Lymphocyte cuff","CD4, CD8 และ NK T cell ล้อมอยู่ชั้นนอก"],{a:"start"})
-  +mlead2(cx-130,cy+84,400,274,["Fibrin capsule","ถ้าเชื้อมาก ผนังหนาจนกัน macrophage ของเราเอง"],{a:"start"});
+ b+=`<g transform="rotate(${(aq()*80-40).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:#C2334A;stroke-width:2.8;stroke-linecap:round" d="M${(x-8).toFixed(1)},${y.toFixed(1)} q4,-2 8,0 q4,2 8,0"/></g>`}
+ b+=mlead2(cx,cy,400,66,["Caseous centre","necrosis คล้ายเนยแข็ง · เชื้ออยู่ในนี้ได้เป็นปี"],{a:"start"})
+ +mlead2(cx-56,cy-46,400,118,["Langhans giant cell","macrophage หลอมรวมกัน นิวเคลียสอยู่ขอบ"],{a:"start"})
+ +mlead2(cx+78,cy-56,400,170,["Epithelioid macrophages","macrophage ที่ถูกกระตุ้นจนเปลี่ยนรูป"],{a:"start"})
+ +mlead2(cx+118,cy+72,400,222,["Lymphocyte cuff","CD4, CD8 และ NK T cell ล้อมอยู่ชั้นนอก"],{a:"start"})
+ +mlead2(cx-130,cy+84,400,274,["Fibrin capsule","ถ้าเชื้อมาก ผนังหนาจนกัน macrophage ของเราเอง"],{a:"start"});
  /* the cytokine chain that builds it */
  b+=`<path class="m-sep" d="M24,348 L616,348"/>`
-  +mL(24,374,"How it is built",{a:"start",c:"bh"});
+ +mL(24,374,"How it is built",{a:"start",c:"bh"});
  const chain=[["Alveolar macrophage","กลืนเชื้อเข้าไป แต่ฆ่าไม่ได้"],
-  ["TH1 differentiation","T cell และ NK cell ถูกเรียกเข้ามา"],
-  ["IFN-γ","macrophage ถูกกระตุ้น · phagosome กับ lysosome รวมตัวกันได้ จึงฆ่าเชื้อในเซลล์ได้"],
-  ["TNF-α","สร้าง nitric oxide และอนุมูลไนโตรเจน · ฆ่าเชื้อในเซลล์ได้ดีขึ้น"]];
+ ["TH1 differentiation","T cell และ NK cell ถูกเรียกเข้ามา"],
+ ["IFN-γ","macrophage ถูกกระตุ้น · phagosome กับ lysosome รวมตัวกันได้ จึงฆ่าเชื้อในเซลล์ได้"],
+ ["TNF-α","สร้าง nitric oxide และอนุมูลไนโตรเจน · ฆ่าเชื้อในเซลล์ได้ดีขึ้น"]];
  chain.forEach(([n,d],i)=>{const y=404+i*46;
-  b+=mL(24,y,n,{a:"start",c:"bh"})+mL(24,y+20,d,{a:"start",c:"s m"});
-  if(i<3)b+=`<path class="m-cyc" marker-end="url(#ah2)" d="M${30},${y+26} L${30},${y+34}"/>`});
+ b+=mL(24,y,n,{a:"start",c:"bh"})+mL(24,y+20,d,{a:"start",c:"s m"});
+ if(i<3)b+=`<path class="m-cyc" marker-end="url(#ah2)" d="M${30},${y+26} L${30},${y+34}"/>`});
  b+=mL(24,608,"ผู้ที่สร้าง IFN-γ หรือ TNF-α ได้น้อย หรือมีความผิดปกติของ receptor ของสองตัวนี้",{a:"start",c:"bad"})
-  +mL(24,628,"เสี่ยงต่อการติดเชื้อ mycobacteria ที่รุนแรงและลุกลาม — รวมถึงผู้ที่ได้ยาต้าน TNF-α",{a:"start",c:"bad"});
+ +mL(24,628,"เสี่ยงต่อ infection mycobacteria ที่รุนแรงและลุกลาม — รวมถึงผู้ที่ได้ยาต้าน TNF-α",{a:"start",c:"bad"});
  return svg(b,"0 0 640 656")},
 notes:()=>`<h3>The cytokine chain</h3><ul>
  <li>เชื้อถูก <b>alveolar macrophage</b> กลืนเข้าไป แต่ฆ่าไม่ได้ในตอนแรก ${S.mu}</li>
  <li>T cell และ <b>natural killer cell</b> ถูกเรียกเข้ามาที่บริเวณนั้น ทำให้ T cell แปรสภาพเป็น <b>TH1</b> แล้วหลั่ง <b>interferon-γ</b> ${S.mu}</li>
  <li>เมื่อมี IFN-γ อยู่ macrophage ที่ติดเชื้อจะ<b>ถูกกระตุ้น ทำให้ phagosome กับ lysosome รวมตัวกันได้</b> และฆ่าเชื้อในเซลล์ได้ ${S.mu}</li>
  <li><b>TNF-α</b> กระตุ้นการสร้าง nitric oxide และอนุมูลไนโตรเจนที่เกี่ยวข้อง ซึ่งเพิ่มการฆ่าเชื้อในเซลล์อีกชั้น ${S.mu}</li>
- <li>ผู้ที่<b>สร้าง IFN-γ หรือ TNF-α ได้น้อย หรือมีความผิดปกติของ receptor ของสองตัวนี้ เสี่ยงต่อการติดเชื้อ mycobacteria ที่รุนแรงและลุกลาม</b> ${S.mu}</li></ul>
+ <li>ผู้ที่<b>สร้าง IFN-γ หรือ TNF-α ได้น้อย หรือมีความผิดปกติของ receptor ของสองตัวนี้ เสี่ยงต่อ infection mycobacteria ที่รุนแรงและลุกลาม</b> ${S.mu}</li></ul>
  <h3>What the granuloma is made of</h3><ul>
- <li>แกนกลางเป็น<b>ก้อนเนื้อตาย</b>ที่มี alveolar macrophage, <b>epithelioid cell</b> และ <b>Langhans giant cell</b> ซึ่งคือ epithelioid cell ที่หลอมรวมกัน โดยมีเชื้ออยู่ข้างใน ${S.mu}</li>
+ <li>แกนกลางเป็น<b>ก้อน necrosis</b>ที่มี alveolar macrophage, <b>epithelioid cell</b> และ <b>Langhans giant cell</b> ซึ่งคือ epithelioid cell ที่หลอมรวมกัน โดยมีเชื้ออยู่ข้างใน ${S.mu}</li>
  <li>รอบแกนนั้นเป็น<b>กำแพงหนาของ macrophage กับ CD4, CD8 และ NK T cell</b> ${S.mu}</li>
  <li>โครงสร้างนี้เรียกว่า <b>granuloma</b> และมันกันไม่ให้เชื้อแพร่ต่อ ${S.mu}</li></ul>
  <h3>Size decides the outcome</h3><ul>
- <li>ถ้าตอนที่ macrophage ถูกกระตุ้นมี<b>เชื้ออยู่น้อย</b> granuloma จะเล็กและเชื้อถูกทำลายโดยเนื้อเยื่อเสียหายน้อย ${S.mu}</li>
- <li>แต่ถ้ามี<b>เชื้ออยู่มาก</b> granuloma ที่เป็นเนื้อตายขนาดใหญ่หรือ <b>caseous granuloma</b> จะถูกห่อด้วย fibrin ซึ่ง<b>กันเชื้อไว้จากการถูก macrophage ฆ่าอย่างได้ผล</b> ${S.mu}</li>
- <li>เชื้ออยู่ในภาวะสงบในระยะนี้ได้ หรือ<b>ถูกปลุกให้กลับมาทำงานอีกหลายปีให้หลัง</b>เมื่อภูมิคุ้มกันของผู้ป่วยตก ${S.mu}</li>
+ <li>ถ้าตอนที่ macrophage ถูกกระตุ้นมี<b>เชื้ออยู่น้อย</b> granuloma จะเล็กและเชื้อถูกทำลายโดย tissue เสียหายน้อย ${S.mu}</li>
+ <li>แต่ถ้ามี<b>เชื้ออยู่มาก</b> granuloma ที่เป็น necrosis ขนาดใหญ่หรือ <b>caseous granuloma</b> จะถูกห่อด้วย fibrin ซึ่ง<b>กันเชื้อไว้จากการถูก macrophage ฆ่าอย่างได้ผล</b> ${S.mu}</li>
+ <li>เชื้ออยู่ในภาวะสงบในระยะนี้ได้ หรือ<b>ถูกปลุกให้กลับมาทำงานอีกหลายปีให้หลัง</b>เมื่อ immunity ของผู้ป่วยตก ${S.mu}</li>
  <li>นี่คือเหตุผลที่โครงสร้างเดียวกันเป็นทั้งเกราะป้องกันและที่หลบซ่อน ${S.mu}</li></ul>
  <h3>How it spreads</h3><ul>
  <li><b>คนเป็นแหล่งโรคตามธรรมชาติเพียงแหล่งเดียว</b> ${S.mu}</li>
- <li>แพร่ด้วยการสูดละอองติดเชื้อจากการสัมผัสใกล้ชิด · ละอองใหญ่ถูกดักที่เยื่อเมือกและถูกกวาดออกด้วย cilia แต่<b>ละอองเล็กที่มีเชื้อเพียง 1–3 ตัวลงถึงถุงลมได้</b>และก่อการติดเชื้อ ${S.mu}</li>
+ <li>แพร่ด้วยการสูดละอองติดเชื้อจากการสัมผัสใกล้ชิด · ละอองใหญ่ถูกดักที่ mucosa และถูกกวาดออกด้วย cilia แต่<b>ละอองเล็กที่มีเชื้อเพียง 1–3 ตัวลงถึงถุงลมได้</b>และก่อ infection ${S.mu}</li>
  <li>องค์การอนามัยโลกประเมินว่า<b>หนึ่งในสี่ของประชากรโลกติดเชื้อ <i>M. tuberculosis</i></b> ${S.mu}</li>
- <li>ปี 2016 มีผู้ป่วยรายใหม่ <b>10.4 ล้านราย และเสียชีวิต 1.6 ล้านราย</b> · มี 460,000 รายที่เป็นสายพันธุ์ดื้อยาหลายขนาน ${S.mu}</li>
+ <li>ปี 2016 มีผู้ป่วยรายใหม่ <b>10.4 ล้านราย และเสียชีวิต 1.6 ล้านราย</b> · มี 460,000 รายที่เป็น strain ดื้อยาหลายขนาน ${S.mu}</li>
  <li>พื้นที่ที่มีอุบัติการณ์สูงสุดคืออินเดีย ปากีสถาน แอฟริกาใต้สะฮารา แอฟริกาใต้ ยุโรปตะวันออก และจีน ${S.mu}</li></ul>`});
 
 SEC.push({id:"tb-dx",k:"a",t:"Proving tuberculosis, and treating it",mm:"TB diagnosis",leg:[],
@@ -446,178 +446,595 @@ draw:()=>{let b="";
  /* exposure tests on the left, disease tests on the right */
  b+=`<path class="m-sep" d="M320,56 L320,300"/>`;
  b+=mL(24,82,"Has the patient been exposed?",{a:"start",c:"bh"})
-  +mL(348,82,"Is there disease now?",{a:"start",c:"bh"});
+ +mL(348,82,"Is there disease now?",{a:"start",c:"bh"});
  /* tuberculin skin test: an induration measured across */
  const sx=120,sy=160;
  b+=`<path class="m-corn" d="M${sx-96},${sy+22} L${sx+96},${sy+22} L${sx+96},${sy+44} L${sx-96},${sy+44} Z"/>`
-  +`<path class="m-pus" style="opacity:.55" d="${mblob(sx,sy+18,42,16,7,.14)}"/>`
-  +`<path class="m-face" d="M${sx-42},${sy-8} L${sx+42},${sy-8}"/>`
-  +`<path class="m-face" d="M${sx-42},${sy-14} L${sx-42},${sy-2} M${sx+42},${sy-14} L${sx+42},${sy-2}"/>`
-  +mL(sx,sy-20,"วัดเส้นผ่านศูนย์กลางของตุ่มแข็ง",{c:"s m"});
+ +`<path class="m-pus" style="opacity:.55" d="${mblob(sx,sy+18,42,16,7,.14)}"/>`
+ +`<path class="m-face" d="M${sx-42},${sy-8} L${sx+42},${sy-8}"/>`
+ +`<path class="m-face" d="M${sx-42},${sy-14} L${sx-42},${sy-2} M${sx+42},${sy-14} L${sx+42},${sy-2}"/>`
+ +mL(sx,sy-20,"วัดเส้นผ่านศูนย์กลางของตุ่มแข็ง",{c:"s m"});
  b+=mL(24,sy+74,"Tuberculin skin test",{a:"start",c:"bh"})
-  +mL(24,sy+94,"ฉีด purified protein derivative 5 tuberculin unit เข้าในผิวหนัง",{a:"start",c:"s m"})
-  +mL(24,sy+112,"อ่านผลเป็นขนาดของตุ่มแข็ง ไม่ใช่ขนาดของรอยแดง",{a:"start",c:"s m"});
+ +mL(24,sy+94,"ฉีด purified protein derivative 5 tuberculin unit เข้าใน skin",{a:"start",c:"s m"})
+ +mL(24,sy+112,"อ่านผลเป็นขนาดของตุ่มแข็ง ไม่ใช่ขนาดของรอยแดง",{a:"start",c:"s m"});
  b+=mL(348,122,"Acid-fast smear",{a:"start",c:"bh"})
-  +mL(348,142,"เร็วที่สุด แต่ต้องมีเชื้อจำนวนมากจึงจะเห็น",{a:"start",c:"s m"})
-  +mL(348,174,"Culture",{a:"start",c:"bh"})
-  +mL(348,194,"ชี้ขาดและใช้ทดสอบความไวต่อยาได้ แต่ใช้เวลาหลายสัปดาห์",{a:"start",c:"s m"})
-  +mL(348,226,"Nucleic acid amplification",{a:"start",c:"bh"})
-  +mL(348,246,"เร็วและจำเพาะ · บางชุดตรวจบอกการดื้อ rifampin ได้ด้วย",{a:"start",c:"s m"});
+ +mL(348,142,"เร็วที่สุด แต่ต้องมีเชื้อจำนวนมากจึงจะเห็น",{a:"start",c:"s m"})
+ +mL(348,174,"Culture",{a:"start",c:"bh"})
+ +mL(348,194,"ชี้ขาดและใช้ทดสอบความไวต่อยาได้ แต่ใช้เวลาหลายสัปดาห์",{a:"start",c:"s m"})
+ +mL(348,226,"Nucleic acid amplification",{a:"start",c:"bh"})
+ +mL(348,246,"เร็วและจำเพาะ · บางชุดตรวจบอกการดื้อ rifampin ได้ด้วย",{a:"start",c:"s m"});
  /* the two traps of the skin test */
  b+=`<path class="m-sep" d="M24,318 L616,318"/>`
-  +mL(24,344,"Two traps in the skin test",{a:"start",c:"bad"})
-  +mL(24,368,"ผู้ป่วยที่เป็นวัณโรคอยู่จริงอาจไม่ตอบสนองเลย จึงต้องมี control เสมอ",{a:"start",c:"s m"})
-  +mL(24,388,"ผู้ที่เคยได้วัคซีนอาจให้ผลบวกทั้งที่ไม่ได้ติดเชื้อ",{a:"start",c:"s m"})
-  +mL(24,416,"Interferon-γ release assay ไม่ถูกรบกวนด้วยวัคซีน จึงใช้แทนได้ในกลุ่มนั้น",{a:"start",c:"bh"});
+ +mL(24,344,"Two traps in the skin test",{a:"start",c:"bad"})
+ +mL(24,368,"ผู้ป่วยที่เป็นวัณโรคอยู่จริงอาจไม่ตอบสนองเลย จึงต้องมี control เสมอ",{a:"start",c:"s m"})
+ +mL(24,388,"ผู้ที่เคยได้ vaccine อาจให้ผลบวกทั้งที่ไม่ได้ติดเชื้อ",{a:"start",c:"s m"})
+ +mL(24,416,"Interferon-γ release assay ไม่ถูกรบกวนด้วย vaccine จึงใช้แทนได้ในกลุ่มนั้น",{a:"start",c:"bh"});
  /* treatment */
  b+=`<path class="m-sep" d="M24,446 L616,446"/>`
-  +mL(24,472,"Treatment",{a:"start",c:"bh"})
-  +mL(24,496,"วัณโรค: isoniazid, rifampin, pyrazinamide และ ethambutol 2 เดือน",{a:"start",c:"s m"})
-  +mL(24,516,"แล้วต่อด้วย isoniazid กับ rifampin อีก 4–6 เดือน",{a:"start",c:"s m"})
-  +mL(24,544,"การติดเชื้อแฝง: isoniazid กับ rifampin 4 เดือน · ไม่ต้องใช้ pyrazinamide",{a:"start",c:"s m"})
-  +mL(24,572,"ที่ต้องใช้หลายตัวและนานขนาดนี้ เพราะเชื้อแบ่งตัวช้าและซ่อนอยู่ในก้อน granuloma",{a:"start",c:"bad"});
+ +mL(24,472,"Treatment",{a:"start",c:"bh"})
+ +mL(24,496,"วัณโรค: isoniazid, rifampin, pyrazinamide และ ethambutol 2 เดือน",{a:"start",c:"s m"})
+ +mL(24,516,"แล้วต่อด้วย isoniazid กับ rifampin อีก 4–6 เดือน",{a:"start",c:"s m"})
+ +mL(24,544,"infection แฝง: isoniazid กับ rifampin 4 เดือน · ไม่ต้องใช้ pyrazinamide",{a:"start",c:"s m"})
+ +mL(24,572,"ที่ต้องใช้หลายตัวและนานขนาดนี้ เพราะเชื้อแบ่งตัวช้าและซ่อนอยู่ในก้อน granuloma",{a:"start",c:"bad"});
  return svg(b,"0 0 640 598")},
 notes:()=>`<h3>The skin test answers the wrong question well</h3><ul>
  <li>การตรวจดั้งเดิมที่ใช้ประเมินการสัมผัสเชื้อคือ <b>tuberculin skin test</b> ${S.mu}</li>
- <li>ฉีด <b>purified protein derivative 5 tuberculin unit</b> เข้าในชั้นผิวหนัง แล้วอ่านผลเป็น<b>ขนาดของตุ่มแข็ง</b> ${S.mu}</li>
+ <li>ฉีด <b>purified protein derivative 5 tuberculin unit</b> เข้าในชั้น skin แล้วอ่านผลเป็น<b>ขนาดของตุ่มแข็ง</b> ${S.mu}</li>
  <li>กับดักที่หนึ่ง: <b>ผู้ป่วยที่เป็นวัณโรคอยู่จริงอาจไม่ตอบสนองต่อการทดสอบ</b> จึงต้องใช้ control ควบคู่เสมอ ${S.mu}</li>
- <li>กับดักที่สอง: <b>ผู้ที่มาจากประเทศที่ฉีดวัคซีนเป็นกิจวัตรอาจให้ผลบวก</b>ทั้งที่ไม่ได้ติดเชื้อ ${S.mu}</li>
- <li><b>Interferon-γ release assay</b> ไม่ถูกรบกวนด้วยวัคซีน จึงมีประโยชน์ในกลุ่มนั้นโดยเฉพาะ ${S.mu}</li>
- <li>สิ่งสำคัญที่สุดคือทั้งสองการตรวจบอกว่า<b>ระบบภูมิคุ้มกันเคยเจอเชื้อแล้ว</b> ไม่ได้บอกว่ามีโรคอยู่ในขณะนี้ ${S.mu}</li></ul>
+ <li>กับดักที่สอง: <b>ผู้ที่มาจากประเทศที่ฉีด vaccine เป็นกิจวัตรอาจให้ผลบวก</b>ทั้งที่ไม่ได้ติดเชื้อ ${S.mu}</li>
+ <li><b>Interferon-γ release assay</b> ไม่ถูกรบกวนด้วย vaccine จึงมีประโยชน์ในกลุ่มนั้นโดยเฉพาะ ${S.mu}</li>
+ <li>สิ่งสำคัญที่สุดคือทั้งสองการตรวจบอกว่า<b>ระบบ immunity เคยเจอเชื้อแล้ว</b> ไม่ได้บอกว่ามีโรคอยู่ในขณะนี้ ${S.mu}</li></ul>
  <h3>Proving disease</h3><ul>
  <li><b>Acid-fast smear</b> ให้คำตอบเร็วที่สุดและบอกว่าผู้ป่วยแพร่เชื้อได้มากแค่ไหน แต่ต้องมีเชื้อจำนวนมากจึงจะเห็น ${S.mu}</li>
- <li><b>การเพาะเชื้อ</b>ยังเป็นการตรวจที่ชี้ขาด และจำเป็นสำหรับการทดสอบความไวต่อยา แต่ใช้เวลาหลายสัปดาห์เพราะเชื้อโตช้า ${S.mu}</li>
+ <li><b>การ culture</b>ยังเป็นการตรวจที่ชี้ขาด และจำเป็นสำหรับการทดสอบความไวต่อยา แต่ใช้เวลาหลายสัปดาห์เพราะเชื้อโตช้า ${S.mu}</li>
  <li><b>Nucleic acid amplification test</b> เร็วและจำเพาะ และบางชุดตรวจบอกการดื้อ rifampin ได้พร้อมกัน ${S.mu}</li></ul>
  <h3>Why the course is so long</h3><ul>
  <li>วัณโรครักษาด้วย <b>isoniazid, rifampin, pyrazinamide และ ethambutol เป็นเวลา 2 เดือน</b> แล้วตามด้วย isoniazid กับ rifampin หรือยาทางเลือกอื่นอีก <b>4–6 เดือน</b> ${S.mu}</li>
- <li>การติดเชื้อแฝงรักษาด้วย <b>isoniazid กับ rifampin 4 เดือน โดยไม่ต้องใช้ pyrazinamide</b> ${S.mu}</li>
- <li>เหตุผลที่ต้องใช้ยาหลายตัวพร้อมกันคือ<b>กันการเกิดสายพันธุ์ดื้อยาระหว่างการรักษา</b> และเหตุผลที่ต้องนานคือเชื้อแบ่งตัวช้าและอยู่ในก้อน granuloma ที่ยาเข้าถึงได้ยาก ${S.mu}</li></ul>`});
+ <li>infection แฝงรักษาด้วย <b>isoniazid กับ rifampin 4 เดือน โดยไม่ต้องใช้ pyrazinamide</b> ${S.mu}</li>
+ <li>เหตุผลที่ต้องใช้ยาหลายตัวพร้อมกันคือ<b>กันการเกิด strain ดื้อยาระหว่างการรักษา</b> และเหตุผลที่ต้องนานคือเชื้อแบ่งตัวช้าและอยู่ในก้อน granuloma ที่ยาเข้าถึงได้ยาก ${S.mu}</li></ul>
+ <h3>Immunodiagnosis: the skin test and what replaced it</h3><ul>
+ <li><b>Tuberculin skin test</b> วัดการตอบสนองต่อการสัมผัสเชื้อ · <b>ฉีด purified protein derivative 5 tuberculin unit เข้าชั้น intradermal แล้ววัดเส้นผ่านศูนย์กลางของ induration ที่ 48 ชั่วโมง</b> ${S.mu}</li>
+ <li><b>ปฏิกิริยาบวกเกิดขึ้น 3 ถึง 4 สัปดาห์หลังสัมผัสเชื้อ</b> ${S.mu}</li>
+ <li>ในผู้ป่วยส่วนใหญ่ หลักฐานเดียวของ infection คือ <b>skin test ที่บวกไปตลอดชีวิต และ calcification ของ granuloma ที่เห็นในภาพรังสี</b> ${S.mu}</li>
+ <li>สองสาเหตุที่ทำให้ผลใช้ไม่ได้: <b>ผู้ป่วยที่ anergic ไม่ตอบสนอง โดยเฉพาะผู้ติดเชื้อ human immunodeficiency virus จึงต้องใช้ control antigen ควบไปด้วย</b> ${S.mu}</li>
+ <li>และ<b>ผู้ที่มาจากประเทศที่ฉีด bacillus Calmette-Guérin กันทั่วไปจะให้ผลบวก จึงการตรวจนี้ไม่ช่วยอะไร</b> ${S.mu}</li>
+ <li><b>IFN-γ release assay</b> เป็นทางเลือก — <b>ใช้ immunoassay วัด IFN-γ ที่ sensitized T cell สร้างเมื่อถูกกระตุ้นด้วย antigen ของเชื้อ</b> ${S.mu}</li>
+ <li>รุ่นแรกใช้ purified protein derivative แต่<b>รุ่นที่สองใช้ antigen ที่จำเพาะกว่าคือ early secreted antigenic target-6 และ culture filtrate protein-10</b> ${S.mu}</li>
+ <li><b>รุ่นที่สองแยก infection <i>M. tuberculosis</i> ออกจากการได้ bacillus Calmette-Guérin ได้</b> และทั้งไวและจำเพาะสูง ${S.mu}</li></ul>
+ <h3>Three acid-fast stains, and what a positive one means</h3>
+ ${tbl(["Method","Dye","Note"],[
+ ["Ziehl-Neelsen","carbolfuchsin — hot acid-fast stain","อ่านด้วย light microscope"],
+ ["Kinyoun","carbolfuchsin — cold acid-fast stain","อ่านด้วย light microscope"],
+ ["Truant fluorochrome","auramine-rhodamine","ไวที่สุด — สแกนหาบริเวณที่เรืองแสงที่กำลังขยายต่ำได้เร็ว แล้วยืนยันที่กำลังขยายสูง"]])}
+ <ul><li>ทุกวิธีย้อมสี แล้ว<b>ล้างสีด้วย acid-alcohol และย้อมสีทับ</b> ${S.mu}</li>
+ <li><b>การเห็น acid-fast bacteria ใต้กล้องเป็นวิธีที่เร็วที่สุดในการยืนยันโรค</b> ${S.mu}</li>
+ <li><b>พบ acid-fast bacteria ใต้กล้องในราวครึ่งหนึ่งของ specimen ที่เพาะขึ้น</b> แต่ตัวเลขนี้<b>แปรผันมหาศาลตามความชำนาญของผู้อ่าน</b> ${S.mu}</li>
+ <li>ความไวสูงในสองกรณี — <b>specimen จาก respiratory tract โดยเฉพาะจากผู้ที่มี cavitation ในภาพรังสี</b> และ<b>specimen ที่เพาะได้เชื้อจำนวนมาก</b> ${S.mu}</li>
+ <li><b>acid-fast stain ที่บวกสอดคล้องกับการแพร่เชื้อที่สูงกว่า</b> ${S.mu}</li>
+ <li><b>ความจำเพาะเกิน 95% เมื่อทำอย่างระมัดระวัง</b> แต่<b>การตรวจนี้ทำและแปลผลยากในประเทศที่ทรัพยากรจำกัด ซึ่งเป็นที่ที่ tuberculosis แพร่หลาย</b> ${S.mu}</li></ul>
+ <h3>Nucleic acid tests have taken over</h3><ul>
+ <li><b>Nucleic acid amplification test เป็นการตรวจที่เลือกใช้สำหรับ tuberculosis แล้ว</b> ${S.mu}</li>
+ <li>แม้ราคาสูง แต่<b>องค์กรที่ไม่ใช่รัฐอุดหนุนราคาอย่างหนัก เพื่อนำการตรวจที่ไวและเร็วไปยังประเทศที่ต้องการที่สุด ซึ่งการย้อมไม่แม่นและการ culture ทำไม่ได้จริง</b> ${S.mu}</li>
+ <li><b>บางชุดตรวจรวมการตรวจการดื้อ rifampin และ isoniazid ไว้ด้วย จึงทั้งตรวจเชื้อและชี้แนวทางการให้ยาในคราวเดียว</b> ${S.mu}</li>
+ <li>ทิศทางต่อไปคือ <b>whole genome sequencing เพื่อทั้งตรวจเชื้อและตรวจยีนดื้อยาอย่างครอบคลุม</b> ${S.mu}</li>
+ <li>เป้าหมายคือ<b>แทนที่ความจำเป็นในการ culture เพื่อทดสอบความไวต่อยา</b> · ปัจจุบันใช้เพื่อ<b>เลี่ยงยาที่ตรวจพบการดื้อ และเลือกยาแนวแรกที่ไม่พบยีนดื้อ</b> ${S.mu}</li>
+ <li><b>โรคจาก nontuberculous mycobacteria ตรวจไม่พบด้วยชุดตรวจเหล่านี้</b> จึงต้องใช้การตรวจเสริมในประเทศที่พบ nontuberculous mycobacteria บ่อย ${S.mu}</li></ul>
+ <h3>Culture: decontamination, then weeks of waiting</h3><ul>
+ <li>เชื้อที่ก่อโรคที่ lung โดยเฉพาะเมื่อมี cavitation <b>มีจำนวนมากใน respiratory secretion — 10⁸ bacilli ต่อมิลลิลิตรหรือมากกว่า</b> ${S.mu}</li>
+ <li><b>การเก็บ specimen ตอนเช้าสามวันติดกันทำให้ได้เชื้อแน่นอนแทบทุกราย</b> ${S.mu}</li>
+ <li>แต่<b>การแยกเชื้อจากตำแหน่งอื่นในผู้ป่วยที่โรคกระจายทำได้ยากกว่า</b> เช่น genitourinary tract, tissue และ cerebrospinal fluid — <b>ต้องเก็บ specimen เพิ่มและต้องใช้ปริมาณมาก</b> ${S.mu}</li>
+ <li>ปัญหาของการเพาะ: <b>เชื้อส่วนใหญ่โตช้าและถูกกลบด้วยแบคทีเรียที่โตเร็วซึ่งอยู่ในคนเป็นปกติ</b> ${S.mu}</li>
+ <li>จึงต้อง<b>ปรับสภาพ specimen อย่าง sputum ด้วย sodium hydroxide 2% เพื่อกำจัดเชื้อที่จะรบกวนผล</b> ${S.mu}</li>
+ <li>เหตุที่ทำได้: <b>mycobacteria ทนด่างระยะสั้นได้ ขณะที่แบคทีเรียที่โตเร็วตาย</b> ${S.mu}</li>
+ <li>แต่<b>การปรับสภาพนานเกินไปฆ่า mycobacteria ด้วย จึงไม่ทำกับ specimen ที่ปกติปลอดเชื้อ หรือเมื่อคาดว่าจะมี mycobacteria น้อย</b> ${S.mu}</li>
+ <li><b>อาหารแบบไข่อย่าง Löwenstein-Jensen และแบบวุ้นอย่าง Middlebrook ใช้เวลา 4 สัปดาห์หรือกว่านั้น</b> ${S.mu}</li>
+ <li><b>น้ำเลี้ยงสูตรพิเศษย่นเวลาลงได้ราว 2 สัปดาห์</b> และ<b>การที่เชื้อโตเร็วในน้ำเลี้ยงก็ถูกใช้ทำการทดสอบความไวต่อยาอย่างรวดเร็วด้วย</b> ${S.mu}</li>
+ <li>การระบุชนิด: <b>biochemical test เคยเป็นมาตรฐาน แต่ผลใช้เวลาอย่างน้อย 3 สัปดาห์และแยกหลายสปีชีส์ไม่ได้</b> ${S.mu}</li>
+ <li>ปัจจุบันใช้ <b>molecular probe จำเพาะสปีชีส์, การเพิ่มจำนวนยีนเป้าหมายอย่างยีน 16S rRNA กับ SecA และ mass spectrometry</b> ${S.mu}</li>
+ <li>และ<b>mass spectrometry น่าจะกลายเป็นการตรวจที่เลือกใช้ เพราะได้ผลในเวลาน้อยกว่า 1 ชั่วโมง, ราคาต่ำ และระบุ acid-fast organism ได้แทบทุกสปีชีส์</b> ${S.mu}</li></ul>
+ <h3>Treatment, and the two kinds of resistance</h3><ul>
+ <li>เหตุที่การรักษาต่างจาก infection แบคทีเรียอื่น: <b>slow-growing mycobacteria ดื้อ antibiotic เกือบทุกตัวที่ใช้รักษาเชื้ออื่น</b> ${S.mu}</li>
+ <li>และ<b>ผู้ป่วยต้องกินยาหลายตัวเป็นเวลานาน — อย่างน้อย 6 ถึง 9 เดือน ไม่เช่นนั้นจะเกิด strain ดื้อยา</b> ${S.mu}</li>
+ <li>สูตรส่วนใหญ่เริ่มด้วย <b>isoniazid, ethambutol, pyrazinamide และ rifampin 2 เดือน แล้วตามด้วย isoniazid กับ rifampin อีก 4 ถึง 6 เดือน</b> หรือยาร่วมทางเลือกอื่น ${S.mu}</li>
+ <li>การปรับสูตร<b>กำหนดโดยความไวต่อยาของเชื้อที่แยกได้และกลุ่มผู้ป่วย</b> ${S.mu}</li>
+ <li><b>Multidrug-resistant tuberculosis นิยามว่าดื้อ isoniazid และ rifampin เป็นอย่างน้อย</b> · <b>การระบาดครั้งแรกพบในปี 1990 ในผู้ป่วย acquired immunodeficiency syndrome และคนไร้บ้านใน New York City และ Miami</b> ${S.mu}</li>
+ <li>แม้ในสหรัฐอเมริกาจะลดลง แต่<b>ความชุกเพิ่มขึ้นอย่างมากในประเทศที่ทรัพยากรจำกัด</b> ${S.mu}</li>
+ <li><b>Extensively drug-resistant tuberculosis</b> นิยามว่าเป็น <b>multidrug-resistant ที่ดื้อ fluoroquinolone และดื้อยาแนวที่สองอย่างน้อยหนึ่งตัว</b> เช่น kanamycin, amikacin หรือ capreomycin — <b>และอาจรักษาไม่ได้เลย</b> ${S.mu}</li>
+ <li>Chemoprophylaxis สำหรับผู้สัมผัส: <b>isoniazid ทุกวันหรือสัปดาห์ละสองครั้งนาน 6 ถึง 9 เดือน หรือ rifampin ทุกวันนาน 4 เดือน</b> ${S.mu}</li>
+ <li>ผู้ที่สัมผัสเชื้อดื้อยาควรได้ <b>pyrazinamide ร่วมกับ ethambutol หรือ levofloxacin นาน 6 ถึง 12 เดือน</b> ${S.mu}</li>
+ <li>Immunoprophylaxis: <b>bacillus Calmette-Guérin คือ <i>M. bovis</i> ที่ลดความรุนแรงลง</b> และใช้กันในประเทศที่โรคเป็น endemic disease ${S.mu}</li>
+ <li>มัน<b>ลดอุบัติการณ์ได้มากถ้าให้ตอนอายุน้อย และได้ผลน้อยกว่าในผู้ใหญ่</b> ${S.mu}</li>
+ <li><b>ใช้ในผู้ที่ immunity บกพร่องไม่ได้</b> จึง<b>ไม่น่าจะมีประโยชน์ในประเทศที่มีความชุกของ human immunodeficiency virus สูง หรือในการคุมการแพร่ของเชื้อดื้อยา</b> ${S.mu}</li>
+ <li><b>ผู้ที่ได้ vaccine ทุกคนจะมี skin test บวกและอาจคงอยู่นาน</b> ${S.mu}</li>
+ <li>แต่<b>ปฏิกิริยานั้นมักไม่แรง จึง induration ที่มากกว่า 20 มม. ยังมีความหมายว่าเพิ่งสัมผัสเชื้อ</b> ${S.mu}</li>
+ <li>และ<b>IFN-γ release assay รุ่นที่สองไม่ถูกรบกวนด้วย vaccine นี้ จึงใช้คัดกรองประชากรกลุ่มนี้ได้</b> ${S.mu}</li>
+ <li><b>ประชากรโลกหนึ่งในสี่ติดเชื้อ <i>M. tuberculosis</i></b> ${S.mu}</li>
+ <li>สิ่งที่ทำได้คือ<b>การควบคุมด้วยการเฝ้าระวังเชิงรุก, การให้ยาทั้งเพื่อป้องกันและเพื่อรักษา และการติดตามผู้ป่วยอย่างระมัดระวัง</b> ${S.mu}</li></ul>
+ <h3>The numbers</h3><ul>
+ <li>WHO ประมาณว่า<b>ประชากรโลกหนึ่งในสี่ติดเชื้อ และ 460,000 รายเกิดโรคจาก strain ดื้อยาหลายขนาน</b> ${S.mu}</li>
+ <li><b>ปี 2016 มีผู้ป่วยใหม่ 10.4 ล้านรายและตาย 1.6 ล้านราย</b> · <b>ทั้งที่มีความพยายามร่วมกันในการกำจัด มันยังเป็นสาเหตุการตายอันดับหนึ่งของโลก</b> ${S.mu}</li>
+ <li>ภูมิภาคที่อุบัติการณ์สูงสุด: <b>India, Pakistan, sub-Saharan Africa, South Africa, Eastern Europe และ China</b> ${S.mu}</li>
+ <li>สหรัฐอเมริกา<b>อุบัติการณ์ลดลงเรื่อย ๆ ตั้งแต่ปี 1992 — 9272 รายในปี 2016 คือ 2.9 ต่อแสนประชากร โดยเกือบ 70% อยู่ในผู้ที่เกิดนอกประเทศ</b> ${S.mu}</li>
+ <li>กลุ่มที่เสี่ยงเพิ่มขึ้น: <b>คนไร้บ้าน, ผู้ใช้ยาและสุรา, ผู้ต้องขัง และผู้ติดเชื้อ human immunodeficiency virus</b> ${S.mu}</li>
+ <li>และเหตุที่เป็นปัญหาสาธารณสุข: <b>เพราะกำจัดโรคในผู้ป่วยกลุ่มนี้ยาก การแพร่ไปประชากรอื่นรวมถึงบุคลากรสาธารณสุขจึงเป็นปัญหาใหญ่</b> โดยเฉพาะกับเชื้อดื้อยา เพราะ<b>ผู้ป่วยที่ได้การรักษาไม่พออาจแพร่เชื้อได้นาน</b> ${S.mu}</li>
+ <li>การแพร่: <b>คนเป็น reservoir ตามธรรมชาติเพียงชนิดเดียว</b> และโรค<b>แพร่โดยการสัมผัสใกล้ชิดจากคนสู่คนผ่านการสูด aerosol ที่มีเชื้อ</b> ${S.mu}</li>
+ <li>กลไกที่ตัดสินว่าจะติดเชื้อหรือไม่: <b>อนุภาคใหญ่ถูกจับไว้ที่ mucosa และถูกขับออกด้วยการทำงานของ cilia แต่อนุภาคเล็กที่มี tubercle bacilli หนึ่งถึงสามตัวไปถึง alveolar space และตั้ง infection ได้</b> ${S.mu}</li></ul>
+ <h3>Who progresses, and how fast</h3><ul>
+ <li>แม้โรคกินอวัยวะใดก็ได้ แต่<b>infection ในผู้ที่ immunity ปกติส่วนใหญ่จำกัดอยู่ที่ lung</b> ${S.mu}</li>
+ <li><b>จุดเริ่มต้นใน lung อยู่ที่ส่วนกลางหรือส่วนล่าง ซึ่ง tubercle bacilli เพิ่มจำนวนได้อย่างอิสระ</b> ${S.mu}</li>
+ <li>แล้ว<b>cellular immunity ถูกกระตุ้นและการเพิ่มจำนวนหยุดลงในผู้ป่วยส่วนใหญ่ภายใน 3 ถึง 6 สัปดาห์หลังสัมผัสเชื้อ</b> ${S.mu}</li>
+ <li><b>ราว 5% ของผู้สัมผัสเชื้อดำเนินเป็นโรคที่ active ภายใน 2 ปี และอีก 5% เกิดโรคในช่วงหลังของชีวิต</b> ${S.mu}</li>
+ <li>ความน่าจะเป็นนั้น<b>ขึ้นกับทั้งปริมาณเชื้อที่ได้รับและความสมบูรณ์ของ immunity</b> ${S.mu}</li>
+ <li>ในผู้ติดเชื้อ human immunodeficiency virus ที่มี CD4 T-cell ต่ำ: <b>ราว 10% เกิดโรคที่ active ภายใน 1 ปี, โรคมักมาก่อน opportunistic infection อื่น, มีโอกาสลามออกนอก lung เป็นสองเท่า และลุกลามถึงตายได้เร็ว</b> ${S.mu}</li>
+ <li><b>Tuberculosis เป็นสาเหตุการตายอันดับหนึ่งในผู้ติดเชื้อ human immunodeficiency virus</b> ${S.mu}</li>
+ <li><b>ผู้ป่วยกลุ่มนี้มักมาด้วยโรคที่ไม่มี symptom และภาพรังสีปกติ แม้เชื้อจะกระจายไปทั่ว</b> ${S.mu}</li>
+ <li>ภาพของ primary disease: <b>เริ่มอย่างค่อยเป็นค่อยไป ด้วย symptom ไม่จำเพาะคือ malaise, weight loss, cough และ sweats ตอนกลางคืน</b> ${S.mu}</li>
+ <li><b>Sputum อาจมีน้อย หรือมี blood ปนและเป็น pus</b> · <b>hemoptysis สัมพันธ์กับการทำลาย tissue เช่น cavitary disease</b> ${S.mu}</li>
+ <li>การวินิจฉัยทางคลินิกอาศัยสามอย่าง — <b>ภาพรังสีที่เข้ากับโรคใน lung, skin test ที่บวก และการตรวจพบ mycobacteria ด้วยการย้อมหรือการเพาะ</b> ${S.mu}</li>
+ <li><b>ผู้ป่วยที่โรค active มักมีกลีบบนของ lung ข้างใดข้างหนึ่งหรือทั้งสองข้างเกี่ยวข้อง ร่วมกับ pneumonitis หรือการเกิด abscess และ cavitation</b> ${S.mu}</li>
+ <li><b>Extrapulmonary tuberculosis เกิดจากการแพร่ทางกระแส blood ในระยะที่เชื้อเพิ่มจำนวนตอนต้น</b> · และ<b>ผู้ป่วยที่โรคกระจายอาจไม่มีหลักฐานของโรคใน lung เลย</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"ntm-leprosy",k:"a",t:"Leprosy's two poles, and the mycobacteria that are not tuberculosis",mm:"Leprosy · NTM",leg:[],
 draw:()=>{let b="";
- b+=mL(24,26,"โรคเดียว เชื้อเดียว แต่ผลลัพธ์อยู่คนละขั้ว — เพราะภูมิคุ้มกันระดับเซลล์ของผู้ป่วยต่างกัน",{a:"start",c:"bh"});
+ b+=mL(24,26,"โรคเดียว เชื้อเดียว แต่ผลลัพธ์อยู่คนละขั้ว — เพราะ immunity ระดับเซลล์ของผู้ป่วยต่างกัน",{a:"start",c:"bh"});
  /* two skins side by side: few bacilli with strong response, many with weak */
  const pole=(x0,t2,sub,many,sd)=>{let g=mL(x0+140,66,t2,{c:"bh"})+mL(x0+140,84,sub,{c:"s m"});
-  const sk=mskin(x0,x0+280,100,{seed:sd,scale:.52});g+=sk.b;const Y=sk.y;
-  const q=rng(sd+7);
-  const n=many?64:6;
-  for(let i=0;i<n;i++){const x=x0+16+q()*248,y=Y.spin+4+q()*(Y.derm-Y.spin-8);
-   g+=`<g transform="rotate(${(q()*70-35).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:#C2334A;stroke-width:2.4;stroke-linecap:round" d="M${(x-6).toFixed(1)},${y.toFixed(1)} q3,-2 6,0 q3,2 6,0"/></g>`}
-  if(!many)for(let i=0;i<5;i++){const x=x0+40+i*50,y=Y.spin+22;
-   g+=`<path class="m-body" style="fill:color-mix(in srgb,#C2185B 12%,var(--sb-surface));stroke:color-mix(in srgb,#C2185B 40%,var(--sb-surface));stroke-width:1.3" d="${mblob(x,y,20,15,i*7+sd,.12)}"/>`}
-  return g};
- b+=pole(24,"Tuberculoid","paucibacillary · ภูมิคุ้มกันระดับเซลล์แรง",false,5)
-  +pole(336,"Lepromatous","multibacillary · ภูมิคุ้มกันระดับเซลล์อ่อน",true,11);
+ const sk=mskin(x0,x0+280,100,{seed:sd,scale:.52});g+=sk.b;const Y=sk.y;
+ const q=rng(sd+7);
+ const n=many?64:6;
+ for(let i=0;i<n;i++){const x=x0+16+q()*248,y=Y.spin+4+q()*(Y.derm-Y.spin-8);
+ g+=`<g transform="rotate(${(q()*70-35).toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:#C2334A;stroke-width:2.4;stroke-linecap:round" d="M${(x-6).toFixed(1)},${y.toFixed(1)} q3,-2 6,0 q3,2 6,0"/></g>`}
+ if(!many)for(let i=0;i<5;i++){const x=x0+40+i*50,y=Y.spin+22;
+ g+=`<path class="m-body" style="fill:color-mix(in srgb,#C2185B 12%,var(--sb-surface));stroke:color-mix(in srgb,#C2185B 40%,var(--sb-surface));stroke-width:1.3" d="${mblob(x,y,20,15,i*7+sd,.12)}"/>`}
+ return g};
+ b+=pole(24,"Tuberculoid","paucibacillary · immunity ระดับเซลล์แรง",false,5)
+ +pole(336,"Lepromatous","multibacillary · immunity ระดับเซลล์อ่อน",true,11);
  b+=mL(164,272,"เชื้อน้อยมากจน microscopy มักหาไม่เจอ",{c:"s m"})
-  +mL(164,290,"มี granuloma · ต้องยืนยันด้วย skin test",{c:"s m"})
-  +mL(476,272,"เชื้อเต็มไปหมด microscopy จึงไวมาก",{c:"s m"})
-  +mL(476,290,"แพร่เชื้อได้สูง ต่างจาก tuberculoid",{c:"s m"});
+ +mL(164,290,"มี granuloma · ต้องยืนยันด้วย skin test",{c:"s m"})
+ +mL(476,272,"เชื้อเต็มไปหมด microscopy จึงไวมาก",{c:"s m"})
+ +mL(476,290,"แพร่เชื้อได้สูง ต่างจาก tuberculoid",{c:"s m"});
  b+=`<path class="m-sep" d="M24,318 L616,318"/>`
-  +mL(24,344,"Treatment",{a:"start",c:"bh"})
-  +mL(24,364,"Tuberculoid: rifampicin กับ dapsone 6 เดือน",{a:"start",c:"s m"})
-  +mL(24,384,"Lepromatous: เติม clofazimine และยืดเป็นอย่างน้อย 12 เดือน",{a:"start",c:"s m"})
-  +mL(24,404,"การเพาะเชื้อไม่มีประโยชน์ — M. leprae เลี้ยงในอาหารเลี้ยงเชื้อไม่ได้",{a:"start",c:"s m"})
-  +mL(348,344,"Spread",{a:"start",c:"bh"})
-  +mL(348,364,"ติดจากการสัมผัสสารคัดหลั่งทางเดินหายใจ",{a:"start",c:"s m"})
-  +mL(348,384,"ของผู้ป่วยที่ยังไม่ได้รักษาเป็นเวลานาน",{a:"start",c:"s m"});
+ +mL(24,344,"Treatment",{a:"start",c:"bh"})
+ +mL(24,364,"Tuberculoid: rifampicin กับ dapsone 6 เดือน",{a:"start",c:"s m"})
+ +mL(24,384,"Lepromatous: เติม clofazimine และยืดเป็นอย่างน้อย 12 เดือน",{a:"start",c:"s m"})
+ +mL(24,404,"การ culture ไม่มีประโยชน์ — M. leprae เลี้ยงใน medium ไม่ได้",{a:"start",c:"s m"})
+ +mL(348,344,"Spread",{a:"start",c:"bh"})
+ +mL(348,364,"ติดจากการสัมผัส secretion respiratory tract",{a:"start",c:"s m"})
+ +mL(348,384,"ของผู้ป่วยที่ยังไม่ได้รักษาเป็นเวลานาน",{a:"start",c:"s m"});
  b+=`<path class="m-sep" d="M24,432 L616,432"/>`
-  +mL(24,458,"Nontuberculous mycobacteria",{a:"start",c:"bh"})
-  +mL(24,478,"Mycobacterium avium complex เป็นตัวที่สำคัญที่สุด · ก่อการติดเชื้อที่ปอดและการติดเชื้อแพร่กระจายในผู้ป่วย AIDS",{a:"start",c:"s m"})
-  +mL(24,506,"พบในสิ่งแวดล้อม ไม่ได้ติดจากคนสู่คน จึงไม่ต้องแยกผู้ป่วย",{a:"start",c:"s m"});
+ +mL(24,458,"Nontuberculous mycobacteria",{a:"start",c:"bh"})
+ +mL(24,478,"Mycobacterium avium complex เป็นตัวที่สำคัญที่สุด · ก่อ infection ที่ lung และ infection แพร่กระจายในผู้ป่วย AIDS",{a:"start",c:"s m"})
+ +mL(24,506,"พบในสิ่งแวดล้อม ไม่ได้ติดจากคนสู่คน จึงไม่ต้องแยกผู้ป่วย",{a:"start",c:"s m"});
  return svg(b,"0 0 640 532")},
 notes:()=>`<h3>Two poles of one disease</h3><ul>
  <li>Leprosy แบ่งเป็นสองรูปแบบหลัก: <b>tuberculoid ซึ่งเป็นแบบ paucibacillary</b> คือมีเชื้อน้อย และ <b>lepromatous ซึ่งเป็นแบบ multibacillary</b> คือมีเชื้อมาก ${S.mu}</li>
- <li>สิ่งที่ตัดสินว่าผู้ป่วยไปทางไหนคือ<b>ความแรงของภูมิคุ้มกันระดับเซลล์</b> ไม่ใช่สายพันธุ์ของเชื้อ ${S.mu}</li>
+ <li>สิ่งที่ตัดสินว่าผู้ป่วยไปทางไหนคือ<b>ความแรงของ immunity ระดับเซลล์</b> ไม่ใช่ strain ของเชื้อ ${S.mu}</li>
  <li><b>Microscopy ไวสำหรับรูปแบบ lepromatous แต่ไม่ไวสำหรับ tuberculoid</b> · การยืนยัน tuberculoid ต้องใช้ skin test ${S.mu}</li>
- <li><b>การเพาะเชื้อไม่มีประโยชน์</b> เพราะ <i>M. leprae</i> เพาะในอาหารเลี้ยงเชื้อไม่ได้ ${S.mu}</li>
+ <li><b>การ culture ไม่มีประโยชน์</b> เพราะ <i>M. leprae</i> เพาะใน medium ไม่ได้ ${S.mu}</li>
  <li>ที่สำคัญทางระบาดวิทยา: <b>รูปแบบ lepromatous แพร่เชื้อได้สูง ส่วน tuberculoid ไม่</b> ${S.mu}</li>
- <li>การแพร่เกิดจาก<b>การสัมผัสสารคัดหลั่งทางเดินหายใจของผู้ป่วยที่ยังไม่ได้รักษาเป็นเวลานาน</b> ${S.mu}</li></ul>
+ <li>การแพร่เกิดจาก<b>การสัมผัส secretion respiratory tract ของผู้ป่วยที่ยังไม่ได้รักษาเป็นเวลานาน</b> ${S.mu}</li></ul>
  <h3>Treatment differs by pole</h3><ul>
  <li>Tuberculoid รักษาด้วย <b>rifampicin กับ dapsone เป็นเวลา 6 เดือน</b> ${S.mu}</li>
  <li>Lepromatous <b>เติม clofazimine</b> เข้าไปในสูตร และยืดการรักษาเป็นอย่างน้อย <b>12 เดือน</b> ${S.mu}</li>
  <li>การควบคุมโรคอาศัย<b>การตรวจพบและรักษาผู้ติดเชื้ออย่างรวดเร็ว</b> ${S.mu}</li>
  <li>ปี 2016 ผู้ป่วยส่วนใหญ่อยู่ในอินเดีย บราซิล และอินโดนีเซีย · สหรัฐรายงาน 178 รายใหม่ในปี 2015 ${S.mu}</li></ul>
  <h3>Mycobacteria that are not tuberculosis</h3><ul>
- <li><b><i>Mycobacterium avium</i> complex</b> เป็นกลุ่มที่สำคัญที่สุด · ก่อการติดเชื้อที่ปอด และการติดเชื้อแพร่กระจายในผู้ป่วย AIDS ${S.mu}</li>
+ <li><b><i>Mycobacterium avium</i> complex</b> เป็นกลุ่มที่สำคัญที่สุด · ก่อ infection ที่ lung และ infection แพร่กระจายในผู้ป่วย AIDS ${S.mu}</li>
  <li>เชื้อกลุ่มนี้อยู่ใน<b>สิ่งแวดล้อม</b> และโดยทั่วไป<b>ไม่ติดจากคนสู่คน</b> ${S.mu}</li>
- <li><i>M. kansasii</i> เป็นตัวอย่างของสปีชีส์ที่สร้างเม็ดสีเมื่อโดนแสง ซึ่งใช้ช่วยจำแนก ${S.mu}</li></ul>`});
+ <li><i>M. kansasii</i> เป็นตัวอย่างของสปีชีส์ที่สร้างเม็ดสีเมื่อโดนแสง ซึ่งใช้ช่วยจำแนก ${S.mu}</li></ul>
+ <h3>Tuberculoid versus lepromatous, feature by feature</h3>
+ ${tbl(["Feature","Tuberculoid — paucibacillary","Lepromatous — multibacillary"],[
+ ["Skin lesions","plaque แดงหรือสีซีดจำนวนน้อย ศูนย์กลางแบนและขอบยกตัวชัด","macule, papule หรือ nodule แดงจำนวนมาก · tissue ถูกทำลายกว้าง รวมถึง nasal cartilage, bone และใบหู"],
+ ["Nerve damage","peripheral nerve เสียหายโดยสูญเสียการรับความรู้สึกทั้งหมด · เห็น nerve โตชัด","nerve เกี่ยวข้องแบบกระจาย โดยสูญเสียการรับความรู้สึกเป็นหย่อม · ไม่มี nerve โต"],
+ ["Histopathology","lymphocyte แทรกรอบศูนย์กลางของ epithelial cell · มี Langhans cell · เห็น acid-fast rod น้อยหรือไม่เห็นเลย","foamy macrophage เป็นส่วนใหญ่และ lymphocyte น้อย · ไม่มี Langhans cell · acid-fast rod จำนวนมากทั้งใน lesion skin และอวัยวะภายใน"],
+ ["Infectivity","low","high"],
+ ["Immune response","delayed hypersensitivity ต่อ lepromin","ไม่ตอบสนองต่อ lepromin"],
+ ["Immunoglobulin","normal","hypergammaglobulinemia"],
+ ["Erythema nodosum","absent","usually present"],
+ ["Treatment","rifampicin กับ dapsone อย่างน้อย 6 เดือน","เพิ่ม clofazimine และยืดการรักษาเป็น 12 เดือน"]])}
+ <ul><li>Leprosy เรียกอีกชื่อว่า <b>Hansen disease</b> · <b>ถูกบรรยายครั้งแรกเมื่อ 600 ปีก่อนคริสตกาล และรู้จักในอารยธรรมโบราณของ China, Egypt และ India</b> ${S.mu}</li>
+ <li>ความชุกทั่วโลก<b>ลดลงอย่างมากจากการใช้ยาที่ได้ผลอย่างกว้างขวาง — กว่า 5 ล้านรายในปี 1985 เหลือ 200,000 รายในปี 2016</b> ${S.mu}</li>
+ <li><b>การวินิจฉัยรายใหม่สูงสุดอยู่ใน India, Brazil และ Indonesia</b> · สหรัฐอเมริการายงาน <b>178 รายใหม่ในปี 2015 ส่วนใหญ่ในผู้อพยพจากประเทศที่เป็น endemic disease</b> ${S.mu}</li>
+ <li><b>leprosy เป็น endemic disease ใน armadillo ที่พบใน Texas และ Louisiana ซึ่งให้โรคคล้ายรูป lepromatous ที่ติดต่อได้สูงในคน</b> — armadillo เหล่านี้<b>จึงเป็นจุด endemic ที่อาจมีอยู่ในประเทศนั้น</b> ${S.mu}</li>
+ <li>การแพร่: <b>จากคนสู่คน แต่ไม่ถือว่าติดต่อได้ง่าย — ต้องสัมผัสผู้ติดเชื้อที่ไม่ได้รักษาเป็นเวลานาน</b> ${S.mu}</li>
+ <li><b>เส้นทางที่สำคัญที่สุดยังไม่ทราบ</b> แต่เชื่อว่าแพร่ทาง<b>การสูด aerosol ที่มีเชื้อ หรือการสัมผัส skin กับ respiratory secretion และสิ่งที่ซึมจากแผล</b> ${S.mu}</li>
+ <li>เพราะ<b>เชื้อเพิ่มจำนวนช้ามาก incubation period จึงยาว โดย symptom อาจเกิดช้าถึง 20 ปีหลังติดเชื้อ</b> ${S.mu}</li>
+ <li>กลไกที่แยกสองขั้ว: <b>ผู้ป่วย tuberculoid มี cellular immune reaction ที่แรง พร้อมการสร้าง cytokine ที่กระตุ้น macrophage, phagocytosis และการกวาดเชื้อออก</b> ${S.mu}</li>
+ <li>ขณะที่<b>ผู้ป่วย lepromatous มีการตอบสนองของ antibody ที่แรง แต่มีความบกพร่องจำเพาะในการตอบสนองแบบ cellular ต่อ antigen ของเชื้อ</b> ${S.mu}</li>
+ <li>จึง<b>พบเชื้อจำนวนมากใน dermal macrophage และใน Schwann cell ของ peripheral nerve</b> — <b>และรูปนี้ติดต่อได้มากที่สุด</b> ${S.mu}</li>
+ <li><b><i>M. leprae</i> โตใน cell-free culture ไม่ได้</b> · รูป tuberculoid <b>วินิจฉัยด้วย skin test ที่ตอบสนองต่อ lepromin และ acid-fast stain มักเป็นลบ</b> ${S.mu}</li>
+ <li>ข้อห้ามที่ต้องจำ: <b>ไม่ใช้ยาเดี่ยวในรูปใดทั้งสองรูป</b> · และ<b>นักวิจัยหลายคนเชื่อว่าต้องรักษานานกว่าที่แนะนำเพื่อผลที่ดีที่สุด</b> ${S.mu}</li></ul>
+ <h3>Mycobacterium avium complex: four pictures</h3>
+ ${tbl(["Picture","Who","What is seen"],[
+ ["Cavitary disease","ชายวัยกลางคนหรือสูงอายุที่สูบบุหรี่และมีโรค lung อยู่เดิม — รูปที่พบบ่อยที่สุด","cavitary disease ที่ค่อย ๆ ดำเนิน และดูเหมือน tuberculosis ในภาพรังสี"],
+ ["Lady Windermere syndrome","หญิงสูงอายุที่ไม่สูบบุหรี่","lingular หรือ middle lobe infiltrate ลักษณะเป็นหย่อมและเป็นปุ่ม ร่วมกับ bronchiectasis · ดำเนินโรคเงียบ แต่ morbidity และ mortality สูง"],
+ ["Solitary pulmonary nodule","ทุกกลุ่ม","ปุ่มเดี่ยวใน lung — Mycobacterium avium complex เป็น mycobacteria ที่ก่อรูปนี้บ่อยที่สุด"],
+ ["Disseminated disease","ผู้ป่วย acquired immunodeficiency syndrome ที่ CD4 T-lymphocyte ต่ำกว่า 50 เซลล์ต่อไมโครลิตร","กระจายทั่วตัวแทบไม่เว้นอวัยวะใด · tissue เต็มไปด้วยเชื้อ และมีเชื้อหลายร้อยถึงหลายพันตัวต่อมิลลิลิตรของ blood"]])}
+ <ul><li><b>สองสปีชีส์ที่พบบ่อยที่สุดในกลุ่มนี้คือ <i>M. avium</i> และ <i>M. intracellulare</i> ซึ่งทั้งคู่ก่อโรคในคน</b> · การจัดจำแนกยังเปลี่ยนแปลงอยู่ ${S.mu}</li>
+ <li>สมมติฐานของ Lady Windermere syndrome: <b>โรคนี้พบในหญิงสูงอายุที่ถือตัวซึ่งกลั้นการไอเป็นนิสัย ทำให้เกิดการเปลี่ยนแปลงอักเสบที่ไม่จำเพาะใน lung และเปิดทางให้ติดเชื้อนี้ซ้อน</b> · ชื่อมาจากตัวละครเอกในบทละครของ Oscar Wilde ${S.mu}</li>
+ <li>ในผู้ป่วย acquired immunodeficiency syndrome <b>โรคเกิดจาก <i>M. avium</i> เป็นหลักและมักกระจายทั่วตัว</b> ${S.mu}</li>
+ <li><b>ด้วย antiretroviral therapy ที่ได้ผลกว่าและการให้ยาป้องกันเป็นกิจวัตร โรคนี้ในผู้ติดเชื้อ human immunodeficiency virus พบน้อยลงมาก</b> ${S.mu}</li>
+ <li>เส้นทางการรับเชื้อ: <b>บางรายรับทาง lung จาก aerosol ของน้ำที่ปนเปื้อน แต่เชื่อว่า infection ส่วนใหญ่เกิดหลังการกินเชื้อ</b> · <b>ยังไม่มีการพิสูจน์การแพร่จากคนสู่คน</b> ${S.mu}</li>
+ <li>หลังสัมผัสเชื้อ <b>การเพิ่มจำนวนเริ่มใน lymph node เฉพาะที่ แล้วจึงกระจายทั่วระบบ</b> · และ<b>symptom ไม่ปรากฏจนกว่ามวลของเชื้อที่กำลังแบ่งตัวจะรบกวนการทำงานปกติของอวัยวะ</b> ${S.mu}</li>
+ <li>การรักษา: <b>clarithromycin หรือ azithromycin ร่วมกับ ethambutol และ rifampin</b> ${S.mu}</li>
+ <li>ระยะเวลาและการเลือกยาสุดท้ายกำหนดโดย<b>การตอบสนองต่อการรักษา และปฏิกิริยาระหว่างยาเหล่านี้กับยาอื่นที่ผู้ป่วยได้รับ</b> เช่น protease inhibitor ที่ใช้รักษา human immunodeficiency virus ${S.mu}</li>
+ <li><b>Chemoprophylaxis ด้วย clarithromycin หรือ azithromycin แนะนำเมื่อ CD4 T-cell ต่ำกว่า 50 เซลล์ต่อไมโครลิตร</b> · <b>การรวมกับ rifabutin เป็นพิษกว่าและไม่ได้ผลดีกว่ายาเดี่ยว</b> ${S.mu}</li></ul>
+ <h3>The rest of the nontuberculous mycobacteria</h3><ul>
+ <li>เหตุที่สปีชีส์ใหม่ยังถูกรายงานเรื่อย ๆ: <b>วิธีวินิจฉัยที่ดีขึ้น</b> · และ<b>ขอบเขตของโรคก็กว้างขึ้น เพราะ acquired immunodeficiency syndrome, มะเร็งและการปลูกถ่ายอวัยวะร่วมกับยากด immunity สร้างประชากรที่ไวต่อเชื้อซึ่งก่อโรคได้ต่ำ</b> ${S.mu}</li>
+ <li><b>บางสปีชีส์ให้โรคเหมือน pulmonary tuberculosis — <i>M. bovis</i> และ <i>M. kansasii</i></b> ${S.mu}</li>
+ <li><b><i>M. scrofulaceum</i> มักก่อ infection ที่จำกัดอยู่ใน tissue lymph</b> ${S.mu}</li>
+ <li>และ<b>สปีชีส์ที่โตดีที่สุดในอุณหภูมิเย็นก่อ infection ที่ skin เป็นหลัก — <i>M. ulcerans</i>, <i>M. marinum</i> และ <i>M. haemophilum</i></b> ${S.mu}</li>
+ <li>แต่<b>ในผู้ป่วย acquired immunodeficiency syndrome สปีชีส์เหล่านี้และสปีชีส์ที่พบน้อยอย่าง <i>M. genavense</i> กับ <i>M. simiae</i> ก่อโรคที่กระจายทั่วตัวได้</b> ${S.mu}</li>
+ <li><b>นอกจาก <i>M. bovis</i> และ mycobacteria ที่ใกล้ชิดกับ <i>M. tuberculosis</i> เชื้อเหล่านี้ไม่แพร่จากคนสู่คน</b> ${S.mu}</li></ul>
+ <h3>Rapidly growing mycobacteria</h3><ul>
+ <li>นิยาม: <b>โตภายในเวลาน้อยกว่า 7 วัน</b> ${S.mu}</li>
+ <li>ความต่างสามข้อที่ทำให้การแยกกลุ่มนี้มีความหมาย — <b>ก่อโรคได้ต่ำกว่า, ย้อมติดสีไม่สม่ำเสมอด้วยสีย้อม mycobacteria แบบเดิม และไวต่อ antibiotic ทั่วไปมากกว่ายาที่ใช้รักษาโรค mycobacteria อื่น</b> ${S.mu}</li>
+ <li>สปีชีส์ที่พบบ่อยที่สุด: <b><i>M. fortuitum</i>, <i>M. chelonae</i>, <i>M. abscessus</i> และ <i>M. mucogenicum</i></b> ${S.mu}</li>
+ <li><b>กลุ่มนี้แทบไม่ก่อโรคที่กระจายทั่วตัว</b> — มัน<b>สัมพันธ์กับโรคที่เกิดหลังเชื้อถูกนำเข้า tissue ใต้ skin ชั้นลึกจากการบาดเจ็บ หรือจากหัตถการทางการแพทย์</b> เช่น intravenous catheter, ผ้าปิดแผลที่ปนเปื้อน, อุปกรณ์เทียมอย่าง heart valve, peritoneal dialysis และ bronchoscopy ${S.mu}</li>
+ <li>และ<b>อุบัติการณ์เพิ่มขึ้น เพราะมีการทำหัตถการรุกล้ำมากขึ้นและการแพทย์ที่ก้าวหน้ายืดอายุผู้ที่ immunity บกพร่อง</b> · <b>infection แบบ opportunistic ในผู้ที่ immunity ปกติก็กลายเป็นเรื่องธรรมดา</b> ${S.mu}</li>
+ <li>การรักษา: <b>ดื้อยา antimycobacterial ที่ใช้ทั่วไปเกือบทุกตัว แต่ไวต่อ clarithromycin, imipenem, amikacin, cefoxitin และ sulfonamide</b> ${S.mu}</li>
+ <li><b>ต้องกำหนดฤทธิ์ของยาด้วยการทดสอบใน in vitro และโดยทั่วไปต้องเอาอุปกรณ์เทียมออกจึงรักษาสำเร็จ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"nocardia",k:"a",t:"Nocardia: branching filaments, weakly acid-fast",mm:"Nocardia",leg:[],
+draw:()=>tbl(["","Nocardia","Mycobacteria"],[
+ ["Shape","แตกแขนงเป็น filament ทั้งใน tissue และในการเพาะ · คล้าย hypha ของเชื้อรา","แท่งเดี่ยว ไม่แตกแขนง"],
+ ["Gram stain","ย้อมติดไม่ดี ดูเป็น gram-negative โดยมีเม็ด gram-positive ในเซลล์","ย้อมติดไม่ดีเช่นกัน"],
+ ["Mycolic acid chain","50 ถึง 62 carbon atom","70 ถึง 90 carbon atom"],
+ ["Acid-fast","weakly acid-fast — ต้องใช้ hydrochloric acid ที่อ่อนกว่าในการล้างสี","acid-fast เต็มที่"],
+ ["Aerial hyphae","มี — เห็นได้ด้วย dissecting microscope · การมีทั้ง aerial hyphae และ acid-fastness เป็นของสกุลนี้เท่านั้น","ไม่มี"],
+ ["Oxygen","strict aerobe","strict aerobe"],
+ ["Time to colony","3 ถึง 5 วัน","4 สัปดาห์หรือกว่านั้นสำหรับ Mycobacterium tuberculosis"]]),
+notes:()=>`<h3>Why it was once thought to be a fungus</h3><ul>
+ <li>Filament ที่แตกแขนง<b>คล้าย hypha ของเชื้อรา และสกุลนี้เคยถูกคิดว่าเป็นเชื้อรา</b> ${S.mu}</li>
+ <li>แต่<b>เชื้อมี cell wall แบบ gram-positive และโครงสร้างอื่นที่เป็นลักษณะของแบคทีเรีย</b> ${S.mu}</li>
+ <li>เหตุที่ย้อมแปลก: <b>cell wall มี branched-chain fatty acid คือ tuberculostearic acid, meso-diaminopimelic acid และ mycolic acid</b> ${S.mu}</li>
+ <li>และ<b>ความยาวของ mycolic acid ที่สั้นกว่าของ mycobacteria อาจอธิบายว่าทำไมทั้งสองสกุลย้อม acid-fast ได้ แต่ Nocardia เรียกว่า weakly acid-fast</b> ${S.mu}</li>
+ <li>การเพาะ: <b>โตบน nonselective medium ที่ใช้แยกแบคทีเรีย mycobacteria และเชื้อราได้เกือบทุกชนิด</b> ${S.mu}</li>
+ <li>แต่<b>โตช้า ต้องบ่ม 3 ถึง 5 วันจึงเห็นโคโลนี จึงต้องแจ้งห้องปฏิบัติการให้บ่มเกิน 1 ถึง 2 วันตามปกติ</b> ${S.mu}</li>
+ <li>โคโลนี<b>เริ่มเป็นสีขาวแต่แปรผันมาก — จากแห้งถึงเหมือนขี้ผึ้ง และจากขาวถึงส้ม</b> ${S.mu}</li>
+ <li>ความต่างจาก Actinomyces: <b>filament บางของ Nocardia ใน tissue ดูเหมือน Actinomyces แต่ Nocardia เป็น weakly acid-fast</b> ${S.mu}</li></ul>
+ <h3>How it survives the phagocyte</h3><ul>
+ <li>แม้มีรายงาน toxin และ hemolysin แต่<b>บทบาทของมันในโรคยังนิยามไม่ได้</b> ${S.mu}</li>
+ <li>ปัจจัยหลักดูเหมือนเป็น<b>ความสามารถเลี่ยงการถูกฆ่าโดย phagocyte</b> ${S.mu}</li>
+ <li>เมื่อ phagocyte สัมผัสเชื้อ เกิด <b>oxidative burst ที่ปล่อย hydrogen peroxide และ superoxide</b> ${S.mu}</li>
+ <li>เชื้อก่อโรค<b>ถูกป้องกันจากสารเหล่านั้นด้วยการหลั่ง catalase และ superoxide dismutase</b> · และ<b>superoxide dismutase ที่ติดอยู่ที่ผิวเซลล์ก็ป้องกันด้วย</b> ${S.mu}</li>
+ <li>มันยังรอดและเพิ่มจำนวนใน macrophage ได้สามทาง — <b>กัน phagosome-lysosome fusion ด้วย cord factor</b>, <b>กันการเป็นกรดของ phagosome</b> และ<b>เลี่ยงการถูกฆ่าด้วย acid phosphatase โดยใช้เอนไซม์นั้นเป็นแหล่ง carbon</b> ${S.mu}</li></ul>
+ <h3>Who gets nocardiosis</h3><ul>
+ <li><b>infection เป็น exogenous คือเกิดจากเชื้อที่ไม่ได้อยู่ในคนเป็นปกติ</b> ${S.mu}</li>
+ <li>เหตุที่โรคเพิ่มขึ้นอย่างมาก: <b>เชื้ออยู่ทั่วไปในดินที่มีสารอินทรีย์มาก และจำนวนผู้ที่ immunity บกพร่องเพิ่มขึ้น</b> ${S.mu}</li>
+ <li>กลุ่มเสี่ยงสูง: <b>ผู้ติดเชื้อ human immunodeficiency virus หรือมีความบกพร่องของ T cell อื่น, ผู้ที่ได้ยากด immunity หลังปลูกถ่ายไข bone หรืออวัยวะ และผู้ที่ immunity ปกติแต่การทำงานของ lung บกพร่อง</b> จาก bronchitis, emphysema, asthma, bronchiectasis และ alveolar proteinosis ${S.mu}</li>
+ <li>เส้นทางของโรคใน lung: <b>เชื้อตั้งรังใน upper respiratory tract จากการสูด แล้วสำลัก oral secretion ลง respiratory tract ส่วนล่าง</b> ${S.mu}</li>
+ <li><b>Primary cutaneous nocardiosis เกิดหลังเชื้อถูกนำเข้า tissue ใต้ skin จากการบาดเจ็บ</b> · <b>การเกี่ยวข้องของ skin แบบทุติยภูมิมักตามหลังการกระจายจากจุดใน lung</b> ${S.mu}</li></ul>
+ <h3>The three clinical pictures</h3><ul>
+ <li><b>Bronchopulmonary disease แยกจาก infection pyogenic อื่นไม่ได้</b> แม้<b>Nocardia มักดำเนินโรคช้ากว่า</b> ${S.mu}</li>
+ <li>และ<b>โรคปฐมภูมิใน lung จาก Nocardia เกิดในผู้ที่ immunity บกพร่องแทบทุกราย</b> ${S.mu}</li>
+ <li>symptom คือ<b>cough หายใจลำบากและ fever ซึ่งไม่ช่วยวินิจฉัย</b> · <b>cavitation และการลามเข้า pleura พบบ่อย</b> ${S.mu}</li>
+ <li>เมื่อไรจึงควรนึกถึงเชื้อนี้: <b>ผู้ที่ immunity บกพร่องที่มี pneumonia พร้อม cavitation โดยเฉพาะถ้ามีหลักฐานการกระจายไป central nervous system หรือ tissue ใต้ skin</b> ${S.mu}</li>
+ <li>และกลับกัน: <b>ถ้าวินิจฉัยโรคใน lung หรือโรคที่กระจายจาก Nocardia ในผู้ที่ไม่มีโรคประจำตัว ต้องตรวจระบบ immunity อย่างครอบคลุม</b> ${S.mu}</li>
+ <li>infection ที่ skin เป็นได้ทั้ง<b>ปฐมภูมิ คือ mycetoma, lymphocutaneous infection, cellulitis และ subcutaneous abscess</b> หรือ<b>ทุติยภูมิจากการลามจากจุดใน lung</b> ${S.mu}</li>
+ <li><b>Mycetoma</b> คือ<b>infection เรื้อรังที่ไม่เจ็บ พบที่เท้าเป็นหลัก มีการบวมใต้ skin เฉพาะที่ร่วมกับการเกี่ยวข้องของ tissue muscle และ bone ใต้ลงไป, การเป็น pus และการเกิด sinus tract หลายทาง</b> ${S.mu}</li>
+ <li>แบคทีเรียและเชื้อราหลายชนิดก่อ mycetoma ได้ แต่ <b><i>N. brasiliensis</i> เป็นสาเหตุที่พบบ่อยที่สุดใน North, Central และ South America</b> ${S.mu}</li>
+ <li><b>Lymphocutaneous infection แสดงเป็นปุ่มและแผลตามแนว lymphatic ร่วมกับการเกี่ยวข้องของ regional lymph node</b> · <b>ภาพนี้คล้าย infectionskin จาก mycobacteria บางสปีชีส์และจากเชื้อรา <i>Sporothrix schenckii</i></b> ${S.mu}</li>
+ <li><b>ผู้ป่วยถึงหนึ่งในสามมีการกระจายไป brain โดยมักเป็น brain abscess หนึ่งหรือหลายก้อน</b> · <b>และโรคอาจมาเป็น chronic meningitis ตั้งแต่แรก</b> ${S.mu}</li></ul>
+ <h3>At the bench, and the drugs</h3><ul>
+ <li><b>ควรเก็บ sputum หลายตัวอย่างในผู้ที่มีโรคใน lung</b> ${S.mu}</li>
+ <li><b>เชื้อมักกระจายอยู่ทั่ว tissue และใน pus จึงเห็นใต้กล้องและเพาะขึ้นได้ไม่ยากในโรคที่ lung skin หรือ central nervous system</b> ${S.mu}</li>
+ <li>เชื้อ<b>โตบนอาหารทั่วไปในบรรยากาศ CO₂ 5% ถึง 10% แต่อาจถูกกลบด้วย commensal ที่โตเร็วกว่า</b> ${S.mu}</li>
+ <li>จึง<b>ควรเพาะลง selective medium ถ้า specimen อาจปนเปื้อน</b> เช่นเชื้อในช่องปากใน sputum ${S.mu}</li>
+ <li>อาหารที่ใช้ได้ดี: <b>buffered charcoal yeast extract agar ซึ่งใช้แยก Legionella — จานเดียวเก็บได้ทั้ง Nocardia และ Legionella จาก specimen ของ lung</b> ${S.mu}</li>
+ <li>เชื้อโตบนอาหารสำหรับ mycobacteria และเชื้อราได้บ้าง แต่<b>วิธีนั้นเชื่อถือได้น้อยกว่าการใช้อาหารสำหรับแบคทีเรียโดยเฉพาะ</b> ${S.mu}</li>
+ <li>การระบุระดับสกุลง่าย — <b>จาก filament ที่ weakly acid-fast และ aerial hyphae บนผิวโคโลนี</b> ${S.mu}</li>
+ <li>แต่<b>การระบุระดับสปีชีส์ยากกว่า เพราะสปีชีส์ส่วนใหญ่ระบุด้วย biochemical test ได้ไม่แม่น</b> ${S.mu}</li>
+ <li>การระบุที่แม่นต้องใช้<b>การวิเคราะห์ยีน ribosomal RNA และยีน housekeeping อย่างยีน heat shock protein หรือใช้ mass spectrometry</b> ซึ่ง<b>กำลังกลายเป็นวิธีที่เลือกใช้</b> ${S.mu}</li>
+ <li>ยาที่ออกฤทธิ์: <b>trimethoprim-sulfamethoxazole, amikacin, imipenem และ cephalosporin วงกว้างอย่าง ceftriaxone กับ cefotaxime</b> ${S.mu}</li>
+ <li>เพราะ<b>ความไวต่อยาแปรผันระหว่างเชื้อแต่ละตัว จึงควรทดสอบความไวเพื่อชี้แนวทาง</b> ${S.mu}</li>
+ <li><b>trimethoprim-sulfamethoxazole ใช้เป็นยา empiric แรกสำหรับ infection ที่ skin ในผู้ที่ immunity ปกติ</b> ${S.mu}</li>
+ <li>infection รุนแรงและ infection ที่ skin ในผู้ที่ immunity บกพร่อง<b>ควรใช้ยาสองหรือสามตัว</b> — <b>trimethoprim-sulfamethoxazole ร่วมกับ amikacin สำหรับโรคที่ lung หรือ skin และร่วมกับ imipenem หรือ cephalosporin สำหรับโรคที่ central nervous system</b> ${S.mu}</li>
+ <li>และเพราะ<b>เชื้อโตช้าและสัมพันธ์กับการกลับเป็นซ้ำ จึงแนะนำการรักษาที่ยาวถึง 12 เดือน</b> ${S.mu}</li>
+ <li>การป้องกัน: <b>เลี่ยงการสัมผัสเชื้อเป็นไปไม่ได้ เพราะมันอยู่ทั่วไป</b> ${S.mu}</li>
+ <li>แต่<b>โรคใน lung พบไม่บ่อยในผู้ที่ immunity ปกติ และ infection ที่ skin ปฐมภูมิป้องกันได้ด้วยการดูแลแผลอย่างถูกต้อง</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"syphilis",k:"b",t:"Syphilis: three phases and two kinds of serology",mm:"Syphilis",leg:[],
 draw:()=>{let b="";
- b+=mL(24,26,"แผลหายเอง ผื่นหายเอง — การหายเองคือสิ่งที่ทำให้โรคนี้อันตราย",{a:"start",c:"bh"});
+ b+=mL(24,26,"แผลหายเอง rash หายเอง — การหายเองคือสิ่งที่ทำให้โรคนี้อันตราย",{a:"start",c:"bh"});
  const X0=56,X1=584,Y0=168;
  b+=`<path class="ax" d="M${X0},${Y0} L${X1+20},${Y0}" marker-end="url(#ah)"/>`;
  [[0,"สัมผัสเชื้อ"],[.17,"10–90 วัน"],[.42,"2 เดือน"],[.72,"ไม่กี่สัปดาห์ถัดมา"],[1,"หลายปี"]].forEach(([f,lab])=>{
-  const x=X0+(X1-X0)*f;
-  b+=`<path class="m-face" d="M${x},${Y0-6} L${x},${Y0+6}"/>`+mL(x,Y0+24,lab,{c:"s m"})});
+ const x=X0+(X1-X0)*f;
+ b+=`<path class="m-face" d="M${x},${Y0-6} L${x},${Y0+6}"/>`+mL(x,Y0+24,lab,{c:"s m"})});
  const band=(f0,f1,y,cls,t2)=>{const x0=X0+(X1-X0)*f0,x1=X0+(X1-X0)*f1;
-  return `<rect class="${cls}" x="${x0}" y="${y}" width="${x1-x0}" height="28" rx="8"/>`+mL((x0+x1)/2,y+19,t2,{c:"bh"})};
+ return `<rect class="${cls}" x="${x0}" y="${y}" width="${x1-x0}" height="28" rx="8"/>`+mL((x0+x1)/2,y+19,t2,{c:"bh"})};
  b+=band(.17,.42,Y0-42,"m-porin","Primary")
-  +band(.42,.72,Y0-80,"m-body2","Secondary")
-  +band(.84,1,Y0-118,"m-tail","Tertiary");
+ +band(.42,.72,Y0-80,"m-body2","Secondary")
+ +band(.84,1,Y0-118,"m-tail","Tertiary");
  /* the chancre, drawn in skin */
  const sk=mskin(24,300,216,{seed:7,scale:.5});b+=sk.b;const Y=sk.y;
  b+=`<path class="m-pus" style="opacity:.7" d="M${150-44},${Y.corn+2} q10,10 44,10 q34,0 44,-10 l0,10 q-10,12 -44,12 q-34,0 -44,-12Z"/>`
-  +`<path class="m-body2" style="fill:none;stroke-width:4;stroke-linecap:round" d="M${150-56},${Y.corn+6} q6,-14 14,-4"/>`
-  +`<path class="m-body2" style="fill:none;stroke-width:4;stroke-linecap:round" d="M${150+56},${Y.corn+6} q-6,-14 -14,-4"/>`;
+ +`<path class="m-body2" style="fill:none;stroke-width:4;stroke-linecap:round" d="M${150-56},${Y.corn+6} q6,-14 14,-4"/>`
+ +`<path class="m-body2" style="fill:none;stroke-width:4;stroke-linecap:round" d="M${150+56},${Y.corn+6} q-6,-14 -14,-4"/>`;
  const vq=rng(13);
  for(let i=0;i<12;i++){const x=90+vq()*130,y=Y.spin+4+vq()*(Y.derm-Y.spin-8),r=(vq()*80-40);
-  b+=`<g transform="rotate(${r.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:color-mix(in srgb,#C2185B 62%,var(--sb-surface));stroke-width:1.6;stroke-linecap:round" d="M${(x-14).toFixed(1)},${y.toFixed(1)} q3.5,-6 7,0 q3.5,6 7,0 q3.5,-6 7,0 q3.5,6 7,0"/></g>`}
+ b+=`<g transform="rotate(${r.toFixed(0)} ${x.toFixed(1)} ${y.toFixed(1)})"><path style="fill:none;stroke:color-mix(in srgb,#C2185B 62%,var(--sb-surface));stroke-width:1.6;stroke-linecap:round" d="M${(x-14).toFixed(1)},${y.toFixed(1)} q3.5,-6 7,0 q3.5,6 7,0 q3.5,-6 7,0 q3.5,6 7,0"/></g>`}
  b+=mL(162,Y.bot+22,"Chancre",{c:"bh"})
-  +mL(162,Y.bot+42,"แผลไม่เจ็บ ขอบนูน · เชื้ออยู่เต็มแผล",{c:"s m"})
-  +mL(162,Y.bot+60,"endarteritis และ periarteritis พบได้ทุกระยะ",{c:"s m"})
-  +mL(162,Y.bot+78,"หายเองใน 2 เดือน — ผู้ป่วยจึงคิดว่าหายแล้ว",{c:"bad"});
+ +mL(162,Y.bot+42,"แผลไม่เจ็บ ขอบนูน · เชื้ออยู่เต็มแผล",{c:"s m"})
+ +mL(162,Y.bot+60,"endarteritis และ periarteritis พบได้ทุกระยะ",{c:"s m"})
+ +mL(162,Y.bot+78,"หายเองใน 2 เดือน — ผู้ป่วยจึงคิดว่าหายแล้ว",{c:"bad"});
  /* the three phases in words */
- [["Primary","แผลตรงที่เชื้อเจาะเข้าไป · 1–2 สัปดาห์ต่อมา","ต่อมน้ำเหลืองโตแบบไม่เจ็บ",330,240],
-  ["Secondary","อาการคล้ายไข้หวัดใหญ่ แล้วผื่นทั่วตัวรวมฝ่ามือฝ่าเท้า","condylomata lata ตามซอกพับ · ติดต่อได้สูง",330,316],
-  ["Tertiary","ราวหนึ่งในสามของผู้ที่ไม่ได้รักษาเข้าสู่ระยะนี้","การอักเสบเรื้อรังแบบกระจายของอวัยวะใดก็ได้",330,392]
+ [["Primary","แผลตรงที่เชื้อเจาะเข้าไป · 1–2 สัปดาห์ต่อมา","lymph node โตแบบไม่เจ็บ",330,240],
+ ["Secondary","symptom คล้าย fever influenza แล้ว rash ทั่วตัวรวมฝ่ามือฝ่าเท้า","condylomata lata ตามซอกพับ · ติดต่อได้สูง",330,316],
+ ["Tertiary","ราวหนึ่งในสามของผู้ที่ไม่ได้รักษาเข้าสู่ระยะนี้","inflammation เรื้อรังแบบกระจายของอวัยวะใดก็ได้",330,392]
  ].forEach(([n,d,d2,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})+mL(x,y+38,d2,{a:"start",c:"s m"})});
  b+=`<path class="m-sep" d="M24,${Y.bot+104} L616,${Y.bot+104}"/>`
-  +mL(24,Y.bot+130,"Darkfield microscopy",{a:"start",c:"bh"})
-  +mL(24,Y.bot+150,"เห็นเชื้อได้ในระยะ primary และ secondary เท่านั้น",{a:"start",c:"s m"})
-  +mL(348,Y.bot+130,"Serology",{a:"start",c:"bh"})
-  +mL(348,Y.bot+150,"ไวมากในระยะ secondary · ใช้ยืนยันในระยะอื่น",{a:"start",c:"s m"})
-  +mL(24,Y.bot+180,"รักษาด้วย penicillin · ผู้ที่แพ้ใช้ tetracycline หรือ erythromycin · คู่นอนต้องได้รับการรักษาด้วย",{a:"start",c:"s m"})
-  +mL(24,Y.bot+208,"ยังไม่มีวัคซีน",{a:"start",c:"bad"});
+ +mL(24,Y.bot+130,"Darkfield microscopy",{a:"start",c:"bh"})
+ +mL(24,Y.bot+150,"เห็นเชื้อได้ในระยะ primary และ secondary เท่านั้น",{a:"start",c:"s m"})
+ +mL(348,Y.bot+130,"Serology",{a:"start",c:"bh"})
+ +mL(348,Y.bot+150,"ไวมากในระยะ secondary · ใช้ยืนยันในระยะอื่น",{a:"start",c:"s m"})
+ +mL(24,Y.bot+180,"รักษาด้วย penicillin · ผู้ที่แพ้ใช้ tetracycline หรือ erythromycin · คู่นอนต้องได้รับการรักษาด้วย",{a:"start",c:"s m"})
+ +mL(24,Y.bot+208,"ยังไม่มี vaccine",{a:"start",c:"bad"});
  return svg(b,"0 0 640 "+(Y.bot+232))},
 notes:()=>`<h3>Primary</h3><ul>
- <li>ระยะแรกมี<b>แผลที่ผิวหนังหนึ่งแผลหรือมากกว่า (chancre)</b> ตรงตำแหน่งที่ spirochete เจาะเข้าไป ${S.mu}</li>
- <li>รอยโรคเกิดขึ้น <b>10 ถึง 90 วัน</b>หลังติดเชื้อ เริ่มเป็นตุ่มนูนแล้วกร่อนเป็น<b>แผลที่ไม่เจ็บและขอบนูน</b> ${S.mu}</li>
- <li>การตรวจทางจุลพยาธิวิทยาพบ <b>endarteritis และ periarteritis</b> ซึ่งเป็นลักษณะของรอยโรคซิฟิลิส<b>ทุกระยะ</b> พร้อมเซลล์อักเสบแทรกอยู่ ${S.mu}</li>
+ <li>ระยะแรกมี<b>แผลที่ skin หนึ่งแผลหรือมากกว่า (chancre)</b> ตรงตำแหน่งที่ spirochete เจาะเข้าไป ${S.mu}</li>
+ <li>lesion เกิดขึ้น <b>10 ถึง 90 วัน</b>หลังติดเชื้อ เริ่มเป็นตุ่มนูนแล้วกร่อนเป็น<b>แผลที่ไม่เจ็บและขอบนูน</b> ${S.mu}</li>
+ <li>การตรวจทางจุลพยาธิวิทยาพบ <b>endarteritis และ periarteritis</b> ซึ่งเป็นลักษณะของ lesion ซิฟิลิส<b>ทุกระยะ</b> พร้อมเซลล์อักเสบแทรกอยู่ ${S.mu}</li>
  <li>เซลล์กลืนกินกลืน spirochete เข้าไป แต่<b>เชื้อมักรอด</b> และมีเชื้ออยู่ในแผลจำนวนมาก ${S.mu}</li>
- <li>ผู้ป่วยส่วนใหญ่มี<b>ต่อมน้ำเหลืองโตแบบไม่เจ็บ</b> 1–2 สัปดาห์หลังแผลปรากฏ ซึ่งเป็นจุดที่เชื้อเพิ่มจำนวนและกระจายเข้ากระแสเลือด ${S.mu}</li>
+ <li>ผู้ป่วยส่วนใหญ่มี<b>lymph node โตแบบไม่เจ็บ</b> 1–2 สัปดาห์หลังแผลปรากฏ ซึ่งเป็นจุดที่เชื้อเพิ่มจำนวนและกระจายเข้ากระแส blood ${S.mu}</li>
  <li><b>แผลหายเองภายใน 2 เดือน</b> ซึ่งทำให้ผู้ป่วยรู้สึกโล่งใจอย่างผิด ๆ ${S.mu}</li></ul>
  <h3>Secondary</h3><ul>
- <li>ระยะที่สองคืออาการของโรคที่กระจายทั่วร่างกาย โดยมี<b>รอยโรคผิวหนังเด่นชัดทั่วทั้งตัว</b> ${S.mu}</li>
- <li>ผู้ป่วยมี<b>อาการคล้ายไข้หวัดใหญ่</b> — เจ็บคอ ปวดศีรษะ ไข้ ปวดกล้ามเนื้อ เบื่ออาหาร ต่อมน้ำเหลืองโต — ตามด้วยผื่นในอีกไม่กี่วัน ${S.mu}</li>
- <li>ผื่นมีได้หลายแบบ ทั้ง macular, papular และ pustular และ<b>คลุมผิวทั้งตัวรวมถึงฝ่ามือและฝ่าเท้า</b> ${S.mu}</li>
- <li><b>Condylomata lata</b> คือรอยโรคนูนตามซอกพับที่ชื้น และอาจมีแผลกร่อนในปากและเยื่อเมือกอื่น ${S.mu}</li>
- <li>เช่นเดียวกับ chancre <b>รอยโรคเหล่านี้ติดต่อได้สูง</b> ${S.mu}</li>
- <li>ผื่นและอาการ<b>หายเองภายในไม่กี่สัปดาห์</b> · ผู้ป่วยอาจหายเอง เข้าสู่ระยะแฝง หรือดำเนินไปสู่ระยะท้าย ${S.mu}</li></ul>
+ <li>ระยะที่สองคือ symptom ของโรคที่กระจายทั่วร่างกาย โดยมี<b>lesion skin เด่นชัดทั่วทั้งตัว</b> ${S.mu}</li>
+ <li>ผู้ป่วยมี<b>symptom คล้าย fever influenza</b> — sore throat headache fever ปวด muscle anorexia lymph node โต — ตามด้วย rash ในอีกไม่กี่วัน ${S.mu}</li>
+ <li>rash มีได้หลายแบบ ทั้ง macular, papular และ pustular และ<b>คลุมผิวทั้งตัวรวมถึงฝ่ามือและฝ่าเท้า</b> ${S.mu}</li>
+ <li><b>Condylomata lata</b> คือ lesion นูนตามซอกพับที่ชื้น และอาจมีแผลกร่อนในปากและ mucosa อื่น ${S.mu}</li>
+ <li>เช่นเดียวกับ chancre <b>lesion เหล่านี้ติดต่อได้สูง</b> ${S.mu}</li>
+ <li>rash และ symptom<b>หายเองภายในไม่กี่สัปดาห์</b> · ผู้ป่วยอาจหายเอง เข้าสู่ระยะแฝง หรือดำเนินไปสู่ระยะท้าย ${S.mu}</li></ul>
  <h3>Tertiary</h3><ul>
  <li>ราว<b>หนึ่งในสามของผู้ป่วยที่ไม่ได้รักษา</b>ดำเนินเข้าสู่ระยะที่สาม ${S.mu}</li>
- <li>อาการมาจาก<b>การอักเสบเรื้อรังแบบกระจาย</b>ซึ่งเกิดกับอวัยวะหรือเนื้อเยื่อใดก็ได้ ${S.mu}</li>
- <li>ซิฟิลิสยัง<b>ติดต่อจากแม่สู่ลูกในครรภ์ได้</b> และการติดเชื้อสู่ทารกเกิดได้ตลอดช่วงนั้น · แม้เชื้อในกระแสเลือดของแม่จะหยุดแล้ว โรคก็ยังทำงานอยู่ได้ ${S.mu}</li></ul>`});
+ <li>symptom มาจาก<b>inflammation เรื้อรังแบบกระจาย</b>ซึ่งเกิดกับอวัยวะหรือ tissue ใดก็ได้ ${S.mu}</li>
+ <li>ซิฟิลิสยัง<b>ติดต่อจากแม่สู่ลูกในครรภ์ได้</b> และ infection สู่ infant เกิดได้ตลอดช่วงนั้น · แม้เชื้อในกระแส blood ของแม่จะหยุดแล้ว โรคก็ยังทำงานอยู่ได้ ${S.mu}</li></ul>
+ <h3>The organism you cannot culture or see</h3><ul>
+ <li>ชื่อสกุลมาจาก trepo คือหมุน และ nema คือเส้นด้าย — <b>เส้นด้ายที่หมุน</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>spirochete เรียวและขดแน่น 0.1–0.2 × 6–20 μm ปลายแหลมและตรง</b> ${S.mu}</li>
+ <li>การตรวจแบบเดิมช่วยไม่ได้สองเหตุ — <b>เชื้อเรียวเกินกว่าจะเห็นด้วย light microscope ใน specimen ที่ย้อม Gram หรือ Giemsa</b> และ<b>เชื้อไม่โตใน cell-free culture</b> ${S.mu}</li>
+ <li>มีการเลี้ยงได้จำกัดใน <b>cultured rabbit epithelial cell แต่การแบ่งตัวช้ามาก คือ doubling time 30 ชั่วโมง และคงอยู่ได้เพียงไม่กี่รุ่น</b> ${S.mu}</li>
+ <li>เหตุที่เชื้อเลี่ยง immunity ได้: <b>lipoprotein ของมันยึดอยู่ใน cytoplasmic membrane และเกือบทั้งหมดไม่โผล่ที่ผิวของ outer membrane</b> — <b>การไม่มี antigen จำเพาะสปีชีส์ที่ผิวเซลล์ทำให้มันพ้นระบบ immunity</b> ${S.mu}</li>
+ <li>เชื้อ<b>ทน phagocytosis ได้ และเกาะ host fibronectin จึงมีปฏิสัมพันธ์กับ tissue โดยตรง</b> ${S.mu}</li>
+ <li>จีโนมมี <b>hemolysin อย่างน้อยห้าตัว แต่ยังไม่ชัดว่ามันทำลาย tissue หรือไม่</b> · และมีข้อเสนอว่า<b>hyaluronidase ช่วยการแทรกรอบ blood vessel</b> ${S.mu}</li>
+ <li><b>การทำลาย tissue และ lesion ใน syphilis เป็นผลของการตอบสนองทาง immunity ของผู้ป่วยเองเป็นหลัก</b> ${S.mu}</li></ul>
+ <h3>Who gets it, and how contagious it is</h3><ul>
+ <li>Syphilis พบทั่วโลก และ<b>เป็นโรคติดต่อทางเพศสัมพันธ์จากแบคทีเรียที่พบมากเป็นอันดับสามในสหรัฐอเมริกา รองจาก <i>Chlamydia trachomatis</i> และ <i>Neisseria gonorrhoeae</i></b> ${S.mu}</li>
+ <li>อุบัติการณ์<b>ลดลงหลังมี penicillin ในต้นทศวรรษ 1940</b> แต่<b>มีการเพิ่มขึ้นเป็นระยะตามการเปลี่ยนแปลงของพฤติกรรมทางเพศ</b> ${S.mu}</li>
+ <li><b>ระหว่างปี 2000 ถึง 2017 อุบัติการณ์ของโรคที่ติดใหม่เพิ่มขึ้นทุกปี</b> ${S.mu}</li>
+ <li><b>ปี 2017 CDC รายงานรายใหม่กว่า 100,000 ราย โดย 30,644 รายเป็นระยะ primary และ secondary ซึ่งเป็นรูปที่ติดต่อได้มากที่สุด</b> ${S.mu}</li>
+ <li>และ<b>ผู้ป่วย syphilis เสี่ยงทั้งต่อการแพร่และการรับ human immunodeficiency virus มากขึ้นเมื่อมี lesion ที่อวัยวะเพศ</b> ${S.mu}</li>
+ <li><b>Syphilis ตามธรรมชาติเกิดเฉพาะในคนและไม่มี host ตามธรรมชาติอื่นที่รู้จัก</b> ${S.mu}</li>
+ <li>และเพราะ<b>เชื้อไม่ทนทานมาก ตายเมื่อเจอความแห้งหรือน้ำยาฆ่าเชื้อ โรคจึงไม่แพร่ผ่านวัตถุอย่างฝารองนั่งโถส้วม</b> ${S.mu}</li>
+ <li>ทางแพร่: <b>การสัมผัสทางเพศโดยตรงเป็นหลัก</b> · และยัง<b>ติดได้ตั้งแต่ในครรภ์หรือจากการรับ blood ที่ปนเปื้อน</b> ${S.mu}</li>
+ <li><b>โรคไม่ได้ติดต่อง่ายมาก — ความเสี่ยงหลังการสัมผัสทางเพศครั้งเดียวประมาณ 30%</b> ${S.mu}</li>
+ <li>แต่<b>ความสามารถแพร่เชื้อขึ้นกับระยะของโรคในผู้แพร่ — เชื้อถ่ายทอดเป็นหลักในระยะต้นที่มีเชื้อจำนวนมากใน lesion ที่ชื้นของ skin หรือ mucosa</b> ${S.mu}</li>
+ <li>และในระยะต้น <b>ผู้ป่วยมี bacteremia — ถ้าไม่รักษา bacteremia แบบเป็นช่วงอยู่ได้นานถึง 8 ปี</b> ${S.mu}</li>
+ <li><b>การถ่ายทอดจากแม่สู่ infant เกิดได้ตลอดช่วงนั้น</b> · และ<b>แม้ bacteremia จะหยุดแล้ว โรคก็ยัง active อยู่ได้</b> ${S.mu}</li></ul>
+ <h3>Primary, secondary, tertiary — and congenital</h3><ul>
+ <li><b>Primary chancre เกิด 10 ถึง 90 วันหลังติดเชื้อ ณ จุดที่เชื้อแทรกเข้า</b> · <b>เริ่มเป็น papule แล้วกร่อนเป็นแผลที่ไม่เจ็บและมีขอบยกตัว</b> ${S.mu}</li>
+ <li>พยาธิสภาพของ lesion syphilis ทุกระยะคือ <b>endarteritis และ periarteritis</b> ร่วมกับ<b>การแทรกของ polymorphonuclear leukocyte และ macrophage</b> ${S.mu}</li>
+ <li>แต่<b>เซลล์ที่กลืนเชื้อมักฆ่าเชื้อไม่สำเร็จ และพบเชื้อจำนวนมากใน chancre</b> ${S.mu}</li>
+ <li>ผู้ป่วยส่วนใหญ่มี <b>regional lymphadenopathy ที่ไม่เจ็บ 1 ถึง 2 สัปดาห์หลัง chancre ปรากฏ</b> ซึ่งเป็น<b>จุดที่เชื้อเพิ่มจำนวนเฉพาะที่และกระจายเข้า blood</b> ${S.mu}</li>
+ <li>และกับดักของโรคนี้: <b>แผลหายเองภายใน 2 เดือน ซึ่งทำให้ผู้ป่วยโล่งใจอย่างผิด ๆ</b> ${S.mu}</li>
+ <li>ระยะ <b>secondary</b> มี<b>flulike syndrome คือ sore throat headache fever ปวด muscle anorexia และ lymphadenopathy</b> แล้วตามด้วย<b>mucocutaneous rash ทั่วตัวในอีกไม่กี่วัน</b> ${S.mu}</li>
+ <li><b>rash แปรผันได้ทั้ง macular, papular หรือ pustular และคลุมผิวทั้งตัวรวมถึงฝ่ามือกับฝ่าเท้า</b> ${S.mu}</li>
+ <li>และมี<b>lesion ยกตัวเรียก condylomata lata ในรอยพับที่ชื้น และการกร่อนในปากกับผิว mucosa อื่น</b> — <b>lesion เหล่านี้ติดต่อได้สูงเช่นเดียวกับ primary chancre</b> ${S.mu}</li>
+ <li>จากนั้นผู้ป่วยไปได้สามทาง — <b>หายเอง, เข้าระยะ latent ที่ไม่มี symptom ทางคลินิก หรือดำเนินสู่ระยะท้าย</b> ${S.mu}</li>
+ <li><b>ราวหนึ่งในสามของผู้ที่ไม่ได้รักษาดำเนินสู่ระยะ tertiary</b> ${S.mu}</li>
+ <li>symptom ของ<b>inflammation เรื้อรังแบบกระจายเกิดหลังช่วงที่ไม่มี symptom นานหลายปีถึงหลายสิบปี และทำลายอวัยวะหรือ tissue ใดก็ได้อย่างรุนแรง</b> เช่น arteritis, dementia และ blindness ${S.mu}</li>
+ <li><b>lesion แบบ granuloma เรียก gumma พบได้ใน bone, skin และ tissue อื่น</b> · ชื่อของโรคระยะท้ายตั้งตามอวัยวะหลักที่เกี่ยวข้อง เช่น neurosyphilis และ cardiovascular syphilis ${S.mu}</li>
+ <li><b>มีรายงานอุบัติการณ์ที่เพิ่มขึ้นแม้รักษา syphilis ระยะต้นอย่างเพียงพอ ในผู้ป่วย acquired immunodeficiency syndrome</b> ${S.mu}</li>
+ <li>และ<b>เชื้อเข้า central nervous system ตั้งแต่ระยะต้นของโรค symptom ทางระบบประสาทอย่าง meningitis จึงเกิดได้ในไม่กี่เดือนแรก — neurosyphilis ไม่ใช่ symptom ของระยะท้ายเท่านั้น</b> ${S.mu}</li>
+ <li><b>Congenital syphilis</b> นำไปสู่<b>infection แฝง, ความผิดรูปของหลายอวัยวะ หรือการตายของ fetus</b> ${S.mu}</li>
+ <li><b>infant ที่ติดเชื้อส่วนใหญ่เกิดมาโดยไม่มี symptom แต่ต่อมาเกิด rhinitis แล้วตามด้วย maculopapular rash ที่ลอกเป็นแผ่นทั่วตัว</b> ${S.mu}</li>
+ <li>ใน infant ที่รอดระยะแรกและไม่ได้รักษา <b>ฟันและ bone ผิดรูป, blindness, หูหนวกและ cardiovascular syphilis พบบ่อย</b> ${S.mu}</li></ul>
+ <h3>Treatment</h3><ul>
+ <li><b>Penicillin เป็นยาที่เลือก</b> ${S.mu}</li>
+ <li><b>ระยะต้นใช้ long-acting benzathine penicillin G ฉีดเข้ากล้ามครั้งเดียว</b> · <b>congenital และ late syphilis แนะนำสามเข็มห่างกันสัปดาห์ละครั้ง</b> ${S.mu}</li>
+ <li><b>Doxycycline หรือ azithromycin ใช้แทนได้ในผู้ที่แพ้ penicillin</b> ${S.mu}</li>
+ <li>แต่ข้อยกเว้นที่สำคัญ: <b>neurosyphilis รักษาได้ด้วย penicillin เท่านั้น ผู้ที่แพ้ penicillin จึงต้องทำ desensitization</b> ${S.mu}</li>
+ <li>เช่นเดียวกับ<b>pregnant woman ซึ่งไม่ควรได้ tetracycline</b> ${S.mu}</li>
+ <li>และ<b>มีรายงานการรักษาล้มเหลวด้วย macrolide จึงผู้ที่ได้ azithromycin ต้องติดตามใกล้ชิด</b> ${S.mu}</li>
+ <li>เพราะ<b>ยังไม่มี vaccine การควบคุมจึงอาศัยเพศสัมพันธ์ที่ปลอดภัยและการตามรักษาคู่ของผู้ป่วยอย่างเพียงพอเท่านั้น</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"syphilis-sero",k:"b",t:"The two kinds of syphilis serology",mm:"Syphilis serology",leg:[],
+draw:()=>tbl(["","Nontreponemal tests","Treponemal tests"],[
+ ["Examples","Venereal Disease Research Laboratory · rapid plasma reagin · unheated serum reagin · toluidine red unheated serum test","fluorescent treponemal antibody-absorption · Treponema pallidum particle agglutination · specific enzyme immunoassay"],
+ ["Antigen used","cardiolipin ซึ่งได้จาก heart วัว","Treponema pallidum เอง"],
+ ["What it measures","reaginic IgG และ IgM ต่อ lipid ที่หลุดจากเซลล์ที่เสียหาย และที่โผล่บนผิวของ treponeme","antibody จำเพาะต่อ Treponema pallidum"],
+ ["Role","ใช้คัดกรอง เพราะทำได้เร็วและราคาถูก","ใช้ยืนยันผลบวกจากการคัดกรอง"],
+ ["Sensitivity","ต่ำมากตอน primary lesion เพิ่งปรากฏ · 70% ถึง 85% หลังหนึ่งสัปดาห์ · 100% ใน secondary · 70% ถึง 75% ใน late syphilis","80% ถึง 95% ใน primary · 100% ใน secondary และ late"],
+ ["Specificity","98% ถึง 99%","96% ถึง 99%"],
+ ["Over time","titer ลดลงช้า ๆ ในผู้ที่ไม่ได้รักษา และเป็นลบใน 25% ถึง 30% ของ late syphilis","มักบวกไปตลอดชีวิตของผู้ที่เคยเป็น syphilis"]]),
+notes:()=>`<h3>Which test when</h3><ul>
+ <li>เพราะ<b>ผลบวกของ nontreponemal test เกิดช้าในระยะแรก ผู้ป่วยหลายรายที่มาด้วย chancre จึงให้ผล serology เป็นลบ</b> ${S.mu}</li>
+ <li>แต่<b>ผลบวกเกิดภายใน 3 เดือนในผู้ป่วยทุกราย และยังบวกอยู่ในผู้ที่ไม่ได้รักษาซึ่งเข้าระยะ secondary</b> ${S.mu}</li>
+ <li>ข้อจำกัดของ nontreponemal test จึงมีสองด้าน — <b>ไวน้อยทั้งใน primary ระยะต้นและใน late syphilis</b> ${S.mu}</li>
+ <li><b>Treponemal test อาจบวกก่อน nontreponemal test ใน syphilis ระยะต้น และยังบวกอยู่เมื่อ nontreponemal test กลับเป็นลบในผู้ป่วย late syphilis บางราย</b> ${S.mu}</li>
+ <li>ข้อยกเว้นที่ต้องจำ: <b>ผล treponemal test ที่เป็นลบเชื่อถือไม่ได้ในผู้ป่วย acquired immunodeficiency syndrome</b> ${S.mu}</li>
+ <li><b>ใช้เฉพาะ Venereal Disease Research Laboratory test กับ cerebrospinal fluid ในผู้ที่สงสัย neurosyphilis</b> ${S.mu}</li>
+ <li>ทั้ง <b>Venereal Disease Research Laboratory และ rapid plasma reagin วัดการจับตัวเป็นก้อนของ cardiolipin antigen โดย serum ของผู้ป่วย</b> ${S.mu}</li>
+ <li><b>Treponema pallidum particle agglutination เป็น microtiter agglutination test — อนุภาคเจลาตินที่ไวต่อ antigen ของเชื้อถูกผสมกับ serum ที่เจือจาง และจับตัวกันถ้ามี antibody</b> ${S.mu}</li>
+ <li><b>Enzyme immunoassay ถูกใช้กว้างขวางในประเทศที่ทรัพยากรจำกัด ซึ่งการคัดกรองด้วย nontreponemal test แล้วยืนยันด้วย fluorescent treponemal antibody-absorption ทำได้ไม่จริง</b> ${S.mu}</li></ul>
+ <h3>Seeing the organism</h3><ul>
+ <li>เพราะเชื้อเรียวเกินกว่า light microscope จะเห็น ต้องใช้ <b>darkfield microscopy หรือสีย้อมเรืองแสงจำเพาะ</b> ${S.mu}</li>
+ <li><b>Darkfield examination ของสิ่งที่ซึมจาก lesion skin วินิจฉัย primary, secondary หรือ congenital syphilis ได้เร็ว</b> ${S.mu}</li>
+ <li>แต่<b>เชื่อถือได้เฉพาะเมื่อผู้อ่านที่ชำนาญตรวจทันทีและเห็นเชื้อที่ยังเคลื่อนไหวอยู่</b> ${S.mu}</li>
+ <li><b>เชื้อไม่รอดการขนส่งมาห้องปฏิบัติการ</b> และ<b>เศษ tissue อาจถูกเข้าใจผิดว่าเป็นเชื้อที่ตายแล้ว</b> ${S.mu}</li>
+ <li>และ<b>ห้ามตรวจสิ่งที่เก็บจาก lesion ในปากและทวารหนัก เพราะพบ spirochete ที่ไม่ก่อโรคในนั้นเป็นปกติ</b> ${S.mu}</li>
+ <li>การตรวจที่ใช้ได้จริงกว่าคือ <b>direct fluorescent antibody test ซึ่งใช้ antibody ที่ติดฉลาก fluorescein ย้อมเชื้อ</b> ${S.mu}</li>
+ <li>มันแก้ข้อจำกัดทั้งสองข้อ — <b>มี monoclonal antibody ที่จำเพาะต่อ treponeme ที่ก่อโรค จึงตรวจ specimen จากปากและทวารหนักได้</b> และ<b>เชื้อที่ตายแล้วก็ติดสี จึงไม่ต้องตรวจทันทีหลังเก็บ</b> ${S.mu}</li>
+ <li><b>ไม่ควรพยายาม culture นี้เลย เพราะมันไม่โตใน medium</b> ${S.mu}</li>
+ <li><b>Nucleic acid amplification test ถูกพัฒนาขึ้นสำหรับ lesion ที่อวัยวะเพศ, blood infant และ cerebrospinal fluid แต่ปัจจุบันยังไม่มีใช้กว้างขวาง</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"borrelia-lepto",k:"b",t:"Borrelia and Leptospira",mm:"Borrelia · Leptospira",leg:[],
 draw:()=>tbl(["Disease","Organism and vector","Picture"],[
- ["Lyme disease","Borrelia burgdorferi · เห็บแข็งสกุล Ixodes — I. scapularis ในสหรัฐ, I. ricinus ในยุโรป, I. persulcatus ในเอเชีย","erythema migrans คือผื่นวงที่ขยายออก · ต่อมามีอาการทางข้อ หัวใจ และระบบประสาท"],
- ["Epidemic relapsing fever","Borrelia recurrentis · เหาตามตัวของคน — แหล่งโรคคือคน","ไข้ขึ้นลงเป็นรอบ · พบในเอธิโอเปีย เอริเทรีย โซมาเลีย และซูดาน"],
- ["Endemic relapsing fever","Borrelia หลายสปีชีส์ · เห็บอ่อน — แหล่งโรคคือหนูและสัตว์เล็ก","ไข้ขึ้นลงเป็นรอบ"],
- ["Leptospirosis","Leptospira · สัมผัสน้ำที่ปนเปื้อนปัสสาวะสัตว์ หรือจับต้องเนื้อเยื่อสัตว์ที่ติดเชื้อ","อาการคล้ายไข้หวัดใหญ่ · aseptic meningitis · Weil disease คือรูปแบบที่รุนแรงมาก"]]),
+ ["Lyme disease","Borrelia burgdorferi · เห็บแข็งสกุล Ixodes — I. scapularis ในสหรัฐ, I. ricinus ในยุโรป, I. persulcatus ในเอเชีย","erythema migrans คือ rash วงที่ขยายออก · ต่อมามี symptom ทางข้อ heart และระบบประสาท"],
+ ["Epidemic relapsing fever","Borrelia recurrentis · เหาตามตัวของคน — แหล่งโรคคือคน","fever ขึ้นลงเป็นรอบ · พบในเอธิโอเปีย เอริเทรีย โซมาเลีย และซูดาน"],
+ ["Endemic relapsing fever","Borrelia หลายสปีชีส์ · เห็บอ่อน — แหล่งโรคคือหนูและสัตว์เล็ก","fever ขึ้นลงเป็นรอบ"],
+ ["Leptospirosis","Leptospira · สัมผัสน้ำที่ปนเปื้อน urine สัตว์ หรือจับต้อง tissue สัตว์ที่ติดเชื้อ","symptom คล้าย fever influenza · aseptic meningitis · Weil disease คือรูปแบบที่รุนแรงมาก"]]),
 notes:()=>`<h3>Borrelia</h3><ul>
  <li>Borreliae เป็น spirochete<b>ขนาดใหญ่</b> (0.2–0.5 × 8–30 µm) และ<b>เห็นได้ด้วยสีย้อมกลุ่ม aniline</b> เช่น Giemsa และ Wright — ต่างจาก <i>Treponema</i> ที่ต้องใช้ darkfield ${S.mu}</li>
  <li>Lyme disease แพร่โดย<b>เห็บแข็งสกุล <i>Ixodes</i></b> · แหล่งโรคได้แก่หนู กวาง และตัวเห็บเอง ${S.mu}</li>
- <li>เชื่อว่า<b>ปฏิกิริยาของภูมิคุ้มกันต่อตัวเชื้อ</b>เป็นสาเหตุของอาการทางคลินิกส่วนหนึ่ง ไม่ใช่ตัวเชื้อโดยตรง ${S.mu}</li>
+ <li>เชื่อว่า<b>ปฏิกิริยาของ immunity ต่อตัวเชื้อ</b>เป็นสาเหตุของ symptom ทางคลินิกส่วนหนึ่ง ไม่ใช่ตัวเชื้อโดยตรง ${S.mu}</li>
  <li><b>Relapsing fever</b> มีสองแบบ: แบบระบาดเกิดจาก <i>B. recurrentis</i> ที่แพร่โดย<b>เหาตามตัวของคน</b> และแพร่จากคนสู่คน · แบบประจำถิ่นเกิดจาก <i>Borrelia</i> หลายสปีชีส์ที่แพร่จาก<b>หนูและสัตว์เล็กผ่านเห็บอ่อน</b> ${S.mu}</li>
  <li>ผู้ที่เสี่ยงต่อแบบระบาดคือผู้ที่อยู่ใน<b>สภาพแออัดและสุขอนามัยไม่ดี</b> ${S.mu}</li></ul>
  <h3>Leptospira</h3><ul>
- <li>Leptospires เป็น spirochete ที่<b>บางและขดแน่น</b> (0.1 × 6–20 µm) และ<b>โตช้าในอาหารเลี้ยงเชื้อจำเพาะ</b> ${S.mu}</li>
+ <li>Leptospires เป็น spirochete ที่<b>บางและขดแน่น</b> (0.1 × 6–20 µm) และ<b>โตช้าใน medium จำเพาะ</b> ${S.mu}</li>
  <li><b>คนเป็น accidental end-stage host</b> ไม่ใช่แหล่งโรค ${S.mu}</li>
- <li>เชื้อ<b>เจาะผ่านผิวหนังที่มีรอยแยกเล็ก ๆ ได้</b> ${S.mu}</li>
- <li>คนติดเชื้อจาก<b>การสัมผัสน้ำที่ปนเปื้อนปัสสาวะของสัตว์ที่ติดเชื้อ</b> หรือจากการจับต้องเนื้อเยื่อสัตว์ที่ติดเชื้อ ${S.mu}</li>
- <li>กลุ่มเสี่ยงคือผู้ที่สัมผัส<b>ลำธาร แม่น้ำ และน้ำขังที่ปนเปื้อนปัสสาวะ</b> รวมถึงผู้ที่สัมผัสสัตว์จากอาชีพ เช่น เกษตรกร คนชำแหละเนื้อ และสัตวแพทย์ ${S.mu}</li>
- <li>โรคมีตั้งแต่อาการคล้ายไข้หวัดใหญ่และ <b>aseptic meningitis</b> ไปจนถึง <b>Weil disease</b> ซึ่งเป็นรูปแบบที่รุนแรงมาก ${S.mu}</li></ul>`});
+ <li>เชื้อ<b>เจาะผ่าน skin ที่มีรอยแยกเล็ก ๆ ได้</b> ${S.mu}</li>
+ <li>คนติดเชื้อจาก<b>การสัมผัสน้ำที่ปนเปื้อน urine ของสัตว์ที่ติดเชื้อ</b> หรือจากการจับต้อง tissue สัตว์ที่ติดเชื้อ ${S.mu}</li>
+ <li>กลุ่มเสี่ยงคือผู้ที่สัมผัส<b>ลำธาร แม่น้ำ และน้ำขังที่ปนเปื้อน urine</b> รวมถึงผู้ที่สัมผัสสัตว์จากอาชีพ เช่น เกษตรกร คนชำแหละเนื้อ และสัตวแพทย์ ${S.mu}</li>
+ <li>โรคมีตั้งแต่ symptom คล้าย fever influenza และ <b>aseptic meningitis</b> ไปจนถึง <b>Weil disease</b> ซึ่งเป็นรูปแบบที่รุนแรงมาก ${S.mu}</li></ul>
+ <h3>Borrelia: bigger, and stainable</h3><ul>
+ <li>Borrelia <b>ย้อม Gram ติดไม่ดีและไม่ถือว่าเป็นทั้ง gram-positive หรือ gram-negative แม้จะมี outer membrane คล้าย gram-negative</b> ${S.mu}</li>
+ <li>มัน<b>ใหญ่กว่า spirochete อื่น คือ 0.2–0.5 × 8–30 μm และย้อมติดดีด้วยสี aniline อย่าง Giemsa หรือ Wright</b> ${S.mu}</li>
+ <li>ผลในทางปฏิบัติ: <b>เห็นได้ง่ายด้วย light microscope ในสเมียร์ blood ของผู้ป่วย relapsing fever แต่ไม่เห็นใน Lyme disease เพราะเชื้อน้อยเกินไป</b> ${S.mu}</li>
+ <li>มันเป็น <b>microaerophile ที่ต้องการอาหารซับซ้อน — N-acetylglucosamine, long-chain fatty acid ทั้งอิ่มตัวและไม่อิ่มตัว, glucose และ amino acid</b> จึงเลี้ยงยาก ${S.mu}</li>
+ <li>สปีชีส์ที่เพาะได้มี <b>generation time 18 ชั่วโมงหรือกว่านั้น</b> ${S.mu}</li>
+ <li><b>การวินิจฉัยอาศัย serology ใน Lyme disease และอาศัยการย้อมใน relapsing fever</b> ${S.mu}</li></ul>
+ <h3>Two outer surface proteins, one handoff</h3><ul>
+ <li>การโตของเชื้อทั้งใน arthropod และใน host เลี้ยงลูกด้วยนม<b>ถูกกำกับโดยการเปิดปิดยีนของ outer surface protein</b> ${S.mu}</li>
+ <li><b>Outer surface protein A แสดงอยู่บนผิวของ <i>B. burgdorferi</i> ที่อยู่ใน midgut ของ tick ที่ยังไม่ได้ดูด blood และมันจับโปรตีนของผนัง gut อย่างจำเพาะ</b> ${S.mu}</li>
+ <li>เมื่อ tick ดูด blood <b>การแสดงออกของโปรตีนนั้นถูกกด เชื้อจึงย้ายไปที่ salivary gland</b> ${S.mu}</li>
+ <li>และ<b>outer surface protein C ซึ่งดูเหมือนจำเป็นต่อการถ่ายทอดจาก tick ไปสู่สัตว์เลี้ยงลูกด้วยนม ถูกเพิ่มการแสดงออกขึ้น</b> ${S.mu}</li>
+ <li><b>การรู้ลำดับจีโนมทั้งหมดของ <i>B. burgdorferi</i> ยังไม่นำไปสู่ความเข้าใจที่ชัดเจนว่าเชื้อก่อโรคอย่างไร</b> ${S.mu}</li>
+ <li><b>เชื้อมีจำนวนน้อยใน skin ตอนที่ erythema migrans ปรากฏ</b> ซึ่งแสดงได้ทั้งจาก culture จาก lesion และการตรวจกรดนิวคลีอิก — แต่<b>ทั้งการเพาะและการตรวจกรดนิวคลีอิกไวค่อนข้างต่ำในระยะต้น</b> ${S.mu}</li>
+ <li>และ<b>แทบไม่เคยแยกเชื้อได้จาก specimen ในระยะท้ายของโรค</b> ${S.mu}</li>
+ <li>คำถามที่ยังค้าง: <b>ไม่ทราบว่า symptom ระยะท้ายเกิดจากเชื้อที่ยังมีชีวิต หรือเกิดจากการที่ immunity ไขว้กับ antigen ของเชื้อ</b> ${S.mu}</li>
+ <li>และ<b>การตอบสนองทาง immunity ถูกกดตอนที่ lesion ที่ skin เพิ่งเกิด แต่ antibody เกิดขึ้นในช่วงหลายเดือนถึงหลายปีและเป็นตัวกวาดเชื้อออกโดยอาศัย complement</b> ${S.mu}</li>
+ <li>กลไกของ relapsing fever: <b>สกุลนี้ไม่สร้าง toxin ที่รู้จัก และถูกกำจัดเร็วเมื่อมีการตอบสนองของ antibody จำเพาะ</b> ${S.mu}</li>
+ <li><b>วงจร fever และไม่มี fever ที่สลับกันเกิดจากความสามารถทำ antigenic variation</b> — <b>เชื้อมียีนจำนวนมากที่คล้ายยีน outer surface protein C แต่แสดงออกครั้งละยีนเดียว</b> ${S.mu}</li></ul>
+ <h3>Lyme disease: tick, mouse, deer</h3>
+ ${tbl(["Infection","Reservoir","Vector"],[
+ ["Lyme disease","rodent · deer · สัตว์เลี้ยง · hard tick","hard tick — Ixodes"],
+ ["Relapsing fever, epidemic","คนเท่านั้น","human body louse"],
+ ["Relapsing fever, endemic","rodent และสัตว์เลี้ยงลูกด้วยนมขนาดเล็ก · soft tick","soft tick — Ornithodoros"]])}
+ <ul><li>สามสปีชีส์ที่ก่อโรคในคน — <b><i>B. burgdorferi</i> พบในสหรัฐอเมริกาและ Europe · <i>B. garinii</i> และ <i>B. afzelii</i> พบใน Europe และ Asia</b> · ทั้งกลุ่มมีอย่างน้อย 10 สปีชีส์ ${S.mu}</li>
+ <li><b>อุบัติการณ์เพิ่มขึ้นอย่างมากจาก 497 รายในปี 1982 เป็น 42,743 รายในปี 2017</b> · <b>เป็นโรคที่มี arthropod เป็นพาหะที่พบมากที่สุดในสหรัฐอเมริกา</b> ${S.mu}</li>
+ <li>รายส่วนใหญ่มาจากสองจุด — <b>รัฐ Northeast และ Mid-Atlantic จาก Maine ถึง Virginia และ Upper Midwest คือ Minnesota กับ Wisconsin</b> ${S.mu}</li>
+ <li>พาหะต่างกันตามภูมิภาค — <b><i>Ixodes scapularis</i> ใน Northeast, Mid-Atlantic และ Midwest · <i>I. pacificus</i> ที่ชายฝั่งตะวันตก · <i>I. ricinus</i> ใน Europe · <i>I. persulcatus</i> ใน Eastern Europe และ Asia</b> ${S.mu}</li>
+ <li>reservoir หลักในสหรัฐอเมริกาคือ <b>white-footed mouse และ white-tailed deer</b> — <b>mouse เป็น host หลักของระยะ larva และ nymph ส่วน deer เป็นของระยะตัวเต็มวัย</b> ${S.mu}</li>
+ <li><b>เพราะระยะ nymph ก่อโรคกว่า 90% ของรายที่บันทึกไว้ mouse จึงเกี่ยวข้องกับโรคในคนมากกว่า</b> ${S.mu}</li>
+ <li>วงจร: <b>larva ติดเชื้อเมื่อดูด blood mouse แล้วลอกคราบเป็น nymph ในปลายฤดูใบไม้ผลิและดูด blood ครั้งที่สอง ซึ่งคนอาจเป็น host โดยอุบัติเหตุ</b> ${S.mu}</li>
+ <li><b>เชื้อถ่ายทอดในน้ำลายของ tick ระหว่างการดูด blood ที่นานอย่างน้อย 48 ชั่วโมง</b> ${S.mu}</li>
+ <li>แต่<b>ผู้ป่วยส่วนใหญ่จำไม่ได้ว่าถูก tick กัด เพราะ nymph มีขนาดเท่าเมล็ดงา</b> ${S.mu}</li>
+ <li><b>nymph โตเป็นตัวเต็มวัยในปลายฤดูร้อนและดูด blood ครั้งที่สาม ซึ่งคนก็ติดเชื้อได้</b> · <b>ผู้ป่วยส่วนใหญ่ถูกวินิจฉัยในเดือนมิถุนายนและกรกฎาคม</b> ${S.mu}</li></ul>
+ <h3>Lyme disease in three stages</h3><ul>
+ <li>หลัง<b>incubation period 3 ถึง 30 วัน</b> เกิด<b>lesion ที่ skin หนึ่งหรือหลายแห่ง ณ จุดที่ tick กัด</b> ${S.mu}</li>
+ <li><b>Erythema migrans เริ่มเป็น macule หรือ papule เล็ก แล้วขยายในไม่กี่สัปดาห์จนคลุมพื้นที่ 5 ซม. ถึงมากกว่า 50 ซม.</b> ${S.mu}</li>
+ <li>lesion<b>มักมีขอบแดงแบนและศูนย์กลางจาง แต่ก็พบ erythema, การเกิดตุ่มน้ำและ necrosis ตรงกลางได้</b> ${S.mu}</li>
+ <li>และ<b>มันจางหายในไม่กี่สัปดาห์ แม้ lesion ใหม่ที่อยู่ชั่วคราวอาจปรากฏตามมา</b> ${S.mu}</li>
+ <li><b>lesion นี้เป็นลักษณะของ Lyme disease แต่ไม่ใช่ pathognomonic</b> ${S.mu}</li>
+ <li>เพราะมี<b>southern tick-associated rash illness ซึ่งเกิดหลังถูก <i>Amblyomma americanum</i> หรือ lone star tick กัด และ tick เหล่านั้นไม่ติดเชื้อ <i>B. burgdorferi</i></b> ${S.mu}</li>
+ <li>symptom ระยะต้นอื่น: <b>malaise, fatigue รุนแรง, headache, fever, chills, ปวด muscle และ lymphadenopathy</b> ซึ่ง<b>อยู่เฉลี่ย 4 สัปดาห์</b> ${S.mu}</li>
+ <li>ระยะ<b>early disseminated</b> เกิดในผู้ที่ไม่ได้รักษาภายในไม่กี่วันถึงไม่กี่สัปดาห์ — มี<b>symptom ทั้งระบบ, arthritis และ arthralgia, ปวด muscle, lesion skin, การทำงานของ heart ผิดปกติและ symptom ทางระบบประสาท</b> ${S.mu}</li>
+ <li><b>ราว 60% ของผู้ที่ไม่ได้รักษาเกิด arthritis ซึ่งมักเป็นที่เข่า · 10% ถึง 20% เกิด symptom ทางระบบประสาท ซึ่งพบบ่อยที่สุดคือ facial nerve palsy · และ 5% มี complication ทาง heart ซึ่งมักเป็น atrioventricular block ระดับต่าง ๆ</b> ${S.mu}</li>
+ <li>ระยะท้ายเกิด<b>หลายเดือนถึงหลายปีหลังติดเชื้อ — arthritis เป็นระยะในข้อหนึ่งหรือหลายข้อ</b> ${S.mu}</li>
+ <li>และ<b>acrodermatitis chronica atrophicans คือ skin เปลี่ยนสีและบวมเรื้อรัง ซึ่งพบบ่อยกว่าใน Lyme disease ของ Europe</b> ${S.mu}</li>
+ <li><b>การมีอยู่ของ Lyme disease เรื้อรังที่มี symptom ในผู้ที่ได้รับการรักษาอย่างเหมาะสมแล้ว ยังไม่ถูกพิสูจน์อย่างชัดเจน</b> ${S.mu}</li></ul>
+ <h3>Relapsing fever: epidemic versus endemic</h3><ul>
+ <li>เชื้อของ<b>louse-borne epidemic relapsing fever คือ <i>B. recurrentis</i> พาหะคือ human body louse และคนเป็น reservoir เพียงชนิดเดียว</b> ${S.mu}</li>
+ <li>วงจรใน louse: <b>louse ติดเชื้อหลังดูด blood ผู้ติดเชื้อ เชื้อผ่านผนัง gut และเพิ่มจำนวนใน hemolymph</b> ${S.mu}</li>
+ <li>และกลไกการติดต่อที่ผิดจากที่คาด: <b>เชื่อว่าเชื้อไม่กระจายทั่วตัว louse — คนจึงติดเชื้อเมื่อ louse ถูกบี้แตกระหว่างที่มันดูด blood</b> ${S.mu}</li>
+ <li>และเพราะ<b>louse ที่ติดเชื้อไม่รอดเกินไม่กี่เดือน การคงอยู่ของโรคจึงต้องอาศัยภาวะแออัดและไม่ถูกสุขลักษณะ</b> เช่นสงครามและภัยธรรมชาติ ${S.mu}</li>
+ <li><b>การระบาดเคยพัดจาก Eastern ไป Western Europe ในศตวรรษที่ผ่านมา แต่ปัจจุบันโรคจำกัดอยู่ใน Ethiopia, Eritrea, Somalia และ Sudan</b> ${S.mu}</li>
+ <li><b>tick-borne endemic relapsing fever เป็น zoonosis โดยมี rodent, สัตว์เลี้ยงลูกด้วยนมขนาดเล็กและ soft tick เป็น reservoir หลัก และมี Borrelia หลายสปีชีส์เป็นสาเหตุ</b> ${S.mu}</li>
+ <li>ต่างจาก louse ตรงที่ <b>เชื้อของ endemic disease ก่อ infection ที่กระจายทั่วตัว tick</b> ${S.mu}</li>
+ <li>และ <b>arthropod ยังรักษา reservoir ไว้ได้ด้วย transovarian transmission</b> · <b>tick รอดได้หลายเดือนระหว่างการดูด blood สองครั้ง</b> ${S.mu}</li>
+ <li><b>soft tick ดูด blood ตอนกลางคืนเป็นหลักและเกาะอยู่เพียงไม่กี่นาที</b> ${S.mu}</li>
+ <li>และ<b>tick ปนเปื้อนแผลที่กัดด้วยเชื้อที่อยู่ในน้ำลายหรือมูล</b> ${S.mu}</li>
+ <li>การกระจาย: <b>tick-borne disease พบทั่วโลกตามการกระจายของ Ornithodoros</b> · ในสหรัฐอเมริกาพบในรัฐทางตะวันตกเป็นหลัก โดยพบบ่อยที่สุดใน Washington และ California ${S.mu}</li>
+ <li>ภาพทางคลินิกของทั้งสองรูป<b>เหมือนกันเป็นหลัก แม้รูป tick-borne อาจมี eschar เล็กที่คันที่จุดกัด</b> ${S.mu}</li>
+ <li>หลัง<b>incubation period หนึ่งสัปดาห์ โรคเริ่มฉับพลันด้วย chills fever ปวด muscle และ headache</b> · <b>splenomegaly และ hepatomegaly พบบ่อย</b> ${S.mu}</li>
+ <li>symptom เหล่านี้<b>ตรงกับระยะ bacteremia และหายใน 3 ถึง 7 วันเมื่อเชื้อถูกกวาดออกจาก blood</b> ${S.mu}</li>
+ <li>แล้ว<b>bacteremia กับ fever กลับมาอีกหลังช่วงไม่มี fever หนึ่งสัปดาห์ — และรอบหลัง ๆ symptom เบากว่าและสั้นกว่า</b> ${S.mu}</li>
+ <li><b>epidemic louse-borne disease มีการกลับเป็นซ้ำครั้งเดียวเป็นลักษณะเฉพาะ ขณะที่ endemic tick-borne disease กลับเป็นซ้ำได้ถึง 10 ครั้ง</b> ${S.mu}</li>
+ <li>และ<b>mortality ของ endemic disease น้อยกว่า 5% แต่ของ louse-borne epidemic disease สูงได้ถึง 70%</b> ${S.mu}</li>
+ <li><b>การตายเกิดจาก cardiac failure, hepatic necrosis หรือ cerebral hemorrhage</b> ${S.mu}</li></ul>
+ <h3>At the bench, and the drugs</h3><ul>
+ <li><b>ไม่แนะนำการตรวจ blood หรือ tissue ใต้กล้องใน Lyme disease เพราะแทบไม่เห็นเชื้อ</b> ${S.mu}</li>
+ <li>แต่สำหรับ relapsing fever <b>การย้อม Giemsa หรือ Wright ของ blood ในช่วงที่มี fever เป็นวิธีที่ไวที่สุด โดยสเมียร์พบเชื้อในผู้ป่วยกว่า 70%</b> ${S.mu}</li>
+ <li>การเพาะ: <b><i>B. recurrentis</i> และ <i>B. hermsii</i> เพาะได้บนอาหารจำเพาะ แต่แทบไม่ทำในห้องปฏิบัติการคลินิก เพราะอาหารหาไม่ง่ายและเชื้อโตช้า</b> ${S.mu}</li>
+ <li>สำหรับ <i>B. burgdorferi</i> <b>การเพาะไวต่ำใน specimen ทุกชนิด ยกเว้น lesion ที่ skin ตอนแรก</b> ${S.mu}</li>
+ <li><b>Nucleic acid amplification ไว 65% ถึง 75% ใน skin biopsy, 50% ถึง 85% ใน synovial fluid และ 25% ใน cerebrospinal fluid</b> — <b>และจำกัดอยู่ในห้องปฏิบัติการวิจัยและอ้างอิง</b> ${S.mu}</li>
+ <li><b>Serology ใช้วินิจฉัย relapsing fever ไม่ได้ เพราะเชื้อทำ antigenic phase variation</b> ${S.mu}</li>
+ <li>แต่<b>serology เป็นการตรวจที่เลือกใช้สำหรับ Lyme disease</b> — ที่ใช้บ่อยคือ <b>immunofluorescence assay และ enzyme immunoassay</b> ${S.mu}</li>
+ <li><b>IgM ปรากฏ 2 ถึง 4 สัปดาห์หลัง erythema migrans ในผู้ที่ไม่ได้รักษา, ขึ้นสูงสุดที่ 6 ถึง 8 สัปดาห์ แล้วลดลงสู่ปกติที่ 4 ถึง 6 เดือน</b> ${S.mu}</li>
+ <li><b>IgG ปรากฏช้ากว่า, ขึ้นสูงสุดที่ 4 ถึง 6 เดือน และคงอยู่ตลอด symptom ระยะท้าย</b> ${S.mu}</li>
+ <li>จึง<b>ผู้ป่วยที่มี complication ระยะท้ายส่วนใหญ่ตรวจพบ antibody ได้ แม้ระดับอาจถูกกดในผู้ที่ได้ antibiotic</b> ${S.mu}</li>
+ <li><b>การตรวจพบ antibody ใน cerebrospinal fluid เป็นหลักฐานหนักแน่นของ neuroborreliosis</b> ${S.mu}</li>
+ <li>แต่<b>ผลบวกต้องแปลอย่างระมัดระวัง โดยเฉพาะถ้า titer ต่ำ — ผลบวกลวงส่วนใหญ่เกิดในผู้ป่วย syphilis</b> ${S.mu}</li>
+ <li>และวิธีตัดออกง่ายมาก: <b>ทำ nontreponemal test สำหรับ syphilis ซึ่งให้ผลลบในผู้ป่วย Lyme disease</b> ${S.mu}</li>
+ <li><b>Western blot ใช้ยืนยันความจำเพาะของผลบวก และ specimen ที่ให้ผลลบไม่ต้องตรวจต่อ</b> ${S.mu}</li>
+ <li>และข้อเตือนที่สำคัญ: <b>serology ควรถือเป็นการยืนยัน และไม่ควรทำถ้าไม่มีประวัติและ symptom ที่เข้ากับ Lyme disease</b> ${S.mu}</li>
+ <li>การรักษา: <b>symptom ระยะต้นจัดการได้ดีด้วย amoxicillin, doxycycline หรือ cefuroxime แบบกิน</b> และ<b>antibiotic ลดทั้งโอกาสและความรุนแรงของ complication ระยะท้าย</b> ${S.mu}</li>
+ <li>แต่<b>Lyme arthritis และ acrodermatitis chronica atrophicans ยังเกิดในผู้ป่วยจำนวนน้อย</b> ${S.mu}</li>
+ <li><b>ผู้ที่มี arthritis กลับเป็นซ้ำ หรือโรคของระบบประสาทส่วนกลางหรือส่วนปลาย มักต้องได้ ceftriaxone, cefotaxime หรือ penicillin G ทาง blood vessel ดำ</b> ${S.mu}</li>
+ <li><b>Relapsing fever รักษาด้วย tetracycline หรือ erythromycin</b> ${S.mu}</li></ul>`});
+SEC.push({id:"leptospira",k:"b",t:"Leptospira: the kidney of a rodent, and the water downstream",mm:"Leptospira",leg:[],
+draw:()=>tbl(["","Reservoir host","Incidental host"],[
+ ["Who","rodent และสัตว์เลี้ยงลูกด้วยนมขนาดเล็กเป็นที่พบบ่อยที่สุด","dog · สัตว์ในฟาร์ม · rodent · คน"],
+ ["Infection","endemic และเรื้อรัง · มักไม่มี symptom","เฉียบพลัน · โดยนิยามไม่เกิดการเป็นพาหะเรื้อรัง"],
+ ["Where the organism sits","ตั้งรังใน renal tubule และถูกขับออกใน urine จำนวนมาก","กระจายใน blood ไปทุก tissue รวมถึง central nervous system"],
+ ["How it reaches the next host","ลำธาร แม่น้ำ น้ำนิ่งและดินชื้นที่ปนเปื้อน urine — เชื้ออยู่ได้นานถึง 6 สัปดาห์","การสัมผัสน้ำที่ปนเปื้อนเพื่อนันทนาการ หรือการสัมผัสสัตว์ที่ติดเชื้อจากการทำงาน"]]),
+notes:()=>`<h3>Physiology</h3><ul>
+ <li>ชื่อสกุลมาจาก lepto คือบาง และ spira คือขด — <b>ขดที่บาง</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>spirochete บางและขด 0.1 × 6.0–20.0 μm โดยมีตะขอที่ปลายแหลมข้างหนึ่งหรือทั้งสองข้าง</b> ${S.mu}</li>
+ <li><b>เคลื่อนที่ด้วย periplasmic flagella สองเส้นที่ยาวตลอดตัวเชื้อและยึดที่ปลายคนละข้าง</b> ${S.mu}</li>
+ <li>เป็น <b>obligate aerobe ที่โตดีที่สุดที่ 28 °C ถึง 30 °C ในอาหารที่เสริมวิตามิน, long-chain fatty acid และ ammonium salt</b> ${S.mu}</li>
+ <li>ความสำคัญในทางปฏิบัติ: <b>เพาะจาก specimen ของผู้ป่วยได้ในอาหารที่จำเพาะมาก แม้จะไม่ค่อยทำกัน</b> ${S.mu}</li></ul>
+ <h3>How it gets in, and what it damages</h3><ul>
+ <li>เพราะ<b>เชื้อบางและเคลื่อนที่เก่ง มันแทรกผ่าน mucosa ที่ยังไม่ฉีกขาด หรือผ่าน skin ทางรอยบาดและรอยถลอกเล็ก ๆ ได้</b> ${S.mu}</li>
+ <li>แล้ว<b>กระจายใน blood ไปทุก tissue รวมถึง central nervous system</b> ${S.mu}</li>
+ <li>กลไกของ symptom แทบทั้งหมด: <b>เชื้อเพิ่มจำนวนเร็วและทำลาย endothelium ของ blood vessel ขนาดเล็ก</b> จึงเกิด meningitis, การทำงานของ liver กับ kidney บกพร่อง และ hemorrhage ${S.mu}</li>
+ <li>ตำแหน่งที่พบเชื้อเปลี่ยนตามเวลา: <b>พบใน blood และ cerebrospinal fluid ในระยะต้น และพบใน urine ในระยะหลัง</b> ${S.mu}</li>
+ <li><b>การกวาดเชื้อออกเกิดเมื่อ humoral immunity พัฒนาขึ้น</b> ${S.mu}</li>
+ <li>แต่<b>symptom ระยะท้ายอย่างความเสียหายของ blood vessel ที่ทำให้การซึมผ่านเพิ่มขึ้น สัมพันธ์กับการตอบสนองทาง immunity ต่อเชื้อ</b> ${S.mu}</li>
+ <li>ความรุนแรงกำหนดโดยสามอย่าง — <b>จำนวนเชื้อ, กลไกป้องกันของ host และ virulence ของ strain</b> ${S.mu}</li></ul>
+ <h3>Two phases, and the icteric form</h3><ul>
+ <li><b>infection ในคนส่วนใหญ่ไม่มี symptom ทางคลินิก และตรวจพบได้เพียงจาก antibody จำเพาะ</b> ${S.mu}</li>
+ <li>เชื้อเข้าทาง<b>รอยถลอกของ skin หรือทาง conjunctiva</b> · <b>symptom เกิดหลัง incubation period 1 ถึง 2 สัปดาห์และมาเป็นสองระยะ</b> ${S.mu}</li>
+ <li>ระยะแรก<b>เหมือน fever influenza — fever, ปวด muscle, chills, headache, vomiting หรือ diarrhea</b> ${S.mu}</li>
+ <li><b>ผู้ป่วยมี bacteremia และมักแยกเชื้อได้จาก cerebrospinal fluid แม้ยังไม่มี symptom ของ meninges</b> ${S.mu}</li>
+ <li>symptom อาจหายไปหลังหนึ่งสัปดาห์ หรือดำเนินสู่<b>ระยะที่สองซึ่งรุนแรงกว่า — headache ปวด muscle chills abdominal pain และ conjunctival suffusion คือตาแดงฉับพลัน</b> ${S.mu}</li>
+ <li>โรคที่รุนแรงดำเนินเป็น <b>vascular collapse, thrombocytopenia, hemorrhage และการทำงานของ liver กับ kidney บกพร่อง</b> ${S.mu}</li>
+ <li>รูปที่จำกัดอยู่ที่ central nervous system <b>ถูกเข้าใจผิดเป็น aseptic viral meningitis ได้ เพราะโรคมักไม่มี complication และ mortality ต่ำมาก</b> · <b>การเพาะ cerebrospinal fluid ในระยะนี้มักเป็นลบ</b> ${S.mu}</li>
+ <li>ที่ตรงข้ามคือ <b>icteric form ซึ่งเป็นราว 10% ของ infection ที่มี symptom รุนแรงกว่าและ mortality เข้าใกล้ 10% ถึง 15%</b> ${S.mu}</li>
+ <li><b>แม้ jaundice จะเด่นใน Weil disease แต่ไม่พบ hepatic necrosis และผู้รอดไม่มีความเสียหายของ liver อย่างถาวร</b> · <b>ผู้ป่วยส่วนใหญ่ก็ฟื้นการทำงานของ kidney ได้เต็มที่</b> ${S.mu}</li>
+ <li><b>Congenital leptospirosis เกิดได้ด้วย — เริ่มฉับพลันด้วย headache fever ปวด muscle และ rash กระจาย</b> ${S.mu}</li></ul>
+ <h3>Numbers, and the tests</h3><ul>
+ <li>Leptospirosis พบทั่วโลก · สหรัฐอเมริกาและดินแดนในปกครองมี<b>ราว 100 รายต่อปี โดยส่วนใหญ่รายงานจาก Puerto Rico และ Hawaii</b> ${S.mu}</li>
+ <li>แต่<b>ตัวเลขนี้ต่ำกว่าความจริงอย่างมาก เพราะ infection ส่วนใหญ่เบาและถูกวินิจฉัยผิดเป็น viral syndrome หรือ aseptic viral meningitis</b> ${S.mu}</li>
+ <li><b>การรายงานบังคับถูกยกเลิกในปี 1995 เพราะหลายรัฐไม่รายงาน แล้วกลับมาเป็นโรคที่ต้องแจ้งระดับประเทศในปี 2013</b> ${S.mu}</li>
+ <li><b>serovar ต่างกันสัมพันธ์กับ reservoir host จำเพาะ ซึ่งสำคัญต่อการสืบค้นทางระบาดวิทยา</b> ${S.mu}</li>
+ <li>infection ในคนส่วนใหญ่มาจาก<b>การสัมผัสน้ำที่ปนเปื้อนเพื่อนันทนาการ หรือการสัมผัสสัตว์ที่ติดเชื้อจากการทำงาน</b> เช่นเกษตรกร คนงานโรงฆ่าสัตว์และสัตวแพทย์ ${S.mu}</li>
+ <li><b>infection ส่วนใหญ่เกิดในเดือนที่อากาศอุ่น เมื่อการสัมผัสเพื่อนันทนาการสูงสุด</b> · <b>ยังไม่มีการบันทึกการแพร่จากคนสู่คน</b> ${S.mu}</li>
+ <li>การย้อม: <b>เชื้อบางจนอยู่ที่ขีดจำกัดของกำลังแยกของ light microscope จึงมองไม่เห็นด้วยกล้องธรรมดา</b> · <b>ทั้ง Gram stain และ silver stain เชื่อถือไม่ได้</b> · และ<b>darkfield microscopy ก็ไวค่อนข้างต่ำและให้ผลไม่จำเพาะเมื่อมีเศษเซลล์อยู่</b> ${S.mu}</li>
+ <li>การเพาะ: <b>ใช้อาหารสูตรจำเพาะอย่าง Fletcher, Ellinghausen-McCullough-Johnson-Harris หรือ Tween 80-albumin</b> ${S.mu}</li>
+ <li>เชื้อ<b>โตช้า generation time 6 ถึง 16 ชั่วโมง ต้องบ่มที่ 28 °C ถึง 30 °C นานถึง 4 เดือน แม้การเพาะส่วนใหญ่ขึ้นภายใน 2 สัปดาห์</b> ${S.mu}</li>
+ <li>และเข้ากับสองระยะของโรค: <b>พบเชื้อใน blood หรือ cerebrospinal fluid ใน 10 วันแรก และใน urine หลังสัปดาห์แรกและนานถึง 3 เดือน</b> ${S.mu}</li>
+ <li>เพราะ<b>ความเข้มข้นของเชื้ออาจต่ำ ควรเก็บ specimen หลายตัวอย่าง</b> · และ<b>สารยับยั้งใน blood กับ urine อาจหน่วงหรือกันการเก็บเชื้อ</b> ${S.mu}</li>
+ <li>วิธีจัดการ urine: <b>ต้องปรับ pH ให้เป็นกลางและปั่นให้เข้มข้นขึ้น แล้วหยดตะกอนลง medium</b> · <b>การโตตรวจพบด้วย darkfield microscopy</b> ${S.mu}</li>
+ <li><b>Nucleic acid amplification ไวกว่า culture แต่ยังไม่มีใช้กว้างขวาง โดยเฉพาะในประเทศที่ทรัพยากรจำกัดซึ่งโรคพบบ่อย</b> ${S.mu}</li>
+ <li>วิธีอ้างอิงของการตรวจ serology คือ <b>microscopic agglutination test ซึ่งวัดความสามารถของ serum ผู้ป่วยในการจับ leptospire ที่มีชีวิตให้เป็นก้อน</b> ${S.mu}</li>
+ <li>เพราะ<b>การตรวจจำเพาะต่อ serotype จึงต้องใช้ antigen หลายชนิดรวมกัน</b> ${S.mu}</li>
+ <li><b>Agglutinin ปรากฏใน blood ของผู้ที่ไม่ได้รักษาหลังป่วย 5 ถึง 7 วัน แม้การตอบสนองนี้อาจช้าถึงหลายเดือน</b> ${S.mu}</li>
+ <li>เกณฑ์: <b>ผู้ติดเชื้อมี titer อย่างน้อย 800 หรือมี titer เพิ่มสี่เท่า</b> · <b>ผู้ที่ได้ antibiotic อาจมีการตอบสนองที่ลดลงหรือ titer ที่ไม่ถึงเกณฑ์</b> ${S.mu}</li>
+ <li><b>agglutinating antibody ตรวจพบได้หลายปีหลังเจ็บป่วยเฉียบพลัน จึงระดับต่ำอาจหมายถึงทั้งการตอบสนองที่ถูกกดในผู้ป่วยเฉียบพลันที่ได้ยา หรือ antibody ที่เหลือจาก infection นานมาแล้วที่ไม่มีใครรู้</b> ${S.mu}</li>
+ <li>และเพราะ<b>microscopic agglutination test ใช้เชื้อที่มีชีวิต มันทำได้เฉพาะในห้องปฏิบัติการอ้างอิง</b> ${S.mu}</li>
+ <li>การตรวจทางเลือกอย่าง <b>indirect hemagglutination, slide agglutination และ enzyme-linked immunosorbent assay ไวและจำเพาะน้อยกว่า</b> จึงใช้คัดกรองได้ แต่<b>ผลบวกต้องยืนยันด้วย microscopic agglutination test หรือ culture</b> ${S.mu}</li>
+ <li><b>การไขว้ทาง serology เกิดกับ infection spirochete อื่น คือ syphilis, relapsing fever และ Lyme disease และกับ legionellosis</b> ${S.mu}</li></ul>
+ <h3>Treatment and control</h3><ul>
+ <li><b>Leptospirosis มักไม่ถึงตาย โดยเฉพาะเมื่อไม่มี icteric disease</b> ${S.mu}</li>
+ <li><b>รักษาด้วย penicillin ทาง blood vessel ดำหรือ doxycycline</b> ${S.mu}</li>
+ <li><b>doxycycline แต่ไม่ใช่ penicillin ใช้ป้องกันโรคในผู้ที่สัมผัสสัตว์ที่ติดเชื้อหรือน้ำที่ปนเปื้อน urine ได้</b> ${S.mu}</li>
+ <li><b>การกำจัดโรคทำได้ยาก เพราะมันแพร่หลายทั้งในสัตว์ป่าและสัตว์เลี้ยง</b> ${S.mu}</li>
+ <li>แต่<b>การให้ vaccine แก่ livestock และสัตว์เลี้ยงลดอุบัติการณ์ในสัตว์เหล่านั้นและการสัมผัสของคนที่ตามมาได้สำเร็จ</b> ${S.mu}</li>
+ <li>และ<b>การควบคุม rodent ได้ผลในการกำจัดโรคในชุมชน</b> ${S.mu}</li></ul>`});
+
 
 atlasFinish();
 </script>

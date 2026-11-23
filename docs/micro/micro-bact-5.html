@@ -335,175 +335,413 @@ Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
 Object.assign(GN,{a:"Curved rods",b:"Respiratory",c:"Zoonoses"});
 
 /* ===================================================================
-   Gram-negative bacilli, part 2 — Murray ch 26 (Vibrio), ch 28
-   (Campylobacter and Helicobacter), ch 24 (Haemophilus) and ch 29
-   (Miscellaneous Gram-Negative Rods).
-   =================================================================== */
+ Gram-negative bacilli, part 2 — Murray ch 26 (Vibrio), ch 28
+ (Campylobacter and Helicobacter), ch 24 (Haemophilus) and ch 29
+ (Miscellaneous Gram-Negative Rods).
+ =================================================================== */
 
 SEC.push({id:"cholera",k:"a",t:"Cholera toxin turns the enterocyte into a tap",mm:"Vibrio cholerae",leg:[],
 draw:()=>{let b="";
- b+=mL(24,26,"สารพิษไม่ได้ฆ่าเซลล์ — มันเปิดก๊อกค้างไว้",{a:"start",c:"bh"});
+ b+=mL(24,26,"toxin ไม่ได้ฆ่าเซลล์ — มันเปิดก๊อกค้างไว้",{a:"start",c:"bh"});
  /* one enterocyte, with the toxin arriving on its apical surface */
  const cx=190,top=70,bot=300,L=96,R=320;
  b+=`<path class="m-spin" d="M${L},${top} L${R},${top} L${R},${bot} L${L},${bot} Z"/>`
-  +mgrainIn("chc","M"+L+","+top+" L"+R+","+top+" L"+R+","+bot+" L"+L+","+bot+" Z",L,top,R-L,bot-top,110,5,"m-gr",.9);
+ +mgrainIn("chc","M"+L+","+top+" L"+R+","+top+" L"+R+","+bot+" L"+L+","+bot+" Z",L,top,R-L,bot-top,110,5,"m-gr",.9);
  for(let x=L+4;x<R;x+=5)b+=`<path class="m-kera" d="M${x},${top} L${x},${top-13}"/>`;
  b+=mL((L+R)/2,bot+22,"enterocyte",{c:"s m"});
  /* AB5 docking on GM1 */
  const tx=150,ty=top-30;
  [...Array(5)].forEach((_,i)=>{const a=i/5*Math.PI*2-Math.PI/2;
-  b+=`<path class="m-ring2" d="${mblob(tx+Math.cos(a)*18,ty+Math.sin(a)*9,10,8,i*7+3,.08)}"/>`});
+ b+=`<path class="m-ring2" d="${mblob(tx+Math.cos(a)*18,ty+Math.sin(a)*9,10,8,i*7+3,.08)}"/>`});
  b+=`<path class="m-body2" d="${mblob(tx,ty-20,15,13,23,.08)}"/>`+mL(tx,ty-16,"A",{c:"bh"});
  b+=`<path class="m-oantib" d="M${tx-18},${top-4} l0,-8 m12,8 l0,-8 m12,8 l0,-8 m12,8 l0,-8"/>`
-  +mL(tx+54,top-6,"GM1 ganglioside",{a:"start",c:"s m"});
+ +mL(tx+54,top-6,"GM1 ganglioside",{a:"start",c:"s m"});
  /* inside: A subunit locks Gs on, adenylate cyclase runs away */
  const ay=150;
  b+=`<path class="m-body2" d="${mblob(cx-40,ay,15,13,29,.1)}"/>`+mL(cx-40,ay+4,"A",{c:"bh"})
-  +`<path class="m-ring2" d="${mblob(cx+22,ay,24,18,31,.08)}"/>`+mL(cx+22,ay+4,"Gs",{c:"bh"})
-  +`<path class="m-cyc" marker-end="url(#ah2)" d="M${cx-22},${ay} L${cx-6},${ay}"/>`;
+ +`<path class="m-ring2" d="${mblob(cx+22,ay,24,18,31,.08)}"/>`+mL(cx+22,ay+4,"Gs",{c:"bh"})
+ +`<path class="m-cyc" marker-end="url(#ah2)" d="M${cx-22},${ay} L${cx-6},${ay}"/>`;
  b+=`<path class="m-porin" d="M${cx+8},${ay+56} l0,-22 l34,0 l0,22 Z"/>`
-  +mL(cx+25,ay+76,"adenylate cyclase",{c:"s m"})
-  +`<path class="m-cyc" marker-end="url(#ah2)" d="M${cx+22},${ay+20} L${cx+22},${ay+32}"/>`;
+ +mL(cx+25,ay+76,"adenylate cyclase",{c:"s m"})
+ +`<path class="m-cyc" marker-end="url(#ah2)" d="M${cx+22},${ay+20} L${cx+22},${ay+32}"/>`;
  const cq=rng(17);
  for(let i=0;i<16;i++)b+=`<circle class="m-gene" cx="${(cx-50+cq()*130).toFixed(1)}" cy="${(ay+96+cq()*56).toFixed(1)}" r="3.4"/>`;
  b+=mL(cx+16,ay+170,"cAMP",{c:"bh"});
  /* water and chloride pouring out */
  const wq=rng(23);
  for(let i=0;i<16;i++){const y=top+16+wq()*200;
-  b+=`<path class="m-oanti" style="stroke-width:2.4" d="M${(L-6).toFixed(1)},${y.toFixed(1)} L${(L-40-wq()*26).toFixed(1)},${(y-6+wq()*12).toFixed(1)}"/>`}
+ b+=`<path class="m-oanti" style="stroke-width:2.4" d="M${(L-6).toFixed(1)},${y.toFixed(1)} L${(L-40-wq()*26).toFixed(1)},${(y-6+wq()*12).toFixed(1)}"/>`}
  b+=mlead2(tx+18,ty-10,360,56,["Five B subunits bind GM1","AB₅ แบบเดียวกับ heat-labile toxin ของ ETEC"],{a:"start"})
-  +mlead2(cx+22,ay,360,108,["A subunit locks Gs on","adenylate cyclase ทำงานค้าง cAMP พุ่ง"],{a:"start"})
-  +mlead2(L-30,top+110,360,160,["Chloride and water pour out","เซลล์หลั่งน้ำและคลอไรด์ออกไม่หยุด"],{a:"start"})
-  +mL(360,206,"ถ่ายเป็นน้ำซาวข้าว (rice-water stool)",{a:"start",c:"bad"})
-  +mL(360,226,"ไม่มีไข้ ไม่มีเลือด ไม่มีเม็ดเลือดขาว",{a:"start",c:"s m"})
-  +mL(360,244,"เยื่อบุลำไส้ไม่ถูกทำลายเลย",{a:"start",c:"s m"});
+ +mlead2(cx+22,ay,360,108,["A subunit locks Gs on","adenylate cyclase ทำงานค้าง cAMP พุ่ง"],{a:"start"})
+ +mlead2(L-30,top+110,360,160,["Chloride and water pour out","เซลล์หลั่งน้ำและคลอไรด์ออกไม่หยุด"],{a:"start"})
+ +mL(360,206,"ถ่ายเป็นน้ำซาวข้าว (rice-water stool)",{a:"start",c:"bad"})
+ +mL(360,226,"ไม่มี fever ไม่มี blood ไม่มี leukocyte",{a:"start",c:"s m"})
+ +mL(360,244,"เยื่อบุ intestine ไม่ถูกทำลายเลย",{a:"start",c:"s m"});
  b+=`<path class="m-sep" d="M24,330 L616,330"/>`;
- [["Toxin-coregulated pilus (TCP)","เกาะเยื่อบุลำไส้ · และเป็น receptor ให้ phage CTXΦ ที่พายีนสารพิษเข้ามา",24,356],
-  ["Accessory cholera enterotoxin · zonula occludens toxin","ถ่ายเหลวได้แม้ไม่มี cholera toxin · ตัวหลังคลาย tight junction",24,404],
-  ["Serogroup O1 และ O139","สองกลุ่มนี้เท่านั้นที่ก่อ cholera แท้ · O1 มีสอง biotype คือ Classical และ El Tor",24,452]
+ [["Toxin-coregulated pilus (TCP)","เกาะเยื่อบุ intestine · และเป็น receptor ให้ phage CTXΦ ที่พายีน toxin เข้ามา",24,356],
+ ["Accessory cholera enterotoxin · zonula occludens toxin","diarrhea ได้แม้ไม่มี cholera toxin · ตัวหลังคลาย tight junction",24,404],
+ ["Serogroup O1 และ O139","สองกลุ่มนี้เท่านั้นที่ก่อ cholera แท้ · O1 มีสอง biotype คือ Classical และ El Tor",24,452]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  return svg(b,"0 0 640 498")},
 notes:()=>`<h3>The organism has to stick first</h3><ul>
- <li>การบีบตัวของลำไส้พยายามกวาดเชื้อออก แต่ <i>V. cholerae</i> เกาะชั้นเยื่อบุไว้ได้ด้วย <b>toxin-coregulated pilus (TCP)</b> และโปรตีน chemotaxis · <b>สายพันธุ์ที่เกาะไม่ได้ก่อโรคไม่ได้เลย</b> ${S.mu}</li>
- <li>ความรุนแรงของ <i>V. cholerae</i> เกิดจากการได้ยีนชุด TCP บน <b>Vibrio pathogenicity island</b> มาก่อน แล้วจึงติดเชื้อ <b>bacteriophage CTXΦ</b> ซึ่งพายีน ctxA และ ctxB ของสารพิษเข้ามา ${S.mu}</li>
- <li>ที่น่าสนใจคือ <b>TCP เองเป็น receptor ของ phage ตัวนั้น</b> — เชื้อต้องมีขาเกาะก่อน จึงจะรับยีนสารพิษได้ ${S.mu}</li></ul>
+ <li>การบีบตัวของ intestine พยายามกวาดเชื้อออก แต่ <i>V. cholerae</i> เกาะชั้นเยื่อบุไว้ได้ด้วย <b>toxin-coregulated pilus (TCP)</b> และโปรตีน chemotaxis · <b>strain ที่เกาะไม่ได้ก่อโรคไม่ได้เลย</b> ${S.mu}</li>
+ <li>ความรุนแรงของ <i>V. cholerae</i> เกิดจากการได้ยีนชุด TCP บน <b>Vibrio pathogenicity island</b> มาก่อน แล้วจึงติดเชื้อ <b>bacteriophage CTXΦ</b> ซึ่งพายีน ctxA และ ctxB ของ toxin เข้ามา ${S.mu}</li>
+ <li>ที่น่าสนใจคือ <b>TCP เองเป็น receptor ของ phage ตัวนั้น</b> — เชื้อต้องมีขาเกาะก่อน จึงจะรับยีน toxin ได้ ${S.mu}</li></ul>
  <h3>The toxin</h3><ul>
  <li>Cholera toxin เป็น A–B toxin ที่<b>คล้ายกับ heat-labile enterotoxin ของ enterotoxigenic Escherichia coli</b> ทั้งโครงสร้างและหน้าที่ ${S.mu}</li>
- <li><b>วงของ B ห้าหน่วยที่เหมือนกัน</b>จับกับ <b>ganglioside GM1</b> บนเซลล์เยื่อบุลำไส้ ${S.mu}</li>
+ <li><b>วงของ B ห้าหน่วยที่เหมือนกัน</b>จับกับ <b>ganglioside GM1</b> บนเซลล์เยื่อบุ intestine ${S.mu}</li>
  <li>ส่วนที่ทำงานของ A ถูกนำเข้าเซลล์แล้วไป<b>จับกับ G protein ที่ควบคุม adenylate cyclase</b> ทำให้ ATP ถูกเปลี่ยนเป็น cyclic AMP ${S.mu}</li>
  <li>ผลคือ<b>การหลั่งน้ำออกมามากผิดปกติ</b> — เซลล์เยื่อบุไม่ถูกทำลาย แต่ทำงานเกินคำสั่ง ${S.mu}</li>
- <li>แม้ไม่มี cholera toxin <i>V. cholerae</i> O1 ก็ยังทำให้ถ่ายเหลวได้มาก ด้วย <b>accessory cholera enterotoxin</b> และ <b>zonula occludens toxin</b> ซึ่งตัวหลังคลาย tight junction ของเยื่อบุลำไส้เล็กจนผนังรั่วมากขึ้น ${S.mu}</li>
+ <li>แม้ไม่มี cholera toxin <i>V. cholerae</i> O1 ก็ยังทำให้ diarrhea ได้มาก ด้วย <b>accessory cholera enterotoxin</b> และ <b>zonula occludens toxin</b> ซึ่งตัวหลังคลาย tight junction ของเยื่อบุ small intestine จนผนังรั่วมากขึ้น ${S.mu}</li>
  <li><b>O139</b> ต่างจาก serotype non-O1 อื่น ๆ ตรงที่<b>มีชุดปัจจัยก่อโรคเดียวกับ O1</b> จึงทำให้ถ่ายเป็นน้ำแบบ cholera ได้เหมือนกัน ${S.mu}</li></ul>
  <h3>The other vibrios</h3><ul>
- <li><b><i>V. parahaemolyticus</i></b> มาจากหอยและน้ำทะเล ก่อ gastroenteritis · สายพันธุ์ก่อโรคส่วนใหญ่สร้าง <b>thermostable direct hemolysin</b> หรือ Kanagawa hemolysin ซึ่งเป็น enterotoxin ที่กระตุ้นการหลั่งคลอไรด์โดยเพิ่มแคลเซียมในเซลล์ ${S.mu}</li>
- <li>Hemolysin ตัวนี้ทำให้เกิด<b>β-hemolysis บนวุ้นที่ใช้เลือดคน แต่ไม่เกิดบนเลือดแกะ</b> — จึงใช้แยกสายพันธุ์ก่อโรคได้ ${S.mu}</li>
- <li><b><i>V. vulnificus</i></b> มาจากหอยและน้ำทะเลเช่นกัน แต่ก่อ <b>bacteremia และการติดเชื้อที่แผล</b> · ชื่อ vulnificus แปลว่า "ก่อบาดแผล" ${S.mu}</li></ul>
+ <li><b><i>V. parahaemolyticus</i></b> มาจากหอยและน้ำทะเล ก่อ gastroenteritis · strain ก่อโรคส่วนใหญ่สร้าง <b>thermostable direct hemolysin</b> หรือ Kanagawa hemolysin ซึ่งเป็น enterotoxin ที่กระตุ้นการหลั่งคลอไรด์โดยเพิ่มแคลเซียมในเซลล์ ${S.mu}</li>
+ <li>Hemolysin ตัวนี้ทำให้เกิด<b>β-hemolysis บนวุ้นที่ใช้ human blood แต่ไม่เกิดบน sheep blood</b> — จึงใช้แยก strain ก่อโรคได้ ${S.mu}</li>
+ <li><b><i>V. vulnificus</i></b> มาจากหอยและน้ำทะเลเช่นกัน แต่ก่อ <b>bacteremia และ infection ที่แผล</b> · ชื่อ vulnificus แปลว่า "ก่อบาดแผล" ${S.mu}</li></ul>
  <h3>Treatment</h3><ul>
- <li>หัวใจของการรักษาคือ<b>การทดแทนน้ำและเกลือแร่</b> ${S.mu}</li>
- <li>ยาปฏิชีวนะอย่าง azithromycin ช่วย<b>ลดปริมาณและระยะเวลาของการถ่ายเหลว</b> แต่ไม่ใช่สิ่งที่ช่วยชีวิต ${S.mu}</li>
- <li>สิ่งส่งตรวจต้องเก็บในสภาพที่<b>เป็นกลางถึงด่าง</b> เพราะเชื้อนี้ไม่ทนกรด ${S.mu}</li></ul>`});
+ <li>heart ของการรักษาคือ<b>การทดแทนน้ำและเกลือแร่</b> ${S.mu}</li>
+ <li>antibiotic อย่าง azithromycin ช่วย<b>ลดปริมาณและระยะเวลาของการ diarrhea</b> แต่ไม่ใช่สิ่งที่ช่วยชีวิต ${S.mu}</li>
+ <li>specimen ต้องเก็บในสภาพที่<b>เป็นกลางถึงด่าง</b> เพราะเชื้อนี้ไม่ทนกรด ${S.mu}</li></ul>
+ <h3>Physiology, and why salt matters</h3><ul>
+ <li>ชื่อสกุลมาจาก vibrio ที่แปลว่า<b>เคลื่อนไหวเร็วหรือสั่น</b> จาก<b>polar flagella</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>gram-negative rod โค้ง ขนาด 0.5–1.5 × 3 μm</b> ${S.mu}</li>
+ <li>โตบนอาหารง่าย ๆ ได้หลายชนิดในช่วงอุณหภูมิกว้างจาก <b>14 °C ถึง 40 °C</b> ${S.mu}</li>
+ <li><b>Vibrio ทุกสปีชีส์ต้องการ sodium chloride ในการโต</b> · <b><i>V. cholerae</i> โตได้บนอาหารส่วนใหญ่โดยไม่ต้องเติมเกลือ แต่สปีชีส์ halophilic อื่นต้องเติม</b> ${S.mu}</li>
+ <li>ทนช่วง pH กว้างจาก <b>6.5 ถึง 9.0 แต่ไม่ทนกรดใน stomach</b> ${S.mu}</li>
+ <li>ผลทางคลินิก: <b>โดยทั่วไปต้องได้รับเชื้อจำนวนมากจึงเกิดโรค แต่ถ้ากรดใน stomach ลดลงหรือถูกลบล้าง ผู้ป่วยจะไวต่อ infection มากขึ้น</b> ${S.mu}</li>
+ <li><i>V. cholerae</i> และ <i>V. parahaemolyticus</i> มี<b>โครโมโซมวงกลมสองวง ซึ่งแต่ละวงมียีนที่จำเป็นต่อเชื้อ</b> · และพบ plasmid รวมถึงที่เข้ารหัส resistance เป็นปกติ ${S.mu}</li>
+ <li><b><i>V. vulnificus</i> และ <i>V. cholerae</i> non-O1 สร้าง acidic polysaccharide capsule ซึ่งสำคัญต่อ infection ที่กระจาย แต่ <i>V. cholerae</i> O1 ไม่สร้าง capsule จึงไม่ลามออกนอก intestine</b> ${S.mu}</li></ul>
+ <h3>How Vibrio cholerae became virulent</h3><ul>
+ <li>ลำดับเหตุการณ์ทางพันธุกรรม: <b>เชื้อรับยีนชุดหนึ่งรวมถึง toxin coregulated pilus บนสิ่งที่เรียกว่า Vibrio Pathogenicity Island ก่อน</b> ${S.mu}</li>
+ <li><b>แล้วจึงถูก bacteriophage CTXΦ ติดเชื้อ ซึ่งเป็นตัวเข้ารหัสยีน ctxA และ ctxB ของ cholera toxin</b> ${S.mu}</li>
+ <li><b>toxin coregulated pilus ทำหน้าที่เป็น receptor ผิวเซลล์ของ bacteriophage เอง จึงเปิดทางให้ phage เข้ามาฝังตัวในจีโนม</b> ${S.mu}</li>
+ <li>ตำแหน่งของ lysogenic phage นั้นยังมีปัจจัยก่อโรคอื่น — <b>ยีน ace ของ accessory cholera enterotoxin, ยีน zot ของ zonula occludens toxin และยีน cep ของ chemotaxis protein</b> ${S.mu}</li>
+ <li><b>ยีนเหล่านี้มีหลายสำเนาใน <i>V. cholerae</i> O1 และ O139 และการแสดงออกถูกประสานโดยยีนกำกับ</b> ${S.mu}</li>
+ <li><b>มันเกาะชั้น mucosa ไว้ด้วย toxin coregulated pilus และ chemotaxis protein จากยีน cep</b> — <b>strain ที่เกาะไม่ได้ก่อโรคไม่ได้</b> ${S.mu}</li>
+ <li>แม้ไม่มี cholera toxin เชื้อ O1 ก็ยังทำให้ diarrhea มากได้ — <b>accessory cholera enterotoxin เพิ่มการหลั่งสารน้ำ และ zonula occludens toxin คลาย tight junction ของ mucosa small intestine จึงเพิ่มการซึมผ่าน</b> ${S.mu}</li>
+ <li>และ <b>neuraminidase ปรับผิวเซลล์ให้มีตำแหน่งจับ GM1 ของ cholera toxin มากขึ้น</b> ${S.mu}</li>
+ <li><b>มันมีชุดปัจจัยก่อโรคเดียวกับ O1 จึงเกาะ mucosa และสร้าง cholera toxin ได้ และให้โรคที่เหมือน cholera</b> ${S.mu}</li>
+ <li>ตัวเลขการสูญเสียน้ำ: <b>ผู้ป่วยที่ติดเชื้อรุนแรงเสียน้ำได้ถึง 1 ลิตรต่อชั่วโมงในช่วงที่โรคหนักที่สุด</b> ${S.mu}</li></ul>
+ <h3>Seven pandemics, and the clone that matters</h3><ul>
+ <li><b>มีการระบาดใหญ่ของ cholera เจ็ดครั้งตั้งแต่ปี 1817</b> ซึ่งทำให้ตายหลายพันคนและเปลี่ยนสังคมเศรษฐกิจอย่างมาก ${S.mu}</li>
+ <li>สิ่งที่ทำให้โรคลามไปทั่วโลกได้คือ<b>การเดินทางข้ามทวีปจากการค้าที่เพิ่มขึ้นและจากสงคราม</b> ${S.mu}</li>
+ <li><b>strain ของการระบาดครั้งที่เจ็ดเป็น biotype El Tor</b> ขณะที่ strain ก่อนหน้าเป็น <b>Classical biotype</b> ${S.mu}</li>
+ <li>ครั้งที่เจ็ด<b>เริ่มใน Asia ปี 1961 ลามไป Africa, Europe และ Oceania ในทศวรรษ 1970 และ 1980</b> · <b>ปี 1991 ไปถึง Peru แล้วลามทั่ว South และ Central America รวมถึงสหรัฐอเมริกาและ Canada</b> ${S.mu}</li>
+ <li><b>strain ระบาดตัวที่สองเกิดในปี 1992 ที่ India ลามทั่ว Asia อย่างรวดเร็ว แต่ตอนนี้จำกัดอยู่ในภูมิภาคนั้น</b> — คือ <b><i>V. cholerae</i> O139 Bengal</b> ${S.mu}</li>
+ <li>ความสำคัญของมัน: <b>เป็น strain non-O1 ตัวแรกที่ก่อการระบาดได้ และก่อโรคในผู้ใหญ่ที่เคยติดเชื้อ O1 มาก่อน ซึ่งแสดงว่าไม่มี immunity ข้าม</b> ${S.mu}</li>
+ <li>ตัวเลขปัจจุบัน: ประมาณว่ามี <b>cholera 3 ถึง 5 ล้านรายและตาย 120,000 รายต่อปีทั่วโลก</b> ${S.mu}</li>
+ <li>การระบาดล่าสุด: <b>Bangladesh ปี 2004 หลังน้ำท่วม, Zimbabwe ปี 2008 ถึง 2009 และ Haiti ปี 2010 หลังแผ่นดินไหว</b> ${S.mu}</li>
+ <li>แพร่ทาง<b>น้ำและอาหารที่ปนเปื้อน ไม่ใช่จากคนสู่คนโดยตรง</b> เพราะ<b>ต้องใช้เชื้อมากกว่า 10⁸ ตัวในผู้ที่กรดใน stomach ปกติ</b> ${S.mu}</li>
+ <li>แต่<b>ในผู้ที่ achlorhydria หรือ hypochlorhydria infectious dose ต่ำได้ถึง 10³ ถึง 10⁵ ตัว</b> ${S.mu}</li>
+ <li><b>เชื้อที่ออกจากตัวผู้ป่วยก่อโรคได้มากกว่าเชื้อในสิ่งแวดล้อม 10 ถึง 100 เท่า แต่ virulence ที่สูงเกินนี้หายไปภายใน 24 ชั่วโมงหลังถูกขับออกมา</b> ${S.mu}</li>
+ <li>ข้อค้นพบจากการหาลำดับจีโนม: <b>เชื้อในน้ำที่ปนเปื้อนมักเป็น polyclonal แต่ strain ที่ก่อการระบาดเป็น monoclonal</b> ${S.mu}</li>
+ <li>ซึ่งหมายความว่า <b>การสัมผัส <i>V. cholerae</i> ทั่ว ๆ ไปไม่พอจะค้ำการระบาดไว้ — ต้องเป็นการสัมผัส clone ที่ก่อโรคนั้นโดยเฉพาะ</b> ${S.mu}</li>
+ <li>ผลลัพธ์ทางประวัติศาสตร์ข้อหนึ่งของการระบาดคือ<b>การตระหนักถึงบทบาทของน้ำที่ปนเปื้อนและความจำเป็นของระบบสุขาภิบาลชุมชน</b> — จึงไม่น่าแปลกที่ cholera ระบาดเมื่อภัยธรรมชาติทำลายการจัดการของเสีย ${S.mu}</li>
+ <li>แหล่งอาศัยตามธรรมชาติ: <b>Vibrio โตในน้ำกร่อยปากแม่น้ำและน้ำทะเลทั่วโลก และรอดกับเพิ่มจำนวนในน้ำปนเปื้อนที่มีความเค็มสูงขึ้น</b> ${S.mu}</li>
+ <li>และ<b>เจริญได้ดีในน้ำที่มีหอยที่มีเปลือก chitin เช่น oyster, clam และ mussel</b> ซึ่งอธิบายความสัมพันธ์ระหว่าง infection Vibrio กับการกินหอย ${S.mu}</li>
+ <li><b>ผู้ติดเชื้อที่ไม่มี symptom ก็เป็น reservoir ที่สำคัญในพื้นที่ที่โรคเป็น endemic disease</b> ${S.mu}</li></ul>
+ <h3>Cholera at the bedside</h3><ul>
+ <li><b>ผู้สัมผัส <i>V. cholerae</i> O1 ที่สร้าง toxin ส่วนใหญ่ไม่มี symptom หรือ diarrhea แล้วหายเอง</b> แต่บางคนเกิด<b>diarrhea รุนแรงที่ถึงตายได้เร็ว</b> ${S.mu}</li>
+ <li>symptom เริ่ม<b>เฉลี่ย 2 ถึง 3 วันหลังกินเชื้อ และอาจเร็วกว่า 12 ชั่วโมง</b> ด้วย<b>diarrhea เป็นน้ำและ vomiting อย่างฉับพลัน</b> ${S.mu}</li>
+ <li><b>Fever พบน้อย และถ้ามีอาจบ่งถึง infection ซ้อน</b> ${S.mu}</li>
+ <li>เมื่อเสียน้ำมากขึ้น stool ที่เคยมีเนื้อ<b>กลายเป็นไม่มีสี ไม่มีกลิ่น ไม่มีโปรตีน และมีจุดมูกปน คือ rice-water stool</b> ${S.mu}</li>
+ <li>ผลของการเสียน้ำและเกลือแร่: <b>ภาวะขาดน้ำ, ปวดเกร็ง muscle, metabolic acidosis จากการเสีย bicarbonate และ hypokalemia กับ hypovolemic shock จากการเสีย potassium</b> พร้อม<b>cardiac arrhythmia และ renal failure</b> ${S.mu}</li>
+ <li><b>mortality สูงถึง 70% ในผู้ที่ไม่ได้รักษา แต่น้อยกว่า 1% ในผู้ที่ได้สารน้ำและเกลือแร่ทดแทนทันที</b> ${S.mu}</li>
+ <li><b>โรคจาก O139 รุนแรงเท่าโรคจาก O1 ได้</b> ${S.mu}</li>
+ <li>ส่วน <b>serotype อื่นที่เรียกรวมว่า non-O1 ไม่สร้าง cholera toxin และมักทำให้ diarrhea เบา ๆ</b> · แต่<b>ก่อ infection นอก intestine อย่าง septicemia ได้ โดยเฉพาะในผู้ที่มีโรค liver หรือ hematologic malignancy</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vibrio-other",k:"a",t:"Vibrio parahaemolyticus, Vibrio vulnificus and Aeromonas",mm:"Other Vibrio · Aeromonas",leg:[],
+draw:()=>tbl(["","Vibrio parahaemolyticus","Vibrio vulnificus"],[
+ ["Source","หอยและน้ำทะเลที่ปนเปื้อน","หอยดิบและน้ำทะเลที่ปนเปื้อน"],
+ ["Main disease","gastroenteritis · wound infection","primary septicemia · wound infection ที่ลุกลามเร็ว"],
+ ["Key virulence factor","thermostable direct hemolysin หรือ Kanagawa hemolysin · type III secretion system","polysaccharide capsule ที่กันการถูกกลืน · cytolysin, protease, collagenase"],
+ ["Incubation","5 ถึง 72 ชั่วโมง เฉลี่ย 24 ชั่วโมง","เฉียบพลัน"],
+ ["Mortality","ฟื้นตัวได้ราบรื่นโดยทั่วไป","septicemia สูงถึง 50% · wound infection 20% ถึง 30%"],
+ ["Treatment","ให้สารน้ำและเกลือแร่ · antibiotic ในรายรุนแรง","minocycline หรือ doxycycline ร่วมกับ ceftriaxone หรือ cefotaxime ทันที"]]),
+notes:()=>`<h3>Vibrio parahaemolyticus</h3><ul>
+ <li>strain ที่ก่อโรคส่วนใหญ่สร้าง <b>adhesin, thermostable direct hemolysin ซึ่งเรียกอีกชื่อว่า Kanagawa hemolysin และ type III secretion system</b> ${S.mu}</li>
+ <li>กลไกของ hemolysin นี้: <b>เป็น enterotoxin ที่เหนี่ยวนำการหลั่ง chloride ion จาก epithelial cell โดยเพิ่ม calcium ในเซลล์</b> ${S.mu}</li>
+ <li>วิธีจำแนก strain ที่ก่อโรคที่สำคัญคือการตรวจ hemolysin นี้ — <b>มันให้โคโลนีที่ β-hemolytic บน agar ที่ใช้ human blood แต่ไม่ใช่ sheep blood</b> · strain เหล่านี้เรียกว่า <b>Kanagawa positive</b> ${S.mu}</li>
+ <li>ระบาดวิทยา: <b>เป็นสาเหตุที่พบบ่อยที่สุดของ bacterial gastroenteritis ใน Japan และ Southeast Asia และเป็น Vibrio ที่ก่อ gastroenteritis บ่อยที่สุดในสหรัฐอเมริกา</b> ${S.mu}</li>
+ <li>ความรุนแรงกว้างจาก<b>diarrhea ที่หายเอง ถึงโรคที่เบากว่าแต่คล้าย cholera</b> ${S.mu}</li>
+ <li>หลัง incubation period เกิด<b>diarrhea เป็นน้ำอย่างรุนแรง</b> · <b>ไม่พบ blood หรือมูกชัดใน stool ยกเว้นในรายที่รุนแรง</b> ${S.mu}</li>
+ <li><b>headache ปวดเกร็งท้อง nausea vomiting และ fever ต่ำ ๆ อาจอยู่ได้ 72 ชั่วโมงหรือกว่านั้น</b> แล้วผู้ป่วยมักฟื้นตัวได้ราบรื่น ${S.mu}</li>
+ <li>แผลติดเชื้อจากเชื้อนี้เกิดในผู้ที่สัมผัสน้ำทะเลที่ปนเปื้อน ${S.mu}</li>
+ <li><b>อุณหภูมิน้ำสูงกว่า 15 °C ถือว่าเอื้อต่อการโตของเชื้อนี้</b> — การอุ่นขึ้นตามฤดูกาลจึงขยายพื้นที่ที่พบเชื้อและโรคใน intestine ที่ตามมา ${S.mu}</li></ul>
+ <h3>Vibrio vulnificus</h3><ul>
+ <li>เป็นสปีชีส์ที่ก่อโรคแรงเป็นพิเศษ — <b>รับผิดชอบการตายที่เกี่ยวกับ Vibrio กว่า 90% ในสหรัฐอเมริกา</b> และ<b>เป็นสาเหตุที่พบบ่อยที่สุดของ Vibrio septicemia</b> ${S.mu}</li>
+ <li>กลไกที่ทำให้มันรอดกรดใน stomach: <b>มันย่อย lysine อย่างรวดเร็ว ได้ผลผลิตที่เป็นด่างซึ่งลบล้างกรด</b> ${S.mu}</li>
+ <li>มันยัง<b>เลี่ยง immunity โดยเหนี่ยวนำ apoptosis ของ macrophage และกันการถูกกลืนด้วย polysaccharide capsule</b> ${S.mu}</li>
+ <li>และมี<b>โปรตีนผิวที่พาเชื้อเกาะเซลล์ host กับการหลั่ง cytolytic toxin ที่ทำให้ necrosis</b> ${S.mu}</li>
+ <li>ภาพที่พบบ่อยที่สุดสองแบบ: <b>primary septicemia หลังกิน oyster ดิบที่ปนเปื้อน</b> และ<b>wound infection ที่ลุกลามเร็วหลังสัมผัสน้ำทะเลที่ปนเปื้อน</b> ${S.mu}</li>
+ <li>Primary septicemia เริ่ม<b>ฉับพลันด้วย fever และ chills vomiting diarrhea และ abdominal pain</b> · <b>มักมี lesion skin ทุติยภูมิที่มี necrosis</b> ${S.mu}</li>
+ <li>Wound infection เริ่มด้วย<b>บวม แดงและปวดที่แผล แล้วเกิดตุ่มน้ำหรือ bullae และ necrosis ร่วมกับ fever และ chills</b> ${S.mu}</li>
+ <li>กลุ่มที่โรครุนแรงที่สุด: <b>ผู้ที่มีโรค liver, โรคของระบบสร้างเม็ด blood, chronic renal failure และผู้ที่ได้ยากด immunity</b> ${S.mu}</li>
+ <li><b>gastroenteritis จาก Vibrio เกิดได้ทั้งปี เพราะ oyster ปนเปื้อนเชื้อจำนวนมากตลอดปี</b> แต่<b>septicemia และ wound infection เกิดในเดือนที่อากาศอุ่น เมื่อเชื้อในน้ำทะเลเพิ่มจำนวนได้สูง</b> ${S.mu}</li></ul>
+ <h3>At the bench, and the vaccines</h3><ul>
+ <li>การย้อมตรงจาก stool: <b>ผู้ป่วยมีเชื้อจำนวนมากใน stool ตอนเริ่มเป็น cholera จึงให้การวินิจฉัยขั้นต้นอย่างรวดเร็วในการระบาดได้</b> ${S.mu}</li>
+ <li>แต่<b>เมื่อโรคดำเนินไป เชื้อถูกเจือจางด้วยน้ำที่เสียไปมหาศาล การย้อมจึงมีประโยชน์น้อยลง</b> ${S.mu}</li>
+ <li>การย้อมแผลมีประโยชน์ในบริบทที่ชี้ไปที่ <i>V. vulnificus</i> เช่นผู้ที่ไวต่อโรคสัมผัสอาหารทะเลหรือน้ำทะเล ${S.mu}</li>
+ <li><b>Immunoassay ที่ตรวจ cholera toxin หรือ lipopolysaccharide ของ O1 และ O139</b> ใช้ในพื้นที่ที่เป็น endemic disease · <b>ความไวแปรผันและสูงได้ถึง 97% แต่คุณค่าลดลงเมื่อโรคดำเนินไป เพราะเชื้อใน specimen น้อยลง</b> ${S.mu}</li>
+ <li><b>Multiplex nucleic acid amplification test กำลังกลายเป็นมาตรฐานของการวินิจฉัย infection ใน intestine</b> ${S.mu}</li>
+ <li>การเก็บ specimen: <b>Vibrio รอดได้ไม่ดีในภาวะเป็นกรดหรือแห้ง</b> จึง<b>ต้องเก็บตอนต้นของโรคและเพาะทันที</b> ${S.mu}</li>
+ <li>ถ้าจะเพาะช้า <b>ให้ผสมใน Cary-Blair transport medium แล้วแช่เย็น</b> · <b>เชื้อรอดได้ต่ำใน buffered glycerol-saline ซึ่งเป็น transport medium ที่ใช้กับเชื้อก่อโรคใน intestine ส่วนใหญ่</b> ${S.mu}</li>
+ <li>เชื้อโตบนอาหารที่ใช้ทั่วไปทั้ง blood agar และ MacConkey agar · มี<b>selective agar เฉพาะคือ thiosulfate citrate bile salts sucrose agar และ enrichment broth คือ alkaline peptone broth ที่ pH 8.6</b> ${S.mu}</li>
+ <li><b>ในการทดสอบทาง biochemistry เพื่อระบุ Vibrio ที่เป็น halophile ต้องเติม sodium chloride 1% ลงในอาหารทดสอบ</b> ${S.mu}</li>
+ <li>การรักษา cholera: <b>ให้สารน้ำและเกลือแร่ทดแทนทันทีก่อนที่การเสียน้ำมหาศาลจะทำให้เกิด hypovolemic shock</b> ${S.mu}</li>
+ <li>antibiotic มีค่ารอง แต่<b>ลดการสร้าง toxin และ symptom และลดการแพร่โดยกวาดเชื้อออกเร็วขึ้น</b> ${S.mu}</li>
+ <li><b>Azithromycin ครั้งเดียวเป็นยาที่เลือกทั้งในเด็กและผู้ใหญ่ เพราะการดื้อ macrolide ยังพบไม่บ่อย</b> · ทางเลือกคือ <b>doxycycline หรือ ciprofloxacin ครั้งเดียวในผู้ใหญ่ที่ไม่ตั้งครรภ์ ถ้าพิสูจน์ได้ว่าเชื้อยังไว — แต่การดื้อ tetracycline และ fluoroquinolone พบได้บ่อย</b> ${S.mu}</li>
+ <li>การควบคุม: <b>ผู้ติดเชื้อขับเชื้อออกในวันแรก ๆ ของโรคเฉียบพลันและเป็นแหล่งสำคัญของ infection รายใหม่</b> ${S.mu}</li>
+ <li>แต่<b>การเป็นพาหะระยะยาวไม่เกิดขึ้น</b> — เชื้ออยู่เป็นอิสระในแหล่งน้ำกร่อยและน้ำทะเล ดังนั้น<b>เฉพาะการปรับปรุงสุขาภิบาลเท่านั้นที่ควบคุมโรคได้จริง</b> ${S.mu}</li>
+ <li>vaccine: <b>สหรัฐอเมริกาไม่มี oral cholera vaccine จำหน่าย แต่มี vaccine เชื้อตายแบบกินหลายชนิดนอกสหรัฐอเมริกา</b> · <b>ไม่มี vaccine ใดให้การป้องกันระยะยาว</b> ${S.mu}</li>
+ <li>ที่แนะนำสำหรับการป้องกันระยะสั้นในผู้เดินทางที่เสี่ยงสูง: <b>vaccine เชื้อตายที่เป็นเซลล์ทั้งตัวของ O1 ร่วมกับ recombinant cholera toxin B subunit หรือ vaccine เชื้อตายแบบ bivalent ของ O1 กับ O139</b> ${S.mu}</li>
+ <li><b>การให้ยาป้องกันแก่คนในบ้านของผู้ป่วยจำกัดการแพร่ได้ แต่โดยทั่วไปไม่ได้ผลในระดับชุมชน</b> ${S.mu}</li></ul>
+ <h3>Aeromonas</h3><ul>
+ <li>ชื่อมาจาก aero คือแก๊สหรืออากาศ กับ monas คือหน่วย — <b>แบคทีเรียที่สร้างแก๊ส</b> ${S.mu}</li>
+ <li>เป็น <b>gram-negative facultative anaerobic rod ที่หมักน้ำตาล และรูปร่างคล้ายสมาชิกของ Enterobacteriaceae</b> ${S.mu}</li>
+ <li>มี<b>เกือบ 50 สปีชีส์และสปีชีส์ย่อยที่บรรยายไว้ ซึ่งหลายตัวสัมพันธ์กับโรคในคน</b> · ที่สำคัญที่สุดคือ <b><i>A. hydrophila</i>, <i>A. caviae</i> และ <i>A. veronii</i> biovar sobria</b> ${S.mu}</li>
+ <li><b>พบทั่วไปในน้ำจืดและน้ำกร่อย</b> ${S.mu}</li>
+ <li>ก่อโรคสามรูป — <b>โรค diarrhea ในคนที่สุขภาพดี, แผลติดเชื้อ และโรคทั้งระบบแบบ opportunistic ในผู้ที่ immunity บกพร่อง</b> โดยเฉพาะผู้ที่มีโรค liver และทางเดินน้ำดีหรือมะเร็ง ${S.mu}</li>
+ <li>โรคใน intestine แสดงได้สามแบบ — <b>diarrhea เป็นน้ำเฉียบพลัน, ถ่ายแบบ dysentery ที่ abdominal pain รุนแรงและมี blood กับ leukocyte ใน stool หรือโรคเรื้อรังที่ diarrhea เป็นระยะ</b> ${S.mu}</li>
+ <li><b>มีคนที่เป็นพาหะใน intestine โดยพบสูงสุดในเดือนที่อากาศอุ่น</b> — <b>ความสำคัญของการแยกเชื้อนี้จาก specimen ใน intestine ต้องตัดสินจากภาพทางคลินิกของผู้ป่วย</b> ${S.mu}</li>
+ <li><b>Gastroenteritis มักเกิดหลังกินน้ำหรืออาหารที่ปนเปื้อน</b> เช่นผักผลไม้สด เนื้อ และผลิตภัณฑ์นม · <b>แผลติดเชื้อมักมาจากการบาดเจ็บที่สัมผัสน้ำที่ปนเปื้อน</b> ${S.mu}</li>
+ <li>รูปที่ผิดแปลกรูปหนึ่งของแผลติดเชื้อ: <b>การใช้ปลิงทางการแพทย์ซึ่ง intestine ของมันมี <i>A. veronii</i> biovar sobria อยู่</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"campylo",k:"a",t:"Campylobacter jejuni",mm:"Campylobacter",leg:[],
 draw:()=>{let b="";
  /* the gull-wing shape is the identification */
  b+=mL(24,26,"Gull-wing and comma shapes on Gram stain",{a:"start",c:"bh"});
  const gull=(x,y,s,sd,flip)=>{const w=mwobC(sd);let d="";
-  for(let k=0;k<=70;k++){const t=k/70,a=t*Math.PI*2;
-   /* a slender S drawn as a closed ribbon */
-   const u=(t<.5?t*2:(1-t)*2),px=-1+2*(t<.5?t*2:(1-t)*2);
-   d+="";}
-  return `<path class="m-body2" style="fill:none;stroke-width:${7*s};stroke-linecap:round" d="M${x-34*s},${y+(flip?-12:12)*s} Q${x-14*s},${y-(flip?22:22)*s} ${x},${y} Q${x+14*s},${y+(flip?22:22)*s} ${x+34*s},${y-(flip?-12:12)*s}"/>`};
+ for(let k=0;k<=70;k++){const t=k/70,a=t*Math.PI*2;
+ /* a slender S drawn as a closed ribbon */
+ const u=(t<.5?t*2:(1-t)*2),px=-1+2*(t<.5?t*2:(1-t)*2);
+ d+="";}
+ return `<path class="m-body2" style="fill:none;stroke-width:${7*s};stroke-linecap:round" d="M${x-34*s},${y+(flip?-12:12)*s} Q${x-14*s},${y-(flip?22:22)*s} ${x},${y} Q${x+14*s},${y+(flip?22:22)*s} ${x+34*s},${y-(flip?-12:12)*s}"/>`};
  [[110,110,1,3,0],[220,96,.9,7,1],[320,126,1.05,11,0],[430,100,.85,13,1],[520,130,1,17,0]].forEach(([x,y,s,sd,f])=>{b+=gull(x,y,s,sd,f)});
  b+=mL(320,170,"สองเซลล์ต่อกันเป็นรูปปีกนกนางนวล",{c:"s m"});
  /* growth conditions */
  b+=`<path class="m-sep" d="M24,200 L616,200"/>`;
  [["Microaerophilic","ต้องการออกซิเจนต่ำกว่าบรรยากาศปกติ",24,226],
-  ["42 °C","C. jejuni โตที่ 42 °C ได้ดีกว่าที่ 37 °C — ใช้เป็นสภาวะคัดเลือก",330,226],
-  ["Curved, motile rods","เคลื่อนที่เร็วแบบพุ่งไปมา",24,272],
-  ["Poultry is the reservoir","สัตว์ปีกเป็นแหล่งโรคหลัก",330,272]
+ ["42 °C","C. jejuni โตที่ 42 °C ได้ดีกว่าที่ 37 °C — ใช้เป็นสภาวะคัดเลือก",330,226],
+ ["Curved, motile rods","เคลื่อนที่เร็วแบบพุ่งไปมา",24,272],
+ ["Poultry is the reservoir","poultry เป็นแหล่งโรคหลัก",330,272]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  /* Guillain-Barré: molecular mimicry */
  b+=`<path class="m-sep" d="M24,318 L616,318"/>`
-  +mL(24,344,"Guillain-Barré syndrome",{a:"start",c:"bad"});
+ +mL(24,344,"Guillain-Barré syndrome",{a:"start",c:"bad"});
  const ny=430;
  b+=`<path class="m-body2" style="fill:none;stroke-width:6" d="M110,${ny-34} Q130,${ny-50} 150,${ny-34}"/>`
-  +mL(130,ny-58,"bacterial lipooligosaccharide",{c:"s m"});
+ +mL(130,ny-58,"bacterial lipooligosaccharide",{c:"s m"});
  /* a myelinated axon */
  b+=`<path class="m-line" style="stroke-width:5;stroke:color-mix(in srgb,#C2185B 46%,var(--sb-surface))" d="M60,${ny+16} L280,${ny+16}"/>`;
  [90,150,210].forEach(x=>{b+=`<path class="m-fat" d="${mblob(x,ny+16,26,13,x,.08)}"/>`});
  b+=mL(170,ny+48,"peripheral nerve",{c:"s m"});
  const aq=rng(19);
  for(let i=0;i<7;i++){const x=70+aq()*200,y=ny-4+aq()*8;
-  b+=`<path class="m-split" d="M${x.toFixed(1)},${(y-16).toFixed(1)} L${(x+10).toFixed(1)},${(y-6).toFixed(1)}"/>`}
- b+=mlead2(200,ny-20,320,366,["Antigenic cross-reactivity","แอนติบอดีที่สร้างต่อ lipooligosaccharide ของเชื้อไปจับเส้นประสาทของตัวเอง"],{a:"start"})
-  +mL(320,416,"ราว 1 ใน 1000 ของผู้ป่วยที่วินิจฉัยได้",{a:"start",c:"s m"})
-  +mL(320,434,"สัมพันธ์กับ serotype O:19 เป็นหลัก",{a:"start",c:"s m"})
-  +mL(320,462,"อ่อนแรงสองข้างเท่ากันภายในไม่กี่วัน",{a:"start",c:"s m"})
-  +mL(320,480,"ฟื้นตัวใช้เวลาเป็นเดือนหรือนานกว่านั้น",{a:"start",c:"s m"});
+ b+=`<path class="m-split" d="M${x.toFixed(1)},${(y-16).toFixed(1)} L${(x+10).toFixed(1)},${(y-6).toFixed(1)}"/>`}
+ b+=mlead2(200,ny-20,320,366,["Antigenic cross-reactivity","antibody ที่สร้างต่อ lipooligosaccharide ของเชื้อไปจับ nerve ของตัวเอง"],{a:"start"})
+ +mL(320,416,"ราว 1 ใน 1000 ของผู้ป่วยที่วินิจฉัยได้",{a:"start",c:"s m"})
+ +mL(320,434,"สัมพันธ์กับ serotype O:19 เป็นหลัก",{a:"start",c:"s m"})
+ +mL(320,462,"weakness สองข้างเท่ากันภายในไม่กี่วัน",{a:"start",c:"s m"})
+ +mL(320,480,"ฟื้นตัวใช้เวลาเป็นเดือนหรือนานกว่านั้น",{a:"start",c:"s m"});
  return svg(b,"0 0 640 508")},
 notes:()=>`<h3>How the laboratory catches it</h3><ul>
  <li><i>Campylobacter</i> แยกได้จากสามคุณสมบัติร่วมกัน: <b>ต้องการออกซิเจนต่ำ (microaerophilic)</b>, รูปร่างโค้ง และชุดทดสอบทางชีวเคมี ${S.mu}</li>
- <li><b><i>C. jejuni</i> โตที่ 42 °C ได้ดีกว่าที่ 37 °C</b> — ห้องปฏิบัติการจึงบ่มที่อุณหภูมิสูงเพื่อกดเชื้ออื่นในอุจจาระ ${S.mu}</li>
- <li>ปัจจุบันชุดตรวจ multiplex nucleic acid amplification สำหรับเชื้อก่อโรคในลำไส้มีทั้งความไวและความจำเพาะสูง ${S.mu}</li></ul>
+ <li><b><i>C. jejuni</i> โตที่ 42 °C ได้ดีกว่าที่ 37 °C</b> — ห้องปฏิบัติการจึงบ่มที่อุณหภูมิสูงเพื่อกดเชื้ออื่นใน stool ${S.mu}</li>
+ <li>ปัจจุบันชุดตรวจ multiplex nucleic acid amplification สำหรับเชื้อก่อโรคใน intestine มีทั้งความไวและความจำเพาะสูง ${S.mu}</li></ul>
  <h3>The disease</h3><ul>
- <li>เยื่อบุลำไส้ที่ติดเชื้อ<b>เป็นแผล บวม และมีเลือดออก</b> ซึ่งสอดคล้องกับการที่เชื้อบุกเข้าไปในเนื้อเยื่อ ${S.mu}</li>
- <li>บทบาทของ cytopathic toxin, enterotoxin และ endotoxin ที่ตรวจพบในเชื้อนี้<b>ยังไม่ชัดเจน</b> — สายพันธุ์ที่ไม่มีฤทธิ์ enterotoxin ก็ยังก่อโรคได้เต็มที่ ${S.mu}</li></ul>
+ <li>เยื่อบุ intestine ที่ติดเชื้อ<b>เป็นแผล บวม และมี hemorrhage</b> ซึ่งสอดคล้องกับการที่เชื้อบุกเข้าไปใน tissue ${S.mu}</li>
+ <li>บทบาทของ cytopathic toxin, enterotoxin และ endotoxin ที่ตรวจพบในเชื้อนี้<b>ยังไม่ชัดเจน</b> — strain ที่ไม่มีฤทธิ์ enterotoxin ก็ยังก่อโรคได้เต็มที่ ${S.mu}</li></ul>
  <h3>Guillain-Barré syndrome</h3><ul>
- <li><i>C. jejuni</i> และ <i>C. upsaliensis</i> สัมพันธ์กับ <b>Guillain-Barré syndrome</b> ซึ่งเป็นโรคภูมิคุ้มกันทำลายตนเองของระบบประสาทส่วนปลาย ${S.mu}</li>
- <li>ลักษณะคือ<b>อ่อนแรงสองข้างเท่ากันภายในไม่กี่วัน</b> และการฟื้นตัวใช้เวลาเป็นเดือนหรือนานกว่านั้น ${S.mu}</li>
- <li>เป็นภาวะแทรกซ้อนที่พบไม่บ่อย — ราว <b>1 ใน 1000</b> ของการติดเชื้อที่วินิจฉัยได้ — และสัมพันธ์กับ serotype จำเพาะ โดยเฉพาะ <b><i>C. jejuni</i> serotype O:19</b> ${S.mu}</li>
- <li>กลไกเชื่อว่าเป็น <b>antigenic cross-reactivity</b> ระหว่าง lipooligosaccharide ที่ผิวของเชื้อบางสายพันธุ์กับโครงสร้างของเส้นประสาทส่วนปลาย ${S.mu}</li></ul>`});
+ <li><i>C. jejuni</i> และ <i>C. upsaliensis</i> สัมพันธ์กับ <b>Guillain-Barré syndrome</b> ซึ่งเป็นโรค immunity ทำลายตนเองของระบบประสาทส่วนปลาย ${S.mu}</li>
+ <li>ลักษณะคือ<b>weakness สองข้างเท่ากันภายในไม่กี่วัน</b> และการฟื้นตัวใช้เวลาเป็นเดือนหรือนานกว่านั้น ${S.mu}</li>
+ <li>เป็น complication ที่พบไม่บ่อย — ราว <b>1 ใน 1000</b> ของ infection ที่วินิจฉัยได้ — และสัมพันธ์กับ serotype จำเพาะ โดยเฉพาะ <b><i>C. jejuni</i> serotype O:19</b> ${S.mu}</li>
+ <li>กลไกเชื่อว่าเป็น <b>antigenic cross-reactivity</b> ระหว่าง lipooligosaccharide ที่ผิวของเชื้อบาง strain กับโครงสร้างของ nerve ส่วนปลาย ${S.mu}</li></ul>
+ <h3>The genus, species by species</h3>
+ ${tbl(["Species","Reservoir","Human disease"],[
+ ["Campylobacter jejuni","poultry · cattle · sheep","gastroenteritis · extraintestinal infection · Guillain-Barré syndrome · reactive arthritis"],
+ ["C. coli","pigs · poultry · sheep · birds","gastroenteritis · extraintestinal infection"],
+ ["C. fetus","cattle · sheep","septicemia · septic thrombophlebitis · endocarditis · meningoencephalitis · gastroenteritis"],
+ ["C. upsaliensis","dogs · cats","gastroenteritis · extraintestinal infection · Guillain-Barré syndrome"]])}
+ <ul><li>ชื่อสกุลมาจาก kampylos คือโค้ง และ bacter คือท่อน — <b>curved rod</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>gram-negative rod รูปจุลภาค กว้าง 0.2–0.5 μm ยาว 0.5–5.0 μm และเคลื่อนที่ได้</b> · <b>เชื้อในโคโลนีเก่าอาจกลายเป็นรูปกลม</b> ${S.mu}</li>
+ <li>มี<b>กว่า 50 สปีชีส์และสปีชีส์ย่อย แต่เพียงสี่สปีชีส์เป็นเชื้อก่อโรคที่พบบ่อยในคน</b> ${S.mu}</li>
+ <li><b><i>C. jejuni</i> รับผิดชอบ infection ส่วนใหญ่</b> · <b><i>C. coli</i> เป็นส่วนน้อยในสหรัฐอเมริกาแต่พบบ่อยกว่าในประเทศกำลังพัฒนา</b> ${S.mu}</li>
+ <li>อุบัติการณ์จาก <i>C. upsaliensis</i> ไม่ทราบ เพราะ<b>เชื้อถูกยับยั้งโดย antibiotic ใน medium ที่ใช้แยก Campylobacter ตัวอื่น</b> — บางคนประมาณว่า<b>10% ของ Campylobacter gastroenteritis เกิดจากเชื้อนี้</b> ${S.mu}</li>
+ <li><b><i>C. fetus</i> ต่างจากตัวอื่นคือก่อโรคทั้งระบบเป็นหลัก</b> — bacteremia, septic thrombophlebitis, arthritis, septic abortion และ meningitis ${S.mu}</li></ul>
+ <h3>Why it went unrecognized for so long</h3><ul>
+ <li>เชื้อโตดีที่สุดใน<b>บรรยากาศที่ออกซิเจนลดลงเหลือ 5% ถึง 7% และ carbon dioxide เพิ่มเป็น 5% ถึง 10%</b> ซึ่ง<b>ไม่ใช่ภาวะบ่มปกติของการ culture แบคทีเรีย</b> ${S.mu}</li>
+ <li>และ <b><i>C. jejuni</i> โตดีกว่าที่ 42 °C มากกว่าที่ 37 °C</b> ${S.mu}</li>
+ <li>คุณสมบัติเหล่านี้ถูกนำมาใช้<b>คัดแยกเชื้อก่อโรคจาก stool</b> ${S.mu}</li>
+ <li>ขนาดที่เล็กก็ใช้ได้ด้วย: <b>Campylobacter ผ่านตัวกรอง 0.45 μm ขณะที่แบคทีเรียอื่นถูกกัก</b> ${S.mu}</li>
+ <li>ข้อนี้คือที่มาของการค้นพบ — <b>มีการกรอง stool เพื่อหาไวรัส</b> — แต่<b>การกรองยุ่งยากเกินไปและไม่ใช้ในห้องปฏิบัติการคลินิก</b> ${S.mu}</li>
+ <li>cell wall เป็นแบบ gram-negative พร้อม <b>polysaccharide capsule ชั้นนอก</b> ${S.mu}</li>
+ <li><b>แทนที่จะมี lipopolysaccharide ที่มีฤทธิ์ endotoxin มันแสดง lipooligosaccharide</b> ${S.mu}</li>
+ <li><b>Polysaccharide ของ capsule มีส่วนใน virulence และเป็นเป้าของการพัฒนา vaccine</b> ${S.mu}</li></ul>
+ <h3>What decides the severity</h3><ul>
+ <li>แม้พบ adhesin, cytotoxic enzyme และ enterotoxin ใน <i>C. jejuni</i> แต่<b>บทบาทที่แน่ชัดของแต่ละอย่างในโรคยังนิยามได้ไม่ชัด</b> ${S.mu}</li>
+ <li>ตัวอย่างที่ชี้ว่าเรายังไม่เข้าใจ: <b>strain ที่ไม่มีฤทธิ์ enterotoxin ก็ยังก่อโรคได้เต็มที่</b> ${S.mu}</li>
+ <li>สิ่งที่ชัดคือ<b>ความเสี่ยงของโรคขึ้นกับ infectious dose</b> · <b>เชื้อตายเมื่อเจอกรดใน stomach จึงภาวะที่ลดหรือลบล้างกรดเอื้อให้เกิดโรค</b> ${S.mu}</li>
+ <li>สถานะ immunity ก็มีผล: <b>ผู้ที่อยู่ในประชากรที่โรคเป็น endemic disease สูงมี antibody ทั้งใน serum และ secretion ที่วัดได้ และโรคเบากว่า</b> ${S.mu}</li>
+ <li>ทางกลับกัน: <b>ผู้ที่มี hypogammaglobulinemia มีโรครุนแรงและยืดเยื้อ</b> ${S.mu}</li>
+ <li>พยาธิสภาพ: <b>ความเสียหายทาง histology ที่ผิว mucosa ของ jejunum ตามชื่อสปีชีส์, ileum และ colon</b> ${S.mu}</li>
+ <li><b>ผิว mucosa เป็นแผล บวมน้ำและมี hemorrhage พร้อม crypt abscess ใน epithelial gland และการแทรกของ neutrophil, mononuclear cell และ eosinophil ใน lamina propria</b> ${S.mu}</li>
+ <li>ภาพอักเสบนี้<b>เข้ากับการที่เชื้อรุกเข้า tissue intestine</b> ${S.mu}</li></ul>
+ <h3>Guillain-Barré syndrome and reactive arthritis</h3><ul>
+ <li><b><i>C. jejuni</i> และ <i>C. upsaliensis</i> สัมพันธ์กับ Guillain-Barré syndrome</b> ซึ่งเป็น<b>โรค autoimmune ของระบบประสาทส่วนปลายที่ weakness สองข้างเท่ากันภายในไม่กี่วัน และการฟื้นตัวใช้เวลาเป็นเดือนหรือกว่านั้น</b> ${S.mu}</li>
+ <li>พบ<b>ราว 1 ใน 1000 ของ infection ที่วินิจฉัยได้</b> และ<b>สัมพันธ์กับ serotype จำเพาะ โดยหลักคือ <i>C. jejuni</i> serotype O:19</b> ${S.mu}</li>
+ <li>กลไกที่เชื่อกัน: <b>แอนติเจนไขว้กันระหว่าง lipooligosaccharide ที่ผิวของบาง strain กับ ganglioside ของ nerve ส่วนปลาย</b> — <b>antibody ที่สร้างต่อเชื้อจึงทำลาย tissue ประสาท</b> ${S.mu}</li>
+ <li><b>Reactive arthritis</b> เป็น complication ช้าอีกอย่างที่เกี่ยวกับ immunity — <b>ปวดและบวมที่ข้อมือ ข้อเท้าและเข่า นาน 1 สัปดาห์ถึงหลายเดือน</b> ${S.mu}</li>
+ <li><b>Reactive arthritis ไม่สัมพันธ์กับความรุนแรงของโรค diarrhea แต่พบบ่อยกว่าในผู้ที่มี HLA-B27 phenotype</b> ${S.mu}</li>
+ <li><b><i>C. jejuni</i> และ <i>C. coli</i> ก่อ bacteremia ได้น้อย — 1.5 รายต่อ 1000 infection ใน intestine</b> ${S.mu}</li>
+ <li>แต่ <b><i>C. fetus</i> มีแนวโน้มลามจาก gastrointestinal tract เข้า blood และไปจุดที่ไกลออกไป</b> ${S.mu}</li>
+ <li><b><i>C. fetus</i> ทนการถูกฆ่าใน serum ทั้งที่อาศัย complement และ antibody ขณะที่ <i>C. jejuni</i> และสปีชีส์อื่นถูกฆ่าเร็ว</b> ${S.mu}</li>
+ <li>สิ่งที่ทำให้ทนได้คือ <b>โปรตีนคล้าย capsule ที่ทนความร้อน เรียกว่า S protein ซึ่งกัน C3b ไม่ให้จับตัวเชื้อ</b> ${S.mu}</li>
+ <li>และ<b><i>C. fetus</i> สูญเสีย virulence ถ้าชั้นโปรตีนนี้ถูกเอาออก</b> ${S.mu}</li>
+ <li>Bacteremia พบบ่อยเป็นพิเศษใน<b>ผู้ที่ทรุดโทรมและ immunity บกพร่อง</b> เช่นผู้ที่มีโรค liver, diabetes mellitus, การดื่มสุราเรื้อรัง หรือมะเร็ง ${S.mu}</li></ul>
+ <h3>Numbers, bench and drugs</h3><ul>
+ <li><b>เป็นโรค diarrhea จากแบคทีเรียที่พบบ่อยที่สุดในสหรัฐอเมริกา — ประมาณ 1.3 ล้านรายต่อปี, นอนโรงพยาบาลกว่า 13,000 ราย, ตาย 119 ราย และคิดเป็นค่าใช้จ่ายราว 1.7 พันล้านดอลลาร์</b> ${S.mu}</li>
+ <li>ตัวเลขจริงน่าจะสูงกว่านี้ เพราะ<b>ห้องปฏิบัติการหลายแห่งไม่เพาะหาเชื้อนี้เป็นปกติ และ <i>C. upsaliensis</i> แยกไม่ได้ด้วยเทคนิคที่ใช้ทั่วไป</b> ${S.mu}</li>
+ <li><b>การใช้การวินิจฉัยระดับโมเลกุลที่เพิ่มขึ้นเผยให้เห็นว่าการ culture ไวต่ำ</b> ${S.mu}</li>
+ <li><b>poultry ที่ปนเปื้อนรับผิดชอบกว่าครึ่งของ infection ในประเทศพัฒนาแล้ว</b> · <b>อาหารที่ลบล้างกรดใน stomach อย่างนมลด infectious dose ลงอย่างมีประสิทธิผล</b> ${S.mu}</li>
+ <li><b>การแพร่แบบ fecal-oral จากคนสู่คนเกิดได้ แต่การแพร่โดยผู้สัมผัสอาหารพบไม่บ่อย</b> ${S.mu}</li>
+ <li><b><i>C. upsaliensis</i> ติดจากการสัมผัส dog บ้าน</b> ทั้งที่เป็นพาหะสุขภาพดีและที่มี symptom diarrhea ${S.mu}</li>
+ <li>โรคเกิดประปรายทั้งปี โดย<b>สูงสุดในเดือนฤดูร้อน</b> · พบมากที่สุดใน<b>ทารกและเด็กเล็ก และมียอดที่สองในผู้ใหญ่อายุ 20 ถึง 40 ปี</b> ${S.mu}</li>
+ <li>ในประเทศกำลังพัฒนาอุบัติการณ์สูงกว่า โดย<b>เด็กมี symptom และผู้ใหญ่เป็นพาหะโดยไม่มี symptom บ่อย</b> ${S.mu}</li>
+ <li><b><i>C. fetus</i> พบน้อยกว่า 250 รายต่อปีในสหรัฐอเมริกา และติดเชื้อในผู้ที่ immunity บกพร่องหรือผู้สูงอายุเป็นหลัก</b> ${S.mu}</li>
+ <li>ภาพทางคลินิก: <b>acute enteritis ที่มี diarrhea fever และ abdominal pain รุนแรง</b> · <b>ผู้ป่วยถ่ายได้ 10 ครั้งหรือมากกว่าต่อวันในช่วงที่โรคหนักที่สุด และ stool อาจเห็น blood ชัด</b> ${S.mu}</li>
+ <li>ขอบเขตของภาพทางคลินิกรวม <b>acute colitis, abdominal pain ที่เลียน acute appendicitis และ infection ใน intestine เรื้อรังที่พบบ่อยที่สุดในผู้ที่ immunity บกพร่อง</b> เช่นผู้ป่วย acquired immunodeficiency syndrome ${S.mu}</li>
+ <li>การย้อม Gram <b>ไวต่ำเพราะเชื้อบางและมองเห็นยาก</b> แต่<b>การเห็นเชื้อรูป S บาง ๆ ใน stool ช่วยยืนยันขั้นต้นได้</b> ${S.mu}</li>
+ <li><b>Immunoassay สำหรับ <i>C. jejuni</i> และ <i>C. coli</i> มีความไว 80% ถึง 90% และความจำเพาะกว่า 95%</b> เทียบกับการ culture ${S.mu}</li>
+ <li><b>Multiplex nucleic acid amplification test ไวกว่าการ culture</b> แต่<b>มักจำกัดอยู่ที่ <i>C. jejuni</i> และ <i>C. coli</i> ไม่ครอบคลุมสปีชีส์อื่น</b> ${S.mu}</li>
+ <li>การเพาะต้องใช้ทั้งสามอย่างพร้อมกัน — <b>บรรยากาศ microaerophilic, อุณหภูมิ 42 °C และ selective agar ที่กด commensal ใน intestine</b> ${S.mu}</li>
+ <li><b>Selective medium ต้องมี blood หรือถ่านเพื่อกำจัด toxic oxygen radical</b> และเติม antibiotic เพื่อยับยั้งเชื้อปนเปื้อน ${S.mu}</li>
+ <li>ข้อเสียที่ตามมา: <b>antibiotic ในอาหารเหล่านั้นอาจยับยั้งบางสปีชีส์ เช่น <i>C. upsaliensis</i></b> ${S.mu}</li>
+ <li>เชื้อ<b>โตช้า ต้องบ่ม 48 ชั่วโมงหรือกว่านั้น</b> · <b><i>C. fetus</i> ไม่ใช่ thermophile และโตที่ 42 °C ไม่ได้ แต่ต้องการบรรยากาศ microaerophilic</b> ${S.mu}</li>
+ <li>การระบุขั้นต้นอาศัย<b>การโตในภาวะคัดเลือก, รูปร่างใต้กล้องที่เป็นแบบฉบับ และ oxidase กับ catalase ที่เป็นบวก</b> · ขั้นสุดท้ายใช้ <b>mass spectrometry</b> ${S.mu}</li>
+ <li><b>การตรวจ antibody IgM และ IgG ใช้ในงานสำรวจทางระบาดวิทยา ไม่ใช้วินิจฉัยผู้ป่วยรายบุคคล</b> ${S.mu}</li>
+ <li>การรักษา: <b>gastroenteritis หายเองโดยทั่วไป จัดการด้วยการให้สารน้ำและเกลือแร่ทดแทน</b> · antibiotic ใช้ในรายรุนแรงหรือมี septicemia ${S.mu}</li>
+ <li>เชื้อไวต่อ <b>macrolide, tetracycline, aminoglycoside, chloramphenicol, fluoroquinolone, clindamycin, amoxicillin-clavulanic acid และ imipenem</b> ${S.mu}</li>
+ <li>แต่<b>เชื้อส่วนใหญ่ดื้อ penicillin, cephalosporin และ sulfonamide</b> ${S.mu}</li>
+ <li><b>Erythromycin หรือ azithromycin เป็นยาที่เลือกสำหรับ enteritis</b> · <b>tetracycline หรือ fluoroquinolone เป็นยารอง แต่การดื้อ fluoroquinolone เพิ่มขึ้นจึงอาจได้ผลน้อยลง</b> ${S.mu}</li>
+ <li><b>Amoxicillin-clavulanic acid ใช้แทน tetracycline ได้ ซึ่งสำคัญเพราะ tetracycline ห้ามใช้ในเด็กเล็ก</b> ${S.mu}</li>
+ <li><b>infection ทั้งระบบรักษาด้วย aminoglycoside, chloramphenicol หรือ imipenem</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"hpylori",k:"a",t:"Helicobacter pylori makes its own neighbourhood",mm:"H. pylori",leg:[],
 draw:()=>{let b="";
- b+=mL(24,26,"กระเพาะเป็นกรดเกินกว่าแบคทีเรียจะอยู่ได้ — เชื้อนี้จึงเปลี่ยนสภาพแวดล้อมรอบตัวเสียเอง",{a:"start",c:"bh"});
+ b+=mL(24,26,"stomach เป็นกรดเกินกว่าแบคทีเรียจะอยู่ได้ — เชื้อนี้จึงเปลี่ยนสภาพแวดล้อมรอบตัวเสียเอง",{a:"start",c:"bh"});
  /* the gastric wall: lumen, mucus layer, epithelium */
  const top=64,muc=top+8,epi=top+86,bot=top+170,L=24,R=392;
  b+=`<path class="m-eps" d="M${L},${muc} L${R},${muc} L${R},${epi} L${L},${epi} Z"/>`
-  +`<path class="m-spin" d="M${L},${epi} L${R},${epi} L${R},${bot} L${L},${bot} Z"/>`
-  +mgrainIn("hpe","M"+L+","+epi+" L"+R+","+epi+" L"+R+","+bot+" L"+L+","+bot+" Z",L,epi,R-L,bot-epi,80,5,"m-gr",.9);
+ +`<path class="m-spin" d="M${L},${epi} L${R},${epi} L${R},${bot} L${L},${bot} Z"/>`
+ +mgrainIn("hpe","M"+L+","+epi+" L"+R+","+epi+" L"+R+","+bot+" L"+L+","+bot+" Z",L,epi,R-L,bot-epi,80,5,"m-gr",.9);
  for(let x=L;x<R-10;x+=44)b+=`<path class="m-kcell" style="stroke-width:1.3" d="M${x},${epi} L${x},${bot}"/>`;
  b+=mL(R-6,top-2,"gastric lumen · pH 1–2",{a:"end",c:"s m"})
-  +mL(R-6,(muc+epi)/2,"mucus layer",{a:"end",c:"s m"})
-  +mL(R-6,bot-10,"gastric epithelium",{a:"end",c:"s m"});
+ +mL(R-6,(muc+epi)/2,"mucus layer",{a:"end",c:"s m"})
+ +mL(R-6,bot-10,"gastric epithelium",{a:"end",c:"s m"});
  /* helical organisms burrowing through the mucus */
  const helix=(x,y,sd)=>`<path class="m-body2" style="fill:none;stroke-width:5;stroke-linecap:round" d="M${x-20},${y} q7,-11 14,0 q7,11 14,0 q7,-11 14,0"/>`;
  [[80,muc+22,3],[150,muc+42,7],[232,muc+30,11],[300,muc+52,13]].forEach(([x,y,sd])=>{b+=helix(x,y,sd)});
  /* the ammonia cloud each one makes */
  const nq=rng(23);
  [[80,muc+22],[150,muc+42],[232,muc+30],[300,muc+52]].forEach(([x,y],i)=>{
-  for(let k=0;k<9;k++)b+=`<circle class="m-oantib" cx="${(x-18+nq()*44).toFixed(1)}" cy="${(y-16+nq()*32).toFixed(1)}" r="2.1"/>`});
+ for(let k=0;k<9;k++)b+=`<circle class="m-oantib" cx="${(x-18+nq()*44).toFixed(1)}" cy="${(y-16+nq()*32).toFixed(1)}" r="2.1"/>`});
  b+=mlead2(150,muc+42,410,66,["Urease","ย่อย urea เป็นแอมโมเนีย สะเทินกรดรอบตัว"],{a:"start"})
-  +mlead2(232,muc+30,410,118,["Motility","รูปเกลียวกับ flagella ไชผ่านเมือกข้น"],{a:"start"})
-  +mlead2(300,epi,410,170,["Adhesins","เกาะเซลล์เยื่อบุด้วยโปรตีนผิวหลายชนิด"],{a:"start"});
+ +mlead2(232,muc+30,410,118,["Motility","รูปเกลียวกับ flagella ไชผ่านเมือกข้น"],{a:"start"})
+ +mlead2(300,epi,410,170,["Adhesins","เกาะเซลล์เยื่อบุด้วยโปรตีนผิวหลายชนิด"],{a:"start"});
  /* damage */
  b+=`<path class="m-sep" d="M24,${bot+40} L616,${bot+40}"/>`;
  [["VacA — vacuolating cytotoxin A","เข้าไปในเซลล์เยื่อบุแล้วสร้าง vacuole จนเซลล์เสียหาย",24,bot+66],
-  ["CagA","ฉีดเข้าเซลล์ผ่าน type VI secretion system",330,bot+66],
-  ["cag pathogenicity island","ยีนราว 30 ตัว · กระตุ้น IL-8 จึงดึง neutrophil เข้ามา",24,bot+112],
-  ["Mucinase · phospholipases","ย่อยชั้นเมือกและไขมันของเยื่อหุ้มเซลล์",330,bot+112]
+ ["CagA","ฉีดเข้าเซลล์ผ่าน type VI secretion system",330,bot+66],
+ ["cag pathogenicity island","ยีนราว 30 ตัว · กระตุ้น IL-8 จึงดึง neutrophil เข้ามา",24,bot+112],
+ ["Mucinase · phospholipases","ย่อยชั้นเมือกและไขมันของ cytoplasmic membrane",330,bot+112]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
- b+=mL(24,bot+162,"โปรตีเอสและอนุมูลอิสระที่ neutrophil ปล่อยออกมา เชื่อว่าเป็นตัวที่ทำให้เกิด gastritis และแผลในกระเพาะ",{a:"start",c:"bad"});
+ b+=mL(24,bot+162,"โปรตีเอสและอนุมูลอิสระที่ neutrophil ปล่อยออกมา เชื่อว่าเป็นตัวที่ทำให้เกิด gastritis และแผลใน stomach",{a:"start",c:"bad"});
  return svg(b,"0 0 640 "+(bot+186))},
 notes:()=>`<h3>Neutralise, then burrow</h3><ul>
- <li><i>H. pylori</i> สร้าง <b>urease</b> จำนวนมาก · คุณสมบัตินี้เชื่อว่าสำคัญต่อการรอดชีวิตในกรดของกระเพาะและต่อการ<b>เคลื่อนที่อย่างรวดเร็วผ่านชั้นเมือกข้นไปสู่บริเวณที่ pH เป็นกลาง</b> ${S.mu}</li>
+ <li><i>H. pylori</i> สร้าง <b>urease</b> จำนวนมาก · คุณสมบัตินี้เชื่อว่าสำคัญต่อการรอดชีวิตในกรดของ stomach และต่อการ<b>เคลื่อนที่อย่างรวดเร็วผ่านชั้นเมือกข้นไปสู่บริเวณที่ pH เป็นกลาง</b> ${S.mu}</li>
  <li>การตั้งรกรากช่วงแรกอาศัยสองอย่าง: <b>โปรตีนของเชื้อที่ยับยั้งการสร้างกรด</b> และ<b>แอมโมเนียจาก urease ที่สะเทินกรด</b> ${S.mu}</li>
- <li>จากนั้นเชื้อที่เคลื่อนที่เก่งจะผ่านเมือกไปเกาะเซลล์เยื่อบุกระเพาะด้วย<b>โปรตีนผิวหลายชนิด</b> · โปรตีนผิวบางตัวยังจับโปรตีนของ host เพื่อช่วยหลบภูมิคุ้มกัน ${S.mu}</li></ul>
+ <li>จากนั้นเชื้อที่เคลื่อนที่เก่งจะผ่านเมือกไปเกาะเซลล์เยื่อบุ stomach ด้วย<b>โปรตีนผิวหลายชนิด</b> · โปรตีนผิวบางตัวยังจับโปรตีนของ host เพื่อช่วยหลบ immunity ${S.mu}</li></ul>
  <h3>Then damage</h3><ul>
  <li>ความเสียหายเฉพาะที่มาจาก<b>ผลพลอยได้ของ urease, mucinase, phospholipase</b> และ <b>vacuolating cytotoxin A (VacA)</b> ซึ่งเข้าไปในเซลล์เยื่อบุแล้วสร้าง vacuole ${S.mu}</li>
  <li>ปัจจัยสำคัญอีกตัวคือ <b>cytotoxin-associated gene (cagA)</b> ซึ่งอยู่บน pathogenicity island ที่มียีนราว 30 ตัว ${S.mu}</li>
  <li>ยีนชุดนี้สร้าง <b>type VI secretion system ที่ทำงานเหมือนเข็มฉีดยา</b> ฉีดโปรตีน CagA เข้าไปในเซลล์เยื่อบุ ซึ่งไปรบกวนโครงร่างเซลล์ ${S.mu}</li>
- <li>ยีนบน island นี้ยัง<b>กระตุ้นการสร้าง IL-8 ซึ่งดึง neutrophil เข้ามา</b> · โปรตีเอสและอนุมูลออกซิเจนที่ neutrophil ปล่อยออกมาเชื่อว่าเป็นตัวที่ทำให้เกิด gastritis และแผลในกระเพาะ ${S.mu}</li></ul>
+ <li>ยีนบน island นี้ยัง<b>กระตุ้นการสร้าง IL-8 ซึ่งดึง neutrophil เข้ามา</b> · โปรตีเอสและอนุมูลออกซิเจนที่ neutrophil ปล่อยออกมาเชื่อว่าเป็นตัวที่ทำให้เกิด gastritis และแผลใน stomach ${S.mu}</li></ul>
  <h3>What it causes, and how common it is</h3><ul>
  <li>โรคที่สัมพันธ์กับ <i>H. pylori</i>: <b>gastritis, peptic ulcer, gastric adenocarcinoma</b> และ <b>mucosa-associated lymphoid tissue lymphoma</b> ${S.mu}</li>
  <li>อุบัติการณ์การเป็นพาหะสูงที่สุดในประเทศกำลังพัฒนา ซึ่ง <b>70–90%</b> ของประชากรมีเชื้อ และส่วนใหญ่ได้รับมาก่อนอายุ 10 ปี ${S.mu}</li>
  <li>ในประเทศอุตสาหกรรมอย่างสหรัฐความชุกต่ำกว่า <b>40%</b> และกำลังลดลง ${S.mu}</li>
- <li>การแพร่เชื่อว่าเป็นทาง<b>อุจจาระสู่ปาก</b> ${S.mu}</li>
- <li>Marshall และ Warren รายงานการค้นพบเชื้อนี้ในปี 1984 ซึ่งเปลี่ยนแนวทางการรักษา gastritis และ peptic ulcer ไปทั้งหมด ${S.mu}</li></ul>`});
+ <li>การแพร่เชื่อว่าเป็นทาง<b>stool สู่ปาก</b> ${S.mu}</li>
+ <li>Marshall และ Warren รายงานการค้นพบเชื้อนี้ในปี 1984 ซึ่งเปลี่ยนแนวทางการรักษา gastritis และ peptic ulcer ไปทั้งหมด ${S.mu}</li></ul>
+ <h3>The genus, and the three species that matter</h3>
+ ${tbl(["Species","Reservoir","Human disease"],[
+ ["Helicobacter pylori","humans · primates · pigs","gastritis · peptic ulcer · gastric adenocarcinoma · mucosa-associated lymphoid tissue B-cell lymphoma"],
+ ["H. cinaedi","humans · hamster","gastroenteritis · septicemia · proctocolitis"],
+ ["H. fennelliae","humans","gastroenteritis · septicemia · proctocolitis"]])}
+ <ul><li>ชื่อสกุลมาจาก helix คือเกลียว กับ bacter คือท่อน — <b>spiral rod</b> · ชื่อสปีชีส์ pylori มาจาก <b>pylorus คือส่วนล่างของ stomach</b> ${S.mu}</li>
+ <li>จำแนกสปีชีส์โดย<b>ลำดับยีน 16S rRNA, cellular fatty acid และการมี polar flagella</b> · มี<b>กว่า 40 สปีชีส์ที่บรรยายไว้ และการจัดจำแนกยังเปลี่ยนเร็ว</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>แท่งหรือเกลียวในโคโลนีใหม่ กว้าง 0.5–1.0 μm ยาว 2–4 μm</b> และ<b>กลายเป็นรูปกลมในโคโลนีเก่าเหมือน Campylobacter</b> ${S.mu}</li>
+ <li>สกุลนี้แบ่งเป็น<b>gastric helicobacter ที่ตั้งรังใน stomach และ enterohepatic helicobacter ที่ตั้งรังใน intestine</b> ${S.mu}</li>
+ <li><b>Gastric helicobacter ทุกตัวเคลื่อนที่เก่งมากแบบ corkscrew และสร้าง urease ปริมาณมาก</b> ${S.mu}</li>
+ <li>เชื่อว่าสองคุณสมบัตินี้<b>สำคัญต่อการรอดในกรด stomach และการเคลื่อนผ่าน mucus layer ที่หนืดไปหาที่ที่ pH เป็นกลาง</b> ${S.mu}</li>
+ <li>เชื้อส่วนใหญ่<b>catalase และ oxidase บวก และไม่หมักหรือ oxidize carbohydrate แต่เมแทบอไลซ์ amino acid ผ่านทาง fermentative ได้</b> ${S.mu}</li>
+ <li><b>Lipid A ของ <i>H. pylori</i> มีฤทธิ์ endotoxin ต่ำกว่า gram-negative ตัวอื่น</b> ${S.mu}</li>
+ <li>และ<b>O side chain ของมันมีแอนติเจนคล้าย Lewis blood group antigen ซึ่งอาจป้องกันเชื้อจากการถูกกวาดโดย immunity</b> ${S.mu}</li>
+ <li>การเพาะต้องใช้<b>อาหารที่ซับซ้อนซึ่งเสริม blood, serum, ถ่าน, แป้งหรือไข่แดง ในภาวะ microaerophilic ที่ 30 °C ถึง 37 °C</b> ${S.mu}</li>
+ <li>ผลในทางปฏิบัติ: <b>เพราะเชื้อแยกยากและระบุด้วย biochemistry ยาก โรคจาก <i>H. pylori</i> ส่วนใหญ่จึงยืนยันด้วยวิธีที่ไม่ต้อง culture</b> ${S.mu}</li></ul>
+ <h3>Colonizing the stomach, in order</h3><ul>
+ <li>การตั้งรังเริ่มจากสองอย่าง — <b>การปิดกั้นการสร้างกรดโดย acid-inhibitory protein ของเชื้อ</b> และ<b>การลบล้างกรดด้วย ammonia จากฤทธิ์ urease</b> ${S.mu}</li>
+ <li>เชื้อที่เคลื่อนที่เก่งจึง<b>ผ่าน mucus layerstomach ไปเกาะ gastric epithelial cell ด้วยโปรตีนเกาะผิวหลายตัว</b> ${S.mu}</li>
+ <li>โปรตีนผิวเหล่านั้นยัง<b>จับโปรตีนของ host และช่วยให้เชื้อเลี่ยง immunity</b> ${S.mu}</li>
+ <li>ความเสียหายเฉพาะที่เกิดจาก<b>ผลผลิตของ urease, mucinase, phospholipase และ vacuolating cytotoxin A</b> ${S.mu}</li>
+ <li><b>Vacuolating cytotoxin A เป็นโปรตีนที่หลังแทรกเข้า epithelial cell แล้วทำลายเซลล์โดยสร้าง vacuole</b> ${S.mu}</li>
+ <li>ปัจจัยก่อโรคสำคัญอีกตัวคือ <b>cytotoxin-associated gene ซึ่งอยู่บน pathogenicity island ที่มียีนราว 30 ตัว</b> ${S.mu}</li>
+ <li>ยีนเหล่านั้น<b>เข้ารหัส type VI secretion system ที่ทำงานเหมือนเข็มฉีดยา ฉีดโปรตีน CagA เข้า epithelial cell ของ host</b> ซึ่ง<b>รบกวนโครงสร้าง cytoskeleton ปกติของเซลล์</b> ${S.mu}</li>
+ <li>และยีนชุดนั้นยัง<b>เหนี่ยวนำการสร้าง IL-8 ซึ่งดึง neutrophil เข้ามา</b> ${S.mu}</li>
+ <li><b>การที่ neutrophil ปล่อย protease และโมเลกุลออกซิเจนที่ว่องไวออกมาเชื่อว่าเป็นส่วนที่ทำให้เกิด gastritis และ gastric ulcer</b> ${S.mu}</li></ul>
+ <h3>Prevalence, and a reason not to always eradicate</h3><ul>
+ <li>อุบัติการณ์การเป็นพาหะสูงสุดใน<b>ประเทศกำลังพัฒนา ซึ่ง 70% ถึง 90% ของประชากรมีเชื้อ และส่วนใหญ่ได้มาก่อนอายุ 10 ปี</b> ${S.mu}</li>
+ <li>ในประเทศอุตสาหกรรมอย่างสหรัฐอเมริกา<b>ความชุกต่ำกว่า 40% และกำลังลดลง</b> จากสุขอนามัยที่ดีขึ้นและการรักษาผู้ที่มีเชื้ออย่างจริงจัง ${S.mu}</li>
+ <li><b>ผู้ป่วย gastritis, gastric ulcer หรือ duodenal ulcer 70% ถึง 100% มี infection นี้</b> ${S.mu}</li>
+ <li><b>คนเป็น reservoir หลัก และเชื่อว่าการตั้งรังอยู่ตลอดชีวิตถ้าไม่ได้รักษาจำเพาะ</b> · <b>แพร่ทาง fecal-oral เป็นไปได้มากที่สุด</b> ${S.mu}</li>
+ <li>ข้อสังเกตที่กลับทิศ: <b>การมี <i>H. pylori</i> ดูเหมือนป้องกัน gastroesophageal reflux disease และ adenocarcinoma ของ esophagus ส่วนล่างกับ gastric cardia</b> ${S.mu}</li>
+ <li><b>การกำจัดเชื้อในผู้ที่ไม่มี symptom อาจไม่ใช่เรื่องฉลาด</b> — ความสัมพันธ์ที่ซับซ้อนระหว่างเชื้อกับ host ยังถูกนิยามต่อไป ${S.mu}</li></ul>
+ <h3>From gastritis to lymphoma</h3><ul>
+ <li>หลักที่คุมทุกอย่าง: <b>โรคจาก helicobacter สัมพันธ์โดยตรงกับตำแหน่งที่มันตั้งรัง</b> — <i>H. pylori</i> ให้ gastritis ขณะที่สปีชีส์ enterohepatic ให้ gastroenteritis ${S.mu}</li>
+ <li><b>การมี <i>H. pylori</i> นำไปสู่หลักฐานทาง histology ของ gastritis อย่างไม่มีข้อยกเว้น</b> คือการแทรกของ neutrophil และ mononuclear cell เข้า gastric mucosa ${S.mu}</li>
+ <li>ระยะเฉียบพลันมี<b>ความรู้สึกแน่นท้อง nausea vomiting และ hypochlorhydria</b> ${S.mu}</li>
+ <li>แล้วอาจกลายเป็น chronic gastritis โดย<b>โรคจำกัดอยู่ที่ gastric antrum ซึ่งมี parietal cell น้อย ในผู้ที่หลั่งกรดปกติ</b> หรือ<b>กินทั่ว stomach เป็น pangastritis ถ้าการหลั่งกรดถูกกด</b> ${S.mu}</li>
+ <li><b>ผู้ป่วย chronic gastritis ราว 10% ถึง 15% ดำเนินไปเป็น peptic ulcer</b> ${S.mu}</li>
+ <li>แผล<b>เกิดที่จุดที่อักเสบรุนแรง — มักที่รอยต่อระหว่าง corpus กับ antrum สำหรับ gastric ulcer หรือที่ duodenum ส่วนต้นสำหรับ duodenal ulcer</b> ${S.mu}</li>
+ <li><b><i>H. pylori</i> รับผิดชอบ 85% ของ gastric ulcer และ 95% ของ duodenal ulcer</b> ${S.mu}</li>
+ <li>Chronic gastritis สุดท้าย<b>นำไปสู่การแทนที่ gastric mucosa ปกติด้วย fibrosis และการเพิ่มจำนวนของ epithelium ชนิด intestine</b> ${S.mu}</li>
+ <li>และกระบวนการนั้น<b>เพิ่มความเสี่ยงของ gastric cancer เกือบ 100 เท่า</b> ${S.mu}</li>
+ <li>ความเสี่ยงนี้ขึ้นกับทั้ง strain และ host — <b>strain ที่ cagA บวกและการสร้าง IL-1 ในระดับสูงสัมพันธ์กับความเสี่ยงมะเร็งที่สูงกว่า</b> ${S.mu}</li>
+ <li>infection ยัง<b>สัมพันธ์กับการแทรกของ tissue lymph เข้า gastric mucosa</b> · และ<b>ในผู้ป่วยจำนวนน้อย ประชากร B cell แบบ monoclonal อาจเกิดขึ้นและกลายเป็น mucosa-associated lymphoid tissue lymphoma</b> ${S.mu}</li></ul>
+ <h3>Which test, and why</h3>
+ ${tbl(["Test","Performance","Catch"],[
+ ["Warthin-Starry silver stain ของ biopsystomach","ความไวและความจำเพาะเข้าใกล้ 100% เมื่อ specimen ดีและผู้อ่านชำนาญ — ถือว่าวินิจฉัยได้","ต้องตัด biopsy จึงไม่ใช้เป็นวิธีแรกในงานประจำ"],
+ ["Urease test จาก biopsy","ความไว 75% ถึง 95% · ความจำเพาะเข้าใกล้ 100% · ผลใน 2 ชั่วโมง","ต้องตัด biopsy · ผลบวกเป็นหลักฐานหนักแน่นว่ามี infection อยู่จริง"],
+ ["Urea breath test","ความไวและความจำเพาะดีเยี่ยม · ไม่ต้องตัด biopsy","ค่อนข้างแพง เพราะต้นทุนของเครื่องตรวจ"],
+ ["Stool antigen immunoassay","ความไวและความจำเพาะเกิน 95%","แนะนำกว้างขวางทั้งเพื่อวินิจฉัยและเพื่อยืนยันการหายหลังรักษา"],
+ ["Serology สำหรับ IgA และ IgG","มีชุดตรวจทางการค้าหลายชนิด","แยก infection อดีตจากปัจจุบันไม่ได้ เพราะ titer อยู่ได้หลายปี · และ titer ไม่สัมพันธ์กับความรุนแรงหรือการตอบสนองต่อการรักษา"],
+ ["Culture","แยกได้ถ้าใช้ enriched medium ในภาวะ microaerophilic นานถึง 2 สัปดาห์","เก็บไว้ใช้เมื่อต้องทดสอบความไวต่อยา · เชื้อเกาะ gastric mucosa จึงไม่พบใน stool หรือ blood"],
+ ["Nucleic acid test","","ปัจจุบันจำกัดอยู่ในห้องปฏิบัติการวิจัย ไม่ใช้ในงานคลินิก"]])}
+ <ul><li><b>การย้อม stool หา helicobacter ไม่น่าเชื่อถือ</b> เพราะ<b>เชื้อมองเห็นยากและอาจมี helicobacter ที่ไม่ก่อโรคอยู่ด้วย</b> ${S.mu}</li>
+ <li>แม้เห็นเชื้อได้ด้วย hematoxylin-eosin หรือ Gram stain แต่ <b>Warthin-Starry silver stain ไวที่สุด</b> ${S.mu}</li>
+ <li>การระบุขั้นต้นอาศัย<b>การโตในภาวะคัดเลือก, รูปร่างใต้กล้อง และฤทธิ์ oxidase, catalase กับ urease</b> · ขั้นสุดท้ายใช้ mass spectrometry ${S.mu}</li></ul>
+ <h3>Treatment</h3><ul>
+ <li>สิ่งที่<b>ไม่</b>ได้ผล: <b>การใช้ antibiotic ตัวเดียว หรือ antibiotic ร่วมกับ bismuth</b> ${S.mu}</li>
+ <li>สูตรที่ได้ผลดีที่สุดในการรักษา gastritis และ peptic ulcer คือ <b>proton pump inhibitor อย่าง omeprazole ร่วมกับ macrolide อย่าง clarithromycin และ β-lactam อย่าง amoxicillin นาน 7 ถึง 10 วันในรอบแรก</b> ${S.mu}</li>
+ <li><b>การรักษาล้มเหลวสัมพันธ์กับการดื้อ clarithromycin มากที่สุด</b> — ถ้าผู้ป่วยไม่ตอบสนอง<b>ควรทดสอบความไวต่อยา</b> ${S.mu}</li>
+ <li><b>Metronidazole ใช้ในสูตรร่วมได้ แต่ resistance เป็นเรื่องธรรมดา</b> ${S.mu}</li>
+ <li>เรื่อง vaccine ที่เผยกลไกของโรค: <b>infection กระตุ้น inflammation ที่อาศัย TH1 อย่างแรง</b> ${S.mu}</li>
+ <li>ดังนั้น<b>vaccine ทดลองที่ใช้แอนติเจนซึ่งกระตุ้น TH1 กลับทำให้อักเสบมากขึ้น</b> ${S.mu}</li>
+ <li>ในทางกลับกัน <b>แอนติเจนที่ให้ร่วมกับ mucosal adjuvant ซึ่งเหนี่ยวนำการตอบสนองแบบ TH2 ป้องกันได้ในสัตว์ทดลองและกำจัด infection ที่มีอยู่แล้วได้</b> · <b>ประสิทธิผลในคนยังต้องพิสูจน์</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"haemophilus",k:"b",t:"Haemophilus and the two factors it cannot make",mm:"Haemophilus",leg:[],
 draw:()=>{let b="";
- b+=mL(24,26,"ชื่อสกุลแปลว่า \"รักเลือด\" — เพราะมันขาดสองอย่างที่ต้องหยิบจากเลือด",{a:"start",c:"bh"});
+ b+=mL(24,26,"ชื่อสกุลแปลว่า \"รัก blood\" — เพราะมันขาดสองอย่างที่ต้องหยิบจาก blood",{a:"start",c:"bh"});
  /* the satellite phenomenon: the picture that explains both factors at once */
  const cx=160,cy=168,R=110;
  b+=`<circle cx="${cx}" cy="${cy}" r="${R}" style="fill:color-mix(in srgb,#8C6D46 22%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 18%,var(--sb-surface));stroke-width:1.5"/>`;
@@ -511,150 +749,560 @@ draw:()=>{let b="";
  b+=`<path d="M${cx},${cy-R+12} L${cx},${cy+R-12}" style="fill:none;stroke:color-mix(in srgb,#B7791F 44%,var(--sb-surface));stroke-width:9;stroke-linecap:round"/>`;
  const sq=rng(11);
  for(let i=0;i<40;i++){const y=cy-R+16+sq()*(2*R-32),d=14+sq()*52,sg=sq()<.5?-1:1;
-  const r=Math.max(1.1,4.2-d/22);
-  b+=`<circle class="m-col" cx="${(cx+sg*d).toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`}
+ const r=Math.max(1.1,4.2-d/22);
+ b+=`<circle class="m-col" cx="${(cx+sg*d).toFixed(1)}" cy="${y.toFixed(1)}" r="${r.toFixed(1)}"/>`}
  b+=mL(cx,cy-R-14,"Satellite phenomenon",{c:"bh"})
-  +mlead2(cx,cy-40,296,86,["Staphylococcus streak","ปล่อย V factor ออกมา และสลายเม็ดเลือดแดงจน X factor หลุดออกมาด้วย"],{a:"start"})
-  +mlead2(cx+30,cy+30,296,138,["Haemophilus colonies","ใหญ่ที่สุดตรงที่ใกล้รอยขีด แล้วเล็กลงเมื่อห่างออกไป"],{a:"start"});
+ +mlead2(cx,cy-40,296,86,["Staphylococcus streak","ปล่อย V factor ออกมา และสลาย erythrocyte จน X factor หลุดออกมาด้วย"],{a:"start"})
+ +mlead2(cx+30,cy+30,296,138,["Haemophilus colonies","ใหญ่ที่สุดตรงที่ใกล้รอยขีด แล้วเล็กลงเมื่อห่างออกไป"],{a:"start"});
  b+=`<path class="m-sep" d="M24,296 L616,296"/>`;
  [["X factor","hemin — ตั้งชื่อว่า X เพราะตอนนั้นยังไม่รู้ว่ามันคืออะไร",24,322],
-  ["V factor","nicotinamide adenine dinucleotide — V มาจาก vitamin",330,322],
-  ["Chocolate agar","sheep blood agar ที่อุ่นเบา ๆ เพื่อทำลายตัวยับยั้ง V factor และปล่อยทั้งสองออกมา",24,368]
+ ["V factor","nicotinamide adenine dinucleotide — V มาจาก vitamin",330,322],
+ ["Chocolate agar","sheep blood agar ที่อุ่นเบา ๆ เพื่อทำลายตัวยับยั้ง V factor และปล่อยทั้งสองออกมา",24,368]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
  /* the capsule that the vaccine targets */
  b+=`<path class="m-sep" d="M24,418 L616,418"/>`
-  +mL(24,444,"Haemophilus influenzae type b",{a:"start",c:"bh"})
-  +mL(24,464,"capsule เป็น polyribitol phosphate (PRP) ซึ่งกันการถูกกลืนกิน และเป็นเป้าของวัคซีน conjugate",{a:"start",c:"s m"})
-  +mL(24,492,"meningitis · epiglottitis · cellulitis · arthritis",{a:"start",c:"s m"})
-  +mL(24,520,"ความเสี่ยงสูงขึ้นมากในผู้ที่ไม่มีแอนติบอดีต่อ PRP ผู้ที่พร่อง complement และผู้ที่ตัดม้าม",{a:"start",c:"bad"});
+ +mL(24,444,"Haemophilus influenzae type b",{a:"start",c:"bh"})
+ +mL(24,464,"capsule เป็น polyribitol phosphate (PRP) ซึ่งกันการถูกกลืนกิน และเป็นเป้าของ vaccine conjugate",{a:"start",c:"s m"})
+ +mL(24,492,"meningitis · epiglottitis · cellulitis · arthritis",{a:"start",c:"s m"})
+ +mL(24,520,"ความเสี่ยงสูงขึ้นมากในผู้ที่ไม่มี antibody ต่อ PRP ผู้ที่พร่อง complement และผู้ที่ตัด spleen",{a:"start",c:"bad"});
  return svg(b,"0 0 640 546")},
 notes:()=>`<h3>X and V</h3><ul>
- <li><i>Haemophilus</i> ส่วนใหญ่ต้องการอาหารเลี้ยงเชื้อที่เติมปัจจัยกระตุ้นการเติบโตหนึ่งหรือทั้งสองอย่าง: <b>hemin ซึ่งเรียกว่า X factor</b> เพราะตอนนั้นยังไม่รู้ว่าเป็นสารอะไร และ <b>nicotinamide adenine dinucleotide ซึ่งเรียกว่า V factor</b> จากคำว่า vitamin ${S.mu}</li>
- <li>ทั้งสองมีอยู่ในอาหารที่เติมเลือด แต่<b>ต้องอุ่น sheep blood agar เบา ๆ เพื่อทำลายตัวยับยั้ง V factor</b> ${S.mu}</li>
- <li>นั่นคือเหตุผลที่การแยกเชื้อ <i>Haemophilus</i> ใช้ <b>chocolate agar</b> ซึ่งก็คือวุ้นเลือดที่ถูกให้ความร้อนจนเป็นสีน้ำตาล ${S.mu}</li></ul>
+ <li><i>Haemophilus</i> ส่วนใหญ่ต้องการ medium ที่เติมปัจจัยกระตุ้นการเติบโตหนึ่งหรือทั้งสองอย่าง: <b>hemin ซึ่งเรียกว่า X factor</b> เพราะตอนนั้นยังไม่รู้ว่าเป็นสารอะไร และ <b>nicotinamide adenine dinucleotide ซึ่งเรียกว่า V factor</b> จากคำว่า vitamin ${S.mu}</li>
+ <li>ทั้งสองมีอยู่ในอาหารที่เติม blood แต่<b>ต้องอุ่น sheep blood agar เบา ๆ เพื่อทำลายตัวยับยั้ง V factor</b> ${S.mu}</li>
+ <li>นั่นคือเหตุผลที่การแยกเชื้อ <i>Haemophilus</i> ใช้ <b>chocolate agar</b> ซึ่งก็คือวุ้น blood ที่ถูกให้ความร้อนจนเป็นสีน้ำตาล ${S.mu}</li></ul>
  <h3>The capsule decides the severity</h3><ul>
  <li>ปัจจัยก่อโรคหลักของ <i>H. influenzae</i> type b คือ <b>capsule ที่กันการถูกกลืนกิน</b> ซึ่งประกอบด้วย ribose, ribitol และ phosphate เรียกรวมว่า <b>polyribitol phosphate (PRP)</b> ${S.mu}</li>
- <li>แอนติบอดีต่อ capsule <b>กระตุ้นการกลืนกินและการฆ่าเชื้อด้วย complement อย่างมาก</b> ${S.mu}</li>
- <li>แอนติบอดีเหล่านี้เกิดได้จากการติดเชื้อตามธรรมชาติ จากวัคซีน PRP หรือจากแอนติบอดีที่รับมาจากแม่ ${S.mu}</li>
- <li>ความรุนแรงของโรคทั่วร่างกาย<b>แปรผกผันกับอัตราการกำจัดเชื้อออกจากเลือด</b> ${S.mu}</li>
- <li>ความเสี่ยงของ meningitis และ epiglottitis <b>สูงขึ้นอย่างมีนัยสำคัญ</b>ในผู้ที่ไม่มีแอนติบอดีต่อ PRP ผู้ที่พร่อง complement และผู้ที่ตัดม้าม ${S.mu}</li>
- <li>ส่วน <b>lipid A ของ lipopolysaccharide</b> กระตุ้นการอักเสบของเยื่อหุ้มสมอง ${S.mu}</li>
- <li><b>วัคซีน conjugate PRP</b> ป้องกันการติดเชื้อ <i>H. influenzae</i> ได้เกือบทั้งหมด ${S.mu}</li></ul>
+ <li>antibody ต่อ capsule <b>กระตุ้น phagocytosis และการฆ่าเชื้อด้วย complement อย่างมาก</b> ${S.mu}</li>
+ <li>antibody เหล่านี้เกิดได้จาก infection ตามธรรมชาติ จาก vaccine PRP หรือจาก antibody ที่รับมาจากแม่ ${S.mu}</li>
+ <li>ความรุนแรงของโรคทั่วร่างกาย<b>แปรผกผันกับอัตราการกำจัดเชื้อออกจาก blood</b> ${S.mu}</li>
+ <li>ความเสี่ยงของ meningitis และ epiglottitis <b>สูงขึ้นอย่างมีนัยสำคัญ</b>ในผู้ที่ไม่มี antibody ต่อ PRP ผู้ที่พร่อง complement และผู้ที่ตัด spleen ${S.mu}</li>
+ <li>ส่วน <b>lipid A ของ lipopolysaccharide</b> กระตุ้น inflammation ของเยื่อหุ้ม brain ${S.mu}</li>
+ <li><b>vaccine conjugate PRP</b> ป้องกัน infection <i>H. influenzae</i> ได้เกือบทั้งหมด ${S.mu}</li></ul>
  <h3>The other species</h3><ul>
  <li><b><i>H. ducreyi</i></b> ก่อ <b>chancroid</b> ซึ่งเป็นแผลริมอ่อนที่อวัยวะเพศ · พบไม่บ่อยในปัจจุบัน ${S.mu}</li>
- <li>สมาชิกอื่นของสกุลก่อ<b>เยื่อบุตาอักเสบเป็นหนองเฉียบพลัน</b>และการติดเชื้อฉวยโอกาสอื่น ${S.mu}</li></ul>`});
+ <li>สมาชิกอื่นของสกุลก่อ<b>เยื่อบุตาอักเสบเป็น pus เฉียบพลัน</b>และ infection ฉวยโอกาสอื่น ${S.mu}</li></ul>
+ <h3>The family, and the two growth factors by name</h3><ul>
+ <li>สามสกุลที่สำคัญที่สุดในวงศ์ Pasteurellaceae คือ <b>Haemophilus, Aggregatibacter และ Pasteurella</b> ${S.mu}</li>
+ <li>สมาชิกของวงศ์เป็น <b>gram-negative rod ขนาด 0.2–0.3 × 1.0–2.0 μm แบบ facultative anaerobe</b> และ<b>ส่วนใหญ่เลี้ยงยาก ต้องใช้ enriched medium</b> ${S.mu}</li>
+ <li>ชื่อสกุลมาจาก haemo คือ blood และ hilos คือผู้รัก — <b>ผู้รัก blood เพราะต้องใช้ blood ในการโตบน agar</b> ${S.mu}</li>
+ <li><b>X factor คือ hemin</b> ซึ่งเรียกว่า X เพราะเดิมเป็นปัจจัยที่ไม่ทราบ · <b>V factor คือ nicotinamide adenine dinucleotide</b> ซึ่งเรียกว่า V เพราะเป็นวิตามิน ${S.mu}</li>
+ <li><b>ทั้งสองปัจจัยอยู่ในอาหารที่เสริม blood แล้ว แต่ sheep blood agar ต้องถูกอุ่นเบา ๆ เพื่อทำลายสารยับยั้ง V factor</b> ${S.mu}</li>
+ <li><b>Satellite phenomenon</b>: เชื้อโตรอบโคโลนีของ <i>Staphylococcus aureus</i> บน blood agar ที่ไม่ได้อุ่น เพราะ<b>staphylococci สลาย erythrocyte ปล่อย heme ออกมาและขับ nicotinamide adenine dinucleotide ออกมาเอง</b> ${S.mu}</li>
+ <li>แต่<b>โคโลนีที่โตแบบนั้นเล็กกว่าบน chocolate agar มาก เพราะสารยับยั้ง V factor ใน blood ยังไม่ถูกทำลาย</b> ${S.mu}</li>
+ <li><i>H. parainfluenzae</i> เป็น<b>สปีชีส์ที่พบมากที่สุดในปาก</b> · <i>H. aegyptius</i> หรือ <b>Koch-Weeks bacillus</b> เป็นสาเหตุสำคัญของ <b>acute purulent conjunctivitis</b> ซึ่งติดต่อได้และ<b>สัมพันธ์กับการระบาดโดยเฉพาะในเดือนที่อากาศอุ่น</b> ${S.mu}</li></ul>
+ <h3>Capsule, serotype and biotype</h3><ul>
+ <li>ผิวของหลาย strain แต่ไม่ใช่ทุก strain ปกคลุมด้วย <b>polysaccharide capsule ซึ่งแยกได้ 6 serotype คือ a ถึง f</b> ${S.mu}</li>
+ <li><b>ก่อนมี vaccine serotype b เป็นต้นเหตุของ infection Haemophilus แบบรุกรานกว่า 95%</b> ${S.mu}</li>
+ <li><b>หลังมี vaccine โรคจาก serotype นี้หายไปเกือบหมดในประชากรที่ได้ vaccine และกว่าครึ่งของโรครุกรานปัจจุบันเกิดจาก strain ที่ไม่มี capsule</b> ${S.mu}</li>
+ <li>แนวโน้มในสหรัฐอเมริกา: <b>โรคจาก serotype b ไม่เพิ่มขึ้นตั้งแต่ปี 2000 ขณะที่โรคจาก serotype อื่นและจาก strain ที่ไม่มี capsule เพิ่มขึ้นอย่างช้า ๆ</b> ${S.mu}</li>
+ <li><i>H. influenzae</i> ยังแบ่งเป็น <b>8 biotype คือ I ถึง VIII</b> โดย<b>ปฏิกิริยาทาง biochemistry สามอย่าง — การสร้าง indole, ฤทธิ์ urease และฤทธิ์ ornithine decarboxylase</b> ซึ่งใช้ประโยชน์ทางระบาดวิทยา ${S.mu}</li>
+ <li><b>Serotype b ที่ก่อโรคคือ biotype I</b> ${S.mu}</li></ul>
+ <h3>Colonization versus invasion</h3><ul>
+ <li><b><i>H. parainfluenzae</i> และ <i>H. influenzae</i> ที่ไม่มี capsule ตั้งรังใน respiratory tract ส่วนบนของแทบทุกคนภายในเดือนแรก ๆ ของชีวิต</b> ${S.mu}</li>
+ <li>พวกมันลามเฉพาะที่และก่อ <b>otitis media, sinusitis, bronchitis และ pneumonia</b> · แต่<b>โรคที่กระจายทั่วตัวพบไม่บ่อย</b> ${S.mu}</li>
+ <li>ที่กลับกัน: <b><i>H. influenzae</i> ที่มี capsule พบใน respiratory tract ส่วนบนไม่บ่อยหรือมีจำนวนน้อยมาก แต่เป็นสาเหตุที่พบบ่อยของโรคในเด็กที่ไม่ได้รับ vaccine</b> — ซึ่งเน้น virulence ของเชื้อนี้ ${S.mu}</li>
+ <li>ลำดับการรุกราน: <b>pili และ adhesin ที่ไม่ใช่ pili พาเชื้อตั้งรังใน oropharynx</b> · แล้ว<b>องค์ประกอบ cell wall คือ lipopolysaccharide และ glycopeptide น้ำหนักโมเลกุลต่ำทำให้การทำงานของ cilia เสียไป จึงเกิดความเสียหายต่อ respiratory epithelium</b> ${S.mu}</li>
+ <li>เชื้อจึง<b>ถูกขนข้ามทั้ง epithelial cell และ endothelial cell เข้าสู่ blood ได้</b> ${S.mu}</li>
+ <li>และ<b>เมื่อไม่มี opsonic antibody จำเพาะต่อ capsule จะเกิด bacteremia ระดับสูงพร้อมการกระจายไปที่เยื่อหุ้ม brain หรือจุดอื่นที่ไกลออกไป</b> ${S.mu}</li></ul>
+ <h3>Polyribitol phosphate</h3><ul>
+ <li>ปัจจัยก่อโรคหลักของ serotype b คือ <b>capsule ที่กันการถูกกลืน ซึ่งมี ribose, ribitol และ phosphate รวมเรียกว่า polyribitol phosphate</b> ${S.mu}</li>
+ <li><b>antibody ต่อ capsule กระตุ้นทั้ง phagocytosis และฤทธิ์ฆ่าเชื้อที่อาศัย complement อย่างมาก</b> ${S.mu}</li>
+ <li>antibody นี้เกิดได้สามทาง — <b>infection ตามธรรมชาติ, vaccine polyribitol phosphate ที่ทำให้บริสุทธิ์ หรือการส่งผ่าน antibody จากแม่</b> ${S.mu}</li>
+ <li>หลักที่ใช้ทำนายความรุนแรง: <b>ความรุนแรงของโรคทั้งระบบแปรผันกลับกับอัตราการกวาดเชื้อออกจาก blood</b> ${S.mu}</li>
+ <li>ผู้ที่เสี่ยงต่อ meningitis และ epiglottitis สูงกว่าชัดเจนคือ<b>ผู้ที่ไม่มี anti-polyribitol phosphate antibody, ผู้ที่พร่อง complement และผู้ที่ตัด spleen</b> ${S.mu}</li>
+ <li><b>Lipid A ของ lipopolysaccharide เหนี่ยวนำ inflammation ของเยื่อหุ้ม brain ในสัตว์ทดลอง</b> และอาจเป็นตัวเริ่มการตอบสนองนี้ในคน ${S.mu}</li>
+ <li><b><i>H. influenzae</i> สร้าง IgA1 protease ทั้ง strain ที่มีและไม่มี capsule</b> ซึ่งอาจช่วยการตั้งรังบนผิว mucosa โดยขัด immunity แบบ humoral ${S.mu}</li></ul>
+ <h3>Growth factor requirement, species by species</h3>
+ ${tbl(["Species","X factor (hemin)","V factor (NAD)","Primary disease"],[
+ ["Haemophilus influenzae","required","required","pneumonia · sinusitis · otitis · meningitis · epiglottitis · cellulitis · bacteremia"],
+ ["H. aegyptius","required","required","purulent conjunctivitis — Koch-Weeks bacillus"],
+ ["H. parainfluenzae","not required","required","bacteremia · endocarditis · opportunistic infection — rare"],
+ ["H. ducreyi","required","not required","chancroid — soft chancre"]])}`});
+
+SEC.push({id:"hib-dis",k:"b",t:"Haemophilus influenzae before and after the vaccine",mm:"Haemophilus disease",leg:[],
+draw:()=>tbl(["Disease","Peak age in the prevaccine era","Culture yield"],[
+ ["Meningitis","3 ถึง 18 เดือน","น้ำ spinal cord ขึ้น 50–95% · blood ขึ้น 50–95%"],
+ ["Epiglottitis","2 ถึง 4 ปี","blood ขึ้น 90–95% · ห้ามเพาะจาก epiglottis"],
+ ["Cellulitis","เด็ก","skin ขึ้น 75–90% · blood ขึ้น 50–75%"],
+ ["Arthritis","น้อยกว่า 2 ปี","synovial fluid ขึ้น 70–90% · blood ขึ้น 50–80%"],
+ ["Otitis media","เด็ก และพบในผู้ใหญ่ได้","tympanocentesis ขึ้น 50–70%"],
+ ["Sinusitis","เด็ก และพบในผู้ใหญ่ได้","sinus aspirate ขึ้น 50–75%"],
+ ["Pneumonia · bronchitis","ผู้สูงอายุที่มีโรค lung เรื้อรัง","sputum ขึ้น 25–75% · blood ขึ้น 10–30%"],
+ ["Conjunctivitis","เด็ก","ตาขึ้น 50–75% · blood ขึ้นน้อยกว่า 10%"]]),
+notes:()=>`<h3>What the conjugate vaccine did</h3><ul>
+ <li>ก่อนมี vaccine conjugate ประมาณว่ามี<b>โรครุกรานจาก serotype b 20,000 รายต่อปีในเด็กอายุน้อยกว่า 5 ปีในสหรัฐอเมริกา</b> ${S.mu}</li>
+ <li><b>vaccine polysaccharide รุ่นแรกไม่ป้องกันเด็กอายุน้อยกว่า 18 เดือน ซึ่งเป็นกลุ่มที่เสี่ยงที่สุด</b> เพราะ<b>การตอบสนองต่อแอนติเจนที่เป็น polysaccharide พัฒนาช้าตามธรรมชาติ</b> ${S.mu}</li>
+ <li>เดือนธันวาคม 1987 มีการนำ<b>vaccine ที่ต่อ polyribitol phosphate เข้ากับโปรตีนพาหะ</b> — <b>diphtheria toxoid, tetanus toxoid หรือ meningococcal outer membrane protein</b> — เข้ามาใช้ ${S.mu}</li>
+ <li>ผลคือ<b>เกิด antibody ที่ป้องกันได้ในทารกอายุ 2 เดือนขึ้นไป และโรคทั้งระบบในเด็กอายุน้อยกว่า 5 ปีถูกกำจัดไปแทบหมดในสหรัฐอเมริกา — ปี 2015 รายงานเพียง 29 ราย</b> ${S.mu}</li>
+ <li>รายที่ยังเหลือเกิดใน<b>เด็กที่ยังไม่มี immunity จากการได้ vaccine ไม่ครบหรือตอบสนองต่อ vaccine ไม่ดี และในผู้สูงอายุที่ immunity จางลง</b> ${S.mu}</li>
+ <li><b>ความสำเร็จนี้ยังไม่เกิดในประเทศกำลังพัฒนาหลายแห่งที่ทำโปรแกรม vaccine ได้ยาก</b> — <b>serotype b จึงยังเป็นเชื้อก่อโรคในเด็กที่สำคัญที่สุดในหลายประเทศ</b> ${S.mu}</li>
+ <li>ตัวเลขทั่วโลก: ประมาณว่ามี<b>โรครุนแรง 3 ล้านรายและเด็กตายถึง 700,000 รายต่อปี</b> ซึ่งเป็นเรื่องน่าเศร้าเมื่อ<b>vaccine กำจัดโรคได้แทบทั้งหมด</b> ${S.mu}</li>
+ <li>คำแนะนำปัจจุบัน: <b>เด็กควรได้ vaccine สองหรือสามเข็มก่อนอายุ 6 เดือน แล้วกระตุ้นอีกครั้งที่อายุ 12 ถึง 15 เดือน</b> ${S.mu}</li>
+ <li><b>Chemoprophylaxis ด้วย rifampin</b> ใช้กวาดการเป็นพาหะของ serotype b ใน<b>เด็กอายุน้อยกว่า 2 ปีที่อยู่ในบ้านหรือศูนย์รับเลี้ยงเด็กที่มีผู้ป่วยโรคทั้งระบบ</b> ${S.mu}</li></ul>
+ <h3>Meningitis, epiglottitis, cellulitis, arthritis</h3><ul>
+ <li><b>Meningitis</b> ในผู้ที่ไม่มี immunity เกิดจาก<b>การแพร่ทาง blood จาก nasopharynx และแยกจาก bacterial meningitis สาเหตุอื่นทางคลินิกไม่ได้</b> ${S.mu}</li>
+ <li>การนำเสนอเริ่มด้วย<b>symptomrespiratory tract ส่วนบนเบา ๆ 1 ถึง 3 วัน แล้ว symptom ของ meningitis จึงปรากฏ</b> ${S.mu}</li>
+ <li><b>mortality น้อยกว่า 10% ในผู้ที่ได้รับการรักษาทันที</b> และการศึกษาที่ออกแบบอย่างรัดกุม<b>พบ complication ทางระบบประสาทที่รุนแรงในอัตราต่ำ</b> ซึ่งต่างจากรายงานยุคแรกที่พบความเสียหายคงเหลือรุนแรงถึง 50% ${S.mu}</li>
+ <li><b>การแพร่จากคนสู่คนในประชากรที่ไม่มี immunity มีหลักฐานชัดเจน</b> จึงต้องใช้มาตรการป้องกันทางระบาดวิทยา ${S.mu}</li>
+ <li><b>Epiglottitis</b> คือ<b>cellulitis และการบวมของ tissue เหนือ glottis ซึ่งเป็นภาวะฉุกเฉินที่คุกคามชีวิต</b> ${S.mu}</li>
+ <li>เด็กมี<b>pharyngitis, fever และหายใจลำบาก ซึ่งลุกลามเร็วเป็นการอุดกั้น respiratory tract และการตาย</b> ${S.mu}</li>
+ <li>ข้อห้ามที่ต้องจำ: <b>ห้ามเก็บ specimen จากคอหอยส่วนหลังในผู้ที่สงสัย epiglottitis เพราะอาจกระตุ้นให้ไอและอุดกั้น respiratory tract</b> — เพาะ blood แทน ${S.mu}</li>
+ <li><b>Cellulitis</b> ก็เป็นโรคของเด็กที่ถูกกำจัดไปแล้วด้วย vaccine · เมื่อพบ ผู้ป่วยมี<b>fever และ cellulitis ที่เป็นปื้นสีแดงอมน้ำเงินที่แก้มหรือรอบเบ้าตา</b> ${S.mu}</li>
+ <li><b>ภาพทางคลินิกที่เป็นแบบฉบับ, cellulitis ที่อยู่ติดกับเยื่อบุช่องปาก และการไม่มีหลักฐานว่าเด็กได้รับ vaccine</b> ${S.mu}</li>
+ <li><b>Arthritis</b> ก่อนยุค vaccine เป็น<b>รูปของ arthritis ที่พบบ่อยที่สุดในเด็กอายุน้อยกว่า 2 ปี คือ infection ที่ข้อใหญ่ข้อเดียวตามหลัง bacteremia</b> · ในเด็กโตและผู้ใหญ่พบน้อยมากและมักเป็นผู้ที่ immunity บกพร่องหรือมีข้อที่เสียหายอยู่เดิม ${S.mu}</li></ul>
+ <h3>Ear, sinus, lung and chancroid</h3><ul>
+ <li>strain ที่ไม่มี capsule เป็น<b>opportunistic pathogen ของ respiratory tract ทั้งส่วนบนและส่วนล่าง</b> ${S.mu}</li>
+ <li>การศึกษาส่วนใหญ่พบว่า<b><i>H. influenzae</i> และ <i>Streptococcus pneumoniae</i> เป็นสองสาเหตุที่พบบ่อยที่สุดของ otitis และ sinusitis ทั้งแบบเฉียบพลันและเรื้อรัง</b> ${S.mu}</li>
+ <li><b>Primary pneumonia พบไม่บ่อยในเด็กและผู้ใหญ่ที่การทำงานของ lung ปกติ</b> ${S.mu}</li>
+ <li>เชื้อ<b>ตั้งรังเป็นปกติในผู้ป่วยโรค lung เรื้อรังรวมถึง cystic fibrosis และมักสัมพันธ์กับการกำเริบของ bronchitis และ pneumonia ชัด ๆ</b> ${S.mu}</li>
+ <li>โรค lung พบมากที่สุดใน<b>ผู้สูงอายุ โดยเฉพาะผู้ที่มีประวัติ chronic obstructive pulmonary disease หรือภาวะที่ทำให้สำลักง่าย</b> เช่นการดื่มสุราและภาวะที่ระดับความรู้สึกตัวเปลี่ยน ${S.mu}</li>
+ <li><b>Chancroid</b> จาก <i>H. ducreyi</i> <b>วินิจฉัยในผู้ชายบ่อยกว่า</b> ซึ่งเข้าใจว่าเพราะ<b>ผู้หญิงอาจไม่มี symptom หรือ symptom ไม่ชัด</b> ${S.mu}</li>
+ <li>ลำดับ: <b>ราว 5 ถึง 7 วันหลังสัมผัส เกิดตุ่มกดเจ็บบนฐานแดงที่อวัยวะเพศหรือรอบทวารหนัก</b> · <b>ภายใน 2 วัน lesion เป็นแผลและเจ็บ และมักมี lymph node ที่ขาหนีบโต</b> ${S.mu}</li>
+ <li>การวินิจฉัย<b>ต้องตัดสาเหตุอื่นของแผลที่อวัยวะเพศออกก่อน โดยเฉพาะ syphilis และ herpes simplex</b> ${S.mu}</li>
+ <li>ระบาดวิทยา: <b>เป็นสาเหตุสำคัญของแผลที่อวัยวะเพศใน Africa และ Asia แต่พบน้อยกว่าใน Europe และ North America</b> · ในสหรัฐอเมริกาอุบัติการณ์เป็นวงรอบ — <b>จุดสูงสุดกว่า 5000 รายในปี 1988 ลดลงเป็น 7 รายในปี 2016</b> แต่<b>โรคนี้ถูกมองข้ามและรายงานต่ำกว่าจริงอย่างมาก</b> ${S.mu}</li></ul>
+ <h3>Specimen, plate and drug</h3><ul>
+ <li>เพราะ infection ในผู้ที่ได้ vaccine ส่วนใหญ่มาจาก oropharynx <b>ต้องเลี่ยงการปนเปื้อน specimen ด้วย secretion ในช่องปาก</b> ${S.mu}</li>
+ <li>จึง<b>ใช้การเจาะดูดด้วยเข็มโดยตรงสำหรับ sinusitis และ otitis</b> และใช้ sputum จาก respiratory tract ส่วนล่างสำหรับ pneumonia ${S.mu}</li>
+ <li><b>ผู้ป่วย meningitis ที่ยังไม่ได้รักษามีเชื้อราว 10⁷ ตัวต่อมิลลิลิตร จึงใช้น้ำเพียง 1 ถึง 2 มิลลิลิตรก็พอสำหรับทั้งการย้อม การเพาะและการตรวจแอนติเจน</b> ${S.mu}</li>
+ <li>แต่<b>ทั้งการย้อมและการเพาะไวน้อยลงถ้าผู้ป่วยได้ antibiotic ก่อนเก็บน้ำ spinal cord</b> ${S.mu}</li>
+ <li>การย้อม: <b>พบ gram-negative rod ที่รูปร่างต่างกันจาก coccobacilli ถึงเส้นยาวหลายรูปในน้ำ spinal cord กว่า 80% ของผู้ป่วยที่ยังไม่ได้รักษา</b> ${S.mu}</li>
+ <li><b>การตรวจแอนติเจน polyribitol phosphate ด้วย particle agglutination ตรวจได้ต่ำกว่า 1 นาโนกรัมต่อมิลลิลิตร</b> และ<b>ตรวจได้ทั้งในน้ำ spinal cord และ urine ซึ่งแอนติเจนถูกขับออกมาทั้งโมเลกุล</b> ${S.mu}</li>
+ <li><b>ตรวจได้เฉพาะ serotype b ซึ่งปัจจุบันพบไม่บ่อยในประเทศที่มีโปรแกรม vaccine</b> — <b>serotype อื่นและ strain ที่ไม่มี capsule ให้ผลลบ</b> ${S.mu}</li>
+ <li>เรื่องการเพาะที่ต้องระวัง: <b>ถ้า chocolate agar ถูกอุ่นมากเกินไปตอนเตรียม V factor จะถูกทำลาย และสปีชีส์ที่ต้องใช้ปัจจัยนี้จะไม่โต</b> ${S.mu}</li>
+ <li>โคโลนีเป็น<b>ก้อนเรียบทึบขนาด 1 ถึง 2 มม. หลังบ่ม 24 ชั่วโมง</b> ${S.mu}</li>
+ <li><b>การโตใน blood culture มักช้า</b> เพราะ<b>น้ำเลี้ยงสำเร็จรูปส่วนใหญ่ไม่ได้เสริม X และ V factor ในความเข้มข้นที่เหมาะสม และยังมีสารยับยั้ง V factor</b> · อีกทั้ง<b>ปัจจัยการโตถูกปล่อยออกมาเฉพาะเมื่อเซลล์ blood สลาย</b> ${S.mu}</li>
+ <li>เคล็ดที่ใช้ได้: <b><i>H. influenzae</i> มักโตดีกว่าใน blood culture ที่บ่มแบบไม่ใช้อากาศ เพราะในภาวะนั้นเชื้อไม่ต้องใช้ X factor</b> ${S.mu}</li>
+ <li><b><i>H. ducreyi</i> เพาะได้ไม่ไว — ขึ้นน้อยกว่า 85% แม้ในภาวะที่ดีที่สุด</b> · ที่ได้ผลดีที่สุดคือ <b>gonococcal agar ที่เสริม hemoglobin 1–2%, fetal bovine serum 5%, IsoVitaleX และ vancomycin</b> บ่มที่ <b>33 °C ใน CO₂ 5–10% นาน 7 วันหรือกว่านั้น</b> ${S.mu}</li>
+ <li>เพราะอาหารและภาวะการบ่มเหล่านี้ไม่ได้ใช้กับเชื้ออื่น <b>การเก็บ <i>H. ducreyi</i> ได้สำเร็จต้องอาศัยการที่นักจุลชีววิทยาตั้งใจหาเชื้อนี้โดยเฉพาะ</b> — ต้องแจ้งห้องปฏิบัติการ ${S.mu}</li>
+ <li>specimen ของ chancroid เก็บด้วย<b>ไม้พันสำลีที่ชุบความชื้นจากฐานหรือขอบของแผล</b> · <b>การเพาะ pus จาก lymph node ไวน้อยกว่าการเพาะจากแผล</b> ${S.mu}</li>
+ <li>การรักษา: <b>โรคทั้งระบบต้องให้ยาทันที เพราะ mortality ของ meningitis หรือ epiglottitis ที่ไม่ได้รักษาเข้าใกล้ 100%</b> ${S.mu}</li>
+ <li><b>infection รุนแรงรักษาด้วย cephalosporin วงกว้าง</b> ${S.mu}</li>
+ <li>infection ที่เบากว่าอย่าง sinusitis และ otitis ใช้ <b>amoxicillin ถ้าเชื้อยังไว ซึ่งราว 30% ของ strain ดื้อ</b>, cephalosporin ที่ออกฤทธิ์, azithromycin, doxycycline หรือ fluoroquinolone ${S.mu}</li>
+ <li><b><i>H. ducreyi</i> ส่วนใหญ่ไวต่อ erythromycin ซึ่งเป็นยาที่แนะนำ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"aggreg-past",k:"b",t:"Aggregatibacter and Pasteurella",mm:"Aggregatibacter · Pasteurella",leg:[],
+notes:()=>`<h3>Aggregatibacter</h3><ul>
+ <li>สองสปีชีส์ที่สำคัญคือ <b><i>A. actinomycetemcomitans</i> และ <i>A. aphrophilus</i></b> ${S.mu}</li>
+ <li>ทั้งคู่<b>ตั้งรังในปากของคน แล้วลามจากปากเข้า blood และไปเกาะ heart valve ที่เสียหายอยู่เดิมหรือลิ้นเทียม จึงเกิด endocarditis</b> ${S.mu}</li>
+ <li><b>symptom ทางคลินิกค่อย ๆ เกิดแบบ subacute endocarditis</b> และ<b>เชื้อโตช้าใน blood culture</b> ${S.mu}</li>
+ <li>ลักษณะที่ช่วยได้: <b>ทั้งสองสปีชีส์สร้างโคโลนีที่เกาะติด ซึ่งเห็นได้บนผิวแก้วของขวด blood culture และบน agar</b> ${S.mu}</li>
+ <li>ยาที่เลือกสำหรับ endocarditis จากเชื้อเหล่านี้คือ <b>cephalosporin อย่าง ceftriaxone</b> ${S.mu}</li></ul>
+ <h3>Pasteurella</h3><ul>
+ <li>รูปร่าง: <b>coccobacilli ขนาดเล็กแบบ facultative anaerobe ที่หมักน้ำตาล</b> · <b>เป็น commensal ใน oropharynx ของสัตว์ที่สุขภาพดี</b> ${S.mu}</li>
+ <li>ชื่อ <i>P. multocida</i> มาจาก multus คือมาก และ cidus คือฆ่า — <b>ฆ่าได้หลายชนิด เพราะก่อโรคในสัตว์หลายสปีชีส์</b> ${S.mu}</li>
+ <li><b>infection ในคนส่วนใหญ่มาจากการสัมผัสสัตว์</b> — การถูกกัด ข่วน หรือการกินอาหารร่วมกัน ${S.mu}</li>
+ <li><b><i>P. multocida</i> เป็นเชื้อที่แยกได้บ่อยที่สุด และ <i>P. canis</i> ก็ก่อโรคในคน</b> · สปีชีส์อื่นพบน้อยมาก ${S.mu}</li>
+ <li>รูปของโรคมีสามแบบ — <b>cellulitis และ lymphadenitis เฉพาะที่หลังถูกสัตว์กัดหรือข่วน</b> โดย <i>P. multocida</i> มาจาก cat หรือ dog และ <i>P. canis</i> มาจาก dog ${S.mu}</li>
+ <li><b>การกำเริบของโรค respiratory tract เรื้อรังในผู้ที่การทำงานของ lung บกพร่อง</b> ซึ่งเข้าใจว่ามาจากการที่เชื้อตั้งรังใน oropharynx แล้วสำลัก secretion ในช่องปาก ${S.mu}</li>
+ <li>และ<b>infection ทั้งระบบในผู้ที่ immunity บกพร่อง โดยเฉพาะผู้ที่มีโรค liver</b> ${S.mu}</li>
+ <li>ปัจจัยก่อโรคที่สำคัญคือ <b>capsule ที่สร้างจาก hyaluronic acid</b> ${S.mu}</li>
+ <li><b>แผล cat กัดลึกและทำความสะอาดฆ่าเชื้อได้ยาก จึงพบ infection บ่อยเป็นพิเศษ</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"pertussis",k:"b",t:"Bordetella pertussis: three stages, two toxins",mm:"Pertussis",leg:[],
 draw:()=>{let b="";
  /* the ciliated epithelium, and what the toxins do to it */
  const top=60,epi=top+70,L=24,R=360;
  b+=`<path class="m-spin" d="M${L},${epi} L${R},${epi} L${R},${epi+70} L${L},${epi+70} Z"/>`
-  +mgrainIn("bpe","M"+L+","+epi+" L"+R+","+epi+" L"+R+","+(epi+70)+" L"+L+","+(epi+70)+" Z",L,epi,R-L,70,60,5,"m-gr",.9);
+ +mgrainIn("bpe","M"+L+","+epi+" L"+R+","+epi+" L"+R+","+(epi+70)+" L"+L+","+(epi+70)+" Z",L,epi,R-L,70,60,5,"m-gr",.9);
  /* cilia — upright on the left, fallen on the right */
  for(let x=L+6;x<R;x+=7){const t=(x-L)/(R-L),lean=t*t*26;
-  b+=`<path class="m-kera" style="stroke-width:1.4" d="M${x},${epi} q${lean*.4},${-14+t*7} ${lean},${-20+t*14}"/>`}
+ b+=`<path class="m-kera" style="stroke-width:1.4" d="M${x},${epi} q${lean*.4},${-14+t*7} ${lean},${-20+t*14}"/>`}
  const bact=(x,y,sd)=>`<path class="m-body2" d="${mrod(x,y,20,7,sd,.06)}"/>`;
  [[120,epi-26,3],[196,epi-20,7],[268,epi-14,11],[320,epi-10,13]].forEach(([x,y,sd])=>{b+=bact(x,y,sd)});
  b+=mL(L,top-16,"Ciliated respiratory epithelium",{a:"start",c:"bh"})
-  +mlead2(120,epi-26,380,66,["Pertactin · FHA · fimbriae","adhesin สามตัวที่เกาะเซลล์ที่มี cilia"],{a:"start"})
-  +mlead2(268,epi-6,380,118,["Tracheal cytotoxin","หยุดการโบกของ cilia — กลไกกวาดเสมหะจึงพัง"],{a:"start"})
-  +mlead2(196,epi+30,380,170,["Pertussis toxin","โปรตีนที่คุม adenylate cyclase หมดฤทธิ์","cAMP สูงขึ้น เสมหะยิ่งมาก"],{a:"start"})
-  +mL(380,222,"Dermonecrotic toxin",{a:"start",c:"bh"})
-  +mL(380,242,"ทำให้เนื้อเยื่อขาดเลือดเฉพาะที่",{a:"start",c:"s m"});
+ +mlead2(120,epi-26,380,66,["Pertactin · FHA · fimbriae","adhesin สามตัวที่เกาะเซลล์ที่มี cilia"],{a:"start"})
+ +mlead2(268,epi-6,380,118,["Tracheal cytotoxin","หยุดการโบกของ cilia — กลไกกวาด sputum จึงพัง"],{a:"start"})
+ +mlead2(196,epi+30,380,170,["Pertussis toxin","โปรตีนที่คุม adenylate cyclase หมดฤทธิ์","cAMP สูงขึ้น sputum ยิ่งมาก"],{a:"start"})
+ +mL(380,222,"Dermonecrotic toxin",{a:"start",c:"bh"})
+ +mL(380,242,"ทำให้ tissue ขาด blood เฉพาะที่",{a:"start",c:"s m"});
  /* the three stages as a timeline */
  const ty=320,X0=50,X1=584;
  b+=`<path class="m-sep" d="M24,${ty-40} L616,${ty-40}"/>`
-  +`<path class="ax" d="M${X0},${ty} L${X1+16},${ty}" marker-end="url(#ah)"/>`;
+ +`<path class="ax" d="M${X0},${ty} L${X1+16},${ty}" marker-end="url(#ah)"/>`;
  const seg=(f0,f1,cls,t2,d1,d2)=>{const x0=X0+(X1-X0)*f0,x1=X0+(X1-X0)*f1;
-  return `<rect class="${cls}" x="${x0}" y="${ty-34}" width="${x1-x0}" height="28" rx="8"/>`
-   +mL((x0+x1)/2,ty-15,t2,{c:"bh"})+mL((x0+x1)/2,ty+24,d1,{c:"s m"})+mL((x0+x1)/2,ty+42,d2,{c:"s m"})};
+ return `<rect class="${cls}" x="${x0}" y="${ty-34}" width="${x1-x0}" height="28" rx="8"/>`
+ +mL((x0+x1)/2,ty-15,t2,{c:"bh"})+mL((x0+x1)/2,ty+24,d1,{c:"s m"})+mL((x0+x1)/2,ty+42,d2,{c:"s m"})};
  b+=seg(0,.28,"m-porin","Catarrhal","เหมือนหวัดธรรมดา","เชื้อมากที่สุด แพร่เก่งที่สุด")
-  +seg(.28,.68,"m-body2","Paroxysmal","ไอเป็นชุดแล้วหายใจเข้าดัง whoop","lymphocytosis เด่น")
-  +seg(.68,1,"m-tail","Convalescent","ไอน้อยลงและเบาลง","ภาวะแทรกซ้อนตามมาได้");
- b+=mL(X0,ty+78,"ระยะฟักตัว 7–10 วัน · catarrhal 1–2 สัปดาห์ · paroxysmal 2–4 สัปดาห์",{a:"start",c:"s m"})
-  +mL(X0,ty+100,"ช่วงที่ไออย่างหนักอาจไอเป็นชุดถึง 40–50 ครั้งต่อวัน",{a:"start",c:"s m"})
-  +mL(X0,ty+128,"ผู้ป่วยในระยะ catarrhal คือคนที่อันตรายที่สุดต่อคนรอบข้าง เพราะยังไม่มีใครรู้ว่าเป็นอะไร",{a:"start",c:"bad"});
+ +seg(.28,.68,"m-body2","Paroxysmal","ไอเป็นชุดแล้วหายใจเข้าดัง whoop","lymphocytosis เด่น")
+ +seg(.68,1,"m-tail","Convalescent","ไอน้อยลงและเบาลง","complication ตามมาได้");
+ b+=mL(X0,ty+78,"incubation period 7–10 วัน · catarrhal 1–2 สัปดาห์ · paroxysmal 2–4 สัปดาห์",{a:"start",c:"s m"})
+ +mL(X0,ty+100,"ช่วงที่ไออย่างหนักอาจไอเป็นชุดถึง 40–50 ครั้งต่อวัน",{a:"start",c:"s m"})
+ +mL(X0,ty+128,"ผู้ป่วยในระยะ catarrhal คือคนที่อันตรายที่สุดต่อคนรอบข้าง เพราะยังไม่มีใครรู้ว่าเป็นอะไร",{a:"start",c:"bad"});
  return svg(b,"0 0 640 "+(ty+152))},
 notes:()=>`<h3>Attachment, then two kinds of damage</h3><ul>
- <li>การติดเชื้อเริ่มเมื่อสูดละอองที่มีเชื้อเข้าไป แล้วเชื้อเกาะและเพิ่มจำนวนบน<b>เซลล์เยื่อบุที่มี cilia</b> ${S.mu}</li>
+ <li>infection เริ่มเมื่อสูด aerosol ที่มีเชื้อเข้าไป แล้วเชื้อเกาะและเพิ่มจำนวนบน<b>เซลล์เยื่อบุที่มี cilia</b> ${S.mu}</li>
  <li>การเกาะอาศัยโปรตีน adhesin สามตัว: <b>pertactin, filamentous hemagglutinin และ fimbriae</b> ${S.mu}</li>
- <li>ความเสียหายเฉพาะที่มาจาก <b>dermonecrotic toxin</b> ซึ่งทำให้เนื้อเยื่อขาดเลือด และ <b>tracheal cytotoxin</b> ซึ่ง<b>ยับยั้งการเคลื่อนไหวของ cilia</b> ทำให้กลไกกวาดเสมหะของทางเดินหายใจเสียไป — นี่คือต้นเหตุของอาการไอที่เป็นเอกลักษณ์ ${S.mu}</li>
- <li>ความเป็นพิษทั่วร่างกายมาจาก <b>pertussis toxin</b> เป็นหลัก · มัน<b>ทำให้โปรตีนที่ควบคุม adenylate cyclase หมดฤทธิ์</b> ระดับ cyclic AMP จึงสูงขึ้น ตามด้วยการหลั่งสารคัดหลั่งและเสมหะที่มากขึ้น ซึ่งเป็นลักษณะของระยะ paroxysmal ${S.mu}</li></ul>
+ <li>ความเสียหายเฉพาะที่มาจาก <b>dermonecrotic toxin</b> ซึ่งทำให้ tissue ขาด blood และ <b>tracheal cytotoxin</b> ซึ่ง<b>ยับยั้งการเคลื่อนไหวของ cilia</b> ทำให้กลไกกวาด sputum ของ respiratory tract เสียไป — นี่คือต้นเหตุของ symptom ไอที่เป็นเอกลักษณ์ ${S.mu}</li>
+ <li>ความเป็นพิษทั่วร่างกายมาจาก <b>pertussis toxin</b> เป็นหลัก · มัน<b>ทำให้โปรตีนที่ควบคุม adenylate cyclase หมดฤทธิ์</b> ระดับ cyclic AMP จึงสูงขึ้น ตามด้วยการหลั่ง secretion และ sputum ที่มากขึ้น ซึ่งเป็นลักษณะของระยะ paroxysmal ${S.mu}</li></ul>
  <h3>The three stages</h3><ul>
- <li>หลังระยะฟักตัว <b>7–10 วัน</b> โรคดำเนินผ่านสามระยะ ${S.mu}</li>
- <li><b>Catarrhal stage</b> เหมือนหวัดธรรมดา — น้ำมูกใส จาม อ่อนเพลีย เบื่ออาหาร ไข้ต่ำ ๆ · <b>ปริมาณเชื้อสูงสุดอยู่ในระยะนี้</b> และเพราะยังไม่มีใครรู้ว่าเป็นโรคอะไร ผู้ป่วยระยะนี้จึงเสี่ยงต่อคนรอบข้างมากที่สุด ${S.mu}</li>
- <li>หลัง 1–2 สัปดาห์เข้าสู่ <b>paroxysmal stage</b> · เซลล์ที่มี cilia หลุดออกจากทางเดินหายใจ การกวาดเสมหะเสียไป · ลักษณะเด่นคือ<b>ไอเป็นชุดแล้วหายใจเข้าดัง whoop</b> มักจบด้วยอาเจียนและอ่อนเพลีย · พบ <b>lymphocytosis</b> ชัดเจน · ช่วงที่หนักที่สุดอาจไอเป็นชุดถึง <b>40–50 ครั้งต่อวัน</b> ${S.mu}</li>
- <li>หลัง 2–4 สัปดาห์เข้าสู่ <b>convalescent stage</b> ซึ่งการไอลดลงทั้งจำนวนและความรุนแรง แต่ภาวะแทรกซ้อนตามมาได้ ${S.mu}</li></ul>
+ <li>หลัง incubation period <b>7–10 วัน</b> โรคดำเนินผ่านสามระยะ ${S.mu}</li>
+ <li><b>Catarrhal stage</b> เหมือนหวัดธรรมดา — น้ำมูกใส จาม fatigue anorexia fever ต่ำ ๆ · <b>ปริมาณเชื้อสูงสุดอยู่ในระยะนี้</b> และเพราะยังไม่มีใครรู้ว่าเป็นโรคอะไร ผู้ป่วยระยะนี้จึงเสี่ยงต่อคนรอบข้างมากที่สุด ${S.mu}</li>
+ <li>หลัง 1–2 สัปดาห์เข้าสู่ <b>paroxysmal stage</b> · เซลล์ที่มี cilia หลุดออกจาก respiratory tract การกวาด sputum เสียไป · ลักษณะเด่นคือ<b>ไอเป็นชุดแล้วหายใจเข้าดัง whoop</b> มักจบด้วย vomiting และ fatigue · พบ <b>lymphocytosis</b> ชัดเจน · ช่วงที่หนักที่สุดอาจไอเป็นชุดถึง <b>40–50 ครั้งต่อวัน</b> ${S.mu}</li>
+ <li>หลัง 2–4 สัปดาห์เข้าสู่ <b>convalescent stage</b> ซึ่งการไอลดลงทั้งจำนวนและความรุนแรง แต่ complication ตามมาได้ ${S.mu}</li></ul>
  <h3>Still a problem</h3><ul>
  <li>Pertussis เป็นโรคของคนเท่านั้น <b>ไม่มีแหล่งโรคในสัตว์หรือสิ่งแวดล้อม</b> ${S.mu}</li>
- <li>แม้อุบัติการณ์ลดลงมากหลังมีวัคซีนในปี 1949 แต่โรคยังเป็นโรคประจำถิ่นทั่วโลก · ปี 2014 ประเมินว่ามีการติดเชื้อ <b>24 ล้านราย และเสียชีวิต 160,000 ราย</b> ส่วนใหญ่ในเด็กที่ไม่ได้รับวัคซีน ${S.mu}</li>
- <li>เดิมถือเป็นโรคของเด็ก แต่ปัจจุบัน<b>สัดส่วนที่สำคัญพบในวัยรุ่นและผู้ใหญ่</b> ${S.mu}</li></ul>`});
+ <li>แม้อุบัติการณ์ลดลงมากหลังมี vaccine ในปี 1949 แต่โรคยังเป็น endemic disease ทั่วโลก · ปี 2014 ประเมินว่ามี infection <b>24 ล้านราย และเสียชีวิต 160,000 ราย</b> ส่วนใหญ่ในเด็กที่ไม่ได้รับ vaccine ${S.mu}</li>
+ <li>เดิมถือเป็นโรคของเด็ก แต่ปัจจุบัน<b>สัดส่วนที่สำคัญพบในวัยรุ่นและผู้ใหญ่</b> ${S.mu}</li></ul>
+ <h3>The genus, and the four species in humans</h3>
+ ${tbl(["Species","Human disease"],[
+ ["Bordetella pertussis","pertussis หรือ whooping cough"],
+ ["B. parapertussis","pertussis รูปที่เบากว่า — 10% ถึง 20% ของรายต่อปีในสหรัฐอเมริกา"],
+ ["B. bronchiseptica","โรค respiratory tract ใน dog swine และสัตว์ทดลอง · ในคนสัมพันธ์กับ respiratory tract colonization และ bronchopulmonary disease"],
+ ["B. holmesii","septicemia — พบไม่บ่อย"]])}
+ <ul><li>รูปร่าง: <b>gram-negative coccobacillus ขนาดเล็กมาก 0.2–0.5 × 1 μm และเป็น strict aerobe</b> ${S.mu}</li>
+ <li>มี<b>14 สปีชีส์ที่รู้จัก โดยสี่สปีชีส์ก่อโรคในคน</b> ${S.mu}</li>
+ <li>แยกสปีชีส์จาก<b>ลักษณะการโต, ปฏิกิริยาทาง biochemistry และสมบัติทางแอนติเจน</b> ${S.mu}</li>
+ <li>แต่ข้อค้นพบที่สำคัญ: <b>การศึกษาพันธุกรรมพบว่าสี่สปีชีส์ที่ก่อโรคในคนใกล้ชิดกันมากหรือเป็นสปีชีส์เดียวกัน ต่างกันเพียงการแสดงออกของยีนก่อโรค</b> ${S.mu}</li></ul>
+ <h3>Three jobs, three sets of molecules</h3><ul>
+ <li>การเกิด whooping cough ต้องมีสี่ขั้นครบ — <b>การสัมผัสเชื้อ, การเกาะ ciliated epithelial cell ของ respiratory tract, การเพิ่มจำนวน และการเกิดความเสียหายเฉพาะที่กับพิษทั้งระบบ</b> ${S.mu}</li>
+ <li>การเกาะอาศัย <b>adhesin สามตัวคือ pertactin, filamentous hemagglutinin และ fimbria</b> · โปรตีนคล้ายกันพบใน <i>B. parapertussis</i> และ <i>B. bronchiseptica</i> ด้วย ${S.mu}</li>
+ <li>ความเสียหายเฉพาะที่เกิดจากสองตัว — <b>dermonecrotic toxin ซึ่งทำให้ ischemia เฉพาะที่ในหนูทดลอง</b> และ <b>tracheal cytotoxin ซึ่งยับยั้งการเคลื่อนของ cilia</b> ${S.mu}</li>
+ <li>และ tracheal cytotoxin คือ<b>ตัวที่ทำลายกลไกกวาดล้างปกติของ respiratory tree จึงเป็นต้นเหตุของ symptom ไอที่เป็นเอกลักษณ์</b> ${S.mu}</li>
+ <li>พิษทั้งระบบมาจาก <b>pertussis toxin</b> เป็นหลัก — มัน<b>ทำให้โปรตีนที่ควบคุมฤทธิ์ adenylate cyclase หมดฤทธิ์ จึง cyclic adenosine monophosphate สูงขึ้น และการหลั่ง secretion กับการสร้างมูกเพิ่มขึ้น</b> ${S.mu}</li>
+ <li>ซึ่งนั่นคือ<b>ลักษณะของ paroxysmal stage</b> ${S.mu}</li></ul>
+ <h3>The three stages, by the clock</h3>
+ ${tbl(["Stage","Duration","What is happening"],[
+ ["Incubation","7 ถึง 10 วัน","เชื้อเกาะและเพิ่มจำนวนบน ciliated epithelial cell"],
+ ["Catarrhal","1 ถึง 2 สัปดาห์","serous rhinorrhea · sneezing · malaise · anorexia · low-grade fever — เหมือน fever หวัด · จำนวนเชื้อสูงสุดอยู่ในระยะนี้"],
+ ["Paroxysmal","2 ถึง 4 สัปดาห์","whooping cough paroxysm · marked lymphocytosis · vomiting และหมดแรงท้ายการไอ · ciliated epithelial cell ถูกขับออกและการกวาดมูกเสียไป"],
+ ["Convalescent","3 ถึง 4 สัปดาห์หรือกว่านั้น","paroxysm ลดลงทั้งจำนวนและความรุนแรง · แต่เกิด complication ทุติยภูมิได้ — pneumonia, seizure, encephalopathy"]])}
+ <ul><li><b>จำนวนเชื้อสูงสุดอยู่ใน catarrhal stage และตอนนั้นยังไม่มีใครรู้ว่าเป็นโรคอะไร — ผู้ป่วยระยะนี้จึงเสี่ยงต่อผู้สัมผัสมากที่สุด</b> ${S.mu}</li>
+ <li>paroxysm คือ<b>ชุดการไอซ้ำ ๆ แล้วตามด้วยการหายใจเข้าเสียงดัง</b> · <b>การสร้างมูกเป็นส่วนหนึ่งที่ทำให้ respiratory tract ตีบ</b> ${S.mu}</li>
+ <li><b>ผู้ป่วยอาจมี paroxysm 40 ถึง 50 ครั้งต่อวันในช่วงที่โรคหนักที่สุด</b> ${S.mu}</li>
+ <li><b>ภาพคลาสสิกนี้อาจไม่พบในผู้ที่มี immunity บางส่วนหรือในผู้ใหญ่</b> ${S.mu}</li>
+ <li>ผู้ป่วยเช่นนั้นอาจมีเพียง<b>ประวัติไอเรื้อรังโดยไม่มีเสียง whoop และไม่ vomiting</b> ${S.mu}</li>
+ <li>เพราะภาพนั้นไม่จำเพาะ จึงควรตรวจหาทั้ง Bordetella และเชื้ออื่น — <b><i>Mycoplasma pneumoniae</i>, <i>Chlamydia pneumoniae</i>, <i>Legionella pneumophila</i></b> และไวรัส respiratory tract ${S.mu}</li></ul>
+ <h3>Numbers, bench and vaccine</h3><ul>
+ <li><b>Pertussis เป็นโรคของคน ไม่มี reservoir ในสัตว์หรือสิ่งแวดล้อมที่รู้จัก</b> ${S.mu}</li>
+ <li>อุบัติการณ์ลดลงมากหลังมี vaccine ในปี 1949 แต่<b>โรคยังเป็น endemic disease ทั่วโลก — ปี 2014 ประมาณว่ามี 24 ล้านรายและตาย 160,000 ราย ส่วนใหญ่เป็นเด็กที่ไม่ได้รับ vaccine</b> ${S.mu}</li>
+ <li>สหรัฐอเมริการายงาน <b>18,975 รายในปี 2017 ซึ่งลดลง 42% จากปี 2014</b> ${S.mu}</li>
+ <li>การเปลี่ยนภาพของโรค: <b>เดิมถือเป็นโรคของเด็ก แต่ตอนนี้สัดส่วนสำคัญของ infection อยู่ในวัยรุ่นและผู้ใหญ่</b> — ซึ่งส่วนหนึ่งมาจาก<b>การรู้จักรูปที่เบากว่าในเด็กโตและผู้ใหญ่ และการตรวจที่ดีขึ้น</b> ${S.mu}</li>
+ <li>ที่ห้องปฏิบัติการ: <b>เชื้อไวต่อความแห้งมาก และไม่รอดถ้าไม่ระวังตอนเก็บและส่ง specimen</b> ${S.mu}</li>
+ <li>แม้ความต้องการอาหารจะง่าย แต่<b>บางสปีชีส์ โดยเฉพาะ <i>B. pertussis</i> ไวต่อ toxin และ metabolite ใน medium ทั่วไปมาก</b> ${S.mu}</li>
+ <li>จึง<b>ต้องใช้อาหารที่เสริมถ่าน แป้ง blood หรือ albumin เพื่อดูดซับ toxin เหล่านั้น และต้องเตรียมอาหารใหม่สด ๆ</b> ${S.mu}</li>
+ <li><b>แม้ในภาวะที่ดีที่สุด การเพาะ <i>B. pertussis</i> ก็ยังยาก</b> ${S.mu}</li>
+ <li>ด้วยเหตุนี้ <b>nucleic acid amplification assay ทั้งแบบจำเพาะและแบบ multiplex สำหรับเชื้อ respiratory tract เป็นการตรวจที่เลือกใช้ และดีกว่าทั้งการย้อมและการเพาะ</b> ${S.mu}</li>
+ <li>การตรวจ serology แปลผลยาก เพราะ<b>มันถูกประเมินเทียบกับการย้อมและการเพาะซึ่งเป็นมาตรฐานที่ไวต่ำ</b> · มี <b>ELISA ที่ตรวจ antibody ต่อ pertussis toxin, filamentous hemagglutinin, pertactin และ fimbriae</b> ${S.mu}</li>
+ <li>การรักษาเป็น<b>การประคับประคองเป็นหลัก</b> พร้อมการดูแลทางการพยาบาลในระยะ paroxysmal และ convalescent ${S.mu}</li>
+ <li>antibiotic<b>ลดความรุนแรงของโรคและลดการแพร่เชื้อได้ โดยเฉพาะในระยะต้น</b> ${S.mu}</li>
+ <li><b>การหายขึ้นกับความเร็วและระดับที่ชั้น ciliated epithelial cell งอกใหม่เป็นหลัก</b> ${S.mu}</li>
+ <li><b>Macrolide กำจัดเชื้อได้ แต่คุณค่าจำกัดเพราะมักไม่มีใครรู้ว่าเป็นโรคนี้ตอนที่ติดต่อได้มากที่สุด</b> ${S.mu}</li>
+ <li><b>Azithromycin และ clarithromycin ทนได้ดีกว่าและเป็น macrolide ที่เลือกใช้</b> · ผู้ที่ทน macrolide ไม่ได้ใช้ <b>trimethoprim-sulfamethoxazole หรือ fluoroquinolone</b> ${S.mu}</li>
+ <li><b>Postexposure prophylaxis ด้วย azithromycin ใช้ในผู้ที่เสี่ยงต่อโรครุนแรง ถ้าให้ภายใน 21 วันหลังสัมผัสผู้ป่วยที่มี symptom</b> ${S.mu}</li>
+ <li>vaccine: <b>สหรัฐอเมริกาอนุญาต acellular vaccine สองชนิด ชนิดหนึ่งสำหรับเด็กและชนิดหนึ่งสำหรับผู้ใหญ่ ให้ร่วมกับ vaccine tetanus และ diphtheria</b> ${S.mu}</li>
+ <li><b>ทั้งสองชนิดมี pertussis toxin ที่ถูกทำให้หมดฤทธิ์, filamentous hemagglutinin และ pertactin</b> ${S.mu}</li>
+ <li><b>vaccine เด็กให้ที่อายุ 2, 4, 6 และ 15 ถึง 18 เดือน แล้วเข็มที่ห้าระหว่างอายุ 4 ถึง 6 ปี</b> ${S.mu}</li>
+ <li><b>vaccine ผู้ใหญ่แนะนำที่อายุ 11 หรือ 12 ปี แล้วอีกครั้งระหว่างอายุ 19 ถึง 65 ปี</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"legionella",k:"c",t:"Legionella lives in the water system",mm:"Legionella",leg:[],
 draw:()=>{let b="";
  b+=mL(24,26,"เชื้อนี้อยู่ในอะมีบาในน้ำตามธรรมชาติ แล้วใช้กลไกเดียวกันนั้นกับ macrophage ของเรา",{a:"start",c:"bh"});
  /* amoeba in water, then alveolar macrophage — the same trick twice */
  const draw1=(cx,cy,t2,d,sd)=>{let g=`<path class="m-body" style="fill:color-mix(in srgb,#8d8578 10%,var(--sb-surface))" d="${mblob(cx,cy,84,62,sd,.1)}"/>`
-   +mgrainIn("lg"+sd,mblob(cx,cy,84,62,sd,.1),cx-84,cy-62,168,124,70,sd+3,"m-gr",.9);
-  const q=rng(sd+9);
-  for(let i=0;i<8;i++){const a=q()*6.28,r=q()*44;
-   g+=`<path class="m-body2" d="${mrod(cx+Math.cos(a)*r,cy+Math.sin(a)*r,22,6.5,i*5+sd,.06)}"/>`}
-  return g+mL(cx,cy+84,t2,{c:"bh"})+mL(cx,cy+102,d,{c:"s m"})};
+ +mgrainIn("lg"+sd,mblob(cx,cy,84,62,sd,.1),cx-84,cy-62,168,124,70,sd+3,"m-gr",.9);
+ const q=rng(sd+9);
+ for(let i=0;i<8;i++){const a=q()*6.28,r=q()*44;
+ g+=`<path class="m-body2" d="${mrod(cx+Math.cos(a)*r,cy+Math.sin(a)*r,22,6.5,i*5+sd,.06)}"/>`}
+ return g+mL(cx,cy+84,t2,{c:"bh"})+mL(cx,cy+102,d,{c:"s m"})};
  b+=draw1(150,140,"Free-living amoeba","ในน้ำตามธรรมชาติ",5)
-  +draw1(430,140,"Alveolar macrophage","ในปอดของผู้ป่วย",11);
+ +draw1(430,140,"Alveolar macrophage","ใน lung ของผู้ป่วย",11);
  b+=`<path class="m-cyc" marker-end="url(#ah)" d="M${244},${140} L${336},${140}"/>`
-  +mL(290,124,"กลไกเดียวกัน",{c:"s m"});
+ +mL(290,124,"กลไกเดียวกัน",{c:"s m"});
  b+=mL(24,276,"จับ complement component แล้วถูกกลืนเข้าไป · จากนั้นยับยั้งไม่ให้ phagolysosome รวมตัว",{a:"start",c:"s m"})
-  +mL(24,296,"เชื้อจึงรอดจากอนุมูลอิสระและเพิ่มจำนวนอยู่ข้างใน",{a:"start",c:"s m"})
-  +mL(24,324,"cytokine ที่ macrophage ที่ติดเชื้อปล่อยออกมา คือที่มาของการอักเสบรุนแรงซึ่งเป็นลักษณะของโรคนี้",{a:"start",c:"bad"});
+ +mL(24,296,"เชื้อจึงรอดจากอนุมูลอิสระและเพิ่มจำนวนอยู่ข้างใน",{a:"start",c:"s m"})
+ +mL(24,324,"cytokine ที่ macrophage ที่ติดเชื้อปล่อยออกมา คือที่มาของ inflammation รุนแรงซึ่งเป็นลักษณะของโรคนี้",{a:"start",c:"bad"});
  /* where it comes from, and the two diseases */
  b+=`<path class="m-sep" d="M24,354 L616,354"/>`;
- [["Legionnaires disease","ปอดอักเสบที่รุนแรงได้",24,380],
-  ["Pontiac fever","อาการคล้ายไข้หวัดใหญ่ที่หายเอง",330,380],
-  ["Water systems","หอหล่อเย็น คอนเดนเซอร์ และระบบน้ำรวมถึงในโรงพยาบาล",24,426],
-  ["Control","superheating หรือ copper-silver ionization",330,426],
-  ["BCYE agar","อาหารเลี้ยงเชื้อจำเพาะ · microscopy ความไวต่ำ",24,472],
-  ["Urinary antigen","ไวสำหรับ L. pneumophila serogroup 1 แต่ไวต่ำกับ serogroup และสปีชีส์อื่น",330,472]
+ [["Legionnaires disease","pneumonia ที่รุนแรงได้",24,380],
+ ["Pontiac fever","symptom คล้าย fever influenza ที่หายเอง",330,380],
+ ["Water systems","หอหล่อเย็น คอนเดนเซอร์ และระบบน้ำรวมถึงในโรงพยาบาล",24,426],
+ ["Control","superheating หรือ copper-silver ionization",330,426],
+ ["BCYE agar","medium จำเพาะ · microscopy ความไวต่ำ",24,472],
+ ["Urinary antigen","ไวสำหรับ L. pneumophila serogroup 1 แต่ไวต่ำกับ serogroup และสปีชีส์อื่น",330,472]
  ].forEach(([n,d,x,y])=>{b+=mL(x,y,n,{a:"start",c:"bh"})+mL(x,y+20,d,{a:"start",c:"s m"})});
- b+=mL(24,522,"ผู้ที่เสี่ยงที่สุดคือผู้ที่การทำงานของปอดบกพร่อง และผู้ที่ภูมิคุ้มกันระดับเซลล์ลดลง โดยเฉพาะผู้ได้รับการปลูกถ่ายอวัยวะ",{a:"start",c:"s m"});
+ b+=mL(24,522,"ผู้ที่เสี่ยงที่สุดคือผู้ที่การทำงานของ lung บกพร่อง และผู้ที่ immunity ระดับเซลล์ลดลง โดยเฉพาะผู้ได้รับการปลูกถ่ายอวัยวะ",{a:"start",c:"s m"});
  return svg(b,"0 0 640 548")},
 notes:()=>`<h3>A facultative intracellular pathogen</h3><ul>
  <li>Legionellae เป็น <b>facultative intracellular bacteria</b> ที่เพิ่มจำนวนใน<b>อะมีบาที่อยู่อิสระในธรรมชาติ</b> และใน <b>alveolar macrophage, monocyte และเซลล์เยื่อบุถุงลม</b>ในผู้ติดเชื้อ ${S.mu}</li>
  <li>ความสามารถที่จะติดเชื้อและเพิ่มจำนวนใน macrophage เริ่มจากการ<b>จับกับองค์ประกอบของ complement</b> ${S.mu}</li>
  <li>เมื่ออยู่ข้างในแล้ว เชื้อรอดจากอนุมูลอิสระได้เพราะมัน<b>ยับยั้งการรวมตัวของ phagolysosome</b> ${S.mu}</li>
- <li><b>Chemokine และ cytokine ที่ macrophage ที่ติดเชื้อปล่อยออกมา</b> กระตุ้นการอักเสบอย่างรุนแรง ซึ่งเป็นลักษณะเฉพาะของการติดเชื้อนี้ ${S.mu}</li></ul>
+ <li><b>Chemokine และ cytokine ที่ macrophage ที่ติดเชื้อปล่อยออกมา</b> กระตุ้น inflammation อย่างรุนแรง ซึ่งเป็นลักษณะเฉพาะของ infection นี้ ${S.mu}</li></ul>
  <h3>Where people catch it</h3><ul>
  <li>แหล่งคือ<b>ระบบน้ำ</b> — หอหล่อเย็น คอนเดนเซอร์ และระบบน้ำของอาคารรวมถึงโรงพยาบาล ${S.mu}</li>
- <li>แบคทีเรียอาศัยอยู่ใน<b>อะมีบาในน้ำและเพิ่มจำนวนในนั้น</b> ก่อนจะถูกพ่นออกมาเป็นละออง ${S.mu}</li>
+ <li>แบคทีเรียอาศัยอยู่ใน<b>อะมีบาในน้ำและเพิ่มจำนวนในนั้น</b> ก่อนจะถูกพ่นออกมาเป็น aerosol ${S.mu}</li>
  <li>การควบคุมทำด้วย<b>การเพิ่มอุณหภูมิน้ำ (superheating) หรือ copper-silver ionization</b> ${S.mu}</li>
- <li>ผู้ที่เสี่ยงที่สุดคือผู้ที่<b>การทำงานของปอดบกพร่อง</b> และผู้ที่<b>ภูมิคุ้มกันระดับเซลล์ลดลง</b> โดยเฉพาะผู้ป่วยปลูกถ่ายอวัยวะ ${S.mu}</li></ul>
+ <li>ผู้ที่เสี่ยงที่สุดคือผู้ที่<b>การทำงานของ lung บกพร่อง</b> และผู้ที่<b>immunity ระดับเซลล์ลดลง</b> โดยเฉพาะผู้ป่วยปลูกถ่ายอวัยวะ ${S.mu}</li></ul>
  <h3>Two diseases, one organism</h3><ul>
- <li><b>Legionnaires disease</b> คือปอดอักเสบที่รุนแรงได้ ${S.mu}</li>
- <li><b>Pontiac fever</b> คืออาการคล้ายไข้หวัดใหญ่ที่หายได้เอง ${S.mu}</li>
+ <li><b>Legionnaires disease</b> คือ pneumonia ที่รุนแรงได้ ${S.mu}</li>
+ <li><b>Pontiac fever</b> คือ symptom คล้าย fever influenza ที่หายได้เอง ${S.mu}</li>
  <li>ในสหรัฐมีรายงานหลายพันรายต่อปี แต่จำนวนจริงเชื่อว่าสูงกว่านั้นมาก — อาจถึง 18,000 รายต่อปี ${S.mu}</li></ul>
  <h3>Diagnosis</h3><ul>
  <li><b>Microscopy มีความไวต่ำ</b> ${S.mu}</li>
- <li>การเพาะเชื้อต้องใช้อาหารจำเพาะคือ <b>BCYE agar</b> ${S.mu}</li>
- <li>การตรวจแอนติเจน<b>ไวสำหรับ <i>L. pneumophila</i> serogroup 1</b> แต่ความไวต่ำสำหรับ serogroup และสปีชีส์อื่น — ผลลบจึงไม่ตัดโรคออก ${S.mu}</li></ul>`});
+ <li>การ culture ต้องใช้อาหารจำเพาะคือ <b>BCYE agar</b> ${S.mu}</li>
+ <li>การตรวจแอนติเจน<b>ไวสำหรับ <i>L. pneumophila</i> serogroup 1</b> แต่ความไวต่ำสำหรับ serogroup และสปีชีส์อื่น — ผลลบจึงไม่ตัดโรคออก ${S.mu}</li></ul>
+ <h3>Entering the macrophage by the front door</h3><ul>
+ <li>โรค respiratory tract เกิดใน<b>ผู้ที่ไวต่อโรคซึ่งสูด aerosol ที่มีเชื้อเข้าไป</b> ${S.mu}</li>
+ <li>Legionella เป็น <b>facultative intracellular bacteria ที่เพิ่มจำนวนใน free-living amebae ในธรรมชาติ และใน alveolar macrophage, monocyte กับ alveolar epithelial cell ใน host</b> ${S.mu}</li>
+ <li>กลไกการเข้าเซลล์ที่ชาญฉลาด: <b>เชื้อจับ complement component C3b เข้ากับ outer membrane porin ของตัวเองก่อน แล้วจึงจับ CR3 complement receptor บนผิว mononuclear phagocyte</b> ${S.mu}</li>
+ <li>แล้วเชื้อ<b>แทรกเข้าเซลล์ด้วย endocytosis และเริ่มเพิ่มจำนวน</b> ${S.mu}</li>
+ <li>เชื้อ<b>ไม่ถูกฆ่าด้วย superoxide, hydrogen peroxide และ hydroxyl radical ที่เป็นพิษ เพราะ phagolysosome fusion ถูกยับยั้ง</b> ${S.mu}</li>
+ <li><b>Chemokine และ cytokine ที่ macrophage ที่ติดเชื้อปล่อยออกมา กระตุ้น inflammation อย่างแรง ซึ่งเป็นลักษณะของ infection นี้</b> ${S.mu}</li>
+ <li>เชื้อเพิ่มจำนวนใน vacuole และ<b>สร้าง proteolytic enzyme คือ phosphatase, lipase และ nuclease ซึ่งสุดท้ายฆ่าเซลล์ host เมื่อ vacuole แตก</b> ${S.mu}</li>
+ <li>immunity ต่อโรคเป็น <b>cell mediated เป็นหลัก โดย humoral immunity มีบทบาทน้อย</b> ${S.mu}</li>
+ <li>และ<b>เชื้อไม่ถูกฆ่าจนกว่า TH1 cell ที่ถูก sensitize แล้วจะไปกระตุ้น macrophage ที่มีเชื้ออยู่</b> · <b>การสร้าง IFN-γ จำเป็นต่อการกำจัดเชื้อ</b> ${S.mu}</li></ul>
+ <h3>Where it lives, and why chlorine does not finish it</h3><ul>
+ <li>พบทั่วโลกใน<b>แหล่งน้ำธรรมชาติอย่างทะเลสาบและลำธาร, ใน air conditioning cooling tower และ condenser และในระบบน้ำอย่างฝักบัวกับ hot tub</b> ${S.mu}</li>
+ <li>infection ในคนสัมพันธ์กับ<b>การสัมผัส aerosol ที่ปนเปื้อน</b> — cooling tower, whirlpool spa, showerhead และ water mister ${S.mu}</li>
+ <li>เชื้อ<b>รอดในที่ชื้นได้นาน ที่อุณหภูมิค่อนข้างสูง และในที่ที่มีน้ำยาฆ่าเชื้ออย่าง chlorine</b> ${S.mu}</li>
+ <li>เหตุผลข้อหนึ่งที่มันรอด: <b>มันเป็น parasite ของ amebae ในน้ำและเพิ่มจำนวนในสภาพแวดล้อมที่ได้รับการปกป้องนั้น เหมือนที่มันทำใน macrophage ของคน</b> ${S.mu}</li>
+ <li>และมัน<b>รอดใน biofilm ที่เกิดในท่อของระบบน้ำ</b> ${S.mu}</li>
+ <li>วงศ์ Legionellaceae มี <b>61 สปีชีส์และ 3 สปีชีส์ย่อย</b> โดย<b>ราวครึ่งหนึ่งเกี่ยวข้องกับโรคในคน</b> ${S.mu}</li>
+ <li><b><i>L. pneumophila</i> เป็นต้นเหตุ 90% ของ infection ทั้งหมด โดย serotype 1 และ 6 แยกได้บ่อยที่สุด</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>gram-negative rod เรียวหลายรูป 0.3–0.9 × 2 μm</b> · <b>ใน tissue เห็นเป็น coccobacilli สั้น แต่บนอาหารสังเคราะห์หลายรูปมาก ยาวได้ถึง 20 μm</b> ${S.mu}</li>
+ <li><b>มันย้อมติดสีทั่วไปได้ไม่ดีและไม่โตบน medium ทั่วไป</b> · <b>ใน tissue เห็นได้ด้วย Dieterle silver stain</b> ${S.mu}</li>
+ <li><b>เป็น obligate aerobe ที่เลี้ยงยาก ต้องใช้อาหารที่เสริม l-cysteine และการโตดีขึ้นเมื่อมีเหล็ก</b> ${S.mu}</li>
+ <li>คุณสมบัตินี้เองใช้เป็นฐานของการระบุขั้นต้น — <b>โตบนอาหารที่เสริมแล้วแต่ไม่โตบน blood agar ทั่วไป</b> ${S.mu}</li>
+ <li>เชื้อมี<b>หลายวิธีในการหาเหล็กจากเซลล์ host หรือจากอาหาร และการสูญเสียความสามารถนี้สัมพันธ์กับการสูญเสีย virulence</b> ${S.mu}</li>
+ <li>มัน<b>ได้พลังงานจากเมแทบอลิซึมของ amino acid ไม่ใช่จาก carbohydrate</b> ${S.mu}</li></ul>
+ <h3>Pontiac fever and legionnaires disease</h3>
+ ${tbl(["","Pontiac fever","Legionnaires disease"],[
+ ["Incubation","symptom เกิดใน 12 ชั่วโมง","2 ถึง 10 วัน"],
+ ["Picture","fever · chills · myalgia · malaise · headache โดยไม่มีหลักฐานทางคลินิกของ pneumonia","fever และ chills · ไอแห้งไม่มี sputum · headache · multilobar consolidation"],
+ ["Course","อยู่ 2 ถึง 5 วันแล้วหายเองโดยไม่ต้องใช้ antibiotic","การทำงานของ lung ทรุดลงเรื่อย ๆ ถ้าไม่รักษา"],
+ ["Mortality","ไม่มีผู้ตาย และ morbidity น้อยที่สุด","15% ในคนที่เคยสุขภาพดี · ถึง 75% ในผู้ที่ immunity บกพร่อง"],
+ ["Mechanism","เชื่อว่าเป็น hypersensitivity reaction ต่อ toxin ของเชื้อ เช่น endotoxin","infection จริงใน alveolar macrophage"],
+ ["Treatment","ไม่จำเป็น เพราะเป็น hypersensitivity ที่หายเอง","macrolide หรือ fluoroquinolone"]])}
+ <ul><li>ชื่อสกุลมาจาก<b>การระบาดครั้งแรกที่งานประชุมของ American Legion</b> · pneumôn คือ lung และ phila คือรัก — <b>lung-loving</b> ${S.mu}</li>
+ <li>Pontiac fever ได้ชื่อจาก<b>โรคที่เกิดในผู้ทำงานที่กรมอนามัยเมือง Pontiac รัฐ Michigan ในปี 1968</b> ${S.mu}</li>
+ <li><b>Legionnaires disease มี multiorgan disease ที่เกี่ยวข้องกับ gastrointestinal tract, central nervous system, liver และ kidney บ่อย</b> ${S.mu}</li>
+ <li>พยาธิสภาพของ lung: <b>multilobar consolidation พร้อม inflammation และ microabscess ในเนื้อ lung</b> ${S.mu}</li>
+ <li><b>ภาพทางคลินิกของ pneumonia จาก Legionella ไม่เป็นเอกลักษณ์</b> ${S.mu}</li>
+ <li>ตัวเลข: <b>รายงานเพิ่มขึ้นเรื่อย ๆ ตั้งแต่ปี 2000 — เกือบ 7500 รายในปี 2016 แต่ CDC ประมาณว่ามีถึง 18,000 รายต่อปีในสหรัฐอเมริกา</b> ${S.mu}</li>
+ <li>การศึกษาทาง serology พบว่า<b>ประชากรสัดส่วนสำคัญมี immunity ต่อเชื้อนี้แล้ว</b> — <b>การสัมผัสเชื้อและการได้ immunity หลัง infection ที่ไม่มี symptom จึงเป็นเรื่องธรรมดา</b> ${S.mu}</li>
+ <li><b>การระบาดส่วนใหญ่เกิดปลายฤดูร้อนและฤดูใบไม้ร่วง เพราะเชื้อเพิ่มจำนวนในแหล่งน้ำในเดือนที่อากาศอุ่น</b> ${S.mu}</li>
+ <li><b>infection ที่บันทึกไว้ในสหรัฐอเมริกากว่า 90% อยู่ในผู้ที่อายุ 40 ปีขึ้นไป</b> ซึ่งเข้าใจว่าเพราะ cellular immunity ลดลงและการทำงานของ lung บกพร่อง ${S.mu}</li>
+ <li><b>สัดส่วนสำคัญของรายที่รายงานติดในโรงพยาบาล</b> เพราะผู้ป่วยกลุ่มเสี่ยงสูงรวมกันอยู่ที่นั่น ${S.mu}</li>
+ <li><b>ยังไม่มีการพิสูจน์การแพร่จากคนสู่คนหรือ reservoir ในสัตว์</b> ${S.mu}</li></ul>
+ <h3>Which test, and what the urine antigen misses</h3><ul>
+ <li><b>การ culture ยังเป็นมาตรฐานทอง</b> แต่<b>การย้อมและ serology ถูกแทนด้วย immunoassay ที่ตรวจแอนติเจนใน urine และด้วย nucleic acid amplification assay สำหรับ secretion respiratory tract</b> ${S.mu}</li>
+ <li>เหตุผล: <b>เชื้อย้อม Gram ติดไม่ดีและแทบไม่เห็นใน specimen และ serology ทั้งไม่ไวและไม่จำเพาะ</b> ${S.mu}</li>
+ <li>Immunoassay ตรวจ <b>lipopolysaccharide ที่จำเพาะต่อ serogroup 1 ซึ่งถูกขับออกมาใน urine ของผู้ป่วย</b> ${S.mu}</li>
+ <li><b>ความไวสำหรับ serogroup 1 สูงถึง 90% โดยเฉพาะกับ urine ที่เข้มข้นขึ้น แต่ตรวจ serogroup อื่นและสปีชีส์อื่นได้ไม่น่าเชื่อถือ</b> ${S.mu}</li>
+ <li>ข้อนี้สำคัญเพราะตัวเลขต่างกันมาก: <b>serogroup 1 รับผิดชอบ 80% ถึง 90% ของ infection ในชุมชน แต่น้อยกว่า 50% ของ infection ในโรงพยาบาล</b> ${S.mu}</li>
+ <li>และแอนติเจน<b>คงอยู่ใน urine หลังรักษา — เกือบ 50% ของผู้ป่วยยังให้ผลบวกที่ 1 เดือนและ 25% ที่ 2 เดือน</b> · <b>ในผู้ที่ถูกกด immunity อาจคงอยู่ถึง 1 ปี</b> ${S.mu}</li>
+ <li><b>Nucleic acid amplification assay จำเพาะสูงและไวเท่าการ culture สำหรับ secretion respiratory tract</b> ${S.mu}</li>
+ <li>แต่<b>สารยับยั้งใน secretion respiratory tract อาจทำให้ผลลบลวง จึงควร culture ทุก specimen อยู่ดี</b> ${S.mu}</li>
+ <li>การเพาะ: <b>อาหารที่ใช้มากที่สุดคือ buffered charcoal yeast extract agar</b> · <b>ความไว 80% ถึงกว่า 90%</b> ${S.mu}</li>
+ <li>เชื้อต้องการ <b>l-cysteine และการเก็บได้ดีขึ้นเมื่อมีเกลือของเหล็ก ซึ่งให้มาในรูป hemoglobin หรือ ferric pyrophosphate</b> ${S.mu}</li>
+ <li><b>เชื้อโตในอากาศหรือใน CO₂ 3% ถึง 5% ที่ 35 °C หลัง 3 ถึง 5 วัน</b> · <b>โคโลนีเล็ก 1 ถึง 3 มม. และมีลักษณะเหมือนกระจกฝ้า</b> ${S.mu}</li>
+ <li>การระบุระดับสกุลทำได้ง่าย — <b>การโตบน buffered charcoal yeast extract agar แต่ไม่โตบนอาหารที่ไม่มี l-cysteine เป็นหลักฐานขั้นต้น</b> ${S.mu}</li>
+ <li>แต่<b>การจำแนกสปีชีส์ยุ่งยากและมักส่งต่อห้องปฏิบัติการอ้างอิง</b> — ต้องใช้<b>การหาลำดับยีนจำเพาะหรือการประเมินรูปแบบโปรตีนด้วย mass spectrometry</b> ${S.mu}</li></ul>
+ <h3>Why in vitro susceptibility is not tested</h3><ul>
+ <li>ไม่มีการทดสอบความไวต่อยาใน in vitro สำหรับเชื้อนี้ เพราะ<b>มันโตไม่ดีบนอาหารที่ใช้ทดสอบ</b> ${S.mu}</li>
+ <li>และ<b>ยาบางตัวที่ดูออกฤทธิ์ใน in vitro รักษาไม่ได้จริง</b> ${S.mu}</li>
+ <li><b>ยาเหล่านั้นแทรกเข้า macrophage ซึ่งเป็นที่ที่เชื้อรอดและเพิ่มจำนวนไม่ได้</b> ${S.mu}</li>
+ <li>ประสบการณ์ทางคลินิกที่สะสมมาชี้ว่าให้ใช้ <b>macrolide อย่าง azithromycin กับ clarithromycin หรือ fluoroquinolone อย่าง ciprofloxacin กับ levofloxacin</b> ${S.mu}</li>
+ <li><b>β-lactam ไม่ได้ผลสองเหตุ — เชื้อส่วนใหญ่สร้าง β-lactamase และยาไม่แทรกเข้า macrophage</b> ${S.mu}</li>
+ <li>การควบคุม: <b>การเติม chlorine เกินปกติและการรักษาอุณหภูมิน้ำให้สูงได้ผลพอประมาณ</b> ${S.mu}</li>
+ <li>แต่<b>การกำจัดเชื้อออกจากระบบน้ำมักทำได้ยากหรือไม่ได้เลย</b> ${S.mu}</li>
+ <li><b>เพราะเชื้อก่อโรคได้ต่ำ การลดจำนวนเชื้อในระบบน้ำมักเป็นมาตรการควบคุมที่เพียงพอ</b> ${S.mu}</li>
+ <li>โรงพยาบาลที่มีผู้ป่วยเสี่ยงสูง<b>ควรเฝ้าระวังทั้งระบบน้ำและตัวโรคในประชากรผู้ป่วยเป็นระยะ</b> ${S.mu}</li>
+ <li>ถ้ายังไม่หยุด <b>การทำ copper-silver ionization ของระบบน้ำอย่างต่อเนื่องอาจจำเป็น</b> ${S.mu}</li></ul>`});
 
 SEC.push({id:"zoonoses",k:"c",t:"Brucella and Francisella",mm:"Brucella · Francisella",leg:[],
 draw:()=>tbl(["Organism","Disease","Picture"],[
- ["Brucella melitensis","brucellosis","โรคทั่วร่างกายเฉียบพลันและรุนแรง มีภาวะแทรกซ้อนตามมา"],
- ["Brucella abortus","brucellosis","อาการไม่รุนแรง แต่มีภาวะแทรกซ้อนเป็นหนอง"],
- ["Brucella suis","brucellosis","เรื้อรัง เป็นหนอง และทำลายเนื้อเยื่อ"],
- ["Brucella canis","brucellosis","อาการไม่รุนแรง มีภาวะแทรกซ้อนเป็นหนอง"],
- ["Francisella tularensis — ulceroglandular","tularemia","ตุ่มที่เจ็บตรงจุดที่เชื้อเข้า แล้วต่อมน้ำเหลืองโต"],
+ ["Brucella melitensis","brucellosis","โรคทั่วร่างกายเฉียบพลันและรุนแรง มี complication ตามมา"],
+ ["Brucella abortus","brucellosis","symptom ไม่รุนแรง แต่มี complication เป็น pus"],
+ ["Brucella suis","brucellosis","เรื้อรัง เป็น pus และทำลาย tissue"],
+ ["Brucella canis","brucellosis","symptom ไม่รุนแรง มี complication เป็น pus"],
+ ["Francisella tularensis — ulceroglandular","tularemia","ตุ่มที่เจ็บตรงจุดที่เชื้อเข้า แล้ว lymph node โต"],
  ["Francisella tularensis — oculoglandular","tularemia","หลังเชื้อเข้าตา"],
- ["Francisella tularensis — pneumonic","tularemia","ปอดอักเสบพร้อมอาการของ sepsis"]]),
+ ["Francisella tularensis — pneumonic","tularemia","pneumonia พร้อม symptom ของ sepsis"]]),
 notes:()=>`<h3>Brucellosis</h3><ul>
- <li><i>Brucella</i> ตั้งชื่อตาม Sir David Bruce ผู้ซึ่งเป็นคนแรกที่ระบุว่าเชื้อนี้เป็นสาเหตุของ <b>undulant fever</b> — ไข้ที่ขึ้นลงเป็นลูกคลื่น ${S.mu}</li>
- <li>โรคเริ่มด้วยไข้ที่เป็น ๆ หาย ๆ และ<b>ลุกลามไปทั่วร่างกายได้</b> รวมถึงระบบทางเดินอาหาร ${S.mu}</li>
- <li>ความรุนแรงต่างกันตามสปีชีส์: <b><i>B. melitensis</i></b> รุนแรงที่สุด · <b><i>B. suis</i></b> เรื้อรังและทำลายเนื้อเยื่อ · <b><i>B. abortus</i> และ <i>B. canis</i></b> อาการไม่รุนแรงแต่มีภาวะแทรกซ้อนเป็นหนอง ${S.mu}</li></ul>
+ <li><i>Brucella</i> ตั้งชื่อตาม Sir David Bruce ผู้ซึ่งเป็นคนแรกที่ระบุว่าเชื้อนี้เป็นสาเหตุของ <b>undulant fever</b> — fever ที่ขึ้นลงเป็นลูกคลื่น ${S.mu}</li>
+ <li>โรคเริ่มด้วย fever ที่เป็น ๆ หาย ๆ และ<b>ลุกลามไปทั่วร่างกายได้</b> รวมถึงระบบ gastrointestinal tract ${S.mu}</li>
+ <li>ความรุนแรงต่างกันตามสปีชีส์: <b><i>B. melitensis</i></b> รุนแรงที่สุด · <b><i>B. suis</i></b> เรื้อรังและทำลาย tissue · <b><i>B. abortus</i> และ <i>B. canis</i></b> symptom ไม่รุนแรงแต่มี complication เป็น pus ${S.mu}</li></ul>
  <h3>Tularemia</h3><ul>
  <li><i>Francisella</i> ตั้งชื่อตาม Edward Francis นักจุลชีววิทยาชาวอเมริกันผู้บรรยายโรค tularemia เป็นคนแรก ${S.mu}</li>
- <li>มันเป็น <b>facultative intracellular pathogen</b> — การกำจัดจึงต้องอาศัยภูมิคุ้มกันระดับเซลล์ ${S.mu}</li>
- <li>รูปแบบของโรคขึ้นกับ<b>ทางที่เชื้อเข้า</b>: <b>ulceroglandular</b> คือมีตุ่มเจ็บตรงจุดที่เชื้อเข้าแล้วต่อมน้ำเหลืองโต · <b>oculoglandular</b> เมื่อเชื้อเข้าตา · <b>pneumonic</b> คือปอดอักเสบพร้อมอาการ sepsis · และยังมีรูปแบบ typhoidal, oropharyngeal และ gastrointestinal ${S.mu}</li>
- <li><i>F. tularensis</i> subsp. <b>tularensis (type A)</b> พบเฉพาะในอเมริกาเหนือ ส่วน subsp. <b>holarctica (type B)</b> เป็นโรคประจำถิ่นทั่วซีกโลกเหนือ ${S.mu}</li></ul>`});
+ <li>มันเป็น <b>facultative intracellular pathogen</b> — การกำจัดจึงต้องอาศัย immunity ระดับเซลล์ ${S.mu}</li>
+ <li>รูปแบบของโรคขึ้นกับ<b>ทางที่เชื้อเข้า</b>: <b>ulceroglandular</b> คือมีตุ่มเจ็บตรงจุดที่เชื้อเข้าแล้ว lymph node โต · <b>oculoglandular</b> เมื่อเชื้อเข้าตา · <b>pneumonic</b> คือ pneumonia พร้อม symptom sepsis · และยังมีรูปแบบ typhoidal, oropharyngeal และ gastrointestinal ${S.mu}</li>
+ <li><i>F. tularensis</i> subsp. <b>tularensis (type A)</b> พบเฉพาะในอเมริกาเหนือ ส่วน subsp. <b>holarctica (type B)</b> เป็น endemic disease ทั่วซีกโลกเหนือ ${S.mu}</li></ul>
+ <h3>Brucella: twelve species, four that matter</h3>
+ ${tbl(["Species","Natural host","Human disease"],[
+ ["Brucella melitensis","goats · sheep","รุนแรง และมี complication ร้ายแรงบ่อย เพราะเชื้อเพิ่มจำนวนถึงความเข้มข้นสูงใน phagocyte · เป็นสาเหตุที่พบบ่อยที่สุดในสหรัฐอเมริกา"],
+ ["B. abortus","cattle · American bison","เบา และ complication เป็น pus พบน้อย"],
+ ["B. suis","swine · reindeer · caribou","lesion ที่ทำลาย tissue และดำเนินโรคยาวนาน"],
+ ["B. canis","dogs · foxes · coyotes","เบา และ complication เป็น pus พบน้อย"]])}
+ <ul><li>การศึกษาระดับโมเลกุลพบว่า<b>strain ในสกุลนี้ใกล้ชิดกันจนเข้ากับการเป็นสปีชีส์เดียว</b> แต่สกุลยัง<b>แบ่งเป็น 12 สปีชีส์</b> ${S.mu}</li>
+ <li>โรคนี้มีชื่อหลายชื่อ ตามชื่อผู้ค้นพบอย่าง <b>Sir David Bruce ซึ่งให้ชื่อ brucellosis และ Bernhard Bang ซึ่งให้ชื่อ Bang disease</b>, ตามภาพทางคลินิกคือ <b>undulant fever</b> และตามที่ที่พบการระบาด เช่น <b>Malta fever, Mediterranean remittent fever, rock fever of Gibraltar</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>gram-negative coccobacillus เล็ก 0.5 × 0.6–1.5 μm ไม่เคลื่อนที่ และไม่มี capsule</b> ${S.mu}</li>
+ <li><b>โตช้าในการเพาะ ใช้เวลาหนึ่งสัปดาห์หรือกว่านั้น, ต้องใช้อาหารซับซ้อน, เป็น strict aerobe โดยบาง strain ต้องการ CO₂ เพิ่ม และไม่หมัก carbohydrate</b> ${S.mu}</li>
+ <li>โคโลนีมีทั้ง<b>รูปเรียบซึ่งใสและเนื้อเดียวกัน และรูปขรุขระซึ่งทึบ เป็นเม็ดหรือเหนียว</b> ซึ่ง<b>กำหนดโดย O antigen ของ lipopolysaccharide</b> ${S.mu}</li>
+ <li>และ<b>antiserum ต่อรูปหนึ่งไม่ไขว้กับอีกรูป</b> ${S.mu}</li>
+ <li><b>Brucella ไม่สร้าง exotoxin ที่ตรวจพบได้ และ endotoxin ของมันเป็นพิษน้อยกว่าของ gram-negative rod ตัวอื่น</b> ${S.mu}</li>
+ <li><b>การกลับจากรูปเรียบเป็นรูปขรุขระสัมพันธ์กับ virulence ที่ลดลงมาก จึง O chain ของ lipopolysaccharide รูปเรียบเป็นเครื่องหมายสำคัญของ virulence</b> ${S.mu}</li>
+ <li>มันเป็น <b>intracellular parasite ของ reticuloendothelial system</b> — <b>ถูก macrophage และ monocyte กลืน แล้วรอดและเพิ่มจำนวนในนั้น</b> ${S.mu}</li>
+ <li>เชื้อที่ถูกกลืน<b>ถูกพาไปที่ spleen, liver, bone marrow, lymph node และ kidney</b> ${S.mu}</li>
+ <li>และ<b>มันหลั่งโปรตีนที่เหนี่ยวนำการสร้าง granuloma ในอวัยวะเหล่านั้น</b> · ในโรคระยะท้ายเกิดการเปลี่ยนแปลงที่ทำลาย tissue เหล่านี้และ tissue อื่น ${S.mu}</li></ul>
+ <h3>Erythritol, and why humans are the wrong host</h3><ul>
+ <li>เชื้อ<b>มีแนวโน้มติดเชื้อในอวัยวะที่มี erythritol มาก ซึ่งเป็นน้ำตาลที่หลาย strain เลือกเมแทบอไลซ์ก่อน glucose</b> ${S.mu}</li>
+ <li><b>tissue ของสัตว์ แต่ไม่ใช่ของคน ซึ่งมี erythritol มาก ได้แก่ breast, uterus, placenta และ epididymis</b> ${S.mu}</li>
+ <li>เชื้อจึง<b>ไปอยู่ใน tissue เหล่านั้นใน reservoir ที่เป็นสัตว์ และก่อภาวะเป็นหมัน การแท้ง หรือการเป็นพาหะตลอดชีวิตโดยไม่มี symptom</b> ${S.mu}</li>
+ <li><b>เชื้อถูกขับออกจำนวนมากในนม, urine และสิ่งที่ออกมาตอนคลอด</b> ${S.mu}</li>
+ <li>โรคในคนในสหรัฐอเมริกาส่วนใหญ่เกิดจาก <b><i>B. melitensis</i> และมาจากการกินนมไม่พาสเจอร์ไรซ์และผลิตภัณฑ์นมที่ปนเปื้อนเป็นหลัก</b> ${S.mu}</li>
+ <li>ทางที่คนรับเชื้อมีสามทาง — <b>การสัมผัสเชื้อโดยตรงเช่นในห้องปฏิบัติการ, การกิน และการสูดเข้าไป</b> ${S.mu}</li>
+ <li><b>Brucella อาจถูกใช้เป็นอาวุธชีวภาพ ซึ่งการสัมผัสจะเป็นทางการสูดเข้าไปมากที่สุด</b> ${S.mu}</li>
+ <li>ระบาดวิทยา: <b>endemic disease พบมากที่สุดในประเทศที่ไม่มีโปรแกรม vaccine ในสัตว์เลี้ยง</b> เช่น Latin America, Africa, Mediterranean basin, Middle East และ Western Asia ${S.mu}</li>
+ <li><b>รายงานกว่า 500,000 รายต่อปีทั่วโลก</b> แต่<b>สหรัฐอเมริการายงานเพียง 140 รายในปี 2017</b> ${S.mu}</li>
+ <li>รายในสหรัฐอเมริกาส่วนใหญ่อยู่ใน <b>California และ Texas และเกิดในผู้ที่มาจาก Mexico หรือเดินทางไปที่นั่น</b> ${S.mu}</li>
+ <li><b>บุคลากรห้องปฏิบัติการเสี่ยงอย่างมีนัยสำคัญจากการสัมผัสโดยตรงหรือการสูดเชื้อ</b> ${S.mu}</li>
+ <li>และ<b>โรคในวัว swine sheep และ goat ในสหรัฐอเมริกาถูกกำจัดได้ด้วยการทำลายสัตว์ที่ติดเชื้อและการให้ vaccine แก่สัตว์ที่ปลอดโรค</b> ${S.mu}</li></ul>
+ <h3>Brucellosis at the bedside</h3><ul>
+ <li><b>โรคเฉียบพลันเกิดในราวครึ่งหนึ่งของผู้ติดเชื้อ โดย symptom เริ่มปรากฏ 1 ถึง 3 สัปดาห์หลังสัมผัส</b> ${S.mu}</li>
+ <li>symptom แรกไม่จำเพาะ — <b>malaise, chills, sweats, fatigue, weakness, ปวด muscle, weight loss, arthralgia และไอแห้ง</b> ${S.mu}</li>
+ <li><b>ผู้ป่วยแทบทุกคนมี fever และ fever เป็นแบบเป็นช่วงในผู้ที่ไม่ได้รักษา จึงเป็นที่มาของชื่อ undulant fever</b> ${S.mu}</li>
+ <li>โรคระยะท้ายมี<b>symptom ทาง gastrointestinal tract, osteolytic lesion หรือ joint effusion, symptomrespiratory tract และที่พบน้อยกว่าคือ symptom ทาง skin ระบบประสาทหรือ heart และ blood vessel</b> ${S.mu}</li>
+ <li><b>infection เรื้อรังเกิดในผู้ที่รักษาไม่พอ โดย symptom เกิดภายใน 3 ถึง 6 เดือนหลังหยุดยา</b> ${S.mu}</li>
+ <li><b>การกลับเป็นซ้ำสัมพันธ์กับจุดติดเชื้อที่ยังคงอยู่ เช่นใน bone, spleen และ liver ไม่ใช่กับ resistance</b> ${S.mu}</li>
+ <li>ห้องปฏิบัติการ: <b>ควรเก็บ blood หลายตัวอย่างทั้งเพื่อ culture และเพื่อตรวจ serology</b> · <b>การเพาะ bone marrow และ tissue ที่ติดเชื้อก็มีประโยชน์</b> ${S.mu}</li>
+ <li><b>ต้องแจ้งห้องปฏิบัติการถ้าสงสัย brucellosis เพื่อความปลอดภัยในการจัดการ specimen</b> ${S.mu}</li>
+ <li><b>เชื้อย้อมติดสีด้วยเทคนิคทั่วไปได้ง่าย แต่ตำแหน่งที่อยู่ในเซลล์และขนาดที่เล็กทำให้เห็นใน specimen ยาก</b> ${S.mu}</li>
+ <li><b>เชื้อโตช้า ต้องใช้ enriched blood agar และบ่มนาน 3 วันหรือกว่านั้น</b> · <b>blood culture ควรบ่ม 2 สัปดาห์ก่อนถือว่าเป็นลบ</b> ${S.mu}</li>
+ <li>การระบุขั้นต้นอาศัย<b>รูปร่างใต้กล้องและของโคโลนี, oxidase กับ urease ที่เป็นบวก และปฏิกิริยากับ antibody จำเพาะ</b> · ระดับสกุลระบุได้ด้วยการหาลำดับยีน 16S rRNA ${S.mu}</li>
+ <li><b>antibody ตรวจพบในผู้ป่วยแทบทุกคนและคงอยู่ได้หลายเดือนถึงหลายปี</b> — <b>จึงต้องเห็น titer ที่เพิ่มขึ้นอย่างมีนัยสำคัญจึงถือเป็นหลักฐานของโรคที่กำลังเป็น</b> ${S.mu}</li>
+ <li><b>การวินิจฉัยขั้นต้นทำได้ถ้า titer เพิ่มสี่เท่า หรือ titer เดี่ยวเท่ากับ 1:160 หรือมากกว่า</b> ${S.mu}</li>
+ <li>การรักษา: <b>tetracycline โดยเฉพาะ doxycycline ออกฤทธิ์ต่อ strain ส่วนใหญ่ แต่เพราะเป็นยา bacteriostatic การกลับเป็นซ้ำจึงพบบ่อยหลังการตอบสนองที่ดูดีตอนแรก</b> ${S.mu}</li>
+ <li><b>WHO แนะนำ doxycycline ร่วมกับ rifampin</b> ${S.mu}</li>
+ <li><b>เพราะ tetracycline เป็นพิษต่อเด็กเล็กและทารกในครรภ์ ให้เปลี่ยน doxycycline เป็น trimethoprim-sulfamethoxazole ในหญิงตั้งครรภ์และเด็กอายุน้อยกว่า 8 ปี</b> ${S.mu}</li>
+ <li><b>ต้องรักษาต่อเนื่อง 6 สัปดาห์หรือนานกว่าจึงสำเร็จ</b> ${S.mu}</li>
+ <li><b>Fluoroquinolone, macrolide, penicillin และ cephalosporin ไม่ได้ผลหรือออกฤทธิ์อย่างคาดเดาไม่ได้</b> ${S.mu}</li>
+ <li>การควบคุม: <b>ต้องควบคุมโรคใน livestock ซึ่งต้องคัดกรองด้วย serology อย่างเป็นระบบ, กำจัดฝูงที่ติดเชื้อ และให้ vaccine แก่สัตว์ ซึ่งปัจจุบันใช้ <i>B. abortus</i> strain RB51 ที่เป็นรูปขรุขระ</b> ${S.mu}</li>
+ <li>และ<b>vaccine ที่มีใช้ในคนไม่ได้ เพราะทำให้เกิดโรคที่มี symptom</b> — <b>การไม่มี vaccine สำหรับคนเป็นเรื่องน่ากังวลเพราะ Brucella อาจถูกใช้ก่อการร้ายชีวภาพ</b> ${S.mu}</li></ul>
+ <h3>Francisella tularensis: subspecies and geography</h3><ul>
+ <li>ชื่อโรคคือ <b>tularemia</b> ซึ่งเรียกอีกหลายชื่อ — <b>glandular fever, rabbit fever, tick fever และ deerfly fever</b> ${S.mu}</li>
+ <li>แบ่งเป็น <b>สามสปีชีส์ย่อย — subspecies tularensis คือ type A และ subspecies holarctica คือ type B ซึ่งสำคัญที่สุด</b> ขณะที่ <b>subsp. mediaasiatica พบน้อยมากในคน</b> ${S.mu}</li>
+ <li><b><i>F. novicida</i> และ <i>F. philomiragia</i> เป็น opportunistic pathogen ที่พบไม่บ่อย และชอบผู้ป่วยที่มีความบกพร่องทาง immunity</b> เช่น chronic granulomatous disease และโรค myeloproliferative ${S.mu}</li>
+ <li>รูปร่าง: <b>gram-negative coccobacillus เล็กมาก 0.2 × 0.2–0.7 μm ติดสีจาง ไม่เคลื่อนที่ มี lipid capsule บาง ๆ</b> ${S.mu}</li>
+ <li><b>เลี้ยงยาก — strain ส่วนใหญ่ต้องการ cysteine, เป็น strict aerobe และต้องใช้ 3 วันหรือกว่านั้นจึงเห็นการโต</b> ${S.mu}</li>
+ <li><b>type A จำกัดอยู่ใน North America ขณะที่ type B เป็น endemic disease ทั่วซีกโลกเหนือ</b> ${S.mu}</li>
+ <li>type A แบ่งย่อยอีก — <b>type A-west เด่นในเขตแห้งแล้งจาก Rocky Mountains ถึง Sierra Nevada</b> · <b>type A-east อยู่ในรัฐ Arkansas, Missouri และ Oklahoma และตาม Atlantic Coast</b> ${S.mu}</li>
+ <li><b>type B เกาะกลุ่มตามทางน้ำสำคัญอย่าง upper Mississippi River และในเขตฝนมากอย่าง Pacific Northwest</b> ${S.mu}</li>
+ <li>การกระจายนี้สำคัญ เพราะ<b>ลักษณะทางระบาดวิทยาของโรคแต่ละแบบต่างกันและการดำเนินโรคต่างกันอย่างมีนัยสำคัญ</b> ${S.mu}</li>
+ <li><b>type A-east สัมพันธ์กับโรคที่กระจายทั่วตัวและ mortality สูง เมื่อเทียบกับ type A-west · ส่วน type B อยู่ตรงกลาง</b> ${S.mu}</li>
+ <li>การกระจายของ strain กำหนดโดยการกระจายของ reservoir และพาหะ — <b>สัตว์เลี้ยงลูกด้วยนมกว่า 200 สปีชีส์ รวมทั้งนกและ arthropod ที่ดูด blood ติดเชื้อนี้ตามธรรมชาติ</b> ${S.mu}</li>
+ <li><b>type A สัมพันธ์กับการสัมผัส lagomorph คือ rabbit กับ hare และ cat</b> · <b>type B สัมพันธ์กับ rodent และ cat แต่ไม่ใช่ lagomorph</b> ${S.mu}</li>
+ <li><b>infection จาก arthropod ที่กัด เช่น hard tick และ deerfly พบบ่อยกว่าใน type A</b> ${S.mu}</li>
+ <li><b>type A-east แพร่จากรัฐตอนกลางใต้ไปรัฐชายฝั่งตะวันออกเมื่อมีการนำ rabbit ที่ติดเชื้อไปสโมสรล่าสัตว์ชายฝั่งตะวันออกในทศวรรษ 1920 และ 1930</b> ${S.mu}</li></ul>
+ <h3>How it survives the phagocyte, and the forms of tularemia</h3><ul>
+ <li>เป็น <b>intracellular pathogen ที่เพิ่มจำนวนใน macrophage, neutrophil, epithelial cell และ endothelial cell</b> ${S.mu}</li>
+ <li>กลไก: <b>มันยับยั้ง phagosome-lysosome fusion โดยหลั่งโปรตีนที่ช่วยให้มันหลุดออกจาก phagosome แล้วเพิ่มจำนวนใน cytosol</b> ${S.mu}</li>
+ <li><b>strain ก่อโรคมี capsule ที่มี polysaccharide มากซึ่งกันการถูกกลืน และการสูญเสีย capsule สัมพันธ์กับ virulence ที่ลดลง</b> ${S.mu}</li>
+ <li><b>Capsule ป้องกันเชื้อจากการถูกฆ่าโดย complement ในระยะ bacteremia</b> ${S.mu}</li>
+ <li><b>มี endotoxin แต่ออกฤทธิ์น้อยกว่าของ gram-negative rod ตัวอื่นอย่างมาก</b> ${S.mu}</li>
+ <li>immunity: <b>innate immune response ที่แรงพร้อมการสร้าง IFN-γ และ tumor necrosis factor สำคัญต่อการคุมการเพิ่มจำนวนใน macrophage ในระยะต้น</b> ${S.mu}</li>
+ <li><b>immunity ที่อาศัย T cell จำเพาะจำเป็นต่อการกระตุ้น macrophage ให้ฆ่าเชื้อในเซลล์ในระยะท้าย</b> · <b>immunity ที่อาศัย B cell สำคัญน้อยกว่า</b> ${S.mu}</li>
+ <li>รูปของโรคแบ่งตามภาพทางคลินิก — <b>ulceroglandular คือแผลที่ skin กับ lymph node โต, oculoglandular คือตาอักเสบกับ cervical lymph node โต, glandular คือ lymph node โตเป็นหลักโดยไม่มี symptom เฉพาะที่อื่น, typhoidal คือ symptom sepsis ทั้งระบบ, pneumonic คือ symptom ทาง lung และ oropharyngeal กับ gastrointestinal หลังกินเชื้อ</b> ${S.mu}</li>
+ <li><b>Ulceroglandular tularemia เป็นรูปที่พบบ่อยที่สุด</b> ${S.mu}</li>
+ <li>lesion<b>เริ่มเป็นตุ่มที่เจ็บ ณ จุดที่ tick กัดหรือจุดที่เชื้อถูกฉีดเข้า skin แล้วกลายเป็นแผลที่มีศูนย์กลาง necrosis และขอบยกตัว</b> ${S.mu}</li>
+ <li>พร้อมกันมี <b>lymphadenopathy เฉพาะที่และ bacteremia ซึ่งอย่างหลังอาจพิสูจน์ได้ยาก</b> ${S.mu}</li>
+ <li><b>Oculoglandular tularemia เกิดจากการปนเปื้อนเข้าตาโดยตรง</b> เช่นจาก finger ที่ปนเปื้อน น้ำ หรือ aerosol · ผู้ป่วยมี<b>conjunctivitis ที่เจ็บและ regional lymphadenopathy</b> ${S.mu}</li>
+ <li><b>Pneumonic tularemia เกิดจากการสูด aerosol ที่มีเชื้อ และมี morbidity กับ mortality สูง</b> เว้นแต่<b>เก็บเชื้อได้เร็วจาก blood culture — เพราะมันตรวจพบใน respiratory culture ได้ยาก</b> ${S.mu}</li>
+ <li>และ<b>ถ้า <i>F. tularensis</i> ถูกใช้เป็นอาวุธชีวภาพ การสร้าง aerosol ที่มีเชื้อจะเป็นวิธีกระจายที่น่าจะใช้มากที่สุด</b> ${S.mu}</li></ul>
+ <h3>Tularemia at the bench</h3><ul>
+ <li><b>การเก็บและการตรวจ specimen อันตรายต่อทั้งแพทย์และเจ้าหน้าที่ห้องปฏิบัติการ</b> ${S.mu}</li>
+ <li>เพราะ<b>ขนาดที่เล็กทำให้เชื้อแทรกผ่าน skin ที่ไม่มีแผลและ mucosa ได้ระหว่างเก็บ specimen หรือถูกสูดเข้าไปถ้ามี aerosol เกิดขึ้น</b> ${S.mu}</li>
+ <li>ข้อเท็จจริงที่น่าตกใจ: <b>ถึง tularemia จะพบน้อย แต่ infection ที่ได้จากห้องปฏิบัติการพบบ่อยอย่างไม่สมส่วน</b> ${S.mu}</li>
+ <li>จึง<b>ต้องสวมถุงมือตอนเก็บ specimen และงานห้องปฏิบัติการทุกขั้นต้องทำใน biohazard hood</b> ${S.mu}</li>
+ <li><b>การตรวจหาเชื้อด้วย Gram stain จากสิ่งที่ดูดจาก node หรือแผลแทบไม่เคยสำเร็จ เพราะเชื้อเล็กมากและติดสีจาง</b> ${S.mu}</li>
+ <li><b>Nucleic acid amplification test จำกัดอยู่ในห้องปฏิบัติการวิจัยเป็นหลัก</b> ${S.mu}</li>
+ <li>มีคำกล่าวว่าเชื้อนี้เพาะบนอาหารทั่วไปไม่ได้เพราะต้องการสารที่มี sulfhydryl อย่าง cysteine — แต่<b>จริง ๆ มันโตบน chocolate agar หรือ buffered charcoal yeast extract agar ซึ่งเป็นอาหารที่เสริม cysteine และมีใช้ในห้องปฏิบัติการส่วนใหญ่</b> ${S.mu}</li>
+ <li><b>ถ้าสงสัยต้องแจ้งห้องปฏิบัติการ เพราะเชื้อโตช้าและอาจถูกมองข้ามถ้าไม่บ่มนานพอ</b> ${S.mu}</li>
+ <li><b>Blood culture มักเป็นลบเว้นแต่บ่มหนึ่งสัปดาห์หรือนานกว่า</b> ${S.mu}</li>
+ <li><b>specimenrespiratory tract จะขึ้นถ้าใช้ selective medium ที่กดเชื้อ respiratory tract ส่วนบนที่โตเร็วกว่า</b> · <b>เชื้อโตบน selective medium ที่ใช้กับ Legionella ได้ด้วย</b> ${S.mu}</li>
+ <li><b>สิ่งที่ดูดจาก lymph node หรือ sinus ที่ระบายมักขึ้นถ้าบ่ม 3 วันหรือนานกว่า</b> ${S.mu}</li>
+ <li>การระบุขั้นต้นอาศัย<b>การโตช้าของ gram-negative coccobacilli เล็กมากบน chocolate agar แต่ไม่โตบน blood agar ซึ่งไม่ได้เสริม cysteine</b> ${S.mu}</li>
+ <li>ยืนยันด้วย<b>การ agglutination ของเชื้อกับ antiserum จำเพาะ</b> ${S.mu}</li>
+ <li>การวินิจฉัยในผู้ป่วยส่วนใหญ่อาศัย <b>titer ที่เพิ่มสี่เท่าหรือมากกว่าในช่วงที่ป่วย หรือ titer เดี่ยว 1:160 หรือมากกว่า</b> ${S.mu}</li>
+ <li>แต่<b>antibody ทั้ง IgG, IgM และ IgA คงอยู่ได้หลายปี จึงแยกโรคอดีตจากปัจจุบันยาก</b> ${S.mu}</li>
+ <li>ตัวเลข: <b>สหรัฐอเมริการายงาน 239 รายในปี 2017 แต่จำนวนจริงน่าจะสูงกว่ามาก เพราะมักไม่มีใครสงสัยและยืนยันทางห้องปฏิบัติการยาก</b> ${S.mu}</li>
+ <li><b>infection ส่วนใหญ่เกิดในฤดูร้อนเมื่อการสัมผัส tick ที่ติดเชื้อสูงสุด</b> ${S.mu}</li>
+ <li>และ<b>อุบัติการณ์เพิ่มขึ้นอย่างมากเมื่อฤดูหนาวที่ค่อนข้างอุ่นตามด้วยฤดูร้อนที่ชื้น ซึ่งทำให้ประชากร tick เพิ่มขึ้น</b> ${S.mu}</li>
+ <li>ผู้ที่เสี่ยงที่สุดคือ<b>นักล่าสัตว์ เจ้าหน้าที่ห้องปฏิบัติการ และผู้ที่สัมผัส tick กับ arthropod ที่กัด</b> ${S.mu}</li>
+ <li>คำกล่าวในพื้นที่ที่เป็น endemic disease: <b>ถ้า rabbit เคลื่อนไหวช้าพอที่นักล่าจะยิงได้หรือสัตว์เลี้ยงจะจับได้ rabbit ตัวนั้นอาจติดเชื้ออยู่</b> ${S.mu}</li>
+ <li>การรักษา: <b>Gentamicin ถือเป็นยาที่เลือก</b> · <b>doxycycline และ ciprofloxacin ใช้รักษารายที่เบา</b> ${S.mu}</li>
+ <li><b>เชื้อสร้าง β-lactamase จึง penicillin และ cephalosporin ไม่ได้ผล</b> ${S.mu}</li>
+ <li><b>mortality น้อยกว่า 1% ถ้ารักษาทันที แต่สูงกว่านั้นมากในผู้ที่ไม่ได้รักษา โดยเฉพาะผู้ที่ติดเชื้อ type A-east</b> ${S.mu}</li>
+ <li>การป้องกัน: <b>ไม่จับ rabbit ที่ดูป่วย และสวมถุงมือเมื่อถลกหนังและควักเครื่องในสัตว์</b> ${S.mu}</li>
+ <li><b>เชื้ออยู่ในมูลของ arthropod ไม่ใช่ในน้ำลาย จึง tick ต้องดูด blood นานพอจึงจะถ่ายทอดเชื้อ — การเอา tick ออกเร็วจึงป้องกัน infection ได้</b> ${S.mu}</li>
+ <li><b>ผู้ที่สัมผัสแบบความเสี่ยงสูง เช่นสัมผัส aerosol ที่มีเชื้อ ควรได้ antibiotic เพื่อป้องกัน</b> ${S.mu}</li>
+ <li><b>ยังไม่มี vaccine ที่ได้ผล และ inactivated vaccine ไม่กระตุ้น cellular immunity ที่ป้องกันได้</b> ${S.mu}</li></ul>
+ <h3>The forms of tularemia</h3>
+ ${tbl(["Form","Route","Picture"],[
+ ["Ulceroglandular","tick bite หรือการฉีดเชื้อเข้าผิวหนังโดยตรง","cutaneous ulcer ที่มี necrotic centre และ raised border · regional lymphadenopathy · bacteremia — รูปที่พบบ่อยที่สุด"],
+ ["Oculoglandular","การปนเปื้อนเข้าตาโดยตรง จากนิ้ว น้ำหรือ aerosol","painful conjunctivitis · cervical lymphadenopathy"],
+ ["Glandular","เช่นเดียวกับ ulceroglandular แต่ไม่มีแผล","lymph node โตเป็นหลัก โดยไม่มีอาการเฉพาะที่อื่น"],
+ ["Typhoidal","การกระจายทางกระแส blood","systemic signs of sepsis"],
+ ["Pneumonic","การสูด aerosol ที่มีเชื้อ","pulmonary symptoms พร้อม systemic sepsis · morbidity และ mortality สูง"],
+ ["Oropharyngeal · gastrointestinal","การกินเชื้อ","pharyngitis · อาการทาง gastrointestinal tract"]])}`});
+SEC.push({id:"bartonella",k:"c",t:"Bartonella, Cardiobacterium and Streptobacillus",mm:"Bartonella · Cardiobacterium",leg:[],
+draw:()=>tbl(["Species","Vector or route","Disease"],[
+ ["Bartonella bacilliformis","sandfly — Phlebotomus","Carrión disease — Oroya fever แล้วตามด้วย verruga peruana"],
+ ["B. quintana","human body louse ผ่านมูลที่ปนเปื้อน","trench fever หรือ 5-day fever · chronic bacteremia · subacute endocarditis · bacillary angiomatosis"],
+ ["B. henselae","cats และ fleas ของ cat","cat-scratch disease · bacillary angiomatosis · peliosis hepatis · subacute endocarditis"],
+ ["Cardiobacterium hominis","oropharynx ของตัวเอง หลังหัตถการทางทันตกรรม","endocarditis"],
+ ["Streptobacillus moniliformis","rodent bite · หรืออาหารกับน้ำที่ปนเปื้อน","rat-bite fever · Haverhill fever"]]),
+notes:()=>`<h3>Bartonella</h3><ul>
+ <li>สกุลนี้มี <b>35 สปีชีส์ โดยสามสปีชีส์สัมพันธ์กับโรคในคนบ่อยที่สุด</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>gram-negative coccobacillary หรือ bacillary rod สั้น 0.2–0.6 × 0.5–1.0 μm</b> · <b>เลี้ยงยากและต้องบ่มนาน 2 ถึง 6 สัปดาห์สำหรับการเก็บครั้งแรก</b> ${S.mu}</li>
+ <li>เชื้อในสกุลนี้<b>พบใน reservoir ที่เป็นสัตว์หลายชนิดและมักอยู่โดยไม่มีหลักฐานของโรค</b> ${S.mu}</li>
+ <li>ลักษณะร่วมของ infection: <b>fever ที่กลับเป็นซ้ำ และ lesion ที่มีการสร้าง blood vessel ใหม่ ซึ่งเป็นถุงที่เต็มไปด้วย blood</b> ${S.mu}</li>
+ <li><b>Carrión disease</b> จาก <i>B. bacilliformis</i> มีสองระยะ — <b>acute hemolytic bacteremia ที่มี fever กับ anemia รุนแรง เรียก Oroya fever</b> แล้วตามด้วย<b>ตุ่ม vasoproliferative เรื้อรัง เรียก verruga peruana หรือ Peruvian wart</b> ${S.mu}</li>
+ <li>โรค<b>จำกัดอยู่ในเขต Andes ของ Peru, Ecuador และ Colombia ซึ่งเป็นพื้นที่ที่พาหะ sandfly อยู่</b> ${S.mu}</li>
+ <li>กลไกของ anemia: <b>หลังถูก sandfly ที่ติดเชื้อกัด เชื้อเข้า blood เพิ่มจำนวน แล้วแทรกเข้า erythrocyte และ endothelial cell</b> ${S.mu}</li>
+ <li>และนั่น<b>เพิ่มความเปราะของเซลล์ที่ติดเชื้อและทำให้ reticuloendothelial system กวาดเซลล์เหล่านั้นออกไป จึงเกิด anemia เฉียบพลัน</b> ${S.mu}</li>
+ <li><b>ระยะนี้สิ้นสุดเมื่อ humoral immunity เกิดขึ้น</b> ${S.mu}</li>
+ <li>ระยะเรื้อรังมี<b>ตุ่มใต้ skin ขนาด 1 ถึง 2 ซม. ที่มักคั่ง blood ซึ่งเกิดขึ้นในช่วง 1 ถึง 2 เดือนและอยู่ได้หลายเดือนถึงหลายปี</b> ${S.mu}</li>
+ <li><b>ความเชื่อมโยงระหว่าง verruga peruana กับ Oroya fever ถูกแสดงโดยนักศึกษาแพทย์ชื่อ Carrión ซึ่งฉีดสิ่งที่ดูดจาก lesion skin เข้าตัวเองและตายด้วย Oroya fever</b> ${S.mu}</li>
+ <li>การรักษา <i>B. bacilliformis</i> ใช้ <b>chloramphenicol หรือ ciprofloxacin</b> ${S.mu}</li>
+ <li><b>Trench fever</b> จาก <i>B. quintana</i> แพร่หลายในสงครามโลกครั้งที่หนึ่ง · ผู้ป่วยมี<b>ปวดหัวรุนแรง, fever, weakness และปวดใน bone ยาว โดยเฉพาะ tibia</b> ${S.mu}</li>
+ <li><b>Fever กลับเป็นซ้ำทุก 5 วัน ซึ่งเป็นที่มาของชื่อ</b> · <b>โรคไม่ทำให้ตาย แต่ symptom หนักได้มาก</b> ${S.mu}</li>
+ <li><b>ไม่พบ reservoir ในสัตว์ — โรคแพร่จากคนสู่คนผ่านมูลที่ปนเปื้อนของ human body louse</b> ${S.mu}</li>
+ <li><i>B. quintana</i> ยัง<b>ก่อโรคในผู้ที่ immunity บกพร่อง โดยเฉพาะผู้ติดเชื้อ human immunodeficiency virus ที่มี fever กลับเป็นซ้ำพร้อม bacteremia และ bacillary angiomatosis</b> ${S.mu}</li>
+ <li>Bacteremia เริ่ม<b>อย่างค่อยเป็นค่อยไปด้วย malaise, ปวดเมื่อยตัว, fatigue, weight loss, ปวดหัวและ fever กลับเป็นซ้ำ</b> ${S.mu}</li>
+ <li>แล้ว<b>นำไปสู่ endocarditis หรือที่พบบ่อยกว่าคือโรคที่สร้าง blood vessel ใหม่ที่ skin tissue ใต้ skin หรือ bone</b> ${S.mu}</li>
+ <li>lesion เป็น<b>ตุ่มที่เต็มไปด้วย blood หลายตุ่ม คล้าย verruga peruana</b> · <b>โรคจำกัดอยู่ในกลุ่มคนไร้บ้านเป็นหลัก ซึ่งสุขอนามัยส่วนบุคคลต่ำ</b> ${S.mu}</li>
+ <li>การรักษา <i>B. quintana</i> ใช้ <b>erythromycin, doxycycline หรือ azithromycin แบบกิน</b> ${S.mu}</li>
+ <li><i>B. henselae</i> ก่อ bacillary angiomatosis ได้ด้วย แต่<b>มันเกี่ยวข้องกับ skin, lymph node, liver ซึ่งเรียก peliosis hepatis หรือ spleen เป็นหลัก</b> · <b>เหตุผลของความชอบ tissue ที่ต่างกันนี้ไม่ทราบ</b> ${S.mu}</li>
+ <li>reservoir ของ <i>B. henselae</i> คือ<b>cat และ fleas ของ cat</b> · <b>เชื้ออยู่ใน oropharynx ของ cat โดยไม่มี symptom และก่อ bacteremia ชั่วคราวได้ โดยเฉพาะใน cat เด็กหรือ cat จรจัด</b> ${S.mu}</li>
+ <li><b>Cat-scratch disease</b> ได้มาจากการ<b>ถูกข่วน ถูกกัด หรือสัมผัสมูลที่ปนเปื้อนของ fleas ของ cat</b> ${S.mu}</li>
+ <li>โดยทั่วไปเป็น<b>infection ที่ไม่ร้ายแรงในเด็ก มีลักษณะเป็น lymph node ที่ระบายบริเวณที่สัมผัสโตเรื้อรัง</b> ${S.mu}</li>
+ <li>แม้ infection ส่วนใหญ่หายเอง แต่<b>กระจายไปที่ liver, spleen, ตาหรือ central nervous system ได้</b> ${S.mu}</li>
+ <li>ข้อสำคัญทางห้องปฏิบัติการ: <b>อาจเห็นเชื้อใน tissue lymph node แต่การ culture แทบเป็นลบเสมอ</b> — <b>การวินิจฉัยขั้นสุดท้ายอาศัยภาพทางคลินิกที่เป็นแบบฉบับร่วมกับหลักฐานทาง serology ของ infection ที่เพิ่งเกิด</b> ${S.mu}</li></ul>
+ <h3>Cardiobacterium hominis</h3><ul>
+ <li>ชื่อตั้งตาม<b>แนวโน้มของเชื้อที่จะก่อ endocarditis ในคน</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>pleomorphic gram-negative หรือ gram-variable rod ขนาดเล็ก 1 × 1–2 μm, ไม่เคลื่อนที่, เป็น facultative anaerobe</b> ${S.mu}</li>
+ <li>คุณสมบัติ: <b>หมักน้ำตาล, oxidase บวกและ catalase ลบ</b> ${S.mu}</li>
+ <li><b>พบใน respiratory tract ส่วนบนของคนสุขภาพดีส่วนใหญ่</b> ${S.mu}</li>
+ <li><b>Endocarditis เป็นโรคหลักในคน ทั้งจาก <i>C. hominis</i> และสปีชีส์ใกล้ชิดคือ <i>C. valvarum</i></b> ${S.mu}</li>
+ <li>และ<b>infection หลายรายน่าจะไม่ถูกรายงานหรือไม่ถูกวินิจฉัย เพราะเชื้อก่อโรคได้ต่ำและโตช้าใน in vitro</b> ${S.mu}</li>
+ <li>ผู้ป่วยส่วนใหญ่<b>มีโรค heart อยู่เดิม และมีประวัติโรคในช่องปากหรือเคยทำหัตถการทางทันตกรรมก่อนเกิด symptom</b> ${S.mu}</li>
+ <li>ลำดับ: <b>เชื้อเข้า blood จาก oropharynx เกาะ tissue heart ที่เสียหาย แล้วเพิ่มจำนวนอย่างช้า ๆ</b> ${S.mu}</li>
+ <li>การดำเนินโรค<b>ค่อยเป็นค่อยไปและเป็นแบบ subacute — ผู้ป่วยมักมี symptom อย่าง fatigue malaise และ fever ต่ำ ๆ นานหลายเดือนก่อนมาพบแพทย์</b> ${S.mu}</li>
+ <li>แต่<b>complication พบน้อย และการหายสนิทหลังได้ยาที่เหมาะสมเป็นเรื่องปกติ</b> ${S.mu}</li>
+ <li>ห้องปฏิบัติการ: <b>การแยกเชื้อจาก blood culture ยืนยันการวินิจฉัย</b> · <b>เชื้อโตช้า ต้องใช้หนึ่งสัปดาห์หรือกว่านั้น</b> ${S.mu}</li>
+ <li>มัน<b>ต้องการ CO₂ และความชื้นที่สูงขึ้นเพื่อโตบน agar โดยเห็นโคโลนีขนาด 1 มม. บน blood หรือ chocolate agar หลังบ่ม 2 วัน</b> ${S.mu}</li>
+ <li>และ<b>ไม่โตบน MacConkey agar หรือ selective medium อื่นที่ใช้กับ gram-negative rod</b> ${S.mu}</li>
+ <li>การรักษา: <b>ไวต่อยาหลายตัว และ infection ส่วนใหญ่รักษาสำเร็จด้วย penicillin หรือ ampicillin นาน 2 ถึง 6 สัปดาห์</b> แม้มีรายงาน strain ที่ดื้อ penicillin ${S.mu}</li>
+ <li>การป้องกันในผู้ที่มีโรค heart อยู่เดิม: <b>รักษาสุขอนามัยช่องปากให้ดีและให้ยาป้องกันตอนทำหัตถการทางทันตกรรม โดย long-acting penicillin ได้ผล</b> ${S.mu}</li>
+ <li>ข้อห้าม: <b>ไม่ควรใช้ erythromycin เพราะเชื้อดื้อบ่อย</b> ${S.mu}</li></ul>
+ <h3>Streptobacillus moniliformis</h3><ul>
+ <li>ชื่อมาจาก streptos คือบิดหรือโค้ง, bacillus คือท่อน, monile คือสร้อยคอ และ forma คือรูป — <b>ท่อนบิดรูปสร้อยคอ ซึ่งหมายถึงรูปร่างหลายแบบของเชื้อ</b> ${S.mu}</li>
+ <li>เป็น <b>gram-negative rod ยาวเรียว 0.1–0.5 × 1–5 μm ที่ติดสีไม่ดีและมีหลายรูปมากขึ้นในโคโลนีเก่า</b> ${S.mu}</li>
+ <li>อาจเห็น<b>เม็ด, ส่วนที่พองออกคล้ายสร้อยลูกปัด และเส้นที่ยาวมาก</b> ${S.mu}</li>
+ <li><b>พบใน nasopharynx ของหนูและ rodent เล็กอื่น และพบชั่วคราวในสัตว์ที่กิน rodent เช่น dog กับ cat</b> ${S.mu}</li>
+ <li>infection ในคนมาจาก<b>การถูก rodent กัด ซึ่งคือ rat-bite fever</b> หรือ<b>ที่พบน้อยกว่ามากคือการกินอาหารหรือน้ำที่ปนเปื้อน ซึ่งคือ Haverhill fever</b> ${S.mu}</li>
+ <li>ในสหรัฐอเมริกา<b>รายส่วนใหญ่อยู่ในเด็กที่เลี้ยงหนูเป็นสัตว์เลี้ยง, เจ้าหน้าที่ห้องปฏิบัติการ และพนักงานร้านขายสัตว์เลี้ยง</b> ${S.mu}</li></ul>`});
+
 
 atlasFinish();
 </script>

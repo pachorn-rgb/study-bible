@@ -1,5 +1,27 @@
 [
  {
+  "v": "6.105",
+  "date": "2026-11-23",
+  "th": [
+   "เติมเนื้อหาโมดูล Haemophilus, Vibrio, Campylobacter, Helicobacter และ miscellaneous gram-negative rods จากต้นฉบับที่อ่านได้ครบ — จาก 7 เป็น 11 หัวข้อ",
+   "หัวข้อใหม่ Haemophilus influenzae before and after the vaccine — ค่าของการเพาะเชื้อแยกตามโรค, อายุที่พบสูงสุดของแต่ละโรคในยุคก่อนวัคซีน, polyribitol phosphate conjugate vaccine และตัวเลขของโลกที่ยังไม่เปลี่ยน",
+   "หัวข้อใหม่ Aggregatibacter and Pasteurella — HACEK endocarditis และแผลแมวกัดที่ลึกจนทำความสะอาดได้ยาก",
+   "หัวข้อใหม่ Vibrio parahaemolyticus, Vibrio vulnificus and Aeromonas — Kanagawa hemolysin, capsule ที่กันการถูกกลืน และตัวเลขอัตราตายของแต่ละรูป",
+   "หัวข้อใหม่ Bartonella, Cardiobacterium and Streptobacillus — Carrión disease, trench fever, cat-scratch disease, bacillary angiomatosis และ rat-bite fever",
+   "Vibrio cholerae ละเอียดขึ้นมาก — Vibrio Pathogenicity Island กับ bacteriophage CTXΦ ที่ใช้ toxin coregulated pilus เป็น receptor, accessory cholera enterotoxin, zonula occludens toxin, การระบาดใหญ่ทั้งเจ็ดครั้ง และเหตุที่เฉพาะ clone เดียวค้ำการระบาดไว้",
+   "Campylobacter และ Helicobacter เพิ่มทั้งกลไกและตัวเลข — ganglioside ที่ไขว้กับ lipooligosaccharide ใน Guillain-Barré syndrome, S protein ของ C. fetus, type VI secretion system ที่ฉีด CagA และตารางเทียบว่าควรใช้การตรวจชนิดไหนเมื่อไร",
+   "Bordetella, Legionella, Brucella และ Francisella ละเอียดขึ้น — pertussis สามระยะพร้อมเวลาจริง, การที่ Legionella ใช้ C3b กับ CR3 เข้า macrophage, erythritol ที่อธิบายว่าทำไมคนเป็น host ที่ผิด และรูปทั้งหกของ tularemia",
+   "เติมเนื้อหาโมดูล Mycobacterium และ spirochetes จากต้นฉบับที่อ่านได้ครบ — จาก 6 เป็น 9 หัวข้อ",
+   "หัวข้อใหม่ Nocardia — เหตุที่เคยถูกคิดว่าเป็นเชื้อรา, ความยาวของ mycolic acid ที่อธิบายว่าทำไมจึงเป็นเพียง weakly acid-fast, mycetoma และ brain abscess ที่พบถึงหนึ่งในสามของผู้ป่วย",
+   "หัวข้อใหม่ The two kinds of syphilis serology — ตารางเทียบ nontreponemal กับ treponemal test ทั้ง antigen ที่ใช้ ความไวของแต่ละระยะ และข้อที่ว่าผลลบเชื่อถือไม่ได้ในผู้ป่วย acquired immunodeficiency syndrome",
+   "หัวข้อใหม่ Leptospira — reservoir host กับ incidental host, สองระยะของโรค, icteric form และ microscopic agglutination test",
+   "Tuberculosis ละเอียดขึ้นมาก — IFN-γ release assay รุ่นที่สองที่แยกการติดเชื้อออกจาก bacillus Calmette-Guérin, การย้อมสามวิธี, การปรับสภาพสิ่งส่งตรวจก่อนเพาะ, สูตรยาจริงและนิยามของ multidrug-resistant กับ extensively drug-resistant",
+   "Leprosy เทียบสองขั้วแบบตารางครบทุกข้อ และ Mycobacterium avium complex แยกสี่ภาพทางคลินิกรวมถึง Lady Windermere syndrome",
+   "Syphilis, Borrelia และ Leptospira เพิ่มทั้งกลไกและตัวเลข — เหตุที่ Treponema pallidum เลี่ยงภูมิคุ้มกันได้, การสลับ outer surface protein A กับ C ตอน tick ดูดเลือด, ตัวเลขของ Lyme disease แยกตามอาการ และความต่างของ relapsing fever แบบ epidemic กับ endemic",
+   "เติมโมดูล Bacterial basics — หัวข้อใหม่ Three ways to make ATP from glucose (ความต้องการของการเติบโต, catabolism กับ anabolism, glycolysis, fermentation, tricarboxylic acid cycle, electron transport และ pentose phosphate pathway) และหัวข้อใหม่ From gene to protein (transcription, translation, จุดที่ยาแต่ละกลุ่มจับ และ quorum sensing)"
+  ]
+ },
+ {
   "v": "6.102",
   "date": "2026-11-23",
   "th": [
