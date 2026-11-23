@@ -1,0 +1,32 @@
+M = "micro-virol-5"
+SUB = "Virology"
+T = {
+"hv-family": [
+ ("Which herpesvirus becomes latent in memory B cells?",["Epstein-Barr virus","Herpes simplex virus type 1","Varicella-zoster virus","Cytomegalovirus"],0,"Cytomegalovirus hides in haematopoietic progenitors and monocytes instead."),
+ ("The space between the herpesvirus capsid and its envelope is the:",["Tegument","Nucleoid","Matrix","Core"],0,"It carries proteins and enzymes that help start replication once the virion is inside."),
+ ("Herpes simplex virus, cytomegalovirus and varicella-zoster virus can form isomeric genomes because:",["Recombination between inverted repeats flips the unique segments","Their genomes are circular rather than linear molecules","They have segmented genomes that reassort on co-infection","They integrate into a chromosome of the infected host"],0,"Direct and inverted repeats bracket the unique long and unique short regions, allowing both circularisation and internal recombination.",3)],
+"hv-repl": [
+ ("In which phase of herpesvirus transcription is the viral DNA polymerase made?",["Early (beta)","Immediate early (alpha)","Late (gamma)","After capsid assembly"],0,"Immediate early proteins regulate transcription; late proteins are mainly structural."),
+ ("Herpesviruses can replicate in neurons, which lack deoxyribonucleotides, because the virus encodes:",["Scavenging enzymes that supply nucleotide substrates","A reverse transcriptase to copy the genome","An integrase that inserts the viral genome","A cellular RNA polymerase of its own"],0,"Those same enzymes make the virus able to replicate in non-growing cells."),
+ ("A cell transcribes a special limited set of viral genes without replicating the genome. This produces:",["Latent infection","Lytic infection","Immortalisation","An abortive infection with cell death"],0,"Progression to early and late gene expression instead yields virus production and usually kills the cell.",2)],
+"hsv-latency": [
+ ("During latency in a neuron, the only region of the herpes simplex virus genome transcribed produces:",["Latency-associated transcripts","Immediate early proteins","DNA polymerase","Glycoprotein D"],0,"Those RNAs are not translated but encode micro-RNAs that silence immediate early genes."),
+ ("Which host factors are important for maintaining herpes simplex virus latency?",["CD8 T cells and interferon gamma","Neutrophils and complement","IgA and lysozyme","Natural killer cells alone"],0,"Latency is actively maintained, not simply a dormant state."),
+ ("A patient develops a cold sore in the same spot after every episode of sunburn. The best explanation is that reactivation:",["Occurs in one neuron of the ganglion and travels back down the same nerve","The lip is reinfected from virus shed continuously in the saliva","A different strain of the virus is acquired on each exposure","Circulating antibody has to be lost before a recurrence can occur"],0,"The virus reactivates despite circulating antibody, which is why recurrences happen at all.",3)],
+"hsv-dis": [
+ ("The classic herpes simplex lesion is described as:",["A clear vesicle on an erythematous base","A painless indurated ulcer","A pustule with a necrotic centre","A target lesion"],0,"It then progresses to pustules, ulcers and crusted lesions."),
+ ("Herpetic whitlow is an infection of the:",["Finger","Eye","Trunk","Genitals"],0,"Herpes gladiatorum, affecting the body, is often acquired during wrestling or rugby."),
+ ("A child with active eczema develops widespread herpes simplex lesions. This happens because:",["The skin disease lets infection spread along the skin","Eczema suppresses systemic immunity to the virus","The virus mutates as it replicates in damaged skin","Antibody cannot be formed while eczema is active"],0,"Eczema herpeticum may spread to the adrenal glands, liver and other organs.",3)],
+"vzv": [
+ ("How does the rash of varicella differ from that of zoster?",["Varicella lesions are present in all stages at once","Varicella follows a single dermatome of the trunk","Zoster lesions all appear at the very same time","Zoster spares the trunk and affects only the face"],0,"Zoster appears along the whole length of one dermatome."),
+ ("Postherpetic neuralgia develops in approximately what proportion of zoster patients?",["As many as 30%","About 1% of patients","About 70% of patients","Almost all patients"],0,"It can persist for months to years."),
+ ("Higher doses of acyclovir are needed for varicella-zoster virus than for herpes simplex virus because:",["Its DNA polymerase is much less sensitive to the drug","It does not encode a thymidine kinase at all","It replicates in the cytoplasm, away from the drug","It is a naked capsid virus and excludes the drug"],0,"Famciclovir and valaciclovir are alternatives with better pharmacodynamics.",3)],
+"ebv": [
+ ("The atypical lymphocytes of infectious mononucleosis are:",["Activated T cells","Infected B cells","Plasma cells","Monocytes"],0,"They are also called Downey cells, and may make up 10% to 80% of the white cell count in the second week."),
+ ("The heterophile antibody of infectious mononucleosis is an IgM directed against:",["The Paul-Bunnell antigen","Viral capsid antigen","Epstein-Barr nuclear antigen","Early antigen"],0,"It recognises that antigen on sheep, horse or bovine erythrocytes."),
+ ("A boy with a congenital T-cell defect acquires Epstein-Barr virus and develops a polyclonal leukaemia-like B-cell proliferation rather than mononucleosis. The reason is that:",["T cells normally control the proliferating B cells","B cells cannot present antigen in this condition","The virus mutates in T-cell deficiency","Heterophile antibody is protective"],0,"Mononucleosis is essentially the T-cell response itself, so without T cells the B-cell outgrowth is unchecked.",3)],
+"cmv": [
+ ("Cytomegalovirus is best described as:",["The most common viral cause of congenital defects","A cause of roseola in infants and young children","The agent responsible for Kaposi sarcoma","A virus that becomes latent in sensory neurons"],0,"About 1 in 150 children is born infected."),
+ ("Which human herpesvirus causes Kaposi sarcoma?",["HHV-8","HHV-6","HHV-7","HHV-3"],0,"HHV-6 and HHV-7 cause roseola instead."),
+ ("Antiviral drugs active against herpes simplex and varicella-zoster virus depend on an enzyme encoded by those viruses, namely:",["Thymidine kinase","Neuraminidase","Integrase","Protease"],0,"It applies the first phosphate to the nucleoside analog, which is why loss of that enzyme confers resistance.",2)],
+}

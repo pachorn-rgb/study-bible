@@ -1,0 +1,528 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Viral classification, structure and replication</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+<link rel="stylesheet" href="../atlas/micro.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Microbiology · Virology</div>
+    <h1>Viral classification, structure and replication</h1>
+    <p class="sb-lede">ไวรัสจำแนกด้วยอะไร, virion ประกอบด้วยอะไร และวงจรการเพิ่มจำนวนเดินเป็นขั้นอย่างไร — naked capsid กับ enveloped ต่างกันตรงไหนและความต่างนั้นเปลี่ยนวิธีแพร่เชื้ออย่างไร · ตรงกับ B1.5.3 (1)–(3) ของเกณฑ์แพทยสภา พ.ศ. 2567 · อ่านจาก Murray บท 36</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 36 Viral Classification, Structure, and Replication</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "micro-virol-1", "kind": "patho", "sys": "Microbiology", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ---------------------------------------------------------------------
+   Microbiology drawing helpers.
+   Everything here draws the real thing: membranes have leaflets, walls are
+   woven, cytoplasm has grain. Nothing here draws a captioned box.
+   --------------------------------------------------------------------- */
+
+/* deterministic pseudo-random — same picture on every reload */
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* closed seeded wobble — periodic over 2π so blobs always shut cleanly */
+function mwobC(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return a => amp * (Math.sin(a * 3 + p[0]) * .55 + Math.sin(a * 5 + p[1]) * .3 + Math.sin(a * 7 + p[2]) * .15);
+}
+
+/* open seeded wobble for baselines */
+function mwob(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return t => amp * (Math.sin(t / 47 + p[0]) * .6 + Math.sin(t / 23 + p[1]) * .28 + Math.sin(t / 11 + p[2]) * .12);
+}
+
+/* an organic cell outline — never a perfect ellipse */
+function mblob(cx, cy, rx, ry, seed, wob = .055, n = 72) {
+  const w = mwobC(seed); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * k).toFixed(1) + "," + (cy + Math.sin(a) * ry * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a rod with rounded caps and a living outline */
+function mrod(cx, cy, len, rad, seed, wob = .05, n = 76) {
+  const w = mwobC(seed), h = Math.max(0, len / 2 - rad); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    const x = Math.cos(a), y = Math.sin(a);
+    d += (i ? "L" : "M") + (cx + x * rad * k + (x > 0 ? h : -h)).toFixed(1) + "," + (cy + y * rad * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* grain: the texture that stops a fill looking like plastic */
+function mgrain(x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  const q = rng(seed); let b = "";
+  for (let i = 0; i < n; i++)
+    b += `<circle class="${cls}" cx="${(x + q() * w).toFixed(1)}" cy="${(y + q() * h).toFixed(1)}" r="${(rad * (.45 + q())).toFixed(2)}"/>`;
+  return b;
+}
+
+/* grain clipped to a path — for cytoplasm inside a cell */
+function mgrainIn(id, path, x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  return `<clipPath id="${id}"><path d="${path}"/></clipPath>`
+    + `<g clip-path="url(#${id})">${mgrain(x, y, w, h, n, seed, cls, rad)}</g>`;
+}
+
+/* ---------------------------------------------------------------------
+   Phospholipid bilayer along a baseline yf(x).
+   up/down decide which leaflet the tails point from; this is drawn as
+   heads and tails, never as a coloured band.
+   --------------------------------------------------------------------- */
+function mbil(x0, x1, yf, o = {}) {
+  const h = o.h || 15, step = o.step || 8.2, hr = o.hr || 3.05,
+    core = o.core || "m-core", head = o.head || "m-head", tail = o.tail || "m-tail";
+  const N = Math.max(2, Math.round((x1 - x0) / step));
+  let top = "", bot = "";
+  for (let i = 0; i <= N; i++) { const x = x0 + (x1 - x0) * i / N, y = yf(x); top += (i ? "L" : "M") + x.toFixed(1) + "," + (y - h / 2).toFixed(1); }
+  for (let i = N; i >= 0; i--) { const x = x0 + (x1 - x0) * i / N, y = yf(x); bot += "L" + x.toFixed(1) + "," + (y + h / 2).toFixed(1); }
+  let b = `<path class="${core}" d="${top + bot}Z"/>`;
+  for (let x = x0 + step / 2; x < x1; x += step) {
+    const y = yf(x), ty = y - h / 2 + hr * .92, by = y + h / 2 - hr * .92;
+    b += `<circle class="${head}" cx="${x.toFixed(1)}" cy="${ty.toFixed(1)}" r="${hr}"/>`
+      + `<circle class="${head}" cx="${x.toFixed(1)}" cy="${by.toFixed(1)}" r="${hr}"/>`;
+    const inT = ty + hr * .8, inB = by - hr * .8, mid = (inT + inB) / 2;
+    b += `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   Woven peptidoglycan: glycan strands running across, peptide bridges
+   linking them. rows = how many layers thick.
+   --------------------------------------------------------------------- */
+function mpgl(x0, x1, yf, rows, gap, seed, o = {}) {
+  const w = mwob(seed, o.amp === undefined ? 1.6 : o.amp), q = rng(seed + 11);
+  const strand = (y0, cls) => {
+    let d = ""; for (let x = x0; x <= x1; x += 6) d += (x === x0 ? "M" : "L") + x.toFixed(1) + "," + (yf(x) + y0 + w(x)).toFixed(1);
+    return `<path class="${cls}" d="${d}"/>`;
+  };
+  let b = "";
+  for (let r = 0; r < rows; r++) {
+    const y0 = r * gap;
+    b += strand(y0, r % 2 ? "m-gly2" : "m-gly");
+    if (r < rows - 1) for (let x = x0 + 7 + q() * 9; x < x1 - 5; x += 15 + q() * 11) {
+      const ya = yf(x) + y0 + w(x), yb = yf(x) + y0 + gap + w(x);
+      const dx = (q() - .5) * 5;
+      b += `<path class="m-pep" d="M${x.toFixed(1)},${ya.toFixed(1)} L${(x + dx).toFixed(1)},${yb.toFixed(1)}"/>`;
+    }
+  }
+  return b;
+}
+
+/* teichoic acid: a beaded strand threading out through the wall */
+function mteic(x, yTop, yBot, seed, beads) {
+  const q = rng(seed); let d = `M${x},${yBot}`, b = "";
+  const n = beads || Math.max(3, Math.round((yBot - yTop) / 9));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, y = yBot + (yTop - yBot) * t, xx = x + Math.sin(t * 7 + q() * 2) * 2.4;
+    d += ` L${xx.toFixed(1)},${y.toFixed(1)}`;
+    b += `<circle class="m-teicb" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5"/>`;
+  }
+  return `<path class="m-teic" d="${d}"/>` + b;
+}
+
+/* LPS: core sugars then a waving O-antigen chain of beads */
+function mlps(x, y, seed, len) {
+  const q = rng(seed); let d = `M${x},${y}`, b = "";
+  const n = len || 7;
+  for (let i = 1; i <= n; i++) {
+    const yy = y - i * 6.4, xx = x + Math.sin(i * .9 + q() * 3) * 3.6;
+    d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
+    b += `<circle class="${i <= 2 ? "m-oantib" : "m-oantib"}" cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="${i <= 2 ? 2.1 : 1.6}"/>`;
+  }
+  return `<path class="m-oanti" d="${d}"/>` + b;
+}
+
+/* mycolic acids: very long tails packed shoulder to shoulder */
+function mmyco(x0, x1, yBase, hgt, seed, step) {
+  const q = rng(seed); let b = "";
+  for (let x = x0; x < x1; x += (step || 5.2)) {
+    const k = .8 + q() * .4, h = hgt * k, bend = (q() - .5) * 4;
+    b += `<path class="m-myco" d="M${x.toFixed(1)},${yBase} C${(x + bend).toFixed(1)},${(yBase - h * .45).toFixed(1)} ${(x - bend).toFixed(1)},${(yBase - h * .7).toFixed(1)} ${(x + bend * .6).toFixed(1)},${(yBase - h).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* a label on a thin leader line with a dot at the thing it names */
+function mlead(px, py, tx, ty, s, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start");
+  return `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`
+    + T(tx + (a === "end" ? -5 : 5), ty + 4, s, { a, c: o.c || "s" });
+}
+
+/* plain label, respecting the Labels toggle */
+const mL = (x, y, s, o) => ST.labels ? T(x, y, s, o) : "";
+
+/* a leader line carrying two short lines of text — long labels never fit */
+function mlead2(px, py, tx, ty, lines, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start"), dx = a === "end" ? -5 : 5;
+  let b = `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`;
+  lines.forEach((l, i) => { b += T(tx + dx, ty + 4 + i * 15, l, { a, c: i ? "s m" : (o.c || "bh") }) });
+  return b;
+}
+
+/* a closed, lobed loop — what a relaxed circular chromosome actually looks like */
+function mloop(cx, cy, R, seed, lob = .3, n = 220, sq = .8) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28]; let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2;
+    const k = 1 + lob * (Math.sin(a * 3 + p[0]) * .5 + Math.sin(a * 5 + p[1]) * .32 + Math.sin(a * 8 + p[2]) * .18);
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * R * k).toFixed(1) + "," + (cy + Math.sin(a) * R * sq * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a tailed phage, drawn with its facets, striated sheath and fibres */
+function mphage(cx, cy, s = 1) {
+  const R = 44 * s, hy = cy - 4 * s; let b = "";
+  const V = [...Array(6)].map((_, i) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + Math.cos(a) * R, hy + Math.sin(a) * R] });
+  b += `<path class="m-head" d="M${V.map(v => v[0].toFixed(1) + "," + v[1].toFixed(1)).join(" L")}Z"/>`;
+  [0, 2, 4].forEach(i => { b += `<path class="m-face" d="M${cx},${hy} L${V[i][0].toFixed(1)},${V[i][1].toFixed(1)}"/>` });
+  /* the genome, coiled inside the head */
+  b += `<path class="m-pdna" d="${mloop(cx, hy, R * .42, 9, .34, 120, .9)}"/>`;
+  const ty = hy + R, L = 52 * s, w = 9 * s;
+  b += `<rect class="m-tail" x="${cx - w - 3}" y="${ty - 2}" width="${(w + 3) * 2}" height="${6 * s}" rx="2"/>`
+    + `<rect class="m-tail" x="${cx - w}" y="${ty + 5 * s}" width="${w * 2}" height="${L}" rx="2"/>`;
+  for (let i = 1; i * 7 * s < L; i++) b += `<path class="m-face" d="M${cx - w},${(ty + 5 * s + i * 7 * s).toFixed(1)} L${cx + w},${(ty + 5 * s + i * 7 * s).toFixed(1)}"/>`;
+  const by = ty + 5 * s + L;
+  b += `<rect class="m-tail" x="${cx - w - 6}" y="${by}" width="${(w + 6) * 2}" height="${6 * s}" rx="3"/>`;
+  [-1, 1].forEach(sg => {
+    b += `<path class="m-fib" d="M${cx + sg * (w + 4)},${by + 6 * s} q${sg * 12 * s},${10 * s} ${sg * 8 * s},${24 * s}"/>`
+      + `<path class="m-fib" d="M${cx + sg * (w + 1)},${by + 6 * s} q${sg * 20 * s},${6 * s} ${sg * 24 * s},${18 * s}"/>`;
+  });
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
+
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"Classification",b:"Virion structure",c:"Replication"});
+
+/* ===================================================================
+   Viral classification, structure and replication — Murray ch 36.
+   =================================================================== */
+
+SEC.push({id:"vir-names",k:"a",t:"Where the names come from",mm:"Naming",leg:[],
+draw:()=>tbl(["Name","What it refers to"],[
+ ["Picornavirus","pico คือเล็ก และ rna — ชื่อบอกโครงสร้าง"],
+ ["Togavirus","toga ภาษากรีกแปลว่าเสื้อคลุม หมายถึง envelope ที่หุ้มอยู่"],
+ ["Retrovirus","retro คือย้อนกลับ — การสร้าง DNA จากแม่แบบ RNA"],
+ ["Poxvirus","ตั้งตามโรค smallpox ซึ่งเกิดจากสมาชิกตัวหนึ่งในวงศ์"],
+ ["Adenovirus","adenoid คือที่ที่แยกเชื้อได้ครั้งแรก"],
+ ["Reovirus","respiratory, enteric, orphan — orphan เพราะถูกค้นพบก่อนที่จะรู้ว่าทำให้เกิดโรคอะไร"],
+ ["Norwalk virus · coxsackievirus","Norwalk รัฐ Ohio และ Coxsackie รัฐ New York"],
+ ["Togavirus · arenavirus · bunyavirus หลายตัว","ชื่อสถานที่ใน Africa ที่แยกเชื้อได้ครั้งแรก"]]),
+notes:()=>`<h3>Four ways to group viruses, and the one that is used</h3><ul>
+ <li>ไวรัสมีตั้งแต่โครงสร้างเรียบง่ายและเล็กอย่าง <b>parvovirus กับ picornavirus</b> ไปจนถึงใหญ่และซับซ้อนอย่าง <b>poxvirus กับ herpesvirus</b> ${S.mu}</li>
+ <li>จัดกลุ่มได้หลายแบบ — <b>ตามโรค เช่น hepatitis, ตาม target tissue, ตามวิธีแพร่เช่น enteric หรือ respiratory และตาม vector เช่น arbovirus คือ arthropod-borne virus</b> ${S.mu}</li>
+ <li>แต่วิธีที่<b>สม่ำเสมอที่สุดและใช้อยู่ปัจจุบันคือการจำแนกด้วยลักษณะทางกายภาพและชีวเคมี</b> — <b>ขนาด, morphology คือมี envelope หรือไม่, ชนิดของ genome และวิธีเพิ่มจำนวน</b> ${S.mu}</li>
+ <li>ผลของการจำแนกแบบนั้น: <b>DNA virus ที่สัมพันธ์กับโรคในคนแบ่งเป็น 7 family</b> และ <b>RNA virus แบ่งได้อย่างน้อย 13 family</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-dna-fam",k:"a",t:"The seven DNA virus families",mm:"DNA families",leg:[],
+draw:()=>tbl(["Family","Genome","Virion","Size (nm)","Encodes polymerase?"],[
+ ["Poxviridae","85–140 × 10⁶ Da · ds linear","brick-shaped, enveloped","300 × 240 × 100","+ และพกมาในตัว virion · และยังเข้ารหัส DNA-dependent RNA polymerase ด้วย"],
+ ["Herpesviridae","100–150 × 10⁶ Da · ds linear","icosadeltahedral, enveloped","capsid 100–110 · envelope 120–200","+"],
+ ["Adenoviridae","20–25 × 10⁶ Da · ds linear","icosadeltahedral with fibers","70–90","+"],
+ ["Hepadnaviridae","1.8 × 10⁶ Da · ds circular (บางส่วนเป็น single strand)","spherical, enveloped","42","+ พกมาในตัว virion · เป็น reverse transcriptase"],
+ ["Polyomaviridae · Papillomaviridae","3–5 × 10⁶ Da · ds circular","icosadeltahedral","45–55","—"],
+ ["Parvoviridae","1.5–2.0 × 10⁶ Da · ss linear","icosahedral","18–26","—"]]),
+notes:()=>`<h3>Members to recognise</h3><ul>
+ <li><b>Poxviridae</b> — smallpox virus, vaccinia virus, monkeypox, canarypox, molluscum contagiosum ${S.mu}</li>
+ <li><b>Herpesviridae</b> — herpes simplex virus type 1 และ 2, varicella-zoster virus, Epstein-Barr virus, cytomegalovirus, human herpesvirus 6, 7 และ 8 ${S.mu}</li>
+ <li><b>Adenoviridae</b> — adenovirus ${S.mu}</li>
+ <li><b>Papillomaviridae</b> — papillomavirus · <b>Polyomaviridae</b> — JC virus, BK virus, SV40 ${S.mu}</li>
+ <li><b>Parvoviridae</b> — parvovirus B19, adeno-associated virus ${S.mu}</li>
+ <li><b>Hepadnaviridae</b> — hepatitis B virus ${S.mu}</li>
+ <li>หลักที่อ่านตารางข้างบน: <b>genome ของ DNA virus เป็นโมเลกุลเดียวเสมอ</b> ${S.mu}</li>
+ <li>และ<b>ยิ่ง virion ใหญ่ ยิ่งบรรจุ genome ที่ใหญ่กว่า จึงเข้ารหัสโปรตีนได้มากกว่าและโดยทั่วไปซับซ้อนกว่า</b> ${S.mu}</li>
+ <li>ตัวเลขที่ให้มาตราส่วน: <b>poxvirus ขนาด 300 nm แทบมองเห็นได้ด้วย light microscope และมีขนาดราวหนึ่งในสี่ของ staphylococcus</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-rna-fam",k:"a",t:"The RNA virus families",mm:"RNA families",leg:[],
+draw:()=>tbl(["Family","Prototype members"],[
+ ["Paramyxoviridae","parainfluenza virus · Sendai virus · measles virus · mumps virus · respiratory syncytial virus · metapneumovirus"],
+ ["Orthomyxoviridae","influenza virus type A, B, C · thogotovirus"],
+ ["Coronaviridae","coronavirus · SARS virus · MERS virus"],
+ ["Arenaviridae","Lassa fever virus · Tacaribe virus complex (Junin, Machupo) · lymphocytic choriomeningitis virus"],
+ ["Rhabdoviridae","rabies virus · vesicular stomatitis virus"],
+ ["Filoviridae","Marburg virus · Ebola virus"],
+ ["Bunyaviridae","California encephalitis virus · hantavirus · Rift Valley fever virus"],
+ ["Retroviridae","human T-lymphotropic virus · human immunodeficiency virus"],
+ ["Reoviridae","reovirus · rotavirus · Colorado tick fever virus"],
+ ["Picornaviridae","poliovirus · coxsackievirus · echovirus · rhinovirus · hepatitis A virus"],
+ ["Caliciviridae · Hepeviridae","norovirus · hepatitis E virus"],
+ ["Astroviridae","astrovirus"],
+ ["Togaviridae","rubella virus · alphavirus"],
+ ["Flaviviridae","dengue virus · yellow fever virus · Zika virus · Japanese encephalitis virus · hepatitis C virus"]]),
+notes:()=>`<h3>Why RNA viruses need more categories</h3><ul>
+ <li><b>วงศ์ของไวรัสถูกกำหนดด้วยโครงสร้างของ genome และ morphology ของ virion</b> ${S.mu}</li>
+ <li>และ RNA genome มีรูปแบบมากกว่า DNA — <b>positive sense (+) ซึ่งทำตัวเหมือน messenger RNA, negative sense (−) ซึ่งเทียบได้กับฟิล์มเนกาทิฟ, double stranded (+/−) และ ambisense คือมีทั้งส่วน + และ − ต่อกันที่ปลาย</b> ${S.mu}</li>
+ <li>และ<b>RNA genome ยังถูกแบ่งเป็น segment ได้ โดยแต่ละชิ้นเข้ารหัสหนึ่งยีนหรือมากกว่า</b> ${S.mu}</li>
+ <li>หลักที่ใช้ได้กับทุกวงศ์: <b>genome ยิ่งใหญ่ ยิ่งพาข้อมูลได้มาก และยิ่งต้องการ capsid หรือ envelope ที่ใหญ่ขึ้นเพื่อบรรจุมัน</b> ${S.mu}</li>
+ <li>ข้อที่ต้องจำสำหรับรูปร่าง: <b>negative-strand RNA virus ทุกตัวเป็น enveloped</b> ${S.mu}</li>
+ <li>และ<b>helical nucleocapsid ในไวรัสของคนเป็น enveloped เสมอ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-virion",k:"b",t:"What a virion is made of",mm:"Virion",leg:[],
+notes:()=>`<h3>The parts</h3><ul>
+ <li><b>Virion คืออนุภาคไวรัส ประกอบด้วย nucleic acid genome ที่ถูกบรรจุใน protein coat คือ capsid หรือใน membrane คือ envelope</b> ${S.mu}</li>
+ <li><b>Virion อาจบรรจุเอนไซม์ที่จำเป็นหรือเป็นส่วนเสริม หรือโปรตีนอื่นที่ช่วยการเพิ่มจำนวนรอบแรกในเซลล์ด้วย</b> ${S.mu}</li>
+ <li><b>Capsid หรือ nucleic acid-binding protein อาจจับกับ genome เป็น nucleocapsid</b> ซึ่ง<b>อาจเป็นตัว virion เองหรือถูกหุ้มด้วย envelope อีกชั้น</b> ${S.mu}</li>
+ <li>ขนาดวัดเป็น nanometer: <b>ไวรัสที่สำคัญทางคลินิกมีตั้งแต่ 18 nm คือ parvovirus ถึง 300 nm คือ poxvirus</b> ${S.mu}</li></ul>
+ <h3>Every form the genome can take</h3><ul>
+ <li><b>DNA เป็น single stranded หรือ double stranded ได้ และเป็น linear หรือ circular ได้</b> ${S.mu}</li>
+ <li><b>RNA เป็น positive sense, negative sense, double stranded หรือ ambisense ได้ และอาจถูกแบ่งเป็น segment</b> ${S.mu}</li>
+ <li>ภาพเปรียบที่ช่วยจำ: <b>เหมือนหน่วยความจำคอมพิวเตอร์ที่มีหลายชนิด รูปแบบของกรดนิวคลีอิกทั้งหมดนี้เก็บและส่งต่อข้อมูลพันธุกรรมของไวรัสได้เหมือนกัน</b> ${S.mu}</li></ul>
+ <h3>The outer layer does three jobs</h3><ul>
+ <li>ชั้นนอกสุดของ virion คือ capsid หรือ envelope ซึ่งเป็น<b>ทั้งบรรจุภัณฑ์ เครื่องป้องกัน และยานพาหนะนำส่ง</b> ${S.mu}</li>
+ <li>งานนั้นเกิดสองระดับ — <b>ระหว่างการแพร่จาก host หนึ่งไปอีก host หนึ่ง และระหว่างการแพร่ภายในตัว host ไปยัง target cell</b> ${S.mu}</li>
+ <li>โครงสร้างที่ผิวของ capsid และ envelope <b>เป็นตัวกลางของปฏิสัมพันธ์กับ target cell ผ่าน viral attachment protein</b> ${S.mu}</li>
+ <li>สองผลที่ตามมาโดยตรง: <b>การเอาหรือทำลายบรรจุภัณฑ์ชั้นนอกทำให้ไวรัสหมดฤทธิ์</b> และ<b>แอนติบอดีที่สร้างต่อ viral attachment protein ป้องกันการติดเชื้อได้</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-capsid",k:"b",t:"Building a capsid",mm:"Capsid assembly",leg:[],
+draw:()=>tbl(["Shape","Who uses it","How it is built"],[
+ ["Helical","negative-strand RNA virus แทบทั้งหมด — เห็นเป็นแท่ง","nucleocapsid protein จับกับ genome แล้วถูกนำส่งเข้าเซลล์พร้อมกัน"],
+ ["Simple icosahedron","ไวรัสขนาดเล็กอย่าง picornavirus และ parvovirus","12 capsomere แต่ละอันมี fivefold symmetry คือ pentamer หรือ penton"],
+ ["Icosadeltahedron","ไวรัสที่ capsid ใหญ่ขึ้น เช่น herpesvirus 12 penton กับ 150 hexon และ adenovirus 252 capsomere โดย 12 อันเป็น penton","แทรก capsomere ที่มีเพื่อนบ้านหกตัว คือ hexon ลงระหว่าง penton ที่มุม"],
+ ["Nonsymmetric · complex","ไวรัสของแบคทีเรียบางตัว คือ phage","ไม่สมมาตร"]]),
+notes:()=>`<h3>From protein to capsid</h3><ul>
+ <li>ลำดับการประกอบ: <b>structural protein รวมเป็น subunit → protomer → capsomere ซึ่งเห็นได้ใน electron micrograph → procapsid หรือ capsid ที่จำรูปได้</b> ${S.mu}</li>
+ <li><b>Procapsid ต้องผ่านกระบวนการต่ออีกจึงกลายเป็น capsid สุดท้ายที่แพร่เชื้อได้</b> ${S.mu}</li>
+ <li>และลำดับต่างกันไปในแต่ละไวรัส — <b>บางตัว capsid ก่อตัวรอบ genome ส่วนบางตัวก่อเป็นเปลือกเปล่าคือ procapsid แล้วจึงเติม genome เข้าไป</b> ${S.mu}</li>
+ <li>โครงสร้างที่สร้างทีละขั้นได้ง่ายที่สุดคือ<b>โครงสร้างสมมาตร ซึ่งมีสองแบบคือ helical และ icosahedral</b> ${S.mu}</li>
+ <li><b>Icosahedron คือการประมาณทรงกลมที่ประกอบจาก subunit ที่สมมาตรกัน</b> ${S.mu}</li>
+ <li>รายละเอียดของ picornavirus: <b>แต่ละ pentamer สร้างจาก protomer ห้าอัน และแต่ละ protomer ประกอบจาก subunit สามชิ้นของโปรตีนสี่ตัวที่แยกกัน</b> ${S.mu}</li>
+ <li>ภาพเปรียบของ icosadeltahedron: <b>ลูกฟุตบอลแบบเก่าคือ icosadeltahedron</b> · และ<b>ขนาดของมันกำหนดโดยจำนวน hexon ที่แทรกตามขอบและบนผิวระหว่าง penton</b> ${S.mu}</li></ul>
+ <h3>The canyon</h3><ul>
+ <li>งาน X-ray crystallography และ cryoelectron microscopy <b>อธิบายโครงสร้าง capsid ของ picornavirus ได้ถึงระดับโมเลกุล</b> ${S.mu}</li>
+ <li>และสิ่งที่งานนั้นเห็นคือ <b>ร่องคล้ายหุบเขา ซึ่งเป็นจุดเทียบท่าสำหรับจับ receptor บนผิวของ target cell</b> ${S.mu}</li>
+ <li>สิ่งที่ helical nucleocapsid พาเข้าไปด้วย: <b>nucleocapsid protein ที่จับ genome คือเอนไซม์ที่จำเป็นต่อการ transcription และการเพิ่มจำนวน</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-naked-env",k:"b",t:"Naked capsid versus enveloped",mm:"Naked vs enveloped",leg:[],
+draw:()=>tbl(["","Naked capsid","Enveloped"],[
+ ["Components","โปรตีน","membrane · lipid · protein · glycoprotein"],
+ ["Environment","ทนทาน — ทนความร้อน กรด protease detergent และการแห้ง","เปราะบาง — ถูกทำลายด้วยกรด detergent การแห้งและความร้อน"],
+ ["Release from the cell","ออกเมื่อเซลล์แตก","ออกโดย budding และโดยเซลล์แตก · และเปลี่ยน cell membrane ระหว่างเพิ่มจำนวน"],
+ ["How it spreads","แพร่ง่ายทั้งบน fomite, จากมือสู่มือ, ทางฝุ่น และทางละอองขนาดเล็ก","แพร่ในละอองขนาดใหญ่ สารคัดหลั่ง การปลูกถ่ายอวัยวะและการให้เลือด"],
+ ["Drying","แห้งแล้วยังแพร่เชื้อได้","ต้องอยู่ในที่ชื้นตลอด"],
+ ["The gut","รอดสภาพที่ไม่เป็นมิตรของทางเดินอาหารได้","รอดทางเดินอาหารไม่ได้"],
+ ["Sewage · detergent","ทนทั้ง detergent และระบบบำบัดน้ำเสียที่ไม่ดี","—"],
+ ["Killing the host cell","ต้องทำให้เซลล์แตกจึงจะออกมาได้","ไม่ต้องฆ่าเซลล์ก็แพร่ต่อได้"],
+ ["Immunity needed","แอนติบอดีอย่างเดียวอาจพอป้องกัน","อาจต้องใช้ทั้งแอนติบอดีและ cell-mediated immune response"],
+ ["Immunopathogenesis","—","กระตุ้น hypersensitivity และ inflammation จึงก่อโรคผ่านภูมิคุ้มกันเอง"]]),
+notes:()=>`<h3>What is in the envelope</h3><ul>
+ <li>แม้ envelope จะได้มาจาก membrane ของเซลล์ แต่<b>แทบไม่พบโปรตีนของเซลล์อยู่ใน envelope ของไวรัส</b> ${S.mu}</li>
+ <li><b>Enveloped virus ส่วนใหญ่กลมหรือรูปร่างไม่แน่นอน</b> · สองข้อยกเว้นคือ <b>poxvirus ซึ่งภายในซับซ้อนและภายนอกเป็นก้อนอิฐ และ rhabdovirus ซึ่งรูปร่างเหมือนกระสุนปืน</b> ${S.mu}</li>
+ <li><b>Viral glycoprotein ส่วนใหญ่มี carbohydrate ที่ต่อแบบ asparagine-linked และยื่นทะลุ envelope ออกไปจากผิวของ virion</b> — <b>ในหลายไวรัสเห็นเป็นหนามหรือ spike</b> ${S.mu}</li>
+ <li>glycoprotein บางตัวทำหน้าที่เป็น <b>viral attachment protein</b> · และ<b>viral attachment protein ที่จับ erythrocyte ได้ด้วยเรียกว่า hemagglutinin</b> ${S.mu}</li>
+ <li>glycoprotein ตัวอื่นทำหน้าที่อื่น — <b>neuraminidase ของ orthomyxovirus, Fc receptor กับ C3b receptor ที่มากับ glycoprotein ของ herpes simplex virus และ fusion glycoprotein ของ paramyxovirus</b> ${S.mu}</li>
+ <li>และข้อที่สำคัญต่อวัคซีน: <b>glycoprotein โดยเฉพาะ viral attachment protein เป็นแอนติเจนหลักที่กระตุ้นภูมิคุ้มกันที่ป้องกันได้</b> ${S.mu}</li></ul>
+ <h3>Four envelopes worth knowing by name</h3><ul>
+ <li><b>Togavirus</b> — envelope หุ้ม icosahedral nucleocapsid ที่บรรจุ positive-strand RNA · <b>spike ของมันประกอบจาก glycoprotein สองหรือสาม subunit ที่ยึดกับ capsid</b> ${S.mu}</li>
+ <li>ผลของการยึดนั้น: <b>envelope แนบแน่นและหดรัดตามรูป icosahedron จนมองเห็นรูปนั้นได้ด้วย cryoelectron microscopy</b> ${S.mu}</li>
+ <li><b>Orthomyxovirus, paramyxovirus และ rhabdovirus</b> — <b>ส่วนประกอบของ RNA-dependent RNA polymerase จับกับ (−) RNA genome เป็น helical nucleocapsid</b> ${S.mu}</li>
+ <li>เหตุผลที่มันต้องอยู่ด้วยกัน: <b>เอนไซม์เหล่านี้จำเป็นต่อการเริ่มเพิ่มจำนวน การที่มันผูกกับ genome จึงเป็นหลักประกันว่ามันถูกส่งเข้าเซลล์ไปด้วย</b> ${S.mu}</li>
+ <li><b>Matrix protein ที่บุด้านในของ envelope ช่วยการประกอบ ribonucleocapsid เข้าเป็น virion</b> · <b>influenza A มี matrix protein บุไว้และมี glycoprotein สองตัวคือ hemagglutinin ซึ่งเป็น viral attachment protein และ neuraminidase</b> · <b>ส่วน bunyavirus ไม่มี matrix protein</b> ${S.mu}</li>
+ <li><b>Herpesvirus</b> — envelope เป็นถุงหุ้ม icosadeltahedral nucleocapsid และ<b>อาจมี glycoprotein ถึง 11 ตัว</b> ${S.mu}</li>
+ <li>ช่องว่างระหว่าง nucleocapsid กับ envelope เรียกว่า <b>tegument ซึ่งบรรจุเอนไซม์ โปรตีนอื่นและแม้แต่ RNA ที่ช่วยการติดเชื้อ</b> ${S.mu}</li>
+ <li><b>Poxvirus</b> — envelope หุ้ม<b>nucleoid รูปดัมเบลล์ที่บรรจุ DNA, lateral body, fibril และเอนไซม์กับโปรตีนจำนวนมาก รวมถึงเอนไซม์และ transcriptional factor ที่ต้องใช้สร้าง messenger RNA</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-attach",k:"c",t:"Attachment decides who gets infected",mm:"Attachment",leg:[],
+draw:()=>tbl(["Family","Virus","Viral attachment protein"],[
+ ["Picornaviridae","rhinovirus","VP1-VP2-VP3 complex"],
+ ["Adenoviridae","adenovirus","fiber protein"],
+ ["Reoviridae","reovirus · rotavirus","σ-1 · VP7"],
+ ["Togaviridae","Semliki Forest virus","E1-E2-E3 complex glycoprotein"],
+ ["Rhabdoviridae","rabies virus","G protein glycoprotein"],
+ ["Orthomyxoviridae","influenza A virus","hemagglutinin glycoprotein"],
+ ["Paramyxoviridae","measles virus","H glycoprotein"]]),
+notes:()=>`<h3>The cell is the factory</h3><ul>
+ <li>ขั้นตอนหลักของการเพิ่มจำนวน<b>เหมือนกันในไวรัสทุกตัว</b> ${S.mu}</li>
+ <li><b>เซลล์ทำหน้าที่เป็นโรงงาน ให้ทั้งสารตั้งต้น พลังงานและเครื่องจักรที่จำเป็นต่อการสร้างโปรตีนของไวรัสและการเพิ่มจำนวน genome</b> ${S.mu}</li>
+ <li>และหลักที่ตามมา: <b>กระบวนการใดที่เซลล์ไม่มีให้ ต้องถูกเข้ารหัสอยู่ใน genome ของไวรัสเอง</b> ${S.mu}</li>
+ <li>วิธีที่แต่ละไวรัสทำขั้นตอนเหล่านี้ต่างกัน <b>ตามโครงสร้างของ genome และของ virion ว่าเป็น enveloped หรือไม่</b> ${S.mu}</li></ul>
+ <h3>Receptor range sets host range</h3><ul>
+ <li>การเกาะอาศัย <b>viral attachment protein จับกับ receptor บนผิว target cell</b> ${S.mu}</li>
+ <li>ตัวอย่างที่อธิบายทั้งวงจรชีวิต: <b>ไวรัสบางตัวจับ receptor ที่พบในเซลล์ของสัตว์หลายสปีชีส์ ทั้ง arthropod, สัตว์เลื้อยคลาน, สัตว์สะเทินน้ำสะเทินบก, นกและสัตว์เลี้ยงลูกด้วยนม</b> ${S.mu}</li>
+ <li>และนั่นคือสิ่งที่<b>ทำให้มันติดเชื้อได้ทั้งในสัตว์และในยุงกับแมลงอื่น และถูกแมลงเหล่านั้นแพร่ต่อ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-enter",k:"c",t:"Getting in and taking the coat off",mm:"Entry and uncoating",leg:[],
+draw:()=>tbl(["Route","Who uses it","The trigger"],[
+ ["Receptor-mediated endocytosis","nonenveloped virus ส่วนใหญ่","กระบวนการปกติที่เซลล์ใช้รับ hormone, low-density lipoprotein และ transferrin"],
+ ["Viropexis — direct penetration","picornavirus · papillomavirus · polyomavirus","โครงสร้าง hydrophobic ของ capsid protein ถูกเปิดออกหลังจับเซลล์ แล้วพาไวรัสหรือ genome ลอดผ่าน membrane"],
+ ["Fusion at neutral pH ที่ผิวเซลล์","paramyxovirus ด้วย fusion protein · herpesvirus และ retrovirus บางตัว","ไม่ต้องใช้กรด — และ paramyxovirus ยังเชื่อมเซลล์กับเซลล์เป็น syncytium ได้"],
+ ["Fusion at acid pH ใน endosome","influenza A","hemagglutinin จับ sialic acid receptor แล้วเปลี่ยนรูปอย่างรุนแรงในกรดอ่อนของ endosome จนเปิดส่วน hydrophobic ออกมา"]]),
+notes:()=>`<h3>Penetration</h3><ul>
+ <li>การเข้าเซลล์เริ่มจาก<b>ปฏิสัมพันธ์ระหว่าง viral attachment protein หลายตัวกับ receptor ของเซลล์</b> ${S.mu}</li>
+ <li>และ<b>กลไกที่ใช้ขึ้นกับโครงสร้างของ virion และชนิดของเซลล์</b> ${S.mu}</li>
+ <li><b>Enveloped virus เชื่อม membrane ของตัวเองกับ membrane ของเซลล์ เพื่อส่ง nucleocapsid หรือ genome เข้า cytoplasm โดยตรง</b> ${S.mu}</li>
+ <li>สิ่งที่ตัดสินว่าจะเชื่อมที่ไหน: <b>pH ที่เหมาะต่อการ fusion</b> — <b>ถ้าเหมาะที่ pH เป็นกลางก็เชื่อมที่ผิวเซลล์ ถ้าต้องการกรดก็ต้องถูกนำเข้าโดย endocytosis แล้วเชื่อมใน endosome</b> ${S.mu}</li>
+ <li>และ<b>ฤทธิ์ fusion มาจาก viral attachment protein เองหรือจากโปรตีนอีกตัวก็ได้</b> ${S.mu}</li></ul>
+ <h3>Uncoating</h3><ul>
+ <li>เมื่อเข้ามาแล้ว <b>nucleocapsid ต้องถูกส่งไปยังจุดที่เพิ่มจำนวนในเซลล์ และ capsid หรือ envelope ต้องถูกถอดออก</b> ${S.mu}</li>
+ <li>จุดหมายต่างกันตามชนิด genome: <b>genome ของ DNA virus ต้องไปถึง nucleus ยกเว้น poxvirus ส่วน RNA virus ส่วนใหญ่อยู่ใน cytoplasm</b> ${S.mu}</li>
+ <li>การถอดเปลือก<b>อาจเริ่มตั้งแต่การจับ receptor หรือถูกเร่งด้วยสภาพกรดหรือ protease ที่อยู่ใน endosome กับ lysosome</b> ${S.mu}</li>
+ <li><b>Picornavirus</b> — <b>capsid อ่อนแอลงเมื่อปล่อย capsid protein VP4 ออก</b> และ<b>VP4 ถูกปล่อยเมื่อ receptor เสียบเข้าไปในร่องคล้ายรูกุญแจที่เป็นจุดเกาะ</b> ${S.mu}</li>
+ <li><b>Herpesvirus</b> — <b>envelope เชื่อมกับ plasma membrane ปล่อย nucleocapsid ออกมา แล้ว nucleocapsid ไปเทียบท่ากับ nuclear membrane เพื่อส่ง DNA เข้าสู่จุดเพิ่มจำนวนโดยตรง</b> ${S.mu}</li>
+ <li><b>Influenza</b> — <b>การปล่อย nucleocapsid ออกจาก matrix และ envelope อาศัยการที่ proton จากใน endosome ไหลผ่านรูที่โปรตีน M2 สร้างขึ้น ทำให้ภายใน virion เป็นกรด</b> ${S.mu}</li>
+ <li><b>Reovirus และ poxvirus ถูกถอดเปลือกเพียงบางส่วนตอนเข้าเซลล์</b> ${S.mu}</li>
+ <li>reovirus — <b>outer capsid ถูกเอาออกแต่ genome ยังอยู่ใน inner capsid ซึ่งบรรจุ polymerase ที่จำเป็นต่อการสร้าง RNA</b> ${S.mu}</li>
+ <li>poxvirus — <b>การถอดเปลือกขั้นแรกเปิดอนุภาคย่อยออกสู่ cytoplasm ทำให้เอนไซม์ที่มากับ virion สร้าง messenger RNA ได้ แล้วจึงสร้างเอนไซม์ถอดเปลือกขึ้นมาปล่อยแกนที่บรรจุ DNA ออกสู่ cytoplasm</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vir-synth",k:"c",t:"Making messenger RNA, genome by genome",mm:"Synthesis",leg:[],
+notes:()=>`<h3>The rule</h3><ul>
+ <li>เมื่ออยู่ในเซลล์แล้ว <b>genome ต้องสั่งการสร้างทั้ง viral messenger RNA และโปรตีน และต้องสร้างสำเนาของตัวเองที่เหมือนเดิม</b> ${S.mu}</li>
+ <li>และหลักที่คุมทุกอย่าง: <b>genome ไร้ประโยชน์ถ้ามันถูกถอดเป็น messenger RNA ที่ใช้งานได้ไม่ได้ — คือจับ ribosome และถูกแปลเป็นโปรตีนไม่ได้</b> ${S.mu}</li>
+ <li>วิธีที่แต่ละไวรัสทำขั้นนี้<b>ขึ้นกับโครงสร้างของ genome และจุดที่มันเพิ่มจำนวน</b> ${S.mu}</li>
+ <li>กลุ่มที่ง่ายที่สุด: <b>genome เปล่าของ DNA virus ยกเว้น poxvirus และของ positive-sense RNA virus ยกเว้น retrovirus ใช้งานได้ด้วยตัวเอง</b> ${S.mu}</li>
+ <li>กลุ่มที่ตรงข้าม: <b>negative-strand RNA virus ต้องพา RNA-dependent RNA polymerase ของตัวเองเข้ามาด้วย เพราะเซลล์ไม่มีเอนไซม์นั้น</b> ${S.mu}</li>
+ <li>นั่นคือเหตุผลที่<b>polymerase ของ orthomyxovirus, paramyxovirus และ rhabdovirus ผูกติดอยู่กับ genome ใน virion</b> ${S.mu}</li></ul>
+ <h3>Reading the growth curve</h3><ul>
+ <li><b>Eclipse period</b> คือช่วงที่<b>มองไม่เห็นส่วนประกอบของไวรัส</b> ${S.mu}</li>
+ <li><b>Latent period</b> คือช่วงที่<b>ยังไม่มีไวรัสที่แพร่เชื้อได้ในน้ำเลี้ยง</b> ${S.mu}</li>
+ <li>ส่วน<b>ระยะ early และ late แบ่งตามการสร้างสารโมเลกุลใหญ่</b> ${S.mu}</li>
+ <li><b>Burst size คือจำนวนไวรัสที่ได้จากเซลล์หนึ่ง</b> และต่างกันมากระหว่างไวรัสแต่ละตัว ${S.mu}</li></ul>
+ <h3>Assembly and release</h3><ul>
+ <li><b>Naked capsid virus โดยทั่วไปถูกปล่อยออกหลังเซลล์แตก</b> ${S.mu}</li>
+ <li><b>Enveloped virus ส่วนใหญ่ถูกปล่อยโดย budding จาก plasma membrane โดยไม่ฆ่าเซลล์</b> ${S.mu}</li>
+ <li>และนี่คือจุดที่ความต่างของโครงสร้างกลายเป็นความต่างของพฤติกรรม — <b>ไวรัสที่ไม่ต้องฆ่าเซลล์เพื่อออกมา ตั้งการติดเชื้อที่ยืดเยื้อได้</b> ${S.mu}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

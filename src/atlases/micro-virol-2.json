@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-2",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "Mechanisms of viral pathogenesis",
+ "h1": "Mechanisms of viral pathogenesis",
+ "lede": "ไวรัสเข้าร่างกายทางไหน ไปถึง target tissue ได้อย่างไร ทำอะไรกับเซลล์ และอาการที่ผู้ป่วยมีมาจากตัวไวรัสหรือมาจากภูมิคุ้มกันของตัวเอง · ตรงกับ B1.5.3 (4) ของเกณฑ์แพทยสภา พ.ศ. 2567 · อ่านจาก Murray บท 37",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 37 Mechanisms of Viral Pathogenesis"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "Mechanisms of viral pathogenesis",
+  "src": "Murray 9e Ch 37",
+  "desc": "ขั้นของโรคตั้งแต่ incubation ถึง convalescence, ทางเข้าและด่านที่กั้นไว้, primary viremia กับ secondary viremia, M cell กับ Peyer patch, สี่ทางที่ไวรัสเข้าสู่ระบบประสาทส่วนกลาง, การติดเชื้อระดับเซลล์ทั้งห้าแบบ, กลไก cytopathogenesis และ inclusion body ที่บอกชื่อไวรัสได้, การ immortalize เซลล์และ 15% ของมะเร็งในคน, interferon กับ cytokine ที่ทำให้เกิดอาการคล้ายไข้หวัดใหญ่, วิธีที่ไวรัสหนีภูมิคุ้มกัน และ immunopathology ตั้งแต่ immune complex ถึง dengue hemorrhagic fever",
+  "ch": "Murray Ch 37",
+  "sort": 14,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

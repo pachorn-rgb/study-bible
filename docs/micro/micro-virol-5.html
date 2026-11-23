@@ -1,0 +1,498 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>The human herpesviruses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+<link rel="stylesheet" href="../atlas/micro.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Microbiology · Virology</div>
+    <h1>The human herpesviruses</h1>
+    <p class="sb-lede">แปดไวรัสที่ติดแล้วติดตลอดชีวิต — แต่ละตัวซ่อนอยู่คนละเซลล์ และแต่ละตัวกลับมาด้วยเงื่อนไขของตัวเอง · ตารางเดียวที่บอกว่าไวรัสไหนเข้าเซลล์อะไร ซ่อนที่ไหน และแพร่อย่างไร · อ่านจาก Murray บท 43</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 43 Human Herpesviruses</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "micro-virol-5", "kind": "patho", "sys": "Microbiology", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ---------------------------------------------------------------------
+   Microbiology drawing helpers.
+   Everything here draws the real thing: membranes have leaflets, walls are
+   woven, cytoplasm has grain. Nothing here draws a captioned box.
+   --------------------------------------------------------------------- */
+
+/* deterministic pseudo-random — same picture on every reload */
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* closed seeded wobble — periodic over 2π so blobs always shut cleanly */
+function mwobC(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return a => amp * (Math.sin(a * 3 + p[0]) * .55 + Math.sin(a * 5 + p[1]) * .3 + Math.sin(a * 7 + p[2]) * .15);
+}
+
+/* open seeded wobble for baselines */
+function mwob(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return t => amp * (Math.sin(t / 47 + p[0]) * .6 + Math.sin(t / 23 + p[1]) * .28 + Math.sin(t / 11 + p[2]) * .12);
+}
+
+/* an organic cell outline — never a perfect ellipse */
+function mblob(cx, cy, rx, ry, seed, wob = .055, n = 72) {
+  const w = mwobC(seed); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * k).toFixed(1) + "," + (cy + Math.sin(a) * ry * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a rod with rounded caps and a living outline */
+function mrod(cx, cy, len, rad, seed, wob = .05, n = 76) {
+  const w = mwobC(seed), h = Math.max(0, len / 2 - rad); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    const x = Math.cos(a), y = Math.sin(a);
+    d += (i ? "L" : "M") + (cx + x * rad * k + (x > 0 ? h : -h)).toFixed(1) + "," + (cy + y * rad * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* grain: the texture that stops a fill looking like plastic */
+function mgrain(x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  const q = rng(seed); let b = "";
+  for (let i = 0; i < n; i++)
+    b += `<circle class="${cls}" cx="${(x + q() * w).toFixed(1)}" cy="${(y + q() * h).toFixed(1)}" r="${(rad * (.45 + q())).toFixed(2)}"/>`;
+  return b;
+}
+
+/* grain clipped to a path — for cytoplasm inside a cell */
+function mgrainIn(id, path, x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  return `<clipPath id="${id}"><path d="${path}"/></clipPath>`
+    + `<g clip-path="url(#${id})">${mgrain(x, y, w, h, n, seed, cls, rad)}</g>`;
+}
+
+/* ---------------------------------------------------------------------
+   Phospholipid bilayer along a baseline yf(x).
+   up/down decide which leaflet the tails point from; this is drawn as
+   heads and tails, never as a coloured band.
+   --------------------------------------------------------------------- */
+function mbil(x0, x1, yf, o = {}) {
+  const h = o.h || 15, step = o.step || 8.2, hr = o.hr || 3.05,
+    core = o.core || "m-core", head = o.head || "m-head", tail = o.tail || "m-tail";
+  const N = Math.max(2, Math.round((x1 - x0) / step));
+  let top = "", bot = "";
+  for (let i = 0; i <= N; i++) { const x = x0 + (x1 - x0) * i / N, y = yf(x); top += (i ? "L" : "M") + x.toFixed(1) + "," + (y - h / 2).toFixed(1); }
+  for (let i = N; i >= 0; i--) { const x = x0 + (x1 - x0) * i / N, y = yf(x); bot += "L" + x.toFixed(1) + "," + (y + h / 2).toFixed(1); }
+  let b = `<path class="${core}" d="${top + bot}Z"/>`;
+  for (let x = x0 + step / 2; x < x1; x += step) {
+    const y = yf(x), ty = y - h / 2 + hr * .92, by = y + h / 2 - hr * .92;
+    b += `<circle class="${head}" cx="${x.toFixed(1)}" cy="${ty.toFixed(1)}" r="${hr}"/>`
+      + `<circle class="${head}" cx="${x.toFixed(1)}" cy="${by.toFixed(1)}" r="${hr}"/>`;
+    const inT = ty + hr * .8, inB = by - hr * .8, mid = (inT + inB) / 2;
+    b += `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   Woven peptidoglycan: glycan strands running across, peptide bridges
+   linking them. rows = how many layers thick.
+   --------------------------------------------------------------------- */
+function mpgl(x0, x1, yf, rows, gap, seed, o = {}) {
+  const w = mwob(seed, o.amp === undefined ? 1.6 : o.amp), q = rng(seed + 11);
+  const strand = (y0, cls) => {
+    let d = ""; for (let x = x0; x <= x1; x += 6) d += (x === x0 ? "M" : "L") + x.toFixed(1) + "," + (yf(x) + y0 + w(x)).toFixed(1);
+    return `<path class="${cls}" d="${d}"/>`;
+  };
+  let b = "";
+  for (let r = 0; r < rows; r++) {
+    const y0 = r * gap;
+    b += strand(y0, r % 2 ? "m-gly2" : "m-gly");
+    if (r < rows - 1) for (let x = x0 + 7 + q() * 9; x < x1 - 5; x += 15 + q() * 11) {
+      const ya = yf(x) + y0 + w(x), yb = yf(x) + y0 + gap + w(x);
+      const dx = (q() - .5) * 5;
+      b += `<path class="m-pep" d="M${x.toFixed(1)},${ya.toFixed(1)} L${(x + dx).toFixed(1)},${yb.toFixed(1)}"/>`;
+    }
+  }
+  return b;
+}
+
+/* teichoic acid: a beaded strand threading out through the wall */
+function mteic(x, yTop, yBot, seed, beads) {
+  const q = rng(seed); let d = `M${x},${yBot}`, b = "";
+  const n = beads || Math.max(3, Math.round((yBot - yTop) / 9));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, y = yBot + (yTop - yBot) * t, xx = x + Math.sin(t * 7 + q() * 2) * 2.4;
+    d += ` L${xx.toFixed(1)},${y.toFixed(1)}`;
+    b += `<circle class="m-teicb" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5"/>`;
+  }
+  return `<path class="m-teic" d="${d}"/>` + b;
+}
+
+/* LPS: core sugars then a waving O-antigen chain of beads */
+function mlps(x, y, seed, len) {
+  const q = rng(seed); let d = `M${x},${y}`, b = "";
+  const n = len || 7;
+  for (let i = 1; i <= n; i++) {
+    const yy = y - i * 6.4, xx = x + Math.sin(i * .9 + q() * 3) * 3.6;
+    d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
+    b += `<circle class="${i <= 2 ? "m-oantib" : "m-oantib"}" cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="${i <= 2 ? 2.1 : 1.6}"/>`;
+  }
+  return `<path class="m-oanti" d="${d}"/>` + b;
+}
+
+/* mycolic acids: very long tails packed shoulder to shoulder */
+function mmyco(x0, x1, yBase, hgt, seed, step) {
+  const q = rng(seed); let b = "";
+  for (let x = x0; x < x1; x += (step || 5.2)) {
+    const k = .8 + q() * .4, h = hgt * k, bend = (q() - .5) * 4;
+    b += `<path class="m-myco" d="M${x.toFixed(1)},${yBase} C${(x + bend).toFixed(1)},${(yBase - h * .45).toFixed(1)} ${(x - bend).toFixed(1)},${(yBase - h * .7).toFixed(1)} ${(x + bend * .6).toFixed(1)},${(yBase - h).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* a label on a thin leader line with a dot at the thing it names */
+function mlead(px, py, tx, ty, s, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start");
+  return `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`
+    + T(tx + (a === "end" ? -5 : 5), ty + 4, s, { a, c: o.c || "s" });
+}
+
+/* plain label, respecting the Labels toggle */
+const mL = (x, y, s, o) => ST.labels ? T(x, y, s, o) : "";
+
+/* a leader line carrying two short lines of text — long labels never fit */
+function mlead2(px, py, tx, ty, lines, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start"), dx = a === "end" ? -5 : 5;
+  let b = `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`;
+  lines.forEach((l, i) => { b += T(tx + dx, ty + 4 + i * 15, l, { a, c: i ? "s m" : (o.c || "bh") }) });
+  return b;
+}
+
+/* a closed, lobed loop — what a relaxed circular chromosome actually looks like */
+function mloop(cx, cy, R, seed, lob = .3, n = 220, sq = .8) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28]; let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2;
+    const k = 1 + lob * (Math.sin(a * 3 + p[0]) * .5 + Math.sin(a * 5 + p[1]) * .32 + Math.sin(a * 8 + p[2]) * .18);
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * R * k).toFixed(1) + "," + (cy + Math.sin(a) * R * sq * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a tailed phage, drawn with its facets, striated sheath and fibres */
+function mphage(cx, cy, s = 1) {
+  const R = 44 * s, hy = cy - 4 * s; let b = "";
+  const V = [...Array(6)].map((_, i) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + Math.cos(a) * R, hy + Math.sin(a) * R] });
+  b += `<path class="m-head" d="M${V.map(v => v[0].toFixed(1) + "," + v[1].toFixed(1)).join(" L")}Z"/>`;
+  [0, 2, 4].forEach(i => { b += `<path class="m-face" d="M${cx},${hy} L${V[i][0].toFixed(1)},${V[i][1].toFixed(1)}"/>` });
+  /* the genome, coiled inside the head */
+  b += `<path class="m-pdna" d="${mloop(cx, hy, R * .42, 9, .34, 120, .9)}"/>`;
+  const ty = hy + R, L = 52 * s, w = 9 * s;
+  b += `<rect class="m-tail" x="${cx - w - 3}" y="${ty - 2}" width="${(w + 3) * 2}" height="${6 * s}" rx="2"/>`
+    + `<rect class="m-tail" x="${cx - w}" y="${ty + 5 * s}" width="${w * 2}" height="${L}" rx="2"/>`;
+  for (let i = 1; i * 7 * s < L; i++) b += `<path class="m-face" d="M${cx - w},${(ty + 5 * s + i * 7 * s).toFixed(1)} L${cx + w},${(ty + 5 * s + i * 7 * s).toFixed(1)}"/>`;
+  const by = ty + 5 * s + L;
+  b += `<rect class="m-tail" x="${cx - w - 6}" y="${by}" width="${(w + 6) * 2}" height="${6 * s}" rx="3"/>`;
+  [-1, 1].forEach(sg => {
+    b += `<path class="m-fib" d="M${cx + sg * (w + 4)},${by + 6 * s} q${sg * 12 * s},${10 * s} ${sg * 8 * s},${24 * s}"/>`
+      + `<path class="m-fib" d="M${cx + sg * (w + 1)},${by + 6 * s} q${sg * 20 * s},${6 * s} ${sg * 24 * s},${18 * s}"/>`;
+  });
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
+
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"The family",b:"Herpes simplex virus",c:"Varicella-zoster virus",d:"Epstein-Barr virus",e:"Cytomegalovirus and the rest"});
+
+/* ===================================================================
+ The human herpesviruses — Murray ch 43.
+ =================================================================== */
+
+SEC.push({id:"hv-family",k:"a",t:"Eight viruses, eight hiding places",mm:"The eight",leg:[],
+draw:()=>tbl(["Subfamily · virus","Primary target cell","Site of latency","Means of spread"],[
+ ["Alphaherpesvirinae · HHV-1 herpes simplex type 1","mucoepithelial cell","neuron","close contact"],
+ ["Alphaherpesvirinae · HHV-2 herpes simplex type 2","mucoepithelial cell","neuron","close contact — sexually transmitted"],
+ ["Alphaherpesvirinae · HHV-3 varicella-zoster virus","mucoepithelial cell และ T cell","neuron","respiratory และ close contact"],
+ ["Gammaherpesvirinae · HHV-4 Epstein-Barr virus","B cell และ epithelial cell","memory B cell","saliva — kissing disease"],
+ ["Gammaherpesvirinae · HHV-8 Kaposi sarcoma-related virus","lymphocyte","B cell","close contact ทางเพศ และ saliva"],
+ ["Betaherpesvirinae · HHV-5 cytomegalovirus","macrophage, lymphocyte, epithelial cell","hematopoietic progenitor cell, myeloid stem cell, monocyte","close contact, การให้ blood, การปลูกถ่าย tissue และแต่กำเนิด"],
+ ["Betaherpesvirinae · HHV-6","T lymphocyte, epithelial cell, neuronal cell","hematopoietic progenitor cell และ T cell","saliva"],
+ ["Betaherpesvirinae · HHV-7","เหมือน HHV-6","hematopoietic progenitor cell และ T cell","saliva"]]),
+notes:()=>`<h3>What they share</h3><ul>
+ <li><b>capsid ขนาดใหญ่ มี envelope เป็น icosadeltahedral และบรรจุ double-stranded DNA genome</b> ${S.mu}</li>
+ <li><b>virion มีขนาดราว 150 nm · DNA core ถูกหุ้มด้วย capsid ที่มี 162 capsomere แล้วหุ้มด้วย envelope ที่มี glycoprotein</b> ${S.mu}</li>
+ <li><b>herpesvirus เข้ารหัส glycoprotein หลายตัวสำหรับการเกาะ การเชื่อม membrane และการหนีการควบคุมของ immunity</b> ${S.mu}</li>
+ <li>ช่องว่างระหว่าง envelope กับ capsid คือ <b>tegument ซึ่งบรรจุโปรตีนและเอนไซม์ที่ช่วยเริ่มการเพิ่มจำนวน</b> ${S.mu}</li>
+ <li>และเพราะเป็น enveloped virus มันจึง<b>ไวต่อกรด ตัวทำละลาย detergent และการแห้ง</b> ${S.mu}</li>
+ <li>genome: <b>เป็น linear double-stranded DNA แต่ต่างกันทั้งขนาดและทิศทางของยีน</b> ${S.mu}</li>
+ <li>และโครงสร้างที่ทำให้มันยืดหยุ่น: <b>ลำดับซ้ำทั้งแบบ direct และ inverted ขนาบส่วนที่ไม่ซ้ำของ genome คือ unique long กับ unique short ทำให้ genome วนเป็นวงและเกิด recombination ภายในตัวเองได้</b> ${S.mu}</li>
+ <li>ผลของ recombination นั้น: <b>herpes simplex virus, cytomegalovirus และ varicella-zoster virus พลิกทิศของส่วน unique long และ unique short เทียบกัน จนได้ genome หลายรูปแบบ</b> ${S.mu}</li>
+ <li>ข้อที่เป็นหลักของทั้งวงศ์: <b>cell-mediated immunity จำเป็นต่อการควบคุม</b> ${S.mu}</li>
+ <li>และ<b>ไวรัสทั้งวงศ์พบทั่วไป และก่อ infection ได้ทั้งแบบ lytic, persistent, latent และสำหรับ Epstein-Barr virus คือ immortalizing</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hv-repl",k:"a",t:"Three waves of transcription",mm:"Replication",leg:[],
+draw:()=>tbl(["Phase","Greek","What is made"],[
+ ["Immediate early","α","โปรตีนที่กำกับการถอดรหัสยีนและยึดครองเซลล์"],
+ ["Early","β","transcription factor เพิ่มเติมและเอนไซม์ รวมถึง DNA polymerase"],
+ ["Late","γ","โปรตีนโครงสร้างเป็นหลัก สร้างหลังการเพิ่มจำนวน genome เริ่มแล้ว"]]),
+notes:()=>`<h3>Entry to nucleus</h3><ul>
+ <li>เริ่มจาก<b>ปฏิสัมพันธ์ระหว่าง viral glycoprotein กับ receptor ที่ผิวเซลล์</b> ${S.mu}</li>
+ <li>และ<b>tropism ของบางตัวเช่น Epstein-Barr virus จำกัดมาก เพราะ receptor ของมันถูกแสดงเฉพาะในบางสปีชีส์และบาง tissue</b> ${S.mu}</li>
+ <li><b>glycoprotein ช่วยเชื่อม envelope เข้ากับ plasma membrane แล้วปล่อย nucleocapsid เข้า cytoplasm</b> ${S.mu}</li>
+ <li>และ<b>เอนไซม์กับ transcription factor ถูกพาเข้าเซลล์มาด้วยใน tegument ของ virion</b> ${S.mu}</li>
+ <li>แล้ว<b>nucleocapsid ไปเทียบท่ากับ nuclear membrane และส่ง genome เข้า nucleus ซึ่งเป็นที่ที่มันถูกถอดรหัสและเพิ่มจำนวน</b> ${S.mu}</li></ul>
+ <h3>What decides lytic versus latent</h3><ul>
+ <li><b>genome ถูกถอดรหัสโดย DNA-dependent RNA polymerase ของเซลล์ และถูกกำกับโดย nuclear factor ทั้งของไวรัสและของเซลล์</b> ${S.mu}</li>
+ <li>และ<b>การปะทะกันของปัจจัยเหล่านี้เองที่ตัดสินว่า infection จะเป็น lytic, persistent หรือ latent</b> ${S.mu}</li>
+ <li><b>เซลล์ที่ส่งเสริม latent infection ถอดรหัสยีนชุดพิเศษโดยไม่เพิ่มจำนวน genome</b> ${S.mu}</li>
+ <li>และ<b>การเดินหน้าไปถึงการแสดงออกของ early กับ late gene ให้ผลเป็นการผลิตไวรัสและมักจบที่เซลล์ตาย</b> ${S.mu}</li>
+ <li>เหตุผลที่ไวรัสต้องพกเอนไซม์มาเอง: <b>viral scavenging enzyme จัดหา deoxyribonucleotide ให้ polymerase</b> ${S.mu}</li>
+ <li>ซึ่ง<b>ทำให้มันเพิ่มจำนวนในเซลล์ที่ไม่โตและขาดทั้ง deoxyribonucleotide และเอนไซม์สำหรับสร้าง DNA ได้ — เช่นใน neuron</b> ${S.mu}</li>
+ <li>และ<b>viral DNA polymerase เป็นเป้าของยาต้านไวรัส</b> ${S.mu}</li>
+ <li>การประกอบและการออก: <b>procapsid เปล่าประกอบใน nucleus แล้วถูกเติม DNA, ผ่านเข้าออก endoplasmic reticulum, รับโปรตีนของ tegument, ผ่าน Golgi membrane เพื่อรับ envelope แล้วออกจากเซลล์โดย exocytosis หรือโดยเซลล์แตก</b> ${S.mu}</li>
+ <li>และระหว่างการเพิ่มจำนวน <b>herpesvirus รบกวนกระบวนการของเซลล์ ย่อย DNA ของเซลล์ และเปลี่ยน cytoskeleton</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hsv-latency",k:"b",t:"How herpes simplex virus hides and comes back",mm:"Latency",leg:[],
+draw:()=>tbl(["Trigger of recurrence","Example"],[
+ ["Ultraviolet B radiation","การเล่นสกี การอาบแดด"],
+ ["Fever","จึงเป็นที่มาของชื่อ fever blister"],
+ ["Emotional stress","การสอบปลายภาค การนัดสำคัญ"],
+ ["Physical stress","การระคายเคือง"],
+ ["Menstruation","—"],
+ ["Food","อาหารรสจัด อาหารเปรี้ยว ภูมิแพ้"],
+ ["Immunosuppression","แบบชั่วคราวจากความเครียด · เคมีบำบัดและรังสีรักษา · human immunodeficiency virus"]]),
+notes:()=>`<h3>The latency-associated transcript</h3><ul>
+ <li>ที่มาของชื่อ: <b>herpes มาจากคำกรีกที่แปลว่าคืบคลาน</b> · <b>cold sore ถูกบรรยายไว้ตั้งแต่สมัยโบราณ และพิสูจน์ว่าเกิดจากไวรัสในปี 1919</b> ${S.mu}</li>
+ <li>ใน infection แบบ latent ของ neuron <b>บริเวณเดียวของ genome ที่ถูกถอดรหัสคือส่วนที่สร้าง latency-associated transcript</b> ${S.mu}</li>
+ <li>และ RNA เหล่านั้น<b>ไม่ถูกแปลเป็นโปรตีน แต่เข้ารหัส micro-RNA ที่ยับยั้งการแสดงออกของ immediate early gene และยีนสำคัญอื่น</b> ${S.mu}</li>
+ <li>กฎที่ตัดสินทุกอย่าง: <b>ถ้า neuron ถอดรหัสเฉพาะ latency-associated transcript และไม่ถอดรหัสยีนอื่นเลย ผลคือ latency</b> ${S.mu}</li>
+ <li>และสิ่งที่รักษา latency ไว้: <b>CD8 T cell และ IFN-γ</b> ${S.mu}</li></ul>
+ <h3>Reactivation</h3><ul>
+ <li>สิ่งกระตุ้นเหล่านั้น<b>จุดชนวนการเพิ่มจำนวนในเซลล์ประสาทเซลล์เดียวในมัดนั้น แล้วไวรัสเดินทางย้อนลงมาตามเส้นประสาท</b> ${S.mu}</li>
+ <li>ผลที่ทำนายได้: <b>รอยโรคขึ้นที่ dermatome และตำแหน่งเดิมทุกครั้ง</b> ${S.mu}</li>
+ <li>กลไกของความเครียด: <b>มันกระตุ้นการกลับเป็นซ้ำโดยส่งเสริมการเพิ่มจำนวนในเส้นประสาท โดยกด cell-mediated immunity ชั่วคราว หรือทั้งสองอย่าง</b> ${S.mu}</li>
+ <li>และข้อที่สำคัญทางคลินิก: <b>ไวรัสถูกปลุกได้แม้จะมี antibody อยู่</b> ${S.mu}</li>
+ <li>แต่<b>infection ซ้ำโดยทั่วไปเบากว่า จำกัดกว่า และสั้นกว่าครั้งแรก เพราะลักษณะของการแพร่และเพราะมี memory immune response อยู่</b> ${S.mu}</li>
+ <li>เมื่อถูกปลุก <b>ไวรัสกลับไปที่จุดติดเชื้อเดิม และอาจไม่ปรากฏ symptom หรือเกิดเป็นตุ่มน้ำ</b> · <b>น้ำในตุ่มมี virion ที่แพร่เชื้อได้</b> ${S.mu}</li>
+ <li>และความเสียหายมาจากสองทาง: <b>ทั้งพยาธิสภาพจากไวรัสเองและ immunopathology</b> · <b>รอยโรคมักหายโดยไม่เกิดแผลเป็น</b> ${S.mu}</li>
+ <li>ผลทางระบาดวิทยาที่ตามมาจาก latency: <b>ผู้ติดเชื้อเป็นแหล่งแพร่เชื้อไปตลอดชีวิต</b> · และ<b>แพร่ในสารคัดหลั่งและโดยการสัมผัสใกล้ชิด</b> ${S.mu}</li>
+ <li>ตัวเลขที่ต้องจำ: <b>ผู้ใหญ่ในสหรัฐอเมริกา 20% ติดเชื้อ herpes simplex virus type 2 ซึ่งคิดเป็นราว 65 ล้านคน</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hsv-dis",k:"b",t:"The syndromes of herpes simplex",mm:"HSV disease",leg:[],
+draw:()=>tbl(["Syndrome","Where","Who"],[
+ ["Gingivostomatitis · herpes labialis","ตุ่มน้ำใสที่แตกเป็นแผลเร็ว มักที่ขอบแดงของริมฝีปาก แต่กระจายรอบหรือในปากได้ ทั้ง palate, pharynx, gingiva, buccal mucosa และลิ้น","เด็ก สำหรับ infection ครั้งแรกของ type 1"],
+ ["Recurrent mucocutaneous herpes — cold sore","มุมปากหรือข้างริมฝีปาก · กลับเป็นซ้ำจาก trigeminal ganglion","เกิดได้แม้ไม่เคยมี infection ครั้งแรกที่เห็นชัด"],
+ ["Herpes pharyngitis","คอหอย","วินิจฉัยบ่อยขึ้นในผู้ใหญ่วัยหนุ่มสาวที่เจ็บคอ"],
+ ["Herpetic keratitis","ตาเกือบเสมอข้างเดียว","กลับเป็นซ้ำได้ นำไปสู่แผลเป็นถาวร cornea เสียหายและตาบอด"],
+ ["Herpetic whitlow","นิ้ว","พยาบาลและแพทย์ที่ดูแลผู้ป่วย, เด็กที่ดูดนิ้ว และผู้ที่ติดเชื้อที่อวัยวะเพศ"],
+ ["Herpes gladiatorum","ลำตัว","ได้มาจากมวยปล้ำหรือรักบี้"],
+ ["Eczema herpeticum","ลามไปตาม skin และอาจถึง adrenal gland, liver และอวัยวะอื่น","เด็กที่มี eczema กำลังกำเริบ"]]),
+notes:()=>`<h3>The lesion</h3><ul>
+ <li>ภาพคลาสสิก: <b>ตุ่มน้ำใสบนฐานแดง ซึ่งเรียกกันว่า dewdrop on a rose petal</b> ${S.mu}</li>
+ <li>แล้ว<b>กลายเป็นตุ่มหนอง เป็นแผล และตกสะเก็ด</b> ${S.mu}</li>
+ <li>ข้อที่ทำให้วินิจฉัยผิดได้: <b>ภาวะอื่นหลายอย่างคล้ายรอยโรคนี้ — รอยโรคจาก coxsackievirus, canker sore และสิว</b> ${S.mu}</li>
+ <li>เครื่องหมายใต้กล้องของทั้งสอง type: <b>Cowdry type A inclusion body, syncytium และ Tzanck smear</b> ${S.mu}</li></ul>
+ <h3>Where it becomes serious</h3><ul>
+ <li><b>herpes simplex virus ก่อ morbidity และ mortality ที่สำคัญเมื่อติดเชื้อที่ตาหรือสมอง และเมื่อกระจายทั่วตัวในผู้ที่ถูกกด immunity หรือในทารกแรกเกิด</b> ${S.mu}</li>
+ <li>immunity ที่คุม keratitis เป็นดาบสองคม: <b>การตอบสนองแบบ TH17 สำคัญต่อการควบคุม แต่ก็มีส่วนในการเกิดพยาธิสภาพของ infection ที่ตาด้วย</b> ${S.mu}</li>
+ <li>การแพร่: <b>แพร่ใน saliva, ในสารคัดหลั่งช่องคลอด และโดยการสัมผัสน้ำจากรอยโรค</b> ${S.mu}</li>
+ <li>และเส้นทาง: <b>แพร่ทางปาก ทางเพศสัมพันธ์ และโดยเข้าสู่ตาหรือรอยแตกของ skin</b> ${S.mu}</li>
+ <li>แนวโน้มทั่วไป: <b>type 1 มักแพร่ทางปาก ส่วน type 2 มักแพร่ทางเพศสัมพันธ์ แต่ไม่ใช่เฉพาะอย่างนั้น</b> ${S.mu}</li>
+ <li>เพราะเป็น enveloped virus <b>มันไม่ทนทานมาก และถูกทำให้หมดฤทธิ์ได้ง่ายด้วยการแห้ง detergent และสภาพของทางเดินอาหาร</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vzv",k:"c",t:"Varicella and zoster are the same virus twice",mm:"VZV",leg:[],
+draw:()=>tbl(["","Varicella — chickenpox","Zoster — shingles"],[
+ ["When","infection ครั้งแรก","การกลับเป็นซ้ำ"],
+ ["Rash","ตุ่มมีทุกระยะพร้อมกัน","ตุ่มเรียงตาม dermatome เดียวตลอดความยาว"],
+ ["Where it comes from","การสูดและการสัมผัสใกล้ชิด","ไวรัสที่หลับอยู่ใน dorsal root ganglion, cranial nerve ganglion และ ganglion อื่น"],
+ ["Who","เด็กเป็นหลัก · ผู้ใหญ่เสี่ยงต่อ pneumonia","ผู้สูงอายุเมื่อ immunity เสื่อม หรือผู้ที่ cellular immunity บกพร่อง"],
+ ["Complication","varicella pneumonia ในผู้ใหญ่","postherpetic neuralgia ซึ่งอยู่ได้หลายเดือนถึงหลายปี เกิดในผู้ป่วยถึง 30%"],
+ ["Prevention","vaccine varicella","vaccine zoster"]]),
+notes:()=>`<h3>The second act</h3><ul>
+ <li>หลัง infection ครั้งแรก <b>ไวรัสกลายเป็น latent ใน dorsal root ganglion, cranial nerve ganglion และ ganglion อื่น</b> ${S.mu}</li>
+ <li>เมื่อถูกปลุก <b>ไวรัสเพิ่มจำนวนและถูกปล่อยไปตลอดความยาวของ neuron ไปติดเชื้อที่ skin จึงเกิด rash ตุ่มน้ำตลอด dermatome นั้น</b> ${S.mu}</li>
+ <li>และความเสียหายที่ตามมา: <b>มันทำลาย neuron และอาจทำให้เกิด postherpetic neuralgia ที่ปวดมาก</b> ${S.mu}</li>
+ <li>ตำแหน่งที่พบบ่อย: <b>หนึ่งในสี่ส่วนของศีรษะ หรือตาม thoracic dermatome</b> ${S.mu}</li>
+ <li>ข้อที่ต่างจาก herpes simplex ในการรักษา: <b>DNA polymerase ของ varicella-zoster virus ไวต่อ acyclovir น้อยกว่าของ herpes simplex virus มาก</b> ${S.mu}</li>
+ <li>จึง<b>ต้องใช้ acyclovir ขนาดสูงกว่า หรือใช้ famciclovir กับ valacyclovir ซึ่งมี pharmacodynamics ที่ดีกว่า</b> ${S.mu}</li>
+ <li>และสำหรับ symptom ปวดที่ตามมา: <b>ไม่มีการรักษาที่ดี — ยาแก้ปวด ยาชาเฉพาะที่ หรือ capsaicin cream อาจช่วยบรรเทาได้บ้าง</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"ebv",k:"d",t:"Epstein-Barr virus lives inside the B-cell programme",mm:"EBV",leg:[],
+notes:()=>`<h3>Using the B cell</h3><ul>
+ <li><b>Epstein-Barr virus ปรับตัวเข้ากับ B cell ของคน และใช้ขั้นตอนต่าง ๆ ของพัฒนาการของ B cell เพื่อตั้ง infection ตลอดชีวิต</b> ${S.mu}</li>
+ <li>และหลักที่อธิบายโรคทั้งหมดของมัน: <b>โรคของ Epstein-Barr virus เกิดจากการตอบสนองของ immunity ที่มากเกินไป ซึ่งคือ infectious mononucleosis หรือจากการที่ immunity คุมไม่ได้ ซึ่งคือ lymphoproliferative disease และ hairy leukoplakia</b> ${S.mu}</li>
+ <li><b>infection แบบผลิตไวรัสใน B cell และ epithelial cell ของ oropharynx เช่นที่ tonsil ทำให้ไวรัสถูกขับลงใน saliva เพื่อแพร่ต่อ และตั้ง viremia เพื่อแพร่ไป B cell อื่น</b> ${S.mu}</li>
+ <li>กลไกของการ immortalize: <b>โปรตีนของไวรัสเข้าแทนที่ปัจจัยของ host ที่ปกติกระตุ้นการโตและพัฒนาการของ B cell</b> ${S.mu}</li>
+ <li>และ<b>เมื่อไม่มี T cell เช่นในการเพาะเลี้ยงเซลล์ Epstein-Barr virus ทำให้ B cell เป็นอมตะและสร้างเป็น B-lymphoblastoid cell line ได้</b> ${S.mu}</li></ul>
+ <h3>Where the blood findings come from</h3><ul>
+ <li>ในร่างกาย การกระตุ้นและเพิ่มจำนวนของ B cell <b>เห็นได้จากการสร้าง IgM ต่อ Paul-Bunnell antigen อย่างไม่ตรงเป้า ซึ่งเรียกว่า heterophile antibody</b> ${S.mu}</li>
+ <li>และ heterophile antibody นั้น<b>จำ Paul-Bunnell antigen บน erythrocyte ของแกะ ม้าหรือวัว</b> ${S.mu}</li>
+ <li>การควบคุม: <b>การโตของ B cell ถูกคุมโดยการตอบสนองปกติของ T cell ต่อทั้งการเพิ่มจำนวนของ B cell และต่อ peptide ของไวรัส</b> ${S.mu}</li>
+ <li>เหตุผลที่ T cell เห็นมันได้ดี: <b>B cell เป็น antigen-presenting cell ที่ดีเยี่ยม และนำเสนอแอนติเจนของไวรัสบนทั้ง major histocompatibility complex I และ II</b> ${S.mu}</li>
+ <li><b>T cell ที่ถูกกระตุ้นปรากฏเป็น atypical lymphocyte ซึ่งเรียกอีกชื่อว่า Downey cell</b> ${S.mu}</li>
+ <li>และตัวเลขที่เป็นที่มาของชื่อโรค: <b>มันเพิ่มจำนวนใน blood ช่วงสัปดาห์ที่สองของ infection จนคิดเป็น 10% ถึง 80% ของเม็ด blood ขาวทั้งหมด</b> ${S.mu}</li>
+ <li>ภาพรวมที่อธิบายทุก symptom: <b>infectious mononucleosis โดยแท้คือสงครามกลางเมืองระหว่าง B cell ที่ติดเชื้อกับ T cell ที่ปกป้องร่างกาย</b> ${S.mu}</li>
+ <li>ดังนั้น <b>lymphocytosis, การบวมของอวัยวะน้ำเหลืองคือ lymph node, spleen และ liver และความอ่อนเพลีย ล้วนเกิดจากการกระตุ้นและเพิ่มจำนวนของ T cell เป็นหลัก</b> ${S.mu}</li>
+ <li>และ<b>พลังงานจำนวนมากที่ใช้ขับเคลื่อนการตอบสนองของ T cell คือเหตุที่ผู้ป่วยอ่อนเพลียอย่างมาก</b> ${S.mu}</li>
+ <li>ส่วน<b>symptom เจ็บคอเป็นการตอบสนองต่อ epithelium และ B cell ที่ติดเชื้อใน tonsil และคอ</b> ${S.mu}</li></ul>
+ <h3>The cancers</h3><ul>
+ <li><b>Epstein-Barr virus สัมพันธ์เชิงสาเหตุกับ endemic Burkitt lymphoma, Hodgkin disease และ nasopharyngeal carcinoma</b> ${S.mu}</li>
+ <li>และ<b>สัมพันธ์กับ B-cell lymphoma ในผู้ที่มี immunity บกพร่องทั้งที่เป็นมาแต่กำเนิดและที่เกิดภายหลัง</b> ${S.mu}</li>
+ <li>ที่มาของการค้นพบ: <b>ความเชื่อมโยงกับ infectious mononucleosis ถูกพบโดยบังเอิญ เมื่อ serum ของเจ้าหน้าที่ห้องปฏิบัติการที่กำลังพักฟื้นจาก infectious mononucleosis มี antibody ที่จำเซลล์ของ Burkitt lymphoma ได้</b> ${S.mu}</li>
+ <li>กลุ่มที่อันตรายที่สุด: <b>ผู้ที่ขาด immunity แบบ T cell เมื่อติดเชื้อนี้ มักเกิดโรค B-cell proliferative ที่คล้ายมะเร็งเม็ด blood ขาวแบบ polyclonal และ lymphoma แทนที่จะเป็น infectious mononucleosis</b> ${S.mu}</li>
+ <li>และ<b>ผู้ชายที่มีความบกพร่องของ T cell แต่กำเนิดมักเกิด X-linked lymphoproliferative disease ที่คุกคามชีวิต</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"cmv",k:"e",t:"Cytomegalovirus and the rest of the family",mm:"CMV · HHV-6/7/8",leg:[],
+notes:()=>`<h3>Cytomegalovirus by the numbers</h3><ul>
+ <li><b>ติดเชื้อในทารกแรกเกิดราว 1% และในผู้ใหญ่อย่างน้อย 50% ถึง 80% เมื่ออายุ 40 ปี</b> ${S.mu}</li>
+ <li>และข้อที่ต้องจำ: <b>มันเป็นสาเหตุไวรัสที่พบบ่อยที่สุดของความพิการแต่กำเนิด</b> ${S.mu}</li>
+ <li>ตัวเลขที่ตามมา: <b>เด็ก 1 ใน 150 คนเกิดมาพร้อม infection นี้ และ 1 ใน 750 คนเกิดมาพร้อมความพิการถาวรหรือจะเกิดความพิการนั้นในภายหลัง</b> ${S.mu}</li>
+ <li>แม้โดยทั่วไป<b>จะให้โรคที่เบาหรือไม่มี symptom ในเด็กและผู้ใหญ่ แต่มันสำคัญเป็นพิเศษในฐานะเชื้อฉวยโอกาสในผู้ที่ถูกกด immunity</b> ${S.mu}</li>
+ <li>เครื่องหมายใต้กล้อง: <b>เซลล์ขนาดใหญ่ที่มี owl's eye inclusion body</b> ${S.mu}</li>
+ <li>โรคที่พบ: <b>โรคฉวยโอกาส, congenital cytomegalovirus, retinitis และกลุ่ม symptom mononucleosis</b> ${S.mu}</li>
+ <li>และ<b>มันกลับเป็นซ้ำจาก monocyte และ stem cell</b> ${S.mu}</li>
+ <li>ทางแพร่หลัก: <b>ทางแต่กำเนิด ทางปาก ทางเพศสัมพันธ์ การให้ blood และการปลูกถ่าย tissue</b> ${S.mu}</li></ul>
+ <h3>HHV-6, HHV-7 and HHV-8</h3><ul>
+ <li><b>HHV-6 และ HHV-7 เป็น lymphotropic และก่อ roseola</b> ${S.mu}</li>
+ <li><b>HHV-8 ก่อ Kaposi sarcoma ซึ่งเป็นโรคที่สัมพันธ์กับ acquired immunodeficiency syndrome</b> ${S.mu}</li>
+ <li>และนอกเหนือจากไวรัสของคน: <b>B virus ของลิงก่อ encephalopathy ที่ถึงตายในคน</b> ${S.mu}</li></ul>
+ <h3>Diagnosis and treatment across the family</h3><ul>
+ <li>การวินิจฉัย: <b>การเพาะเชื้อ, การตรวจทาง immunology เช่น serology ของ Epstein-Barr virus และ PCR กับการวิเคราะห์ genome</b> ${S.mu}</li>
+ <li>การรักษาและป้องกัน: <b>มี vaccine สำหรับ varicella และ zoster และมียาต้านไวรัสสำหรับ herpes simplex virus, varicella-zoster virus และ cytomegalovirus</b> ${S.mu}</li>
+ <li>และสิ่งที่ยาเหล่านั้นอาศัย: <b>herpes simplex virus และ varicella-zoster virus เข้ารหัส thymidine kinase ของตัวเอง ซึ่งเป็นตัวเติม phosphate ตัวแรกให้ยา</b> ${S.mu}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

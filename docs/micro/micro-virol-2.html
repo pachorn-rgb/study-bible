@@ -1,0 +1,517 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Mechanisms of viral pathogenesis</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+<link rel="stylesheet" href="../atlas/micro.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Microbiology · Virology</div>
+    <h1>Mechanisms of viral pathogenesis</h1>
+    <p class="sb-lede">ไวรัสเข้าร่างกายทางไหน ไปถึง target tissue ได้อย่างไร ทำอะไรกับเซลล์ และอาการที่ผู้ป่วยมีมาจากตัวไวรัสหรือมาจากภูมิคุ้มกันของตัวเอง · ตรงกับ B1.5.3 (4) ของเกณฑ์แพทยสภา พ.ศ. 2567 · อ่านจาก Murray บท 37</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 37 Mechanisms of Viral Pathogenesis</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "micro-virol-2", "kind": "patho", "sys": "Microbiology", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ---------------------------------------------------------------------
+   Microbiology drawing helpers.
+   Everything here draws the real thing: membranes have leaflets, walls are
+   woven, cytoplasm has grain. Nothing here draws a captioned box.
+   --------------------------------------------------------------------- */
+
+/* deterministic pseudo-random — same picture on every reload */
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* closed seeded wobble — periodic over 2π so blobs always shut cleanly */
+function mwobC(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return a => amp * (Math.sin(a * 3 + p[0]) * .55 + Math.sin(a * 5 + p[1]) * .3 + Math.sin(a * 7 + p[2]) * .15);
+}
+
+/* open seeded wobble for baselines */
+function mwob(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return t => amp * (Math.sin(t / 47 + p[0]) * .6 + Math.sin(t / 23 + p[1]) * .28 + Math.sin(t / 11 + p[2]) * .12);
+}
+
+/* an organic cell outline — never a perfect ellipse */
+function mblob(cx, cy, rx, ry, seed, wob = .055, n = 72) {
+  const w = mwobC(seed); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * k).toFixed(1) + "," + (cy + Math.sin(a) * ry * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a rod with rounded caps and a living outline */
+function mrod(cx, cy, len, rad, seed, wob = .05, n = 76) {
+  const w = mwobC(seed), h = Math.max(0, len / 2 - rad); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    const x = Math.cos(a), y = Math.sin(a);
+    d += (i ? "L" : "M") + (cx + x * rad * k + (x > 0 ? h : -h)).toFixed(1) + "," + (cy + y * rad * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* grain: the texture that stops a fill looking like plastic */
+function mgrain(x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  const q = rng(seed); let b = "";
+  for (let i = 0; i < n; i++)
+    b += `<circle class="${cls}" cx="${(x + q() * w).toFixed(1)}" cy="${(y + q() * h).toFixed(1)}" r="${(rad * (.45 + q())).toFixed(2)}"/>`;
+  return b;
+}
+
+/* grain clipped to a path — for cytoplasm inside a cell */
+function mgrainIn(id, path, x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  return `<clipPath id="${id}"><path d="${path}"/></clipPath>`
+    + `<g clip-path="url(#${id})">${mgrain(x, y, w, h, n, seed, cls, rad)}</g>`;
+}
+
+/* ---------------------------------------------------------------------
+   Phospholipid bilayer along a baseline yf(x).
+   up/down decide which leaflet the tails point from; this is drawn as
+   heads and tails, never as a coloured band.
+   --------------------------------------------------------------------- */
+function mbil(x0, x1, yf, o = {}) {
+  const h = o.h || 15, step = o.step || 8.2, hr = o.hr || 3.05,
+    core = o.core || "m-core", head = o.head || "m-head", tail = o.tail || "m-tail";
+  const N = Math.max(2, Math.round((x1 - x0) / step));
+  let top = "", bot = "";
+  for (let i = 0; i <= N; i++) { const x = x0 + (x1 - x0) * i / N, y = yf(x); top += (i ? "L" : "M") + x.toFixed(1) + "," + (y - h / 2).toFixed(1); }
+  for (let i = N; i >= 0; i--) { const x = x0 + (x1 - x0) * i / N, y = yf(x); bot += "L" + x.toFixed(1) + "," + (y + h / 2).toFixed(1); }
+  let b = `<path class="${core}" d="${top + bot}Z"/>`;
+  for (let x = x0 + step / 2; x < x1; x += step) {
+    const y = yf(x), ty = y - h / 2 + hr * .92, by = y + h / 2 - hr * .92;
+    b += `<circle class="${head}" cx="${x.toFixed(1)}" cy="${ty.toFixed(1)}" r="${hr}"/>`
+      + `<circle class="${head}" cx="${x.toFixed(1)}" cy="${by.toFixed(1)}" r="${hr}"/>`;
+    const inT = ty + hr * .8, inB = by - hr * .8, mid = (inT + inB) / 2;
+    b += `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   Woven peptidoglycan: glycan strands running across, peptide bridges
+   linking them. rows = how many layers thick.
+   --------------------------------------------------------------------- */
+function mpgl(x0, x1, yf, rows, gap, seed, o = {}) {
+  const w = mwob(seed, o.amp === undefined ? 1.6 : o.amp), q = rng(seed + 11);
+  const strand = (y0, cls) => {
+    let d = ""; for (let x = x0; x <= x1; x += 6) d += (x === x0 ? "M" : "L") + x.toFixed(1) + "," + (yf(x) + y0 + w(x)).toFixed(1);
+    return `<path class="${cls}" d="${d}"/>`;
+  };
+  let b = "";
+  for (let r = 0; r < rows; r++) {
+    const y0 = r * gap;
+    b += strand(y0, r % 2 ? "m-gly2" : "m-gly");
+    if (r < rows - 1) for (let x = x0 + 7 + q() * 9; x < x1 - 5; x += 15 + q() * 11) {
+      const ya = yf(x) + y0 + w(x), yb = yf(x) + y0 + gap + w(x);
+      const dx = (q() - .5) * 5;
+      b += `<path class="m-pep" d="M${x.toFixed(1)},${ya.toFixed(1)} L${(x + dx).toFixed(1)},${yb.toFixed(1)}"/>`;
+    }
+  }
+  return b;
+}
+
+/* teichoic acid: a beaded strand threading out through the wall */
+function mteic(x, yTop, yBot, seed, beads) {
+  const q = rng(seed); let d = `M${x},${yBot}`, b = "";
+  const n = beads || Math.max(3, Math.round((yBot - yTop) / 9));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, y = yBot + (yTop - yBot) * t, xx = x + Math.sin(t * 7 + q() * 2) * 2.4;
+    d += ` L${xx.toFixed(1)},${y.toFixed(1)}`;
+    b += `<circle class="m-teicb" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5"/>`;
+  }
+  return `<path class="m-teic" d="${d}"/>` + b;
+}
+
+/* LPS: core sugars then a waving O-antigen chain of beads */
+function mlps(x, y, seed, len) {
+  const q = rng(seed); let d = `M${x},${y}`, b = "";
+  const n = len || 7;
+  for (let i = 1; i <= n; i++) {
+    const yy = y - i * 6.4, xx = x + Math.sin(i * .9 + q() * 3) * 3.6;
+    d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
+    b += `<circle class="${i <= 2 ? "m-oantib" : "m-oantib"}" cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="${i <= 2 ? 2.1 : 1.6}"/>`;
+  }
+  return `<path class="m-oanti" d="${d}"/>` + b;
+}
+
+/* mycolic acids: very long tails packed shoulder to shoulder */
+function mmyco(x0, x1, yBase, hgt, seed, step) {
+  const q = rng(seed); let b = "";
+  for (let x = x0; x < x1; x += (step || 5.2)) {
+    const k = .8 + q() * .4, h = hgt * k, bend = (q() - .5) * 4;
+    b += `<path class="m-myco" d="M${x.toFixed(1)},${yBase} C${(x + bend).toFixed(1)},${(yBase - h * .45).toFixed(1)} ${(x - bend).toFixed(1)},${(yBase - h * .7).toFixed(1)} ${(x + bend * .6).toFixed(1)},${(yBase - h).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* a label on a thin leader line with a dot at the thing it names */
+function mlead(px, py, tx, ty, s, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start");
+  return `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`
+    + T(tx + (a === "end" ? -5 : 5), ty + 4, s, { a, c: o.c || "s" });
+}
+
+/* plain label, respecting the Labels toggle */
+const mL = (x, y, s, o) => ST.labels ? T(x, y, s, o) : "";
+
+/* a leader line carrying two short lines of text — long labels never fit */
+function mlead2(px, py, tx, ty, lines, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start"), dx = a === "end" ? -5 : 5;
+  let b = `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`;
+  lines.forEach((l, i) => { b += T(tx + dx, ty + 4 + i * 15, l, { a, c: i ? "s m" : (o.c || "bh") }) });
+  return b;
+}
+
+/* a closed, lobed loop — what a relaxed circular chromosome actually looks like */
+function mloop(cx, cy, R, seed, lob = .3, n = 220, sq = .8) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28]; let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2;
+    const k = 1 + lob * (Math.sin(a * 3 + p[0]) * .5 + Math.sin(a * 5 + p[1]) * .32 + Math.sin(a * 8 + p[2]) * .18);
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * R * k).toFixed(1) + "," + (cy + Math.sin(a) * R * sq * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a tailed phage, drawn with its facets, striated sheath and fibres */
+function mphage(cx, cy, s = 1) {
+  const R = 44 * s, hy = cy - 4 * s; let b = "";
+  const V = [...Array(6)].map((_, i) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + Math.cos(a) * R, hy + Math.sin(a) * R] });
+  b += `<path class="m-head" d="M${V.map(v => v[0].toFixed(1) + "," + v[1].toFixed(1)).join(" L")}Z"/>`;
+  [0, 2, 4].forEach(i => { b += `<path class="m-face" d="M${cx},${hy} L${V[i][0].toFixed(1)},${V[i][1].toFixed(1)}"/>` });
+  /* the genome, coiled inside the head */
+  b += `<path class="m-pdna" d="${mloop(cx, hy, R * .42, 9, .34, 120, .9)}"/>`;
+  const ty = hy + R, L = 52 * s, w = 9 * s;
+  b += `<rect class="m-tail" x="${cx - w - 3}" y="${ty - 2}" width="${(w + 3) * 2}" height="${6 * s}" rx="2"/>`
+    + `<rect class="m-tail" x="${cx - w}" y="${ty + 5 * s}" width="${w * 2}" height="${L}" rx="2"/>`;
+  for (let i = 1; i * 7 * s < L; i++) b += `<path class="m-face" d="M${cx - w},${(ty + 5 * s + i * 7 * s).toFixed(1)} L${cx + w},${(ty + 5 * s + i * 7 * s).toFixed(1)}"/>`;
+  const by = ty + 5 * s + L;
+  b += `<rect class="m-tail" x="${cx - w - 6}" y="${by}" width="${(w + 6) * 2}" height="${6 * s}" rx="3"/>`;
+  [-1, 1].forEach(sg => {
+    b += `<path class="m-fib" d="M${cx + sg * (w + 4)},${by + 6 * s} q${sg * 12 * s},${10 * s} ${sg * 8 * s},${24 * s}"/>`
+      + `<path class="m-fib" d="M${cx + sg * (w + 1)},${by + 6 * s} q${sg * 20 * s},${6 * s} ${sg * 24 * s},${18 * s}"/>`;
+  });
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
+
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"Reaching the target tissue",b:"What the virus does to the cell",c:"What the host does back",d:"The shape of the illness"});
+
+/* ===================================================================
+ Mechanisms of viral pathogenesis — Murray ch 37.
+ =================================================================== */
+
+SEC.push({id:"vp-steps",k:"a",t:"The steps of a viral illness",mm:"Steps",leg:[],
+draw:()=>tbl(["Stage","What is happening","What the patient feels"],[
+ ["Incubation period","ไวรัสเพิ่มจำนวนแล้วแต่ยังไปไม่ถึง target tissue หรือยังทำความเสียหายไม่พอ","ไม่มี symptom หรือมี symptom ไม่จำเพาะจาก cytokine คือ prodrome — fever, headache ปวดตัว chills"],
+ ["Prodrome","viremia กำลังดำเนินอยู่","symptom คล้าย fever หวัดใหญ่ มาก่อน symptom จำเพาะของโรค"],
+ ["Symptomatic disease","ความเสียหายของ tissue และผลทั้งระบบ จากทั้งตัวไวรัสและระบบภูมิคุ้มกัน","symptom จำเพาะตามหน้าที่ของ tissue ที่ติดเชื้อ"],
+ ["Convalescence","ร่างกายซ่อมความเสียหาย","symptom อาจยังอยู่ต่อระหว่างนี้"],
+ ["After","สร้าง memory immune response ไว้ป้องกันครั้งหน้า","—"]]),
+notes:()=>`<h3>Why the incubation period is long or short</h3><ul>
+ <li><b>incubation period สั้น เมื่อ primary site of infection เป็น target tissue เองและให้ symptom จำเพาะของโรคเลย</b> ${S.mu}</li>
+ <li><b>incubation period ยาว เมื่อไวรัสต้องแพร่ไปที่อื่นและถูกขยายจำนวนก่อนจะถึง target tissue หรือเมื่อ symptom เกิดจาก immunopathology</b> ${S.mu}</li>
+ <li>และบ่อยครั้ง<b>infection ถูกจัดการจบโดย innate host protection โดยไม่มี symptom ใด ๆ</b> ${S.mu}</li></ul>
+ <h3>Four things decide how bad it will be</h3><ul>
+ <li><b>กลไกการสัมผัสเชื้อและตำแหน่งที่ติดเชื้อ</b> ${S.mu}</li>
+ <li><b>สถานะภูมิคุ้มกัน อายุ และสุขภาพโดยรวมของผู้ป่วย</b> ${S.mu}</li>
+ <li><b>ปริมาณไวรัสที่ได้รับ</b> ${S.mu}</li>
+ <li><b>พันธุกรรมของทั้งไวรัสและ host</b> ${S.mu}</li>
+ <li>แต่เมื่อติดเชื้อแล้ว <b>สถานะและความสมบูรณ์ของภูมิคุ้มกันน่าจะเป็นปัจจัยหลักที่ตัดสินว่าโรคจะคุกคามชีวิต จะจบลงดี หรือจะไม่มี symptom เลย</b> ${S.mu}</li>
+ <li>และความรุนแรงของ symptom สัมพันธ์กับสองอย่าง — <b>หน้าที่ของ target tissue ที่ติดเชื้อ เช่น liver ให้ hepatitis และ brain ให้ encephalitis</b> และ<b>ขนาดของการตอบสนองแบบ immunopathologic ที่ถูกกระตุ้น</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-entry",k:"a",t:"Getting into the body",mm:"Entry",leg:[],
+notes:()=>`<h3>The barriers</h3><ul>
+ <li>ไวรัสเข้าร่างกายได้สองทาง — <b>ผ่านรอยแยกของ skin คือบาดแผล รอยกัดและการฉีด</b> หรือ<b>ข้าม mucoepithelial membrane ที่บุช่องเปิดของร่างกาย คือตา respiratory tract ปาก อวัยวะเพศ และ gastrointestinal tract</b> ${S.mu}</li>
+ <li><b>Skin เป็นด่านกั้น infection ที่ดีเยี่ยม</b> ${S.mu}</li>
+ <li>ส่วนช่องเปิดถูกป้องกันด้วย <b>น้ำตา มูก ciliated epithelium กรดในกระเพาะ น้ำดี และ IgA</b> ${S.mu}</li>
+ <li>ข้อที่ใช้ตอบคำถามระบาดวิทยาได้: <b>การสูดเข้าไปน่าจะเป็นทางติดเชื้อไวรัสที่พบบ่อยที่สุด</b> ${S.mu}</li></ul>
+ <h3>The primary site</h3><ul>
+ <li>เมื่อเข้ามาแล้ว <b>ไวรัสเพิ่มจำนวนในเซลล์ที่แสดง receptor ของมันและมีเครื่องจักรชีวสังเคราะห์ที่เหมาะสม</b> ${S.mu}</li>
+ <li><b>ไวรัสหลายตัวเริ่ม infection ที่ oral mucosa หรือ upper respiratory tract</b> ${S.mu}</li>
+ <li>และ<b>อาจมี symptom ของโรคที่ primary site นั้นพร้อมกับที่ไวรัสเพิ่มจำนวน</b> ${S.mu}</li>
+ <li>จากนั้นมีสามทางเลือก — <b>เพิ่มจำนวนแล้วอยู่ที่เดิม, กระจายไป tissue อื่นทาง bloodstream หรือใน mononuclear phagocyte กับ lymphocyte หรือกระจายไปตาม neuron</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-spread",k:"a",t:"Viremia and the four roads to the brain",mm:"Spread",leg:[],
+draw:()=>tbl(["Route into the central nervous system","Example or mechanism"],[
+ ["จาก bloodstream","arboencephalitis virus"],
+ ["จาก meninges ที่ติดเชื้อ หรือจาก cerebrospinal fluid","meninges เข้าถึงได้ง่ายสำหรับไวรัสหลายตัวที่แพร่ทาง viremia"],
+ ["โดยการเคลื่อนที่ของ macrophage ที่ติดเชื้อ","ไวรัสเดินทางอยู่ในเซลล์ จึงพ้น antibody ใน blood"],
+ ["โดย infection ที่ peripheral neuron และ sensory neuron รวมถึง olfactory neuron","เส้นทางของ rabies และ herpes simplex virus"]]),
+notes:()=>`<h3>Blood and lymph are the highways</h3><ul>
+ <li><b>bloodstream และระบบ lymph เป็นทางหลักของการเคลื่อนย้ายไวรัสในร่างกาย</b> ${S.mu}</li>
+ <li>ไวรัสเข้าถึงมันได้สามทาง — <b>หลังจาก tissue เสียหาย, เมื่อถูก macrophage กลืน หรือเมื่อถูกขนผ่าน mucoepithelial cell ของ oropharynx, gastrointestinal tract, ช่องคลอดหรือทวารหนัก</b> ${S.mu}</li>
+ <li>กลไกที่จำเพาะกว่านั้น: <b>enteric virus หลายตัวคือ picornavirus และ reovirus จับ receptor บน M cell ซึ่งขนไวรัสข้ามไปยัง Peyer patch ที่อยู่ใต้ลงไป</b> ${S.mu}</li></ul>
+ <h3>Primary and secondary viremia</h3><ul>
+ <li><b>Viremia คือการเคลื่อนย้ายไวรัสใน blood</b> · ไวรัส<b>อาจอยู่อิสระใน plasma หรือเกาะอยู่กับ lymphocyte และ macrophage</b> ${S.mu}</li>
+ <li>ไวรัสที่ถูก phagocytic macrophage กลืนไปมีสามชะตา — <b>ถูกทำให้หมดฤทธิ์, เพิ่มจำนวน หรือถูกส่งต่อไปยัง tissue อื่น</b> ${S.mu}</li>
+ <li>จุดที่ขยาย infection: <b>การเพิ่มจำนวนใน macrophage, ใน endothelium ที่บุ blood vessel, ใน lung หรือใน liver ขยาย infection และเริ่ม secondary viremia</b> ${S.mu}</li>
+ <li>และลำดับที่พบบ่อย: <b>secondary viremia มาก่อนการส่งไวรัสไปถึง target tissue เช่น liver, brain หรือ skin และก่อนที่ symptom จำเพาะจะปรากฏ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-celltypes",k:"b",t:"Five kinds of infection at the cell level",mm:"Infection types",leg:[],
+draw:()=>tbl(["Type","Virus produced?","Fate of the cell"],[
+ ["Abortive","—","ไม่มีผลต่อเซลล์"],
+ ["Cytolytic","+","เซลล์ตาย"],
+ ["Persistent · productive","+","senescence"],
+ ["Persistent · latent","—","ไม่มีผลต่อเซลล์"],
+ ["Transforming — DNA virus","—","immortalization"],
+ ["Transforming — retrovirus","+","immortalization"]]),
+notes:()=>`<h3>Thinking like a parasite</h3><ul>
+ <li><b>Persistent infection เกิดในเซลล์ที่ติดเชื้อแต่ไม่ถูกไวรัสฆ่า</b> ${S.mu}</li>
+ <li>ไวรัสบางตัวให้ <b>persistent productive infection เพราะถูกปล่อยออกอย่างนุ่มนวลด้วย exocytosis หรือด้วย budding จาก plasma membrane</b> ซึ่งเป็นแบบที่ enveloped virus หลายตัวใช้ ${S.mu}</li>
+ <li>เหตุผลเชิงวิวัฒนาการ: <b>ไวรัสไม่ต้องการฆ่าเซลล์ เพราะยิ่งเซลล์อยู่นาน ไวรัสยิ่งอยู่ในร่างกายได้นาน และยิ่งผลิตไวรัสออกมามากเพื่อแพร่ไปเซลล์อื่นหรือคนอื่น</b> ${S.mu}</li></ul>
+ <h3>Latency</h3><ul>
+ <li><b>Latent infection เกิดได้เมื่อ DNA virus ติดเชื้อในเซลล์ที่จำกัดหรือไม่มีเครื่องจักรสำหรับถอดรหัสยีนของไวรัสทั้งหมด</b> ${S.mu}</li>
+ <li>หรืออีกทาง: <b>ไวรัสเข้ารหัสหน้าที่ที่กดการเพิ่มจำนวนของตัวเอง เพื่อยืดการเป็นปรสิตออกไป</b> เช่นที่ cytomegalovirus ทำ ${S.mu}</li>
+ <li><b>Transcription factor ที่ไวรัสเช่นนั้นต้องการ อาจแสดงออกเฉพาะใน tissue บางชนิด, ในเซลล์ที่กำลังแบ่งตัวแต่ไม่ใช่เซลล์ที่พัก หรือหลังการเหนี่ยวนำด้วยฮอร์โมนหรือ cytokine</b> ${S.mu}</li>
+ <li>ตัวอย่างที่ชัดที่สุด: <b>herpes simplex virus ตั้ง latent infection ใน neuron ซึ่งไม่แสดง nuclear factor ที่ต้องใช้ถอดรหัส immediate early gene ของไวรัส</b> ${S.mu}</li>
+ <li>และ<b>ความเครียดกับสิ่งกระตุ้นอื่นปลุกเซลล์เหล่านั้นจนไวรัสเพิ่มจำนวนได้</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-cpe",k:"b",t:"How the virus damages the cell, and the inclusion body that names it",mm:"Cytopathogenesis",leg:[],
+draw:()=>tbl(["Mechanism","Examples"],[
+ ["ยับยั้งการสร้างโปรตีนของเซลล์","poliovirus · herpes simplex virus · togavirus · poxvirus"],
+ ["ยับยั้งและย่อย DNA ของเซลล์","herpesvirus"],
+ ["เปลี่ยนโครงสร้างของ cell membrane","enveloped virus"],
+ ["แทรก viral glycoprotein เข้าไปใน cell membrane","enveloped virus ทุกตัว"],
+ ["สร้าง syncytium","herpes simplex virus · varicella-zoster virus · paramyxovirus · human immunodeficiency virus"],
+ ["รบกวน cytoskeleton","nonenveloped virus โดยการสะสม · herpes simplex virus"],
+ ["เปลี่ยน permeability","togavirus · herpesvirus"],
+ ["ความเป็นพิษของส่วนประกอบของ virion เอง","fiber ของ adenovirus · โปรตีน NSP4 ของ reovirus"]]),
+notes:()=>`<h3>Inclusion bodies</h3><ul>
+ <li><b>Negri body ใน cytoplasm</b> — rabies ${S.mu}</li>
+ <li><b>Intranuclear basophilic คือ owl's eye</b> — cytomegalovirus ซึ่งทำให้เซลล์โตขึ้นด้วย และ adenovirus ${S.mu}</li>
+ <li><b>Cowdry type A ใน nucleus</b> — herpes simplex virus และ subacute sclerosing panencephalitis จาก measles virus ${S.mu}</li>
+ <li><b>Intracytoplasmic acidophilic</b> — poxvirus ${S.mu}</li>
+ <li><b>Perinuclear cytoplasmic acidophilic</b> — reovirus ${S.mu}</li>
+ <li>สิ่งที่ inclusion body เป็นจริง ๆ: <b>มันอาจเกิดจากการที่ไวรัสเปลี่ยนโครงสร้างของ membrane หรือของโครโมโซม หรืออาจเป็นจุดที่ไวรัสเพิ่มจำนวน หรือเป็นกองสะสมของ viral capsid</b> ${S.mu}</li>
+ <li>และเหตุผลที่มันมีค่าทางห้องปฏิบัติการ: <b>ลักษณะและตำแหน่งของ inclusion body เป็นเอกลักษณ์ของ infection ไวรัสแต่ละชนิด</b> ${S.mu}</li>
+ <li>infection ไวรัสยังทำให้เกิด<b>vacuolization, เซลล์กลมขึ้น และการเปลี่ยนแปลงทาง histology ที่ไม่จำเพาะอื่น ๆ ซึ่งเป็นลักษณะของเซลล์ที่ป่วย</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-onco",k:"b",t:"Viruses that immortalise the cell",mm:"Oncogenesis",leg:[],
+notes:()=>`<h3>What a transformed cell looks like</h3><ul>
+ <li><b>DNA virus บางตัวและ retrovirus ตั้ง persistent infection ที่ยังกระตุ้นการเติบโตของเซลล์อย่างควบคุมไม่ได้ด้วย จึงเกิด transformation หรือ immortalization</b> ${S.mu}</li>
+ <li>ลักษณะของเซลล์ที่ถูก transform: <b>โตต่อเนื่องโดยไม่เข้า senescence, morphology และ metabolism เปลี่ยน, อัตราการโตและการขนส่งน้ำตาลเพิ่มขึ้น, สูญเสีย contact inhibition และโตในสารแขวนลอยหรือกองซ้อนกันเป็น focus บน semisolid agar ได้</b> ${S.mu}</li></ul>
+ <h3>Four ways to immortalise</h3><ul>
+ <li><b>กระตุ้นหรือจัดหายีนที่กระตุ้นการเติบโต</b> ${S.mu}</li>
+ <li><b>ถอดกลไกเบรกที่จำกัดการสร้าง DNA และการเติบโตของเซลล์ออก</b> ${S.mu}</li>
+ <li><b>ป้องกัน apoptosis</b> ${S.mu}</li>
+ <li><b>จัดหาหรือเหนี่ยวนำ cytokine ที่กระตุ้นการเติบโต</b> ${S.mu}</li>
+ <li>เงื่อนไขของ DNA virus: <b>มัน immortalize ได้ใน semipermissive cell ซึ่งแสดงยีนของไวรัสเพียงบางตัวและไม่ผลิตไวรัสออกมา</b> ${S.mu}</li>
+ <li>เหตุผลที่ต้องเป็นอย่างนั้น: <b>การสร้าง viral DNA, late messenger RNA, late protein หรือตัวไวรัส นำไปสู่การตายของเซลล์ ซึ่งตัดโอกาส immortalization ทิ้ง</b> ${S.mu}</li>
+ <li><b>Oncogenic DNA virus หลายตัวแทรกตัวเข้าไปในโครโมโซมของ host</b> ${S.mu}</li>
+ <li>ตัวเลขที่ต้องจำ: <b>ราว 15% ของมะเร็งในคนเกี่ยวข้องกับ oncogenic virus</b> — <b>HTLV-1, hepatitis B virus, hepatitis C virus, high-risk papillomavirus, human herpesvirus 8 และ Epstein-Barr virus</b> ${S.mu}</li>
+ <li>และกลไกที่เชื่อมไปถึงมะเร็งจริง: <b>เซลล์ที่ถูก immortalize มีโอกาสสะสม mutation และการจัดเรียงโครโมโซมใหม่มากกว่าเซลล์ปกติ ซึ่งผลักให้กลายเป็นเซลล์มะเร็ง</b> ${S.mu}</li>
+ <li>และมัน<b>อาจไวต่อ cofactor และ tumor promoter อย่าง phorbol ester กับ butyrate มากขึ้นด้วย</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-defense",k:"c",t:"The host response, and why it differs from the response to bacteria",mm:"Host defence",leg:[],
+notes:()=>`<h3>Three goals</h3><ul>
+ <li>เป้าหมายของการตอบสนองทั้ง innate และ immune ต่อไวรัสมีสามข้อ — <b>กันการเข้า, กันการแพร่ และกำจัดทั้งไวรัสและเซลล์ที่เก็บหรือเพิ่มจำนวนไวรัสอยู่</b> ${S.mu}</li>
+ <li><b>การตอบสนองทางภูมิคุ้มกันเป็นวิธีที่ดีที่สุด และในกรณีส่วนใหญ่เป็นวิธีเดียว ที่ควบคุม infection ไวรัสได้</b> ${S.mu}</li>
+ <li>ข้อสังเกตเชิงวิวัฒนาการ: <b>interferon และการตอบสนองของ cytotoxic T cell อาจวิวัฒน์ขึ้นมาเพื่อเป็นกลไกต้านไวรัสเป็นหลัก</b> ${S.mu}</li>
+ <li>หลักที่ใช้ทำนายความรุนแรง: <b>ยิ่งไวรัสเพิ่มจำนวนในร่างกายนาน infection ยิ่งกระจาย การตอบสนองที่ต้องใช้ควบคุมยิ่งรุนแรง และโอกาสเกิด immunopathogenesis ยิ่งสูง</b> ${S.mu}</li></ul>
+ <h3>Why the first symptoms feel like flu, not like infection</h3><ul>
+ <li>หลังไวรัสผ่านด่านธรรมชาติ มัน<b>กระตุ้น innate host defense คือ fever, interferon, macrophage, dendritic cell และ natural killer cell</b> ${S.mu}</li>
+ <li>ความต่างจากแบคทีเรียที่สำคัญ: <b>innate response ต่อไวรัสถูกกระตุ้นโดยเซลล์ที่ติดเชื้อหรือถูกกระตุ้นให้ต่อต้านเซลล์ที่ติดเชื้อ</b> ${S.mu}</li>
+ <li>และ<b>การตอบสนองแรกมาจาก interferon กับ cytokine ซึ่งให้ symptom คล้าย fever หวัดใหญ่ มากกว่าจะเป็น inflammation ที่อาศัย complement กับ neutrophil</b> ${S.mu}</li>
+ <li>สิ่งที่จุดชนวน interferon: <b>double-stranded RNA ซึ่งเป็นตัวกลางของการเพิ่มจำนวนของ RNA virus, DNA และ single-stranded RNA บางรูป และ viral glycoprotein บางตัว</b> ${S.mu}</li>
+ <li>ผ่านทาง<b>receptor ใน cytoplasm หรือ Toll-like receptor ใน endosome</b> ${S.mu}</li>
+ <li>และผลที่สำคัญที่สุด: <b>innate response กัน infection ไวรัสส่วนใหญ่ไม่ให้กลายเป็นโรค</b> ${S.mu}</li></ul>
+ <h3>Antibody or T cell — which one matters</h3><ul>
+ <li><b>การตอบสนองแบบจำเพาะต่อแอนติเจนใช้เวลาหลายวันจึงถูกกระตุ้นและได้ผล</b> ${S.mu}</li>
+ <li><b>antibody ได้ผลต่อไวรัสนอกเซลล์ และอาจพอควบคุม cytolytic virus ได้ เพราะการเพิ่มจำนวนของไวรัสจะทำลายโรงงานคือเซลล์ที่ติดเชื้อไปเอง</b> ${S.mu}</li>
+ <li><b>antibody จำเป็นต่อการกันการแพร่ไปยัง target tissue ทาง viremia</b> ${S.mu}</li>
+ <li><b>Cell-mediated immunity จำเป็นต่อการสลายเซลล์ที่ติดเชื้อไวรัสที่ไม่ทำให้เซลล์แตก เช่น hepatitis A virus และต่อ infection จาก enveloped virus</b> ${S.mu}</li>
+ <li>สิ่งที่ภูมิคุ้มกันเดิมทำได้และทำไม่ได้: <b>ภูมิคุ้มกันเดิมอาจไม่กันระยะแรกของ infection แต่ส่วนใหญ่กันไม่ให้โรคดำเนินต่อ</b> ${S.mu}</li>
+ <li>แบ่งหน้าที่กันชัด: <b>cell-mediated response จำกัดการแพร่เฉพาะที่ได้ดีกว่า ส่วน serum antibody กันการแพร่ทาง viremia ไปยัง target tissue จึงกันภาพโรคที่เป็นเอกลักษณ์ไม่ให้เกิด</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-escape",k:"c",t:"How viruses escape the immune response",mm:"Immune escape",leg:[],
+draw:()=>tbl(["Strategy","Who does it"],[
+ ["กันไม่ให้ interferon ออกฤทธิ์","herpes simplex virus — กันผลของ antiviral state ที่ IFN-α และ IFN-β เหนี่ยวนำ จึงสร้างโปรตีนและเพิ่มจำนวนต่อได้"],
+ ["เปลี่ยนแอนติเจนของตัวเอง","influenza ด้วย antigenic shift และ drift ข้ามหลายปี · human immunodeficiency virus ภายในช่วงชีวิตของผู้ติดเชื้อคนเดียว"],
+ ["แพร่จากเซลล์สู่เซลล์เพื่อหนี antibody","ไวรัสที่สร้าง syncytium"],
+ ["กดการนำเสนอแอนติเจนและการทำงานของ lymphocyte","cytomegalovirus และ adenovirus ยับยั้งการแสดงออกของ major histocompatibility complex I จึงกัน T cell ไม่ให้ฆ่าเซลล์ที่ติดเชื้อ"]]),
+notes:()=>`<h3>Who escapes, and what it costs the patient</h3><ul>
+ <li><b>ไวรัสหลายตัว โดยเฉพาะไวรัสขนาดใหญ่ มีวิธีหนีการควบคุมของภูมิคุ้มกันอย่างน้อยหนึ่งด้าน</b> ${S.mu}</li>
+ <li>และผลเมื่อหนีสำเร็จ: <b>การที่แก้ infection ไม่สำเร็จนำไปสู่ persistent infection, โรคเรื้อรัง หรือการตายของผู้ป่วย</b> ${S.mu}</li>
+ <li>กลุ่มที่ติดเชื้อเรื้อรังได้: <b>DNA virus ทุกวงศ์ยกเว้น parvovirus กับ poxvirus และ retrovirus ก่อ latent infection ที่กลับเป็นซ้ำได้</b> ${S.mu}</li>
+ <li>และ<b>cytomegalovirus กับ herpesvirus ตัวอื่น, hepatitis B, C, G และ D และ retrovirus ก่อ chronic productive infection</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-immunopath",k:"c",t:"When the immune response is the disease",mm:"Immunopathology",leg:[],
+draw:()=>tbl(["Immunopathogenesis","Mediator","Examples"],[
+ ["symptom คล้าย fever หวัดใหญ่","interferon · cytokine","respiratory virus · arbovirus — คือไวรัสที่ทำให้เกิด viremia"],
+ ["Type IV hypersensitivity และ inflammation","T cell · macrophage · polymorphonuclear leukocyte","enveloped virus"],
+ ["Immune complex disease","antibody กับ complement","hepatitis B virus — immune complex มักไปสะสมที่ kidney และทำให้เกิด glomerulonephritis"],
+ ["การตอบสนองที่แรงเกินเมื่อเจอไวรัสครั้งที่สอง","T cell และ antibody ที่จำเพาะ","dengue hemorrhagic fever · atypical measles"]]),
+notes:()=>`<h3>The early response already causes symptoms</h3><ul>
+ <li><b>ปฏิกิริยา hypersensitivity และ inflammation ที่ภูมิคุ้มกันต้านไวรัสจุดชนวน อาจเป็นสาเหตุหลักของพยาธิสภาพและ symptom ของโรคไวรัส</b> ${S.mu}</li>
+ <li><b>interferon และ cytokine กระตุ้น symptom ทั้งระบบคล้าย fever หวัดใหญ่ คือ fever, malaise และ headache</b> ซึ่งมักพบใน infection ไวรัส respiratory tract และในภาวะ viremia ${S.mu}</li>
+ <li>และ<b>symptom เหล่านี้ในระยะ viremia มักมาก่อน symptom จำเพาะของโรค คือเป็น prodrome</b> ${S.mu}</li>
+ <li>กรณีที่เลวร้ายกว่า: <b>infection ไวรัสบางชนิดเหนี่ยวนำการตอบสนองของ cytokine ที่ใหญ่มาก คือ cytokine storm</b> ${S.mu}</li>
+ <li>ซึ่ง<b>ทำให้การตอบสนองทางภูมิคุ้มกันเสียการควบคุม และอาจจุดชนวนโรค autoimmune ในผู้ที่มีพันธุกรรมโน้มเอียง</b> ${S.mu}</li>
+ <li>ต่อมาจึงเกิด<b>immune complex กับการกระตุ้น complement ทาง classic pathway, type IV hypersensitivity ที่ CD4 T cell เหนี่ยวนำ และการทำงานของ CD8 cytolytic T cell</b> ซึ่ง<b>มักดึง neutrophil เข้ามาและทำให้เซลล์เสียหายเพิ่ม</b> ${S.mu}</li></ul>
+ <h3>Why enveloped viruses hurt more</h3><ul>
+ <li><b>inflammation ที่ cell-mediated immunity จุดชนวนควบคุมยากและทำลาย tissue</b> ${S.mu}</li>
+ <li>และ<b>infection จาก enveloped virus เหนี่ยวนำ cell-mediated response ที่มักให้ภาวะ immunopathologic ที่กว้างกว่า</b> ${S.mu}</li>
+ <li>ตัวอย่างที่ชี้ชัด: <b>symptom คลาสสิกของ measles, mumps และ hepatitis virus เกิดจาก inflammation ที่ T cell เหนี่ยวนำเป็นหลัก ไม่ใช่จากฤทธิ์ทำลายเซลล์ของไวรัสเอง</b> ${S.mu}</li>
+ <li>และ<b>ปริมาณแอนติเจนกับ antibody ที่มากใน blood ระหว่าง viremia หรือ infection เรื้อรัง จุดชนวนปฏิกิริยา type III immune complex hypersensitivity</b> ${S.mu}</li></ul>
+ <h3>The second exposure problem</h3><ul>
+ <li><b>ใน dengue การมีภูมิคุ้มกันบางส่วนต่อไวรัสที่ใกล้เคียง และใน measles การมีภูมิคุ้มกันต่อไวรัสที่ถูกทำให้หมดฤทธิ์ ทำให้การตอบสนองและโรครุนแรงขึ้นเมื่อเจอไวรัสที่ใกล้เคียงหรือไวรัสจริงครั้งถัดไป</b> ${S.mu}</li>
+ <li>กลไก: <b>การตอบสนองของ T cell และ antibody ที่จำเพาะถูกเร่ง จึงก่อความเสียหายจาก inflammation และ hypersensitivity อย่างมีนัยสำคัญต่อ endothelial cell ที่ติดเชื้อ ซึ่งคือ dengue hemorrhagic fever หรือต่อ skin และ lung ซึ่งคือ atypical measles</b> ${S.mu}</li>
+ <li>และกลไกที่สอง: <b>antibody ที่ลบล้างฤทธิ์ไม่ได้ ช่วยพา dengue virus และ yellow fever virus เข้า macrophage ผ่าน Fc receptor ซึ่งเป็นที่ที่มันเพิ่มจำนวนได้</b> ${S.mu}</li>
+ <li>ข้อที่อธิบายว่าทำไมเด็ก symptom เบากว่า: <b>เด็กโดยทั่วไปมี cell-mediated response เช่น natural killer cell และ natural killer T cell ที่แอคทีฟน้อยกว่าผู้ใหญ่ จึงมักมี symptom เบากว่าใน measles, mumps, Epstein-Barr และ varicella-zoster</b> ${S.mu}</li>
+ <li>แต่ด้านกลับของเหรียญเดียวกัน: <b>ใน hepatitis B virus การมี symptom น้อยหรือไม่มี symptom สัมพันธ์กับการที่แก้ infection ไม่ได้ จึงกลายเป็นโรคเรื้อรัง</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"vp-determinants",k:"d",t:"What decides whether there is a disease at all",mm:"Determinants",leg:[],
+draw:()=>tbl(["Determinant","What it covers"],[
+ ["Nature of the disease","target tissue · portal of entry · การเข้าถึง target tissue"],
+ ["Access of virus to target tissue","ความคงทนของไวรัสในร่างกาย: อุณหภูมิ, กรดและน้ำดีของ gastrointestinal tract · ความสามารถข้าม skin หรือ mucosal epithelium · ความสามารถตั้ง viremia · ความสามารถแพร่ผ่าน reticuloendothelial system"],
+ ["Target tissue","ความจำเพาะของ viral attachment protein · การแสดงออกของ receptor ที่จำเพาะต่อ tissue"],
+ ["Cytopathologic activity","ประสิทธิภาพการเพิ่มจำนวนในเซลล์ · อุณหภูมิที่เหมาะต่อการเพิ่มจำนวน · ความยอมให้ของเซลล์ · โปรตีนที่เป็นพิษ · การยับยั้งการสร้างสารโมเลกุลใหญ่ของเซลล์ · การสะสมเป็น inclusion body · metabolism ของเซลล์ที่เปลี่ยนไป เช่น immortalization"],
+ ["Host protective responses","interferon และ cytokine · natural killer cell และ macrophage · T cell และ antibody · กลไกหนีภูมิคุ้มกันของไวรัส"],
+ ["Immunopathology","symptom คล้าย fever หวัดใหญ่ · การฆ่าเซลล์และ inflammation จาก T cell · complement, antibody-dependent cellular cytotoxicity และ immune complex"]]),
+notes:()=>`<h3>Inapparent infection</h3><ul>
+ <li>ผลสุดท้ายของทั้งหมดนี้อาจเป็น infection ที่ไม่ปรากฏ symptom ซึ่งเกิดได้เมื่อ<b>tissue ที่ติดเชื้อไม่จำเป็นต่อร่างกาย, ไวรัสถูกควบคุมก่อนจะถึง target tissue หรือ infection ถูกแก้โดย innate response ก่อนที่จะเกิดความเสียหายพอให้มี symptom</b> ${S.mu}</li>
+ <li>และข้อที่ทำให้เรื่องนี้สำคัญทางระบาดวิทยา: <b>คนที่ไม่มี symptom ยังแพร่เชื้อต่อได้</b> ${S.mu}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

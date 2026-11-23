@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-4",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "DNA viruses: papilloma, polyoma, adeno, parvo and pox",
+ "h1": "DNA viruses: papilloma, polyoma, adeno, parvo and pox",
+ "lede": "ไวรัส DNA ที่ไม่ใช่ herpes — HPV ที่ผูกวงจรตัวเองเข้ากับการแก่ของ keratinocyte และกลายเป็นมะเร็งเมื่อ genome แตกตรงที่ผิดจุด, JC virus ที่รออยู่จนภูมิคุ้มกันตก, adenovirus ที่มี fiber เป็นทั้งตัวเกาะและตัวพิษ, parvovirus B19 ที่ต้องการเซลล์ที่กำลังแบ่งตัว และ poxvirus ที่ใหญ่จนไม่ต้องพึ่ง nucleus · อ่านจาก Murray บท 41, 42, 44 และ 45",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 41 Papillomaviruses and Polyomaviruses, Ch 42 Adenoviruses, Ch 44 Poxviruses และ Ch 45 Parvoviruses"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "DNA viruses: papilloma, polyoma, adeno, parvo and pox",
+  "src": "Murray 9e Ch 41, 42, 44, 45",
+  "desc": "HPV ที่เข้าทางรอยแตกของผิวไปถึง basal layer แล้วปล่อยไวรัสออกมาพร้อมเซลล์ที่ตายแล้ว, koilocyte, E6 กับ E7 ที่จับ p53 และ p105RB, เหตุที่การแทรก genome เข้าโครโมโซมทำให้ E6 กับ E7 หลุดการควบคุม, วัคซีน HPV เก้าสายพันธุ์, JC virus กับ progressive multifocal leukoencephalopathy และ BK virus กับไต, adenovirus ที่ fiber เป็นทั้ง viral attachment protein และสารพิษต่อเซลล์, parvovirus B19 ที่ต้องการ erythroid precursor จึงเกิด aplastic crisis กับ hydrops fetalis และโรคสองระยะที่ระยะหลังเกิดจาก immune complex, poxvirus ที่เพิ่มจำนวนใน cytoplasm ล้วนและ smallpox ที่ตุ่มขึ้นพร้อมกันทีเดียว",
+  "ch": "Murray Ch 41, 42, 44, 45",
+  "sort": 16,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

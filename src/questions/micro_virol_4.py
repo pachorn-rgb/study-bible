@@ -1,0 +1,28 @@
+M = "micro-virol-4"
+SUB = "Virology"
+T = {
+"hpv-struct": [
+ ("The viral attachment protein of human papillomavirus is:",["L1","L2","E6","E7"],0,"Antibody against it neutralises the virus, which is the basis of the vaccine."),
+ ("Late genes of human papillomavirus are expressed only in the:",["Terminally differentiated upper epithelial layer","Basal cell layer, where the virus first enters","Dermis, beneath the epithelial basement membrane","Stratum spinosum, midway through the epidermis"],0,"The virus assembles in the nucleus there and is shed with the dead surface cells."),
+ ("Why is the replication cycle of human papillomavirus tied to keratinocyte differentiation?",["Different layers express different nuclear factors that switch viral genes on","The virus can only enter cells that are fully differentiated","Only the superficial cells of the epithelium carry the receptor","The viral DNA polymerase works only at the epithelial surface"],0,"Viral gene expression tracks keratin expression, so the programme of the cell dictates the programme of the virus.",3)],
+"hpv-dis": [
+ ("A koilocyte is:",["An enlarged keratinocyte with a clear halo around a shrunken nucleus","A multinucleated giant cell formed by fusion of keratinocytes","An epithelial cell containing a basophilic owl's eye inclusion","A basal cell showing abundant abnormal mitotic figures"],0,"It is characteristic of papillomavirus infection."),
+ ("Which two human papillomavirus types account for about 70% of cervical carcinomas?",["HPV-16 and HPV-18","HPV-6 and HPV-11","HPV-1 and HPV-2","HPV-31 and HPV-33"],0,"Types 6 and 11 cause laryngeal papillomas acquired through an infected birth canal."),
+ ("Integration of the human papillomavirus genome promotes carcinogenesis because the break occurs in E1 or E2, which:",["Inactivates them and leaves E6 and E7 unregulated","Destroys the genes encoding the capsid proteins","Prevents the virus from entering the host cell","Removes the origin of replication and nothing else"],0,"The virus can no longer replicate, but the oncogenes keep being expressed.",3)],
+"polyoma": [
+ ("The polyomavirus T antigen promotes cell growth by binding:",["Both p105RB and p53","Only p53 and nothing else","Only p105RB and nothing else","Telomerase in the host nucleus"],0,"High-risk papillomaviruses split the same job between E6 and E7."),
+ ("Progressive multifocal leukoencephalopathy is caused by:",["JC virus","BK virus","SV40","Merkel cell polyomavirus"],0,"BK virus is associated with renal disease in the immunosuppressed."),
+ ("In progressive multifocal leukoencephalopathy the demyelination occurs because the virus:",["Kills oligodendrocytes","Kills astrocytes outright","Destroys neuronal cell bodies","Blocks the blood-brain barrier"],0,"It partially transforms astrocytes at the same time, which is why the lesions contain unusually large astrocytes.",3)],
+"adeno": [
+ ("Which part of the adenovirus virion carries the viral attachment protein?",["The fiber","The hexon","The terminal protein","The core protein"],0,"The penton base and fiber are also toxic to cells."),
+ ("The receptor used by most adenoviruses is shared with:",["Coxsackievirus B","Poliovirus, which uses CD155","Influenza A, which uses sialic acid","Rhinovirus, which uses ICAM-1"],0,"Hence its name, the coxsackie adenovirus receptor."),
+ ("Study of the adenovirus hexon gene led directly to the discovery of:",["Introns and messenger RNA splicing","Reverse transcriptase in tumour viruses","The triplet nature of the genetic code","Restriction enzymes in bacterial cells"],0,"That is one reason this virus has been used so heavily as a model system, and now as a gene-therapy vector.",2)],
+"parvo": [
+ ("Parvovirus B19 must replicate in:",["Erythroid precursor cells","Hepatocytes","Respiratory epithelium","Lymphocytes"],0,"Its tiny genome depends on a growing cell to supply the machinery."),
+ ("The rash and arthralgia of erythema infectiosum coincide with:",["Appearance of specific antibody and immune complexes","Peak viremia in the first days of the illness","The prodrome, before any rash has appeared","Reticulocytopenia in the peripheral blood film"],0,"The second stage of the illness is immune mediated, not directly cytopathic."),
+ ("A child with sickle cell anaemia becomes severely anaemic after a viral illness. The mechanism combining with B19 infection is:",["A shortened erythrocyte lifespan from the underlying anaemia","Fibrosis of the marrow cavity caused by the virus","Autoimmune haemolysis of circulating mature red cells","Iron deficiency arising from chronic occult blood loss"],0,"Depletion of red cell precursors is tolerated in a normal host but not when the cells already turn over fast.",3)],
+"pox": [
+ ("Poxviruses can replicate entirely in the cytoplasm because they encode:",["Their own DNA-dependent RNA and DNA polymerases","A reverse transcriptase carried in the virion","A nuclear localisation signal on the capsid","An integrase that works on host DNA"],0,"Every other DNA virus of medical importance must reach the nucleus."),
+ ("Which feature distinguishes the rash of smallpox?",["All vesicles appear at the same time","Vesicles appear in successive crops","The rash spares the palms and soles","The rash is maculopapular only"],0,"Varicella, by contrast, produces lesions of different ages together."),
+ ("Uncoating of poxvirus happens in two stages because:",["Virion enzymes must first make messenger RNA for an uncoating enzyme","The envelope is far too thick to be removed in a single step","The genome is circular and has to be linearised beforehand","The capsid is helical and can only unwind gradually"],0,"The partially uncoated subviral particle makes the enzyme that then releases the DNA core.",3)],
+}

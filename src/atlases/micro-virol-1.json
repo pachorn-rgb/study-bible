@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-1",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "Viral classification, structure and replication",
+ "h1": "Viral classification, structure and replication",
+ "lede": "ไวรัสจำแนกด้วยอะไร, virion ประกอบด้วยอะไร และวงจรการเพิ่มจำนวนเดินเป็นขั้นอย่างไร — naked capsid กับ enveloped ต่างกันตรงไหนและความต่างนั้นเปลี่ยนวิธีแพร่เชื้ออย่างไร · ตรงกับ B1.5.3 (1)–(3) ของเกณฑ์แพทยสภา พ.ศ. 2567 · อ่านจาก Murray บท 36",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 36 Viral Classification, Structure, and Replication"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "Viral classification, structure and replication",
+  "src": "Murray 9e Ch 36",
+  "desc": "ชื่อของไวรัสมาจากไหน, เจ็ด DNA family กับสิบสาม RNA family, ขนาดของ virion จาก parvovirus ถึง poxvirus, รูปแบบของ genome ทั้งหมดที่เป็นไปได้, การประกอบ capsid จาก protomer ถึง capsomere, icosahedron กับ helical nucleocapsid, naked capsid เทียบ enveloped ทั้งคุณสมบัติและผลที่ตามมาต่อการแพร่เชื้อ, viral attachment protein กับ receptor ที่กำหนดทั้ง host range และ tissue tropism, penetration ทั้ง endocytosis และ fusion, uncoating, การสร้าง mRNA แยกตามชนิดของ genome และ growth curve ที่มี eclipse period",
+  "ch": "Murray Ch 36",
+  "sort": 13,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-6",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "RNA viruses of the gut and the airway",
+ "h1": "RNA viruses of the gut and the airway",
+ "lede": "Picornavirus ที่ genome เป็น messenger RNA อยู่แล้ว, coronavirus ที่ทน detergent ทั้งที่มี envelope, paramyxovirus ที่เชื่อมเซลล์เข้าด้วยกัน และ influenza ที่ genome แตกเป็นแปดชิ้นจึงสลับชิ้นกันได้ · อ่านจาก Murray บท 46 ถึง 49",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 46 Picornaviruses, Ch 47 Coronaviruses and Noroviruses, Ch 48 Paramyxoviruses และ Ch 49 Orthomyxoviruses"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "RNA viruses of the gut and the airway",
+  "src": "Murray 9e Ch 46–49",
+  "desc": "โครงสร้าง capsid ของ picornavirus กับ canyon ที่ receptor เสียบเข้าไป, VPg และ internal ribosome entry site, polyprotein ที่ถูกตัดด้วย protease ของตัวเอง, receptor ที่กำหนดว่าไวรัสตัวไหนไปที่ไหน, poliovirus กับ anterior horn, coxsackievirus A เทียบ B, rhinovirus ที่โตไม่ได้เหนือ 33 องศา, coronavirus ที่ทน detergent และเหตุที่ SARS กับ MERS รุนแรงกว่า, norovirus ที่ทนสิ่งแวดล้อมมาก, fusion protein ของ paramyxovirus กับ syncytium, measles ตั้งแต่ Koplik spot ถึง subacute sclerosing panencephalitis, mumps, parainfluenza กับ croup, respiratory syncytial virus ในทารกคลอดก่อนกำหนด และ influenza ที่ reassortment ทำให้เกิด pandemic ส่วน mutation ทำให้เกิดการระบาดประจำปี",
+  "ch": "Murray Ch 46–49",
+  "sort": 18,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

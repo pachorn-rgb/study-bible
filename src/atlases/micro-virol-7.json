@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-7",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "Rabies, rotavirus and the arboviruses",
+ "h1": "Rabies, rotavirus and the arboviruses",
+ "lede": "ไวรัสที่เดินทางขึ้นเส้นประสาท, ไวรัสที่ genome เป็น RNA สองสายสิบเอ็ดชิ้น และกลุ่มใหญ่ที่เข้าร่างกายผ่านยุง เห็บหรือหนู · อ่านจาก Murray บท 50 ถึง 53",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 50 Rhabdoviruses Filoviruses และ Bornaviruses, Ch 51 Reoviruses, Ch 52 Togaviruses และ Flaviviruses และ Ch 53 Bunyaviruses และ Arenaviruses"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "Rabies, rotavirus and the arboviruses",
+  "src": "Murray 9e Ch 50–53",
+  "desc": "virion รูปกระสุนของ rabies virus, retrograde axoplasmic transport ขึ้นไปถึง brain, Negri body, เหตุที่ระยะฟักตัวยาวพอให้ฉีดวัคซีนหลังถูกกัด, filovirus ที่เป็นเส้นยาวและต้องการ biosafety level 4, double capsid ของ reovirus กับ intermediate subviral particle, rotavirus ที่ NSP4 ทำให้ถ่ายเหลวแบบ cholera, alphavirus กับ flavivirus ที่เป็น arbovirus, วงจร zoonosis ที่คนเป็น dead-end host, primary เทียบ secondary viremia, rubella ที่ teratogenic ถึงสัปดาห์ที่ 20, yellow fever, dengue กับ antibody ที่ไม่ลบฤทธิ์ซึ่งทำให้เกิด dengue hemorrhagic fever, bunyavirus ที่ไม่มี matrix protein, hantavirus ที่มาจาก aerosol ของปัสสาวะหนู และ arenavirus ที่พา ribosome ของเซลล์ติดไปใน virion",
+  "ch": "Murray Ch 50–53",
+  "sort": 19,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

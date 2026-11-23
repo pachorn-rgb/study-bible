@@ -1,0 +1,242 @@
+//@include _micro-helpers.js
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"Rhabdovirus and filovirus",b:"Reovirus and rotavirus",c:"Togavirus and flavivirus",d:"Bunyavirus and arenavirus"});
+
+/* ===================================================================
+ Rhabdoviruses, filoviruses, reoviruses, togaviruses, flaviviruses,
+ bunyaviruses and arenaviruses — Murray ch 50 to 53.
+ =================================================================== */
+
+SEC.push({id:"rabies-struct",k:"a",t:"A bullet-shaped virion with five proteins",mm:"Rhabdovirus",leg:[],
+draw:()=>tbl(["Protein","Role"],[
+ ["G glycoprotein","trimeric spike ที่ปกคลุมผิว · เป็น viral attachment protein และกระตุ้น neutralizing antibody · G ของ vesicular stomatitis virus เป็นต้นแบบในการศึกษาการสร้าง glycoprotein ของ eukaryote"],
+ ["N nucleoprotein","เป็นโปรตีนโครงสร้างหลัก · ป้องกัน RNA จากการย่อยด้วย ribonuclease และคง RNA ไว้ในรูปที่ถอดรหัสได้"],
+ ["L large protein และ NS nonstructural protein","รวมกันเป็น RNA-dependent RNA polymerase"],
+ ["M matrix protein","อยู่ระหว่าง envelope กับ nucleocapsid · การจับกับ M ทำให้ nucleocapsid ขดแน่นจนได้รูปกระสุน"]]),
+notes:()=>`<h3>Structure</h3><ul>
+ <li>ชื่อวงศ์มาจากคำกรีก <b>rhabdos ซึ่งหมายถึงแท่ง</b> ${S.mu}</li>
+ <li>เป็นไวรัสเรียบง่าย — <b>เข้ารหัสโปรตีนเพียงห้าตัว และเป็น virion รูปกระสุนที่มี envelope เส้นผ่านศูนย์กลาง 50 ถึง 95 nm ยาว 130 ถึง 380 nm</b> ${S.mu}</li>
+ <li>ภายใน envelope <b>helical nucleocapsid ขดเป็นทรงกระบอกอย่างสมมาตร จึงเห็นเป็นลายขวาง</b> ${S.mu}</li>
+ <li>genome คือ <b>negative-sense single-stranded RNA ราว 12,000 base</b> ${S.mu}</li>
+ <li>และสถานะในวิชานี้: <b>วงจรการเพิ่มจำนวนของ vesicular stomatitis virus เป็นต้นแบบของ rhabdovirus และของ negative-strand RNA virus ตัวอื่น</b> ${S.mu}</li></ul>
+ <h3>Entry and replication</h3><ul>
+ <li><b>G protein จับเซลล์แล้ว virion ถูกนำเข้าด้วย endocytosis</b> ${S.mu}</li>
+ <li>receptor ของ rabies virus: <b>nicotinic acetylcholine receptor, neural cell adhesion molecule หรือโมเลกุลอื่น</b> ${S.mu}</li>
+ <li>แล้ว<b>envelope เชื่อมกับ membrane ของ endosome เมื่อ vesicle เป็นกรด จึงปล่อย nucleocapsid เข้า cytoplasm</b> ${S.mu}</li>
+ <li>ในเซลล์ประสาท <b>endosomal vesicle อาจพา virion ทั้งตัวไปตาม axon เพื่อช่วยการแพร่จาก neuron หนึ่งไปอีกอันหนึ่ง</b> ${S.mu}</li>
+ <li><b>polymerase ที่ติดมากับ nucleocapsid ถอด genome เป็น messenger RNA ห้าตัว และในกรณีของ rabies virus การถอดนี้เกิดใน Negri body</b> ${S.mu}</li>
+ <li>การปล่อยไวรัส: <b>ในเซลล์ส่วนใหญ่ไวรัส budding จาก membrane ใน cytoplasm และถูกปล่อยออกอย่างไม่มีประสิทธิภาพ ยกเว้นที่ salivary gland ซึ่ง budding จาก plasma membrane ได้ดี</b> ${S.mu}</li>
+ <li>และนั่นคือเหตุที่น้ำลายเป็นตัวแพร่โรค — <b>salivary gland สร้างและปล่อยไวรัสจำนวนมาก และเป็นแหล่งแพร่เชื้อหลัก</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"rabies-dis",k:"a",t:"Why rabies can be prevented after the bite",mm:"Rabies",leg:[],
+draw:()=>tbl(["Phase","What is happening"],[
+ ["Incubation","ไวรัสเพิ่มจำนวนใน muscle ที่แผล โดยแทบไม่มี symptom หรือไม่มีเลย"],
+ ["Prodrome","หลังเป็นสัปดาห์ถึงเป็นเดือน ไวรัสติดเชื้อ peripheral nerve แล้วเดินขึ้น central nervous system"],
+ ["Neurologic","การติดเชื้อที่ brain ให้ symptom คลาสสิก, coma แล้วตาย · ระยะนี้ไวรัสกระจายไปที่ gland, skin และ salivary gland"]]),
+notes:()=>`<h3>The route</h3><ul>
+ <li>การติดเชื้อมักเกิด<b>จากการถูกสัตว์ที่เป็น rabies กัด และ rabies ในสัตว์ทำให้มันหลั่งไวรัสในน้ำลายและทำให้มันดุและกัด ซึ่งช่วยการแพร่</b> ${S.mu}</li>
+ <li>ทางอื่น: <b>การหายใจเอา aerosol ของไวรัสเช่นในถ้ำค้างคาว, การปลูกถ่าย tissue ที่ติดเชื้อเช่น cornea และการเข้าทาง mucosal membrane ที่ไม่มีแผล</b> ${S.mu}</li>
+ <li>การเดินทาง: <b>ไวรัสเดินทางด้วย retrograde axoplasmic transport ไปที่ dorsal root ganglion และ spinal cord</b> ${S.mu}</li>
+ <li>แล้ว<b>เมื่อเข้าถึง spinal cord ได้ brain จะติดเชื้ออย่างรวดเร็ว</b> ${S.mu}</li>
+ <li>บริเวณที่ถูกกระทบ: <b>hippocampus, brainstem, ganglionic cell ของ pontine nuclei และ Purkinje cell ของ cerebellum</b> ${S.mu}</li>
+ <li>แล้วไวรัส<b>กระจายออกจาก central nervous system ผ่าน afferent neuron ไปที่ตำแหน่งที่มีเส้นประสาทหนาแน่น — skin ของ head กับ neck, salivary gland, retina, cornea, nasal mucosa, adrenal medulla, renal parenchyma และ pancreatic acinar cell</b> ${S.mu}</li></ul>
+ <h3>Why so little is seen under the microscope</h3><ul>
+ <li>ต่างจาก viral encephalitis อื่น: <b>rabies ทำลายเซลล์น้อยมากและแทบไม่ก่อ inflammatory lesion</b> ${S.mu}</li>
+ <li>เหตุผล: <b>โปรตีนของไวรัสยับยั้ง apoptosis และยับยั้งการทำงานของ interferon บางส่วน และมี antigen ถูกปล่อยออกน้อย การติดเชื้อจึงน่าจะซ่อนจากระบบภูมิคุ้มกัน</b> ${S.mu}</li>
+ <li>ผลที่ตามมา: <b>neutralizing antibody ยังไม่ปรากฏจนกว่าโรคทางคลินิกจะชัดเจนแล้ว</b> และ<b>cell-mediated immunity ดูจะมีบทบาทน้อยหรือไม่มีเลยในการป้องกัน</b> ${S.mu}</li>
+ <li>สิ่งที่เห็นใน tissue: <b>Negri body — นอกจากนั้นแทบไม่มีการเปลี่ยนแปลงทาง histopathology แม้ central nervous system จะถูกกระทบอย่างกว้างขวาง</b> ${S.mu}</li></ul>
+ <h3>The one therapeutic window</h3><ul>
+ <li><b>rabies เสียชีวิตแน่นอนเมื่อโรคทางคลินิกปรากฏแล้ว</b> ${S.mu}</li>
+ <li>แต่: <b>antibody ปิดกั้นการแพร่ของไวรัสเข้า central nervous system ได้ ถ้าให้หรือถูกสร้างขึ้นระหว่างระยะฟักตัว</b> ${S.mu}</li>
+ <li>และ<b>ระยะฟักตัวมักยาวพอให้สร้าง antibody ที่ป้องกันได้ทันหลังฉีดวัคซีนชนิดเชื้อตาย</b> ${S.mu}</li>
+ <li>ตัวกำหนดความยาวของระยะฟักตัว: <b>ปริมาณไวรัสที่ได้รับ, ระยะจากแผลถึง brain, ความรุนแรงของแผล, อายุและสถานะภูมิคุ้มกันของผู้ป่วย</b> ${S.mu}</li>
+ <li>การป้องกันหลังสัมผัส: <b>วัคซีนชนิดเชื้อตายร่วมกับ antirabies immunoglobulin</b> ${S.mu}</li>
+ <li>และ<b>ให้วัคซีนล่วงหน้าถ้าเสี่ยงจากงาน · วัคซีนเชื้อตายสำหรับสัตว์เลี้ยง · วัคซีนลูกผสมที่ใช้ vaccinia virus สำหรับสัตว์ป่า</b> ${S.mu}</li></ul>
+ <h3>Where it comes from</h3><ul>
+ <li>เป็น<b>zoonosis คลาสสิก</b> ${S.mu}</li>
+ <li>สามรูปแบบการคงอยู่: <b>urban rabies ที่ dog เป็นตัวแพร่หลัก, sylvatic rabies ที่สัตว์ป่าหลายชนิดเป็นตัวแพร่ และ bat rabies</b> ${S.mu}</li>
+ <li>แหล่งรังในโลกส่วนใหญ่คือ <b>dog</b> · ส่วนในสหรัฐ <b>พบใน cat มากกว่าเพราะไม่ได้รับวัคซีน</b> ${S.mu}</li>
+ <li>ตัวเลข: <b>ประมาณว่า rabies ทำให้เสียชีวิต 40,000 ถึง 100,000 รายต่อปีทั่วโลก ส่วนใหญ่เป็นเด็ก และอย่างน้อย 20,000 รายในอินเดีย ซึ่ง 96% แพร่จาก dog</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>RT-PCR, การตรวจหา antigen ใน biopsy และการพบ Negri body ในเซลล์ที่ติดเชื้อ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"filo",k:"a",t:"Filoviruses: long filaments and level 4",mm:"Ebola · Marburg",leg:[],
+notes:()=>`<h3>Structure</h3><ul>
+ <li><b>Marburg virus และ Ebola virus เคยถูกจัดเป็น Rhabdoviridae แต่ปัจจุบันเป็น filovirus — เป็นเส้นใย มี envelope และเป็น negative-strand RNA virus</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>virion เป็นเส้นใยยาวที่มี envelope เส้นผ่านศูนย์กลาง 80 nm ยาว 800 ถึง 1400 nm และอาจบรรจุ genome ไม่มีเลย หนึ่งอัน หรือหลายอัน</b> ${S.mu}</li>
+ <li>genome <b>สายเดี่ยว เข้ารหัสโปรตีนเจ็ดตัว</b> และ<b>nucleocapsid เป็น helical อยู่ใน envelope ที่มี glycoprotein หนึ่งชนิด</b> ${S.mu}</li>
+ <li>receptor ของ Ebola virus: <b>Niemann-Pick C1 ซึ่งเป็น cholesterol transfer protein และ T-cell immunoglobulin and mucin domain 1 ซึ่งเป็น receptor ของ hepatitis A virus ด้วย</b> ${S.mu}</li>
+ <li>แล้วมัน<b>เข้าเซลล์และเพิ่มจำนวนใน cytoplasm เหมือน rhabdovirus</b> ${S.mu}</li>
+ <li>เซลล์เป้าหมาย: <b>มันเพิ่มจำนวนได้ดีมากใน endothelial cell, monocyte และ macrophage</b> ${S.mu}</li></ul>
+ <h3>The illness</h3><ul>
+ <li><b>Marburg virus และ Ebola virus เป็นสาเหตุที่รุนแรงที่สุดของ viral hemorrhagic fever</b> ${S.mu}</li>
+ <li>ลำดับอาการ: <b>เริ่มด้วย symptom คล้าย influenza เช่น headache และ myalgia แล้วภายในไม่กี่วันมี nausea, vomiting และ diarrhea และอาจมี rash</b> ${S.mu}</li>
+ <li>แล้ว<b>เลือดออกจากหลายตำแหน่งโดยเฉพาะ gastrointestinal tract และเสียชีวิตถึง 90% ของผู้ป่วยที่มีโรคชัดเจน</b> ${S.mu}</li>
+ <li>ที่มาของชื่อ: <b>Marburg virus ถูกพบครั้งแรกในเจ้าหน้าที่ห้องปฏิบัติการที่เมือง Marburg ประเทศเยอรมนี ซึ่งสัมผัส tissue จาก African green monkey ที่ดูแข็งแรง</b> และ<b>Ebola virus ตั้งชื่อตามแม่น้ำ</b> ${S.mu}</li></ul>
+ <h3>Handling and prevention</h3><ul>
+ <li><b>สิ่งส่งตรวจทุกชิ้นจากผู้ป่วยที่สงสัย filovirus ต้องจัดการอย่างระมัดระวังที่สุด และต้องใช้ขั้นตอนแยกระดับ 4 ซึ่งไม่มีให้ใช้โดยทั่วไป</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>ตรวจ antigen ใน tissue ด้วย direct immunofluorescence และในของเหลวด้วย ELISA · และ RT-PCR ของ genome ในสารคัดหลั่ง ซึ่งยืนยันการวินิจฉัยและลดการจับต้องสิ่งส่งตรวจ</b> ${S.mu}</li>
+ <li>สิ่งที่เคยลองใช้: <b>serum ที่มี antibody, antibody ที่ผลิตขึ้นคือ ZMAPP และ interferon กับ ribavirin</b> ${S.mu}</li>
+ <li>และวัคซีนที่ใช้ในการระบาดปี 2018 ในสาธารณรัฐประชาธิปไตยคองโก: <b>rVSV-ZEBOV ซึ่งเป็นวัคซีนลูกผสมที่ vesicular stomatitis virus แสดง glycoprotein ของ Ebola แทนของตัวเอง โดยให้ความสำคัญกับบุคลากรสุขภาพและผู้ที่อยู่รอบการระบาดก่อน ซึ่งเรียกว่า ring vaccination</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"reo-struct",k:"b",t:"Double capsid, double-stranded, segmented",mm:"Reovirus",leg:[],
+draw:()=>tbl(["Layer","Rotavirus component"],[
+ ["Inner capsid","VP2"],
+ ["Intermediate capsid","VP6 เป็นหลัก"],
+ ["Outer layer","VP4 ซึ่งเป็น viral attachment protein และ VP7 ซึ่งเป็น glycoprotein"],
+ ["Core","enzyme สำหรับการสร้าง RNA และ genome segment ที่เป็น RNA สองสาย — reovirus มี 10 ชิ้น rotavirus มี 11 ชิ้น"]]),
+notes:()=>`<h3>Why the name</h3><ul>
+ <li><b>ชื่อ reovirus ถูกเสนอในปี 1959 โดย Albert Sabin สำหรับกลุ่มไวรัสของ respiratory tract และลำไส้ที่ยังไม่พบว่าสัมพันธ์กับโรคใด — respiratory, enteric, orphan</b> ${S.mu}</li>
+ <li>และ<b>ชื่อ rotavirus มาจากคำละติน rota ที่หมายถึงล้อ ซึ่งหมายถึงรูปร่างของ virion สามชั้นเมื่อย้อมแบบ negative stain</b> ${S.mu}</li>
+ <li><b>orthoreovirus เรียกอีกอย่างว่า mammalian reovirus ถูกแยกครั้งแรกในช่วงปี 1950 จากอุจจาระของเด็ก และโดยทั่วไปก่อการติดเชื้อที่ไม่มีอาการในคน</b> ${S.mu}</li></ul>
+ <h3>Structure and stability</h3><ul>
+ <li>เป็น<b>ไวรัสที่ไม่มี envelope มี capsid โปรตีนสองชั้น บรรจุ genome ที่เป็น RNA สองสาย 10 ถึง 12 ชิ้น</b> ${S.mu}</li>
+ <li>ความทนทาน: <b>ทน detergent, ทน pH และอุณหภูมิในช่วงกว้าง และทนในรูป aerosol</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>icosahedral เส้นผ่านศูนย์กลาง 60 ถึง 80 nm</b> ${S.mu}</li>
+ <li>และสิ่งที่เปิดสวิตช์ให้มันก่อการติดเชื้อ: <b>การตัด outer capsid ด้วย protease อย่างที่เกิดใน gastrointestinal tract กระตุ้นไวรัสและให้ intermediate หรือ infectious subviral particle</b> ${S.mu}</li>
+ <li>ข้อที่น่าสนใจ: <b>rotavirus คล้าย enveloped virus ตรงที่มี glycoprotein คือ VP7 กับ NSP4 อยู่นอก virion, ได้ envelope มาแล้วเสียไปในระหว่างการประกอบตัว และดูจะมีฤทธิ์แบบ fusion protein ที่ช่วยการเจาะ membrane ของเซลล์เป้าหมายโดยตรง</b> ${S.mu}</li>
+ <li>และเหมือน influenza: <b>การสลับ gene segment เกิดขึ้นได้จึงสร้างไวรัสลูกผสม</b> ${S.mu}</li></ul>
+ <h3>Replication</h3><ul>
+ <li><b>outer capsid ปกป้อง nucleocapsid กับ core จากสิ่งแวดล้อม โดยเฉพาะสภาพกรดของ gastrointestinal tract</b> ${S.mu}</li>
+ <li><b>โปรตีน σ1 ของ reovirus และ VP4 ของ rotavirus อยู่ที่มุมของ capsid และยื่นออกมาเหมือน spike</b> ${S.mu}</li>
+ <li>หน้าที่ของมัน: <b>การเกาะ, hemagglutination และการกระตุ้น neutralizing antibody</b> ${S.mu}</li>
+ <li>และ<b>VP4 ถูกกระตุ้นด้วยการตัดเป็น VP5 กับ VP8 ซึ่งเผยโครงสร้างคล้าย fusion protein ของ paramyxovirus</b> ${S.mu}</li>
+ <li>receptor: <b>σ1 กับ VP4 จับ glycoprotein ที่มี sialic acid · receptor เพิ่มเติมคือ β-adrenergic receptor สำหรับ reovirus และ integrin สำหรับ rotavirus</b> ${S.mu}</li>
+ <li>แล้ว<b>intermediate subviral particle ปล่อย core เข้า cytoplasm และ enzyme ใน core เริ่มสร้าง messenger RNA โดย RNA สองสายอยู่ใน core เสมอ</b> ${S.mu}</li>
+ <li>ข้อที่เป็นประวัติศาสตร์ของวิชา: <b>5′-methyl guanosine cap ถูกค้นพบครั้งแรกใน messenger RNA ของ reovirus แล้วจึงพบว่ามีใน messenger RNA ของเซลล์ด้วย</b> ${S.mu}</li>
+ <li>การประกอบตัว: <b>โปรตีนและ RNA สายบวกมารวมกันเป็นโครงคล้าย core ใน inclusion ขนาดใหญ่ใน cytoplasm ที่เรียกว่า viroplasm</b> ${S.mu}</li>
+ <li>และ<b>การสร้างสารชีวโมเลกุลของเซลล์ถูกยับยั้งภายใน 8 ชั่วโมงหลังติดเชื้อ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"rota",k:"b",t:"Rotavirus",mm:"Rotavirus",leg:[],
+notes:()=>`<h3>The burden</h3><ul>
+ <li><b>rotavirus ก่อ infantile gastroenteritis ในคน ซึ่งเป็นโรคที่พบบ่อยมาก</b> ${S.mu}</li>
+ <li>ก่อนมีวัคซีน: <b>rotavirus เป็นสาเหตุราว 50% ของ diarrhea ในเด็กที่ต้องรับไว้ในโรงพยาบาลจาก dehydration และในประเทศที่ยังไม่พัฒนาเป็นสาเหตุของการเสียชีวิตอย่างน้อย 1 ล้านรายต่อปีในเด็กที่ขาดสารอาหาร</b> ${S.mu}</li>
+ <li>และ<b>วัคซีนรุ่นใหม่ปลอดภัยกว่าและลดการเกิดโรคนี้ลงทั่วโลก</b> ${S.mu}</li>
+ <li>กลไกของอาการ: <b>rotavirus เหนี่ยวนำ diarrhea แบบ cholera</b> ${S.mu}</li>
+ <li>ระบาดวิทยา: <b>พบทั่วโลกและพบทั่วไป เกิดได้ทั้งปี · แพร่ทาง fecal-oral · ติดต่อง่ายมาก และทารกเสี่ยงต่อโรครุนแรง</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>ELISA หาไวรัสในอุจจาระ</b> ${S.mu}</li>
+ <li>การรักษา: <b>ให้สารน้ำแบบประคับประคอง</b> · การป้องกัน: <b>วัคซีนชนิดเชื้อเป็นแบบกิน ให้ที่อายุ 2, 4 และ 6 เดือน</b> · การควบคุม: <b>ล้างมือและสุขอนามัยที่ดี</b> ${S.mu}</li></ul>
+ <h3>The other Reoviridae of humans</h3><ul>
+ <li><b>orthoreovirus ก่อโรค respiratory tract อย่างอ่อน, โรคของ gastrointestinal tract และ biliary atresia</b> ${S.mu}</li>
+ <li>และ<b>orbivirus กับ coltivirus ก่อ febrile illness ที่มี headache และ myalgia และเป็น zoonosis</b> ${S.mu}</li>
+ <li>ตัวที่ต้องจำชื่อ: <b>Colorado tick fever — zoonosis ที่ให้โรคคล้าย dengue พร้อม rash</b> ${S.mu}</li>
+ <li>และ<b>orbivirus กับ coltivirus แพร่โดย arthropod จึงเป็น arbovirus</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"arbo-cycle",k:"c",t:"How an arbovirus reaches the brain",mm:"Arbovirus",leg:[],
+draw:()=>tbl(["Stage","What decides the outcome"],[
+ ["Inoculation","arthropod ฉีดไวรัสเข้าเลือด"],
+ ["Primary viremia","อาจมีโรคทั้งระบบอย่างอ่อน · การติดเชื้อส่วนใหญ่หยุดที่ขั้นนี้"],
+ ["Secondary viremia","ถ้าสร้างไวรัสมากพอจะไปถึง target tissue ที่สำคัญ จึงเกิดโรคทั้งระบบที่รุนแรงหรือ encephalitis"],
+ ["Antibody","ถ้ามี antibody อยู่ viremia ถูกปิดกั้น"]]),
+notes:()=>`<h3>The family in one paragraph</h3><ul>
+ <li><b>สมาชิกของ Togaviridae และ Flaviviridae เป็นไวรัสที่มี envelope และมี positive-sense single-stranded RNA</b> ${S.mu}</li>
+ <li><b>Alphavirus ของ togavirus และ Flavivirus ต่างกันในขนาด รูปร่าง ลำดับ gene และการเพิ่มจำนวน แต่ถูกพูดถึงร่วมกันเพราะโรคและระบาดวิทยาคล้ายกัน</b> ${S.mu}</li>
+ <li>และ<b>ส่วนใหญ่แพร่โดย arthropod จึงเป็น arbovirus คือ arthropod-borne virus</b> ${S.mu}</li>
+ <li>ขอบเขตของ host: <b>กว้างมาก ทั้ง vertebrate เช่น mammal, bird, amphibian และ reptile และ invertebrate เช่น mosquito และ tick</b> ${S.mu}</li>
+ <li>และ<b>โรคที่แพร่โดยสัตว์หรือมีแหล่งรังในสัตว์เรียกว่า zoonosis</b> ${S.mu}</li></ul>
+ <h3>Immunity cuts both ways</h3><ul>
+ <li><b>interferon และ cytokine response ทำให้เกิด prodrome กับ symptom ทั้งระบบ รวมถึง arthritis</b> ${S.mu}</li>
+ <li>และ<b>inflammation กับการสลายเซลล์จาก complement และ cell-mediated immune response ทำลาย tissue และมีส่วนสำคัญต่อพยาธิกำเนิดของ encephalitis</b> ${S.mu}</li>
+ <li>ส่วนเลือดออก: <b>hypersensitivity reaction ต่อ antibody ที่ติดอยู่กับเซลล์ หรือที่เริ่มจาก immune complex กับ virion และ antigen ของไวรัส กระตุ้น complement และทำลายเซลล์ของหลอดเลือด จึงเกิด hemorrhagic symptom</b> ${S.mu}</li>
+ <li>การวินิจฉัยของทั้งกลุ่ม: <b>RT-PCR และ ELISA</b> · การควบคุม: <b>การควบคุม mosquito</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"alpha",k:"c",t:"Alphavirus: an envelope shrink-wrapped onto the capsid",mm:"Alphavirus",leg:[],
+notes:()=>`<h3>Structure</h3><ul>
+ <li><b>alphavirus มี icosahedral capsid และ positive-sense single-strand RNA genome ที่เหมือน messenger RNA</b> ${S.mu}</li>
+ <li>ขนาด: <b>ใหญ่กว่า picornavirus เล็กน้อยคือ 45 ถึง 75 nm และถูกหุ้มด้วย envelope ซึ่งมาจากคำละติน toga ที่หมายถึงเสื้อคลุม</b> ${S.mu}</li>
+ <li>และ<b>genome ของ togavirus เข้ารหัสทั้งโปรตีนระยะต้นและระยะปลาย</b> ${S.mu}</li>
+ <li>ลักษณะที่ตั้งชื่อให้โครงสร้าง: <b>glycoprotein สองหรือสามตัวรวมกันเป็น spike เดียว และปลาย carboxy ของ glycoprotein ถูกยึดใน capsid จึงบังคับให้ envelope ห่อแน่นและรับรูปร่างของ capsid</b> ${S.mu}</li>
+ <li>แอนติเจน: <b>โปรตีน capsid ของ alphavirus ทุกตัวมีโครงสร้างคล้ายกันและไขว้กันทางแอนติเจน ส่วนการแยกกลุ่มทำได้จากตัวกำหนดแอนติเจนบน envelope glycoprotein</b> ${S.mu}</li>
+ <li>โรคที่ต้องจำ: <b>equine encephalitis virus คือ western, eastern และ Venezuelan equine encephalitis</b> ${S.mu}</li>
+ <li>แหล่งรังและพาหะ: <b>zoonosis ที่มีแหล่งรังใน bird และพาหะคือ mosquito สกุล Aedes และ Culex</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"rubella",k:"c",t:"Rubella and the fetus",mm:"Rubella",leg:[],
+notes:()=>`<h3>Not like the other togaviruses</h3><ul>
+ <li><b>rubella virus มีโครงสร้างและการเพิ่มจำนวนเหมือน togavirus อื่น แต่ต่างกันตรงที่มันเป็นไวรัสของ respiratory tract และไม่ก่อ cytopathologic effect ที่ตรวจพบได้ง่าย</b> ${S.mu}</li>
+ <li><b>rubella เป็นหนึ่งใน exanthem คลาสสิกห้าโรคของเด็ก ร่วมกับ measles, roseola, fifth disease และ chickenpox</b> ${S.mu}</li>
+ <li>ที่มาของชื่อ: <b>rubella หมายถึงแดงเล็ก ๆ ในภาษาละติน และถูกแยกจาก measles ครั้งแรกโดยแพทย์เยอรมัน จึงมีชื่อสามัญว่า German measles</b> ${S.mu}</li>
+ <li>จุดเปลี่ยนทางประวัติศาสตร์: <b>ในปี 1941 จักษุแพทย์ชาวออสเตรเลีย Norman McAlister Gregg พบว่า rubella ในมารดาเป็นสาเหตุของ congenital cataract</b> ${S.mu}</li>
+ <li>และนั่นคือเหตุผลของโปรแกรมวัคซีน: <b>การค้นพบนี้นำไปสู่โปรแกรมที่ให้วัคซีนเด็กเพื่อป้องกันการติดเชื้อในหญิงตั้งครรภ์และทารกแรกเกิด</b> ${S.mu}</li>
+ <li>คุณสมบัติที่ทำให้แยกเชื้อได้ครั้งแรก: <b>rubella ไม่สลายเซลล์แต่รบกวนกลไกของเซลล์ และการเพิ่มจำนวนของมันกันการเพิ่มจำนวนของ picornavirus ที่มาติดเชื้อซ้อน ซึ่งเรียกว่า heterologous interference</b> ${S.mu}</li></ul>
+ <h3>The course</h3><ul>
+ <li><b>rubella ติดเชื้อที่ upper respiratory tract แล้วแพร่ไป lymph node ซึ่งตรงกับช่วงที่มี lymphadenopathy</b> ${S.mu}</li>
+ <li>แล้ว<b>เกิด viremia ซึ่งแพร่ไวรัสไปทั่วร่างกาย จึงติดเชื้อ tissue อื่นและเกิด rash อย่างอ่อนที่เป็นลักษณะเฉพาะ</b> ${S.mu}</li>
+ <li>การแพร่เชื้อ: <b>prodrome ยาวราว 2 สัปดาห์ และผู้ติดเชื้อปล่อยไวรัสในละอองทางเดินหายใจได้ตลอด prodrome และนานถึง 2 สัปดาห์หลัง rash เริ่ม</b> ${S.mu}</li>
+ <li>ภูมิคุ้มกัน: <b>antibody ถูกสร้างหลัง viremia และการปรากฏของมันตรงกับการปรากฏของ rash</b> ${S.mu}</li>
+ <li>และ<b>rubella มี serotype เดียว การติดเชื้อตามธรรมชาติจึงให้ภูมิคุ้มกันที่ป้องกันได้ตลอดชีวิต</b> ${S.mu}</li>
+ <li>ที่มาของ rash: <b>immune complex น่าจะเป็นสาเหตุของ rash และ arthralgia</b> ${S.mu}</li>
+ <li>ในเด็ก: <b>โรคมักไม่รุนแรง — หลังระยะฟักตัว 14 ถึง 21 วันมี rash แบบ maculopapular หรือ macular 3 วันและต่อมโต</b> ${S.mu}</li>
+ <li>ในผู้ใหญ่: <b>รุนแรงกว่าได้ รวมถึงปวดกระดูกและข้อคือ arthralgia กับ arthritis และนาน ๆ ครั้งมี thrombocytopenia หรือ postinfectious encephalopathy</b> ${S.mu}</li></ul>
+ <h3>Congenital rubella</h3><ul>
+ <li><b>ถ้ามารดาไม่มี antibody ไวรัสเพิ่มจำนวนใน placenta แล้วแพร่เข้าเลือดของ fetus และไปทั่วตัว fetus</b> ${S.mu}</li>
+ <li>กลไกที่ทำให้เกิดความพิการ: <b>ไวรัสอาจไม่สลายเซลล์ แต่การเติบโต การแบ่งตัวและโครงสร้าง chromosome ของเซลล์ fetus ถูกเปลี่ยนไป</b> ${S.mu}</li>
+ <li>และ<b>ชนิดของความผิดปกติถูกกำหนดจาก tissue ที่ถูกกระทบและจากระยะของการพัฒนาที่ถูกรบกวน</b> ${S.mu}</li>
+ <li>ช่วงเวลา: <b>fetus เสี่ยงมากจนถึงสัปดาห์ที่ 20 ของการตั้งครรภ์</b> ${S.mu}</li>
+ <li>สิ่งที่ป้องกันได้: <b>ภูมิคุ้มกันของมารดาจากการติดเชื้อก่อนหน้าหรือจากวัคซีนกันการแพร่ไวรัสไปที่ fetus</b> ${S.mu}</li>
+ <li>อาการที่พบบ่อยที่สุด: <b>cataract, mental retardation, ความผิดปกติของหัวใจและ deafness</b> และ<b>อัตราตายใน utero และในปีแรกหลังเกิดสูง</b> ${S.mu}</li>
+ <li>ข้อที่เปลี่ยนไปหลังยุควัคซีน: <b>cytomegalovirus แทนที่ rubella เป็นสาเหตุที่พบบ่อยที่สุดของความพิการแต่กำเนิด</b> ${S.mu}</li>
+ <li>และ<b>ไวรัสอาจคงอยู่ใน tissue เช่น lens ของตา 3 ถึง 4 ปี และถูกปล่อยออกได้นานถึงหนึ่งปีหลังเกิด</b> ${S.mu}</li>
+ <li>host: <b>คนเป็น host เดียวของ rubella</b> และ<b>ราว 20% ของหญิงวัยเจริญพันธุ์ไม่ติดเชื้อในวัยเด็กจึงเสี่ยงถ้าไม่ได้รับวัคซีน</b> ${S.mu}</li>
+ <li>การป้องกัน: <b>วัคซีนชนิดเชื้อเป็นอ่อนฤทธิ์ที่อายุ 1 ปีใน measles-mumps-rubella และกระตุ้นซ้ำที่อายุ 4 ถึง 6 ปี</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"flavi",k:"c",t:"Flavivirus: encephalitis, yellow fever and dengue",mm:"Flavivirus",leg:[],
+draw:()=>tbl(["Group","Viruses","Clinical picture"],[
+ ["Encephalitis","St. Louis, West Nile และ Japanese encephalitis virus","ไวรัสแพร่ในเลือดไปที่ neuron และ brain"],
+ ["Hemorrhagic — yellow fever","yellow fever virus","jaundice และ black vomit · มีวัคซีนชนิดเชื้อเป็นอ่อนฤทธิ์"],
+ ["Hemorrhagic — dengue","dengue virus","hemorrhagic fever · breakbone fever · dengue shock syndrome"]]),
+notes:()=>`<h3>The group</h3><ul>
+ <li><b>flavivirus มีขนาดเล็ก envelope หุ้ม icosahedral nucleocapsid และมี positive-sense RNA genome</b> ${S.mu}</li>
+ <li>และ<b>Flaviviridae รวม flavivirus, pestivirus และ hepacivirus คือ hepatitis C และ hepatitis G virus</b> ${S.mu}</li>
+ <li>ตำแหน่งที่ไวรัสไป: <b>ไวรัสแพร่ในเลือดไปที่ target tissue — สำหรับไวรัสที่ก่อ encephalitis คือ neuron และ brain ส่วนไวรัสที่ก่อเลือดออกคือหลอดเลือด liver และอวัยวะอื่น</b> ${S.mu}</li>
+ <li>ระบาดวิทยา: <b>เป็นโรคประจำถิ่นตามที่อยู่ของ mosquito · zoonosis ที่มีแหล่งรังใน bird และพาหะคือ Aedes หรือ Culex</b> ${S.mu}</li></ul>
+ <h3>When antibody makes things worse</h3><ul>
+ <li>ข้อที่กลับหัวกลับหางจากที่คาด: <b>neutralizing antibody ปิดกั้นโรคได้ แต่ antibody ที่ไม่ลบฤทธิ์ส่งเสริมการติดเชื้อของ dengue virus</b> ${S.mu}</li>
+ <li>และ<b>มีการสร้าง antibody ที่ไขว้ข้ามกันระหว่าง flavivirus ต่างตัว</b> ${S.mu}</li>
+ <li>กลไก: <b>antibody ต่อ flavivirus อีกตัวที่ไม่ลบฤทธิ์เพิ่มการนำ flavivirus เข้า macrophage และเซลล์อื่นที่แสดง Fc receptor</b> ${S.mu}</li>
+ <li>และผลทางคลินิก: <b>การตอบสนองทางภูมิคุ้มกันต่อ dengue virus สายพันธุ์ใกล้เคียงที่ไม่กันการติดเชื้อทำให้พยาธิกำเนิดทางภูมิคุ้มกันรุนแรงขึ้น จึงเกิด dengue hemorrhagic fever หรือ dengue shock syndrome</b> ${S.mu}</li>
+ <li>พูดอีกแบบ: <b>สำหรับ dengue virus การติดเชื้อซ้ำด้วยสายพันธุ์อื่นทำให้เกิด dengue hemorrhagic fever ที่รุนแรง ซึ่งนำไปสู่ dengue shock syndrome จากการสูญเสียสารน้ำออกจากหลอดเลือด</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"bunya",k:"d",t:"Bunyavirus: three segments and no matrix protein",mm:"Bunyavirus",leg:[],
+draw:()=>tbl(["Segment","What it encodes"],[
+ ["L large","โปรตีน L ซึ่งคือ polymerase"],
+ ["M medium","โปรตีน NSm กับ G1 ซึ่งเป็น viral attachment protein และ G2"],
+ ["S small","โปรตีน N และ NSs · ในกลุ่ม Phlebovirus สาย S เป็น ambisense"]]),
+notes:()=>`<h3>Structure</h3><ul>
+ <li><b>bunyavirus เป็นอนุภาคค่อนข้างกลม เส้นผ่านศูนย์กลาง 90 ถึง 120 nm</b> ${S.mu}</li>
+ <li><b>envelope มี glycoprotein สองตัวคือ G1 กับ G2 และหุ้ม negative-strand RNA สามชิ้นที่จับกับโปรตีนเป็น nucleocapsid</b> ${S.mu}</li>
+ <li>รายละเอียดที่แยกบางตัวออกมา: <b>genome segment ของ La Crosse และ California encephalitis virus ที่เกี่ยวข้องเป็นวง</b> ${S.mu}</li>
+ <li>และข้อที่เป็นลักษณะเฉพาะ: <b>ต่างจาก negative-strand RNA virus อื่น Bunyaviridae ไม่มี matrix protein</b> ${S.mu}</li>
+ <li>สิ่งที่ใช้แยกสกุล: <b>จำนวนและขนาดของโปรตีนใน virion, ความยาวของสาย L M และ S และวิธีที่มันถูกถอดรหัส</b> ${S.mu}</li></ul>
+ <h3>Replication</h3><ul>
+ <li><b>G1 glycoprotein จับ β-integrin ที่ผิวเซลล์แล้วไวรัสถูกนำเข้าด้วย endocytosis</b> ${S.mu}</li>
+ <li>แล้ว<b>envelope เชื่อมกับ membrane ของ endosome เมื่อ vesicle เป็นกรด จึงปล่อย nucleocapsid เข้า cytoplasm</b> ${S.mu}</li>
+ <li>ข้อที่เหมือนและไม่เหมือน influenza: <b>bunyavirus ขโมยส่วนที่มี cap ของ messenger RNA ของเซลล์มาเป็น primer เหมือน influenza แต่ทำใน cytoplasm ไม่ใช่ใน nucleus</b> ${S.mu}</li>
+ <li>การออก: <b>glycoprotein ถูกสร้างและเติมน้ำตาลใน endoplasmic reticulum แล้วส่งไป Golgi แต่ไม่ถูกส่งต่อไป plasma membrane</b> ${S.mu}</li>
+ <li>จึง<b>virion ประกอบตัวโดย budding เข้า Golgi และถูกปล่อยออกเมื่อเซลล์แตกหรือด้วย exocytosis</b> ${S.mu}</li></ul>
+ <h3>Disease and epidemiology</h3><ul>
+ <li><b>Bunyaviridae ส่วนใหญ่เป็น arbovirus และมีกลไกก่อโรคหลายอย่างเหมือน togavirus กับ flavivirus</b> ${S.mu}</li>
+ <li>โรคที่เกิด: <b>หลายตัวก่อ encephalitis ตัวอื่นก่อ hepatic necrosis หรือโรคเลือดออก เช่น Crimean-Congo hemorrhagic fever และ Hantaan hemorrhagic disease ซึ่งมัก hemorrhagic necrosis ของ kidney</b> ${S.mu}</li>
+ <li>และเหมือน togavirus, flavivirus กับ arenavirus: <b>bunyavirus เหนี่ยวนำ type 1 interferon ได้ดี</b> ${S.mu}</li>
+ <li>สรุปพยาธิกำเนิด: <b>โรคของ bunyavirus เกิดจากทั้งภูมิคุ้มกันและตัวไวรัสร่วมกัน</b> ${S.mu}</li>
+ <li>พาหะ: <b>ส่วนใหญ่แพร่โดย mosquito, tick หรือแมลงวันสกุล Phlebotomus ไปที่ rodent, bird และสัตว์ใหญ่ ซึ่งกลายเป็นแหล่งรัง</b> ${S.mu}</li>
+ <li>และ<b>คนติดเชื้อเมื่อเข้าไปในสิ่งแวดล้อมของพาหะ แต่มักเป็น dead-end host</b> ${S.mu}</li>
+ <li>ข้อที่ต่างจาก arbovirus อื่น: <b>Bunyaviridae หลายตัวอยู่รอดฤดูหนาวในไข่ของ mosquito ได้ จึงคงอยู่ในพื้นที่เดิม</b> ${S.mu}</li>
+ <li>พาหะของ La Crosse: <b>Aedes triseriatus ที่กัดเวลากลางวันอย่างดุดัน และวางไข่ในน้ำในโพรงต้นไม้และยางรถที่ทิ้งไว้</b> ${S.mu}</li></ul>
+ <h3>Hantavirus is the exception</h3><ul>
+ <li><b>ต่างจาก bunyavirus อื่น rodent เป็นทั้งแหล่งรังและพาหะของ hantavirus และคนได้รับเชื้อจากการหายใจเอา aerosol ที่ปนเปื้อนปัสสาวะที่ติดเชื้อ</b> ${S.mu}</li>
+ <li>ที่ rodent: <b>hantavirus มุ่งที่ kidney และก่อการติดเชื้อเรื้อรังที่ไม่มีอาการใน rodent จึงปล่อยไวรัสในปัสสาวะเป็นเวลานาน</b> ${S.mu}</li>
+ <li>ในคน: <b>การหายใจเข้าไปนำไวรัสถึง lung แล้วมันแพร่ไปหลอดเลือดและ kidney ซึ่งมันเพิ่มจำนวนแต่ไม่สลายเซลล์</b> ${S.mu}</li>
+ <li>แล้วมัน<b>รบกวนการทำงานของ endothelial cell ทำให้หลอดเลือดรั่วซึ่งนำไปสู่ shock และเหนี่ยวนำการตอบสนองทางภูมิคุ้มกันที่สลายเซลล์ จึงทำลาย tissue แบบเลือดออกและก่อโรคของปอดที่ถึงตาย</b> ${S.mu}</li>
+ <li>การระบาดที่เป็นบทเรียน: <b>ในเดือนพฤษภาคม 1993 เกิด hantavirus pulmonary syndrome ที่ร้ายแรงในพื้นที่ Four Corners รัฐ New Mexico จากการสัมผัส deer mouse ที่มากขึ้นในฤดูที่ฝนมากผิดปกติ อาหารมากขึ้นและประชากร rodent เพิ่ม โดยแยกไวรัสกลุ่ม Sin Nombre ได้จากผู้ป่วยและจาก rodent</b> ${S.mu}</li>
+ <li>การควบคุม: <b>ควบคุม mosquito สำหรับ arbovirus และควบคุม rodent สำหรับ hantavirus</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"arena",k:"d",t:"Arenavirus carries host ribosomes",mm:"Arenavirus",leg:[],
+notes:()=>`<h3>What to remember</h3><ul>
+ <li>เป็นไวรัส<b>ขนาดกลาง มี envelope และมี negative-sense segmented RNA genome</b> ${S.mu}</li>
+ <li>และสิ่งที่ตั้งชื่อให้มัน: <b>มี ribosome ที่ไม่ทำงานอยู่ใน virion</b> ${S.mu}</li>
+ <li>มัน<b>เข้ารหัส RNA-dependent RNA polymerase และเพิ่มจำนวนใน cytoplasm</b> ${S.mu}</li>
+ <li>การก่อโรค: <b>antibody ปิดกั้นโรคได้</b> และ<b>ไวรัสแพร่ในเลือดไปที่ tissue, neuron และ brain</b> ${S.mu}</li>
+ <li>และ<b>prodrome ที่มี symptom คล้าย influenza เกิดจาก interferon กับ cytokine response</b> ${S.mu}</li>
+ <li>สองโรคที่ต้องจำ: <b>lymphocytic choriomeningitis virus ก่อ meningitis และ Lassa fever virus ก่อ hemorrhagic fever</b> ${S.mu}</li>
+ <li>การแพร่: <b>หายใจเอา aerosol จากปัสสาวะหรืออุจจาระของ rodent</b> ${S.mu}</li>
+ <li>การกระจาย: <b>lymphocytic choriomeningitis virus พบทั่วโลก ส่วน Lassa fever พบในแอฟริกา</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>RT-PCR และ ELISA</b> · การควบคุม: <b>การควบคุม rodent</b> ${S.mu}</li></ul>`});

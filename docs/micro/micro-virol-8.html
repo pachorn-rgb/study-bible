@@ -1,0 +1,510 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Retroviruses</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+<link rel="stylesheet" href="../atlas/micro.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Microbiology · Virology</div>
+    <h1>Retroviruses</h1>
+    <p class="sb-lede">ไวรัสที่คัดลอก RNA กลับเป็น DNA แล้วแทรกตัวเองเข้า chromosome ของเซลล์จนกลายเป็น gene หนึ่ง · reverse transcriptase, provirus, HIV และ HTLV · อ่านจาก Murray บท 54</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 54 Retroviruses</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "micro-virol-8", "kind": "patho", "sys": "Microbiology", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ---------------------------------------------------------------------
+   Microbiology drawing helpers.
+   Everything here draws the real thing: membranes have leaflets, walls are
+   woven, cytoplasm has grain. Nothing here draws a captioned box.
+   --------------------------------------------------------------------- */
+
+/* deterministic pseudo-random — same picture on every reload */
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* closed seeded wobble — periodic over 2π so blobs always shut cleanly */
+function mwobC(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return a => amp * (Math.sin(a * 3 + p[0]) * .55 + Math.sin(a * 5 + p[1]) * .3 + Math.sin(a * 7 + p[2]) * .15);
+}
+
+/* open seeded wobble for baselines */
+function mwob(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return t => amp * (Math.sin(t / 47 + p[0]) * .6 + Math.sin(t / 23 + p[1]) * .28 + Math.sin(t / 11 + p[2]) * .12);
+}
+
+/* an organic cell outline — never a perfect ellipse */
+function mblob(cx, cy, rx, ry, seed, wob = .055, n = 72) {
+  const w = mwobC(seed); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * k).toFixed(1) + "," + (cy + Math.sin(a) * ry * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a rod with rounded caps and a living outline */
+function mrod(cx, cy, len, rad, seed, wob = .05, n = 76) {
+  const w = mwobC(seed), h = Math.max(0, len / 2 - rad); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    const x = Math.cos(a), y = Math.sin(a);
+    d += (i ? "L" : "M") + (cx + x * rad * k + (x > 0 ? h : -h)).toFixed(1) + "," + (cy + y * rad * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* grain: the texture that stops a fill looking like plastic */
+function mgrain(x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  const q = rng(seed); let b = "";
+  for (let i = 0; i < n; i++)
+    b += `<circle class="${cls}" cx="${(x + q() * w).toFixed(1)}" cy="${(y + q() * h).toFixed(1)}" r="${(rad * (.45 + q())).toFixed(2)}"/>`;
+  return b;
+}
+
+/* grain clipped to a path — for cytoplasm inside a cell */
+function mgrainIn(id, path, x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  return `<clipPath id="${id}"><path d="${path}"/></clipPath>`
+    + `<g clip-path="url(#${id})">${mgrain(x, y, w, h, n, seed, cls, rad)}</g>`;
+}
+
+/* ---------------------------------------------------------------------
+   Phospholipid bilayer along a baseline yf(x).
+   up/down decide which leaflet the tails point from; this is drawn as
+   heads and tails, never as a coloured band.
+   --------------------------------------------------------------------- */
+function mbil(x0, x1, yf, o = {}) {
+  const h = o.h || 15, step = o.step || 8.2, hr = o.hr || 3.05,
+    core = o.core || "m-core", head = o.head || "m-head", tail = o.tail || "m-tail";
+  const N = Math.max(2, Math.round((x1 - x0) / step));
+  let top = "", bot = "";
+  for (let i = 0; i <= N; i++) { const x = x0 + (x1 - x0) * i / N, y = yf(x); top += (i ? "L" : "M") + x.toFixed(1) + "," + (y - h / 2).toFixed(1); }
+  for (let i = N; i >= 0; i--) { const x = x0 + (x1 - x0) * i / N, y = yf(x); bot += "L" + x.toFixed(1) + "," + (y + h / 2).toFixed(1); }
+  let b = `<path class="${core}" d="${top + bot}Z"/>`;
+  for (let x = x0 + step / 2; x < x1; x += step) {
+    const y = yf(x), ty = y - h / 2 + hr * .92, by = y + h / 2 - hr * .92;
+    b += `<circle class="${head}" cx="${x.toFixed(1)}" cy="${ty.toFixed(1)}" r="${hr}"/>`
+      + `<circle class="${head}" cx="${x.toFixed(1)}" cy="${by.toFixed(1)}" r="${hr}"/>`;
+    const inT = ty + hr * .8, inB = by - hr * .8, mid = (inT + inB) / 2;
+    b += `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   Woven peptidoglycan: glycan strands running across, peptide bridges
+   linking them. rows = how many layers thick.
+   --------------------------------------------------------------------- */
+function mpgl(x0, x1, yf, rows, gap, seed, o = {}) {
+  const w = mwob(seed, o.amp === undefined ? 1.6 : o.amp), q = rng(seed + 11);
+  const strand = (y0, cls) => {
+    let d = ""; for (let x = x0; x <= x1; x += 6) d += (x === x0 ? "M" : "L") + x.toFixed(1) + "," + (yf(x) + y0 + w(x)).toFixed(1);
+    return `<path class="${cls}" d="${d}"/>`;
+  };
+  let b = "";
+  for (let r = 0; r < rows; r++) {
+    const y0 = r * gap;
+    b += strand(y0, r % 2 ? "m-gly2" : "m-gly");
+    if (r < rows - 1) for (let x = x0 + 7 + q() * 9; x < x1 - 5; x += 15 + q() * 11) {
+      const ya = yf(x) + y0 + w(x), yb = yf(x) + y0 + gap + w(x);
+      const dx = (q() - .5) * 5;
+      b += `<path class="m-pep" d="M${x.toFixed(1)},${ya.toFixed(1)} L${(x + dx).toFixed(1)},${yb.toFixed(1)}"/>`;
+    }
+  }
+  return b;
+}
+
+/* teichoic acid: a beaded strand threading out through the wall */
+function mteic(x, yTop, yBot, seed, beads) {
+  const q = rng(seed); let d = `M${x},${yBot}`, b = "";
+  const n = beads || Math.max(3, Math.round((yBot - yTop) / 9));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, y = yBot + (yTop - yBot) * t, xx = x + Math.sin(t * 7 + q() * 2) * 2.4;
+    d += ` L${xx.toFixed(1)},${y.toFixed(1)}`;
+    b += `<circle class="m-teicb" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5"/>`;
+  }
+  return `<path class="m-teic" d="${d}"/>` + b;
+}
+
+/* LPS: core sugars then a waving O-antigen chain of beads */
+function mlps(x, y, seed, len) {
+  const q = rng(seed); let d = `M${x},${y}`, b = "";
+  const n = len || 7;
+  for (let i = 1; i <= n; i++) {
+    const yy = y - i * 6.4, xx = x + Math.sin(i * .9 + q() * 3) * 3.6;
+    d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
+    b += `<circle class="${i <= 2 ? "m-oantib" : "m-oantib"}" cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="${i <= 2 ? 2.1 : 1.6}"/>`;
+  }
+  return `<path class="m-oanti" d="${d}"/>` + b;
+}
+
+/* mycolic acids: very long tails packed shoulder to shoulder */
+function mmyco(x0, x1, yBase, hgt, seed, step) {
+  const q = rng(seed); let b = "";
+  for (let x = x0; x < x1; x += (step || 5.2)) {
+    const k = .8 + q() * .4, h = hgt * k, bend = (q() - .5) * 4;
+    b += `<path class="m-myco" d="M${x.toFixed(1)},${yBase} C${(x + bend).toFixed(1)},${(yBase - h * .45).toFixed(1)} ${(x - bend).toFixed(1)},${(yBase - h * .7).toFixed(1)} ${(x + bend * .6).toFixed(1)},${(yBase - h).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* a label on a thin leader line with a dot at the thing it names */
+function mlead(px, py, tx, ty, s, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start");
+  return `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`
+    + T(tx + (a === "end" ? -5 : 5), ty + 4, s, { a, c: o.c || "s" });
+}
+
+/* plain label, respecting the Labels toggle */
+const mL = (x, y, s, o) => ST.labels ? T(x, y, s, o) : "";
+
+/* a leader line carrying two short lines of text — long labels never fit */
+function mlead2(px, py, tx, ty, lines, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start"), dx = a === "end" ? -5 : 5;
+  let b = `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`;
+  lines.forEach((l, i) => { b += T(tx + dx, ty + 4 + i * 15, l, { a, c: i ? "s m" : (o.c || "bh") }) });
+  return b;
+}
+
+/* a closed, lobed loop — what a relaxed circular chromosome actually looks like */
+function mloop(cx, cy, R, seed, lob = .3, n = 220, sq = .8) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28]; let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2;
+    const k = 1 + lob * (Math.sin(a * 3 + p[0]) * .5 + Math.sin(a * 5 + p[1]) * .32 + Math.sin(a * 8 + p[2]) * .18);
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * R * k).toFixed(1) + "," + (cy + Math.sin(a) * R * sq * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a tailed phage, drawn with its facets, striated sheath and fibres */
+function mphage(cx, cy, s = 1) {
+  const R = 44 * s, hy = cy - 4 * s; let b = "";
+  const V = [...Array(6)].map((_, i) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + Math.cos(a) * R, hy + Math.sin(a) * R] });
+  b += `<path class="m-head" d="M${V.map(v => v[0].toFixed(1) + "," + v[1].toFixed(1)).join(" L")}Z"/>`;
+  [0, 2, 4].forEach(i => { b += `<path class="m-face" d="M${cx},${hy} L${V[i][0].toFixed(1)},${V[i][1].toFixed(1)}"/>` });
+  /* the genome, coiled inside the head */
+  b += `<path class="m-pdna" d="${mloop(cx, hy, R * .42, 9, .34, 120, .9)}"/>`;
+  const ty = hy + R, L = 52 * s, w = 9 * s;
+  b += `<rect class="m-tail" x="${cx - w - 3}" y="${ty - 2}" width="${(w + 3) * 2}" height="${6 * s}" rx="2"/>`
+    + `<rect class="m-tail" x="${cx - w}" y="${ty + 5 * s}" width="${w * 2}" height="${L}" rx="2"/>`;
+  for (let i = 1; i * 7 * s < L; i++) b += `<path class="m-face" d="M${cx - w},${(ty + 5 * s + i * 7 * s).toFixed(1)} L${cx + w},${(ty + 5 * s + i * 7 * s).toFixed(1)}"/>`;
+  const by = ty + 5 * s + L;
+  b += `<rect class="m-tail" x="${cx - w - 6}" y="${by}" width="${(w + 6) * 2}" height="${6 * s}" rx="3"/>`;
+  [-1, 1].forEach(sg => {
+    b += `<path class="m-fib" d="M${cx + sg * (w + 4)},${by + 6 * s} q${sg * 12 * s},${10 * s} ${sg * 8 * s},${24 * s}"/>`
+      + `<path class="m-fib" d="M${cx + sg * (w + 1)},${by + 6 * s} q${sg * 20 * s},${6 * s} ${sg * 24 * s},${18 * s}"/>`;
+  });
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
+
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"The family",b:"Replication",c:"Human immunodeficiency virus",d:"HTLV and endogenous retroviruses"});
+
+/* ===================================================================
+ Retroviruses — Murray ch 54.
+ =================================================================== */
+
+SEC.push({id:"retro-class",k:"a",t:"The discovery that broke the central dogma",mm:"Retrovirus",leg:[],
+draw:()=>tbl(["Subfamily","Characteristics","Examples"],[
+ ["Oncovirinae type B","nucleocapsid core อยู่เยื้องศูนย์ใน virion ที่สมบูรณ์","mouse mammary tumor virus"],
+ ["Oncovirinae type C","nucleocapsid core อยู่กลาง","HTLV-1, HTLV-2, HTLV-5 และ Rous sarcoma virus ของไก่"],
+ ["Oncovirinae type D","nucleocapsid core เป็นทรงกระบอก","Mason-Pfizer monkey virus"],
+ ["Lentivirinae","โรคเริ่มช้า ก่อความผิดปกติทางระบบประสาทและกด immunity · core ทรงกระบอกแบบ D","HIV-1, HIV-2, visna virus ของแกะ และ caprine arthritis encephalitis virus ของแพะ"],
+ ["Spumavirinae","ไม่ก่อโรคที่ทราบ แต่ให้ cytopathology แบบเป็นฟองที่เป็นลักษณะเฉพาะ","human foamy virus"],
+ ["Human endogenous retrovirus","sequence retrovirus ที่แทรกอยู่ใน genome ของคน","human placental virus"]]),
+notes:()=>`<h3>1970</h3><ul>
+ <li><b>retrovirus น่าจะเป็นกลุ่ม virus ที่ถูกศึกษามากที่สุดในอณูชีววิทยา</b> ${S.mu}</li>
+ <li><b>ในปี 1970 Baltimore และ Temin แสดงว่า retrovirus เข้ารหัส RNA-dependent DNA polymerase คือ reverse transcriptase และ replicate ผ่านตัวกลางที่เป็น DNA</b> ${S.mu}</li>
+ <li>แล้ว<b>สำเนา DNA ของ genome ถูกแทรกเข้า chromosome ของ cell จนกลายเป็น gene ของ cell</b> ${S.mu}</li>
+ <li>ความสำคัญ: <b>การค้นพบนี้ทำให้ Baltimore, Temin และ Dulbecco ได้รางวัล Nobel ปี 1975 และขัดกับสิ่งที่เคยเป็น central dogma ของอณูชีววิทยา คือข้อมูลพันธุกรรมไหลจาก DNA ไป RNA แล้วไปโปรตีน</b> ${S.mu}</li></ul>
+ <h3>From chickens to AIDS</h3><ul>
+ <li><b>retrovirus ตัวแรกที่แยกได้คือ Rous sarcoma virus ซึ่ง Peyton Rous แสดงว่าทำให้เกิดก้อนเนื้องอกคือ sarcoma ในไก่</b> ${S.mu}</li>
+ <li>และ<b>เหมือน retrovirus ส่วนใหญ่ Rous sarcoma virus มีขอบเขต host และ species จำกัดมาก</b> ${S.mu}</li>
+ <li><b>retrovirus ที่ก่อ cancer ถูกแยกจากสัตว์ชนิดอื่นในเวลาต่อมาและถูกจัดเป็น RNA tumor virus หรือ oncornavirus</b> ${S.mu}</li>
+ <li>กลไกของมันหลายตัว: <b>เปลี่ยนการเติบโตของ cell โดยแสดงสิ่งที่คล้าย gene ควบคุมการเติบโตของ cell ซึ่งคือ oncogene</b> ${S.mu}</li>
+ <li>จุดเริ่มของ retrovirus ของคน: <b>ในปี 1981 Robert Gallo และคณะแยก HTLV-1 จากผู้ป่วย adult human T-cell leukemia ซึ่งเป็นครั้งแรกที่ retrovirus ของคนถูกเชื่อมกับโรคในคน</b> ${S.mu}</li>
+ <li>แล้ว<b>Montagnier และคณะในปารีส และ Gallo กับคณะในสหรัฐ รายงานการแยก HIV-1 จากผู้ป่วย lymphadenopathy และ AIDS</b> ${S.mu}</li>
+ <li>และ<b>HIV-2 ซึ่งเป็น virus ใกล้ชิดถูกแยกได้ภายหลังและพบมากในแอฟริกาตะวันตก</b> ${S.mu}</li>
+ <li>ที่มา: <b>HIV ดูจะถูกส่งต่อมาถึงคนจากชิมแปนซี แล้วแพร่อย่างรวดเร็วทั่วแอฟริกาและทั่วโลกจากประชากรที่เคลื่อนที่มากขึ้น</b> ${S.mu}</li>
+ <li>จำนวน: <b>ปัจจุบันมีราว 37 ล้านคนทั่วโลกที่อยู่กับ virus ที่ก่อ AIDS</b> ${S.mu}</li>
+ <li>และ<b>แม้โรคจะร้ายแรงและไม่หายขาด การพัฒนายาต้าน virus แบบผสมคือ highly active antiretroviral therapy ทำให้ผู้ป่วยหลายคนกลับไปใช้ชีวิตปกติได้</b> ${S.mu}</li></ul>
+ <h3>How they are classified</h3><ul>
+ <li><b>retrovirus ถูกจัดกลุ่มจากโรคที่ก่อ, tissue tropism และขอบเขต host, รูปร่างของ virion และความซับซ้อนทางพันธุกรรม</b> ${S.mu}</li>
+ <li>ข้อที่ต้องแยกให้ชัด: <b>oncovirus เป็น retrovirus กลุ่มเดียวที่ทำให้ cell เป้าหมายเป็น immortal หรือเปลี่ยนสภาพได้</b> ${S.mu}</li>
+ <li>และ<b>อนุภาคแบบ A เป็นรูประยะยังไม่สมบูรณ์ที่อยู่ใน cytoplasm ซึ่ง budding ผ่าน plasma membrane แล้วเจริญเป็นอนุภาคแบบ B, C และ D</b> ${S.mu}</li>
+ <li><b>lentivirus เป็น virus ช้าที่สัมพันธ์กับโรคทางระบบประสาทและโรคที่กด immunity</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"retro-struct",k:"a",t:"Two genomes, two transfer RNAs and three enzymes",mm:"Virion",leg:[],
+notes:()=>`<h3>The virion</h3><ul>
+ <li><b>retrovirus ค่อนข้างกลม มี envelope เส้นผ่านศูนย์กลาง 80 ถึง 120 nm</b> ${S.mu}</li>
+ <li><b>envelope บรรจุ glycoprotein ของ virus และได้มาจากการ budding ที่ plasma membrane</b> ${S.mu}</li>
+ <li>และสิ่งที่อยู่ข้างใน: <b>envelope หุ้ม capsid ที่บรรจุสำเนา positive-strand RNA genome ที่เหมือนกันสองชุด อยู่ใน core ที่ทึบต่ออิเล็กตรอน</b> ${S.mu}</li>
+ <li>enzyme ที่พามาด้วย: <b>virion บรรจุ reverse transcriptase และ integrase 10 ถึง 50 ชุด และ transfer RNA ของ cell สองตัว</b> ${S.mu}</li>
+ <li>หน้าที่ของ transfer RNA นั้น: <b>มันจับคู่เบสกับ genome แต่ละชุด เพื่อใช้เป็น primer ของ reverse transcriptase</b> ${S.mu}</li>
+ <li>และ<b>รูปร่างของ core ต่างกันใน virus แต่ละตัวและถูกใช้จัดกลุ่ม retrovirus · core ของ HIV virion มีรูปคล้ายกรวยตัดยอด</b> ${S.mu}</li></ul>
+ <h3>The glycoprotein spikes</h3><ul>
+ <li><b>glycoprotein ของ virus เกิดจากการตัด polyprotein ที่เข้ารหัสด้วย gene env ด้วย protease</b> ${S.mu}</li>
+ <li><b>ขนาดของ glycoprotein ต่างกันในแต่ละกลุ่ม — gp62 ของ HTLV-1 ถูกตัดเป็น gp46 กับ p21 และ gp160 ของ HIV ถูกตัดเป็น gp41 กับ gp120</b> ${S.mu}</li>
+ <li>และ<b>glycoprotein เหล่านี้รวมเป็น trimer spike ที่มีรูปคล้ายอมยิ้ม ซึ่งเห็นได้บน surface ของ virion</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"retro-genome",k:"a",t:"gag, pol, env and the long terminal repeat",mm:"Genome",leg:[],
+draw:()=>tbl(["Gene","Polyprotein it encodes"],[
+ ["gag","group-specific antigen — capsid, matrix และโปรตีนที่จับกรดนิวคลิอิก"],
+ ["pol","polymerase, protease และ integrase"],
+ ["env","envelope glycoprotein"]]),
+notes:()=>`<h3>Simple versus complex</h3><ul>
+ <li><b>genome ของ retrovirus ที่เรียบง่ายมี gene หลักสามตัว</b> ${S.mu}</li>
+ <li>ที่ปลายทั้งสอง: <b>มี sequence long terminal repeat</b> ${S.mu}</li>
+ <li>หน้าที่ของมัน: <b>sequence long terminal repeat บรรจุ promoter, enhancer และ sequence อื่นที่ใช้จับ transcription factor ของ cell หลายชนิด</b> ${S.mu}</li>
+ <li>และ<b>virus ที่ก่อ cancer อาจบรรจุ oncogene ที่ส่งเสริมการเติบโตด้วย</b> ${S.mu}</li>
+ <li><b>retrovirus ที่ซับซ้อนรวมถึง HTLV, HIV และ lentivirus อื่น แสดงโปรตีนระยะต้นและระยะปลาย และเข้ารหัสโปรตีนที่เพิ่มความรุนแรงหลายตัวซึ่งต้องการการตัดต่อที่ซับซ้อนกว่า</b> ${S.mu}</li></ul>
+ <h3>The one difference from picornavirus</h3><ul>
+ <li><b>แม้ genome จะเหมือน messenger RNA แต่ต่างจาก genome ของ picornavirus มันไม่ก่อ infection เพราะ reverse transcriptase กับ integrase ที่พามาใน virion จำเป็นต่อ replication</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"rt-step",k:"b",t:"From RNA to provirus",mm:"Reverse transcriptase",leg:[],
+notes:()=>`<h3>Three activities in one enzyme</h3><ul>
+ <li>เมื่อ genome ถูกปล่อยเข้า cytoplasm <b>ระยะต้นของ replication เริ่มขึ้น</b> ${S.mu}</li>
+ <li><b>reverse transcriptase ซึ่งเข้ารหัสด้วย gene pol ใช้ transfer RNA ใน virion เป็น primer และสร้าง DNA สายลบที่เป็นคู่สม</b> ${S.mu}</li>
+ <li>แล้ว<b>reverse transcriptase ยังทำหน้าที่ ribonuclease H ย่อย RNA genome ทิ้ง แล้วสร้าง DNA สายบวก</b> ${S.mu}</li>
+ <li>ความสำคัญทางคลินิก: <b>reverse transcriptase เป็นเป้าหลักของยาต้าน virus</b> ${S.mu}</li>
+ <li>สิ่งที่เกิดขึ้นระหว่างทาง: <b>ระหว่างการสร้าง DNA ของ virion คือ provirus sequence จากปลายทั้งสองของ genome คือ U3 กับ U5 ถูกทำซ้ำ จึงติด long terminal repeat ไว้ที่ปลายทั้งสองข้าง</b> ${S.mu}</li>
+ <li>และนั่นให้สองสิ่ง: <b>sequence ที่จำเป็นต่อการ integrate และ sequence enhancer กับ promoter ใน long terminal repeat สำหรับควบคุมการถอดรหัส</b> ${S.mu}</li>
+ <li>ผลข้างเคียงที่สังเกตได้: <b>สำเนา DNA ของ genome ใหญ่กว่า RNA เดิม</b> ${S.mu}</li>
+ <li>ชื่อของตัวกลาง: <b>replication ดำเนินผ่านตัวกลางที่เป็น DNA ซึ่งเรียกว่า provirus</b> ${S.mu}</li>
+ <li>และ<b>provirus แทรกเข้า chromosome ของ cell อย่างสุ่มและกลายเป็น gene ของ cell</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"late-phase",k:"b",t:"The provirus behaves like a cellular gene",mm:"Late phase",leg:[],
+notes:()=>`<h3>Transcription</h3><ul>
+ <li>เมื่อ integrate แล้ว <b>ระยะปลายเริ่มขึ้นและ DNA provirus ถูกถอดรหัสเหมือน gene ของ cell ด้วย RNA polymerase II ของ host</b> ${S.mu}</li>
+ <li><b>การถอดรหัส genome ให้ RNA เต็มสาย ซึ่งใน retrovirus ที่เรียบง่ายถูกตัดต่อให้ messenger RNA หลายตัวที่บรรจุ sequence gag, gag-pol หรือ env</b> ${S.mu}</li>
+ <li>และ<b>transcript เต็มสายของ genome ยังถูกประกอบเข้า virion ใหม่ได้</b> ${S.mu}</li>
+ <li>ข้อที่ตามมาจากการเป็น gene ของ cell: <b>replication ของมันขึ้นกับระดับการเติม methyl ของ DNA ของ virus</b> ${S.mu}</li>
+ <li>และสิ่งที่ virus ทำกับ cell: <b>retrovirus ก่อ syncytia</b> ${S.mu}</li>
+ <li>ส่วน ability ทาง immunity: <b>มันทำให้การควบคุมทาง immunity เสีย ability และหนีการควบคุมนั้นได้</b> ${S.mu}</li>
+ <li>ความต่างที่ใช้แยก oncornavirus จาก HTLV-1: <b>oncornavirus อาจเข้ารหัส oncogene และมี latency สั้นก่อนเกิด cancer ส่วน HTLV-1 ไม่มี oncogene และมี latency ยาวก่อนเกิด leukemia</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hiv-entry",k:"c",t:"CD4 first, then a chemokine receptor",mm:"HIV entry",leg:[],
+draw:()=>tbl(["","M-tropic virus","T-tropic virus"],[
+ ["Co-receptor","CCR5","CXCR4"],
+ ["When","infection ครั้งแรก","ภายหลัง เมื่อ gene env กลายพันธุ์ในช่วงที่ติดเชื้อเรื้อรัง"],
+ ["Cells it reaches","cell สาย myeloid และ CD4 T cell กลุ่มย่อยที่อยู่รอบนอก, ที่ถูกกระตุ้น, central memory และในลำไส้","CD4 T cell เป็นหลัก"]]),
+notes:()=>`<h3>The two-step door</h3><ul>
+ <li><b>infection เริ่มจาก glycoprotein spike ซึ่งเป็น trimer ของ gp120 กับ gp41 จับ receptor หลักคือโปรตีน CD4 แล้วจึงจับ receptor ที่สองคือ chemokine receptor ที่เป็น G-protein-coupled ชนิดเจ็ดเกลียวข้าม membrane</b> ${S.mu}</li>
+ <li>ความสำคัญ: <b>การจับ receptor ทั้งสองนี้เป็นตัวกำหนดแรกและตัวกำหนดหลักของ tissue tropism และขอบเขต host ของ retrovirus</b> ${S.mu}</li>
+ <li>แล้ว<b>การจับ chemokine receptor กระตุ้น cell และดึง envelope ของ virus กับ plasma membrane เข้ามาใกล้กัน จึงให้ gp41 เข้าเชื่อม membrane ทั้งสอง</b> ${S.mu}</li>
+ <li>จุดที่ยาออกฤทธิ์: <b>ทั้งการจับ CCR5 และการเชื่อมที่อาศัย gp41 เป็นเป้าของยาต้าน virus</b> ${S.mu}</li>
+ <li>และช่องทางเพิ่ม: <b>HIV จับ cellular adhesion molecule คือ α-4 β-7 integrin ได้ด้วย</b> ${S.mu}</li>
+ <li>หลักฐานจากคนที่ไม่ติดเชื้อ: <b>ผู้ที่พร่อง CCR5 chemokine receptor ต้านทาน infection HIV</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hiv-cells",k:"c",t:"The Trojan horse",mm:"Reservoirs",leg:[],
+notes:()=>`<h3>Which cells hold the virus</h3><ul>
+ <li><b>ระยะแรกของ infection อาศัย M-tropic virus ที่จับ CD4 และ CCR5 บน dendritic cell และ cell สาย monocyte กับ macrophage อื่น รวมถึง memory T cell, TH1 และ T cell ในลำไส้เป็นส่วนใหญ่ และ CD4 T cell อื่น</b> ${S.mu}</li>
+ <li>แหล่งกักเก็บ: <b>macrophage, dendritic cell, memory T cell และ hematopoietic stem cell ติดเชื้อ HIV อย่างคงอยู่ และเป็นแหล่งกักเก็บหลักและเป็นวิธีกระจาย HIV ซึ่งเรียกว่า Trojan horse</b> ${S.mu}</li>
+ <li>และ<b>HIV จับ lectin คือ DC-SIGN และคงอยู่บน surface ของ dendritic cell รวมถึง follicular dendritic cell ได้</b> ${S.mu}</li>
+ <li>แล้ว<b>CD4 T cell ติดเชื้อได้จาก HIV ที่ติดอยู่กับ cell หรือจากการส่ง virus จาก cell ถึง cell เมื่อจับกับ dendritic cell</b> ${S.mu}</li>
+ <li>ปลายทาง: <b>ช่วงท้ายของการดำเนินโรค gene env ที่เข้ารหัส gp120 ของ virus บางส่วนกลายพันธุ์ จึงเปลี่ยน tropism จาก M-tropic เป็น T-tropic</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hiv-course",k:"c",t:"From mononucleosis-like illness to AIDS",mm:"Clinical course",leg:[],
+draw:()=>tbl(["Marker","Where the disease stands"],[
+ ["CD4 T cell ต่ำกว่า 500 ต่อไมโครลิตร","เริ่มมี symptom ร่วมกับ virus ใน blood สูงขึ้นและโปรตีน p24 ใน blood"],
+ ["CD4 T cell ต่ำกว่า 200 ต่อไมโครลิตร","AIDS เต็มรูป — มักลงไปถึง 50 ต่อไมโครลิตรหรือวัดไม่ได้"],
+ ["Viral load เหนือ 75,000 สำเนาต่อมิลลิลิตร","สอดคล้องกับ AIDS เต็มรูป"]]),
+notes:()=>`<h3>The three phases</h3><ul>
+ <li><b>AIDS เป็นหนึ่งในการระบาดที่ร้ายแรงที่สุดที่เคยถูกบันทึก</b> ${S.mu}</li>
+ <li>และ<b>ผู้ติดเชื้อ HIV ส่วนใหญ่จะมี symptom และส่วนมหาศาลของพวกเขาจะเสียชีวิตจากโรคนี้ถ้าไม่ได้รับการรักษา</b> ${S.mu}</li>
+ <li>สิ่งที่ประกอบเป็นโรค: <b>โรคที่สัมพันธ์กับ AIDS ส่วนใหญ่คือ opportunistic infection, cancer และผลโดยตรงของ HIV ต่อ central nervous system</b> ${S.mu}</li>
+ <li>ระยะเฉียบพลัน: <b>symptom เริ่มแรก 2 ถึง 4 สัปดาห์หลังติดเชื้ออาจคล้าย influenza หรือคล้าย mononucleosis ที่ heterophile antibody เป็นลบ โดยอาจมี aseptic meningitis หรือ rash ได้ถึง 3 เดือนหลังติดเชื้อ</b> ${S.mu}</li>
+ <li>ที่มาของ symptom นั้น: <b>เหมือนใน mononucleosis จาก Epstein-Barr virus — มันมาจากการตอบสนองของ T cell ที่ถูกกระตุ้นจาก infection อย่างกว้างขวางของ antigen-presenting cell คือ macrophage</b> ${S.mu}</li>
+ <li>แล้ว<b>symptom เหล่านี้หายไปเองหลัง 2 ถึง 3 สัปดาห์ แล้วตามด้วยช่วงที่ไม่มี symptom หรือมี generalized lymphadenopathy ที่คงอยู่ ซึ่งอาจยาวหลายปี</b> ${S.mu}</li>
+ <li>สิ่งที่เกิดขึ้นเงียบ ๆ ในช่วงนั้น: <b>virusreplicate อยู่ใน lymph node</b> ${S.mu}</li>
+ <li>และสัญญาณว่า immunity เสื่อม: <b>ความไวต่อ opportunistic pathogen ที่เพิ่มขึ้น</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hiv-epi",k:"c",t:"How HIV moves and how it is stopped",mm:"Epidemiology",leg:[],
+draw:()=>tbl(["Route","Specific transmission"],[
+ ["Inoculation in blood","การให้ blood และผลิตภัณฑ์ blood · การใช้เข็มร่วมกันในผู้ใช้ยาเสพติดทางหลอด blood · การถูกเข็มตำ แผลเปิดและการสัมผัส mucous membrane ในบุคลากรสุขภาพ · เข็มสัก"],
+ ["Sexual transmission","anal และ vaginal intercourse"],
+ ["Perinatal transmission","ใน utero · ช่วงคลอด · breast milk"]]),
+notes:()=>`<h3>Viral factors that shape the epidemic</h3><ul>
+ <li><b>เป็น virus ที่มี envelope จึงถูกทำให้หมดฤทธิ์ได้ง่าย และต้องถูกส่งผ่านในสารน้ำของร่างกาย</b> ${S.mu}</li>
+ <li>และสองข้อที่ทำให้คุมยาก: <b>โรคมีระยะก่อน symptom ที่ยาว และ virus ถูกปล่อยออกได้ก่อนที่จะมี symptom ที่ระบุได้</b> ${S.mu}</li>
+ <li>ที่พบ virus: <b>ใน blood, semen และ secretion จากช่องคลอด</b> ${S.mu}</li>
+ <li>กลุ่มเสี่ยง: <b>ผู้ใช้ยาเสพติดทางหลอด blood, ผู้ที่มีคู่นอนหลายคน, ผู้ขายบริการ, infant ของ mother ที่ติดเชื้อ และคู่นอนของผู้ติดเชื้อ</b> ${S.mu}</li>
+ <li>และกลุ่มในอดีต: <b>ผู้รับ blood และผู้รับการ transplant อวัยวะ กับผู้ป่วย hemophilia ที่ได้รับการรักษาก่อนปี 1985 ซึ่งเป็นก่อนมีโปรแกรม screening</b> ${S.mu}</li>
+ <li>การกระจาย: <b>เป็นการระบาดที่ขยายตัวทั่วโลก และไม่มีความชุกตามฤดูกาล</b> ${S.mu}</li>
+ <li>การควบคุม: <b>ยาต้าน virus จำกัดการดำเนินของโรค และใช้เป็นการป้องกันทั้งก่อนและหลังสัมผัส</b> ${S.mu}</li>
+ <li>และ<b>ยังไม่มี vaccine</b> ${S.mu}</li>
+ <li>มาตรการอื่น: <b>เพศสัมพันธ์ที่ปลอดภัยและมีคู่คนเดียว, การใช้เข็มที่ปลอดเชื้อ, การขริบ และโปรแกรม screening ขนาดใหญ่ของ blood สำหรับการให้ blood อวัยวะสำหรับการ transplant และ clotting factor ที่ผู้ป่วย hemophilia ใช้</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>RT-PCR และ ELISA</b> · และ<b>การ screening เริ่มต้นใช้ ELISA ที่ตรวจทั้ง antigen และ antibody, latex agglutination, การตรวจ antibody ในช่องปากแบบเร็ว และการตรวจ antibody ในปัสสาวะ</b> ${S.mu}</li>
+ <li>การรักษา: <b>nucleoside analog, protease inhibitor และยาต้าน virus อื่น</b> ${S.mu}</li>
+ <li>และ<b>จำนวนยาและสูตรผสมที่ได้รับการรับรองเพิ่มขึ้นจนปรับสูตรให้เหมาะกับแต่ละคนได้ เพื่อให้ได้ผลสูงสุดและจำกัดผลข้างเคียง · ยาต้าน HIV ที่ได้รับการรับรองถูกจัดกลุ่มตามกลไกการออกฤทธิ์</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"htlv",k:"d",t:"HTLV-1 and the flower cell",mm:"HTLV",leg:[],
+notes()
+{return`<h3>Adult T-cell leukemia and lymphoma</h3><ul>
+ <li><b>HTLV ก่อ acute T-cell lymphocytic leukemia และ tropical spastic paraparesis</b> ${S.mu}</li>
+ <li>cell ที่เป็น cancer: <b>เป็น CD4 helper T cell และโรคเป็นได้ทั้งเฉียบพลันและเรื้อรัง</b> ${S.mu}</li>
+ <li>ที่มาของชื่อ: <b>cellcancer ถูกเรียกว่า flower cell เพราะมันมีรูปร่างหลากหลายและมี nucleus ที่เป็นพู</b> ${S.mu}</li>
+ <li>และ<b>นอกจาก white blood cell ที่สูงขึ้น adult T-cell leukemia and lymphoma รูปนี้มีรอยโรคที่ skin คล้ายที่พบใน Sézary syndrome</b> ${S.mu}</li>
+ <li>การพยากรณ์โรค: <b>มักเสียชีวิตภายในหนึ่งปีหลังวินิจฉัย ไม่ว่าจะรักษาอย่างไร</b> ${S.mu}</li></ul>
+ <h3>The neurologic disease</h3><ul>
+ <li><b>HTLV-1 ยังก่อ HTLV-1-associated myelopathy ซึ่งคือ tropical spastic paraparesis และเป็นโรคทางระบบประสาทที่ไม่ใช่ cancer</b> ${S.mu}</li>
+ <li>และ<b>HTLV-1-associated myelopathy นำไปสู่การเสื่อมของ myelin ที่ spinal cord และเกิดอัมพาต</b> ${S.mu}</li>
+ <li>โรคอื่น: <b>uveitis, HTLV-associated infectious dermatitis และความผิดปกติที่มี inflammation อื่น</b> ${S.mu}</li>
+ <li>และ<b>infection HTLV ยังกด immunity</b> ${S.mu}</li>
+ <li>ส่วนตัวที่สอง: <b>HTLV-2 ไม่น่าจะก่อ leukemia แต่อาจก่อโรคทางระบบประสาทเช่น HTLV-1-associated myelopathy</b> ${S.mu}</li></ul>
+ <h3>Treatment and control</h3><ul>
+ <li><b>การใช้ zidovudine ร่วมกับ interferon-α ได้ผลในผู้ป่วย adult T-cell leukemia and lymphoma บางราย แต่ยังไม่มีการรักษาใดได้รับการรับรองสำหรับการจัดการ infection HTLV-1</b> ${S.mu}</li>
+ <li>และ<b>มาตรการจำกัดการแพร่ของ HTLV-1 เหมือนกับของ HIV — การป้องกันทางเพศ, การ screeningblood และการรับรู้ความเสี่ยงที่เพิ่มขึ้น</b> ${S.mu}</li>
+ <li>สิ่งที่ screening เป็นประจำเพื่อปกป้อง blood ที่ใช้: <b>HTLV-1, HIV, hepatitis B virus และ hepatitis C virus</b> ${S.mu}</li>
+ <li>และข้อที่ยังทำได้ยาก: <b>การควบคุม infection จาก mother สู่บุตรยากมาก</b> ${S.mu}</li></ul>`}});
+
+SEC.push({id:"herv",k:"d",t:"The retroviruses already in our chromosomes",mm:"Endogenous",leg:[],
+notes:()=>`<h3>Eight per cent</h3><ul>
+ <li><b>endogenous retrovirus เป็นปรสิตที่สมบูรณ์แบบที่สุด — มันแทรกอยู่แล้ว ถูกส่งต่อในแนวดิ่ง และอาจกินพื้นที่ถึง 8% ของ chromosome ของคน</b> ${S.mu}</li>
+ <li>และ<b>แม้มันอาจไม่สร้าง virion มันก็ยังอาจมีส่วนหรือมีอิทธิพลต่อการทำงานของร่างกาย</b> ${S.mu}</li>
+ <li>สิ่งที่ตรวจพบได้ในคน: <b>sequence provirus ทั้งที่สมบูรณ์และบางส่วน ซึ่งมี sequence gene คล้ายของ HTLV, mouse mammary tumor virus และ retrovirus อื่น</b> ${S.mu}</li>
+ <li>เหตุที่มัน replicate ไม่ได้: <b>มันมักขาด ability นั้นเพราะมีการขาดหายของ sequence หรือมี termination codon แทรกเข้าไป หรือเพราะมันถูกถอดรหัสได้ไม่ดี</b> ${S.mu}</li>
+ <li>และสิ่งที่ cell เราทำกับมัน: <b>cell ของเราแสดงโปรตีนเช่น apolipoprotein B editing catalytic protein เพื่อกด replication ของ endogenous retrovirus</b> ${S.mu}</li>
+ <li>ตัวอย่างที่เป็นประโยชน์: <b>retrovirus ตัวหนึ่งตรวจพบได้ใน placenta และถูกกระตุ้นด้วยการตั้งครรภ์ · มันสร้าง syncytin ซึ่งจำเป็นต่อการทำงานของ placenta</b> ${S.mu}</li>
+ <li>และตัวอื่น: <b>human endogenous retrovirus อื่นสัมพันธ์กับ cancer prostate และ cancer อื่น, multiple sclerosis และ amyotrophic lateral sclerosis</b> ${S.mu}</li>
+ <li>สิ่งที่ retrovirus ให้กลับแก่วิทยาศาสตร์: <b>มันให้เครื่องมือสำคัญแก่อณูชีววิทยาคือ enzyme reverse transcriptase และผ่านการศึกษา oncogene ของ virus ก็ให้วิธีเข้าใจการเติบโต การเปลี่ยนสภาพและการเกิด cancer ของ cell</b> ${S.mu}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

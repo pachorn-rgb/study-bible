@@ -63,7 +63,7 @@ const ABBR={
  /* drugs */
  NSAID:"nonsteroidal anti-inflammatory drug",ACE:"angiotensin-converting enzyme",
  SSSS:"staphylococcal scalded skin syndrome",
- NAAT:"nucleic acid amplification test",LOS:"lipooligosaccharide",
+ NAAT:"nucleic acid amplification test",MERS:"Middle East respiratory syndrome",HTLV:"human T-lymphotropic virus",LOS:"lipooligosaccharide",HN:"hemagglutinin neuraminidase",VPg:"viral protein genome-linked",ISVP:"intermediate subviral particle",
  DFA:"direct fluorescent antibody",PFGE:"pulsed-field gel electrophoresis",
  CTBA:"cycloserine-cefoxitin-fructose agar with taurocholate",CNA:"colistin-nalidixic acid agar",EIA:"enzyme immunoassay",
  KOH:"potassium hydroxide",MBC:"minimum bactericidal concentration",XLD:"xylose-lysine deoxycholate",MALDI:"matrix-assisted laser desorption ionization",
@@ -318,7 +318,7 @@ const ABBR={
  NTM:"nontuberculous mycobacteria"
 };
 /* never expanded: formula fragments, gene and protein symbols, and names read as words */
-const ABBR_OK=new Set(["TH2","CR3","RB51","C3b","C5a","HB","PBP2","LasA","LasB","ETA","AIP","OMP","TW","HEp","OmpA","TWAR","TH1","CTX","BCYE","CFA","LT","PA63","pXO1","pXO2","JK","ETA","ETB","LIM","PURPLE","POSITIVE","ATP","ADP","AMP","cAMP","ATPase","DNA","RNA","mRNA","pH","HCO","NaHCO","NH","PCO","PO","CO","KCl","NaCl","MgSO","CaCl",
+const ABBR_OK=new Set(["TCD50","LD50","ID50","CCR5","E1A","E1B","E6","E7","L1","L2","p53","p105RB","AUG","VP1","VP2","VP3","VP4","VP7","JC","SV40","NSP4","M2","TH2","TH17","CR3","CXCR4","DC","SIGN","HBcAg","PrP","PrPSc","PrPC","GPI","U3","U5","HBc","HBe","HBs","APOBEC","Da","CD150","CD55","CD155","CD46","VP0","VP5","VP6","VP8","PB1","PB2","PA","NS1","NS2","NSs","NSm","NSP4","G1","G2","NPC1","TIM","ZMAPP","rVSV","ZEBOV","VSV","RB51","C3b","C5a","HB","PBP2","LasA","LasB","ETA","AIP","OMP","TW","HEp","OmpA","TWAR","TH1","CTX","BCYE","CFA","LT","PA63","pXO1","pXO2","JK","ETA","ETB","LIM","PURPLE","POSITIVE","ATP","ADP","AMP","cAMP","ATPase","DNA","RNA","mRNA","pH","HCO","NaHCO","NH","PCO","PO","CO","KCl","NaCl","MgSO","CaCl",
  "AA","AL","IgA","IgG","IgM","IgE","C3","C4","C1q","C5","CD","CD4","CD8","CD20","CD28","CD80","ABO","WHO","ISUP","AJCC","KDOQI",
  "TSC","TSC1","TSC2","MUC1","REN","HNF1B","COL4A3","COL4A4","COL4A5","PKD1","PKD2","PKHD1","APOL1","PLA2R","LIMS","CXCL9","DNAJB9",
  "HIF","TGF","VEGF","PDGF","FGF","EGF","IGF","TNF","IL","IFN","WNK","CaSR","TRPV5","FKBP","mTOR","IMPDH","NC1","GzmB","TCR","Tfh","Th1","Th2","Th17",

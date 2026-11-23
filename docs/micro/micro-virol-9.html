@@ -1,0 +1,520 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>Hepatitis viruses and prions</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+<link rel="stylesheet" href="../atlas/micro.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Microbiology · Virology</div>
+    <h1>Hepatitis viruses and prions</h1>
+    <p class="sb-lede">ไวรัสห้าตัวที่ไม่เกี่ยวข้องกันทางโครงสร้างเลย แต่ลงเอยที่ liver เหมือนกัน · แล้วปิดบท virology ด้วยสิ่งที่ติดต่อได้โดยไม่มี genome เลย · อ่านจาก Murray บท 55 และ 56</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 55 Hepatitis Viruses และ Ch 56 Prion Diseases</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "micro-virol-9", "kind": "patho", "sys": "Microbiology", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ---------------------------------------------------------------------
+   Microbiology drawing helpers.
+   Everything here draws the real thing: membranes have leaflets, walls are
+   woven, cytoplasm has grain. Nothing here draws a captioned box.
+   --------------------------------------------------------------------- */
+
+/* deterministic pseudo-random — same picture on every reload */
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* closed seeded wobble — periodic over 2π so blobs always shut cleanly */
+function mwobC(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return a => amp * (Math.sin(a * 3 + p[0]) * .55 + Math.sin(a * 5 + p[1]) * .3 + Math.sin(a * 7 + p[2]) * .15);
+}
+
+/* open seeded wobble for baselines */
+function mwob(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return t => amp * (Math.sin(t / 47 + p[0]) * .6 + Math.sin(t / 23 + p[1]) * .28 + Math.sin(t / 11 + p[2]) * .12);
+}
+
+/* an organic cell outline — never a perfect ellipse */
+function mblob(cx, cy, rx, ry, seed, wob = .055, n = 72) {
+  const w = mwobC(seed); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * k).toFixed(1) + "," + (cy + Math.sin(a) * ry * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a rod with rounded caps and a living outline */
+function mrod(cx, cy, len, rad, seed, wob = .05, n = 76) {
+  const w = mwobC(seed), h = Math.max(0, len / 2 - rad); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    const x = Math.cos(a), y = Math.sin(a);
+    d += (i ? "L" : "M") + (cx + x * rad * k + (x > 0 ? h : -h)).toFixed(1) + "," + (cy + y * rad * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* grain: the texture that stops a fill looking like plastic */
+function mgrain(x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  const q = rng(seed); let b = "";
+  for (let i = 0; i < n; i++)
+    b += `<circle class="${cls}" cx="${(x + q() * w).toFixed(1)}" cy="${(y + q() * h).toFixed(1)}" r="${(rad * (.45 + q())).toFixed(2)}"/>`;
+  return b;
+}
+
+/* grain clipped to a path — for cytoplasm inside a cell */
+function mgrainIn(id, path, x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  return `<clipPath id="${id}"><path d="${path}"/></clipPath>`
+    + `<g clip-path="url(#${id})">${mgrain(x, y, w, h, n, seed, cls, rad)}</g>`;
+}
+
+/* ---------------------------------------------------------------------
+   Phospholipid bilayer along a baseline yf(x).
+   up/down decide which leaflet the tails point from; this is drawn as
+   heads and tails, never as a coloured band.
+   --------------------------------------------------------------------- */
+function mbil(x0, x1, yf, o = {}) {
+  const h = o.h || 15, step = o.step || 8.2, hr = o.hr || 3.05,
+    core = o.core || "m-core", head = o.head || "m-head", tail = o.tail || "m-tail";
+  const N = Math.max(2, Math.round((x1 - x0) / step));
+  let top = "", bot = "";
+  for (let i = 0; i <= N; i++) { const x = x0 + (x1 - x0) * i / N, y = yf(x); top += (i ? "L" : "M") + x.toFixed(1) + "," + (y - h / 2).toFixed(1); }
+  for (let i = N; i >= 0; i--) { const x = x0 + (x1 - x0) * i / N, y = yf(x); bot += "L" + x.toFixed(1) + "," + (y + h / 2).toFixed(1); }
+  let b = `<path class="${core}" d="${top + bot}Z"/>`;
+  for (let x = x0 + step / 2; x < x1; x += step) {
+    const y = yf(x), ty = y - h / 2 + hr * .92, by = y + h / 2 - hr * .92;
+    b += `<circle class="${head}" cx="${x.toFixed(1)}" cy="${ty.toFixed(1)}" r="${hr}"/>`
+      + `<circle class="${head}" cx="${x.toFixed(1)}" cy="${by.toFixed(1)}" r="${hr}"/>`;
+    const inT = ty + hr * .8, inB = by - hr * .8, mid = (inT + inB) / 2;
+    b += `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   Woven peptidoglycan: glycan strands running across, peptide bridges
+   linking them. rows = how many layers thick.
+   --------------------------------------------------------------------- */
+function mpgl(x0, x1, yf, rows, gap, seed, o = {}) {
+  const w = mwob(seed, o.amp === undefined ? 1.6 : o.amp), q = rng(seed + 11);
+  const strand = (y0, cls) => {
+    let d = ""; for (let x = x0; x <= x1; x += 6) d += (x === x0 ? "M" : "L") + x.toFixed(1) + "," + (yf(x) + y0 + w(x)).toFixed(1);
+    return `<path class="${cls}" d="${d}"/>`;
+  };
+  let b = "";
+  for (let r = 0; r < rows; r++) {
+    const y0 = r * gap;
+    b += strand(y0, r % 2 ? "m-gly2" : "m-gly");
+    if (r < rows - 1) for (let x = x0 + 7 + q() * 9; x < x1 - 5; x += 15 + q() * 11) {
+      const ya = yf(x) + y0 + w(x), yb = yf(x) + y0 + gap + w(x);
+      const dx = (q() - .5) * 5;
+      b += `<path class="m-pep" d="M${x.toFixed(1)},${ya.toFixed(1)} L${(x + dx).toFixed(1)},${yb.toFixed(1)}"/>`;
+    }
+  }
+  return b;
+}
+
+/* teichoic acid: a beaded strand threading out through the wall */
+function mteic(x, yTop, yBot, seed, beads) {
+  const q = rng(seed); let d = `M${x},${yBot}`, b = "";
+  const n = beads || Math.max(3, Math.round((yBot - yTop) / 9));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, y = yBot + (yTop - yBot) * t, xx = x + Math.sin(t * 7 + q() * 2) * 2.4;
+    d += ` L${xx.toFixed(1)},${y.toFixed(1)}`;
+    b += `<circle class="m-teicb" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5"/>`;
+  }
+  return `<path class="m-teic" d="${d}"/>` + b;
+}
+
+/* LPS: core sugars then a waving O-antigen chain of beads */
+function mlps(x, y, seed, len) {
+  const q = rng(seed); let d = `M${x},${y}`, b = "";
+  const n = len || 7;
+  for (let i = 1; i <= n; i++) {
+    const yy = y - i * 6.4, xx = x + Math.sin(i * .9 + q() * 3) * 3.6;
+    d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
+    b += `<circle class="${i <= 2 ? "m-oantib" : "m-oantib"}" cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="${i <= 2 ? 2.1 : 1.6}"/>`;
+  }
+  return `<path class="m-oanti" d="${d}"/>` + b;
+}
+
+/* mycolic acids: very long tails packed shoulder to shoulder */
+function mmyco(x0, x1, yBase, hgt, seed, step) {
+  const q = rng(seed); let b = "";
+  for (let x = x0; x < x1; x += (step || 5.2)) {
+    const k = .8 + q() * .4, h = hgt * k, bend = (q() - .5) * 4;
+    b += `<path class="m-myco" d="M${x.toFixed(1)},${yBase} C${(x + bend).toFixed(1)},${(yBase - h * .45).toFixed(1)} ${(x - bend).toFixed(1)},${(yBase - h * .7).toFixed(1)} ${(x + bend * .6).toFixed(1)},${(yBase - h).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* a label on a thin leader line with a dot at the thing it names */
+function mlead(px, py, tx, ty, s, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start");
+  return `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`
+    + T(tx + (a === "end" ? -5 : 5), ty + 4, s, { a, c: o.c || "s" });
+}
+
+/* plain label, respecting the Labels toggle */
+const mL = (x, y, s, o) => ST.labels ? T(x, y, s, o) : "";
+
+/* a leader line carrying two short lines of text — long labels never fit */
+function mlead2(px, py, tx, ty, lines, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start"), dx = a === "end" ? -5 : 5;
+  let b = `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`;
+  lines.forEach((l, i) => { b += T(tx + dx, ty + 4 + i * 15, l, { a, c: i ? "s m" : (o.c || "bh") }) });
+  return b;
+}
+
+/* a closed, lobed loop — what a relaxed circular chromosome actually looks like */
+function mloop(cx, cy, R, seed, lob = .3, n = 220, sq = .8) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28]; let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2;
+    const k = 1 + lob * (Math.sin(a * 3 + p[0]) * .5 + Math.sin(a * 5 + p[1]) * .32 + Math.sin(a * 8 + p[2]) * .18);
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * R * k).toFixed(1) + "," + (cy + Math.sin(a) * R * sq * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a tailed phage, drawn with its facets, striated sheath and fibres */
+function mphage(cx, cy, s = 1) {
+  const R = 44 * s, hy = cy - 4 * s; let b = "";
+  const V = [...Array(6)].map((_, i) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + Math.cos(a) * R, hy + Math.sin(a) * R] });
+  b += `<path class="m-head" d="M${V.map(v => v[0].toFixed(1) + "," + v[1].toFixed(1)).join(" L")}Z"/>`;
+  [0, 2, 4].forEach(i => { b += `<path class="m-face" d="M${cx},${hy} L${V[i][0].toFixed(1)},${V[i][1].toFixed(1)}"/>` });
+  /* the genome, coiled inside the head */
+  b += `<path class="m-pdna" d="${mloop(cx, hy, R * .42, 9, .34, 120, .9)}"/>`;
+  const ty = hy + R, L = 52 * s, w = 9 * s;
+  b += `<rect class="m-tail" x="${cx - w - 3}" y="${ty - 2}" width="${(w + 3) * 2}" height="${6 * s}" rx="2"/>`
+    + `<rect class="m-tail" x="${cx - w}" y="${ty + 5 * s}" width="${w * 2}" height="${L}" rx="2"/>`;
+  for (let i = 1; i * 7 * s < L; i++) b += `<path class="m-face" d="M${cx - w},${(ty + 5 * s + i * 7 * s).toFixed(1)} L${cx + w},${(ty + 5 * s + i * 7 * s).toFixed(1)}"/>`;
+  const by = ty + 5 * s + L;
+  b += `<rect class="m-tail" x="${cx - w - 6}" y="${by}" width="${(w + 6) * 2}" height="${6 * s}" rx="3"/>`;
+  [-1, 1].forEach(sg => {
+    b += `<path class="m-fib" d="M${cx + sg * (w + 4)},${by + 6 * s} q${sg * 12 * s},${10 * s} ${sg * 8 * s},${24 * s}"/>`
+      + `<path class="m-fib" d="M${cx + sg * (w + 1)},${by + 6 * s} q${sg * 20 * s},${6 * s} ${sg * 24 * s},${18 * s}"/>`;
+  });
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
+
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"The hepatitis alphabet",b:"Hepatitis B",c:"Hepatitis C, D and E",d:"Prion diseases"});
+
+/* ===================================================================
+ Hepatitis viruses and prion diseases — Murray ch 55 and 56.
+ =================================================================== */
+
+SEC.push({id:"hep-compare",k:"a",t:"Five unrelated viruses, one target organ",mm:"Comparison",leg:[],
+draw:()=>tbl(["Feature","Hepatitis A","Hepatitis B","Hepatitis C","Hepatitis D","Hepatitis E"],[
+ ["Common name","infectious","serum","non-A non-B posttransfusion","delta agent","enteric non-A non-B"],
+ ["Virus structure","picornavirus · capsid · (+) RNA","hepadnavirus · envelope · DNA","flavivirus · envelope · (+) RNA","viroid-like · envelope · circular RNA","hepevirus · capsid · (+) RNA"],
+ ["Transmission","fecal-oral","parenteral และทางเพศ","parenteral และทางเพศ","parenteral และทางเพศ","fecal-oral"],
+ ["Onset","abrupt","insidious","insidious","abrupt","abrupt"],
+ ["Incubation period","15 ถึง 50 วัน","45 ถึง 160 วัน","14 ถึงเกิน 180 วัน","15 ถึง 64 วัน","15 ถึง 50 วัน"],
+ ["Severity","mild","รุนแรงได้บางครั้ง · เรื้อรัง 3% ถึง 10% ในผู้ใหญ่ และ 30% ถึง 90% ในทารกและเด็ก","มักไม่มี symptom · เรื้อรัง 70%","co-infection กับ hepatitis B รุนแรงได้บางครั้ง · superinfection มักรุนแรง","ในผู้ป่วยทั่วไป mild · ในหญิงตั้งครรภ์รุนแรง"],
+ ["Mortality","ต่ำกว่า 0.5%","1% ถึง 2%","ราว 4%","สูงถึงสูงมาก","ทั่วไป 1% ถึง 2% · หญิงตั้งครรภ์ 20%"],
+ ["Chronic carrier state","ไม่มี","มี","มี","มี","ไม่มี"],
+ ["Other associations","ไม่มี","primary hepatocellular carcinoma และ cirrhosis","primary hepatocellular carcinoma และ cirrhosis","—","ไม่มี"]]),
+notes:()=>`<h3>What they share and what they do not</h3><ul>
+ <li><b>hepatitis alphabet มีไวรัสอย่างน้อยหกตัว คือ A ถึง E และ G</b> ${S.mu}</li>
+ <li>และข้อสำคัญ: <b>แม้อวัยวะเป้าหมายของทุกตัวคือ liver และ symptom พื้นฐานคล้ายกัน แต่มันต่างกันมากในโครงสร้าง, วิธีเพิ่มจำนวน, วิธีแพร่ และในลำดับเวลาและผลตามหลังของโรคที่ก่อ</b> ${S.mu}</li>
+ <li>ชื่อเก่า: <b>hepatitis A กับ hepatitis B virus เป็นไวรัส hepatitis คลาสสิก ส่วน hepatitis C, D, E และ G ถูกเรียกว่าไวรัส non-A non-B hepatitis</b> ${S.mu}</li>
+ <li>และ<b>ไวรัสอื่นก็ก่อ hepatitis ได้</b> ${S.mu}</li>
+ <li>กลไกร่วม: <b>ไวรัส hepatitis แต่ละตัวติดเชื้อแล้วเริ่มการตอบสนองที่มี inflammation ซึ่งทำลาย liver จึงเกิด symptom แบบ icteric คลาสสิกคือ jaundice และการปล่อย enzyme ของ liver</b> ${S.mu}</li>
+ <li>ข้อที่เป็นหลักของทั้งบท: <b>ไวรัสเหล่านี้ไม่สลายเซลล์ ดังนั้น cell-mediated immunity เป็นตัวก่อ symptom</b> ${S.mu}</li>
+ <li>และเหตุที่มันแพร่ได้ง่าย: <b>ผู้ติดเชื้อแพร่เชื้อได้ก่อนจะมี symptom หรือแพร่ได้โดยไม่มี symptom เลย</b> ${S.mu}</li>
+ <li>การแยกโรค: <b>ไวรัสที่เป็นสาเหตุแยกได้จากลำดับเวลา ลักษณะ และ serology ของโรค</b> ${S.mu}</li>
+ <li>การวินิจฉัยของทั้งกลุ่ม: <b>RT-PCR และ ELISA</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hep-a",k:"a",t:"Hepatitis A",mm:"Hepatitis A",leg:[],
+notes:()=>`<h3>The abrupt one that leaves nothing behind</h3><ul>
+ <li><b>hepatitis A ซึ่งบางครั้งเรียกว่า infectious hepatitis เกิดจาก picornavirus ซึ่งเป็นไวรัส RNA</b> ${S.mu}</li>
+ <li>ลำดับโรค: <b>แพร่ทาง fecal-oral, มีระยะฟักตัวราวหนึ่งเดือน แล้ว symptom แบบ icteric เริ่มขึ้นอย่างฉับพลัน, ไม่ก่อโรค liver เรื้อรัง และนาน ๆ ครั้งจึงถึงตาย</b> ${S.mu}</li>
+ <li>และ<b>การติดเชื้อ hepatitis A virus มักเกิดจากการกิน</b> ${S.mu}</li>
+ <li>ลักษณะทางชีววิทยา: <b>มันเป็น picornavirus ที่ไม่สลายเซลล์ เริ่มเฉียบพลันและไม่มีผลตามหลัง</b> ${S.mu}</li></ul>
+ <h3>Control</h3><ul>
+ <li><b>การแพร่ของ hepatitis A virus ลดลงได้ด้วยการตัดการแพร่แบบ fecal-oral</b> ${S.mu}</li>
+ <li>วิธีทำ: <b>หลีกเลี่ยงน้ำหรืออาหารที่อาจปนเปื้อน โดยเฉพาะ shellfish ที่ไม่ผ่านการปรุง และการบำบัดน้ำเสียอย่างถูกวิธี</b> ${S.mu}</li>
+ <li>และ<b>การล้างมืออย่างถูกวิธีสำคัญอย่างยิ่ง โดยเฉพาะในสถานรับเลี้ยงเด็ก โรงพยาบาลจิตเวชและสถานดูแลอื่น</b> ${S.mu}</li>
+ <li>น้ำดื่ม: <b>การเติม chlorine ในน้ำดื่มมักเพียงพอที่จะฆ่าไวรัส</b> ${S.mu}</li>
+ <li>การป้องกันหลังสัมผัส: <b>immune serum globulin ที่ให้ก่อนหรือช่วงต้นของระยะฟักตัว คือภายในไม่ถึง 2 สัปดาห์หลังสัมผัส ป้องกันโรคทางคลินิกได้ 80% ถึง 90%</b> ${S.mu}</li>
+ <li>วัคซีน: <b>วัคซีนชนิดเชื้อตายแนะนำสำหรับเด็กทุกคนหลังอายุ 1 ปี และสำหรับผู้ใหญ่ที่เสี่ยงสูง รวมถึงผู้เดินทางไปพื้นที่ที่เป็นโรคประจำถิ่น, ผู้ใช้ยาเสพติดทางหลอดเลือด และชายที่มีเพศสัมพันธ์กับชาย</b> ${S.mu}</li>
+ <li>และ<b>วัคซีนให้สองเข็มห่างกัน 6 เดือน และให้พร้อมวัคซีน hepatitis B virus ได้ · วัคซีนชนิดเชื้อเป็นใช้อยู่ในจีน</b> ${S.mu}</li>
+ <li>เหตุที่โปรแกรมวัคซีนนี้สำเร็จ: <b>hepatitis A virus มี serotype เดียวและติดเชื้อในคนเท่านั้น</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hbv-struct",k:"b",t:"The Dane particle and the Australia antigen",mm:"HBV structure",leg:[],
+draw:()=>tbl(["Antigen","What it is"],[
+ ["HBsAg","glycoprotein สามรูปใน envelope · เดิมเรียกว่า Australia antigen · L, M และ S เข้ารหัสจาก gene เดียวในกรอบเดียว แต่แปลจาก AUG start codon ที่ต่างกัน"],
+ ["HBcAg","โปรตีนที่ประกอบเป็น icosahedral capsid"],
+ ["HBeAg","มีลำดับโปรตีนเหมือน HBcAg เป็นส่วนใหญ่ แต่ถูกจัดการต่างกันโดยเซลล์ · ถูกหลั่งเข้า serum เป็นหลัก · ประกอบตัวเองไม่ได้ และแสดงตัวกำหนดแอนติเจนที่ต่างออกไป"]]),
+notes:()=>`<h3>A DNA virus with a reverse transcriptase</h3><ul>
+ <li><b>hepatitis B เดิมเรียกว่า serum hepatitis เกิดจาก hepadnavirus ที่มี genome เป็น DNA</b> ${S.mu}</li>
+ <li>การแพร่และลำดับโรค: <b>แพร่ทาง parenteral คือทางเลือดหรือเข็ม, ทางเพศสัมพันธ์ และจากมารดาสู่บุตร · ระยะฟักตัวมัธยฐานราว 3 เดือน แล้ว symptom แบบ icteric เริ่มอย่างค่อยเป็นค่อยไป</b> ${S.mu}</li>
+ <li>แล้ว<b>ตามด้วย chronic hepatitis ใน 5% ถึง 10% ของผู้ป่วย และสัมพันธ์เชิงสาเหตุกับ primary hepatocellular carcinoma</b> ${S.mu}</li>
+ <li>ภาระโรค: <b>ประชากรโลกมากกว่าหนึ่งในสามเคยติดเชื้อ hepatitis B virus ซึ่งทำให้เสียชีวิต 1 ถึง 2 ล้านรายต่อปี</b> ${S.mu}</li>
+ <li>และแนวโน้ม: <b>การเกิด hepatitis B virus ลดลง โดยเฉพาะในทารก เพราะการพัฒนาและการใช้วัคซีนชนิด subunit</b> ${S.mu}</li></ul>
+ <h3>The virion</h3><ul>
+ <li><b>virion ซึ่งเรียกว่า Dane particle มีเส้นผ่านศูนย์กลาง 42 nm</b> ${S.mu}</li>
+ <li>และข้อที่สำคัญทางการควบคุมการติดเชื้อ: <b>virion คงทนผิดปกติสำหรับไวรัสที่มี envelope — มันทนต่อ ether, pH ต่ำ, การแช่แข็งและความร้อนปานกลาง</b> ${S.mu}</li>
+ <li>ผลที่ตามมา: <b>คุณสมบัติเหล่านี้ช่วยการแพร่จากคนหนึ่งไปอีกคน และขัดขวางการทำลายเชื้อ</b> ${S.mu}</li>
+ <li>สิ่งที่ virion บรรจุ: <b>protein kinase และ polymerase ที่มีฤทธิ์ reverse transcriptase กับ ribonuclease H รวมถึงโปรตีน P ที่ติดอยู่กับ genome</b> ${S.mu}</li>
+ <li>และ<b>ทั้งหมดนั้นถูกหุ้มด้วย icosahedral capsid ที่สร้างจาก HBcAg และ envelope ที่บรรจุ HBsAg สามรูป</b> ${S.mu}</li></ul>
+ <h3>The empty particles that became the first vaccine</h3><ul>
+ <li><b>อนุภาคที่บรรจุ HBsAg ถูกปล่อยเข้า serum ของผู้ติดเชื้อ และมีจำนวนมากกว่า virion จริง</b> ${S.mu}</li>
+ <li>รูปร่าง: <b>อนุภาคเหล่านี้เป็นทรงกลมซึ่งเล็กกว่า Dane particle หรือเป็นเส้นใย</b> ${S.mu}</li>
+ <li>และ<b>มันกระตุ้นภูมิคุ้มกันได้ จึงถูกนำไปทำเป็นวัคซีนเชิงพาณิชย์ตัวแรกต่อ hepatitis B virus</b> ${S.mu}</li>
+ <li>พูดอีกอย่าง: <b>เซลล์ที่ติดเชื้อ hepatitis B virus สร้างและปล่อยอนุภาค HBsAg จำนวนมากที่ไม่มี DNA อยู่ข้างใน</b> ${S.mu}</li>
+ <li>และกลไกทางพันธุกรรมที่อยู่เบื้องหลัง: <b>ไวรัสเข้ารหัสโปรตีนหลายตัวที่ใช้ลำดับพันธุกรรมร่วมกัน แต่ใช้ start codon ที่ต่างกันในกรอบเดียว</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hbv-repl",k:"b",t:"Replication through an RNA intermediate",mm:"HBV replication",leg:[],
+notes:()=>`<h3>Backwards for a DNA virus</h3><ul>
+ <li>หลังเข้า hepatocyte และถอดเปลือก nucleocapsid core <b>genome DNA ที่เป็นสองสายบางส่วนถูกส่งเข้า nucleus และถูกเติมให้สมบูรณ์</b> ${S.mu}</li>
+ <li>แล้ว<b>การถอดรหัส genome ให้ messenger RNA สี่ตัว รวมถึงตัวที่ใหญ่กว่า genome เองคือ 3500 base</b> ${S.mu}</li>
+ <li>สิ่งที่ messenger RNA ตัวใหญ่นั้นเข้ารหัส: <b>HBc กับ HBe antigen, polymerase และ protein primer สำหรับการเพิ่มจำนวน DNA — และมันเป็นแม่แบบด้วย</b> ${S.mu}</li>
+ <li>แล้ว<b>messenger RNA ย้ายเข้า cytoplasm และถูกแปลเป็นโปรตีน</b> ${S.mu}</li>
+ <li>ขั้นที่กลับทิศ: <b>โปรตีน core ประกอบตัวรอบ messenger RNA ขนาด 3500 base แล้ว DNA สายลบถูกสร้างด้วยฤทธิ์ reverse transcriptase ที่อยู่ใน core</b> ${S.mu}</li>
+ <li>ต่อมา<b>RNA ถูกย่อยทิ้งขณะที่ DNA สายบวกถูกสร้างขึ้น</b> ${S.mu}</li>
+ <li>การออก: <b>core ที่เต็มแล้วจับกับ membrane ของ endoplasmic reticulum ที่มี HBsAg, ได้ envelope ก่อน DNA สายบวกจะเสร็จ แล้วถูกปล่อยด้วย exocytosis พร้อมอนุภาคที่บรรจุ HBsAg</b> ${S.mu}</li>
+ <li>และนั่นอธิบายสิ่งที่เห็นใน virion: <b>genome ใน virion เป็น DNA สองสายบางส่วน ไม่ใช่สองสายสมบูรณ์</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hbv-sero",k:"b",t:"Reading the serology",mm:"HBV serology",leg:[],
+draw:()=>tbl(["Marker","What it means"],[
+ ["HBsAg, HBeAg หรือทั้งคู่ โดยตรวจไม่พบ antibody ต่อแอนติเจนเหล่านั้น","การติดเชื้อที่กำลังดำเนินอยู่"],
+ ["Anti-HBs","การติดเชื้อหายแล้ว หรือได้รับวัคซีน"],
+ ["Anti-HBc","เคยติดเชื้อหรือกำลังติดเชื้อ hepatitis B virus"],
+ ["IgM anti-HBc","วิธีที่ดีที่สุดในการวินิจฉัยการติดเชื้อเฉียบพลันที่เพิ่งเกิด โดยเฉพาะในช่วง window ที่ตรวจไม่พบทั้ง HBsAg และ anti-HBs"]]),
+notes:()=>`<h3>Why the window exists</h3><ul>
+ <li><b>immune complex ของ HBeAg กับ HBsAg และ antibody ยับยั้งการสร้าง antibody และทำให้ตรวจแอนติเจนที่อยู่ใน complex ไม่พบ</b> ${S.mu}</li>
+ <li>จึงเกิดช่วงที่<b>ทั้ง HBsAg และ anti-HBs ตรวจไม่พบ ซึ่งเรียกว่า window</b> ${S.mu}</li>
+ <li>และสิ่งที่ใช้แทน: <b>การตรวจ IgM anti-HBc ตามปกติในช่วง window นั้น</b> ${S.mu}</li>
+ <li>สิ่งที่ใช้ติดตามโรค: <b>symptom, ระดับ HBsAg, HBeAg และ IgM anti-HBc ใน serum และ genome</b> ${S.mu}</li></ul>
+ <h3>Immune complex disease</h3><ul>
+ <li><b>การติดเชื้อ hepatitis B virus ส่งเสริม hypersensitivity reaction ที่เกิดจาก immune complex ของ HBsAg กับ antibody</b> ${S.mu}</li>
+ <li>และสิ่งที่ complex เหล่านั้นก่อ: <b>rash, polyarthritis, fever, acute necrotizing vasculitis และ glomerulonephritis</b> ${S.mu}</li></ul>
+ <h3>Prevention</h3><ul>
+ <li><b>วัคซีนชนิด virus-like particle ที่เป็น HBsAg, การตรวจคัดกรองเลือดที่ใช้, เพศสัมพันธ์ที่ปลอดภัย และยาต้านไวรัส</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"hep-cde",k:"c",t:"Hepatitis C, D, E and G",mm:"HCV · HDV · HEV",leg:[],
+notes:()=>`<h3>Hepatitis C</h3><ul>
+ <li><b>hepatitis C เกิดจาก flavivirus ที่มี genome เป็น RNA</b> ${S.mu}</li>
+ <li>การแพร่และภาระโรค: <b>แพร่ทางเดียวกับ hepatitis B virus และมีผู้เป็นพาหะติดเชื้อเรื้อรังมากกว่า 170 ล้านคน</b> ${S.mu}</li>
+ <li>และความต่างจาก hepatitis B: <b>มันมีแนวโน้มก่อการติดเชื้อที่ไม่มี symptom และก่อโรคเรื้อรังมากกว่า hepatitis B virus และเพิ่มความเสี่ยงต่อ primary hepatocellular carcinoma</b> ${S.mu}</li>
+ <li>ตัวเลขที่ต้องจำ: <b>มันก่อโรคเรื้อรังใน 70% ของผู้ป่วย</b> และ<b>เสี่ยงต่อ primary hepatocellular carcinoma กับ cirrhosis หลังเวลาผ่านไปนาน</b> ${S.mu}</li>
+ <li>การควบคุม: <b>การตรวจคัดกรองเลือดที่ใช้, เพศสัมพันธ์ที่ปลอดภัย และยาต้านไวรัส</b> ${S.mu}</li>
+ <li>และญาติของมัน: <b>hepatitis G virus ก็เป็น flavivirus และก่อการติดเชื้อเรื้อรัง</b> ${S.mu}</li></ul>
+ <h3>Hepatitis D</h3><ul>
+ <li><b>hepatitis D หรือ delta hepatitis พิเศษตรงที่มันต้องมี hepatitis B virus ที่กำลังเพิ่มจำนวนอยู่เป็น helper virus และเกิดเฉพาะในผู้ป่วยที่มีการติดเชื้อ hepatitis B virus ที่ยังดำเนินอยู่</b> ${S.mu}</li>
+ <li>สิ่งที่ hepatitis B virus ให้มา: <b>envelope สำหรับ RNA ของ hepatitis D virus และแอนติเจนของมัน</b> ${S.mu}</li>
+ <li>และผลทางคลินิก: <b>hepatitis D virus ทำให้ symptom ที่เกิดจาก hepatitis B virus แย่ลง</b> ${S.mu}</li>
+ <li>ลักษณะของอนุภาค: <b>เป็นแบบ viroid และต้องการ hepatitis B virus เป็น helper จึงให้โรคแบบ fulminant</b> ${S.mu}</li>
+ <li>การป้องกัน: <b>การให้วัคซีน hepatitis B virus</b> ${S.mu}</li></ul>
+ <h3>Hepatitis E</h3><ul>
+ <li><b>hepatitis E virus เป็นไวรัสของลำไส้ที่มี capsid และมี genome เป็น RNA อยู่ในวงศ์ของตัวเอง</b> ${S.mu}</li>
+ <li>และ<b>โรคของมันคล้าย hepatitis A virus แต่รุนแรงได้ในหญิงตั้งครรภ์</b> ${S.mu}</li>
+ <li>ตัวเลขที่ต้องจำ: <b>อัตราตายในผู้ป่วยทั่วไป 1% ถึง 2% แต่ในหญิงตั้งครรภ์ถึง 20%</b> ${S.mu}</li>
+ <li>ลักษณะทางชีววิทยา: <b>เป็น hepevirus คล้าย calicivirus เริ่มเฉียบพลันและไม่มีผลตามหลัง</b> ${S.mu}</li>
+ <li>การควบคุม: <b>สุขอนามัย</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"prion-struct",k:"d",t:"An infectious protein with no genome",mm:"PrP",leg:[],
+draw:()=>tbl(["Characteristic","Classic virus","Prion"],[
+ ["Filterable infectious agent","yes","yes"],
+ ["Presence of nucleic acid","yes","no"],
+ ["Defined morphology on electron microscopy","yes","no"],
+ ["Presence of protein","yes","yes"],
+ ["Disinfection by formaldehyde","yes","no"],
+ ["Disinfection by proteases","บางตัว","no"],
+ ["Disinfection by heat at 80 °C","ส่วนใหญ่","no"],
+ ["Disinfection by ionizing และ ultraviolet radiation","yes","no"]]),
+notes:()=>`<h3>The two conformations</h3><ul>
+ <li><b>spongiform encephalopathy เป็นโรคที่ระบบประสาทเสื่อมอย่างช้า และเกิดจากอนุภาคที่ติดต่อได้ซึ่งเป็นโปรตีน เรียกว่า prion</b> ${S.mu}</li>
+ <li>และสี่ข้อที่ทำให้มันไม่เหมือนไวรัสเลย: <b>prion ไม่มีโครงสร้าง virion ไม่มี genome ไม่กระตุ้นการตอบสนองทางภูมิคุ้มกัน และทนอย่างยิ่งต่อการทำให้หมดฤทธิ์ด้วยความร้อน น้ำยาฆ่าเชื้อและรังสี</b> ${S.mu}</li>
+ <li>ตัว prion: <b>เป็นโปรตีนที่ติดต่อได้เรียกว่า scrapie-like prion protein ซึ่งทนต่อ protease, ไม่ชอบน้ำ, รวมตัวเป็น fibril และไม่มีกรดนิวคลิอิก</b> ${S.mu}</li>
+ <li>และมันคือ<b>รูปทางเลือกของ glycoprotein ปกติที่ผิวเซลล์ซึ่งเรียกว่า cellular prion protein ขนาด 27,000 ถึง 30,000 Da</b> ${S.mu}</li>
+ <li>โปรตีนปกตินั้น: <b>ไวต่อ protease และถูกยึดใน cell membrane ด้วยพันธะระหว่าง serine ที่ปลายกับ lipid พิเศษคือ glycophosphatidylinositol</b> ${S.mu}</li>
+ <li>หน้าที่ปกติของมัน: <b>cellular prion protein ทำปฏิกิริยากับและปรับการทำงานของโปรตีนที่ membrane หลายตัวใน brain รวมถึง potassium channel, N-methyl-d-aspartate receptor และ neural cell adhesion molecule</b> ${S.mu}</li>
+ <li>และการเปลี่ยนรูป: <b>การจับกับ scrapie prion protein เปลี่ยนรูปของ cellular prion protein ซึ่งมี α-helix มาก ให้เป็นรูปที่มี β-sheet มาก จึงได้โปรตีนที่ผิดปกติซึ่งสร้าง fibril</b> ${S.mu}</li>
+ <li>คุณสมบัติที่ต่างกัน: <b>scrapie prion protein เป็น multimer, ทน protease, พบใน scrapie fibril, อยู่ใน cytoplasmic vesicle กับนอกเซลล์ และมี turnover เป็นวัน ส่วน cellular prion protein เป็น monomer, ไวต่อ protease, อยู่ที่ plasma membrane และมี turnover เป็นชั่วโมง</b> ${S.mu}</li></ul>
+ <h3>Template-mediated protein refolding</h3><ul>
+ <li><b>ทฤษฎีปัจจุบันที่อธิบายว่าโปรตีนที่ผิดรูปก่อโรคได้อย่างไร เรียกว่า template-mediated protein refolding</b> ${S.mu}</li>
+ <li>ขั้นแรก: <b>สายของ scrapie prion protein จับกับโครงสร้างที่มีประจุลบที่ผิวเซลล์ เช่น glycosaminoglycan และจับกับ cellular prion protein ปกติที่ผิวเซลล์</b> ${S.mu}</li>
+ <li>แล้ว<b>cellular prion protein นั้นพับใหม่ ได้โครงสร้างของ scrapie prion protein และต่อเข้ากับสาย</b> ${S.mu}</li>
+ <li>การเทียบที่ Murray ใช้: <b>scrapie prion protein ทำหน้าที่เป็นแม่แบบที่ส่งต่อรูปของมันให้ตัวใหม่แต่ละตัว ซึ่งคล้ายกับที่ mutation ใน genetic template ของไวรัสส่งต่อการเปลี่ยนแปลงใน genome</b> ${S.mu}</li>
+ <li>และเหตุที่มันขยายตัว: <b>เมื่อสายของ scrapie prion protein หักออก มันสร้าง primer ใหม่ให้ prion ถูกต่อเพิ่ม · เซลล์ยังสร้าง cellular prion protein ต่อไป และเมื่อมันจับ primer วงจรก็ดำเนินต่อ</b> ${S.mu}</li>
+ <li>พันธุกรรม: <b>cellular prion protein ของคนเข้ารหัสบน chromosome 20</b> ${S.mu}</li>
+ <li>และข้อที่อธิบายการไม่มีภูมิคุ้มกัน: <b>plaque เหล่านี้ประกอบจากโปรตีนของ host เอง ซึ่งอาจอธิบายการไม่มีการตอบสนองทางภูมิคุ้มกันต่อตัวการในผู้ป่วย spongiform encephalopathy</b> ${S.mu}</li>
+ <li>สายพันธุ์: <b>scrapie prion protein มีสายพันธุ์ต่างกันเพราะ mutation ใน cellular prion protein ซึ่งเป็นทางพันธุกรรม หรือเพราะรูปแบบการพับทางเลือกที่ขยายตัวเอง ซึ่งเป็นแบบ sporadic หรือ acquired</b> ${S.mu}</li>
+ <li>และ<b>mutation จำเพาะที่ codon 129 กำหนดความรุนแรงของ Creutzfeldt-Jakob disease</b> ${S.mu}</li>
+ <li>ข้อที่แยก prion จากไวรัสอีกข้อ: <b>มันกลายพันธุ์เชิงโครงสร้าง ไม่ใช่เชิงพันธุกรรม · สายพันธุ์เชิงโครงสร้างที่ต่างกันมีคุณสมบัติและลักษณะโรคที่ต่างกัน เช่นระยะฟักตัว</b> ${S.mu}</li>
+ <li>และขอบเขตที่กว้างกว่าโรค prion: <b>การรวมตัวของโปรตีนอื่นเป็น prion หรือโครงสร้างคล้าย prion อาจก่อหรือมีส่วนในโรคของคนเช่น Alzheimer disease, Huntington disease และ Parkinson disease</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"prion-dis",k:"d",t:"Kuru, Creutzfeldt-Jakob disease and the rest",mm:"Prion diseases",leg:[],
+draw:()=>tbl(["Human","Animal"],[
+ ["Kuru","scrapie ของแกะและแพะ"],
+ ["Creutzfeldt-Jakob disease","transmissible mink encephalopathy"],
+ ["Variant Creutzfeldt-Jakob disease","bovine spongiform encephalopathy ซึ่งคือ mad cow disease"],
+ ["Gerstmann-Sträussler-Scheinker syndrome","chronic wasting disease ของ mule, deer และ elk"],
+ ["Fatal familial insomnia และ sporadic fatal insomnia","—"]]),
+notes:()=>`<h3>Three origins</h3><ul>
+ <li><b>โรค prion เป็นแบบ sporadic, genetic หรือ acquired ได้</b> ${S.mu}</li>
+ <li>สัดส่วน: <b>Creutzfeldt-Jakob disease และ fatal familial insomnia แบบ sporadic พบมากกว่าคือ 85% ถึง 90% ของผู้ป่วย เทียบกับแบบ genetic ที่ 10% ถึง 15% และแบบ acquired ที่ 1% ถึง 3%</b> ${S.mu}</li>
+ <li>แบบที่ได้จากการติดเชื้อ: <b>kuru, Creutzfeldt-Jakob disease และ variant Creutzfeldt-Jakob disease</b> ${S.mu}</li>
+ <li>และแบบทางพันธุกรรม: <b>Creutzfeldt-Jakob disease, Gerstmann-Sträussler-Scheinker syndrome และ fatal familial insomnia</b> ${S.mu}</li>
+ <li>สองรางวัล Nobel: <b>Carlton Gajdusek ได้ในปี 1976 จากการแสดงว่า kuru มีสาเหตุจากการติดเชื้อและจากการพัฒนาวิธีวิเคราะห์ตัวการ</b> ${S.mu}</li>
+ <li>และ<b>Stanley Prusiner ได้ในปี 1997 จากการพัฒนาแบบจำลองการติดเชื้อใน hamster สำหรับตัวการของ scrapie · เขาและคณะทำให้ gene ของ scrapie และ prion อื่นบริสุทธิ์ จำแนกและ clone ได้ และแสดงว่าโปรตีน prion ที่สัมพันธ์กับโรคเพียงอย่างเดียวก่อโรคได้</b> ${S.mu}</li></ul>
+ <h3>How it gets to the brain</h3><ul>
+ <li><b>การติดเชื้อ prion เกิดจากการกิน, การเจาะผ่านรอยแผลที่ skin หรือจากการติดเชื้อที่ brain หรือ neuronal tissue โดยตรงด้วย tissue ที่มี prion</b> ${S.mu}</li>
+ <li>เส้นทางหลังการกิน: <b>prion สะสมใน secondary lymphoid tissue ที่มีเส้นประสาทหนาแน่น ใน follicular dendritic cell และ B cell แล้วเดินขึ้นไปตาม neuron ถึง central nervous system และ brain</b> ${S.mu}</li>
+ <li>สิ่งที่เห็นใน tissue: <b>การเกิด plaque และ fibril ที่มี amyloid, การเพิ่มจำนวนและโตขึ้นของ astrocyte และการเกิด vacuole ใน neuron กับ glial cell ที่อยู่ติดกัน</b> ${S.mu}</li>
+ <li>ที่มาของชื่อ: <b>spongiform encephalopathy อธิบายลักษณะของ neuron ที่เป็น vacuole รวมถึงการเสียหน้าที่ของมันและการไม่มีการตอบสนองทางภูมิคุ้มกันหรือ inflammation</b> ${S.mu}</li>
+ <li>เหตุที่ brain เสียหาย: <b>scrapie prion protein ไปถึงความเข้มข้นสูงใน brain และถูกนำเข้าโดย neuron กับเซลล์ที่กลืนกิน แต่ย่อยสลายยาก ซึ่งอาจมีส่วนในการเกิด vacuole ของ tissue</b> ${S.mu}</li>
+ <li>ข้อที่น่าสังเกต: <b>แยก prion ได้จาก tissue อื่นนอก brain ด้วย แต่มีเพียง brain ที่แสดงการเปลี่ยนแปลงทางพยาธิวิทยา</b> ${S.mu}</li>
+ <li>และสิ่งที่แยกจาก viral encephalitis คลาสสิก: <b>ไม่มี inflammation หรือการตอบสนองทางภูมิคุ้มกันต่อตัวการเลย</b> ${S.mu}</li>
+ <li>ตัวช่วยวินิจฉัย: <b>โปรตีนบ่งชี้คือ tau protein หรือ 14-3-3 brain protein ตรวจพบได้ใน cerebrospinal fluid ของผู้ที่มี symptom แต่ไม่จำเพาะต่อโรค prion</b> ${S.mu}</li></ul>
+ <h3>Time course and control</h3><ul>
+ <li><b>ระยะฟักตัวของ Creutzfeldt-Jakob disease และ kuru อาจยาวถึง 30 ปี</b> ${S.mu}</li>
+ <li>แต่<b>เมื่อ symptom ปรากฏชัดแล้ว โรคดำเนินอย่างรวดเร็วและมักเสียชีวิตภายในหนึ่งปี</b> ${S.mu}</li>
+ <li>และระยะฟักตัวที่ยาวนั้น<b>ทำให้การศึกษาตัวการเหล่านี้ยาก</b> ${S.mu}</li>
+ <li>การแพร่ของ Creutzfeldt-Jakob disease: <b>ส่วนใหญ่ทางการฉีด, การปลูกถ่าย tissue ที่ปนเปื้อนเช่น cornea และการสัมผัส</b> ${S.mu}</li>
+ <li>พูดอีกแบบ: <b>แพร่บนอุปกรณ์ผ่าตัดที่ปนเปื้อน, ทางการฉีด, ในอาหาร หรือทางพันธุกรรม</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>ลักษณะอาการ, magnetic resonance imaging และการตรวจทางอ้อม</b> ${S.mu}</li>
+ <li>และการควบคุม: <b>ขั้นตอนการทำลายเชื้ออย่างเข้มงวด — ไม่มีวิธีป้องกันหรือควบคุมอื่น</b> ${S.mu}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

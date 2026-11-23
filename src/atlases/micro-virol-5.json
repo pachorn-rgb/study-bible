@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-5",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "The human herpesviruses",
+ "h1": "The human herpesviruses",
+ "lede": "แปดไวรัสที่ติดแล้วติดตลอดชีวิต — แต่ละตัวซ่อนอยู่คนละเซลล์ และแต่ละตัวกลับมาด้วยเงื่อนไขของตัวเอง · ตารางเดียวที่บอกว่าไวรัสไหนเข้าเซลล์อะไร ซ่อนที่ไหน และแพร่อย่างไร · อ่านจาก Murray บท 43",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 43 Human Herpesviruses"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "The human herpesviruses",
+  "src": "Murray 9e Ch 43",
+  "desc": "โครงสร้างของ herpesvirus และ tegument ที่พาเอนไซม์เข้าไปด้วย, การถอดรหัสสามระยะ immediate early กับ early และ late, ตารางเทียบทั้งแปดไวรัสว่าเข้าเซลล์เป้าหมายใด ซ่อนตัวที่ไหน และแพร่ทางใด, latency-associated transcript ที่ทำให้ herpes simplex virus อยู่เงียบใน neuron, สิ่งกระตุ้นให้กลับเป็นซ้ำ, กลุ่มอาการของ herpes simplex ตั้งแต่ gingivostomatitis ถึง herpetic whitlow กับ eczema herpeticum, varicella ที่ตุ่มมีทุกระยะพร้อมกันเทียบกับ zoster ที่อยู่ใน dermatome เดียว, postherpetic neuralgia, EBV ที่ใช้พัฒนาการของ B cell เป็นที่อยู่และทำให้เกิด heterophile antibody กับ Downey cell และ cytomegalovirus ที่เป็นสาเหตุไวรัสอันดับหนึ่งของความพิการแต่กำเนิด",
+  "ch": "Murray Ch 43",
+  "sort": 17,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

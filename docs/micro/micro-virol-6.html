@@ -1,0 +1,516 @@
+<!doctype html>
+<html lang="th">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="manifest" href="../manifest.json"><meta name="theme-color" content="#0B0D11"><link rel="apple-touch-icon" href="../icons/icon-180.png">
+<script src="../app.js" defer></script>
+<title>RNA viruses of the gut and the airway</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Sans+Thai:wght@400;500;600;700;800&display=swap" media="print" onload="this.media='all'">
+<link rel="stylesheet" href="../design/sb.css">
+<link rel="stylesheet" href="../atlas/atlas.css">
+<link rel="stylesheet" href="../atlas/micro.css">
+
+</head>
+<body>
+<div class="wrap">
+  <header class="sb-hero">
+    <div class="sb-eyebrow">Microbiology · Virology</div>
+    <h1>RNA viruses of the gut and the airway</h1>
+    <p class="sb-lede">Picornavirus ที่ genome เป็น messenger RNA อยู่แล้ว, coronavirus ที่ทน detergent ทั้งที่มี envelope, paramyxovirus ที่เชื่อมเซลล์เข้าด้วยกัน และ influenza ที่ genome แตกเป็นแปดชิ้นจึงสลับชิ้นกันได้ · อ่านจาก Murray บท 46 ถึง 49</p>
+    <div class="sb-sources"><span class="sb-src"><i class="murray">Mu</i>Murray Medical Microbiology 9e · Ch 46 Picornaviruses, Ch 47 Coronaviruses and Noroviruses, Ch 48 Paramyxoviruses และ Ch 49 Orthomyxoviruses</span></div>
+    <div class="pstats" id="pstats"></div>
+  </header>
+  <div class="mbar"><button class="ar" type="button" id="mprev" aria-label="Previous topic">‹</button><button class="open" type="button" id="mopen" aria-label="Open contents"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"><path d="M4 6h16M4 12h16M4 18h10"/></svg><span><small id="mgrp"></small><b id="mtop"></b></span></button><button class="ar" type="button" id="mnext" aria-label="Next topic">›</button></div>
+  <div class="shell">
+  <aside class="side toc" id="side" aria-label="Contents"></aside>
+  <main><div id="flow"></div><nav class="steps" id="steps" aria-label="Chapters"></nav></main>
+  </div>
+</div>
+<div class="drawer" id="drawer" hidden><div class="pane toc" id="dpane" role="dialog" aria-modal="true" aria-label="Contents"></div><div class="dim" id="ddim"></div></div>
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true"><div class="bar"><b id="lbt"></b><button type="button" id="zo" aria-label="Zoom out">−</button><button type="button" id="zi" aria-label="Zoom in">+</button><button type="button" id="lbx" aria-label="Close">✕</button></div><div class="sc" id="lbsc"><img id="lbi" alt=""></div></div>
+<script>const ATLAS={"id": "micro-virol-6", "kind": "patho", "sys": "Microbiology", "root": "Microbiology", "mmh": "map", "mapT": "Topic map", "leg": false, "drugs": false};</script>
+<script src="../atlas/core.js"></script>
+<script>
+/* ---------------------------------------------------------------------
+   Microbiology drawing helpers.
+   Everything here draws the real thing: membranes have leaflets, walls are
+   woven, cytoplasm has grain. Nothing here draws a captioned box.
+   --------------------------------------------------------------------- */
+
+/* deterministic pseudo-random — same picture on every reload */
+function rng(s){return()=>{s=(s*16807)%2147483647;return(s-1)/2147483646}}
+
+/* closed seeded wobble — periodic over 2π so blobs always shut cleanly */
+function mwobC(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return a => amp * (Math.sin(a * 3 + p[0]) * .55 + Math.sin(a * 5 + p[1]) * .3 + Math.sin(a * 7 + p[2]) * .15);
+}
+
+/* open seeded wobble for baselines */
+function mwob(seed, amp = 1) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28];
+  return t => amp * (Math.sin(t / 47 + p[0]) * .6 + Math.sin(t / 23 + p[1]) * .28 + Math.sin(t / 11 + p[2]) * .12);
+}
+
+/* an organic cell outline — never a perfect ellipse */
+function mblob(cx, cy, rx, ry, seed, wob = .055, n = 72) {
+  const w = mwobC(seed); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * rx * k).toFixed(1) + "," + (cy + Math.sin(a) * ry * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a rod with rounded caps and a living outline */
+function mrod(cx, cy, len, rad, seed, wob = .05, n = 76) {
+  const w = mwobC(seed), h = Math.max(0, len / 2 - rad); let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2, k = 1 + w(a) * wob;
+    const x = Math.cos(a), y = Math.sin(a);
+    d += (i ? "L" : "M") + (cx + x * rad * k + (x > 0 ? h : -h)).toFixed(1) + "," + (cy + y * rad * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* grain: the texture that stops a fill looking like plastic */
+function mgrain(x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  const q = rng(seed); let b = "";
+  for (let i = 0; i < n; i++)
+    b += `<circle class="${cls}" cx="${(x + q() * w).toFixed(1)}" cy="${(y + q() * h).toFixed(1)}" r="${(rad * (.45 + q())).toFixed(2)}"/>`;
+  return b;
+}
+
+/* grain clipped to a path — for cytoplasm inside a cell */
+function mgrainIn(id, path, x, y, w, h, n, seed, cls = "m-gr", rad = .8) {
+  return `<clipPath id="${id}"><path d="${path}"/></clipPath>`
+    + `<g clip-path="url(#${id})">${mgrain(x, y, w, h, n, seed, cls, rad)}</g>`;
+}
+
+/* ---------------------------------------------------------------------
+   Phospholipid bilayer along a baseline yf(x).
+   up/down decide which leaflet the tails point from; this is drawn as
+   heads and tails, never as a coloured band.
+   --------------------------------------------------------------------- */
+function mbil(x0, x1, yf, o = {}) {
+  const h = o.h || 15, step = o.step || 8.2, hr = o.hr || 3.05,
+    core = o.core || "m-core", head = o.head || "m-head", tail = o.tail || "m-tail";
+  const N = Math.max(2, Math.round((x1 - x0) / step));
+  let top = "", bot = "";
+  for (let i = 0; i <= N; i++) { const x = x0 + (x1 - x0) * i / N, y = yf(x); top += (i ? "L" : "M") + x.toFixed(1) + "," + (y - h / 2).toFixed(1); }
+  for (let i = N; i >= 0; i--) { const x = x0 + (x1 - x0) * i / N, y = yf(x); bot += "L" + x.toFixed(1) + "," + (y + h / 2).toFixed(1); }
+  let b = `<path class="${core}" d="${top + bot}Z"/>`;
+  for (let x = x0 + step / 2; x < x1; x += step) {
+    const y = yf(x), ty = y - h / 2 + hr * .92, by = y + h / 2 - hr * .92;
+    b += `<circle class="${head}" cx="${x.toFixed(1)}" cy="${ty.toFixed(1)}" r="${hr}"/>`
+      + `<circle class="${head}" cx="${x.toFixed(1)}" cy="${by.toFixed(1)}" r="${hr}"/>`;
+    const inT = ty + hr * .8, inB = by - hr * .8, mid = (inT + inB) / 2;
+    b += `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inT.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid - .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x - 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x - 2.1).toFixed(1)},${mid.toFixed(1)} ${(x - 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`
+      + `<path class="${tail}" d="M${(x + 1.15).toFixed(1)},${inB.toFixed(1)} Q${(x + 2.1).toFixed(1)},${mid.toFixed(1)} ${(x + 1.15).toFixed(1)},${(mid + .6).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   Woven peptidoglycan: glycan strands running across, peptide bridges
+   linking them. rows = how many layers thick.
+   --------------------------------------------------------------------- */
+function mpgl(x0, x1, yf, rows, gap, seed, o = {}) {
+  const w = mwob(seed, o.amp === undefined ? 1.6 : o.amp), q = rng(seed + 11);
+  const strand = (y0, cls) => {
+    let d = ""; for (let x = x0; x <= x1; x += 6) d += (x === x0 ? "M" : "L") + x.toFixed(1) + "," + (yf(x) + y0 + w(x)).toFixed(1);
+    return `<path class="${cls}" d="${d}"/>`;
+  };
+  let b = "";
+  for (let r = 0; r < rows; r++) {
+    const y0 = r * gap;
+    b += strand(y0, r % 2 ? "m-gly2" : "m-gly");
+    if (r < rows - 1) for (let x = x0 + 7 + q() * 9; x < x1 - 5; x += 15 + q() * 11) {
+      const ya = yf(x) + y0 + w(x), yb = yf(x) + y0 + gap + w(x);
+      const dx = (q() - .5) * 5;
+      b += `<path class="m-pep" d="M${x.toFixed(1)},${ya.toFixed(1)} L${(x + dx).toFixed(1)},${yb.toFixed(1)}"/>`;
+    }
+  }
+  return b;
+}
+
+/* teichoic acid: a beaded strand threading out through the wall */
+function mteic(x, yTop, yBot, seed, beads) {
+  const q = rng(seed); let d = `M${x},${yBot}`, b = "";
+  const n = beads || Math.max(3, Math.round((yBot - yTop) / 9));
+  for (let i = 1; i <= n; i++) {
+    const t = i / n, y = yBot + (yTop - yBot) * t, xx = x + Math.sin(t * 7 + q() * 2) * 2.4;
+    d += ` L${xx.toFixed(1)},${y.toFixed(1)}`;
+    b += `<circle class="m-teicb" cx="${xx.toFixed(1)}" cy="${y.toFixed(1)}" r="1.5"/>`;
+  }
+  return `<path class="m-teic" d="${d}"/>` + b;
+}
+
+/* LPS: core sugars then a waving O-antigen chain of beads */
+function mlps(x, y, seed, len) {
+  const q = rng(seed); let d = `M${x},${y}`, b = "";
+  const n = len || 7;
+  for (let i = 1; i <= n; i++) {
+    const yy = y - i * 6.4, xx = x + Math.sin(i * .9 + q() * 3) * 3.6;
+    d += ` L${xx.toFixed(1)},${yy.toFixed(1)}`;
+    b += `<circle class="${i <= 2 ? "m-oantib" : "m-oantib"}" cx="${xx.toFixed(1)}" cy="${yy.toFixed(1)}" r="${i <= 2 ? 2.1 : 1.6}"/>`;
+  }
+  return `<path class="m-oanti" d="${d}"/>` + b;
+}
+
+/* mycolic acids: very long tails packed shoulder to shoulder */
+function mmyco(x0, x1, yBase, hgt, seed, step) {
+  const q = rng(seed); let b = "";
+  for (let x = x0; x < x1; x += (step || 5.2)) {
+    const k = .8 + q() * .4, h = hgt * k, bend = (q() - .5) * 4;
+    b += `<path class="m-myco" d="M${x.toFixed(1)},${yBase} C${(x + bend).toFixed(1)},${(yBase - h * .45).toFixed(1)} ${(x - bend).toFixed(1)},${(yBase - h * .7).toFixed(1)} ${(x + bend * .6).toFixed(1)},${(yBase - h).toFixed(1)}"/>`;
+  }
+  return b;
+}
+
+/* a label on a thin leader line with a dot at the thing it names */
+function mlead(px, py, tx, ty, s, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start");
+  return `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`
+    + T(tx + (a === "end" ? -5 : 5), ty + 4, s, { a, c: o.c || "s" });
+}
+
+/* plain label, respecting the Labels toggle */
+const mL = (x, y, s, o) => ST.labels ? T(x, y, s, o) : "";
+
+/* a leader line carrying two short lines of text — long labels never fit */
+function mlead2(px, py, tx, ty, lines, o = {}) {
+  if (!ST.labels) return "";
+  const a = o.a || (tx < px ? "end" : "start"), dx = a === "end" ? -5 : 5;
+  let b = `<path class="m-lead" d="M${px},${py} L${tx},${ty}"/>`
+    + `<circle class="m-dot" cx="${px}" cy="${py}" r="1.9"/>`;
+  lines.forEach((l, i) => { b += T(tx + dx, ty + 4 + i * 15, l, { a, c: i ? "s m" : (o.c || "bh") }) });
+  return b;
+}
+
+/* a closed, lobed loop — what a relaxed circular chromosome actually looks like */
+function mloop(cx, cy, R, seed, lob = .3, n = 220, sq = .8) {
+  const r = rng(seed), p = [r() * 6.28, r() * 6.28, r() * 6.28]; let d = "";
+  for (let i = 0; i <= n; i++) {
+    const a = i / n * Math.PI * 2;
+    const k = 1 + lob * (Math.sin(a * 3 + p[0]) * .5 + Math.sin(a * 5 + p[1]) * .32 + Math.sin(a * 8 + p[2]) * .18);
+    d += (i ? "L" : "M") + (cx + Math.cos(a) * R * k).toFixed(1) + "," + (cy + Math.sin(a) * R * sq * k).toFixed(1);
+  }
+  return d + "Z";
+}
+
+/* a tailed phage, drawn with its facets, striated sheath and fibres */
+function mphage(cx, cy, s = 1) {
+  const R = 44 * s, hy = cy - 4 * s; let b = "";
+  const V = [...Array(6)].map((_, i) => { const a = -Math.PI / 2 + i * Math.PI / 3; return [cx + Math.cos(a) * R, hy + Math.sin(a) * R] });
+  b += `<path class="m-head" d="M${V.map(v => v[0].toFixed(1) + "," + v[1].toFixed(1)).join(" L")}Z"/>`;
+  [0, 2, 4].forEach(i => { b += `<path class="m-face" d="M${cx},${hy} L${V[i][0].toFixed(1)},${V[i][1].toFixed(1)}"/>` });
+  /* the genome, coiled inside the head */
+  b += `<path class="m-pdna" d="${mloop(cx, hy, R * .42, 9, .34, 120, .9)}"/>`;
+  const ty = hy + R, L = 52 * s, w = 9 * s;
+  b += `<rect class="m-tail" x="${cx - w - 3}" y="${ty - 2}" width="${(w + 3) * 2}" height="${6 * s}" rx="2"/>`
+    + `<rect class="m-tail" x="${cx - w}" y="${ty + 5 * s}" width="${w * 2}" height="${L}" rx="2"/>`;
+  for (let i = 1; i * 7 * s < L; i++) b += `<path class="m-face" d="M${cx - w},${(ty + 5 * s + i * 7 * s).toFixed(1)} L${cx + w},${(ty + 5 * s + i * 7 * s).toFixed(1)}"/>`;
+  const by = ty + 5 * s + L;
+  b += `<rect class="m-tail" x="${cx - w - 6}" y="${by}" width="${(w + 6) * 2}" height="${6 * s}" rx="3"/>`;
+  [-1, 1].forEach(sg => {
+    b += `<path class="m-fib" d="M${cx + sg * (w + 4)},${by + 6 * s} q${sg * 12 * s},${10 * s} ${sg * 8 * s},${24 * s}"/>`
+      + `<path class="m-fib" d="M${cx + sg * (w + 1)},${by + 6 * s} q${sg * 20 * s},${6 * s} ${sg * 24 * s},${18 * s}"/>`;
+  });
+  return b;
+}
+
+/* ---------------------------------------------------------------------
+   A skin cross-section. Layers are drawn with their own texture — corneum
+   flakes, granular cells, collagen bundles, fat lobules — so a lesion can
+   be placed at the depth it actually occupies.
+   Returns {y:{corn,gran,spin,basal,derm,subq,fasc,musc,bot}} for callers.
+   --------------------------------------------------------------------- */
+function mskin(x0, x1, y0, o = {}) {
+  const sc = o.scale || 1, w = x1 - x0;
+  const y = { top: y0, corn: y0 + 14 * sc, gran: y0 + 24 * sc, spin: y0 + 52 * sc, derm: y0 + 128 * sc, subq: y0 + 182 * sc, fasc: y0 + 194 * sc, bot: y0 + 230 * sc };
+  const wv = mwob(o.seed || 3, 2.4), q = rng((o.seed || 3) + 31);
+  const band = (a, b, cls) => {
+    let d = `M${x0},${a(x0)}`; for (let x = x0; x <= x1; x += 6) d += `L${x.toFixed(1)},${a(x).toFixed(1)}`;
+    for (let x = x1; x >= x0; x -= 6) d += `L${x.toFixed(1)},${b(x).toFixed(1)}`;
+    return `<path class="${cls}" d="${d}Z"/>`;
+  };
+  const f = v => x => v + wv(x);
+  let b = band(f(y.top), f(y.corn), "m-corn") + band(f(y.corn), f(y.gran), "m-gran")
+    + band(f(y.gran), f(y.spin), "m-spin") + band(f(y.spin), f(y.derm), "m-derm")
+    + band(f(y.derm), f(y.subq), "m-subq") + band(f(y.subq), f(y.fasc), "m-fasc")
+    + band(f(y.fasc), f(y.bot), "m-musc");
+  /* corneum: flattened, overlapping squames */
+  for (let x = x0 + 4; x < x1; x += 13) {
+    const yy = y.top + wv(x) + 4 + (q() * 5);
+    b += `<path class="m-kera" d="M${x.toFixed(1)},${yy.toFixed(1)} q${6},${-1.6} ${12},0"/>`;
+  }
+  /* granular + spinous: polygonal keratinocytes, flatter nearer the surface */
+  for (let yy = y.corn + 5; yy < y.spin - 2; yy += 9)
+    for (let x = x0 + 6 + (yy % 2 ? 6 : 0); x < x1 - 4; x += 15)
+      b += `<path class="m-kcell" d="${mblob(x, yy + wv(x), 7, 3.6, Math.round(x + yy), .12, 14)}"/>`;
+  /* dermis: collagen bundles running with the surface */
+  for (let i = 0; i < 26; i++) {
+    const yy = y.spin + 6 + q() * (y.derm - y.spin - 10), x = x0 + q() * (w - 60), L = 30 + q() * 60;
+    b += `<path class="m-coll" d="M${x.toFixed(1)},${(yy + wv(x)).toFixed(1)} q${(L / 2).toFixed(0)},${(q() * 7 - 3.5).toFixed(1)} ${L.toFixed(0)},0"/>`;
+  }
+  /* subcutis: fat lobules */
+  for (let x = x0 + 14; x < x1 - 8; x += 29)
+    b += `<path class="m-fat" d="${mblob(x, (y.derm + y.subq) / 2 + wv(x), 14, 11, Math.round(x), .1, 20)}"/>`;
+  return { b, y, wv };
+}
+
+/* a hair follicle sunk into the dermis, with its shaft */
+function mfoll(x, y, depth, wv, o = {}) {
+  const w = o.w || 9, bulb = o.bulb || 13;
+  let b = `<path class="m-foll" d="M${x - w},${(y.top + wv(x)).toFixed(1)} L${x - w},${y.derm - bulb} q0,${bulb} ${w},${bulb} q${w},0 ${w},${-bulb} L${x + w},${(y.top + wv(x)).toFixed(1)} Z"/>`;
+  if (o.hair !== false) b += `<path class="m-hair" d="M${x},${y.derm - 6} L${x},${y.top + wv(x) - (o.out || 16)}"/>`;
+  return b;
+}
+
+/* a blood agar plate seen from above, with one hemolysis pattern per sector */
+function magar(cx, cy, R, sectors, seed = 5) {
+  const q = rng(seed);
+  let b = `<circle class="m-agar" cx="${cx}" cy="${cy}" r="${R}"/>`;
+  sectors.forEach(([cls, ang], i) => {
+    const a0 = ang - Math.PI * 2 / sectors.length / 2, a1 = ang + Math.PI * 2 / sectors.length / 2;
+    const px = cx + Math.cos(ang) * R * .52, py = cy + Math.sin(ang) * R * .52;
+    for (let k = 0; k < 5; k++) {
+      const aa = a0 + (a1 - a0) * (.2 + q() * .6), rr = R * (.3 + q() * .45);
+      const x = cx + Math.cos(aa) * rr, y = cy + Math.sin(aa) * rr;
+      if (cls) b += `<circle class="${cls}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(cls === "m-beta" ? 11 : 8).toFixed(1)}"/>`;
+      b += `<circle class="m-col" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="${(2.6 + q()).toFixed(1)}"/>`;
+    }
+  });
+  return b;
+}
+
+/* a pair of kidney-bean diplococci, flat faces together — the Neisseria look */
+function mdiplo(cx, cy, r, seed, rot = 0, cls = "m-body2") {
+  let out = "";
+  [-1, 1].forEach((sg, i) => {
+    const w = mwobC(seed + i * 7); let d = "";
+    for (let k = 0; k <= 56; k++) {
+      const a = k / 56 * Math.PI * 2, c = Math.cos(a);
+      /* flatten, then dish in, the face that meets the partner */
+      const flat = 1 - .34 * Math.max(0, sg * c) - .12 * Math.pow(Math.max(0, sg * c), 3);
+      const rr = r * flat * (1 + w(a) * .05);
+      d += (k ? "L" : "M") + (cx + sg * r * .96 + Math.cos(a) * rr).toFixed(1) + "," + (cy + Math.sin(a) * rr * 1.04).toFixed(1);
+    }
+    out += `<path class="${cls}" d="${d}Z"/>`
+      + `<ellipse class="m-in" cx="${(cx + sg * r * 1.05).toFixed(1)}" cy="${(cy + r * .16).toFixed(1)}" rx="${(r * .5).toFixed(1)}" ry="${(r * .54).toFixed(1)}"/>`
+      + `<ellipse class="m-hi" cx="${(cx + sg * r * 1.18).toFixed(1)}" cy="${(cy - r * .36).toFixed(1)}" rx="${(r * .24).toFixed(1)}" ry="${(r * .2).toFixed(1)}"/>`;
+  });
+  return rot ? `<g transform="rotate(${rot} ${cx} ${cy})">${out}</g>` : out;
+}
+
+/* a neutrophil: multilobed nucleus, granular cytoplasm */
+function mpmn(cx, cy, r, seed) {
+  const q = rng(seed);
+  const body = mblob(cx, cy, r, r * .92, seed, .07);
+  let b = `<path class="m-body" style="fill:color-mix(in srgb,#8d8578 9%,var(--sb-surface));stroke:color-mix(in srgb,var(--sb-ink) 26%,var(--sb-surface));stroke-width:1.6" d="${body}"/>`
+    + mgrainIn("pmn" + seed, body, cx - r, cy - r, r * 2, r * 2, 120, seed + 3, "m-gr", .9);
+  /* three or four lobes on a ring, joined by thin bridges */
+  const n = 3 + Math.round(q()), pts = [];
+  for (let i = 0; i < n; i++) {
+    const a = i / n * Math.PI * 2 + q() * .6, rr = r * (.4 + q() * .12);
+    pts.push([cx + Math.cos(a) * rr, cy + Math.sin(a) * rr * .9]);
+  }
+  pts.forEach(([x, y], i) => {
+    const [x2, y2] = pts[(i + 1) % n];
+    b += `<path class="m-cap" style="stroke-dasharray:none;stroke-width:5;stroke:color-mix(in srgb,#6B4FC8 34%,var(--sb-surface));fill:none" d="M${x.toFixed(1)},${y.toFixed(1)} L${x2.toFixed(1)},${y2.toFixed(1)}"/>`;
+  });
+  pts.forEach(([x, y], i) => {
+    b += `<path class="m-cap" style="stroke-dasharray:none;fill:color-mix(in srgb,#6B4FC8 22%,var(--sb-surface));stroke:color-mix(in srgb,#6B4FC8 46%,var(--sb-surface));stroke-width:1.3" d="${mblob(x, y, r * .3, r * .26, seed + i * 5, .16)}"/>`;
+  });
+  return b;
+}
+
+Object.assign(S,{mu:'<b class="sbb murray">Mu</b>'});
+Object.assign(GN,{a:"Picornavirus",b:"Coronavirus and norovirus",c:"Paramyxovirus",d:"Orthomyxovirus"});
+
+/* ===================================================================
+ Picornaviruses, coronaviruses and noroviruses, paramyxoviruses and
+ orthomyxoviruses — Murray ch 46 to 49.
+ =================================================================== */
+
+SEC.push({id:"picorna-struct",k:"a",t:"A genome that is already messenger RNA",mm:"Picornavirus",leg:[],
+draw:()=>tbl(["Receptor","Which viruses bind it"],[
+ ["Intercellular adhesion molecule-1","rhinovirus อย่างน้อย 80% และ coxsackievirus หลาย serotype — แสดงบน epithelial cell, fibroblast และ endothelial cell"],
+ ["Decay accelerating factor คือ CD55","coxsackievirus หลายตัว, echovirus และ enterovirus อื่น"],
+ ["Coxsackie adenovirus receptor","coxsackievirus B — ใช้ร่วมกับ adenovirus"],
+ ["PVR คือ CD155","poliovirus — คล้าย receptor ของ herpes simplex virus และพบบนเซลล์คนหลายชนิด แต่ไม่ใช่ทุกเซลล์ที่เพิ่มจำนวนไวรัสได้"]]),
+notes:()=>`<h3>The capsid</h3><ul>
+ <li><b>plus-strand RNA ถูกหุ้มด้วย icosahedral capsid ขนาดราว 30 nm</b> ${S.mu}</li>
+ <li><b>capsid มี 12 pentameric vertex แต่ละอันประกอบจาก protomer ห้าหน่วย และ protomer สร้างจาก polypeptide สี่ตัวคือ VP1 ถึง VP4</b> ${S.mu}</li>
+ <li><b>VP2 และ VP4 เกิดจากการตัด precursor คือ VP0</b> ${S.mu}</li>
+ <li>บทบาทที่พิเศษของ VP4: <b>มันทำให้โครงสร้างแข็งแรง แต่ไม่ถูกสร้างจนกว่า genome จะถูกใส่เข้า capsid และถูกปล่อยออกเมื่อไวรัสจับ receptor</b> ${S.mu}</li>
+ <li>ความทนทาน: <b>capsid ทนความร้อน กรดและ detergent ยกเว้น rhinovirus ซึ่งไม่ทนกรด</b> ${S.mu}</li>
+ <li>และ<b>โครงสร้างสม่ำเสมอมากจนเกิด paracrystal ของ virion ในเซลล์ที่ติดเชื้อได้</b> ${S.mu}</li></ul>
+ <h3>The genome</h3><ul>
+ <li><b>genome เหมือน messenger RNA — เป็น plus-sense RNA สายเดี่ยวยาวราว 7200 ถึง 8450 base</b> ${S.mu}</li>
+ <li>ปลายทั้งสอง: <b>มี polyA ที่ปลาย 3′ และโปรตีนเล็ก ๆ คือ VPg ขนาด 22 ถึง 24 amino acid ติดที่ปลาย 5′</b> ${S.mu}</li>
+ <li>หน้าที่: <b>polyA เพิ่มความสามารถก่อ infection ของ RNA และ VPg สำคัญต่อการบรรจุ genome เข้า capsid และการเริ่มสร้าง RNA</b> ${S.mu}</li>
+ <li>และข้อที่ตามมาโดยตรง: <b>genome เปล่าของ picornavirus เพียงพอต่อการก่อ infection ถ้าฉีดเข้าเซลล์โดยตรง</b> ${S.mu}</li></ul>
+ <h3>Entry and the polyprotein</h3><ul>
+ <li><b>ความจำเพาะต่อ receptor เป็นตัวกำหนดหลักของ tissue tropism และของโรค</b> ${S.mu}</li>
+ <li><b>โปรตีน VP1 ที่มุมของ virion มีโครงสร้างคล้ายหุบเขาซึ่ง receptor เข้าไปจับ</b> ${S.mu}</li>
+ <li>และนั่นคือจุดที่ยาออกฤทธิ์: <b>pleconaril และสารที่เกี่ยวข้องมีหมู่ 3-methylisoxazole ที่จับพื้นของหุบเขานี้และเปลี่ยนรูปมัน จึงกันการถอดเปลือกของไวรัส</b> ${S.mu}</li>
+ <li>หลังจับ receptor <b>VP4 ถูกปล่อยและ capsid อ่อนแอลง</b> ${S.mu}</li>
+ <li>แล้ว<b>genome ถูกฉีดข้าม membrane โดยตรงผ่านช่องที่โปรตีน VP1 สร้างขึ้นที่มุมหนึ่งของ virion</b> ${S.mu}</li>
+ <li>ข้อที่แปลกสำหรับ RNA ที่ไม่มี cap: <b>genome จับ ribosome ได้โดยตรง เพราะ ribosome จำ RNA loop ภายในที่เรียกว่า internal ribosome entry site ซึ่งพบใน messenger RNA ของเซลล์บางตัวด้วย</b> ${S.mu}</li>
+ <li>แล้ว<b>polyprotein ที่บรรจุลำดับโปรตีนของไวรัสทั้งหมดถูกสร้างขึ้นภายใน 10 ถึง 15 นาทีหลังติดเชื้อ แล้วถูกตัดด้วย protease ที่เข้ารหัสอยู่ในตัวมันเอง</b> ${S.mu}</li>
+ <li>และไวรัส<b>เพิ่มจำนวนใน cytoplasm โดยเข้ารหัส RNA-dependent RNA polymerase ของตัวเอง</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"entero",k:"a",t:"The enteroviruses, virus by virus",mm:"Enterovirus",leg:[],
+draw:()=>tbl(["Virus","Disease"],[
+ ["Poliovirus","infection แบบ cytolytic ของ motor neuron ที่ anterior horn และ brainstem จึงเกิดอัมพาตแบบอ่อนปวกเปียก · minor และ major disease · แพร่ทาง fecal-oral"],
+ ["Coxsackievirus A","herpangina · hand-foot-and-mouth disease · common cold · meningitis — คือโรคที่มีตุ่มน้ำ"],
+ ["Coxsackievirus B","pleurodynia · neonatal myocarditis · type 1 diabetes — จำว่า B คือ body"],
+ ["Echovirus","เหมือน coxsackievirus"],
+ ["Parechovirus","เหมือน coxsackievirus และเป็นสาเหตุสำคัญของ neonatal viral sepsis กับ meningitis"],
+ ["Hepatitis A virus","คุณสมบัติเหมือน enterovirus · เป็นไวรัสของคน · โรคที่ liver เกิดจากการตอบสนองทาง immunity"]]),
+notes:()=>`<h3>Where they start and where they go</h3><ul>
+ <li><b>โรคเกิดจาก infection แบบ lytic ของ target tissue ที่สำคัญ</b> ${S.mu}</li>
+ <li>และเป็น capsid virus จึง<b>ทนต่อการถูกทำให้หมดฤทธิ์ — ทน pH 3 ถึง 9, detergent, การบำบัดน้ำเสียอย่างอ่อนและความร้อน</b> ${S.mu}</li>
+ <li>ข้อที่มักเข้าใจผิดจากชื่อ: <b>การเพิ่มจำนวนรอบแรกอาจอยู่ที่ respiratory tract, oropharynx หรือ gastrointestinal tract แต่มันไม่ก่อโรคในลำไส้</b> ${S.mu}</li>
+ <li>การแพร่: <b>enterovirus แพร่ทาง fecal-oral และทาง aerosol</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>immune assay เช่น ELISA หรือการวิเคราะห์ genome ด้วย RT-PCR จาก blood cerebrospinal fluid หรือสิ่งส่งตรวจที่เกี่ยวข้อง</b> ${S.mu}</li>
+ <li>การป้องกัน: <b>vaccine polio ทั้งชนิดกินและชนิดฉีดที่เชื้อตาย</b> ${S.mu}</li></ul>
+ <h3>Where the names came from</h3><ul>
+ <li><b>Coxsackievirus ตั้งตามเมือง Coxsackie รัฐ New York ที่แยกเชื้อได้ครั้งแรก</b> ${S.mu}</li>
+ <li>และ<b>แบ่งเป็นกลุ่ม A กับ B จากความต่างทางชีววิทยาและแอนติเจน แล้วแบ่งย่อยเป็น serotype ตามตัวเลข</b> ${S.mu}</li>
+ <li><b>Echovirus มาจาก enteric cytopathic human orphan เพราะตอนแรกไม่ทราบว่ามันทำให้เกิดโรคอะไร</b> ${S.mu}</li>
+ <li>และ<b>parechovirus เคยถูกคิดว่าเป็น echovirus</b> · <b>ตั้งแต่ปี 1967 enterovirus ที่แยกได้ใหม่ถูกแยกด้วยตัวเลข</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"rhino",k:"a",t:"Rhinovirus is defined by two weaknesses",mm:"Rhinovirus",leg:[],
+notes:()=>`<h3>Acid and temperature</h3><ul>
+ <li><b>rhinovirus ของคนมีอย่างน้อย 100 serotype และเป็นสาเหตุหลักของ common cold</b> ${S.mu}</li>
+ <li>สองคุณสมบัติที่กำหนดทุกอย่าง: <b>มันไวต่อ pH ที่เป็นกรด และเพิ่มจำนวนได้ไม่ดีที่อุณหภูมิเหนือ 33 °C</b> ${S.mu}</li>
+ <li>และผลที่ตามมา: <b>คุณสมบัติทั้งสองจำกัดให้มันก่อ infection เฉพาะที่ upper respiratory tract</b> ${S.mu}</li>
+ <li>การแพร่: <b>ทาง aerosol และการสัมผัส</b> ${S.mu}</li>
+ <li>เทียบกับญาติของมัน: <b>enterovirus ทนกรดจึงผ่านกระเพาะได้ ส่วน rhinovirus ผ่านไม่ได้ — นี่คือความต่างข้อเดียวที่อธิบายว่าทำไมสองกลุ่มนี้ก่อโรคคนละที่</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"corona",k:"b",t:"Coronavirus: an enveloped virus that resists detergent",mm:"Coronavirus",leg:[],
+draw:()=>tbl(["Protein","Role"],[
+ ["E2 หรือ spike glycoprotein","เป็นตัวเกาะและเชื่อม membrane · เป็นเป้าของ neutralizing antibody"],
+ ["E1 glycoprotein","transmembrane matrix protein"],
+ ["N nucleoprotein","จับกับ positive-strand genomic RNA เป็น helical nucleocapsid ที่ยาวและยืดหยุ่น"],
+ ["E3 hemagglutinin neuraminidase","พบในบางสายพันธุ์เท่านั้น"]]),
+notes:()=>`<h3>The exception to the envelope rule</h3><ul>
+ <li>เป็นไวรัสขนาดกลาง <b>มี envelope และมี (+) RNA genome</b> ${S.mu}</li>
+ <li>และข้อที่ขัดกับกฎทั่วไปของ enveloped virus: <b>มันทน detergent เพราะมี glycoprotein corona หุ้มอยู่</b> ${S.mu}</li>
+ <li>มัน<b>เข้ารหัส RNA-dependent RNA polymerase และเพิ่มจำนวนใน cytoplasm</b> ${S.mu}</li></ul>
+ <h3>Why SARS and MERS are different</h3><ul>
+ <li><b>coronavirus ของคนส่วนใหญ่มีอุณหภูมิที่เหมาะต่อการโตที่ 33 ถึง 35 °C infection จึงอยู่เฉพาะที่ upper respiratory tract</b> ${S.mu}</li>
+ <li>แต่<b>coronavirus ของสัตว์รวมถึง SARS-CoV และ MERS-CoV เพิ่มจำนวนได้ที่ 37 °C จึงก่อโรคทั้งระบบในคนและก่อ pneumonia ที่รุนแรง</b> ${S.mu}</li>
+ <li>สิ่งที่มันทำกับเซลล์: <b>ก่อ infection แบบ cytolytic — เมื่อหยอดเข้า respiratory tract ของอาสาสมัคร มันติดเชื้อและทำลายการทำงานของ ciliated epithelial cell</b> ${S.mu}</li>
+ <li>ตัวเลขภาระโรค: <b>coronavirus ของคนส่วนใหญ่ก่อ infectionrespiratory tract ส่วนบน คิดเป็นราว 10% ถึง 15% ของ infectionrespiratory tract ส่วนบนทั้งหมด</b> ${S.mu}</li>
+ <li>และความต่างจาก rhinovirus: <b>โรคคล้าย common cold แต่ incubation period ยาวกว่า เฉลี่ย 3 วัน</b> ${S.mu}</li>
+ <li>มันยัง<b>ทำให้โรคปอดเรื้อรังที่มีอยู่เดิมอย่าง asthma หรือ bronchitis กำเริบ และนาน ๆ ครั้งก่อ pneumonia</b> ${S.mu}</li>
+ <li>การแพร่: <b>ทาง aerosol, การสัมผัสโดยตรง, ทาง fecal-oral และสระว่ายน้ำที่ปนเปื้อน</b> ${S.mu}</li>
+ <li>การควบคุม: <b>การกักกันสำหรับ SARS และ MERS</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"noro",k:"b",t:"Norovirus and the cruise ship",mm:"Norovirus",leg:[],
+notes:()=>`<h3>Why outbreaks are so hard to stop</h3><ul>
+ <li>เป็นไวรัส<b>ขนาดเล็ก มี capsid และมี (+) RNA genome</b> ${S.mu}</li>
+ <li>และข้อที่อธิบายการระบาดบนเรือสำราญ: <b>มันทนสิ่งแวดล้อมมาก รวมถึงทน detergent และน้ำยาฆ่าเชื้ออื่น</b> ${S.mu}</li>
+ <li>มัน<b>เข้ารหัส RNA-dependent RNA polymerase และเพิ่มจำนวนใน cytoplasm</b> ${S.mu}</li>
+ <li>กลไกของ symptom: <b>มันทำลาย brush border ของลำไส้</b> ${S.mu}</li>
+ <li>ภาพทางคลินิก: <b>ถ่ายเหลวเป็นน้ำ ร่วมกับคลื่นไส้และอาเจียน</b> ${S.mu}</li>
+ <li>แพร่<b>ทาง fecal-oral ในอาหารและน้ำที่ปนเปื้อน</b> ${S.mu}</li>
+ <li>วินิจฉัยจาก<b>symptom และการวิเคราะห์ genome ด้วย RT-PCR</b> · และ<b>รักษาแบบประคับประคอง</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"paramyxo",k:"c",t:"The fusion protein defines the family",mm:"Paramyxovirus",leg:[],
+draw:()=>tbl(["Genus","Human pathogen","Attachment protein"],[
+ ["Morbillivirus","measles virus","H glycoprotein — จับโปรตีน ไม่ต้องใช้ neuraminidase"],
+ ["Paramyxovirus","parainfluenza virus 1 ถึง 4 · mumps virus","HN glycoprotein — จับ sialic acid และมีฤทธิ์ neuraminidase"],
+ ["Pneumovirus","respiratory syncytial virus","G glycoprotein — จับโปรตีน"]]),
+notes:()=>`<h3>Structure</h3><ul>
+ <li>เป็นไวรัสค่อนข้างใหญ่ <b>มี negative-sense single-stranded RNA ใน helical nucleocapsid ที่หุ้มด้วย envelope รูปร่างไม่แน่นอนขนาดราว 156 ถึง 300 nm</b> ${S.mu}</li>
+ <li>ความต่างจาก orthomyxovirus: <b>มันใหญ่กว่า และ genome ไม่ได้แบ่งเป็น segment</b> ${S.mu}</li>
+ <li>nucleocapsid ประกอบด้วย <b>RNA กับ nucleoprotein N, polymerase phosphoprotein P และ large protein L</b> ${S.mu}</li>
+ <li>หน้าที่ของแต่ละตัว: <b>L คือ RNA polymerase, P ช่วยการสร้าง RNA และ N ช่วยรักษาโครงสร้างของ genome</b> ${S.mu}</li>
+ <li>และ<b>nucleocapsid จับกับ matrix protein M ที่บุด้านในของ envelope</b> ${S.mu}</li>
+ <li>envelope มี glycoprotein สองตัว — <b>fusion protein F และ viral attachment protein ซึ่งเป็น HN, H หรือ G</b> ${S.mu}</li>
+ <li>เงื่อนไขที่ F ต้องผ่าน: <b>มันต้องถูกกระตุ้นด้วยการตัดด้วย protease จึงจะเชื่อม membrane ได้ ซึ่งให้ F1 กับ F2 ที่ยึดกันด้วย disulfide bond</b> ${S.mu}</li>
+ <li>และ<b>โปรตีน V กับ C ซึ่งมาจากการถอดรหัสแบบอื่นของยีน P ช่วยให้ไวรัสหนีการป้องกันแบบ innate</b> ${S.mu}</li></ul>
+ <h3>Replication and syncytia</h3><ul>
+ <li><b>HN ของ parainfluenza จับ sialic acid บน glycolipid และ glycoprotein ที่ผิวเซลล์</b> ${S.mu}</li>
+ <li>และเหมือน influenza: <b>มันใช้ฤทธิ์ neuraminidase ตัด sialic acid บน glycoprotein ของทั้งไวรัสและเซลล์ เพื่อกันไม่ให้จับตัวเองและเพื่อช่วยออกจากเซลล์</b> ${S.mu}</li>
+ <li>ส่วน<b>paramyxovirus ตัวอื่นจับ receptor ที่เป็นโปรตีนจึงไม่ต้องใช้ neuraminidase</b> ${S.mu}</li>
+ <li><b>F protein ส่งเสริมการเชื่อม envelope เข้ากับ plasma membrane</b> ${S.mu}</li>
+ <li>และความสามารถที่ตั้งชื่อให้ไวรัสตัวหนึ่งทั้งตัว: <b>paramyxovirus เหนี่ยวนำการเชื่อมเซลล์กับเซลล์จนเกิด multinucleated giant cell คือ syncytium</b> ${S.mu}</li>
+ <li>การเพิ่มจำนวน: <b>RNA polymerase ถูกพาเข้าเซลล์มาในฐานะส่วนหนึ่งของ nucleocapsid</b> และ<b>การถอดรหัส การสร้างโปรตีน และการเพิ่มจำนวน genome เกิดใน cytoplasm ทั้งหมด</b> ${S.mu}</li>
+ <li><b>genome ถูกถอดเป็น messenger RNA แต่ละตัว และเป็น positive-sense RNA เต็มสายเพื่อใช้เป็นแม่แบบ</b> ${S.mu}</li>
+ <li>และการออก: <b>virion ที่สมบูรณ์ budding ออกจาก plasma membrane และออกไปโดยไม่ฆ่าเซลล์</b> ${S.mu}</li>
+ <li>ข้อที่เป็นหลักของทั้งวงศ์: <b>cell-mediated immune response จำเป็นต่อการควบคุม แต่ก็เป็นตัวก่อพยาธิสภาพด้วย</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"measles",k:"c",t:"Measles",mm:"Measles",leg:[],
+notes:()=>`<h3>The receptors explain the spread</h3><ul>
+ <li>measles virus ติดเชื้อได้หลายชนิดเซลล์ เพราะ receptor ของมันคือ <b>CD46 ซึ่งเป็น complement regulatory protein และ nectin 4 บน epithelial cell กับเซลล์อื่น และ CD150 ซึ่งคือ signaling lymphocyte-activation molecule บน dendritic cell และ lymphocyte</b> ${S.mu}</li>
+ <li>และ<b>การจับ CD150 ส่งเสริมการแพร่แบบ viremia ใน dendritic cell และใน B กับ T lymphocyte ไปทั่วร่างกาย</b> ${S.mu}</li>
+ <li>ลักษณะที่ขึ้นชื่อ: <b>แนวโน้มที่จะเชื่อมเซลล์เข้าด้วยกันจนเกิด giant cell</b> ${S.mu}</li></ul>
+ <h3>The illness</h3><ul>
+ <li>symptom คลาสสิก: <b>fever สูงพร้อม cough, conjunctivitis และ coryza, photophobia, Koplik spot ซึ่งเป็นรอยโรคสีเทาเล็ก ๆ ในปาก และ rash maculopapular</b> ${S.mu}</li>
+ <li>สิ่งที่ทำให้แย่ลง: <b>โรครุนแรงกว่าถ้าขาด vitamin A</b> ${S.mu}</li>
+ <li>และ<b>ถ้าผู้ป่วยบกพร่องด้าน T cell จะเกิด giant cell pneumonia</b> ${S.mu}</li>
+ <li>ภาวะแทรกซ้อนทางระบบประสาทสองแบบ: <b>postmeasles encephalitis</b> และ <b>subacute sclerosing panencephalitis ซึ่งเกิดภายหลัง 5 ถึง 7 ปีและเกิดจาก measles variant</b> ${S.mu}</li>
+ <li>measles เป็นหนึ่งใน<b>exanthem คลาสสิกห้าโรคของเด็ก ร่วมกับ rubella, roseola, fifth disease และ chickenpox</b> ${S.mu}</li>
+ <li>ภาระโรคในอดีต: <b>ก่อนปี 1960 ประชากรที่อายุน้อยกว่า 20 ปีมากกว่า 90% เคยเป็น measles</b> ${S.mu}</li>
+ <li>และภาระโรคปัจจุบัน: <b>ยังเป็นสาเหตุสำคัญของโรคคือมากกว่า 10 ล้านรายต่อปี และของการตายคือ 120,000 รายในปี 2012 ในประชากรที่ไม่ได้รับ vaccine</b> ${S.mu}</li>
+ <li>และข้อเตือนที่ยังจริงอยู่: <b>โปรแกรม vaccine ที่ได้ผลทำให้ measles เป็นโรคที่พบน้อยในประเทศพัฒนาแล้ว แต่ยังมีเด็กที่ไม่ได้รับ vaccine หรือไม่ได้รับเข็มกระตุ้น และการระบาดจึงยังเกิด</b> ${S.mu}</li>
+ <li>การป้องกัน: <b>live attenuated vaccine สำหรับ measles และ mumps</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"mumps-rsv",k:"c",t:"Mumps, parainfluenza and respiratory syncytial virus",mm:"Mumps · Parainfluenza · RSV",leg:[],
+draw:()=>tbl(["Virus","Disease","Treatment or prevention"],[
+ ["Mumps virus","parotitis · orchitis · aseptic meningitis","live attenuated vaccine"],
+ ["Parainfluenza virus","common cold · croup ที่ไอเสียงก้องเหมือนแมวน้ำ · bronchitis · pneumonia","—"],
+ ["Respiratory syncytial virus","common cold · pneumonia · bronchiolitis — คุกคามชีวิตในทารกคลอดก่อนกำหนด","passive immunization สำหรับทารกคลอดก่อนกำหนดที่เสี่ยงสูง · ribavirin แบบ aerosol"]]),
+notes:()=>`<h3>What to notice</h3><ul>
+ <li>ทั้งวงศ์<b>แพร่ทาง aerosol</b> ${S.mu}</li>
+ <li>และ<b>วินิจฉัยจาก symptom ร่วมกับการวิเคราะห์ genome ด้วย RT-PCR จากสารคัดหลั่ง respiratory tract</b> ${S.mu}</li>
+ <li>ความต่างที่ใช้แยกกลุ่ม: <b>parainfluenza และ mumps จับ sialic acid และเข้ารหัสฤทธิ์ neuraminidase ไว้ใน HN glycoprotein ขณะที่ glycoprotein ของ measles และ respiratory syncytial virus จับกับโปรตีน</b> ${S.mu}</li>
+ <li>และชื่อของ respiratory syncytial virus มาจากสิ่งที่มันทำ — <b>การเชื่อมเซลล์เข้าด้วยกันเป็น syncytium</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"flu-struct",k:"d",t:"Influenza: eight segments and two glycoproteins",mm:"Influenza structure",leg:[],
+draw:()=>tbl(["Feature","Influenza"],[
+ ["Virion","รูปร่างไม่แน่นอน ทั้งกลมและเป็นท่อ ขนาด 80 ถึง 120 nm"],
+ ["Genome","influenza A และ B มี helical nucleocapsid แปด segment แต่ละอันเป็น negative-sense RNA ที่จับกับ nucleoprotein และ transcriptase คือ PB1, PB2 และ PA · influenza C มีเจ็ด segment"],
+ ["Segment size","890 ถึง 2340 base · โปรตีนเข้ารหัสแยก segment ยกเว้น NS1 กับ NS2 และ M1 กับ M2 ซึ่งคู่ละ segment"],
+ ["Hemagglutinin","เป็นทั้ง viral attachment protein และ fusion protein · กระตุ้น neutralizing antibody ที่ป้องกันได้"],
+ ["Neuraminidase","เป้าของ zanamivir, oseltamivir และ peramivir ซึ่งออกฤทธิ์กับทั้ง influenza A และ B"],
+ ["M2 ion channel","เป้าของ amantadine และ rimantadine ซึ่งออกฤทธิ์กับ influenza A เท่านั้น โดยยับยั้งขั้น uncoating"],
+ ["Where it replicates","ถอดรหัสและเพิ่มจำนวน genome ใน nucleus ซึ่งเป็นข้อยกเว้นของ RNA virus แต่ประกอบตัวและ budding ที่ plasma membrane"]]),
+notes:()=>`<h3>Stealing a cap</h3><ul>
+ <li><b>polymerase ใช้ messenger RNA ของเซลล์ที่มี cap แล้วเป็น primer ในการสร้าง messenger RNA ของตัวเอง</b> ${S.mu}</li>
+ <li>และขั้นตอนนั้นเองคือ<b>เป้าของ baloxavir marboxil</b> ${S.mu}</li>
+ <li>ข้อที่ทำให้ influenza A ต่างจาก B: <b>influenza A เป็น zoonosis — มันติดเชื้อในคน สัตว์เลี้ยงลูกด้วยนมอื่นและนก ส่วน influenza B ไม่ใช่</b> ${S.mu}</li>
+ <li>ที่มาของ symptom: <b>symptom เฉียบพลันคล้ายไข้หวัดใหญ่เกิดจากการปล่อย cytokine จำนวนมาก</b> ${S.mu}</li>
+ <li>และความเสียหายที่แท้จริง: <b>การทำลาย ciliated epithelium อย่างกว้างขวาง</b> ${S.mu}</li>
+ <li>จึงเกิด<b>pneumonia ได้ทั้งจากตัว influenza เองและจาก infection แบคทีเรียซ้อน</b> ${S.mu}</li>
+ <li>บทบาทของ immunity: <b>antibody ที่มีอยู่ก่อนปิดกั้นโรคได้</b> และ<b>cell-mediated immune response สำคัญต่อการควบคุมแต่ก็ก่อพยาธิสภาพ</b> ${S.mu}</li></ul>`});
+
+SEC.push({id:"flu-drift",k:"d",t:"Drift makes an epidemic, shift makes a pandemic",mm:"Drift and shift",leg:[],
+draw:()=>tbl(["","Antigenic drift","Antigenic shift"],[
+ ["Mechanism","mutation สะสมใน hemagglutinin และ neuraminidase","reassortment ของ genome segment ระหว่างไวรัสของคนกับของสัตว์ เมื่อติดเชื้อสองสายพันธุ์พร้อมกัน"],
+ ["Consequence","การระบาดประจำปี","pandemic"],
+ ["Why it is possible","polymerase ของไวรัสไม่มีการตรวจแก้","genome แบ่งเป็นแปดชิ้นที่สลับกันได้"]]),
+notes:()=>`<h3>The vaccine and the drugs</h3><ul>
+ <li><b>vaccine ประจำปีบรรจุ influenza A สองสายพันธุ์และ influenza B หนึ่งหรือสองสายพันธุ์</b> ${S.mu}</li>
+ <li><b>vaccine ชนิดเชื้อตายบรรจุ hemagglutinin และ neuraminidase</b> ${S.mu}</li>
+ <li>และ<b>มี vaccine ชนิดเชื้อเป็นอ่อนฤทธิ์แบบพ่นจมูกสำหรับผู้ที่อายุ 2 ถึง 49 ปี</b> ${S.mu}</li>
+ <li>สามเป้าของยาต้านไวรัส: <b>neuraminidase, ช่อง M2 และ cap-dependent endonuclease</b> ${S.mu}</li>
+ <li>การวินิจฉัย: <b>symptom, การวิเคราะห์ genome ด้วย RT-PCR จากสารคัดหลั่ง respiratory tract, การตรวจทาง immunology เช่น ELISA และ hemagglutination กับ hemagglutination inhibition</b> ${S.mu}</li>
+ <li>และสิ่งที่ทำให้ influenza ต่างจากไวรัส respiratory tract อื่นทั้งหมด: <b>genome ที่แบ่งเป็น segment ส่งเสริมความหลากหลายทางพันธุกรรม ทั้งจาก mutation และจากการสลับ segment เมื่อติดเชื้อสองสายพันธุ์พร้อมกัน</b> ${S.mu}</li></ul>`});
+
+atlasFinish();
+</script>
+<script src="../atlas/render.js"></script>
+</body>
+</html>

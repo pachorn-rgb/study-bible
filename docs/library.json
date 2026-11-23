@@ -2523,6 +2523,560 @@
         "ch": "Murray Ch 4, 16, 17",
         "sort": 13
        }
+      },
+      {
+       "id": "micro-virol-1",
+       "title": "Viral classification, structure and replication",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 36",
+       "href": "micro/micro-virol-1.html",
+       "thumb": "thumbs/micro-virol-1.jpg",
+       "desc": "ชื่อของไวรัสมาจากไหน, เจ็ด DNA family กับสิบสาม RNA family, ขนาดของ virion จาก parvovirus ถึง poxvirus, รูปแบบของ genome ทั้งหมดที่เป็นไปได้, การประกอบ capsid จาก protomer ถึง capsomere, icosahedron กับ helical nucleocapsid, naked capsid เทียบ enveloped ทั้งคุณสมบัติและผลที่ตามมาต่อการแพร่เชื้อ, viral attachment protein กับ receptor ที่กำหนดทั้ง host range และ tissue tropism, penetration ทั้ง endocytosis และ fusion, uncoating, การสร้าง mRNA แยกตามชนิดของ genome และ growth curve ที่มี eclipse period",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Where the names come from",
+         "vir-names"
+        ],
+        [
+         "The seven DNA virus families",
+         "vir-dna-fam"
+        ],
+        [
+         "The RNA virus families",
+         "vir-rna-fam"
+        ],
+        [
+         "What a virion is made of",
+         "vir-virion"
+        ],
+        [
+         "Building a capsid",
+         "vir-capsid"
+        ],
+        [
+         "Naked capsid versus enveloped",
+         "vir-naked-env"
+        ],
+        [
+         "Attachment decides who gets infected",
+         "vir-attach"
+        ],
+        [
+         "Getting in and taking the coat off",
+         "vir-enter"
+        ],
+        [
+         "Making messenger RNA, genome by genome",
+         "vir-synth"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 36",
+        "sort": 13
+       }
+      },
+      {
+       "id": "micro-virol-2",
+       "title": "Mechanisms of viral pathogenesis",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 37",
+       "href": "micro/micro-virol-2.html",
+       "thumb": "thumbs/micro-virol-2.jpg",
+       "desc": "ขั้นของโรคตั้งแต่ incubation ถึง convalescence, ทางเข้าและด่านที่กั้นไว้, primary viremia กับ secondary viremia, M cell กับ Peyer patch, สี่ทางที่ไวรัสเข้าสู่ระบบประสาทส่วนกลาง, การติดเชื้อระดับเซลล์ทั้งห้าแบบ, กลไก cytopathogenesis และ inclusion body ที่บอกชื่อไวรัสได้, การ immortalize เซลล์และ 15% ของมะเร็งในคน, interferon กับ cytokine ที่ทำให้เกิดอาการคล้ายไข้หวัดใหญ่, วิธีที่ไวรัสหนีภูมิคุ้มกัน และ immunopathology ตั้งแต่ immune complex ถึง dengue hemorrhagic fever",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "The steps of a viral illness",
+         "vp-steps"
+        ],
+        [
+         "Getting into the body",
+         "vp-entry"
+        ],
+        [
+         "Viremia and the four roads to the brain",
+         "vp-spread"
+        ],
+        [
+         "Five kinds of infection at the cell level",
+         "vp-celltypes"
+        ],
+        [
+         "How the virus damages the cell, and the inclusion body that names it",
+         "vp-cpe"
+        ],
+        [
+         "Viruses that immortalise the cell",
+         "vp-onco"
+        ],
+        [
+         "The host response, and why it differs from the response to bacteria",
+         "vp-defense"
+        ],
+        [
+         "How viruses escape the immune response",
+         "vp-escape"
+        ],
+        [
+         "When the immune response is the disease",
+         "vp-immunopath"
+        ],
+        [
+         "What decides whether there is a disease at all",
+         "vp-determinants"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 37",
+        "sort": 14
+       }
+      },
+      {
+       "id": "micro-virol-3",
+       "title": "Diagnosing viral disease, and the drugs",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 39–40",
+       "href": "micro/micro-virol-3.html",
+       "thumb": "thumbs/micro-virol-3.jpg",
+       "desc": "การเลือกสิ่งส่งตรวจตามการวินิจฉัยแยกโรค, ช่วงเวลาที่ยังเก็บเชื้อได้ของแต่ละไวรัส, การขนส่งที่ทำให้ enveloped virus ตาย, cytopathic effect ทั้งหมดที่เห็นได้, inclusion body ที่บอกชื่อไวรัส, ระบบเพาะเลี้ยงทั้งสามแบบ, hemadsorption, การวัดปริมาณไวรัสด้วย TCD50 กับ plaque-forming unit, PCR และ RT-PCR กับ real-time PCR, multiplex panel, in situ hybridization, serology ที่แยก primary จาก reinfection, เป้าของยาต้านไวรัสแยกตามขั้นของวงจร, เหตุที่ nucleoside analog เลือกออกฤทธิ์กับ viral polymerase และการควบคุมการติดเชื้อที่ต่างกันระหว่าง naked capsid กับ enveloped virus",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Which specimen, and how long you have",
+         "vl-specimen"
+        ],
+        [
+         "What the microscope can already tell you",
+         "vl-cyto"
+        ],
+        [
+         "Growing the virus, and counting it",
+         "vl-culture"
+        ],
+        [
+         "Detecting the genome",
+         "vl-genome"
+        ],
+        [
+         "What serology answers",
+         "vl-sero"
+        ],
+        [
+         "Where antiviral drugs bind",
+         "va-targets"
+        ],
+        [
+         "Why nucleoside analogs are selective",
+         "va-nucleoside"
+        ],
+        [
+         "Infection control, and what the envelope changes",
+         "va-control"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 39–40",
+        "sort": 15
+       }
+      },
+      {
+       "id": "micro-virol-4",
+       "title": "DNA viruses: papilloma, polyoma, adeno, parvo and pox",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 41, 42, 44, 45",
+       "href": "micro/micro-virol-4.html",
+       "thumb": "thumbs/micro-virol-4.jpg",
+       "desc": "HPV ที่เข้าทางรอยแตกของผิวไปถึง basal layer แล้วปล่อยไวรัสออกมาพร้อมเซลล์ที่ตายแล้ว, koilocyte, E6 กับ E7 ที่จับ p53 และ p105RB, เหตุที่การแทรก genome เข้าโครโมโซมทำให้ E6 กับ E7 หลุดการควบคุม, วัคซีน HPV เก้าสายพันธุ์, JC virus กับ progressive multifocal leukoencephalopathy และ BK virus กับไต, adenovirus ที่ fiber เป็นทั้ง viral attachment protein และสารพิษต่อเซลล์, parvovirus B19 ที่ต้องการ erythroid precursor จึงเกิด aplastic crisis กับ hydrops fetalis และโรคสองระยะที่ระยะหลังเกิดจาก immune complex, poxvirus ที่เพิ่มจำนวนใน cytoplasm ล้วนและ smallpox ที่ตุ่มขึ้นพร้อมกันทีเดียว",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Human papillomavirus follows the keratinocyte",
+         "hpv-struct"
+        ],
+        [
+         "From wart to cervical carcinoma",
+         "hpv-dis"
+        ],
+        [
+         "Polyomavirus waits for the immune system to fail",
+         "polyoma"
+        ],
+        [
+         "Adenovirus: the fiber is both the key and the poison",
+         "adeno"
+        ],
+        [
+         "Parvovirus B19 needs a dividing cell",
+         "parvo"
+        ],
+        [
+         "Poxvirus replicates without a nucleus",
+         "pox"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 41, 42, 44, 45",
+        "sort": 16
+       }
+      },
+      {
+       "id": "micro-virol-5",
+       "title": "The human herpesviruses",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 43",
+       "href": "micro/micro-virol-5.html",
+       "thumb": "thumbs/micro-virol-5.jpg",
+       "desc": "โครงสร้างของ herpesvirus และ tegument ที่พาเอนไซม์เข้าไปด้วย, การถอดรหัสสามระยะ immediate early กับ early และ late, ตารางเทียบทั้งแปดไวรัสว่าเข้าเซลล์เป้าหมายใด ซ่อนตัวที่ไหน และแพร่ทางใด, latency-associated transcript ที่ทำให้ herpes simplex virus อยู่เงียบใน neuron, สิ่งกระตุ้นให้กลับเป็นซ้ำ, กลุ่มอาการของ herpes simplex ตั้งแต่ gingivostomatitis ถึง herpetic whitlow กับ eczema herpeticum, varicella ที่ตุ่มมีทุกระยะพร้อมกันเทียบกับ zoster ที่อยู่ใน dermatome เดียว, postherpetic neuralgia, EBV ที่ใช้พัฒนาการของ B cell เป็นที่อยู่และทำให้เกิด heterophile antibody กับ Downey cell และ cytomegalovirus ที่เป็นสาเหตุไวรัสอันดับหนึ่งของความพิการแต่กำเนิด",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Eight viruses, eight hiding places",
+         "hv-family"
+        ],
+        [
+         "Three waves of transcription",
+         "hv-repl"
+        ],
+        [
+         "How herpes simplex virus hides and comes back",
+         "hsv-latency"
+        ],
+        [
+         "The syndromes of herpes simplex",
+         "hsv-dis"
+        ],
+        [
+         "Varicella and zoster are the same virus twice",
+         "vzv"
+        ],
+        [
+         "Epstein-Barr virus lives inside the B-cell programme",
+         "ebv"
+        ],
+        [
+         "Cytomegalovirus and the rest of the family",
+         "cmv"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 43",
+        "sort": 17
+       }
+      },
+      {
+       "id": "micro-virol-6",
+       "title": "RNA viruses of the gut and the airway",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 46–49",
+       "href": "micro/micro-virol-6.html",
+       "thumb": "thumbs/micro-virol-6.jpg",
+       "desc": "โครงสร้าง capsid ของ picornavirus กับ canyon ที่ receptor เสียบเข้าไป, VPg และ internal ribosome entry site, polyprotein ที่ถูกตัดด้วย protease ของตัวเอง, receptor ที่กำหนดว่าไวรัสตัวไหนไปที่ไหน, poliovirus กับ anterior horn, coxsackievirus A เทียบ B, rhinovirus ที่โตไม่ได้เหนือ 33 องศา, coronavirus ที่ทน detergent และเหตุที่ SARS กับ MERS รุนแรงกว่า, norovirus ที่ทนสิ่งแวดล้อมมาก, fusion protein ของ paramyxovirus กับ syncytium, measles ตั้งแต่ Koplik spot ถึง subacute sclerosing panencephalitis, mumps, parainfluenza กับ croup, respiratory syncytial virus ในทารกคลอดก่อนกำหนด และ influenza ที่ reassortment ทำให้เกิด pandemic ส่วน mutation ทำให้เกิดการระบาดประจำปี",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "A genome that is already messenger RNA",
+         "picorna-struct"
+        ],
+        [
+         "The enteroviruses, virus by virus",
+         "entero"
+        ],
+        [
+         "Rhinovirus is defined by two weaknesses",
+         "rhino"
+        ],
+        [
+         "Coronavirus: an enveloped virus that resists detergent",
+         "corona"
+        ],
+        [
+         "Norovirus and the cruise ship",
+         "noro"
+        ],
+        [
+         "The fusion protein defines the family",
+         "paramyxo"
+        ],
+        [
+         "Measles",
+         "measles"
+        ],
+        [
+         "Mumps, parainfluenza and respiratory syncytial virus",
+         "mumps-rsv"
+        ],
+        [
+         "Influenza: eight segments and two glycoproteins",
+         "flu-struct"
+        ],
+        [
+         "Drift makes an epidemic, shift makes a pandemic",
+         "flu-drift"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 46–49",
+        "sort": 18
+       }
+      },
+      {
+       "id": "micro-virol-7",
+       "title": "Rabies, rotavirus and the arboviruses",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 50–53",
+       "href": "micro/micro-virol-7.html",
+       "thumb": "thumbs/micro-virol-7.jpg",
+       "desc": "virion รูปกระสุนของ rabies virus, retrograde axoplasmic transport ขึ้นไปถึง brain, Negri body, เหตุที่ระยะฟักตัวยาวพอให้ฉีดวัคซีนหลังถูกกัด, filovirus ที่เป็นเส้นยาวและต้องการ biosafety level 4, double capsid ของ reovirus กับ intermediate subviral particle, rotavirus ที่ NSP4 ทำให้ถ่ายเหลวแบบ cholera, alphavirus กับ flavivirus ที่เป็น arbovirus, วงจร zoonosis ที่คนเป็น dead-end host, primary เทียบ secondary viremia, rubella ที่ teratogenic ถึงสัปดาห์ที่ 20, yellow fever, dengue กับ antibody ที่ไม่ลบฤทธิ์ซึ่งทำให้เกิด dengue hemorrhagic fever, bunyavirus ที่ไม่มี matrix protein, hantavirus ที่มาจาก aerosol ของปัสสาวะหนู และ arenavirus ที่พา ribosome ของเซลล์ติดไปใน virion",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "A bullet-shaped virion with five proteins",
+         "rabies-struct"
+        ],
+        [
+         "Why rabies can be prevented after the bite",
+         "rabies-dis"
+        ],
+        [
+         "Filoviruses: long filaments and level 4",
+         "filo"
+        ],
+        [
+         "Double capsid, double-stranded, segmented",
+         "reo-struct"
+        ],
+        [
+         "Rotavirus",
+         "rota"
+        ],
+        [
+         "How an arbovirus reaches the brain",
+         "arbo-cycle"
+        ],
+        [
+         "Alphavirus: an envelope shrink-wrapped onto the capsid",
+         "alpha"
+        ],
+        [
+         "Rubella and the fetus",
+         "rubella"
+        ],
+        [
+         "Flavivirus: encephalitis, yellow fever and dengue",
+         "flavi"
+        ],
+        [
+         "Bunyavirus: three segments and no matrix protein",
+         "bunya"
+        ],
+        [
+         "Arenavirus carries host ribosomes",
+         "arena"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 50–53",
+        "sort": 19
+       }
+      },
+      {
+       "id": "micro-virol-8",
+       "title": "Retroviruses",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 54",
+       "href": "micro/micro-virol-8.html",
+       "thumb": "thumbs/micro-virol-8.jpg",
+       "desc": "การค้นพบ reverse transcriptase ที่ขัดกับ central dogma, การจัดกลุ่มเป็น Oncovirinae Lentivirinae และ Spumavirinae, รูปร่าง core แบบ A B C D, gag pol env กับ long terminal repeat, เหตุที่ genome ของ retrovirus ไม่ก่อการติดเชื้อเองต่างจาก picornavirus, gp120 กับ gp41, CD4 ร่วมกับ CCR5 แล้วเปลี่ยนเป็น CXCR4, เซลล์ที่เป็นแหล่งกักเก็บแบบ Trojan horse, ลำดับขั้นของโรคจากระยะเฉียบพลันคล้าย mononucleosis ถึง AIDS ที่ CD4 ต่ำกว่า 200, จุดที่ยาต้านไวรัสแต่ละกลุ่มออกฤทธิ์, HTLV-1 ที่ไม่มี oncogene และระยะแฝงยาวก่อน adult T-cell leukemia กับ flower cell, tropical spastic paraparesis และ human endogenous retrovirus ที่เป็น 8% ของ genome คน",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "The discovery that broke the central dogma",
+         "retro-class"
+        ],
+        [
+         "Two genomes, two transfer RNAs and three enzymes",
+         "retro-struct"
+        ],
+        [
+         "gag, pol, env and the long terminal repeat",
+         "retro-genome"
+        ],
+        [
+         "From RNA to provirus",
+         "rt-step"
+        ],
+        [
+         "The provirus behaves like a cellular gene",
+         "late-phase"
+        ],
+        [
+         "CD4 first, then a chemokine receptor",
+         "hiv-entry"
+        ],
+        [
+         "The Trojan horse",
+         "hiv-cells"
+        ],
+        [
+         "From mononucleosis-like illness to AIDS",
+         "hiv-course"
+        ],
+        [
+         "How HIV moves and how it is stopped",
+         "hiv-epi"
+        ],
+        [
+         "HTLV-1 and the flower cell",
+         "htlv"
+        ],
+        [
+         "The retroviruses already in our chromosomes",
+         "herv"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 54",
+        "sort": 20
+       }
+      },
+      {
+       "id": "micro-virol-9",
+       "title": "Hepatitis viruses and prions",
+       "subs": [
+        "Virology"
+       ],
+       "src": "Murray 9e Ch 55–56",
+       "href": "micro/micro-virol-9.html",
+       "thumb": "thumbs/micro-virol-9.jpg",
+       "desc": "ตารางเทียบ hepatitis A ถึง E ทั้งโครงสร้าง การแพร่ ระยะฟักตัว ความรุนแรงและภาวะเรื้อรัง, เหตุที่อาการเกิดจาก cell-mediated immunity ไม่ใช่จากไวรัสสลายเซลล์, Dane particle กับ HBsAg L M S ที่ใช้ start codon ต่างกัน, reverse transcriptase ใน hepadnavirus, ลำดับ serology ของ hepatitis B กับ window ที่ใช้ IgM anti-HBc, immune complex ที่ให้ vasculitis และ glomerulonephritis, hepatitis C ที่เรื้อรัง 70%, hepatitis D ที่ต้องมี hepatitis B เป็น helper, hepatitis E ที่รุนแรงในหญิงตั้งครรภ์ และ prion ที่ไม่มี genome ไม่กระตุ้นภูมิคุ้มกัน และเกิดจากการพับผิดของ PrP ตามแบบ template-mediated protein refolding",
+       "tags": [
+        "microbiology"
+       ],
+       "topics": [
+        [
+         "Topic map",
+         "map"
+        ],
+        [
+         "Five unrelated viruses, one target organ",
+         "hep-compare"
+        ],
+        [
+         "Hepatitis A",
+         "hep-a"
+        ],
+        [
+         "The Dane particle and the Australia antigen",
+         "hbv-struct"
+        ],
+        [
+         "Replication through an RNA intermediate",
+         "hbv-repl"
+        ],
+        [
+         "Reading the serology",
+         "hbv-sero"
+        ],
+        [
+         "Hepatitis C, D, E and G",
+         "hep-cde"
+        ],
+        [
+         "An infectious protein with no genome",
+         "prion-struct"
+        ],
+        [
+         "Kuru, Creutzfeldt-Jakob disease and the rest",
+         "prion-dis"
+        ]
+       ],
+       "ref": {
+        "b": "murray",
+        "l": "Mu",
+        "ch": "Murray Ch 55–56",
+        "sort": 21
+       }
       }
      ],
      "checklist": [
@@ -2686,6 +3240,654 @@
        "link": {
         "m": "pharm-micro",
         "h": "hep"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-names",
+       "sub": "Virology",
+       "t": "Where the names come from",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-names"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-dna-fam",
+       "sub": "Virology",
+       "t": "The seven DNA virus families",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-dna-fam"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-rna-fam",
+       "sub": "Virology",
+       "t": "The RNA virus families",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-rna-fam"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-virion",
+       "sub": "Virology",
+       "t": "What a virion is made of",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-virion"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-capsid",
+       "sub": "Virology",
+       "t": "Building a capsid",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-capsid"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-naked-env",
+       "sub": "Virology",
+       "t": "Naked capsid versus enveloped",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-naked-env"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-attach",
+       "sub": "Virology",
+       "t": "Attachment decides who gets infected",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-attach"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-enter",
+       "sub": "Virology",
+       "t": "Getting in and taking the coat off",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-enter"
+       }
+      },
+      {
+       "id": "micro-virol-1:vir-synth",
+       "sub": "Virology",
+       "t": "Making messenger RNA, genome by genome",
+       "link": {
+        "m": "micro-virol-1",
+        "h": "vir-synth"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-steps",
+       "sub": "Virology",
+       "t": "The steps of a viral illness",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-steps"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-entry",
+       "sub": "Virology",
+       "t": "Getting into the body",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-entry"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-spread",
+       "sub": "Virology",
+       "t": "Viremia and the four roads to the brain",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-spread"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-celltypes",
+       "sub": "Virology",
+       "t": "Five kinds of infection at the cell level",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-celltypes"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-cpe",
+       "sub": "Virology",
+       "t": "How the virus damages the cell, and the inclusion body that names it",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-cpe"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-onco",
+       "sub": "Virology",
+       "t": "Viruses that immortalise the cell",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-onco"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-defense",
+       "sub": "Virology",
+       "t": "The host response, and why it differs from the response to bacteria",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-defense"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-escape",
+       "sub": "Virology",
+       "t": "How viruses escape the immune response",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-escape"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-immunopath",
+       "sub": "Virology",
+       "t": "When the immune response is the disease",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-immunopath"
+       }
+      },
+      {
+       "id": "micro-virol-2:vp-determinants",
+       "sub": "Virology",
+       "t": "What decides whether there is a disease at all",
+       "link": {
+        "m": "micro-virol-2",
+        "h": "vp-determinants"
+       }
+      },
+      {
+       "id": "micro-virol-3:vl-specimen",
+       "sub": "Virology",
+       "t": "Which specimen, and how long you have",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "vl-specimen"
+       }
+      },
+      {
+       "id": "micro-virol-3:vl-cyto",
+       "sub": "Virology",
+       "t": "What the microscope can already tell you",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "vl-cyto"
+       }
+      },
+      {
+       "id": "micro-virol-3:vl-culture",
+       "sub": "Virology",
+       "t": "Growing the virus, and counting it",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "vl-culture"
+       }
+      },
+      {
+       "id": "micro-virol-3:vl-genome",
+       "sub": "Virology",
+       "t": "Detecting the genome",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "vl-genome"
+       }
+      },
+      {
+       "id": "micro-virol-3:vl-sero",
+       "sub": "Virology",
+       "t": "What serology answers",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "vl-sero"
+       }
+      },
+      {
+       "id": "micro-virol-3:va-targets",
+       "sub": "Virology",
+       "t": "Where antiviral drugs bind",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "va-targets"
+       }
+      },
+      {
+       "id": "micro-virol-3:va-nucleoside",
+       "sub": "Virology",
+       "t": "Why nucleoside analogs are selective",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "va-nucleoside"
+       }
+      },
+      {
+       "id": "micro-virol-3:va-control",
+       "sub": "Virology",
+       "t": "Infection control, and what the envelope changes",
+       "link": {
+        "m": "micro-virol-3",
+        "h": "va-control"
+       }
+      },
+      {
+       "id": "micro-virol-4:hpv-struct",
+       "sub": "Virology",
+       "t": "Human papillomavirus follows the keratinocyte",
+       "link": {
+        "m": "micro-virol-4",
+        "h": "hpv-struct"
+       }
+      },
+      {
+       "id": "micro-virol-4:hpv-dis",
+       "sub": "Virology",
+       "t": "From wart to cervical carcinoma",
+       "link": {
+        "m": "micro-virol-4",
+        "h": "hpv-dis"
+       }
+      },
+      {
+       "id": "micro-virol-4:polyoma",
+       "sub": "Virology",
+       "t": "Polyomavirus waits for the immune system to fail",
+       "link": {
+        "m": "micro-virol-4",
+        "h": "polyoma"
+       }
+      },
+      {
+       "id": "micro-virol-4:adeno",
+       "sub": "Virology",
+       "t": "Adenovirus: the fiber is both the key and the poison",
+       "link": {
+        "m": "micro-virol-4",
+        "h": "adeno"
+       }
+      },
+      {
+       "id": "micro-virol-4:parvo",
+       "sub": "Virology",
+       "t": "Parvovirus B19 needs a dividing cell",
+       "link": {
+        "m": "micro-virol-4",
+        "h": "parvo"
+       }
+      },
+      {
+       "id": "micro-virol-4:pox",
+       "sub": "Virology",
+       "t": "Poxvirus replicates without a nucleus",
+       "link": {
+        "m": "micro-virol-4",
+        "h": "pox"
+       }
+      },
+      {
+       "id": "micro-virol-5:hv-family",
+       "sub": "Virology",
+       "t": "Eight viruses, eight hiding places",
+       "link": {
+        "m": "micro-virol-5",
+        "h": "hv-family"
+       }
+      },
+      {
+       "id": "micro-virol-5:hv-repl",
+       "sub": "Virology",
+       "t": "Three waves of transcription",
+       "link": {
+        "m": "micro-virol-5",
+        "h": "hv-repl"
+       }
+      },
+      {
+       "id": "micro-virol-5:hsv-latency",
+       "sub": "Virology",
+       "t": "How herpes simplex virus hides and comes back",
+       "link": {
+        "m": "micro-virol-5",
+        "h": "hsv-latency"
+       }
+      },
+      {
+       "id": "micro-virol-5:hsv-dis",
+       "sub": "Virology",
+       "t": "The syndromes of herpes simplex",
+       "link": {
+        "m": "micro-virol-5",
+        "h": "hsv-dis"
+       }
+      },
+      {
+       "id": "micro-virol-5:vzv",
+       "sub": "Virology",
+       "t": "Varicella and zoster are the same virus twice",
+       "link": {
+        "m": "micro-virol-5",
+        "h": "vzv"
+       }
+      },
+      {
+       "id": "micro-virol-5:ebv",
+       "sub": "Virology",
+       "t": "Epstein-Barr virus lives inside the B-cell programme",
+       "link": {
+        "m": "micro-virol-5",
+        "h": "ebv"
+       }
+      },
+      {
+       "id": "micro-virol-5:cmv",
+       "sub": "Virology",
+       "t": "Cytomegalovirus and the rest of the family",
+       "link": {
+        "m": "micro-virol-5",
+        "h": "cmv"
+       }
+      },
+      {
+       "id": "micro-virol-6:picorna-struct",
+       "sub": "Virology",
+       "t": "A genome that is already messenger RNA",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "picorna-struct"
+       }
+      },
+      {
+       "id": "micro-virol-6:entero",
+       "sub": "Virology",
+       "t": "The enteroviruses, virus by virus",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "entero"
+       }
+      },
+      {
+       "id": "micro-virol-6:rhino",
+       "sub": "Virology",
+       "t": "Rhinovirus is defined by two weaknesses",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "rhino"
+       }
+      },
+      {
+       "id": "micro-virol-6:corona",
+       "sub": "Virology",
+       "t": "Coronavirus: an enveloped virus that resists detergent",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "corona"
+       }
+      },
+      {
+       "id": "micro-virol-6:noro",
+       "sub": "Virology",
+       "t": "Norovirus and the cruise ship",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "noro"
+       }
+      },
+      {
+       "id": "micro-virol-6:paramyxo",
+       "sub": "Virology",
+       "t": "The fusion protein defines the family",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "paramyxo"
+       }
+      },
+      {
+       "id": "micro-virol-6:measles",
+       "sub": "Virology",
+       "t": "Measles",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "measles"
+       }
+      },
+      {
+       "id": "micro-virol-6:mumps-rsv",
+       "sub": "Virology",
+       "t": "Mumps, parainfluenza and respiratory syncytial virus",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "mumps-rsv"
+       }
+      },
+      {
+       "id": "micro-virol-6:flu-struct",
+       "sub": "Virology",
+       "t": "Influenza: eight segments and two glycoproteins",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "flu-struct"
+       }
+      },
+      {
+       "id": "micro-virol-6:flu-drift",
+       "sub": "Virology",
+       "t": "Drift makes an epidemic, shift makes a pandemic",
+       "link": {
+        "m": "micro-virol-6",
+        "h": "flu-drift"
+       }
+      },
+      {
+       "id": "micro-virol-7:rabies-struct",
+       "sub": "Virology",
+       "t": "A bullet-shaped virion with five proteins",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "rabies-struct"
+       }
+      },
+      {
+       "id": "micro-virol-7:rabies-dis",
+       "sub": "Virology",
+       "t": "Why rabies can be prevented after the bite",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "rabies-dis"
+       }
+      },
+      {
+       "id": "micro-virol-7:filo",
+       "sub": "Virology",
+       "t": "Filoviruses: long filaments and level 4",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "filo"
+       }
+      },
+      {
+       "id": "micro-virol-7:reo-struct",
+       "sub": "Virology",
+       "t": "Double capsid, double-stranded, segmented",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "reo-struct"
+       }
+      },
+      {
+       "id": "micro-virol-7:rota",
+       "sub": "Virology",
+       "t": "Rotavirus",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "rota"
+       }
+      },
+      {
+       "id": "micro-virol-7:arbo-cycle",
+       "sub": "Virology",
+       "t": "How an arbovirus reaches the brain",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "arbo-cycle"
+       }
+      },
+      {
+       "id": "micro-virol-7:alpha",
+       "sub": "Virology",
+       "t": "Alphavirus: an envelope shrink-wrapped onto the capsid",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "alpha"
+       }
+      },
+      {
+       "id": "micro-virol-7:rubella",
+       "sub": "Virology",
+       "t": "Rubella and the fetus",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "rubella"
+       }
+      },
+      {
+       "id": "micro-virol-7:flavi",
+       "sub": "Virology",
+       "t": "Flavivirus: encephalitis, yellow fever and dengue",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "flavi"
+       }
+      },
+      {
+       "id": "micro-virol-7:bunya",
+       "sub": "Virology",
+       "t": "Bunyavirus: three segments and no matrix protein",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "bunya"
+       }
+      },
+      {
+       "id": "micro-virol-7:arena",
+       "sub": "Virology",
+       "t": "Arenavirus carries host ribosomes",
+       "link": {
+        "m": "micro-virol-7",
+        "h": "arena"
+       }
+      },
+      {
+       "id": "micro-virol-8:retro-class",
+       "sub": "Virology",
+       "t": "The discovery that broke the central dogma",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "retro-class"
+       }
+      },
+      {
+       "id": "micro-virol-8:retro-struct",
+       "sub": "Virology",
+       "t": "Two genomes, two transfer RNAs and three enzymes",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "retro-struct"
+       }
+      },
+      {
+       "id": "micro-virol-8:retro-genome",
+       "sub": "Virology",
+       "t": "gag, pol, env and the long terminal repeat",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "retro-genome"
+       }
+      },
+      {
+       "id": "micro-virol-8:rt-step",
+       "sub": "Virology",
+       "t": "From RNA to provirus",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "rt-step"
+       }
+      },
+      {
+       "id": "micro-virol-8:late-phase",
+       "sub": "Virology",
+       "t": "The provirus behaves like a cellular gene",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "late-phase"
+       }
+      },
+      {
+       "id": "micro-virol-8:hiv-entry",
+       "sub": "Virology",
+       "t": "CD4 first, then a chemokine receptor",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "hiv-entry"
+       }
+      },
+      {
+       "id": "micro-virol-8:hiv-cells",
+       "sub": "Virology",
+       "t": "The Trojan horse",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "hiv-cells"
+       }
+      },
+      {
+       "id": "micro-virol-8:hiv-course",
+       "sub": "Virology",
+       "t": "From mononucleosis-like illness to AIDS",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "hiv-course"
+       }
+      },
+      {
+       "id": "micro-virol-8:hiv-epi",
+       "sub": "Virology",
+       "t": "How HIV moves and how it is stopped",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "hiv-epi"
+       }
+      },
+      {
+       "id": "micro-virol-8:htlv",
+       "sub": "Virology",
+       "t": "HTLV-1 and the flower cell",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "htlv"
+       }
+      },
+      {
+       "id": "micro-virol-8:herv",
+       "sub": "Virology",
+       "t": "The retroviruses already in our chromosomes",
+       "link": {
+        "m": "micro-virol-8",
+        "h": "herv"
        }
       }
      ],
@@ -8516,7 +9718,7 @@
        ],
        "topics": [
         [
-         "ติดตามสาร: สารแต่ละตัวเคลื่อนที่ที่ไหน",
+         "Substance tracker: where each solute moves",
          "tracker"
         ],
         [
@@ -11421,7 +12623,7 @@
       {
        "id": "nephron-pathway:dct",
        "sub": "Physiology",
-       "t": "Distal convoluted tubule",
+       "t": "DCT",
        "link": {
         "m": "nephron-pathway",
         "h": "dct"

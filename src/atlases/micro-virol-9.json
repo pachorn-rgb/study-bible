@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-9",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "Hepatitis viruses and prions",
+ "h1": "Hepatitis viruses and prions",
+ "lede": "ไวรัสห้าตัวที่ไม่เกี่ยวข้องกันทางโครงสร้างเลย แต่ลงเอยที่ liver เหมือนกัน · แล้วปิดบท virology ด้วยสิ่งที่ติดต่อได้โดยไม่มี genome เลย · อ่านจาก Murray บท 55 และ 56",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 55 Hepatitis Viruses และ Ch 56 Prion Diseases"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "Hepatitis viruses and prions",
+  "src": "Murray 9e Ch 55–56",
+  "desc": "ตารางเทียบ hepatitis A ถึง E ทั้งโครงสร้าง การแพร่ ระยะฟักตัว ความรุนแรงและภาวะเรื้อรัง, เหตุที่อาการเกิดจาก cell-mediated immunity ไม่ใช่จากไวรัสสลายเซลล์, Dane particle กับ HBsAg L M S ที่ใช้ start codon ต่างกัน, reverse transcriptase ใน hepadnavirus, ลำดับ serology ของ hepatitis B กับ window ที่ใช้ IgM anti-HBc, immune complex ที่ให้ vasculitis และ glomerulonephritis, hepatitis C ที่เรื้อรัง 70%, hepatitis D ที่ต้องมี hepatitis B เป็น helper, hepatitis E ที่รุนแรงในหญิงตั้งครรภ์ และ prion ที่ไม่มี genome ไม่กระตุ้นภูมิคุ้มกัน และเกิดจากการพับผิดของ PrP ตามแบบ template-mediated protein refolding",
+  "ch": "Murray Ch 55–56",
+  "sort": 21,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

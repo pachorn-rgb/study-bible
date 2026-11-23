@@ -1,0 +1,28 @@
+{
+ "id": "micro-virol-8",
+ "kind": "patho",
+ "override": {"root": "Microbiology"},
+ "sys": "Microbiology",
+ "eyebrow": "Microbiology · Virology",
+ "draft": false,
+ "title_tag": "Retroviruses",
+ "h1": "Retroviruses",
+ "lede": "ไวรัสที่คัดลอก RNA กลับเป็น DNA แล้วแทรกตัวเองเข้า chromosome ของเซลล์จนกลายเป็น gene หนึ่ง · reverse transcriptase, provirus, HIV และ HTLV · อ่านจาก Murray บท 54",
+ "sources": [
+  ["murray", "Mu", "Murray Medical Microbiology 9e · Ch 54 Retroviruses"]
+ ],
+ "css": ["micro.css"],
+ "lib": {
+  "cid": "micro",
+  "folder": "micro",
+  "subs": ["Virology"],
+  "title": "Retroviruses",
+  "src": "Murray 9e Ch 54",
+  "desc": "การค้นพบ reverse transcriptase ที่ขัดกับ central dogma, การจัดกลุ่มเป็น Oncovirinae Lentivirinae และ Spumavirinae, รูปร่าง core แบบ A B C D, gag pol env กับ long terminal repeat, เหตุที่ genome ของ retrovirus ไม่ก่อการติดเชื้อเองต่างจาก picornavirus, gp120 กับ gp41, CD4 ร่วมกับ CCR5 แล้วเปลี่ยนเป็น CXCR4, เซลล์ที่เป็นแหล่งกักเก็บแบบ Trojan horse, ลำดับขั้นของโรคจากระยะเฉียบพลันคล้าย mononucleosis ถึง AIDS ที่ CD4 ต่ำกว่า 200, จุดที่ยาต้านไวรัสแต่ละกลุ่มออกฤทธิ์, HTLV-1 ที่ไม่มี oncogene และระยะแฝงยาวก่อน adult T-cell leukemia กับ flower cell, tropical spastic paraparesis และ human endogenous retrovirus ที่เป็น 8% ของ genome คน",
+  "ch": "Murray Ch 54",
+  "sort": 20,
+  "refb": "murray",
+  "refl": "Mu",
+  "tags": ["microbiology"]
+ }
+}

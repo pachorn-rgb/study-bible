@@ -1,7 +1,7 @@
 /* Med Study Bible service worker.
    To publish an update: change VERSION (any new string). Installed apps
    download the new files in the background and show "New version" banner. */
-const VERSION = "6.105";
+const VERSION = "6.116";
 const CACHE = "bible-" + VERSION;
 const FONT_CACHE = "bible-fonts";
 const FILES = [
@@ -159,7 +159,25 @@ const FILES = [
  "micro/micro-bact-7.html",
  "thumbs/micro-bact-7.jpg",
  "micro/micro-lab.html",
- "thumbs/micro-lab.jpg"
+ "thumbs/micro-lab.jpg",
+ "micro/micro-virol-1.html",
+ "thumbs/micro-virol-1.jpg",
+ "micro/micro-virol-2.html",
+ "thumbs/micro-virol-2.jpg",
+ "micro/micro-virol-3.html",
+ "thumbs/micro-virol-3.jpg",
+ "micro/micro-virol-4.html",
+ "thumbs/micro-virol-4.jpg",
+ "micro/micro-virol-5.html",
+ "thumbs/micro-virol-5.jpg",
+ "micro/micro-virol-6.html",
+ "thumbs/micro-virol-6.jpg",
+ "micro/micro-virol-7.html",
+ "thumbs/micro-virol-7.jpg",
+ "micro/micro-virol-8.html",
+ "thumbs/micro-virol-8.jpg",
+ "micro/micro-virol-9.html",
+ "thumbs/micro-virol-9.jpg"
 ];
 /* figure images (renal/img/**) are cached the first time they are viewed, so installing stays light */
 self.addEventListener("install", e => {

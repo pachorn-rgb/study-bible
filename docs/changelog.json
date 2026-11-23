@@ -1,5 +1,24 @@
 [
  {
+  "v": "6.116",
+  "date": "2026-11-23",
+  "th": [
+   "เริ่มบท Virology — atlas ใหม่สองอันแรก พร้อมคำถามทบทวนครบทุกหัวข้อ",
+   "Viral classification, structure and replication — ชื่อของไวรัสมาจากไหน, เจ็ด DNA family กับสิบสาม RNA family, รูปแบบของ genome ทั้งหมดที่เป็นไปได้, การประกอบ capsid, naked capsid เทียบ enveloped ทั้งคุณสมบัติและผลต่อการแพร่เชื้อ, viral attachment protein กับ receptor ที่กำหนด host range, การเข้าเซลล์ทั้งสี่ทาง, uncoating และ growth curve",
+   "Mechanisms of viral pathogenesis — ขั้นของโรคตั้งแต่ incubation ถึง convalescence, primary กับ secondary viremia, สี่ทางที่ไวรัสเข้าสู่ระบบประสาทส่วนกลาง, การติดเชื้อระดับเซลล์ทั้งห้าแบบ, inclusion body ที่บอกชื่อไวรัสได้, การ immortalize เซลล์กับ 15% ของมะเร็งในคน, วิธีที่ไวรัสหนีภูมิคุ้มกัน และ immunopathology ตั้งแต่ immune complex ถึง dengue hemorrhagic fever",
+   "Diagnosing viral disease, and the drugs — การเลือกสิ่งส่งตรวจตามการวินิจฉัยแยกโรคและช่วงเวลาที่ยังเก็บเชื้อได้, cytopathic effect ทั้งหมดที่เห็นได้, hemadsorption, การวัดปริมาณไวรัสด้วย TCD50 กับ plaque-forming unit, PCR กับ real-time PCR และ multiplex panel, serology ที่แยก primary จาก reinfection, ตารางเป้าของยาต้านไวรัสแยกตามขั้นของวงจร, เหตุที่ nucleoside analog เลือกออกฤทธิ์ได้ และการฆ่าเชื้อที่ต่างกันระหว่าง naked capsid กับ enveloped virus",
+   "เพิ่มคำถาม 57 ข้อในบท Microbiology ซึ่งเดิมมีเฉพาะของโมดูลยาต้านจุลชีพ",
+   "แก้หัวข้อ Substance tracker ในบท Renal ให้เป็นภาษาอังกฤษตามมาตรฐานของหัวข้อทั้งแอป",
+   "DNA viruses: papilloma, polyoma, adeno, parvo and pox — HPV ที่เดินตามการแก่ของ keratinocyte ทีละชั้น, koilocyte, E6 กับ E7 ที่จับ p53 และ p105RB, เหตุที่การแทรก genome ทำให้ E6 กับ E7 หลุดการควบคุม, JC virus กับ progressive multifocal leukoencephalopathy, adenovirus ที่ fiber เป็นทั้งตัวเกาะและสารพิษ, parvovirus B19 ที่ต้องการเซลล์ที่กำลังแบ่งตัวจึงเกิด aplastic crisis กับ hydrops fetalis และ poxvirus ที่เพิ่มจำนวนใน cytoplasm ล้วน",
+   "The human herpesviruses — ตารางเดียวที่บอกว่าไวรัสทั้งแปดเข้าเซลล์อะไร ซ่อนที่ไหน และแพร่ทางใด, การถอดรหัสสามระยะ, latency-associated transcript ที่ทำให้ herpes simplex virus อยู่เงียบใน neuron พร้อมสิ่งกระตุ้นให้กลับเป็นซ้ำ, กลุ่มอาการทั้งหมดของ herpes simplex, varicella ที่ตุ่มมีทุกระยะพร้อมกันเทียบกับ zoster ที่อยู่ใน dermatome เดียว, EBV ที่ใช้พัฒนาการของ B cell เป็นที่อยู่จนเกิด heterophile antibody กับ Downey cell และ cytomegalovirus ที่เป็นสาเหตุไวรัสอันดับหนึ่งของความพิการแต่กำเนิด",
+   "เพิ่ม atlas RNA viruses ของลำไส้และทางเดินหายใจ — picornavirus, coronavirus กับ norovirus, paramyxovirus และ influenza พร้อม MCQ 41 ข้อ",
+   "เพิ่ม atlas Rabies, rotavirus และ arboviruses — rabies, filovirus, reovirus, togavirus, flavivirus, bunyavirus และ arenavirus พร้อม MCQ 52 ข้อ",
+   "เพิ่ม atlas Retroviruses — reverse transcriptase, provirus, HIV, HTLV และ human endogenous retrovirus พร้อม MCQ 46 ข้อ",
+   "ปรับตัวเลือกของคำถาม virology ทั้งชุด ไม่ให้คำตอบที่ถูกเป็นตัวเลือกที่ยาวที่สุดจนเดาได้",
+   "เพิ่ม atlas Hepatitis viruses and prions — ตารางเทียบ hepatitis A ถึง E, serology ของ hepatitis B พร้อม window และ prion disease · ปิดบท virology ครบ 9 atlas"
+  ]
+ },
+ {
   "v": "6.105",
   "date": "2026-11-23",
   "th": [
