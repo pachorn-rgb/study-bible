@@ -1,5 +1,20 @@
 [
  {
+  "v": "6.96",
+  "date": "2026-11-23",
+  "th": [
+   "เปลี่ยนวิธีอ่านตำรา: ดึงข้อความจาก PDF ใหม่ทั้ง 21 เล่ม ได้ย่อหน้าต่อเนื่องเรียงถูกลำดับ แทนไฟล์เดิมที่สองคอลัมน์ปนกันในบรรทัดเดียวถึง 62%",
+   "เติมเนื้อหาโมดูล Obligate intracellular, wall-less and anaerobic bacteria จากต้นฉบับที่อ่านได้ครบ — เพิ่มจาก 12 เป็น 13 หัวข้อ",
+   "Chlamydia: เพิ่ม OMP 2 กับ disulfide cross-link ที่ทำให้ EB ทนทาน, EB เกาะที่ microvilli, reticulate body ที่เปราะต่อออสโมซิส",
+   "เพิ่มหัวข้อใหม่ Diagnosing and treating Chlamydia — NAAT กับความไว 90–98%, ข้อจำกัดของการเพาะเชื้อและซีโรโลยี, เกณฑ์ CF ของ LGV และสูตรยาทั้งสี่สถานการณ์",
+   "โรคของ C. trachomatis ลงรายละเอียดครบ: pannus คืออะไร, neonatal conjunctivitis ที่ลากได้ถึง 12 เดือน, infant pneumonia ที่ไอแบบ staccato และไม่มีไข้, ผู้หญิงไม่มีอาการถึง 80%, และเหตุผลที่อาการโผล่หลังรักษา gonorrhea หาย",
+   "C. pneumoniae และ C. psittaci: เกณฑ์ MIF, ที่มาของชื่อ TWAR, ornithosis กับนกทุกชนิด และการรักษานกด้วย chlortetracycline 45 วัน",
+   "Rickettsia: เพิ่มตารางเทียบระยะฟักตัว ลักษณะผื่น ทิศทางการลาม eschar และอัตราตายของทั้งแปดโรคในกลุ่ม",
+   "Mycoplasma: ผ่านตัวกรอง 0.45 μm จนเคยถูกเข้าใจว่าเป็นไวรัส, เป็น superantigen, M. pneumoniae เป็น strict aerobe, ระบาดทุก 4–8 ปี และไม่มีฤดูกาล",
+   "Anaerobes: ความหลากหลายของเชื้อที่ลดลงเมื่อเป็นโรค, bacteremia ที่ลดจาก 20% เหลือต่ำกว่า 5%, และ Actinomyces ที่ดื้อ metronidazole กับการเพาะที่ต้องรอสองสัปดาห์"
+  ]
+ },
+ {
   "v": "6.94",
   "date": "2026-11-17",
   "th": [
