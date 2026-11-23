@@ -1,5 +1,22 @@
 [
  {
+  "v": "6.98",
+  "date": "2026-11-23",
+  "th": [
+   "เติมเนื้อหาโมดูล Gram-positive cocci จากต้นฉบับที่อ่านได้ครบ — จาก 15 เป็น 19 หัวข้อ และเนื้อหาต่อหัวข้อเพิ่มกว่าสองเท่า",
+   "หัวข้อใหม่ When Staphylococcus aureus gets past the skin — bacteremia, endocarditis ที่ลิ้น tricuspid ในผู้ใช้ยาฉีด, necrotizing pneumonia จาก community MRSA, empyema, osteomyelitis และ septic arthritis",
+   "หัวข้อใหม่ Finding it, and treating it — ค่าของ Gram stain แยกตามชนิดสิ่งส่งตรวจ, coagulase ทั้งแบบ slide และ tube, mannitol salt agar และสูตรยาทั้งกินและฉีด",
+   "หัวข้อใหม่ Diagnosing and treating group A disease — การป้ายคอที่ถูกวิธี, bacitracin กับ PYR, และเส้นแบ่งว่ายาป้องกัน rheumatic fever ได้แต่ไม่กัน glomerulonephritis",
+   "หัวข้อใหม่ The pneumococcus at the bench — bile solubility, optochin, ชุดตรวจแอนติเจนในปัสสาวะ และเหตุผลที่ต้องมีวัคซีนสองแบบ",
+   "Staphylococcus: เพิ่ม agr quorum-sensing operon ที่ตัดสินว่าเมื่อไรเชื้อจะเปลี่ยนจากอยู่อาศัยเป็นรุกราน, alpha toxin ที่รวมเป็น heptamer เปิดรู, MSCRAMM, แคปซูล serotype 5 กับ 8 และกลไกของ superantigen",
+   "SSSS ครบทั้ง Nikolsky sign, ตุ่มน้ำที่ไม่มีเชื้อ, อัตราตาย 5% ในเด็กเทียบ 60% ในผู้ใหญ่ และ bullous impetigo ที่ต่างกันสามข้อ",
+   "MRSA: mecA, mecC, SCCmec, PBP2a, heterogeneous resistance และการดื้อ vancomycin ทั้งสองแบบ",
+   "Streptococcus: M protein ทั้งโครงสร้างและ class I กับ rheumatic fever, สี่กลไกหลบ phagocyte, Spe superantigen, ตาราง Lancefield และ viridans ทั้งห้ากลุ่ม",
+   "GBS: serotype Ia, III, V, sialic acid ที่ยับยั้ง alternative pathway และตัวเลขการได้รับเชื้อระหว่างคลอด 60%",
+   "Enterococcus: สูตรยาตามรูปแบบการดื้อ และยาที่ไม่มีฤทธิ์เลยอย่าง cephalosporin"
+  ]
+ },
+ {
   "v": "6.96",
   "date": "2026-11-23",
   "th": [

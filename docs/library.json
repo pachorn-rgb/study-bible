@@ -1971,12 +1971,20 @@
          "staph-pyo"
         ],
         [
+         "When Staphylococcus aureus gets past the skin",
+         "staph-sys"
+        ],
+        [
          "MRSA and why β-lactams stop working",
          "mrsa"
         ],
         [
          "Coagulase-negative staphylococci",
          "cons"
+        ],
+        [
+         "Finding it, and treating it",
+         "staph-dx-rx"
         ],
         [
          "Classifying streptococci: hemolysis and Lancefield",
@@ -1995,12 +2003,20 @@
          "gas-seq"
         ],
         [
+         "Diagnosing and treating group A disease",
+         "gas-dx-rx"
+        ],
+        [
          "Streptococcus agalactiae and the neonate",
          "gbs"
         ],
         [
          "Streptococcus pneumoniae",
          "spn"
+        ],
+        [
+         "The pneumococcus at the bench, and the two vaccines",
+         "spn-dx-rx"
         ],
         [
          "Viridans streptococci",
